@@ -2,6 +2,7 @@ import { readFile, readdir, rename, writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 import { fileURLToPath } from "node:url";
+import YAML from "yaml";
 
 const DEFAULT_DELAY_MS = 5_000;
 const MIN_DELAY_MS = 2_000;
@@ -17,11 +18,13 @@ try {
 function usage() {
   return `Usage:
   npm run wiki:import -- --id codwiki-88-ridge
+  npm run wiki:import -- --game cod3
   npm run wiki:import -- --limit 10
   npm run wiki:import -- --all
 
 Options:
   --id <id>       Import one record; repeat for several records
+  --game <id>     Import records used by every level of a game; repeatable
   --limit <n>     Import the first n incomplete records
   --all           Check every Wiki import record
   --force         Rewrite records whose revision is unchanged
@@ -32,23 +35,54 @@ Options:
 Configure COD_ATLAS_WIKI_ORIGIN and COD_ATLAS_WIKI_USER_AGENT in .env first.`;
 }
 
+export class WikiConfigurationError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = "WikiConfigurationError";
+  }
+}
+
+export function formatWikiConfigurationError(error) {
+  return `Wiki import configuration required
+
+${error.message}
+
+Add these values to .env and replace the contact details:
+
+  COD_ATLAS_WIKI_ORIGIN=https://callofduty.fandom.com
+  COD_ATLAS_WIKI_USER_AGENT=CoDAtlasWikiImporter/0.1 (you@example.com; https://github.com/time-wasters/cod-atlas)
+
+See .env.example for details.`;
+}
+
 export function resolveWikiConfiguration(environment = process.env) {
   const originValue = environment.COD_ATLAS_WIKI_ORIGIN?.trim().replace(/\/+$/, "");
   const userAgent = environment.COD_ATLAS_WIKI_USER_AGENT?.trim();
-  if (!originValue) throw new Error("COD_ATLAS_WIKI_ORIGIN is not configured; see .env.example");
-  if (!userAgent) throw new Error("COD_ATLAS_WIKI_USER_AGENT is not configured; include maintainer contact information");
-  const origin = new URL(originValue);
-  if (!['http:', 'https:'].includes(origin.protocol) || origin.pathname !== '/') {
-    throw new Error("COD_ATLAS_WIKI_ORIGIN must be an HTTP(S) origin without a path");
+  if (!originValue) throw new WikiConfigurationError("COD_ATLAS_WIKI_ORIGIN is not configured.");
+  if (!userAgent) throw new WikiConfigurationError("COD_ATLAS_WIKI_USER_AGENT is not configured; include maintainer contact information.");
+  let origin;
+  try {
+    origin = new URL(originValue);
+  } catch {
+    throw new WikiConfigurationError("COD_ATLAS_WIKI_ORIGIN must be a valid HTTP(S) origin without a path.");
+  }
+  if (!["http:", "https:"].includes(origin.protocol) || origin.pathname !== "/") {
+    throw new WikiConfigurationError("COD_ATLAS_WIKI_ORIGIN must be an HTTP(S) origin without a path.");
   }
   return { origin: origin.origin, apiUrl: new URL("/api.php", origin), userAgent };
 }
 
 export function parseArguments(argv) {
-  const options = { ids: [], limit: null, all: false, force: false, dryRun: false, delayMs: DEFAULT_DELAY_MS };
+  const options = { ids: [], gameIds: [], limit: null, all: false, force: false, dryRun: false, delayMs: DEFAULT_DELAY_MS };
   for (let index = 0; index < argv.length; index += 1) {
     const argument = argv[index];
-    if (argument === "--id") options.ids.push(argv[++index]);
+    if (argument === "--id" || argument === "--game") {
+      const value = argv[index + 1];
+      if (!value || value.startsWith("--")) throw new Error(`${argument} requires a value`);
+      if (argument === "--id") options.ids.push(value);
+      else options.gameIds.push(value);
+      index += 1;
+    }
     else if (argument === "--limit") options.limit = Number(argv[++index]);
     else if (argument === "--delay-ms") options.delayMs = Number(argv[++index]);
     else if (argument === "--all") options.all = true;
@@ -58,11 +92,48 @@ export function parseArguments(argv) {
     else throw new Error(`Unknown option: ${argument}`);
   }
   if (options.help) return options;
-  if (!options.ids.length && options.limit === null && !options.all) throw new Error("Select records with --id, --limit, or --all");
-  if (options.ids.some((id) => !id)) throw new Error("--id requires a value");
+  if (!options.ids.length && !options.gameIds.length && options.limit === null && !options.all) throw new Error("Select records with --id, --game, --limit, or --all");
   if (options.limit !== null && (!Number.isInteger(options.limit) || options.limit < 1)) throw new Error("--limit must be a positive integer");
   if (!Number.isInteger(options.delayMs) || options.delayMs < MIN_DELAY_MS) throw new Error(`--delay-ms must be at least ${MIN_DELAY_MS}`);
   return options;
+}
+
+async function filesBelow(directory, extension) {
+  const entries = await readdir(directory, { withFileTypes: true });
+  const nested = await Promise.all(entries.map(async (entry) => {
+    const target = path.join(directory, entry.name);
+    if (entry.isDirectory()) return filesBelow(target, extension);
+    return entry.name.endsWith(extension) ? [target] : [];
+  }));
+  return nested.flat();
+}
+
+function frontmatter(text, filename) {
+  const match = text.match(/^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/);
+  if (!match) throw new Error(`${filename}: missing YAML frontmatter`);
+  return YAML.parse(match[1]);
+}
+
+export function wikiArticleIdsForGames(levels, gameIds) {
+  const selectedGames = new Set(gameIds);
+  return [...new Set(levels
+    .filter((level) => level.games?.some((gameId) => selectedGames.has(gameId)))
+    .map((level) => level.wikiArticle)
+    .filter(Boolean))].sort();
+}
+
+export async function loadWikiArticleIdsForGames(gameIds) {
+  const contentRoot = path.join(process.cwd(), "content");
+  const gameFilenames = await filesBelow(path.join(contentRoot, "games"), ".yaml");
+  const knownGameIds = new Set(await Promise.all(gameFilenames.map(async (filename) =>
+    YAML.parse(await readFile(filename, "utf8")).id)));
+  const unknownGameIds = [...new Set(gameIds)].filter((gameId) => !knownGameIds.has(gameId));
+  if (unknownGameIds.length) throw new Error(`Unknown game IDs: ${unknownGameIds.join(", ")}`);
+
+  const levelFilenames = await filesBelow(path.join(contentRoot, "levels"), ".md");
+  const levels = await Promise.all(levelFilenames.map(async (filename) =>
+    frontmatter(await readFile(filename, "utf8"), filename)));
+  return wikiArticleIdsForGames(levels, gameIds);
 }
 
 function splitTopLevel(value, separator) {
@@ -275,6 +346,9 @@ async function main() {
     return { filename, article: JSON.parse(await readFile(filename, "utf8")) };
   }));
   const ids = new Set(options.ids);
+  if (options.gameIds.length) {
+    for (const id of await loadWikiArticleIdsForGames(options.gameIds)) ids.add(id);
+  }
   let selected = ids.size ? records.filter(({ article }) => ids.has(article.id)) : records;
   const missing = [...ids].filter((id) => !selected.some(({ article }) => article.id === id));
   if (missing.length) throw new Error(`Unknown Wiki import IDs: ${missing.join(", ")}`);
@@ -288,5 +362,8 @@ async function main() {
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  main().catch((error) => { console.error(error.stack ?? error); process.exitCode = 1; });
+  main().catch((error) => {
+    console.error(error instanceof WikiConfigurationError ? formatWikiConfigurationError(error) : error.stack ?? error);
+    process.exitCode = 1;
+  });
 }

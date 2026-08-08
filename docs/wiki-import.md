@@ -38,7 +38,9 @@ COD_ATLAS_WIKI_USER_AGENT=CoDAtlasWikiImporter/0.1 (maintainer@example.com)
 The importer derives both paths from it and rejects source records belonging
 to another origin. The command refuses to make a request if either variable is
 blank. `.env.example` contains commented Call of Duty Wiki values as a hint;
-the repository does not enable that service by default.
+the repository does not enable that service by default. Missing or invalid
+configuration produces concise setup guidance and a non-zero exit status,
+without printing a JavaScript stack trace.
 
 ## Select records
 
@@ -47,6 +49,7 @@ The importer refuses to run without an explicit scope.
 | Option | Behavior |
 | --- | --- |
 | `--id <id>` | Check one import record. Repeat the option to check several IDs. |
+| `--game <game-id>` | Check every distinct Wiki record referenced by levels whose `games` list contains this game ID. Repeat for several games. |
 | `--limit <n>` | Check the first `n` records whose `importedAt` is still null. |
 | `--all` | Check all import records and skip those already at the latest revision. |
 | `--force` | Re-import selected records even when the revision ID is unchanged. |
@@ -65,6 +68,22 @@ Docker equivalent:
 ```sh
 docker compose run --rm cod-atlas-tools npm run wiki:import -- --id codwiki-88-ridge --dry-run
 ```
+
+To check all levels associated with one game, use its repository game ID. Wiki
+articles shared by several matching levels are fetched only once:
+
+```sh
+npm run wiki:import -- --game cod3 --dry-run
+```
+
+Docker equivalent:
+
+```sh
+docker compose run --rm cod-atlas-tools npm run wiki:import -- --game cod3 --dry-run
+```
+
+The command rejects unknown game IDs. Levels are selected when the ID appears
+anywhere in their `games` list, so shared and remastered levels are included.
 
 Remove `--dry-run` only after the result looks correct. A gradual initial
 import can use `--limit 10`; subsequent runs continue with records whose
@@ -94,7 +113,7 @@ leaves the media record unchanged, and retains the discovered file title in
 
 ## Request behavior and failures
 
-The importer groups up to ten articles into an API request, sends requests
+The importer groups up to ten distinct articles into an API request, sends requests
 serially, waits five seconds by default, and supplies `maxlag=1`. Image metadata
 is fetched in a second batched request only when images were discovered.
 Unchanged revision IDs avoid the image request and any file write.

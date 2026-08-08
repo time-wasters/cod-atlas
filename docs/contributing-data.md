@@ -148,6 +148,7 @@ check the entire collection:
 
 ```sh
 npm run wiki:import -- --id codwiki-88-ridge
+npm run wiki:import -- --game cod3
 npm run wiki:import -- --limit 10
 npm run wiki:import -- --all
 ```
@@ -156,6 +157,7 @@ Docker equivalents use the same options, for example:
 
 ```sh
 docker compose run --rm cod-atlas-tools npm run wiki:import -- --id codwiki-88-ridge
+docker compose run --rm cod-atlas-tools npm run wiki:import -- --game cod3
 docker compose run --rm cod-atlas-tools npm run wiki:import -- --limit 10
 docker compose run --rm cod-atlas-tools npm run wiki:import -- --all
 ```

@@ -1,6 +1,17 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { extractInfobox, hasCompleteAttribution, imageRecord, parseArguments, parseWikiLink, resolveWikiConfiguration } from "../scripts/import-wiki-articles.mjs";
+import {
+  extractInfobox,
+  formatWikiConfigurationError,
+  hasCompleteAttribution,
+  imageRecord,
+  loadWikiArticleIdsForGames,
+  parseArguments,
+  parseWikiLink,
+  resolveWikiConfiguration,
+  WikiConfigurationError,
+  wikiArticleIdsForGames,
+} from "../scripts/import-wiki-articles.mjs";
 
 const wikiOrigin = "https://wiki.example.test";
 
@@ -41,7 +52,21 @@ test("imageRecord maps attribution and source links", () => {
 });
 
 test("Wiki configuration is opt-in and accepts an explicit origin", () => {
-  assert.throws(() => resolveWikiConfiguration({}), /not configured/);
+  let error;
+  try {
+    resolveWikiConfiguration({});
+  } catch (caught) {
+    error = caught;
+  }
+  assert.ok(error instanceof WikiConfigurationError);
+  const output = formatWikiConfigurationError(error);
+  assert.match(output, /Wiki import configuration required/);
+  assert.match(output, /COD_ATLAS_WIKI_ORIGIN=https:\/\/callofduty\.fandom\.com/);
+  assert.doesNotMatch(output, /\n\s+at /);
+  assert.throws(() => resolveWikiConfiguration({
+    COD_ATLAS_WIKI_ORIGIN: "not a URL",
+    COD_ATLAS_WIKI_USER_AGENT: "Atlas importer (maintainer@example.test)",
+  }), WikiConfigurationError);
   assert.deepEqual(resolveWikiConfiguration({
     COD_ATLAS_WIKI_ORIGIN: wikiOrigin,
     COD_ATLAS_WIKI_USER_AGENT: "Atlas importer (maintainer@example.test)",
@@ -70,5 +95,25 @@ test("media requires complete attribution before import", () => {
 test("arguments require explicit scope and enforce a polite delay", () => {
   assert.throws(() => parseArguments([]), /Select records/);
   assert.throws(() => parseArguments(["--all", "--delay-ms", "100"]), /at least 2000/);
+  assert.throws(() => parseArguments(["--game", "--dry-run"]), /--game requires a value/);
   assert.equal(parseArguments(["--id", "codwiki-example"]).ids[0], "codwiki-example");
+  assert.deepEqual(parseArguments(["--game", "cod3", "--game", "cod4"]).gameIds, ["cod3", "cod4"]);
+});
+
+test("game selection includes every matching level and deduplicates Wiki articles", () => {
+  const levels = [
+    { games: ["cod3"], wikiArticle: "codwiki-one" },
+    { games: ["cod3", "cod4-r"], wikiArticle: "codwiki-shared" },
+    { games: ["cod4-r"], wikiArticle: "codwiki-shared" },
+    { games: ["cod4"], wikiArticle: "codwiki-other" },
+  ];
+  assert.deepEqual(wikiArticleIdsForGames(levels, ["cod3"]), ["codwiki-one", "codwiki-shared"]);
+  assert.deepEqual(wikiArticleIdsForGames(levels, ["cod3", "cod4-r"]), ["codwiki-one", "codwiki-shared"]);
+});
+
+test("game selection resolves curated levels and rejects unknown game IDs", async () => {
+  const ids = await loadWikiArticleIdsForGames(["cod3"]);
+  assert.ok(ids.includes("codwiki-the-corridor-of-death"));
+  assert.equal(ids.length, new Set(ids).size);
+  await assert.rejects(loadWikiArticleIdsForGames(["not-a-game"]), /Unknown game IDs: not-a-game/);
 });
