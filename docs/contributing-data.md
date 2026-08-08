@@ -11,14 +11,18 @@ Without host npm, use
 | Record | Source path | Template |
 | --- | --- | --- |
 | Game | `content/games/<game-id>.yaml` | [game.yaml](templates/game.yaml) |
-| Terrestrial level | `content/levels/<primary-game>/<level-id>.md` | [level-terrestrial.md](templates/level-terrestrial.md) |
-| Off-world level | `content/levels/<primary-game>/<level-id>.md` | [level-off-world.md](templates/level-off-world.md) |
+| Terrestrial level | `content/levels/<primary-game>/<level-slug>.md` | [level-terrestrial.md](templates/level-terrestrial.md) |
+| Off-world level | `content/levels/<primary-game>/<level-slug>.md` | [level-off-world.md](templates/level-off-world.md) |
 | Wiki import | `content/wiki-import/articles/<article-id>.json` | [wiki-article.json](templates/wiki-article.json) |
 
 Most contributions only change a level. Add a game only if it does not exist,
 and add a Wiki record only if the level's article is not already represented.
 Search IDs before adding anything. IDs are lowercase, stable, and hyphenated;
 do not rename an ID merely to improve its wording.
+
+The primary-game directory supplies the filename's game prefix. For example,
+the level ID `cod3-laison-river` belongs at
+`content/levels/cod3/laison-river.md`, not `cod3/cod3-laison-river.md`.
 
 ## Level fields
 

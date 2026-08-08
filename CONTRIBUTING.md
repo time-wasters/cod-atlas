@@ -46,6 +46,10 @@ guidance, and copy-ready templates for every source record type.
 
 Create a Markdown file under the primary game's directory:
 
+Name it `<level-slug>.md` without repeating the primary game ID. For example,
+an `id` of `cod3-example-level` belongs at
+`content/levels/cod3/example-level.md`.
+
 ```md
 ---
 id: cod3-example-level

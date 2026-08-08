@@ -5,6 +5,7 @@ import YAML from "yaml";
 
 const root = process.cwd();
 const contentRoot = path.join(root, "content");
+const levelsRoot = path.join(contentRoot, "levels");
 const outputPath = path.join(root, "app/data/atlas.generated.json");
 const checkOnly = process.argv.includes("--check");
 const validModes = new Set(["singleplayer", "multiplayer"]);
@@ -43,7 +44,7 @@ function requireValue(condition, message) {
 
 const atlas = YAML.parse(await readFile(path.join(contentRoot, "atlas.yaml"), "utf8"));
 const gameFiles = (await filesBelow(path.join(contentRoot, "games"), ".yaml")).sort();
-const levelFiles = (await filesBelow(path.join(contentRoot, "levels"), ".md")).sort();
+const levelFiles = (await filesBelow(levelsRoot, ".md")).sort();
 const wikiFiles = (await filesBelow(path.join(contentRoot, "wiki-import/articles"), ".json")).sort();
 
 const games = new Map();
@@ -74,6 +75,11 @@ for (const filename of levelFiles) {
   requireValue(validModes.has(level.mode), `${filename}: invalid mode ${level.mode}`);
   requireValue(Array.isArray(level.games) && level.games.length, `${filename}: games must be a non-empty list`);
   for (const gameId of level.games) requireValue(games.has(gameId), `${filename}: unknown game ${gameId}`);
+  const primaryGame = level.games[0];
+  const idPrefix = `${primaryGame}-`;
+  requireValue(level.id.startsWith(idPrefix), `${filename}: level id must start with primary game ${idPrefix}`);
+  const expectedFilename = path.join(levelsRoot, primaryGame, `${level.id.slice(idPrefix.length)}.md`);
+  requireValue(filename === expectedFilename, `${filename}: expected level path ${expectedFilename}`);
   requireValue(wikiArticles.has(level.wikiArticle), `${filename}: unknown wikiArticle ${level.wikiArticle}`);
   requireValue(Array.isArray(level.locations) && level.locations.length, `${filename}: locations must be a non-empty list`);
   const locationIds = new Set();

@@ -3,8 +3,9 @@
 These instructions apply to everything under `content/`.
 
 - Treat files here as curated source data.
-- Levels live in `levels/<primary-game>/<level-id>.md` and own their embedded
-  marker locations.
+- Levels live in `levels/<primary-game>/<level-slug>.md` and own their embedded
+  marker locations. The stable `id` is `<primary-game>-<level-slug>`; do not
+  repeat the game prefix in the filename.
 - Do not create or reference a separate place entity.
 - Every `games` ID must resolve to `games/<id>.yaml`.
 - Every `wikiArticle` ID must resolve to
