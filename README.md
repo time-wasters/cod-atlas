@@ -91,6 +91,8 @@ Useful commands:
 
 - `npm run data:build` validates content and refreshes the generated dataset.
 - `npm run data:check` verifies that the committed generated dataset is current.
+- `npm run wiki:import -- --help` documents the manual Wiki import command; see
+  [`docs/wiki-import.md`](docs/wiki-import.md) for its Docker workflow.
 - `npm test` builds the static site and checks important migrated records.
 - `npm run build` creates the Sites/Worker deployment in `dist/`.
 - `npm run build:static` creates a plain, relative-path website in

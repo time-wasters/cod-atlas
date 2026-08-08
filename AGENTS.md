@@ -37,6 +37,18 @@ changes are intended to be reviewable through pull requests.
 
 ## Working procedure
 
+### Command execution environment
+
+- Do not assume Node.js or npm is installed on the host. Check availability
+  before using host-side Node/npm commands.
+- Prefer Docker for installs, data commands, linting, tests, and builds. Use the
+  `builder` stage in `Dockerfile`, which contains the locked Node/npm toolchain.
+- When a command must update a tracked file (for example `npm run data:build`),
+  run the builder with the repository bind-mounted at `/app` and preserve the
+  image's `/app/node_modules` separately so generated output is written back to
+  the workspace without hiding installed dependencies.
+- Do not install Node.js or npm on the host merely to run repository commands.
+
 1. Read `README.md`, `CONTRIBUTING.md`, and `docs/data-model.md` when relevant.
 2. Make the smallest coherent change.
 3. Run the focused check while iterating.

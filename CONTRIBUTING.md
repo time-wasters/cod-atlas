@@ -51,7 +51,7 @@ locations:
     longitude: -0.2
     precision: approximate
     confidence: medium
-    method: historical-research
+    method: manual-approximate
     primary: true
 ---
 
@@ -69,6 +69,10 @@ existing record whose assumptions may not fit the new contribution.
 Wiki import records must remain separate from curated level files. A refresh
 may update the Fandom page ID, revision, source location, map style evidence,
 and image metadata. It must not silently replace curated coordinates or notes.
+
+Use the manual [Wiki import command](docs/wiki-import.md) to refresh records.
+The reference documents Docker execution, dry runs, selection options, request
+pacing, imported fields, and media-attribution safeguards.
 
 Do not add an image unless its import record contains the source URL, image
 detail page, author, author profile link, license name, and license URL.

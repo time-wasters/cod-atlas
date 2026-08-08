@@ -104,6 +104,32 @@ Do not add media without its source URL, detail page URL, author name and user
 URL, license name, and license URL. A refresh must never overwrite curated
 coordinates, precision, confidence, method, or notes.
 
+## Refresh Wiki imports
+
+The Wiki importer is deliberately manual and read-only toward the Wiki. See the
+[Wiki import command reference](wiki-import.md) for Docker setup, every option,
+field behavior, pacing, attribution safeguards, and failure recovery.
+
+Preview one article before writing it:
+
+```sh
+npm run wiki:import -- --id codwiki-88-ridge --dry-run
+```
+
+Then import it, refresh a small number of incomplete records, or deliberately
+check the entire collection:
+
+```sh
+npm run wiki:import -- --id codwiki-88-ridge
+npm run wiki:import -- --limit 10
+npm run wiki:import -- --all
+```
+
+Set `COD_ATLAS_WIKI_USER_AGENT` to a descriptive value containing maintainer
+contact information. The delay cannot be reduced below two seconds. Do not run
+multiple importers in parallel. On HTTP 403 the command stops; do not work
+around a block. Review imported location and media attribution before commit.
+
 ## Submit and validate
 
 After editing `content/`, run `npm run data:build` and include the regenerated
