@@ -8,7 +8,7 @@ wikiArticle: codwiki-tranzit
 locations:
   - id: main
     label: Washington
-    country: Washington
+    country: "USA: Washington"
     latitude: 47.4
     longitude: -120.7
     precision: country

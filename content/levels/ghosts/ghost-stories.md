@@ -7,15 +7,15 @@ mode: singleplayer
 wikiArticle: codwiki-ghost-stories
 locations:
   - id: main
-    label: Earth’s Orbit
-    country: Earth’s Orbit
+    label: Earthâ€™s Orbit
+    country: Earthâ€™s Orbit
     precision: off-world
     confidence: fallback
     method: region-fallback
     primary: true
   - id: california-2
     label: California
-    country: California
+    country: "USA: California"
     latitude: 36.8
     longitude: -119.4
     precision: country

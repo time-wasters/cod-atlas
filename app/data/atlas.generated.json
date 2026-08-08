@@ -551,170 +551,6 @@
       ]
     },
     {
-      "name": "Alaska",
-      "coordinates": [
-        64.2,
-        -152
-      ],
-      "kind": "terrestrial",
-      "entries": [
-        {
-          "id": "mw3-d-in-the-wild:main",
-          "levelId": "mw3-d-in-the-wild",
-          "locationId": "main",
-          "title": "In The Wild",
-          "game": "MW3:D",
-          "wiki": "https://callofduty.fandom.com/wiki/In_The_Wild",
-          "wikiArticle": "codwiki-in-the-wild",
-          "city": null,
-          "region": null,
-          "label": "Alaska",
-          "coordinates": [
-            64.2,
-            -152
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
-          "id": "mw3-d-isolation:main",
-          "levelId": "mw3-d-isolation",
-          "locationId": "main",
-          "title": "Isolation",
-          "game": "MW3:D",
-          "wiki": "https://callofduty.fandom.com/wiki/Isolation",
-          "wikiArticle": "codwiki-isolation",
-          "city": null,
-          "region": null,
-          "label": "Alaska",
-          "coordinates": [
-            64.2,
-            -152
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
-          "id": "bo4-militia:main",
-          "levelId": "bo4-militia",
-          "locationId": "main",
-          "title": "Militia",
-          "game": "BO4",
-          "wiki": "https://callofduty.fandom.com/wiki/Militia_(Black_Ops_4)",
-          "wikiArticle": "codwiki-militia-black-ops-4",
-          "city": null,
-          "region": null,
-          "label": "Alaska",
-          "coordinates": [
-            64.2,
-            -152
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "ghosts-nightfall:main",
-          "levelId": "ghosts-nightfall",
-          "locationId": "main",
-          "title": "Nightfall",
-          "game": "G",
-          "wiki": "https://callofduty.fandom.com/wiki/Nightfall",
-          "wikiArticle": "codwiki-nightfall",
-          "city": null,
-          "region": null,
-          "label": "Alaska",
-          "coordinates": [
-            64.2,
-            -152
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "mw3-d-oil-fire-and-ice:main",
-          "levelId": "mw3-d-oil-fire-and-ice",
-          "locationId": "main",
-          "title": "Oil, Fire, and Ice",
-          "game": "MW3:D",
-          "wiki": "https://callofduty.fandom.com/wiki/Oil,_Fire,_and_Ice",
-          "wikiArticle": "codwiki-oil-fire-and-ice",
-          "city": null,
-          "region": null,
-          "label": "Alaska",
-          "coordinates": [
-            64.2,
-            -152
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
-          "id": "mw3-d-overwatch:main",
-          "levelId": "mw3-d-overwatch",
-          "locationId": "main",
-          "title": "Overwatch",
-          "game": "MW3:D",
-          "wiki": "https://callofduty.fandom.com/wiki/Overwatch_(Modern_Warfare_3:_Defiance)",
-          "wikiArticle": "codwiki-overwatch-modern-warfare-3-defiance",
-          "city": null,
-          "region": null,
-          "label": "Alaska",
-          "coordinates": [
-            64.2,
-            -152
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
-          "id": "ghosts-whiteout:main",
-          "levelId": "ghosts-whiteout",
-          "locationId": "main",
-          "title": "Whiteout",
-          "game": "G",
-          "wiki": "https://callofduty.fandom.com/wiki/Whiteout",
-          "wikiArticle": "codwiki-whiteout",
-          "city": null,
-          "region": null,
-          "label": "Alaska",
-          "coordinates": [
-            64.2,
-            -152
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        }
-      ]
-    },
-    {
       "name": "Algeria",
       "coordinates": [
         28,
@@ -1134,82 +970,6 @@
           "method": "country-fallback",
           "modes": [
             "singleplayer"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Arizona",
-      "coordinates": [
-        34.3,
-        -111.7
-      ],
-      "kind": "terrestrial",
-      "entries": [
-        {
-          "id": "aw-bio-lab-cc02039f:main",
-          "levelId": "aw-bio-lab-cc02039f",
-          "locationId": "main",
-          "title": "Bio Lab",
-          "game": "AW",
-          "wiki": "https://callofduty.fandom.com/wiki/Bio_Lab_(Map)",
-          "wikiArticle": "codwiki-bio-lab-map",
-          "city": null,
-          "region": null,
-          "label": "Arizona",
-          "coordinates": [
-            34.3,
-            -111.7
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "mw3-gulch:main",
-          "levelId": "mw3-gulch",
-          "locationId": "main",
-          "title": "Gulch",
-          "game": "MW3",
-          "wiki": "https://callofduty.fandom.com/wiki/Gulch",
-          "wikiArticle": "codwiki-gulch",
-          "city": null,
-          "region": null,
-          "label": "Arizona",
-          "coordinates": [
-            34.3,
-            -111.7
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "bo3-outlaw:main",
-          "levelId": "bo3-outlaw",
-          "locationId": "main",
-          "title": "Outlaw",
-          "game": "BO3",
-          "wiki": "https://callofduty.fandom.com/wiki/Outlaw",
-          "wikiArticle": "codwiki-outlaw",
-          "city": null,
-          "region": null,
-          "label": "Arizona",
-          "coordinates": [
-            34.3,
-            -111.7
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
           ]
         }
       ]
@@ -2481,852 +2241,6 @@
       ]
     },
     {
-      "name": "California",
-      "coordinates": [
-        36.8,
-        -119.4
-      ],
-      "kind": "terrestrial",
-      "entries": [
-        {
-          "id": "bo2-aftermath:main",
-          "levelId": "bo2-aftermath",
-          "locationId": "main",
-          "title": "Aftermath",
-          "game": "BO2",
-          "wiki": "https://callofduty.fandom.com/wiki/Aftermath_(map)",
-          "wikiArticle": "codwiki-aftermath-map",
-          "city": null,
-          "region": null,
-          "label": "California",
-          "coordinates": [
-            36.8,
-            -119.4
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "bo4-alcatraz:main",
-          "levelId": "bo4-alcatraz",
-          "locationId": "main",
-          "title": "Alcatraz",
-          "game": "BO4",
-          "wiki": "https://callofduty.fandom.com/wiki/Alcatraz_(Blackout)",
-          "wikiArticle": "codwiki-alcatraz-blackout",
-          "city": null,
-          "region": null,
-          "label": "California",
-          "coordinates": [
-            36.8,
-            -119.4
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "aw-armada:main",
-          "levelId": "aw-armada",
-          "locationId": "main",
-          "title": "Armada",
-          "game": "AW",
-          "wiki": "https://callofduty.fandom.com/wiki/Armada",
-          "wikiArticle": "codwiki-armada",
-          "city": null,
-          "region": null,
-          "label": "California",
-          "coordinates": [
-            36.8,
-            -119.4
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
-          "id": "iw-attack-of-the-radioactive-thing:main",
-          "levelId": "iw-attack-of-the-radioactive-thing",
-          "locationId": "main",
-          "title": "Attack of the Radioactive Thing",
-          "game": "IW",
-          "wiki": "https://callofduty.fandom.com/wiki/Attack_of_the_Radioactive_Thing",
-          "wikiArticle": "codwiki-attack-of-the-radioactive-thing",
-          "city": null,
-          "region": null,
-          "label": "California",
-          "coordinates": [
-            36.8,
-            -119.4
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "ghosts-bayview:main",
-          "levelId": "ghosts-bayview",
-          "locationId": "main",
-          "title": "BayView",
-          "game": "G",
-          "wiki": "https://callofduty.fandom.com/wiki/BayView",
-          "wikiArticle": "codwiki-bayview",
-          "city": null,
-          "region": null,
-          "label": "California",
-          "coordinates": [
-            36.8,
-            -119.4
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "mw3-black-box:main",
-          "levelId": "mw3-black-box",
-          "locationId": "main",
-          "title": "Black Box",
-          "game": "MW3",
-          "wiki": "https://callofduty.fandom.com/wiki/Black_Box",
-          "wikiArticle": "codwiki-black-box",
-          "city": null,
-          "region": null,
-          "label": "California",
-          "coordinates": [
-            36.8,
-            -119.4
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "bo4-blackout-map:main",
-          "levelId": "bo4-blackout-map",
-          "locationId": "main",
-          "title": "Blackout Map",
-          "game": "BO4",
-          "wiki": "https://callofduty.fandom.com/wiki/Blackout_(Black_Ops_4)",
-          "wikiArticle": "codwiki-blackout-black-ops-4",
-          "city": null,
-          "region": null,
-          "label": "California",
-          "coordinates": [
-            36.8,
-            -119.4
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "bo4-blood-of-the-dead:main",
-          "levelId": "bo4-blood-of-the-dead",
-          "locationId": "main",
-          "title": "Blood of the Dead",
-          "game": "BO4",
-          "wiki": "https://callofduty.fandom.com/wiki/Blood_of_the_Dead",
-          "wikiArticle": "codwiki-blood-of-the-dead",
-          "city": null,
-          "region": null,
-          "label": "California",
-          "coordinates": [
-            36.8,
-            -119.4
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "ghosts-brave-new-world:main",
-          "levelId": "ghosts-brave-new-world",
-          "locationId": "main",
-          "title": "Brave New World",
-          "game": "G",
-          "wiki": "https://callofduty.fandom.com/wiki/Brave_New_World",
-          "wikiArticle": "codwiki-brave-new-world",
-          "city": null,
-          "region": null,
-          "label": "California",
-          "coordinates": [
-            36.8,
-            -119.4
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
-          "id": "iw-carnage:main",
-          "levelId": "iw-carnage",
-          "locationId": "main",
-          "title": "Carnage",
-          "game": "IW",
-          "wiki": "https://callofduty.fandom.com/wiki/Carnage",
-          "wikiArticle": "codwiki-carnage",
-          "city": null,
-          "region": null,
-          "label": "California",
-          "coordinates": [
-            36.8,
-            -119.4
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "ghosts-chasm:main",
-          "levelId": "ghosts-chasm",
-          "locationId": "main",
-          "title": "Chasm",
-          "game": "G",
-          "wiki": "https://callofduty.fandom.com/wiki/Chasm",
-          "wikiArticle": "codwiki-chasm",
-          "city": null,
-          "region": null,
-          "label": "California",
-          "coordinates": [
-            36.8,
-            -119.4
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "cod4-chinatown:main",
-          "levelId": "cod4-chinatown",
-          "locationId": "main",
-          "title": "Chinatown",
-          "game": "COD4",
-          "wiki": "https://callofduty.fandom.com/wiki/Chinatown",
-          "wikiArticle": "codwiki-chinatown",
-          "city": null,
-          "region": null,
-          "label": "California",
-          "coordinates": [
-            36.8,
-            -119.4
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "aw-collapse:main",
-          "levelId": "aw-collapse",
-          "locationId": "main",
-          "title": "Collapse",
-          "game": "AW",
-          "wiki": "https://callofduty.fandom.com/wiki/Collapse",
-          "wikiArticle": "codwiki-collapse",
-          "city": null,
-          "region": null,
-          "label": "California",
-          "coordinates": [
-            36.8,
-            -119.4
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
-          "id": "bo-convoy:main",
-          "levelId": "bo-convoy",
-          "locationId": "main",
-          "title": "Convoy",
-          "game": "BO",
-          "wiki": "https://callofduty.fandom.com/wiki/Convoy",
-          "wikiArticle": "codwiki-convoy",
-          "city": null,
-          "region": null,
-          "label": "California",
-          "coordinates": [
-            36.8,
-            -119.4
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "bo2-cordis-die:main",
-          "levelId": "bo2-cordis-die",
-          "locationId": "main",
-          "title": "Cordis Die",
-          "game": "BO2",
-          "wiki": "https://callofduty.fandom.com/wiki/Cordis_Die_(mission)",
-          "wikiArticle": "codwiki-cordis-die-mission",
-          "city": null,
-          "region": null,
-          "label": "California",
-          "coordinates": [
-            36.8,
-            -119.4
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
-          "id": "aw-defender:main",
-          "levelId": "aw-defender",
-          "locationId": "main",
-          "title": "Defender",
-          "game": "AW",
-          "wiki": "https://callofduty.fandom.com/wiki/Defender_(map)",
-          "wikiArticle": "codwiki-defender-map",
-          "city": null,
-          "region": null,
-          "label": "California",
-          "coordinates": [
-            36.8,
-            -119.4
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "ghosts-exodus:main",
-          "levelId": "ghosts-exodus",
-          "locationId": "main",
-          "title": "Exodus",
-          "game": "G",
-          "wiki": "https://callofduty.fandom.com/wiki/Exodus_(Extinction)",
-          "wikiArticle": "codwiki-exodus-extinction",
-          "city": null,
-          "region": null,
-          "label": "California",
-          "coordinates": [
-            36.8,
-            -119.4
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "bo2-bocw-express:main",
-          "levelId": "bo2-bocw-express",
-          "locationId": "main",
-          "title": "Express",
-          "game": "BO2 / BOCW",
-          "wiki": "https://callofduty.fandom.com/wiki/Express_(map)",
-          "wikiArticle": "codwiki-express-map",
-          "city": null,
-          "region": null,
-          "label": "California",
-          "coordinates": [
-            36.8,
-            -119.4
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "bo3-fringe:main",
-          "levelId": "bo3-fringe",
-          "locationId": "main",
-          "title": "Fringe",
-          "game": "BO3",
-          "wiki": "https://callofduty.fandom.com/wiki/Fringe",
-          "wikiArticle": "codwiki-fringe",
-          "city": null,
-          "region": null,
-          "label": "California",
-          "coordinates": [
-            36.8,
-            -119.4
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "bocw-game-show:main",
-          "levelId": "bocw-game-show",
-          "locationId": "main",
-          "title": "Game Show",
-          "game": "BOCW",
-          "wiki": "https://callofduty.fandom.com/wiki/Game_Show",
-          "wikiArticle": "codwiki-game-show",
-          "city": null,
-          "region": null,
-          "label": "California",
-          "coordinates": [
-            36.8,
-            -119.4
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "iw-genesis:main",
-          "levelId": "iw-genesis",
-          "locationId": "main",
-          "title": "Genesis",
-          "game": "IW",
-          "wiki": "https://callofduty.fandom.com/wiki/Genesis",
-          "wikiArticle": "codwiki-genesis",
-          "city": null,
-          "region": null,
-          "label": "California",
-          "coordinates": [
-            36.8,
-            -119.4
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "ghosts-ghost-stories:california-2",
-          "levelId": "ghosts-ghost-stories",
-          "locationId": "california-2",
-          "title": "Ghost Stories",
-          "game": "G",
-          "wiki": "https://callofduty.fandom.com/wiki/Ghost_Stories",
-          "wikiArticle": "codwiki-ghost-stories",
-          "city": null,
-          "region": null,
-          "label": "California",
-          "coordinates": [
-            36.8,
-            -119.4
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
-          "id": "bo2-bo4-grind:main",
-          "levelId": "bo2-bo4-grind",
-          "locationId": "main",
-          "title": "Grind",
-          "game": "BO2 / BO4",
-          "wiki": "https://callofduty.fandom.com/wiki/Grind",
-          "wikiArticle": "codwiki-grind",
-          "city": null,
-          "region": null,
-          "label": "California",
-          "coordinates": [
-            36.8,
-            -119.4
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "ghosts-homecoming:main",
-          "levelId": "ghosts-homecoming",
-          "locationId": "main",
-          "title": "Homecoming",
-          "game": "G",
-          "wiki": "https://callofduty.fandom.com/wiki/Homecoming_(Ghosts)",
-          "wikiArticle": "codwiki-homecoming-ghosts",
-          "city": null,
-          "region": null,
-          "label": "California",
-          "coordinates": [
-            36.8,
-            -119.4
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
-          "id": "bo4-lockup:main",
-          "levelId": "bo4-lockup",
-          "locationId": "main",
-          "title": "Lockup",
-          "game": "BO4",
-          "wiki": "https://callofduty.fandom.com/wiki/Lockup",
-          "wikiArticle": "codwiki-lockup",
-          "city": null,
-          "region": null,
-          "label": "California",
-          "coordinates": [
-            36.8,
-            -119.4
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "bo2-mob-of-the-dead:main",
-          "levelId": "bo2-mob-of-the-dead",
-          "locationId": "main",
-          "title": "Mob of the Dead",
-          "game": "BO2",
-          "wiki": "https://callofduty.fandom.com/wiki/Mob_of_the_Dead",
-          "wikiArticle": "codwiki-mob-of-the-dead",
-          "city": null,
-          "region": null,
-          "label": "California",
-          "coordinates": [
-            36.8,
-            -119.4
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "mw2-museum:main",
-          "levelId": "mw2-museum",
-          "locationId": "main",
-          "title": "Museum",
-          "game": "MW2",
-          "wiki": "https://callofduty.fandom.com/wiki/Museum",
-          "wikiArticle": "codwiki-museum",
-          "city": null,
-          "region": null,
-          "label": "California",
-          "coordinates": [
-            36.8,
-            -119.4
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "ghosts-no-man-s-land:main",
-          "levelId": "ghosts-no-man-s-land",
-          "locationId": "main",
-          "title": "No Man's Land",
-          "game": "G",
-          "wiki": "https://callofduty.fandom.com/wiki/No_Man's_Land_(Ghosts)",
-          "wikiArticle": "codwiki-no-man-s-land-ghosts",
-          "city": null,
-          "region": null,
-          "label": "California",
-          "coordinates": [
-            36.8,
-            -119.4
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
-          "id": "bo2-bocw-raid:main",
-          "levelId": "bo2-bocw-raid",
-          "locationId": "main",
-          "title": "Raid",
-          "game": "BO2 / BOCW",
-          "wiki": "https://callofduty.fandom.com/wiki/Raid",
-          "wikiArticle": "codwiki-raid",
-          "city": null,
-          "region": null,
-          "label": "California",
-          "coordinates": [
-            36.8,
-            -119.4
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "iw-rave-in-the-redwoods:main",
-          "levelId": "iw-rave-in-the-redwoods",
-          "locationId": "main",
-          "title": "Rave in the Redwoods",
-          "game": "IW",
-          "wiki": "https://callofduty.fandom.com/wiki/Rave_in_the_Redwoods",
-          "wikiArticle": "codwiki-rave-in-the-redwoods",
-          "city": null,
-          "region": null,
-          "label": "California",
-          "coordinates": [
-            36.8,
-            -119.4
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "bo3-redwood:main",
-          "levelId": "bo3-redwood",
-          "locationId": "main",
-          "title": "Redwood",
-          "game": "BO3",
-          "wiki": "https://callofduty.fandom.com/wiki/Redwood_(map)",
-          "wikiArticle": "codwiki-redwood-map",
-          "city": null,
-          "region": null,
-          "label": "California",
-          "coordinates": [
-            36.8,
-            -119.4
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "ghosts-showtime:main",
-          "levelId": "ghosts-showtime",
-          "locationId": "main",
-          "title": "Showtime",
-          "game": "G",
-          "wiki": "https://callofduty.fandom.com/wiki/Showtime",
-          "wikiArticle": "codwiki-showtime",
-          "city": null,
-          "region": null,
-          "label": "California",
-          "coordinates": [
-            36.8,
-            -119.4
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "mw2-skidrow:main",
-          "levelId": "mw2-skidrow",
-          "locationId": "main",
-          "title": "Skidrow",
-          "game": "MW2",
-          "wiki": "https://callofduty.fandom.com/wiki/Skidrow",
-          "wikiArticle": "codwiki-skidrow",
-          "city": null,
-          "region": null,
-          "label": "California",
-          "coordinates": [
-            36.8,
-            -119.4
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "ghosts-stormfront:main",
-          "levelId": "ghosts-stormfront",
-          "locationId": "main",
-          "title": "Stormfront",
-          "game": "G",
-          "wiki": "https://callofduty.fandom.com/wiki/Stormfront",
-          "wikiArticle": "codwiki-stormfront",
-          "city": null,
-          "region": null,
-          "label": "California",
-          "coordinates": [
-            36.8,
-            -119.4
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "ghosts-strikezone:main",
-          "levelId": "ghosts-strikezone",
-          "locationId": "main",
-          "title": "Strikezone",
-          "game": "G",
-          "wiki": "https://callofduty.fandom.com/wiki/Strikezone",
-          "wikiArticle": "codwiki-strikezone",
-          "city": null,
-          "region": null,
-          "label": "California",
-          "coordinates": [
-            36.8,
-            -119.4
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "ghosts-struck-down:main",
-          "levelId": "ghosts-struck-down",
-          "locationId": "main",
-          "title": "Struck Down",
-          "game": "G",
-          "wiki": "https://callofduty.fandom.com/wiki/Struck_Down",
-          "wikiArticle": "codwiki-struck-down",
-          "city": null,
-          "region": null,
-          "label": "California",
-          "coordinates": [
-            36.8,
-            -119.4
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
-          "id": "bo2-studio:main",
-          "levelId": "bo2-studio",
-          "locationId": "main",
-          "title": "Studio",
-          "game": "BO2",
-          "wiki": "https://callofduty.fandom.com/wiki/Studio",
-          "wikiArticle": "codwiki-studio",
-          "city": null,
-          "region": null,
-          "label": "California",
-          "coordinates": [
-            36.8,
-            -119.4
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "bo-wmd:california-2",
-          "levelId": "bo-wmd",
-          "locationId": "california-2",
-          "title": "WMD",
-          "game": "BO",
-          "wiki": "https://callofduty.fandom.com/wiki/WMD_(mission)",
-          "wikiArticle": "codwiki-wmd-mission",
-          "city": null,
-          "region": null,
-          "label": "California",
-          "coordinates": [
-            36.8,
-            -119.4
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        }
-      ]
-    },
-    {
       "name": "Canada",
       "coordinates": [
         60,
@@ -3871,126 +2785,6 @@
       ]
     },
     {
-      "name": "Colorado",
-      "coordinates": [
-        39,
-        -105.5
-      ],
-      "kind": "terrestrial",
-      "entries": [
-        {
-          "id": "aw-atlas:main",
-          "levelId": "aw-atlas",
-          "locationId": "main",
-          "title": "Atlas",
-          "game": "AW",
-          "wiki": "https://callofduty.fandom.com/wiki/Atlas_(mission)",
-          "wikiArticle": "codwiki-atlas-mission",
-          "city": null,
-          "region": null,
-          "label": "Colorado",
-          "coordinates": [
-            39,
-            -105.5
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
-          "id": "aw-compound:main",
-          "levelId": "aw-compound",
-          "locationId": "main",
-          "title": "Compound",
-          "game": "AW",
-          "wiki": "https://callofduty.fandom.com/wiki/Compound",
-          "wikiArticle": "codwiki-compound",
-          "city": null,
-          "region": null,
-          "label": "Colorado",
-          "coordinates": [
-            39,
-            -105.5
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "aw-drift:main",
-          "levelId": "aw-drift",
-          "locationId": "main",
-          "title": "Drift",
-          "game": "AW",
-          "wiki": "https://callofduty.fandom.com/wiki/Drift",
-          "wikiArticle": "codwiki-drift",
-          "city": null,
-          "region": null,
-          "label": "Colorado",
-          "coordinates": [
-            39,
-            -105.5
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "bocw-icmb:main",
-          "levelId": "bocw-icmb",
-          "locationId": "main",
-          "title": "ICMB",
-          "game": "BOCW",
-          "wiki": "https://callofduty.fandom.com/wiki/ICBM_(map)",
-          "wikiArticle": "codwiki-icbm-map",
-          "city": null,
-          "region": null,
-          "label": "Colorado",
-          "coordinates": [
-            39,
-            -105.5
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "ghosts-point-of-contact:main",
-          "levelId": "ghosts-point-of-contact",
-          "locationId": "main",
-          "title": "Point of Contact",
-          "game": "G",
-          "wiki": "https://callofduty.fandom.com/wiki/Point_of_Contact",
-          "wikiArticle": "codwiki-point-of-contact",
-          "city": null,
-          "region": null,
-          "label": "Colorado",
-          "coordinates": [
-            39,
-            -105.5
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        }
-      ]
-    },
-    {
       "name": "Cuba",
       "coordinates": [
         21.5,
@@ -4404,25 +3198,6 @@
       "kind": "off-world",
       "entries": [
         {
-          "id": "ghosts-ghost-stories:main",
-          "levelId": "ghosts-ghost-stories",
-          "locationId": "main",
-          "title": "Ghost Stories",
-          "game": "G",
-          "wiki": "https://callofduty.fandom.com/wiki/Ghost_Stories",
-          "wikiArticle": "codwiki-ghost-stories",
-          "city": null,
-          "region": null,
-          "label": "Earth’s Orbit",
-          "coordinates": null,
-          "precision": "off-world",
-          "confidence": "fallback",
-          "method": "region-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
           "id": "ghosts-loki:main",
           "levelId": "ghosts-loki",
           "locationId": "main",
@@ -4471,6 +3246,32 @@
           "city": null,
           "region": null,
           "label": "Earth’s Orbit",
+          "coordinates": null,
+          "precision": "off-world",
+          "confidence": "fallback",
+          "method": "region-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Earthâ€™s Orbit",
+      "coordinates": null,
+      "kind": "off-world",
+      "entries": [
+        {
+          "id": "ghosts-ghost-stories:main",
+          "levelId": "ghosts-ghost-stories",
+          "locationId": "main",
+          "title": "Ghost Stories",
+          "game": "G",
+          "wiki": "https://callofduty.fandom.com/wiki/Ghost_Stories",
+          "wikiArticle": "codwiki-ghost-stories",
+          "city": null,
+          "region": null,
+          "label": "Earthâ€™s Orbit",
           "coordinates": null,
           "precision": "off-world",
           "confidence": "fallback",
@@ -5143,82 +3944,6 @@
           "method": "region-fallback",
           "modes": [
             "singleplayer"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Florida",
-      "coordinates": [
-        27.8,
-        -81.7
-      ],
-      "kind": "terrestrial",
-      "entries": [
-        {
-          "id": "ghosts-ignition:main",
-          "levelId": "ghosts-ignition",
-          "locationId": "main",
-          "title": "Ignition",
-          "game": "G",
-          "wiki": "https://callofduty.fandom.com/wiki/Ignition",
-          "wikiArticle": "codwiki-ignition",
-          "city": null,
-          "region": null,
-          "label": "Florida",
-          "coordinates": [
-            27.8,
-            -81.7
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "bocw-miami:main",
-          "levelId": "bocw-miami",
-          "locationId": "main",
-          "title": "Miami",
-          "game": "BOCW",
-          "wiki": "https://callofduty.fandom.com/wiki/Miami",
-          "wikiArticle": "codwiki-miami",
-          "city": null,
-          "region": null,
-          "label": "Florida",
-          "coordinates": [
-            27.8,
-            -81.7
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "bo3-splash:main",
-          "levelId": "bo3-splash",
-          "locationId": "main",
-          "title": "Splash",
-          "game": "BO3",
-          "wiki": "https://callofduty.fandom.com/wiki/Splash",
-          "wikiArticle": "codwiki-splash",
-          "city": null,
-          "region": null,
-          "label": "Florida",
-          "coordinates": [
-            27.8,
-            -81.7
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
           ]
         }
       ]
@@ -7317,92 +6042,6 @@
           "precision": "city",
           "confidence": "high",
           "method": "title-mention",
-          "modes": [
-            "multiplayer"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Georgia",
-      "coordinates": [
-        42,
-        43.5
-      ],
-      "kind": "terrestrial",
-      "entries": [
-        {
-          "id": "mw19-into-the-furnace:main",
-          "levelId": "mw19-into-the-furnace",
-          "locationId": "main",
-          "title": "Into the Furnace",
-          "game": "MW19",
-          "wiki": "https://callofduty.fandom.com/wiki/Into_the_Furnace",
-          "wikiArticle": "codwiki-into-the-furnace",
-          "city": null,
-          "region": null,
-          "label": "Georgia",
-          "coordinates": [
-            42,
-            43.5
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Georgia, USA",
-      "coordinates": [
-        32.7,
-        -83.3
-      ],
-      "kind": "terrestrial",
-      "entries": [
-        {
-          "id": "cod-camp-toccoa:main",
-          "levelId": "cod-camp-toccoa",
-          "locationId": "main",
-          "title": "Camp Toccoa",
-          "game": "COD",
-          "wiki": "https://callofduty.fandom.com/wiki/Camp_Toccoa",
-          "wikiArticle": "codwiki-camp-toccoa",
-          "city": "Toccoa",
-          "region": null,
-          "label": "Toccoa",
-          "coordinates": [
-            34.57732,
-            -83.33239
-          ],
-          "precision": "city",
-          "confidence": "high",
-          "method": "title-mention",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
-          "id": "bo2-bocw-rush:main",
-          "levelId": "bo2-bocw-rush",
-          "locationId": "main",
-          "title": "Rush",
-          "game": "BO2 / BOCW",
-          "wiki": "https://callofduty.fandom.com/wiki/Rush",
-          "wikiArticle": "codwiki-rush",
-          "city": null,
-          "region": null,
-          "label": "Georgia, USA",
-          "coordinates": [
-            32.7,
-            -83.3
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
           "modes": [
             "multiplayer"
           ]
@@ -9572,82 +8211,6 @@
       ]
     },
     {
-      "name": "Hawaii",
-      "coordinates": [
-        20.8,
-        -157.5
-      ],
-      "kind": "terrestrial",
-      "entries": [
-        {
-          "id": "aw-recovery:main",
-          "levelId": "aw-recovery",
-          "locationId": "main",
-          "title": "Recovery",
-          "game": "AW",
-          "wiki": "https://callofduty.fandom.com/wiki/Recovery",
-          "wikiArticle": "codwiki-recovery",
-          "city": null,
-          "region": null,
-          "label": "Hawaii",
-          "coordinates": [
-            20.8,
-            -157.5
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "vanguard-shipmas:main",
-          "levelId": "vanguard-shipmas",
-          "locationId": "main",
-          "title": "Shipmas",
-          "game": "V",
-          "wiki": "https://callofduty.fandom.com/wiki/Shipmas",
-          "wikiArticle": "codwiki-shipmas",
-          "city": null,
-          "region": null,
-          "label": "Hawaii",
-          "coordinates": [
-            20.8,
-            -157.5
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "vanguard-shipment:main",
-          "levelId": "vanguard-shipment",
-          "locationId": "main",
-          "title": "Shipment",
-          "game": "V",
-          "wiki": "https://callofduty.fandom.com/wiki/Shipment",
-          "wikiArticle": "codwiki-shipment",
-          "city": null,
-          "region": null,
-          "label": "Hawaii",
-          "coordinates": [
-            20.8,
-            -157.5
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        }
-      ]
-    },
-    {
       "name": "Iceland",
       "coordinates": [
         65,
@@ -9735,60 +8298,6 @@
           "coordinates": [
             65,
             -18
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Illinois",
-      "coordinates": [
-        40,
-        -89.2
-      ],
-      "kind": "terrestrial",
-      "entries": [
-        {
-          "id": "mwii-countdown:main",
-          "levelId": "mwii-countdown",
-          "locationId": "main",
-          "title": "Countdown",
-          "game": "MWII",
-          "wiki": "https://callofduty.fandom.com/wiki/Countdown_(Modern_Warfare_II)",
-          "wikiArticle": "codwiki-countdown-modern-warfare-ii",
-          "city": null,
-          "region": null,
-          "label": "Illinois",
-          "coordinates": [
-            40,
-            -89.2
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
-          "id": "iw-permafrost:main",
-          "levelId": "iw-permafrost",
-          "locationId": "main",
-          "title": "Permafrost",
-          "game": "IW",
-          "wiki": "https://callofduty.fandom.com/wiki/Permafrost",
-          "wikiArticle": "codwiki-permafrost",
-          "city": null,
-          "region": null,
-          "label": "Illinois",
-          "coordinates": [
-            40,
-            -89.2
           ],
           "precision": "country",
           "confidence": "fallback",
@@ -11354,38 +9863,6 @@
       ]
     },
     {
-      "name": "Kansas",
-      "coordinates": [
-        38.5,
-        -98.2
-      ],
-      "kind": "terrestrial",
-      "entries": [
-        {
-          "id": "mw3-vortex:main",
-          "levelId": "mw3-vortex",
-          "locationId": "main",
-          "title": "Vortex",
-          "game": "MW3",
-          "wiki": "https://callofduty.fandom.com/wiki/Vortex",
-          "wikiArticle": "codwiki-vortex",
-          "city": null,
-          "region": null,
-          "label": "Kansas",
-          "coordinates": [
-            38.5,
-            -98.2
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        }
-      ]
-    },
-    {
       "name": "Kazakhstan",
       "coordinates": [
         48,
@@ -11876,60 +10353,6 @@
       ]
     },
     {
-      "name": "Louisiana",
-      "coordinates": [
-        31,
-        -92
-      ],
-      "kind": "terrestrial",
-      "entries": [
-        {
-          "id": "mw3-parish:main",
-          "levelId": "mw3-parish",
-          "locationId": "main",
-          "title": "Parish",
-          "game": "MW3",
-          "wiki": "https://callofduty.fandom.com/wiki/Parish",
-          "wikiArticle": "codwiki-parish",
-          "city": null,
-          "region": null,
-          "label": "Louisiana",
-          "coordinates": [
-            31,
-            -92
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "bo4-remnant:main",
-          "levelId": "bo4-remnant",
-          "locationId": "main",
-          "title": "Remnant",
-          "game": "BO4",
-          "wiki": "https://callofduty.fandom.com/wiki/Remnant",
-          "wikiArticle": "codwiki-remnant",
-          "city": null,
-          "region": null,
-          "label": "Louisiana",
-          "coordinates": [
-            31,
-            -92
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        }
-      ]
-    },
-    {
       "name": "Luxembourg",
       "coordinates": [
         49.8475,
@@ -12174,148 +10597,6 @@
           "method": "region-fallback",
           "modes": [
             "multiplayer"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Maryland",
-      "coordinates": [
-        39,
-        -76.7
-      ],
-      "kind": "terrestrial",
-      "entries": [
-        {
-          "id": "aw-atlas:maryland-2",
-          "levelId": "aw-atlas",
-          "locationId": "maryland-2",
-          "title": "Atlas",
-          "game": "AW",
-          "wiki": "https://callofduty.fandom.com/wiki/Atlas_(mission)",
-          "wikiArticle": "codwiki-atlas-mission",
-          "city": null,
-          "region": null,
-          "label": "Maryland",
-          "coordinates": [
-            39,
-            -76.7
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
-          "id": "mw3-d-clean-up:main",
-          "levelId": "mw3-d-clean-up",
-          "locationId": "main",
-          "title": "Clean Up",
-          "game": "MW3:D",
-          "wiki": "https://callofduty.fandom.com/wiki/Clean_Up",
-          "wikiArticle": "codwiki-clean-up",
-          "city": null,
-          "region": null,
-          "label": "Maryland",
-          "coordinates": [
-            39,
-            -76.7
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
-          "id": "mw3-d-dangerous-cargo:main",
-          "levelId": "mw3-d-dangerous-cargo",
-          "locationId": "main",
-          "title": "Dangerous Cargo",
-          "game": "MW3:D",
-          "wiki": "https://callofduty.fandom.com/wiki/Dangerous_Cargo",
-          "wikiArticle": "codwiki-dangerous-cargo",
-          "city": null,
-          "region": null,
-          "label": "Maryland",
-          "coordinates": [
-            39,
-            -76.7
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
-          "id": "mw3-d-fire-from-the-sky:main",
-          "levelId": "mw3-d-fire-from-the-sky",
-          "locationId": "main",
-          "title": "Fire From the Sky",
-          "game": "MW3:D",
-          "wiki": "https://callofduty.fandom.com/wiki/Fire_From_the_Sky",
-          "wikiArticle": "codwiki-fire-from-the-sky",
-          "city": null,
-          "region": null,
-          "label": "Maryland",
-          "coordinates": [
-            39,
-            -76.7
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
-          "id": "mw3-d-heavy-metal:main",
-          "levelId": "mw3-d-heavy-metal",
-          "locationId": "main",
-          "title": "Heavy Metal",
-          "game": "MW3:D",
-          "wiki": "https://callofduty.fandom.com/wiki/Heavy_Metal_(level)",
-          "wikiArticle": "codwiki-heavy-metal-level",
-          "city": null,
-          "region": null,
-          "label": "Maryland",
-          "coordinates": [
-            39,
-            -76.7
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
-          "id": "mw3-d-hurricane-ivan:main",
-          "levelId": "mw3-d-hurricane-ivan",
-          "locationId": "main",
-          "title": "Hurricane Ivan",
-          "game": "MW3:D",
-          "wiki": "https://callofduty.fandom.com/wiki/Hurricane_Ivan",
-          "wikiArticle": "codwiki-hurricane-ivan",
-          "city": null,
-          "region": null,
-          "label": "Maryland",
-          "coordinates": [
-            39,
-            -76.7
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "singleplayer"
           ]
         }
       ]
@@ -12749,60 +11030,6 @@
       ]
     },
     {
-      "name": "Michigan",
-      "coordinates": [
-        44.3,
-        -85.6
-      ],
-      "kind": "terrestrial",
-      "entries": [
-        {
-          "id": "aw-aftermath:main",
-          "levelId": "aw-aftermath",
-          "locationId": "main",
-          "title": "Aftermath",
-          "game": "AW",
-          "wiki": "https://callofduty.fandom.com/wiki/Aftermath_(Advanced_Warfare)",
-          "wikiArticle": "codwiki-aftermath-advanced-warfare",
-          "city": null,
-          "region": null,
-          "label": "Michigan",
-          "coordinates": [
-            44.3,
-            -85.6
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
-          "id": "aw-detroit:main",
-          "levelId": "aw-detroit",
-          "locationId": "main",
-          "title": "Detroit",
-          "game": "AW",
-          "wiki": "https://callofduty.fandom.com/wiki/Detroit",
-          "wikiArticle": "codwiki-detroit",
-          "city": null,
-          "region": null,
-          "label": "Michigan",
-          "coordinates": [
-            44.3,
-            -85.6
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        }
-      ]
-    },
-    {
       "name": "Micronesia",
       "coordinates": [
         6.91666666,
@@ -13155,82 +11382,6 @@
           "coordinates": [
             22,
             98
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Nebraska",
-      "coordinates": [
-        41.5,
-        -99.8
-      ],
-      "kind": "terrestrial",
-      "entries": [
-        {
-          "id": "bo-bocw-drive-in:main",
-          "levelId": "bo-bocw-drive-in",
-          "locationId": "main",
-          "title": "Drive-In",
-          "game": "BO / BOCW",
-          "wiki": "https://callofduty.fandom.com/wiki/Drive-In",
-          "wikiArticle": "codwiki-drive-in",
-          "city": null,
-          "region": null,
-          "label": "Nebraska",
-          "coordinates": [
-            41.5,
-            -99.8
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "iw-heartland:main",
-          "levelId": "iw-heartland",
-          "locationId": "main",
-          "title": "Heartland",
-          "game": "IW",
-          "wiki": "https://callofduty.fandom.com/wiki/Heartland",
-          "wikiArticle": "codwiki-heartland",
-          "city": null,
-          "region": null,
-          "label": "Nebraska",
-          "coordinates": [
-            41.5,
-            -99.8
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "ghosts-warhawk:main",
-          "levelId": "ghosts-warhawk",
-          "locationId": "main",
-          "title": "Warhawk",
-          "game": "G",
-          "wiki": "https://callofduty.fandom.com/wiki/Warhawk",
-          "wikiArticle": "codwiki-warhawk",
-          "city": null,
-          "region": null,
-          "label": "Nebraska",
-          "coordinates": [
-            41.5,
-            -99.8
           ],
           "precision": "country",
           "confidence": "fallback",
@@ -13725,926 +11876,6 @@
       ]
     },
     {
-      "name": "Nevada",
-      "coordinates": [
-        39.3,
-        -116.6
-      ],
-      "kind": "terrestrial",
-      "entries": [
-        {
-          "id": "bo4-alpha-omega:main",
-          "levelId": "bo4-alpha-omega",
-          "locationId": "main",
-          "title": "Alpha Omega",
-          "game": "BO4",
-          "wiki": "https://callofduty.fandom.com/wiki/Alpha_Omega",
-          "wikiArticle": "codwiki-alpha-omega",
-          "city": null,
-          "region": null,
-          "label": "Nevada",
-          "coordinates": [
-            39.3,
-            -116.6
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "iw-breakout:main",
-          "levelId": "iw-breakout",
-          "locationId": "main",
-          "title": "Breakout",
-          "game": "IW",
-          "wiki": "https://callofduty.fandom.com/wiki/Breakout",
-          "wikiArticle": "codwiki-breakout",
-          "city": null,
-          "region": null,
-          "label": "Nevada",
-          "coordinates": [
-            39.3,
-            -116.6
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "mw3-d-clearing-out:main",
-          "levelId": "mw3-d-clearing-out",
-          "locationId": "main",
-          "title": "Clearing Out",
-          "game": "MW3:D",
-          "wiki": "https://callofduty.fandom.com/wiki/Clearing_Out",
-          "wikiArticle": "codwiki-clearing-out",
-          "city": null,
-          "region": null,
-          "label": "Nevada",
-          "coordinates": [
-            39.3,
-            -116.6
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
-          "id": "mw3-d-dam-approach:main",
-          "levelId": "mw3-d-dam-approach",
-          "locationId": "main",
-          "title": "Dam Approach",
-          "game": "MW3:D",
-          "wiki": "https://callofduty.fandom.com/wiki/Dam_Approach",
-          "wikiArticle": "codwiki-dam-approach",
-          "city": null,
-          "region": null,
-          "label": "Nevada",
-          "coordinates": [
-            39.3,
-            -116.6
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
-          "id": "bo-hangar-18:main",
-          "levelId": "bo-hangar-18",
-          "locationId": "main",
-          "title": "Hangar 18",
-          "game": "BO",
-          "wiki": "https://callofduty.fandom.com/wiki/Hangar_18",
-          "wikiArticle": "codwiki-hangar-18",
-          "city": null,
-          "region": null,
-          "label": "Nevada",
-          "coordinates": [
-            39.3,
-            -116.6
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "mw3-d-lights-out:main",
-          "levelId": "mw3-d-lights-out",
-          "locationId": "main",
-          "title": "Lights Out",
-          "game": "MW3:D",
-          "wiki": "https://callofduty.fandom.com/wiki/Lights_Out_(Modern_Warfare_3:_Defiance)",
-          "wikiArticle": "codwiki-lights-out-modern-warfare-3-defiance",
-          "city": null,
-          "region": null,
-          "label": "Nevada",
-          "coordinates": [
-            39.3,
-            -116.6
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
-          "id": "bo-nuketown:main",
-          "levelId": "bo-nuketown",
-          "locationId": "main",
-          "title": "Nuketown",
-          "game": "BO",
-          "wiki": "https://callofduty.fandom.com/wiki/Nuketown_(map)",
-          "wikiArticle": "codwiki-nuketown-map",
-          "city": null,
-          "region": null,
-          "label": "Nevada",
-          "coordinates": [
-            39.3,
-            -116.6
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "bocw-nuketown-84:main",
-          "levelId": "bocw-nuketown-84",
-          "locationId": "main",
-          "title": "Nuketown '84",
-          "game": "BOCW",
-          "wiki": "https://callofduty.fandom.com/wiki/Nuketown_'84",
-          "wikiArticle": "codwiki-nuketown-84",
-          "city": null,
-          "region": null,
-          "label": "Nevada",
-          "coordinates": [
-            39.3,
-            -116.6
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "bocw-nuketown-84-halloween:main",
-          "levelId": "bocw-nuketown-84-halloween",
-          "locationId": "main",
-          "title": "Nuketown ‘84 Halloween",
-          "game": "BOCW",
-          "wiki": "https://callofduty.fandom.com/wiki/Nuketown_'84_Halloween",
-          "wikiArticle": "codwiki-nuketown-84-halloween",
-          "city": null,
-          "region": null,
-          "label": "Nevada",
-          "coordinates": [
-            39.3,
-            -116.6
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "bocw-nuketown-84-holiday:main",
-          "levelId": "bocw-nuketown-84-holiday",
-          "locationId": "main",
-          "title": "Nuketown '84 Holiday",
-          "game": "BOCW",
-          "wiki": "https://callofduty.fandom.com/wiki/Nuketown_'84_Holiday",
-          "wikiArticle": "codwiki-nuketown-84-holiday",
-          "city": null,
-          "region": null,
-          "label": "Nevada",
-          "coordinates": [
-            39.3,
-            -116.6
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "bo2-nuketown-2025:main",
-          "levelId": "bo2-nuketown-2025",
-          "locationId": "main",
-          "title": "Nuketown 2025",
-          "game": "BO2",
-          "wiki": "https://callofduty.fandom.com/wiki/Nuketown_2025",
-          "wikiArticle": "codwiki-nuketown-2025",
-          "city": null,
-          "region": null,
-          "label": "Nevada",
-          "coordinates": [
-            39.3,
-            -116.6
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "bo2-nuketown-zombies:main",
-          "levelId": "bo2-nuketown-zombies",
-          "locationId": "main",
-          "title": "Nuketown Zombies",
-          "game": "BO2",
-          "wiki": "https://callofduty.fandom.com/wiki/Nuketown_Zombies",
-          "wikiArticle": "codwiki-nuketown-zombies",
-          "city": null,
-          "region": null,
-          "label": "Nevada",
-          "coordinates": [
-            39.3,
-            -116.6
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "ghosts-octane:main",
-          "levelId": "ghosts-octane",
-          "locationId": "main",
-          "title": "Octane",
-          "game": "G",
-          "wiki": "https://callofduty.fandom.com/wiki/Octane",
-          "wikiArticle": "codwiki-octane",
-          "city": null,
-          "region": null,
-          "label": "Nevada",
-          "coordinates": [
-            39.3,
-            -116.6
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "mw3-d-running-for-cover:main",
-          "levelId": "mw3-d-running-for-cover",
-          "locationId": "main",
-          "title": "Running For Cover",
-          "game": "MW3:D",
-          "wiki": "https://callofduty.fandom.com/wiki/Running_For_Cover",
-          "wikiArticle": "codwiki-running-for-cover",
-          "city": null,
-          "region": null,
-          "label": "Nevada",
-          "coordinates": [
-            39.3,
-            -116.6
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
-          "id": "ghosts-sin-city:main",
-          "levelId": "ghosts-sin-city",
-          "locationId": "main",
-          "title": "Sin City",
-          "game": "G",
-          "wiki": "https://callofduty.fandom.com/wiki/Sin_City",
-          "wikiArticle": "codwiki-sin-city",
-          "city": null,
-          "region": null,
-          "label": "Nevada",
-          "coordinates": [
-            39.3,
-            -116.6
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
-          "id": "vanguard-sphere:main",
-          "levelId": "vanguard-sphere",
-          "locationId": "main",
-          "title": "Sphere",
-          "game": "V",
-          "wiki": "https://callofduty.fandom.com/wiki/Sphere",
-          "wikiArticle": "codwiki-sphere",
-          "city": null,
-          "region": null,
-          "label": "Nevada",
-          "coordinates": [
-            39.3,
-            -116.6
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "mw3-d-through-the-mountains:main",
-          "levelId": "mw3-d-through-the-mountains",
-          "locationId": "main",
-          "title": "Through the Mountains",
-          "game": "MW3:D",
-          "wiki": "https://callofduty.fandom.com/wiki/Through_the_Mountains",
-          "wikiArticle": "codwiki-through-the-mountains",
-          "city": null,
-          "region": null,
-          "label": "Nevada",
-          "coordinates": [
-            39.3,
-            -116.6
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "New Jersey",
-      "coordinates": [
-        40.1,
-        -74.5
-      ],
-      "kind": "terrestrial",
-      "entries": [
-        {
-          "id": "mw3-boardwalk:main",
-          "levelId": "mw3-boardwalk",
-          "locationId": "main",
-          "title": "Boardwalk",
-          "game": "MW3",
-          "wiki": "https://callofduty.fandom.com/wiki/Boardwalk",
-          "wikiArticle": "codwiki-boardwalk",
-          "city": null,
-          "region": null,
-          "label": "New Jersey",
-          "coordinates": [
-            40.1,
-            -74.5
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "mw3-interchange:main",
-          "levelId": "mw3-interchange",
-          "locationId": "main",
-          "title": "Interchange",
-          "game": "MW3",
-          "wiki": "https://callofduty.fandom.com/wiki/Interchange",
-          "wikiArticle": "codwiki-interchange",
-          "city": null,
-          "region": null,
-          "label": "New Jersey",
-          "coordinates": [
-            40.1,
-            -74.5
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "bocw-showroom:main",
-          "levelId": "bocw-showroom",
-          "locationId": "main",
-          "title": "Showroom",
-          "game": "BOCW",
-          "wiki": "https://callofduty.fandom.com/wiki/Showroom",
-          "wikiArticle": "codwiki-showroom",
-          "city": null,
-          "region": null,
-          "label": "New Jersey",
-          "coordinates": [
-            40.1,
-            -74.5
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "bocw-the-pines:main",
-          "levelId": "bocw-the-pines",
-          "locationId": "main",
-          "title": "The Pines",
-          "game": "BOCW",
-          "wiki": "https://callofduty.fandom.com/wiki/The_Pines",
-          "wikiArticle": "codwiki-the-pines",
-          "city": null,
-          "region": null,
-          "label": "New Jersey",
-          "coordinates": [
-            40.1,
-            -74.5
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "New Mexico",
-      "coordinates": [
-        34.5,
-        -106
-      ],
-      "kind": "terrestrial",
-      "entries": [
-        {
-          "id": "bocw-diesel:main",
-          "levelId": "bocw-diesel",
-          "locationId": "main",
-          "title": "Diesel",
-          "game": "BOCW",
-          "wiki": "https://callofduty.fandom.com/wiki/Diesel",
-          "wikiArticle": "codwiki-diesel",
-          "city": null,
-          "region": null,
-          "label": "New Mexico",
-          "coordinates": [
-            34.5,
-            -106
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "bocw-operation-chaos:main",
-          "levelId": "bocw-operation-chaos",
-          "locationId": "main",
-          "title": "Operation Chaos",
-          "game": "BOCW",
-          "wiki": "https://callofduty.fandom.com/wiki/Operation_Chaos",
-          "wikiArticle": "codwiki-operation-chaos",
-          "city": null,
-          "region": null,
-          "label": "New Mexico",
-          "coordinates": [
-            34.5,
-            -106
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "New York",
-      "coordinates": [
-        42.9,
-        -75.5
-      ],
-      "kind": "terrestrial",
-      "entries": [
-        {
-          "id": "vanguard-beheaded:main",
-          "levelId": "vanguard-beheaded",
-          "locationId": "main",
-          "title": "Beheaded",
-          "game": "V",
-          "wiki": "https://callofduty.fandom.com/wiki/Beheaded_(map)",
-          "wikiArticle": "codwiki-beheaded-map",
-          "city": null,
-          "region": null,
-          "label": "New York",
-          "coordinates": [
-            42.9,
-            -75.5
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "mw3-black-tuesday:main",
-          "levelId": "mw3-black-tuesday",
-          "locationId": "main",
-          "title": "Black Tuesday",
-          "game": "MW3",
-          "wiki": "https://callofduty.fandom.com/wiki/Black_Tuesday",
-          "wikiArticle": "codwiki-black-tuesday",
-          "city": null,
-          "region": null,
-          "label": "New York",
-          "coordinates": [
-            42.9,
-            -75.5
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
-          "id": "ghosts-collision:main",
-          "levelId": "ghosts-collision",
-          "locationId": "main",
-          "title": "Collision",
-          "game": "G",
-          "wiki": "https://callofduty.fandom.com/wiki/Collision",
-          "wikiArticle": "codwiki-collision",
-          "city": null,
-          "region": null,
-          "label": "New York",
-          "coordinates": [
-            42.9,
-            -75.5
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "bo2-detour:main",
-          "levelId": "bo2-detour",
-          "locationId": "main",
-          "title": "Detour",
-          "game": "BO2",
-          "wiki": "https://callofduty.fandom.com/wiki/Detour",
-          "wikiArticle": "codwiki-detour",
-          "city": null,
-          "region": null,
-          "label": "New York",
-          "coordinates": [
-            42.9,
-            -75.5
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "mw3-downturn:main",
-          "levelId": "mw3-downturn",
-          "locationId": "main",
-          "title": "Downturn",
-          "game": "MW3",
-          "wiki": "https://callofduty.fandom.com/wiki/Downturn",
-          "wikiArticle": "codwiki-downturn",
-          "city": null,
-          "region": null,
-          "label": "New York",
-          "coordinates": [
-            42.9,
-            -75.5
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "mw3-hardhat:main",
-          "levelId": "mw3-hardhat",
-          "locationId": "main",
-          "title": "Hardhat",
-          "game": "MW3",
-          "wiki": "https://callofduty.fandom.com/wiki/Hardhat",
-          "wikiArticle": "codwiki-hardhat",
-          "city": null,
-          "region": null,
-          "label": "New York",
-          "coordinates": [
-            42.9,
-            -75.5
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "mw2-highrise:main",
-          "levelId": "mw2-highrise",
-          "locationId": "main",
-          "title": "Highrise",
-          "game": "MW2",
-          "wiki": "https://callofduty.fandom.com/wiki/Highrise",
-          "wikiArticle": "codwiki-highrise",
-          "city": null,
-          "region": null,
-          "label": "New York",
-          "coordinates": [
-            42.9,
-            -75.5
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "mw3-hunter-killer:main",
-          "levelId": "mw3-hunter-killer",
-          "locationId": "main",
-          "title": "Hunter Killer",
-          "game": "MW3",
-          "wiki": "https://callofduty.fandom.com/wiki/Hunter_Killer",
-          "wikiArticle": "codwiki-hunter-killer",
-          "city": null,
-          "region": null,
-          "label": "New York",
-          "coordinates": [
-            42.9,
-            -75.5
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
-          "id": "mw3-intersection:main",
-          "levelId": "mw3-intersection",
-          "locationId": "main",
-          "title": "Intersection",
-          "game": "MW3",
-          "wiki": "https://callofduty.fandom.com/wiki/Intersection",
-          "wikiArticle": "codwiki-intersection",
-          "city": null,
-          "region": null,
-          "label": "New York",
-          "coordinates": [
-            42.9,
-            -75.5
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "mw3-liberation:main",
-          "levelId": "mw3-liberation",
-          "locationId": "main",
-          "title": "Liberation",
-          "game": "MW3",
-          "wiki": "https://callofduty.fandom.com/wiki/Liberation",
-          "wikiArticle": "codwiki-liberation",
-          "city": null,
-          "region": null,
-          "label": "New York",
-          "coordinates": [
-            42.9,
-            -75.5
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "iw-noir:main",
-          "levelId": "iw-noir",
-          "locationId": "main",
-          "title": "Noir",
-          "game": "IW",
-          "wiki": "https://callofduty.fandom.com/wiki/Noir",
-          "wikiArticle": "codwiki-noir",
-          "city": null,
-          "region": null,
-          "label": "New York",
-          "coordinates": [
-            42.9,
-            -75.5
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "mw3-overwatch:main",
-          "levelId": "mw3-overwatch",
-          "locationId": "main",
-          "title": "Overwatch",
-          "game": "MW3",
-          "wiki": "https://callofduty.fandom.com/wiki/Overwatch_(map)",
-          "wikiArticle": "codwiki-overwatch-map",
-          "city": null,
-          "region": null,
-          "label": "New York",
-          "coordinates": [
-            42.9,
-            -75.5
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "aw-quarantine:main",
-          "levelId": "aw-quarantine",
-          "locationId": "main",
-          "title": "Quarantine",
-          "game": "AW",
-          "wiki": "https://callofduty.fandom.com/wiki/Quarantine",
-          "wikiArticle": "codwiki-quarantine",
-          "city": null,
-          "region": null,
-          "label": "New York",
-          "coordinates": [
-            42.9,
-            -75.5
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "iw-shaolin-shuffle:main",
-          "levelId": "iw-shaolin-shuffle",
-          "locationId": "main",
-          "title": "Shaolin Shuffle",
-          "game": "IW",
-          "wiki": "https://callofduty.fandom.com/wiki/Shaolin_Shuffle",
-          "wikiArticle": "codwiki-shaolin-shuffle",
-          "city": null,
-          "region": null,
-          "label": "New York",
-          "coordinates": [
-            42.9,
-            -75.5
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "bo3-spire:main",
-          "levelId": "bo3-spire",
-          "locationId": "main",
-          "title": "Spire",
-          "game": "BO3",
-          "wiki": "https://callofduty.fandom.com/wiki/Spire",
-          "wikiArticle": "codwiki-spire",
-          "city": null,
-          "region": null,
-          "label": "New York",
-          "coordinates": [
-            42.9,
-            -75.5
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "bo-stadium:main",
-          "levelId": "bo-stadium",
-          "locationId": "main",
-          "title": "Stadium",
-          "game": "BO",
-          "wiki": "https://callofduty.fandom.com/wiki/Stadium",
-          "wikiArticle": "codwiki-stadium",
-          "city": null,
-          "region": null,
-          "label": "New York",
-          "coordinates": [
-            42.9,
-            -75.5
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "iw-the-beast-from-beyond:main",
-          "levelId": "iw-the-beast-from-beyond",
-          "locationId": "main",
-          "title": "The Beast From Beyond",
-          "game": "IW",
-          "wiki": "https://callofduty.fandom.com/wiki/The_Beast_from_Beyond",
-          "wikiArticle": "codwiki-the-beast-from-beyond",
-          "city": null,
-          "region": null,
-          "label": "New York",
-          "coordinates": [
-            42.9,
-            -75.5
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        }
-      ]
-    },
-    {
       "name": "Nicaragua",
       "coordinates": [
         13,
@@ -14786,38 +12017,6 @@
           "coordinates": [
             10,
             8
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "North Carolina",
-      "coordinates": [
-        35.5,
-        -79.4
-      ],
-      "kind": "terrestrial",
-      "entries": [
-        {
-          "id": "waw-ff-basic-training:north-carolina-2",
-          "levelId": "waw-ff-basic-training",
-          "locationId": "north-carolina-2",
-          "title": "Basic Training",
-          "game": "WAW:FF",
-          "wiki": "https://callofduty.fandom.com/wiki/Basic_Training",
-          "wikiArticle": "codwiki-basic-training",
-          "city": null,
-          "region": null,
-          "label": "North Carolina",
-          "coordinates": [
-            35.5,
-            -79.4
           ],
           "precision": "country",
           "confidence": "fallback",
@@ -18530,38 +15729,6 @@
       ]
     },
     {
-      "name": "South Dakota",
-      "coordinates": [
-        44.4,
-        -100.2
-      ],
-      "kind": "terrestrial",
-      "entries": [
-        {
-          "id": "aw-site-244:main",
-          "levelId": "aw-site-244",
-          "locationId": "main",
-          "title": "Site 244",
-          "game": "AW",
-          "wiki": "https://callofduty.fandom.com/wiki/Site_244",
-          "wikiArticle": "codwiki-site-244",
-          "city": null,
-          "region": null,
-          "label": "South Dakota",
-          "coordinates": [
-            44.4,
-            -100.2
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        }
-      ]
-    },
-    {
       "name": "South Korea",
       "coordinates": [
         37,
@@ -19731,170 +16898,6 @@
           "coordinates": [
             23.5,
             121
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Texas",
-      "coordinates": [
-        31,
-        -99
-      ],
-      "kind": "terrestrial",
-      "entries": [
-        {
-          "id": "wwii-ambush:texas-2",
-          "levelId": "wwii-ambush",
-          "locationId": "texas-2",
-          "title": "Ambush",
-          "game": "WWII",
-          "wiki": "https://callofduty.fandom.com/wiki/Ambush_(mission)",
-          "wikiArticle": "codwiki-ambush-mission",
-          "city": null,
-          "region": null,
-          "label": "Texas",
-          "coordinates": [
-            31,
-            -99
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
-          "id": "bo4-arsenal:main",
-          "levelId": "bo4-arsenal",
-          "locationId": "main",
-          "title": "Arsenal",
-          "game": "BO4",
-          "wiki": "https://callofduty.fandom.com/wiki/Arsenal_(Black_Ops_4)",
-          "wikiArticle": "codwiki-arsenal-black-ops-4",
-          "city": null,
-          "region": null,
-          "label": "Texas",
-          "coordinates": [
-            31,
-            -99
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "bo4-arsenal-sandstorm:main",
-          "levelId": "bo4-arsenal-sandstorm",
-          "locationId": "main",
-          "title": "Arsenal Sandstorm",
-          "game": "BO4",
-          "wiki": "https://callofduty.fandom.com/wiki/Arsenal_Sandstorm",
-          "wikiArticle": "codwiki-arsenal-sandstorm",
-          "city": null,
-          "region": null,
-          "label": "Texas",
-          "coordinates": [
-            31,
-            -99
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "mwii-borderline:texas-2",
-          "levelId": "mwii-borderline",
-          "locationId": "texas-2",
-          "title": "Borderline",
-          "game": "MWII",
-          "wiki": "https://callofduty.fandom.com/wiki/Borderline",
-          "wikiArticle": "codwiki-borderline",
-          "city": null,
-          "region": null,
-          "label": "Texas",
-          "coordinates": [
-            31,
-            -99
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
-          "id": "wwii-epilogue:texas-3",
-          "levelId": "wwii-epilogue",
-          "locationId": "texas-3",
-          "title": "Epilogue",
-          "game": "WWII",
-          "wiki": "https://callofduty.fandom.com/wiki/Epilogue_(mission)",
-          "wikiArticle": "codwiki-epilogue-mission",
-          "city": null,
-          "region": null,
-          "label": "Texas",
-          "coordinates": [
-            31,
-            -99
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
-          "id": "ghosts-tremor:main",
-          "levelId": "ghosts-tremor",
-          "locationId": "main",
-          "title": "Tremor",
-          "game": "G",
-          "wiki": "https://callofduty.fandom.com/wiki/Tremor",
-          "wikiArticle": "codwiki-tremor",
-          "city": null,
-          "region": null,
-          "label": "Texas",
-          "coordinates": [
-            31,
-            -99
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "aw-urban:main",
-          "levelId": "aw-urban",
-          "locationId": "main",
-          "title": "Urban",
-          "game": "AW",
-          "wiki": "https://callofduty.fandom.com/wiki/Urban_(map)",
-          "wikiArticle": "codwiki-urban-map",
-          "city": null,
-          "region": null,
-          "label": "Texas",
-          "coordinates": [
-            31,
-            -99
           ],
           "precision": "country",
           "confidence": "fallback",
@@ -21974,6 +18977,3206 @@
       ]
     },
     {
+      "name": "USA: Alaska",
+      "coordinates": [
+        64.2,
+        -152
+      ],
+      "kind": "terrestrial",
+      "entries": [
+        {
+          "id": "mw3-d-in-the-wild:main",
+          "levelId": "mw3-d-in-the-wild",
+          "locationId": "main",
+          "title": "In The Wild",
+          "game": "MW3:D",
+          "wiki": "https://callofduty.fandom.com/wiki/In_The_Wild",
+          "wikiArticle": "codwiki-in-the-wild",
+          "city": null,
+          "region": null,
+          "label": "Alaska",
+          "coordinates": [
+            64.2,
+            -152
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "mw3-d-isolation:main",
+          "levelId": "mw3-d-isolation",
+          "locationId": "main",
+          "title": "Isolation",
+          "game": "MW3:D",
+          "wiki": "https://callofduty.fandom.com/wiki/Isolation",
+          "wikiArticle": "codwiki-isolation",
+          "city": null,
+          "region": null,
+          "label": "Alaska",
+          "coordinates": [
+            64.2,
+            -152
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "bo4-militia:main",
+          "levelId": "bo4-militia",
+          "locationId": "main",
+          "title": "Militia",
+          "game": "BO4",
+          "wiki": "https://callofduty.fandom.com/wiki/Militia_(Black_Ops_4)",
+          "wikiArticle": "codwiki-militia-black-ops-4",
+          "city": null,
+          "region": null,
+          "label": "Alaska",
+          "coordinates": [
+            64.2,
+            -152
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "ghosts-nightfall:main",
+          "levelId": "ghosts-nightfall",
+          "locationId": "main",
+          "title": "Nightfall",
+          "game": "G",
+          "wiki": "https://callofduty.fandom.com/wiki/Nightfall",
+          "wikiArticle": "codwiki-nightfall",
+          "city": null,
+          "region": null,
+          "label": "Alaska",
+          "coordinates": [
+            64.2,
+            -152
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "mw3-d-oil-fire-and-ice:main",
+          "levelId": "mw3-d-oil-fire-and-ice",
+          "locationId": "main",
+          "title": "Oil, Fire, and Ice",
+          "game": "MW3:D",
+          "wiki": "https://callofduty.fandom.com/wiki/Oil,_Fire,_and_Ice",
+          "wikiArticle": "codwiki-oil-fire-and-ice",
+          "city": null,
+          "region": null,
+          "label": "Alaska",
+          "coordinates": [
+            64.2,
+            -152
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "mw3-d-overwatch:main",
+          "levelId": "mw3-d-overwatch",
+          "locationId": "main",
+          "title": "Overwatch",
+          "game": "MW3:D",
+          "wiki": "https://callofduty.fandom.com/wiki/Overwatch_(Modern_Warfare_3:_Defiance)",
+          "wikiArticle": "codwiki-overwatch-modern-warfare-3-defiance",
+          "city": null,
+          "region": null,
+          "label": "Alaska",
+          "coordinates": [
+            64.2,
+            -152
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "ghosts-whiteout:main",
+          "levelId": "ghosts-whiteout",
+          "locationId": "main",
+          "title": "Whiteout",
+          "game": "G",
+          "wiki": "https://callofduty.fandom.com/wiki/Whiteout",
+          "wikiArticle": "codwiki-whiteout",
+          "city": null,
+          "region": null,
+          "label": "Alaska",
+          "coordinates": [
+            64.2,
+            -152
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "USA: Arizona",
+      "coordinates": [
+        34.3,
+        -111.7
+      ],
+      "kind": "terrestrial",
+      "entries": [
+        {
+          "id": "aw-bio-lab-cc02039f:main",
+          "levelId": "aw-bio-lab-cc02039f",
+          "locationId": "main",
+          "title": "Bio Lab",
+          "game": "AW",
+          "wiki": "https://callofduty.fandom.com/wiki/Bio_Lab_(Map)",
+          "wikiArticle": "codwiki-bio-lab-map",
+          "city": null,
+          "region": null,
+          "label": "Arizona",
+          "coordinates": [
+            34.3,
+            -111.7
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "mw3-gulch:main",
+          "levelId": "mw3-gulch",
+          "locationId": "main",
+          "title": "Gulch",
+          "game": "MW3",
+          "wiki": "https://callofduty.fandom.com/wiki/Gulch",
+          "wikiArticle": "codwiki-gulch",
+          "city": null,
+          "region": null,
+          "label": "Arizona",
+          "coordinates": [
+            34.3,
+            -111.7
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "bo3-outlaw:main",
+          "levelId": "bo3-outlaw",
+          "locationId": "main",
+          "title": "Outlaw",
+          "game": "BO3",
+          "wiki": "https://callofduty.fandom.com/wiki/Outlaw",
+          "wikiArticle": "codwiki-outlaw",
+          "city": null,
+          "region": null,
+          "label": "Arizona",
+          "coordinates": [
+            34.3,
+            -111.7
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "USA: California",
+      "coordinates": [
+        36.8,
+        -119.4
+      ],
+      "kind": "terrestrial",
+      "entries": [
+        {
+          "id": "bo2-aftermath:main",
+          "levelId": "bo2-aftermath",
+          "locationId": "main",
+          "title": "Aftermath",
+          "game": "BO2",
+          "wiki": "https://callofduty.fandom.com/wiki/Aftermath_(map)",
+          "wikiArticle": "codwiki-aftermath-map",
+          "city": null,
+          "region": null,
+          "label": "California",
+          "coordinates": [
+            36.8,
+            -119.4
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "bo4-alcatraz:main",
+          "levelId": "bo4-alcatraz",
+          "locationId": "main",
+          "title": "Alcatraz",
+          "game": "BO4",
+          "wiki": "https://callofduty.fandom.com/wiki/Alcatraz_(Blackout)",
+          "wikiArticle": "codwiki-alcatraz-blackout",
+          "city": null,
+          "region": null,
+          "label": "California",
+          "coordinates": [
+            36.8,
+            -119.4
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "aw-armada:main",
+          "levelId": "aw-armada",
+          "locationId": "main",
+          "title": "Armada",
+          "game": "AW",
+          "wiki": "https://callofduty.fandom.com/wiki/Armada",
+          "wikiArticle": "codwiki-armada",
+          "city": null,
+          "region": null,
+          "label": "California",
+          "coordinates": [
+            36.8,
+            -119.4
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "iw-attack-of-the-radioactive-thing:main",
+          "levelId": "iw-attack-of-the-radioactive-thing",
+          "locationId": "main",
+          "title": "Attack of the Radioactive Thing",
+          "game": "IW",
+          "wiki": "https://callofduty.fandom.com/wiki/Attack_of_the_Radioactive_Thing",
+          "wikiArticle": "codwiki-attack-of-the-radioactive-thing",
+          "city": null,
+          "region": null,
+          "label": "California",
+          "coordinates": [
+            36.8,
+            -119.4
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "ghosts-bayview:main",
+          "levelId": "ghosts-bayview",
+          "locationId": "main",
+          "title": "BayView",
+          "game": "G",
+          "wiki": "https://callofduty.fandom.com/wiki/BayView",
+          "wikiArticle": "codwiki-bayview",
+          "city": null,
+          "region": null,
+          "label": "California",
+          "coordinates": [
+            36.8,
+            -119.4
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "mw3-black-box:main",
+          "levelId": "mw3-black-box",
+          "locationId": "main",
+          "title": "Black Box",
+          "game": "MW3",
+          "wiki": "https://callofduty.fandom.com/wiki/Black_Box",
+          "wikiArticle": "codwiki-black-box",
+          "city": null,
+          "region": null,
+          "label": "California",
+          "coordinates": [
+            36.8,
+            -119.4
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "bo4-blackout-map:main",
+          "levelId": "bo4-blackout-map",
+          "locationId": "main",
+          "title": "Blackout Map",
+          "game": "BO4",
+          "wiki": "https://callofduty.fandom.com/wiki/Blackout_(Black_Ops_4)",
+          "wikiArticle": "codwiki-blackout-black-ops-4",
+          "city": null,
+          "region": null,
+          "label": "California",
+          "coordinates": [
+            36.8,
+            -119.4
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "bo4-blood-of-the-dead:main",
+          "levelId": "bo4-blood-of-the-dead",
+          "locationId": "main",
+          "title": "Blood of the Dead",
+          "game": "BO4",
+          "wiki": "https://callofduty.fandom.com/wiki/Blood_of_the_Dead",
+          "wikiArticle": "codwiki-blood-of-the-dead",
+          "city": null,
+          "region": null,
+          "label": "California",
+          "coordinates": [
+            36.8,
+            -119.4
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "ghosts-brave-new-world:main",
+          "levelId": "ghosts-brave-new-world",
+          "locationId": "main",
+          "title": "Brave New World",
+          "game": "G",
+          "wiki": "https://callofduty.fandom.com/wiki/Brave_New_World",
+          "wikiArticle": "codwiki-brave-new-world",
+          "city": null,
+          "region": null,
+          "label": "California",
+          "coordinates": [
+            36.8,
+            -119.4
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "iw-carnage:main",
+          "levelId": "iw-carnage",
+          "locationId": "main",
+          "title": "Carnage",
+          "game": "IW",
+          "wiki": "https://callofduty.fandom.com/wiki/Carnage",
+          "wikiArticle": "codwiki-carnage",
+          "city": null,
+          "region": null,
+          "label": "California",
+          "coordinates": [
+            36.8,
+            -119.4
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "ghosts-chasm:main",
+          "levelId": "ghosts-chasm",
+          "locationId": "main",
+          "title": "Chasm",
+          "game": "G",
+          "wiki": "https://callofduty.fandom.com/wiki/Chasm",
+          "wikiArticle": "codwiki-chasm",
+          "city": null,
+          "region": null,
+          "label": "California",
+          "coordinates": [
+            36.8,
+            -119.4
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "cod4-chinatown:main",
+          "levelId": "cod4-chinatown",
+          "locationId": "main",
+          "title": "Chinatown",
+          "game": "COD4",
+          "wiki": "https://callofduty.fandom.com/wiki/Chinatown",
+          "wikiArticle": "codwiki-chinatown",
+          "city": null,
+          "region": null,
+          "label": "California",
+          "coordinates": [
+            36.8,
+            -119.4
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "aw-collapse:main",
+          "levelId": "aw-collapse",
+          "locationId": "main",
+          "title": "Collapse",
+          "game": "AW",
+          "wiki": "https://callofduty.fandom.com/wiki/Collapse",
+          "wikiArticle": "codwiki-collapse",
+          "city": null,
+          "region": null,
+          "label": "California",
+          "coordinates": [
+            36.8,
+            -119.4
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "bo-convoy:main",
+          "levelId": "bo-convoy",
+          "locationId": "main",
+          "title": "Convoy",
+          "game": "BO",
+          "wiki": "https://callofduty.fandom.com/wiki/Convoy",
+          "wikiArticle": "codwiki-convoy",
+          "city": null,
+          "region": null,
+          "label": "California",
+          "coordinates": [
+            36.8,
+            -119.4
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "bo2-cordis-die:main",
+          "levelId": "bo2-cordis-die",
+          "locationId": "main",
+          "title": "Cordis Die",
+          "game": "BO2",
+          "wiki": "https://callofduty.fandom.com/wiki/Cordis_Die_(mission)",
+          "wikiArticle": "codwiki-cordis-die-mission",
+          "city": null,
+          "region": null,
+          "label": "California",
+          "coordinates": [
+            36.8,
+            -119.4
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "aw-defender:main",
+          "levelId": "aw-defender",
+          "locationId": "main",
+          "title": "Defender",
+          "game": "AW",
+          "wiki": "https://callofduty.fandom.com/wiki/Defender_(map)",
+          "wikiArticle": "codwiki-defender-map",
+          "city": null,
+          "region": null,
+          "label": "California",
+          "coordinates": [
+            36.8,
+            -119.4
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "ghosts-exodus:main",
+          "levelId": "ghosts-exodus",
+          "locationId": "main",
+          "title": "Exodus",
+          "game": "G",
+          "wiki": "https://callofduty.fandom.com/wiki/Exodus_(Extinction)",
+          "wikiArticle": "codwiki-exodus-extinction",
+          "city": null,
+          "region": null,
+          "label": "California",
+          "coordinates": [
+            36.8,
+            -119.4
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "bo2-bocw-express:main",
+          "levelId": "bo2-bocw-express",
+          "locationId": "main",
+          "title": "Express",
+          "game": "BO2 / BOCW",
+          "wiki": "https://callofduty.fandom.com/wiki/Express_(map)",
+          "wikiArticle": "codwiki-express-map",
+          "city": null,
+          "region": null,
+          "label": "California",
+          "coordinates": [
+            36.8,
+            -119.4
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "bo3-fringe:main",
+          "levelId": "bo3-fringe",
+          "locationId": "main",
+          "title": "Fringe",
+          "game": "BO3",
+          "wiki": "https://callofduty.fandom.com/wiki/Fringe",
+          "wikiArticle": "codwiki-fringe",
+          "city": null,
+          "region": null,
+          "label": "California",
+          "coordinates": [
+            36.8,
+            -119.4
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "bocw-game-show:main",
+          "levelId": "bocw-game-show",
+          "locationId": "main",
+          "title": "Game Show",
+          "game": "BOCW",
+          "wiki": "https://callofduty.fandom.com/wiki/Game_Show",
+          "wikiArticle": "codwiki-game-show",
+          "city": null,
+          "region": null,
+          "label": "California",
+          "coordinates": [
+            36.8,
+            -119.4
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "iw-genesis:main",
+          "levelId": "iw-genesis",
+          "locationId": "main",
+          "title": "Genesis",
+          "game": "IW",
+          "wiki": "https://callofduty.fandom.com/wiki/Genesis",
+          "wikiArticle": "codwiki-genesis",
+          "city": null,
+          "region": null,
+          "label": "California",
+          "coordinates": [
+            36.8,
+            -119.4
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "ghosts-ghost-stories:california-2",
+          "levelId": "ghosts-ghost-stories",
+          "locationId": "california-2",
+          "title": "Ghost Stories",
+          "game": "G",
+          "wiki": "https://callofduty.fandom.com/wiki/Ghost_Stories",
+          "wikiArticle": "codwiki-ghost-stories",
+          "city": null,
+          "region": null,
+          "label": "California",
+          "coordinates": [
+            36.8,
+            -119.4
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "bo2-bo4-grind:main",
+          "levelId": "bo2-bo4-grind",
+          "locationId": "main",
+          "title": "Grind",
+          "game": "BO2 / BO4",
+          "wiki": "https://callofduty.fandom.com/wiki/Grind",
+          "wikiArticle": "codwiki-grind",
+          "city": null,
+          "region": null,
+          "label": "California",
+          "coordinates": [
+            36.8,
+            -119.4
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "ghosts-homecoming:main",
+          "levelId": "ghosts-homecoming",
+          "locationId": "main",
+          "title": "Homecoming",
+          "game": "G",
+          "wiki": "https://callofduty.fandom.com/wiki/Homecoming_(Ghosts)",
+          "wikiArticle": "codwiki-homecoming-ghosts",
+          "city": null,
+          "region": null,
+          "label": "California",
+          "coordinates": [
+            36.8,
+            -119.4
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "bo4-lockup:main",
+          "levelId": "bo4-lockup",
+          "locationId": "main",
+          "title": "Lockup",
+          "game": "BO4",
+          "wiki": "https://callofduty.fandom.com/wiki/Lockup",
+          "wikiArticle": "codwiki-lockup",
+          "city": null,
+          "region": null,
+          "label": "California",
+          "coordinates": [
+            36.8,
+            -119.4
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "bo2-mob-of-the-dead:main",
+          "levelId": "bo2-mob-of-the-dead",
+          "locationId": "main",
+          "title": "Mob of the Dead",
+          "game": "BO2",
+          "wiki": "https://callofduty.fandom.com/wiki/Mob_of_the_Dead",
+          "wikiArticle": "codwiki-mob-of-the-dead",
+          "city": null,
+          "region": null,
+          "label": "California",
+          "coordinates": [
+            36.8,
+            -119.4
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "mw2-museum:main",
+          "levelId": "mw2-museum",
+          "locationId": "main",
+          "title": "Museum",
+          "game": "MW2",
+          "wiki": "https://callofduty.fandom.com/wiki/Museum",
+          "wikiArticle": "codwiki-museum",
+          "city": null,
+          "region": null,
+          "label": "California",
+          "coordinates": [
+            36.8,
+            -119.4
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "ghosts-no-man-s-land:main",
+          "levelId": "ghosts-no-man-s-land",
+          "locationId": "main",
+          "title": "No Man's Land",
+          "game": "G",
+          "wiki": "https://callofduty.fandom.com/wiki/No_Man's_Land_(Ghosts)",
+          "wikiArticle": "codwiki-no-man-s-land-ghosts",
+          "city": null,
+          "region": null,
+          "label": "California",
+          "coordinates": [
+            36.8,
+            -119.4
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "bo2-bocw-raid:main",
+          "levelId": "bo2-bocw-raid",
+          "locationId": "main",
+          "title": "Raid",
+          "game": "BO2 / BOCW",
+          "wiki": "https://callofduty.fandom.com/wiki/Raid",
+          "wikiArticle": "codwiki-raid",
+          "city": null,
+          "region": null,
+          "label": "California",
+          "coordinates": [
+            36.8,
+            -119.4
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "iw-rave-in-the-redwoods:main",
+          "levelId": "iw-rave-in-the-redwoods",
+          "locationId": "main",
+          "title": "Rave in the Redwoods",
+          "game": "IW",
+          "wiki": "https://callofduty.fandom.com/wiki/Rave_in_the_Redwoods",
+          "wikiArticle": "codwiki-rave-in-the-redwoods",
+          "city": null,
+          "region": null,
+          "label": "California",
+          "coordinates": [
+            36.8,
+            -119.4
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "bo3-redwood:main",
+          "levelId": "bo3-redwood",
+          "locationId": "main",
+          "title": "Redwood",
+          "game": "BO3",
+          "wiki": "https://callofduty.fandom.com/wiki/Redwood_(map)",
+          "wikiArticle": "codwiki-redwood-map",
+          "city": null,
+          "region": null,
+          "label": "California",
+          "coordinates": [
+            36.8,
+            -119.4
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "ghosts-showtime:main",
+          "levelId": "ghosts-showtime",
+          "locationId": "main",
+          "title": "Showtime",
+          "game": "G",
+          "wiki": "https://callofduty.fandom.com/wiki/Showtime",
+          "wikiArticle": "codwiki-showtime",
+          "city": null,
+          "region": null,
+          "label": "California",
+          "coordinates": [
+            36.8,
+            -119.4
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "mw2-skidrow:main",
+          "levelId": "mw2-skidrow",
+          "locationId": "main",
+          "title": "Skidrow",
+          "game": "MW2",
+          "wiki": "https://callofduty.fandom.com/wiki/Skidrow",
+          "wikiArticle": "codwiki-skidrow",
+          "city": null,
+          "region": null,
+          "label": "California",
+          "coordinates": [
+            36.8,
+            -119.4
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "ghosts-stormfront:main",
+          "levelId": "ghosts-stormfront",
+          "locationId": "main",
+          "title": "Stormfront",
+          "game": "G",
+          "wiki": "https://callofduty.fandom.com/wiki/Stormfront",
+          "wikiArticle": "codwiki-stormfront",
+          "city": null,
+          "region": null,
+          "label": "California",
+          "coordinates": [
+            36.8,
+            -119.4
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "ghosts-strikezone:main",
+          "levelId": "ghosts-strikezone",
+          "locationId": "main",
+          "title": "Strikezone",
+          "game": "G",
+          "wiki": "https://callofduty.fandom.com/wiki/Strikezone",
+          "wikiArticle": "codwiki-strikezone",
+          "city": null,
+          "region": null,
+          "label": "California",
+          "coordinates": [
+            36.8,
+            -119.4
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "ghosts-struck-down:main",
+          "levelId": "ghosts-struck-down",
+          "locationId": "main",
+          "title": "Struck Down",
+          "game": "G",
+          "wiki": "https://callofduty.fandom.com/wiki/Struck_Down",
+          "wikiArticle": "codwiki-struck-down",
+          "city": null,
+          "region": null,
+          "label": "California",
+          "coordinates": [
+            36.8,
+            -119.4
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "bo2-studio:main",
+          "levelId": "bo2-studio",
+          "locationId": "main",
+          "title": "Studio",
+          "game": "BO2",
+          "wiki": "https://callofduty.fandom.com/wiki/Studio",
+          "wikiArticle": "codwiki-studio",
+          "city": null,
+          "region": null,
+          "label": "California",
+          "coordinates": [
+            36.8,
+            -119.4
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "bo-wmd:california-2",
+          "levelId": "bo-wmd",
+          "locationId": "california-2",
+          "title": "WMD",
+          "game": "BO",
+          "wiki": "https://callofduty.fandom.com/wiki/WMD_(mission)",
+          "wikiArticle": "codwiki-wmd-mission",
+          "city": null,
+          "region": null,
+          "label": "California",
+          "coordinates": [
+            36.8,
+            -119.4
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "USA: Colorado",
+      "coordinates": [
+        39,
+        -105.5
+      ],
+      "kind": "terrestrial",
+      "entries": [
+        {
+          "id": "aw-atlas:main",
+          "levelId": "aw-atlas",
+          "locationId": "main",
+          "title": "Atlas",
+          "game": "AW",
+          "wiki": "https://callofduty.fandom.com/wiki/Atlas_(mission)",
+          "wikiArticle": "codwiki-atlas-mission",
+          "city": null,
+          "region": null,
+          "label": "Colorado",
+          "coordinates": [
+            39,
+            -105.5
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "aw-compound:main",
+          "levelId": "aw-compound",
+          "locationId": "main",
+          "title": "Compound",
+          "game": "AW",
+          "wiki": "https://callofduty.fandom.com/wiki/Compound",
+          "wikiArticle": "codwiki-compound",
+          "city": null,
+          "region": null,
+          "label": "Colorado",
+          "coordinates": [
+            39,
+            -105.5
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "aw-drift:main",
+          "levelId": "aw-drift",
+          "locationId": "main",
+          "title": "Drift",
+          "game": "AW",
+          "wiki": "https://callofduty.fandom.com/wiki/Drift",
+          "wikiArticle": "codwiki-drift",
+          "city": null,
+          "region": null,
+          "label": "Colorado",
+          "coordinates": [
+            39,
+            -105.5
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "bocw-icmb:main",
+          "levelId": "bocw-icmb",
+          "locationId": "main",
+          "title": "ICMB",
+          "game": "BOCW",
+          "wiki": "https://callofduty.fandom.com/wiki/ICBM_(map)",
+          "wikiArticle": "codwiki-icbm-map",
+          "city": null,
+          "region": null,
+          "label": "Colorado",
+          "coordinates": [
+            39,
+            -105.5
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "ghosts-point-of-contact:main",
+          "levelId": "ghosts-point-of-contact",
+          "locationId": "main",
+          "title": "Point of Contact",
+          "game": "G",
+          "wiki": "https://callofduty.fandom.com/wiki/Point_of_Contact",
+          "wikiArticle": "codwiki-point-of-contact",
+          "city": null,
+          "region": null,
+          "label": "Colorado",
+          "coordinates": [
+            39,
+            -105.5
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "USA: Florida",
+      "coordinates": [
+        27.8,
+        -81.7
+      ],
+      "kind": "terrestrial",
+      "entries": [
+        {
+          "id": "ghosts-ignition:main",
+          "levelId": "ghosts-ignition",
+          "locationId": "main",
+          "title": "Ignition",
+          "game": "G",
+          "wiki": "https://callofduty.fandom.com/wiki/Ignition",
+          "wikiArticle": "codwiki-ignition",
+          "city": null,
+          "region": null,
+          "label": "Florida",
+          "coordinates": [
+            27.8,
+            -81.7
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "bocw-miami:main",
+          "levelId": "bocw-miami",
+          "locationId": "main",
+          "title": "Miami",
+          "game": "BOCW",
+          "wiki": "https://callofduty.fandom.com/wiki/Miami",
+          "wikiArticle": "codwiki-miami",
+          "city": null,
+          "region": null,
+          "label": "Florida",
+          "coordinates": [
+            27.8,
+            -81.7
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "bo3-splash:main",
+          "levelId": "bo3-splash",
+          "locationId": "main",
+          "title": "Splash",
+          "game": "BO3",
+          "wiki": "https://callofduty.fandom.com/wiki/Splash",
+          "wikiArticle": "codwiki-splash",
+          "city": null,
+          "region": null,
+          "label": "Florida",
+          "coordinates": [
+            27.8,
+            -81.7
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "USA: Georgia",
+      "coordinates": [
+        32.7,
+        -83.3
+      ],
+      "kind": "terrestrial",
+      "entries": [
+        {
+          "id": "cod-camp-toccoa:main",
+          "levelId": "cod-camp-toccoa",
+          "locationId": "main",
+          "title": "Camp Toccoa",
+          "game": "COD",
+          "wiki": "https://callofduty.fandom.com/wiki/Camp_Toccoa",
+          "wikiArticle": "codwiki-camp-toccoa",
+          "city": "Toccoa",
+          "region": null,
+          "label": "Toccoa",
+          "coordinates": [
+            34.57732,
+            -83.33239
+          ],
+          "precision": "city",
+          "confidence": "high",
+          "method": "title-mention",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "mw19-into-the-furnace:main",
+          "levelId": "mw19-into-the-furnace",
+          "locationId": "main",
+          "title": "Into the Furnace",
+          "game": "MW19",
+          "wiki": "https://callofduty.fandom.com/wiki/Into_the_Furnace",
+          "wikiArticle": "codwiki-into-the-furnace",
+          "city": null,
+          "region": null,
+          "label": "Georgia",
+          "coordinates": [
+            42,
+            43.5
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "bo2-bocw-rush:main",
+          "levelId": "bo2-bocw-rush",
+          "locationId": "main",
+          "title": "Rush",
+          "game": "BO2 / BOCW",
+          "wiki": "https://callofduty.fandom.com/wiki/Rush",
+          "wikiArticle": "codwiki-rush",
+          "city": null,
+          "region": null,
+          "label": "Georgia, USA",
+          "coordinates": [
+            32.7,
+            -83.3
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "USA: Hawaii",
+      "coordinates": [
+        20.8,
+        -157.5
+      ],
+      "kind": "terrestrial",
+      "entries": [
+        {
+          "id": "aw-recovery:main",
+          "levelId": "aw-recovery",
+          "locationId": "main",
+          "title": "Recovery",
+          "game": "AW",
+          "wiki": "https://callofduty.fandom.com/wiki/Recovery",
+          "wikiArticle": "codwiki-recovery",
+          "city": null,
+          "region": null,
+          "label": "Hawaii",
+          "coordinates": [
+            20.8,
+            -157.5
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "vanguard-shipmas:main",
+          "levelId": "vanguard-shipmas",
+          "locationId": "main",
+          "title": "Shipmas",
+          "game": "V",
+          "wiki": "https://callofduty.fandom.com/wiki/Shipmas",
+          "wikiArticle": "codwiki-shipmas",
+          "city": null,
+          "region": null,
+          "label": "Hawaii",
+          "coordinates": [
+            20.8,
+            -157.5
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "vanguard-shipment:main",
+          "levelId": "vanguard-shipment",
+          "locationId": "main",
+          "title": "Shipment",
+          "game": "V",
+          "wiki": "https://callofduty.fandom.com/wiki/Shipment",
+          "wikiArticle": "codwiki-shipment",
+          "city": null,
+          "region": null,
+          "label": "Hawaii",
+          "coordinates": [
+            20.8,
+            -157.5
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "USA: Illinois",
+      "coordinates": [
+        40,
+        -89.2
+      ],
+      "kind": "terrestrial",
+      "entries": [
+        {
+          "id": "mwii-countdown:main",
+          "levelId": "mwii-countdown",
+          "locationId": "main",
+          "title": "Countdown",
+          "game": "MWII",
+          "wiki": "https://callofduty.fandom.com/wiki/Countdown_(Modern_Warfare_II)",
+          "wikiArticle": "codwiki-countdown-modern-warfare-ii",
+          "city": null,
+          "region": null,
+          "label": "Illinois",
+          "coordinates": [
+            40,
+            -89.2
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "iw-permafrost:main",
+          "levelId": "iw-permafrost",
+          "locationId": "main",
+          "title": "Permafrost",
+          "game": "IW",
+          "wiki": "https://callofduty.fandom.com/wiki/Permafrost",
+          "wikiArticle": "codwiki-permafrost",
+          "city": null,
+          "region": null,
+          "label": "Illinois",
+          "coordinates": [
+            40,
+            -89.2
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "USA: Kansas",
+      "coordinates": [
+        38.5,
+        -98.2
+      ],
+      "kind": "terrestrial",
+      "entries": [
+        {
+          "id": "mw3-vortex:main",
+          "levelId": "mw3-vortex",
+          "locationId": "main",
+          "title": "Vortex",
+          "game": "MW3",
+          "wiki": "https://callofduty.fandom.com/wiki/Vortex",
+          "wikiArticle": "codwiki-vortex",
+          "city": null,
+          "region": null,
+          "label": "Kansas",
+          "coordinates": [
+            38.5,
+            -98.2
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "USA: Louisiana",
+      "coordinates": [
+        31,
+        -92
+      ],
+      "kind": "terrestrial",
+      "entries": [
+        {
+          "id": "mw3-parish:main",
+          "levelId": "mw3-parish",
+          "locationId": "main",
+          "title": "Parish",
+          "game": "MW3",
+          "wiki": "https://callofduty.fandom.com/wiki/Parish",
+          "wikiArticle": "codwiki-parish",
+          "city": null,
+          "region": null,
+          "label": "Louisiana",
+          "coordinates": [
+            31,
+            -92
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "bo4-remnant:main",
+          "levelId": "bo4-remnant",
+          "locationId": "main",
+          "title": "Remnant",
+          "game": "BO4",
+          "wiki": "https://callofduty.fandom.com/wiki/Remnant",
+          "wikiArticle": "codwiki-remnant",
+          "city": null,
+          "region": null,
+          "label": "Louisiana",
+          "coordinates": [
+            31,
+            -92
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "USA: Maryland",
+      "coordinates": [
+        39,
+        -76.7
+      ],
+      "kind": "terrestrial",
+      "entries": [
+        {
+          "id": "aw-atlas:maryland-2",
+          "levelId": "aw-atlas",
+          "locationId": "maryland-2",
+          "title": "Atlas",
+          "game": "AW",
+          "wiki": "https://callofduty.fandom.com/wiki/Atlas_(mission)",
+          "wikiArticle": "codwiki-atlas-mission",
+          "city": null,
+          "region": null,
+          "label": "Maryland",
+          "coordinates": [
+            39,
+            -76.7
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "mw3-d-clean-up:main",
+          "levelId": "mw3-d-clean-up",
+          "locationId": "main",
+          "title": "Clean Up",
+          "game": "MW3:D",
+          "wiki": "https://callofduty.fandom.com/wiki/Clean_Up",
+          "wikiArticle": "codwiki-clean-up",
+          "city": null,
+          "region": null,
+          "label": "Maryland",
+          "coordinates": [
+            39,
+            -76.7
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "mw3-d-dangerous-cargo:main",
+          "levelId": "mw3-d-dangerous-cargo",
+          "locationId": "main",
+          "title": "Dangerous Cargo",
+          "game": "MW3:D",
+          "wiki": "https://callofduty.fandom.com/wiki/Dangerous_Cargo",
+          "wikiArticle": "codwiki-dangerous-cargo",
+          "city": null,
+          "region": null,
+          "label": "Maryland",
+          "coordinates": [
+            39,
+            -76.7
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "mw3-d-fire-from-the-sky:main",
+          "levelId": "mw3-d-fire-from-the-sky",
+          "locationId": "main",
+          "title": "Fire From the Sky",
+          "game": "MW3:D",
+          "wiki": "https://callofduty.fandom.com/wiki/Fire_From_the_Sky",
+          "wikiArticle": "codwiki-fire-from-the-sky",
+          "city": null,
+          "region": null,
+          "label": "Maryland",
+          "coordinates": [
+            39,
+            -76.7
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "mw3-d-heavy-metal:main",
+          "levelId": "mw3-d-heavy-metal",
+          "locationId": "main",
+          "title": "Heavy Metal",
+          "game": "MW3:D",
+          "wiki": "https://callofduty.fandom.com/wiki/Heavy_Metal_(level)",
+          "wikiArticle": "codwiki-heavy-metal-level",
+          "city": null,
+          "region": null,
+          "label": "Maryland",
+          "coordinates": [
+            39,
+            -76.7
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "mw3-d-hurricane-ivan:main",
+          "levelId": "mw3-d-hurricane-ivan",
+          "locationId": "main",
+          "title": "Hurricane Ivan",
+          "game": "MW3:D",
+          "wiki": "https://callofduty.fandom.com/wiki/Hurricane_Ivan",
+          "wikiArticle": "codwiki-hurricane-ivan",
+          "city": null,
+          "region": null,
+          "label": "Maryland",
+          "coordinates": [
+            39,
+            -76.7
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "USA: Michigan",
+      "coordinates": [
+        44.3,
+        -85.6
+      ],
+      "kind": "terrestrial",
+      "entries": [
+        {
+          "id": "aw-aftermath:main",
+          "levelId": "aw-aftermath",
+          "locationId": "main",
+          "title": "Aftermath",
+          "game": "AW",
+          "wiki": "https://callofduty.fandom.com/wiki/Aftermath_(Advanced_Warfare)",
+          "wikiArticle": "codwiki-aftermath-advanced-warfare",
+          "city": null,
+          "region": null,
+          "label": "Michigan",
+          "coordinates": [
+            44.3,
+            -85.6
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "aw-detroit:main",
+          "levelId": "aw-detroit",
+          "locationId": "main",
+          "title": "Detroit",
+          "game": "AW",
+          "wiki": "https://callofduty.fandom.com/wiki/Detroit",
+          "wikiArticle": "codwiki-detroit",
+          "city": null,
+          "region": null,
+          "label": "Michigan",
+          "coordinates": [
+            44.3,
+            -85.6
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "USA: Nebraska",
+      "coordinates": [
+        41.5,
+        -99.8
+      ],
+      "kind": "terrestrial",
+      "entries": [
+        {
+          "id": "bo-bocw-drive-in:main",
+          "levelId": "bo-bocw-drive-in",
+          "locationId": "main",
+          "title": "Drive-In",
+          "game": "BO / BOCW",
+          "wiki": "https://callofduty.fandom.com/wiki/Drive-In",
+          "wikiArticle": "codwiki-drive-in",
+          "city": null,
+          "region": null,
+          "label": "Nebraska",
+          "coordinates": [
+            41.5,
+            -99.8
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "iw-heartland:main",
+          "levelId": "iw-heartland",
+          "locationId": "main",
+          "title": "Heartland",
+          "game": "IW",
+          "wiki": "https://callofduty.fandom.com/wiki/Heartland",
+          "wikiArticle": "codwiki-heartland",
+          "city": null,
+          "region": null,
+          "label": "Nebraska",
+          "coordinates": [
+            41.5,
+            -99.8
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "ghosts-warhawk:main",
+          "levelId": "ghosts-warhawk",
+          "locationId": "main",
+          "title": "Warhawk",
+          "game": "G",
+          "wiki": "https://callofduty.fandom.com/wiki/Warhawk",
+          "wikiArticle": "codwiki-warhawk",
+          "city": null,
+          "region": null,
+          "label": "Nebraska",
+          "coordinates": [
+            41.5,
+            -99.8
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "USA: Nevada",
+      "coordinates": [
+        39.3,
+        -116.6
+      ],
+      "kind": "terrestrial",
+      "entries": [
+        {
+          "id": "bo4-alpha-omega:main",
+          "levelId": "bo4-alpha-omega",
+          "locationId": "main",
+          "title": "Alpha Omega",
+          "game": "BO4",
+          "wiki": "https://callofduty.fandom.com/wiki/Alpha_Omega",
+          "wikiArticle": "codwiki-alpha-omega",
+          "city": null,
+          "region": null,
+          "label": "Nevada",
+          "coordinates": [
+            39.3,
+            -116.6
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "iw-breakout:main",
+          "levelId": "iw-breakout",
+          "locationId": "main",
+          "title": "Breakout",
+          "game": "IW",
+          "wiki": "https://callofduty.fandom.com/wiki/Breakout",
+          "wikiArticle": "codwiki-breakout",
+          "city": null,
+          "region": null,
+          "label": "Nevada",
+          "coordinates": [
+            39.3,
+            -116.6
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "mw3-d-clearing-out:main",
+          "levelId": "mw3-d-clearing-out",
+          "locationId": "main",
+          "title": "Clearing Out",
+          "game": "MW3:D",
+          "wiki": "https://callofduty.fandom.com/wiki/Clearing_Out",
+          "wikiArticle": "codwiki-clearing-out",
+          "city": null,
+          "region": null,
+          "label": "Nevada",
+          "coordinates": [
+            39.3,
+            -116.6
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "mw3-d-dam-approach:main",
+          "levelId": "mw3-d-dam-approach",
+          "locationId": "main",
+          "title": "Dam Approach",
+          "game": "MW3:D",
+          "wiki": "https://callofduty.fandom.com/wiki/Dam_Approach",
+          "wikiArticle": "codwiki-dam-approach",
+          "city": null,
+          "region": null,
+          "label": "Nevada",
+          "coordinates": [
+            39.3,
+            -116.6
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "bo-hangar-18:main",
+          "levelId": "bo-hangar-18",
+          "locationId": "main",
+          "title": "Hangar 18",
+          "game": "BO",
+          "wiki": "https://callofduty.fandom.com/wiki/Hangar_18",
+          "wikiArticle": "codwiki-hangar-18",
+          "city": null,
+          "region": null,
+          "label": "Nevada",
+          "coordinates": [
+            39.3,
+            -116.6
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "mw3-d-lights-out:main",
+          "levelId": "mw3-d-lights-out",
+          "locationId": "main",
+          "title": "Lights Out",
+          "game": "MW3:D",
+          "wiki": "https://callofduty.fandom.com/wiki/Lights_Out_(Modern_Warfare_3:_Defiance)",
+          "wikiArticle": "codwiki-lights-out-modern-warfare-3-defiance",
+          "city": null,
+          "region": null,
+          "label": "Nevada",
+          "coordinates": [
+            39.3,
+            -116.6
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "bo-nuketown:main",
+          "levelId": "bo-nuketown",
+          "locationId": "main",
+          "title": "Nuketown",
+          "game": "BO",
+          "wiki": "https://callofduty.fandom.com/wiki/Nuketown_(map)",
+          "wikiArticle": "codwiki-nuketown-map",
+          "city": null,
+          "region": null,
+          "label": "Nevada",
+          "coordinates": [
+            39.3,
+            -116.6
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "bocw-nuketown-84:main",
+          "levelId": "bocw-nuketown-84",
+          "locationId": "main",
+          "title": "Nuketown '84",
+          "game": "BOCW",
+          "wiki": "https://callofduty.fandom.com/wiki/Nuketown_'84",
+          "wikiArticle": "codwiki-nuketown-84",
+          "city": null,
+          "region": null,
+          "label": "Nevada",
+          "coordinates": [
+            39.3,
+            -116.6
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "bocw-nuketown-84-holiday:main",
+          "levelId": "bocw-nuketown-84-holiday",
+          "locationId": "main",
+          "title": "Nuketown '84 Holiday",
+          "game": "BOCW",
+          "wiki": "https://callofduty.fandom.com/wiki/Nuketown_'84_Holiday",
+          "wikiArticle": "codwiki-nuketown-84-holiday",
+          "city": null,
+          "region": null,
+          "label": "Nevada",
+          "coordinates": [
+            39.3,
+            -116.6
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "bo2-nuketown-2025:main",
+          "levelId": "bo2-nuketown-2025",
+          "locationId": "main",
+          "title": "Nuketown 2025",
+          "game": "BO2",
+          "wiki": "https://callofduty.fandom.com/wiki/Nuketown_2025",
+          "wikiArticle": "codwiki-nuketown-2025",
+          "city": null,
+          "region": null,
+          "label": "Nevada",
+          "coordinates": [
+            39.3,
+            -116.6
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "bocw-nuketown-84-halloween:main",
+          "levelId": "bocw-nuketown-84-halloween",
+          "locationId": "main",
+          "title": "Nuketown â€˜84 Halloween",
+          "game": "BOCW",
+          "wiki": "https://callofduty.fandom.com/wiki/Nuketown_'84_Halloween",
+          "wikiArticle": "codwiki-nuketown-84-halloween",
+          "city": null,
+          "region": null,
+          "label": "Nevada",
+          "coordinates": [
+            39.3,
+            -116.6
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "bo2-nuketown-zombies:main",
+          "levelId": "bo2-nuketown-zombies",
+          "locationId": "main",
+          "title": "Nuketown Zombies",
+          "game": "BO2",
+          "wiki": "https://callofduty.fandom.com/wiki/Nuketown_Zombies",
+          "wikiArticle": "codwiki-nuketown-zombies",
+          "city": null,
+          "region": null,
+          "label": "Nevada",
+          "coordinates": [
+            39.3,
+            -116.6
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "ghosts-octane:main",
+          "levelId": "ghosts-octane",
+          "locationId": "main",
+          "title": "Octane",
+          "game": "G",
+          "wiki": "https://callofduty.fandom.com/wiki/Octane",
+          "wikiArticle": "codwiki-octane",
+          "city": null,
+          "region": null,
+          "label": "Nevada",
+          "coordinates": [
+            39.3,
+            -116.6
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "mw3-d-running-for-cover:main",
+          "levelId": "mw3-d-running-for-cover",
+          "locationId": "main",
+          "title": "Running For Cover",
+          "game": "MW3:D",
+          "wiki": "https://callofduty.fandom.com/wiki/Running_For_Cover",
+          "wikiArticle": "codwiki-running-for-cover",
+          "city": null,
+          "region": null,
+          "label": "Nevada",
+          "coordinates": [
+            39.3,
+            -116.6
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "ghosts-sin-city:main",
+          "levelId": "ghosts-sin-city",
+          "locationId": "main",
+          "title": "Sin City",
+          "game": "G",
+          "wiki": "https://callofduty.fandom.com/wiki/Sin_City",
+          "wikiArticle": "codwiki-sin-city",
+          "city": null,
+          "region": null,
+          "label": "Nevada",
+          "coordinates": [
+            39.3,
+            -116.6
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "vanguard-sphere:main",
+          "levelId": "vanguard-sphere",
+          "locationId": "main",
+          "title": "Sphere",
+          "game": "V",
+          "wiki": "https://callofduty.fandom.com/wiki/Sphere",
+          "wikiArticle": "codwiki-sphere",
+          "city": null,
+          "region": null,
+          "label": "Nevada",
+          "coordinates": [
+            39.3,
+            -116.6
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "mw3-d-through-the-mountains:main",
+          "levelId": "mw3-d-through-the-mountains",
+          "locationId": "main",
+          "title": "Through the Mountains",
+          "game": "MW3:D",
+          "wiki": "https://callofduty.fandom.com/wiki/Through_the_Mountains",
+          "wikiArticle": "codwiki-through-the-mountains",
+          "city": null,
+          "region": null,
+          "label": "Nevada",
+          "coordinates": [
+            39.3,
+            -116.6
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "USA: New Jersey",
+      "coordinates": [
+        40.1,
+        -74.5
+      ],
+      "kind": "terrestrial",
+      "entries": [
+        {
+          "id": "mw3-boardwalk:main",
+          "levelId": "mw3-boardwalk",
+          "locationId": "main",
+          "title": "Boardwalk",
+          "game": "MW3",
+          "wiki": "https://callofduty.fandom.com/wiki/Boardwalk",
+          "wikiArticle": "codwiki-boardwalk",
+          "city": null,
+          "region": null,
+          "label": "New Jersey",
+          "coordinates": [
+            40.1,
+            -74.5
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "mw3-interchange:main",
+          "levelId": "mw3-interchange",
+          "locationId": "main",
+          "title": "Interchange",
+          "game": "MW3",
+          "wiki": "https://callofduty.fandom.com/wiki/Interchange",
+          "wikiArticle": "codwiki-interchange",
+          "city": null,
+          "region": null,
+          "label": "New Jersey",
+          "coordinates": [
+            40.1,
+            -74.5
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "bocw-showroom:main",
+          "levelId": "bocw-showroom",
+          "locationId": "main",
+          "title": "Showroom",
+          "game": "BOCW",
+          "wiki": "https://callofduty.fandom.com/wiki/Showroom",
+          "wikiArticle": "codwiki-showroom",
+          "city": null,
+          "region": null,
+          "label": "New Jersey",
+          "coordinates": [
+            40.1,
+            -74.5
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "bocw-the-pines:main",
+          "levelId": "bocw-the-pines",
+          "locationId": "main",
+          "title": "The Pines",
+          "game": "BOCW",
+          "wiki": "https://callofduty.fandom.com/wiki/The_Pines",
+          "wikiArticle": "codwiki-the-pines",
+          "city": null,
+          "region": null,
+          "label": "New Jersey",
+          "coordinates": [
+            40.1,
+            -74.5
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "USA: New Mexico",
+      "coordinates": [
+        34.5,
+        -106
+      ],
+      "kind": "terrestrial",
+      "entries": [
+        {
+          "id": "bocw-diesel:main",
+          "levelId": "bocw-diesel",
+          "locationId": "main",
+          "title": "Diesel",
+          "game": "BOCW",
+          "wiki": "https://callofduty.fandom.com/wiki/Diesel",
+          "wikiArticle": "codwiki-diesel",
+          "city": null,
+          "region": null,
+          "label": "New Mexico",
+          "coordinates": [
+            34.5,
+            -106
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "bocw-operation-chaos:main",
+          "levelId": "bocw-operation-chaos",
+          "locationId": "main",
+          "title": "Operation Chaos",
+          "game": "BOCW",
+          "wiki": "https://callofduty.fandom.com/wiki/Operation_Chaos",
+          "wikiArticle": "codwiki-operation-chaos",
+          "city": null,
+          "region": null,
+          "label": "New Mexico",
+          "coordinates": [
+            34.5,
+            -106
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "USA: New York",
+      "coordinates": [
+        42.9,
+        -75.5
+      ],
+      "kind": "terrestrial",
+      "entries": [
+        {
+          "id": "vanguard-beheaded:main",
+          "levelId": "vanguard-beheaded",
+          "locationId": "main",
+          "title": "Beheaded",
+          "game": "V",
+          "wiki": "https://callofduty.fandom.com/wiki/Beheaded_(map)",
+          "wikiArticle": "codwiki-beheaded-map",
+          "city": null,
+          "region": null,
+          "label": "New York",
+          "coordinates": [
+            42.9,
+            -75.5
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "mw3-black-tuesday:main",
+          "levelId": "mw3-black-tuesday",
+          "locationId": "main",
+          "title": "Black Tuesday",
+          "game": "MW3",
+          "wiki": "https://callofduty.fandom.com/wiki/Black_Tuesday",
+          "wikiArticle": "codwiki-black-tuesday",
+          "city": null,
+          "region": null,
+          "label": "New York",
+          "coordinates": [
+            42.9,
+            -75.5
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "ghosts-collision:main",
+          "levelId": "ghosts-collision",
+          "locationId": "main",
+          "title": "Collision",
+          "game": "G",
+          "wiki": "https://callofduty.fandom.com/wiki/Collision",
+          "wikiArticle": "codwiki-collision",
+          "city": null,
+          "region": null,
+          "label": "New York",
+          "coordinates": [
+            42.9,
+            -75.5
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "bo2-detour:main",
+          "levelId": "bo2-detour",
+          "locationId": "main",
+          "title": "Detour",
+          "game": "BO2",
+          "wiki": "https://callofduty.fandom.com/wiki/Detour",
+          "wikiArticle": "codwiki-detour",
+          "city": null,
+          "region": null,
+          "label": "New York",
+          "coordinates": [
+            42.9,
+            -75.5
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "mw3-downturn:main",
+          "levelId": "mw3-downturn",
+          "locationId": "main",
+          "title": "Downturn",
+          "game": "MW3",
+          "wiki": "https://callofduty.fandom.com/wiki/Downturn",
+          "wikiArticle": "codwiki-downturn",
+          "city": null,
+          "region": null,
+          "label": "New York",
+          "coordinates": [
+            42.9,
+            -75.5
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "mw3-hardhat:main",
+          "levelId": "mw3-hardhat",
+          "locationId": "main",
+          "title": "Hardhat",
+          "game": "MW3",
+          "wiki": "https://callofduty.fandom.com/wiki/Hardhat",
+          "wikiArticle": "codwiki-hardhat",
+          "city": null,
+          "region": null,
+          "label": "New York",
+          "coordinates": [
+            42.9,
+            -75.5
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "mw2-highrise:main",
+          "levelId": "mw2-highrise",
+          "locationId": "main",
+          "title": "Highrise",
+          "game": "MW2",
+          "wiki": "https://callofduty.fandom.com/wiki/Highrise",
+          "wikiArticle": "codwiki-highrise",
+          "city": null,
+          "region": null,
+          "label": "New York",
+          "coordinates": [
+            42.9,
+            -75.5
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "mw3-hunter-killer:main",
+          "levelId": "mw3-hunter-killer",
+          "locationId": "main",
+          "title": "Hunter Killer",
+          "game": "MW3",
+          "wiki": "https://callofduty.fandom.com/wiki/Hunter_Killer",
+          "wikiArticle": "codwiki-hunter-killer",
+          "city": null,
+          "region": null,
+          "label": "New York",
+          "coordinates": [
+            42.9,
+            -75.5
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "mw3-intersection:main",
+          "levelId": "mw3-intersection",
+          "locationId": "main",
+          "title": "Intersection",
+          "game": "MW3",
+          "wiki": "https://callofduty.fandom.com/wiki/Intersection",
+          "wikiArticle": "codwiki-intersection",
+          "city": null,
+          "region": null,
+          "label": "New York",
+          "coordinates": [
+            42.9,
+            -75.5
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "mw3-liberation:main",
+          "levelId": "mw3-liberation",
+          "locationId": "main",
+          "title": "Liberation",
+          "game": "MW3",
+          "wiki": "https://callofduty.fandom.com/wiki/Liberation",
+          "wikiArticle": "codwiki-liberation",
+          "city": null,
+          "region": null,
+          "label": "New York",
+          "coordinates": [
+            42.9,
+            -75.5
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "iw-noir:main",
+          "levelId": "iw-noir",
+          "locationId": "main",
+          "title": "Noir",
+          "game": "IW",
+          "wiki": "https://callofduty.fandom.com/wiki/Noir",
+          "wikiArticle": "codwiki-noir",
+          "city": null,
+          "region": null,
+          "label": "New York",
+          "coordinates": [
+            42.9,
+            -75.5
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "mw3-overwatch:main",
+          "levelId": "mw3-overwatch",
+          "locationId": "main",
+          "title": "Overwatch",
+          "game": "MW3",
+          "wiki": "https://callofduty.fandom.com/wiki/Overwatch_(map)",
+          "wikiArticle": "codwiki-overwatch-map",
+          "city": null,
+          "region": null,
+          "label": "New York",
+          "coordinates": [
+            42.9,
+            -75.5
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "aw-quarantine:main",
+          "levelId": "aw-quarantine",
+          "locationId": "main",
+          "title": "Quarantine",
+          "game": "AW",
+          "wiki": "https://callofduty.fandom.com/wiki/Quarantine",
+          "wikiArticle": "codwiki-quarantine",
+          "city": null,
+          "region": null,
+          "label": "New York",
+          "coordinates": [
+            42.9,
+            -75.5
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "iw-shaolin-shuffle:main",
+          "levelId": "iw-shaolin-shuffle",
+          "locationId": "main",
+          "title": "Shaolin Shuffle",
+          "game": "IW",
+          "wiki": "https://callofduty.fandom.com/wiki/Shaolin_Shuffle",
+          "wikiArticle": "codwiki-shaolin-shuffle",
+          "city": null,
+          "region": null,
+          "label": "New York",
+          "coordinates": [
+            42.9,
+            -75.5
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "bo3-spire:main",
+          "levelId": "bo3-spire",
+          "locationId": "main",
+          "title": "Spire",
+          "game": "BO3",
+          "wiki": "https://callofduty.fandom.com/wiki/Spire",
+          "wikiArticle": "codwiki-spire",
+          "city": null,
+          "region": null,
+          "label": "New York",
+          "coordinates": [
+            42.9,
+            -75.5
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "bo-stadium:main",
+          "levelId": "bo-stadium",
+          "locationId": "main",
+          "title": "Stadium",
+          "game": "BO",
+          "wiki": "https://callofduty.fandom.com/wiki/Stadium",
+          "wikiArticle": "codwiki-stadium",
+          "city": null,
+          "region": null,
+          "label": "New York",
+          "coordinates": [
+            42.9,
+            -75.5
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "iw-the-beast-from-beyond:main",
+          "levelId": "iw-the-beast-from-beyond",
+          "locationId": "main",
+          "title": "The Beast From Beyond",
+          "game": "IW",
+          "wiki": "https://callofduty.fandom.com/wiki/The_Beast_from_Beyond",
+          "wikiArticle": "codwiki-the-beast-from-beyond",
+          "city": null,
+          "region": null,
+          "label": "New York",
+          "coordinates": [
+            42.9,
+            -75.5
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "USA: North Carolina",
+      "coordinates": [
+        35.5,
+        -79.4
+      ],
+      "kind": "terrestrial",
+      "entries": [
+        {
+          "id": "waw-ff-basic-training:north-carolina-2",
+          "levelId": "waw-ff-basic-training",
+          "locationId": "north-carolina-2",
+          "title": "Basic Training",
+          "game": "WAW:FF",
+          "wiki": "https://callofduty.fandom.com/wiki/Basic_Training",
+          "wikiArticle": "codwiki-basic-training",
+          "city": null,
+          "region": null,
+          "label": "North Carolina",
+          "coordinates": [
+            35.5,
+            -79.4
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "USA: South Dakota",
+      "coordinates": [
+        44.4,
+        -100.2
+      ],
+      "kind": "terrestrial",
+      "entries": [
+        {
+          "id": "aw-site-244:main",
+          "levelId": "aw-site-244",
+          "locationId": "main",
+          "title": "Site 244",
+          "game": "AW",
+          "wiki": "https://callofduty.fandom.com/wiki/Site_244",
+          "wikiArticle": "codwiki-site-244",
+          "city": null,
+          "region": null,
+          "label": "South Dakota",
+          "coordinates": [
+            44.4,
+            -100.2
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "USA: Texas",
+      "coordinates": [
+        31,
+        -99
+      ],
+      "kind": "terrestrial",
+      "entries": [
+        {
+          "id": "wwii-ambush:texas-2",
+          "levelId": "wwii-ambush",
+          "locationId": "texas-2",
+          "title": "Ambush",
+          "game": "WWII",
+          "wiki": "https://callofduty.fandom.com/wiki/Ambush_(mission)",
+          "wikiArticle": "codwiki-ambush-mission",
+          "city": null,
+          "region": null,
+          "label": "Texas",
+          "coordinates": [
+            31,
+            -99
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "bo4-arsenal:main",
+          "levelId": "bo4-arsenal",
+          "locationId": "main",
+          "title": "Arsenal",
+          "game": "BO4",
+          "wiki": "https://callofduty.fandom.com/wiki/Arsenal_(Black_Ops_4)",
+          "wikiArticle": "codwiki-arsenal-black-ops-4",
+          "city": null,
+          "region": null,
+          "label": "Texas",
+          "coordinates": [
+            31,
+            -99
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "bo4-arsenal-sandstorm:main",
+          "levelId": "bo4-arsenal-sandstorm",
+          "locationId": "main",
+          "title": "Arsenal Sandstorm",
+          "game": "BO4",
+          "wiki": "https://callofduty.fandom.com/wiki/Arsenal_Sandstorm",
+          "wikiArticle": "codwiki-arsenal-sandstorm",
+          "city": null,
+          "region": null,
+          "label": "Texas",
+          "coordinates": [
+            31,
+            -99
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "mwii-borderline:texas-2",
+          "levelId": "mwii-borderline",
+          "locationId": "texas-2",
+          "title": "Borderline",
+          "game": "MWII",
+          "wiki": "https://callofduty.fandom.com/wiki/Borderline",
+          "wikiArticle": "codwiki-borderline",
+          "city": null,
+          "region": null,
+          "label": "Texas",
+          "coordinates": [
+            31,
+            -99
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "wwii-epilogue:texas-3",
+          "levelId": "wwii-epilogue",
+          "locationId": "texas-3",
+          "title": "Epilogue",
+          "game": "WWII",
+          "wiki": "https://callofduty.fandom.com/wiki/Epilogue_(mission)",
+          "wikiArticle": "codwiki-epilogue-mission",
+          "city": null,
+          "region": null,
+          "label": "Texas",
+          "coordinates": [
+            31,
+            -99
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "ghosts-tremor:main",
+          "levelId": "ghosts-tremor",
+          "locationId": "main",
+          "title": "Tremor",
+          "game": "G",
+          "wiki": "https://callofduty.fandom.com/wiki/Tremor",
+          "wikiArticle": "codwiki-tremor",
+          "city": null,
+          "region": null,
+          "label": "Texas",
+          "coordinates": [
+            31,
+            -99
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "aw-urban:main",
+          "levelId": "aw-urban",
+          "locationId": "main",
+          "title": "Urban",
+          "game": "AW",
+          "wiki": "https://callofduty.fandom.com/wiki/Urban_(map)",
+          "wikiArticle": "codwiki-urban-map",
+          "city": null,
+          "region": null,
+          "label": "Texas",
+          "coordinates": [
+            31,
+            -99
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "USA: Virginia",
+      "coordinates": [
+        37.5,
+        -78.8
+      ],
+      "kind": "terrestrial",
+      "entries": [
+        {
+          "id": "aw-atlas:virginia-3",
+          "levelId": "aw-atlas",
+          "locationId": "virginia-3",
+          "title": "Atlas",
+          "game": "AW",
+          "wiki": "https://callofduty.fandom.com/wiki/Atlas_(mission)",
+          "wikiArticle": "codwiki-atlas-mission",
+          "city": null,
+          "region": null,
+          "label": "Virginia",
+          "coordinates": [
+            37.5,
+            -78.8
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "mw2-bailout:main",
+          "levelId": "mw2-bailout",
+          "locationId": "main",
+          "title": "Bailout",
+          "game": "MW2",
+          "wiki": "https://callofduty.fandom.com/wiki/Bailout",
+          "wikiArticle": "codwiki-bailout",
+          "city": null,
+          "region": null,
+          "label": "Virginia",
+          "coordinates": [
+            37.5,
+            -78.8
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "mw2-exodus:main",
+          "levelId": "mw2-exodus",
+          "locationId": "main",
+          "title": "Exodus",
+          "game": "MW2",
+          "wiki": "https://callofduty.fandom.com/wiki/Exodus_(Modern_Warfare_2)",
+          "wikiArticle": "codwiki-exodus-modern-warfare-2",
+          "city": null,
+          "region": null,
+          "label": "Virginia",
+          "coordinates": [
+            37.5,
+            -78.8
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "mw2-wolverines:main",
+          "levelId": "mw2-wolverines",
+          "locationId": "main",
+          "title": "Wolverines!",
+          "game": "MW2",
+          "wiki": "https://callofduty.fandom.com/wiki/Wolverines!",
+          "wikiArticle": "codwiki-wolverines",
+          "city": null,
+          "region": null,
+          "label": "Virginia",
+          "coordinates": [
+            37.5,
+            -78.8
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "USA: Washington",
+      "coordinates": [
+        47.4,
+        -120.7
+      ],
+      "kind": "terrestrial",
+      "entries": [
+        {
+          "id": "aw-fission:main",
+          "levelId": "aw-fission",
+          "locationId": "main",
+          "title": "Fission",
+          "game": "AW",
+          "wiki": "https://callofduty.fandom.com/wiki/Fission",
+          "wikiArticle": "codwiki-fission",
+          "city": null,
+          "region": null,
+          "label": "Washington",
+          "coordinates": [
+            47.4,
+            -120.7
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "ghosts-fog:main",
+          "levelId": "ghosts-fog",
+          "locationId": "main",
+          "title": "Fog",
+          "game": "G",
+          "wiki": "https://callofduty.fandom.com/wiki/Fog",
+          "wikiArticle": "codwiki-fog",
+          "city": null,
+          "region": null,
+          "label": "Washington",
+          "coordinates": [
+            47.4,
+            -120.7
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "bo2-tranzit:main",
+          "levelId": "bo2-tranzit",
+          "locationId": "main",
+          "title": "TranZit",
+          "game": "BO2",
+          "wiki": "https://callofduty.fandom.com/wiki/TranZit",
+          "wikiArticle": "codwiki-tranzit",
+          "city": null,
+          "region": null,
+          "label": "Washington",
+          "coordinates": [
+            47.4,
+            -120.7
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "USA: Wyoming",
+      "coordinates": [
+        43,
+        -107.5
+      ],
+      "kind": "terrestrial",
+      "entries": [
+        {
+          "id": "aw-sideshow:main",
+          "levelId": "aw-sideshow",
+          "locationId": "main",
+          "title": "Sideshow",
+          "game": "AW",
+          "wiki": "https://callofduty.fandom.com/wiki/Sideshow",
+          "wikiArticle": "codwiki-sideshow",
+          "city": null,
+          "region": null,
+          "label": "Wyoming",
+          "coordinates": [
+            43,
+            -107.5
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        }
+      ]
+    },
+    {
       "name": "Uzbekistan",
       "coordinates": [
         41,
@@ -22426,180 +22629,6 @@
       ]
     },
     {
-      "name": "Virginia",
-      "coordinates": [
-        37.5,
-        -78.8
-      ],
-      "kind": "terrestrial",
-      "entries": [
-        {
-          "id": "aw-atlas:virginia-3",
-          "levelId": "aw-atlas",
-          "locationId": "virginia-3",
-          "title": "Atlas",
-          "game": "AW",
-          "wiki": "https://callofduty.fandom.com/wiki/Atlas_(mission)",
-          "wikiArticle": "codwiki-atlas-mission",
-          "city": null,
-          "region": null,
-          "label": "Virginia",
-          "coordinates": [
-            37.5,
-            -78.8
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
-          "id": "mw2-bailout:main",
-          "levelId": "mw2-bailout",
-          "locationId": "main",
-          "title": "Bailout",
-          "game": "MW2",
-          "wiki": "https://callofduty.fandom.com/wiki/Bailout",
-          "wikiArticle": "codwiki-bailout",
-          "city": null,
-          "region": null,
-          "label": "Virginia",
-          "coordinates": [
-            37.5,
-            -78.8
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "mw2-exodus:main",
-          "levelId": "mw2-exodus",
-          "locationId": "main",
-          "title": "Exodus",
-          "game": "MW2",
-          "wiki": "https://callofduty.fandom.com/wiki/Exodus_(Modern_Warfare_2)",
-          "wikiArticle": "codwiki-exodus-modern-warfare-2",
-          "city": null,
-          "region": null,
-          "label": "Virginia",
-          "coordinates": [
-            37.5,
-            -78.8
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
-          "id": "mw2-wolverines:main",
-          "levelId": "mw2-wolverines",
-          "locationId": "main",
-          "title": "Wolverines!",
-          "game": "MW2",
-          "wiki": "https://callofduty.fandom.com/wiki/Wolverines!",
-          "wikiArticle": "codwiki-wolverines",
-          "city": null,
-          "region": null,
-          "label": "Virginia",
-          "coordinates": [
-            37.5,
-            -78.8
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Washington",
-      "coordinates": [
-        47.4,
-        -120.7
-      ],
-      "kind": "terrestrial",
-      "entries": [
-        {
-          "id": "aw-fission:main",
-          "levelId": "aw-fission",
-          "locationId": "main",
-          "title": "Fission",
-          "game": "AW",
-          "wiki": "https://callofduty.fandom.com/wiki/Fission",
-          "wikiArticle": "codwiki-fission",
-          "city": null,
-          "region": null,
-          "label": "Washington",
-          "coordinates": [
-            47.4,
-            -120.7
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
-          "id": "ghosts-fog:main",
-          "levelId": "ghosts-fog",
-          "locationId": "main",
-          "title": "Fog",
-          "game": "G",
-          "wiki": "https://callofduty.fandom.com/wiki/Fog",
-          "wikiArticle": "codwiki-fog",
-          "city": null,
-          "region": null,
-          "label": "Washington",
-          "coordinates": [
-            47.4,
-            -120.7
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "bo2-tranzit:main",
-          "levelId": "bo2-tranzit",
-          "locationId": "main",
-          "title": "TranZit",
-          "game": "BO2",
-          "wiki": "https://callofduty.fandom.com/wiki/TranZit",
-          "wikiArticle": "codwiki-tranzit",
-          "city": null,
-          "region": null,
-          "label": "Washington",
-          "coordinates": [
-            47.4,
-            -120.7
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        }
-      ]
-    },
-    {
       "name": "Washington D.C.",
       "coordinates": [
         38.907,
@@ -22737,38 +22766,6 @@
           "method": "country-fallback",
           "modes": [
             "singleplayer"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Wyoming",
-      "coordinates": [
-        43,
-        -107.5
-      ],
-      "kind": "terrestrial",
-      "entries": [
-        {
-          "id": "aw-sideshow:main",
-          "levelId": "aw-sideshow",
-          "locationId": "main",
-          "title": "Sideshow",
-          "game": "AW",
-          "wiki": "https://callofduty.fandom.com/wiki/Sideshow",
-          "wikiArticle": "codwiki-sideshow",
-          "city": null,
-          "region": null,
-          "label": "Wyoming",
-          "coordinates": [
-            43,
-            -107.5
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
           ]
         }
       ]

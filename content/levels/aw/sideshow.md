@@ -8,7 +8,7 @@ wikiArticle: codwiki-sideshow
 locations:
   - id: main
     label: Wyoming
-    country: Wyoming
+    country: "USA: Wyoming"
     latitude: 43
     longitude: -107.5
     precision: country

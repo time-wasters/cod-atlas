@@ -8,7 +8,7 @@ wikiArticle: codwiki-icbm-map
 locations:
   - id: main
     label: Colorado
-    country: Colorado
+    country: "USA: Colorado"
     latitude: 39
     longitude: -105.5
     precision: country

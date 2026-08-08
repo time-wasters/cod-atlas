@@ -8,7 +8,7 @@ wikiArticle: codwiki-vortex
 locations:
   - id: main
     label: Kansas
-    country: Kansas
+    country: "USA: Kansas"
     latitude: 38.5
     longitude: -98.2
     precision: country

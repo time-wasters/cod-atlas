@@ -8,7 +8,7 @@ wikiArticle: codwiki-countdown-modern-warfare-ii
 locations:
   - id: main
     label: Illinois
-    country: Illinois
+    country: "USA: Illinois"
     latitude: 40
     longitude: -89.2
     precision: country

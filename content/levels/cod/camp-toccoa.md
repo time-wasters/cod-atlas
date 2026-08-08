@@ -8,7 +8,7 @@ wikiArticle: codwiki-camp-toccoa
 locations:
   - id: main
     label: Toccoa
-    country: Georgia, USA
+    country: "USA: Georgia"
     city: Toccoa
     latitude: 34.57732
     longitude: -83.33239

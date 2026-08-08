@@ -8,7 +8,7 @@ wikiArticle: codwiki-the-pines
 locations:
   - id: main
     label: New Jersey
-    country: New Jersey
+    country: "USA: New Jersey"
     latitude: 40.1
     longitude: -74.5
     precision: country

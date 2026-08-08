@@ -8,7 +8,7 @@ wikiArticle: codwiki-detroit
 locations:
   - id: main
     label: Michigan
-    country: Michigan
+    country: "USA: Michigan"
     latitude: 44.3
     longitude: -85.6
     precision: country

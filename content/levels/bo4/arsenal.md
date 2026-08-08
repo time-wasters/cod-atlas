@@ -8,7 +8,7 @@ wikiArticle: codwiki-arsenal-black-ops-4
 locations:
   - id: main
     label: Texas
-    country: Texas
+    country: "USA: Texas"
     latitude: 31
     longitude: -99
     precision: country

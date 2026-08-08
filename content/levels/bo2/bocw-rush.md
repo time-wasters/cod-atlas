@@ -9,7 +9,7 @@ wikiArticle: codwiki-rush
 locations:
   - id: main
     label: Georgia, USA
-    country: Georgia, USA
+    country: "USA: Georgia"
     latitude: 32.7
     longitude: -83.3
     precision: country

@@ -8,7 +8,7 @@ wikiArticle: codwiki-through-the-mountains
 locations:
   - id: main
     label: Nevada
-    country: Nevada
+    country: "USA: Nevada"
     latitude: 39.3
     longitude: -116.6
     precision: country

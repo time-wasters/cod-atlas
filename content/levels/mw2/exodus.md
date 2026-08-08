@@ -8,7 +8,7 @@ wikiArticle: codwiki-exodus-modern-warfare-2
 locations:
   - id: main
     label: Virginia
-    country: Virginia
+    country: "USA: Virginia"
     latitude: 37.5
     longitude: -78.8
     precision: country

@@ -17,7 +17,7 @@ locations:
     primary: true
   - id: texas-2
     label: Texas
-    country: Texas
+    country: "USA: Texas"
     latitude: 31
     longitude: -99
     precision: country

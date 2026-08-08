@@ -8,7 +8,7 @@ wikiArticle: codwiki-into-the-furnace
 locations:
   - id: main
     label: Georgia
-    country: Georgia
+    country: "USA: Georgia"
     latitude: 42
     longitude: 43.5
     precision: country

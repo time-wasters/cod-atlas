@@ -8,7 +8,7 @@ wikiArticle: codwiki-stadium
 locations:
   - id: main
     label: New York
-    country: New York
+    country: "USA: New York"
     latitude: 42.9
     longitude: -75.5
     precision: country

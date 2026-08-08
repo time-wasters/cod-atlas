@@ -17,7 +17,7 @@ locations:
     primary: true
   - id: north-carolina-2
     label: North Carolina
-    country: North Carolina
+    country: "USA: North Carolina"
     latitude: 35.5
     longitude: -79.4
     precision: country

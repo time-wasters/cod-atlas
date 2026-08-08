@@ -8,7 +8,7 @@ wikiArticle: codwiki-strikezone
 locations:
   - id: main
     label: California
-    country: California
+    country: "USA: California"
     latitude: 36.8
     longitude: -119.4
     precision: country

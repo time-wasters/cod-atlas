@@ -8,7 +8,7 @@ wikiArticle: codwiki-oil-fire-and-ice
 locations:
   - id: main
     label: Alaska
-    country: Alaska
+    country: "USA: Alaska"
     latitude: 64.2
     longitude: -152
     precision: country

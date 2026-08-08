@@ -8,7 +8,7 @@ wikiArticle: codwiki-parish
 locations:
   - id: main
     label: Louisiana
-    country: Louisiana
+    country: "USA: Louisiana"
     latitude: 31
     longitude: -92
     precision: country

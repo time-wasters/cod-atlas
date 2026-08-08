@@ -8,7 +8,7 @@ wikiArticle: codwiki-shipmas
 locations:
   - id: main
     label: Hawaii
-    country: Hawaii
+    country: "USA: Hawaii"
     latitude: 20.8
     longitude: -157.5
     precision: country

@@ -8,7 +8,7 @@ wikiArticle: codwiki-site-244
 locations:
   - id: main
     label: South Dakota
-    country: South Dakota
+    country: "USA: South Dakota"
     latitude: 44.4
     longitude: -100.2
     precision: country

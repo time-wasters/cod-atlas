@@ -8,7 +8,7 @@ wikiArticle: codwiki-splash
 locations:
   - id: main
     label: Florida
-    country: Florida
+    country: "USA: Florida"
     latitude: 27.8
     longitude: -81.7
     precision: country

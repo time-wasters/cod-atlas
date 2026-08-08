@@ -8,7 +8,7 @@ wikiArticle: codwiki-gulch
 locations:
   - id: main
     label: Arizona
-    country: Arizona
+    country: "USA: Arizona"
     latitude: 34.3
     longitude: -111.7
     precision: country

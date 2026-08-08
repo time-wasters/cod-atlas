@@ -8,7 +8,7 @@ wikiArticle: codwiki-fire-from-the-sky
 locations:
   - id: main
     label: Maryland
-    country: Maryland
+    country: "USA: Maryland"
     latitude: 39
     longitude: -76.7
     precision: country

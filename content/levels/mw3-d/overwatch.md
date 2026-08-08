@@ -8,7 +8,7 @@ wikiArticle: codwiki-overwatch-modern-warfare-3-defiance
 locations:
   - id: main
     label: Alaska
-    country: Alaska
+    country: "USA: Alaska"
     latitude: 64.2
     longitude: -152
     precision: country

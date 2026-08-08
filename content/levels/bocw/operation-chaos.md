@@ -8,7 +8,7 @@ wikiArticle: codwiki-operation-chaos
 locations:
   - id: main
     label: New Mexico
-    country: New Mexico
+    country: "USA: New Mexico"
     latitude: 34.5
     longitude: -106
     precision: country

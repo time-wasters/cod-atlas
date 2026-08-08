@@ -43,6 +43,34 @@ test("preserves the complete statically compiled atlas", async () => {
 
   assert.equal(entries.length, 987);
   assert.deepEqual(
+    atlas.groups.filter((group) => group.name.startsWith("USA: ")).map((group) => group.name),
+    [
+      "USA: Alaska",
+      "USA: Arizona",
+      "USA: California",
+      "USA: Colorado",
+      "USA: Florida",
+      "USA: Georgia",
+      "USA: Hawaii",
+      "USA: Illinois",
+      "USA: Kansas",
+      "USA: Louisiana",
+      "USA: Maryland",
+      "USA: Michigan",
+      "USA: Nebraska",
+      "USA: Nevada",
+      "USA: New Jersey",
+      "USA: New Mexico",
+      "USA: New York",
+      "USA: North Carolina",
+      "USA: South Dakota",
+      "USA: Texas",
+      "USA: Virginia",
+      "USA: Washington",
+      "USA: Wyoming",
+    ],
+  );
+  assert.deepEqual(
     atlas.games.map((game) => game.released),
     atlas.games.map((game) => game.released).toSorted(),
     "games stay in chronological release order",
