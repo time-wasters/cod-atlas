@@ -60,11 +60,11 @@ function compareGames(a: string, b: string) {
   return releaseDifference || gameLabel(a).localeCompare(gameLabel(b));
 }
 
-const initialGroup = data.groups.find((group) =>
-  group.entries.some((entry) => entry.title === "Brecourt Manor"),
-) ?? data.groups[0];
-const initialEntry = initialGroup.entries.find((entry) => entry.title === "Brecourt Manor")
-  ?? initialGroup.entries[0];
+const initialGroup = data.groups[0];
+if (!initialGroup) throw new Error("Generated atlas contains no groups");
+
+const initialEntry = initialGroup.entries[0];
+if (!initialEntry) throw new Error("Generated atlas contains an empty group");
 
 function escapeXml(value: string) {
   return value.replace(/[<>&'\"]/g, (char) =>
