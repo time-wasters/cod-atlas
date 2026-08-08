@@ -6021,15 +6021,23 @@
           "wikiArticle": "codwiki-the-corridor-of-death",
           "country": "France",
           "city": null,
-          "region": null,
+          "region": "Saint-Lambert-sur-Dive",
           "landmark": null,
           "coordinates": [
-            46,
-            2
+            48.819557910469904,
+            0.07593786425682185
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "approximate",
+          "confidence": "medium",
+          "method": "manual-approximate",
+          "urls": [
+            {
+              "googleMaps": "https://maps.app.goo.gl/Wjtis8unFE4KVvgL9"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Saint-Lambert-sur-Dive"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -23957,7 +23965,7 @@
     "levels": 967,
     "entries": 987,
     "mapped": 956,
-    "cityMatched": 78,
-    "countryFallback": 879
+    "cityMatched": 79,
+    "countryFallback": 878
   }
 }

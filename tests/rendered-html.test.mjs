@@ -34,6 +34,9 @@ test("renders development preview metadata", async () => {
   assert.match(html, /class="intel-country-fallback"/);
   assert.match(html, />Adriatic Sea<\/span>/);
   assert.doesNotMatch(html, /Selected location/);
+  assert.doesNotMatch(html, />Level<\/span>/);
+  assert.match(html, /(Campaign mission|Multiplayer map)/);
+  assert.ok(html.indexOf('class="mission-heading"') < html.indexOf('class="intel-kicker"'));
 });
 
 test("preserves the complete statically compiled atlas", async () => {
@@ -79,6 +82,20 @@ test("preserves the complete statically compiled atlas", async () => {
   assert.equal(laisonRiver.precision, "approximate");
   assert.equal(laisonRiver.confidence, "medium");
   assert.equal(laisonRiver.method, "manual-approximate");
+
+  const corridorOfDeath = findEntry("COD3", "The Corridor of Death");
+  assert.equal(corridorOfDeath.country, "France");
+  assert.equal(corridorOfDeath.region, "Saint-Lambert-sur-Dive");
+  assert.equal(corridorOfDeath.city, null);
+  assert.equal(corridorOfDeath.landmark, null);
+  assert.deepEqual(corridorOfDeath.coordinates, [48.819557910469904, 0.07593786425682185]);
+  assert.equal(corridorOfDeath.precision, "approximate");
+  assert.equal(corridorOfDeath.confidence, "medium");
+  assert.equal(corridorOfDeath.method, "manual-approximate");
+  assert.deepEqual(corridorOfDeath.urls, [
+    { googleMaps: "https://maps.app.goo.gl/Wjtis8unFE4KVvgL9" },
+    { wikipedia: "https://en.wikipedia.org/wiki/Saint-Lambert-sur-Dive" },
+  ]);
 
   const blowtorchAndCorkscrew = findEntry("WAW", "Blowtorch & Corkscrew");
   assert.deepEqual(blowtorchAndCorkscrew.coordinates, [26.22882, 127.71437]);
