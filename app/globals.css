@@ -121,6 +121,8 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
 .atlas-sidebar footer .source-credit { margin-top: 8px; }
 .atlas-sidebar footer a { color: #b5ad8c; text-decoration-color: #777c6b; text-underline-offset: 2px; }
 .atlas-sidebar footer a:hover, .atlas-sidebar footer a:focus-visible { color: var(--amber); }
+.atlas-sidebar footer .icon-link { display: inline-flex; align-items: center; gap: 4px; }
+.atlas-sidebar footer .icon-link svg { flex: none; }
 .legend-dot { display: inline-block; width: 11px; height: 11px; margin: 0 6px 0 0; border: 2px solid var(--amber); border-radius: 50%; vertical-align: -2px; }
 .legend-dot.is-fallback { margin-left: 10px; border-color: #aaa27f; border-style: dotted; }
 
