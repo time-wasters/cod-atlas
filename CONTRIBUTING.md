@@ -78,6 +78,10 @@ Optional research notes belong here.
 Add a game YAML file only when its referenced game does not already exist. Add
 or reference a separate Wiki import JSON record for `wikiArticle`.
 
+An optional interface icon can be added at
+`public/images/games/<game-id>.png`. The filename must exactly match the game
+ID; no game record change is needed.
+
 Copy templates from [`docs/templates/`](docs/templates/) instead of using an
 existing record whose assumptions may not fit the new contribution.
 

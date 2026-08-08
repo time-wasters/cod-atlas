@@ -10,6 +10,7 @@ type Entry = {
   locationId: string;
   title: string;
   game: string;
+  gameIds: string[];
   wiki: string;
   country: string;
   region?: string | null;
@@ -72,6 +73,7 @@ type Game = {
   code: string;
   label: string;
   released: string;
+  icon?: string;
 };
 type AtlasData = {
   games: Game[];
@@ -90,6 +92,7 @@ type AtlasData = {
 type Selection = { group: Group; entry: Entry };
 
 const data = atlasSource as AtlasData;
+const gamesById = new Map(data.games.map((game) => [game.id, game]));
 
 function gameCodes(value: string) {
   return value.split(" / ").filter((code) => code && code !== "MP");
@@ -398,7 +401,29 @@ export default function Home() {
         <article className="intel-card">
           <div className="mission-heading">
             <h2>{selected.entry.title}</h2>
-            <p>{selected.entry.game} · {selected.entry.modes.includes("multiplayer") ? "Multiplayer map" : "Campaign mission"}</p>
+            <div className="mission-meta">
+              <span className="mission-games">
+                {selected.entry.gameIds.map((gameId) => {
+                  const selectedGame = gamesById.get(gameId);
+                  if (!selectedGame) return null;
+                  return selectedGame.icon ? (
+                    // Game icons are reviewed local public assets and do not need image optimization.
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      className="mission-game-icon"
+                      key={gameId}
+                      src={selectedGame.icon}
+                      alt={selectedGame.label}
+                      title={selectedGame.label}
+                    />
+                  ) : (
+                    <span className="mission-game-name" key={gameId}>{selectedGame.label}</span>
+                  );
+                })}
+              </span>
+              <span className="mission-meta-separator" aria-hidden="true">·</span>
+              <span>{selected.entry.modes.includes("multiplayer") ? "Multiplayer map" : "Campaign mission"}</span>
+            </div>
           </div>
           {selectedImage && (
             <figure className="intel-media" key={selectedImageKey}>

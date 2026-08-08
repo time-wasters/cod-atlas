@@ -135,6 +135,29 @@ for (const filename of gameFiles) {
   games.set(game.id, game);
 }
 
+const gameIconDirectory = path.join(root, "public/images/games");
+let gameIconFiles = [];
+try {
+  gameIconFiles = (await readdir(gameIconDirectory, { withFileTypes: true }))
+    .filter((entry) => entry.isFile() && entry.name.endsWith(".png"))
+    .map((entry) => entry.name)
+    .sort();
+} catch (error) {
+  if (error?.code !== "ENOENT") throw error;
+}
+for (const filename of gameIconFiles) {
+  const gameId = filename.slice(0, -4);
+  requireValue(games.has(gameId), `public/images/games/${filename}: filename must use a known game ID`);
+  const cachedIcon = await readFile(path.join(gameIconDirectory, filename));
+  requireValue(
+    cachedIcon.length >= 8
+      && cachedIcon[0] === 0x89
+      && cachedIcon.toString("ascii", 1, 4) === "PNG",
+    `public/images/games/${filename}: file is not a PNG image`,
+  );
+  games.get(gameId).icon = `/images/games/${filename}`;
+}
+
 const wikiArticles = new Map();
 for (const filename of wikiFiles) {
   const article = JSON.parse(await readFile(filename, "utf8"));
@@ -220,6 +243,7 @@ for (const level of levels) {
       locationId: location.id,
       title: level.title,
       game: gameCodes,
+      gameIds: [...level.games],
       wiki: article.sourceUrl,
       wikiArticle: level.wikiArticle,
       country: location.country,

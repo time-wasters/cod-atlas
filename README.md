@@ -48,6 +48,10 @@ One level can contain several `locations`. Coordinate precision is one of `exact
 
 Wiki import files remain separate so an automated refresh cannot silently overwrite curated coordinates, classifications, or historical notes. Each record has a stable local ID and placeholders for the Fandom page ID, revision, location links, map style, main image, map image, image detail pages, authors or uploaders, licenses or non-free rights notices, and raw import payload.
 
+Optional game icons live under `public/images/games/` as
+`<game-id>.png`. The details pane uses an icon when present and keeps the game
+name as a fallback while the remaining icons are being created.
+
 ## Editing data
 
 1. Edit or add a file under `content/levels/`.

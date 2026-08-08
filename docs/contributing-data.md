@@ -112,7 +112,9 @@ examples, not automatic rules: record what the evidence supports.
 ## Game and Wiki records
 
 A game requires `id`, short `code`, human-readable `label`, and ISO
-`released` date (`YYYY-MM-DD`). Release dates control filter order.
+`released` date (`YYYY-MM-DD`). Release dates control filter order. An optional
+interface icon belongs at `public/images/games/<game-id>.png`; the build detects
+it automatically.
 
 A Wiki import record requires a stable `id` and `sourceUrl`. Keep import data
 separate from curated level data. Unknown import values are `null`; do not

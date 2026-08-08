@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { access } from "node:fs/promises";
 import test from "node:test";
 
 const developmentPreviewMeta =
@@ -62,6 +63,14 @@ test("preserves the complete statically compiled atlas", async () => {
     atlas.games.map((game) => game.released).toSorted(),
     "games stay in chronological release order",
   );
+  const codGame = atlas.games.find((game) => game.id === "cod");
+  assert.equal(codGame.icon, "/images/games/cod.png");
+  for (const game of atlas.games.filter((item) => item.icon)) {
+    assert.equal(game.icon, `/images/games/${game.id}.png`);
+    await access(new URL(`../public${game.icon}`, import.meta.url));
+  }
+  assert.ok(atlas.games.some((game) => !game.icon), "game labels remain available as the icon fallback");
+  assert.ok(entries.every((entry) => Array.isArray(entry.gameIds) && entry.gameIds.length > 0));
   assert.ok(entries.every((entry) =>
     entry.modes.length === 1 && ["singleplayer", "multiplayer"].includes(entry.modes[0])));
 

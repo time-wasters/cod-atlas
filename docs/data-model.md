@@ -30,7 +30,10 @@ released: 2006-11-07
 ```
 
 The release date controls the game-filter ordering. Labels should be concise
-but understandable without prior knowledge of internal abbreviations.
+but understandable without prior knowledge of internal abbreviations. An
+optional `public/images/games/<game-id>.png` is detected during the build and
+exposed as the game's `icon`; games without one continue to display their
+label.
 
 ## Level record
 
