@@ -311,6 +311,9 @@ export default function Home() {
           <p className="source-credit">
             Inspired by <a href="https://www.reddit.com/r/CallOfDuty/comments/10c3jbd/cod_every_location_visited_in_the_cod_franchise/" target="_blank" rel="noreferrer">the original Reddit post by u/robracer97 ↗</a>
           </p>
+          <p className="source-credit">
+            <a href="https://github.com/PLP-GTR/call-of-duty-atlas" target="_blank" rel="noreferrer">Source code · AGPL-3.0 ↗</a>
+          </p>
         </footer>
       </aside>
 

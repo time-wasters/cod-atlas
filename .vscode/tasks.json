@@ -1,0 +1,54 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Atlas: Start development server",
+      "type": "npm",
+      "script": "dev",
+      "isBackground": true,
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
+    },
+    {
+      "label": "Atlas: Rebuild generated data",
+      "type": "npm",
+      "script": "data:build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Atlas: Validate generated data",
+      "type": "npm",
+      "script": "data:check",
+      "problemMatcher": []
+    },
+    {
+      "label": "Atlas: Lint",
+      "type": "npm",
+      "script": "lint",
+      "problemMatcher": ["$eslint-stylish"]
+    },
+    {
+      "label": "Atlas: Run tests",
+      "type": "npm",
+      "script": "test",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Atlas: Build static website",
+      "type": "npm",
+      "script": "build:static",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    }
+  ]
+}

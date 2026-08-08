@@ -91,6 +91,40 @@ or other database service is required.
 The included GitHub Actions workflow validates every pull request and attaches
 the static website as a downloadable build artifact on `main`.
 
+## Codex and VSCodium
+
+Codex automatically reads the repository instructions in `AGENTS.md`. The
+instructions preserve the data architecture, required checks, and licensing
+rules so a new session can begin without repeating the project history.
+
+After opening the repository in VSCodium:
+
+```sh
+npm ci
+codex
+```
+
+Sign in to Codex with ChatGPT when prompted. Use **Terminal → Run Task** for
+one-click data validation, tests, development, and static builds. Personal
+model, login, and approval settings are intentionally not committed.
+
+See `CONTRIBUTING.md` for the pull-request workflow and `docs/data-model.md` for
+the complete content relationships.
+
+## License
+
+- Source code: GNU Affero General Public License v3.0 only
+  (`AGPL-3.0-only`). Modified versions offered over a network must provide the
+  corresponding source under the same license.
+- Original project data and editorial content: Creative Commons
+  Attribution-ShareAlike 4.0 International (`CC-BY-SA-4.0`).
+- Third-party Wiki material and media retain their original licenses and
+  attribution requirements. See `NOTICE.md`.
+
+`LICENSE-DATA` applies to original material under `content/` and the generated
+`app/data/atlas.generated.json`, to the extent copyright or database rights
+apply. It does not relicense third-party material.
+
 ## Provenance
 
 The project was inspired by

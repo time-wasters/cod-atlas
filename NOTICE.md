@@ -1,0 +1,48 @@
+# Notices and attribution
+
+## Project
+
+Copyright © 2026 Call of Duty Atlas contributors.
+
+Source code is licensed under `AGPL-3.0-only`. Original project data and
+editorial content are licensed under `CC-BY-SA-4.0`. See `LICENSE` and
+`LICENSE-DATA`.
+
+The data license applies to original material under `content/` and the derived
+`app/data/atlas.generated.json`, to the extent copyright or database rights
+apply.
+
+Third-party names, facts, links, text, and media are not relicensed by this
+project. Their original terms continue to apply.
+
+## Original inspiration
+
+The atlas was inspired by the Reddit post
+[“COD: Every location visited in the COD franchise”](https://www.reddit.com/r/CallOfDuty/comments/10c3jbd/cod_every_location_visited_in_the_cod_franchise/)
+by Reddit user **u/robracer97**.
+
+## Call of Duty Wiki and Fandom
+
+Atlas records link to pages on the
+[Call of Duty Wiki](https://callofduty.fandom.com/wiki/Call_of_Duty_Wiki).
+Imported article or media material remains subject to the license and
+attribution displayed on its source page or file-detail page. Import records
+must retain the source URL, author information, and applicable license links.
+
+## Maps
+
+The live map uses OpenStreetMap tiles and displays the required OpenStreetMap
+copyright attribution in the map interface. OpenStreetMap data is subject to
+the Open Database License; tile usage is governed by the applicable tile
+service policy.
+
+## Trademarks
+
+Call of Duty and related game names, imagery, and trademarks belong to their
+respective owners. This community project is unofficial and is not endorsed by
+Activision or the relevant rights holders.
+
+## Software dependencies
+
+Bundled and runtime dependencies retain their own licenses. Their package
+metadata and license files are authoritative for those components.
