@@ -29,7 +29,11 @@ test("renders development preview metadata", async () => {
     response.headers.get("content-type") ?? "",
     /^text\/html\b/i,
   );
-  assert.match(await response.text(), developmentPreviewMeta);
+  const html = await response.text();
+  assert.match(html, developmentPreviewMeta);
+  assert.match(html, /class="intel-country-fallback"/);
+  assert.match(html, />Adriatic Sea<\/span>/);
+  assert.doesNotMatch(html, /Selected location/);
 });
 
 test("preserves the complete statically compiled atlas", async () => {
@@ -37,11 +41,16 @@ test("preserves the complete statically compiled atlas", async () => {
     with: { type: "json" },
   });
   const entries = atlas.groups.flatMap((group) => group.entries);
+  const findGroup = (name) => atlas.groups.find((group) => group.name === name);
   const findEntry = (game, title) => entries.find(
     (entry) => entry.title === title && entry.game.split(" / ").includes(game),
   );
 
   assert.equal(entries.length, 987);
+  assert.equal(findGroup("France").flagCode, "FR");
+  assert.equal(findGroup("Turkey").flagCode, "TR");
+  assert.equal(findGroup("USA: California").flagCode, "US");
+  assert.equal(findGroup("Adriatic Sea").flagCode, null);
   assert.deepEqual(
     atlas.groups.filter((group) => group.name.startsWith("USA: ")).map((group) => group.name),
     [

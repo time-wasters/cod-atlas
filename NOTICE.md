@@ -48,6 +48,11 @@ The Reddit mark in the site footer is from
 distributed under CC0-1.0. The Reddit logo remains subject to Reddit's brand
 and trademark terms.
 
+Country flag artwork is provided by
+[country-flag-icons](https://gitlab.com/catamphetamine/country-flag-icons),
+copyright Nikolay Kuchumov and contributors, and is distributed under the MIT
+License.
+
 ## Trademarks
 
 Call of Duty and related game names, imagery, and trademarks belong to their

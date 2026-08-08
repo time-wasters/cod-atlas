@@ -185,6 +185,7 @@
         16.1
       ],
       "kind": "terrestrial",
+      "flagCode": null,
       "entries": [
         {
           "id": "mw19-wz-fortune-s-keep:main",
@@ -217,6 +218,7 @@
         65
       ],
       "kind": "terrestrial",
+      "flagCode": "AF",
       "entries": [
         {
           "id": "mw2-afgan:main",
@@ -557,6 +559,7 @@
         3
       ],
       "kind": "terrestrial",
+      "flagCode": "DZ",
       "entries": [
         {
           "id": "cod2-bro-baptism-by-fire:main",
@@ -677,6 +680,7 @@
         18.5
       ],
       "kind": "terrestrial",
+      "flagCode": "AO",
       "entries": [
         {
           "id": "bo2-buried:main",
@@ -775,6 +779,7 @@
         0
       ],
       "kind": "terrestrial",
+      "flagCode": "AQ",
       "entries": [
         {
           "id": "ghosts-atlas-falls:main",
@@ -895,6 +900,7 @@
         24
       ],
       "kind": "terrestrial",
+      "flagCode": null,
       "entries": [
         {
           "id": "aw-fracture:main",
@@ -949,6 +955,7 @@
         -64
       ],
       "kind": "terrestrial",
+      "flagCode": "AR",
       "entries": [
         {
           "id": "ghosts-clockwork:main",
@@ -981,6 +988,7 @@
         -38
       ],
       "kind": "terrestrial",
+      "flagCode": null,
       "entries": [
         {
           "id": "bocw-armada:main",
@@ -1167,6 +1175,7 @@
         133
       ],
       "kind": "terrestrial",
+      "flagCode": "AU",
       "entries": [
         {
           "id": "ghosts-awakening:main",
@@ -1221,6 +1230,7 @@
         13.33333333
       ],
       "kind": "terrestrial",
+      "flagCode": "AT",
       "entries": [
         {
           "id": "waw-ff-braunau-am-inn:main",
@@ -1385,6 +1395,7 @@
         47.5
       ],
       "kind": "terrestrial",
+      "flagCode": "AZ",
       "entries": [
         {
           "id": "cod4-heat:main",
@@ -1439,6 +1450,7 @@
         19.2
       ],
       "kind": "terrestrial",
+      "flagCode": null,
       "entries": [
         {
           "id": "wwii-v2:main",
@@ -1471,6 +1483,7 @@
         90
       ],
       "kind": "terrestrial",
+      "flagCode": "BD",
       "entries": [
         {
           "id": "bo4-masquerade:main",
@@ -1503,6 +1516,7 @@
         4
       ],
       "kind": "terrestrial",
+      "flagCode": "BE",
       "entries": [
         {
           "id": "wwii-ambush:main",
@@ -1887,6 +1901,7 @@
         -168.8
       ],
       "kind": "terrestrial",
+      "flagCode": null,
       "entries": [
         {
           "id": "cod4-crew-expendable:main",
@@ -1941,6 +1956,7 @@
         -55
       ],
       "kind": "terrestrial",
+      "flagCode": "BR",
       "entries": [
         {
           "id": "mw2-carnival:main",
@@ -2215,6 +2231,7 @@
         25
       ],
       "kind": "terrestrial",
+      "flagCode": "BG",
       "entries": [
         {
           "id": "aw-bio-lab:main",
@@ -2247,6 +2264,7 @@
         -95
       ],
       "kind": "terrestrial",
+      "flagCode": "CA",
       "entries": [
         {
           "id": "mw3-charges-set:main",
@@ -2345,6 +2363,7 @@
         -75
       ],
       "kind": "terrestrial",
+      "flagCode": null,
       "entries": [
         {
           "id": "ghosts-mutiny:main",
@@ -2377,6 +2396,7 @@
         -81.25
       ],
       "kind": "terrestrial",
+      "flagCode": "KY",
       "entries": [
         {
           "id": "bo2-karma:main",
@@ -2409,6 +2429,7 @@
         -71
       ],
       "kind": "terrestrial",
+      "flagCode": "CL",
       "entries": [
         {
           "id": "ghosts-overlord:main",
@@ -2485,6 +2506,7 @@
         105
       ],
       "kind": "terrestrial",
+      "flagCode": "CN",
       "entries": [
         {
           "id": "aw-atlas-gorge:main",
@@ -2737,6 +2759,7 @@
         -72
       ],
       "kind": "terrestrial",
+      "flagCode": "CO",
       "entries": [
         {
           "id": "bo4-contraband:main",
@@ -2791,6 +2814,7 @@
         -80
       ],
       "kind": "terrestrial",
+      "flagCode": "CU",
       "entries": [
         {
           "id": "bo-crisis:main",
@@ -3018,6 +3042,7 @@
       "name": "Cygnus X-3's Orbit",
       "coordinates": null,
       "kind": "off-world",
+      "flagCode": null,
       "entries": [
         {
           "id": "iw-mayday:main",
@@ -3047,6 +3072,7 @@
         15.5
       ],
       "kind": "terrestrial",
+      "flagCode": "CZ",
       "entries": [
         {
           "id": "wwii-anthropoid:main",
@@ -3167,6 +3193,7 @@
         35.5
       ],
       "kind": "terrestrial",
+      "flagCode": null,
       "entries": [
         {
           "id": "iw-cryogen:main",
@@ -3196,6 +3223,7 @@
       "name": "Earth’s Orbit",
       "coordinates": null,
       "kind": "off-world",
+      "flagCode": null,
       "entries": [
         {
           "id": "ghosts-loki:main",
@@ -3260,6 +3288,7 @@
       "name": "Earthâ€™s Orbit",
       "coordinates": null,
       "kind": "off-world",
+      "flagCode": null,
       "entries": [
         {
           "id": "ghosts-ghost-stories:main",
@@ -3289,6 +3318,7 @@
         30
       ],
       "kind": "terrestrial",
+      "flagCode": "EG",
       "entries": [
         {
           "id": "bo3-breach:main",
@@ -3783,6 +3813,7 @@
         -1.2
       ],
       "kind": "terrestrial",
+      "flagCode": null,
       "entries": [
         {
           "id": "cod-uo-bomber:main",
@@ -3837,6 +3868,7 @@
         38
       ],
       "kind": "terrestrial",
+      "flagCode": "ET",
       "entries": [
         {
           "id": "bo3-black-ops:main",
@@ -3888,6 +3920,7 @@
       "name": "Europa (Jupiter Moon)",
       "coordinates": null,
       "kind": "off-world",
+      "flagCode": null,
       "entries": [
         {
           "id": "iw-frost:main",
@@ -3955,6 +3988,7 @@
         2
       ],
       "kind": "terrestrial",
+      "flagCode": "FR",
       "entries": [
         {
           "id": "cod3-argentan:main",
@@ -6055,6 +6089,7 @@
         9
       ],
       "kind": "terrestrial",
+      "flagCode": "DE",
       "entries": [
         {
           "id": "wwii-aachen:main",
@@ -7891,6 +7926,7 @@
         -5.35257
       ],
       "kind": "terrestrial",
+      "flagCode": "GI",
       "entries": [
         {
           "id": "wwii-gibraltar:main",
@@ -7923,6 +7959,7 @@
         22
       ],
       "kind": "terrestrial",
+      "flagCode": "GR",
       "entries": [
         {
           "id": "bo4-ancient-evil:main",
@@ -8043,6 +8080,7 @@
         -89
       ],
       "kind": "terrestrial",
+      "flagCode": null,
       "entries": [
         {
           "id": "aw-ascend:main",
@@ -8185,6 +8223,7 @@
         -72.41666666
       ],
       "kind": "terrestrial",
+      "flagCode": "HT",
       "entries": [
         {
           "id": "bo2-judgment-day:main",
@@ -8217,6 +8256,7 @@
         -18
       ],
       "kind": "terrestrial",
+      "flagCode": "IS",
       "entries": [
         {
           "id": "bo4-artifact:main",
@@ -8315,6 +8355,7 @@
         77
       ],
       "kind": "terrestrial",
+      "flagCode": "IN",
       "entries": [
         {
           "id": "bo2-fob:main",
@@ -8435,6 +8476,7 @@
         78
       ],
       "kind": "terrestrial",
+      "flagCode": null,
       "entries": [
         {
           "id": "bo2-hijacked:main",
@@ -8489,6 +8531,7 @@
         120
       ],
       "kind": "terrestrial",
+      "flagCode": "ID",
       "entries": [
         {
           "id": "mw19-wz-caldera:main",
@@ -8565,6 +8608,7 @@
         44
       ],
       "kind": "terrestrial",
+      "flagCode": "IQ",
       "entries": [
         {
           "id": "cod4-aftermath:main",
@@ -9103,6 +9147,7 @@
         -8
       ],
       "kind": "terrestrial",
+      "flagCode": "IE",
       "entries": [
         {
           "id": "mw3-aground:main",
@@ -9157,6 +9202,7 @@
         12.83333333
       ],
       "kind": "terrestrial",
+      "flagCode": "IT",
       "entries": [
         {
           "id": "vanguard-alps:main",
@@ -9585,6 +9631,7 @@
         138
       ],
       "kind": "terrestrial",
+      "flagCode": "JP",
       "entries": [
         {
           "id": "waw-blowtorch-and-corkscrew:main",
@@ -9705,6 +9752,7 @@
         127.719475
       ],
       "kind": "terrestrial",
+      "flagCode": "JP",
       "entries": [
         {
           "id": "waw-breaking-point:main",
@@ -9869,6 +9917,7 @@
         68
       ],
       "kind": "terrestrial",
+      "flagCode": "KZ",
       "entries": [
         {
           "id": "bo-bo3-ascension:main",
@@ -10011,6 +10060,7 @@
         172.92105
       ],
       "kind": "terrestrial",
+      "flagCode": "KI",
       "entries": [
         {
           "id": "waw-ff-betio-airfield:main",
@@ -10131,6 +10181,7 @@
         75
       ],
       "kind": "terrestrial",
+      "flagCode": "KG",
       "entries": [
         {
           "id": "bo2-bocw-standoff:main",
@@ -10163,6 +10214,7 @@
         105
       ],
       "kind": "terrestrial",
+      "flagCode": "LA",
       "entries": [
         {
           "id": "bocw-apocalypse:main",
@@ -10239,6 +10291,7 @@
         17
       ],
       "kind": "terrestrial",
+      "flagCode": "LY",
       "entries": [
         {
           "id": "cod2-88-ridge:main",
@@ -10359,6 +10412,7 @@
         6.10417
       ],
       "kind": "terrestrial",
+      "flagCode": "LU",
       "entries": [
         {
           "id": "waw-ff-ettelbruck:main",
@@ -10391,6 +10445,7 @@
         47
       ],
       "kind": "terrestrial",
+      "flagCode": "MG",
       "entries": [
         {
           "id": "bo4-madagascar:main",
@@ -10423,6 +10478,7 @@
         73
       ],
       "kind": "terrestrial",
+      "flagCode": "MV",
       "entries": [
         {
           "id": "bo4-lair:main",
@@ -10455,6 +10511,7 @@
         14.58333333
       ],
       "kind": "terrestrial",
+      "flagCode": "MT",
       "entries": [
         {
           "id": "vanguard-fortress:main",
@@ -10484,6 +10541,7 @@
       "name": "Mars",
       "coordinates": null,
       "kind": "off-world",
+      "flagCode": null,
       "entries": [
         {
           "id": "iw-crusher:main",
@@ -10608,6 +10666,7 @@
         -102
       ],
       "kind": "terrestrial",
+      "flagCode": "MX",
       "entries": [
         {
           "id": "mwii-alone:main",
@@ -11036,6 +11095,7 @@
         158.25
       ],
       "kind": "terrestrial",
+      "flagCode": "FM",
       "entries": [
         {
           "id": "bo3-zetsubou-no-shima:main",
@@ -11068,6 +11128,7 @@
         -177.38
       ],
       "kind": "terrestrial",
+      "flagCode": "US",
       "entries": [
         {
           "id": "vanguard-the-battle-of-midway:main",
@@ -11100,6 +11161,7 @@
         29
       ],
       "kind": "terrestrial",
+      "flagCode": "MD",
       "entries": [
         {
           "id": "mw19-going-dark:main",
@@ -11132,6 +11194,7 @@
         7.4
       ],
       "kind": "terrestrial",
+      "flagCode": "MC",
       "entries": [
         {
           "id": "bo4-casino:main",
@@ -11161,6 +11224,7 @@
       "name": "Moon",
       "coordinates": null,
       "kind": "off-world",
+      "flagCode": null,
       "entries": [
         {
           "id": "bo-bo3-moon:main",
@@ -11247,6 +11311,7 @@
         -5
       ],
       "kind": "terrestrial",
+      "flagCode": "MA",
       "entries": [
         {
           "id": "vanguard-casablanca:main",
@@ -11323,6 +11388,7 @@
         98
       ],
       "kind": "terrestrial",
+      "flagCode": "MM",
       "entries": [
         {
           "id": "bo2-celerium:main",
@@ -11399,6 +11465,7 @@
         84
       ],
       "kind": "terrestrial",
+      "flagCode": "NP",
       "entries": [
         {
           "id": "bo4-elevation:main",
@@ -11428,6 +11495,7 @@
       "name": "Neptune’s Orbit",
       "coordinates": null,
       "kind": "off-world",
+      "flagCode": null,
       "entries": [
         {
           "id": "iw-frontier:main",
@@ -11476,6 +11544,7 @@
         5.75
       ],
       "kind": "terrestrial",
+      "flagCode": "NL",
       "entries": [
         {
           "id": "bocw-amsterdam:main",
@@ -11882,6 +11951,7 @@
         -85
       ],
       "kind": "terrestrial",
+      "flagCode": "NI",
       "entries": [
         {
           "id": "bocw-cartel:main",
@@ -11980,6 +12050,7 @@
         8
       ],
       "kind": "terrestrial",
+      "flagCode": "NG",
       "entries": [
         {
           "id": "aw-comeback:main",
@@ -12034,6 +12105,7 @@
         145.75
       ],
       "kind": "terrestrial",
+      "flagCode": "MP",
       "entries": [
         {
           "id": "waw-ff-codename-forager:main",
@@ -12088,6 +12160,7 @@
         18.79948
       ],
       "kind": "terrestrial",
+      "flagCode": "NO",
       "entries": [
         {
           "id": "cod-battleship-tirpitz:main",
@@ -12142,6 +12215,7 @@
         -150
       ],
       "kind": "terrestrial",
+      "flagCode": null,
       "entries": [
         {
           "id": "ghosts-all-or-nothing:main",
@@ -12306,6 +12380,7 @@
         70
       ],
       "kind": "terrestrial",
+      "flagCode": "PK",
       "entries": [
         {
           "id": "bo2-dispatch:main",
@@ -12448,6 +12523,7 @@
         134.5
       ],
       "kind": "terrestrial",
+      "flagCode": "PW",
       "entries": [
         {
           "id": "waw-airfield:main",
@@ -12590,6 +12666,7 @@
         -80
       ],
       "kind": "terrestrial",
+      "flagCode": "PA",
       "entries": [
         {
           "id": "bo2-bo3-bo4-bocw-slums:main",
@@ -12644,6 +12721,7 @@
         147
       ],
       "kind": "terrestrial",
+      "flagCode": "PG",
       "entries": [
         {
           "id": "vanguard-numa-numa:main",
@@ -12698,6 +12776,7 @@
         132
       ],
       "kind": "terrestrial",
+      "flagCode": null,
       "entries": [
         {
           "id": "waw-black-cats:main",
@@ -12730,6 +12809,7 @@
         122
       ],
       "kind": "terrestrial",
+      "flagCode": "PH",
       "entries": [
         {
           "id": "waw-battery:main",
@@ -12759,6 +12839,7 @@
       "name": "Pluto’s Orbit",
       "coordinates": null,
       "kind": "off-world",
+      "flagCode": null,
       "entries": [
         {
           "id": "iw-operation-deep-execute:main",
@@ -12807,6 +12888,7 @@
         20
       ],
       "kind": "terrestrial",
+      "flagCode": "PL",
       "entries": [
         {
           "id": "waw-bo-der-riese:main",
@@ -13015,6 +13097,7 @@
         -149.4
       ],
       "kind": "terrestrial",
+      "flagCode": null,
       "entries": [
         {
           "id": "bo3-knockout:main",
@@ -13047,6 +13130,7 @@
         100
       ],
       "kind": "terrestrial",
+      "flagCode": "RU",
       "entries": [
         {
           "id": "cod-fh-airfield-ambush:main",
@@ -15213,6 +15297,7 @@
         -2.21177
       ],
       "kind": "terrestrial",
+      "flagCode": "GB",
       "entries": [
         {
           "id": "ghosts-stonehaven:main",
@@ -15245,6 +15330,7 @@
         -11.5
       ],
       "kind": "terrestrial",
+      "flagCode": "SL",
       "entries": [
         {
           "id": "mw3-back-on-the-grid:main",
@@ -15321,6 +15407,7 @@
         103.8
       ],
       "kind": "terrestrial",
+      "flagCode": "SG",
       "entries": [
         {
           "id": "bo3-aquarium:main",
@@ -15551,6 +15638,7 @@
         14.81666666
       ],
       "kind": "terrestrial",
+      "flagCode": "SI",
       "entries": [
         {
           "id": "cod-uo-stanjel:main",
@@ -15583,6 +15671,7 @@
         159
       ],
       "kind": "terrestrial",
+      "flagCode": "SB",
       "entries": [
         {
           "id": "waw-ff-basic-training:main",
@@ -15637,6 +15726,7 @@
         49
       ],
       "kind": "terrestrial",
+      "flagCode": "SO",
       "entries": [
         {
           "id": "mw3-bakaara:main",
@@ -15735,6 +15825,7 @@
         127.5
       ],
       "kind": "terrestrial",
+      "flagCode": "KR",
       "entries": [
         {
           "id": "mw3-foundation:main",
@@ -15833,6 +15924,7 @@
         -4
       ],
       "kind": "terrestrial",
+      "flagCode": "ES",
       "entries": [
         {
           "id": "bo4-hacienda:main",
@@ -15994,6 +16086,7 @@
       "name": "Sun’s Orbit",
       "coordinates": null,
       "kind": "off-world",
+      "flagCode": null,
       "entries": [
         {
           "id": "iw-operation-dark-quarry:main",
@@ -16061,6 +16154,7 @@
         15
       ],
       "kind": "terrestrial",
+      "flagCode": "SE",
       "entries": [
         {
           "id": "bo3-berserk:main",
@@ -16093,6 +16187,7 @@
         8
       ],
       "kind": "terrestrial",
+      "flagCode": "CH",
       "entries": [
         {
           "id": "iw-black-sky:main",
@@ -16301,6 +16396,7 @@
         38
       ],
       "kind": "terrestrial",
+      "flagCode": "SY",
       "entries": [
         {
           "id": "mw19-al-raab-airbase:main",
@@ -16883,6 +16979,7 @@
         121
       ],
       "kind": "terrestrial",
+      "flagCode": "TW",
       "entries": [
         {
           "id": "bo2-pod:main",
@@ -16915,6 +17012,7 @@
         100
       ],
       "kind": "terrestrial",
+      "flagCode": "TH",
       "entries": [
         {
           "id": "waw-banzai:main",
@@ -16988,6 +17086,7 @@
       "name": "Titan (Saturn Moon)",
       "coordinates": null,
       "kind": "off-world",
+      "flagCode": null,
       "entries": [
         {
           "id": "iw-grounded:main",
@@ -17055,6 +17154,7 @@
         9
       ],
       "kind": "terrestrial",
+      "flagCode": "TN",
       "entries": [
         {
           "id": "cod-fh-a-desert-ride:main",
@@ -17392,6 +17492,7 @@
       "name": "Turkey",
       "coordinates": null,
       "kind": "terrestrial",
+      "flagCode": "TR",
       "entries": [
         {
           "id": "bocw-nowhere-left-to-run:turkey-2",
@@ -17421,6 +17522,7 @@
         32
       ],
       "kind": "terrestrial",
+      "flagCode": "UA",
       "entries": [
         {
           "id": "mw19-aisle-9:main",
@@ -18399,6 +18501,7 @@
         54
       ],
       "kind": "terrestrial",
+      "flagCode": "AE",
       "entries": [
         {
           "id": "mw3-dust-to-dust:main",
@@ -18475,6 +18578,7 @@
         -2
       ],
       "kind": "terrestrial",
+      "flagCode": "GB",
       "entries": [
         {
           "id": "mw19-cargo:main",
@@ -18922,6 +19026,7 @@
       "name": "Uranus’ Orbit",
       "coordinates": null,
       "kind": "off-world",
+      "flagCode": null,
       "entries": [
         {
           "id": "iw-operation-phoenix:main",
@@ -18951,6 +19056,7 @@
         -56
       ],
       "kind": "terrestrial",
+      "flagCode": "UY",
       "entries": [
         {
           "id": "ghosts-behemoth:main",
@@ -18983,6 +19089,7 @@
         -152
       ],
       "kind": "terrestrial",
+      "flagCode": "US",
       "entries": [
         {
           "id": "mw3-d-in-the-wild:main",
@@ -19147,6 +19254,7 @@
         -111.7
       ],
       "kind": "terrestrial",
+      "flagCode": "US",
       "entries": [
         {
           "id": "aw-bio-lab-cc02039f:main",
@@ -19223,6 +19331,7 @@
         -119.4
       ],
       "kind": "terrestrial",
+      "flagCode": "US",
       "entries": [
         {
           "id": "bo2-aftermath:main",
@@ -20069,6 +20178,7 @@
         -105.5
       ],
       "kind": "terrestrial",
+      "flagCode": "US",
       "entries": [
         {
           "id": "aw-atlas:main",
@@ -20189,6 +20299,7 @@
         -81.7
       ],
       "kind": "terrestrial",
+      "flagCode": "US",
       "entries": [
         {
           "id": "ghosts-ignition:main",
@@ -20265,6 +20376,7 @@
         -83.3
       ],
       "kind": "terrestrial",
+      "flagCode": "US",
       "entries": [
         {
           "id": "cod-camp-toccoa:main",
@@ -20341,6 +20453,7 @@
         -157.5
       ],
       "kind": "terrestrial",
+      "flagCode": "US",
       "entries": [
         {
           "id": "aw-recovery:main",
@@ -20417,6 +20530,7 @@
         -89.2
       ],
       "kind": "terrestrial",
+      "flagCode": "US",
       "entries": [
         {
           "id": "mwii-countdown:main",
@@ -20471,6 +20585,7 @@
         -98.2
       ],
       "kind": "terrestrial",
+      "flagCode": "US",
       "entries": [
         {
           "id": "mw3-vortex:main",
@@ -20503,6 +20618,7 @@
         -92
       ],
       "kind": "terrestrial",
+      "flagCode": "US",
       "entries": [
         {
           "id": "mw3-parish:main",
@@ -20557,6 +20673,7 @@
         -76.7
       ],
       "kind": "terrestrial",
+      "flagCode": "US",
       "entries": [
         {
           "id": "aw-atlas:maryland-2",
@@ -20699,6 +20816,7 @@
         -85.6
       ],
       "kind": "terrestrial",
+      "flagCode": "US",
       "entries": [
         {
           "id": "aw-aftermath:main",
@@ -20753,6 +20871,7 @@
         -99.8
       ],
       "kind": "terrestrial",
+      "flagCode": "US",
       "entries": [
         {
           "id": "bo-bocw-drive-in:main",
@@ -20829,6 +20948,7 @@
         -116.6
       ],
       "kind": "terrestrial",
+      "flagCode": "US",
       "entries": [
         {
           "id": "bo4-alpha-omega:main",
@@ -21213,6 +21333,7 @@
         -74.5
       ],
       "kind": "terrestrial",
+      "flagCode": "US",
       "entries": [
         {
           "id": "mw3-boardwalk:main",
@@ -21311,6 +21432,7 @@
         -106
       ],
       "kind": "terrestrial",
+      "flagCode": "US",
       "entries": [
         {
           "id": "bocw-diesel:main",
@@ -21365,6 +21487,7 @@
         -75.5
       ],
       "kind": "terrestrial",
+      "flagCode": "US",
       "entries": [
         {
           "id": "vanguard-beheaded:main",
@@ -21749,6 +21872,7 @@
         -79.4
       ],
       "kind": "terrestrial",
+      "flagCode": "US",
       "entries": [
         {
           "id": "waw-ff-basic-training:north-carolina-2",
@@ -21781,6 +21905,7 @@
         -100.2
       ],
       "kind": "terrestrial",
+      "flagCode": "US",
       "entries": [
         {
           "id": "aw-site-244:main",
@@ -21813,6 +21938,7 @@
         -99
       ],
       "kind": "terrestrial",
+      "flagCode": "US",
       "entries": [
         {
           "id": "wwii-ambush:texas-2",
@@ -21977,6 +22103,7 @@
         -78.8
       ],
       "kind": "terrestrial",
+      "flagCode": "US",
       "entries": [
         {
           "id": "aw-atlas:virginia-3",
@@ -22075,6 +22202,7 @@
         -120.7
       ],
       "kind": "terrestrial",
+      "flagCode": "US",
       "entries": [
         {
           "id": "aw-fission:main",
@@ -22151,6 +22279,7 @@
         -107.5
       ],
       "kind": "terrestrial",
+      "flagCode": "US",
       "entries": [
         {
           "id": "aw-sideshow:main",
@@ -22183,6 +22312,7 @@
         64
       ],
       "kind": "terrestrial",
+      "flagCode": "UZ",
       "entries": [
         {
           "id": "bocw-crossroads:main",
@@ -22237,6 +22367,7 @@
         -66
       ],
       "kind": "terrestrial",
+      "flagCode": "VE",
       "entries": [
         {
           "id": "ghosts-federation-day:main",
@@ -22332,6 +22463,7 @@
       "name": "Venus’ Orbit",
       "coordinates": null,
       "kind": "off-world",
+      "flagCode": null,
       "entries": [
         {
           "id": "iw-operation-d-con:main",
@@ -22361,6 +22493,7 @@
         107.83333333
       ],
       "kind": "terrestrial",
+      "flagCode": "VN",
       "entries": [
         {
           "id": "bo-d-air-traffic-control:main",
@@ -22635,6 +22768,7 @@
         -77.037
       ],
       "kind": "terrestrial",
+      "flagCode": "US",
       "entries": [
         {
           "id": "bo4-classified:main",
@@ -22777,6 +22911,7 @@
         48
       ],
       "kind": "terrestrial",
+      "flagCode": "YE",
       "entries": [
         {
           "id": "bo2-achilles-veil:main",

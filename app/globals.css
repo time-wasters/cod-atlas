@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "leaflet/dist/leaflet.css";
+@import "country-flag-icons/3x2/flags.css";
 
 :root {
   --ink: #10140f;
@@ -151,8 +152,11 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
 .atlas-marker.is-active::after { inset: 7px; }
 
 .intel-card { position: absolute; z-index: 500; top: 24px; right: 24px; width: min(330px, calc(100% - 48px)); max-height: calc(100% - 48px); overflow: auto; border: 1px solid #b57a18; border-radius: 7px; padding: 17px; color: #ddd6c3; background: linear-gradient(150deg, #181d16f5, #10140ff4); box-shadow: 0 16px 50px #000a, inset 0 0 30px #a27c1710; backdrop-filter: blur(7px); }
-.intel-kicker { display: flex; gap: 7px; align-items: center; color: #9b9f8d; font-size: 9px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
-.intel-kicker span { color: var(--amber); font-size: 17px; }
+.intel-kicker { min-width: 0; display: flex; gap: 8px; align-items: center; color: #9b9f8d; font-size: 9px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+.intel-country-flag { --CountryFlagIcon-height: 18px; flex: 0 0 27px; }
+.intel-country-fallback { width: 18px; height: 18px; flex: 0 0 18px; }
+.intel-country-fallback { fill: #e0a12624; stroke: var(--amber); stroke-width: 1.5; }
+.intel-country-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .intel-card h2 { margin: 9px 0 2px; color: #f0e8d2; font-family: "Arial Narrow", Impact, sans-serif; font-size: 28px; letter-spacing: .03em; }
 .intel-card > p { margin: 0 0 14px; color: #858b76; font-size: 11px; }
 .precision-badge { margin: -5px 0 13px; padding: 6px 8px; border: 1px solid #665f43; border-radius: 3px; color: #b9b297; background: #24271e; font: 700 8px var(--font-geist-mono), monospace; letter-spacing: .08em; text-transform: uppercase; }

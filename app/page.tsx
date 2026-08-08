@@ -22,6 +22,7 @@ type Group = {
   name: string;
   coordinates: [number, number] | null;
   kind: "terrestrial" | "off-world";
+  flagCode: string | null;
   entries: Entry[];
 };
 type Game = {
@@ -333,7 +334,24 @@ export default function Home() {
         <div className="map-label" aria-hidden="true">TACTICAL GEOGRAPHY // GLOBAL</div>
 
         <article className="intel-card">
-          <div className="intel-kicker"><span>◎</span> Selected location</div>
+          <div className="intel-kicker">
+            {selected.group.flagCode ? (
+              <span
+                className={`flag:${selected.group.flagCode} intel-country-flag`}
+                role="img"
+                aria-label={`${selected.group.name} flag`}
+              />
+            ) : (
+              <svg
+                className="intel-country-fallback"
+                viewBox="0 0 18 18"
+                aria-hidden="true"
+              >
+                <circle cx="9" cy="9" r="6.5" />
+              </svg>
+            )}
+            <span className="intel-country-name">{selected.group.name}</span>
+          </div>
           <h2>{selected.entry.title}</h2>
           <p>{selected.entry.city ? `${selected.entry.city}, ${selected.group.name}` : selected.group.name} · {selected.entry.game}</p>
           <div className={`precision-badge ${selected.entry.precision === "approximate" ? "is-approximate" : !["country", "off-world"].includes(selected.entry.precision) ? "is-city" : "is-country"}`}>

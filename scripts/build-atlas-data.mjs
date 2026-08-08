@@ -1,6 +1,7 @@
 import { readFile, readdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
+import countries from "world-countries";
 import YAML from "yaml";
 
 const root = process.cwd();
@@ -21,6 +22,29 @@ const validMethods = new Set([
   "region-fallback",
   "country-fallback",
 ]);
+const countryAliases = new Map([
+  ["Czech Republic (Czechia)", "Czechia"],
+  ["Gibraltar (UK)", "Gibraltar"],
+  ["Japan (Okinawa)", "Japan"],
+  ["Midway Atoll (U.S.A)", "United States"],
+  ["Myanmar (Burma)", "Myanmar"],
+  ["Northern Mariana Islands (U.S.A)", "Northern Mariana Islands"],
+  ["Okinawa (Japan)", "Japan"],
+  ["Scotland (UK)", "United Kingdom"],
+  ["Turkey", "Türkiye"],
+  ["Washington D.C.", "United States"],
+]);
+const flagCodesByCountryName = new Map(countries.flatMap((country) => [
+  [country.name.common, country.cca2],
+  [country.name.official, country.cca2],
+]));
+
+function flagCodeForGroup(name) {
+  const countryName = name.startsWith("USA: ")
+    ? "United States"
+    : countryAliases.get(name) ?? name;
+  return flagCodesByCountryName.get(countryName) ?? null;
+}
 
 async function filesBelow(directory, extension) {
   const entries = await readdir(directory, { withFileTypes: true });
@@ -116,6 +140,7 @@ for (const level of levels) {
         name: key,
         coordinates: null,
         kind: location.precision === "off-world" ? "off-world" : "terrestrial",
+        flagCode: flagCodeForGroup(key),
         entries: [],
       });
     }
