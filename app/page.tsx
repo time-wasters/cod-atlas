@@ -356,6 +356,10 @@ export default function Home() {
         <div className="map-label" aria-hidden="true">TACTICAL GEOGRAPHY // GLOBAL</div>
 
         <article className="intel-card">
+          <div className="mission-heading">
+            <h2>{selected.entry.title}</h2>
+            <p>{selected.entry.game} · {selected.entry.modes.includes("multiplayer") ? "Multiplayer map" : "Campaign mission"}</p>
+          </div>
           <div className="intel-kicker">
             {selected.group.flagCode ? (
               <span
@@ -387,11 +391,6 @@ export default function Home() {
               )}
             </div>
           )}
-          <div className="mission-heading">
-            <span>Level</span>
-            <h2>{selected.entry.title}</h2>
-            <p>{selected.entry.game}</p>
-          </div>
           <div className={`precision-badge ${selected.entry.precision === "approximate" ? "is-approximate" : !["country", "off-world"].includes(selected.entry.precision) ? "is-city" : "is-country"}`}>
             {selected.entry.precision === "approximate" ? "Approximate historical position" : !["country", "off-world"].includes(selected.entry.precision) ? `Localized · ${selected.entry.confidence} confidence` : selected.entry.precision === "off-world" ? "Off-world location" : "No city evidence · country fallback"}
           </div>
