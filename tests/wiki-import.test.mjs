@@ -1,6 +1,8 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { extractInfobox, hasCompleteAttribution, imageRecord, parseArguments, parseWikiLink } from "../scripts/import-wiki-articles.mjs";
+import { extractInfobox, hasCompleteAttribution, imageRecord, parseArguments, parseWikiLink, resolveWikiConfiguration } from "../scripts/import-wiki-articles.mjs";
+
+const wikiOrigin = "https://wiki.example.test";
 
 test("extractInfobox keeps nested values intact", () => {
   const box = extractInfobox(`{{Infobox level
@@ -15,26 +17,38 @@ Body`);
 });
 
 test("parseWikiLink preserves raw evidence and resolves its first link", () => {
-  assert.deepEqual(parseWikiLink("[[Paris|Paris, France]]"), {
+  assert.deepEqual(parseWikiLink("[[Paris|Paris, France]]", wikiOrigin), {
     raw: "[[Paris|Paris, France]]",
     label: "Paris, France",
-    url: "https://callofduty.fandom.com/wiki/Paris",
+    url: "https://wiki.example.test/wiki/Paris",
   });
 });
 
 test("imageRecord maps attribution and source links", () => {
   assert.deepEqual(imageRecord({
-    canonicalurl: "https://callofduty.fandom.com/wiki/File:Example.jpg",
+    canonicalurl: "https://wiki.example.test/wiki/File:Example.jpg",
     imageinfo: [{ url: "https://static.wikia.nocookie.net/example.jpg", extmetadata: {
       Artist: { value: '<a href="/wiki/User:Editor">Editor</a>' },
       LicenseShortName: { value: "CC BY-SA 3.0" },
       LicenseUrl: { value: "https://creativecommons.org/licenses/by-sa/3.0/" },
     } }],
-  }), {
+  }, wikiOrigin), {
     sourceUrl: "https://static.wikia.nocookie.net/example.jpg",
-    detailPageUrl: "https://callofduty.fandom.com/wiki/File:Example.jpg",
-    author: { name: "Editor", userUrl: "https://callofduty.fandom.com/wiki/User:Editor" },
+    detailPageUrl: "https://wiki.example.test/wiki/File:Example.jpg",
+    author: { name: "Editor", userUrl: "https://wiki.example.test/wiki/User:Editor" },
     license: { name: "CC BY-SA 3.0", url: "https://creativecommons.org/licenses/by-sa/3.0/" },
+  });
+});
+
+test("Wiki configuration is opt-in and accepts an explicit origin", () => {
+  assert.throws(() => resolveWikiConfiguration({}), /not configured/);
+  assert.deepEqual(resolveWikiConfiguration({
+    COD_ATLAS_WIKI_ORIGIN: wikiOrigin,
+    COD_ATLAS_WIKI_USER_AGENT: "Atlas importer (maintainer@example.test)",
+  }), {
+    origin: wikiOrigin,
+    apiUrl: new URL("https://wiki.example.test/api.php"),
+    userAgent: "Atlas importer (maintainer@example.test)",
   });
 });
 

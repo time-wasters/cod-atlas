@@ -141,8 +141,9 @@ docker compose run --rm cod-atlas-tools npm run wiki:import -- --limit 10
 docker compose run --rm cod-atlas-tools npm run wiki:import -- --all
 ```
 
-Set `COD_ATLAS_WIKI_USER_AGENT` to a descriptive value containing maintainer
-contact information. The delay cannot be reduced below two seconds. Do not run
+Enable `COD_ATLAS_WIKI_ORIGIN` and a contact-bearing
+`COD_ATLAS_WIKI_USER_AGENT` explicitly in `.env`; `.env.example` contains
+commented hints. The delay cannot be reduced below two seconds. Do not run
 multiple importers in parallel. On HTTP 403 the command stops; do not work
 around a block. Review imported location and media attribution before commit.
 

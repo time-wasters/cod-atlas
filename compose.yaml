@@ -20,6 +20,9 @@ services:
       context: .
       target: builder
     working_dir: /app
+    environment:
+      COD_ATLAS_WIKI_ORIGIN: "${COD_ATLAS_WIKI_ORIGIN:-}"
+      COD_ATLAS_WIKI_USER_AGENT: "${COD_ATLAS_WIKI_USER_AGENT:-}"
     ports:
       - "${COD_ATLAS_DEV_PORT:-3000}:3000"
     volumes:

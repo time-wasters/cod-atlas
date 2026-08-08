@@ -25,17 +25,20 @@ docker compose run --rm cod-atlas-tools \
 The syntax works in PowerShell and POSIX-compatible shells. On PowerShell,
 enter it on one line or replace each trailing `\` with a backtick.
 
-To identify a responsible maintainer, pass a contact-bearing user agent:
+Wiki access is disabled until it is explicitly configured. Copy the commented
+Wiki hints from `.env.example` into the ignored `.env`, uncomment them, and
+replace the example contact address:
 
-```sh
-docker compose run --rm \
-  --env "COD_ATLAS_WIKI_USER_AGENT=CoDAtlasWikiImporter/0.1 (maintainer@example.com)" \
-  cod-atlas-tools \
-  npm run wiki:import -- --limit 10 --dry-run
+```dotenv
+COD_ATLAS_WIKI_ORIGIN=https://your-wiki.example
+COD_ATLAS_WIKI_USER_AGENT=CoDAtlasWikiImporter/0.1 (maintainer@example.com)
 ```
 
-The command has a project-identifying default, but maintainers should set the
-environment variable to provide current contact information.
+`COD_ATLAS_WIKI_ORIGIN` is an origin only, without `/wiki` or `/api.php`.
+The importer derives both paths from it and rejects source records belonging
+to another origin. The command refuses to make a request if either variable is
+blank. `.env.example` contains commented Call of Duty Wiki values as a hint;
+the repository does not enable that service by default.
 
 ## Select records
 

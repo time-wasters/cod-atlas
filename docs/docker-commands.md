@@ -5,6 +5,10 @@ uses the locked builder stage from `Dockerfile`, mounts the repository at
 `/app`, and keeps container dependencies in a named volume. Generated files
 are therefore written back to the working tree.
 
+Copy `.env.example` to the ignored `.env` for local configuration. The checked
+out repository already works with the documented port defaults; Wiki access
+remains disabled until its commented example values are explicitly enabled.
+
 Replace any local command of the form `npm ...` with:
 
 ```sh

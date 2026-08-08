@@ -65,6 +65,9 @@ The build fails for duplicate IDs, missing foreign keys, invalid modes, incomple
 
 Requires Docker with the Compose plugin. Build the static site and start it in a background container with one command:
 
+Copy `.env.example` to `.env` when customizing ports or opting into external
+services. Wiki importing is intentionally unconfigured by default.
+
 ```sh
 docker compose up --build -d
 ```

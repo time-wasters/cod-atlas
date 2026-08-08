@@ -7,6 +7,9 @@ and additions should arrive as focused pull requests with supporting sources.
 
 Requires Node.js 22.13 or newer.
 
+Use the ignored `.env` for local settings. `.env.example` documents available
+variables; its Wiki settings are commented because imports are opt-in.
+
 ```sh
 npm ci
 npm run dev

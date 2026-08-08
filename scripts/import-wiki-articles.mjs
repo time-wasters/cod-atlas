@@ -3,13 +3,16 @@ import path from "node:path";
 import process from "node:process";
 import { fileURLToPath } from "node:url";
 
-const API_URL = "https://callofduty.fandom.com/api.php";
 const DEFAULT_DELAY_MS = 5_000;
 const MIN_DELAY_MS = 2_000;
 const BATCH_SIZE = 10;
-const USER_AGENT = process.env.COD_ATLAS_WIKI_USER_AGENT
-  ?? "CoDAtlasWikiImporter/0.1 (+https://github.com/time-wasters/cod-atlas)";
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+try {
+  process.loadEnvFile?.();
+} catch (error) {
+  if (error?.code !== "ENOENT") throw error;
+}
 
 function usage() {
   return `Usage:
@@ -26,7 +29,19 @@ Options:
   --delay-ms <n>  Delay between API calls (minimum 2000; default 5000)
   --help          Show this message
 
-Set COD_ATLAS_WIKI_USER_AGENT to include maintainer contact information.`;
+Configure COD_ATLAS_WIKI_ORIGIN and COD_ATLAS_WIKI_USER_AGENT in .env first.`;
+}
+
+export function resolveWikiConfiguration(environment = process.env) {
+  const originValue = environment.COD_ATLAS_WIKI_ORIGIN?.trim().replace(/\/+$/, "");
+  const userAgent = environment.COD_ATLAS_WIKI_USER_AGENT?.trim();
+  if (!originValue) throw new Error("COD_ATLAS_WIKI_ORIGIN is not configured; see .env.example");
+  if (!userAgent) throw new Error("COD_ATLAS_WIKI_USER_AGENT is not configured; include maintainer contact information");
+  const origin = new URL(originValue);
+  if (!['http:', 'https:'].includes(origin.protocol) || origin.pathname !== '/') {
+    throw new Error("COD_ATLAS_WIKI_ORIGIN must be an HTTP(S) origin without a path");
+  }
+  return { origin: origin.origin, apiUrl: new URL("/api.php", origin), userAgent };
 }
 
 export function parseArguments(argv) {
@@ -103,14 +118,14 @@ function stripMarkup(value) {
   return text || null;
 }
 
-export function parseWikiLink(value) {
+export function parseWikiLink(value, wikiOrigin) {
   if (!value) return { raw: null, label: null, url: null };
   const match = value.match(/\[\[([^\]|#]+)(?:#[^\]|]*)?(?:\|([^\]]+))?\]\]/);
   const target = match?.[1]?.trim();
   return {
     raw: value.trim(),
     label: stripMarkup(match?.[2] ?? match?.[1] ?? value),
-    url: target ? `https://callofduty.fandom.com/wiki/${encodeURIComponent(target.replace(/ /g, "_"))}` : null,
+    url: target ? `${wikiOrigin}/wiki/${encodeURIComponent(target.replace(/ /g, "_"))}` : null,
   };
 }
 
@@ -124,12 +139,12 @@ function fileTitle(value) {
 
 const firstValue = (object, names) => names.map((name) => object[name]).find(Boolean) ?? null;
 const htmlText = (value) => stripMarkup(value?.value?.replace(/&nbsp;/g, " ").replace(/&amp;/g, "&"));
-function htmlUrl(value) {
+function htmlUrl(value, wikiOrigin) {
   const href = value?.value?.match(/href=["']([^"']+)/i)?.[1];
-  return href?.startsWith("/") ? `https://callofduty.fandom.com${href}` : href ?? null;
+  return href?.startsWith("/") ? `${wikiOrigin}${href}` : href ?? null;
 }
 
-export function imageRecord(page) {
+export function imageRecord(page, wikiOrigin) {
   const info = page?.imageinfo?.[0];
   if (!info) return null;
   const metadata = info.extmetadata ?? {};
@@ -138,8 +153,8 @@ export function imageRecord(page) {
     detailPageUrl: page.canonicalurl ?? page.fullurl ?? null,
     author: {
       name: htmlText(metadata.Artist) ?? htmlText(metadata.Credit) ?? info.user ?? null,
-      userUrl: htmlUrl(metadata.Artist) ?? htmlUrl(metadata.Credit)
-        ?? (info.user ? `https://callofduty.fandom.com/wiki/User:${encodeURIComponent(info.user.replace(/ /g, "_"))}` : null),
+      userUrl: htmlUrl(metadata.Artist, wikiOrigin) ?? htmlUrl(metadata.Credit, wikiOrigin)
+        ?? (info.user ? `${wikiOrigin}/wiki/User:${encodeURIComponent(info.user.replace(/ /g, "_"))}` : null),
     },
     license: { name: htmlText(metadata.LicenseShortName) ?? htmlText(metadata.License), url: metadata.LicenseUrl?.value ?? null },
   };
@@ -150,25 +165,26 @@ export function hasCompleteAttribution(image) {
     && image.author.userUrl && image.license?.name && image.license.url);
 }
 
-function titleFromSource(sourceUrl) {
+function titleFromSource(sourceUrl, wikiOrigin) {
   const url = new URL(sourceUrl);
+  if (url.origin !== wikiOrigin) throw new Error(`Wiki record origin does not match COD_ATLAS_WIKI_ORIGIN: ${sourceUrl}`);
   const index = url.pathname.indexOf("/wiki/");
   if (index < 0) throw new Error(`Unsupported Wiki URL: ${sourceUrl}`);
   return decodeURIComponent(url.pathname.slice(index + 6));
 }
 
-function apiUrl(parameters) {
-  const url = new URL(API_URL);
+function apiUrl(parameters, configuration) {
+  const url = new URL(configuration.apiUrl);
   for (const [name, value] of Object.entries({ action: "query", format: "json", formatversion: "2", maxlag: "1", ...parameters })) url.searchParams.set(name, String(value));
   return url;
 }
 
-async function request(parameters, options, state) {
+async function request(parameters, options, state, configuration) {
   if (state.count) await sleep(options.delayMs);
   state.count += 1;
-  const url = apiUrl(parameters);
+  const url = apiUrl(parameters, configuration);
   for (let attempt = 0; attempt < 4; attempt += 1) {
-    const response = await fetch(url, { headers: { Accept: "application/json", "User-Agent": USER_AGENT }, signal: AbortSignal.timeout(30_000) });
+    const response = await fetch(url, { headers: { Accept: "application/json", "User-Agent": configuration.userAgent }, signal: AbortSignal.timeout(30_000) });
     const payload = response.ok ? await response.json() : null;
     const temporary = response.status === 429 || response.status === 503 || ["maxlag", "ratelimited"].includes(payload?.error?.code);
     if (!temporary) {
@@ -190,9 +206,9 @@ async function writeJsonAtomic(filename, value) {
   await rename(temporary, filename);
 }
 
-async function importBatch(records, options, state) {
-  const titles = records.map(({ article }) => titleFromSource(article.sourceUrl));
-  const payload = await request({ redirects: "1", prop: "info|revisions|pageimages", inprop: "url", rvprop: "ids|timestamp|sha1|content", rvslots: "main", piprop: "name", titles: titles.join("|") }, options, state);
+async function importBatch(records, options, state, configuration) {
+  const titles = records.map(({ article }) => titleFromSource(article.sourceUrl, configuration.origin));
+  const payload = await request({ redirects: "1", prop: "info|revisions|pageimages", inprop: "url", rvprop: "ids|timestamp|sha1|content", rvslots: "main", piprop: "name", titles: titles.join("|") }, options, state, configuration);
   const aliases = new Map(titles.map((title) => [title.replace(/_/g, " "), title]));
   for (const item of payload.query?.normalized ?? []) aliases.set(item.to, aliases.get(item.from) ?? item.from);
   for (const item of payload.query?.redirects ?? []) aliases.set(item.to, aliases.get(item.from) ?? item.from);
@@ -216,9 +232,9 @@ async function importBatch(records, options, state) {
   }
   const images = new Map();
   if (imageTitles.size) {
-    const imagePayload = await request({ redirects: "1", prop: "info|imageinfo", inprop: "url", iiprop: "url|mime|size|sha1|user|extmetadata", titles: [...imageTitles].join("|") }, options, state);
+    const imagePayload = await request({ redirects: "1", prop: "info|imageinfo", inprop: "url", iiprop: "url|mime|size|sha1|user|extmetadata", titles: [...imageTitles].join("|") }, options, state, configuration);
     for (const page of imagePayload.query?.pages ?? []) {
-      const image = imageRecord(page);
+      const image = imageRecord(page, configuration.origin);
       const title = page.title.replace(/ /g, "_");
       if (hasCompleteAttribution(image)) images.set(title, image);
       else console.warn(`skipping media without complete attribution: ${page.title}`);
@@ -232,7 +248,7 @@ async function importBatch(records, options, state) {
       canonicalUrl: update.page.canonicalurl ?? update.page.fullurl ?? article.canonicalUrl,
       latestRevisionId: update.revision.revid,
       importedAt: new Date().toISOString(),
-      levelLocation: parseWikiLink(firstValue(update.infobox, ["location", "place", "setting"])),
+      levelLocation: parseWikiLink(firstValue(update.infobox, ["location", "place", "setting"]), configuration.origin),
       images: {
         main: images.get(update.mainTitle?.replace(/ /g, "_")) ?? article.images?.main ?? emptyImage(),
         map: images.get(update.mapTitle?.replace(/ /g, "_")) ?? article.images?.map ?? emptyImage(),
@@ -251,6 +267,7 @@ async function main() {
   try { options = parseArguments(process.argv.slice(2)); }
   catch (error) { console.error(error.message); console.error(usage()); process.exitCode = 1; return; }
   if (options.help) { console.log(usage()); return; }
+  const configuration = resolveWikiConfiguration();
   const directory = path.join(process.cwd(), "content/wiki-import/articles");
   const filenames = (await readdir(directory)).filter((name) => name.endsWith(".json")).sort();
   const records = await Promise.all(filenames.map(async (name) => {
@@ -266,7 +283,7 @@ async function main() {
   console.log(`Checking ${selected.length} record(s) in batches of ${BATCH_SIZE}; API delay ${options.delayMs}ms.`);
   const state = { count: 0 };
   let changed = 0;
-  for (let index = 0; index < selected.length; index += BATCH_SIZE) changed += await importBatch(selected.slice(index, index + BATCH_SIZE), options, state);
+  for (let index = 0; index < selected.length; index += BATCH_SIZE) changed += await importBatch(selected.slice(index, index + BATCH_SIZE), options, state, configuration);
   console.log(`Finished: ${changed} changed record(s), ${state.count} API request(s).`);
 }
 
