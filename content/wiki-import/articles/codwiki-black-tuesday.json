@@ -1,0 +1,44 @@
+{
+  "id": "codwiki-black-tuesday",
+  "fandomPageId": null,
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Black_Tuesday",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Black_Tuesday",
+  "latestRevisionId": null,
+  "importedAt": null,
+  "levelLocation": {
+    "raw": null,
+    "label": null,
+    "url": null
+  },
+  "mapStyle": "singleplayer",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
+  "images": {
+    "main": {
+      "sourceUrl": null,
+      "detailPageUrl": null,
+      "author": {
+        "name": null,
+        "userUrl": null
+      },
+      "license": {
+        "name": null,
+        "url": null
+      }
+    },
+    "map": {
+      "sourceUrl": null,
+      "detailPageUrl": null,
+      "author": {
+        "name": null,
+        "userUrl": null
+      },
+      "license": {
+        "name": null,
+        "url": null
+      }
+    }
+  },
+  "rawPayload": null
+}

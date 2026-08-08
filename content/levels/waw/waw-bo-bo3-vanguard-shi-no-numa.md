@@ -1,0 +1,21 @@
+---
+id: waw-bo-bo3-vanguard-shi-no-numa
+title: Shi No Numa
+games:
+  - waw
+  - bo
+  - bo3
+  - vanguard
+mode: multiplayer
+wikiArticle: codwiki-shi-no-numa
+locations:
+  - id: main
+    label: Okinawa (Japan)
+    country: Okinawa (Japan)
+    latitude: 36
+    longitude: 138
+    precision: country
+    confidence: fallback
+    method: country-fallback
+    primary: true
+---

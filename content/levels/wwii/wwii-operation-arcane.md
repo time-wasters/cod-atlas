@@ -1,0 +1,18 @@
+---
+id: wwii-operation-arcane
+title: Operation Arcane
+games:
+  - wwii
+mode: multiplayer
+wikiArticle: codwiki-operation-arcane
+locations:
+  - id: main
+    label: Austria
+    country: Austria
+    latitude: 47.33333333
+    longitude: 13.33333333
+    precision: country
+    confidence: fallback
+    method: country-fallback
+    primary: true
+---

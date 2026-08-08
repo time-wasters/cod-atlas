@@ -1,0 +1,44 @@
+{
+  "id": "codwiki-lights-out-modern-warfare-3-defiance",
+  "fandomPageId": null,
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Lights_Out_(Modern_Warfare_3:_Defiance)",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Lights_Out_(Modern_Warfare_3:_Defiance)",
+  "latestRevisionId": null,
+  "importedAt": null,
+  "levelLocation": {
+    "raw": null,
+    "label": null,
+    "url": null
+  },
+  "mapStyle": "singleplayer",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
+  "images": {
+    "main": {
+      "sourceUrl": null,
+      "detailPageUrl": null,
+      "author": {
+        "name": null,
+        "userUrl": null
+      },
+      "license": {
+        "name": null,
+        "url": null
+      }
+    },
+    "map": {
+      "sourceUrl": null,
+      "detailPageUrl": null,
+      "author": {
+        "name": null,
+        "userUrl": null
+      },
+      "license": {
+        "name": null,
+        "url": null
+      }
+    }
+  },
+  "rawPayload": null
+}

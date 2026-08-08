@@ -1,65 +1,99 @@
 # Call of Duty Atlas
 
-An interactive world map of locations featured across the Call of Duty franchise. Browse markers by country or city, filter by game and by singleplayer/multiplayer mode, and open the matching Call of Duty Wiki article from each location.
+An open, static atlas of real-world locations represented in Call of Duty. The
+website has no database and no write API: Git is the source of truth, so data
+corrections can be reviewed as normal pull requests.
 
-**Live map:** [call-of-duty-atlas.plp-gtr.chatgpt.site](https://call-of-duty-atlas.plp-gtr.chatgpt.site)
+## Content model
 
-## Features
+```text
+content/
+├── atlas.yaml                 # catalog metadata and original source
+├── games/                     # one small YAML file per game
+├── levels/<game>/             # one Markdown file per level
+└── wiki-import/articles/      # machine-oriented Wiki import records
+```
 
-- Interactive Leaflet map with clustered markers
-- City-level positioning when reliable location evidence is available
-- Country-level fallback for ambiguous locations
-- Singleplayer and multiplayer visibility filters
-- Human-readable game names ordered by release date
-- Direct links to the relevant Call of Duty Wiki pages
-- Responsive tactical field-map interface
+A level owns its marker coordinates. There is deliberately no shared `place`
+table: two levels in Berlin, for example, may point to different buildings.
+Leaflet can group nearby markers for display at low zoom without changing their
+source coordinates.
 
-## Run locally
+Example level:
 
-Requirements:
+```md
+---
+id: cod3-laison-river
+title: Laison River
+games:
+  - cod3
+mode: singleplayer
+wikiArticle: codwiki-laison-river
+locations:
+  - id: main
+    label: Laizon River near Falaise
+    country: France
+    region: Normandy
+    city: Falaise
+    latitude: 48.944742
+    longitude: -0.229523
+    precision: approximate
+    confidence: medium
+    method: manual-approximate
+    primary: true
+---
 
-- Node.js 22.13 or newer
-- npm
-- Linux or WSL for the included build helper scripts
+Historical or editorial notes can live here.
+```
 
-```bash
-npm install
+One level can contain several `locations`. Coordinate precision is one of
+`exact`, `approximate`, `city`, `region`, `country`, or `off-world`.
+
+Wiki import files remain separate so an automated refresh cannot silently
+overwrite curated coordinates, classifications, or historical notes. Each
+record has a stable local ID and placeholders for the Fandom page ID, revision,
+location links, map style, main image, map image, image detail pages, authors,
+licenses, and raw import payload.
+
+## Editing data
+
+1. Edit or add a file under `content/levels/`.
+2. Add a referenced game or Wiki import record when needed.
+3. Run `npm run data:build` to validate relationships and regenerate the compact
+   browser dataset.
+4. Open a pull request with both the source change and regenerated
+   `app/data/atlas.generated.json`.
+
+The build fails for duplicate IDs, missing foreign keys, invalid modes,
+incomplete coordinate pairs, or stale generated data.
+
+## Local development
+
+Requires Node.js 22.13 or newer.
+
+```sh
+npm ci
 npm run dev
 ```
 
-Open the local URL printed by Vite. To create a production build or run the test suite:
+Useful commands:
 
-```bash
-npm run build
-npm test
-```
+- `npm run data:build` validates content and refreshes the generated dataset.
+- `npm run data:check` verifies that the committed generated dataset is current.
+- `npm test` builds the static site and checks important migrated records.
+- `npm run build` creates the Sites/Worker deployment in `dist/`.
+- `npm run build:static` creates a plain, relative-path website in
+  `dist-static/` for GitHub Pages, Nginx, or basic webspace.
 
-## Project structure
+The finished `dist-static/` directory can be uploaded as-is by CI. No Supabase
+or other database service is required.
 
-- `app/page.tsx` — interactive map and filtering interface
-- `app/data/locations.json` — map location records and Wiki links
-- `app/data/city-enrichment.json` — evidence-backed city coordinate enrichment
-- `app/globals.css` — application styling
-- `db/schema.ts` — normalized atlas and Wiki-import database schema
-- `db/wiki-import-types.ts` — scraper/import payload contract
-- `docs/data-model.md` — entity relationships and import rules
-- `scripts/` — data preparation and build utilities
-- `tests/` — rendered output checks
+The included GitHub Actions workflow validates every pull request and attaches
+the static website as a downloadable build artifact on `main`.
 
-## Data maintenance
+## Provenance
 
-The checked-in JSON files are the source used by the application. They are not automatically re-synced from the original Google document. Review generated or bulk-edited location data before committing it, especially mode classifications, Wiki targets, and city coordinates.
-
-## Credits and data sources
-
-The project was inspired by [the original r/CallOfDuty post by u/robracer97](https://www.reddit.com/r/CallOfDuty/comments/10c3jbd/cod_every_location_visited_in_the_cod_franchise/).
-
-- Level and location research links point to the community-run [Call of Duty Wiki](https://callofduty.fandom.com/wiki/Call_of_Duty_Wiki).
-- Map tiles and geographic data are provided by [OpenStreetMap contributors](https://www.openstreetmap.org/copyright).
-- City matching uses [GeoNames](https://www.geonames.org/) geographic data.
-
-This is an unofficial fan project. Call of Duty and related names, marks, and imagery are trademarks or copyrighted material of their respective owners. This project is not affiliated with or endorsed by Activision, Microsoft, or the Call of Duty Wiki.
-
-## License
-
-The source code is available under the [MIT License](LICENSE). Third-party data, map tiles, Wiki content, game names, trademarks, and imagery remain subject to their respective owners' terms and licenses.
+The project was inspired by
+[u/robracer97's Call of Duty location post](https://www.reddit.com/r/CallOfDuty/comments/10c3jbd/cod_every_location_visited_in_the_cod_franchise/).
+Call of Duty Wiki links and imported metadata remain subject to their source
+pages' licensing and attribution requirements.

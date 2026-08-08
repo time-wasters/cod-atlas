@@ -2,16 +2,21 @@
 
 import type { LayerGroup, Map as LeafletMap } from "leaflet";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import atlasSource from "./data/atlas.generated.json";
 
 type Entry = {
+  id: string;
+  levelId: string;
+  locationId: string;
   title: string;
   game: string;
   wiki: string;
   overlay: null;
   city?: string | null;
   coordinates?: [number, number] | null;
-  precision?: "city" | "country";
+  precision: "exact" | "approximate" | "city" | "region" | "country" | "off-world";
   confidence?: "high" | "medium" | "fallback";
+  method?: string;
   modes: ("singleplayer" | "multiplayer")[];
 };
 type Group = {
@@ -21,6 +26,7 @@ type Group = {
   entries: Entry[];
 };
 type AtlasData = {
+  games: { id: string; code: string; label: string; released: string }[];
   groups: Group[];
   totals: {
     groups: number;
@@ -34,37 +40,10 @@ type AtlasData = {
 
 type Selection = { group: Group; entry: Entry };
 
-const gameMetadata: Record<string, { label: string; released: number }> = {
-  COD: { label: "Call of Duty", released: 20031029 },
-  UO: { label: "United Offensive", released: 20040914 },
-  FH: { label: "Finest Hour", released: 20041116 },
-  COD2: { label: "Call of Duty 2", released: 20051025 },
-  BR1: { label: "Big Red One", released: 20051101 },
-  COD3: { label: "Call of Duty 3", released: 20061107 },
-  RTV: { label: "Roads to Victory", released: 20070313 },
-  COD4: { label: "Modern Warfare (2007)", released: 20071105 },
-  WAW: { label: "World at War", released: 20081111 },
-  "WAW:FF": { label: "Final Fronts", released: 20081111 },
-  MW2: { label: "Modern Warfare 2 (2009)", released: 20091110 },
-  BO: { label: "Black Ops", released: 20101109 },
-  MW3: { label: "Modern Warfare 3 (2011)", released: 20111108 },
-  "MW3:D": { label: "MW3: Defiance", released: 20111108 },
-  BO2: { label: "Black Ops II", released: 20121113 },
-  "BO:D": { label: "Black Ops: Declassified", released: 20121113 },
-  G: { label: "Ghosts", released: 20131105 },
-  AW: { label: "Advanced Warfare", released: 20141104 },
-  BO3: { label: "Black Ops III", released: 20151106 },
-  IW: { label: "Infinite Warfare", released: 20161104 },
-  "COD4:R": { label: "Modern Warfare Remastered", released: 20161104 },
-  WWII: { label: "WWII", released: 20171103 },
-  BO4: { label: "Black Ops 4", released: 20181012 },
-  MW19: { label: "Modern Warfare (2019)", released: 20191025 },
-  "MW19-WZ": { label: "Warzone (2020)", released: 20200310 },
-  BOCW: { label: "Black Ops Cold War", released: 20201113 },
-  V: { label: "Vanguard", released: 20211105 },
-  MWII: { label: "Modern Warfare II (2022)", released: 20221028 },
-  "MWII-WZ": { label: "Warzone 2.0", released: 20221116 },
-};
+const data = atlasSource as AtlasData;
+const gameMetadata: Record<string, { label: string; released: string }> = Object.fromEntries(
+  data.games.map((item) => [item.code, { label: item.label, released: item.released }]),
+);
 
 function gameCodes(value: string) {
   return value.split(" / ").filter((code) => code && code !== "MP");
@@ -75,67 +54,17 @@ function gameLabel(code: string) {
 }
 
 function compareGames(a: string, b: string) {
-  const releaseDifference = (gameMetadata[a]?.released ?? Number.MAX_SAFE_INTEGER)
-    - (gameMetadata[b]?.released ?? Number.MAX_SAFE_INTEGER);
+  const releaseDifference = (gameMetadata[a]?.released ?? "9999").localeCompare(
+    gameMetadata[b]?.released ?? "9999",
+  );
   return releaseDifference || gameLabel(a).localeCompare(gameLabel(b));
 }
 
-const fallbackGroups: Group[] = [
-  {
-    name: "France",
-    coordinates: [46.2, 2.2],
-    kind: "terrestrial",
-    entries: [
-      {
-        title: "Brecourt Manor",
-        game: "COD",
-        wiki: "https://callofduty.fandom.com/wiki/Brecourt_Manor",
-        overlay: null,
-        city: null,
-        coordinates: [46.2, 2.2],
-        precision: "country",
-        confidence: "fallback",
-        modes: ["singleplayer"],
-      },
-    ],
-  },
-  {
-    name: "Afghanistan",
-    coordinates: [33, 65],
-    kind: "terrestrial",
-    entries: [
-      {
-        title: "S.S.D.D.",
-        game: "MW2",
-        wiki: "https://callofduty.fandom.com/wiki/S.S.D.D.",
-        overlay: null,
-        city: null,
-        coordinates: [33, 65],
-        precision: "country",
-        confidence: "fallback",
-        modes: ["singleplayer"],
-      },
-    ],
-  },
-  {
-    name: "Brazil",
-    coordinates: [-10, -55],
-    kind: "terrestrial",
-    entries: [
-      {
-        title: "Takedown",
-        game: "MW2",
-        wiki: "https://callofduty.fandom.com/wiki/Takedown_(mission)",
-        overlay: null,
-        city: "Rio de Janeiro",
-        coordinates: [-22.9068, -43.1729],
-        precision: "city",
-        confidence: "high",
-        modes: ["singleplayer"],
-      },
-    ],
-  },
-];
+const initialGroup = data.groups.find((group) =>
+  group.entries.some((entry) => entry.title === "Brecourt Manor"),
+) ?? data.groups[0];
+const initialEntry = initialGroup.entries.find((entry) => entry.title === "Brecourt Manor")
+  ?? initialGroup.entries[0];
 
 function escapeXml(value: string) {
   return value.replace(/[<>&'\"]/g, (char) =>
@@ -144,7 +73,6 @@ function escapeXml(value: string) {
 }
 
 export default function Home() {
-  const [data, setData] = useState<AtlasData | null>(null);
   const [query, setQuery] = useState("");
   const [game, setGame] = useState("all");
   const [region, setRegion] = useState("all");
@@ -153,33 +81,15 @@ export default function Home() {
   const [showMultiplayer, setShowMultiplayer] = useState(true);
   const [mapReady, setMapReady] = useState(false);
   const [selected, setSelected] = useState<Selection>({
-    group: fallbackGroups[0],
-    entry: fallbackGroups[0].entries[0],
+    group: initialGroup,
+    entry: initialEntry,
   });
-  const [sourceError, setSourceError] = useState(false);
   const mapNode = useRef<HTMLDivElement>(null);
   const map = useRef<LeafletMap | null>(null);
   const markerLayer = useRef<LayerGroup | null>(null);
   const leaflet = useRef<typeof import("leaflet") | null>(null);
 
-  useEffect(() => {
-    fetch("/api/locations")
-      .then((response) => {
-        if (!response.ok) throw new Error("Source unavailable");
-        return response.json();
-      })
-      .then((next: AtlasData) => {
-        setData(next);
-        const brecourt = next.groups.find((group) =>
-          group.entries.some((entry) => entry.title === "Brecourt Manor"),
-        );
-        const entry = brecourt?.entries.find((item) => item.title === "Brecourt Manor");
-        if (brecourt && entry) setSelected({ group: brecourt, entry });
-      })
-      .catch(() => setSourceError(true));
-  }, []);
-
-  const groups = data?.groups ?? fallbackGroups;
+  const groups = data.groups;
   const games = useMemo(
     () =>
       [...new Set(groups.flatMap((group) => group.entries.flatMap((entry) => gameCodes(entry.game))))]
@@ -198,7 +108,9 @@ export default function Home() {
         ...group,
         entries: group.entries.filter((entry) => {
           const matchesGame = game === "all" || entry.game.split(" / ").includes(game);
-          const matchesPrecision = precision === "all" || entry.precision === precision;
+          const matchesPrecision = precision === "all"
+            || (precision === "localized" && !["country", "off-world"].includes(entry.precision))
+            || entry.precision === precision;
           const matchesMode =
             (showSingleplayer && entry.modes.includes("singleplayer")) ||
             (showMultiplayer && entry.modes.includes("multiplayer"));
@@ -256,8 +168,8 @@ export default function Home() {
     filtered.forEach((group) => {
       group.entries.forEach((entry) => {
         if (!entry.coordinates) return;
-        const active = entry.wiki === selected.entry.wiki && entry.game === selected.entry.game;
-        const cityLevel = entry.precision === "city";
+        const active = entry.id === selected.entry.id;
+        const cityLevel = !["country", "off-world"].includes(entry.precision);
         const marker = L.marker(entry.coordinates, {
           icon: L.divIcon({
             className: "atlas-marker-wrap",
@@ -285,7 +197,7 @@ export default function Home() {
         if (!entry.coordinates) return [];
         const [lat, lng] = entry.coordinates;
         return `<Placemark><name>${escapeXml(entry.title)}</name><description>${escapeXml(
-          `${entry.game} · ${entry.city ?? group.name}, ${group.name} · ${entry.precision === "city" ? "city-level" : "country fallback"} · ${entry.wiki}`,
+          `${entry.game} · ${entry.city ?? group.name}, ${group.name} · ${entry.method === "manual-approximate" ? "approximate historical position" : entry.precision === "city" ? "city-level" : "country fallback"} · ${entry.wiki}`,
         )}</description><Point><coordinates>${lng},${lat},0</coordinates></Point></Placemark>`;
       });
     });
@@ -307,7 +219,7 @@ export default function Home() {
           <p>Real-world geography of the series</p>
         </div>
         <div className="header-stat">
-          <strong>{data?.totals.entries ?? "…"}</strong>
+          <strong>{data.totals.entries}</strong>
           <span>locations</span>
         </div>
       </header>
@@ -342,7 +254,7 @@ export default function Home() {
 
         <div className="precision-filter" aria-label="Location precision">
           <button className={precision === "all" ? "is-active" : ""} onClick={() => setPrecision("all")}>All</button>
-          <button className={precision === "city" ? "is-active" : ""} onClick={() => setPrecision("city")}>City</button>
+          <button className={precision === "localized" ? "is-active" : ""} onClick={() => setPrecision("localized")}>Localized</button>
           <button className={precision === "country" ? "is-active" : ""} onClick={() => setPrecision("country")}>Country fallback</button>
         </div>
 
@@ -366,7 +278,7 @@ export default function Home() {
         <section className="result-panel" aria-live="polite">
           <div><strong>{resultCount}</strong><span>results</span></div>
           <dl>
-            <div><dt>City-level</dt><dd>{filtered.flatMap((item) => item.entries).filter((item) => item.precision === "city").length}</dd></div>
+            <div><dt>Localized</dt><dd>{filtered.flatMap((item) => item.entries).filter((item) => !["country", "off-world"].includes(item.precision)).length}</dd></div>
             <div><dt>Fallback</dt><dd>{filtered.flatMap((item) => item.entries).filter((item) => item.precision === "country").length}</dd></div>
             <div><dt>Regions</dt><dd>{filtered.length}</dd></div>
           </dl>
@@ -394,8 +306,8 @@ export default function Home() {
         </section>
 
         <footer>
-          <span className="legend-dot" /> City-level <span className="legend-dot is-fallback" /> Country fallback
-          <p>{sourceError ? "Location data unavailable — showing sample data." : "Wiki evidence matched to GeoNames; ambiguous entries stay at country level."}</p>
+          <span className="legend-dot" /> Localized <span className="legend-dot is-fallback" /> Country fallback
+          <p>Versioned level files are compiled into this static atlas; ambiguous entries stay at country level.</p>
           <p className="source-credit">
             Inspired by <a href="https://www.reddit.com/r/CallOfDuty/comments/10c3jbd/cod_every_location_visited_in_the_cod_franchise/" target="_blank" rel="noreferrer">the original Reddit post by u/robracer97 ↗</a>
           </p>
@@ -411,8 +323,8 @@ export default function Home() {
           <div className="intel-kicker"><span>◎</span> Selected location</div>
           <h2>{selected.entry.title}</h2>
           <p>{selected.entry.city ? `${selected.entry.city}, ${selected.group.name}` : selected.group.name} · {selected.entry.game}</p>
-          <div className={`precision-badge ${selected.entry.precision === "city" ? "is-city" : "is-country"}`}>
-            {selected.entry.precision === "city" ? `City-level · ${selected.entry.confidence} confidence` : "No city evidence · country fallback"}
+          <div className={`precision-badge ${selected.entry.precision === "approximate" ? "is-approximate" : !["country", "off-world"].includes(selected.entry.precision) ? "is-city" : "is-country"}`}>
+            {selected.entry.precision === "approximate" ? "Approximate historical position" : !["country", "off-world"].includes(selected.entry.precision) ? `Localized · ${selected.entry.confidence} confidence` : selected.entry.precision === "off-world" ? "Off-world location" : "No city evidence · country fallback"}
           </div>
           <div className="intel-entries">
             {selected.group.entries.slice(0, 8).map((entry, index) => (

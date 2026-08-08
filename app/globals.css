@@ -152,6 +152,7 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
 .intel-card > p { margin: 0 0 14px; color: #858b76; font-size: 11px; }
 .precision-badge { margin: -5px 0 13px; padding: 6px 8px; border: 1px solid #665f43; border-radius: 3px; color: #b9b297; background: #24271e; font: 700 8px var(--font-geist-mono), monospace; letter-spacing: .08em; text-transform: uppercase; }
 .precision-badge.is-city { border-color: #a8731d; color: #e3b451; }
+.precision-badge.is-approximate { border-style: dashed; border-color: #a8731d; color: #e3b451; }
 .precision-badge.is-country { border-style: dotted; }
 .intel-entries { border-block: 1px solid #464c3b; }
 .intel-entry { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 9px 0; border-bottom: 1px solid #33392d; }

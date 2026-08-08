@@ -1,0 +1,25 @@
+name: Validate and build
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  atlas:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run data:check
+      - run: npm test
+      - run: npm run build:static
+      - uses: actions/upload-artifact@v4
+        with:
+          name: call-of-duty-atlas-static
+          path: dist-static
+          if-no-files-found: error

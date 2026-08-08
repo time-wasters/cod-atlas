@@ -32,18 +32,10 @@ test("renders development preview metadata", async () => {
   assert.match(await response.text(), developmentPreviewMeta);
 });
 
-test("classifies campaign and multiplayer locations across the full atlas", async () => {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("mode-audit", `${process.pid}-${Date.now()}`);
-  const { default: worker } = await import(workerUrl.href);
-  const response = await worker.fetch(
-    new Request("http://localhost/api/locations", { headers: { accept: "application/json" } }),
-    { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
-    { waitUntil() {}, passThroughOnException() {} },
-  );
-
-  assert.equal(response.status, 200);
-  const atlas = await response.json();
+test("preserves the complete statically compiled atlas", async () => {
+  const { default: atlas } = await import("../app/data/atlas.generated.json", {
+    with: { type: "json" },
+  });
   const entries = atlas.groups.flatMap((group) => group.entries);
   const findEntry = (game, title) => entries.find(
     (entry) => entry.title === title && entry.game.split(" / ").includes(game),
@@ -60,6 +52,15 @@ test("classifies campaign and multiplayer locations across the full atlas", asyn
   assert.deepEqual(findEntry("BO4", "Blackout Map").modes, ["multiplayer"]);
   assert.deepEqual(findEntry("BO2", "FOB").modes, ["singleplayer"]);
   assert.deepEqual(findEntry("BOCW", "CIA").modes, ["singleplayer"]);
+
+  const laisonRiver = findEntry("COD3", "Laison River");
+  assert.deepEqual(laisonRiver.coordinates, [48.944742, -0.229523]);
+  assert.equal(laisonRiver.city, "Falaise");
+  assert.equal(laisonRiver.region, "Normandy");
+  assert.equal(laisonRiver.label, "Laizon River near Falaise");
+  assert.equal(laisonRiver.precision, "approximate");
+  assert.equal(laisonRiver.confidence, "medium");
+  assert.equal(laisonRiver.method, "manual-approximate");
 
   const cod2Entries = entries.filter((entry) => entry.game.split(" / ").includes("COD2"));
   assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "singleplayer").length, 26);
