@@ -97,7 +97,8 @@ For a changed page, the command can update:
 - Fandom page ID, resolved source URL, and canonical URL;
 - latest revision ID, timestamp, and SHA-1;
 - the raw and display forms of the infobox location;
-- main/map image metadata when complete attribution is available; and
+- main/map image metadata when its license or recognized rights notice and
+  attribution are available; and
 - import time and a small raw evidence summary.
 
 It preserves `mapStyle`, `mapStyleDetail`, `mapStyleConfidence`, and
@@ -105,11 +106,18 @@ It preserves `mapStyle`, `mapStyleDetail`, `mapStyleConfidence`, and
 coordinates, precision, confidence, method, mode, and editorial notes remain
 untouched.
 
-Media is populated only when the API provides all required information: source
-URL, file detail page, author, author profile, license name, and license URL.
-Otherwise the command prints `skipping media without complete attribution`,
-leaves the media record unchanged, and retains the discovered file title in
-`rawPayload` for manual review. Do not fill missing attribution by guesswork.
+Media is populated only when the API provides a source URL, web-resolution
+thumbnail, file detail page, and an author or uploader profile. It must also
+provide either a reusable license and license URL or use the recognized CoD
+Wiki `Copyrighted Media` notice. For that non-free case, the importer preserves
+the notice separately with `rights.status: non-free`; it does not call fair use
+a license. The details pane exposes the source notice and attribution through
+the image information dialog.
+
+Other incomplete or unrecognized files produce `skipping media without a
+reusable license or recognized non-free notice`, leave the media record
+unchanged, and retain the discovered file title in `rawPayload` for manual
+review. Do not fill missing attribution or rights information by guesswork.
 
 ## Request behavior and failures
 

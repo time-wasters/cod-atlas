@@ -23,6 +23,31 @@ type Entry = {
   modes: ("singleplayer" | "multiplayer")[];
 };
 
+type WikiImage = {
+  sourceUrl: string;
+  thumbnailUrl: string;
+  detailPageUrl: string;
+  author: {
+    name: string;
+    userUrl: string;
+    role: "author" | "uploader";
+  };
+  license: {
+    name: string | null;
+    url: string | null;
+  };
+  rights: {
+    status: "licensed" | "non-free";
+    notice: string | null;
+    noticeUrl: string | null;
+  };
+};
+
+type WikiMedia = {
+  main: WikiImage | null;
+  map: WikiImage | null;
+};
+
 function locationUrl(entry: Entry, provider: "googleMaps" | "wikipedia") {
   return entry.urls?.find((item) => item[provider])?.[provider] ?? null;
 }
@@ -50,6 +75,7 @@ type Game = {
 };
 type AtlasData = {
   games: Game[];
+  wikiMedia: Record<string, WikiMedia>;
   groups: Group[];
   totals: {
     groups: number;
@@ -101,6 +127,7 @@ export default function Home() {
   const map = useRef<LeafletMap | null>(null);
   const markerLayer = useRef<LayerGroup | null>(null);
   const leaflet = useRef<typeof import("leaflet") | null>(null);
+  const mediaDialog = useRef<HTMLDialogElement>(null);
 
   const groups = data.groups;
   const games = useMemo(() => {
@@ -142,8 +169,14 @@ export default function Home() {
   const resultCount = filtered.reduce((sum, group) => sum + group.entries.length, 0);
   const selectedGoogleMapsUrl = locationUrl(selected.entry, "googleMaps");
   const selectedWikipediaUrl = locationUrl(selected.entry, "wikipedia");
+  const selectedMedia = data.wikiMedia[selected.entry.wikiArticle];
+  const selectedImage = selectedMedia?.main ?? selectedMedia?.map ?? null;
 
   const selectEntry = useCallback((group: Group, entry: Entry) => setSelected({ group, entry }), []);
+
+  useEffect(() => {
+    mediaDialog.current?.close();
+  }, [selected.entry.id]);
 
   useEffect(() => {
     if (!mapNode.current || map.current) return;
@@ -360,6 +393,29 @@ export default function Home() {
             <h2>{selected.entry.title}</h2>
             <p>{selected.entry.game} · {selected.entry.modes.includes("multiplayer") ? "Multiplayer map" : "Campaign mission"}</p>
           </div>
+          {selectedImage && (
+            <figure className="intel-media">
+              {/* Preserve the reviewed external thumbnail instead of proxying or transforming it. */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={selectedImage.thumbnailUrl}
+                alt={`${selected.entry.title} media from the Call of Duty Wiki`}
+                referrerPolicy="no-referrer"
+              />
+              <button
+                className="media-info-button"
+                type="button"
+                aria-label="Show image copyright and attribution information"
+                title="Image information"
+                onClick={() => mediaDialog.current?.showModal()}
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M12 10.8v6M12 7.2h.01" />
+                </svg>
+              </button>
+            </figure>
+          )}
           <div className="intel-kicker">
             {selected.group.flagCode ? (
               <span
@@ -415,6 +471,55 @@ export default function Home() {
           )}
           <a className="wiki-button" href={selected.entry.wiki} target="_blank" rel="noreferrer">Open on CoD Wiki ↗</a>
         </article>
+
+        {selectedImage && (
+          <dialog
+            ref={mediaDialog}
+            className="media-info-dialog"
+            aria-labelledby="media-info-title"
+            onClick={(event) => {
+              if (event.target === event.currentTarget) event.currentTarget.close();
+            }}
+          >
+            <div className="media-info-content">
+              <header>
+                <div>
+                  <span>{selectedImage.rights.status === "non-free" ? "Copyrighted media" : "Licensed media"}</span>
+                  <h2 id="media-info-title">Image information</h2>
+                </div>
+                <form method="dialog">
+                  <button aria-label="Close image information">×</button>
+                </form>
+              </header>
+              {selectedImage.rights.notice && (
+                <div className="media-rights-notice">{selectedImage.rights.notice}</div>
+              )}
+              <dl>
+                <div>
+                  <dt>{selectedImage.author.role === "uploader" ? "Uploaded by" : "Author"}</dt>
+                  <dd><a href={selectedImage.author.userUrl} target="_blank" rel="noreferrer">{selectedImage.author.name}</a></dd>
+                </div>
+                {selectedImage.license.name && selectedImage.license.url && (
+                  <div>
+                    <dt>License</dt>
+                    <dd><a href={selectedImage.license.url} target="_blank" rel="noreferrer">{selectedImage.license.name}</a></dd>
+                  </div>
+                )}
+                {selectedImage.rights.noticeUrl && (
+                  <div>
+                    <dt>Rights notice</dt>
+                    <dd><a href={selectedImage.rights.noticeUrl} target="_blank" rel="noreferrer">Read on CoD Wiki</a></dd>
+                  </div>
+                )}
+                <div>
+                  <dt>Source</dt>
+                  <dd><a href={selectedImage.detailPageUrl} target="_blank" rel="noreferrer">Open file page</a></dd>
+                </div>
+              </dl>
+              <p className="media-notice-credit">Notice reproduced from the Call of Duty Wiki; the image remains subject to its original copyright status.</p>
+            </div>
+          </dialog>
+        )}
       </section>
     </main>
   );

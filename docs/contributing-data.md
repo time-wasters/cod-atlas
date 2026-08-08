@@ -121,9 +121,12 @@ invent values just to fill the template. `mapStyle` is `singleplayer` or
 `mapStyleConfidence` uses `curated` when that classification came from the
 atlas pending a future source refresh.
 
-Do not add media without its source URL, detail page URL, author name and user
-URL, license name, and license URL. A refresh must never overwrite curated
-coordinates, precision, confidence, method, or notes.
+Do not add media without its source URL, web-resolution URL, detail page URL,
+and an author or uploader name and user URL. Freely reusable media also needs
+its license name and URL. Recognized non-free media instead needs its original
+rights notice and notice URL; do not record a copyright exception as a
+license. A refresh must never overwrite curated coordinates, precision,
+confidence, method, or notes.
 
 ## Refresh Wiki imports
 

@@ -92,6 +92,35 @@ function validateLocationUrls(urls, filename) {
   }
 }
 
+function validateHttpsUrl(value, field, filename) {
+  requireValue(typeof value === "string" && value, `${filename}: ${field} is required`);
+  let url;
+  try {
+    url = new URL(value);
+  } catch {
+    throw new Error(`${filename}: ${field} must be a valid URL`);
+  }
+  requireValue(url.protocol === "https:", `${filename}: ${field} must use HTTPS`);
+}
+
+function validateWikiImage(image, field, filename) {
+  if (!image?.sourceUrl) return;
+  validateHttpsUrl(image.sourceUrl, `${field}.sourceUrl`, filename);
+  validateHttpsUrl(image.thumbnailUrl, `${field}.thumbnailUrl`, filename);
+  validateHttpsUrl(image.detailPageUrl, `${field}.detailPageUrl`, filename);
+  requireValue(image.author?.name, `${filename}: ${field}.author.name is required`);
+  requireValue(["author", "uploader"].includes(image.author?.role), `${filename}: ${field}.author.role is invalid`);
+  validateHttpsUrl(image.author.userUrl, `${field}.author.userUrl`, filename);
+  if (image.rights?.status === "non-free") {
+    requireValue(image.rights.notice, `${filename}: ${field}.rights.notice is required for non-free media`);
+    validateHttpsUrl(image.rights.noticeUrl, `${field}.rights.noticeUrl`, filename);
+  } else {
+    requireValue(image.rights?.status === "licensed", `${filename}: ${field}.rights.status must be licensed or non-free`);
+    requireValue(image.license?.name, `${filename}: ${field}.license.name is required for licensed media`);
+    validateHttpsUrl(image.license.url, `${field}.license.url`, filename);
+  }
+}
+
 const atlas = YAML.parse(await readFile(path.join(contentRoot, "atlas.yaml"), "utf8"));
 const gameFiles = (await filesBelow(path.join(contentRoot, "games"), ".yaml")).sort();
 const levelFiles = (await filesBelow(levelsRoot, ".md")).sort();
@@ -112,6 +141,8 @@ for (const filename of wikiFiles) {
   requireValue(article?.id, `${filename}: wiki article id is required`);
   requireValue(!wikiArticles.has(article.id), `${filename}: duplicate wiki article id ${article.id}`);
   requireValue(article.sourceUrl, `${filename}: sourceUrl is required`);
+  validateWikiImage(article.images?.main, "images.main", filename);
+  validateWikiImage(article.images?.map, "images.map", filename);
   wikiArticles.set(article.id, article);
 }
 
@@ -212,10 +243,16 @@ const compiledGroups = [...groups.values()]
     entries: group.entries.sort((a, b) => a.title.localeCompare(b.title) || a.game.localeCompare(b.game)),
   }));
 const entries = compiledGroups.flatMap((group) => group.entries);
+const wikiMedia = Object.fromEntries([...wikiArticles].flatMap(([id, article]) => {
+  const main = article.images?.main?.sourceUrl ? article.images.main : null;
+  const map = article.images?.map?.sourceUrl ? article.images.map : null;
+  return main || map ? [[id, { main, map }]] : [];
+}));
 const compiled = {
   source: atlas.source,
   updatedAt: atlas.updatedAt,
   games: [...games.values()].sort((a, b) => String(a.released).localeCompare(String(b.released))),
+  wikiMedia,
   groups: compiledGroups,
   totals: {
     groups: compiledGroups.length,

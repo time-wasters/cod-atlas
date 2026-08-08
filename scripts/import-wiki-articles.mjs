@@ -8,6 +8,15 @@ const DEFAULT_DELAY_MS = 5_000;
 const MIN_DELAY_MS = 2_000;
 const BATCH_SIZE = 10;
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+const COPYRIGHTED_MEDIA_TEMPLATE = /{{\s*Copyrighted[ _]Media(?:\s*[|}])/i;
+const COPYRIGHTED_MEDIA_NOTICE = `This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots
+
+for identification and critical commentary on
+  • the computer or video game in question or
+  • the copyrighted character(s) or item(s) depicted on the screenshot in question
+on the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,
+
+qualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.`;
 
 try {
   process.loadEnvFile?.();
@@ -219,21 +228,42 @@ export function imageRecord(page, wikiOrigin) {
   const info = page?.imageinfo?.[0];
   if (!info) return null;
   const metadata = info.extmetadata ?? {};
+  const artist = htmlText(metadata.Artist) ?? htmlText(metadata.Credit);
+  const artistUrl = htmlUrl(metadata.Artist, wikiOrigin) ?? htmlUrl(metadata.Credit, wikiOrigin);
+  const licenseName = htmlText(metadata.LicenseShortName) ?? htmlText(metadata.License);
+  const licenseUrl = metadata.LicenseUrl?.value ?? null;
+  const wikitext = page.revisions?.[0]?.slots?.main?.content ?? "";
+  const copyrightedMedia = COPYRIGHTED_MEDIA_TEMPLATE.test(wikitext);
   return {
     sourceUrl: info.url ?? null,
+    thumbnailUrl: info.thumburl ?? info.url ?? null,
     detailPageUrl: page.canonicalurl ?? page.fullurl ?? null,
     author: {
-      name: htmlText(metadata.Artist) ?? htmlText(metadata.Credit) ?? info.user ?? null,
-      userUrl: htmlUrl(metadata.Artist, wikiOrigin) ?? htmlUrl(metadata.Credit, wikiOrigin)
+      name: artist ?? info.user ?? null,
+      userUrl: artistUrl
         ?? (info.user ? `${wikiOrigin}/wiki/User:${encodeURIComponent(info.user.replace(/ /g, "_"))}` : null),
+      role: artist ? "author" : info.user ? "uploader" : null,
     },
-    license: { name: htmlText(metadata.LicenseShortName) ?? htmlText(metadata.License), url: metadata.LicenseUrl?.value ?? null },
+    license: { name: licenseName, url: licenseUrl },
+    rights: copyrightedMedia ? {
+      status: "non-free",
+      notice: COPYRIGHTED_MEDIA_NOTICE,
+      noticeUrl: `${wikiOrigin}/wiki/Template:Copyrighted_Media`,
+    } : {
+      status: licenseName && licenseUrl ? "licensed" : "unknown",
+      notice: null,
+      noticeUrl: licenseUrl,
+    },
   };
 }
 
 export function hasCompleteAttribution(image) {
-  return Boolean(image?.sourceUrl && image.detailPageUrl && image.author?.name
-    && image.author.userUrl && image.license?.name && image.license.url);
+  const sourced = image?.sourceUrl && image.thumbnailUrl && image.detailPageUrl
+    && image.author?.name && image.author.userUrl;
+  const licensed = image?.license?.name && image.license.url;
+  const nonFreeNotice = image?.rights?.status === "non-free"
+    && image.rights.notice && image.rights.noticeUrl;
+  return Boolean(sourced && (licensed || nonFreeNotice));
 }
 
 function titleFromSource(sourceUrl, wikiOrigin) {
@@ -270,7 +300,14 @@ async function request(parameters, options, state, configuration) {
   }
 }
 
-const emptyImage = () => ({ sourceUrl: null, detailPageUrl: null, author: { name: null, userUrl: null }, license: { name: null, url: null } });
+const emptyImage = () => ({
+  sourceUrl: null,
+  thumbnailUrl: null,
+  detailPageUrl: null,
+  author: { name: null, userUrl: null, role: null },
+  license: { name: null, url: null },
+  rights: { status: "unknown", notice: null, noticeUrl: null },
+});
 async function writeJsonAtomic(filename, value) {
   const temporary = `${filename}.tmp`;
   await writeFile(temporary, `${JSON.stringify(value, null, 2)}\n`, "utf8");
@@ -303,12 +340,12 @@ async function importBatch(records, options, state, configuration) {
   }
   const images = new Map();
   if (imageTitles.size) {
-    const imagePayload = await request({ redirects: "1", prop: "info|imageinfo", inprop: "url", iiprop: "url|mime|size|sha1|user|extmetadata", titles: [...imageTitles].join("|") }, options, state, configuration);
+    const imagePayload = await request({ redirects: "1", prop: "info|imageinfo|revisions", inprop: "url", iiprop: "url|mime|size|sha1|user|extmetadata", iiurlwidth: "800", rvprop: "content", rvslots: "main", titles: [...imageTitles].join("|") }, options, state, configuration);
     for (const page of imagePayload.query?.pages ?? []) {
       const image = imageRecord(page, configuration.origin);
       const title = page.title.replace(/ /g, "_");
       if (hasCompleteAttribution(image)) images.set(title, image);
-      else console.warn(`skipping media without complete attribution: ${page.title}`);
+      else console.warn(`skipping media without a reusable license or recognized non-free notice: ${page.title}`);
     }
   }
   for (const update of updates) {

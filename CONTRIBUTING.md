@@ -91,8 +91,11 @@ Use the manual [Wiki import command](docs/wiki-import.md) to refresh records.
 The reference documents Docker execution, dry runs, selection options, request
 pacing, imported fields, and media-attribution safeguards.
 
-Do not add an image unless its import record contains the source URL, image
-detail page, author, author profile link, license name, and license URL.
+Do not add an image unless its import record contains the source URL,
+web-resolution URL, image detail page, and an author or uploader profile. It
+must also contain either a reusable license and license URL or a recognized
+non-free rights notice and notice URL. Never describe a copyright exception as
+a license.
 
 ## Required checks
 

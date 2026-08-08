@@ -81,12 +81,15 @@ The stable `id` is the foreign-key target. Import-oriented fields include:
 - Source and canonical article URLs.
 - Wiki-provided level-location text and link.
 - Map-style classification and supporting evidence.
-- Main and map images.
-- Image detail pages, authors, author profiles, licenses, and license URLs.
+- Main and map images, including web-resolution display URLs.
+- Image detail pages and author or uploader profiles.
+- Either reusable license metadata or a recognized non-free rights notice.
 - Optional raw import payload.
 
 Null fields mean that the value has not been imported yet. Third-party media
-must retain the license shown on its source detail page.
+must retain the license or non-free notice shown on its source detail page.
+The generated atlas exposes displayable media once per Wiki article through
+the top-level `wikiMedia` object, rather than duplicating it for every marker.
 
 ## Build flow
 

@@ -46,7 +46,7 @@ Historical or editorial notes can live here.
 
 One level can contain several `locations`. Coordinate precision is one of `exact`, `approximate`, `city`, `region`, `country`, or `off-world`.
 
-Wiki import files remain separate so an automated refresh cannot silently overwrite curated coordinates, classifications, or historical notes. Each record has a stable local ID and placeholders for the Fandom page ID, revision, location links, map style, main image, map image, image detail pages, authors, licenses, and raw import payload.
+Wiki import files remain separate so an automated refresh cannot silently overwrite curated coordinates, classifications, or historical notes. Each record has a stable local ID and placeholders for the Fandom page ID, revision, location links, map style, main image, map image, image detail pages, authors or uploaders, licenses or non-free rights notices, and raw import payload.
 
 ## Editing data
 

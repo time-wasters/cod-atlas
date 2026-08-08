@@ -17,26 +17,40 @@
   "images": {
     "main": {
       "sourceUrl": null,
+      "thumbnailUrl": null,
       "detailPageUrl": null,
       "author": {
         "name": null,
-        "userUrl": null
+        "userUrl": null,
+        "role": null
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "unknown",
+        "notice": null,
+        "noticeUrl": null
       }
     },
     "map": {
       "sourceUrl": null,
+      "thumbnailUrl": null,
       "detailPageUrl": null,
       "author": {
         "name": null,
-        "userUrl": null
+        "userUrl": null,
+        "role": null
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "unknown",
+        "notice": null,
+        "noticeUrl": null
       }
     }
   },

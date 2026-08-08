@@ -143,6 +143,14 @@ test("preserves the complete statically compiled atlas", async () => {
     { wikipedia: "https://en.wikipedia.org/wiki/Monte_Carlo_Casino" },
   ]);
 
+  const bocageMedia = atlas.wikiMedia["codwiki-bocage"].main;
+  assert.match(bocageMedia.thumbnailUrl, /scale-to-width-down\/800/);
+  assert.equal(bocageMedia.author.name, "Thumps4DaZomb");
+  assert.equal(bocageMedia.author.role, "uploader");
+  assert.equal(bocageMedia.license.name, null);
+  assert.equal(bocageMedia.rights.status, "non-free");
+  assert.match(bocageMedia.rights.notice, /identification and critical commentary/);
+
   const cod2Entries = entries.filter((entry) => entry.game.split(" / ").includes("COD2"));
   assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "singleplayer").length, 26);
   assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "multiplayer").length, 21);
