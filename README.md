@@ -54,6 +54,8 @@ Wiki import files remain separate so an automated refresh cannot silently overwr
 2. Add a referenced game or Wiki import record when needed.
 3. Run `npm run data:build` to validate relationships and regenerate the compact
    browser dataset.
+   Without host npm, run
+   `docker compose run --rm cod-atlas-tools npm run data:build`.
 4. Open a pull request with both the source change and regenerated
    `app/data/atlas.generated.json`.
 
@@ -87,16 +89,19 @@ npm ci
 npm run dev
 ```
 
-Useful commands:
+Docker equivalent (no host Node.js/npm required):
 
-- `npm run data:build` validates content and refreshes the generated dataset.
-- `npm run data:check` verifies that the committed generated dataset is current.
-- `npm run wiki:import -- --help` documents the manual Wiki import command; see
-  [`docs/wiki-import.md`](docs/wiki-import.md) for its Docker workflow.
-- `npm test` builds the static site and checks important migrated records.
-- `npm run build` creates the Sites/Worker deployment in `dist/`.
-- `npm run build:static` creates a plain, relative-path website in
-  `dist-static/` for GitHub Pages, Nginx, or basic webspace.
+```sh
+docker compose build cod-atlas-tools
+docker compose run --rm --service-ports cod-atlas-tools npm run dev -- --port 3000
+```
+
+See [Docker npm commands](docs/docker-commands.md) for the reusable command
+pattern and all common equivalents.
+
+Useful commands and their Docker equivalents are listed in
+[Docker npm commands](docs/docker-commands.md). The manual Wiki importer has a
+separate [command reference](docs/wiki-import.md).
 
 The finished `dist-static/` directory can be uploaded as-is by CI. No Supabase or other database service is required.
 
@@ -112,6 +117,9 @@ After opening the repository in VSCodium:
 npm ci
 codex
 ```
+
+If npm is unavailable, replace `npm ci` with
+`docker compose build cod-atlas-tools`; `codex` itself still runs on the host.
 
 Sign in to Codex with ChatGPT when prompted. Use **Terminal → Run Task** for one-click data validation, tests, development, and static builds. Personal model, login, and approval settings are intentionally not committed.
 

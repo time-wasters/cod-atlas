@@ -12,6 +12,15 @@ npm ci
 npm run dev
 ```
 
+Docker equivalent (no host Node.js/npm required):
+
+```sh
+docker compose build cod-atlas-tools
+docker compose run --rm --service-ports cod-atlas-tools npm run dev -- --port 3000
+```
+
+See [Docker npm commands](docs/docker-commands.md) for other commands.
+
 VSCodium users can run the common commands through **Terminal → Run Task**.
 
 ## Correct an existing level
@@ -19,7 +28,8 @@ VSCodium users can run the common commands through **Terminal → Run Task**.
 1. Find the Markdown file under `content/levels/`.
 2. Change the curated frontmatter or add a concise note to the Markdown body.
 3. Include a reliable source link in the pull-request description.
-4. Run `npm run data:build`.
+4. Run `npm run data:build`, or its Docker equivalent:
+   `docker compose run --rm cod-atlas-tools npm run data:build`.
 5. Commit the level file and `app/data/atlas.generated.json` together.
 
 Coordinates belong to the level location itself. Do not create a shared place
@@ -84,6 +94,15 @@ npm run data:check
 npm run lint
 npm test
 npm run build:static
+```
+
+Docker equivalents:
+
+```sh
+docker compose run --rm cod-atlas-tools npm run data:check
+docker compose run --rm cod-atlas-tools npm run lint
+docker compose run --rm cod-atlas-tools npm test
+docker compose run --rm cod-atlas-tools npm run build:static
 ```
 
 If a change intentionally adds or removes marker locations, update the explicit

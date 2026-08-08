@@ -3,6 +3,8 @@
 This is the reference for hand-authored data under `content/`. Start from a
 file in [`docs/templates/`](templates/) and replace every example value. Do not
 edit `app/data/atlas.generated.json`; `npm run data:build` regenerates it.
+Without host npm, use
+`docker compose run --rm cod-atlas-tools npm run data:build`.
 
 ## What to contribute
 
@@ -116,6 +118,12 @@ Preview one article before writing it:
 npm run wiki:import -- --id codwiki-88-ridge --dry-run
 ```
 
+Docker equivalent:
+
+```sh
+docker compose run --rm cod-atlas-tools npm run wiki:import -- --id codwiki-88-ridge --dry-run
+```
+
 Then import it, refresh a small number of incomplete records, or deliberately
 check the entire collection:
 
@@ -123,6 +131,14 @@ check the entire collection:
 npm run wiki:import -- --id codwiki-88-ridge
 npm run wiki:import -- --limit 10
 npm run wiki:import -- --all
+```
+
+Docker equivalents use the same options, for example:
+
+```sh
+docker compose run --rm cod-atlas-tools npm run wiki:import -- --id codwiki-88-ridge
+docker compose run --rm cod-atlas-tools npm run wiki:import -- --limit 10
+docker compose run --rm cod-atlas-tools npm run wiki:import -- --all
 ```
 
 Set `COD_ATLAS_WIKI_USER_AGENT` to a descriptive value containing maintainer
@@ -140,6 +156,15 @@ npm run data:check
 npm run lint
 npm test
 npm run build:static
+```
+
+Docker equivalents:
+
+```sh
+docker compose run --rm cod-atlas-tools npm run data:check
+docker compose run --rm cod-atlas-tools npm run lint
+docker compose run --rm cod-atlas-tools npm test
+docker compose run --rm cod-atlas-tools npm run build:static
 ```
 
 Explain the evidence and link reliable sources in the pull-request description.

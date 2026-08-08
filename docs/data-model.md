@@ -95,5 +95,11 @@ Run `npm run data:build` to validate IDs, foreign keys, enum values, coordinate
 pairs, and ranges before regenerating the browser dataset. Never manually edit
 the generated JSON.
 
+Docker equivalent:
+
+```sh
+docker compose run --rm cod-atlas-tools npm run data:build
+```
+
 Marker clustering is a display concern. It may group nearby markers according
 to zoom level, but it must not mutate or merge the underlying locations.

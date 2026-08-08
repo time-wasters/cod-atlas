@@ -13,7 +13,24 @@ services:
       - cod-atlas-network
     volumes: []
 
+  cod-atlas-tools:
+    profiles: ["tools"]
+    image: cod-atlas-builder:local
+    build:
+      context: .
+      target: builder
+    working_dir: /app
+    ports:
+      - "${COD_ATLAS_DEV_PORT:-3000}:3000"
+    volumes:
+      - .:/app
+      - cod-atlas-node-modules:/app/node_modules
+
 networks:
   cod-atlas-network:
     name: cod-atlas-network
     driver: bridge
+
+volumes:
+  cod-atlas-node-modules:
+    name: cod-atlas-node-modules

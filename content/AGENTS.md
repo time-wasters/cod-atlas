@@ -14,4 +14,6 @@ These instructions apply to everything under `content/`.
   attribution fields, and stable ID when refreshing them.
 - Use `precision: approximate` whenever coordinates represent a researched
   estimate rather than a verified point.
-- Run `npm run data:build` after every content change.
+- Run `npm run data:build` after every content change. If host npm is
+  unavailable, run
+  `docker compose run --rm cod-atlas-tools npm run data:build` instead.

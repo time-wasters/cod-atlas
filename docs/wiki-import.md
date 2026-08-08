@@ -6,22 +6,19 @@ the MediaWiki API and never edits the Wiki or curated level files.
 
 ## Run through Docker
 
-The host may not have Node.js or npm. Build the repository's locked builder
-image once:
+The host may not have Node.js or npm. Build the repository's locked tooling
+service once:
 
 ```sh
-docker build --target builder --tag cod-atlas-builder:local .
+docker compose build cod-atlas-tools
 ```
 
-Run the importer with the repository mounted at `/app` so non-dry runs write
-updated JSON back to the working tree. The separate `/app/node_modules` volume
-keeps the dependencies installed in the image visible beneath that mount:
+Compose mounts the repository at `/app` so non-dry runs write updated JSON back
+to the working tree. Its separate `/app/node_modules` volume keeps container
+dependencies visible beneath that mount:
 
 ```sh
-docker run --rm \
-  --mount "type=bind,source=${PWD},target=/app" \
-  --mount "type=volume,target=/app/node_modules" \
-  cod-atlas-builder:local \
+docker compose run --rm cod-atlas-tools \
   npm run wiki:import -- --id codwiki-88-ridge --dry-run
 ```
 
@@ -31,11 +28,9 @@ enter it on one line or replace each trailing `\` with a backtick.
 To identify a responsible maintainer, pass a contact-bearing user agent:
 
 ```sh
-docker run --rm \
+docker compose run --rm \
   --env "COD_ATLAS_WIKI_USER_AGENT=CoDAtlasWikiImporter/0.1 (maintainer@example.com)" \
-  --mount "type=bind,source=${PWD},target=/app" \
-  --mount "type=volume,target=/app/node_modules" \
-  cod-atlas-builder:local \
+  cod-atlas-tools \
   npm run wiki:import -- --limit 10 --dry-run
 ```
 
@@ -60,6 +55,12 @@ Start with one dry run and inspect its proposed record:
 
 ```sh
 npm run wiki:import -- --id codwiki-88-ridge --dry-run
+```
+
+Docker equivalent:
+
+```sh
+docker compose run --rm cod-atlas-tools npm run wiki:import -- --id codwiki-88-ridge --dry-run
 ```
 
 Remove `--dry-run` only after the result looks correct. A gradual initial
@@ -115,4 +116,5 @@ After a non-dry run:
 4. Commit reviewed source JSON and generated data together.
 
 Run the standard checks listed in [CONTRIBUTING.md](../CONTRIBUTING.md). The
-focused parser tests are part of `npm test`.
+focused parser tests are part of `npm test`; the Docker equivalent is
+`docker compose run --rm cod-atlas-tools npm test`.
