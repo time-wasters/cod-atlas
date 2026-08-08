@@ -1,10 +1,10 @@
 ---
-id: br1-farewell-to-friends
-title: Farewell to Friends
+id: cod2-bro-piano-lupo
+title: Piano Lupo
 games:
-  - br1
+  - cod2-bro
 mode: singleplayer
-wikiArticle: codwiki-farewell-to-friends
+wikiArticle: codwiki-piano-lupo
 locations:
   - id: main
     label: Italy

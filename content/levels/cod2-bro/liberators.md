@@ -1,10 +1,10 @@
 ---
-id: br1-baptism-by-fire
-title: Baptism By Fire
+id: cod2-bro-liberators
+title: Liberators
 games:
-  - br1
+  - cod2-bro
 mode: singleplayer
-wikiArticle: codwiki-baptism-by-fire
+wikiArticle: codwiki-liberators
 locations:
   - id: main
     label: Algeria

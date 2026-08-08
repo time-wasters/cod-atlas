@@ -1,8 +1,8 @@
 ---
-id: br1-kasserine
+id: cod2-bro-kasserine
 title: Kasserine
 games:
-  - br1
+  - cod2-bro
 mode: multiplayer
 wikiArticle: codwiki-kasserine
 locations:

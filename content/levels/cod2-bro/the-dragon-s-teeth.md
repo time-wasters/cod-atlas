@@ -1,15 +1,15 @@
 ---
-id: br1-counterattack
-title: Counterattack
+id: cod2-bro-the-dragon-s-teeth
+title: The Dragon's Teeth
 games:
-  - br1
+  - cod2-bro
 mode: singleplayer
-wikiArticle: codwiki-counterattack
+wikiArticle: codwiki-the-dragon-s-teeth
 locations:
   - id: main
-    label: Tunisia
-    country: Tunisia
-    latitude: 34
+    label: Germany
+    country: Germany
+    latitude: 51
     longitude: 9
     precision: country
     confidence: fallback

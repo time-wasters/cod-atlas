@@ -1,8 +1,8 @@
 ---
-id: br1-maubeuge
+id: cod2-bro-maubeuge
 title: Maubeuge
 games:
-  - br1
+  - cod2-bro
 mode: multiplayer
 wikiArticle: codwiki-maubeuge
 locations:

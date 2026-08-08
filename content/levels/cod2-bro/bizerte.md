@@ -1,8 +1,8 @@
 ---
-id: br1-bizerte
+id: cod2-bro-bizerte
 title: Bizerte
 games:
-  - br1
+  - cod2-bro
 mode: multiplayer
 wikiArticle: codwiki-bizerte
 locations:

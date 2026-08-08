@@ -1,8 +1,8 @@
 ---
-id: br1-troina
+id: cod2-bro-troina
 title: Troina
 games:
-  - br1
+  - cod2-bro
 mode: multiplayer
 wikiArticle: codwiki-troina
 locations:

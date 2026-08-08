@@ -1,8 +1,8 @@
 ---
-id: br1-we-ve-been-through-worse
+id: cod2-bro-we-ve-been-through-worse
 title: We've Been Through Worse
 games:
-  - br1
+  - cod2-bro
 mode: singleplayer
 wikiArticle: codwiki-we-ve-been-through-worse
 locations:

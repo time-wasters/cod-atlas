@@ -1,16 +1,16 @@
 ---
-id: br1-buchholz
-title: Buchholz
+id: cod2-bro-canyon
+title: Canyon
 games:
-  - br1
+  - cod2-bro
 mode: multiplayer
-wikiArticle: codwiki-buchholz
+wikiArticle: codwiki-canyon
 locations:
   - id: main
-    label: Germany
-    country: Germany
-    latitude: 51
-    longitude: 9
+    label: Algeria
+    country: Algeria
+    latitude: 28
+    longitude: 3
     precision: country
     confidence: fallback
     method: country-fallback

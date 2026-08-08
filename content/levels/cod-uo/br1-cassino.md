@@ -3,7 +3,7 @@ id: cod-uo-br1-cassino
 title: Cassino
 games:
   - cod-uo
-  - br1
+  - cod2-bro
 mode: multiplayer
 wikiArticle: codwiki-cassino
 locations:

@@ -1,8 +1,8 @@
 ---
-id: br1-the-great-crusade
+id: cod2-bro-the-great-crusade
 title: The Great Crusade
 games:
-  - br1
+  - cod2-bro
 mode: singleplayer
 wikiArticle: codwiki-the-great-crusade
 locations:

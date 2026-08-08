@@ -1,15 +1,15 @@
 ---
-id: br1-tankers
-title: Tankers
+id: cod2-bro-the-last-train
+title: The Last Train
 games:
-  - br1
+  - cod2-bro
 mode: singleplayer
-wikiArticle: codwiki-tankers
+wikiArticle: codwiki-the-last-train
 locations:
   - id: main
-    label: Tunisia
-    country: Tunisia
-    latitude: 34
+    label: Germany
+    country: Germany
+    latitude: 51
     longitude: 9
     precision: country
     confidence: fallback

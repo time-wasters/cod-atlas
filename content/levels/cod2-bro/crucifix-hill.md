@@ -1,10 +1,10 @@
 ---
-id: br1-crucifix
-title: Crucifix
+id: cod2-bro-crucifix-hill
+title: Crucifix Hill
 games:
-  - br1
-mode: multiplayer
-wikiArticle: codwiki-crucifix
+  - cod2-bro
+mode: singleplayer
+wikiArticle: codwiki-crucifix-hill
 locations:
   - id: main
     label: Germany

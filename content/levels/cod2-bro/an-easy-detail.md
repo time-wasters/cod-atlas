@@ -1,15 +1,15 @@
 ---
-id: br1-the-desert-fox
-title: The Desert Fox
+id: cod2-bro-an-easy-detail
+title: An Easy Detail
 games:
-  - br1
+  - cod2-bro
 mode: singleplayer
-wikiArticle: codwiki-the-desert-fox
+wikiArticle: codwiki-an-easy-detail
 locations:
   - id: main
-    label: Tunisia
-    country: Tunisia
-    latitude: 34
+    label: Germany
+    country: Germany
+    latitude: 51
     longitude: 9
     precision: country
     confidence: fallback

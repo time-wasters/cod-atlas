@@ -1,10 +1,10 @@
 ---
-id: br1-the-last-train
-title: The Last Train
+id: cod2-bro-crucifix
+title: Crucifix
 games:
-  - br1
-mode: singleplayer
-wikiArticle: codwiki-the-last-train
+  - cod2-bro
+mode: multiplayer
+wikiArticle: codwiki-crucifix
 locations:
   - id: main
     label: Germany

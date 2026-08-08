@@ -1,8 +1,8 @@
 ---
-id: br1-gela
+id: cod2-bro-gela
 title: Gela
 games:
-  - br1
+  - cod2-bro
 mode: multiplayer
 wikiArticle: codwiki-gela
 locations:

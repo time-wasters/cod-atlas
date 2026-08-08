@@ -1,8 +1,8 @@
 ---
-id: br1-operation-husky
+id: cod2-bro-operation-husky
 title: Operation Husky
 games:
-  - br1
+  - cod2-bro
 mode: singleplayer
 wikiArticle: codwiki-operation-husky-level
 locations:

@@ -27,7 +27,7 @@
       "released": "2005-10-25"
     },
     {
-      "id": "br1",
+      "id": "cod2-bro",
       "code": "BR1",
       "label": "Big Red One",
       "released": "2005-11-01"
@@ -723,8 +723,8 @@
       "kind": "terrestrial",
       "entries": [
         {
-          "id": "br1-baptism-by-fire:main",
-          "levelId": "br1-baptism-by-fire",
+          "id": "cod2-bro-baptism-by-fire:main",
+          "levelId": "cod2-bro-baptism-by-fire",
           "locationId": "main",
           "title": "Baptism By Fire",
           "game": "BR1",
@@ -745,8 +745,8 @@
           ]
         },
         {
-          "id": "br1-canyon:main",
-          "levelId": "br1-canyon",
+          "id": "cod2-bro-canyon:main",
+          "levelId": "cod2-bro-canyon",
           "locationId": "main",
           "title": "Canyon",
           "game": "BR1",
@@ -811,8 +811,8 @@
           ]
         },
         {
-          "id": "br1-liberators:main",
-          "levelId": "br1-liberators",
+          "id": "cod2-bro-liberators:main",
+          "levelId": "cod2-bro-liberators",
           "locationId": "main",
           "title": "Liberators",
           "game": "BR1",
@@ -2053,8 +2053,8 @@
           ]
         },
         {
-          "id": "br1-the-great-crusade:main",
-          "levelId": "br1-the-great-crusade",
+          "id": "cod2-bro-the-great-crusade:main",
+          "levelId": "cod2-bro-the-great-crusade",
           "locationId": "main",
           "title": "The Great Crusade",
           "game": "BR1",
@@ -6156,8 +6156,8 @@
           ]
         },
         {
-          "id": "br1-maubeuge:main",
-          "levelId": "br1-maubeuge",
+          "id": "cod2-bro-maubeuge:main",
+          "levelId": "cod2-bro-maubeuge",
           "locationId": "main",
           "title": "Maubeuge",
           "game": "BR1",
@@ -7256,8 +7256,8 @@
           ]
         },
         {
-          "id": "br1-we-ve-been-through-worse:main",
-          "levelId": "br1-we-ve-been-through-worse",
+          "id": "cod2-bro-we-ve-been-through-worse:main",
+          "levelId": "cod2-bro-we-ve-been-through-worse",
           "locationId": "main",
           "title": "We've Been Through Worse",
           "game": "BR1",
@@ -7528,8 +7528,8 @@
           ]
         },
         {
-          "id": "br1-an-easy-detail:main",
-          "levelId": "br1-an-easy-detail",
+          "id": "cod2-bro-an-easy-detail:main",
+          "levelId": "cod2-bro-an-easy-detail",
           "locationId": "main",
           "title": "An Easy Detail",
           "game": "BR1",
@@ -7748,8 +7748,8 @@
           ]
         },
         {
-          "id": "br1-buchholz:main",
-          "levelId": "br1-buchholz",
+          "id": "cod2-bro-buchholz:main",
+          "levelId": "cod2-bro-buchholz",
           "locationId": "main",
           "title": "Buchholz",
           "game": "BR1",
@@ -7902,8 +7902,8 @@
           ]
         },
         {
-          "id": "br1-crucifix:main",
-          "levelId": "br1-crucifix",
+          "id": "cod2-bro-crucifix:main",
+          "levelId": "cod2-bro-crucifix",
           "locationId": "main",
           "title": "Crucifix",
           "game": "BR1",
@@ -7924,8 +7924,8 @@
           ]
         },
         {
-          "id": "br1-crucifix-hill:main",
-          "levelId": "br1-crucifix-hill",
+          "id": "cod2-bro-crucifix-hill:main",
+          "levelId": "cod2-bro-crucifix-hill",
           "locationId": "main",
           "title": "Crucifix Hill",
           "game": "BR1",
@@ -8914,8 +8914,8 @@
           ]
         },
         {
-          "id": "br1-the-dragon-s-teeth:main",
-          "levelId": "br1-the-dragon-s-teeth",
+          "id": "cod2-bro-the-dragon-s-teeth:main",
+          "levelId": "cod2-bro-the-dragon-s-teeth",
           "locationId": "main",
           "title": "The Dragon's Teeth",
           "game": "BR1",
@@ -8980,8 +8980,8 @@
           ]
         },
         {
-          "id": "br1-the-last-train:main",
-          "levelId": "br1-the-last-train",
+          "id": "cod2-bro-the-last-train:main",
+          "levelId": "cod2-bro-the-last-train",
           "locationId": "main",
           "title": "The Last Train",
           "game": "BR1",
@@ -10760,8 +10760,8 @@
           ]
         },
         {
-          "id": "br1-farewell-to-friends:main",
-          "levelId": "br1-farewell-to-friends",
+          "id": "cod2-bro-farewell-to-friends:main",
+          "levelId": "cod2-bro-farewell-to-friends",
           "locationId": "main",
           "title": "Farewell to Friends",
           "game": "BR1",
@@ -10782,8 +10782,8 @@
           ]
         },
         {
-          "id": "br1-gela:main",
-          "levelId": "br1-gela",
+          "id": "cod2-bro-gela:main",
+          "levelId": "cod2-bro-gela",
           "locationId": "main",
           "title": "Gela",
           "game": "BR1",
@@ -10848,8 +10848,8 @@
           ]
         },
         {
-          "id": "br1-operation-husky:main",
-          "levelId": "br1-operation-husky",
+          "id": "cod2-bro-operation-husky:main",
+          "levelId": "cod2-bro-operation-husky",
           "locationId": "main",
           "title": "Operation Husky",
           "game": "BR1",
@@ -10892,8 +10892,8 @@
           ]
         },
         {
-          "id": "br1-piano-lupo:main",
-          "levelId": "br1-piano-lupo",
+          "id": "cod2-bro-piano-lupo:main",
+          "levelId": "cod2-bro-piano-lupo",
           "locationId": "main",
           "title": "Piano Lupo",
           "game": "BR1",
@@ -11024,8 +11024,8 @@
           ]
         },
         {
-          "id": "br1-troina:main",
-          "levelId": "br1-troina",
+          "id": "cod2-bro-troina:main",
+          "levelId": "cod2-bro-troina",
           "locationId": "main",
           "title": "Troina",
           "game": "BR1",
@@ -20048,8 +20048,8 @@
     {
       "name": "Tunisia",
       "coordinates": [
-        37.27442,
-        9.87391
+        34,
+        9
       ],
       "kind": "terrestrial",
       "entries": [
@@ -20098,8 +20098,8 @@
           ]
         },
         {
-          "id": "br1-bizerte:main",
-          "levelId": "br1-bizerte",
+          "id": "cod2-bro-bizerte:main",
+          "levelId": "cod2-bro-bizerte",
           "locationId": "main",
           "title": "Bizerte",
           "game": "BR1",
@@ -20120,8 +20120,8 @@
           ]
         },
         {
-          "id": "br1-counterattack:main",
-          "levelId": "br1-counterattack",
+          "id": "cod2-bro-counterattack:main",
+          "levelId": "cod2-bro-counterattack",
           "locationId": "main",
           "title": "Counterattack",
           "game": "BR1",
@@ -20164,8 +20164,8 @@
           ]
         },
         {
-          "id": "br1-kasserine:main",
-          "levelId": "br1-kasserine",
+          "id": "cod2-bro-kasserine:main",
+          "levelId": "cod2-bro-kasserine",
           "locationId": "main",
           "title": "Kasserine",
           "game": "BR1",
@@ -20318,8 +20318,8 @@
           ]
         },
         {
-          "id": "br1-tankers:main",
-          "levelId": "br1-tankers",
+          "id": "cod2-bro-tankers:main",
+          "levelId": "cod2-bro-tankers",
           "locationId": "main",
           "title": "Tankers",
           "game": "BR1",
@@ -20340,8 +20340,8 @@
           ]
         },
         {
-          "id": "br1-the-desert-fox:main",
-          "levelId": "br1-the-desert-fox",
+          "id": "cod2-bro-the-desert-fox:main",
+          "levelId": "cod2-bro-the-desert-fox",
           "locationId": "main",
           "title": "The Desert Fox",
           "game": "BR1",

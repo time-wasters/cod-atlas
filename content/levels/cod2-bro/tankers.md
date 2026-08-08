@@ -1,15 +1,15 @@
 ---
-id: br1-the-dragon-s-teeth
-title: The Dragon's Teeth
+id: cod2-bro-tankers
+title: Tankers
 games:
-  - br1
+  - cod2-bro
 mode: singleplayer
-wikiArticle: codwiki-the-dragon-s-teeth
+wikiArticle: codwiki-tankers
 locations:
   - id: main
-    label: Germany
-    country: Germany
-    latitude: 51
+    label: Tunisia
+    country: Tunisia
+    latitude: 34
     longitude: 9
     precision: country
     confidence: fallback
