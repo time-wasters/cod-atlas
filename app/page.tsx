@@ -24,8 +24,14 @@ type Group = {
   kind: "terrestrial" | "off-world";
   entries: Entry[];
 };
+type Game = {
+  id: string;
+  code: string;
+  label: string;
+  released: string;
+};
 type AtlasData = {
-  games: { id: string; code: string; label: string; released: string }[];
+  games: Game[];
   groups: Group[];
   totals: {
     groups: number;
@@ -40,23 +46,13 @@ type AtlasData = {
 type Selection = { group: Group; entry: Entry };
 
 const data = atlasSource as AtlasData;
-const gameMetadata: Record<string, { label: string; released: string }> = Object.fromEntries(
-  data.games.map((item) => [item.code, { label: item.label, released: item.released }]),
-);
 
 function gameCodes(value: string) {
   return value.split(" / ").filter((code) => code && code !== "MP");
 }
 
-function gameLabel(code: string) {
-  return gameMetadata[code]?.label ?? code;
-}
-
-function compareGames(a: string, b: string) {
-  const releaseDifference = (gameMetadata[a]?.released ?? "9999").localeCompare(
-    gameMetadata[b]?.released ?? "9999",
-  );
-  return releaseDifference || gameLabel(a).localeCompare(gameLabel(b));
+function compareGames(a: Game, b: Game) {
+  return a.released.localeCompare(b.released) || a.label.localeCompare(b.label);
 }
 
 const initialGroup = data.groups[0];
@@ -89,13 +85,12 @@ export default function Home() {
   const leaflet = useRef<typeof import("leaflet") | null>(null);
 
   const groups = data.groups;
-  const games = useMemo(
-    () =>
-      [...new Set(groups.flatMap((group) => group.entries.flatMap((entry) => gameCodes(entry.game))))]
-        .filter(Boolean)
-        .sort(compareGames),
-    [groups],
-  );
+  const games = useMemo(() => {
+    const representedCodes = new Set(
+      groups.flatMap((group) => group.entries.flatMap((entry) => gameCodes(entry.game))),
+    );
+    return data.games.filter((item) => representedCodes.has(item.code)).sort(compareGames);
+  }, [groups]);
   const regions = useMemo(
     () => groups.map((group) => group.name).sort((a, b) => a.localeCompare(b)),
     [groups],
@@ -235,11 +230,19 @@ export default function Home() {
         </label>
 
         <div className="filter-grid">
-          <label>
-            <span>Game</span>
-            <select value={game} onChange={(event) => setGame(event.target.value)}>
+          <label className="game-filter">
+            <span>Game <small>Oldest to newest</small></span>
+            <select
+              value={game}
+              onChange={(event) => setGame(event.target.value)}
+              aria-label="Filter by game, ordered by release date"
+            >
               <option value="all">All games</option>
-              {games.map((item) => <option key={item} value={item}>{gameLabel(item)}</option>)}
+              {games.map((item) => (
+                <option key={item.id} value={item.code}>
+                  {item.released.slice(0, 4)} · {item.label}
+                </option>
+              ))}
             </select>
           </label>
           <label>

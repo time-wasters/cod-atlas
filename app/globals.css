@@ -73,9 +73,12 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
 .search-field:focus-within { border-color: var(--amber); box-shadow: 0 0 0 2px #e0a12622; }
 .search-field input::placeholder { color: #747969; }
 
-.filter-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.filter-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
 .filter-grid label > span, .section-title > span { display: block; margin: 0 0 7px; color: #999d8d; font-family: "Arial Narrow", sans-serif; font-size: 10px; font-weight: 700; letter-spacing: .17em; text-transform: uppercase; }
-.filter-grid select { width: 100%; height: 40px; appearance: none; border: 1px solid #48503d; border-radius: 4px; padding: 0 28px 0 10px; color: #d0cab8; background: #141912 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='m1 1 4 4 4-4' fill='none' stroke='%23aaa27f'/%3E%3C/svg%3E") no-repeat right 10px center; font-size: 12px; }
+.filter-grid label > span small { float: right; color: #686f60; font: 600 8px var(--font-geist-mono), monospace; letter-spacing: .08em; }
+.filter-grid select { width: 100%; height: 40px; appearance: none; border: 1px solid #48503d; border-radius: 4px; padding: 0 34px 0 11px; overflow: hidden; color: #d0cab8; background: #141912 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='m1 1 4 4 4-4' fill='none' stroke='%23aaa27f'/%3E%3C/svg%3E") no-repeat right 11px center; font-size: 12px; text-overflow: ellipsis; cursor: pointer; }
+.filter-grid select:hover { border-color: #697159; background-color: #191f16; }
+.filter-grid select:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; border-color: var(--amber-dark); }
 
 .precision-filter { display: grid; grid-template-columns: .65fr .8fr 1.55fr; border: 1px solid #48503d; border-radius: 4px; overflow: hidden; }
 .precision-filter button { min-height: 35px; border: 0; border-right: 1px solid #48503d; color: #999d8d; background: #141912; font-size: 10px; cursor: pointer; }

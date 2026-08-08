@@ -42,6 +42,11 @@ test("preserves the complete statically compiled atlas", async () => {
   );
 
   assert.equal(entries.length, 987);
+  assert.deepEqual(
+    atlas.games.map((game) => game.released),
+    atlas.games.map((game) => game.released).toSorted(),
+    "games stay in chronological release order",
+  );
   assert.ok(entries.every((entry) =>
     entry.modes.length === 1 && ["singleplayer", "multiplayer"].includes(entry.modes[0])));
 
