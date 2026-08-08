@@ -1,0 +1,16 @@
+.git
+.github
+.next
+.pnp
+.sites-runtime
+.vscode
+.wrangler
+coverage
+dist
+dist-static
+node_modules
+outputs
+work
+.research-cache
+.env*
+*.log

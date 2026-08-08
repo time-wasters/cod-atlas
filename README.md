@@ -67,7 +67,32 @@ licenses, and raw import payload.
 The build fails for duplicate IDs, missing foreign keys, invalid modes,
 incomplete coordinate pairs, or stale generated data.
 
-## Local development
+## Run with Docker
+
+Requires Docker with the Compose plugin. Build the static site and start it in
+a background container with one command:
+
+```sh
+docker compose up --build -d
+```
+
+Open [http://localhost:8080](http://localhost:8080). To stop and remove the
+container, run:
+
+```sh
+docker compose down
+```
+
+All runtime resources have deterministic names: project, service, container,
+and hostname `cod-atlas`; image `cod-atlas:local`; and bridge network
+`cod-atlas-network`. The service explicitly uses no Docker volumes. Docker
+still assigns its mandatory internal IDs, but no command relies on them.
+
+Set `COD_ATLAS_PORT` in your shell or a local `.env` file before starting the
+container to use a host port other than `8080`. Re-run the startup command
+after source or content changes to rebuild the static site.
+
+## Local development with Node.js
 
 Requires Node.js 22.13 or newer.
 
