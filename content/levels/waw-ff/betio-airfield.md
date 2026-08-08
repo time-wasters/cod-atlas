@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-betio-airfield
 locations:
   - id: main
-    label: Betio Village
     country: Kiribati
     city: Betio Village
     latitude: 1.35797

@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-numa-numa
 locations:
   - id: main
-    label: Papua New Guinea
     country: Papua New Guinea
     latitude: -6
     longitude: 147

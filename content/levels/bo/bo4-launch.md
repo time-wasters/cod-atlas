@@ -8,7 +8,6 @@ mode: multiplayer
 wikiArticle: codwiki-launch
 locations:
   - id: main
-    label: Kazakhstan
     country: Kazakhstan
     latitude: 48
     longitude: 68

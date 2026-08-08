@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-mayenne-bridge
 locations:
   - id: main
-    label: Mayenne
     country: France
     city: Mayenne
     latitude: 48.30337

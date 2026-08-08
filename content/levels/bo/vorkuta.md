@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-vorkuta-level
 locations:
   - id: main
-    label: Vorkuta
     country: Russia
     city: Vorkuta
     latitude: 67.50867

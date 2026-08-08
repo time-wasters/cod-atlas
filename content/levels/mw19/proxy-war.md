@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-proxy-war
 locations:
   - id: main
-    label: Syria
     country: Syria
     latitude: 35
     longitude: 38

@@ -7,8 +7,8 @@ mode: multiplayer
 wikiArticle: codwiki-militia-black-ops-4
 locations:
   - id: main
-    label: Alaska
-    country: "USA: Alaska"
+    country: United States
+    region: Alaska
     latitude: 64.2
     longitude: -152
     precision: country

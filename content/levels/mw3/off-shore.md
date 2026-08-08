@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-off-shore
 locations:
   - id: main
-    label: Russia
     country: Russia
     latitude: 60
     longitude: 100

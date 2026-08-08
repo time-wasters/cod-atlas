@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-hard-landing-campaign
 locations:
   - id: main
-    label: Palau
     country: Palau
     latitude: 7.5
     longitude: 134.5

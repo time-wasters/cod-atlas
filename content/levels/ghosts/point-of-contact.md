@@ -7,8 +7,8 @@ mode: multiplayer
 wikiArticle: codwiki-point-of-contact
 locations:
   - id: main
-    label: Colorado
-    country: "USA: Colorado"
+    country: United States
+    region: Colorado
     latitude: 39
     longitude: -105.5
     precision: country

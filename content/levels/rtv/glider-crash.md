@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-glider-crash
 locations:
   - id: main
-    label: France
     country: France
     latitude: 46
     longitude: 2

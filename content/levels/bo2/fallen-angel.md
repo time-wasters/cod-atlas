@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-fallen-angel
 locations:
   - id: main
-    label: Pakistan
     country: Pakistan
     latitude: 30
     longitude: 70

@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-hunted-call-of-duty-4
 locations:
   - id: main
-    label: Russia
     country: Russia
     latitude: 60
     longitude: 100

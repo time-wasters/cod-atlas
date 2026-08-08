@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-rimling
 locations:
   - id: main
-    label: Rimling
     country: France
     city: Rimling
     latitude: 49.09656

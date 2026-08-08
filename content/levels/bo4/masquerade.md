@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-masquerade
 locations:
   - id: main
-    label: Bangladesh
     country: Bangladesh
     latitude: 24
     longitude: 90

@@ -7,8 +7,8 @@ mode: multiplayer
 wikiArticle: codwiki-cliffside
 locations:
   - id: main
-    label: Japan (Okinawa)
-    country: Japan (Okinawa)
+    country: Japan
+    region: Okinawa
     latitude: 36
     longitude: 138
     precision: country

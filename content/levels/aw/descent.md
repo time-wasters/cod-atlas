@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-descent-exo-zombies
 locations:
   - id: main
-    label: Pacific Ocean
     country: Pacific Ocean
     latitude: 3
     longitude: -150

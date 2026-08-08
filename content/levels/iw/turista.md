@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-turista
 locations:
   - id: main
-    label: Mars
     country: Mars
     precision: off-world
     confidence: fallback

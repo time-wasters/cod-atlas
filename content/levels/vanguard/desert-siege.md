@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-desert-siege
 locations:
   - id: main
-    label: Libya
     country: Libya
     latitude: 25
     longitude: 17

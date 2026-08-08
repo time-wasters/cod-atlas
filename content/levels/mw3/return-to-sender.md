@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-return-to-sender
 locations:
   - id: main
-    label: Somalia
     country: Somalia
     latitude: 10
     longitude: 49

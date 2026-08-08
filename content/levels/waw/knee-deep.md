@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-knee-deep
 locations:
   - id: main
-    label: Palau
     country: Palau
     latitude: 7.5
     longitude: 134.5

@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-mayhem-map
 locations:
   - id: main
-    label: Japan
     country: Japan
     latitude: 36
     longitude: 138

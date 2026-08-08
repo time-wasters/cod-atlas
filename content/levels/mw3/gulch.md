@@ -7,8 +7,8 @@ mode: multiplayer
 wikiArticle: codwiki-gulch
 locations:
   - id: main
-    label: Arizona
-    country: "USA: Arizona"
+    country: United States
+    region: Arizona
     latitude: 34.3
     longitude: -111.7
     precision: country

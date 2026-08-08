@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-downtown-assault
 locations:
   - id: main
-    label: Russia
     country: Russia
     latitude: 60
     longitude: 100

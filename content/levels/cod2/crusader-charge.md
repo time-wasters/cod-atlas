@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-crusader-charge
 locations:
   - id: main
-    label: Libya
     country: Libya
     latitude: 25
     longitude: 17

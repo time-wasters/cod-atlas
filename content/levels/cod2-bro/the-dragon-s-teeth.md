@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-the-dragon-s-teeth
 locations:
   - id: main
-    label: Germany
     country: Germany
     latitude: 51
     longitude: 9

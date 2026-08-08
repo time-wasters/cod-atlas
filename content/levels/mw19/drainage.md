@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-drainage
 locations:
   - id: main
-    label: Syria
     country: Syria
     latitude: 35
     longitude: 38

@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-hydro
 locations:
   - id: main
-    label: Pakistan
     country: Pakistan
     latitude: 30
     longitude: 70

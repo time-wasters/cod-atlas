@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-poisson
 locations:
   - id: main
-    label: Poisson
     country: France
     city: Poisson
     latitude: 46.3847

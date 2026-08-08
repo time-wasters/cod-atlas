@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-seaside
 locations:
   - id: main
-    label: Spain
     country: Spain
     latitude: 40
     longitude: -4

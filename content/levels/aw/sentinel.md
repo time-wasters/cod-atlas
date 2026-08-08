@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-sentinel-mission
 locations:
   - id: main
-    label: Thailand
     country: Thailand
     latitude: 15
     longitude: 100

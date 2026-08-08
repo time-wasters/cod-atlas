@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-ste-mere-eglise
 locations:
   - id: main
-    label: Sainte-Mère-Église
     country: France
     city: Sainte-Mère-Église
     latitude: 49.41

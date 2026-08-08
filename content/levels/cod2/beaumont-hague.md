@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-beaumont-hague
 locations:
   - id: main
-    label: Beaumont-Hague
     country: France
     city: Beaumont-Hague
     latitude: 49.66387

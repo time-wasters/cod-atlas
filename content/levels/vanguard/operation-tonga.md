@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-operation-tonga
 locations:
   - id: main
-    label: France
     country: France
     latitude: 46
     longitude: 2

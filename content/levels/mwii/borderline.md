@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-borderline
 locations:
   - id: main
-    label: Mexico
     country: Mexico
     latitude: 23
     longitude: -102
@@ -16,8 +15,8 @@ locations:
     method: country-fallback
     primary: true
   - id: texas-2
-    label: Texas
-    country: "USA: Texas"
+    country: United States
+    region: Texas
     latitude: 31
     longitude: -99
     precision: country

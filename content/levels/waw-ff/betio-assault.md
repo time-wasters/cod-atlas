@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-betio-assault
 locations:
   - id: main
-    label: Betio Village
     country: Kiribati
     city: Betio Village
     latitude: 1.35797

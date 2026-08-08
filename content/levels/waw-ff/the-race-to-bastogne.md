@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-the-race-to-bastogne
 locations:
   - id: main
-    label: Bastogne
     country: Belgium
     city: Bastogne
     latitude: 50.00347

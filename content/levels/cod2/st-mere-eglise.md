@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-sainte-mere-eglise
 locations:
   - id: main
-    label: France
     country: France
     latitude: 46
     longitude: 2

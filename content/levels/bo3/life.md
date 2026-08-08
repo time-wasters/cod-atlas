@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-life
 locations:
   - id: main
-    label: Switzerland
     country: Switzerland
     latitude: 47
     longitude: 8

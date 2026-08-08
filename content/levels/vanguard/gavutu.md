@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-gavutu
 locations:
   - id: main
-    label: Solomon Islands
     country: Solomon Islands
     latitude: -8
     longitude: 159

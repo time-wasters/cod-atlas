@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-operation-supercharge-wwii
 locations:
   - id: main
-    label: Tunisia
     country: Tunisia
     latitude: 34
     longitude: 9

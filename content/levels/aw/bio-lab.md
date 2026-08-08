@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-bio-lab
 locations:
   - id: main
-    label: Bulgaria
     country: Bulgaria
     latitude: 43
     longitude: 25

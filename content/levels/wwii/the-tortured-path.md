@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-the-tortured-path
 locations:
   - id: main
-    label: Antarctica
     country: Antarctica
     latitude: -90
     longitude: 0
@@ -16,7 +15,6 @@ locations:
     method: country-fallback
     primary: true
   - id: atlantic-ocean-2
-    label: Atlantic Ocean
     country: Atlantic Ocean
     latitude: 26
     longitude: -38
@@ -25,7 +23,6 @@ locations:
     method: region-fallback
     primary: false
   - id: spain-3
-    label: Spain
     country: Spain
     latitude: 40
     longitude: -4

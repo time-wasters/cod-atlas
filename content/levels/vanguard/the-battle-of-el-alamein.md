@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-the-battle-of-el-alamein
 locations:
   - id: main
-    label: Al ‘Alamayn
     country: Egypt
     city: Al ‘Alamayn
     latitude: 30.83007

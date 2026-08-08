@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-plaza
 locations:
   - id: main
-    label: Indian Ocean
     country: Indian Ocean
     latitude: -20
     longitude: 78

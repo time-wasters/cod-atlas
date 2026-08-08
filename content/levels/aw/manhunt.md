@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-manhunt
 locations:
   - id: main
-    label: Greece
     country: Greece
     latitude: 39
     longitude: 22

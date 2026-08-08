@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-crossroads-united-offensive
 locations:
   - id: main
-    label: Belgium
     country: Belgium
     latitude: 50.83333333
     longitude: 4

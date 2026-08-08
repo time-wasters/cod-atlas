@@ -37,11 +37,24 @@ the level ID `cod3-laison-river` belongs at
 | Markdown body | no | Concise research, ambiguity, or editorial notes. |
 
 Each location requires `id`, `country`, `precision`, `confidence`, and `method`.
-The location ID only needs to be unique within its level. `label`, `region`, and
-`city` are optional display context. `latitude` and `longitude` must either
-both be present or both be absent. Latitude is -90 through 90 and longitude is
--180 through 180. Use decimal degrees. Set `primary: true` on the main location
-when a level contains multiple locations; use it at most once.
+The location ID only needs to be unique within its level. The geographic
+taxonomy is `country` → `region` → `city` → `landmark`; the last three tiers are
+optional and must only be included when supported by the evidence. A region may
+be a state, province, constituent country, island, territory, or similar area.
+Use `landmark` for a river, castle, building, or other named site. The former
+`label` field is not supported. `latitude` and `longitude` must either both be
+present or both be absent. Latitude is -90 through 90 and longitude is -180
+through 180. Use decimal degrees. Set `primary: true` on the main location when
+a level contains multiple locations; use it at most once.
+
+Locations may also include a `urls` array of curated HTTPS links to the specific
+place. Each item is a single-key object using the `googleMaps` or `wikipedia`
+provider, and duplicate providers are not allowed. These links stay on the
+location rather than in a shared places record. A Google Maps URL is only an
+outbound link and does not require an API key. Prefer a standard Maps URL such
+as `https://www.google.com/maps/search/?api=1&query=...`; an exact Google Maps
+share link is also accepted when it identifies the intended listing. Wikipedia
+links may use a direct article URL from any language edition.
 
 For `off-world`, omit both coordinates. For terrestrial records, provide the
 best evidence-supported coordinates. A country or region centroid is allowed

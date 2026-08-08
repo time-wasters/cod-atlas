@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-karma
 locations:
   - id: main
-    label: Cayman Islands
     country: Cayman Islands
     latitude: 19.31
     longitude: -81.25

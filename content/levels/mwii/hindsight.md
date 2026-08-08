@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-hindsight
 locations:
   - id: main
-    label: Yemen
     country: Yemen
     latitude: 15
     longitude: 48

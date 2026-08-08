@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-prologue
 locations:
   - id: main
-    label: India
     country: India
     latitude: 20
     longitude: 77

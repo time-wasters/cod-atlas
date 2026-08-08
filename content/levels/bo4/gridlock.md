@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-gridlock
 locations:
   - id: main
-    label: Japan
     country: Japan
     latitude: 36
     longitude: 138

@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-anthropoid
 locations:
   - id: main
-    label: Czech Republic (Czechia)
     country: Czech Republic (Czechia)
     latitude: 49.75
     longitude: 15.5

@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-violence-and-timing
 locations:
   - id: main
-    label: Syria
     country: Syria
     latitude: 35
     longitude: 38
@@ -16,7 +15,6 @@ locations:
     method: country-fallback
     primary: true
   - id: yemen-2
-    label: Yemen
     country: Yemen
     latitude: 15
     longitude: 48

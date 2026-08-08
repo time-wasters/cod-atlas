@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-dust-to-dust
 locations:
   - id: main
-    label: United Arab Emirates
     country: United Arab Emirates
     latitude: 24
     longitude: 54

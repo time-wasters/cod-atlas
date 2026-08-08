@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-v-2-rocket-site
 locations:
   - id: main
-    label: Germany
     country: Germany
     latitude: 51
     longitude: 9

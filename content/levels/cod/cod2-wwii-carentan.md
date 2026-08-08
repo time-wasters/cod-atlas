@@ -9,7 +9,6 @@ mode: multiplayer
 wikiArticle: codwiki-carentan
 locations:
   - id: main
-    label: Carentan
     country: France
     city: Carentan
     latitude: 49.30312

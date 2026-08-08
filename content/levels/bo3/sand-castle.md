@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-sand-castle
 locations:
   - id: main
-    label: Egypt
     country: Egypt
     latitude: 27
     longitude: 30

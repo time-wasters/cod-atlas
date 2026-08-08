@@ -7,8 +7,8 @@ mode: singleplayer
 wikiArticle: codwiki-camp-toccoa
 locations:
   - id: main
-    label: Toccoa
-    country: "USA: Georgia"
+    country: United States
+    region: Georgia
     city: Toccoa
     latitude: 34.57732
     longitude: -83.33239

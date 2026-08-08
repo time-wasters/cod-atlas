@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-sainte-marie-du-mont
 locations:
   - id: main
-    label: Sainte-Marie-du-Mont
     country: France
     city: Sainte-Marie-du-Mont
     latitude: 49.37893

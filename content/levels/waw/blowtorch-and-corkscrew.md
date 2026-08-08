@@ -7,10 +7,10 @@ mode: singleplayer
 wikiArticle: codwiki-blowtorch-and-corkscrew
 locations:
   - id: main
-    label: Wana Ridge, Sueyoshi Park
     country: Japan
-    region: Okinawa Prefecture
+    region: Okinawa
     city: Naha
+    landmark: Wana Ridge, Sueyoshi Park
     latitude: 26.22882
     longitude: 127.71437
     precision: approximate

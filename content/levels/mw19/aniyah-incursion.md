@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-aniyah-incursion
 locations:
   - id: main
-    label: Syria
     country: Syria
     latitude: 35
     longitude: 38

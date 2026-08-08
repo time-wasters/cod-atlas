@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-warsaw-railyard
 locations:
   - id: main
-    label: Warsaw
     country: Poland
     city: Warsaw
     latitude: 52.22977

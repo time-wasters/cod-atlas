@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-moscow-cold-war
 locations:
   - id: main
-    label: Moscow
     country: Russia
     city: Moscow
     latitude: 55.75204

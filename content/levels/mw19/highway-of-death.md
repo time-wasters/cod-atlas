@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-highway-of-death
 locations:
   - id: main
-    label: Syria
     country: Syria
     latitude: 35
     longitude: 38

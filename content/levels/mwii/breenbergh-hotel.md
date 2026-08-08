@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-breenbergh-hotel
 locations:
   - id: main
-    label: Netherlands
     country: Netherlands
     latitude: 52.5
     longitude: 5.75

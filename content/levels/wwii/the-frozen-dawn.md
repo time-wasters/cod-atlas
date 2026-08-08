@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-the-frozen-dawn
 locations:
   - id: main
-    label: Antarctica
     country: Antarctica
     latitude: -90
     longitude: 0

@@ -7,8 +7,8 @@ mode: multiplayer
 wikiArticle: codwiki-spire
 locations:
   - id: main
-    label: New York
-    country: "USA: New York"
+    country: United States
+    region: New York
     latitude: 42.9
     longitude: -75.5
     precision: country

@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-ambush-mission
 locations:
   - id: main
-    label: Belgium
     country: Belgium
     latitude: 50.83333333
     longitude: 4
@@ -16,8 +15,8 @@ locations:
     method: country-fallback
     primary: true
   - id: texas-2
-    label: Texas
-    country: "USA: Texas"
+    country: United States
+    region: Texas
     latitude: 31
     longitude: -99
     precision: country

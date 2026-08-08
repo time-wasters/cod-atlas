@@ -8,7 +8,6 @@ mode: multiplayer
 wikiArticle: codwiki-standoff
 locations:
   - id: main
-    label: Kyrgyzstan
     country: Kyrgyzstan
     latitude: 41
     longitude: 75

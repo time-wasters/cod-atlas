@@ -7,8 +7,8 @@ mode: singleplayer
 wikiArticle: codwiki-heavy-metal-level
 locations:
   - id: main
-    label: Maryland
-    country: "USA: Maryland"
+    country: United States
+    region: Maryland
     latitude: 39
     longitude: -76.7
     precision: country

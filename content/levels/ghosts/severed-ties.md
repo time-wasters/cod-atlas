@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-severed-ties
 locations:
   - id: main
-    label: Chile
     country: Chile
     latitude: -30
     longitude: -71

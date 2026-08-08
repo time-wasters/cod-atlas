@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-the-crossroads-call-of-duty-2
 locations:
   - id: main
-    label: France
     country: France
     latitude: 46
     longitude: 2

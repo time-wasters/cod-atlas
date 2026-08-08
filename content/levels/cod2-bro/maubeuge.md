@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-maubeuge
 locations:
   - id: main
-    label: Maubeuge
     country: France
     city: Maubeuge
     latitude: 50.27875

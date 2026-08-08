@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-elevation
 locations:
   - id: main
-    label: Nepal
     country: Nepal
     latitude: 28
     longitude: 84

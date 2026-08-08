@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-dunkirk
 locations:
   - id: main
-    label: Dunkirk
     country: France
     city: Dunkirk
     latitude: 51.0344

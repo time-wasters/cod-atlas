@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-berlin-level
 locations:
   - id: main
-    label: Berlin
     country: Germany
     city: Berlin
     latitude: 52.52437

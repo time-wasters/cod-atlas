@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-killhouse-call-of-duty-4
 locations:
   - id: main
-    label: United Kingdom
     country: United Kingdom
     latitude: 54
     longitude: -2

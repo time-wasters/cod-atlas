@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-voyage-of-despair
 locations:
   - id: main
-    label: Atlantic Ocean
     country: Atlantic Ocean
     latitude: 26
     longitude: -38

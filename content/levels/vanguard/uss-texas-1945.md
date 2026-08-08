@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-uss-texas
 locations:
   - id: main
-    label: Indonesia
     country: Indonesia
     latitude: -5
     longitude: 120

@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-groesten-haus
 locations:
   - id: main
-    label: Germany
     country: Germany
     latitude: 51
     longitude: 9

@@ -7,8 +7,8 @@ mode: multiplayer
 wikiArticle: codwiki-chasm
 locations:
   - id: main
-    label: California
-    country: "USA: California"
+    country: United States
+    region: California
     latitude: 36.8
     longitude: -119.4
     precision: country

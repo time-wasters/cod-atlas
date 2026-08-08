@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-vertigo
 locations:
   - id: main
-    label: India
     country: India
     latitude: 20
     longitude: 77

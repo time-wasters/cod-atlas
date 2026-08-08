@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-kursk-campaign
 locations:
   - id: main
-    label: Kursk
     country: Russia
     city: Kursk
     latitude: 51.72689

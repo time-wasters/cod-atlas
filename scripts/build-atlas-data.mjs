@@ -24,15 +24,8 @@ const validMethods = new Set([
 ]);
 const countryAliases = new Map([
   ["Czech Republic (Czechia)", "Czechia"],
-  ["Gibraltar (UK)", "Gibraltar"],
-  ["Japan (Okinawa)", "Japan"],
-  ["Midway Atoll (U.S.A)", "United States"],
   ["Myanmar (Burma)", "Myanmar"],
-  ["Northern Mariana Islands (U.S.A)", "Northern Mariana Islands"],
-  ["Okinawa (Japan)", "Japan"],
-  ["Scotland (UK)", "United Kingdom"],
   ["Turkey", "Türkiye"],
-  ["Washington D.C.", "United States"],
 ]);
 const flagCodesByCountryName = new Map(countries.flatMap((country) => [
   [country.name.common, country.cca2],
@@ -40,9 +33,7 @@ const flagCodesByCountryName = new Map(countries.flatMap((country) => [
 ]));
 
 function flagCodeForGroup(name) {
-  const countryName = name.startsWith("USA: ")
-    ? "United States"
-    : countryAliases.get(name) ?? name;
+  const countryName = countryAliases.get(name) ?? name;
   return flagCodesByCountryName.get(countryName) ?? null;
 }
 
@@ -64,6 +55,40 @@ function parseMarkdown(text, filename) {
 
 function requireValue(condition, message) {
   if (!condition) throw new Error(message);
+}
+
+function validateLocationUrl(value, field, filename, supportedHost) {
+  if (value == null) return;
+  requireValue(typeof value === "string", `${filename}: ${field} must be a URL string`);
+  let url;
+  try {
+    url = new URL(value);
+  } catch {
+    throw new Error(`${filename}: ${field} must be a valid URL`);
+  }
+  requireValue(url.protocol === "https:", `${filename}: ${field} must use HTTPS`);
+  requireValue(supportedHost(url.hostname), `${filename}: ${field} uses an unsupported host ${url.hostname}`);
+}
+
+function validateLocationUrls(urls, filename) {
+  if (urls == null) return;
+  requireValue(Array.isArray(urls), `${filename}: location urls must be an array`);
+  requireValue(urls.length > 0, `${filename}: location urls must not be empty`);
+  const providers = new Map([
+    ["googleMaps", (hostname) => hostname === "maps.app.goo.gl" || hostname === "maps.google.com" || hostname === "www.google.com"],
+    ["wikipedia", (hostname) => hostname === "wikipedia.org" || hostname.endsWith(".wikipedia.org")],
+  ]);
+  const seenProviders = new Set();
+  for (const item of urls) {
+    requireValue(item && typeof item === "object" && !Array.isArray(item), `${filename}: each location URL must be an object`);
+    const fields = Object.keys(item);
+    requireValue(fields.length === 1, `${filename}: each location URL must contain exactly one provider`);
+    const provider = fields[0];
+    requireValue(providers.has(provider), `${filename}: unsupported location URL provider ${provider}`);
+    requireValue(!seenProviders.has(provider), `${filename}: duplicate location URL provider ${provider}`);
+    seenProviders.add(provider);
+    validateLocationUrl(item[provider], `urls.${provider}`, filename, providers.get(provider));
+  }
 }
 
 const atlas = YAML.parse(await readFile(path.join(contentRoot, "atlas.yaml"), "utf8"));
@@ -111,9 +136,17 @@ for (const filename of levelFiles) {
     requireValue(location.id && !locationIds.has(location.id), `${filename}: duplicate or missing location id`);
     locationIds.add(location.id);
     requireValue(location.country, `${filename}: location country is required`);
+    requireValue(location.label == null, `${filename}: location label was replaced by landmark`);
+    for (const field of ["region", "city", "landmark"]) {
+      requireValue(
+        location[field] == null || (typeof location[field] === "string" && location[field].trim()),
+        `${filename}: location ${field} must be a non-empty string`,
+      );
+    }
     requireValue(validPrecisions.has(location.precision), `${filename}: invalid precision ${location.precision}`);
     requireValue(validConfidences.has(location.confidence), `${filename}: invalid or missing confidence ${location.confidence}`);
     requireValue(validMethods.has(location.method), `${filename}: invalid or missing method ${location.method}`);
+    validateLocationUrls(location.urls, filename);
     const hasLatitude = Number.isFinite(location.latitude);
     const hasLongitude = Number.isFinite(location.longitude);
     requireValue(hasLatitude === hasLongitude, `${filename}: latitude and longitude must be supplied together`);
@@ -157,13 +190,15 @@ for (const level of levels) {
       game: gameCodes,
       wiki: article.sourceUrl,
       wikiArticle: level.wikiArticle,
+      country: location.country,
       city: location.city ?? null,
       region: location.region ?? null,
-      label: location.label ?? location.city ?? location.country,
+      landmark: location.landmark ?? null,
       coordinates,
       precision: location.precision,
       confidence: location.confidence ?? (location.precision === "country" ? "fallback" : "medium"),
       method: location.method ?? null,
+      ...(location.urls ? { urls: location.urls } : {}),
       modes: [level.mode],
     });
   }

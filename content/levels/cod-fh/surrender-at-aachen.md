@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-surrender-at-aachen
 locations:
   - id: main
-    label: Aachen
     country: Germany
     city: Aachen
     latitude: 50.77664

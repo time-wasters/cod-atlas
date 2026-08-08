@@ -8,7 +8,6 @@ mode: multiplayer
 wikiArticle: codwiki-dome-world-at-war
 locations:
   - id: main
-    label: Germany
     country: Germany
     latitude: 51
     longitude: 9

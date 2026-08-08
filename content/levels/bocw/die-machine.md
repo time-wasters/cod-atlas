@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-die-maschine
 locations:
   - id: main
-    label: Poland
     country: Poland
     latitude: 52
     longitude: 20

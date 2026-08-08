@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-radar-map
 locations:
   - id: main
-    label: Indonesia
     country: Indonesia
     latitude: -5
     longitude: 120

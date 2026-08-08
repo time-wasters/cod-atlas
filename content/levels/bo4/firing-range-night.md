@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-firing-range-night
 locations:
   - id: main
-    label: Cuba
     country: Cuba
     latitude: 21.5
     longitude: -80

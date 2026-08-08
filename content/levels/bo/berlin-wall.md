@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-berlin-wall
 locations:
   - id: main
-    label: Berlin
     country: Germany
     city: Berlin
     latitude: 52.52437

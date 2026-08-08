@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-legends-never-die
 locations:
   - id: main
-    label: Venezuela
     country: Venezuela
     latitude: 8
     longitude: -66

@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-close-air
 locations:
   - id: main
-    label: Mexico
     country: Mexico
     latitude: 23
     longitude: -102

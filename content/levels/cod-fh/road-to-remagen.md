@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-road-to-remagen
 locations:
   - id: main
-    label: Remagen
     country: Germany
     city: Remagen
     latitude: 50.57879

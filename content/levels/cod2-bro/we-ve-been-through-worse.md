@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-we-ve-been-through-worse
 locations:
   - id: main
-    label: France
     country: France
     latitude: 46
     longitude: 2

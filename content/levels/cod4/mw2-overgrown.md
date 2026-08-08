@@ -8,7 +8,6 @@ mode: multiplayer
 wikiArticle: codwiki-overgrown
 locations:
   - id: main
-    label: Russia
     country: Russia
     latitude: 60
     longitude: 100

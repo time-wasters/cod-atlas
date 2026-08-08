@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-altavilla
 locations:
   - id: main
-    label: Altavilla Silentina
     country: Italy
     city: Altavilla Silentina
     latitude: 40.53012

@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-contraband-hurricane
 locations:
   - id: main
-    label: Colombia
     country: Colombia
     latitude: 4
     longitude: -72

@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-overflow
 locations:
   - id: main
-    label: Pakistan
     country: Pakistan
     latitude: 30
     longitude: 70

@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-sovereign
 locations:
   - id: main
-    label: Rio de Janeiro
     country: Brazil
     city: Rio de Janeiro
     latitude: -22.90642

@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-el-alamein
 locations:
   - id: main
-    label: Al ‘Alamayn
     country: Egypt
     city: Al ‘Alamayn
     latitude: 30.83007

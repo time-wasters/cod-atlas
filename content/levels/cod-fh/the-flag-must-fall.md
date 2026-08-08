@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-the-flag-must-fall
 locations:
   - id: main
-    label: Russia
     country: Russia
     latitude: 60
     longitude: 100

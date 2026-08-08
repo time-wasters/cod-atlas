@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-lucky-thirteen
 locations:
   - id: main
-    label: Netherlands
     country: Netherlands
     latitude: 52.5
     longitude: 5.75

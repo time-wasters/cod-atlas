@@ -9,7 +9,6 @@ mode: multiplayer
 wikiArticle: codwiki-summit
 locations:
   - id: main
-    label: Russia
     country: Russia
     latitude: 60
     longitude: 100

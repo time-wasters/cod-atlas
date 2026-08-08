@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-apocalypse-map
 locations:
   - id: main
-    label: Laos
     country: Laos
     latitude: 18
     longitude: 105

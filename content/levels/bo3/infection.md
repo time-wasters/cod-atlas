@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-infection-map
 locations:
   - id: main
-    label: Belgium
     country: Belgium
     latitude: 50.83333333
     longitude: 4

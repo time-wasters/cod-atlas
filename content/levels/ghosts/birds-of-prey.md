@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-birds-of-prey-ghosts
 locations:
   - id: main
-    label: Gulf of Mexico
     country: Gulf of Mexico
     latitude: 24.5
     longitude: -89

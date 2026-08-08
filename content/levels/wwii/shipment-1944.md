@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-shipment-1944
 locations:
   - id: main
-    label: France
     country: France
     latitude: 46
     longitude: 2

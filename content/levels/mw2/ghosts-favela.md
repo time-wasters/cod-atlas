@@ -8,7 +8,6 @@ mode: multiplayer
 wikiArticle: codwiki-favela
 locations:
   - id: main
-    label: Brazil
     country: Brazil
     latitude: -10
     longitude: -55

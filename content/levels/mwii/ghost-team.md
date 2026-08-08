@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-ghost-team
 locations:
   - id: main
-    label: Mexico
     country: Mexico
     latitude: 23
     longitude: -102

@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-pod
 locations:
   - id: main
-    label: Taiwan
     country: Taiwan
     latitude: 23.5
     longitude: 121

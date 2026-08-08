@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-arnhem-map
 locations:
   - id: main
-    label: Arnhem
     country: Netherlands
     city: Arnhem
     latitude: 51.98

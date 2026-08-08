@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-the-only-easy-day-was-yesterday
 locations:
   - id: main
-    label: Russia
     country: Russia
     latitude: 60
     longitude: 100

@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-numa-numa-trail
 locations:
   - id: main
-    label: Papua New Guinea
     country: Papua New Guinea
     latitude: -6
     longitude: 147

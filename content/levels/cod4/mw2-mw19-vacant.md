@@ -9,7 +9,6 @@ mode: multiplayer
 wikiArticle: codwiki-vacant
 locations:
   - id: main
-    label: Ukraine
     country: Ukraine
     latitude: 49
     longitude: 32

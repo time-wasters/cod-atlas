@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-valderas-museum
 locations:
   - id: main
-    label: Spain
     country: Spain
     latitude: 40
     longitude: -4

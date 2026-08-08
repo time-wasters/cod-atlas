@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-going-dark
 locations:
   - id: main
-    label: Moldova
     country: Moldova
     latitude: 47
     longitude: 29

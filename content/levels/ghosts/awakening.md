@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-awakening
 locations:
   - id: main
-    label: Australia
     country: Australia
     latitude: -27
     longitude: 133

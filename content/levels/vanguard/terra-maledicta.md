@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-terra-maledicta
 locations:
   - id: main
-    label: Egypt
     country: Egypt
     latitude: 27
     longitude: 30
@@ -16,7 +15,6 @@ locations:
     method: country-fallback
     primary: true
   - id: germany-2
-    label: Germany
     country: Germany
     latitude: 51
     longitude: 9

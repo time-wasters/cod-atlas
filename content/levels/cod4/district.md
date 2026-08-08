@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-district
 locations:
   - id: main
-    label: Iraq
     country: Iraq
     latitude: 33
     longitude: 44

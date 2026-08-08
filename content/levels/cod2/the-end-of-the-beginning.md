@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-the-end-of-the-beginning
 locations:
   - id: main
-    label: Egypt
     country: Egypt
     latitude: 27
     longitude: 30

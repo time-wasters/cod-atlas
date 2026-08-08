@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-frost-black-ops-ii-map
 locations:
   - id: main
-    label: Netherlands
     country: Netherlands
     latitude: 52.5
     longitude: 5.75

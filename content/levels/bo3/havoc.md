@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-havoc-black-ops-iii
 locations:
   - id: main
-    label: Egypt
     country: Egypt
     latitude: 27
     longitude: 30

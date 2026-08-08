@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-casino-black-ops-4
 locations:
   - id: main
-    label: Monaco
     country: Monaco
     latitude: 43.73333333
     longitude: 7.4

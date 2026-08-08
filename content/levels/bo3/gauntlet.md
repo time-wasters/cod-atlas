@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-gauntlet
 locations:
   - id: main
-    label: Angola
     country: Angola
     latitude: -12.5
     longitude: 18.5

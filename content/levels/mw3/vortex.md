@@ -7,8 +7,8 @@ mode: multiplayer
 wikiArticle: codwiki-vortex
 locations:
   - id: main
-    label: Kansas
-    country: "USA: Kansas"
+    country: United States
+    region: Kansas
     latitude: 38.5
     longitude: -98.2
     precision: country

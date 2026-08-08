@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-operation-trace-kill
 locations:
   - id: main
-    label: Sun’s Orbit
     country: Sun’s Orbit
     precision: off-world
     confidence: fallback

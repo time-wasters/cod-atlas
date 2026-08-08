@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-die-rise
 locations:
   - id: main
-    label: China
     country: China
     latitude: 35
     longitude: 105

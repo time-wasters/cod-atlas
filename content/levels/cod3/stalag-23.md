@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-stalag-23
 locations:
   - id: main
-    label: France
     country: France
     latitude: 46
     longitude: 2

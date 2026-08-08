@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-stalingrad-wwii
 locations:
   - id: main
-    label: Volgograd
     country: Russia
     city: Volgograd
     latitude: 48.71378

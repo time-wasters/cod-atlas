@@ -11,13 +11,30 @@ type Entry = {
   title: string;
   game: string;
   wiki: string;
+  country: string;
+  region?: string | null;
   city?: string | null;
+  landmark?: string | null;
   coordinates?: [number, number] | null;
   precision: "exact" | "approximate" | "city" | "region" | "country" | "off-world";
   confidence?: "high" | "medium" | "fallback";
   method?: string;
+  urls?: Partial<Record<"googleMaps" | "wikipedia", string>>[];
   modes: ("singleplayer" | "multiplayer")[];
 };
+
+function locationUrl(entry: Entry, provider: "googleMaps" | "wikipedia") {
+  return entry.urls?.find((item) => item[provider])?.[provider] ?? null;
+}
+
+function locationName(entry: Entry) {
+  return entry.landmark ?? entry.city ?? entry.region ?? entry.country;
+}
+
+function locationPath(entry: Entry) {
+  return [entry.country, entry.region, entry.city, entry.landmark].filter(Boolean).join(" › ");
+}
+
 type Group = {
   name: string;
   coordinates: [number, number] | null;
@@ -71,7 +88,7 @@ function escapeXml(value: string) {
 export default function Home() {
   const [query, setQuery] = useState("");
   const [game, setGame] = useState("all");
-  const [region, setRegion] = useState("all");
+  const [country, setCountry] = useState("all");
   const [precision, setPrecision] = useState("all");
   const [showSingleplayer, setShowSingleplayer] = useState(true);
   const [showMultiplayer, setShowMultiplayer] = useState(true);
@@ -92,7 +109,7 @@ export default function Home() {
     );
     return data.games.filter((item) => representedCodes.has(item.code)).sort(compareGames);
   }, [groups]);
-  const regions = useMemo(
+  const countries = useMemo(
     () => groups.map((group) => group.name).sort((a, b) => a.localeCompare(b)),
     [groups],
   );
@@ -112,14 +129,19 @@ export default function Home() {
           const matchesText =
             !needle ||
             group.name.toLowerCase().includes(needle) ||
+            entry.region?.toLowerCase().includes(needle) ||
+            entry.city?.toLowerCase().includes(needle) ||
+            entry.landmark?.toLowerCase().includes(needle) ||
             entry.title.toLowerCase().includes(needle) ||
             entry.game.toLowerCase().includes(needle);
           return matchesGame && matchesPrecision && matchesMode && matchesText;
         }),
       }))
-      .filter((group) => group.entries.length && (region === "all" || group.name === region));
-  }, [groups, game, precision, query, region, showMultiplayer, showSingleplayer]);
+      .filter((group) => group.entries.length && (country === "all" || group.name === country));
+  }, [country, groups, game, precision, query, showMultiplayer, showSingleplayer]);
   const resultCount = filtered.reduce((sum, group) => sum + group.entries.length, 0);
+  const selectedGoogleMapsUrl = locationUrl(selected.entry, "googleMaps");
+  const selectedWikipediaUrl = locationUrl(selected.entry, "wikipedia");
 
   const selectEntry = useCallback((group: Group, entry: Entry) => setSelected({ group, entry }), []);
 
@@ -172,11 +194,11 @@ export default function Home() {
             iconSize: [active ? 30 : 18, active ? 30 : 18],
             iconAnchor: [active ? 15 : 9, active ? 15 : 9],
           }),
-          title: `${entry.title} — ${entry.city ?? group.name}`,
+          title: `${entry.title} — ${locationName(entry)}`,
           keyboard: true,
         });
         marker.on("click", () => selectEntry(group, entry));
-        marker.bindTooltip(`${entry.title} · ${entry.city ?? group.name}`, {
+        marker.bindTooltip(`${entry.title} · ${locationName(entry)}`, {
           direction: "top",
           offset: [0, -8],
         });
@@ -192,7 +214,7 @@ export default function Home() {
         if (!entry.coordinates) return [];
         const [lat, lng] = entry.coordinates;
         return `<Placemark><name>${escapeXml(entry.title)}</name><description>${escapeXml(
-          `${entry.game} · ${entry.city ?? group.name}, ${group.name} · ${entry.method === "manual-approximate" ? "approximate historical position" : entry.precision === "city" ? "city-level" : "country fallback"} · ${entry.wiki}`,
+          `${entry.game} · ${locationPath(entry)} · ${entry.method === "manual-approximate" ? "approximate historical position" : entry.precision === "city" ? "city-level" : "country fallback"} · ${entry.wiki}`,
         )}</description><Point><coordinates>${lng},${lat},0</coordinates></Point></Placemark>`;
       });
     });
@@ -247,10 +269,10 @@ export default function Home() {
             </select>
           </label>
           <label>
-            <span>Country / region</span>
-            <select value={region} onChange={(event) => setRegion(event.target.value)}>
-              <option value="all">All regions</option>
-              {regions.map((item, index) => <option key={`${item}-${index}`}>{item}</option>)}
+            <span>Country</span>
+            <select value={country} onChange={(event) => setCountry(event.target.value)}>
+              <option value="all">All countries</option>
+              {countries.map((item, index) => <option key={`${item}-${index}`}>{item}</option>)}
             </select>
           </label>
         </div>
@@ -339,7 +361,7 @@ export default function Home() {
               <span
                 className={`flag:${selected.group.flagCode} intel-country-flag`}
                 role="img"
-                aria-label={`${selected.group.name} flag`}
+                aria-label={`${selected.entry.country} flag`}
               />
             ) : (
               <svg
@@ -350,23 +372,49 @@ export default function Home() {
                 <circle cx="9" cy="9" r="6.5" />
               </svg>
             )}
-            <span className="intel-country-name">{selected.group.name}</span>
+            <span className="intel-country-name">{selected.entry.country}</span>
           </div>
-          <h2>{selected.entry.title}</h2>
-          <p>{selected.entry.city ? `${selected.entry.city}, ${selected.group.name}` : selected.group.name} · {selected.entry.game}</p>
+          {(selected.entry.region || selected.entry.city || selected.entry.landmark) && (
+            <div className="location-taxonomy" aria-label="Location hierarchy">
+              {selected.entry.region && (
+                <div className="taxonomy-tier is-region"><span>Region</span><strong>{selected.entry.region}</strong></div>
+              )}
+              {selected.entry.city && (
+                <div className="taxonomy-tier is-city"><span>City</span><strong>{selected.entry.city}</strong></div>
+              )}
+              {selected.entry.landmark && (
+                <div className="taxonomy-tier is-landmark"><span>Landmark</span><strong>{selected.entry.landmark}</strong></div>
+              )}
+            </div>
+          )}
+          <div className="mission-heading">
+            <span>Level</span>
+            <h2>{selected.entry.title}</h2>
+            <p>{selected.entry.game}</p>
+          </div>
           <div className={`precision-badge ${selected.entry.precision === "approximate" ? "is-approximate" : !["country", "off-world"].includes(selected.entry.precision) ? "is-city" : "is-country"}`}>
             {selected.entry.precision === "approximate" ? "Approximate historical position" : !["country", "off-world"].includes(selected.entry.precision) ? `Localized · ${selected.entry.confidence} confidence` : selected.entry.precision === "off-world" ? "Off-world location" : "No city evidence · country fallback"}
           </div>
           <div className="intel-entries">
             {selected.group.entries.slice(0, 8).map((entry, index) => (
               <div className="intel-entry" key={`${entry.title}-${index}`}>
-                <button onClick={() => setSelected({ group: selected.group, entry })}><strong>{entry.title}</strong><span>{entry.city ?? selected.group.name} · {entry.game}</span></button>
+                <button onClick={() => setSelected({ group: selected.group, entry })}><strong>{entry.title}</strong><span>{locationName(entry)} · {entry.game}</span></button>
                 <a href={entry.wiki} target="_blank" rel="noreferrer" aria-label={`Open ${entry.title} on CoD Wiki`}>↗</a>
               </div>
             ))}
             {selected.group.entries.length > 8 && <div className="more-row">+ {selected.group.entries.length - 8} more in this region</div>}
           </div>
-          <a className="wiki-button" href={selected.entry.wiki} target="_blank" rel="noreferrer">Open this Wiki entry ↗</a>
+          {(selectedGoogleMapsUrl || selectedWikipediaUrl) && (
+            <div className="place-links" aria-label="Place links">
+              {selectedGoogleMapsUrl && (
+                <a href={selectedGoogleMapsUrl} target="_blank" rel="noreferrer">Google Maps ↗</a>
+              )}
+              {selectedWikipediaUrl && (
+                <a href={selectedWikipediaUrl} target="_blank" rel="noreferrer">Wikipedia ↗</a>
+              )}
+            </div>
+          )}
+          <a className="wiki-button" href={selected.entry.wiki} target="_blank" rel="noreferrer">Open on CoD Wiki ↗</a>
         </article>
       </section>
     </main>

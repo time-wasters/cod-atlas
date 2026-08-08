@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-operation-dark-quarry
 locations:
   - id: main
-    label: Sun’s Orbit
     country: Sun’s Orbit
     precision: off-world
     confidence: fallback

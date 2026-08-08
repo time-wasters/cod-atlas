@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-flooded
 locations:
   - id: main
-    label: Venezuela
     country: Venezuela
     latitude: 8
     longitude: -66

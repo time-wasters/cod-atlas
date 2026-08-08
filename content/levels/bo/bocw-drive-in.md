@@ -8,8 +8,8 @@ mode: multiplayer
 wikiArticle: codwiki-drive-in
 locations:
   - id: main
-    label: Nebraska
-    country: "USA: Nebraska"
+    country: United States
+    region: Nebraska
     latitude: 41.5
     longitude: -99.8
     precision: country

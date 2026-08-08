@@ -7,8 +7,8 @@ mode: singleplayer
 wikiArticle: codwiki-overwatch-modern-warfare-3-defiance
 locations:
   - id: main
-    label: Alaska
-    country: "USA: Alaska"
+    country: United States
+    region: Alaska
     latitude: 64.2
     longitude: -152
     precision: country

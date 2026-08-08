@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-aftermath-call-of-duty-4
 locations:
   - id: main
-    label: Iraq
     country: Iraq
     latitude: 33
     longitude: 44

@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-takedown-mission
 locations:
   - id: main
-    label: Brazil
     country: Brazil
     latitude: -10
     longitude: -55

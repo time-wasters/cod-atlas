@@ -7,8 +7,8 @@ mode: singleplayer
 wikiArticle: codwiki-operation-chaos
 locations:
   - id: main
-    label: New Mexico
-    country: "USA: New Mexico"
+    country: United States
+    region: New Mexico
     latitude: 34.5
     longitude: -106
     precision: country

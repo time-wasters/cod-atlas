@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-judgment-day
 locations:
   - id: main
-    label: Haiti
     country: Haiti
     latitude: 19
     longitude: -72.41666666

@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-redlight-greenlight
 locations:
   - id: main
-    label: Ukraine
     country: Ukraine
     latitude: 49
     longitude: 32

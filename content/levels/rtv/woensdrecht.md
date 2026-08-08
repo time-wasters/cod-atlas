@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-woensdrecht
 locations:
   - id: main
-    label: Woensdrecht
     country: Netherlands
     city: Woensdrecht
     latitude: 51.42897

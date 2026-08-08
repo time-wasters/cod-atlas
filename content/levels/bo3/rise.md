@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-rise
 locations:
   - id: main
-    label: Switzerland
     country: Switzerland
     latitude: 47
     longitude: 8

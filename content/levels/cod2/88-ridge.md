@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-88-ridge
 locations:
   - id: main
-    label: Libya
     country: Libya
     latitude: 25
     longitude: 17

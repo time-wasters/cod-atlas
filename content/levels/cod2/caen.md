@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-caen
 locations:
   - id: main
-    label: Caen
     country: France
     city: Caen
     latitude: 49.18585

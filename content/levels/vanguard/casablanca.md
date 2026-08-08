@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-casablanca
 locations:
   - id: main
-    label: Casablanca
     country: Morocco
     city: Casablanca
     latitude: 33.58831

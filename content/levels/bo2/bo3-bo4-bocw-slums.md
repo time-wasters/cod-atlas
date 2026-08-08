@@ -10,7 +10,6 @@ mode: multiplayer
 wikiArticle: codwiki-slums
 locations:
   - id: main
-    label: Panama
     country: Panama
     latitude: 9
     longitude: -80

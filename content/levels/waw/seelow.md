@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-seelow
 locations:
   - id: main
-    label: Seelow
     country: Germany
     city: Seelow
     latitude: 52.53392

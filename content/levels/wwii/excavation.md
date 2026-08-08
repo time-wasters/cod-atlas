@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-excavation
 locations:
   - id: main
-    label: Algeria
     country: Algeria
     latitude: 28
     longitude: 3

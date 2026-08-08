@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-zarqwa-hydroelectric
 locations:
   - id: main
-    label: Yemen
     country: Yemen
     latitude: 15
     longitude: 48

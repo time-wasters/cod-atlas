@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-saint-lo-level
 locations:
   - id: main
-    label: Saint-Lô
     country: France
     city: Saint-Lô
     latitude: 49.11624

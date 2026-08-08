@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-yemen-map
 locations:
   - id: main
-    label: Yemen
     country: Yemen
     latitude: 15
     longitude: 48

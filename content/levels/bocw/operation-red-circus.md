@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-operation-red-circus
 locations:
   - id: main
-    label: Uzbekistan
     country: Uzbekistan
     latitude: 41
     longitude: 64

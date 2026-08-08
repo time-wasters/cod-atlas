@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-lair
 locations:
   - id: main
-    label: Maldives
     country: Maldives
     latitude: 3.25
     longitude: 73

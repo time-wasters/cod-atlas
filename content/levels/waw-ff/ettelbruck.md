@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-ettelbruck
 locations:
   - id: main
-    label: Ettelbruck
     country: Luxembourg
     city: Ettelbruck
     latitude: 49.8475

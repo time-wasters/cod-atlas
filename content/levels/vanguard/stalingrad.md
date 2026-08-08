@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-stalingrad-vanguard
 locations:
   - id: main
-    label: Volgograd
     country: Russia
     city: Volgograd
     latitude: 48.71378

@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-operation-d-con
 locations:
   - id: main
-    label: Venus’ Orbit
     country: Venus’ Orbit
     precision: off-world
     confidence: fallback

@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-matmata
 locations:
   - id: main
-    label: Matmata
     country: Tunisia
     city: Matmata
     latitude: 33.54445

@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-crash-site
 locations:
   - id: main
-    label: Laos
     country: Laos
     latitude: 18
     longitude: 105

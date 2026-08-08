@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-kharkov-1
 locations:
   - id: main
-    label: Kharkiv
     country: Ukraine
     city: Kharkiv
     latitude: 49.98177

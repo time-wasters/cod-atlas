@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-down-the-rabbit-hole
 locations:
   - id: main
-    label: Russia
     country: Russia
     latitude: 60
     longitude: 100

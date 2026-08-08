@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-ponyri
 locations:
   - id: main
-    label: Ponyri
     country: Russia
     city: Ponyri
     latitude: 52.31839

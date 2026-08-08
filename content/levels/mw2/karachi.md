@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-karachi
 locations:
   - id: main
-    label: Karachi
     country: Pakistan
     city: Karachi
     latitude: 24.8608

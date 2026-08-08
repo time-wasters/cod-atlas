@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-black-cats
 locations:
   - id: main
-    label: Philippine Sea
     country: Philippine Sea
     latitude: 18
     longitude: 132

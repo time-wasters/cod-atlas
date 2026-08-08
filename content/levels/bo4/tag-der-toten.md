@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-tag-der-toten
 locations:
   - id: main
-    label: Russia
     country: Russia
     latitude: 60
     longitude: 100

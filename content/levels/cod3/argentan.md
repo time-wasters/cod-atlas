@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-argentan
 locations:
   - id: main
-    label: Argentan
     country: France
     city: Argentan
     latitude: 48.74441

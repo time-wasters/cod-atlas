@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-gondola-map
 locations:
   - id: main
-    label: Norway
     country: Norway
     latitude: 62
     longitude: 10

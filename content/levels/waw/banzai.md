@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-banzai-map
 locations:
   - id: main
-    label: Thailand
     country: Thailand
     latitude: 15
     longitude: 100

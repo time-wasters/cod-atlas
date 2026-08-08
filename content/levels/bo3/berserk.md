@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-berserk
 locations:
   - id: main
-    label: Sweden
     country: Sweden
     latitude: 62
     longitude: 15

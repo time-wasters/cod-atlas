@@ -47,8 +47,11 @@ Required fields:
 - `locations`: one or more embedded location records.
 
 One level can embed multiple locations. Each location has a locally unique
-`id`, a country/group name, and normally coordinates. Coordinates are not
-deduplicated across levels.
+`id`, a country, and normally coordinates. Optional geographic detail follows
+the hierarchy `country` → `region` → `city` → `landmark`. A region may be a
+state, province, constituent country, island, territory, or similar area;
+landmarks are named sites such as rivers, castles, and buildings. Coordinates
+are not deduplicated across levels.
 
 Precision values:
 

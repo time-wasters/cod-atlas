@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-aniyah-palace
 locations:
   - id: main
-    label: Syria
     country: Syria
     latitude: 35
     longitude: 38
@@ -16,7 +15,6 @@ locations:
     method: country-fallback
     primary: true
   - id: syria-2
-    label: Syria
     country: Syria
     latitude: 35
     longitude: 38

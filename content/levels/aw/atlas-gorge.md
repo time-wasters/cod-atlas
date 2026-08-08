@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-atlas-gorge
 locations:
   - id: main
-    label: China
     country: China
     latitude: 35
     longitude: 105

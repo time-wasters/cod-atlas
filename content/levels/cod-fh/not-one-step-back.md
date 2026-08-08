@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-not-one-step-back
 locations:
   - id: main
-    label: Russia
     country: Russia
     latitude: 60
     longitude: 100

@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-just-like-old-times
 locations:
   - id: main
-    label: Afghanistan
     country: Afghanistan
     latitude: 33
     longitude: 65

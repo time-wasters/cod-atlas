@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-carbon
 locations:
   - id: main
-    label: Somalia
     country: Somalia
     latitude: 10
     longitude: 49

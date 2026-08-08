@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-the-ghost-killer
 locations:
   - id: main
-    label: Chile
     country: Chile
     latitude: -30
     longitude: -71

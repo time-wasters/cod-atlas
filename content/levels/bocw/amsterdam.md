@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-amsterdam-map
 locations:
   - id: main
-    label: Amsterdam
     country: Netherlands
     city: Amsterdam
     latitude: 52.37403

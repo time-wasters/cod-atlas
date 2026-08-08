@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-black-ops-level
 locations:
   - id: main
-    label: Ethiopia
     country: Ethiopia
     latitude: 8
     longitude: 38

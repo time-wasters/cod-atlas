@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-kasserine
 locations:
   - id: main
-    label: Kasserine
     country: Tunisia
     city: Kasserine
     latitude: 35.16758

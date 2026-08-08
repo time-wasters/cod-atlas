@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-operation-husky-wwii
 locations:
   - id: main
-    label: Italy
     country: Italy
     latitude: 42.83333333
     longitude: 12.83333333

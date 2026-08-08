@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-induction
 locations:
   - id: main
-    label: South Korea
     country: South Korea
     latitude: 37
     longitude: 127.5

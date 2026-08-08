@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-piccadilly-level
 locations:
   - id: main
-    label: United Kingdom
     country: United Kingdom
     latitude: 54
     longitude: -2

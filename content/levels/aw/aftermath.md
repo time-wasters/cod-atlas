@@ -7,8 +7,8 @@ mode: singleplayer
 wikiArticle: codwiki-aftermath-advanced-warfare
 locations:
   - id: main
-    label: Michigan
-    country: "USA: Michigan"
+    country: United States
+    region: Michigan
     latitude: 44.3
     longitude: -85.6
     precision: country

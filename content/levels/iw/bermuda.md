@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-bermuda
 locations:
   - id: main
-    label: Atlantic Ocean
     country: Atlantic Ocean
     latitude: 26
     longitude: -38

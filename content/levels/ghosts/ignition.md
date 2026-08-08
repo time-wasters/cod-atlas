@@ -7,8 +7,8 @@ mode: multiplayer
 wikiArticle: codwiki-ignition
 locations:
   - id: main
-    label: Florida
-    country: "USA: Florida"
+    country: United States
+    region: Florida
     latitude: 27.8
     longitude: -81.7
     precision: country

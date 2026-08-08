@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-madagascar
 locations:
   - id: main
-    label: Madagascar
     country: Madagascar
     latitude: -20
     longitude: 47

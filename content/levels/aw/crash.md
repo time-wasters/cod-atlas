@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-crash-mission
 locations:
   - id: main
-    label: Antarctica
     country: Antarctica
     latitude: -90
     longitude: 0

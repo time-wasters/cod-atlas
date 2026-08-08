@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-operation-black-flag
 locations:
   - id: main
-    label: Switzerland
     country: Switzerland
     latitude: 47
     longitude: 8

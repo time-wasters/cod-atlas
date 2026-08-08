@@ -7,10 +7,10 @@ mode: singleplayer
 wikiArticle: codwiki-laison-river
 locations:
   - id: main
-    label: Laizon River near Falaise
     country: France
     region: Normandy
     city: Falaise
+    landmark: Laizon River
     latitude: 48.944742
     longitude: -0.229523
     precision: approximate

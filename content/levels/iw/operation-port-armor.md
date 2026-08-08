@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-operation-port-armor
 locations:
   - id: main
-    label: Moon
     country: Moon
     precision: off-world
     confidence: fallback

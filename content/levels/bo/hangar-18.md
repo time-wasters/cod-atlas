@@ -7,8 +7,8 @@ mode: multiplayer
 wikiArticle: codwiki-hangar-18
 locations:
   - id: main
-    label: Nevada
-    country: "USA: Nevada"
+    country: United States
+    region: Nevada
     latitude: 39.3
     longitude: -116.6
     precision: country

@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-uss-texas
 locations:
   - id: main
-    label: English Channel
     country: English Channel
     latitude: 50.2
     longitude: -1.2

@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-the-rats-of-tobruk
 locations:
   - id: main
-    label: Tobruk
     country: Libya
     city: Tobruk
     latitude: 32.08963

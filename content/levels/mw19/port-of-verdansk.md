@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-port-of-verdansk
 locations:
   - id: main
-    label: Ukraine
     country: Ukraine
     latitude: 49
     longitude: 32

@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-ops-m-i-a
 locations:
   - id: main
-    label: Nicaragua
     country: Nicaragua
     latitude: 13
     longitude: -85

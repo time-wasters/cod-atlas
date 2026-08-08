@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-rouen
 locations:
   - id: main
-    label: Rouen
     country: France
     city: Rouen
     latitude: 49.44313

@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-cliffhanger-mission
 locations:
   - id: main
-    label: Kazakhstan
     country: Kazakhstan
     latitude: 48
     longitude: 68

@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-operation-burn-water
 locations:
   - id: main
-    label: Titan (Saturn Moon)
     country: Titan (Saturn Moon)
     precision: off-world
     confidence: fallback

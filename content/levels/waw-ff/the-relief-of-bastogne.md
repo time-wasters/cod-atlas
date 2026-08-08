@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-the-relief-of-bastogne
 locations:
   - id: main
-    label: Bastogne
     country: Belgium
     city: Bastogne
     latitude: 50.00347

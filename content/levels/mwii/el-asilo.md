@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-el-asilo
 locations:
   - id: main
-    label: Mexico
     country: Mexico
     latitude: 23
     longitude: -102

@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-crossroads-cold-war
 locations:
   - id: main
-    label: Uzbekistan
     country: Uzbekistan
     latitude: 41
     longitude: 64

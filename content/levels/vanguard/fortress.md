@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-fortress
 locations:
   - id: main
-    label: Malta
     country: Malta
     latitude: 35.83333333
     longitude: 14.58333333

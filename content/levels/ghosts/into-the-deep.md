@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-into-the-deep
 locations:
   - id: main
-    label: Atlantic Ocean
     country: Atlantic Ocean
     latitude: 26
     longitude: -38

@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-battery
 locations:
   - id: main
-    label: Philippines
     country: Philippines
     latitude: 13
     longitude: 122

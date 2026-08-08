@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-executive-order
 locations:
   - id: main
-    label: Kazakhstan
     country: Kazakhstan
     latitude: 48
     longitude: 68

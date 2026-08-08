@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-rhine-crossing
 locations:
   - id: main
-    label: Germany
     country: Germany
     latitude: 51
     longitude: 9

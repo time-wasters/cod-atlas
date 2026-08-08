@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-containment
 locations:
   - id: main
-    label: Mexico
     country: Mexico
     latitude: 23
     longitude: -102

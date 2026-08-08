@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-call-of-duty-roads-to-victory
 locations:
   - id: main
-    label: Al ‘Alamayn
     country: Egypt
     city: Al ‘Alamayn
     latitude: 30.83007

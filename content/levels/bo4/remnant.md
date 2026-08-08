@@ -7,8 +7,8 @@ mode: multiplayer
 wikiArticle: codwiki-remnant
 locations:
   - id: main
-    label: Louisiana
-    country: "USA: Louisiana"
+    country: United States
+    region: Louisiana
     latitude: 31
     longitude: -92
     precision: country

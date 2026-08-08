@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-lookout
 locations:
   - id: main
-    label: Afghanistan
     country: Afghanistan
     latitude: 33
     longitude: 65

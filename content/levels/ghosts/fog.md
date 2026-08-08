@@ -7,8 +7,8 @@ mode: multiplayer
 wikiArticle: codwiki-fog
 locations:
   - id: main
-    label: Washington
-    country: "USA: Washington"
+    country: United States
+    region: Washington
     latitude: 47.4
     longitude: -120.7
     precision: country

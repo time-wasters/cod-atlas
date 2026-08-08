@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-ancient-evil
 locations:
   - id: main
-    label: Greece
     country: Greece
     latitude: 39
     longitude: 22

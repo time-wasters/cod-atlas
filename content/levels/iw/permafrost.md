@@ -7,8 +7,8 @@ mode: multiplayer
 wikiArticle: codwiki-permafrost
 locations:
   - id: main
-    label: Illinois
-    country: "USA: Illinois"
+    country: United States
+    region: Illinois
     latitude: 40
     longitude: -89.2
     precision: country

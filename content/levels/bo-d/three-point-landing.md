@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-three-point-landing
 locations:
   - id: main
-    label: Russia
     country: Russia
     latitude: 60
     longitude: 100

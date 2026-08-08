@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-end-of-the-line-cold-war
 locations:
   - id: main
-    label: Cuba
     country: Cuba
     latitude: 21.5
     longitude: -80

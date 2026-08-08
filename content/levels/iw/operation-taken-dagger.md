@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-operation-taken-dagger
 locations:
   - id: main
-    label: Neptune’s Orbit
     country: Neptune’s Orbit
     precision: off-world
     confidence: fallback

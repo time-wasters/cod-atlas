@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-bizerte
 locations:
   - id: main
-    label: Bizerte
     country: Tunisia
     city: Bizerte
     latitude: 37.27442

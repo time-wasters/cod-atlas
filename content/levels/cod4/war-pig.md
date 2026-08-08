@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-war-pig-mission
 locations:
   - id: main
-    label: Iraq
     country: Iraq
     latitude: 33
     longitude: 44

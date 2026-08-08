@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-demon-within
 locations:
   - id: main
-    label: Belgium
     country: Belgium
     latitude: 50.83333333
     longitude: 4
@@ -16,7 +15,6 @@ locations:
     method: country-fallback
     primary: true
   - id: egypt-2
-    label: Egypt
     country: Egypt
     latitude: 27
     longitude: 30

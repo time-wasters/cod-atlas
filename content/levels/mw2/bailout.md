@@ -7,8 +7,8 @@ mode: multiplayer
 wikiArticle: codwiki-bailout
 locations:
   - id: main
-    label: Virginia
-    country: "USA: Virginia"
+    country: United States
+    region: Virginia
     latitude: 37.5
     longitude: -78.8
     precision: country

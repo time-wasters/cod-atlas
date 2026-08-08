@@ -105,7 +105,7 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
 
 .kml-button { min-height: 42px; border: 1px solid var(--amber-dark); border-radius: 4px; color: #17140c; background: linear-gradient(#e0a126, #b97d16); font-size: 11px; font-weight: 750; letter-spacing: .05em; cursor: pointer; }
 .kml-button:hover { filter: brightness(1.08); }
-.kml-button:focus-visible, .location-row:focus-visible, .wiki-button:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+.kml-button:focus-visible, .location-row:focus-visible, .place-links a:focus-visible, .wiki-button:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
 
 .mission-list { min-height: 0; display: flex; flex: 1; flex-direction: column; }
 .section-title { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #373d30; }
@@ -157,8 +157,17 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
 .intel-country-fallback { width: 18px; height: 18px; flex: 0 0 18px; }
 .intel-country-fallback { fill: #e0a12624; stroke: var(--amber); stroke-width: 1.5; }
 .intel-country-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.intel-card h2 { margin: 9px 0 2px; color: #f0e8d2; font-family: "Arial Narrow", Impact, sans-serif; font-size: 28px; letter-spacing: .03em; }
-.intel-card > p { margin: 0 0 14px; color: #858b76; font-size: 11px; }
+.location-taxonomy { display: grid; gap: 7px; margin: 12px 0 15px; padding-left: 8px; border-left: 1px solid #5e573d; }
+.taxonomy-tier { position: relative; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.taxonomy-tier::before { content: ""; position: absolute; top: 9px; left: -9px; width: 6px; border-top: 1px solid #5e573d; }
+.taxonomy-tier.is-city { margin-left: 12px; }
+.taxonomy-tier.is-landmark { margin-left: 24px; }
+.taxonomy-tier span, .mission-heading > span { color: #777d69; font: 700 8px var(--font-geist-mono), monospace; letter-spacing: .13em; text-transform: uppercase; }
+.taxonomy-tier strong { overflow: hidden; color: #d8d0ba; font-size: 12px; font-weight: 600; text-overflow: ellipsis; }
+.taxonomy-tier.is-landmark strong { color: #edbd58; }
+.mission-heading { margin: 0 0 14px; }
+.intel-card h2 { margin: 3px 0 2px; color: #f0e8d2; font-family: "Arial Narrow", Impact, sans-serif; font-size: 28px; letter-spacing: .03em; }
+.mission-heading p { margin: 0; color: #858b76; font-size: 11px; }
 .precision-badge { margin: -5px 0 13px; padding: 6px 8px; border: 1px solid #665f43; border-radius: 3px; color: #b9b297; background: #24271e; font: 700 8px var(--font-geist-mono), monospace; letter-spacing: .08em; text-transform: uppercase; }
 .precision-badge.is-city { border-color: #a8731d; color: #e3b451; }
 .precision-badge.is-approximate { border-style: dashed; border-color: #a8731d; color: #e3b451; }
@@ -173,6 +182,9 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
 .intel-entry a { flex: 0 0 28px; height: 28px; display: grid; place-items: center; border: 1px solid #5d624c; border-radius: 3px; color: var(--amber); text-decoration: none; }
 .intel-entry a:hover { border-color: var(--amber); background: #dfa12718; }
 .more-row { padding: 9px 0; color: #a27c38; font-size: 10px; }
+.place-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 8px; margin-top: 10px; }
+.place-links a { min-height: 36px; display: grid; place-items: center; border: 1px solid #676b55; border-radius: 4px; color: #d8cfb2; background: #20251c; font-size: 10px; font-weight: 700; text-decoration: none; }
+.place-links a:hover { border-color: var(--amber); color: var(--amber); background: #dfa12712; }
 .wiki-button { width: 100%; min-height: 40px; display: grid; place-items: center; margin-top: 10px; border-radius: 4px; font-size: 11px; font-weight: 700; text-decoration: none; }
 .wiki-button { border: 1px solid #b77b16; color: #151309; background: linear-gradient(#e2a632, #bb7d17); }
 .wiki-button:hover { filter: brightness(1.08); }

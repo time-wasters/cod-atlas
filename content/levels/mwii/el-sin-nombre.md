@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-el-sin-nombre-level
 locations:
   - id: main
-    label: Mexico
     country: Mexico
     latitude: 23
     longitude: -102

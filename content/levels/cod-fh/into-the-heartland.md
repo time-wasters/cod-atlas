@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-into-the-heartland
 locations:
   - id: main
-    label: Germany
     country: Germany
     latitude: 51
     longitude: 9

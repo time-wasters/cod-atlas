@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-rebirth-island-warzone
 locations:
   - id: main
-    label: Kazakhstan
     country: Kazakhstan
     latitude: 48
     longitude: 68

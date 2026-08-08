@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-fortune-s-keep
 locations:
   - id: main
-    label: Adriatic Sea
     country: Adriatic Sea
     latitude: 42.7
     longitude: 16.1

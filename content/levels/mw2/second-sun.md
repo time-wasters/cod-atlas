@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-second-sun
 locations:
   - id: main
-    label: Earth’s Orbit
     country: Earth’s Orbit
     precision: off-world
     confidence: fallback

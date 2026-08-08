@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-nowhere-left-to-run
 locations:
   - id: main
-    label: Netherlands
     country: Netherlands
     latitude: 52.5
     longitude: 5.75
@@ -16,7 +15,6 @@ locations:
     method: country-fallback
     primary: true
   - id: turkey-2
-    label: Turkey
     country: Turkey
     precision: country
     confidence: fallback

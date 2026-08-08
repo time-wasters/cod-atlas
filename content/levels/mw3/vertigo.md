@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-vertigo-special-ops
 locations:
   - id: main
-    label: United Arab Emirates
     country: United Arab Emirates
     latitude: 24
     longitude: 54

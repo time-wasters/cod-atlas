@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-mission
 locations:
   - id: main
-    label: Sierra Leone
     country: Sierra Leone
     latitude: 8.5
     longitude: -11.5

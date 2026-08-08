@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-warsaw-factory
 locations:
   - id: main
-    label: Warsaw
     country: Poland
     city: Warsaw
     latitude: 52.22977

@@ -7,8 +7,8 @@ mode: multiplayer
 wikiArticle: codwiki-stonehaven
 locations:
   - id: main
-    label: Stonehaven
-    country: Scotland (UK)
+    country: United Kingdom
+    region: Scotland
     city: Stonehaven
     latitude: 56.96365
     longitude: -2.21177

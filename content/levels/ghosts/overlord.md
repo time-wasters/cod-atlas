@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-overlord-map
 locations:
   - id: main
-    label: Chile
     country: Chile
     latitude: -30
     longitude: -71

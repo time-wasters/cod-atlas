@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-kursk-map
 locations:
   - id: main
-    label: Kursk
     country: Russia
     city: Kursk
     latitude: 51.72689

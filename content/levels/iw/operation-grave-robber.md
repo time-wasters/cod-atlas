@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-operation-grave-robber
 locations:
   - id: main
-    label: Pluto’s Orbit
     country: Pluto’s Orbit
     precision: off-world
     confidence: fallback

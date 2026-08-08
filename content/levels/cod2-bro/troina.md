@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-troina
 locations:
   - id: main
-    label: Troina / Draginai
     country: Italy
     city: Troina / Draginai
     latitude: 37.78437

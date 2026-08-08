@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-clockwork
 locations:
   - id: main
-    label: Argentina
     country: Argentina
     latitude: -34
     longitude: -64

@@ -7,8 +7,7 @@ mode: singleplayer
 wikiArticle: codwiki-into-the-furnace
 locations:
   - id: main
-    label: Georgia
-    country: "USA: Georgia"
+    country: Georgia
     latitude: 42
     longitude: 43.5
     precision: country

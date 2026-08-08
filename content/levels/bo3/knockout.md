@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-knockout
 locations:
   - id: main
-    label: Polynesia
     country: Polynesia
     latitude: -17.6
     longitude: -149.4

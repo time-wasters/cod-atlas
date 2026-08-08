@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-crew-expendable
 locations:
   - id: main
-    label: Bering Strait
     country: Bering Strait
     latitude: 65.8
     longitude: -168.8

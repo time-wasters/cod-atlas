@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-dead-of-the-night
 locations:
   - id: main
-    label: United Kingdom
     country: United Kingdom
     latitude: 54
     longitude: -2

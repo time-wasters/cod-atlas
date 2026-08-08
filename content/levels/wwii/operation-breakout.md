@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-operation-breakout
 locations:
   - id: main
-    label: France
     country: France
     latitude: 46
     longitude: 2

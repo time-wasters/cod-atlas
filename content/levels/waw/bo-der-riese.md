@@ -8,7 +8,6 @@ mode: multiplayer
 wikiArticle: codwiki-der-riese
 locations:
   - id: main
-    label: Poland
     country: Poland
     latitude: 52
     longitude: 20

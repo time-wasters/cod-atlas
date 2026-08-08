@@ -7,8 +7,8 @@ mode: multiplayer
 wikiArticle: codwiki-urban-map
 locations:
   - id: main
-    label: Texas
-    country: "USA: Texas"
+    country: United States
+    region: Texas
     latitude: 31
     longitude: -99
     precision: country

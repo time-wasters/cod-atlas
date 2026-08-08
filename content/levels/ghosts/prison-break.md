@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-prison-break-map
 locations:
   - id: main
-    label: Mexico
     country: Mexico
     latitude: 23
     longitude: -102

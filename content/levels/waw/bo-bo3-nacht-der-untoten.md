@@ -9,7 +9,6 @@ mode: multiplayer
 wikiArticle: codwiki-nacht-der-untoten
 locations:
   - id: main
-    label: Poland
     country: Poland
     latitude: 52
     longitude: 20

@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-second-chance-strike-force
 locations:
   - id: main
-    label: Yemen
     country: Yemen
     latitude: 15
     longitude: 48

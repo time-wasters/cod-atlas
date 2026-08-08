@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-nuketown-black-ops-4
 locations:
   - id: main
-    label: Ukraine
     country: Ukraine
     latitude: 49
     longitude: 32

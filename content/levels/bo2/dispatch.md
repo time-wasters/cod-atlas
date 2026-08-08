@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-dispatch
 locations:
   - id: main
-    label: Pakistan
     country: Pakistan
     latitude: 30
     longitude: 70

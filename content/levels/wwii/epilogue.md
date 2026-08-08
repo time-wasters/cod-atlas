@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-epilogue-mission
 locations:
   - id: main
-    label: France
     country: France
     latitude: 46
     longitude: 2
@@ -16,7 +15,6 @@ locations:
     method: country-fallback
     primary: true
   - id: germany-2
-    label: Germany
     country: Germany
     latitude: 51
     longitude: 9
@@ -25,8 +23,8 @@ locations:
     method: country-fallback
     primary: false
   - id: texas-3
-    label: Texas
-    country: "USA: Texas"
+    country: United States
+    region: Texas
     latitude: 31
     longitude: -99
     precision: country

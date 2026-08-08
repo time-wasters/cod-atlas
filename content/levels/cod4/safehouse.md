@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-safehouse
 locations:
   - id: main
-    label: Azerbaijan
     country: Azerbaijan
     latitude: 40.5
     longitude: 47.5

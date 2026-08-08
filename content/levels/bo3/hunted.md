@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-hunted-black-ops-iii
 locations:
   - id: main
-    label: Ethiopia
     country: Ethiopia
     latitude: 8
     longitude: 38

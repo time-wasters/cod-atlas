@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-getaway
 locations:
   - id: main
-    label: Brazil
     country: Brazil
     latitude: -10
     longitude: -55

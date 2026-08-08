@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-arnhem-fire
 locations:
   - id: main
-    label: Arnhem
     country: Netherlands
     city: Arnhem
     latitude: 51.98

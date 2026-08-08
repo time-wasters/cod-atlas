@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-comeback
 locations:
   - id: main
-    label: Nigeria
     country: Nigeria
     latitude: 10
     longitude: 8

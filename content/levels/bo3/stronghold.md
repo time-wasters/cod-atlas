@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-stronghold-black-ops-iii
 locations:
   - id: main
-    label: Switzerland
     country: Switzerland
     latitude: 47
     longitude: 8

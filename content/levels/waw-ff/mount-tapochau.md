@@ -7,8 +7,8 @@ mode: singleplayer
 wikiArticle: codwiki-mount-tapochau
 locations:
   - id: main
-    label: Northern Mariana Islands (U.S.A)
-    country: Northern Mariana Islands (U.S.A)
+    country: United States
+    region: Northern Mariana Islands
     latitude: 15.2
     longitude: 145.75
     precision: country

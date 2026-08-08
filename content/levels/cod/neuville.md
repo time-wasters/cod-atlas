@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-neuville
 locations:
   - id: main
-    label: France
     country: France
     latitude: 46
     longitude: 2

@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-battleship-tirpitz-level
 locations:
   - id: main
-    label: Håkøya (Tromsø)
     country: Norway
     city: Håkøya (Tromsø)
     latitude: 69.65818

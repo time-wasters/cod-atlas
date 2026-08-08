@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-frontier
 locations:
   - id: main
-    label: Neptune’s Orbit
     country: Neptune’s Orbit
     precision: off-world
     confidence: fallback

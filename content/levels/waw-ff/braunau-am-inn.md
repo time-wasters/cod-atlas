@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-braunau-am-inn
 locations:
   - id: main
-    label: Braunau am Inn
     country: Austria
     city: Braunau am Inn
     latitude: 48.25628

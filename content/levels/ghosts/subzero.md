@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-subzero
 locations:
   - id: main
-    label: Canada
     country: Canada
     latitude: 60
     longitude: -95

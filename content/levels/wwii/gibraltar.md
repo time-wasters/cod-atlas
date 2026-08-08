@@ -7,8 +7,8 @@ mode: multiplayer
 wikiArticle: codwiki-gibraltar
 locations:
   - id: main
-    label: Gibraltar
-    country: Gibraltar (UK)
+    country: United Kingdom
+    region: Gibraltar
     city: Gibraltar
     latitude: 36.14474
     longitude: -5.35257

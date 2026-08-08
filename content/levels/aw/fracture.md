@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-fracture-map
 locations:
   - id: main
-    label: Arctic Circle
     country: Arctic Circle
     latitude: 66.5
     longitude: 24

@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-rocket-s-red-glare
 locations:
   - id: main
-    label: Russia
     country: Russia
     latitude: 60
     longitude: 100

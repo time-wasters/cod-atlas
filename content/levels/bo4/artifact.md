@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-artifact
 locations:
   - id: main
-    label: Iceland
     country: Iceland
     latitude: 65
     longitude: -18

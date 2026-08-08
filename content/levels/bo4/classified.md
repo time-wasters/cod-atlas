@@ -7,8 +7,8 @@ mode: multiplayer
 wikiArticle: codwiki-classified
 locations:
   - id: main
-    label: Washington D.C.
-    country: Washington D.C.
+    country: United States
+    region: Washington, D.C.
     latitude: 38.907
     longitude: -77.037
     precision: country

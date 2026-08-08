@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-zetsubou-no-shima
 locations:
   - id: main
-    label: Micronesia
     country: Micronesia
     latitude: 6.91666666
     longitude: 158.25

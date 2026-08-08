@@ -7,8 +7,8 @@ mode: multiplayer
 wikiArticle: codwiki-recovery
 locations:
   - id: main
-    label: Hawaii
-    country: "USA: Hawaii"
+    country: United States
+    region: Hawaii
     latitude: 20.8
     longitude: -157.5
     precision: country

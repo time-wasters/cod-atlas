@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-al-mazrah
 locations:
   - id: main
-    label: Yemen
     country: Yemen
     latitude: 15
     longitude: 48

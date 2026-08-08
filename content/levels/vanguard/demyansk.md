@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-demyansk
 locations:
   - id: main
-    label: Demyansk
     country: Russia
     city: Demyansk
     latitude: 57.64456

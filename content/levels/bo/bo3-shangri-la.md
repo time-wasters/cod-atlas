@@ -8,7 +8,6 @@ mode: multiplayer
 wikiArticle: codwiki-shangri-la
 locations:
   - id: main
-    label: China
     country: China
     latitude: 35
     longitude: 105

@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-pyrrhic-victory
 locations:
   - id: main
-    label: Angola
     country: Angola
     latitude: -12.5
     longitude: 18.5

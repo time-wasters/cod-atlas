@@ -7,8 +7,8 @@ mode: multiplayer
 wikiArticle: codwiki-site-244
 locations:
   - id: main
-    label: South Dakota
-    country: "USA: South Dakota"
+    country: United States
+    region: South Dakota
     latitude: 44.4
     longitude: -100.2
     precision: country

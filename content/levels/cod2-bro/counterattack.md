@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-counterattack
 locations:
   - id: main
-    label: Tunisia
     country: Tunisia
     latitude: 34
     longitude: 9

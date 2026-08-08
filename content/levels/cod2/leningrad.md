@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-leningrad
 locations:
   - id: main
-    label: Saint Petersburg
     country: Russia
     city: Saint Petersburg
     latitude: 59.93863

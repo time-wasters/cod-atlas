@@ -7,8 +7,8 @@ mode: multiplayer
 wikiArticle: codwiki-sideshow
 locations:
   - id: main
-    label: Wyoming
-    country: "USA: Wyoming"
+    country: United States
+    region: Wyoming
     latitude: 43
     longitude: -107.5
     precision: country

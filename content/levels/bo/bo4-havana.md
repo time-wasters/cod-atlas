@@ -8,7 +8,6 @@ mode: multiplayer
 wikiArticle: codwiki-havana
 locations:
   - id: main
-    label: Havana
     country: Cuba
     city: Havana
     latitude: 23.13302

@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-federation-day
 locations:
   - id: main
-    label: Venezuela
     country: Venezuela
     latitude: 8
     longitude: -66

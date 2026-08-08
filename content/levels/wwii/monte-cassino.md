@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-monte-cassino
 locations:
   - id: main
-    label: Cassino
     country: Italy
     city: Cassino
     latitude: 41.48581

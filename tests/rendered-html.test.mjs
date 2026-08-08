@@ -49,36 +49,11 @@ test("preserves the complete statically compiled atlas", async () => {
   assert.equal(entries.length, 987);
   assert.equal(findGroup("France").flagCode, "FR");
   assert.equal(findGroup("Turkey").flagCode, "TR");
-  assert.equal(findGroup("USA: California").flagCode, "US");
+  assert.equal(findGroup("United States").flagCode, "US");
   assert.equal(findGroup("Adriatic Sea").flagCode, null);
-  assert.deepEqual(
-    atlas.groups.filter((group) => group.name.startsWith("USA: ")).map((group) => group.name),
-    [
-      "USA: Alaska",
-      "USA: Arizona",
-      "USA: California",
-      "USA: Colorado",
-      "USA: Florida",
-      "USA: Georgia",
-      "USA: Hawaii",
-      "USA: Illinois",
-      "USA: Kansas",
-      "USA: Louisiana",
-      "USA: Maryland",
-      "USA: Michigan",
-      "USA: Nebraska",
-      "USA: Nevada",
-      "USA: New Jersey",
-      "USA: New Mexico",
-      "USA: New York",
-      "USA: North Carolina",
-      "USA: South Dakota",
-      "USA: Texas",
-      "USA: Virginia",
-      "USA: Washington",
-      "USA: Wyoming",
-    ],
-  );
+  assert.ok(atlas.groups.every((group) => group.entries.every((entry) => entry.country === group.name)));
+  assert.ok(entries.every((entry) => !Object.hasOwn(entry, "label")));
+  assert.ok(findGroup("United States").entries.some((entry) => entry.region === "California"));
   assert.deepEqual(
     atlas.games.map((game) => game.released),
     atlas.games.map((game) => game.released).toSorted(),
@@ -97,21 +72,45 @@ test("preserves the complete statically compiled atlas", async () => {
 
   const laisonRiver = findEntry("COD3", "Laison River");
   assert.deepEqual(laisonRiver.coordinates, [48.944742, -0.229523]);
+  assert.equal(laisonRiver.country, "France");
   assert.equal(laisonRiver.city, "Falaise");
   assert.equal(laisonRiver.region, "Normandy");
-  assert.equal(laisonRiver.label, "Laizon River near Falaise");
+  assert.equal(laisonRiver.landmark, "Laizon River");
   assert.equal(laisonRiver.precision, "approximate");
   assert.equal(laisonRiver.confidence, "medium");
   assert.equal(laisonRiver.method, "manual-approximate");
 
   const blowtorchAndCorkscrew = findEntry("WAW", "Blowtorch & Corkscrew");
   assert.deepEqual(blowtorchAndCorkscrew.coordinates, [26.22882, 127.71437]);
+  assert.equal(blowtorchAndCorkscrew.country, "Japan");
   assert.equal(blowtorchAndCorkscrew.city, "Naha");
-  assert.equal(blowtorchAndCorkscrew.region, "Okinawa Prefecture");
-  assert.equal(blowtorchAndCorkscrew.label, "Wana Ridge, Sueyoshi Park");
+  assert.equal(blowtorchAndCorkscrew.region, "Okinawa");
+  assert.equal(blowtorchAndCorkscrew.landmark, "Wana Ridge, Sueyoshi Park");
   assert.equal(blowtorchAndCorkscrew.precision, "approximate");
   assert.equal(blowtorchAndCorkscrew.confidence, "high");
   assert.equal(blowtorchAndCorkscrew.method, "manual-approximate");
+
+  const aDesertRide = findEntry("FH", "A Desert Ride");
+  assert.deepEqual(aDesertRide.coordinates, [33.216667, 9.8]);
+  assert.equal(aDesertRide.country, "Tunisia");
+  assert.equal(aDesertRide.landmark, "Ksar Tarcine");
+  assert.equal(aDesertRide.precision, "approximate");
+  assert.equal(aDesertRide.confidence, "medium");
+  assert.equal(aDesertRide.method, "manual-approximate");
+  assert.deepEqual(aDesertRide.urls, [
+    { googleMaps: "https://maps.app.goo.gl/FVktkscEyG9DtDoy6" },
+    { wikipedia: "https://de.wikipedia.org/wiki/Centenarium_Tibubuci" },
+  ]);
+
+  const shuriCastle = findEntry("WAW:FF", "Shuri Castle");
+  assert.equal(shuriCastle.country, "Japan");
+  assert.equal(shuriCastle.region, "Okinawa");
+  assert.equal(shuriCastle.city, "Naha");
+  assert.equal(shuriCastle.landmark, "Shuri Castle");
+
+  const intoTheFurnace = findEntry("MW19", "Into the Furnace");
+  assert.equal(intoTheFurnace.country, "Georgia");
+  assert.equal(intoTheFurnace.region, null);
 
   const cod2Entries = entries.filter((entry) => entry.game.split(" / ").includes("COD2"));
   assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "singleplayer").length, 26);

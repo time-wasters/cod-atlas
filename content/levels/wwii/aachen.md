@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-aachen-map
 locations:
   - id: main
-    label: Aachen
     country: Germany
     city: Aachen
     latitude: 50.77664

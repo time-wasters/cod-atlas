@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-daybreak
 locations:
   - id: main
-    label: Ireland
     country: Ireland
     latitude: 53
     longitude: -8

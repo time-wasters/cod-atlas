@@ -7,8 +7,8 @@ mode: singleplayer
 wikiArticle: codwiki-the-battle-of-midway
 locations:
   - id: main
-    label: Midway Atoll (U.S.A)
-    country: Midway Atoll (U.S.A)
+    country: United States
+    region: Midway Atoll
     latitude: 28.21
     longitude: -177.38
     precision: country

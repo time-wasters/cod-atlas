@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-ste-mere-eglise-day
 locations:
   - id: main
-    label: France
     country: France
     latitude: 46
     longitude: 2

@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-seatown
 locations:
   - id: main
-    label: Morocco
     country: Morocco
     latitude: 32
     longitude: -5

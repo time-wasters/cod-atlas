@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-baptism-by-fire
 locations:
   - id: main
-    label: Algeria
     country: Algeria
     latitude: 28
     longitude: 3

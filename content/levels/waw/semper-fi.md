@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-semper-fi
 locations:
   - id: main
-    label: Kiribati
     country: Kiribati
     latitude: 1.41666666
     longitude: 173

@@ -7,7 +7,6 @@ mode: singleplayer
 wikiArticle: codwiki-nijmegen
 locations:
   - id: main
-    label: Nijmegen
     country: Netherlands
     city: Nijmegen
     latitude: 51.8425

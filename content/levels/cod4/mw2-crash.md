@@ -8,7 +8,6 @@ mode: multiplayer
 wikiArticle: codwiki-crash-map
 locations:
   - id: main
-    label: Iraq
     country: Iraq
     latitude: 33
     longitude: 44
