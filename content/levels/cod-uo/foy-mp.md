@@ -1,10 +1,10 @@
 ---
-id: uo-noville
-title: Noville
+id: cod-uo-foy-mp
+title: Foy MP
 games:
-  - uo
-mode: singleplayer
-wikiArticle: codwiki-noville
+  - cod-uo
+mode: multiplayer
+wikiArticle: codwiki-foy-map
 locations:
   - id: main
     label: Belgium

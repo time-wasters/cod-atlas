@@ -1,10 +1,10 @@
 ---
-id: uo-bois-jacques
-title: Bois Jacques
+id: cod-uo-foy
+title: Foy
 games:
-  - uo
+  - cod-uo
 mode: singleplayer
-wikiArticle: codwiki-bois-jacques
+wikiArticle: codwiki-foy-campaign
 locations:
   - id: main
     label: Belgium

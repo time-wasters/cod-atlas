@@ -1,8 +1,8 @@
 ---
-id: uo-kharkov-1
+id: cod-uo-kharkov-1
 title: Kharkov 1
 games:
-  - uo
+  - cod-uo
 mode: singleplayer
 wikiArticle: codwiki-kharkov-1
 locations:

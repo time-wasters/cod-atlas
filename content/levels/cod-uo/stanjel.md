@@ -1,8 +1,8 @@
 ---
-id: uo-stanjel
+id: cod-uo-stanjel
 title: Stanjel
 games:
-  - uo
+  - cod-uo
 mode: multiplayer
 wikiArticle: codwiki-stanjel
 locations:

@@ -1,8 +1,8 @@
 ---
-id: uo-arnhem
+id: cod-uo-arnhem
 title: Arnhem
 games:
-  - uo
+  - cod-uo
 mode: multiplayer
 wikiArticle: codwiki-arnhem-map
 locations:

@@ -1,8 +1,8 @@
 ---
-id: uo-bomber
+id: cod-uo-bomber
 title: Bomber
 games:
-  - uo
+  - cod-uo
 mode: singleplayer
 wikiArticle: codwiki-bomber-united-offensive
 locations:

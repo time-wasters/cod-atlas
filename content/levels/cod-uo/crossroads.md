@@ -1,8 +1,8 @@
 ---
-id: uo-crossroads
+id: cod-uo-crossroads
 title: Crossroads
 games:
-  - uo
+  - cod-uo
 mode: singleplayer
 wikiArticle: codwiki-crossroads-united-offensive
 locations:

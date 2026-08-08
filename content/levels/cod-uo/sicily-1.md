@@ -1,10 +1,10 @@
 ---
-id: uo-sicily-2
-title: Sicily 2
+id: cod-uo-sicily-1
+title: Sicily 1
 games:
-  - uo
+  - cod-uo
 mode: singleplayer
-wikiArticle: codwiki-sicily-2
+wikiArticle: codwiki-sicily-1
 locations:
   - id: main
     label: Italy

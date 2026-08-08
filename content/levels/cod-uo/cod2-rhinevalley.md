@@ -1,8 +1,8 @@
 ---
-id: uo-cod2-rhinevalley
+id: cod-uo-cod2-rhinevalley
 title: Rhinevalley
 games:
-  - uo
+  - cod-uo
   - cod2
 mode: multiplayer
 wikiArticle: codwiki-rhinevalley

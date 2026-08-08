@@ -9,7 +9,7 @@
       "released": "2003-10-29"
     },
     {
-      "id": "uo",
+      "id": "cod-uo",
       "code": "UO",
       "label": "United Offensive",
       "released": "2004-09-14"
@@ -1811,8 +1811,8 @@
           ]
         },
         {
-          "id": "uo-bois-jacques:main",
-          "levelId": "uo-bois-jacques",
+          "id": "cod-uo-bois-jacques:main",
+          "levelId": "cod-uo-bois-jacques",
           "locationId": "main",
           "title": "Bois Jacques",
           "game": "UO",
@@ -1833,8 +1833,8 @@
           ]
         },
         {
-          "id": "uo-crossroads:main",
-          "levelId": "uo-crossroads",
+          "id": "cod-uo-crossroads:main",
+          "levelId": "cod-uo-crossroads",
           "locationId": "main",
           "title": "Crossroads",
           "game": "UO",
@@ -1899,8 +1899,8 @@
           ]
         },
         {
-          "id": "uo-foy:main",
-          "levelId": "uo-foy",
+          "id": "cod-uo-foy:main",
+          "levelId": "cod-uo-foy",
           "locationId": "main",
           "title": "Foy",
           "game": "UO",
@@ -1921,8 +1921,8 @@
           ]
         },
         {
-          "id": "uo-foy-mp:main",
-          "levelId": "uo-foy-mp",
+          "id": "cod-uo-foy-mp:main",
+          "levelId": "cod-uo-foy-mp",
           "locationId": "main",
           "title": "Foy MP",
           "game": "UO",
@@ -1987,8 +1987,8 @@
           ]
         },
         {
-          "id": "uo-noville:main",
-          "levelId": "uo-noville",
+          "id": "cod-uo-noville:main",
+          "levelId": "cod-uo-noville",
           "locationId": "main",
           "title": "Noville",
           "game": "UO",
@@ -4984,8 +4984,8 @@
       "kind": "terrestrial",
       "entries": [
         {
-          "id": "uo-bomber:main",
-          "levelId": "uo-bomber",
+          "id": "cod-uo-bomber:main",
+          "levelId": "cod-uo-bomber",
           "locationId": "main",
           "title": "Bomber",
           "game": "UO",
@@ -7616,8 +7616,8 @@
           ]
         },
         {
-          "id": "uo-berlin:main",
-          "levelId": "uo-berlin",
+          "id": "cod-uo-berlin:main",
+          "levelId": "cod-uo-berlin",
           "locationId": "main",
           "title": "Berlin",
           "game": "UO",
@@ -8650,8 +8650,8 @@
           ]
         },
         {
-          "id": "uo-cod2-rhinevalley:main",
-          "levelId": "uo-cod2-rhinevalley",
+          "id": "cod-uo-cod2-rhinevalley:main",
+          "levelId": "cod-uo-cod2-rhinevalley",
           "locationId": "main",
           "title": "Rhinevalley",
           "game": "UO / COD2",
@@ -10694,8 +10694,8 @@
           ]
         },
         {
-          "id": "uo-br1-cassino:main",
-          "levelId": "uo-br1-cassino",
+          "id": "cod-uo-br1-cassino:main",
+          "levelId": "cod-uo-br1-cassino",
           "locationId": "main",
           "title": "Cassino",
           "game": "UO / BR1",
@@ -10804,8 +10804,8 @@
           ]
         },
         {
-          "id": "uo-italy:main",
-          "levelId": "uo-italy",
+          "id": "cod-uo-italy:main",
+          "levelId": "cod-uo-italy",
           "locationId": "main",
           "title": "Italy",
           "game": "UO",
@@ -10958,8 +10958,8 @@
           ]
         },
         {
-          "id": "uo-sicily:main",
-          "levelId": "uo-sicily",
+          "id": "cod-uo-sicily:main",
+          "levelId": "cod-uo-sicily",
           "locationId": "main",
           "title": "Sicily",
           "game": "UO",
@@ -10980,8 +10980,8 @@
           ]
         },
         {
-          "id": "uo-sicily-1:main",
-          "levelId": "uo-sicily-1",
+          "id": "cod-uo-sicily-1:main",
+          "levelId": "cod-uo-sicily-1",
           "locationId": "main",
           "title": "Sicily 1",
           "game": "UO",
@@ -11002,8 +11002,8 @@
           ]
         },
         {
-          "id": "uo-sicily-2:main",
-          "levelId": "uo-sicily-2",
+          "id": "cod-uo-sicily-2:main",
+          "levelId": "cod-uo-sicily-2",
           "locationId": "main",
           "title": "Sicily 2",
           "game": "UO",
@@ -13163,8 +13163,8 @@
           ]
         },
         {
-          "id": "uo-arnhem:main",
-          "levelId": "uo-arnhem",
+          "id": "cod-uo-arnhem:main",
+          "levelId": "cod-uo-arnhem",
           "locationId": "main",
           "title": "Arnhem",
           "game": "UO",
@@ -13449,8 +13449,8 @@
           ]
         },
         {
-          "id": "uo-train-bridge:main",
-          "levelId": "uo-train-bridge",
+          "id": "cod-uo-train-bridge:main",
+          "levelId": "cod-uo-train-bridge",
           "locationId": "main",
           "title": "Train Bridge",
           "game": "UO",
@@ -16686,8 +16686,8 @@
           ]
         },
         {
-          "id": "uo-kursk:main",
-          "levelId": "uo-kursk",
+          "id": "cod-uo-kursk:main",
+          "levelId": "cod-uo-kursk",
           "locationId": "main",
           "title": "Kursk",
           "game": "UO",
@@ -16708,8 +16708,8 @@
           ]
         },
         {
-          "id": "uo-kursk-mp:main",
-          "levelId": "uo-kursk-mp",
+          "id": "cod-uo-kursk-mp:main",
+          "levelId": "cod-uo-kursk-mp",
           "locationId": "main",
           "title": "Kursk MP",
           "game": "UO",
@@ -17060,8 +17060,8 @@
           ]
         },
         {
-          "id": "uo-ponyri:main",
-          "levelId": "uo-ponyri",
+          "id": "cod-uo-ponyri:main",
+          "levelId": "cod-uo-ponyri",
           "locationId": "main",
           "title": "Ponyri",
           "game": "UO",
@@ -17082,8 +17082,8 @@
           ]
         },
         {
-          "id": "uo-ponyri-mp:main",
-          "levelId": "uo-ponyri-mp",
+          "id": "cod-uo-ponyri-mp:main",
+          "levelId": "cod-uo-ponyri-mp",
           "locationId": "main",
           "title": "Ponyri MP",
           "game": "UO",
@@ -17786,8 +17786,8 @@
           ]
         },
         {
-          "id": "uo-trenches:main",
-          "levelId": "uo-trenches",
+          "id": "cod-uo-trenches:main",
+          "levelId": "cod-uo-trenches",
           "locationId": "main",
           "title": "Trenches",
           "game": "UO",
@@ -18354,8 +18354,8 @@
       "kind": "terrestrial",
       "entries": [
         {
-          "id": "uo-stanjel:main",
-          "levelId": "uo-stanjel",
+          "id": "cod-uo-stanjel:main",
+          "levelId": "cod-uo-stanjel",
           "locationId": "main",
           "title": "Stanjel",
           "game": "UO",
@@ -20838,8 +20838,8 @@
           ]
         },
         {
-          "id": "uo-karkov:main",
-          "levelId": "uo-karkov",
+          "id": "cod-uo-karkov:main",
+          "levelId": "cod-uo-karkov",
           "locationId": "main",
           "title": "Karkov",
           "game": "UO",
@@ -20882,8 +20882,8 @@
           ]
         },
         {
-          "id": "uo-kharkov-1:main",
-          "levelId": "uo-kharkov-1",
+          "id": "cod-uo-kharkov-1:main",
+          "levelId": "cod-uo-kharkov-1",
           "locationId": "main",
           "title": "Kharkov 1",
           "game": "UO",
@@ -20904,8 +20904,8 @@
           ]
         },
         {
-          "id": "uo-kharkov-2:main",
-          "levelId": "uo-kharkov-2",
+          "id": "cod-uo-kharkov-2:main",
+          "levelId": "cod-uo-kharkov-2",
           "locationId": "main",
           "title": "Kharkov 2",
           "game": "UO",

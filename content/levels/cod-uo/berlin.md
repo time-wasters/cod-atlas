@@ -1,8 +1,8 @@
 ---
-id: uo-berlin
+id: cod-uo-berlin
 title: Berlin
 games:
-  - uo
+  - cod-uo
 mode: multiplayer
 wikiArticle: codwiki-berlin-map
 locations:

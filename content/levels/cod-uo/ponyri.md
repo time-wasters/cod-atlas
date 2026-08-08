@@ -1,8 +1,8 @@
 ---
-id: uo-ponyri
+id: cod-uo-ponyri
 title: Ponyri
 games:
-  - uo
+  - cod-uo
 mode: singleplayer
 wikiArticle: codwiki-ponyri
 locations:

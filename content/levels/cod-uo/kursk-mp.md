@@ -1,8 +1,8 @@
 ---
-id: uo-kursk-mp
+id: cod-uo-kursk-mp
 title: Kursk MP
 games:
-  - uo
+  - cod-uo
 mode: multiplayer
 wikiArticle: codwiki-kursk-map
 locations:

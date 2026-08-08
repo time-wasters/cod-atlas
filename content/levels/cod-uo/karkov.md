@@ -1,16 +1,16 @@
 ---
-id: uo-ponyri-mp
-title: Ponyri MP
+id: cod-uo-karkov
+title: Karkov
 games:
-  - uo
+  - cod-uo
 mode: multiplayer
-wikiArticle: codwiki-ponyri-map
+wikiArticle: codwiki-kharkov-map
 locations:
   - id: main
-    label: Russia
-    country: Russia
-    latitude: 60
-    longitude: 100
+    label: Ukraine
+    country: Ukraine
+    latitude: 49
+    longitude: 32
     precision: country
     confidence: fallback
     method: country-fallback

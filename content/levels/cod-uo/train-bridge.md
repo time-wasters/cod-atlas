@@ -1,8 +1,8 @@
 ---
-id: uo-train-bridge
+id: cod-uo-train-bridge
 title: Train Bridge
 games:
-  - uo
+  - cod-uo
 mode: singleplayer
 wikiArticle: codwiki-train-bridge
 locations:

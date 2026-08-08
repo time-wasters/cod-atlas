@@ -1,8 +1,8 @@
 ---
-id: uo-kursk
+id: cod-uo-kursk
 title: Kursk
 games:
-  - uo
+  - cod-uo
 mode: singleplayer
 wikiArticle: codwiki-kursk-campaign
 locations:

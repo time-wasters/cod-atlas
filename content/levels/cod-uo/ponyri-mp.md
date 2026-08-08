@@ -1,10 +1,10 @@
 ---
-id: uo-trenches
-title: Trenches
+id: cod-uo-ponyri-mp
+title: Ponyri MP
 games:
-  - uo
-mode: singleplayer
-wikiArticle: codwiki-trenches-united-offensive
+  - cod-uo
+mode: multiplayer
+wikiArticle: codwiki-ponyri-map
 locations:
   - id: main
     label: Russia
