@@ -1,15 +1,15 @@
 ---
-id: fh-into-the-heartland
-title: Into the Heartland
+id: cod-fh-depot-saboteurs
+title: Depot Saboteurs
 games:
-  - fh
+  - cod-fh
 mode: singleplayer
-wikiArticle: codwiki-into-the-heartland
+wikiArticle: codwiki-depot-saboteurs
 locations:
   - id: main
-    label: Germany
-    country: Germany
-    latitude: 51
+    label: Tunisia
+    country: Tunisia
+    latitude: 34
     longitude: 9
     precision: country
     confidence: fallback

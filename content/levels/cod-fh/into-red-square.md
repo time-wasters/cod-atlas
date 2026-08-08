@@ -1,10 +1,10 @@
 ---
-id: fh-operation-little-saturn
-title: Operation Little Saturn
+id: cod-fh-into-red-square
+title: Into Red Square
 games:
-  - fh
+  - cod-fh
 mode: singleplayer
-wikiArticle: codwiki-operation-little-saturn-level
+wikiArticle: codwiki-into-red-square
 locations:
   - id: main
     label: Russia

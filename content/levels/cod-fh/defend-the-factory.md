@@ -1,10 +1,10 @@
 ---
-id: fh-the-flag-must-fall
-title: The Flag Must Fall
+id: cod-fh-defend-the-factory
+title: Defend the Factory
 games:
-  - fh
+  - cod-fh
 mode: singleplayer
-wikiArticle: codwiki-the-flag-must-fall
+wikiArticle: codwiki-defend-the-factory
 locations:
   - id: main
     label: Russia

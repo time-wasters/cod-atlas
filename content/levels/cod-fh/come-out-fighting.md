@@ -1,10 +1,10 @@
 ---
-id: fh-first-city-to-fall
-title: First City to Fall
+id: cod-fh-come-out-fighting
+title: Come Out Fighting
 games:
-  - fh
+  - cod-fh
 mode: singleplayer
-wikiArticle: codwiki-first-city-to-fall
+wikiArticle: codwiki-come-out-fighting
 locations:
   - id: main
     label: Germany

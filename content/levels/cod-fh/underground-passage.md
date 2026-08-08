@@ -1,15 +1,15 @@
 ---
-id: fh-raiding-the-fortress
-title: Raiding the Fortress
+id: cod-fh-underground-passage
+title: Underground Passage
 games:
-  - fh
+  - cod-fh
 mode: singleplayer
-wikiArticle: codwiki-raiding-the-fortress
+wikiArticle: codwiki-underground-passage
 locations:
   - id: main
-    label: Tunisia
-    country: Tunisia
-    latitude: 34
+    label: Germany
+    country: Germany
+    latitude: 51
     longitude: 9
     precision: country
     confidence: fallback

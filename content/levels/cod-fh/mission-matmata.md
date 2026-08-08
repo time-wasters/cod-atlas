@@ -1,10 +1,10 @@
 ---
-id: fh-a-desert-ride
-title: A Desert Ride
+id: cod-fh-mission-matmata
+title: "Mission: Matmata"
 games:
-  - fh
+  - cod-fh
 mode: singleplayer
-wikiArticle: codwiki-a-desert-ride
+wikiArticle: codwiki-mission-matmata
 locations:
   - id: main
     label: Tunisia

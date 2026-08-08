@@ -1,8 +1,8 @@
 ---
-id: fh-surrender-at-aachen
+id: cod-fh-surrender-at-aachen
 title: Surrender at Aachen
 games:
-  - fh
+  - cod-fh
 mode: singleplayer
 wikiArticle: codwiki-surrender-at-aachen
 locations:

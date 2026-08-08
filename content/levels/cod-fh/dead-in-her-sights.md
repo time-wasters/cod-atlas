@@ -1,8 +1,8 @@
 ---
-id: fh-dead-in-her-sights
+id: cod-fh-dead-in-her-sights
 title: Dead In Her Sights
 games:
-  - fh
+  - cod-fh
 mode: singleplayer
 wikiArticle: codwiki-dead-in-her-sights
 locations:

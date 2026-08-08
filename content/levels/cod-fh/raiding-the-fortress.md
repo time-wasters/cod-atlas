@@ -1,15 +1,15 @@
 ---
-id: fh-come-out-fighting
-title: Come Out Fighting
+id: cod-fh-raiding-the-fortress
+title: Raiding the Fortress
 games:
-  - fh
+  - cod-fh
 mode: singleplayer
-wikiArticle: codwiki-come-out-fighting
+wikiArticle: codwiki-raiding-the-fortress
 locations:
   - id: main
-    label: Germany
-    country: Germany
-    latitude: 51
+    label: Tunisia
+    country: Tunisia
+    latitude: 34
     longitude: 9
     precision: country
     confidence: fallback

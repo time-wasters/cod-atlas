@@ -1,15 +1,15 @@
 ---
-id: fh-depot-saboteurs
-title: Depot Saboteurs
+id: cod-fh-first-city-to-fall
+title: First City to Fall
 games:
-  - fh
+  - cod-fh
 mode: singleplayer
-wikiArticle: codwiki-depot-saboteurs
+wikiArticle: codwiki-first-city-to-fall
 locations:
   - id: main
-    label: Tunisia
-    country: Tunisia
-    latitude: 34
+    label: Germany
+    country: Germany
+    latitude: 51
     longitude: 9
     precision: country
     confidence: fallback

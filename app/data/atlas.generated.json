@@ -15,7 +15,7 @@
       "released": "2004-09-14"
     },
     {
-      "id": "fh",
+      "id": "cod-fh",
       "code": "FH",
       "label": "Finest Hour",
       "released": "2004-11-16"
@@ -7858,8 +7858,8 @@
           ]
         },
         {
-          "id": "fh-come-out-fighting:main",
-          "levelId": "fh-come-out-fighting",
+          "id": "cod-fh-come-out-fighting:main",
+          "levelId": "cod-fh-come-out-fighting",
           "locationId": "main",
           "title": "Come Out Fighting",
           "game": "FH",
@@ -8188,8 +8188,8 @@
           ]
         },
         {
-          "id": "fh-first-city-to-fall:main",
-          "levelId": "fh-first-city-to-fall",
+          "id": "cod-fh-first-city-to-fall:main",
+          "levelId": "cod-fh-first-city-to-fall",
           "locationId": "main",
           "title": "First City to Fall",
           "game": "FH",
@@ -8364,8 +8364,8 @@
           ]
         },
         {
-          "id": "fh-into-the-heartland:main",
-          "levelId": "fh-into-the-heartland",
+          "id": "cod-fh-into-the-heartland:main",
+          "levelId": "cod-fh-into-the-heartland",
           "locationId": "main",
           "title": "Into the Heartland",
           "game": "FH",
@@ -8408,8 +8408,8 @@
           ]
         },
         {
-          "id": "fh-last-bridge-standing:main",
-          "levelId": "fh-last-bridge-standing",
+          "id": "cod-fh-last-bridge-standing:main",
+          "levelId": "cod-fh-last-bridge-standing",
           "locationId": "main",
           "title": "Last Bridge Standing",
           "game": "FH",
@@ -8694,8 +8694,8 @@
           ]
         },
         {
-          "id": "fh-road-to-remagen:main",
-          "levelId": "fh-road-to-remagen",
+          "id": "cod-fh-road-to-remagen:main",
+          "levelId": "cod-fh-road-to-remagen",
           "locationId": "main",
           "title": "Road to Remagen",
           "game": "FH",
@@ -8826,8 +8826,8 @@
           ]
         },
         {
-          "id": "fh-surrender-at-aachen:main",
-          "levelId": "fh-surrender-at-aachen",
+          "id": "cod-fh-surrender-at-aachen:main",
+          "levelId": "cod-fh-surrender-at-aachen",
           "locationId": "main",
           "title": "Surrender at Aachen",
           "game": "FH",
@@ -9112,8 +9112,8 @@
           ]
         },
         {
-          "id": "fh-underground-passage:main",
-          "levelId": "fh-underground-passage",
+          "id": "cod-fh-underground-passage:main",
+          "levelId": "cod-fh-underground-passage",
           "locationId": "main",
           "title": "Underground Passage",
           "game": "FH",
@@ -15850,8 +15850,8 @@
       "kind": "terrestrial",
       "entries": [
         {
-          "id": "fh-airfield-ambush:main",
-          "levelId": "fh-airfield-ambush",
+          "id": "cod-fh-airfield-ambush:main",
+          "levelId": "cod-fh-airfield-ambush",
           "locationId": "main",
           "title": "Airfield Ambush",
           "game": "FH",
@@ -16026,8 +16026,8 @@
           ]
         },
         {
-          "id": "fh-breakdown:main",
-          "levelId": "fh-breakdown",
+          "id": "cod-fh-breakdown:main",
+          "levelId": "cod-fh-breakdown",
           "locationId": "main",
           "title": "Breakdown",
           "game": "FH",
@@ -16202,8 +16202,8 @@
           ]
         },
         {
-          "id": "fh-dead-in-her-sights:main",
-          "levelId": "fh-dead-in-her-sights",
+          "id": "cod-fh-dead-in-her-sights:main",
+          "levelId": "cod-fh-dead-in-her-sights",
           "locationId": "main",
           "title": "Dead In Her Sights",
           "game": "FH",
@@ -16246,8 +16246,8 @@
           ]
         },
         {
-          "id": "fh-defend-the-factory:main",
-          "levelId": "fh-defend-the-factory",
+          "id": "cod-fh-defend-the-factory:main",
+          "levelId": "cod-fh-defend-the-factory",
           "locationId": "main",
           "title": "Defend the Factory",
           "game": "FH",
@@ -16620,8 +16620,8 @@
           ]
         },
         {
-          "id": "fh-into-red-square:main",
-          "levelId": "fh-into-red-square",
+          "id": "cod-fh-into-red-square:main",
+          "levelId": "cod-fh-into-red-square",
           "locationId": "main",
           "title": "Into Red Square",
           "game": "FH",
@@ -16884,8 +16884,8 @@
           ]
         },
         {
-          "id": "fh-not-one-step-back:main",
-          "levelId": "fh-not-one-step-back",
+          "id": "cod-fh-not-one-step-back:main",
+          "levelId": "cod-fh-not-one-step-back",
           "locationId": "main",
           "title": "Not One Step Back",
           "game": "FH",
@@ -16950,8 +16950,8 @@
           ]
         },
         {
-          "id": "fh-operation-little-saturn:main",
-          "levelId": "fh-operation-little-saturn",
+          "id": "cod-fh-operation-little-saturn:main",
+          "levelId": "cod-fh-operation-little-saturn",
           "locationId": "main",
           "title": "Operation Little Saturn",
           "game": "FH",
@@ -17632,8 +17632,8 @@
           ]
         },
         {
-          "id": "fh-the-flag-must-fall:main",
-          "levelId": "fh-the-flag-must-fall",
+          "id": "cod-fh-the-flag-must-fall:main",
+          "levelId": "cod-fh-the-flag-must-fall",
           "locationId": "main",
           "title": "The Flag Must Fall",
           "game": "FH",
@@ -20054,8 +20054,8 @@
       "kind": "terrestrial",
       "entries": [
         {
-          "id": "fh-a-desert-ride:main",
-          "levelId": "fh-a-desert-ride",
+          "id": "cod-fh-a-desert-ride:main",
+          "levelId": "cod-fh-a-desert-ride",
           "locationId": "main",
           "title": "A Desert Ride",
           "game": "FH",
@@ -20142,8 +20142,8 @@
           ]
         },
         {
-          "id": "fh-depot-saboteurs:main",
-          "levelId": "fh-depot-saboteurs",
+          "id": "cod-fh-depot-saboteurs:main",
+          "levelId": "cod-fh-depot-saboteurs",
           "locationId": "main",
           "title": "Depot Saboteurs",
           "game": "FH",
@@ -20208,8 +20208,8 @@
           ]
         },
         {
-          "id": "fh-mission-matmata:main",
-          "levelId": "fh-mission-matmata",
+          "id": "cod-fh-mission-matmata:main",
+          "levelId": "cod-fh-mission-matmata",
           "locationId": "main",
           "title": "Mission: Matmata",
           "game": "FH",
@@ -20274,8 +20274,8 @@
           ]
         },
         {
-          "id": "fh-raiding-the-fortress:main",
-          "levelId": "fh-raiding-the-fortress",
+          "id": "cod-fh-raiding-the-fortress:main",
+          "levelId": "cod-fh-raiding-the-fortress",
           "locationId": "main",
           "title": "Raiding the Fortress",
           "game": "FH",

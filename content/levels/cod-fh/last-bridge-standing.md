@@ -1,8 +1,8 @@
 ---
-id: fh-last-bridge-standing
+id: cod-fh-last-bridge-standing
 title: Last Bridge Standing
 games:
-  - fh
+  - cod-fh
 mode: singleplayer
 wikiArticle: codwiki-last-bridge-standing
 locations:

@@ -1,10 +1,10 @@
 ---
-id: fh-defend-the-factory
-title: Defend the Factory
+id: cod-fh-not-one-step-back
+title: Not One Step Back
 games:
-  - fh
+  - cod-fh
 mode: singleplayer
-wikiArticle: codwiki-defend-the-factory
+wikiArticle: codwiki-not-one-step-back
 locations:
   - id: main
     label: Russia

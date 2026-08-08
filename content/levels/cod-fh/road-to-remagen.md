@@ -1,8 +1,8 @@
 ---
-id: fh-road-to-remagen
+id: cod-fh-road-to-remagen
 title: Road to Remagen
 games:
-  - fh
+  - cod-fh
 mode: singleplayer
 wikiArticle: codwiki-road-to-remagen
 locations:

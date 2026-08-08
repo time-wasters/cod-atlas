@@ -1,10 +1,10 @@
 ---
-id: fh-airfield-ambush
-title: Airfield Ambush
+id: cod-fh-breakdown
+title: Breakdown
 games:
-  - fh
+  - cod-fh
 mode: singleplayer
-wikiArticle: codwiki-airfield-ambush
+wikiArticle: codwiki-breakdown
 locations:
   - id: main
     label: Russia

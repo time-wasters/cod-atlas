@@ -1,10 +1,10 @@
 ---
-id: fh-underground-passage
-title: Underground Passage
+id: cod-fh-into-the-heartland
+title: Into the Heartland
 games:
-  - fh
+  - cod-fh
 mode: singleplayer
-wikiArticle: codwiki-underground-passage
+wikiArticle: codwiki-into-the-heartland
 locations:
   - id: main
     label: Germany

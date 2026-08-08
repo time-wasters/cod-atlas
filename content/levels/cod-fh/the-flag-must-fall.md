@@ -1,10 +1,10 @@
 ---
-id: fh-into-red-square
-title: Into Red Square
+id: cod-fh-the-flag-must-fall
+title: The Flag Must Fall
 games:
-  - fh
+  - cod-fh
 mode: singleplayer
-wikiArticle: codwiki-into-red-square
+wikiArticle: codwiki-the-flag-must-fall
 locations:
   - id: main
     label: Russia
