@@ -67,6 +67,15 @@ test("preserves the complete statically compiled atlas", async () => {
   assert.equal(laisonRiver.confidence, "medium");
   assert.equal(laisonRiver.method, "manual-approximate");
 
+  const blowtorchAndCorkscrew = findEntry("WAW", "Blowtorch & Corkscrew");
+  assert.deepEqual(blowtorchAndCorkscrew.coordinates, [26.22882, 127.71437]);
+  assert.equal(blowtorchAndCorkscrew.city, "Naha");
+  assert.equal(blowtorchAndCorkscrew.region, "Okinawa Prefecture");
+  assert.equal(blowtorchAndCorkscrew.label, "Wana Ridge, Sueyoshi Park");
+  assert.equal(blowtorchAndCorkscrew.precision, "approximate");
+  assert.equal(blowtorchAndCorkscrew.confidence, "high");
+  assert.equal(blowtorchAndCorkscrew.method, "manual-approximate");
+
   const cod2Entries = entries.filter((entry) => entry.game.split(" / ").includes("COD2"));
   assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "singleplayer").length, 26);
   assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "multiplayer").length, 21);

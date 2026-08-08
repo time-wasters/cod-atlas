@@ -8,8 +8,8 @@ mode: multiplayer
 wikiArticle: codwiki-castle
 locations:
   - id: main
-    label: Okinawa (Japan)
-    country: Okinawa (Japan)
+    label: Japan (Okinawa)
+    country: Japan (Okinawa)
     latitude: 36
     longitude: 138
     precision: country

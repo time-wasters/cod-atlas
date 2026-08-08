@@ -11,13 +11,13 @@
     {
       "id": "cod-uo",
       "code": "UO",
-      "label": "United Offensive",
+      "label": "Call of Duty: United Offensive",
       "released": "2004-09-14"
     },
     {
       "id": "cod-fh",
       "code": "FH",
-      "label": "Finest Hour",
+      "label": "Call of Duty: Finest Hour",
       "released": "2004-11-16"
     },
     {
@@ -29,7 +29,7 @@
     {
       "id": "cod2-bro",
       "code": "BR1",
-      "label": "Big Red One",
+      "label": "Call of Duty 2: Big Red One",
       "released": "2005-11-01"
     },
     {
@@ -41,7 +41,7 @@
     {
       "id": "rtv",
       "code": "RTV",
-      "label": "Roads to Victory",
+      "label": "Call of Duty: Roads to Victory",
       "released": "2007-03-13"
     },
     {
@@ -11078,6 +11078,28 @@
       "kind": "terrestrial",
       "entries": [
         {
+          "id": "waw-blowtorch-and-corkscrew:main",
+          "levelId": "waw-blowtorch-and-corkscrew",
+          "locationId": "main",
+          "title": "Blowtorch & Corkscrew",
+          "game": "WAW",
+          "wiki": "https://callofduty.fandom.com/wiki/Blowtorch_&_Corkscrew",
+          "wikiArticle": "codwiki-blowtorch-and-corkscrew",
+          "city": "Naha",
+          "region": "Okinawa Prefecture",
+          "label": "Wana Ridge, Sueyoshi Park",
+          "coordinates": [
+            26.22882,
+            127.71437
+          ],
+          "precision": "approximate",
+          "confidence": "high",
+          "method": "manual-approximate",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
           "id": "bo4-gridlock:main",
           "levelId": "bo4-gridlock",
           "locationId": "main",
@@ -11163,6 +11185,170 @@
           "method": "country-fallback",
           "modes": [
             "multiplayer"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Japan (Okinawa)",
+      "coordinates": [
+        26.217031,
+        127.719475
+      ],
+      "kind": "terrestrial",
+      "entries": [
+        {
+          "id": "waw-breaking-point:main",
+          "levelId": "waw-breaking-point",
+          "locationId": "main",
+          "title": "Breaking Point",
+          "game": "WAW",
+          "wiki": "https://callofduty.fandom.com/wiki/Breaking_Point",
+          "wikiArticle": "codwiki-breaking-point",
+          "city": null,
+          "region": null,
+          "label": "Japan (Okinawa)",
+          "coordinates": [
+            36,
+            138
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "waw-vanguard-castle:main",
+          "levelId": "waw-vanguard-castle",
+          "locationId": "main",
+          "title": "Castle",
+          "game": "WAW / V",
+          "wiki": "https://callofduty.fandom.com/wiki/Castle",
+          "wikiArticle": "codwiki-castle",
+          "city": null,
+          "region": null,
+          "label": "Japan (Okinawa)",
+          "coordinates": [
+            36,
+            138
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "waw-cliffside:main",
+          "levelId": "waw-cliffside",
+          "locationId": "main",
+          "title": "Cliffside",
+          "game": "WAW",
+          "wiki": "https://callofduty.fandom.com/wiki/Cliffside",
+          "wikiArticle": "codwiki-cliffside",
+          "city": null,
+          "region": null,
+          "label": "Japan (Okinawa)",
+          "coordinates": [
+            36,
+            138
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "waw-courtyard:main",
+          "levelId": "waw-courtyard",
+          "locationId": "main",
+          "title": "Courtyard",
+          "game": "WAW",
+          "wiki": "https://callofduty.fandom.com/wiki/Courtyard_(World_at_War)",
+          "wikiArticle": "codwiki-courtyard-world-at-war",
+          "city": null,
+          "region": null,
+          "label": "Japan (Okinawa)",
+          "coordinates": [
+            36,
+            138
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "waw-bo-bo3-vanguard-shi-no-numa:main",
+          "levelId": "waw-bo-bo3-vanguard-shi-no-numa",
+          "locationId": "main",
+          "title": "Shi No Numa",
+          "game": "WAW / BO / BO3 / V",
+          "wiki": "https://callofduty.fandom.com/wiki/Shi_No_Numa",
+          "wikiArticle": "codwiki-shi-no-numa",
+          "city": null,
+          "region": null,
+          "label": "Japan (Okinawa)",
+          "coordinates": [
+            36,
+            138
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "waw-ff-shuri-castle:main",
+          "levelId": "waw-ff-shuri-castle",
+          "locationId": "main",
+          "title": "Shuri Castle",
+          "game": "WAW:FF",
+          "wiki": "https://callofduty.fandom.com/wiki/Shuri_Castle_(level)",
+          "wikiArticle": "codwiki-shuri-castle-level",
+          "city": "Shuri Castle (Naha)",
+          "region": null,
+          "label": "Shuri Castle (Naha)",
+          "coordinates": [
+            26.217031,
+            127.719475
+          ],
+          "precision": "city",
+          "confidence": "high",
+          "method": "verified-landmark",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "waw-ff-typhoon-of-steel:main",
+          "levelId": "waw-ff-typhoon-of-steel",
+          "locationId": "main",
+          "title": "Typhoon of Steel",
+          "game": "WAW:FF",
+          "wiki": "https://callofduty.fandom.com/wiki/Typhoon_of_Steel",
+          "wikiArticle": "codwiki-typhoon-of-steel",
+          "city": null,
+          "region": null,
+          "label": "Japan (Okinawa)",
+          "coordinates": [
+            36,
+            138
+          ],
+          "precision": "country",
+          "confidence": "fallback",
+          "method": "country-fallback",
+          "modes": [
+            "singleplayer"
           ]
         }
       ]
@@ -14746,192 +14932,6 @@
           "method": "country-fallback",
           "modes": [
             "multiplayer"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Okinawa (Japan)",
-      "coordinates": [
-        26.217031,
-        127.719475
-      ],
-      "kind": "terrestrial",
-      "entries": [
-        {
-          "id": "waw-blowtorch-and-corkscrew:main",
-          "levelId": "waw-blowtorch-and-corkscrew",
-          "locationId": "main",
-          "title": "Blowtorch & Corkscrew",
-          "game": "WAW",
-          "wiki": "https://callofduty.fandom.com/wiki/Blowtorch_&_Corkscrew",
-          "wikiArticle": "codwiki-blowtorch-and-corkscrew",
-          "city": null,
-          "region": null,
-          "label": "Okinawa (Japan)",
-          "coordinates": [
-            36,
-            138
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
-          "id": "waw-breaking-point:main",
-          "levelId": "waw-breaking-point",
-          "locationId": "main",
-          "title": "Breaking Point",
-          "game": "WAW",
-          "wiki": "https://callofduty.fandom.com/wiki/Breaking_Point",
-          "wikiArticle": "codwiki-breaking-point",
-          "city": null,
-          "region": null,
-          "label": "Okinawa (Japan)",
-          "coordinates": [
-            36,
-            138
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
-          "id": "waw-vanguard-castle:main",
-          "levelId": "waw-vanguard-castle",
-          "locationId": "main",
-          "title": "Castle",
-          "game": "WAW / V",
-          "wiki": "https://callofduty.fandom.com/wiki/Castle",
-          "wikiArticle": "codwiki-castle",
-          "city": null,
-          "region": null,
-          "label": "Okinawa (Japan)",
-          "coordinates": [
-            36,
-            138
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "waw-cliffside:main",
-          "levelId": "waw-cliffside",
-          "locationId": "main",
-          "title": "Cliffside",
-          "game": "WAW",
-          "wiki": "https://callofduty.fandom.com/wiki/Cliffside",
-          "wikiArticle": "codwiki-cliffside",
-          "city": null,
-          "region": null,
-          "label": "Okinawa (Japan)",
-          "coordinates": [
-            36,
-            138
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "waw-courtyard:main",
-          "levelId": "waw-courtyard",
-          "locationId": "main",
-          "title": "Courtyard",
-          "game": "WAW",
-          "wiki": "https://callofduty.fandom.com/wiki/Courtyard_(World_at_War)",
-          "wikiArticle": "codwiki-courtyard-world-at-war",
-          "city": null,
-          "region": null,
-          "label": "Okinawa (Japan)",
-          "coordinates": [
-            36,
-            138
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "waw-bo-bo3-vanguard-shi-no-numa:main",
-          "levelId": "waw-bo-bo3-vanguard-shi-no-numa",
-          "locationId": "main",
-          "title": "Shi No Numa",
-          "game": "WAW / BO / BO3 / V",
-          "wiki": "https://callofduty.fandom.com/wiki/Shi_No_Numa",
-          "wikiArticle": "codwiki-shi-no-numa",
-          "city": null,
-          "region": null,
-          "label": "Okinawa (Japan)",
-          "coordinates": [
-            36,
-            138
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "waw-ff-shuri-castle:main",
-          "levelId": "waw-ff-shuri-castle",
-          "locationId": "main",
-          "title": "Shuri Castle",
-          "game": "WAW:FF",
-          "wiki": "https://callofduty.fandom.com/wiki/Shuri_Castle_(level)",
-          "wikiArticle": "codwiki-shuri-castle-level",
-          "city": "Shuri Castle (Naha)",
-          "region": null,
-          "label": "Shuri Castle (Naha)",
-          "coordinates": [
-            26.217031,
-            127.719475
-          ],
-          "precision": "city",
-          "confidence": "high",
-          "method": "verified-landmark",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
-          "id": "waw-ff-typhoon-of-steel:main",
-          "levelId": "waw-ff-typhoon-of-steel",
-          "locationId": "main",
-          "title": "Typhoon of Steel",
-          "game": "WAW:FF",
-          "wiki": "https://callofduty.fandom.com/wiki/Typhoon_of_Steel",
-          "wikiArticle": "codwiki-typhoon-of-steel",
-          "city": null,
-          "region": null,
-          "label": "Okinawa (Japan)",
-          "coordinates": [
-            36,
-            138
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "singleplayer"
           ]
         }
       ]
@@ -23119,7 +23119,7 @@
     "levels": 967,
     "entries": 987,
     "mapped": 956,
-    "cityMatched": 75,
-    "countryFallback": 882
+    "cityMatched": 76,
+    "countryFallback": 881
   }
 }

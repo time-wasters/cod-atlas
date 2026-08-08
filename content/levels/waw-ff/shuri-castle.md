@@ -8,7 +8,7 @@ wikiArticle: codwiki-shuri-castle-level
 locations:
   - id: main
     label: Shuri Castle (Naha)
-    country: Okinawa (Japan)
+    country: Japan (Okinawa)
     city: Shuri Castle (Naha)
     latitude: 26.217031
     longitude: 127.719475
