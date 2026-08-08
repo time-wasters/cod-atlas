@@ -126,7 +126,6 @@ for (const level of levels) {
       game: gameCodes,
       wiki: article.sourceUrl,
       wikiArticle: level.wikiArticle,
-      overlay: level.overlay ?? null,
       city: location.city ?? null,
       region: location.region ?? null,
       label: location.label ?? location.city ?? location.country,

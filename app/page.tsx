@@ -11,7 +11,6 @@ type Entry = {
   title: string;
   game: string;
   wiki: string;
-  overlay: null;
   city?: string | null;
   coordinates?: [number, number] | null;
   precision: "exact" | "approximate" | "city" | "region" | "country" | "off-world";
@@ -339,7 +338,6 @@ export default function Home() {
             {selected.group.entries.length > 8 && <div className="more-row">+ {selected.group.entries.length - 8} more in this region</div>}
           </div>
           <a className="wiki-button" href={selected.entry.wiki} target="_blank" rel="noreferrer">Open this Wiki entry ↗</a>
-          <button className="overlay-button" disabled title="Prepared for a later development phase">▱ Screenshot overlay — prepared</button>
         </article>
       </section>
     </main>

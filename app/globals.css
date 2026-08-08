@@ -164,10 +164,9 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
 .intel-entry a { flex: 0 0 28px; height: 28px; display: grid; place-items: center; border: 1px solid #5d624c; border-radius: 3px; color: var(--amber); text-decoration: none; }
 .intel-entry a:hover { border-color: var(--amber); background: #dfa12718; }
 .more-row { padding: 9px 0; color: #a27c38; font-size: 10px; }
-.wiki-button, .overlay-button { width: 100%; min-height: 40px; display: grid; place-items: center; margin-top: 10px; border-radius: 4px; font-size: 11px; font-weight: 700; text-decoration: none; }
+.wiki-button { width: 100%; min-height: 40px; display: grid; place-items: center; margin-top: 10px; border-radius: 4px; font-size: 11px; font-weight: 700; text-decoration: none; }
 .wiki-button { border: 1px solid #b77b16; color: #151309; background: linear-gradient(#e2a632, #bb7d17); }
 .wiki-button:hover { filter: brightness(1.08); }
-.overlay-button { border: 1px solid #4c503f; color: #777c69; background: #1e221b; cursor: not-allowed; }
 
 @media (max-width: 900px) {
   body { overflow: auto; }
