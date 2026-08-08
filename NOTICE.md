@@ -2,7 +2,7 @@
 
 ## Project
 
-Copyright © 2026 Call of Duty Atlas contributors.
+Copyright © 2026 CoD Atlas contributors.
 
 Source code is licensed under `AGPL-3.0-only`. Original project data and
 editorial content are licensed under `CC-BY-SA-4.0`. See `LICENSE` and
@@ -21,10 +21,10 @@ The atlas was inspired by the Reddit post
 [“COD: Every location visited in the COD franchise”](https://www.reddit.com/r/CallOfDuty/comments/10c3jbd/cod_every_location_visited_in_the_cod_franchise/)
 by Reddit user **u/robracer97**.
 
-## Call of Duty Wiki and Fandom
+## CoD Wiki and Fandom
 
 Atlas records link to pages on the
-[Call of Duty Wiki](https://callofduty.fandom.com/wiki/Call_of_Duty_Wiki).
+[CoD Wiki](https://callofduty.fandom.com/wiki/Call_of_Duty_Wiki).
 Imported article or media material remains subject to the license and
 attribution displayed on its source page or file-detail page. Import records
 must retain the source URL, author information, and applicable license links.

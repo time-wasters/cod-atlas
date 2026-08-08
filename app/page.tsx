@@ -201,7 +201,7 @@ export default function Home() {
         )}</description><Point><coordinates>${lng},${lat},0</coordinates></Point></Placemark>`;
       });
     });
-    const kml = `<?xml version="1.0" encoding="UTF-8"?><kml xmlns="http://www.opengis.net/kml/2.2"><Document><name>Call of Duty Atlas</name>${placemarks.join("")}</Document></kml>`;
+    const kml = `<?xml version="1.0" encoding="UTF-8"?><kml xmlns="http://www.opengis.net/kml/2.2"><Document><name>CoD Atlas</name>${placemarks.join("")}</Document></kml>`;
     const url = URL.createObjectURL(new Blob([kml], { type: "application/vnd.google-earth.kml+xml" }));
     const anchor = document.createElement("a");
     anchor.href = url;
@@ -215,7 +215,7 @@ export default function Home() {
       <header className="atlas-header">
         <div className="brand-mark" aria-hidden="true">◎</div>
         <div>
-          <h1>Call of Duty Atlas</h1>
+          <h1>CoD Atlas</h1>
           <p>Real-world geography of the series</p>
         </div>
         <div className="header-stat">
@@ -333,7 +333,7 @@ export default function Home() {
             {selected.group.entries.slice(0, 8).map((entry, index) => (
               <div className="intel-entry" key={`${entry.title}-${index}`}>
                 <button onClick={() => setSelected({ group: selected.group, entry })}><strong>{entry.title}</strong><span>{entry.city ?? selected.group.name} · {entry.game}</span></button>
-                <a href={entry.wiki} target="_blank" rel="noreferrer" aria-label={`Open ${entry.title} on Call of Duty Wiki`}>↗</a>
+                <a href={entry.wiki} target="_blank" rel="noreferrer" aria-label={`Open ${entry.title} on CoD Wiki`}>↗</a>
               </div>
             ))}
             {selected.group.entries.length > 8 && <div className="more-row">+ {selected.group.entries.length - 8} more in this region</div>}

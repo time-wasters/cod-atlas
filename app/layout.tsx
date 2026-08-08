@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Call of Duty Atlas",
-  description: "An interactive map of real-world Call of Duty locations, missions and multiplayer maps.",
+  title: "CoD Atlas",
+  description: "An interactive map of real-world CoD locations, missions and multiplayer maps.",
   other: {
     "codex-preview": "development",
   },

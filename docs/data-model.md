@@ -25,7 +25,7 @@ erDiagram
 ```yaml
 id: cod3
 code: COD3
-label: Call of Duty 3
+label: CoD 3
 released: 2006-11-07
 ```
 

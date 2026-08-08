@@ -5,8 +5,8 @@ These instructions apply to the entire repository. A more specific
 
 ## Project goal
 
-Call of Duty Atlas is a database-free, statically deployable map of real-world
-locations represented in Call of Duty. Git is the source of truth and data
+CoD Atlas is a database-free, statically deployable map of real-world
+locations represented in CoD. Git is the source of truth and data
 changes are intended to be reviewable through pull requests.
 
 ## Non-negotiable architecture

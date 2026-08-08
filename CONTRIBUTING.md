@@ -1,4 +1,4 @@
-# Contributing to Call of Duty Atlas
+# Contributing to CoD Atlas
 
 Thanks for helping improve the atlas. Git is the source of truth; corrections
 and additions should arrive as focused pull requests with supporting sources.

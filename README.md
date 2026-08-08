@@ -1,6 +1,6 @@
-# Call of Duty Atlas
+# CoD Atlas
 
-An open, static atlas of real-world locations represented in Call of Duty. The
+An open, static atlas of real-world locations represented in CoD. The
 website has no database and no write API: Git is the source of truth, so data
 corrections can be reviewed as normal pull requests.
 
@@ -128,6 +128,6 @@ apply. It does not relicense third-party material.
 ## Provenance
 
 The project was inspired by
-[u/robracer97's Call of Duty location post](https://www.reddit.com/r/CallOfDuty/comments/10c3jbd/cod_every_location_visited_in_the_cod_franchise/).
-Call of Duty Wiki links and imported metadata remain subject to their source
+[u/robracer97's CoD location post](https://www.reddit.com/r/CallOfDuty/comments/10c3jbd/cod_every_location_visited_in_the_cod_franchise/).
+CoD Wiki links and imported metadata remain subject to their source
 pages' licensing and attribution requirements.
