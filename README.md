@@ -1,10 +1,10 @@
 # CoD Atlas
 
-An open, static atlas of real-world locations represented in CoD. The
-website has no database and no write API: Git is the source of truth, so data
-corrections can be reviewed as normal pull requests.
+An open, static atlas of real-world locations represented on an interactive map.
 
 ## Content model
+
+The website has no database and no write API: Git is the source of truth, so data corrections can be reviewed as normal pull requests.
 
 ```text
 content/
@@ -14,10 +14,8 @@ content/
 └── wiki-import/articles/      # machine-oriented Wiki import records
 ```
 
-A level owns its marker coordinates. There is deliberately no shared `place`
-table: two levels in Berlin, for example, may point to different buildings.
-Leaflet can group nearby markers for display at low zoom without changing their
-source coordinates.
+A level owns its marker coordinates. There is deliberately no shared `place` table: two levels in Berlin, for example, may point to different buildings.
+Leaflet can group nearby markers for display at low zoom without changing their source coordinates.
 
 Example level:
 
@@ -46,14 +44,9 @@ locations:
 Historical or editorial notes can live here.
 ```
 
-One level can contain several `locations`. Coordinate precision is one of
-`exact`, `approximate`, `city`, `region`, `country`, or `off-world`.
+One level can contain several `locations`. Coordinate precision is one of `exact`, `approximate`, `city`, `region`, `country`, or `off-world`.
 
-Wiki import files remain separate so an automated refresh cannot silently
-overwrite curated coordinates, classifications, or historical notes. Each
-record has a stable local ID and placeholders for the Fandom page ID, revision,
-location links, map style, main image, map image, image detail pages, authors,
-licenses, and raw import payload.
+Wiki import files remain separate so an automated refresh cannot silently overwrite curated coordinates, classifications, or historical notes. Each record has a stable local ID and placeholders for the Fandom page ID, revision, location links, map style, main image, map image, image detail pages, authors, licenses, and raw import payload.
 
 ## Editing data
 
@@ -64,13 +57,11 @@ licenses, and raw import payload.
 4. Open a pull request with both the source change and regenerated
    `app/data/atlas.generated.json`.
 
-The build fails for duplicate IDs, missing foreign keys, invalid modes,
-incomplete coordinate pairs, or stale generated data.
+The build fails for duplicate IDs, missing foreign keys, invalid modes, incomplete coordinate pairs, or stale generated data.
 
 ## Run with Docker
 
-Requires Docker with the Compose plugin. Build the static site and start it in
-a background container with one command:
+Requires Docker with the Compose plugin. Build the static site and start it in a background container with one command:
 
 ```sh
 docker compose up --build -d
@@ -83,14 +74,9 @@ container, run:
 docker compose down
 ```
 
-All runtime resources have deterministic names: project, service, container,
-and hostname `cod-atlas`; image `cod-atlas:local`; and bridge network
-`cod-atlas-network`. The service explicitly uses no Docker volumes. Docker
-still assigns its mandatory internal IDs, but no command relies on them.
+All runtime resources have deterministic names: project, service, container, and hostname `cod-atlas`; image `cod-atlas:local`; and bridge network `cod-atlas-network`. The service explicitly uses no Docker volumes. Docker still assigns its mandatory internal IDs, but no command relies on them.
 
-Set `COD_ATLAS_PORT` in your shell or a local `.env` file before starting the
-container to use a host port other than `8080`. Re-run the startup command
-after source or content changes to rebuild the static site.
+Set `COD_ATLAS_PORT` in your shell or a local `.env` file before starting the container to use a host port other than `8080`. Re-run the startup command after source or content changes to rebuild the static site.
 
 ## Local development with Node.js
 
@@ -110,17 +96,13 @@ Useful commands:
 - `npm run build:static` creates a plain, relative-path website in
   `dist-static/` for GitHub Pages, Nginx, or basic webspace.
 
-The finished `dist-static/` directory can be uploaded as-is by CI. No Supabase
-or other database service is required.
+The finished `dist-static/` directory can be uploaded as-is by CI. No Supabase or other database service is required.
 
-The included GitHub Actions workflow validates every pull request and attaches
-the static website as a downloadable build artifact on `main`.
+The included GitHub Actions workflow validates every pull request and attaches the static website as a downloadable build artifact on `main`.
 
 ## Codex and VSCodium
 
-Codex automatically reads the repository instructions in `AGENTS.md`. The
-instructions preserve the data architecture, required checks, and licensing
-rules so a new session can begin without repeating the project history.
+Codex automatically reads the repository instructions in `AGENTS.md`. The instructions preserve the data architecture, required checks, and licensing rules so a new session can begin without repeating the project history.
 
 After opening the repository in VSCodium:
 
@@ -129,26 +111,17 @@ npm ci
 codex
 ```
 
-Sign in to Codex with ChatGPT when prompted. Use **Terminal → Run Task** for
-one-click data validation, tests, development, and static builds. Personal
-model, login, and approval settings are intentionally not committed.
+Sign in to Codex with ChatGPT when prompted. Use **Terminal → Run Task** for one-click data validation, tests, development, and static builds. Personal model, login, and approval settings are intentionally not committed.
 
-See `CONTRIBUTING.md` for the pull-request workflow and `docs/data-model.md` for
-the complete content relationships.
+See `CONTRIBUTING.md` for the pull-request workflow and `docs/data-model.md` for the complete content relationships.
 
 ## License
 
-- Source code: GNU Affero General Public License v3.0 only
-  (`AGPL-3.0-only`). Modified versions offered over a network must provide the
-  corresponding source under the same license.
-- Original project data and editorial content: Creative Commons
-  Attribution-ShareAlike 4.0 International (`CC-BY-SA-4.0`).
-- Third-party Wiki material and media retain their original licenses and
-  attribution requirements. See `NOTICE.md`.
+- Source code: GNU Affero General Public License v3.0 only (`AGPL-3.0-only`). Modified versions offered over a network must provide the corresponding source under the same license.
+- Original project data and editorial content: Creative Commons Attribution-ShareAlike 4.0 International (`CC-BY-SA-4.0`).
+- Third-party Wiki material and media retain their original licenses and attribution requirements. See `NOTICE.md`.
 
-`LICENSE-DATA` applies to original material under `content/` and the generated
-`app/data/atlas.generated.json`, to the extent copyright or database rights
-apply. It does not relicense third-party material.
+`LICENSE-DATA` applies to original material under `content/` and the generated `app/data/atlas.generated.json`, to the extent copyright or database rights apply. It does not relicense third-party material.
 
 ## Provenance
 

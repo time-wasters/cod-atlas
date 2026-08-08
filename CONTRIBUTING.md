@@ -27,6 +27,10 @@ record even when several levels use the same city name.
 
 ## Add a level
 
+See the [data contribution guide](docs/contributing-data.md) for every field,
+all allowed `mode`, `precision`, `confidence`, and `method` values, selection
+guidance, and copy-ready templates for every source record type.
+
 Create a Markdown file under the primary game's directory:
 
 ```md
@@ -56,6 +60,9 @@ Optional research notes belong here.
 
 Add a game YAML file only when its referenced game does not already exist. Add
 or reference a separate Wiki import JSON record for `wikiArticle`.
+
+Copy templates from [`docs/templates/`](docs/templates/) instead of using an
+existing record whose assumptions may not fit the new contribution.
 
 ## Wiki imports and media
 

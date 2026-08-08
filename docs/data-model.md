@@ -59,6 +59,11 @@ Precision values:
 - `country`: country fallback.
 - `off-world`: no terrestrial coordinates.
 
+`confidence` and `method` are required on every location. Their allowed values
+and decision guidance are documented in the
+[data contribution guide](contributing-data.md). Copy-ready records live in
+[`docs/templates/`](templates/).
+
 `primary: true` identifies the main location when a level contains several.
 
 ## Wiki import record

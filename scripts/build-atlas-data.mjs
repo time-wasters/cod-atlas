@@ -9,6 +9,17 @@ const outputPath = path.join(root, "app/data/atlas.generated.json");
 const checkOnly = process.argv.includes("--check");
 const validModes = new Set(["singleplayer", "multiplayer"]);
 const validPrecisions = new Set(["exact", "approximate", "city", "region", "country", "off-world"]);
+const validConfidences = new Set(["high", "medium", "fallback"]);
+const validMethods = new Set([
+  "verified-landmark",
+  "manual-approximate",
+  "wiki-location",
+  "article-context",
+  "title",
+  "title-mention",
+  "region-fallback",
+  "country-fallback",
+]);
 
 async function filesBelow(directory, extension) {
   const entries = await readdir(directory, { withFileTypes: true });
@@ -71,6 +82,8 @@ for (const filename of levelFiles) {
     locationIds.add(location.id);
     requireValue(location.country, `${filename}: location country is required`);
     requireValue(validPrecisions.has(location.precision), `${filename}: invalid precision ${location.precision}`);
+    requireValue(validConfidences.has(location.confidence), `${filename}: invalid or missing confidence ${location.confidence}`);
+    requireValue(validMethods.has(location.method), `${filename}: invalid or missing method ${location.method}`);
     const hasLatitude = Number.isFinite(location.latitude);
     const hasLongitude = Number.isFinite(location.longitude);
     requireValue(hasLatitude === hasLongitude, `${filename}: latitude and longitude must be supplied together`);
