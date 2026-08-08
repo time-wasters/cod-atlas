@@ -1,14 +1,14 @@
 {
   "id": "codwiki-railyard-map",
-  "fandomPageId": null,
+  "fandomPageId": 15417,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Railyard_(map)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Railyard_(map)",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2991590,
+  "importedAt": "2026-08-08T22:28:11.559Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "[[Wikipedia:Warsaw|Warsaw]], [[Wikipedia:Poland|Poland]]",
+    "label": "Warsaw",
+    "url": "https://callofduty.fandom.com/wiki/Wikipedia%3AWarsaw"
   },
   "mapStyle": "multiplayer",
   "mapStyleDetail": null,
@@ -40,5 +40,11 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-04-12T11:04:05Z",
+    "revisionSha1": "c0165fface02cbc9b7aa936e7a45b74a3fcd3510",
+    "resolvedTitle": "Railyard (map)",
+    "mainImageTitle": "File:Railyard_loading_screen_CoD1.jpg",
+    "mapImageTitle": null
+  }
 }

@@ -119,6 +119,8 @@ export default function Home() {
   const [showSingleplayer, setShowSingleplayer] = useState(true);
   const [showMultiplayer, setShowMultiplayer] = useState(true);
   const [mapReady, setMapReady] = useState(false);
+  const [loadedImageKey, setLoadedImageKey] = useState<string | null>(null);
+  const [failedImageKey, setFailedImageKey] = useState<string | null>(null);
   const [selected, setSelected] = useState<Selection>({
     group: initialGroup,
     entry: initialEntry,
@@ -171,6 +173,11 @@ export default function Home() {
   const selectedWikipediaUrl = locationUrl(selected.entry, "wikipedia");
   const selectedMedia = data.wikiMedia[selected.entry.wikiArticle];
   const selectedImage = selectedMedia?.main ?? selectedMedia?.map ?? null;
+  const selectedImageKey = selectedImage
+    ? `${selected.entry.id}:${selectedImage.thumbnailUrl}`
+    : null;
+  const selectedImageLoaded = selectedImageKey !== null && loadedImageKey === selectedImageKey;
+  const selectedImageFailed = selectedImageKey !== null && failedImageKey === selectedImageKey;
 
   const selectEntry = useCallback((group: Group, entry: Entry) => setSelected({ group, entry }), []);
 
@@ -394,13 +401,21 @@ export default function Home() {
             <p>{selected.entry.game} · {selected.entry.modes.includes("multiplayer") ? "Multiplayer map" : "Campaign mission"}</p>
           </div>
           {selectedImage && (
-            <figure className="intel-media">
+            <figure className="intel-media" key={selectedImageKey}>
+              {!selectedImageLoaded && (
+                <span className="media-load-state" role="status">
+                  {selectedImageFailed ? "Image unavailable" : "Loading image…"}
+                </span>
+              )}
               {/* Preserve the reviewed external thumbnail instead of proxying or transforming it. */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
+                className={selectedImageLoaded ? "is-loaded" : ""}
                 src={selectedImage.thumbnailUrl}
                 alt={`${selected.entry.title} media from the Call of Duty Wiki`}
                 referrerPolicy="no-referrer"
+                onLoad={() => setLoadedImageKey(selectedImageKey)}
+                onError={() => setFailedImageKey(selectedImageKey)}
               />
               <button
                 className="media-info-button"
@@ -410,7 +425,6 @@ export default function Home() {
                 onClick={() => mediaDialog.current?.showModal()}
               >
                 <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <circle cx="12" cy="12" r="9" />
                   <path d="M12 10.8v6M12 7.2h.01" />
                 </svg>
               </button>
