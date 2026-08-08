@@ -67,6 +67,10 @@ and decision guidance are documented in the
 [data contribution guide](contributing-data.md). Copy-ready records live in
 [`docs/templates/`](templates/).
 
+Use `real-world-inspiration` when a verified real place inspired a fictional or
+adapted in-game location. It distinguishes the real reference point from a
+canonical claim that the in-game location is the landmark itself.
+
 `primary: true` identifies the main location when a level contains several.
 
 ## Wiki import record

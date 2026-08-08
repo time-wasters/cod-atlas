@@ -112,6 +112,20 @@ test("preserves the complete statically compiled atlas", async () => {
   assert.equal(intoTheFurnace.country, "Georgia");
   assert.equal(intoTheFurnace.region, null);
 
+  const casino = findEntry("BO4", "Casino");
+  assert.equal(casino.country, "Monaco");
+  assert.equal(casino.region, "Monte Carlo");
+  assert.equal(casino.city, null);
+  assert.equal(casino.landmark, "Casino de Monte-Carlo");
+  assert.deepEqual(casino.coordinates, [43.739444, 7.428889]);
+  assert.equal(casino.precision, "exact");
+  assert.equal(casino.confidence, "high");
+  assert.equal(casino.method, "real-world-inspiration");
+  assert.deepEqual(casino.urls, [
+    { googleMaps: "https://maps.app.goo.gl/c4AA1ZP8rtzM7unH9" },
+    { wikipedia: "https://en.wikipedia.org/wiki/Monte_Carlo_Casino" },
+  ]);
+
   const cod2Entries = entries.filter((entry) => entry.game.split(" / ").includes("COD2"));
   assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "singleplayer").length, 26);
   assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "multiplayer").length, 21);

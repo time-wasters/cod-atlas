@@ -94,6 +94,7 @@ that actually produced the location.
 | Value | Meaning |
 | --- | --- |
 | `verified-landmark` | A real landmark or exact site was independently verified. |
+| `real-world-inspiration` | The point is a verified real place that inspired a fictional or adapted in-game location, rather than its canonical in-universe position. |
 | `manual-approximate` | Research established an area and a contributor manually selected an approximate point. |
 | `wiki-location` | The Wiki's structured location field explicitly identifies the place. |
 | `article-context` | Article prose or other reliable contextual evidence identifies it. |
@@ -102,7 +103,8 @@ that actually produced the location.
 | `region-fallback` | Only regional evidence is available, so a regional representative point is used—or no terrestrial point exists. |
 | `country-fallback` | Only country evidence is available, so a country representative point is used. |
 
-Common combinations are `exact` + `high` + `verified-landmark`,
+Common combinations are `exact` + `high` + `verified-landmark`, `exact` +
+`high` + `real-world-inspiration`,
 `approximate` + `medium` + `manual-approximate`, `city` + `high` +
 `wiki-location`, and `country` + `fallback` + `country-fallback`. These are
 examples, not automatic rules: record what the evidence supports.

@@ -14,6 +14,7 @@ const validPrecisions = new Set(["exact", "approximate", "city", "region", "coun
 const validConfidences = new Set(["high", "medium", "fallback"]);
 const validMethods = new Set([
   "verified-landmark",
+  "real-world-inspiration",
   "manual-approximate",
   "wiki-location",
   "article-context",

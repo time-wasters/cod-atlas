@@ -11617,8 +11617,8 @@
     {
       "name": "Monaco",
       "coordinates": [
-        43.73333333,
-        7.4
+        43.739444,
+        7.428889
       ],
       "kind": "terrestrial",
       "flagCode": "MC",
@@ -11633,15 +11633,23 @@
           "wikiArticle": "codwiki-casino-black-ops-4",
           "country": "Monaco",
           "city": null,
-          "region": null,
-          "landmark": null,
+          "region": "Monte Carlo",
+          "landmark": "Casino de Monte-Carlo",
           "coordinates": [
-            43.73333333,
-            7.4
+            43.739444,
+            7.428889
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "exact",
+          "confidence": "high",
+          "method": "real-world-inspiration",
+          "urls": [
+            {
+              "googleMaps": "https://maps.app.goo.gl/c4AA1ZP8rtzM7unH9"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Monte_Carlo_Casino"
+            }
+          ],
           "modes": [
             "multiplayer"
           ]
@@ -23949,7 +23957,7 @@
     "levels": 967,
     "entries": 987,
     "mapped": 956,
-    "cityMatched": 77,
-    "countryFallback": 880
+    "cityMatched": 78,
+    "countryFallback": 879
   }
 }
