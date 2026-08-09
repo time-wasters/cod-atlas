@@ -559,6 +559,12 @@ export default function Home() {
     : hasSpaceLocations;
   const selectedGoogleMapsUrl = locationUrl(selected.entry, "googleMaps");
   const selectedWikipediaUrl = locationUrl(selected.entry, "wikipedia");
+  const otherLevelLocations = useMemo(
+    () => groups.flatMap((group) => group.entries
+      .filter((entry) => entry.levelId === selected.entry.levelId && entry.id !== selected.entry.id)
+      .map((entry) => ({ group, entry }))),
+    [groups, selected.entry.id, selected.entry.levelId],
+  );
   const selectedMedia = data.wikiMedia[selected.entry.wikiArticle];
   const selectedImage = selectedMedia?.main ?? selectedMedia?.map ?? null;
   const selectedImageKey = selectedImage
@@ -911,6 +917,45 @@ export default function Home() {
           <div className={`precision-badge ${selected.entry.precision === "approximate" ? "is-approximate" : !["country", "off-world"].includes(selected.entry.precision) ? "is-city" : "is-country"}`}>
             {selected.entry.precision === "approximate" ? "Approximate historical position" : !["country", "off-world"].includes(selected.entry.precision) ? `Localized · ${selected.entry.confidence} confidence` : selected.entry.precision === "off-world" ? "Off-world location" : "No city evidence · country fallback"}
           </div>
+          {otherLevelLocations.length > 0 && (
+            <div className="related-level-locations" aria-label="Other locations in this level">
+              {otherLevelLocations.map(({ group, entry }) => (
+                <div className="related-level-location" key={entry.id}>
+                  <div className="intel-kicker">
+                    {group.flagCode ? (
+                      <span
+                        className={`flag:${group.flagCode} intel-country-flag`}
+                        role="img"
+                        aria-label={`${entry.country} flag`}
+                      />
+                    ) : (
+                      <svg
+                        className="intel-country-fallback"
+                        viewBox="0 0 18 18"
+                        aria-hidden="true"
+                      >
+                        <circle cx="9" cy="9" r="6.5" />
+                      </svg>
+                    )}
+                    <span className="intel-country-name">{entry.country}</span>
+                  </div>
+                  {(entry.region || entry.city || entry.landmark) && (
+                    <div className="location-taxonomy">
+                      {entry.region && (
+                        <div className="taxonomy-tier is-region"><span>Region</span><strong>{entry.region}</strong></div>
+                      )}
+                      {entry.city && (
+                        <div className="taxonomy-tier is-city"><span>City</span><strong>{entry.city}</strong></div>
+                      )}
+                      {entry.landmark && (
+                        <div className="taxonomy-tier is-landmark"><span>Landmark</span><strong>{entry.landmark}</strong></div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
           <div className="intel-entries">
             {selected.group.entries.slice(0, 8).map((entry, index) => (
               <div className="intel-entry" key={`${entry.title}-${index}`}>

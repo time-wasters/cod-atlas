@@ -264,6 +264,12 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
 .precision-badge.is-city { border-color: #a8731d; color: #e3b451; }
 .precision-badge.is-approximate { border-style: dashed; border-color: #a8731d; color: #e3b451; }
 .precision-badge.is-country { border-style: dotted; }
+.related-level-locations { display: grid; gap: 10px; margin: -3px 0 13px; padding-top: 10px; border-top: 1px solid #3b4134; }
+.related-level-location + .related-level-location { padding-top: 10px; border-top: 1px solid #30362b; }
+.related-level-location .intel-kicker { font-size: 8px; }
+.related-level-location .intel-country-flag { --CountryFlagIcon-height: 16px; flex-basis: 24px; }
+.related-level-location .intel-country-fallback { width: 16px; height: 16px; flex-basis: 16px; }
+.related-level-location .location-taxonomy { margin-bottom: 0; }
 .intel-entries { border-block: 1px solid #464c3b; }
 .intel-entry { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 9px 0; border-bottom: 1px solid #33392d; }
 .intel-entry:last-child { border-bottom: 0; }
