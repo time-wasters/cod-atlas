@@ -45,10 +45,11 @@ The GitHub mark in the site footer is from
 Octicons code is distributed under the MIT License; the GitHub logo remains
 subject to GitHub's logo guidelines.
 
-The Reddit mark in the site footer is from
+The Reddit mark in the site footer and the Google Maps, Wikipedia, and Fandom
+marks in the details pane are from
 [Simple Icons](https://github.com/simple-icons/simple-icons), whose icon set is
-distributed under CC0-1.0. The Reddit logo remains subject to Reddit's brand
-and trademark terms.
+distributed under CC0-1.0. The individual logos remain subject to their
+respective brand and trademark terms.
 
 Country flag artwork is provided by
 [country-flag-icons](https://gitlab.com/catamphetamine/country-flag-icons),
