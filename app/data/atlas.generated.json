@@ -110,7 +110,7 @@
     {
       "id": "waw-ff",
       "code": "WAW:FF",
-      "label": "Final Fronts",
+      "label": "World at War: Final Fronts",
       "released": "2008-11-11",
       "icon": "/images/games/waw-ff.png"
     },
@@ -139,19 +139,43 @@
       "id": "bo",
       "code": "BO",
       "label": "Black Ops",
-      "released": "2010-11-09"
+      "released": "2010-11-09",
+      "images": {
+        "steam": {
+          "app": 42700,
+          "icon": "ea744d59efded3feaeebcafed224be9eadde90ac",
+          "clienticon": "0d652160dff1ab3d1352aa83c9cf14a20146519e"
+        }
+      },
+      "icon": "/images/games/bo.png"
     },
     {
       "id": "mw3-d",
       "code": "MW3:D",
       "label": "MW3: Defiance",
-      "released": "2011-11-08"
+      "released": "2011-11-08",
+      "images": {
+        "steamgriddb": {
+          "game": 5331486,
+          "icon": 96165,
+          "file": "37d5fdebc471ffd69e5150058aec30d4.png"
+        }
+      },
+      "icon": "/images/games/mw3-d.png"
     },
     {
       "id": "mw3",
       "code": "MW3",
       "label": "Modern Warfare 3 (2011)",
-      "released": "2011-11-08"
+      "released": "2011-11-08",
+      "images": {
+        "steam": {
+          "app": 42680,
+          "icon": "c3330a875925437d8216949b6571f6e941ba0679",
+          "clienticon": "d95d20dd4381f6935fbc1a62be592d21a64c2af7"
+        }
+      },
+      "icon": "/images/games/mw3.png"
     },
     {
       "id": "bo-d",
@@ -163,7 +187,14 @@
       "id": "bo2",
       "code": "BO2",
       "label": "Black Ops II",
-      "released": "2012-11-13"
+      "released": "2012-11-13",
+      "images": {
+        "steam": {
+          "app": 202970,
+          "icon": "0a23d78ade8c8d7b4cfa15bf71c9dd535b2998ca",
+          "clienticon": "bf2dbf3aaa1464cf97ab1558e2b9b305ae538e42"
+        }
+      }
     },
     {
       "id": "ghosts",
@@ -2465,16 +2496,24 @@
           "wiki": "https://callofduty.fandom.com/wiki/Dulag_IIIA",
           "wikiArticle": "codwiki-dulag-iiia",
           "country": "Austria",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Strasshof an der Nordbahn",
+          "region": "Lower Austria",
+          "landmark": "Strasshof concentration camp",
           "coordinates": [
-            47.33333333,
-            13.33333333
+            48.31485,
+            16.60947
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "exact",
+          "confidence": "high",
+          "method": "verified-landmark",
+          "urls": [
+            {
+              "googleMaps": "https://maps.app.goo.gl/Gi45f9czvRZoKW8n9"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Strasshof_concentration_camp"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -2873,16 +2912,21 @@
           "wiki": "https://callofduty.fandom.com/wiki/Festung_Recogne",
           "wikiArticle": "codwiki-festung-recogne",
           "country": "Belgium",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Recogne",
+          "region": "Luxembourg Province",
+          "landmark": "Recogne-Bastogne German military cemetery",
           "coordinates": [
-            50.83333333,
-            4
+            50.04935278,
+            5.74149722
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "exact",
+          "confidence": "high",
+          "method": "real-world-inspiration",
+          "urls": [
+            {
+              "googleMaps": "https://maps.app.goo.gl/ZhsYATLpg92LcViLA"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -5705,16 +5749,24 @@
           "wiki": "https://callofduty.fandom.com/wiki/Brecourt_Manor",
           "wikiArticle": "codwiki-brecourt-manor",
           "country": "France",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Le Grand Chemin",
+          "region": "Normandy",
+          "landmark": "Brécourt Manor",
           "coordinates": [
-            46,
-            2
+            49.390056,
+            -1.226111
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "exact",
+          "confidence": "high",
+          "method": "verified-landmark",
+          "urls": [
+            {
+              "googleMaps": "https://maps.app.goo.gl/aU9PXcPt9jWnof539"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Br%C3%A9court_Manor_Assault"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -27879,7 +27931,7 @@
     "levels": 967,
     "entries": 987,
     "mapped": 956,
-    "cityMatched": 79,
-    "countryFallback": 878
+    "cityMatched": 82,
+    "countryFallback": 875
   }
 }
