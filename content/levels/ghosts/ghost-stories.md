@@ -7,7 +7,8 @@ mode: singleplayer
 wikiArticle: codwiki-ghost-stories
 locations:
   - id: main
-    country: Earthâ€™s Orbit
+    country: Space
+    region: Earth's Orbit
     precision: off-world
     confidence: fallback
     method: region-fallback

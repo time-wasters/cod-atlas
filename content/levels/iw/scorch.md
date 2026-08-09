@@ -7,7 +7,8 @@ mode: multiplayer
 wikiArticle: codwiki-scorch
 locations:
   - id: main
-    country: Sun’s Orbit
+    country: Space
+    region: Sun's Orbit
     precision: off-world
     confidence: fallback
     method: region-fallback

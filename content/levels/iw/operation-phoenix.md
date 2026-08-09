@@ -7,7 +7,8 @@ mode: singleplayer
 wikiArticle: codwiki-operation-phoenix
 locations:
   - id: main
-    country: Uranus’ Orbit
+    country: Space
+    region: Uranus' Orbit
     precision: off-world
     confidence: fallback
     method: region-fallback

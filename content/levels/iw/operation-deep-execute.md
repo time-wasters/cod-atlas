@@ -7,7 +7,8 @@ mode: singleplayer
 wikiArticle: codwiki-operation-deep-execute
 locations:
   - id: main
-    country: Pluto’s Orbit
+    country: Space
+    region: Pluto's Orbit
     precision: off-world
     confidence: fallback
     method: region-fallback

@@ -1,6 +1,6 @@
 ---
 id: vanguard-eagle-s-nest
-title: Eagle’s Nest
+title: Eagle's Nest
 games:
   - vanguard
 mode: multiplayer
