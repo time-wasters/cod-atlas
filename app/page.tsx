@@ -91,7 +91,7 @@ type AtlasData = {
 };
 
 type Selection = { group: Group; entry: Entry };
-type CountryOption = Pick<Group, "name" | "flagCode">;
+type CountryOption = Pick<Group, "name" | "flagCode"> & { available: boolean };
 
 const data = atlasSource as AtlasData;
 const gamesById = new Map(data.games.map((game) => [game.id, game]));
@@ -178,7 +178,10 @@ function CountrySelect({
 
   return (
     <Select.Root value={value} onValueChange={onValueChange}>
-      <Select.Trigger className="country-select-trigger" aria-label="Filter by country">
+      <Select.Trigger
+        className={`country-select-trigger${selectedCountry && !selectedCountry.available ? " is-unavailable" : ""}`}
+        aria-label="Filter by country"
+      >
         <Select.Value>{selectedCountry?.name ?? "All countries"}</Select.Value>
         {selectedCountry ? (
           <CountryFlag code={selectedCountry.flagCode} />
@@ -202,7 +205,12 @@ function CountrySelect({
               <Select.ItemText>All countries</Select.ItemText>
             </Select.Item>
             {countries.map((item) => (
-              <Select.Item className="country-select-item" key={item.name} value={item.name}>
+              <Select.Item
+                className={`country-select-item${item.available ? "" : " is-unavailable"}`}
+                key={item.name}
+                value={item.name}
+                aria-label={item.available ? item.name : `${item.name}, no matching levels`}
+              >
                 <Select.ItemText>{item.name}</Select.ItemText>
                 <CountryFlag code={item.flagCode} />
               </Select.Item>
@@ -487,23 +495,20 @@ export default function Home() {
   }, [groups]);
   const countries = useMemo(
     () => groups
-      .map(({ name, flagCode }) => ({ name, flagCode }))
+      .map(({ name, flagCode, entries }) => ({
+        name,
+        flagCode,
+        available: entries.some((entry) => {
+          const matchesGame = game === "all" || entry.game.split(" / ").includes(game);
+          const matchesMode =
+            (showSingleplayer && entry.modes.includes("singleplayer")) ||
+            (showMultiplayer && entry.modes.includes("multiplayer"));
+          return matchesGame && matchesMode;
+        }),
+      }))
       .sort((a, b) => a.name.localeCompare(b.name)),
-    [groups],
+    [game, groups, showMultiplayer, showSingleplayer],
   );
-  const mapFitCoordinates = useMemo(() => {
-    const seen = new Set<string>();
-    return groups.flatMap((group) => {
-      if (country !== "all" && group.name !== country) return [];
-      return group.entries.flatMap((entry) => {
-        if (!entry.coordinates || (game !== "all" && !entry.game.split(" / ").includes(game))) return [];
-        const key = entry.coordinates.join(",");
-        if (seen.has(key)) return [];
-        seen.add(key);
-        return [entry.coordinates];
-      });
-    });
-  }, [country, game, groups]);
   const filtered = useMemo(() => {
     const needle = query.trim().toLowerCase();
     return groups
@@ -530,6 +535,16 @@ export default function Home() {
       }))
       .filter((group) => group.entries.length && (country === "all" || group.name === country));
   }, [country, groups, game, precision, query, showMultiplayer, showSingleplayer]);
+  const mapFitCoordinates = useMemo(() => {
+    const seen = new Set<string>();
+    return filtered.flatMap((group) => group.entries.flatMap((entry) => {
+      if (!entry.coordinates) return [];
+      const key = entry.coordinates.join(",");
+      if (seen.has(key)) return [];
+      seen.add(key);
+      return [entry.coordinates];
+    }));
+  }, [filtered]);
   const resultCount = filtered.reduce((sum, group) => sum + group.entries.length, 0);
   const spaceLocations = useMemo(
     () => filtered.flatMap((group) => group.entries
@@ -644,7 +659,10 @@ export default function Home() {
         maxZoom: mapFitCoordinates.length === 1 ? 6 : 7,
       });
     } else {
-      currentMap.fitWorld(animation);
+      currentMap.setView([27, 8], 2, {
+        animate: animation.animate,
+        duration: animation.duration,
+      });
     }
   }, [mapFitCoordinates, mapReady]);
 

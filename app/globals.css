@@ -84,6 +84,8 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
 .country-select-trigger > span:first-child { min-width: 0; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .country-select-trigger:hover, .country-select-trigger[data-state="open"] { border-color: #697159; background: #191f16; }
 .country-select-trigger:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; border-color: var(--amber-dark); }
+.country-select-trigger.is-unavailable { color: #717667; }
+.country-select-trigger.is-unavailable .country-select-flag { opacity: .35; filter: grayscale(1); }
 .country-select-chevron { width: 10px; height: 6px; display: block; color: #aaa27f; transition: transform .15s ease; }
 .country-select-chevron svg { width: 10px; height: 6px; display: block; fill: none; stroke: currentColor; }
 .country-select-trigger[data-state="open"] .country-select-chevron { transform: rotate(180deg); }
@@ -96,6 +98,10 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
 .country-select-item[data-highlighted] { color: #fff4d0; background: #303323; }
 .country-select-item[data-state="checked"] { color: #e8bc5b; background: #29291c; }
 .country-select-item[data-highlighted][data-state="checked"] { background: #3a3521; }
+.country-select-item.is-unavailable { color: #656b5d; }
+.country-select-item.is-unavailable .country-select-flag { opacity: .3; filter: grayscale(1); }
+.country-select-item.is-unavailable[data-highlighted] { color: #9a9f8d; background: #24291f; }
+.country-select-item.is-unavailable[data-state="checked"] { color: #858b78; background: #22271e; }
 .country-select-scroll-button { height: 24px; width: 100%; display: grid; place-items: center; border: 0; color: #aaa27f; background: #1d221a; font-size: 8px; cursor: default; }
 
 .precision-filter { display: grid; grid-template-columns: .65fr .8fr 1.55fr; border: 1px solid #48503d; border-radius: 4px; overflow: hidden; }
