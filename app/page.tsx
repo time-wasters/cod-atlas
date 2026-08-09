@@ -95,6 +95,7 @@ type CountryOption = Pick<Group, "name" | "flagCode"> & { available: boolean };
 
 const data = atlasSource as AtlasData;
 const gamesById = new Map(data.games.map((game) => [game.id, game]));
+const MAP_MAX_ZOOM = 18;
 
 function gameCodes(value: string) {
   return value.split(" / ").filter((code) => code && code !== "MP");
@@ -581,12 +582,13 @@ export default function Home() {
         center: [27, 8],
         zoom: 2,
         minZoom: 2,
-        maxZoom: 9,
+        maxZoom: MAP_MAX_ZOOM,
         zoomControl: false,
         worldCopyJump: true,
       });
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        maxZoom: MAP_MAX_ZOOM,
       }).addTo(instance);
       L.control.zoom({ position: "bottomright" }).addTo(instance);
       map.current = instance;
@@ -777,7 +779,7 @@ export default function Home() {
                 className={group.name === selected.group.name ? "location-row is-selected" : "location-row"}
                 onClick={() => setSelected({ group, entry: group.entries[0] })}
               >
-                <i aria-hidden="true">◎</i>
+                <i className="location-marker-icon" aria-hidden="true" />
                 <span><b>{group.name}</b><small>{group.entries.length} appearances</small></span>
                 <em>{group.coordinates ? "MAP" : "ORBIT"}</em>
               </button>

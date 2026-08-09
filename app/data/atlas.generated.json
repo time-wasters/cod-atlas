@@ -14600,16 +14600,24 @@
           "wiki": "https://callofduty.fandom.com/wiki/Nowhere_Left_to_Run",
           "wikiArticle": "codwiki-nowhere-left-to-run",
           "country": "Netherlands",
-          "city": null,
-          "region": null,
+          "city": "Amsterdam",
+          "region": "North Holland",
           "landmark": null,
           "coordinates": [
-            52.5,
-            5.75
+            52.37278,
+            4.89361
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "city",
+          "confidence": "high",
+          "method": "article-context",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Amsterdam%2C%20Netherlands"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Amsterdam"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -21407,7 +21415,10 @@
     },
     {
       "name": "Turkey",
-      "coordinates": null,
+      "coordinates": [
+        40.995,
+        39.78972
+      ],
       "kind": "terrestrial",
       "flagCode": "TR",
       "entries": [
@@ -21423,13 +21434,24 @@
           "wiki": "https://callofduty.fandom.com/wiki/Nowhere_Left_to_Run",
           "wikiArticle": "codwiki-nowhere-left-to-run",
           "country": "Turkey",
-          "city": null,
-          "region": null,
-          "landmark": null,
-          "coordinates": null,
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "region-fallback",
+          "city": "Trabzon",
+          "region": "Trabzon Province",
+          "landmark": "Trabzon Airport",
+          "coordinates": [
+            40.995,
+            39.78972
+          ],
+          "precision": "exact",
+          "confidence": "high",
+          "method": "real-world-inspiration",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Trabzon%20Airport"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Trabzon_Airport"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -27946,8 +27968,8 @@
     "groups": 100,
     "levels": 967,
     "entries": 987,
-    "mapped": 956,
-    "cityMatched": 83,
-    "countryFallback": 874
+    "mapped": 957,
+    "cityMatched": 85,
+    "countryFallback": 872
   }
 }
