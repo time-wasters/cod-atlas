@@ -8,11 +8,19 @@ wikiArticle: codwiki-ste-mere-eglise
 locations:
   - id: main
     country: France
+    region: Normandy
     city: Sainte-Mère-Église
-    latitude: 49.41
-    longitude: -1.31726
+    latitude: 49.4089
+    longitude: -1.3181
     precision: city
     confidence: high
-    method: article-context
+    method: wiki-location
     primary: true
+    urls:
+      - googleMaps: https://maps.app.goo.gl/hCuGskAmXe9hMTwc9
+      - wikipedia: https://en.wikipedia.org/wiki/Sainte-M%C3%A8re-%C3%89glise
 ---
+
+The mission is set in Sainte-Mère-Église, Normandy. The marker uses the
+published coordinates for the commune rather than a specific building or
+landmark within it.

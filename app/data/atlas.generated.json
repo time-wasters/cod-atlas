@@ -6826,15 +6826,23 @@
           "wikiArticle": "codwiki-normandy-route-n13",
           "country": "France",
           "city": null,
-          "region": null,
-          "landmark": null,
+          "region": "Normandy",
+          "landmark": "Borne Voie de la Liberté",
           "coordinates": [
-            46,
-            2
+            49.38611017143339,
+            -1.3003333355741817
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "approximate",
+          "confidence": "medium",
+          "method": "manual-approximate",
+          "urls": [
+            {
+              "googleMaps": "https://maps.app.goo.gl/VQc1L49q4tM3dC4bA"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Route_nationale_13"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -7503,15 +7511,23 @@
           "wikiArticle": "codwiki-ste-mere-eglise",
           "country": "France",
           "city": "Sainte-Mère-Église",
-          "region": null,
+          "region": "Normandy",
           "landmark": null,
           "coordinates": [
-            49.41,
-            -1.31726
+            49.4089,
+            -1.3181
           ],
           "precision": "city",
           "confidence": "high",
-          "method": "article-context",
+          "method": "wiki-location",
+          "urls": [
+            {
+              "googleMaps": "https://maps.app.goo.gl/hCuGskAmXe9hMTwc9"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Sainte-M%C3%A8re-%C3%89glise"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -27931,7 +27947,7 @@
     "levels": 967,
     "entries": 987,
     "mapped": 956,
-    "cityMatched": 82,
-    "countryFallback": 875
+    "cityMatched": 83,
+    "countryFallback": 874
   }
 }
