@@ -7,6 +7,13 @@
       "code": "COD",
       "label": "Call of Duty",
       "released": "2003-10-29",
+      "images": {
+        "steam": {
+          "app": 2620,
+          "icon": "b4ce47894dee6ec21b0ad96cfb2b8c0036098e39",
+          "clienticon": null
+        }
+      },
       "icon": "/images/games/cod.png"
     },
     {
@@ -28,6 +35,13 @@
       "code": "COD2",
       "label": "Call of Duty 2",
       "released": "2005-10-25",
+      "images": {
+        "steam": {
+          "app": 2630,
+          "icon": "2e455daa8702a3cb9da8733232ec330a06936df3",
+          "clienticon": "85d64426a5cc03a6fcdc6827a0048f83996f70ea"
+        }
+      },
       "icon": "/images/games/cod2.png"
     },
     {
@@ -55,7 +69,8 @@
       "id": "cod4",
       "code": "COD4",
       "label": "Modern Warfare (2007)",
-      "released": "2007-11-05"
+      "released": "2007-11-05",
+      "icon": "/images/games/cod4.png"
     },
     {
       "id": "waw-ff",
@@ -1102,7 +1117,7 @@
           "id": "mw19-wz-fortune-s-keep:main",
           "levelId": "mw19-wz-fortune-s-keep",
           "locationId": "main",
-          "title": "Fortune’s Keep",
+          "title": "Fortune's Keep",
           "game": "MW19-WZ",
           "gameIds": [
             "mw19-wz"
@@ -4427,37 +4442,6 @@
       ]
     },
     {
-      "name": "Cygnus X-3's Orbit",
-      "coordinates": null,
-      "kind": "off-world",
-      "flagCode": null,
-      "entries": [
-        {
-          "id": "iw-mayday:main",
-          "levelId": "iw-mayday",
-          "locationId": "main",
-          "title": "Mayday",
-          "game": "IW",
-          "gameIds": [
-            "iw"
-          ],
-          "wiki": "https://callofduty.fandom.com/wiki/Mayday_(map)",
-          "wikiArticle": "codwiki-mayday-map",
-          "country": "Cygnus X-3's Orbit",
-          "city": null,
-          "region": null,
-          "landmark": null,
-          "coordinates": null,
-          "precision": "off-world",
-          "confidence": "fallback",
-          "method": "region-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        }
-      ]
-    },
-    {
       "name": "Czech Republic (Czechia)",
       "coordinates": [
         49.75,
@@ -4631,114 +4615,6 @@
           "method": "region-fallback",
           "modes": [
             "multiplayer"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Earth’s Orbit",
-      "coordinates": null,
-      "kind": "off-world",
-      "flagCode": null,
-      "entries": [
-        {
-          "id": "ghosts-loki:main",
-          "levelId": "ghosts-loki",
-          "locationId": "main",
-          "title": "Loki",
-          "game": "G",
-          "gameIds": [
-            "ghosts"
-          ],
-          "wiki": "https://callofduty.fandom.com/wiki/Loki",
-          "wikiArticle": "codwiki-loki",
-          "country": "Earth’s Orbit",
-          "city": null,
-          "region": null,
-          "landmark": null,
-          "coordinates": null,
-          "precision": "off-world",
-          "confidence": "fallback",
-          "method": "region-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
-          "id": "iw-operation-safe-harbor:main",
-          "levelId": "iw-operation-safe-harbor",
-          "locationId": "main",
-          "title": "Operation Safe Harbor",
-          "game": "IW",
-          "gameIds": [
-            "iw"
-          ],
-          "wiki": "https://callofduty.fandom.com/wiki/Operation_Safe_Harbor",
-          "wikiArticle": "codwiki-operation-safe-harbor",
-          "country": "Earth’s Orbit",
-          "city": null,
-          "region": null,
-          "landmark": null,
-          "coordinates": null,
-          "precision": "off-world",
-          "confidence": "fallback",
-          "method": "region-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
-          "id": "mw2-second-sun:main",
-          "levelId": "mw2-second-sun",
-          "locationId": "main",
-          "title": "Second Sun",
-          "game": "MW2",
-          "gameIds": [
-            "mw2"
-          ],
-          "wiki": "https://callofduty.fandom.com/wiki/Second_Sun",
-          "wikiArticle": "codwiki-second-sun",
-          "country": "Earth’s Orbit",
-          "city": null,
-          "region": null,
-          "landmark": null,
-          "coordinates": null,
-          "precision": "off-world",
-          "confidence": "fallback",
-          "method": "region-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Earthâ€™s Orbit",
-      "coordinates": null,
-      "kind": "off-world",
-      "flagCode": null,
-      "entries": [
-        {
-          "id": "ghosts-ghost-stories:main",
-          "levelId": "ghosts-ghost-stories",
-          "locationId": "main",
-          "title": "Ghost Stories",
-          "game": "G",
-          "gameIds": [
-            "ghosts"
-          ],
-          "wiki": "https://callofduty.fandom.com/wiki/Ghost_Stories",
-          "wikiArticle": "codwiki-ghost-stories",
-          "country": "Earthâ€™s Orbit",
-          "city": null,
-          "region": null,
-          "landmark": null,
-          "coordinates": null,
-          "precision": "off-world",
-          "confidence": "fallback",
-          "method": "region-fallback",
-          "modes": [
-            "singleplayer"
           ]
         }
       ]
@@ -8826,7 +8702,7 @@
           "id": "vanguard-eagle-s-nest:main",
           "levelId": "vanguard-eagle-s-nest",
           "locationId": "main",
-          "title": "Eagle’s Nest",
+          "title": "Eagle's Nest",
           "game": "V",
           "gameIds": [
             "vanguard"
@@ -14331,60 +14207,6 @@
       ]
     },
     {
-      "name": "Neptune’s Orbit",
-      "coordinates": null,
-      "kind": "off-world",
-      "flagCode": null,
-      "entries": [
-        {
-          "id": "iw-frontier:main",
-          "levelId": "iw-frontier",
-          "locationId": "main",
-          "title": "Frontier",
-          "game": "IW",
-          "gameIds": [
-            "iw"
-          ],
-          "wiki": "https://callofduty.fandom.com/wiki/Frontier",
-          "wikiArticle": "codwiki-frontier",
-          "country": "Neptune’s Orbit",
-          "city": null,
-          "region": null,
-          "landmark": null,
-          "coordinates": null,
-          "precision": "off-world",
-          "confidence": "fallback",
-          "method": "region-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "iw-operation-taken-dagger:main",
-          "levelId": "iw-operation-taken-dagger",
-          "locationId": "main",
-          "title": "Operation Taken Dagger",
-          "game": "IW",
-          "gameIds": [
-            "iw"
-          ],
-          "wiki": "https://callofduty.fandom.com/wiki/Operation_Taken_Dagger",
-          "wikiArticle": "codwiki-operation-taken-dagger",
-          "country": "Neptune’s Orbit",
-          "city": null,
-          "region": null,
-          "landmark": null,
-          "coordinates": null,
-          "precision": "off-world",
-          "confidence": "fallback",
-          "method": "region-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        }
-      ]
-    },
-    {
       "name": "Netherlands",
       "coordinates": [
         52.5,
@@ -15830,60 +15652,6 @@
           "method": "country-fallback",
           "modes": [
             "multiplayer"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Pluto’s Orbit",
-      "coordinates": null,
-      "kind": "off-world",
-      "flagCode": null,
-      "entries": [
-        {
-          "id": "iw-operation-deep-execute:main",
-          "levelId": "iw-operation-deep-execute",
-          "locationId": "main",
-          "title": "Operation Deep Execute",
-          "game": "IW",
-          "gameIds": [
-            "iw"
-          ],
-          "wiki": "https://callofduty.fandom.com/wiki/Operation_Deep_Execute",
-          "wikiArticle": "codwiki-operation-deep-execute",
-          "country": "Pluto’s Orbit",
-          "city": null,
-          "region": null,
-          "landmark": null,
-          "coordinates": null,
-          "precision": "off-world",
-          "confidence": "fallback",
-          "method": "region-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
-          "id": "iw-operation-grave-robber:main",
-          "levelId": "iw-operation-grave-robber",
-          "locationId": "main",
-          "title": "Operation Grave Robber",
-          "game": "IW",
-          "gameIds": [
-            "iw"
-          ],
-          "wiki": "https://callofduty.fandom.com/wiki/Operation_Grave_Robber",
-          "wikiArticle": "codwiki-operation-grave-robber",
-          "country": "Pluto’s Orbit",
-          "city": null,
-          "region": null,
-          "landmark": null,
-          "coordinates": null,
-          "precision": "off-world",
-          "confidence": "fallback",
-          "method": "region-fallback",
-          "modes": [
-            "singleplayer"
           ]
         }
       ]
@@ -19429,6 +19197,405 @@
       ]
     },
     {
+      "name": "Space",
+      "coordinates": null,
+      "kind": "off-world",
+      "flagCode": null,
+      "entries": [
+        {
+          "id": "iw-frontier:main",
+          "levelId": "iw-frontier",
+          "locationId": "main",
+          "title": "Frontier",
+          "game": "IW",
+          "gameIds": [
+            "iw"
+          ],
+          "wiki": "https://callofduty.fandom.com/wiki/Frontier",
+          "wikiArticle": "codwiki-frontier",
+          "country": "Space",
+          "city": null,
+          "region": "Neptune's Orbit",
+          "landmark": null,
+          "coordinates": null,
+          "precision": "off-world",
+          "confidence": "fallback",
+          "method": "region-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "ghosts-ghost-stories:main",
+          "levelId": "ghosts-ghost-stories",
+          "locationId": "main",
+          "title": "Ghost Stories",
+          "game": "G",
+          "gameIds": [
+            "ghosts"
+          ],
+          "wiki": "https://callofduty.fandom.com/wiki/Ghost_Stories",
+          "wikiArticle": "codwiki-ghost-stories",
+          "country": "Space",
+          "city": null,
+          "region": "Earth's Orbit",
+          "landmark": null,
+          "coordinates": null,
+          "precision": "off-world",
+          "confidence": "fallback",
+          "method": "region-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "iw-grounded:main",
+          "levelId": "iw-grounded",
+          "locationId": "main",
+          "title": "Grounded",
+          "game": "IW",
+          "gameIds": [
+            "iw"
+          ],
+          "wiki": "https://callofduty.fandom.com/wiki/Grounded",
+          "wikiArticle": "codwiki-grounded",
+          "country": "Space",
+          "city": null,
+          "region": "Titan (Saturn Moon)",
+          "landmark": null,
+          "coordinates": null,
+          "precision": "off-world",
+          "confidence": "fallback",
+          "method": "region-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "ghosts-loki:main",
+          "levelId": "ghosts-loki",
+          "locationId": "main",
+          "title": "Loki",
+          "game": "G",
+          "gameIds": [
+            "ghosts"
+          ],
+          "wiki": "https://callofduty.fandom.com/wiki/Loki",
+          "wikiArticle": "codwiki-loki",
+          "country": "Space",
+          "city": null,
+          "region": "Earth's Orbit",
+          "landmark": null,
+          "coordinates": null,
+          "precision": "off-world",
+          "confidence": "fallback",
+          "method": "region-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "iw-mayday:main",
+          "levelId": "iw-mayday",
+          "locationId": "main",
+          "title": "Mayday",
+          "game": "IW",
+          "gameIds": [
+            "iw"
+          ],
+          "wiki": "https://callofduty.fandom.com/wiki/Mayday_(map)",
+          "wikiArticle": "codwiki-mayday-map",
+          "country": "Space",
+          "city": null,
+          "region": "Cygnus X-3's Orbit",
+          "landmark": null,
+          "coordinates": null,
+          "precision": "off-world",
+          "confidence": "fallback",
+          "method": "region-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "iw-operation-burn-water:main",
+          "levelId": "iw-operation-burn-water",
+          "locationId": "main",
+          "title": "Operation Burn Water",
+          "game": "IW",
+          "gameIds": [
+            "iw"
+          ],
+          "wiki": "https://callofduty.fandom.com/wiki/Operation_Burn_Water",
+          "wikiArticle": "codwiki-operation-burn-water",
+          "country": "Space",
+          "city": null,
+          "region": "Titan (Saturn Moon)",
+          "landmark": null,
+          "coordinates": null,
+          "precision": "off-world",
+          "confidence": "fallback",
+          "method": "region-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "iw-operation-d-con:main",
+          "levelId": "iw-operation-d-con",
+          "locationId": "main",
+          "title": "Operation D-Con",
+          "game": "IW",
+          "gameIds": [
+            "iw"
+          ],
+          "wiki": "https://callofduty.fandom.com/wiki/Operation_D-Con",
+          "wikiArticle": "codwiki-operation-d-con",
+          "country": "Space",
+          "city": null,
+          "region": "Venus' Orbit",
+          "landmark": null,
+          "coordinates": null,
+          "precision": "off-world",
+          "confidence": "fallback",
+          "method": "region-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "iw-operation-dark-quarry:main",
+          "levelId": "iw-operation-dark-quarry",
+          "locationId": "main",
+          "title": "Operation Dark Quarry",
+          "game": "IW",
+          "gameIds": [
+            "iw"
+          ],
+          "wiki": "https://callofduty.fandom.com/wiki/Operation_Dark_Quarry",
+          "wikiArticle": "codwiki-operation-dark-quarry",
+          "country": "Space",
+          "city": null,
+          "region": "Sun's Orbit",
+          "landmark": null,
+          "coordinates": null,
+          "precision": "off-world",
+          "confidence": "fallback",
+          "method": "region-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "iw-operation-deep-execute:main",
+          "levelId": "iw-operation-deep-execute",
+          "locationId": "main",
+          "title": "Operation Deep Execute",
+          "game": "IW",
+          "gameIds": [
+            "iw"
+          ],
+          "wiki": "https://callofduty.fandom.com/wiki/Operation_Deep_Execute",
+          "wikiArticle": "codwiki-operation-deep-execute",
+          "country": "Space",
+          "city": null,
+          "region": "Pluto's Orbit",
+          "landmark": null,
+          "coordinates": null,
+          "precision": "off-world",
+          "confidence": "fallback",
+          "method": "region-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "iw-operation-grave-robber:main",
+          "levelId": "iw-operation-grave-robber",
+          "locationId": "main",
+          "title": "Operation Grave Robber",
+          "game": "IW",
+          "gameIds": [
+            "iw"
+          ],
+          "wiki": "https://callofduty.fandom.com/wiki/Operation_Grave_Robber",
+          "wikiArticle": "codwiki-operation-grave-robber",
+          "country": "Space",
+          "city": null,
+          "region": "Pluto's Orbit",
+          "landmark": null,
+          "coordinates": null,
+          "precision": "off-world",
+          "confidence": "fallback",
+          "method": "region-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "iw-operation-phoenix:main",
+          "levelId": "iw-operation-phoenix",
+          "locationId": "main",
+          "title": "Operation Phoenix",
+          "game": "IW",
+          "gameIds": [
+            "iw"
+          ],
+          "wiki": "https://callofduty.fandom.com/wiki/Operation_Phoenix",
+          "wikiArticle": "codwiki-operation-phoenix",
+          "country": "Space",
+          "city": null,
+          "region": "Uranus' Orbit",
+          "landmark": null,
+          "coordinates": null,
+          "precision": "off-world",
+          "confidence": "fallback",
+          "method": "region-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "iw-operation-safe-harbor:main",
+          "levelId": "iw-operation-safe-harbor",
+          "locationId": "main",
+          "title": "Operation Safe Harbor",
+          "game": "IW",
+          "gameIds": [
+            "iw"
+          ],
+          "wiki": "https://callofduty.fandom.com/wiki/Operation_Safe_Harbor",
+          "wikiArticle": "codwiki-operation-safe-harbor",
+          "country": "Space",
+          "city": null,
+          "region": "Earth's Orbit",
+          "landmark": null,
+          "coordinates": null,
+          "precision": "off-world",
+          "confidence": "fallback",
+          "method": "region-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "iw-operation-sudden-death:main",
+          "levelId": "iw-operation-sudden-death",
+          "locationId": "main",
+          "title": "Operation Sudden Death",
+          "game": "IW",
+          "gameIds": [
+            "iw"
+          ],
+          "wiki": "https://callofduty.fandom.com/wiki/Operation_Sudden_Death",
+          "wikiArticle": "codwiki-operation-sudden-death",
+          "country": "Space",
+          "city": null,
+          "region": "Titan (Saturn Moon)",
+          "landmark": null,
+          "coordinates": null,
+          "precision": "off-world",
+          "confidence": "fallback",
+          "method": "region-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "iw-operation-taken-dagger:main",
+          "levelId": "iw-operation-taken-dagger",
+          "locationId": "main",
+          "title": "Operation Taken Dagger",
+          "game": "IW",
+          "gameIds": [
+            "iw"
+          ],
+          "wiki": "https://callofduty.fandom.com/wiki/Operation_Taken_Dagger",
+          "wikiArticle": "codwiki-operation-taken-dagger",
+          "country": "Space",
+          "city": null,
+          "region": "Neptune's Orbit",
+          "landmark": null,
+          "coordinates": null,
+          "precision": "off-world",
+          "confidence": "fallback",
+          "method": "region-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "iw-operation-trace-kill:main",
+          "levelId": "iw-operation-trace-kill",
+          "locationId": "main",
+          "title": "Operation Trace Kill",
+          "game": "IW",
+          "gameIds": [
+            "iw"
+          ],
+          "wiki": "https://callofduty.fandom.com/wiki/Operation_Trace_Kill",
+          "wikiArticle": "codwiki-operation-trace-kill",
+          "country": "Space",
+          "city": null,
+          "region": "Sun's Orbit",
+          "landmark": null,
+          "coordinates": null,
+          "precision": "off-world",
+          "confidence": "fallback",
+          "method": "region-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "iw-scorch:main",
+          "levelId": "iw-scorch",
+          "locationId": "main",
+          "title": "Scorch",
+          "game": "IW",
+          "gameIds": [
+            "iw"
+          ],
+          "wiki": "https://callofduty.fandom.com/wiki/Scorch",
+          "wikiArticle": "codwiki-scorch",
+          "country": "Space",
+          "city": null,
+          "region": "Sun's Orbit",
+          "landmark": null,
+          "coordinates": null,
+          "precision": "off-world",
+          "confidence": "fallback",
+          "method": "region-fallback",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "mw2-second-sun:main",
+          "levelId": "mw2-second-sun",
+          "locationId": "main",
+          "title": "Second Sun",
+          "game": "MW2",
+          "gameIds": [
+            "mw2"
+          ],
+          "wiki": "https://callofduty.fandom.com/wiki/Second_Sun",
+          "wikiArticle": "codwiki-second-sun",
+          "country": "Space",
+          "city": null,
+          "region": "Earth's Orbit",
+          "landmark": null,
+          "coordinates": null,
+          "precision": "off-world",
+          "confidence": "fallback",
+          "method": "region-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        }
+      ]
+    },
+    {
       "name": "Spain",
       "coordinates": [
         40,
@@ -19615,83 +19782,6 @@
           "precision": "country",
           "confidence": "fallback",
           "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Sun’s Orbit",
-      "coordinates": null,
-      "kind": "off-world",
-      "flagCode": null,
-      "entries": [
-        {
-          "id": "iw-operation-dark-quarry:main",
-          "levelId": "iw-operation-dark-quarry",
-          "locationId": "main",
-          "title": "Operation Dark Quarry",
-          "game": "IW",
-          "gameIds": [
-            "iw"
-          ],
-          "wiki": "https://callofduty.fandom.com/wiki/Operation_Dark_Quarry",
-          "wikiArticle": "codwiki-operation-dark-quarry",
-          "country": "Sun’s Orbit",
-          "city": null,
-          "region": null,
-          "landmark": null,
-          "coordinates": null,
-          "precision": "off-world",
-          "confidence": "fallback",
-          "method": "region-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
-          "id": "iw-operation-trace-kill:main",
-          "levelId": "iw-operation-trace-kill",
-          "locationId": "main",
-          "title": "Operation Trace Kill",
-          "game": "IW",
-          "gameIds": [
-            "iw"
-          ],
-          "wiki": "https://callofduty.fandom.com/wiki/Operation_Trace_Kill",
-          "wikiArticle": "codwiki-operation-trace-kill",
-          "country": "Sun’s Orbit",
-          "city": null,
-          "region": null,
-          "landmark": null,
-          "coordinates": null,
-          "precision": "off-world",
-          "confidence": "fallback",
-          "method": "region-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
-          "id": "iw-scorch:main",
-          "levelId": "iw-scorch",
-          "locationId": "main",
-          "title": "Scorch",
-          "game": "IW",
-          "gameIds": [
-            "iw"
-          ],
-          "wiki": "https://callofduty.fandom.com/wiki/Scorch",
-          "wikiArticle": "codwiki-scorch",
-          "country": "Sun’s Orbit",
-          "city": null,
-          "region": null,
-          "landmark": null,
-          "coordinates": null,
-          "precision": "off-world",
-          "confidence": "fallback",
-          "method": "region-fallback",
           "modes": [
             "multiplayer"
           ]
@@ -20787,83 +20877,6 @@
           "precision": "country",
           "confidence": "fallback",
           "method": "country-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Titan (Saturn Moon)",
-      "coordinates": null,
-      "kind": "off-world",
-      "flagCode": null,
-      "entries": [
-        {
-          "id": "iw-grounded:main",
-          "levelId": "iw-grounded",
-          "locationId": "main",
-          "title": "Grounded",
-          "game": "IW",
-          "gameIds": [
-            "iw"
-          ],
-          "wiki": "https://callofduty.fandom.com/wiki/Grounded",
-          "wikiArticle": "codwiki-grounded",
-          "country": "Titan (Saturn Moon)",
-          "city": null,
-          "region": null,
-          "landmark": null,
-          "coordinates": null,
-          "precision": "off-world",
-          "confidence": "fallback",
-          "method": "region-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "iw-operation-burn-water:main",
-          "levelId": "iw-operation-burn-water",
-          "locationId": "main",
-          "title": "Operation Burn Water",
-          "game": "IW",
-          "gameIds": [
-            "iw"
-          ],
-          "wiki": "https://callofduty.fandom.com/wiki/Operation_Burn_Water",
-          "wikiArticle": "codwiki-operation-burn-water",
-          "country": "Titan (Saturn Moon)",
-          "city": null,
-          "region": null,
-          "landmark": null,
-          "coordinates": null,
-          "precision": "off-world",
-          "confidence": "fallback",
-          "method": "region-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
-          "id": "iw-operation-sudden-death:main",
-          "levelId": "iw-operation-sudden-death",
-          "locationId": "main",
-          "title": "Operation Sudden Death",
-          "game": "IW",
-          "gameIds": [
-            "iw"
-          ],
-          "wiki": "https://callofduty.fandom.com/wiki/Operation_Sudden_Death",
-          "wikiArticle": "codwiki-operation-sudden-death",
-          "country": "Titan (Saturn Moon)",
-          "city": null,
-          "region": null,
-          "landmark": null,
-          "coordinates": null,
-          "precision": "off-world",
-          "confidence": "fallback",
-          "method": "region-fallback",
           "modes": [
             "singleplayer"
           ]
@@ -26874,37 +26887,6 @@
       ]
     },
     {
-      "name": "Uranus’ Orbit",
-      "coordinates": null,
-      "kind": "off-world",
-      "flagCode": null,
-      "entries": [
-        {
-          "id": "iw-operation-phoenix:main",
-          "levelId": "iw-operation-phoenix",
-          "locationId": "main",
-          "title": "Operation Phoenix",
-          "game": "IW",
-          "gameIds": [
-            "iw"
-          ],
-          "wiki": "https://callofduty.fandom.com/wiki/Operation_Phoenix",
-          "wikiArticle": "codwiki-operation-phoenix",
-          "country": "Uranus’ Orbit",
-          "city": null,
-          "region": null,
-          "landmark": null,
-          "coordinates": null,
-          "precision": "off-world",
-          "confidence": "fallback",
-          "method": "region-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        }
-      ]
-    },
-    {
       "name": "Uruguay",
       "coordinates": [
         -33,
@@ -27113,37 +27095,6 @@
           "precision": "country",
           "confidence": "fallback",
           "method": "country-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Venus’ Orbit",
-      "coordinates": null,
-      "kind": "off-world",
-      "flagCode": null,
-      "entries": [
-        {
-          "id": "iw-operation-d-con:main",
-          "levelId": "iw-operation-d-con",
-          "locationId": "main",
-          "title": "Operation D-Con",
-          "game": "IW",
-          "gameIds": [
-            "iw"
-          ],
-          "wiki": "https://callofduty.fandom.com/wiki/Operation_D-Con",
-          "wikiArticle": "codwiki-operation-d-con",
-          "country": "Venus’ Orbit",
-          "city": null,
-          "region": null,
-          "landmark": null,
-          "coordinates": null,
-          "precision": "off-world",
-          "confidence": "fallback",
-          "method": "region-fallback",
           "modes": [
             "singleplayer"
           ]
@@ -27879,7 +27830,7 @@
     }
   ],
   "totals": {
-    "groups": 108,
+    "groups": 100,
     "levels": 967,
     "entries": 987,
     "mapped": 956,

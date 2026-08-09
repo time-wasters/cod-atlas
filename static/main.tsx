@@ -1,5 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import "@fontsource/noto-sans/latin-500.css";
 import Home from "../app/page";
 import "../app/globals.css";
 

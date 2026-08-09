@@ -7,7 +7,8 @@ mode: multiplayer
 wikiArticle: codwiki-grounded
 locations:
   - id: main
-    country: Titan (Saturn Moon)
+    country: Space
+    region: Titan (Saturn Moon)
     precision: off-world
     confidence: fallback
     method: region-fallback

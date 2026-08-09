@@ -177,6 +177,244 @@ function CountrySelect({
   );
 }
 
+type SolarTargetId =
+  | "sun"
+  | "mercury"
+  | "venus"
+  | "earth"
+  | "moon"
+  | "mars"
+  | "jupiter"
+  | "europa"
+  | "saturn"
+  | "titan"
+  | "uranus"
+  | "neptune"
+  | "pluto"
+  | "deep-space";
+
+type SolarBody = {
+  id: Exclude<SolarTargetId, "moon" | "europa" | "titan" | "deep-space">;
+  name: string;
+  x: number;
+  radius: number;
+};
+
+const solarBodies: SolarBody[] = [
+  { id: "mercury", name: "Mercury", x: 82, radius: 3 },
+  { id: "venus", name: "Venus", x: 123, radius: 5 },
+  { id: "earth", name: "Earth", x: 168, radius: 5 },
+  { id: "mars", name: "Mars", x: 213, radius: 4 },
+  { id: "jupiter", name: "Jupiter", x: 267, radius: 14 },
+  { id: "saturn", name: "Saturn", x: 330, radius: 11 },
+  { id: "uranus", name: "Uranus", x: 389, radius: 7 },
+  { id: "neptune", name: "Neptune", x: 437, radius: 7 },
+  { id: "pluto", name: "Pluto", x: 478, radius: 3 },
+];
+
+const solarTargetPoints: Record<SolarTargetId, { x: number; y: number; radius: number }> = {
+  sun: { x: 45, y: 119, radius: 3 },
+  mercury: { x: 82, y: 116, radius: 3 },
+  venus: { x: 123, y: 116, radius: 5 },
+  earth: { x: 168, y: 116, radius: 5 },
+  moon: { x: 179, y: 123, radius: 2 },
+  mars: { x: 213, y: 116, radius: 4 },
+  jupiter: { x: 267, y: 116, radius: 14 },
+  europa: { x: 285, y: 126, radius: 2 },
+  saturn: { x: 330, y: 116, radius: 11 },
+  titan: { x: 349, y: 126, radius: 2.5 },
+  uranus: { x: 389, y: 116, radius: 7 },
+  neptune: { x: 437, y: 116, radius: 7 },
+  pluto: { x: 478, y: 116, radius: 3 },
+  "deep-space": { x: 486, y: 32, radius: 2 },
+};
+
+function solarTargetForEntry(entry: Entry): SolarTargetId {
+  const location = [entry.country, entry.region, entry.city, entry.landmark]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+
+  if (location.includes("cygnus") || location.includes("deep space")) return "deep-space";
+  if (location.includes("europa")) return "europa";
+  if (location.includes("titan")) return "titan";
+  if (location.includes("moon")) return "moon";
+  if (location.includes("mercury")) return "mercury";
+  if (location.includes("venus")) return "venus";
+  if (location.includes("earth")) return "earth";
+  if (location.includes("mars")) return "mars";
+  if (location.includes("jupiter")) return "jupiter";
+  if (location.includes("saturn")) return "saturn";
+  if (location.includes("uranus")) return "uranus";
+  if (location.includes("neptune")) return "neptune";
+  if (location.includes("pluto")) return "pluto";
+  if (location.includes("sun")) return "sun";
+  return "deep-space";
+}
+
+function SolarPlanet({ body }: { body: SolarBody }) {
+  const y = 116;
+
+  if (body.id === "saturn") {
+    return (
+      <g className="solar-planet" transform={`translate(${body.x} ${y})`} aria-hidden="true">
+        <ellipse className="solar-saturn-ring" rx="21" ry="6" transform="rotate(-22)" />
+        <circle r={body.radius} />
+        <path d="M-8 -3.5h16M-9 1h18M-7 5h14" />
+      </g>
+    );
+  }
+
+  if (body.id === "jupiter") {
+    return (
+      <g className="solar-planet" transform={`translate(${body.x} ${y})`} aria-hidden="true">
+        <circle r={body.radius} />
+        <path d="M-11 -6h22M-13 -1h26M-12 5h24" />
+      </g>
+    );
+  }
+
+  return (
+    <g className={`solar-planet is-${body.id}`} transform={`translate(${body.x} ${y})`} aria-hidden="true">
+      <circle r={body.radius} />
+      {body.id === "earth" && <path d="M-4 -1q3-5 7-2M-1 1q4 1 3 5" />}
+      {body.id === "mars" && <path d="M-3 0h6" />}
+    </g>
+  );
+}
+
+function SolarSystemOverlay({
+  locations,
+  selectedEntryId,
+  expanded,
+  onExpandedChange,
+  onSelect,
+}: {
+  locations: Selection[];
+  selectedEntryId: string;
+  expanded: boolean;
+  onExpandedChange: (expanded: boolean) => void;
+  onSelect: (group: Group, entry: Entry) => void;
+}) {
+  const locationsByTarget = new Map<SolarTargetId, Selection[]>();
+  for (const location of locations) {
+    const target = solarTargetForEntry(location.entry);
+    locationsByTarget.set(target, [...(locationsByTarget.get(target) ?? []), location]);
+  }
+
+  function selectTarget(target: SolarTargetId) {
+    const targetLocations = locationsByTarget.get(target) ?? [];
+    if (!targetLocations.length) return;
+    const selectedIndex = targetLocations.findIndex(({ entry }) => entry.id === selectedEntryId);
+    const next = targetLocations[selectedIndex >= 0 ? (selectedIndex + 1) % targetLocations.length : 0];
+    if (next) onSelect(next.group, next.entry);
+  }
+
+  return (
+    <aside
+      className={`solar-system-overlay${expanded ? " is-expanded" : " is-collapsed"}`}
+      aria-label="Solar System mission locations"
+    >
+      <div className="solar-system-panel" aria-hidden={!expanded}>
+        <svg viewBox="0 0 500 160" role="img" aria-labelledby="solar-system-title solar-system-description">
+          <title id="solar-system-title">Solar System schematic</title>
+          <desc id="solar-system-description">
+            Reference planets with markers for filtered off-world Call of Duty levels.
+          </desc>
+          <defs>
+            <radialGradient id="solar-sun-fill" cx="75%" cy="48%" r="62%">
+              <stop offset="0" stopColor="#c7ad68" stopOpacity=".78" />
+              <stop offset="1" stopColor="#8c7c4f" stopOpacity=".48" />
+            </radialGradient>
+          </defs>
+
+          <text className="solar-system-caption" x="11" y="15">Solar System // Schematic</text>
+          {(locationsByTarget.get("deep-space")?.length ?? 0) > 0 && (
+            <text className="solar-deep-space-label" x="489" y="15" textAnchor="end">
+              +{locationsByTarget.get("deep-space")?.length} Deep Space
+            </text>
+          )}
+
+          <g className="solar-orbits" aria-hidden="true">
+            {solarBodies.map((body) => (
+              <ellipse key={body.id} cx="-42" cy="116" rx={body.x + 42} ry="147" />
+            ))}
+          </g>
+
+          <g className="solar-sun" aria-hidden="true">
+            <circle cx="-16" cy="116" r="55" />
+            <path d="M8 71q24 43 0 89M18 78q20 37 0 76" />
+          </g>
+
+          <g className="solar-labels" aria-hidden="true">
+            {solarBodies.map((body) => (
+              <text
+                key={body.id}
+                x={body.x - 2}
+                y="85"
+                transform={`rotate(-30 ${body.x - 2} 85)`}
+              >
+                {body.name}
+              </text>
+            ))}
+          </g>
+
+          {solarBodies.map((body) => <SolarPlanet body={body} key={body.id} />)}
+          <g className="solar-moons" aria-hidden="true">
+            <circle cx="179" cy="123" r="2" />
+            <circle cx="285" cy="126" r="2" />
+            <circle cx="349" cy="126" r="2.5" />
+          </g>
+
+          {([...locationsByTarget] as [SolarTargetId, Selection[]][]).map(([target, targetLocations]) => {
+            const point = solarTargetPoints[target];
+            const isSelected = targetLocations.some(({ entry }) => entry.id === selectedEntryId);
+            const label = `${targetLocations.length} filtered ${targetLocations.length === 1 ? "level" : "levels"} at ${target.replace("-", " ")}`;
+            return (
+              <g
+                className={`solar-location-marker${isSelected ? " is-selected" : ""}`}
+                key={target}
+                role="button"
+                tabIndex={expanded ? 0 : -1}
+                aria-label={label}
+                transform={`translate(${point.x} ${point.y})`}
+                onClick={() => selectTarget(target)}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    selectTarget(target);
+                  }
+                }}
+              >
+                <title>{label}</title>
+                <circle className="solar-marker-hit" r={Math.max(point.radius + 10, 11)} />
+                <circle className="solar-marker-outer" r={Math.max(point.radius + 7, 8)} />
+                <circle className="solar-marker-inner" r={Math.max(point.radius + 3, 4)} />
+                {targetLocations.length > 1 && (
+                  <text className="solar-marker-count" y={Math.max(point.radius + 19, 20)} textAnchor="middle">
+                    {targetLocations.length}
+                  </text>
+                )}
+              </g>
+            );
+          })}
+        </svg>
+      </div>
+      <button
+        className="solar-system-toggle"
+        type="button"
+        aria-expanded={expanded}
+        aria-label={expanded ? "Collapse Solar System overlay" : "Expand Solar System overlay"}
+        onClick={() => onExpandedChange(!expanded)}
+      >
+        <svg viewBox="0 0 12 18" aria-hidden="true">
+          <path d={expanded ? "m8 3-5 6 5 6" : "m4 3 5 6-5 6"} />
+        </svg>
+      </button>
+    </aside>
+  );
+}
+
 export default function Home() {
   const [query, setQuery] = useState("");
   const [game, setGame] = useState("all");
@@ -185,6 +423,10 @@ export default function Home() {
   const [showSingleplayer, setShowSingleplayer] = useState(true);
   const [showMultiplayer, setShowMultiplayer] = useState(true);
   const [mapReady, setMapReady] = useState(false);
+  const [solarSystemDisplay, setSolarSystemDisplay] = useState({
+    hasSpaceLocations: true,
+    expanded: true,
+  });
   const [loadedImageKey, setLoadedImageKey] = useState<string | null>(null);
   const [failedImageKey, setFailedImageKey] = useState<string | null>(null);
   const [selected, setSelected] = useState<Selection>({
@@ -237,6 +479,16 @@ export default function Home() {
       .filter((group) => group.entries.length && (country === "all" || group.name === country));
   }, [country, groups, game, precision, query, showMultiplayer, showSingleplayer]);
   const resultCount = filtered.reduce((sum, group) => sum + group.entries.length, 0);
+  const spaceLocations = useMemo(
+    () => filtered.flatMap((group) => group.entries
+      .filter((entry) => entry.precision === "off-world")
+      .map((entry) => ({ group, entry }))),
+    [filtered],
+  );
+  const hasSpaceLocations = spaceLocations.length > 0;
+  const solarSystemExpanded = solarSystemDisplay.hasSpaceLocations === hasSpaceLocations
+    ? solarSystemDisplay.expanded
+    : hasSpaceLocations;
   const selectedGoogleMapsUrl = locationUrl(selected.entry, "googleMaps");
   const selectedWikipediaUrl = locationUrl(selected.entry, "wikipedia");
   const selectedMedia = data.wikiMedia[selected.entry.wikiArticle];
@@ -459,6 +711,14 @@ export default function Home() {
         <div ref={mapNode} className="map-canvas" />
         <div className="map-grid" aria-hidden="true" />
         <div className="map-label" aria-hidden="true">TACTICAL GEOGRAPHY // GLOBAL</div>
+
+        <SolarSystemOverlay
+          locations={spaceLocations}
+          selectedEntryId={selected.entry.id}
+          expanded={solarSystemExpanded}
+          onExpandedChange={(expanded) => setSolarSystemDisplay({ hasSpaceLocations, expanded })}
+          onSelect={selectEntry}
+        />
 
         <article className="intel-card">
           <div className="mission-heading">
