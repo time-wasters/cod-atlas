@@ -33,6 +33,8 @@ test("renders development preview metadata", async () => {
   const html = await response.text();
   assert.match(html, developmentPreviewMeta);
   assert.match(html, /class="intel-country-fallback"/);
+  assert.match(html, /class="country-select-trigger"/);
+  assert.match(html, /aria-label="Filter by country"/);
   assert.match(html, />Adriatic Sea<\/span>/);
   assert.doesNotMatch(html, /Selected location/);
   assert.doesNotMatch(html, />Level<\/span>/);

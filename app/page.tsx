@@ -1,6 +1,7 @@
 "use client";
 
 import type { LayerGroup, Map as LeafletMap } from "leaflet";
+import * as Select from "@radix-ui/react-select";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import atlasSource from "./data/atlas.generated.json";
 
@@ -90,6 +91,7 @@ type AtlasData = {
 };
 
 type Selection = { group: Group; entry: Entry };
+type CountryOption = Pick<Group, "name" | "flagCode">;
 
 const data = atlasSource as AtlasData;
 const gamesById = new Map(data.games.map((game) => [game.id, game]));
@@ -111,6 +113,67 @@ if (!initialEntry) throw new Error("Generated atlas contains an empty group");
 function escapeXml(value: string) {
   return value.replace(/[<>&'\"]/g, (char) =>
     ({ "<": "&lt;", ">": "&gt;", "&": "&amp;", "'": "&apos;", '\"': "&quot;" })[char]!,
+  );
+}
+
+function CountryFlag({ code }: { code: string | null }) {
+  if (!code) return null;
+
+  return (
+    <span
+      className={`flag:${code} country-select-flag`}
+      aria-hidden="true"
+    />
+  );
+}
+
+function CountrySelect({
+  countries,
+  value,
+  onValueChange,
+}: {
+  countries: CountryOption[];
+  value: string;
+  onValueChange: (value: string) => void;
+}) {
+  const selectedCountry = countries.find((item) => item.name === value) ?? null;
+
+  return (
+    <Select.Root value={value} onValueChange={onValueChange}>
+      <Select.Trigger className="country-select-trigger" aria-label="Filter by country">
+        <Select.Value>{selectedCountry?.name ?? "All countries"}</Select.Value>
+        {selectedCountry ? (
+          <CountryFlag code={selectedCountry.flagCode} />
+        ) : null}
+        <Select.Icon className="country-select-chevron" aria-hidden="true">
+          <svg viewBox="0 0 10 6"><path d="m1 1 4 4 4-4" /></svg>
+        </Select.Icon>
+      </Select.Trigger>
+
+      <Select.Portal>
+        <Select.Content
+          className="country-select-content"
+          position="popper"
+          align="start"
+          sideOffset={4}
+          collisionPadding={8}
+        >
+          <Select.ScrollUpButton className="country-select-scroll-button" aria-label="Scroll up">▲</Select.ScrollUpButton>
+          <Select.Viewport className="country-select-viewport">
+            <Select.Item className="country-select-item" value="all">
+              <Select.ItemText>All countries</Select.ItemText>
+            </Select.Item>
+            {countries.map((item) => (
+              <Select.Item className="country-select-item" key={item.name} value={item.name}>
+                <Select.ItemText>{item.name}</Select.ItemText>
+                <CountryFlag code={item.flagCode} />
+              </Select.Item>
+            ))}
+          </Select.Viewport>
+          <Select.ScrollDownButton className="country-select-scroll-button" aria-label="Scroll down">▼</Select.ScrollDownButton>
+        </Select.Content>
+      </Select.Portal>
+    </Select.Root>
   );
 }
 
@@ -142,7 +205,9 @@ export default function Home() {
     return data.games.filter((item) => representedCodes.has(item.code)).sort(compareGames);
   }, [groups]);
   const countries = useMemo(
-    () => groups.map((group) => group.name).sort((a, b) => a.localeCompare(b)),
+    () => groups
+      .map(({ name, flagCode }) => ({ name, flagCode }))
+      .sort((a, b) => a.name.localeCompare(b.name)),
     [groups],
   );
   const filtered = useMemo(() => {
@@ -311,13 +376,10 @@ export default function Home() {
               ))}
             </select>
           </label>
-          <label>
+          <div className="filter-field">
             <span>Country</span>
-            <select value={country} onChange={(event) => setCountry(event.target.value)}>
-              <option value="all">All countries</option>
-              {countries.map((item, index) => <option key={`${item}-${index}`}>{item}</option>)}
-            </select>
-          </label>
+            <CountrySelect countries={countries} value={country} onValueChange={setCountry} />
+          </div>
         </div>
 
         <div className="precision-filter" aria-label="Location precision">

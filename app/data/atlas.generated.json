@@ -34,7 +34,8 @@
       "id": "cod2-bro",
       "code": "BR1",
       "label": "Call of Duty 2: Big Red One",
-      "released": "2005-11-01"
+      "released": "2005-11-01",
+      "icon": "/images/games/cod2-bro.png"
     },
     {
       "id": "cod3",
@@ -47,7 +48,8 @@
       "id": "rtv",
       "code": "RTV",
       "label": "Call of Duty: Roads to Victory",
-      "released": "2007-03-13"
+      "released": "2007-03-13",
+      "icon": "/images/games/rtv.png"
     },
     {
       "id": "cod4",
