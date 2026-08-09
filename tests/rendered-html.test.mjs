@@ -39,6 +39,7 @@ test("renders development preview metadata", async () => {
   assert.match(html, /aria-label="Collapse Solar System overlay"/);
   assert.match(html, />Solar System \/\/ Schematic<\/text>/);
   assert.match(html, />Mercury<\/text>/);
+  assert.match(html, /aria-pressed="false"[^>]*>[\s\S]{0,120}Multiplayer/);
   assert.match(html, />Adriatic Sea<\/span>/);
   assert.doesNotMatch(html, /Selected location/);
   assert.doesNotMatch(html, />Level<\/span>/);

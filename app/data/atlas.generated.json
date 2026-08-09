@@ -21,6 +21,13 @@
       "code": "UO",
       "label": "Call of Duty: United Offensive",
       "released": "2004-09-14",
+      "images": {
+        "steam": {
+          "app": 2640,
+          "icon": "e5fbc61fce98c303a9c49dc988163499b183f037",
+          "clienticon": null
+        }
+      },
       "icon": "/images/games/cod-uo.png"
     },
     {
@@ -28,6 +35,13 @@
       "code": "FH",
       "label": "Call of Duty: Finest Hour",
       "released": "2004-11-16",
+      "images": {
+        "steam": {
+          "app": null,
+          "icon": null,
+          "clienticon": null
+        }
+      },
       "icon": "/images/games/cod-fh.png"
     },
     {
@@ -49,6 +63,13 @@
       "code": "BR1",
       "label": "Call of Duty 2: Big Red One",
       "released": "2005-11-01",
+      "images": {
+        "steam": {
+          "app": null,
+          "icon": null,
+          "clienticon": null
+        }
+      },
       "icon": "/images/games/cod2-bro.png"
     },
     {
@@ -56,6 +77,13 @@
       "code": "COD3",
       "label": "Call of Duty 3",
       "released": "2006-11-07",
+      "images": {
+        "steam": {
+          "app": null,
+          "icon": null,
+          "clienticon": null
+        }
+      },
       "icon": "/images/games/cod3.png"
     },
     {
@@ -70,19 +98,28 @@
       "code": "COD4",
       "label": "Modern Warfare (2007)",
       "released": "2007-11-05",
+      "images": {
+        "steam": {
+          "app": 7940,
+          "icon": "b40c43b0b14b7e124553e0220581a1b9ef8e38bf",
+          "clienticon": "f4b2045a6cfc7bfaddae1e49540537359ae5e4a0"
+        }
+      },
       "icon": "/images/games/cod4.png"
     },
     {
       "id": "waw-ff",
       "code": "WAW:FF",
       "label": "Final Fronts",
-      "released": "2008-11-11"
+      "released": "2008-11-11",
+      "icon": "/images/games/waw-ff.png"
     },
     {
       "id": "waw",
       "code": "WAW",
       "label": "World at War",
-      "released": "2008-11-11"
+      "released": "2008-11-11",
+      "icon": "/images/games/waw.png"
     },
     {
       "id": "mw2",

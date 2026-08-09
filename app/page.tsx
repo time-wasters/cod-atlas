@@ -116,6 +116,44 @@ function escapeXml(value: string) {
   );
 }
 
+function mapViewportPadding(mapElement: HTMLElement, detailsElement: HTMLElement | null) {
+  const mapRect = mapElement.getBoundingClientRect();
+  const shortestEdge = Math.min(mapRect.width, mapRect.height);
+  const edgePadding = Math.round(Math.min(56, Math.max(32, shortestEdge * .055)));
+  let rightPadding = edgePadding;
+  let bottomPadding = edgePadding;
+
+  if (detailsElement) {
+    const detailsRect = detailsElement.getBoundingClientRect();
+    const horizontalOverlap = Math.max(
+      0,
+      Math.min(mapRect.right, detailsRect.right) - Math.max(mapRect.left, detailsRect.left),
+    );
+    const verticalOverlap = Math.max(
+      0,
+      Math.min(mapRect.bottom, detailsRect.bottom) - Math.max(mapRect.top, detailsRect.top),
+    );
+
+    if (horizontalOverlap > 0 && verticalOverlap > 0) {
+      const detailsAtBottom = detailsRect.width >= mapRect.width * .68
+        && Math.abs(mapRect.bottom - detailsRect.bottom) <= edgePadding;
+      if (detailsAtBottom) {
+        bottomPadding = mapRect.bottom - detailsRect.top + edgePadding;
+      } else {
+        rightPadding = mapRect.right - detailsRect.left + edgePadding;
+      }
+    }
+  }
+
+  return {
+    paddingTopLeft: [edgePadding, edgePadding] as [number, number],
+    paddingBottomRight: [
+      Math.min(rightPadding, Math.max(edgePadding, mapRect.width - edgePadding - 64)),
+      Math.min(bottomPadding, Math.max(edgePadding, mapRect.height - edgePadding - 64)),
+    ] as [number, number],
+  };
+}
+
 function CountryFlag({ code }: { code: string | null }) {
   if (!code) return null;
 
@@ -421,7 +459,7 @@ export default function Home() {
   const [country, setCountry] = useState("all");
   const [precision, setPrecision] = useState("all");
   const [showSingleplayer, setShowSingleplayer] = useState(true);
-  const [showMultiplayer, setShowMultiplayer] = useState(true);
+  const [showMultiplayer, setShowMultiplayer] = useState(false);
   const [mapReady, setMapReady] = useState(false);
   const [solarSystemDisplay, setSolarSystemDisplay] = useState({
     hasSpaceLocations: true,
@@ -438,6 +476,7 @@ export default function Home() {
   const markerLayer = useRef<LayerGroup | null>(null);
   const leaflet = useRef<typeof import("leaflet") | null>(null);
   const mediaDialog = useRef<HTMLDialogElement>(null);
+  const intelCard = useRef<HTMLElement>(null);
 
   const groups = data.groups;
   const games = useMemo(() => {
@@ -452,6 +491,19 @@ export default function Home() {
       .sort((a, b) => a.name.localeCompare(b.name)),
     [groups],
   );
+  const mapFitCoordinates = useMemo(() => {
+    const seen = new Set<string>();
+    return groups.flatMap((group) => {
+      if (country !== "all" && group.name !== country) return [];
+      return group.entries.flatMap((entry) => {
+        if (!entry.coordinates || (game !== "all" && !entry.game.split(" / ").includes(game))) return [];
+        const key = entry.coordinates.join(",");
+        if (seen.has(key)) return [];
+        seen.add(key);
+        return [entry.coordinates];
+      });
+    });
+  }, [country, game, groups]);
   const filtered = useMemo(() => {
     const needle = query.trim().toLowerCase();
     return groups
@@ -565,8 +617,36 @@ export default function Home() {
         marker.addTo(layer);
       });
     });
-    if (selected.entry.coordinates) currentMap.panInside(selected.entry.coordinates, { padding: [80, 80] });
+    const selectedIsVisible = filtered.some((group) =>
+      group.entries.some((entry) => entry.id === selected.entry.id));
+    if (selected.entry.coordinates && selectedIsVisible && mapNode.current) {
+      currentMap.panInside(
+        selected.entry.coordinates,
+        mapViewportPadding(mapNode.current, intelCard.current),
+      );
+    }
   }, [filtered, mapReady, selected, selectEntry]);
+
+  useEffect(() => {
+    if (!mapReady || !map.current || !mapNode.current) return;
+    const currentMap = map.current;
+    const padding = mapViewportPadding(mapNode.current, intelCard.current);
+    const animation = {
+      ...padding,
+      animate: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+      duration: .45,
+    };
+
+    currentMap.stop();
+    if (mapFitCoordinates.length) {
+      currentMap.fitBounds(mapFitCoordinates, {
+        ...animation,
+        maxZoom: mapFitCoordinates.length === 1 ? 6 : 7,
+      });
+    } else {
+      currentMap.fitWorld(animation);
+    }
+  }, [mapFitCoordinates, mapReady]);
 
   function exportKml() {
     const placemarks = filtered.flatMap((group) => {
@@ -720,7 +800,7 @@ export default function Home() {
           onSelect={selectEntry}
         />
 
-        <article className="intel-card">
+        <article className="intel-card" ref={intelCard}>
           <div className="mission-heading">
             <h2>{selected.entry.title}</h2>
             <div className="mission-meta">
