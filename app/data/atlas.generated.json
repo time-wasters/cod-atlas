@@ -8695,9 +8695,9 @@
           "wiki": "https://callofduty.fandom.com/wiki/Normandy_Route_N13",
           "wikiArticle": "codwiki-normandy-route-n13",
           "country": "France",
-          "city": null,
+          "city": "Blosville",
           "region": "Normandy",
-          "landmark": "Borne Voie de la Liberté",
+          "landmark": "Former Route nationale 13 (modern D974)",
           "coordinates": [
             49.38611017143339,
             -1.3003333355741817
@@ -8707,7 +8707,7 @@
           "method": "manual-approximate",
           "urls": [
             {
-              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Borne+Voie+de+la+Liberte%2C+Normandy%2C+France"
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Route+D974%2C+Blosville%2C+France"
             },
             {
               "wikipedia": "https://en.wikipedia.org/wiki/Route_nationale_13"
