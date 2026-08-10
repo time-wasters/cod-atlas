@@ -25875,14 +25875,22 @@
           "country": "United States",
           "city": "Toccoa",
           "region": "Georgia",
-          "landmark": null,
+          "landmark": "Camp Toccoa at Currahee historic site",
           "coordinates": [
-            34.57732,
-            -83.33239
+            34.55086,
+            -83.39627
           ],
-          "precision": "city",
+          "precision": "exact",
           "confidence": "high",
-          "method": "title-mention",
+          "method": "verified-landmark",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Camp+Toccoa+at+Currahee%2C+2351+Ayersville+Road%2C+Toccoa%2C+Georgia"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Camp_Toccoa"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
