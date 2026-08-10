@@ -1,5 +1,7 @@
 @import "tailwindcss";
 @import "leaflet/dist/leaflet.css";
+@import "leaflet.markercluster/dist/MarkerCluster.css";
+@import "leaflet.markercluster/dist/MarkerCluster.Default.css";
 @import "country-flag-icons/3x2/flags.css";
 
 :root {
@@ -199,6 +201,22 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
 .leaflet-control-attribution { color: #8f917f !important; background: #11150fd9 !important; font-size: 8px !important; }
 .leaflet-control-attribution a { color: #b99b53 !important; }
 .leaflet-tooltip { border: 1px solid #8a6b2b !important; border-radius: 3px !important; color: #e5ddc7 !important; background: #151a13ef !important; box-shadow: 0 4px 18px #0008 !important; font-size: 10px; }
+.atlas-cluster-wrap { background: transparent !important; }
+.atlas-cluster {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  place-items: center;
+  border: 2px solid #e0c36a;
+  border-radius: 50%;
+  color: #fff7d4;
+  background: #3d4b2ff2;
+  box-shadow: 0 0 0 3px #11190dcc, 0 3px 12px #000b;
+  font: 700 11px/1 var(--font-geist-mono), monospace;
+}
+.atlas-cluster.is-medium { background: #68552df2; }
+.atlas-cluster.is-large { background: #74402bf2; }
+.marker-cluster-spider-leg { stroke: #d8bb65; stroke-width: 1.5; stroke-opacity: .8; }
 .atlas-marker-wrap { background: none !important; border: 0 !important; }
 .atlas-marker { width: 18px; height: 18px; display: grid; place-items: center; border: 2px solid #b8af80; border-radius: 50%; color: #16160e; background: #aaa476cc; box-shadow: 0 0 0 3px #0f140dcc, 0 2px 8px #000b; transition: transform .15s ease-out, filter .15s ease-out; }
 .atlas-marker::after { content: ""; position: absolute; inset: 4px; border: 1px solid #3e412d; border-radius: 50%; }

@@ -1,6 +1,6 @@
 "use client";
 
-import type { LayerGroup, Map as LeafletMap } from "leaflet";
+import type { Map as LeafletMap, MarkerClusterGroup } from "leaflet";
 import * as Select from "@radix-ui/react-select";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import atlasSource from "./data/atlas.generated.json";
@@ -505,7 +505,7 @@ export default function Home() {
   });
   const mapNode = useRef<HTMLDivElement>(null);
   const map = useRef<LeafletMap | null>(null);
-  const markerLayer = useRef<LayerGroup | null>(null);
+  const markerLayer = useRef<MarkerClusterGroup | null>(null);
   const leaflet = useRef<typeof import("leaflet") | null>(null);
   const mediaDialog = useRef<HTMLDialogElement>(null);
   const intelCard = useRef<HTMLElement>(null);
@@ -614,8 +614,12 @@ export default function Home() {
   useEffect(() => {
     if (!mapNode.current || map.current) return;
     let cancelled = false;
-    import("leaflet").then((L) => {
+    import("leaflet").then(async (leafletModule) => {
+      await import("leaflet.markercluster");
       if (cancelled || !mapNode.current || map.current) return;
+      // Leaflet is CommonJS. Its ESM namespace is immutable, while
+      // leaflet.markercluster augments the shared default export at runtime.
+      const L = leafletModule.default as unknown as typeof import("leaflet");
       const instance = L.map(mapNode.current, {
         center: [27, 8],
         zoom: 2,
@@ -630,7 +634,29 @@ export default function Home() {
       }).addTo(instance);
       L.control.zoom({ position: "bottomright" }).addTo(instance);
       map.current = instance;
-      markerLayer.current = L.layerGroup().addTo(instance);
+      markerLayer.current = L.markerClusterGroup({
+        showCoverageOnHover: false,
+        zoomToBoundsOnClick: true,
+        spiderfyOnMaxZoom: true,
+        spiderfyDistanceMultiplier: 1.35,
+        maxClusterRadius: 42,
+        animate: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+        spiderLegPolylineOptions: {
+          color: "#d8bb65",
+          weight: 1.5,
+          opacity: .8,
+        },
+        iconCreateFunction(cluster) {
+          const count = cluster.getChildCount();
+          const size = count < 10 ? 34 : count < 100 ? 40 : 46;
+          const scale = count < 10 ? "is-small" : count < 100 ? "is-medium" : "is-large";
+          return L.divIcon({
+            className: "atlas-cluster-wrap",
+            html: `<span class="atlas-cluster ${scale}">${count}</span>`,
+            iconSize: [size, size],
+          });
+        },
+      }).addTo(instance);
       leaflet.current = L;
       setMapReady(true);
     });
