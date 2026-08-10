@@ -10080,15 +10080,23 @@
           "wikiArticle": "codwiki-alps-chateau",
           "country": "Germany",
           "city": null,
-          "region": null,
+          "region": "Bavarian Alps",
           "landmark": null,
           "coordinates": [
-            51,
-            9
+            47.64,
+            11.77
           ],
-          "precision": "country",
+          "precision": "region",
           "confidence": "fallback",
-          "method": "country-fallback",
+          "method": "region-fallback",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Bavarian+Alps%2C+Bavaria%2C+Germany"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Bavarian_Alps"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -29892,7 +29900,7 @@
     "levels": 967,
     "entries": 987,
     "mapped": 957,
-    "cityMatched": 90,
-    "countryFallback": 867
+    "cityMatched": 91,
+    "countryFallback": 866
   }
 }
