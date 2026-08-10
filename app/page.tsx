@@ -54,7 +54,10 @@ function locationUrl(entry: Entry, provider: "googleMaps" | "wikipedia") {
   return entry.urls?.find((item) => item[provider])?.[provider] ?? null;
 }
 
-function googleMapsCoordinatesUrl(entry: Entry) {
+function googleMapsUrl(entry: Entry) {
+  if (entry.precision === "country") {
+    return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(entry.country)}`;
+  }
   if (!entry.coordinates) return null;
   const [latitude, longitude] = entry.coordinates;
   return `https://www.google.com/maps/search/?api=1&query=${latitude}%2C${longitude}`;
@@ -577,7 +580,7 @@ export default function Home() {
   const solarSystemExpanded = solarSystemDisplay.hasSpaceLocations === hasSpaceLocations
     ? solarSystemDisplay.expanded
     : hasSpaceLocations;
-  const selectedGoogleMapsUrl = googleMapsCoordinatesUrl(selected.entry);
+  const selectedGoogleMapsUrl = googleMapsUrl(selected.entry);
   const selectedWikipediaUrl = locationUrl(selected.entry, "wikipedia");
   const otherLevelLocations = useMemo(
     () => groups.flatMap((group) => group.entries

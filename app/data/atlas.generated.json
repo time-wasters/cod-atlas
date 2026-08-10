@@ -4789,9 +4789,9 @@
             50.04935278,
             5.74149722
           ],
-          "precision": "exact",
+          "precision": "city",
           "confidence": "high",
-          "method": "real-world-inspiration",
+          "method": "title-mention",
           "urls": [
             {
               "googleMaps": "https://www.google.com/maps/search/?api=1&query=Recogne-Bastogne+German+military+cemetery%2C+Recogne%2C+Belgium"
@@ -8886,16 +8886,21 @@
           "wiki": "https://callofduty.fandom.com/wiki/Pathfinder",
           "wikiArticle": "codwiki-pathfinder",
           "country": "France",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Hiesville",
+          "region": "Normandy",
+          "landmark": "Lecaudey farm (101st Airborne headquarters)",
           "coordinates": [
-            46,
-            2
+            49.371744,
+            -1.262987
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "exact",
+          "confidence": "medium",
+          "method": "real-world-inspiration",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=49.371744%2C-1.262987"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -29855,7 +29860,7 @@
     "levels": 967,
     "entries": 987,
     "mapped": 957,
-    "cityMatched": 86,
-    "countryFallback": 871
+    "cityMatched": 87,
+    "countryFallback": 870
   }
 }
