@@ -4368,20 +4368,20 @@
           "country": "Austria",
           "city": "Strasshof an der Nordbahn",
           "region": "Lower Austria",
-          "landmark": "Strasshof concentration camp",
+          "landmark": "Former Durchgangslager Strasshof grounds",
           "coordinates": [
-            48.31485,
-            16.60947
+            48.31581,
+            16.60989
           ],
           "precision": "exact",
           "confidence": "high",
           "method": "verified-landmark",
           "urls": [
             {
-              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Erinnerungsmal+NS-Durchgangslager%2C+Strasshof+an+der+Nordbahn%2C+Austria"
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Erinnerungsmal+f%C3%BCr+die+Opfer+des+Durchgangslagers+Strasshof%2C+Helmahofstra%C3%9Fe%2C+2231+Strasshof+an+der+Nordbahn%2C+Austria"
             },
             {
-              "wikipedia": "https://en.wikipedia.org/wiki/Strasshof_concentration_camp"
+              "wikipedia": "https://de.wikipedia.org/wiki/Durchgangslager_Strasshof"
             }
           ],
           "modes": [
