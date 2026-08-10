@@ -8898,7 +8898,7 @@
           "method": "real-world-inspiration",
           "urls": [
             {
-              "googleMaps": "https://www.google.com/maps/search/?api=1&query=49.371744%2C-1.262987"
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Plaque+du+poste+de+commandement+du+G%C3%A9n%C3%A9ral+Maxwell+Taylor%2C+Hiesville%2C+France"
             }
           ],
           "modes": [
@@ -8929,7 +8929,7 @@
           "method": "verified-landmark",
           "urls": [
             {
-              "googleMaps": "https://www.google.com/maps/search/?api=1&query=49.242392%2C-0.274192"
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Pegasus+Bridge%2C+B%C3%A9nouville%2C+France"
             },
             {
               "wikipedia": "https://en.wikipedia.org/wiki/Pegasus_Bridge"
@@ -8963,7 +8963,7 @@
           "method": "verified-landmark",
           "urls": [
             {
-              "googleMaps": "https://www.google.com/maps/search/?api=1&query=49.242392%2C-0.274192"
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Pegasus+Bridge%2C+B%C3%A9nouville%2C+France"
             },
             {
               "wikipedia": "https://en.wikipedia.org/wiki/Pegasus_Bridge"
@@ -9403,17 +9403,17 @@
           "country": "France",
           "city": "Sainte-Mère-Église",
           "region": "Normandy",
-          "landmark": null,
+          "landmark": "Église Notre-Dame-de-l'Assomption de Sainte-Mère-Église",
           "coordinates": [
-            49.4089,
-            -1.3181
+            49.40882,
+            -1.31626
           ],
-          "precision": "city",
+          "precision": "exact",
           "confidence": "high",
-          "method": "wiki-location",
+          "method": "verified-landmark",
           "urls": [
             {
-              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Sainte-Mere-Eglise%2C+Normandy%2C+France"
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=%C3%89glise+Notre-Dame-de-l%27Assomption%2C+Sainte-M%C3%A8re-%C3%89glise%2C+France"
             },
             {
               "wikipedia": "https://en.wikipedia.org/wiki/Sainte-M%C3%A8re-%C3%89glise"
