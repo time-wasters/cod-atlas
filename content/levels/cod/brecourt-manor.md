@@ -18,7 +18,7 @@ locations:
     method: verified-landmark
     primary: true
     urls:
-      - googleMaps: https://maps.app.goo.gl/aU9PXcPt9jWnof539
+      - googleMaps: https://www.google.com/maps/search/?api=1&query=Manoir+de+Brécourt%2C+Sainte-Marie-du-Mont%2C+France
       - wikipedia: https://en.wikipedia.org/wiki/Br%C3%A9court_Manor_Assault
 ---
 

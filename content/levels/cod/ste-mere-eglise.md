@@ -17,7 +17,7 @@ locations:
     method: wiki-location
     primary: true
     urls:
-      - googleMaps: https://maps.app.goo.gl/hCuGskAmXe9hMTwc9
+      - googleMaps: https://www.google.com/maps/search/?api=1&query=Sainte-Mere-Eglise%2C+Normandy%2C+France
       - wikipedia: https://en.wikipedia.org/wiki/Sainte-M%C3%A8re-%C3%89glise
 ---
 

@@ -17,7 +17,7 @@ locations:
     method: manual-approximate
     primary: true
     urls:
-      - googleMaps: https://maps.app.goo.gl/VQc1L49q4tM3dC4bA
+      - googleMaps: https://www.google.com/maps/search/?api=1&query=Borne+Voie+de+la+Liberte%2C+Normandy%2C+France
       - wikipedia: https://en.wikipedia.org/wiki/Route_nationale_13
 ---
 

@@ -4378,7 +4378,7 @@
           "method": "verified-landmark",
           "urls": [
             {
-              "googleMaps": "https://maps.app.goo.gl/Gi45f9czvRZoKW8n9"
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Erinnerungsmal+NS-Durchgangslager%2C+Strasshof+an+der+Nordbahn%2C+Austria"
             },
             {
               "wikipedia": "https://en.wikipedia.org/wiki/Strasshof_concentration_camp"
@@ -4794,7 +4794,7 @@
           "method": "real-world-inspiration",
           "urls": [
             {
-              "googleMaps": "https://maps.app.goo.gl/ZhsYATLpg92LcViLA"
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Recogne-Bastogne+German+military+cemetery%2C+Recogne%2C+Belgium"
             }
           ],
           "modes": [
@@ -7631,7 +7631,7 @@
           "method": "verified-landmark",
           "urls": [
             {
-              "googleMaps": "https://maps.app.goo.gl/aU9PXcPt9jWnof539"
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Manoir+de+Brécourt%2C+Sainte-Marie-du-Mont%2C+France"
             },
             {
               "wikipedia": "https://en.wikipedia.org/wiki/Br%C3%A9court_Manor_Assault"
@@ -8707,7 +8707,7 @@
           "method": "manual-approximate",
           "urls": [
             {
-              "googleMaps": "https://maps.app.goo.gl/VQc1L49q4tM3dC4bA"
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Borne+Voie+de+la+Liberte%2C+Normandy%2C+France"
             },
             {
               "wikipedia": "https://en.wikipedia.org/wiki/Route_nationale_13"
@@ -9392,7 +9392,7 @@
           "method": "wiki-location",
           "urls": [
             {
-              "googleMaps": "https://maps.app.goo.gl/hCuGskAmXe9hMTwc9"
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Sainte-Mere-Eglise%2C+Normandy%2C+France"
             },
             {
               "wikipedia": "https://en.wikipedia.org/wiki/Sainte-M%C3%A8re-%C3%89glise"
@@ -9990,16 +9990,24 @@
           "wiki": "https://callofduty.fandom.com/wiki/Airfield_Escape",
           "wikiArticle": "codwiki-airfield-escape",
           "country": "Germany",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Fritzlar",
+          "region": "Hesse",
+          "landmark": "Fritzlar Air Base",
           "coordinates": [
-            51,
-            9
+            51.1145,
+            9.285833
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "exact",
+          "confidence": "medium",
+          "method": "real-world-inspiration",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Bundeswehrflugplatz+Fritzlar%2C+Fritzlar%2C+Germany"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Fritzlar_Air_Base"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -10158,7 +10166,7 @@
           "method": "verified-landmark",
           "urls": [
             {
-              "googleMaps": "https://maps.app.goo.gl/3bfXb8hT1wk1qz2D7"
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Reichstag+Building%2C+Berlin%2C+Germany"
             },
             {
               "wikipedia": "https://en.wikipedia.org/wiki/Reichstag_building"
@@ -29847,7 +29855,7 @@
     "levels": 967,
     "entries": 987,
     "mapped": 957,
-    "cityMatched": 85,
-    "countryFallback": 872
+    "cityMatched": 86,
+    "countryFallback": 871
   }
 }

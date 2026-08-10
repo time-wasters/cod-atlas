@@ -18,7 +18,7 @@ locations:
     method: verified-landmark
     primary: true
     urls:
-      - googleMaps: https://maps.app.goo.gl/Gi45f9czvRZoKW8n9
+      - googleMaps: https://www.google.com/maps/search/?api=1&query=Erinnerungsmal+NS-Durchgangslager%2C+Strasshof+an+der+Nordbahn%2C+Austria
       - wikipedia: https://en.wikipedia.org/wiki/Strasshof_concentration_camp
 ---
 

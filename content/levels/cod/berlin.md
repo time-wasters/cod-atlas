@@ -17,7 +17,7 @@ locations:
     method: verified-landmark
     primary: true
     urls:
-      - googleMaps: https://maps.app.goo.gl/3bfXb8hT1wk1qz2D7
+      - googleMaps: https://www.google.com/maps/search/?api=1&query=Reichstag+Building%2C+Berlin%2C+Germany
       - wikipedia: https://en.wikipedia.org/wiki/Reichstag_building
 ---
 

@@ -44,6 +44,7 @@ test("renders development preview metadata", async () => {
   assert.doesNotMatch(html, /Selected location/);
   assert.doesNotMatch(html, />Level<\/span>/);
   assert.match(html, /(Campaign mission|Multiplayer map)/);
+  assert.match(html, /https:\/\/www\.google\.com\/maps\/search\/\?api=1(?:&|&amp;)query=-?\d+(?:\.\d+)?%2C-?\d+(?:\.\d+)?/);
   assert.ok(html.indexOf('class="mission-heading"') < html.indexOf('class="intel-kicker"'));
 });
 
