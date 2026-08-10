@@ -9375,16 +9375,24 @@
           "wiki": "https://callofduty.fandom.com/wiki/Ste._Mere-Eglise-Day",
           "wikiArticle": "codwiki-ste-mere-eglise-day",
           "country": "France",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Sainte-Mère-Église",
+          "region": "Normandy",
+          "landmark": "Église Notre-Dame-de-l'Assomption de Sainte-Mère-Église",
           "coordinates": [
-            46,
-            2
+            49.40882,
+            -1.31626
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "exact",
+          "confidence": "high",
+          "method": "verified-landmark",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=%C3%89glise+Notre-Dame-de-l%27Assomption%2C+Sainte-M%C3%A8re-%C3%89glise%2C+France"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Sainte-M%C3%A8re-%C3%89glise"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -29876,7 +29884,7 @@
     "levels": 967,
     "entries": 987,
     "mapped": 957,
-    "cityMatched": 89,
-    "countryFallback": 868
+    "cityMatched": 90,
+    "countryFallback": 867
   }
 }
