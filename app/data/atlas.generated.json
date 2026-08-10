@@ -8917,16 +8917,24 @@
           "wiki": "https://callofduty.fandom.com/wiki/Pegasus_Bridge",
           "wikiArticle": "codwiki-pegasus-bridge",
           "country": "France",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Bénouville",
+          "region": "Normandy",
+          "landmark": "Pegasus Bridge wartime crossing site",
           "coordinates": [
-            46,
-            2
+            49.242392,
+            -0.274192
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "exact",
+          "confidence": "high",
+          "method": "verified-landmark",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=49.242392%2C-0.274192"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Pegasus_Bridge"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -29860,7 +29868,7 @@
     "levels": 967,
     "entries": 987,
     "mapped": 957,
-    "cityMatched": 87,
-    "countryFallback": 870
+    "cityMatched": 88,
+    "countryFallback": 869
   }
 }
