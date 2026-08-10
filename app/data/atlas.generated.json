@@ -7619,7 +7619,7 @@
           "wiki": "https://callofduty.fandom.com/wiki/Brecourt_Manor",
           "wikiArticle": "codwiki-brecourt-manor",
           "country": "France",
-          "city": "Le Grand Chemin",
+          "city": "Sainte-Marie-du-Mont",
           "region": "Normandy",
           "landmark": "Brécourt Manor",
           "coordinates": [
@@ -8707,7 +8707,7 @@
           "method": "manual-approximate",
           "urls": [
             {
-              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Route+D974%2C+Blosville%2C+France"
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=From+Sainte-Mère-Église,+50480,+Frankreich+To+Sainte-Marie-du-Mont,+50480,+Frankreich"
             },
             {
               "wikipedia": "https://en.wikipedia.org/wiki/Route_nationale_13"
@@ -11788,16 +11788,24 @@
           "wiki": "https://callofduty.fandom.com/wiki/The_Eder_Dam",
           "wikiArticle": "codwiki-the-eder-dam",
           "country": "Germany",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Edertal",
+          "region": "Hesse",
+          "landmark": "Edertalsperre",
           "coordinates": [
-            51,
-            9
+            51.18333,
+            9.05889
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "exact",
+          "confidence": "high",
+          "method": "verified-landmark",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Edertalsperre"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Edersee_Dam"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -29900,7 +29908,7 @@
     "levels": 967,
     "entries": 987,
     "mapped": 957,
-    "cityMatched": 91,
-    "countryFallback": 866
+    "cityMatched": 92,
+    "countryFallback": 865
   }
 }
