@@ -1,14 +1,14 @@
 {
   "id": "codwiki-the-pipeline",
-  "fandomPageId": null,
-  "sourceUrl": "https://callofduty.fandom.com/wiki/The_Pipeline",
-  "canonicalUrl": "https://callofduty.fandom.com/wiki/The_Pipeline",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "fandomPageId": 5714,
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Railroad_Station_No._1",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Railroad_Station_No._1",
+  "latestRevisionId": 2951065,
+  "importedAt": "2026-08-10T19:03:06.658Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "[[Stalingrad]], U.S.S.R.",
+    "label": "Stalingrad",
+    "url": "https://callofduty.fandom.com/wiki/Stalingrad"
   },
   "mapStyle": "singleplayer",
   "mapStyleDetail": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/1/11/Pipetroops1.png/revision/latest?cb=20120120200848",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/1/11/Pipetroops1.png/revision/latest/scale-to-width-down/800?cb=20120120200848",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Pipetroops1.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "URL",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:URL",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,11 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-01-03T21:02:01Z",
+    "revisionSha1": "86c36b0e0e07f16e0b0bf605d87eced06f87e022",
+    "resolvedTitle": "Railroad Station No. 1",
+    "mainImageTitle": "File:Pipetroops1.png",
+    "mapImageTitle": null
+  }
 }
