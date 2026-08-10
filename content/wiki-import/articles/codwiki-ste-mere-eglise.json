@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Ste._Mere-Eglise",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Ste._Mere-Eglise",
   "latestRevisionId": 2992309,
-  "importedAt": "2026-08-08T22:28:22.205Z",
+  "importedAt": "2026-08-10T19:24:12.206Z",
   "levelLocation": {
     "raw": "Sainte-Mère-Église, Normandy, France",
     "label": "Sainte-Mère-Église, Normandy, France",
@@ -53,5 +53,52 @@
     "resolvedTitle": "Ste. Mere-Eglise",
     "mainImageTitle": "File:SteMereEglise_SaveScreen_Recreation_CoD1.jpg",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Pathfinder]]<br>[[Pegasus Bridge]] (Chronologically)",
+    "label": "Pathfinder, Pegasus Bridge (Chronologically)",
+    "links": [
+      {
+        "wikiTitle": "Pathfinder",
+        "label": "Pathfinder",
+        "url": "https://callofduty.fandom.com/wiki/Pathfinder"
+      },
+      {
+        "wikiTitle": "Pegasus Bridge",
+        "label": "Pegasus Bridge",
+        "url": "https://callofduty.fandom.com/wiki/Pegasus_Bridge"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Ste. Mere-Eglise-Day]]",
+    "label": "Ste. Mere-Eglise-Day",
+    "links": [
+      {
+        "wikiTitle": "Ste. Mere-Eglise-Day",
+        "label": "Ste. Mere-Eglise-Day",
+        "url": "https://callofduty.fandom.com/wiki/Ste._Mere-Eglise-Day"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty]]''<br>''[[Call of Duty: Classic]]''",
+    "label": "Call of Duty, Call of Duty: Classic",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty",
+        "label": "Call of Duty",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty"
+      },
+      {
+        "wikiTitle": "Call of Duty: Classic",
+        "label": "Call of Duty: Classic",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Classic"
+      }
+    ]
+  },
+  "date": {
+    "raw": "June 6, 1944, 0020 hrs",
+    "label": "June 6, 1944, 0020 hrs"
   }
 }

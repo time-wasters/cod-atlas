@@ -97,6 +97,11 @@ For a changed page, the command can update:
 - Fandom page ID, resolved source URL, and canonical URL;
 - latest revision ID, timestamp, and SHA-1;
 - the raw and display forms of the infobox location;
+- the raw and display forms of the infobox previous level, next level, game,
+  and date fields;
+- every linked Wiki target found in the previous-level, next-level, and game
+  fields, retained as a Wiki title, display label, and URL for later reviewed
+  mapping to curated level and game IDs;
 - main/map image metadata when its license or recognized rights notice and
   attribution are available; and
 - import time and a small raw evidence summary.
@@ -125,6 +130,8 @@ The importer groups up to ten distinct articles into an API request, sends reque
 serially, waits five seconds by default, and supplies `maxlag=1`. Image metadata
 is fetched in a second batched request only when images were discovered.
 Unchanged revision IDs avoid the image request and any file write.
+An unchanged record that predates a newly supported import field is refreshed
+once to backfill that field without requiring `--force`.
 
 HTTP 429/503, `maxlag`, and `ratelimited` responses receive bounded exponential
 backoff. Other errors stop the run rather than attempting to bypass a block.

@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Oder_River_Country",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Oder_River_Country",
   "latestRevisionId": 2992572,
-  "importedAt": "2026-08-08T22:28:00.756Z",
+  "importedAt": "2026-08-10T19:23:50.598Z",
   "levelLocation": {
     "raw": "Oder River, Germany",
     "label": "Oder River, Germany",
@@ -53,5 +53,47 @@
     "resolvedTitle": "Oder River Country",
     "mainImageTitle": "File:OderRiverCountry_SaveScreen_Recreation_CoD1.jpg",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Warsaw Railyard]]",
+    "label": "Warsaw Railyard",
+    "links": [
+      {
+        "wikiTitle": "Warsaw Railyard",
+        "label": "Warsaw Railyard",
+        "url": "https://callofduty.fandom.com/wiki/Warsaw_Railyard"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Oder River Town]]",
+    "label": "Oder River Town",
+    "links": [
+      {
+        "wikiTitle": "Oder River Town",
+        "label": "Oder River Town",
+        "url": "https://callofduty.fandom.com/wiki/Oder_River_Town"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty]]''<br>''[[Call of Duty: Classic]]''",
+    "label": "Call of Duty, Call of Duty: Classic",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty",
+        "label": "Call of Duty",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty"
+      },
+      {
+        "wikiTitle": "Call of Duty: Classic",
+        "label": "Call of Duty: Classic",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Classic"
+      }
+    ]
+  },
+  "date": {
+    "raw": "January 26, 1945, 1345 hrs",
+    "label": "January 26, 1945, 1345 hrs"
   }
 }

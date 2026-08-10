@@ -10,6 +10,25 @@
     "label": null,
     "url": null
   },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "date": {
+    "raw": null,
+    "label": null
+  },
   "mapStyle": "singleplayer",
   "mapStyleDetail": null,
   "mapStyleConfidence": "curated",

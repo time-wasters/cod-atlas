@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Depot",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Depot",
   "latestRevisionId": 2991555,
-  "importedAt": "2026-08-08T22:28:00.782Z",
+  "importedAt": "2026-08-10T19:23:50.619Z",
   "levelLocation": {
     "raw": null,
     "label": null,
@@ -53,5 +53,35 @@
     "resolvedTitle": "Depot",
     "mainImageTitle": "File:United_Offensive_Depot_5.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty]]''<br>''[[Call of Duty: United Offensive]]''",
+    "label": "Call of Duty, Call of Duty: United Offensive",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty",
+        "label": "Call of Duty",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty"
+      },
+      {
+        "wikiTitle": "Call of Duty: United Offensive",
+        "label": "Call of Duty: United Offensive",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_United_Offensive"
+      }
+    ]
+  },
+  "date": {
+    "raw": null,
+    "label": null
   }
 }

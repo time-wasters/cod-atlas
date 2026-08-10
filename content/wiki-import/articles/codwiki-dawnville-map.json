@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Dawnville_(map)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Dawnville_(map)",
   "latestRevisionId": 2991550,
-  "importedAt": "2026-08-08T22:28:00.773Z",
+  "importedAt": "2026-08-10T19:23:50.612Z",
   "levelLocation": {
     "raw": "Sainte-Mère-Église",
     "label": "Sainte-Mère-Église",
@@ -53,5 +53,40 @@
     "resolvedTitle": "Dawnville (map)",
     "mainImageTitle": "File:St._Mere_Eglise_Map_CoD2.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty]]''<br>''[[Call of Duty: United Offensive]]''<br>''[[Call of Duty 2]]''",
+    "label": "Call of Duty, Call of Duty: United Offensive, Call of Duty 2",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty",
+        "label": "Call of Duty",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty"
+      },
+      {
+        "wikiTitle": "Call of Duty: United Offensive",
+        "label": "Call of Duty: United Offensive",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_United_Offensive"
+      },
+      {
+        "wikiTitle": "Call of Duty 2",
+        "label": "Call of Duty 2",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_2"
+      }
+    ]
+  },
+  "date": {
+    "raw": "June 5-June 6, 1944",
+    "label": "June 5-June 6, 1944"
   }
 }

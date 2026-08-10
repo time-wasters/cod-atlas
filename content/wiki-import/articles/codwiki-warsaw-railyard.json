@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Warsaw_Railyard",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Warsaw_Railyard",
   "latestRevisionId": 2992569,
-  "importedAt": "2026-08-08T22:28:33.012Z",
+  "importedAt": "2026-08-10T19:24:22.935Z",
   "levelLocation": {
     "raw": "Warsaw, Poland",
     "label": "Warsaw, Poland",
@@ -53,5 +53,47 @@
     "resolvedTitle": "Warsaw Railyard",
     "mainImageTitle": "File:WarsawRailyard_SaveScreen_Recreation_CoD1.jpg",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Warsaw Factory]]",
+    "label": "Warsaw Factory",
+    "links": [
+      {
+        "wikiTitle": "Warsaw Factory",
+        "label": "Warsaw Factory",
+        "url": "https://callofduty.fandom.com/wiki/Warsaw_Factory"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Oder River Country]]",
+    "label": "Oder River Country",
+    "links": [
+      {
+        "wikiTitle": "Oder River Country",
+        "label": "Oder River Country",
+        "url": "https://callofduty.fandom.com/wiki/Oder_River_Country"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty]]''<br>''[[Call of Duty: Classic]]''",
+    "label": "Call of Duty, Call of Duty: Classic",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty",
+        "label": "Call of Duty",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty"
+      },
+      {
+        "wikiTitle": "Call of Duty: Classic",
+        "label": "Call of Duty: Classic",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Classic"
+      }
+    ]
+  },
+  "date": {
+    "raw": "January 17, 1945",
+    "label": "January 17, 1945"
   }
 }

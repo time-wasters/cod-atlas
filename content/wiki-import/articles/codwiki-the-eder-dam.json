@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/The_Eder_Dam",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/The_Eder_Dam",
   "latestRevisionId": 2992541,
-  "importedAt": "2026-08-08T22:28:22.213Z",
+  "importedAt": "2026-08-10T19:24:12.213Z",
   "levelLocation": {
     "raw": "Edersee Dam, Waldeck, Kurhessen, Germany",
     "label": "Edersee Dam, Waldeck, Kurhessen, Germany",
@@ -53,5 +53,52 @@
     "resolvedTitle": "The Eder Dam",
     "mainImageTitle": "File:EderDam_SaveScreen_Recreation_CoD1.jpg",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Pegasus Bridge-Day]]<br>[[Alps Chateau]] (Chronologically)",
+    "label": "Pegasus Bridge-Day, Alps Chateau (Chronologically)",
+    "links": [
+      {
+        "wikiTitle": "Pegasus Bridge-Day",
+        "label": "Pegasus Bridge-Day",
+        "url": "https://callofduty.fandom.com/wiki/Pegasus_Bridge-Day"
+      },
+      {
+        "wikiTitle": "Alps Chateau",
+        "label": "Alps Chateau",
+        "url": "https://callofduty.fandom.com/wiki/Alps_Chateau"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Eder Dam Getaway]]",
+    "label": "Eder Dam Getaway",
+    "links": [
+      {
+        "wikiTitle": "Eder Dam Getaway",
+        "label": "Eder Dam Getaway",
+        "url": "https://callofduty.fandom.com/wiki/Eder_Dam_Getaway"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty]]''<br>''[[Call of Duty: Classic]]''",
+    "label": "Call of Duty, Call of Duty: Classic",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty",
+        "label": "Call of Duty",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty"
+      },
+      {
+        "wikiTitle": "Call of Duty: Classic",
+        "label": "Call of Duty: Classic",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Classic"
+      }
+    ]
+  },
+  "date": {
+    "raw": "September 2, 1944, 0545 hrs",
+    "label": "September 2, 1944, 0545 hrs"
   }
 }

@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Stalingrad_(level)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Stalingrad_(level)",
   "latestRevisionId": 2992551,
-  "importedAt": "2026-08-08T22:28:22.222Z",
+  "importedAt": "2026-08-10T19:24:12.220Z",
   "levelLocation": {
     "raw": "Volga River, [[Stalingrad]], Russian SFSR, Soviet Union",
     "label": "Stalingrad",
@@ -53,5 +53,52 @@
     "resolvedTitle": "Stalingrad (level)",
     "mainImageTitle": "File:Stalingrad_SaveScreen_Recreation_CoD1.jpg",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Battleship Tirpitz (level)|Battleship Tirpitz]]<br>[[Camp Toccoa]] (Chronologically)",
+    "label": "Battleship Tirpitz, Camp Toccoa (Chronologically)",
+    "links": [
+      {
+        "wikiTitle": "Battleship Tirpitz (level)",
+        "label": "Battleship Tirpitz",
+        "url": "https://callofduty.fandom.com/wiki/Battleship_Tirpitz_(level)"
+      },
+      {
+        "wikiTitle": "Camp Toccoa",
+        "label": "Camp Toccoa",
+        "url": "https://callofduty.fandom.com/wiki/Camp_Toccoa"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Red Square (level)|Red Square]]",
+    "label": "Red Square",
+    "links": [
+      {
+        "wikiTitle": "Red Square (level)",
+        "label": "Red Square",
+        "url": "https://callofduty.fandom.com/wiki/Red_Square_(level)"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty]]''<br>''[[Call of Duty: Classic]]''",
+    "label": "Call of Duty, Call of Duty: Classic",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty",
+        "label": "Call of Duty",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty"
+      },
+      {
+        "wikiTitle": "Call of Duty: Classic",
+        "label": "Call of Duty: Classic",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Classic"
+      }
+    ]
+  },
+  "date": {
+    "raw": "September 18, 1942, 1100 hrs",
+    "label": "September 18, 1942, 1100 hrs"
   }
 }

@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Festung_Recogne",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Festung_Recogne",
   "latestRevisionId": 2992578,
-  "importedAt": "2026-08-08T22:28:00.765Z",
+  "importedAt": "2026-08-10T19:23:50.605Z",
   "levelLocation": {
     "raw": "Festung Recogne, Northeast of Bastogne, Belgium",
     "label": "Festung Recogne, Northeast of Bastogne, Belgium",
@@ -53,5 +53,57 @@
     "resolvedTitle": "Festung Recogne",
     "mainImageTitle": "File:FestungRecogne_SaveScreen_Recreation_CoD1.jpg",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Oder River Town]]<br>[[Battleship Tirpitz (level)|Battleship Tirpitz]] (Chronologically)",
+    "label": "Oder River Town, Battleship Tirpitz (Chronologically)",
+    "links": [
+      {
+        "wikiTitle": "Oder River Town",
+        "label": "Oder River Town",
+        "url": "https://callofduty.fandom.com/wiki/Oder_River_Town"
+      },
+      {
+        "wikiTitle": "Battleship Tirpitz (level)",
+        "label": "Battleship Tirpitz",
+        "url": "https://callofduty.fandom.com/wiki/Battleship_Tirpitz_(level)"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[V-2 Rocket Site]]<br>[[Warsaw Factory]] (Chronologically)",
+    "label": "V-2 Rocket Site, Warsaw Factory (Chronologically)",
+    "links": [
+      {
+        "wikiTitle": "V-2 Rocket Site",
+        "label": "V-2 Rocket Site",
+        "url": "https://callofduty.fandom.com/wiki/V-2_Rocket_Site"
+      },
+      {
+        "wikiTitle": "Warsaw Factory",
+        "label": "Warsaw Factory",
+        "url": "https://callofduty.fandom.com/wiki/Warsaw_Factory"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty]]''<br>''[[Call of Duty: Classic]]''",
+    "label": "Call of Duty, Call of Duty: Classic",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty",
+        "label": "Call of Duty",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty"
+      },
+      {
+        "wikiTitle": "Call of Duty: Classic",
+        "label": "Call of Duty: Classic",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Classic"
+      }
+    ]
+  },
+  "date": {
+    "raw": "January 15, 1945, 1520 hrs",
+    "label": "January 15, 1945, 1520 hrs"
   }
 }

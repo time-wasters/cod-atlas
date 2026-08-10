@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Alps_Chateau",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Alps_Chateau",
   "latestRevisionId": 2992529,
-  "importedAt": "2026-08-08T22:27:49.998Z",
+  "importedAt": "2026-08-10T19:23:39.767Z",
   "levelLocation": {
     "raw": "Bavarian Alps, Bavaria, Germany",
     "label": "Bavarian Alps, Bavaria, Germany",
@@ -53,5 +53,57 @@
     "resolvedTitle": "Alps Chateau",
     "mainImageTitle": "File:AlpsChateau_SaveScreen_Recreation_CoD1.jpg",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Brecourt Manor]]\n[[Pegasus Bridge-Day]] (Chronologically)",
+    "label": "Brecourt Manor Pegasus Bridge-Day (Chronologically)",
+    "links": [
+      {
+        "wikiTitle": "Brecourt Manor",
+        "label": "Brecourt Manor",
+        "url": "https://callofduty.fandom.com/wiki/Brecourt_Manor"
+      },
+      {
+        "wikiTitle": "Pegasus Bridge-Day",
+        "label": "Pegasus Bridge-Day",
+        "url": "https://callofduty.fandom.com/wiki/Pegasus_Bridge-Day"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Dulag IIIA]]\n[[The Eder Dam]] (Chronologically)",
+    "label": "Dulag IIIA The Eder Dam (Chronologically)",
+    "links": [
+      {
+        "wikiTitle": "Dulag IIIA",
+        "label": "Dulag IIIA",
+        "url": "https://callofduty.fandom.com/wiki/Dulag_IIIA"
+      },
+      {
+        "wikiTitle": "The Eder Dam",
+        "label": "The Eder Dam",
+        "url": "https://callofduty.fandom.com/wiki/The_Eder_Dam"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty]]''<br>''[[Call of Duty: Classic]]''",
+    "label": "Call of Duty, Call of Duty: Classic",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty",
+        "label": "Call of Duty",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty"
+      },
+      {
+        "wikiTitle": "Call of Duty: Classic",
+        "label": "Call of Duty: Classic",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Classic"
+      }
+    ]
+  },
+  "date": {
+    "raw": "August 7, 1944, 0130 hrs",
+    "label": "August 7, 1944, 0130 hrs"
   }
 }

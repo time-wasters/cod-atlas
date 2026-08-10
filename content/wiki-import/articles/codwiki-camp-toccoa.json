@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Camp_Toccoa",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Camp_Toccoa",
   "latestRevisionId": 2992307,
-  "importedAt": "2026-08-08T22:27:49.979Z",
+  "importedAt": "2026-08-10T19:23:39.750Z",
   "levelLocation": {
     "raw": "Camp Toccoa, Georgia, United States",
     "label": "Camp Toccoa, Georgia, United States",
@@ -53,5 +53,46 @@
     "resolvedTitle": "Camp Toccoa",
     "mainImageTitle": "File:CampToccoa_SaveScreen_Recreation_CoD1.jpg",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": "[[Pathfinder]]<br>[[Stalingrad (level)|Stalingrad]] (Chronologically)",
+    "label": "Pathfinder, Stalingrad (Chronologically)",
+    "links": [
+      {
+        "wikiTitle": "Pathfinder",
+        "label": "Pathfinder",
+        "url": "https://callofduty.fandom.com/wiki/Pathfinder"
+      },
+      {
+        "wikiTitle": "Stalingrad (level)",
+        "label": "Stalingrad",
+        "url": "https://callofduty.fandom.com/wiki/Stalingrad_(level)"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty]]''<br>''[[Call of Duty: Classic]]''",
+    "label": "Call of Duty, Call of Duty: Classic",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty",
+        "label": "Call of Duty",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty"
+      },
+      {
+        "wikiTitle": "Call of Duty: Classic",
+        "label": "Call of Duty: Classic",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Classic"
+      }
+    ]
+  },
+  "date": {
+    "raw": "August 10, 1942, 0900 hrs",
+    "label": "August 10, 1942, 0900 hrs"
   }
 }

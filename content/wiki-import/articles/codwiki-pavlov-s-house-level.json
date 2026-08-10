@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Pavlov%27s_House_(level)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Pavlov%27s_House_(level)",
   "latestRevisionId": 2992563,
-  "importedAt": "2026-08-08T22:28:11.532Z",
+  "importedAt": "2026-08-10T19:24:01.461Z",
   "levelLocation": {
     "raw": "[[Pavlov's House]], [[Stalingrad]], Russian SFSR, Soviet Union",
     "label": "Pavlov's House",
@@ -53,5 +53,52 @@
     "resolvedTitle": "Pavlov's House (level)",
     "mainImageTitle": "File:PavlovsHouse_SaveScreen_Recreation_CoD1.jpg",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Stalingrad Sewers]]",
+    "label": "Stalingrad Sewers",
+    "links": [
+      {
+        "wikiTitle": "Stalingrad Sewers",
+        "label": "Stalingrad Sewers",
+        "url": "https://callofduty.fandom.com/wiki/Stalingrad_Sewers"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Warsaw Factory]]<br>[[Pathfinder]] (Chronologically)",
+    "label": "Warsaw Factory, Pathfinder (Chronologically)",
+    "links": [
+      {
+        "wikiTitle": "Warsaw Factory",
+        "label": "Warsaw Factory",
+        "url": "https://callofduty.fandom.com/wiki/Warsaw_Factory"
+      },
+      {
+        "wikiTitle": "Pathfinder",
+        "label": "Pathfinder",
+        "url": "https://callofduty.fandom.com/wiki/Pathfinder"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty]]''<br>''[[Call of Duty: Classic]]''",
+    "label": "Call of Duty, Call of Duty: Classic",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty",
+        "label": "Call of Duty",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty"
+      },
+      {
+        "wikiTitle": "Call of Duty: Classic",
+        "label": "Call of Duty: Classic",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Classic"
+      }
+    ]
+  },
+  "date": {
+    "raw": "November 9, 1942",
+    "label": "November 9, 1942"
   }
 }

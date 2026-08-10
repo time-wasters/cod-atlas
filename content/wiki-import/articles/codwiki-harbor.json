@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Harbor",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Harbor",
   "latestRevisionId": 2796068,
-  "importedAt": "2026-08-10T19:02:33.598Z",
+  "importedAt": "2026-08-10T19:23:50.570Z",
   "levelLocation": {
     "raw": "[[Wikipedia:Warsaw, Poland|Warsaw]], [[Wikipedia:Poland|Poland]] (CoD1 and UO)<br>Rostov, Russia (CoD2)",
     "label": "Warsaw",
@@ -53,5 +53,40 @@
     "resolvedTitle": "Harbor",
     "mainImageTitle": "File:Harbor_Map_CoD1.jpg",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty]]''<br>''[[Call of Duty: United Offensive]]''<br>''[[Call of Duty 2]]''",
+    "label": "Call of Duty, Call of Duty: United Offensive, Call of Duty 2",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty",
+        "label": "Call of Duty",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty"
+      },
+      {
+        "wikiTitle": "Call of Duty: United Offensive",
+        "label": "Call of Duty: United Offensive",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_United_Offensive"
+      },
+      {
+        "wikiTitle": "Call of Duty 2",
+        "label": "Call of Duty 2",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_2"
+      }
+    ]
+  },
+  "date": {
+    "raw": null,
+    "label": null
   }
 }

@@ -209,6 +209,28 @@ export function parseWikiLink(value, wikiOrigin) {
   };
 }
 
+export function parseWikiReferences(value, wikiOrigin) {
+  if (!value) return { raw: null, label: null, links: [] };
+  const links = [...value.matchAll(/\[\[([^\]|#]+)(?:#[^\]|]*)?(?:\|([^\]]+))?\]\]/g)].map((match) => {
+    const wikiTitle = match[1].trim();
+    return {
+      wikiTitle,
+      label: stripMarkup(match[2] ?? match[1]),
+      url: `${wikiOrigin}/wiki/${encodeURIComponent(wikiTitle.replace(/ /g, "_"))}`,
+    };
+  });
+  return { raw: value.trim(), label: stripMarkup(value), links };
+}
+
+export function parseWikiValue(value) {
+  return value ? { raw: value.trim(), label: stripMarkup(value) } : { raw: null, label: null };
+}
+
+export function hasSequenceMetadata(article) {
+  return ["previousLevels", "nextLevels", "games", "date"]
+    .every((field) => Object.hasOwn(article, field));
+}
+
 function fileTitle(value) {
   if (!value) return null;
   const link = value.match(/\[\[(?:File|Image):([^\]|]+)/i)?.[1];
@@ -330,7 +352,10 @@ async function importBatch(records, options, state, configuration) {
     if (page.missing) { console.warn(`missing ${record.article.id}: ${record.article.sourceUrl}`); continue; }
     const revision = page.revisions?.[0];
     if (!revision) { console.warn(`no revision ${record.article.id}`); continue; }
-    if (!options.force && record.article.latestRevisionId === revision.revid) { console.log(`unchanged ${record.article.id} (revision ${revision.revid})`); continue; }
+    if (!options.force && record.article.latestRevisionId === revision.revid && hasSequenceMetadata(record.article)) {
+      console.log(`unchanged ${record.article.id} (revision ${revision.revid})`);
+      continue;
+    }
     const infobox = extractInfobox(revision.slots?.main?.content ?? "");
     const mainTitle = page.pageimage ? fileTitle(page.pageimage) : fileTitle(firstValue(infobox, ["image", "image1", "cover"]));
     const mapTitle = fileTitle(firstValue(infobox, ["map", "map_image", "mapimage", "layout"]));
@@ -357,6 +382,10 @@ async function importBatch(records, options, state, configuration) {
       latestRevisionId: update.revision.revid,
       importedAt: new Date().toISOString(),
       levelLocation: parseWikiLink(firstValue(update.infobox, ["location", "place", "setting"]), configuration.origin),
+      previousLevels: parseWikiReferences(firstValue(update.infobox, ["previous_level", "previouslevel", "previous", "prev"]), configuration.origin),
+      nextLevels: parseWikiReferences(firstValue(update.infobox, ["next_level", "nextlevel", "next"]), configuration.origin),
+      games: parseWikiReferences(firstValue(update.infobox, ["game", "games"]), configuration.origin),
+      date: parseWikiValue(firstValue(update.infobox, ["date"])),
       images: {
         main: images.get(update.mainTitle?.replace(/ /g, "_")) ?? article.images?.main ?? emptyImage(),
         map: images.get(update.mapTitle?.replace(/ /g, "_")) ?? article.images?.map ?? emptyImage(),

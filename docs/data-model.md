@@ -83,6 +83,9 @@ The stable `id` is the foreign-key target. Import-oriented fields include:
 - Fandom page and revision IDs.
 - Source and canonical article URLs.
 - Wiki-provided level-location text and link.
+- Wiki-provided previous/next-level and game text, with every linked Wiki
+  target retained for later reviewed mapping to curated IDs.
+- Wiki-provided date text.
 - Map-style classification and supporting evidence.
 - Main and map images, including web-resolution display URLs.
 - Image detail pages and author or uploader profiles.

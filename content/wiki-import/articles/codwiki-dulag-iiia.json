@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Dulag_IIIA",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Dulag_IIIA",
   "latestRevisionId": 2992532,
-  "importedAt": "2026-08-08T22:28:00.739Z",
+  "importedAt": "2026-08-10T19:23:50.584Z",
   "levelLocation": {
     "raw": "Dulag IIIA, near Strasshof, Austria",
     "label": "Dulag IIIA, near Strasshof, Austria",
@@ -53,5 +53,57 @@
     "resolvedTitle": "Dulag IIIA",
     "mainImageTitle": "File:DulagIIIA_SaveScreen_Recreation_CoD1.jpg",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Alps Chateau]]\n[[Airfield Escape]] (Chronologically)",
+    "label": "Alps Chateau Airfield Escape (Chronologically)",
+    "links": [
+      {
+        "wikiTitle": "Alps Chateau",
+        "label": "Alps Chateau",
+        "url": "https://callofduty.fandom.com/wiki/Alps_Chateau"
+      },
+      {
+        "wikiTitle": "Airfield Escape",
+        "label": "Airfield Escape",
+        "url": "https://callofduty.fandom.com/wiki/Airfield_Escape"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Pegasus Bridge]]\n[[Battleship Tirpitz (level)|Battleship Tirpitz]] (Chronologically)",
+    "label": "Pegasus Bridge Battleship Tirpitz (Chronologically)",
+    "links": [
+      {
+        "wikiTitle": "Pegasus Bridge",
+        "label": "Pegasus Bridge",
+        "url": "https://callofduty.fandom.com/wiki/Pegasus_Bridge"
+      },
+      {
+        "wikiTitle": "Battleship Tirpitz (level)",
+        "label": "Battleship Tirpitz",
+        "url": "https://callofduty.fandom.com/wiki/Battleship_Tirpitz_(level)"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty]]''<br>''[[Call of Duty: Classic]]''",
+    "label": "Call of Duty, Call of Duty: Classic",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty",
+        "label": "Call of Duty",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty"
+      },
+      {
+        "wikiTitle": "Call of Duty: Classic",
+        "label": "Call of Duty: Classic",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Classic"
+      }
+    ]
+  },
+  "date": {
+    "raw": "September 18, 1944, 0320 hrs",
+    "label": "September 18, 1944, 0320 hrs"
   }
 }

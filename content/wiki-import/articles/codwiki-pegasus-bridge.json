@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Pegasus_Bridge",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Pegasus_Bridge",
   "latestRevisionId": 2992534,
-  "importedAt": "2026-08-08T22:28:11.506Z",
+  "importedAt": "2026-08-10T19:24:01.440Z",
   "levelLocation": {
     "raw": "Bénouville, Normandy, France",
     "label": "Bénouville, Normandy, France",
@@ -53,5 +53,57 @@
     "resolvedTitle": "Pegasus Bridge",
     "mainImageTitle": "File:PegasusBridge_SaveScreen_Recreation_CoD1.jpg",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Dulag IIIA]]<br>[[Pathfinder]] (Chronologically)",
+    "label": "Dulag IIIA, Pathfinder (Chronologically)",
+    "links": [
+      {
+        "wikiTitle": "Dulag IIIA",
+        "label": "Dulag IIIA",
+        "url": "https://callofduty.fandom.com/wiki/Dulag_IIIA"
+      },
+      {
+        "wikiTitle": "Pathfinder",
+        "label": "Pathfinder",
+        "url": "https://callofduty.fandom.com/wiki/Pathfinder"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Pegasus Bridge-Day]]<br>[[Ste. Mere-Eglise]] (Chronologically)",
+    "label": "Pegasus Bridge-Day, Ste. Mere-Eglise (Chronologically)",
+    "links": [
+      {
+        "wikiTitle": "Pegasus Bridge-Day",
+        "label": "Pegasus Bridge-Day",
+        "url": "https://callofduty.fandom.com/wiki/Pegasus_Bridge-Day"
+      },
+      {
+        "wikiTitle": "Ste. Mere-Eglise",
+        "label": "Ste. Mere-Eglise",
+        "url": "https://callofduty.fandom.com/wiki/Ste._Mere-Eglise"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty]]''<br>''[[Call of Duty: Classic]]''",
+    "label": "Call of Duty, Call of Duty: Classic",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty",
+        "label": "Call of Duty",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty"
+      },
+      {
+        "wikiTitle": "Call of Duty: Classic",
+        "label": "Call of Duty: Classic",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Classic"
+      }
+    ]
+  },
+  "date": {
+    "raw": "June 6, 1944, 0007 hrs",
+    "label": "June 6, 1944, 0007 hrs"
   }
 }

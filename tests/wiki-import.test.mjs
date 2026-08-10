@@ -3,11 +3,14 @@ import test from "node:test";
 import {
   extractInfobox,
   formatWikiConfigurationError,
+  hasSequenceMetadata,
   hasCompleteAttribution,
   imageRecord,
   loadWikiArticleIdsForGames,
   parseArguments,
   parseWikiLink,
+  parseWikiReferences,
+  parseWikiValue,
   resolveWikiConfiguration,
   WikiConfigurationError,
   wikiArticleIdsForGames,
@@ -33,6 +36,36 @@ test("parseWikiLink preserves raw evidence and resolves its first link", () => {
     label: "Paris, France",
     url: "https://wiki.example.test/wiki/Paris",
   });
+});
+
+test("parseWikiReferences preserves display evidence and every linked target", () => {
+  assert.deepEqual(parseWikiReferences("[[Crew Expendable]] / [[Blackout (Call of Duty 4)|Blackout]]", wikiOrigin), {
+    raw: "[[Crew Expendable]] / [[Blackout (Call of Duty 4)|Blackout]]",
+    label: "Crew Expendable / Blackout",
+    links: [
+      {
+        wikiTitle: "Crew Expendable",
+        label: "Crew Expendable",
+        url: "https://wiki.example.test/wiki/Crew_Expendable",
+      },
+      {
+        wikiTitle: "Blackout (Call of Duty 4)",
+        label: "Blackout",
+        url: "https://wiki.example.test/wiki/Blackout_(Call_of_Duty_4)",
+      },
+    ],
+  });
+  assert.deepEqual(parseWikiReferences(null, wikiOrigin), { raw: null, label: null, links: [] });
+});
+
+test("parseWikiValue preserves raw date evidence and a display value", () => {
+  assert.deepEqual(parseWikiValue("[[2011]]-10-6"), { raw: "[[2011]]-10-6", label: "2011-10-6" });
+  assert.deepEqual(parseWikiValue(null), { raw: null, label: null });
+});
+
+test("existing snapshots are refreshed until sequence metadata has been imported", () => {
+  assert.equal(hasSequenceMetadata({ latestRevisionId: 123 }), false);
+  assert.equal(hasSequenceMetadata({ previousLevels: {}, nextLevels: {}, games: {}, date: {} }), true);
 });
 
 test("imageRecord maps attribution and source links", () => {

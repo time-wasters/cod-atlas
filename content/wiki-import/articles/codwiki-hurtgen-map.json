@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Hurtgen_(map)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Hurtgen_(map)",
   "latestRevisionId": 2991573,
-  "importedAt": "2026-08-08T22:28:00.790Z",
+  "importedAt": "2026-08-10T19:23:50.626Z",
   "levelLocation": {
     "raw": "Hürtgen forest, German-Belgian border",
     "label": "Hürtgen forest, German-Belgian border",
@@ -53,5 +53,35 @@
     "resolvedTitle": "Hurtgen (map)",
     "mainImageTitle": "File:Hurtgen.jpg",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty]]''<br>''[[Call of Duty: United Offensive]]''",
+    "label": "Call of Duty, Call of Duty: United Offensive",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty",
+        "label": "Call of Duty",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty"
+      },
+      {
+        "wikiTitle": "Call of Duty: United Offensive",
+        "label": "Call of Duty: United Offensive",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_United_Offensive"
+      }
+    ]
+  },
+  "date": {
+    "raw": "September 19, 1944-February 10, 1945",
+    "label": "September 19, 1944-February 10, 1945"
   }
 }

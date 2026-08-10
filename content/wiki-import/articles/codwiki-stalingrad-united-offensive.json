@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Stalingrad_(United_Offensive)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Stalingrad_(United_Offensive)",
   "latestRevisionId": 2991598,
-  "importedAt": "2026-08-08T22:28:22.248Z",
+  "importedAt": "2026-08-10T19:24:12.241Z",
   "levelLocation": {
     "raw": "{{w|Volgagrad|Stalingrad}}, {{w|Soviet Union}}",
     "label": ",",
@@ -53,5 +53,35 @@
     "resolvedTitle": "Stalingrad (United Offensive)",
     "mainImageTitle": "File:Stalingrad_Map_CoD1.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty]]''<br>''[[Call of Duty: United Offensive]]''",
+    "label": "Call of Duty, Call of Duty: United Offensive",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty",
+        "label": "Call of Duty",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty"
+      },
+      {
+        "wikiTitle": "Call of Duty: United Offensive",
+        "label": "Call of Duty: United Offensive",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_United_Offensive"
+      }
+    ]
+  },
+  "date": {
+    "raw": null,
+    "label": null
   }
 }

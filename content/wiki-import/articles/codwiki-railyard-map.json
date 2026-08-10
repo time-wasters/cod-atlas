@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Railyard_(map)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Railyard_(map)",
   "latestRevisionId": 2991590,
-  "importedAt": "2026-08-08T22:28:11.559Z",
+  "importedAt": "2026-08-10T19:24:01.483Z",
   "levelLocation": {
     "raw": "[[Wikipedia:Warsaw|Warsaw]], [[Wikipedia:Poland|Poland]]",
     "label": "Warsaw",
@@ -46,5 +46,40 @@
     "resolvedTitle": "Railyard (map)",
     "mainImageTitle": "File:Railyard_loading_screen_CoD1.jpg",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty]]''<br>''[[Call of Duty: United Offensive]]''<br>''[[Call of Duty 2]]''",
+    "label": "Call of Duty, Call of Duty: United Offensive, Call of Duty 2",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty",
+        "label": "Call of Duty",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty"
+      },
+      {
+        "wikiTitle": "Call of Duty: United Offensive",
+        "label": "Call of Duty: United Offensive",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_United_Offensive"
+      },
+      {
+        "wikiTitle": "Call of Duty 2",
+        "label": "Call of Duty 2",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_2"
+      }
+    ]
+  },
+  "date": {
+    "raw": null,
+    "label": null
   }
 }
