@@ -10079,22 +10079,22 @@
           "wiki": "https://callofduty.fandom.com/wiki/Alps_Chateau",
           "wikiArticle": "codwiki-alps-chateau",
           "country": "Germany",
-          "city": null,
-          "region": "Bavarian Alps",
-          "landmark": null,
+          "city": "Krün",
+          "region": "Bavaria",
+          "landmark": "Schloss Elmau",
           "coordinates": [
-            47.64,
-            11.77
+            47.46194,
+            11.18611
           ],
-          "precision": "region",
-          "confidence": "fallback",
-          "method": "region-fallback",
+          "precision": "exact",
+          "confidence": "medium",
+          "method": "real-world-inspiration",
           "urls": [
             {
-              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Bavarian+Alps%2C+Bavaria%2C+Germany"
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Schloss+Elmau%2C+In+Elmau+2%2C+82493+Kr%C3%BCn%2C+Germany"
             },
             {
-              "wikipedia": "https://en.wikipedia.org/wiki/Bavarian_Alps"
+              "wikipedia": "https://en.wikipedia.org/wiki/Schloss_Elmau"
             }
           ],
           "modes": [
