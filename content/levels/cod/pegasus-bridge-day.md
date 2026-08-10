@@ -18,7 +18,7 @@ locations:
     method: verified-landmark
     primary: true
     urls:
-      - googleMaps: https://www.google.com/maps/search/?api=1&query=49.242392%2C-0.274192
+      - googleMaps: https://www.google.com/maps/search/?api=1&query=Pegasus+Bridge%2C+B%C3%A9nouville%2C+France
       - wikipedia: https://en.wikipedia.org/wiki/Pegasus_Bridge
 ---
 

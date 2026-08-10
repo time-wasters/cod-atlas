@@ -18,7 +18,7 @@ locations:
     method: real-world-inspiration
     primary: true
     urls:
-      - googleMaps: https://www.google.com/maps/search/?api=1&query=49.371744%2C-1.262987
+      - googleMaps: https://www.google.com/maps/search/?api=1&query=Plaque+du+poste+de+commandement+du+G%C3%A9n%C3%A9ral+Maxwell+Taylor%2C+Hiesville%2C+France
 ---
 
 > **AI-generated research note:** The historical summary below was generated
