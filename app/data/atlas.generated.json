@@ -10148,14 +10148,22 @@
           "country": "Germany",
           "city": "Berlin",
           "region": null,
-          "landmark": null,
+          "landmark": "Reichstag building",
           "coordinates": [
-            52.52437,
-            13.41053
+            52.518611,
+            13.376111
           ],
-          "precision": "city",
+          "precision": "exact",
           "confidence": "high",
-          "method": "title",
+          "method": "verified-landmark",
+          "urls": [
+            {
+              "googleMaps": "https://maps.app.goo.gl/3bfXb8hT1wk1qz2D7"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Reichstag_building"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
