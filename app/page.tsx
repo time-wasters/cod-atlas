@@ -560,10 +560,6 @@ export default function Home() {
     );
     return data.games.filter((item) => representedCodes.has(item.code)).sort(compareGames);
   }, [groups]);
-  const externalIconCount = externalIconManifest
-    ? Object.values(externalIconManifest).filter((entry) => entry.icon).length
-    : 0;
-
   const gameIcon = useCallback((game: Game) => {
     const externalPath = externalIconsEnabled && !failedExternalGameIcons.has(game.id)
       ? externalIconManifest?.[game.id]?.icon?.path
@@ -872,15 +868,14 @@ export default function Home() {
         <section className="settings-page" aria-labelledby="settings-title">
           <div className="settings-surface">
             <header>
-              <div><span>Atlas configuration</span><h2 id="settings-title">Settings</h2></div>
+              <h2 id="settings-title">Settings</h2>
               <button type="button" aria-label="Close settings" onClick={() => setSettingsOpen(false)}>×</button>
             </header>
             <div className="settings-content">
               <section className="settings-group">
                 <div className="settings-copy">
                   <h3>External game icons</h3>
-                  <p>Use imported Steam and SteamGridDB icons when available. Repository icons remain the fallback.</p>
-                  {externalIconsEnabled && externalIconManifest && <small>{externalIconCount} external game icons available</small>}
+                  <p>Use imported icons when available; local icons remain the fallback.</p>
                   {externalIconsEnabled && externalIconManifestUnavailable && <small className="is-warning">External icons are unavailable in this build; local icons are still active.</small>}
                 </div>
                 <button

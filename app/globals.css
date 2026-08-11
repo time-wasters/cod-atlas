@@ -60,13 +60,12 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
 .settings-button svg { width: 19px; height: 19px; fill: currentColor; }
 .settings-page { position: fixed; z-index: 2000; inset: 0; display: grid; place-items: center; padding: 24px; background: #050704d9; backdrop-filter: blur(5px); }
 .settings-surface { width: min(620px, 100%); max-height: min(720px, 100%); overflow: auto; border: 1px solid #b57a18; border-radius: 7px; color: #ddd6c3; background: linear-gradient(150deg, #181d16, #10140f); box-shadow: 0 22px 80px #000d; }
-.settings-surface > header { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; border-bottom: 1px solid #464c3b; padding: 20px; }
-.settings-surface > header span { color: var(--amber); font: 700 9px var(--font-geist-mono), monospace; letter-spacing: .14em; text-transform: uppercase; }
-.settings-surface h2 { margin: 4px 0 0; color: #fff4d7; font: 28px/1.05 "Arial Narrow", Impact, sans-serif; letter-spacing: .04em; }
+.settings-surface > header { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 20px 20px 0; }
+.settings-surface h2 { margin: 0; color: #fff4d7; font: 28px/1.05 "Arial Narrow", Impact, sans-serif; letter-spacing: .04em; }
 .settings-surface > header button { width: 34px; height: 34px; border: 1px solid #626953; border-radius: 50%; padding: 0 0 2px; color: #ddd6c3; background: #20251c; font-size: 22px; cursor: pointer; }
 .settings-surface > header button:hover, .settings-surface > header button:focus-visible { border-color: var(--amber); color: var(--amber); outline: none; }
 .settings-content { padding: 20px; }
-.settings-group { display: flex; align-items: center; justify-content: space-between; gap: 24px; border: 1px solid #454b3a; border-radius: 5px; padding: 17px; background: #121610; }
+.settings-group { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .settings-copy { min-width: 0; }
 .settings-copy h3 { margin: 0 0 6px; color: #e5dcc5; font-size: 14px; }
 .settings-copy p { max-width: 410px; margin: 0; color: #8f9583; font-size: 11px; line-height: 1.55; }
