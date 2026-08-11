@@ -44,6 +44,8 @@ test("renders development preview metadata", async () => {
   assert.doesNotMatch(html, /Selected location/);
   assert.doesNotMatch(html, />Level<\/span>/);
   assert.match(html, /aria-label="(Singleplayer|Multiplayer)"/);
+  assert.match(html, /Made with ♥️ by <a href="https:\/\/github\.com\/plp-gtr"[^>]*>plp-GTR<\/a>/);
+  assert.doesNotMatch(html, /> Localized /);
   assert.match(html, /https:\/\/www\.google\.com\/maps\/search\/\?api=1(?:&|&amp;)query=Adriatic%20Sea/);
   assert.ok(html.indexOf('class="mission-heading"') < html.indexOf('class="intel-kicker"'));
 });

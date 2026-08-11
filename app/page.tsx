@@ -1111,7 +1111,7 @@ export default function Home() {
         </section>
 
         <footer>
-          <span className="legend-dot" /> Localized <span className="legend-dot is-fallback" /> Country fallback
+          <p className="creator-credit">Made with ♥️ by <a href="https://github.com/plp-gtr" target="_blank" rel="noreferrer">plp-GTR</a></p>
           <p className="source-credit">
             Inspired by <a className="icon-link" href="https://www.reddit.com/r/CallOfDuty/comments/10c3jbd/cod_every_location_visited_in_the_cod_franchise/" target="_blank" rel="noreferrer">
               u/robracer97
