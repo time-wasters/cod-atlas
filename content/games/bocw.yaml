@@ -2,3 +2,8 @@ id: bocw
 code: BOCW
 label: Black Ops Cold War
 released: 2020-11-13
+images:
+  steam:
+    app: 1985810
+    icon: 2998827956613290f9af6b771a5281249af91740
+    clienticon: 4ff3c6ae703d37c6d12b94f57b98622c6553a1de

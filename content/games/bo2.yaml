@@ -2,3 +2,8 @@ id: bo2
 code: BO2
 label: Black Ops II
 released: 2012-11-13
+images:
+  steam:
+    app: 202970
+    icon: 0a23d78ade8c8d7b4cfa15bf71c9dd535b2998ca
+    clienticon: bf2dbf3aaa1464cf97ab1558e2b9b305ae538e42

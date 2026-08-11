@@ -2,3 +2,8 @@ id: mw3-d
 code: MW3:D
 label: "MW3: Defiance"
 released: 2011-11-08
+images:
+  steamgriddb:
+    game: 5331486
+    icon: 96165
+    file: 37d5fdebc471ffd69e5150058aec30d4.png

@@ -38,6 +38,7 @@ yarn-error.log*
 next-env.d.ts
 /dist/
 /dist-static/
+/public/images/games_external/
 /.wrangler/
 /.sites-runtime/
 /outputs/

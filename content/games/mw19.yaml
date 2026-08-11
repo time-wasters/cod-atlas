@@ -2,3 +2,8 @@ id: mw19
 code: MW19
 label: Modern Warfare (2019)
 released: 2019-10-25
+images:
+  steam:
+    app: 2000950
+    icon: dec4f33dfa8c3a47cfadb3a8ef0629740caa536d
+    clienticon: 485450eba5e95e25805d9a34a668d5dc6b51d129

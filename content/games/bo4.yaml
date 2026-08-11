@@ -2,3 +2,8 @@ id: bo4
 code: BO4
 label: Black Ops 4
 released: 2018-10-12
+images:
+  steamgriddb:
+    game: 5246008
+    icon: 2407
+    file: 97416ac0f58056947e2eb5d5d253d4f2.png

@@ -2,3 +2,8 @@ id: iw
 code: IW
 label: Infinite Warfare
 released: 2016-11-04
+images:
+  steam:
+    app: 292730
+    icon: 8e3c9bc9a9aa614c436b12db701c4b7afe6ca672
+    clienticon: b8be0ff5938892e8130ed71fd75012644ac10c89
