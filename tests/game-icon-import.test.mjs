@@ -96,9 +96,39 @@ test("image signatures matching the configured output are persisted", async () =
       fetchImplementation: async () => new Response(jpeg, { status: 200 }),
     });
     assert.equal(result.imported, 1);
+    assert.equal(result.cached, 0);
     assert.deepEqual(JSON.parse(await readFile(path.join(outputRoot, "manifest.json"), "utf8")), {
       cod: { icon: { provider: "steam", path: "/images/games_external/steam/cod/icon.jpg" } },
     });
+  } finally {
+    await rm(temporaryRoot, { recursive: true, force: true });
+  }
+});
+
+test("valid cached icons are reused without a network request", async () => {
+  const temporaryRoot = await mkdtemp(path.join(os.tmpdir(), "cod-atlas-icons-"));
+  const contentRoot = path.join(temporaryRoot, "games");
+  const outputRoot = path.join(temporaryRoot, "public/images/games_external");
+  const { mkdir, writeFile } = await import("node:fs/promises");
+  await mkdir(contentRoot, { recursive: true });
+  await mkdir(path.join(outputRoot, "steam/cod"), { recursive: true });
+  await writeFile(path.join(contentRoot, "cod.yaml"), `id: cod\nimages:\n  steam:\n    app: 2620\n    icon: ${"a".repeat(40)}\n    clienticon: null\n`);
+  await writeFile(path.join(outputRoot, "steam/cod/icon.jpg"), Buffer.from([0xff, 0xd8, 0xff, 0xd9]));
+  let fetched = false;
+  try {
+    const result = await importGameIcons({
+      contentRoot,
+      outputRoot,
+      environment: { STEAM_ICON_URL: "https://steam.example.test/%app%/%icon%.%extension%" },
+      fetchImplementation: async () => {
+        fetched = true;
+        throw new Error("cache should prevent this request");
+      },
+    });
+    assert.equal(fetched, false);
+    assert.equal(result.imported, 0);
+    assert.equal(result.cached, 1);
+    assert.equal(result.failed, 0);
   } finally {
     await rm(temporaryRoot, { recursive: true, force: true });
   }

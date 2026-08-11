@@ -2,7 +2,7 @@
 
 import type { Map as LeafletMap, MarkerClusterGroup } from "leaflet";
 import * as Select from "@radix-ui/react-select";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import ReactMarkdown from "react-markdown";
 import atlasSource from "./data/atlas.generated.json";
 
@@ -86,6 +86,10 @@ type Game = {
   released: string;
   icon?: string;
 };
+type ExternalIconManifest = Record<string, {
+  icon?: { provider: "steam" | "steamgriddb"; path: string };
+  clienticon?: { provider: "steam"; path: string };
+}>;
 type AtlasData = {
   games: Game[];
   wikiMedia: Record<string, WikiMedia>;
@@ -105,6 +109,29 @@ type CountryOption = Pick<Group, "name" | "flagCode"> & { available: boolean };
 
 const data = atlasSource as AtlasData;
 const gamesById = new Map(data.games.map((game) => [game.id, game]));
+const EXTERNAL_ICONS_PREFERENCE = "cod-atlas:external-game-icons";
+const externalIconPreferenceListeners = new Set<() => void>();
+
+function externalIconsEnabledSnapshot() {
+  return typeof window !== "undefined" && window.localStorage.getItem(EXTERNAL_ICONS_PREFERENCE) === "true";
+}
+
+function subscribeToExternalIconPreference(listener: () => void) {
+  externalIconPreferenceListeners.add(listener);
+  const onStorage = (event: StorageEvent) => {
+    if (event.key === EXTERNAL_ICONS_PREFERENCE) listener();
+  };
+  window.addEventListener("storage", onStorage);
+  return () => {
+    externalIconPreferenceListeners.delete(listener);
+    window.removeEventListener("storage", onStorage);
+  };
+}
+
+function setExternalIconsEnabled(enabled: boolean) {
+  window.localStorage.setItem(EXTERNAL_ICONS_PREFERENCE, String(enabled));
+  externalIconPreferenceListeners.forEach((listener) => listener());
+}
 const MAP_MAX_ZOOM = 18;
 const EXTERNAL_LINK_ICON_PATHS = {
   googleMaps: "M19.527 4.799c1.212 2.608.937 5.678-.405 8.173-1.101 2.047-2.744 3.74-4.098 5.614-.619.858-1.244 1.75-1.669 2.727-.141.325-.263.658-.383.992-.121.333-.224.673-.34 1.008-.109.314-.236.684-.627.687h-.007c-.466-.001-.579-.53-.695-.887-.284-.874-.581-1.713-1.019-2.525-.51-.944-1.145-1.817-1.79-2.671L19.527 4.799zM8.545 7.705l-3.959 4.707c.724 1.54 1.821 2.863 2.871 4.18.247.31.494.622.737.936l4.984-5.925-.029.01c-1.741.601-3.691-.291-4.392-1.987a3.377 3.377 0 0 1-.209-.716c-.063-.437-.077-.761-.004-1.198l.001-.007zM5.492 3.149l-.003.004c-1.947 2.466-2.281 5.88-1.117 8.77l4.785-5.689-.058-.05-3.607-3.035zM14.661.436l-3.838 4.563a.295.295 0 0 1 .027-.01c1.6-.551 3.403.15 4.22 1.626.176.319.323.683.377 1.045.068.446.085.773.012 1.22l-.003.016 3.836-4.561A8.382 8.382 0 0 0 14.67.439l-.009-.003zM9.466 5.868L14.162.285l-.047-.012A8.31 8.31 0 0 0 11.986 0a8.439 8.439 0 0 0-6.169 2.766l-.016.018 3.665 3.084z",
@@ -493,6 +520,15 @@ export default function Home() {
   const [showSingleplayer, setShowSingleplayer] = useState(true);
   const [showMultiplayer, setShowMultiplayer] = useState(false);
   const [mapReady, setMapReady] = useState(false);
+  const [settingsOpen, setSettingsOpen] = useState(false);
+  const [externalIconManifest, setExternalIconManifest] = useState<ExternalIconManifest | null>(null);
+  const [externalIconManifestUnavailable, setExternalIconManifestUnavailable] = useState(false);
+  const [failedExternalGameIcons, setFailedExternalGameIcons] = useState<Set<string>>(() => new Set());
+  const externalIconsEnabled = useSyncExternalStore(
+    subscribeToExternalIconPreference,
+    externalIconsEnabledSnapshot,
+    () => false,
+  );
   const [solarSystemDisplay, setSolarSystemDisplay] = useState({
     hasSpaceLocations: true,
     expanded: true,
@@ -524,6 +560,35 @@ export default function Home() {
     );
     return data.games.filter((item) => representedCodes.has(item.code)).sort(compareGames);
   }, [groups]);
+  const externalIconCount = externalIconManifest
+    ? Object.values(externalIconManifest).filter((entry) => entry.icon).length
+    : 0;
+
+  const gameIcon = useCallback((game: Game) => {
+    const externalPath = externalIconsEnabled && !failedExternalGameIcons.has(game.id)
+      ? externalIconManifest?.[game.id]?.icon?.path
+      : null;
+    return externalPath
+      ? new URL(externalPath.replace(/^\/+/, ""), document.baseURI).href
+      : game.icon;
+  }, [externalIconManifest, externalIconsEnabled, failedExternalGameIcons]);
+
+  useEffect(() => {
+    if (!externalIconsEnabled || externalIconManifest || externalIconManifestUnavailable) return;
+    const controller = new AbortController();
+    const manifestUrl = new URL("images/games_external/manifest.json", document.baseURI);
+    fetch(manifestUrl, { signal: controller.signal })
+      .then((response) => {
+        if (!response.ok) throw new Error(`External icon manifest returned ${response.status}`);
+        return response.json() as Promise<ExternalIconManifest>;
+      })
+      .then(setExternalIconManifest)
+      .catch((error: unknown) => {
+        if (error instanceof DOMException && error.name === "AbortError") return;
+        setExternalIconManifestUnavailable(true);
+      });
+    return () => controller.abort();
+  }, [externalIconManifest, externalIconManifestUnavailable, externalIconsEnabled]);
   const countries = useMemo(
     () => groups
       .map(({ name, flagCode, entries }) => ({
@@ -796,7 +861,44 @@ export default function Home() {
           <strong>{data.totals.entries}</strong>
           <span>locations</span>
         </div>
+        <button className="settings-button" type="button" aria-label="Open settings" onClick={() => setSettingsOpen(true)}>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Zm8.1 5.1v-3.2l-2.3-.7a7 7 0 0 0-.7-1.6l1.1-2.2-2.2-2.2-2.2 1.1a7 7 0 0 0-1.6-.7L11.5 2H8.4l-.7 2.3a7 7 0 0 0-1.6.7L3.9 3.9 1.7 6.1l1.1 2.2a7 7 0 0 0-.7 1.6L0 10.5v3.1l2.3.7a7 7 0 0 0 .7 1.6l-1.1 2.2 2.2 2.2 2.2-1.1a7 7 0 0 0 1.6.7l.7 2.3h3.1l.7-2.3a7 7 0 0 0 1.6-.7l2.2 1.1 2.2-2.2-1.1-2.2a7 7 0 0 0 .7-1.6l2.2-.7Z" />
+          </svg>
+        </button>
       </header>
+
+      {settingsOpen && (
+        <section className="settings-page" aria-labelledby="settings-title">
+          <div className="settings-surface">
+            <header>
+              <div><span>Atlas configuration</span><h2 id="settings-title">Settings</h2></div>
+              <button type="button" aria-label="Close settings" onClick={() => setSettingsOpen(false)}>×</button>
+            </header>
+            <div className="settings-content">
+              <section className="settings-group">
+                <div className="settings-copy">
+                  <h3>External game icons</h3>
+                  <p>Use imported Steam and SteamGridDB icons when available. Repository icons remain the fallback.</p>
+                  {externalIconsEnabled && externalIconManifest && <small>{externalIconCount} external game icons available</small>}
+                  {externalIconsEnabled && externalIconManifestUnavailable && <small className="is-warning">External icons are unavailable in this build; local icons are still active.</small>}
+                </div>
+                <button
+                  className={`settings-switch${externalIconsEnabled ? " is-enabled" : ""}`}
+                  type="button"
+                  role="switch"
+                  aria-checked={externalIconsEnabled}
+                  onClick={() => setExternalIconsEnabled(!externalIconsEnabled)}
+                >
+                  <span aria-hidden="true" />
+                  <b>{externalIconsEnabled ? "On" : "Off"}</b>
+                </button>
+              </section>
+              <p className="settings-note">This preference is stored only in this browser.</p>
+            </div>
+          </div>
+        </section>
+      )}
 
       <aside className="atlas-sidebar" aria-label="Map filters">
         <label className="search-field">
@@ -950,15 +1052,21 @@ export default function Home() {
                 {selected.entry.gameIds.map((gameId) => {
                   const selectedGame = gamesById.get(gameId);
                   if (!selectedGame) return null;
-                  return selectedGame.icon ? (
+                  const selectedGameIcon = gameIcon(selectedGame);
+                  return selectedGameIcon ? (
                     // Game icons are reviewed local public assets and do not need image optimization.
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
                       className="mission-game-icon"
                       key={gameId}
-                      src={selectedGame.icon}
+                      src={selectedGameIcon}
                       alt={selectedGame.label}
                       title={selectedGame.label}
+                      onError={() => {
+                        if (selectedGameIcon !== selectedGame.icon) {
+                          setFailedExternalGameIcons((failed) => new Set(failed).add(gameId));
+                        }
+                      }}
                     />
                   ) : (
                     <span className="mission-game-name" key={gameId}>{selectedGame.label}</span>

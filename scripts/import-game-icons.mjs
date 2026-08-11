@@ -108,6 +108,17 @@ function detectedImageType(buffer) {
 }
 
 async function downloadIcon(request, outputRoot, fetchImplementation) {
+  const destination = path.join(outputRoot, ...request.relativePath.split("/"));
+  const expectedExtension = path.extname(request.relativePath).slice(1).replace("jpeg", "jpg");
+  try {
+    const cached = await readFile(destination);
+    if (cached.length > 0 && cached.length <= MAX_IMAGE_BYTES && detectedImageType(cached) === expectedExtension) {
+      return { publicPath: `/images/games_external/${request.relativePath}`, cached: true };
+    }
+  } catch (error) {
+    if (error?.code !== "ENOENT") throw error;
+  }
+
   const response = await fetchImplementation(request.url, { redirect: "follow" });
   requireValue(response.ok, `${request.gameId}: ${request.provider} ${request.kind} returned HTTP ${response.status}`);
   const declaredLength = Number(response.headers.get("content-length"));
@@ -116,15 +127,13 @@ async function downloadIcon(request, outputRoot, fetchImplementation) {
   requireValue(buffer.length > 0 && buffer.length <= MAX_IMAGE_BYTES, `${request.gameId}: downloaded icon is empty or exceeds 5 MiB`);
   const imageType = detectedImageType(buffer);
   requireValue(imageType, `${request.gameId}: downloaded ${request.provider} ${request.kind} is not a supported image`);
-  const expectedExtension = path.extname(request.relativePath).slice(1).replace("jpeg", "jpg");
   requireValue(imageType === expectedExtension, `${request.gameId}: downloaded ${imageType} does not match .${expectedExtension} output`);
 
-  const destination = path.join(outputRoot, ...request.relativePath.split("/"));
   await mkdir(path.dirname(destination), { recursive: true });
   const temporary = `${destination}.tmp-${process.pid}`;
   await writeFile(temporary, buffer);
   await rename(temporary, destination);
-  return `/images/games_external/${request.relativePath}`;
+  return { publicPath: `/images/games_external/${request.relativePath}`, cached: false };
 }
 
 export async function importGameIcons({
@@ -151,11 +160,13 @@ export async function importGameIcons({
   const requests = games.flatMap((game) => iconRequestsForGame(game, configuration));
   const manifest = {};
   const failures = [];
+  let cached = 0;
   for (const request of requests) {
     try {
-      const publicPath = await downloadIcon(request, outputRoot, fetchImplementation);
+      const imported = await downloadIcon(request, outputRoot, fetchImplementation);
+      if (imported.cached) cached += 1;
       manifest[request.gameId] ??= {};
-      manifest[request.gameId][request.kind] = { provider: request.provider, path: publicPath };
+      manifest[request.gameId][request.kind] = { provider: request.provider, path: imported.publicPath };
     } catch (error) {
       if (strict) throw error;
       failures.push({ gameId: request.gameId, provider: request.provider, kind: request.kind, message: error.message });
@@ -166,7 +177,14 @@ export async function importGameIcons({
   const temporaryManifest = `${manifestPath}.tmp-${process.pid}`;
   await writeFile(temporaryManifest, `${JSON.stringify(manifest, null, 2)}\n`);
   await rename(temporaryManifest, manifestPath);
-  return { enabled: true, imported: requests.length - failures.length, failed: failures.length, failures, manifest };
+  return {
+    enabled: true,
+    imported: requests.length - failures.length - cached,
+    cached,
+    failed: failures.length,
+    failures,
+    manifest,
+  };
 }
 
 async function main() {
@@ -178,7 +196,7 @@ async function main() {
   for (const failure of result.failures) {
     console.warn(`External icon unavailable: ${failure.gameId} ${failure.provider} ${failure.kind}: ${failure.message}`);
   }
-  console.log(`Imported ${result.imported} external game icons${result.failed ? `; ${result.failed} unavailable` : ""}.`);
+  console.log(`Imported ${result.imported} external game icons; reused ${result.cached} cached${result.failed ? `; ${result.failed} unavailable` : ""}.`);
 }
 
 if (process.argv[1] && fileURLToPath(import.meta.url) === path.resolve(process.argv[1])) {

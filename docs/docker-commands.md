@@ -47,6 +47,8 @@ command to choose a different host port; the container still listens on 3000.
 the ignored `public/images/games_external/` build cache, together with a
 `manifest.json`. Steam `icon` images are imported as JPEG and optional
 `clienticon` images as ICO, using `%extension%` in the Steam URL template.
+Existing files with a valid matching image signature are reused without a
+network request; missing or invalid files are downloaded.
 
 Both regular and static builds run this command automatically. An unavailable
 external image is reported and omitted from the manifest so the existing local
