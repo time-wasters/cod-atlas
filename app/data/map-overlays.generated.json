@@ -32,5 +32,107 @@
       "rightsNotice": "The extraction is contributed to CoD Atlas; the underlying copyrighted game artwork remains the property of Activision and is used for identification and geographic comparison.",
       "rightsNoticeUrl": "https://www.activision.com/legal/terms-of-use"
     }
+  },
+  "rtv-glider-crash": {
+    "levelId": "rtv-glider-crash",
+    "image": "/images/maps/rtv/glider-crash.png",
+    "opacity": 0.72,
+    "corners": {
+      "topLeft": [
+        49.41909,
+        -1.36634
+      ],
+      "topRight": [
+        49.42172,
+        -1.26404
+      ],
+      "bottomLeft": [
+        49.37522,
+        -1.36368
+      ],
+      "bottomRight": [
+        49.37785,
+        -1.26138
+      ]
+    },
+    "attribution": {
+      "title": "Call of Duty: Roads to Victory — Glider Crash loading-screen map",
+      "source": "Directly extracted from Call of Duty: Roads to Victory by plp-gtr.",
+      "sourceUrl": "https://github.com/time-wasters/cod-atlas/blob/main/public/images/maps/rtv/glider-crash.png",
+      "extractedBy": "plp-gtr",
+      "extractedByUrl": "https://github.com/plp-gtr",
+      "copyrightHolder": "Activision Publishing, Inc.",
+      "rights": "non-free",
+      "rightsNotice": "The extraction is contributed to CoD Atlas; the underlying copyrighted game artwork remains the property of Activision and is used for identification and geographic comparison.",
+      "rightsNoticeUrl": "https://www.activision.com/legal/terms-of-use"
+    }
+  },
+  "rtv-lucky-thirteen": {
+    "levelId": "rtv-lucky-thirteen",
+    "image": "/images/maps/rtv/lucky-thirteen.png",
+    "opacity": 0.72,
+    "corners": {
+      "topLeft": [
+        52.2968,
+        0.4289
+      ],
+      "topRight": [
+        52.30024,
+        6.17577
+      ],
+      "bottomLeft": [
+        50.19646,
+        0.43047
+      ],
+      "bottomRight": [
+        50.19818,
+        6.17734
+      ]
+    },
+    "attribution": {
+      "title": "Call of Duty: Roads to Victory — Lucky Thirteen loading-screen map",
+      "source": "Directly extracted from Call of Duty: Roads to Victory by plp-gtr.",
+      "sourceUrl": "https://github.com/time-wasters/cod-atlas/blob/main/public/images/maps/rtv/lucky-thirteen.png",
+      "extractedBy": "plp-gtr",
+      "extractedByUrl": "https://github.com/plp-gtr",
+      "copyrightHolder": "Activision Publishing, Inc.",
+      "rights": "non-free",
+      "rightsNotice": "The extraction is contributed to CoD Atlas; the underlying copyrighted game artwork remains the property of Activision and is used for identification and geographic comparison.",
+      "rightsNoticeUrl": "https://www.activision.com/legal/terms-of-use"
+    }
+  },
+  "rtv-scavenger-hunt": {
+    "levelId": "rtv-scavenger-hunt",
+    "image": "/images/maps/rtv/scavenger-hunt.png",
+    "opacity": 0.72,
+    "corners": {
+      "topLeft": [
+        49.41909,
+        -1.36634
+      ],
+      "topRight": [
+        49.42172,
+        -1.26404
+      ],
+      "bottomLeft": [
+        49.37522,
+        -1.36368
+      ],
+      "bottomRight": [
+        49.37785,
+        -1.26138
+      ]
+    },
+    "attribution": {
+      "title": "Call of Duty: Roads to Victory — Scavenger Hunt loading-screen map",
+      "source": "Directly extracted from Call of Duty: Roads to Victory by plp-gtr.",
+      "sourceUrl": "https://github.com/time-wasters/cod-atlas/blob/main/public/images/maps/rtv/scavenger-hunt.png",
+      "extractedBy": "plp-gtr",
+      "extractedByUrl": "https://github.com/plp-gtr",
+      "copyrightHolder": "Activision Publishing, Inc.",
+      "rights": "non-free",
+      "rightsNotice": "The extraction is contributed to CoD Atlas; the underlying copyrighted game artwork remains the property of Activision and is used for identification and geographic comparison.",
+      "rightsNoticeUrl": "https://www.activision.com/legal/terms-of-use"
+    }
   }
 }

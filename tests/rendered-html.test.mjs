@@ -202,4 +202,14 @@ test("keeps calibrated game-map overlays in a separate generated store", async (
   });
   assert.equal(altavilla.attribution.rights, "non-free");
   await access(new URL(`../public${altavilla.image}`, import.meta.url));
+  const scavengerHunt = overlays["rtv-scavenger-hunt"];
+  assert.equal(scavengerHunt.image, "/images/maps/rtv/scavenger-hunt.png");
+  assert.deepEqual(scavengerHunt.corners, {
+    topLeft: [49.41909, -1.36634],
+    topRight: [49.42172, -1.26404],
+    bottomLeft: [49.37522, -1.36368],
+    bottomRight: [49.37785, -1.26138],
+  });
+  assert.equal(scavengerHunt.attribution.extractedBy, "plp-gtr");
+  await access(new URL(`../public${scavengerHunt.image}`, import.meta.url));
 });

@@ -9925,16 +9925,24 @@
           "wiki": "https://callofduty.fandom.com/wiki/Glider_Crash",
           "wikiArticle": "codwiki-glider-crash",
           "country": "France",
-          "city": null,
-          "region": null,
+          "city": "Carentan-les-Marais",
+          "region": "Normandy",
           "landmark": null,
           "coordinates": [
-            46,
-            2
+            49.30312,
+            -1.24806
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "city",
+          "confidence": "high",
+          "method": "title-mention",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Carentan-les-Marais%2C+France"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Carentan-les-Marais"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -11004,16 +11012,24 @@
           "wiki": "https://callofduty.fandom.com/wiki/Scavenger_Hunt",
           "wikiArticle": "codwiki-scavenger-hunt",
           "country": "France",
-          "city": null,
-          "region": null,
+          "city": "Sainte-Mère-Église",
+          "region": "Normandy",
           "landmark": null,
           "coordinates": [
-            46,
-            2
+            49.40882,
+            -1.31626
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "city",
+          "confidence": "high",
+          "method": "article-context",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Sainte-M%C3%A8re-%C3%89glise%2C+France"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Sainte-M%C3%A8re-%C3%89glise"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -18299,16 +18315,24 @@
           "wiki": "https://callofduty.fandom.com/wiki/Lucky_Thirteen",
           "wikiArticle": "codwiki-lucky-thirteen",
           "country": "Netherlands",
-          "city": null,
-          "region": null,
+          "city": "Nijmegen",
+          "region": "Gelderland",
           "landmark": null,
           "coordinates": [
-            52.5,
-            5.75
+            51.8425,
+            5.85278
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "city",
+          "confidence": "high",
+          "method": "article-context",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Nijmegen%2C+Netherlands"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Nijmegen"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -18352,15 +18376,23 @@
           "wikiArticle": "codwiki-nijmegen",
           "country": "Netherlands",
           "city": "Nijmegen",
-          "region": null,
-          "landmark": null,
+          "region": "Gelderland",
+          "landmark": "Keizer Traianusplein (wartime Keizer Lodewijkplein)",
           "coordinates": [
-            51.8425,
-            5.85278
+            51.845919,
+            5.873881
           ],
-          "precision": "city",
-          "confidence": "high",
-          "method": "title",
+          "precision": "exact",
+          "confidence": "medium",
+          "method": "real-world-inspiration",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Keizer+Traianusplein%2C+Nijmegen%2C+Netherlands"
+            },
+            {
+              "wikipedia": "https://nl.wikipedia.org/wiki/Keizer_Traianusplein"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -31912,7 +31944,7 @@
     "levels": 967,
     "entries": 987,
     "mapped": 957,
-    "cityMatched": 111,
-    "countryFallback": 846
+    "cityMatched": 114,
+    "countryFallback": 843
   }
 }
