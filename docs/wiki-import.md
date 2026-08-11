@@ -111,18 +111,16 @@ It preserves `mapStyle`, `mapStyleDetail`, `mapStyleConfidence`, and
 coordinates, precision, confidence, method, mode, and editorial notes remain
 untouched.
 
-Media is populated only when the API provides a source URL, web-resolution
-thumbnail, file detail page, and an author or uploader profile. It must also
-provide either a reusable license and license URL or use the recognized CoD
-Wiki `Copyrighted Media` notice. For that non-free case, the importer preserves
-the notice separately with `rights.status: non-free`; it does not call fair use
-a license. The details pane exposes the source notice and attribution through
-the image information dialog.
+Media is populated when the API provides a source URL, web-resolution
+thumbnail, and file detail page. Author, uploader, license, and rights metadata
+are optional and preserved whenever Fandom provides them. A recognized CoD
+Wiki `Copyrighted Media` notice is stored as `rights.status: non-free`, but it
+is not required to display the article's main image.
 
-Other incomplete or unrecognized files produce `skipping media without a
-reusable license or recognized non-free notice`, leave the media record
-unchanged, and retain the discovered file title in `rawPayload` for manual
-review. Do not fill missing attribution or rights information by guesswork.
+Files without usable display URLs produce `skipping media without a usable
+display URL`, leave the media record unchanged, and retain the discovered file
+title in `rawPayload` for manual review. Do not fill missing metadata by
+guesswork.
 
 ## Request behavior and failures
 

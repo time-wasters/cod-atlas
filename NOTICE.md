@@ -25,11 +25,10 @@ by Reddit user **u/robracer97**.
 
 Atlas records link to pages on the
 [CoD Wiki](https://callofduty.fandom.com/wiki/Call_of_Duty_Wiki).
-Imported article or media material remains subject to the license and
-attribution displayed on its source page or file-detail page. Import records
-must retain the source URL, author or uploader information, and applicable
-license or non-free rights notice. The interface reproduces non-free notices
-for provenance and does not reclassify a copyright exception as a license.
+Imported article or media material remains subject to the terms displayed on
+its source page or file-detail page. Image records retain source links and any
+author, uploader, license, or rights metadata returned by Fandom, but that
+optional metadata is not required in order to display an article's main image.
 
 ## Maps
 

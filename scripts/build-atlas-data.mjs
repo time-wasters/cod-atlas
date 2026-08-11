@@ -110,17 +110,6 @@ function validateWikiImage(image, field, filename) {
   validateHttpsUrl(image.sourceUrl, `${field}.sourceUrl`, filename);
   validateHttpsUrl(image.thumbnailUrl, `${field}.thumbnailUrl`, filename);
   validateHttpsUrl(image.detailPageUrl, `${field}.detailPageUrl`, filename);
-  requireValue(image.author?.name, `${filename}: ${field}.author.name is required`);
-  requireValue(["author", "uploader"].includes(image.author?.role), `${filename}: ${field}.author.role is invalid`);
-  validateHttpsUrl(image.author.userUrl, `${field}.author.userUrl`, filename);
-  if (image.rights?.status === "non-free") {
-    requireValue(image.rights.notice, `${filename}: ${field}.rights.notice is required for non-free media`);
-    validateHttpsUrl(image.rights.noticeUrl, `${field}.rights.noticeUrl`, filename);
-  } else {
-    requireValue(image.rights?.status === "licensed", `${filename}: ${field}.rights.status must be licensed or non-free`);
-    requireValue(image.license?.name, `${filename}: ${field}.license.name is required for licensed media`);
-    validateHttpsUrl(image.license.url, `${field}.license.url`, filename);
-  }
 }
 
 async function validateMapOverlay(overlay, levelId, filename) {

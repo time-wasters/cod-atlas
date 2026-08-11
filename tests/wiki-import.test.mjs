@@ -4,7 +4,7 @@ import {
   extractInfobox,
   formatWikiConfigurationError,
   hasSequenceMetadata,
-  hasCompleteAttribution,
+  hasUsableWikiImage,
   imageRecord,
   loadWikiArticleIdsForGames,
   parseArguments,
@@ -111,7 +111,7 @@ test("imageRecord preserves the Wiki notice for copyrighted game media", () => {
   assert.equal(image.rights.status, "non-free");
   assert.match(image.rights.notice, /identification and critical commentary/);
   assert.equal(image.rights.noticeUrl, "https://wiki.example.test/wiki/Template:Copyrighted_Media");
-  assert.equal(hasCompleteAttribution(image), true);
+  assert.equal(hasUsableWikiImage(image), true);
 });
 
 test("Wiki configuration is opt-in and accepts an explicit origin", () => {
@@ -140,21 +140,22 @@ test("Wiki configuration is opt-in and accepts an explicit origin", () => {
   });
 });
 
-test("media requires complete attribution before import", () => {
-  assert.equal(hasCompleteAttribution({
+test("Wiki media only requires usable source URLs", () => {
+  assert.equal(hasUsableWikiImage({
     sourceUrl: "https://example.test/image.png",
     thumbnailUrl: "https://example.test/image-thumbnail.png",
     detailPageUrl: "https://example.test/file",
     author: { name: "Editor", userUrl: "https://example.test/user" },
     license: { name: "CC BY-SA", url: "https://example.test/license" },
   }), true);
-  assert.equal(hasCompleteAttribution({
+  assert.equal(hasUsableWikiImage({
     sourceUrl: "https://example.test/image.png",
     thumbnailUrl: "https://example.test/image-thumbnail.png",
     detailPageUrl: "https://example.test/file",
     author: { name: null, userUrl: null },
     license: { name: null, url: null },
-  }), false);
+  }), true);
+  assert.equal(hasUsableWikiImage({ sourceUrl: "https://example.test/image.png" }), false);
 });
 
 test("arguments require explicit scope and enforce a polite delay", () => {

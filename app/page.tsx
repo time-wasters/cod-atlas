@@ -33,16 +33,16 @@ type WikiImage = {
   thumbnailUrl: string;
   detailPageUrl: string;
   author: {
-    name: string;
-    userUrl: string;
-    role: "author" | "uploader";
+    name: string | null;
+    userUrl: string | null;
+    role: "author" | "uploader" | null;
   };
   license: {
     name: string | null;
     url: string | null;
   };
   rights: {
-    status: "licensed" | "non-free";
+    status: "licensed" | "non-free" | "unknown";
     notice: string | null;
     noticeUrl: string | null;
   };
@@ -1463,7 +1463,7 @@ export default function Home() {
             <div className="media-info-content">
               <header>
                 <div>
-                  <span>{selectedImage.rights.status === "non-free" ? "Copyrighted media" : "Licensed media"}</span>
+                  <span>{selectedImage.rights.status === "non-free" ? "Copyrighted media" : selectedImage.rights.status === "licensed" ? "Licensed media" : "Wiki media"}</span>
                   <h2 id="media-info-title">Image information</h2>
                 </div>
                 <form method="dialog">
@@ -1474,10 +1474,12 @@ export default function Home() {
                 <div className="media-rights-notice">{selectedImage.rights.notice}</div>
               )}
               <dl>
-                <div>
-                  <dt>{selectedImageIsLocal ? "Captured by" : selectedImage.author.role === "uploader" ? "Uploaded by" : "Author"}</dt>
-                  <dd><a href={selectedImage.author.userUrl} target="_blank" rel="noreferrer">{selectedImage.author.name}</a></dd>
-                </div>
+                {selectedImage.author.name && selectedImage.author.userUrl && (
+                  <div>
+                    <dt>{selectedImageIsLocal ? "Captured by" : selectedImage.author.role === "uploader" ? "Uploaded by" : "Author"}</dt>
+                    <dd><a href={selectedImage.author.userUrl} target="_blank" rel="noreferrer">{selectedImage.author.name}</a></dd>
+                  </div>
+                )}
                 {selectedImage.license.name && selectedImage.license.url && (
                   <div>
                     <dt>License</dt>

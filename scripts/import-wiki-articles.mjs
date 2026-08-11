@@ -279,13 +279,8 @@ export function imageRecord(page, wikiOrigin) {
   };
 }
 
-export function hasCompleteAttribution(image) {
-  const sourced = image?.sourceUrl && image.thumbnailUrl && image.detailPageUrl
-    && image.author?.name && image.author.userUrl;
-  const licensed = image?.license?.name && image.license.url;
-  const nonFreeNotice = image?.rights?.status === "non-free"
-    && image.rights.notice && image.rights.noticeUrl;
-  return Boolean(sourced && (licensed || nonFreeNotice));
+export function hasUsableWikiImage(image) {
+  return Boolean(image?.sourceUrl && image.thumbnailUrl && image.detailPageUrl);
 }
 
 function titleFromSource(sourceUrl, wikiOrigin) {
@@ -369,8 +364,8 @@ async function importBatch(records, options, state, configuration) {
     for (const page of imagePayload.query?.pages ?? []) {
       const image = imageRecord(page, configuration.origin);
       const title = page.title.replace(/ /g, "_");
-      if (hasCompleteAttribution(image)) images.set(title, image);
-      else console.warn(`skipping media without a reusable license or recognized non-free notice: ${page.title}`);
+      if (hasUsableWikiImage(image)) images.set(title, image);
+      else console.warn(`skipping media without a usable display URL: ${page.title}`);
     }
   }
   for (const update of updates) {
