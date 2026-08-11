@@ -271,6 +271,7 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
 .mission-meta { min-height: 32px; display: flex; align-items: center; gap: 7px; color: #a99667; font: 700 9px var(--font-geist-mono), monospace; letter-spacing: .08em; text-transform: uppercase; }
 .mission-games { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 4px; }
 .mission-game-icon { width: 32px; height: 32px; display: block; border: 1px solid #575e4a; border-radius: 5px; padding: 4px; object-fit: contain; background: linear-gradient(145deg, #282d23dd, #151a14e8); box-shadow: inset 0 1px 0 #ffffff0d, 0 2px 6px #0007; }
+.mission-game-icon.is-external { padding: 0; }
 .mission-game-name { font-size: 9px; }
 .mission-meta-separator { color: #686e5c; }
 .intel-media { position: relative; max-height: 160px; aspect-ratio: 800 / 344; margin: 0 0 13px; overflow: hidden; border: 1px solid #4c513f; border-radius: 4px; background: #0b0e0a; }

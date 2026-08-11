@@ -1053,17 +1053,18 @@ export default function Home() {
                   const selectedGame = gamesById.get(gameId);
                   if (!selectedGame) return null;
                   const selectedGameIcon = gameIcon(selectedGame);
+                  const usesExternalGameIcon = Boolean(selectedGameIcon && selectedGameIcon !== selectedGame.icon);
                   return selectedGameIcon ? (
                     // Game icons are reviewed local public assets and do not need image optimization.
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
-                      className="mission-game-icon"
+                      className={`mission-game-icon${usesExternalGameIcon ? " is-external" : ""}`}
                       key={gameId}
                       src={selectedGameIcon}
                       alt={selectedGame.label}
                       title={selectedGame.label}
                       onError={() => {
-                        if (selectedGameIcon !== selectedGame.icon) {
+                        if (usesExternalGameIcon) {
                           setFailedExternalGameIcons((failed) => new Set(failed).add(gameId));
                         }
                       }}

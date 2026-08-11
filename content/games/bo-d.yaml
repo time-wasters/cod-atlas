@@ -2,3 +2,8 @@ id: bo-d
 code: BO:D
 label: "Black Ops: Declassified"
 released: 2012-11-13
+images:
+  steamgriddb:
+    game: 5246676
+    icon: 7616
+    file: 479f499df3bbc0deda265b92316d362f.png
