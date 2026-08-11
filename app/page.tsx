@@ -3,6 +3,7 @@
 import type { Map as LeafletMap, MarkerClusterGroup } from "leaflet";
 import * as Select from "@radix-ui/react-select";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import ReactMarkdown from "react-markdown";
 import atlasSource from "./data/atlas.generated.json";
 
 type Entry = {
@@ -499,6 +500,12 @@ export default function Home() {
   const [loadedImageKey, setLoadedImageKey] = useState<string | null>(null);
   const [failedImageKey, setFailedImageKey] = useState<string | null>(null);
   const [expandedRegionEntryId, setExpandedRegionEntryId] = useState<string | null>(null);
+  const [expandedLevelNotesId, setExpandedLevelNotesId] = useState<string | null>(null);
+  const [levelNotes, setLevelNotes] = useState<{
+    levelId: string;
+    status: "loading" | "ready" | "missing";
+    content: string | null;
+  } | null>(null);
   const [selected, setSelected] = useState<Selection>({
     group: initialGroup,
     entry: initialEntry,
@@ -601,11 +608,37 @@ export default function Home() {
     && entries.findIndex((candidate) => candidate.levelId === entry.levelId) === index);
   const visibleRegionalLevels = regionLevelsExpanded ? regionalLevels : regionalLevels.slice(0, 8);
   const hiddenRegionalLevelCount = regionalLevels.length - visibleRegionalLevels.length;
+  const levelNotesExpanded = expandedLevelNotesId === selected.entry.levelId;
+  const selectedLevelNotes = levelNotes?.levelId === selected.entry.levelId ? levelNotes : null;
 
   const selectEntry = useCallback((group: Group, entry: Entry) => {
     setSelected({ group, entry });
     setExpandedRegionEntryId(null);
+    setExpandedLevelNotesId(null);
   }, []);
+
+  const toggleLevelNotes = useCallback(() => {
+    const levelId = selected.entry.levelId;
+    if (expandedLevelNotesId === levelId) {
+      setExpandedLevelNotesId(null);
+      return;
+    }
+    setExpandedLevelNotesId(levelId);
+    if (levelNotes?.levelId === levelId) return;
+    setLevelNotes({ levelId, status: "loading", content: null });
+    const notesUrl = new URL(`level-notes/${levelId}.md`, document.baseURI);
+    fetch(notesUrl)
+      .then((response) => {
+        if (!response.ok) throw new Error(`Level notes returned ${response.status}`);
+        return response.text();
+      })
+      .then((content) => setLevelNotes({
+        levelId,
+        status: content.trim() ? "ready" : "missing",
+        content,
+      }))
+      .catch(() => setLevelNotes({ levelId, status: "missing", content: null }));
+  }, [expandedLevelNotesId, levelNotes?.levelId, selected.entry.levelId]);
 
   useEffect(() => {
     mediaDialog.current?.close();
@@ -1032,6 +1065,33 @@ export default function Home() {
               <span>CoD Wiki</span>
             </a>
           </div>
+          <section className={`level-briefing${levelNotesExpanded ? " is-expanded" : ""}`}>
+            <button
+              className="level-briefing-toggle"
+              type="button"
+              aria-expanded={levelNotesExpanded}
+              aria-controls="selected-level-briefing"
+              onClick={toggleLevelNotes}
+            >
+              <span><small>Level briefing</small><strong>Research &amp; historical context</strong></span>
+              <b aria-hidden="true">{levelNotesExpanded ? "−" : "+"}</b>
+            </button>
+            {levelNotesExpanded && (
+              <div className="level-briefing-content" id="selected-level-briefing">
+                {selectedLevelNotes?.status === "loading" && <p className="level-briefing-state">Loading briefing…</p>}
+                {selectedLevelNotes?.status === "missing" && <p className="level-briefing-state">No briefing has been written for this level yet.</p>}
+                {selectedLevelNotes?.status === "ready" && selectedLevelNotes.content && (
+                  <ReactMarkdown
+                    components={{
+                      a: ({ children, ...props }) => <a {...props} target="_blank" rel="noreferrer">{children}</a>,
+                    }}
+                  >
+                    {selectedLevelNotes.content}
+                  </ReactMarkdown>
+                )}
+              </div>
+            )}
+          </section>
           {regionalLevels.length > 0 && (
             <div
               className={`intel-entries${regionLevelsExpanded ? " is-expanded" : ""}`}

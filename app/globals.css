@@ -305,6 +305,26 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
 .place-links svg { width: 15px; height: 15px; flex: 0 0 15px; fill: currentColor; }
 .place-links span { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
 .place-links a:hover { border-color: var(--amber); color: var(--amber); background: #dfa12712; }
+.level-briefing { margin: 13px 0 10px; border-block: 1px solid #464c3b; background: #11150f99; }
+.level-briefing-toggle { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 12px; border: 0; padding: 12px 3px; color: inherit; background: transparent; text-align: left; cursor: pointer; }
+.level-briefing-toggle span { min-width: 0; display: grid; gap: 3px; }
+.level-briefing-toggle small { color: var(--amber); font: 700 8px var(--font-geist-mono), monospace; letter-spacing: .15em; text-transform: uppercase; }
+.level-briefing-toggle strong { color: #d9d2c0; font-size: 11px; font-weight: 600; }
+.level-briefing-toggle > b { width: 25px; height: 25px; flex: 0 0 25px; display: grid; place-items: center; border: 1px solid #5d624c; border-radius: 50%; color: var(--amber); font: 400 17px/1 var(--font-geist-mono), monospace; }
+.level-briefing-toggle:hover strong, .level-briefing-toggle:focus-visible strong { color: #fff4d7; }
+.level-briefing-toggle:focus-visible { outline: 1px solid var(--amber); outline-offset: 3px; }
+.level-briefing-content { max-height: 340px; overflow: auto; padding: 2px 5px 15px; scrollbar-color: #6f674b #171b14; }
+.level-briefing-content p, .level-briefing-content li { color: #c8c1ae; font-size: 11px; line-height: 1.65; }
+.level-briefing-content p { margin: 0 0 12px; }
+.level-briefing-content h2, .level-briefing-content h3 { margin: 20px 0 9px; color: #e9dcb9; font: 700 11px var(--font-geist-mono), monospace; letter-spacing: .08em; text-transform: uppercase; }
+.level-briefing-content blockquote { margin: 2px 0 15px; border-left: 2px solid #a8731d; padding: 8px 10px; background: #d99a1c0b; }
+.level-briefing-content blockquote p { margin: 0; color: #aaa48f; }
+.level-briefing-content ul, .level-briefing-content ol { margin: 0 0 13px; padding-left: 19px; }
+.level-briefing-content li + li { margin-top: 7px; }
+.level-briefing-content a { color: #e3b451; text-decoration-color: #8f6d2c; text-underline-offset: 2px; }
+.level-briefing-content a:hover, .level-briefing-content a:focus-visible { color: #ffcf68; }
+.level-briefing-content code { border: 1px solid #3d4335; border-radius: 2px; padding: 1px 3px; color: #e2d6b8; background: #0b0e0a; font: 10px var(--font-geist-mono), monospace; }
+.level-briefing-state { color: #858b78 !important; font-family: var(--font-geist-mono), monospace; }
 
 @media (max-width: 900px) {
   body { overflow: auto; }
