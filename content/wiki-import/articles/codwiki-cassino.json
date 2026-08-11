@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Cassino",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Cassino",
   "latestRevisionId": 2855660,
-  "importedAt": "2026-08-09T21:33:45.150Z",
+  "importedAt": "2026-08-11T18:55:15.227Z",
   "levelLocation": {
     "raw": "[[Wikipedia:Monte Cassino, Italy|Monte Cassino]], [[Wikipedia:Italy|Italy]]",
     "label": "Monte Cassino",
@@ -53,5 +53,35 @@
     "resolvedTitle": "Cassino",
     "mainImageTitle": "File:Cassino_Map_UO.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty: United Offensive]]''<br>''[[Call of Duty 2: Big Red One]]''",
+    "label": "Call of Duty: United Offensive, Call of Duty 2: Big Red One",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: United Offensive",
+        "label": "Call of Duty: United Offensive",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_United_Offensive"
+      },
+      {
+        "wikiTitle": "Call of Duty 2: Big Red One",
+        "label": "Call of Duty 2: Big Red One",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_2%3A_Big_Red_One"
+      }
+    ]
+  },
+  "date": {
+    "raw": "January 17-May 18, 1944",
+    "label": "January 17-May 18, 1944"
   }
 }
