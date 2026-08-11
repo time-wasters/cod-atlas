@@ -2,7 +2,7 @@
 
 import type { Map as LeafletMap, Marker as LeafletMarker, MarkerClusterGroup } from "leaflet";
 import * as Select from "@radix-ui/react-select";
-import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import ReactMarkdown from "react-markdown";
 import atlasSource from "./data/atlas.generated.json";
 import mapOverlaysSource from "./data/map-overlays.generated.json";
@@ -179,6 +179,46 @@ function ExternalLinkIcon({ name }: { name: keyof typeof EXTERNAL_LINK_ICON_PATH
       <path d={EXTERNAL_LINK_ICON_PATHS[name]} />
     </svg>
   );
+}
+
+function LevelModeIcon({ multiplayer }: { multiplayer: boolean }) {
+  return multiplayer ? (
+    <svg className="mission-mode-icon" viewBox="0 0 24 24" role="img" aria-label="Multiplayer">
+      <circle cx="8" cy="8" r="3" /><circle cx="16" cy="9" r="2.5" />
+      <path d="M2.5 19c.4-4 2.2-6 5.5-6s5.1 2 5.5 6M13 14c.8-.7 1.8-1 3-1 3 0 4.7 2 5 5.5" />
+    </svg>
+  ) : (
+    <svg className="mission-mode-icon" viewBox="0 0 24 24" role="img" aria-label="Singleplayer">
+      <circle cx="12" cy="7.5" r="3.5" /><path d="M5 20c.5-5 2.8-7.5 7-7.5s6.5 2.5 7 7.5" />
+    </svg>
+  );
+}
+
+function FittedLevelTitle({ children }: { children: string }) {
+  const title = useRef<HTMLHeadingElement>(null);
+
+  useLayoutEffect(() => {
+    const element = title.current;
+    if (!element) return;
+    let lastWidth = -1;
+    const fit = () => {
+      const width = Math.round(element.getBoundingClientRect().width);
+      if (width === lastWidth) return;
+      lastWidth = width;
+      let size = 30;
+      element.style.fontSize = `${size}px`;
+      while (element.scrollHeight > element.clientHeight + 1 && size > 17) {
+        size -= 1;
+        element.style.fontSize = `${size}px`;
+      }
+    };
+    fit();
+    const observer = new ResizeObserver(fit);
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [children]);
+
+  return <h2 ref={title}>{children}</h2>;
 }
 
 function gameCodes(value: string) {
@@ -1123,36 +1163,33 @@ export default function Home() {
 
         <article className={`intel-card${levelNotesExpanded ? " has-open-briefing" : ""}`} ref={intelCard}>
           <div className="mission-heading">
-            <h2>{selected.entry.title}</h2>
-            <div className="mission-meta">
-              <span className="mission-games">
-                {selected.entry.gameIds.map((gameId) => {
-                  const selectedGame = gamesById.get(gameId);
-                  if (!selectedGame) return null;
-                  const selectedGameIcon = gameIcon(selectedGame);
-                  const usesExternalGameIcon = Boolean(selectedGameIcon && selectedGameIcon !== selectedGame.icon);
-                  return selectedGameIcon ? (
-                    // Game icons are reviewed local public assets and do not need image optimization.
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      className={`mission-game-icon${usesExternalGameIcon ? " is-external" : ""}`}
-                      key={gameId}
-                      src={selectedGameIcon}
-                      alt={selectedGame.label}
-                      title={selectedGame.label}
-                      onError={() => {
-                        if (usesExternalGameIcon) {
-                          setFailedExternalGameIcons((failed) => new Set(failed).add(gameId));
-                        }
-                      }}
-                    />
-                  ) : (
-                    <span className="mission-game-name" key={gameId}>{selectedGame.label}</span>
-                  );
-                })}
-              </span>
-              <span className="mission-meta-separator" aria-hidden="true">·</span>
-              <span>{selected.entry.modes.includes("multiplayer") ? "Multiplayer map" : "Campaign mission"}</span>
+            <LevelModeIcon multiplayer={selected.entry.modes.includes("multiplayer")} />
+            <FittedLevelTitle>{selected.entry.title}</FittedLevelTitle>
+            <div className="mission-games">
+              {selected.entry.gameIds.map((gameId) => {
+                const selectedGame = gamesById.get(gameId);
+                if (!selectedGame) return null;
+                const selectedGameIcon = gameIcon(selectedGame);
+                const usesExternalGameIcon = Boolean(selectedGameIcon && selectedGameIcon !== selectedGame.icon);
+                return selectedGameIcon ? (
+                  // Game icons are reviewed local public assets and do not need image optimization.
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    className={`mission-game-icon${usesExternalGameIcon ? " is-external" : ""}`}
+                    key={gameId}
+                    src={selectedGameIcon}
+                    alt={selectedGame.label}
+                    title={selectedGame.label}
+                    onError={() => {
+                      if (usesExternalGameIcon) {
+                        setFailedExternalGameIcons((failed) => new Set(failed).add(gameId));
+                      }
+                    }}
+                  />
+                ) : (
+                  <span className="mission-game-name" key={gameId}>{selectedGame.label}</span>
+                );
+              })}
             </div>
           </div>
           {selectedImage && (

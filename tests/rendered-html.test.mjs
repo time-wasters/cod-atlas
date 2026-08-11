@@ -43,7 +43,7 @@ test("renders development preview metadata", async () => {
   assert.match(html, />Adriatic Sea<\/span>/);
   assert.doesNotMatch(html, /Selected location/);
   assert.doesNotMatch(html, />Level<\/span>/);
-  assert.match(html, /(Campaign mission|Multiplayer map)/);
+  assert.match(html, /aria-label="(Singleplayer|Multiplayer)"/);
   assert.match(html, /https:\/\/www\.google\.com\/maps\/search\/\?api=1(?:&|&amp;)query=Adriatic%20Sea/);
   assert.ok(html.indexOf('class="mission-heading"') < html.indexOf('class="intel-kicker"'));
 });
