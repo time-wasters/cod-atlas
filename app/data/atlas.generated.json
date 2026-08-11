@@ -13941,6 +13941,9 @@
           "urls": [
             {
               "googleMaps": "https://www.google.com/maps/search/?api=1&query=Hill+424+%28Quota+424%29+Memorial%2C+Localit%C3%A0+Piano+delle+Rose%2C+Altavilla+Silentina%2C+Italy"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Altavilla_Silentina"
             }
           ],
           "modes": [

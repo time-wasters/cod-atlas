@@ -37,6 +37,7 @@ locations:
     primary: true
     urls:
       - googleMaps: https://www.google.com/maps/search/?api=1&query=Hill+424+%28Quota+424%29+Memorial%2C+Localit%C3%A0+Piano+delle+Rose%2C+Altavilla+Silentina%2C+Italy
+      - wikipedia: https://en.wikipedia.org/wiki/Altavilla_Silentina
 ---
 
 > **AI-generated research note:** The historical summary below was generated
@@ -110,6 +111,9 @@ coordinates above.
 - [Call of Duty Wiki: Altavilla](https://callofduty.fandom.com/wiki/Altavilla)
   — mission date, player character, represented unit, setting, briefing,
   objectives and gameplay sequence.
+- [English Wikipedia: Altavilla Silentina](https://en.wikipedia.org/wiki/Altavilla_Silentina)
+  — English-language overview of the modern town, its position in Campania and
+  its geography overlooking the Sele plain.
 - [U.S. Army Center of Military History: *Salerno—American Operations From the Beaches to the Volturno*](https://history.army.mil/portals/143/Images/Publications/catalog/100-7.pdf)
   — official account of the 504th PIR's advance, the fighting on 17 September,
   and the occupation of Altavilla after the German withdrawal on the 18th.
