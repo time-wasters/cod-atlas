@@ -36,10 +36,10 @@
       "label": "Call of Duty: Finest Hour",
       "released": "2004-11-16",
       "images": {
-        "steam": {
-          "app": null,
-          "icon": null,
-          "clienticon": null
+        "steamgriddb": {
+          "game": 5252406,
+          "icon": 2368,
+          "file": "466accbac9a66b805ba50e42ad715740.png"
         }
       },
       "icon": "/images/games/cod-fh.png"
@@ -64,10 +64,10 @@
       "label": "Call of Duty 2: Big Red One",
       "released": "2005-11-01",
       "images": {
-        "steam": {
-          "app": null,
-          "icon": null,
-          "clienticon": null
+        "steamgriddb": {
+          "game": 5252158,
+          "icon": 4185,
+          "file": "b207f5c56605a9d1a22e1e134fe95ba9.png"
         }
       },
       "icon": "/images/games/cod2-bro.png"
@@ -78,10 +78,10 @@
       "label": "Call of Duty 3",
       "released": "2006-11-07",
       "images": {
-        "steam": {
-          "app": null,
-          "icon": null,
-          "clienticon": null
+        "steamgriddb": {
+          "game": 5248470,
+          "icon": 116450,
+          "file": "bc05aa23b91a3a988e14179077e9696c.png"
         }
       },
       "icon": "/images/games/cod3.png"
@@ -91,6 +91,13 @@
       "code": "RTV",
       "label": "Call of Duty: Roads to Victory",
       "released": "2007-03-13",
+      "images": {
+        "steamgriddb": {
+          "game": 5258603,
+          "icon": 17271,
+          "file": "5cd8270fa6b6f7b7e7ee19ab22b8024a.ico"
+        }
+      },
       "icon": "/images/games/rtv.png"
     },
     {
@@ -112,6 +119,13 @@
       "code": "WAW:FF",
       "label": "World at War: Final Fronts",
       "released": "2008-11-11",
+      "images": {
+        "steamgriddb": {
+          "game": 5252157,
+          "icon": 88121,
+          "file": "b7d1f1c8d305db3a7f5bced270c7a47a.png"
+        }
+      },
       "icon": "/images/games/waw-ff.png"
     },
     {
@@ -119,6 +133,13 @@
       "code": "WAW",
       "label": "World at War",
       "released": "2008-11-11",
+      "images": {
+        "steam": {
+          "app": 10090,
+          "icon": "2bfb85222af4a01842baa5c3a16a080eb27ac6c3",
+          "clienticon": "8afeb1572ffa6e380b8520e0ee797b3120a06ff7"
+        }
+      },
       "icon": "/images/games/waw.png"
     },
     {
@@ -200,79 +221,222 @@
       "id": "ghosts",
       "code": "G",
       "label": "Ghosts",
-      "released": "2013-11-05"
+      "released": "2013-11-05",
+      "images": {
+        "steam": {
+          "app": 209160,
+          "icon": "634577eb0ac94ce620c328885961ed6756823474",
+          "clienticon": "4c96165b43204485761d7e79ca209a5ba4b644ec"
+        }
+      }
     },
     {
       "id": "aw",
       "code": "AW",
       "label": "Advanced Warfare",
-      "released": "2014-11-04"
+      "released": "2014-11-04",
+      "images": {
+        "steam": {
+          "app": 209650,
+          "icon": "aab8b39ef63c54af5497b55aa104d5c7ec860fd9",
+          "clienticon": "a0306bcf727ce144ae43681a886fdaa038ec0472"
+        }
+      }
     },
     {
       "id": "bo3",
       "code": "BO3",
       "label": "Black Ops III",
-      "released": "2015-11-06"
+      "released": "2015-11-06",
+      "images": {
+        "steam": {
+          "app": 311210,
+          "icon": "bd3e3a9516b480164df25d16e49ae4ce4a063cb4",
+          "clienticon": "d5163ea762a63dca461ab6287694f9f1cf55663b"
+        }
+      }
     },
     {
       "id": "cod4-r",
       "code": "COD4:R",
       "label": "Modern Warfare Remastered",
-      "released": "2016-11-04"
+      "released": "2016-11-04",
+      "images": {
+        "steam": {
+          "app": 393080,
+          "icon": "ed487167f0b2f5a7dfc61d8cb6b98b4be2d81e6f",
+          "clienticon": "0a418bf7639fda58fdb3c9f336c13a52ef735854"
+        }
+      }
     },
     {
       "id": "iw",
       "code": "IW",
       "label": "Infinite Warfare",
-      "released": "2016-11-04"
+      "released": "2016-11-04",
+      "images": {
+        "steam": {
+          "app": 292730,
+          "icon": "8e3c9bc9a9aa614c436b12db701c4b7afe6ca672",
+          "clienticon": "b8be0ff5938892e8130ed71fd75012644ac10c89"
+        }
+      }
     },
     {
       "id": "wwii",
       "code": "WWII",
       "label": "WWII",
-      "released": "2017-11-03"
+      "released": "2017-11-03",
+      "images": {
+        "steam": {
+          "app": 476600,
+          "icon": "9cc56555b04419785037d36362b71e2854daa69c",
+          "clienticon": "4198e9d08d4ac9276c621adc6ae5c81d6dc9b94c"
+        }
+      }
     },
     {
       "id": "bo4",
       "code": "BO4",
       "label": "Black Ops 4",
-      "released": "2018-10-12"
+      "released": "2018-10-12",
+      "images": {
+        "steamgriddb": {
+          "game": 5246008,
+          "icon": 2407,
+          "file": "97416ac0f58056947e2eb5d5d253d4f2.png"
+        }
+      }
     },
     {
       "id": "mw19",
       "code": "MW19",
       "label": "Modern Warfare (2019)",
-      "released": "2019-10-25"
+      "released": "2019-10-25",
+      "images": {
+        "steam": {
+          "app": 2000950,
+          "icon": "dec4f33dfa8c3a47cfadb3a8ef0629740caa536d",
+          "clienticon": "485450eba5e95e25805d9a34a668d5dc6b51d129"
+        }
+      }
     },
     {
       "id": "mw19-wz",
       "code": "MW19-WZ",
       "label": "Warzone (2020)",
-      "released": "2020-03-10"
+      "released": "2020-03-10",
+      "images": {
+        "steamgriddb": {
+          "game": 5257960,
+          "icon": 19164,
+          "file": "8f9fe000818954f238235f26ca070247.png"
+        }
+      }
     },
     {
       "id": "bocw",
       "code": "BOCW",
       "label": "Black Ops Cold War",
-      "released": "2020-11-13"
+      "released": "2020-11-13",
+      "images": {
+        "steam": {
+          "app": 1985810,
+          "icon": "2998827956613290f9af6b771a5281249af91740",
+          "clienticon": "4ff3c6ae703d37c6d12b94f57b98622c6553a1de"
+        }
+      }
     },
     {
       "id": "vanguard",
       "code": "V",
       "label": "Vanguard",
-      "released": "2021-11-05"
+      "released": "2021-11-05",
+      "images": {
+        "steam": {
+          "app": 1985820,
+          "icon": "41abf602e6cd58c0beafd9aa0c166583d6263111",
+          "clienticon": "b11ecaf5fe049e3c35a833053e46a53761fbb775"
+        }
+      }
     },
     {
       "id": "mwii",
       "code": "MWII",
       "label": "Modern Warfare II (2022)",
-      "released": "2022-10-28"
+      "released": "2022-10-28",
+      "images": {
+        "steam": {
+          "app": 3595230,
+          "icon": "4e557bc86b950518cf3d8bd8ebec5f91d867bb9b",
+          "clienticon": "62a85dd81cffb687139bc757fca6320c1592e7a1"
+        }
+      }
     },
     {
       "id": "mwii-wz",
       "code": "MWII-WZ",
       "label": "Warzone 2.0",
-      "released": "2022-11-16"
+      "released": "2022-11-16",
+      "images": {
+        "steamgriddb": {
+          "game": 5358697,
+          "icon": 25304,
+          "file": "fdb0dfc7a10173835252be882819b650.png"
+        }
+      }
+    },
+    {
+      "id": "mwiii",
+      "code": "MWIII",
+      "label": "Modern Warfare III (2023)",
+      "released": "2023-11-10",
+      "images": {
+        "steam": {
+          "app": 3595270,
+          "icon": "82bd74afbe6e7e75da1a76be34360f682ba8ce63",
+          "clienticon": "aa8195de250808b6ad8767b09d832b966df9f7fd"
+        }
+      }
+    },
+    {
+      "id": "bo6",
+      "code": "BO6",
+      "label": "Black Ops 6",
+      "released": "2024-10-25",
+      "images": {
+        "steam": {
+          "app": 4384550,
+          "icon": "76273a939a2465166f0609398686f59082aa9fc3",
+          "clienticon": "76273a939a2465166f0609398686f59082aa9fc3"
+        }
+      }
+    },
+    {
+      "id": "bo7",
+      "code": "BO7",
+      "label": "Black Ops 7",
+      "released": "2025-11-14",
+      "images": {
+        "steamgriddb": {
+          "game": 5491818,
+          "icon": 82668,
+          "file": "739043330e259775c46a1a4d0d143240.png"
+        }
+      }
+    },
+    {
+      "id": "mw4",
+      "code": "MW4",
+      "label": "Modern Warfare 4",
+      "released": "2026-10-23",
+      "images": {
+        "steam": {
+          "app": 4435490,
+          "icon": "91af283eab8b68667d9121cfd3d3b322abc4eb3b",
+          "clienticon": null
+        }
+      }
     }
   ],
   "wikiMedia": {
