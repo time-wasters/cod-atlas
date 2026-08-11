@@ -226,8 +226,7 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
 .atlas-marker.is-active { width: 30px; height: 30px; border-style: solid; border-color: #ffc13b; background: #d99819; box-shadow: 0 0 0 4px #12160f, 0 0 0 6px #d99819aa, 0 0 22px #d9981988; }
 .atlas-marker.is-active::after { inset: 7px; }
 
-.intel-card { position: absolute; z-index: 500; top: 24px; right: 24px; width: min(330px, calc(100% - 48px)); max-height: calc(100% - 48px); overflow: auto; border: 1px solid #b57a18; border-radius: 7px; padding: 17px; color: #ddd6c3; background: linear-gradient(150deg, #181d16f5, #10140ff4); box-shadow: 0 16px 50px #000a, inset 0 0 30px #a27c1710; backdrop-filter: blur(7px); }
-.intel-card.has-open-briefing { overflow: hidden; }
+.intel-card { position: absolute; z-index: 500; top: 24px; right: 24px; width: min(330px, calc(100% - 48px)); max-height: calc(100% - 48px); overflow: auto; border: 1px solid #b57a18; border-radius: 7px; padding: 17px; color: #ddd6c3; background: linear-gradient(150deg, #181d16f5, #10140ff4); box-shadow: 0 16px 50px #000a, inset 0 0 30px #a27c1710; scrollbar-color: #6f674b #171b14; scrollbar-width: thin; backdrop-filter: blur(7px); }
 .intel-kicker { min-width: 0; display: flex; gap: 8px; align-items: center; color: #9b9f8d; font-size: 9px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
 .intel-country-flag { --CountryFlagIcon-height: 18px; flex: 0 0 27px; }
 .intel-country-fallback { width: 18px; height: 18px; flex: 0 0 18px; }
@@ -320,7 +319,11 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
 .level-briefing-pane > header h2 { margin: 4px 0 0; color: #fff4d7; font: 24px/1.05 "Arial Narrow", Impact, sans-serif; letter-spacing: .03em; }
 .level-briefing-pane > header button { width: 29px; height: 29px; flex: 0 0 29px; border: 1px solid #5d624c; border-radius: 50%; padding: 0 0 2px; color: #c7bea5; background: #20251c; font-size: 20px; cursor: pointer; }
 .level-briefing-pane > header button:hover, .level-briefing-pane > header button:focus-visible { border-color: var(--amber); color: var(--amber); outline: none; }
-.level-briefing-content { min-height: 0; overflow-y: auto; padding: 16px 18px 20px; scrollbar-color: #6f674b #171b14; }
+.level-briefing-content { min-height: 0; overflow-y: auto; padding: 16px 18px 20px; scrollbar-color: #6f674b #171b14; scrollbar-width: thin; }
+.intel-card::-webkit-scrollbar, .level-briefing-content::-webkit-scrollbar { width: 8px; }
+.intel-card::-webkit-scrollbar-track, .level-briefing-content::-webkit-scrollbar-track { border-radius: 4px; background: #171b14; }
+.intel-card::-webkit-scrollbar-thumb, .level-briefing-content::-webkit-scrollbar-thumb { border: 2px solid #171b14; border-radius: 4px; background: #6f674b; }
+.intel-card::-webkit-scrollbar-thumb:hover, .level-briefing-content::-webkit-scrollbar-thumb:hover { background: #9a895d; }
 .level-briefing-content p, .level-briefing-content li { color: #c8c1ae; font-size: 11px; line-height: 1.65; }
 .level-briefing-content p { margin: 0 0 12px; }
 .level-briefing-content h2, .level-briefing-content h3 { margin: 20px 0 9px; color: #e9dcb9; font: 700 11px var(--font-geist-mono), monospace; letter-spacing: .08em; text-transform: uppercase; }
