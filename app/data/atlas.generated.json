@@ -5869,32 +5869,6 @@
           ]
         },
         {
-          "id": "cod-ship:main",
-          "levelId": "cod-ship",
-          "locationId": "main",
-          "title": "Ship",
-          "game": "COD",
-          "gameIds": [
-            "cod"
-          ],
-          "wiki": "https://callofduty.fandom.com/wiki/Ship_(map)",
-          "wikiArticle": "codwiki-ship-map",
-          "country": "Atlantic Ocean",
-          "city": null,
-          "region": null,
-          "landmark": null,
-          "coordinates": [
-            26,
-            -38
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "region-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
           "id": "mwii-shipment:main",
           "levelId": "mwii-shipment",
           "locationId": "main",
@@ -6189,23 +6163,32 @@
           "levelId": "cod-pow-camp",
           "locationId": "main",
           "title": "POW Camp",
-          "game": "COD",
+          "game": "COD / UO",
           "gameIds": [
-            "cod"
+            "cod",
+            "cod-uo"
           ],
           "wiki": "https://callofduty.fandom.com/wiki/POW_Camp_(map)",
           "wikiArticle": "codwiki-pow-camp-map",
           "country": "Austria",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Strasshof an der Nordbahn",
+          "region": "Lower Austria",
+          "landmark": "Former Durchgangslager Strasshof grounds",
           "coordinates": [
-            47.33333333,
-            13.33333333
+            48.31581,
+            16.60989
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "exact",
+          "confidence": "high",
+          "method": "verified-landmark",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Erinnerungsmal+f%C3%BCr+die+Opfer+des+Durchgangslagers+Strasshof%2C+Helmahofstra%C3%9Fe%2C+2231+Strasshof+an+der+Nordbahn%2C+Austria"
+            },
+            {
+              "wikipedia": "https://de.wikipedia.org/wiki/Durchgangslager_Strasshof"
+            }
+          ],
           "modes": [
             "multiplayer"
           ]
@@ -6608,32 +6591,6 @@
           ],
           "wiki": "https://callofduty.fandom.com/wiki/Foy_(Map)",
           "wikiArticle": "codwiki-foy-map",
-          "country": "Belgium",
-          "city": null,
-          "region": null,
-          "landmark": null,
-          "coordinates": [
-            50.83333333,
-            4
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
-          ]
-        },
-        {
-          "id": "cod-hurtgen:main",
-          "levelId": "cod-hurtgen",
-          "locationId": "main",
-          "title": "Hurtgen",
-          "game": "COD",
-          "gameIds": [
-            "cod"
-          ],
-          "wiki": "https://callofduty.fandom.com/wiki/Hurtgen_(map)",
-          "wikiArticle": "codwiki-hurtgen-map",
           "country": "Belgium",
           "city": null,
           "region": null,
@@ -9313,23 +9270,32 @@
           "levelId": "cod-brecourt",
           "locationId": "main",
           "title": "Brecourt",
-          "game": "COD",
+          "game": "COD / UO",
           "gameIds": [
-            "cod"
+            "cod",
+            "cod-uo"
           ],
           "wiki": "https://callofduty.fandom.com/wiki/Brecourt_(map)",
           "wikiArticle": "codwiki-brecourt-map",
           "country": "France",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Sainte-Marie-du-Mont",
+          "region": "Normandy",
+          "landmark": "Brécourt Manor assault site",
           "coordinates": [
-            46,
-            2
+            49.390056,
+            -1.226111
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "exact",
+          "confidence": "high",
+          "method": "verified-landmark",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Manoir+de+Br%C3%A9court%2C+Sainte-Marie-du-Mont%2C+France"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Br%C3%A9court_Manor_Assault"
+            }
+          ],
           "modes": [
             "multiplayer"
           ]
@@ -9661,23 +9627,32 @@
           "levelId": "cod-dawnville",
           "locationId": "main",
           "title": "Dawnville",
-          "game": "COD",
+          "game": "COD / UO",
           "gameIds": [
-            "cod"
+            "cod",
+            "cod-uo"
           ],
           "wiki": "https://callofduty.fandom.com/wiki/Dawnville_(map)",
           "wikiArticle": "codwiki-dawnville-map",
           "country": "France",
           "city": "Sainte-Mère-Église",
-          "region": null,
-          "landmark": null,
+          "region": "Normandy",
+          "landmark": "Église Notre-Dame-de-l'Assomption de Sainte-Mère-Église",
           "coordinates": [
-            49.41,
-            -1.31726
+            49.40882,
+            -1.31626
           ],
-          "precision": "city",
+          "precision": "exact",
           "confidence": "high",
-          "method": "article-context",
+          "method": "verified-landmark",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=%C3%89glise+Notre-Dame-de-l%27Assomption%2C+Sainte-M%C3%A8re-%C3%89glise%2C+France"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Sainte-M%C3%A8re-%C3%89glise"
+            }
+          ],
           "modes": [
             "multiplayer"
           ]
@@ -9706,32 +9681,6 @@
           "method": "country-fallback",
           "modes": [
             "singleplayer"
-          ]
-        },
-        {
-          "id": "cod-depot:main",
-          "levelId": "cod-depot",
-          "locationId": "main",
-          "title": "Depot",
-          "game": "COD",
-          "gameIds": [
-            "cod"
-          ],
-          "wiki": "https://callofduty.fandom.com/wiki/Depot",
-          "wikiArticle": "codwiki-depot",
-          "country": "France",
-          "city": null,
-          "region": null,
-          "landmark": null,
-          "coordinates": [
-            46,
-            2
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "multiplayer"
           ]
         },
         {
@@ -10363,23 +10312,32 @@
           "levelId": "cod-neuville",
           "locationId": "main",
           "title": "Neuville",
-          "game": "COD",
+          "game": "COD / UO",
           "gameIds": [
-            "cod"
+            "cod",
+            "cod-uo"
           ],
           "wiki": "https://callofduty.fandom.com/wiki/Neuville",
           "wikiArticle": "codwiki-neuville",
           "country": "France",
-          "city": null,
-          "region": null,
+          "city": "Neuville-au-Plain",
+          "region": "Normandy",
           "landmark": null,
           "coordinates": [
-            46,
-            2
+            49.425,
+            -1.329
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "city",
+          "confidence": "high",
+          "method": "title-mention",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Neuville-au-Plain%2C+France"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Neuville-au-Plain"
+            }
+          ],
           "modes": [
             "multiplayer"
           ]
@@ -11535,9 +11493,10 @@
           "levelId": "cod-tigertown",
           "locationId": "main",
           "title": "Tigertown",
-          "game": "COD",
+          "game": "COD / UO",
           "gameIds": [
-            "cod"
+            "cod",
+            "cod-uo"
           ],
           "wiki": "https://callofduty.fandom.com/wiki/Tigertown",
           "wikiArticle": "codwiki-tigertown",
@@ -11552,6 +11511,11 @@
           "precision": "country",
           "confidence": "fallback",
           "method": "country-fallback",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=France"
+            }
+          ],
           "modes": [
             "multiplayer"
           ]
@@ -12145,23 +12109,32 @@
           "levelId": "cod-chateau",
           "locationId": "main",
           "title": "Chateau",
-          "game": "COD",
+          "game": "COD / UO",
           "gameIds": [
-            "cod"
+            "cod",
+            "cod-uo"
           ],
           "wiki": "https://callofduty.fandom.com/wiki/Chateau_(map)",
           "wikiArticle": "codwiki-chateau-map",
           "country": "Germany",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Krün",
+          "region": "Bavaria",
+          "landmark": "Schloss Elmau",
           "coordinates": [
-            51,
-            9
+            47.46194,
+            11.18611
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "exact",
+          "confidence": "medium",
+          "method": "real-world-inspiration",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Schloss+Elmau%2C+In+Elmau+2%2C+82493+Kr%C3%BCn%2C+Germany"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Schloss_Elmau"
+            }
+          ],
           "modes": [
             "multiplayer"
           ]
@@ -12852,6 +12825,41 @@
           ]
         },
         {
+          "id": "cod-hurtgen:main",
+          "levelId": "cod-hurtgen",
+          "locationId": "main",
+          "title": "Hurtgen",
+          "game": "COD / UO",
+          "gameIds": [
+            "cod",
+            "cod-uo"
+          ],
+          "wiki": "https://callofduty.fandom.com/wiki/Hurtgen_(map)",
+          "wikiArticle": "codwiki-hurtgen-map",
+          "country": "Germany",
+          "city": "Hürtgenwald",
+          "region": "North Rhine-Westphalia",
+          "landmark": "Vossenack battlefield and Museum Hürtgenwald 1944",
+          "coordinates": [
+            50.6863,
+            6.3727
+          ],
+          "precision": "approximate",
+          "confidence": "high",
+          "method": "manual-approximate",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Museum+H%C3%BCrtgenwald+1944%2C+Vossenack%2C+Germany"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/1944_H%C3%BCrtgen_Forest_Museum"
+            }
+          ],
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
           "id": "cod-fh-into-the-heartland:main",
           "levelId": "cod-fh-into-the-heartland",
           "locationId": "main",
@@ -13284,23 +13292,29 @@
           "levelId": "cod-rocket",
           "locationId": "main",
           "title": "Rocket",
-          "game": "COD",
+          "game": "COD / UO",
           "gameIds": [
-            "cod"
+            "cod",
+            "cod-uo"
           ],
           "wiki": "https://callofduty.fandom.com/wiki/Rocket_(map)",
           "wikiArticle": "codwiki-rocket-map",
           "country": "Germany",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Heek",
+          "region": "North Rhine-Westphalia",
+          "landmark": "V-2 launch pad in the van Oerschen Wald",
           "coordinates": [
-            51,
-            9
+            52.1255,
+            7.0919
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "exact",
+          "confidence": "medium",
+          "method": "real-world-inspiration",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Erinnerung+an+die+Opfer+der+V2-Raketen%2C+48619+Heek%2C+Germany"
+            }
+          ],
           "modes": [
             "multiplayer"
           ]
@@ -18793,6 +18807,41 @@
           "modes": [
             "multiplayer"
           ]
+        },
+        {
+          "id": "cod-ship:main",
+          "levelId": "cod-ship",
+          "locationId": "main",
+          "title": "Ship",
+          "game": "COD / UO",
+          "gameIds": [
+            "cod",
+            "cod-uo"
+          ],
+          "wiki": "https://callofduty.fandom.com/wiki/Ship_(map)",
+          "wikiArticle": "codwiki-ship-map",
+          "country": "Norway",
+          "city": "Tromsø",
+          "region": "Troms",
+          "landmark": "Tirpitz final anchorage and wreck site off Håkøya",
+          "coordinates": [
+            69.647,
+            18.806
+          ],
+          "precision": "exact",
+          "confidence": "high",
+          "method": "verified-landmark",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Tirpitz+wreck+site%2C+H%C3%A5k%C3%B8ya%2C+Troms%C3%B8%2C+Norway"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/German_battleship_Tirpitz"
+            }
+          ],
+          "modes": [
+            "multiplayer"
+          ]
         }
       ]
     },
@@ -19593,23 +19642,29 @@
           "levelId": "cod-harbor",
           "locationId": "main",
           "title": "Harbor",
-          "game": "COD",
+          "game": "COD / UO",
           "gameIds": [
-            "cod"
+            "cod",
+            "cod-uo"
           ],
           "wiki": "https://callofduty.fandom.com/wiki/Harbor",
           "wikiArticle": "codwiki-harbor",
           "country": "Poland",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Warsaw",
+          "region": "Masovian Voivodeship",
+          "landmark": "Former Ursus Mechanical Works (Waverma)",
           "coordinates": [
-            52,
-            20
+            52.19765,
+            20.8829
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "exact",
+          "confidence": "medium",
+          "method": "real-world-inspiration",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Former+Ursus+Factory%2C+Dyrekcyjna%2C+Warsaw%2C+Poland"
+            }
+          ],
           "modes": [
             "multiplayer"
           ]
@@ -19647,23 +19702,29 @@
           "levelId": "cod-railyard",
           "locationId": "main",
           "title": "Railyard",
-          "game": "COD",
+          "game": "COD / UO",
           "gameIds": [
-            "cod"
+            "cod",
+            "cod-uo"
           ],
           "wiki": "https://callofduty.fandom.com/wiki/Railyard_(map)",
           "wikiArticle": "codwiki-railyard-map",
           "country": "Poland",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Warsaw",
+          "region": "Masovian Voivodeship",
+          "landmark": "Historic Ursus factory siding",
           "coordinates": [
-            52,
-            20
+            52.1964,
+            20.88525
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "approximate",
+          "confidence": "medium",
+          "method": "real-world-inspiration",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Warszawa+Ursus+railway+station%2C+Warsaw%2C+Poland"
+            }
+          ],
           "modes": [
             "multiplayer"
           ]
@@ -20372,6 +20433,41 @@
           "precision": "city",
           "confidence": "high",
           "method": "title",
+          "modes": [
+            "multiplayer"
+          ]
+        },
+        {
+          "id": "cod-depot:main",
+          "levelId": "cod-depot",
+          "locationId": "main",
+          "title": "Depot",
+          "game": "COD / UO",
+          "gameIds": [
+            "cod",
+            "cod-uo"
+          ],
+          "wiki": "https://callofduty.fandom.com/wiki/Depot",
+          "wikiArticle": "codwiki-depot",
+          "country": "Russia",
+          "city": "Volgograd",
+          "region": "Volgograd Oblast",
+          "landmark": "Stalingrad Railway Station No. 1 (modern Volgograd-1)",
+          "coordinates": [
+            48.71258,
+            44.51355
+          ],
+          "precision": "exact",
+          "confidence": "medium",
+          "method": "real-world-inspiration",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Volgograd-1+Railway+Station%2C+Volgograd%2C+Russia"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Volgograd_railway_station"
+            }
+          ],
           "modes": [
             "multiplayer"
           ]
@@ -21214,23 +21310,32 @@
           "levelId": "cod-pavlov",
           "locationId": "main",
           "title": "Pavlov",
-          "game": "COD",
+          "game": "COD / UO",
           "gameIds": [
-            "cod"
+            "cod",
+            "cod-uo"
           ],
           "wiki": "https://callofduty.fandom.com/wiki/Pavlov_(map)",
           "wikiArticle": "codwiki-pavlov-map",
           "country": "Russia",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Volgograd",
+          "region": "Volgograd Oblast",
+          "landmark": "Pavlov's House (House of Soldiers' Glory)",
           "coordinates": [
-            60,
-            100
+            48.716086,
+            44.531389
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "exact",
+          "confidence": "high",
+          "method": "verified-landmark",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Pavlov%27s+House%2C+Volgograd%2C+Russia"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Pavlov%27s_House"
+            }
+          ],
           "modes": [
             "multiplayer"
           ]
@@ -21758,23 +21863,32 @@
           "levelId": "cod-stalingrad-mp",
           "locationId": "main",
           "title": "Stalingrad MP",
-          "game": "COD",
+          "game": "COD / UO",
           "gameIds": [
-            "cod"
+            "cod",
+            "cod-uo"
           ],
           "wiki": "https://callofduty.fandom.com/wiki/Stalingrad_(United_Offensive)",
           "wikiArticle": "codwiki-stalingrad-united-offensive",
           "country": "Russia",
           "city": "Volgograd",
-          "region": null,
-          "landmark": null,
+          "region": "Volgograd Oblast",
+          "landmark": "Square of the Fallen Fighters (wartime Red Square)",
           "coordinates": [
-            48.71378,
-            44.4976
+            48.708028,
+            44.515442
           ],
-          "precision": "city",
+          "precision": "exact",
           "confidence": "high",
-          "method": "title-mention",
+          "method": "verified-landmark",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Square+of+the+Fallen+Fighters%2C+Volgograd%2C+Russia"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Square_of_the_Fallen_Fighters"
+            }
+          ],
           "modes": [
             "multiplayer"
           ]
@@ -31776,7 +31890,7 @@
     "levels": 967,
     "entries": 987,
     "mapped": 957,
-    "cityMatched": 100,
-    "countryFallback": 857
+    "cityMatched": 111,
+    "countryFallback": 846
   }
 }
