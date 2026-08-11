@@ -496,28 +496,6 @@
       },
       "map": null
     },
-    "codwiki-berlin-level": {
-      "main": {
-        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/c/cb/TheReichstag_SaveScreen_Recreation_CoD1.jpg/revision/latest?cb=20230619221012",
-        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/c/cb/TheReichstag_SaveScreen_Recreation_CoD1.jpg/revision/latest/scale-to-width-down/800?cb=20230619221012",
-        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:TheReichstag_SaveScreen_Recreation_CoD1.jpg",
-        "author": {
-          "name": "Dead53",
-          "userUrl": "https://callofduty.fandom.com/wiki/User:Dead53",
-          "role": "uploader"
-        },
-        "license": {
-          "name": null,
-          "url": null
-        },
-        "rights": {
-          "status": "non-free",
-          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
-          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
-        }
-      },
-      "map": null
-    },
     "codwiki-bocage": {
       "main": {
         "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/6/67/Bocage_3_CoD.png/revision/latest?cb=20121016030828",
@@ -2726,6 +2704,28 @@
         "author": {
           "name": "URL",
           "userUrl": "https://callofduty.fandom.com/wiki/User:URL",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
+    "codwiki-the-reichstag": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/c/cb/TheReichstag_SaveScreen_Recreation_CoD1.jpg/revision/latest?cb=20230619221012",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/c/cb/TheReichstag_SaveScreen_Recreation_CoD1.jpg/revision/latest/scale-to-width-down/800?cb=20230619221012",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:TheReichstag_SaveScreen_Recreation_CoD1.jpg",
+        "author": {
+          "name": "Dead53",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:Dead53",
           "role": "uploader"
         },
         "license": {
@@ -10180,40 +10180,6 @@
           ]
         },
         {
-          "id": "cod-berlin:main",
-          "levelId": "cod-berlin",
-          "locationId": "main",
-          "title": "Berlin",
-          "game": "COD",
-          "gameIds": [
-            "cod"
-          ],
-          "wiki": "https://callofduty.fandom.com/wiki/The_Reichstag",
-          "wikiArticle": "codwiki-berlin-level",
-          "country": "Germany",
-          "city": "Berlin",
-          "region": "Berlin",
-          "landmark": "Reichstag building",
-          "coordinates": [
-            52.518611,
-            13.376111
-          ],
-          "precision": "exact",
-          "confidence": "high",
-          "method": "verified-landmark",
-          "urls": [
-            {
-              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Reichstag+Building%2C+Platz+der+Republik+1%2C+Berlin%2C+Germany"
-            },
-            {
-              "wikipedia": "https://en.wikipedia.org/wiki/Reichstag_building"
-            }
-          ],
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
           "id": "cod-uo-berlin:main",
           "levelId": "cod-uo-berlin",
           "locationId": "main",
@@ -11876,6 +11842,40 @@
           "precision": "country",
           "confidence": "fallback",
           "method": "country-fallback",
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
+          "id": "cod-the-reichstag:main",
+          "levelId": "cod-the-reichstag",
+          "locationId": "main",
+          "title": "The Reichstag",
+          "game": "COD",
+          "gameIds": [
+            "cod"
+          ],
+          "wiki": "https://callofduty.fandom.com/wiki/The_Reichstag",
+          "wikiArticle": "codwiki-the-reichstag",
+          "country": "Germany",
+          "city": "Berlin",
+          "region": "Berlin",
+          "landmark": "Reichstag building",
+          "coordinates": [
+            52.518611,
+            13.376111
+          ],
+          "precision": "exact",
+          "confidence": "high",
+          "method": "verified-landmark",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Reichstag+Building%2C+Platz+der+Republik+1%2C+Berlin%2C+Germany"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Reichstag_building"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]

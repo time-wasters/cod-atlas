@@ -1,10 +1,10 @@
 ---
-id: cod-berlin
-title: Berlin
+id: cod-the-reichstag
+title: The Reichstag
 games:
   - cod
 mode: singleplayer
-wikiArticle: codwiki-berlin-level
+wikiArticle: codwiki-the-reichstag
 locations:
   - id: main
     country: Germany
