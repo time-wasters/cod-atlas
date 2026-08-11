@@ -26,12 +26,16 @@ locations:
 > with AI assistance and should be reviewed against the cited sources before
 > being treated as authoritative.
 
+## The Mission in the Game
+
 The mission begins at 09:00 on June 6, 1944. Private Martin and the fictional
 Baker Company of the 506th PIR attack a German battery near Brécourt Manor,
 capture two sets of maps and documents, and destroy four guns described by the
 game as 88 mm antiaircraft pieces. The action advances gun by gun through
 hedgerows and connected positions, closely echoing the structure of the real
 Brécourt assault even though the game changes its participants and equipment.
+
+## The Real Place & Differences
 
 The historical action occurred in fields south of the hamlet of Le Grand
 Chemin, beside Brécourt Manor in the commune of Sainte-Marie-du-Mont. At about
@@ -40,6 +44,8 @@ Chemin, beside Brécourt Manor in the commune of Sainte-Marie-du-Mont. At about
 Causeway 2 from Utah Beach. He initially attacked with a small force drawn
 mainly from E Company. Lieutenant Ronald Speirs and men of D Company helped
 complete the assault, and the Americans withdrew at approximately 11:30.
+
+## The Real Mission & Differences
 
 The real battery consisted of four German 105 mm field howitzers rather than
 the FlaK 88 guns depicted in the level. The pieces were spaced through the
@@ -57,6 +63,8 @@ that uncertainty. The mission's compact trenches, precise gun spacing, large
 enemy force, and named Baker Company characters should therefore not be read as
 a literal reconstruction. Its largest divergence is organizational: the real
 attack is associated with Easy Company, not the game's Baker Company.
+
+## Marker Position Explanation
 
 The marker at `49.390056, -1.226111` identifies Brécourt Manor and the published
 center of the assault site. It has exact landmark precision because the named

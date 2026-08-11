@@ -26,6 +26,8 @@ locations:
 > with AI assistance and should be reviewed against the cited sources before
 > being treated as authoritative.
 
+## The Mission in the Game
+
 The mission takes place on November 9, 1942. Junior Sergeant Alexei Ivanovich
 Voronin joins Sergeant Yakov Pavlov's reconnaissance squad near a large
 apartment building overlooking an open square. Voronin shoots German snipers,
@@ -34,6 +36,8 @@ and helps defend it from infantry and Panzer IV counterattacks. He uses PTRS-41
 anti-tank rifles positioned on different floors until Soviet infantry and
 T-34-85 tanks arrive four minutes later to relieve the garrison.
 
+## The Real Place & Differences
+
 The real place is securely identified as Pavlov's House, a four-storey
 apartment block on wartime Penzenskaia Street overlooking 9 January Square.
 Today it forms part of the residential building at 39 Sovetskaya Street in
@@ -41,6 +45,8 @@ Volgograd, opposite the preserved ruins of Gerhardt's Mill. Its commanding
 view across the square and toward German-held central Stalingrad made it useful
 for observation, fire control, and defence within the 13th Guards Rifle
 Division's Penza strongpoint.
+
+## The Real Mission & Differences
 
 The historical garrison belonged to the 42nd Guards Rifle Regiment of Major
 General Alexander Rodimtsev's 13th Guards Rifle Division, matching the game's
@@ -75,6 +81,8 @@ the garrison, including the well-known red-brick relief facing Lenin Square.
 The modern appearance therefore combines restored wartime fabric, post-war
 residential construction, and commemorative architecture rather than preserving
 the ruin exactly as it stood in 1942.
+
+## Marker Position Explanation
 
 The marker at `48.716086, 44.531389` identifies the real Pavlov's House
 footprint and memorial. `precision: exact`, `confidence: high`, and

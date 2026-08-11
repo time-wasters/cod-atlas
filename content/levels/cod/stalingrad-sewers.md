@@ -26,6 +26,8 @@ locations:
 > with AI assistance and should be reviewed against the cited sources before
 > being treated as authoritative.
 
+## The Mission in the Game
+
 The mission takes place at 13:00 on November 9, 1942. Major V. S. Zubov orders
 the newly promoted Junior Sergeant Alexei Ivanovich Voronin, a sniper in the
 13th Guards Rifle Division, to reach a reconnaissance squad beyond the German
@@ -35,6 +37,8 @@ route, Voronin enters the sewer system, fights German troops underground and
 in adjoining passages, briefly engages snipers through a broken roof, joins
 Soviet soldiers, and emerges among ruined apartment buildings.
 
+## The Real Place & Differences
+
 The surface clues identify the destination as the Penza defence centre around
 Pavlov's House and Gerhardt's Mill. Wartime Penzenskaia Street is now Sovetskaya
 Street. Pavlov's House stood on 9 January Square opposite the mill, and both
@@ -42,6 +46,8 @@ belonged to a compact system of 13th Guards strongpoints on the narrow Soviet
 bridgehead beside the Volga. The represented unit and the mission's description
 of a four-storey observation position near a gristmill are therefore unusually
 specific real-world references.
+
+## The Real Mission & Differences
 
 Use of underground infrastructure is historically plausible. A U.S. Army
 Command and General Staff College study reports that the Soviet 62nd Army
@@ -61,6 +67,8 @@ accounts do not show a German recapture on the morning of November 9 followed
 by a new reconnaissance mission led by Yakov Pavlov. Voronin, Zubov, the lost
 squad, and the German occupation of the depicted sewer route are likewise not
 identified in the historical record reviewed here.
+
+## Marker Position Explanation
 
 The coordinate `48.714402439819644, 44.5273090316671` marks an inferred route
 beneath the Penza defence centre near Pavlov's House, anchoring an otherwise

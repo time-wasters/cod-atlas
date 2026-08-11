@@ -25,6 +25,8 @@ locations:
 > with AI assistance and should be reviewed against the cited sources before
 > being treated as authoritative.
 
+## The Mission in the Game
+
 “Warsaw Railyard” begins at noon on January 17, 1945, immediately after
 “Warsaw Factory,” which began at 10:30. Sergeant Alexei Voronin and the other
 Soviet soldiers pass through the factory door directly into a yard containing
@@ -33,6 +35,8 @@ building holding tanks, and regroup with troops near a truck on the outskirts
 of the factory complex. The mission is therefore a short continuation through
 the same industrial site, not evidence for an independent main railway
 station elsewhere in Warsaw.
+
+## The Real Place & Differences
 
 The historic factory siding beside the Ursus Mechanical Works at Czechowice
 is the strongest real-world analogue. The factory stood beside the
@@ -60,6 +64,8 @@ modelled the map on Ursus. Warsaw's much larger freight installations around
 Odolany and the former Main Station are alternative visual matches, but they
 fit the explicit factory-to-yard continuity less well.
 
+## The Real Mission & Differences
+
 The battle narrative also compresses and changes the history of January 17.
 The Warsaw operation involved the Polish First Army and the Soviet 47th and
 61st Armies. German covering troops offered limited resistance before
@@ -68,6 +74,8 @@ place only sporadic fighting at a few locations. This does not support the
 level's sustained battle by the 150th Rifle Division, nor its objective to
 regroup with a “4th Army” at the complex. Those formations serve the game's
 campaign continuity rather than a reliable order of battle for Warsaw.
+
+## Marker Position Explanation
 
 The marker at `52.1964, 20.88525` uses the present Warszawa Ursus railway stop
 as the most reproducible point beside the former works and the documented

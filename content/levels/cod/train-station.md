@@ -26,6 +26,8 @@ locations:
 > with AI assistance and should be reviewed against the cited sources before
 > being treated as authoritative.
 
+## The Mission in the Game
+
 The mission takes place on September 18, 1942, immediately after “Red Square.”
 Corporal Alexei Ivanovich Voronin and two other soldiers of the 13th Guards
 Rifle Division enter a railway-station building, clear its lobby and upper
@@ -33,12 +35,16 @@ floor, cross the tracks and rail yard, and continue through surrounding ruins.
 Their objective is to reach Major Zubov and report that Red Square has been
 recaptured. German forces attack Zubov's position as Voronin approaches it.
 
+## The Real Place & Differences
+
 The location can be identified as Stalingrad's central Railway Station No. 1,
 called Stalingrad-1 in wartime records and Volgograd-1 today. It must not be
 confused with Stalingrad-2, the southern station near the Tsaritsa. The campaign
 sequence is geographically coherent: the station stands roughly half a
 kilometre north-west of the Square of the Fallen Fighters, connected to the
 square by the short Gogol Street and the adjoining station square.
+
+## The Real Mission & Differences
 
 This station was one of the most violently contested sites during the opening
 German assault on central Stalingrad. German troops reached it on September 14,
@@ -57,6 +63,8 @@ were attacked, lost, and counterattacked, rather than a secure corridor that a
 three-man group simply cleared on its way to a headquarters. No reviewed source
 identifies Voronin, Major Zubov, their message from Red Square, or the precise
 room-by-room and rail-yard route shown in the game.
+
+## Marker Position Explanation
 
 The wartime station building no longer survives. It was almost completely
 destroyed during the battle. The present Volgograd-1 building was constructed

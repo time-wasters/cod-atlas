@@ -26,12 +26,16 @@ locations:
 > with AI assistance and should be reviewed against the cited sources before
 > being treated as authoritative.
 
+## The Mission in the Game
+
 The mission takes place at 05:45 on September 2, 1944. Sergeant Evans, Captain
 Price, and Sergeant Waters are presented as members of 3 Troop, 2 SAS. Evans
 crosses the dam complex, destroys anti-aircraft guns above and below the wall,
 plants explosives on four generators, and rejoins the others at the southern
 end. The briefing describes the attack as preparation for renewed RAF bombing
 of the Eder Dam after the earlier Dambusters raid.
+
+## The Real Place & Differences
 
 The structure is a direct real-world match. The Edertalsperre is a roughly
 400-metre masonry gravity dam across the Eder near Hemfurth-Edersee in the
@@ -40,6 +44,8 @@ water for navigation and also supported hydroelectric generation. The game's
 dam, machinery spaces, crest, and steep valley setting clearly refer to this
 site, even though its combat layout should not be treated as a survey of the
 real installation.
+
+## The Real Mission & Differences
 
 Its best-known wartime event occurred more than a year before the level. During
 Operation Chastise on the night of May 16–17, 1943, Lancaster bombers of No. 617
@@ -58,6 +64,8 @@ Edertalsperre on September 2. Nor do those records substantiate the mission's
 specific generator demolitions or an imminent renewed RAF dam attack. Price,
 Evans, Waters, and their action are best understood as a fictional commando
 story constructed around a genuine strategic target and the real 1943 raid.
+
+## Marker Position Explanation
 
 The marker at `51.18333, 9.05889` is placed on the Edertalsperre itself. It has
 exact landmark precision because the level names and depicts this surviving

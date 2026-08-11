@@ -26,6 +26,8 @@ locations:
 > with AI assistance and should be reviewed against the cited sources before
 > being treated as authoritative.
 
+## The Mission in the Game
+
 The mission sends Private Martin, Captain Foley, and a small Baker Company
 force to a camp outside Strasshof at 03:20 on September 18, 1944. They attack
 through the main gate, find the fictional British officer Major Gerald Ingram,
@@ -42,6 +44,8 @@ approximately 15,000 to 21,000 Hungarian Jews sent there in 1944—passed throug
 Strasshof before being assigned to forced labor in Vienna, Lower Austria, and
 agriculture. The site's rail connections were integral to this system.
 
+## The Real Place & Differences
+
 “III-A” may invite confusion with Stalag III-A, but that was a different and
 genuine Wehrmacht prisoner-of-war camp at Luckenwalde, Brandenburg, south of
 Berlin. No evidence found in the reviewed historical sources shows that the
@@ -49,12 +53,16 @@ Strasshof transit camp officially bore the designation “Dulag IIIA,” or that
 British major was rescued there. The game's numbered name and POW-camp layout
 are therefore a fictional adaptation attached to the real Strasshof location.
 
+## The Real Mission & Differences
+
 The represented American unit creates another clear historical divergence. On
 September 18, 1944, the 506th PIR was advancing into Eindhoven during Operation
 Market Garden, having parachuted into the Netherlands the previous day. It was
 not conducting a raid near Vienna, roughly 850 kilometres away. Martin, Foley,
 and Ingram are fictional participants rather than counterparts to a documented
 Strasshof rescue team.
+
+## Marker Position Explanation
 
 The Austrian Federal Monuments Office locates the former camp north of the bend
 in Helmastraße at `48.31581, 16.60989`, spanning parcels on both sides of the

@@ -26,11 +26,15 @@ locations:
 > with AI assistance and should be reviewed against the cited sources before
 > being treated as authoritative.
 
+## The Mission in the Game
+
 The game's opening mission places Private Martin of Baker Company, 506th
 Parachute Infantry Regiment, at Camp Toccoa on August 10, 1942. It functions as
 a training tutorial: Martin completes an obstacle course and practices with the
 M1A1 Carbine, Springfield rifle, Thompson submachine gun, fragmentation
 grenades, and demolition charges under Sergeant Moody's instruction.
+
+## The Real Place & Differences
 
 This setting has a direct historical basis. The 506th PIR was activated at Camp
 Toccoa on July 20, 1942, only three weeks before the mission's stated date. The
@@ -42,12 +46,16 @@ the mountain road became associated with the soldiers' “three miles up, three
 miles down” runs, while weapons work, field exercises, forced marches, and
 physical conditioning prepared volunteers for airborne service.
 
+## The Real Mission & Differences
+
 One organizational detail is simplified by the game. The level identifies
 Martin with both the 506th PIR and the 101st Airborne Division in August 1942.
 The regiment genuinely existed and trained at Toccoa then, but Army lineage
 records place its assignment to the 101st in June 1943. The character and Baker
 Company narrative are fictional, while the regiment, training period, and camp
 are real.
+
+## Marker Position Explanation
 
 Most original camp buildings disappeared after the war, but Camp Toccoa at
 Currahee preserves and reconstructs the historic training site at 2351

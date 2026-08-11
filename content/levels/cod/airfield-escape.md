@@ -26,12 +26,16 @@ locations:
 > with AI assistance and should be reviewed against the cited sources before
 > being treated as authoritative.
 
+## The Mission in the Game
+
 The mission takes place on September 2, 1944, immediately after “Eder Dam
 Getaway.” Captain Price drives Sergeant Evans and Sergeant Waters onto an
 unnamed airfield in Kurhesse, where the rest of their fictional 2 SAS team is
 preparing a captured aircraft. Evans draws fire from the ground force and uses
 an antiaircraft gun to destroy Ju 87 Stukas taxiing for takeoff before the team
 drives across the tarmac and escapes by air.
+
+## The Real Place & Differences
 
 Fritzlar Air Base is the strongest real-world candidate. “Kurhessen” is the
 historical name for northern Hesse, and Fritzlar lies in the Eder lowlands east
@@ -57,12 +61,16 @@ does not establish the game's Stuka force there in 1944. The game's control
 tower, runway battle, antiaircraft emplacement, and escape aircraft should be
 treated as a fictional airfield composition.
 
+## The Real Mission & Differences
+
 The represented SAS operation is likewise unsupported. British SAS formations
 did conduct sabotage, reconnaissance, resistance support, and target marking
 in north-west Europe during 1944–45, but the reviewed institutional history
 does not document Price, Evans, Waters, or a 2 SAS penetration from the Eder
 Dam to Fritzlar. The level continues the invented commando narrative of the two
 preceding missions while attaching it to a credible German military site.
+
+## Marker Position Explanation
 
 The marker at `51.1145, 9.285833` identifies Fritzlar Air Base itself. Its
 `exact` precision describes the coordinate of the real airfield, while

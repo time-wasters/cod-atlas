@@ -26,6 +26,8 @@ locations:
 > with AI assistance and should be reviewed against the cited sources before
 > being treated as authoritative.
 
+## The Mission in the Game
+
 This mission begins at 07:30 on June 6, 1944 and continues the game's nighttime
 capture of Sainte-Mère-Église. Private Martin, Captain Foley, and the game's
 Baker Company force defend the town against infantry, tanks, and mortar fire.
@@ -34,6 +36,8 @@ the building and cemetery are defended, and its MG42 positions are used against
 another attack. The squad then reinforces the northern approach, clears an
 unidentified mortar position in a manor outside town, and departs to request
 reinforcements.
+
+## The Real Place & Differences
 
 The broad situation has a strong historical basis. Sainte-Mère-Église was a
 critical road junction on Route Nationale 13 behind Utah Beach, and German
@@ -45,12 +49,16 @@ defence at Neuville-au-Plain delayed a larger German force advancing toward the
 town. Glider-delivered 57 mm anti-tank guns and other infantry anti-tank weapons
 helped the airborne troops resist German armour.
 
+## The Real Mission & Differences
+
 The mission compresses those dispersed actions into one fight around its town
 map. Its Tiger I and Panzer IV encounters should not be read as a vehicle-for-
 vehicle reconstruction: historical accounts instead describe mixed German
 armour, including assault guns and older tanks, attacking different parts of
 the perimeter. Likewise, the game's mortar manor cannot be matched confidently
 to a documented battery site.
+
+## Marker Position Explanation
 
 The marker therefore uses Notre-Dame-de-l'Assomption at
 `49.40882, -1.31626`. It is an exact coordinate for the level's recurring,

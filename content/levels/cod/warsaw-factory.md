@@ -25,12 +25,16 @@ locations:
 > with AI assistance and should be reviewed against the cited sources before
 > being treated as authoritative.
 
+## The Mission in the Game
+
 The mission is dated January 17, 1945, at 10:30. Sergeant Alexei Voronin and
 soldiers identified as the Soviet 150th Rifle Division attack a German tank
 repair facility in Warsaw's manufacturing district. The briefing links the
 factory to railway yards used to move and repair armored vehicles; after the
 workshops are cleared, the campaign continues directly into “Warsaw
 Railyard.”
+
+## The Real Place & Differences
 
 The former Ursus Mechanical Works at Czechowice is the strongest documented
 real-world analogue. Before the war, the site belonged to the Polish State
@@ -49,6 +53,8 @@ charges, although some buildings were destroyed. This history supports a
 militarized, retreating industrial site, but not the game's depiction of a
 fully operating repair depot defended in a large set-piece battle.
 
+## The Real Mission & Differences
+
 The represented combat formation is also historically displaced. On January
 17 the Polish First Army occupied the ruins of left-bank Warsaw after
 outflanking attacks and German withdrawal; its 2nd and 6th Infantry Divisions
@@ -57,6 +63,8 @@ the 1st Belorussian Front, rather than the force clearing Warsaw. The 150th
 Rifle Division's well-documented association with that army and with Sergeant
 Voronin's later Berlin missions therefore appears to have been extended
 backward for campaign continuity.
+
+## Marker Position Explanation
 
 Czechowice was not incorporated into Warsaw until after the war (and later
 became the Ursus district), another reason not to claim the game names this

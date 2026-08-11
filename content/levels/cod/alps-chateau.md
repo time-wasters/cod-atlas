@@ -26,12 +26,16 @@ locations:
 > with AI assistance and should be reviewed against the cited sources before
 > being treated as authoritative.
 
+## The Mission in the Game
+
 The mission sends Private Martin and a small Baker Company detachment to raid a
 château at 01:30 on August 7, 1944. The stated objectives are to enter the
 estate, collect German documents, destroy communications equipment, and rescue
 the captured British officers Captain Price and Major Ingram. Price is found,
 but Ingram has already been transferred to Dulag IIIA, setting up the following
 American campaign mission.
+
+## The Real Place & Differences
 
 The available game sources identify only the Bavarian Alps in Germany; they do
 not name the château, municipality, valley, or mountain range. Martin's journal
@@ -60,6 +64,8 @@ the game's broad, near-rectangular forecourt arrangement. Elmau's façade is a
 weaker visual match, but its greater scale, multi-wing institutional function,
 seclusion, and large performance space fit the complete level more closely.
 
+## The Real Mission & Differences
+
 The operation itself is fictional rather than a reconstruction of a known
 506th PIR action. After its Normandy fighting, the 101st Airborne Division
 returned to England for refitting and preparation for future airborne
@@ -79,6 +85,8 @@ Much of Schloss Elmau was rebuilt after a major fire in 2005, although its
 concert hall survived. Coincidentally, the fire began on August 7—exactly the
 calendar date assigned to the game mission, but 61 years later. The coincidence
 cannot have inspired the 2003 game and is included only as modern site history.
+
+## Marker Position Explanation
 
 The marker uses the verified Schloss Elmau coordinate `47.46194, 11.18611` as
 a researched analogue, not as a confirmed inspiration or canonical mission

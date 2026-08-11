@@ -26,12 +26,16 @@ locations:
 > with AI assistance and should be reviewed against the cited sources before
 > being treated as authoritative.
 
+## The Mission in the Game
+
 The mission is set on September 18, 1942, at 11:00. Corporal Alexei Ivanovich
 Voronin crosses the Volga with replacements assigned to Major General Alexander
 Rodimtsev's 13th Guards Rifle Division. German aircraft attack the boats, and
 the survivors land without enough rifles for every soldier. Voronin receives
 ammunition, follows a veteran up the riverbank under machine-gun fire, helps
 direct Soviet rocket artillery onto the German position, and enters the city.
+
+## The Real Place & Differences
 
 The unit and broad geography have a strong historical basis. On September 14,
 German forces broke into central Stalingrad and threatened the central landing
@@ -42,6 +46,8 @@ centre, the main railway station, Mamayev Kurgan, and the narrow bridgehead
 along the western bank. The 42nd Guards Rifle Regiment landed in the central
 embankment sector near the brewery and NKVD complex; the ruined Gerhardt Mill
 subsequently became one of its defensive strongpoints.
+
+## The Real Mission & Differences
 
 The date and presentation should not be read as a literal reconstruction. By
 the game's September 18 date, the division had already been fighting in the
@@ -58,6 +64,8 @@ noted the resemblance. These elements communicate the desperate popular image
 of Stalingrad, but they are not evidence for the precise landing place or for
 one documented incident involving Voronin. The player character and his route
 from the water to the rocket-observation point remain fictional.
+
+## Marker Position Explanation
 
 The marker at `48.7147, 44.5361` represents Rodimtsev's Wall on the central
 Volga embankment. The surviving quay wall commemorates the 13th Guards' landing

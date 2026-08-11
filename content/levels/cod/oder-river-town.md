@@ -25,6 +25,8 @@ locations:
 > with AI assistance and should be reviewed against the cited sources before
 > being treated as authoritative.
 
+## The Mission in the Game
+
 “Oder River Town” continues directly from “Oder River Country” on January 26,
 1945. Sergeant Alexei Voronin remains a T-34-85 commander in the 2nd Guards
 Tank Army. His column enters an unnamed small German town near the Oder, moves
@@ -32,6 +34,8 @@ west through rubble-filled streets, fights tanks and Panzerfaust teams around
 a large church and its yard, then destroys two 88 mm guns and a Flakpanzer on
 the western outskirts. Securing the west edge completes this part of the
 campaign's advance toward Berlin.
+
+## The Real Place & Differences
 
 Genschmar is the strongest real-world candidate when the two Oder levels are
 read as one continuous movement. The village lies in the low Oderbruch on the
@@ -51,6 +55,8 @@ Genschmar a plausible historical analogue for the level's devastated village
 and church-centred tank combat, although they do not establish that the game's
 church copies the real building.
 
+## The Real Mission & Differences
+
 The match remains interpretive. The documented 2nd Guards Tank Army bridgehead
 near Genschmar was established around February 2, about a week after the
 mission's January 26 date. The heaviest documented struggle around Genschmar
@@ -66,6 +72,8 @@ the level depicts a compact rural settlement that the tanks traverse in a
 single westward push, not a fortified city divided by the Oder and Warthe.
 Genschmar better preserves the small-town scale, direction of travel, and unit
 connection.
+
+## Marker Position Explanation
 
 The marker at `52.614444, 14.513056` identifies the centre of Genschmar near
 the surviving cemetery and chapel area. It is not presented as an exact

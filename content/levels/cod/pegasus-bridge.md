@@ -26,11 +26,15 @@ locations:
 > with AI assistance and should be reviewed against the cited sources before
 > being treated as authoritative.
 
+## The Mission in the Game
+
 The game places Sergeant Evans in D Company, 2nd Battalion, Oxfordshire and
 Buckinghamshire Light Infantry, part of the British 6th Airborne Division. It
 opens at 00:07 on June 6, 1944 with a glider assault whose objectives are to
 seize both ends of the bridge over the Caen Canal at Bénouville, clear its
 defences, and hold it against a German armoured response.
+
+## The Real Place & Differences
 
 This closely represents Operation Deadstick. Major John Howard commanded a
 reinforced D Company of the 2nd Ox and Bucks, accompanied by Royal Engineers
@@ -40,6 +44,8 @@ named Horsa Bridge. The aircraft crossed the Normandy coast at approximately
 00:07; the first glider reached the canal bridge at about 00:16, and both
 bridges were secured within the opening minutes of D-Day.
 
+## The Real Mission & Differences
+
 The historical mission was intended to stop German armour crossing the two
 bridges to attack the eastern flank of the Allied landings, while also keeping
 the crossings available to the 6th Airborne Division. A subsequent German
@@ -47,6 +53,8 @@ armoured counterattack was stopped near the canal bridge with D Company's
 serviceable PIAT anti-tank weapon. The game's engineer, German tank, and
 captured 88 mm gun sequence dramatizes this defence rather than reproducing
 the historical engagement weapon-for-weapon.
+
+## Marker Position Explanation
 
 The [Bénouville municipality](https://www.mairie-benouville.fr/tourism/pegasus-bridge/)
 confirms that Howard's 2nd Ox and Bucks force captured the bridge and explains

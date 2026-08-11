@@ -26,6 +26,8 @@ locations:
 > with AI assistance and should be reviewed against the cited sources before
 > being treated as authoritative.
 
+## The Mission in the Game
+
 The mission begins at 08:15 on June 6, 1944, immediately after the game's
 daytime defence of Sainte-Mère-Église. Sergeant Moody drives Private Martin and
 Private Elder south in a requisitioned Peugeot 202 to report the town's capture
@@ -34,6 +36,8 @@ journey includes a German roadblock, a cross-country detour, pursuing
 Kübelwagens, a convoy, a Tiger I, and the theft of another vehicle. The game
 names the road Route N13 but supplies no identifiable real-world village or
 site for those encounters.
+
+## The Real Place & Differences
 
 The road reference is geographically plausible only in part. The historic N13
 was the main Carentan–Cherbourg road and passed through Blosville and
@@ -44,6 +48,8 @@ N13. Reaching it or the 506th PIR command area around Hiesville required leaving
 the trunk road for local roads. The level therefore compresses a real road, a
 real destination area, and invented chase events into one continuous route.
 
+## The Real Mission & Differences
+
 The unit story is also a fictional composite. The 506th PIR of the 101st
 Airborne Division did operate around Hiesville and Sainte-Marie-du-Mont, and
 Colonel Robert Sink established his regimental command post near Hiesville.
@@ -51,6 +57,8 @@ Sainte-Mère-Église itself was chiefly an 82nd Airborne objective and was held 
 the 505th PIR. No reviewed source documents Moody, Martin, and Elder's vehicle
 run or places the mission's roadblocks, Tiger, and village battle at a specific
 point on N13.
+
+## Marker Position Explanation
 
 The marker at `49.38611017143339, -1.3003333355741817` is consequently an
 approximate representative point on the former N13/D974 south of

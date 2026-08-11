@@ -25,7 +25,7 @@ locations:
 > cited sources. The identification of the village as the level's marker does
 > not imply that the fictional fortress existed there.
 
-## Historical setting and location assessment
+## The Mission in the Game
 
 The mission identifies its setting as **Festung Recogne**, northeast of
 Bastogne, and dates the action to 15 January 1945. The player fights as Private
@@ -38,6 +38,8 @@ the battlefield was reused for the multiplayer map Hurtgen. Consequently, the
 bunkers and their layout should not be treated as evidence for a particular
 fortification at Recogne.
 
+## The Real Place & Differences
+
 Recogne is nevertheless a genuine Battle of the Bulge location connected to
 the 101st Airborne's defence of Bastogne. The U.S. Army's account of the battle
 records fighting at Recogne on 20 December 1944: Company G held in the village
@@ -46,6 +48,8 @@ Infantry attacked through Recogne in an attempt to regain contact with the
 American force at Noville. This establishes Recogne as a real battlefield on
 the division's northern perimeter, but it does not substantiate the game's
 fortress or its Baker Company raid.
+
+## The Real Mission & Differences
 
 The mission's exact date and regiment point to a different nearby action. A
 506th PIR unit history places the regiment at Foy on 13 January, advancing
@@ -56,6 +60,8 @@ broad sequence. Noville is therefore the closest documented match for what the
 sources do not identify an assault resembling the fictional bunker operation.
 The game appears to combine the real Recogne place-name, the 506th's January
 offensive north of Bastogne and a reused fictional battlefield.
+
+## Marker Position Explanation
 
 The marker is placed at the centre of **Recogne village** because that is the
 only location explicitly identified by the mission and historically verified

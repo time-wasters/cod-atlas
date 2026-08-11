@@ -26,6 +26,8 @@ locations:
 > with AI assistance and should be reviewed against the cited sources before
 > being treated as authoritative.
 
+## The Mission in the Game
+
 The mission begins at 13:00 on September 18, 1942, two hours after the preceding
 Volga-crossing mission. Corporal Alexei Ivanovich Voronin joins another attack
 by the 13th Guards Rifle Division across the game's “Red Square.” After the
@@ -34,12 +36,16 @@ meets Sergeant Makarov near the square's monument, moves through ruined
 buildings to a flanking position, kills German officers directing the defence,
 and survives a Soviet bombardment before heading toward the railway station.
 
+## The Real Place & Differences
+
 This is not Moscow's Red Square. The real-world location is the central square
 of wartime Stalingrad, now Volgograd's Square of the Fallen Fighters
 (`Ploshchad Pavshikh Bortsov`). The square had carried that commemorative name
 since 1920. “Red Square” is the name used by the game and also appears in some
 English-language accounts and German descriptions of the battle, but it should
 not be interpreted as the site's formal modern name.
+
+## The Real Mission & Differences
 
 The represented unit is historically well matched to this location. After
 crossing the Volga on September 14–15, Major General Alexander Rodimtsev's 13th
@@ -66,6 +72,8 @@ January 31. Much of the surrounding ensemble was rebuilt after the war, and
 the square was enlarged slightly toward the railway station, but the Univermag
 site, square, mass graves, and a battle-scarred poplar preserve its historical
 identity.
+
+## Marker Position Explanation
 
 The marker at `48.708028, 44.515442` is placed in the Square of the Fallen
 Fighters itself. `precision: exact`, `confidence: high`, and

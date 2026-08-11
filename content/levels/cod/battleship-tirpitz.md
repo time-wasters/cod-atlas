@@ -26,12 +26,16 @@ locations:
 > with AI assistance and should be reviewed against the cited sources before
 > being treated as authoritative.
 
+## The Mission in the Game
+
 The mission takes place at 19:00 on October 27, 1944. Sergeant Evans and
 Captain Price approach Tirpitz in German naval uniforms aboard an intercepted
 supply boat, while Sergeant Waters waits alongside. They use forged papers to
 board the ship, obtain explosives from its armory, place four charges in boiler
 passageways, destroy antiaircraft-radar electronics, take naval patrol logs
 from the bridge, and escape after Price is killed.
+
+## The Real Place & Differences
 
 The geographic and chronological setting is exceptionally strong. After RAF
 Tallboy bombs crippled Tirpitz at Kåfjord during Operation Paravane on
@@ -41,6 +45,8 @@ mooring south of Håkøya. She remained at that anchorage through the game's
 October 27 date and until her destruction on November 12. Unlike many campaign
 locations, the named ship can therefore be placed at a specific wartime berth
 on the stated day.
+
+## The Real Mission & Differences
 
 The fictional sabotage is positioned between two real RAF operations. On
 October 29—two days after the mission—Lancasters of Nos. 9 and 617 Squadrons
@@ -66,6 +72,8 @@ patrol logs. Contemporary British intelligence did track the ship closely, but
 the actual destruction was achieved by aerial reconnaissance, planning, and
 heavy bombing rather than an onboard SAS raid. The mission combines Tirpitz's
 real final anchorage and imminent RAF attacks with an invented commando story.
+
+## Marker Position Explanation
 
 The marker at `69.647, 18.806` represents the final anchorage, sinking, and
 residual wreck-debris site off Håkøya's southern shore. A recent remote-sensing

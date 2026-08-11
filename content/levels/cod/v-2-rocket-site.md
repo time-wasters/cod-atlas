@@ -26,7 +26,7 @@ locations:
 > the mission's stated operating area, not a confirmed model for its fictional
 > battlefield or proof that the depicted raid occurred there.
 
-## Historical setting and location assessment
+## The Mission in the Game
 
 Call of Duty places the mission at **Batterie #445 near Burgsteinfurt** on 2
 February 1945. Sergeant Evans and Sergeant Waters of 3 Troop, 2nd Special Air
@@ -34,6 +34,8 @@ Service are sent to find a mobile V-2 unit, destroy its anti-aircraft guns and
 supply trucks, and demolish three rockets. The briefing says that American
 troops obtained the unit's resupply schedule at Festung Recogne and that the
 rockets threaten London.
+
+## The Real Place & Differences
 
 The strongest real-world match is not a generic point in Burgsteinfurt but the
 surviving V-2 firing position in the **van Oerschen Wald**, between Nienborg and
@@ -45,6 +47,8 @@ trailer. A local eyewitness account describes three concealed firing positions
 in the forest—one concreted—and rockets waiting nearby on special trailers.
 That combination of a wooded mobile-launch area, several firing positions and
 support vehicles is unusually close to the level's physical premise.
+
+## The Real Mission & Differences
 
 The historical unit identification is different from the game's. Detailed
 launch records place **2nd Battery, Artillery Battalion 485** (`2./485`) in the
@@ -69,6 +73,8 @@ position. It remained active until the Allied advance reached the area near the
 end of March 1945. The level is consequently best understood as a fictional
 special-forces raid built around a genuine and operationally appropriate V-2
 landscape.
+
+## Marker Position Explanation
 
 The marker uses the published location of the surviving launch slab rather
 than the centre of Burgsteinfurt. Its `exact` precision describes the known

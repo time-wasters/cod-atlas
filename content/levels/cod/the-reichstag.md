@@ -26,7 +26,7 @@ locations:
 > cited sources. The building is securely identified, but the assessment of
 > the mission's staging and compressed chronology is interpretive.
 
-## Historical setting and location assessment
+## The Mission in the Game
 
 The Call of Duty finale is titled **The Reichstag** by the Call of Duty Wiki
 and begins while the player is “Approaching the Reichstag” at 11:00 on 30 April
@@ -35,6 +35,8 @@ Division of the 3rd Shock Army. The mission follows Soviet tanks and infantry
 through ruined buildings, across the exposed ground in front of the Reichstag,
 into the building and finally onto its roof, where a Red Army soldier raises a
 Soviet flag.
+
+## The Real Place & Differences
 
 This is an unusually firm real-world identification. The landmark, date and
 formation all correspond to the historical battle. The 150th Rifle Division
@@ -45,6 +47,8 @@ Reichstag and nearby positions repeatedly stopped the attackers. Tanks,
 self-propelled guns and massed artillery were brought forward to support later
 assaults, matching the level's broad image of infantry advancing behind armour
 across the devastated square.
+
+## The Real Mission & Differences
 
 The mission compresses a much longer and less orderly fight. Historical
 accounts describe failed attacks during the morning and afternoon, followed by
@@ -80,6 +84,8 @@ left by Red Army soldiers. Selected graffiti and battle-damaged masonry were
 preserved as historical evidence within the restored building. The modern
 glass cupola was designed by Norman Foster during that later reconstruction; it
 is not the dome seen by the combatants in 1945.
+
+## Marker Position Explanation
 
 The marker remains at the verified Reichstag building coordinates,
 `52.518611, 13.376111`. Its exact precision and high confidence refer to the

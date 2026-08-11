@@ -25,6 +25,8 @@ locations:
 > with AI assistance and should be reviewed against the cited sources before
 > being treated as authoritative.
 
+## The Mission in the Game
+
 “Oder River Country” is dated January 26, 1945, at 13:45. Sergeant Alexei
 Voronin has been transferred from the infantry to the 2nd Guards Tank Army and
 commands a T-34-85. The Soviet column crosses snowy open ground, fights German
@@ -32,6 +34,8 @@ tanks around streams and a bridge, survives Panzerfaust ambushes in a forest,
 and follows a westbound road toward the outskirts of the next town. Colonel
 Andropov's briefing says the formation is almost at the Oder and that Berlin
 lies less than 70 kilometres beyond it.
+
+## The Real Place & Differences
 
 The countryside around Genschmar, north of Küstrin (present-day Kostrzyn nad
 Odrą), is the strongest real-world match. The 2nd Guards Tank Army really did
@@ -52,6 +56,8 @@ That event supports the game's general setting, but Kienitz is a weaker marker
 for this particular level because the playable formation is the 2nd Guards
 Tank Army.
 
+## The Real Mission & Differences
+
 The level is several days early. On January 26 the Soviet high command was
 still directing the continued advance and proposed crossings; leading forces
 reached the Oder around January 31, and the documented 2nd Guards Tank Army
@@ -67,6 +73,8 @@ is measured from the river, nearby Kienitz, or Küstrin—and whether the target
 is Berlin's edge or centre—the result changes materially. It identifies the
 Berlin-facing central Oder sector, but cannot select a single village by
 itself.
+
+## Marker Position Explanation
 
 No reviewed source demonstrates that Infinity Ward deliberately modelled the
 level on Genschmar, and the small rivers, bridge, forest road, and unnamed town

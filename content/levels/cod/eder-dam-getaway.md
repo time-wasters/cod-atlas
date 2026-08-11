@@ -26,6 +26,8 @@ locations:
 > with AI assistance and should be reviewed against the cited sources before
 > being treated as authoritative.
 
+## The Mission in the Game
+
 The mission follows immediately after the game's attack on the Eder Dam on
 September 2, 1944. Captain Price drives Sergeant Evans and Sergeant Waters away
 in a captured Opel Blitz while German trucks, Kübelwagens, and motorcycles
@@ -33,13 +35,7 @@ pursue them. Evans fires Panzerfausts from the truck, then covers Waters while
 he manually demolishes a wooden bridge. Their briefing orders 3 Troop, 2 SAS to
 reach an airfield “approx. 8 mile away” at the map reference `033875`.
 
-No reviewed historical source identifies this escape or bridge demolition as a
-real operation. The premise continues the preceding level's fictional SAS raid:
-the actual Edertalsperre was breached from the air by No. 617 Squadron RAF in
-May 1943 and rebuilt during that year, not attacked by this commando team in
-September 1944. The real SAS did conduct sabotage and reconnaissance behind
-enemy lines in north-west Europe, but the available SAS history does not place
-Price, Evans, Waters, or a 2 SAS bridge action in the Eder valley.
+## The Real Place & Differences
 
 Fritzlar is nevertheless a plausible inspiration for the unnamed destination.
 Its Luftwaffe airfield was constructed in the Eder lowlands during the German
@@ -60,6 +56,18 @@ fixed bridge scene. The game environment—especially its timber bridge,
 waterfall, tunnels, roadblocks, and pursuit sequence—does not reproduce the
 present crossing closely enough to establish identity, and no evidence shows
 that SAS troops destroyed the Affoldern bridge in 1944.
+
+## The Real Mission & Differences
+
+No reviewed historical source identifies this escape or bridge demolition as a
+real operation. The premise continues the preceding level's fictional SAS raid:
+the actual Edertalsperre was breached from the air by No. 617 Squadron RAF in
+May 1943 and rebuilt during that year, not attacked by this commando team in
+September 1944. The real SAS did conduct sabotage and reconnaissance behind
+enemy lines in north-west Europe, but the available SAS history does not place
+Price, Evans, Waters, or a 2 SAS bridge action in the Eder valley.
+
+## Marker Position Explanation
 
 The marker at `51.16506, 9.08726` therefore represents the real Eder bridge at
 Affoldern on a plausible escape corridor from the dam toward Fritzlar. Its

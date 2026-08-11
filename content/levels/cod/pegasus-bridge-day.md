@@ -26,6 +26,8 @@ locations:
 > with AI assistance and should be reviewed against the cited sources before
 > being treated as authoritative.
 
+## The Mission in the Game
+
 The game returns to Bénouville at 12:30 on June 6, 1944. Sergeant Evans is
 still presented as a member of D Company, 2nd Battalion, Oxfordshire and
 Buckinghamshire Light Infantry, 6th Airborne Division. The mission depicts the
@@ -33,12 +35,16 @@ company defending the Caen Canal bridge against repeated infantry and armoured
 attacks until troops identified by the game as the Special Air Service arrive
 from the west.
 
+## The Real Place & Differences
+
 Historically, Major John Howard's reinforced D Company had captured the Caen
 Canal and River Orne bridges shortly after midnight in Operation Deadstick.
 The 7th Parachute Battalion reached the bridge area at about 03:00 and bore
 much of the subsequent fighting west of the canal, particularly around
 Bénouville. D Company and the wider bridgehead then resisted German
 counterattacks while waiting for forces advancing inland from Sword Beach.
+
+## The Real Mission & Differences
 
 The timing of the game broadly matches the arrival of Lord Lovat's 1st Special
 Service Brigade. Its commandos advanced from Sword Beach to Pegasus Bridge,
@@ -52,6 +58,8 @@ defenders did face armour-supported counterattacks, but the best-known early
 armoured threat was stopped with a PIAT. The central historical fact represented
 by the level is nevertheless sound: British airborne troops held the canal
 crossing until the bridgehead connected with troops arriving from the beaches.
+
+## Marker Position Explanation
 
 The marker uses the exact wartime Caen Canal crossing at
 `49.242392, -0.274192`. It does not follow the original 1935 bridge to its
