@@ -1,5 +1,4 @@
 {
-  "source": "https://docs.google.com/document/d/1wfhdv8jD_Uggr9fO1zATiCb1qynVj1bV76ujziHCZZE/mobilebasic",
   "updatedAt": "2026-07-21T22:10:47.646Z",
   "games": [
     {
@@ -639,6 +638,94 @@
       },
       "map": null
     },
+    "codwiki-altavilla": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/a/ae/Altavilla_COD_RTV.JPG/revision/latest?cb=20240730064932",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/a/ae/Altavilla_COD_RTV.JPG/revision/latest/scale-to-width-down/800?cb=20240730064932",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Altavilla_COD_RTV.JPG",
+        "author": {
+          "name": "Hatake98",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:Hatake98",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
+    "codwiki-argentan": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/b/b7/Argentan_Map_CoD3.png/revision/latest?cb=20240620145006",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/b/b7/Argentan_Map_CoD3.png/revision/latest/scale-to-width-down/800?cb=20240620145006",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Argentan_Map_CoD3.png",
+        "author": {
+          "name": "CommanderVain",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:CommanderVain",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
+    "codwiki-arnhem-assault": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/7/72/Arnhem_Assault_CODRTV.png/revision/latest?cb=20180111000256",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/7/72/Arnhem_Assault_CODRTV.png/revision/latest?cb=20180111000256",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Arnhem_Assault_CODRTV.png",
+        "author": {
+          "name": "Northern Rain",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:Northern_Rain",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
+    "codwiki-arnhem-fire": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/b/b1/Arnhem_Fire_CODRTV.png/revision/latest?cb=20180110234837",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/b/b1/Arnhem_Fire_CODRTV.png/revision/latest?cb=20180110234837",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Arnhem_Fire_CODRTV.png",
+        "author": {
+          "name": "Northern Rain",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:Northern_Rain",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
     "codwiki-arnhem-map": {
       "main": {
         "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/4/49/Arnhem_Map_UO.png/revision/latest?cb=20241022124100",
@@ -925,6 +1012,28 @@
       },
       "map": null
     },
+    "codwiki-call-of-duty-roads-to-victory": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/f/f2/CodRtvBoxart.jpg/revision/latest?cb=20070627022732",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/f/f2/CodRtvBoxart.jpg/revision/latest?cb=20070627022732",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:CodRtvBoxart.jpg",
+        "author": {
+          "name": "Son of the Witch-King",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:Son_of_the_Witch-King",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
     "codwiki-camp-toccoa": {
       "main": {
         "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/3/35/CampToccoa_SaveScreen_Recreation_CoD1.jpg/revision/latest?cb=20230612164030",
@@ -974,6 +1083,50 @@
         "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/0/07/Cassino_Map_UO.png/revision/latest?cb=20241022124238",
         "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/0/07/Cassino_Map_UO.png/revision/latest/scale-to-width-down/800?cb=20241022124238",
         "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Cassino_Map_UO.png",
+        "author": {
+          "name": "CommanderVain",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:CommanderVain",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
+    "codwiki-chambois-level": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/f/f7/Chambois.jpg/revision/latest?cb=20200810114138",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/f/f7/Chambois.jpg/revision/latest/scale-to-width-down/800?cb=20200810114138",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Chambois.jpg",
+        "author": {
+          "name": "Ruvlad",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:Ruvlad",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
+    "codwiki-champs": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/e/e0/Champs_Map_CoD3.png/revision/latest?cb=20240620145340",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/e/e0/Champs_Map_CoD3.png/revision/latest/scale-to-width-down/800?cb=20240620145340",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Champs_Map_CoD3.png",
         "author": {
           "name": "CommanderVain",
           "userUrl": "https://callofduty.fandom.com/wiki/User:CommanderVain",
@@ -1087,6 +1240,28 @@
         "author": {
           "name": "Redskin-26",
           "userUrl": "https://callofduty.fandom.com/wiki/User:Redskin-26",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
+    "codwiki-crossing": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/b/ba/Crossing_Map_CoD3.png/revision/latest?cb=20240620143234",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/b/ba/Crossing_Map_CoD3.png/revision/latest/scale-to-width-down/800?cb=20240620143234",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Crossing_Map_CoD3.png",
+        "author": {
+          "name": "CommanderVain",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:CommanderVain",
           "role": "uploader"
         },
         "license": {
@@ -1409,6 +1584,28 @@
       },
       "map": null
     },
+    "codwiki-eder-dam-multiplayer": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/4/42/Eder_Dam_Map_CoD3.png/revision/latest?cb=20240620145605",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/4/42/Eder_Dam_Map_CoD3.png/revision/latest/scale-to-width-down/800?cb=20240620145605",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Eder_Dam_Map_CoD3.png",
+        "author": {
+          "name": "CommanderVain",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:CommanderVain",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
     "codwiki-el-alamein": {
       "main": {
         "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/7/7c/El_Alamein_Map_CoD2.png/revision/latest?cb=20240622131942",
@@ -1417,6 +1614,28 @@
         "author": {
           "name": "CommanderVain",
           "userUrl": "https://callofduty.fandom.com/wiki/User:CommanderVain",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
+    "codwiki-falaise-road": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/4/4b/FalaiseRoad.jpg/revision/latest?cb=20200810113823",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/4/4b/FalaiseRoad.jpg/revision/latest/scale-to-width-down/800?cb=20200810113823",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:FalaiseRoad.jpg",
+        "author": {
+          "name": "Ruvlad",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:Ruvlad",
           "role": "uploader"
         },
         "license": {
@@ -1519,6 +1738,72 @@
       },
       "map": null
     },
+    "codwiki-fuel-plant-level": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/c/ce/FuelPlant.jpg/revision/latest?cb=20200810113835",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/c/ce/FuelPlant.jpg/revision/latest/scale-to-width-down/800?cb=20200810113835",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:FuelPlant.jpg",
+        "author": {
+          "name": "Ruvlad",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:Ruvlad",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
+    "codwiki-gare-centrale": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/8/84/Gare_Centrale_CoD3.png/revision/latest?cb=20240620025429",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/8/84/Gare_Centrale_CoD3.png/revision/latest/scale-to-width-down/800?cb=20240620025429",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Gare_Centrale_CoD3.png",
+        "author": {
+          "name": "Ruvlad",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:Ruvlad",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
+    "codwiki-glider-crash": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/4/46/Glider_Crash_CODRTV.png/revision/latest?cb=20120504225726",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/4/46/Glider_Crash_CODRTV.png/revision/latest?cb=20120504225726",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Glider_Crash_CODRTV.png",
+        "author": {
+          "name": "URL",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:URL",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
     "codwiki-harbor": {
       "main": {
         "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/8/8d/Harbor_Map_CoD1.jpg/revision/latest?cb=20110519055532",
@@ -1549,6 +1834,50 @@
         "author": {
           "name": "Chiafriend12",
           "userUrl": "https://callofduty.fandom.com/wiki/User:Chiafriend12",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
+    "codwiki-hostage": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/8/84/Hostage%28level%29.jpg/revision/latest?cb=20200810114117",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/8/84/Hostage%28level%29.jpg/revision/latest/scale-to-width-down/800?cb=20200810114117",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Hostage(level).jpg",
+        "author": {
+          "name": "Ruvlad",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:Ruvlad",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
+    "codwiki-hunner-park": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/e/e1/Hunner_Park_CODRTV.png/revision/latest?cb=20120505000829",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/e/e1/Hunner_Park_CODRTV.png/revision/latest?cb=20120505000829",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Hunner_Park_CODRTV.png",
+        "author": {
+          "name": "URL",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:URL",
           "role": "uploader"
         },
         "license": {
@@ -1612,6 +1941,28 @@
         "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/a/a2/CoDFH_Into_the_Hearland_loading_screen.png/revision/latest?cb=20200821141436",
         "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/a/a2/CoDFH_Into_the_Hearland_loading_screen.png/revision/latest?cb=20200821141436",
         "detailPageUrl": "https://callofduty.fandom.com/wiki/File:CoDFH_Into_the_Hearland_loading_screen.png",
+        "author": {
+          "name": "Ruvlad",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:Ruvlad",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
+    "codwiki-ironclad": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/3/32/Ironclad_Map_CoD3.png/revision/latest?cb=20240621161849",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/3/32/Ironclad_Map_CoD3.png/revision/latest/scale-to-width-down/800?cb=20240621161849",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Ironclad_Map_CoD3.png",
         "author": {
           "name": "Ruvlad",
           "userUrl": "https://callofduty.fandom.com/wiki/User:Ruvlad",
@@ -1761,6 +2112,50 @@
       },
       "map": null
     },
+    "codwiki-la-bourgade": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/2/28/La_Bourgade_Map_CoD3.png/revision/latest?cb=20240620143826",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/2/28/La_Bourgade_Map_CoD3.png/revision/latest/scale-to-width-down/800?cb=20240620143826",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:La_Bourgade_Map_CoD3.png",
+        "author": {
+          "name": "CommanderVain",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:CommanderVain",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
+    "codwiki-laison-river": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/5/58/LaisonRiver.jpg/revision/latest?cb=20200810114102",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/5/58/LaisonRiver.jpg/revision/latest/scale-to-width-down/800?cb=20200810114102",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:LaisonRiver.jpg",
+        "author": {
+          "name": "Ruvlad",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:Ruvlad",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
     "codwiki-last-bridge-standing": {
       "main": {
         "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/2/20/CoDFH_Last_Bridge_Standing_loading_screen.png/revision/latest?cb=20200821141445",
@@ -1805,11 +2200,143 @@
       },
       "map": null
     },
+    "codwiki-les-ormes": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/8/82/Les_Ormes_Map_CoD3.png/revision/latest?cb=20240620150036",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/8/82/Les_Ormes_Map_CoD3.png/revision/latest/scale-to-width-down/800?cb=20240620150036",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Les_Ormes_Map_CoD3.png",
+        "author": {
+          "name": "CommanderVain",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:CommanderVain",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
+    "codwiki-lucky-thirteen": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/5/51/Lucky_Thirteen_CODRTV.png/revision/latest?cb=20120505030740",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/5/51/Lucky_Thirteen_CODRTV.png/revision/latest?cb=20120505030740",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Lucky_Thirteen_CODRTV.png",
+        "author": {
+          "name": "URL",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:URL",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
+    "codwiki-marseilles": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/6/6d/Marseilles_CoD3.png/revision/latest?cb=20240619215616",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/6/6d/Marseilles_CoD3.png/revision/latest/scale-to-width-down/800?cb=20240619215616",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Marseilles_CoD3.png",
+        "author": {
+          "name": "CommanderVain",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:CommanderVain",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
     "codwiki-matmata": {
       "main": {
         "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/7/7b/Matmata_Map_CoD2.png/revision/latest?cb=20240622132626",
         "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/7/7b/Matmata_Map_CoD2.png/revision/latest/scale-to-width-down/800?cb=20240622132626",
         "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Matmata_Map_CoD2.png",
+        "author": {
+          "name": "CommanderVain",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:CommanderVain",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
+    "codwiki-mayenne-bridge": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/0/04/MayenneBridge.jpg/revision/latest?cb=20200810113816",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/0/04/MayenneBridge.jpg/revision/latest/scale-to-width-down/800?cb=20200810113816",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:MayenneBridge.jpg",
+        "author": {
+          "name": "Ruvlad",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:Ruvlad",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
+    "codwiki-mayenne-multiplayer": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/c/cf/Mayenne_Map_CoD3.png/revision/latest?cb=20240620150512",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/c/cf/Mayenne_Map_CoD3.png/revision/latest/scale-to-width-down/800?cb=20240620150512",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Mayenne_Map_CoD3.png",
+        "author": {
+          "name": "CommanderVain",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:CommanderVain",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
+    "codwiki-merville": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/2/2a/Merville_Map_CoD3.png/revision/latest?cb=20240620150712",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/2/2a/Merville_Map_CoD3.png/revision/latest/scale-to-width-down/800?cb=20240620150712",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Merville_Map_CoD3.png",
         "author": {
           "name": "CommanderVain",
           "userUrl": "https://callofduty.fandom.com/wiki/User:CommanderVain",
@@ -1901,6 +2428,50 @@
         "author": {
           "name": "CommanderVain",
           "userUrl": "https://callofduty.fandom.com/wiki/User:CommanderVain",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
+    "codwiki-night-drop": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/a/aa/NightDrop.jpg/revision/latest?cb=20200810113808",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/a/aa/NightDrop.jpg/revision/latest/scale-to-width-down/800?cb=20200810113808",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:NightDrop.jpg",
+        "author": {
+          "name": "Ruvlad",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:Ruvlad",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
+    "codwiki-nijmegen": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/0/0c/Nijmegen_CODRTV.png/revision/latest?cb=20120505115430",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/0/0c/Nijmegen_CODRTV.png/revision/latest?cb=20120505115430",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Nijmegen_CODRTV.png",
+        "author": {
+          "name": "URL",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:URL",
           "role": "uploader"
         },
         "license": {
@@ -2223,6 +2794,28 @@
       },
       "map": null
     },
+    "codwiki-poisson": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/8/87/Poisson_Map_CoD3.png/revision/latest?cb=20240620150856",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/8/87/Poisson_Map_CoD3.png/revision/latest/scale-to-width-down/800?cb=20240620150856",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Poisson_Map_CoD3.png",
+        "author": {
+          "name": "CommanderVain",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:CommanderVain",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
     "codwiki-ponyri-map": {
       "main": {
         "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/c/c9/Ponyri_Map_UO.png/revision/latest?cb=20241022124732",
@@ -2399,6 +2992,28 @@
       },
       "map": null
     },
+    "codwiki-reichswald": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/7/7d/Reichswald_CODRTV.png/revision/latest?cb=20180110212035",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/7/7d/Reichswald_CODRTV.png/revision/latest?cb=20180110212035",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Reichswald_CODRTV.png",
+        "author": {
+          "name": "Northern Rain",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:Northern_Rain",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
     "codwiki-repairing-the-wire": {
       "main": {
         "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/f/f7/Repairing_The_Wire.jpg/revision/latest?cb=20120520174054",
@@ -2443,6 +3058,28 @@
       },
       "map": null
     },
+    "codwiki-rhine-crossing": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/2/27/Rhine_Crossing_CODRTV.png/revision/latest?cb=20180205212641",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/2/27/Rhine_Crossing_CODRTV.png/revision/latest?cb=20180205212641",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Rhine_Crossing_CODRTV.png",
+        "author": {
+          "name": "Northern Rain",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:Northern_Rain",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
     "codwiki-rhinevalley": {
       "main": {
         "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/e/e8/United_Offensive_Rhinevalley_Preview.png/revision/latest?cb=20210615142030",
@@ -2451,6 +3088,50 @@
         "author": {
           "name": "ItsDexus",
           "userUrl": "https://callofduty.fandom.com/wiki/User:ItsDexus",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
+    "codwiki-rimling": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/3/39/Rimling_CoD3.png/revision/latest?cb=20240619215148",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/3/39/Rimling_CoD3.png/revision/latest/scale-to-width-down/800?cb=20240619215148",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Rimling_CoD3.png",
+        "author": {
+          "name": "CommanderVain",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:CommanderVain",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
+    "codwiki-river-crossing": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/d/dd/River_Crossing_CODRTV.png/revision/latest?cb=20120505180842",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/d/dd/River_Crossing_CODRTV.png/revision/latest?cb=20120505180842",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:River_Crossing_CODRTV.png",
+        "author": {
+          "name": "URL",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:URL",
           "role": "uploader"
         },
         "license": {
@@ -2509,11 +3190,99 @@
       },
       "map": null
     },
+    "codwiki-rouen": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/0/07/Rouen_Map_CoD3.png/revision/latest?cb=20240620151020",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/0/07/Rouen_Map_CoD3.png/revision/latest/scale-to-width-down/800?cb=20240620151020",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Rouen_Map_CoD3.png",
+        "author": {
+          "name": "CommanderVain",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:CommanderVain",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
+    "codwiki-saint-lo-level": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/9/9a/SaintLo.jpg/revision/latest?cb=20200810113548",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/9/9a/SaintLo.jpg/revision/latest/scale-to-width-down/800?cb=20200810113548",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:SaintLo.jpg",
+        "author": {
+          "name": "Ruvlad",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:Ruvlad",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
     "codwiki-sainte-mere-eglise": {
       "main": {
         "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/4/44/St._Mere_Eglise_Map_CoD2.png/revision/latest?cb=20240622133154",
         "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/4/44/St._Mere_Eglise_Map_CoD2.png/revision/latest/scale-to-width-down/800?cb=20240622133154",
         "detailPageUrl": "https://callofduty.fandom.com/wiki/File:St._Mere_Eglise_Map_CoD2.png",
+        "author": {
+          "name": "CommanderVain",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:CommanderVain",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
+    "codwiki-scavenger-hunt": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/4/45/Scavenger_Hunt_CODRTV.png/revision/latest?cb=20120505201041",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/4/45/Scavenger_Hunt_CODRTV.png/revision/latest?cb=20120505201041",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Scavenger_Hunt_CODRTV.png",
+        "author": {
+          "name": "URL",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:URL",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
+    "codwiki-seine-river": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/d/d7/Seine_River_CoD3.png/revision/latest?cb=20240619215744",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/d/d7/Seine_River_CoD3.png/revision/latest/scale-to-width-down/800?cb=20240619215744",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Seine_River_CoD3.png",
         "author": {
           "name": "CommanderVain",
           "userUrl": "https://callofduty.fandom.com/wiki/User:CommanderVain",
@@ -2605,6 +3374,50 @@
         "author": {
           "name": "BC Matsuyama",
           "userUrl": "https://callofduty.fandom.com/wiki/User:BC_Matsuyama",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
+    "codwiki-sloedam": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/9/95/Sloedam_CODRTV.png/revision/latest?cb=20180110195237",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/9/95/Sloedam_CODRTV.png/revision/latest?cb=20180110195237",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Sloedam_CODRTV.png",
+        "author": {
+          "name": "Northern Rain",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:Northern_Rain",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
+    "codwiki-stalag-23": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/7/78/Stalag_23_Map_CoD3.png/revision/latest?cb=20240620144303",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/7/78/Stalag_23_Map_CoD3.png/revision/latest/scale-to-width-down/800?cb=20240620144303",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Stalag_23_Map_CoD3.png",
+        "author": {
+          "name": "CommanderVain",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:CommanderVain",
           "role": "uploader"
         },
         "license": {
@@ -2817,6 +3630,28 @@
       },
       "map": null
     },
+    "codwiki-the-black-baron-level": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/7/75/Black_Baron_CoD3.jpg/revision/latest?cb=20200810114017",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/7/75/Black_Baron_CoD3.jpg/revision/latest/scale-to-width-down/800?cb=20200810114017",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Black_Baron_CoD3.jpg",
+        "author": {
+          "name": "Ruvlad",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:Ruvlad",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
     "codwiki-the-brigade-box": {
       "main": {
         "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/c/cd/Brigade_Box_tohouse1.png/revision/latest?cb=20120117100352",
@@ -2839,6 +3674,28 @@
       },
       "map": null
     },
+    "codwiki-the-corridor-of-death": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/3/3b/TheCorridorofDeath.jpg/revision/latest?cb=20200810114125",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/3/3b/TheCorridorofDeath.jpg/revision/latest/scale-to-width-down/800?cb=20200810114125",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:TheCorridorofDeath.jpg",
+        "author": {
+          "name": "Ruvlad",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:Ruvlad",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
     "codwiki-the-crossroads-call-of-duty-2": {
       "main": {
         "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/8/8f/Price_in_The_Crossroads.jpg/revision/latest?cb=20120520174053",
@@ -2847,6 +3704,28 @@
         "author": {
           "name": "Redskin-26",
           "userUrl": "https://callofduty.fandom.com/wiki/User:Redskin-26",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
+    "codwiki-the-crossroads-call-of-duty-3": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/c/cd/Crossroads.jpg/revision/latest?cb=20200810114109",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/c/cd/Crossroads.jpg/revision/latest/scale-to-width-down/800?cb=20200810114109",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Crossroads.jpg",
+        "author": {
+          "name": "Ruvlad",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:Ruvlad",
           "role": "uploader"
         },
         "license": {
@@ -2932,6 +3811,72 @@
         "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/6/6b/CoDFH_-_The_Flag_Must_Fall.jpg/revision/latest?cb=20200823154954",
         "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/6/6b/CoDFH_-_The_Flag_Must_Fall.jpg/revision/latest/scale-to-width-down/800?cb=20200823154954",
         "detailPageUrl": "https://callofduty.fandom.com/wiki/File:CoDFH_-_The_Flag_Must_Fall.jpg",
+        "author": {
+          "name": "Ruvlad",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:Ruvlad",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
+    "codwiki-the-forest": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/f/f8/TheForest.jpg/revision/latest?cb=20200810114054",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/f/f8/TheForest.jpg/revision/latest/scale-to-width-down/800?cb=20200810114054",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:TheForest.jpg",
+        "author": {
+          "name": "Ruvlad",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:Ruvlad",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
+    "codwiki-the-island": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/f/fd/TheIsland.jpg/revision/latest?cb=20200810113746",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/f/fd/TheIsland.jpg/revision/latest/scale-to-width-down/800?cb=20200810113746",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:TheIsland.jpg",
+        "author": {
+          "name": "Ruvlad",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:Ruvlad",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
+    "codwiki-the-mace": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/e/ed/TheMace.jpg/revision/latest?cb=20200810114130",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/e/ed/TheMace.jpg/revision/latest/scale-to-width-down/800?cb=20200810114130",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:TheMace.jpg",
         "author": {
           "name": "Ruvlad",
           "userUrl": "https://callofduty.fandom.com/wiki/User:Ruvlad",
@@ -3191,6 +4136,28 @@
       },
       "map": null
     },
+    "codwiki-verdun": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/e/e6/Verdun_Map_CoD3.png/revision/latest?cb=20240620151211",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/e/e6/Verdun_Map_CoD3.png/revision/latest/scale-to-width-down/800?cb=20240620151211",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Verdun_Map_CoD3.png",
+        "author": {
+          "name": "CommanderVain",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:CommanderVain",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
     "codwiki-villers-bocage": {
       "main": {
         "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/7/79/Villers-Bocage_View_COD2.png/revision/latest?cb=20231229214438",
@@ -3221,6 +4188,28 @@
         "author": {
           "name": "CommanderVain",
           "userUrl": "https://callofduty.fandom.com/wiki/User:CommanderVain",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
+    "codwiki-walcheren": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/6/62/Walcheren_CODRTV.png/revision/latest?cb=20180110203110",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/6/62/Walcheren_CODRTV.png/revision/latest?cb=20180110203110",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Walcheren_CODRTV.png",
+        "author": {
+          "name": "Northern Rain",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:Northern_Rain",
           "role": "uploader"
         },
         "license": {
@@ -3287,6 +4276,50 @@
         "author": {
           "name": "Dead53",
           "userUrl": "https://callofduty.fandom.com/wiki/User:Dead53",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
+    "codwiki-wildwood": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/d/db/Wildwood_Map_CoD3.png/revision/latest?cb=20240620144507",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/d/db/Wildwood_Map_CoD3.png/revision/latest/scale-to-width-down/800?cb=20240620144507",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Wildwood_Map_CoD3.png",
+        "author": {
+          "name": "CommanderVain",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:CommanderVain",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
+    "codwiki-woensdrecht": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/1/16/Woensdrecht_CODRTV.png/revision/latest?cb=20180110185854",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/1/16/Woensdrecht_CODRTV.png/revision/latest?cb=20180110185854",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Woensdrecht_CODRTV.png",
+        "author": {
+          "name": "Northern Rain",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:Northern_Rain",
           "role": "uploader"
         },
         "license": {
@@ -7031,7 +8064,7 @@
           "gameIds": [
             "rtv"
           ],
-          "wiki": "https://callofduty.fandom.com/wiki/Call_of_Duty:_Roads_to_Victory#Multiplayer",
+          "wiki": "https://callofduty.fandom.com/wiki/Call_of_Duty:_Roads_to_Victory",
           "wikiArticle": "codwiki-call-of-duty-roads-to-victory",
           "country": "Egypt",
           "city": "Al ‘Alamayn",
@@ -7843,7 +8876,7 @@
           "gameIds": [
             "rtv"
           ],
-          "wiki": "https://callofduty.fandom.com/wiki/Call_of_Duty:_Roads_to_Victory#Multiplayer",
+          "wiki": "https://callofduty.fandom.com/wiki/Call_of_Duty:_Roads_to_Victory",
           "wikiArticle": "codwiki-call-of-duty-roads-to-victory",
           "country": "France",
           "city": null,
@@ -9417,7 +10450,7 @@
           "gameIds": [
             "cod3"
           ],
-          "wiki": "https://callofduty.fandom.com/wiki/Saint-Lô_(level)",
+          "wiki": "https://callofduty.fandom.com/wiki/Saint-L%C3%B4_(level)",
           "wikiArticle": "codwiki-saint-lo-level",
           "country": "France",
           "city": "Saint-Lô",

@@ -21,8 +21,6 @@ changes are intended to be reviewable through pull requests.
   with `wikiArticle` IDs.
 - Never let a Wiki refresh overwrite curated coordinates, precision, mode, or
   editorial notes without an explicit, reviewed change.
-- Do not re-synchronize from the original Google document. It is historical
-  provenance, not an active data source.
 - Do not introduce a database, Supabase, or a runtime locations API unless the
   user explicitly changes the architecture.
 - Preserve the plain static build produced by `npm run build:static` (Docker:

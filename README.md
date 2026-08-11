@@ -8,7 +8,7 @@ The website has no database and no write API: Git is the source of truth, so dat
 
 ```text
 content/
-├── atlas.yaml                 # catalog metadata and original source
+├── atlas.yaml                 # catalog metadata
 ├── games/                     # one YAML file per game
 ├── levels/<game>/<level>.md   # one MD file per level
 └── wiki-import/articles/      # machine-oriented Wiki import records

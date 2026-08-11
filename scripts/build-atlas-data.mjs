@@ -350,7 +350,6 @@ const wikiMedia = Object.fromEntries([...wikiArticles].flatMap(([id, article]) =
   return main || map ? [[id, { main, map }]] : [];
 }));
 const compiled = {
-  source: atlas.source,
   updatedAt: atlas.updatedAt,
   games: [...games.values()].sort((a, b) => String(a.released).localeCompare(String(b.released))),
   levelBanners,
