@@ -1149,7 +1149,9 @@ export default function Home() {
         <div className="project-info-content">
           <header>
             <h2 id="project-info-title">About CoD Atlas</h2>
-            <form method="dialog"><button aria-label="Close project information">×</button></form>
+            <form method="dialog">
+              <button aria-label="Close project information"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg></button>
+            </form>
           </header>
           <p>This website was made by me, <a href="https://github.com/plp-gtr" target="_blank" rel="noreferrer">Philipp Gächter</a>.</p>
           <p>It is a pure hobby project that resulted from the urge to start the Call of Duty series from the first game and play all major instances, especially the console games I missed when I was young.</p>
@@ -1441,7 +1443,7 @@ export default function Home() {
                   <h2 id="media-info-title">Image information</h2>
                 </div>
                 <form method="dialog">
-                  <button aria-label="Close image information">×</button>
+                  <button aria-label="Close image information"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg></button>
                 </form>
               </header>
               {selectedImage.rights.notice && (
