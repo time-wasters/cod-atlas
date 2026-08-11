@@ -1,0 +1,36 @@
+{
+  "rtv-altavilla": {
+    "levelId": "rtv-altavilla",
+    "image": "/images/maps/rtv/altavilla.png",
+    "opacity": 0.72,
+    "corners": {
+      "topLeft": [
+        40.59997,
+        14.78375
+      ],
+      "topRight": [
+        40.59054,
+        15.29434
+      ],
+      "bottomLeft": [
+        40.38271,
+        14.7768
+      ],
+      "bottomRight": [
+        40.37325,
+        15.28739
+      ]
+    },
+    "attribution": {
+      "title": "Call of Duty: Roads to Victory — Altavilla loading-screen map",
+      "source": "Directly extracted from Call of Duty: Roads to Victory by plp-gtr.",
+      "sourceUrl": "https://github.com/time-wasters/cod-atlas/blob/main/public/images/maps/rtv/altavilla.png",
+      "extractedBy": "plp-gtr",
+      "extractedByUrl": "https://github.com/plp-gtr",
+      "copyrightHolder": "Activision Publishing, Inc.",
+      "rights": "non-free",
+      "rightsNotice": "The extraction is contributed to CoD Atlas; the underlying copyrighted game artwork remains the property of Activision and is used for identification and geographic comparison.",
+      "rightsNoticeUrl": "https://www.activision.com/legal/terms-of-use"
+    }
+  }
+}

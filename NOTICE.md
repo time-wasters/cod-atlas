@@ -38,6 +38,14 @@ copyright attribution in the map interface. OpenStreetMap data is subject to
 the Open Database License; tile usage is governed by the applicable tile
 service policy.
 
+All in-game map images included in CoD Atlas were extracted from the relevant
+game files or captured as screenshots by
+[plp-gtr](https://github.com/plp-gtr). These reproductions are contributed to
+the project by plp-gtr, but the underlying non-free game artwork remains the
+property of its respective copyright holders. The images are included for
+identification and geographic comparison and are not relicensed under the
+project data license.
+
 ## Interface icons
 
 The GitHub mark in the site footer is from

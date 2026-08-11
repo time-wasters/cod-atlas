@@ -76,6 +76,13 @@ canonical claim that the in-game location is the landmark itself.
 
 `primary: true` identifies the main location when a level contains several.
 
+An optional `mapOverlay` belongs in the level Markdown frontmatter when a
+reviewed game map can be geographically calibrated. It records a local image,
+opacity, all four `[latitude, longitude]` corners, and complete source and
+non-free rights attribution. The compiler validates these fields and writes
+them to the separate `app/data/map-overlays.generated.json` browser store;
+overlay data is not added to the main atlas JSON.
+
 ## Wiki import record
 
 The stable `id` is the foreign-key target. Import-oriented fields include:

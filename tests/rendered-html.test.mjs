@@ -174,3 +174,19 @@ test("preserves the complete statically compiled atlas", async () => {
   assert.equal(entries.filter((entry) => entry.modes[0] === "singleplayer").length, 406);
   assert.equal(entries.filter((entry) => entry.modes[0] === "multiplayer").length, 581);
 });
+
+test("keeps calibrated game-map overlays in a separate generated store", async () => {
+  const { default: overlays } = await import("../app/data/map-overlays.generated.json", {
+    with: { type: "json" },
+  });
+  const altavilla = overlays["rtv-altavilla"];
+  assert.equal(altavilla.image, "/images/maps/rtv/altavilla.png");
+  assert.deepEqual(altavilla.corners, {
+    topLeft: [40.59997, 14.78375],
+    topRight: [40.59054, 15.29434],
+    bottomLeft: [40.38271, 14.7768],
+    bottomRight: [40.37325, 15.28739],
+  });
+  assert.equal(altavilla.attribution.rights, "non-free");
+  await access(new URL(`../public${altavilla.image}`, import.meta.url));
+});

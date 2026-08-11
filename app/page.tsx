@@ -5,6 +5,7 @@ import * as Select from "@radix-ui/react-select";
 import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import ReactMarkdown from "react-markdown";
 import atlasSource from "./data/atlas.generated.json";
+import mapOverlaysSource from "./data/map-overlays.generated.json";
 
 type Entry = {
   id: string;
@@ -100,6 +101,28 @@ type ExternalIconManifest = Record<string, {
   icon?: { provider: "steam" | "steamgriddb"; path: string };
   clienticon?: { provider: "steam"; path: string };
 }>;
+type MapOverlayRecord = {
+  levelId: string;
+  image: string;
+  opacity: number;
+  corners: {
+    topLeft: [number, number];
+    topRight: [number, number];
+    bottomLeft: [number, number];
+    bottomRight: [number, number];
+  };
+  attribution: {
+    title: string;
+    source: string;
+    sourceUrl: string;
+    extractedBy: string;
+    extractedByUrl: string;
+    copyrightHolder: string;
+    rights: "non-free";
+    rightsNotice: string;
+    rightsNoticeUrl: string;
+  };
+};
 type AtlasData = {
   games: Game[];
   wikiMedia: Record<string, WikiMedia>;
@@ -118,6 +141,7 @@ type Selection = { group: Group; entry: Entry };
 type CountryOption = Pick<Group, "name" | "flagCode"> & { available: boolean };
 
 const data = atlasSource as AtlasData;
+const mapOverlays = mapOverlaysSource as Record<string, MapOverlayRecord>;
 const gamesById = new Map(data.games.map((game) => [game.id, game]));
 const EXTERNAL_ICONS_PREFERENCE = "cod-atlas:external-game-icons";
 const externalIconPreferenceListeners = new Set<() => void>();
@@ -534,6 +558,7 @@ export default function Home() {
   const [externalIconManifest, setExternalIconManifest] = useState<ExternalIconManifest | null>(null);
   const [externalIconManifestUnavailable, setExternalIconManifestUnavailable] = useState(false);
   const [failedExternalGameIcons, setFailedExternalGameIcons] = useState<Set<string>>(() => new Set());
+  const [disabledMapOverlays, setDisabledMapOverlays] = useState<Set<string>>(() => new Set());
   const externalIconsEnabled = useSyncExternalStore(
     subscribeToExternalIconPreference,
     externalIconsEnabledSnapshot,
@@ -560,6 +585,7 @@ export default function Home() {
   const map = useRef<LeafletMap | null>(null);
   const markerLayer = useRef<MarkerClusterGroup | null>(null);
   const markers = useRef<Map<string, { marker: LeafletMarker; entry: Entry }>>(new Map());
+  const mapImageOverlay = useRef<import("leaflet").ImageOverlay.Rotated | null>(null);
   const leaflet = useRef<typeof import("leaflet") | null>(null);
   const mediaDialog = useRef<HTMLDialogElement>(null);
   const intelCard = useRef<HTMLElement>(null);
@@ -682,6 +708,8 @@ export default function Home() {
   const hiddenRegionalLevelCount = regionalLevels.length - visibleRegionalLevels.length;
   const levelNotesExpanded = expandedLevelNotesId === selected.entry.levelId;
   const selectedLevelNotes = levelNotes?.levelId === selected.entry.levelId ? levelNotes : null;
+  const selectedMapOverlay = mapOverlays[selected.entry.levelId] ?? null;
+  const selectedMapOverlayEnabled = selectedMapOverlay !== null && !disabledMapOverlays.has(selected.entry.levelId);
 
   const selectEntry = useCallback((group: Group, entry: Entry) => {
     setSelected({ group, entry });
@@ -722,6 +750,7 @@ export default function Home() {
     let cancelled = false;
     import("leaflet").then(async (leafletModule) => {
       await import("leaflet.markercluster");
+      await import("leaflet-imageoverlay-rotated");
       if (cancelled || !mapNode.current || map.current) return;
       // Leaflet is CommonJS. Its ESM namespace is immutable, while
       // leaflet.markercluster augments the shared default export at runtime.
@@ -772,6 +801,7 @@ export default function Home() {
       map.current = null;
       markerLayer.current = null;
       markerStore.clear();
+      mapImageOverlay.current = null;
       leaflet.current = null;
     };
   }, []);
@@ -819,6 +849,31 @@ export default function Home() {
       );
     }
   }, [filtered, mapReady, selected]);
+
+  useEffect(() => {
+    if (!mapReady || !map.current || !leaflet.current) return;
+    mapImageOverlay.current?.remove();
+    mapImageOverlay.current = null;
+    if (!selectedMapOverlay || !selectedMapOverlayEnabled) return;
+    const L = leaflet.current;
+    const imageUrl = new URL(selectedMapOverlay.image.replace(/^\/+/, ""), document.baseURI).href;
+    const overlay = L.imageOverlay.rotated(
+      imageUrl,
+      selectedMapOverlay.corners.topLeft,
+      selectedMapOverlay.corners.topRight,
+      selectedMapOverlay.corners.bottomLeft,
+      {
+        opacity: selectedMapOverlay.opacity,
+        interactive: false,
+        alt: `${selected.entry.title} historical game map overlay`,
+      },
+    ).addTo(map.current);
+    mapImageOverlay.current = overlay;
+    return () => {
+      overlay.remove();
+      if (mapImageOverlay.current === overlay) mapImageOverlay.current = null;
+    };
+  }, [mapReady, selected.entry.title, selectedMapOverlay, selectedMapOverlayEnabled]);
 
   useEffect(() => {
     if (!mapReady || !map.current || !mapNode.current) return;
@@ -1212,6 +1267,28 @@ export default function Home() {
               <span>CoD Wiki</span>
             </a>
           </div>
+          {selectedMapOverlay && (
+            <div className="map-overlay-control">
+              <button
+                className={selectedMapOverlayEnabled ? "is-enabled" : ""}
+                type="button"
+                aria-pressed={selectedMapOverlayEnabled}
+                onClick={() => setDisabledMapOverlays((disabled) => {
+                  const next = new Set(disabled);
+                  if (selectedMapOverlayEnabled) next.add(selected.entry.levelId);
+                  else next.delete(selected.entry.levelId);
+                  return next;
+                })}
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5Zm-9 9 9 5 9-5M3 16l9 5 9-5" /></svg>
+                <span>Game map overlay</span>
+                <b>{selectedMapOverlayEnabled ? "On" : "Off"}</b>
+              </button>
+              <a href={selectedMapOverlay.attribution.sourceUrl} target="_blank" rel="noreferrer" title={selectedMapOverlay.attribution.rightsNotice}>
+                Image source
+              </a>
+            </div>
+          )}
           <section className="level-briefing">
             <button
               className="level-briefing-toggle"
