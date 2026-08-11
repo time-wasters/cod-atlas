@@ -917,7 +917,32 @@ export default function Home() {
           onSelect={selectEntry}
         />
 
-        <article className="intel-card" ref={intelCard}>
+        {levelNotesExpanded && (
+          <aside id="selected-level-briefing" className="level-briefing-pane" aria-labelledby="level-briefing-title">
+            <header>
+              <div>
+                <span>Level briefing</span>
+                <h2 id="level-briefing-title">{selected.entry.title}</h2>
+              </div>
+              <button type="button" aria-label="Close level briefing" onClick={toggleLevelNotes}>×</button>
+            </header>
+            <div className="level-briefing-content">
+              {selectedLevelNotes?.status === "loading" && <p className="level-briefing-state">Loading briefing…</p>}
+              {selectedLevelNotes?.status === "missing" && <p className="level-briefing-state">No briefing has been written for this level yet.</p>}
+              {selectedLevelNotes?.status === "ready" && selectedLevelNotes.content && (
+                <ReactMarkdown
+                  components={{
+                    a: ({ children, ...props }) => <a {...props} target="_blank" rel="noreferrer">{children}</a>,
+                  }}
+                >
+                  {selectedLevelNotes.content}
+                </ReactMarkdown>
+              )}
+            </div>
+          </aside>
+        )}
+
+        <article className={`intel-card${levelNotesExpanded ? " has-open-briefing" : ""}`} ref={intelCard}>
           <div className="mission-heading">
             <h2>{selected.entry.title}</h2>
             <div className="mission-meta">
@@ -1065,7 +1090,7 @@ export default function Home() {
               <span>CoD Wiki</span>
             </a>
           </div>
-          <section className={`level-briefing${levelNotesExpanded ? " is-expanded" : ""}`}>
+          <section className="level-briefing">
             <button
               className="level-briefing-toggle"
               type="button"
@@ -1073,24 +1098,9 @@ export default function Home() {
               aria-controls="selected-level-briefing"
               onClick={toggleLevelNotes}
             >
+              <b aria-hidden="true">{levelNotesExpanded ? "›" : "‹"}</b>
               <span><small>Level briefing</small><strong>Research &amp; historical context</strong></span>
-              <b aria-hidden="true">{levelNotesExpanded ? "−" : "+"}</b>
             </button>
-            {levelNotesExpanded && (
-              <div className="level-briefing-content" id="selected-level-briefing">
-                {selectedLevelNotes?.status === "loading" && <p className="level-briefing-state">Loading briefing…</p>}
-                {selectedLevelNotes?.status === "missing" && <p className="level-briefing-state">No briefing has been written for this level yet.</p>}
-                {selectedLevelNotes?.status === "ready" && selectedLevelNotes.content && (
-                  <ReactMarkdown
-                    components={{
-                      a: ({ children, ...props }) => <a {...props} target="_blank" rel="noreferrer">{children}</a>,
-                    }}
-                  >
-                    {selectedLevelNotes.content}
-                  </ReactMarkdown>
-                )}
-              </div>
-            )}
           </section>
           {regionalLevels.length > 0 && (
             <div
