@@ -1,6 +1,6 @@
 "use client";
 
-import type { Map as LeafletMap, MarkerClusterGroup } from "leaflet";
+import type { Map as LeafletMap, Marker as LeafletMarker, MarkerClusterGroup } from "leaflet";
 import * as Select from "@radix-ui/react-select";
 import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import ReactMarkdown from "react-markdown";
@@ -70,6 +70,16 @@ function locationName(entry: Entry) {
 
 function locationPath(entry: Entry) {
   return [entry.country, entry.region, entry.city, entry.landmark].filter(Boolean).join(" › ");
+}
+
+function atlasMarkerIcon(L: typeof import("leaflet"), entry: Entry, active: boolean) {
+  const cityLevel = !["country", "off-world"].includes(entry.precision);
+  return L.divIcon({
+    className: "atlas-marker-wrap",
+    html: `<span class="atlas-marker ${cityLevel ? "is-city" : "is-country"}${active ? " is-active" : ""}"><b></b></span>`,
+    iconSize: [active ? 30 : 18, active ? 30 : 18],
+    iconAnchor: [active ? 15 : 9, active ? 15 : 9],
+  });
 }
 
 type Group = {
@@ -549,6 +559,7 @@ export default function Home() {
   const mapNode = useRef<HTMLDivElement>(null);
   const map = useRef<LeafletMap | null>(null);
   const markerLayer = useRef<MarkerClusterGroup | null>(null);
+  const markers = useRef<Map<string, { marker: LeafletMarker; entry: Entry }>>(new Map());
   const leaflet = useRef<typeof import("leaflet") | null>(null);
   const mediaDialog = useRef<HTMLDialogElement>(null);
   const intelCard = useRef<HTMLElement>(null);
@@ -707,6 +718,7 @@ export default function Home() {
 
   useEffect(() => {
     if (!mapNode.current || map.current) return;
+    const markerStore = markers.current;
     let cancelled = false;
     import("leaflet").then(async (leafletModule) => {
       await import("leaflet.markercluster");
@@ -759,28 +771,22 @@ export default function Home() {
       map.current?.remove();
       map.current = null;
       markerLayer.current = null;
+      markerStore.clear();
       leaflet.current = null;
     };
   }, []);
 
   useEffect(() => {
     if (!mapReady || !map.current || !markerLayer.current || !leaflet.current) return;
-    const currentMap = map.current;
     const layer = markerLayer.current;
     const L = leaflet.current;
     layer.clearLayers();
+    markers.current.clear();
     filtered.forEach((group) => {
       group.entries.forEach((entry) => {
         if (!entry.coordinates) return;
-        const active = entry.id === selected.entry.id;
-        const cityLevel = !["country", "off-world"].includes(entry.precision);
         const marker = L.marker(entry.coordinates, {
-          icon: L.divIcon({
-            className: "atlas-marker-wrap",
-            html: `<span class="atlas-marker ${cityLevel ? "is-city" : "is-country"}${active ? " is-active" : ""}"><b></b></span>`,
-            iconSize: [active ? 30 : 18, active ? 30 : 18],
-            iconAnchor: [active ? 15 : 9, active ? 15 : 9],
-          }),
+          icon: atlasMarkerIcon(L, entry, false),
           title: `${entry.title} — ${locationName(entry)}`,
           keyboard: true,
         });
@@ -790,7 +796,19 @@ export default function Home() {
           offset: [0, -8],
         });
         marker.addTo(layer);
+        markers.current.set(entry.id, { marker, entry });
       });
+    });
+  }, [filtered, mapReady, selectEntry]);
+
+  useEffect(() => {
+    if (!mapReady || !map.current || !leaflet.current) return;
+    const currentMap = map.current;
+    const L = leaflet.current;
+    markers.current.forEach(({ marker, entry }) => {
+      const active = entry.id === selected.entry.id;
+      marker.setIcon(atlasMarkerIcon(L, entry, active));
+      marker.setZIndexOffset(active ? 1000 : 0);
     });
     const selectedIsVisible = filtered.some((group) =>
       group.entries.some((entry) => entry.id === selected.entry.id));
@@ -800,7 +818,7 @@ export default function Home() {
         mapViewportPadding(mapNode.current, intelCard.current),
       );
     }
-  }, [filtered, mapReady, selected, selectEntry]);
+  }, [filtered, mapReady, selected]);
 
   useEffect(() => {
     if (!mapReady || !map.current || !mapNode.current) return;
