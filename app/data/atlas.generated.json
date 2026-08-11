@@ -16926,8 +16926,8 @@
     {
       "name": "Norway",
       "coordinates": [
-        69.65818,
-        18.79948
+        69.647,
+        18.806
       ],
       "kind": "terrestrial",
       "flagCode": "NO",
@@ -16944,16 +16944,24 @@
           "wiki": "https://callofduty.fandom.com/wiki/Battleship_Tirpitz_(level)",
           "wikiArticle": "codwiki-battleship-tirpitz-level",
           "country": "Norway",
-          "city": "Håkøya (Tromsø)",
-          "region": null,
-          "landmark": null,
+          "city": "Tromsø",
+          "region": "Troms",
+          "landmark": "Tirpitz final anchorage and wreck site off Håkøya",
           "coordinates": [
-            69.65818,
-            18.79948
+            69.647,
+            18.806
           ],
-          "precision": "city",
+          "precision": "exact",
           "confidence": "high",
-          "method": "wiki-location",
+          "method": "verified-landmark",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Tirpitz+wreck+site%2C+H%C3%A5k%C3%B8ya%2C+Troms%C3%B8%2C+Norway"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/German_battleship_Tirpitz"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
