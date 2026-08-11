@@ -142,6 +142,13 @@ context. Add a hyperlink only when the application has a stable level-detail
 URL format. Do not infer a relationship from visual similarity alone; cite
 evidence for it.
 
+Keep multiplayer analysis substantially shorter than singleplayer mission
+research. State that there is no mission once, then avoid repeating the same
+caveat in every section. Summarize the map layout and visual evidence in one or
+two compact paragraphs. Include only enough historical context to explain the
+location choice, a documented campaign connection or an important difference.
+Do not pad a generic multiplayer setting with a broad campaign history.
+
 ### The Real Place & Differences
 
 Describe the present-day place and the relevant wartime geography. Compare
@@ -162,6 +169,11 @@ the map identifies a real place or event. When the map corresponds to a
 singleplayer mission, base the mission comparison on that linked level and
 keep clear which claims belong to the multiplayer map, the singleplayer
 mission and the historical record.
+
+If the lack of a mission was already made clear under **The Mission in the
+Game**, do not restate it at length here. Use a short cross-reference or explain
+only the closest historical context and its limitations. Do not repeat the map
+description, marker rationale or uncertainty already covered elsewhere.
 
 If no matching real mission is documented, say so directly and present the
 closest supported historical context without turning it into a claim of

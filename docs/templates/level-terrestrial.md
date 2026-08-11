@@ -31,7 +31,8 @@ locations:
 For singleplayer, summarize the mission's character, unit, date, stated place
 and objectives. For multiplayer, state that there is no mission narrative,
 describe the map setting and reference any documented corresponding
-singleplayer level by title and stable ID.
+singleplayer level by title and stable ID. Keep multiplayer analysis compact
+and do not repeat the same caveat or map description in later sections.
 
 ## The Real Place & Differences
 
@@ -42,7 +43,8 @@ Describe the identified place and compare its geography with the game.
 Compare the documented historical operation with the singleplayer mission. For
 a standalone multiplayer map, state that there is no in-game mission to
 compare; if it corresponds to a singleplayer level, make that relationship and
-the source of each claim explicit.
+the source of each claim explicit. Otherwise provide only the brief historical
+context needed to explain the location, without retelling a broad campaign.
 
 ## Marker Position Explanation
 
