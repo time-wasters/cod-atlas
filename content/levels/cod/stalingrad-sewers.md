@@ -11,8 +11,8 @@ locations:
     region: Volgograd Oblast
     city: Volgograd
     landmark: Inferred sewer route beneath the Penza defence centre near Pavlov's House
-    latitude: 48.716086
-    longitude: 44.531389
+    latitude: 48.714402439819644
+    longitude: 44.5273090316671
     precision: approximate
     confidence: medium
     method: manual-approximate
@@ -62,8 +62,8 @@ by a new reconnaissance mission led by Yakov Pavlov. Voronin, Zubov, the lost
 squad, and the German occupation of the depicted sewer route are likewise not
 identified in the historical record reviewed here.
 
-The coordinate `48.716086, 44.531389` is the securely known position of
-Pavlov's House, used here as the surface destination anchoring an otherwise
+The coordinate `48.714402439819644, 44.5273090316671` marks an inferred route
+beneath the Penza defence centre near Pavlov's House, anchoring an otherwise
 unmappable underground journey. It is not presented as a verified sewer
 entrance. `precision: approximate`, `confidence: medium`, and
 `method: manual-approximate` record that distinction. The stored Google Maps

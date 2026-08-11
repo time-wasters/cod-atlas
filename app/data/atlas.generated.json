@@ -17931,15 +17931,20 @@
           "wikiArticle": "codwiki-warsaw-factory",
           "country": "Poland",
           "city": "Warsaw",
-          "region": null,
-          "landmark": null,
+          "region": "Masovian Voivodeship",
+          "landmark": "Former Ursus Mechanical Works (Waverma)",
           "coordinates": [
-            52.22977,
-            21.01178
+            52.19765,
+            20.8829
           ],
-          "precision": "city",
-          "confidence": "high",
-          "method": "title-mention",
+          "precision": "exact",
+          "confidence": "medium",
+          "method": "real-world-inspiration",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Former+Ursus+Factory%2C+Dyrekcyjna%2C+Warsaw%2C+Poland"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -17957,15 +17962,20 @@
           "wikiArticle": "codwiki-warsaw-railyard",
           "country": "Poland",
           "city": "Warsaw",
-          "region": null,
-          "landmark": null,
+          "region": "Masovian Voivodeship",
+          "landmark": "Historic Ursus factory siding",
           "coordinates": [
-            52.22977,
-            21.01178
+            52.1964,
+            20.88525
           ],
-          "precision": "city",
-          "confidence": "high",
-          "method": "title-mention",
+          "precision": "approximate",
+          "confidence": "medium",
+          "method": "real-world-inspiration",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Warszawa+Ursus+railway+station%2C+Warsaw%2C+Poland"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -19983,8 +19993,8 @@
           "region": "Volgograd Oblast",
           "landmark": "Inferred sewer route beneath the Penza defence centre near Pavlov's House",
           "coordinates": [
-            48.716086,
-            44.531389
+            48.714402439819644,
+            44.5273090316671
           ],
           "precision": "approximate",
           "confidence": "medium",
