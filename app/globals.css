@@ -267,6 +267,8 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
 
 .intel-card { position: absolute; z-index: 500; top: 24px; right: 24px; width: min(330px, calc(100% - 48px)); max-height: calc(100% - 48px); overflow: auto; border: 1px solid #b57a18; border-radius: 7px; padding: 17px; color: #ddd6c3; background: linear-gradient(150deg, #181d16f5, #10140ff4); box-shadow: 0 16px 50px #000a, inset 0 0 30px #a27c1710; scrollbar-color: #6f674b #171b14; scrollbar-width: thin; backdrop-filter: blur(7px); }
 .intel-kicker { min-width: 0; display: flex; gap: 8px; align-items: center; color: #9b9f8d; font-size: 9px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+.intel-location-row { min-height: 38px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.intel-location-row .intel-kicker { min-width: 0; flex: 1; }
 .intel-country-flag { --CountryFlagIcon-height: 18px; flex: 0 0 27px; }
 .intel-country-fallback { width: 18px; height: 18px; flex: 0 0 18px; }
 .intel-country-fallback { fill: #e0a12624; stroke: var(--amber); stroke-width: 1.5; }
@@ -319,7 +321,7 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
 .media-info-content a:hover, .media-info-content a:focus-visible { color: #ffcf68; }
 .media-notice-credit { margin: 16px 0 0; color: #777d69; font-size: 10px; line-height: 1.45; }
 .precision-badge { margin: 0 0 13px; padding: 6px 8px; border: 1px solid #665f43; border-radius: 3px; color: #b9b297; background: #24271e; font: 700 8px var(--font-geist-mono), monospace; letter-spacing: .08em; text-transform: uppercase; }
-.intel-kicker + .precision-badge { margin-top: 11px; }
+.intel-kicker + .precision-badge, .intel-location-row + .precision-badge { margin-top: 11px; }
 .precision-badge.is-city { border-color: #a8731d; color: #e3b451; }
 .precision-badge.is-approximate { border-style: dashed; border-color: #a8731d; color: #e3b451; }
 .precision-badge.is-country { border-style: dotted; }
@@ -346,15 +348,10 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
 .place-links svg { width: 15px; height: 15px; flex: 0 0 15px; fill: currentColor; }
 .place-links span { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
 .place-links a:hover { border-color: var(--amber); color: var(--amber); background: #dfa12712; }
-.map-overlay-control { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; align-items: center; margin: 0 0 10px; }
-.map-overlay-control > button { width: 38px; height: 38px; display: grid; place-items: center; border: 1px solid #5d624c; border-radius: 4px; padding: 0; color: #aaa995; background: #1a1f17; cursor: pointer; }
-.map-overlay-control > button svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-linejoin: round; stroke-width: 1.5; }
-.map-overlay-control > button.is-enabled { border-color: #a8731d; color: #e3b451; background: #dfa12712; }
-.map-overlay-control > button:hover, .map-overlay-control > button:focus-visible { border-color: var(--amber); color: var(--amber); outline: none; }
-.map-overlay-control > a { color: #777d69; font-size: 8px; text-underline-offset: 2px; }
-.map-overlay-control > a:hover, .map-overlay-control > a:focus-visible { color: var(--amber); }
-.game-map-overlay { transition: opacity 300ms ease; }
-@media (prefers-reduced-motion: reduce) { .game-map-overlay { transition: none; } }
+.map-overlay-toggle { width: 34px; height: 34px; flex: 0 0 34px; display: grid; place-items: center; border: 1px solid #5d624c; border-radius: 4px; padding: 0; color: #aaa995; background: #1a1f17; cursor: pointer; }
+.map-overlay-toggle svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-linejoin: round; stroke-width: 1.5; }
+.map-overlay-toggle.is-enabled { border-color: #a8731d; color: #e3b451; background: #dfa12712; }
+.map-overlay-toggle:hover, .map-overlay-toggle:focus-visible { border-color: var(--amber); color: var(--amber); outline: none; }
 .level-briefing { margin: 13px 0 10px; background: #11150f99; }
 .level-briefing-toggle { width: 100%; display: flex; align-items: center; justify-content: flex-start; gap: 9px; border: 0; padding: 8px 3px; color: inherit; background: transparent; text-align: left; cursor: pointer; }
 .level-briefing-toggle span { min-width: 0; flex: 1; display: grid; gap: 3px; text-align: left; }

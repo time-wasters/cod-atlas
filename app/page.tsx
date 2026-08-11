@@ -630,6 +630,8 @@ export default function Home() {
   const markers = useRef<Map<string, { marker: LeafletMarker; entry: Entry }>>(new Map());
   const mapImageOverlay = useRef<import("leaflet").ImageOverlay.Rotated | null>(null);
   const mapImageOverlayLevelId = useRef<string | null>(null);
+  const mapImageOverlayOpacity = useRef(0);
+  const mapImageOverlayAnimation = useRef<number | null>(null);
   const leaflet = useRef<typeof import("leaflet") | null>(null);
   const mediaDialog = useRef<HTMLDialogElement>(null);
   const infoDialog = useRef<HTMLDialogElement>(null);
@@ -852,6 +854,9 @@ export default function Home() {
       markerStore.clear();
       mapImageOverlay.current = null;
       mapImageOverlayLevelId.current = null;
+      if (mapImageOverlayAnimation.current !== null) cancelAnimationFrame(mapImageOverlayAnimation.current);
+      mapImageOverlayAnimation.current = null;
+      mapImageOverlayOpacity.current = 0;
       leaflet.current = null;
     };
   }, []);
@@ -902,16 +907,41 @@ export default function Home() {
 
   useEffect(() => {
     if (!mapReady || !map.current || !leaflet.current) return;
+    const animateOpacity = (overlay: import("leaflet").ImageOverlay.Rotated, target: number) => {
+      if (mapImageOverlayAnimation.current !== null) cancelAnimationFrame(mapImageOverlayAnimation.current);
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        overlay.setOpacity(target);
+        mapImageOverlayOpacity.current = target;
+        mapImageOverlayAnimation.current = null;
+        return;
+      }
+      const start = mapImageOverlayOpacity.current;
+      const startedAt = performance.now();
+      const tick = (now: number) => {
+        const progress = Math.min(1, (now - startedAt) / 320);
+        const eased = 1 - (1 - progress) ** 3;
+        const opacity = start + (target - start) * eased;
+        overlay.setOpacity(opacity);
+        mapImageOverlayOpacity.current = opacity;
+        if (progress < 1) mapImageOverlayAnimation.current = requestAnimationFrame(tick);
+        else mapImageOverlayAnimation.current = null;
+      };
+      mapImageOverlayAnimation.current = requestAnimationFrame(tick);
+    };
     if (!selectedMapOverlay) {
+      if (mapImageOverlayAnimation.current !== null) cancelAnimationFrame(mapImageOverlayAnimation.current);
       mapImageOverlay.current?.remove();
       mapImageOverlay.current = null;
       mapImageOverlayLevelId.current = null;
+      mapImageOverlayAnimation.current = null;
+      mapImageOverlayOpacity.current = 0;
       return;
     }
     if (mapImageOverlay.current && mapImageOverlayLevelId.current === selected.entry.levelId) {
-      mapImageOverlay.current.setOpacity(selectedMapOverlayEnabled ? selectedMapOverlay.opacity : 0);
+      animateOpacity(mapImageOverlay.current, selectedMapOverlayEnabled ? selectedMapOverlay.opacity : 0);
       return;
     }
+    if (mapImageOverlayAnimation.current !== null) cancelAnimationFrame(mapImageOverlayAnimation.current);
     mapImageOverlay.current?.remove();
     const L = leaflet.current;
     const imageUrl = new URL(selectedMapOverlay.image.replace(/^\/+/, ""), document.baseURI).href;
@@ -929,7 +959,8 @@ export default function Home() {
     ).addTo(map.current);
     mapImageOverlay.current = overlay;
     mapImageOverlayLevelId.current = selected.entry.levelId;
-    requestAnimationFrame(() => overlay.setOpacity(selectedMapOverlayEnabled ? selectedMapOverlay.opacity : 0));
+    mapImageOverlayOpacity.current = 0;
+    animateOpacity(overlay, selectedMapOverlayEnabled ? selectedMapOverlay.opacity : 0);
   }, [mapReady, selected.entry.levelId, selected.entry.title, selectedMapOverlay, selectedMapOverlayEnabled]);
 
   useEffect(() => {
@@ -1265,23 +1296,38 @@ export default function Home() {
               </button>
             </figure>
           )}
-          <div className="intel-kicker">
-            {selected.group.flagCode ? (
-              <span
-                className={`flag:${selected.group.flagCode} intel-country-flag`}
-                role="img"
-                aria-label={`${selected.entry.country} flag`}
-              />
-            ) : (
-              <svg
-                className="intel-country-fallback"
-                viewBox="0 0 18 18"
-                aria-hidden="true"
+          <div className="intel-location-row">
+            <div className="intel-kicker">
+              {selected.group.flagCode ? (
+                <span
+                  className={`flag:${selected.group.flagCode} intel-country-flag`}
+                  role="img"
+                  aria-label={`${selected.entry.country} flag`}
+                />
+              ) : (
+                <svg className="intel-country-fallback" viewBox="0 0 18 18" aria-hidden="true">
+                  <circle cx="9" cy="9" r="6.5" />
+                </svg>
+              )}
+              <span className="intel-country-name">{selected.entry.country}</span>
+            </div>
+            {selectedMapOverlay && (
+              <button
+                className={`map-overlay-toggle${selectedMapOverlayEnabled ? " is-enabled" : ""}`}
+                type="button"
+                aria-pressed={selectedMapOverlayEnabled}
+                aria-label={`${selectedMapOverlayEnabled ? "Hide" : "Show"} game map overlay`}
+                title={`${selectedMapOverlayEnabled ? "Hide" : "Show"} game map overlay`}
+                onClick={() => setDisabledMapOverlays((disabled) => {
+                  const next = new Set(disabled);
+                  if (selectedMapOverlayEnabled) next.add(selected.entry.levelId);
+                  else next.delete(selected.entry.levelId);
+                  return next;
+                })}
               >
-                <circle cx="9" cy="9" r="6.5" />
-              </svg>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5Zm-9 9 9 5 9-5M3 16l9 5 9-5" /></svg>
+              </button>
             )}
-            <span className="intel-country-name">{selected.entry.country}</span>
           </div>
           {(selected.entry.region || selected.entry.city || selected.entry.landmark) && (
             <div className="location-taxonomy" aria-label="Location hierarchy">
@@ -1356,28 +1402,6 @@ export default function Home() {
               <span>CoD Wiki</span>
             </a>
           </div>
-          {selectedMapOverlay && (
-            <div className="map-overlay-control">
-              <button
-                className={selectedMapOverlayEnabled ? "is-enabled" : ""}
-                type="button"
-                aria-pressed={selectedMapOverlayEnabled}
-                aria-label={`${selectedMapOverlayEnabled ? "Hide" : "Show"} game map overlay`}
-                title={`${selectedMapOverlayEnabled ? "Hide" : "Show"} game map overlay`}
-                onClick={() => setDisabledMapOverlays((disabled) => {
-                  const next = new Set(disabled);
-                  if (selectedMapOverlayEnabled) next.add(selected.entry.levelId);
-                  else next.delete(selected.entry.levelId);
-                  return next;
-                })}
-              >
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5Zm-9 9 9 5 9-5M3 16l9 5 9-5" /></svg>
-              </button>
-              <a href={selectedMapOverlay.attribution.sourceUrl} target="_blank" rel="noreferrer" title={selectedMapOverlay.attribution.rightsNotice}>
-                Image source
-              </a>
-            </div>
-          )}
           <section className="level-briefing">
             <button
               className="level-briefing-toggle"
