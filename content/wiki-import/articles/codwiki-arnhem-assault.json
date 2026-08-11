@@ -1,13 +1,13 @@
 {
   "id": "codwiki-arnhem-assault",
-  "fandomPageId": null,
+  "fandomPageId": 90752,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Arnhem_Assault",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Arnhem_Assault",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2957238,
+  "importedAt": "2026-08-11T18:50:28.390Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
+    "raw": "Arnhem, Netherlands",
+    "label": "Arnhem, Netherlands",
     "url": null
   },
   "mapStyle": "singleplayer",
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/7/72/Arnhem_Assault_CODRTV.png/revision/latest?cb=20180111000256",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/7/72/Arnhem_Assault_CODRTV.png/revision/latest?cb=20180111000256",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Arnhem_Assault_CODRTV.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Northern Rain",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Northern_Rain",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,48 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-01-17T14:35:02Z",
+    "revisionSha1": "acce16bcd330369e15700d48185f3073fd555a8c",
+    "resolvedTitle": "Arnhem Assault",
+    "mainImageTitle": "File:Arnhem_Assault_CODRTV.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Arnhem Fire]]",
+    "label": "Arnhem Fire",
+    "links": [
+      {
+        "wikiTitle": "Arnhem Fire",
+        "label": "Arnhem Fire",
+        "url": "https://callofduty.fandom.com/wiki/Arnhem_Fire"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Rhine Crossing]]",
+    "label": "Rhine Crossing",
+    "links": [
+      {
+        "wikiTitle": "Rhine Crossing",
+        "label": "Rhine Crossing",
+        "url": "https://callofduty.fandom.com/wiki/Rhine_Crossing"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Roads to Victory]]''",
+    "label": "Call of Duty: Roads to Victory",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Roads to Victory",
+        "label": "Call of Duty: Roads to Victory",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Roads_to_Victory"
+      }
+    ]
+  },
+  "date": {
+    "raw": "18 September 1944",
+    "label": "18 September 1944"
+  }
 }
