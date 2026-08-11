@@ -586,6 +586,7 @@ export default function Home() {
   const markerLayer = useRef<MarkerClusterGroup | null>(null);
   const markers = useRef<Map<string, { marker: LeafletMarker; entry: Entry }>>(new Map());
   const mapImageOverlay = useRef<import("leaflet").ImageOverlay.Rotated | null>(null);
+  const mapImageOverlayLevelId = useRef<string | null>(null);
   const leaflet = useRef<typeof import("leaflet") | null>(null);
   const mediaDialog = useRef<HTMLDialogElement>(null);
   const intelCard = useRef<HTMLElement>(null);
@@ -802,6 +803,7 @@ export default function Home() {
       markerLayer.current = null;
       markerStore.clear();
       mapImageOverlay.current = null;
+      mapImageOverlayLevelId.current = null;
       leaflet.current = null;
     };
   }, []);
@@ -852,9 +854,17 @@ export default function Home() {
 
   useEffect(() => {
     if (!mapReady || !map.current || !leaflet.current) return;
+    if (!selectedMapOverlay) {
+      mapImageOverlay.current?.remove();
+      mapImageOverlay.current = null;
+      mapImageOverlayLevelId.current = null;
+      return;
+    }
+    if (mapImageOverlay.current && mapImageOverlayLevelId.current === selected.entry.levelId) {
+      mapImageOverlay.current.setOpacity(selectedMapOverlayEnabled ? selectedMapOverlay.opacity : 0);
+      return;
+    }
     mapImageOverlay.current?.remove();
-    mapImageOverlay.current = null;
-    if (!selectedMapOverlay || !selectedMapOverlayEnabled) return;
     const L = leaflet.current;
     const imageUrl = new URL(selectedMapOverlay.image.replace(/^\/+/, ""), document.baseURI).href;
     const overlay = L.imageOverlay.rotated(
@@ -863,17 +873,16 @@ export default function Home() {
       selectedMapOverlay.corners.topRight,
       selectedMapOverlay.corners.bottomLeft,
       {
-        opacity: selectedMapOverlay.opacity,
+        opacity: 0,
         interactive: false,
+        className: "game-map-overlay",
         alt: `${selected.entry.title} historical game map overlay`,
       },
     ).addTo(map.current);
     mapImageOverlay.current = overlay;
-    return () => {
-      overlay.remove();
-      if (mapImageOverlay.current === overlay) mapImageOverlay.current = null;
-    };
-  }, [mapReady, selected.entry.title, selectedMapOverlay, selectedMapOverlayEnabled]);
+    mapImageOverlayLevelId.current = selected.entry.levelId;
+    requestAnimationFrame(() => overlay.setOpacity(selectedMapOverlayEnabled ? selectedMapOverlay.opacity : 0));
+  }, [mapReady, selected.entry.levelId, selected.entry.title, selectedMapOverlay, selectedMapOverlayEnabled]);
 
   useEffect(() => {
     if (!mapReady || !map.current || !mapNode.current) return;
@@ -1273,6 +1282,8 @@ export default function Home() {
                 className={selectedMapOverlayEnabled ? "is-enabled" : ""}
                 type="button"
                 aria-pressed={selectedMapOverlayEnabled}
+                aria-label={`${selectedMapOverlayEnabled ? "Hide" : "Show"} game map overlay`}
+                title={`${selectedMapOverlayEnabled ? "Hide" : "Show"} game map overlay`}
                 onClick={() => setDisabledMapOverlays((disabled) => {
                   const next = new Set(disabled);
                   if (selectedMapOverlayEnabled) next.add(selected.entry.levelId);
@@ -1281,8 +1292,6 @@ export default function Home() {
                 })}
               >
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5Zm-9 9 9 5 9-5M3 16l9 5 9-5" /></svg>
-                <span>Game map overlay</span>
-                <b>{selectedMapOverlayEnabled ? "On" : "Off"}</b>
               </button>
               <a href={selectedMapOverlay.attribution.sourceUrl} target="_blank" rel="noreferrer" title={selectedMapOverlay.attribution.rightsNotice}>
                 Image source

@@ -330,15 +330,14 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
 .place-links span { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
 .place-links a:hover { border-color: var(--amber); color: var(--amber); background: #dfa12712; }
 .map-overlay-control { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; align-items: center; margin: 0 0 10px; }
-.map-overlay-control > button { min-width: 0; min-height: 38px; display: flex; align-items: center; gap: 7px; border: 1px solid #5d624c; border-radius: 4px; padding: 0 9px; color: #aaa995; background: #1a1f17; cursor: pointer; }
-.map-overlay-control > button svg { width: 16px; height: 16px; flex: 0 0 16px; fill: none; stroke: currentColor; stroke-linejoin: round; stroke-width: 1.5; }
-.map-overlay-control > button span { min-width: 0; flex: 1; overflow: hidden; font-size: 9px; font-weight: 700; text-align: left; text-overflow: ellipsis; white-space: nowrap; }
-.map-overlay-control > button b { color: #777d69; font: 700 8px var(--font-geist-mono), monospace; letter-spacing: .08em; text-transform: uppercase; }
+.map-overlay-control > button { width: 38px; height: 38px; display: grid; place-items: center; border: 1px solid #5d624c; border-radius: 4px; padding: 0; color: #aaa995; background: #1a1f17; cursor: pointer; }
+.map-overlay-control > button svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-linejoin: round; stroke-width: 1.5; }
 .map-overlay-control > button.is-enabled { border-color: #a8731d; color: #e3b451; background: #dfa12712; }
-.map-overlay-control > button.is-enabled b { color: #e3b451; }
 .map-overlay-control > button:hover, .map-overlay-control > button:focus-visible { border-color: var(--amber); color: var(--amber); outline: none; }
 .map-overlay-control > a { color: #777d69; font-size: 8px; text-underline-offset: 2px; }
 .map-overlay-control > a:hover, .map-overlay-control > a:focus-visible { color: var(--amber); }
+.game-map-overlay { transition: opacity 300ms ease; }
+@media (prefers-reduced-motion: reduce) { .game-map-overlay { transition: none; } }
 .level-briefing { margin: 13px 0 10px; border-block: 1px solid #464c3b; background: #11150f99; }
 .level-briefing-toggle { width: 100%; display: flex; align-items: center; justify-content: flex-start; gap: 9px; border: 0; padding: 8px 3px; color: inherit; background: transparent; text-align: left; cursor: pointer; }
 .level-briefing-toggle span { min-width: 0; flex: 1; display: grid; gap: 3px; text-align: left; }
