@@ -4782,19 +4782,19 @@
           "wiki": "https://callofduty.fandom.com/wiki/Festung_Recogne",
           "wikiArticle": "codwiki-festung-recogne",
           "country": "Belgium",
-          "city": "Recogne",
+          "city": "Bastogne",
           "region": "Luxembourg Province",
-          "landmark": "Recogne-Bastogne German military cemetery",
+          "landmark": "Recogne battlefield",
           "coordinates": [
-            50.04935278,
-            5.74149722
+            50.0538889,
+            5.7380556
           ],
           "precision": "city",
           "confidence": "high",
           "method": "title-mention",
           "urls": [
             {
-              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Recogne-Bastogne+German+military+cemetery%2C+Recogne%2C+Belgium"
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Recogne%2C+Bastogne%2C+Belgium"
             }
           ],
           "modes": [
@@ -10192,7 +10192,7 @@
           "wikiArticle": "codwiki-berlin-level",
           "country": "Germany",
           "city": "Berlin",
-          "region": null,
+          "region": "Berlin",
           "landmark": "Reichstag building",
           "coordinates": [
             52.518611,
@@ -10203,7 +10203,7 @@
           "method": "verified-landmark",
           "urls": [
             {
-              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Reichstag+Building%2C+Berlin%2C+Germany"
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Reichstag+Building%2C+Platz+der+Republik+1%2C+Berlin%2C+Germany"
             },
             {
               "wikipedia": "https://en.wikipedia.org/wiki/Reichstag_building"
@@ -11249,16 +11249,21 @@
           "wiki": "https://callofduty.fandom.com/wiki/Oder_River_Country",
           "wikiArticle": "codwiki-oder-river-country",
           "country": "Germany",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Bleyen-Genschmar",
+          "region": "Brandenburg",
+          "landmark": "Genschmar sector of the Oder front",
           "coordinates": [
-            51,
-            9
+            52.611944,
+            14.539444
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "approximate",
+          "confidence": "medium",
+          "method": "real-world-inspiration",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Genschmar%2C+Bleyen-Genschmar%2C+Germany"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -11275,16 +11280,21 @@
           "wiki": "https://callofduty.fandom.com/wiki/Oder_River_Town",
           "wikiArticle": "codwiki-oder-river-town",
           "country": "Germany",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Bleyen-Genschmar",
+          "region": "Brandenburg",
+          "landmark": "Genschmar village and former church site",
           "coordinates": [
-            51,
-            9
+            52.614444,
+            14.513056
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "approximate",
+          "confidence": "medium",
+          "method": "real-world-inspiration",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Genschmar%2C+Bleyen-Genschmar%2C+Germany"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -12064,16 +12074,21 @@
           "wiki": "https://callofduty.fandom.com/wiki/V-2_Rocket_Site",
           "wikiArticle": "codwiki-v-2-rocket-site",
           "country": "Germany",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Heek",
+          "region": "North Rhine-Westphalia",
+          "landmark": "V-2 launch pad in the van Oerschen Wald",
           "coordinates": [
-            51,
-            9
+            52.1255,
+            7.0919
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "exact",
+          "confidence": "medium",
+          "method": "real-world-inspiration",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Erinnerung+an+die+Opfer+der+V2-Raketen%2C+48619+Heek%2C+Germany"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -29974,7 +29989,7 @@
     "levels": 967,
     "entries": 987,
     "mapped": 957,
-    "cityMatched": 96,
-    "countryFallback": 861
+    "cityMatched": 99,
+    "countryFallback": 858
   }
 }
