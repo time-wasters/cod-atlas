@@ -21,11 +21,16 @@ to obtain a detailed marker.
    any related level files before changing anything. Preserve unrelated curated
    data, overlays, attribution and editorial notes.
 2. Establish what the game actually depicts:
+   - whether the level is singleplayer or multiplayer;
    - playable character and unit;
    - date and stated location;
    - briefing, objectives and route through the level;
    - named buildings, terrain, towns, rivers, roads or military sites;
    - preceding and following missions when they clarify chronology.
+   A multiplayer map is not a mission: do not invent a playable character,
+   unit, date, briefing, route or historical objective for it. If it corresponds
+   to, reuses, or is derived from a singleplayer mission, identify that level
+   and explain the documented relationship.
 3. Research the real place and the real operation separately. Look for the
    historical location of the represented unit on the mission date, the
    terrain and objectives involved, and any surviving landmark, battlefield,
@@ -128,6 +133,15 @@ Summarize the playable character and unit, date, stated location, objectives,
 route and notable terrain. Identify fictional characters or formations when
 known. Describe the game without presenting its events as historical fact.
 
+For a multiplayer map, state clearly that it has no mission narrative. Describe
+the map's setting and relevant layout or environmental clues instead. If a
+corresponding singleplayer mission exists, reference its curated level record
+by title and stable level ID, and summarize the relationship—for
+example, shared geography, reused assets, an adapted combat area or narrative
+context. Add a hyperlink only when the application has a stable level-detail
+URL format. Do not infer a relationship from visual similarity alone; cite
+evidence for it.
+
 ### The Real Place & Differences
 
 Describe the present-day place and the relevant wartime geography. Compare
@@ -141,6 +155,13 @@ Explain what the represented unit was historically doing in that place and
 time. Compare the real chronology, forces, objectives and outcome with the
 game. Clearly label compressed timelines, invented combat, composite events
 and unsupported characters or objectives.
+
+For a standalone multiplayer map, state that there is no in-game mission to
+compare with a real operation. Historical context may still be included when
+the map identifies a real place or event. When the map corresponds to a
+singleplayer mission, base the mission comparison on that linked level and
+keep clear which claims belong to the multiplayer map, the singleplayer
+mission and the historical record.
 
 If no matching real mission is documented, say so directly and present the
 closest supported historical context without turning it into a claim of

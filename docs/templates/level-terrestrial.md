@@ -28,7 +28,10 @@ locations:
 
 ## The Mission in the Game
 
-Summarize the mission's character, unit, date, stated place and objectives.
+For singleplayer, summarize the mission's character, unit, date, stated place
+and objectives. For multiplayer, state that there is no mission narrative,
+describe the map setting and reference any documented corresponding
+singleplayer level by title and stable ID.
 
 ## The Real Place & Differences
 
@@ -36,7 +39,10 @@ Describe the identified place and compare its geography with the game.
 
 ## The Real Mission & Differences
 
-Compare the documented historical operation with the game's version.
+Compare the documented historical operation with the singleplayer mission. For
+a standalone multiplayer map, state that there is no in-game mission to
+compare; if it corresponds to a singleplayer level, make that relationship and
+the source of each claim explicit.
 
 ## Marker Position Explanation
 
