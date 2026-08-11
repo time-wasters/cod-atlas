@@ -7623,8 +7623,8 @@
           "region": "Normandy",
           "landmark": "Brécourt Manor",
           "coordinates": [
-            49.390056,
-            -1.226111
+            49.38837503110612,
+            -1.2265583900818713
           ],
           "precision": "exact",
           "confidence": "high",
@@ -10824,16 +10824,24 @@
           "wiki": "https://callofduty.fandom.com/wiki/Eder_Dam_Getaway",
           "wikiArticle": "codwiki-eder-dam-getaway",
           "country": "Germany",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Affoldern",
+          "region": "Hesse",
+          "landmark": "Eder bridge at Affoldern",
           "coordinates": [
-            51,
-            9
+            51.16506,
+            9.08726
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "approximate",
+          "confidence": "medium",
+          "method": "real-world-inspiration",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Ederbr%C3%BCcke+Affoldern%2C+Br%C3%BCckenstra%C3%9Fe%2C+34549+Edertal%2C+Germany"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Eder"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -29908,7 +29916,7 @@
     "levels": 967,
     "entries": 987,
     "mapped": 957,
-    "cityMatched": 92,
-    "countryFallback": 865
+    "cityMatched": 93,
+    "countryFallback": 864
   }
 }
