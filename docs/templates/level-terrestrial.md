@@ -22,5 +22,27 @@ locations:
     #   - wikipedia: https://en.wikipedia.org/wiki/Example_landmark
 ---
 
-Explain the evidence, ambiguity, or coordinate choice here. Put source links
-in the pull-request description.
+> **AI-generated research note:** The historical summary below was generated
+> with AI assistance and should be reviewed against the cited sources before
+> being treated as authoritative.
+
+## The Mission in the Game
+
+Summarize the mission's character, unit, date, stated place and objectives.
+
+## The Real Place & Differences
+
+Describe the identified place and compare its geography with the game.
+
+## The Real Mission & Differences
+
+Compare the documented historical operation with the game's version.
+
+## Marker Position Explanation
+
+Explain the coordinate choice, precision, confidence and limitations.
+
+## Sources
+
+- [Descriptive source title](https://example.com/source) — state what this
+  source supports.

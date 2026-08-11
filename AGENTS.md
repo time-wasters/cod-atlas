@@ -80,6 +80,8 @@ changes are intended to be reviewable through pull requests.
 ## Code and content conventions
 
 - Use TypeScript/React patterns already present in the repository.
+- For AI-assisted research or editing of level locations and historical notes,
+  read and follow `docs/map-research-ai-instructions.md` in full.
 - Keep game labels short, human-readable, and ordered by release date.
 - A level may contain more than one location.
 - Valid modes are `singleplayer` and `multiplayer`.

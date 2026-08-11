@@ -20,6 +20,11 @@ and add a Wiki record only if the level's article is not already represented.
 Search IDs before adding anything. IDs are lowercase, stable, and hyphenated;
 do not rename an ID merely to improve its wording.
 
+AI-assisted map research must follow the
+[map-research AI instructions](map-research-ai-instructions.md), including its
+source standards, coordinate-selection rules, Google Maps URL format, AI
+disclosure and required Markdown headings.
+
 The primary-game directory supplies the filename's game prefix. For example,
 the level ID `cod3-laison-river` belongs at
 `content/levels/cod3/laison-river.md`, not `cod3/cod3-laison-river.md`.
@@ -54,7 +59,8 @@ location rather than in a shared places record. A Google Maps URL is only an
 outbound link and does not require an API key. Prefer a standard Maps URL such
 as `https://www.google.com/maps/search/?api=1&query=...`; an exact Google Maps
 share link is also accepted when it identifies the intended listing. Wikipedia
-links may use a direct article URL from any language edition.
+links should prefer the direct English Wikipedia article for the real location. If
+that location has no English Wikipedia article, , use the language of the country and check if an article exists in the corresponding wikipedia.
 
 For `off-world`, omit both coordinates. For terrestrial records, provide the
 best evidence-supported coordinates. A country or region centroid is allowed
