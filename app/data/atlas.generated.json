@@ -19435,16 +19435,24 @@
           "wiki": "https://callofduty.fandom.com/wiki/Pavlov%27s_House_(level)",
           "wikiArticle": "codwiki-pavlov-s-house-level",
           "country": "Russia",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Volgograd",
+          "region": "Volgograd Oblast",
+          "landmark": "Pavlov's House (House of Soldiers' Glory)",
           "coordinates": [
-            60,
-            100
+            48.716086,
+            44.531389
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "exact",
+          "confidence": "high",
+          "method": "verified-landmark",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Pavlov%27s+House%2C+Volgograd%2C+Russia"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Pavlov%27s_House"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -19565,16 +19573,24 @@
           "wiki": "https://callofduty.fandom.com/wiki/Red_Square_(level)",
           "wikiArticle": "codwiki-red-square-level",
           "country": "Russia",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Volgograd",
+          "region": "Volgograd Oblast",
+          "landmark": "Square of the Fallen Fighters (wartime Red Square)",
           "coordinates": [
-            60,
-            100
+            48.708028,
+            44.515442
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "exact",
+          "confidence": "high",
+          "method": "verified-landmark",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Square+of+the+Fallen+Fighters%2C+Volgograd%2C+Russia"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Square_of_the_Fallen_Fighters"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -19852,15 +19868,23 @@
           "wikiArticle": "codwiki-stalingrad-level",
           "country": "Russia",
           "city": "Volgograd",
-          "region": null,
-          "landmark": null,
+          "region": "Volgograd Oblast",
+          "landmark": "13th Guards landing sector at Rodimtsev's Wall",
           "coordinates": [
-            48.71378,
-            44.4976
+            48.7147,
+            44.5361
           ],
-          "precision": "city",
-          "confidence": "high",
-          "method": "title",
+          "precision": "approximate",
+          "confidence": "medium",
+          "method": "manual-approximate",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Rodimtsev%27s+Wall%2C+Volgograd%2C+Russia"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Battle_of_Stalingrad"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -19956,15 +19980,23 @@
           "wikiArticle": "codwiki-stalingrad-sewers",
           "country": "Russia",
           "city": "Volgograd",
-          "region": null,
-          "landmark": null,
+          "region": "Volgograd Oblast",
+          "landmark": "Inferred sewer route beneath the Penza defence centre near Pavlov's House",
           "coordinates": [
-            48.71378,
-            44.4976
+            48.716086,
+            44.531389
           ],
-          "precision": "city",
-          "confidence": "high",
-          "method": "title-mention",
+          "precision": "approximate",
+          "confidence": "medium",
+          "method": "manual-approximate",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Pavlov%27s+House%2C+Volgograd%2C+Russia"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Pavlov%27s_House"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -20296,16 +20328,24 @@
           "wiki": "https://callofduty.fandom.com/wiki/Train_Station",
           "wikiArticle": "codwiki-train-station",
           "country": "Russia",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Volgograd",
+          "region": "Volgograd Oblast",
+          "landmark": "Stalingrad Railway Station No. 1 (modern Volgograd-1)",
           "coordinates": [
-            60,
-            100
+            48.71258,
+            44.51355
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "exact",
+          "confidence": "high",
+          "method": "verified-landmark",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Volgograd-1+Railway+Station%2C+Volgograd%2C+Russia"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Volgograd_railway_station"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -29924,7 +29964,7 @@
     "levels": 967,
     "entries": 987,
     "mapped": 957,
-    "cityMatched": 93,
-    "countryFallback": 864
+    "cityMatched": 96,
+    "countryFallback": 861
   }
 }
