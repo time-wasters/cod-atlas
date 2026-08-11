@@ -1,0 +1,10 @@
+id: mwiii
+code: MWIII
+label: Modern Warfare III (2022)
+released: 2023-11-10
+images:
+  steam:
+    app: 4435490
+    icon: 91af283eab8b68667d9121cfd3d3b322abc4eb3b
+    clienticon: null
+

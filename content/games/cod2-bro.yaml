@@ -3,7 +3,7 @@ code: BR1
 label: "Call of Duty 2: Big Red One"
 released: 2005-11-01
 images:
-  steam:
-    app: null
-    icon: null
-    clienticon: null
+  steamgriddb:
+    game: 5252158
+    icon: 4185
+    file: b207f5c56605a9d1a22e1e134fe95ba9.png

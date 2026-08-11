@@ -2,3 +2,8 @@ id: vanguard
 code: V
 label: Vanguard
 released: 2021-11-05
+images:
+  steam:
+    app: 1985820
+    icon: 41abf602e6cd58c0beafd9aa0c166583d6263111
+    clienticon: b11ecaf5fe049e3c35a833053e46a53761fbb775

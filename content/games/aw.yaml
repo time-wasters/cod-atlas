@@ -2,3 +2,8 @@ id: aw
 code: AW
 label: Advanced Warfare
 released: 2014-11-04
+images:
+  steam:
+    app: 209650
+    icon: aab8b39ef63c54af5497b55aa104d5c7ec860fd9
+    clienticon: a0306bcf727ce144ae43681a886fdaa038ec0472

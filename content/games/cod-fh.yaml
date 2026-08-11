@@ -3,7 +3,7 @@ code: FH
 label: "Call of Duty: Finest Hour"
 released: 2004-11-16
 images:
-  steam:
-    app: null
-    icon: null
-    clienticon: null
+  steamgriddb:
+    game: 5252406
+    icon: 2368
+    file: 466accbac9a66b805ba50e42ad715740.png

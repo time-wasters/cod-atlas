@@ -3,7 +3,7 @@ code: COD3
 label: Call of Duty 3
 released: 2006-11-07
 images:
-  steam:
-    app: null
-    icon: null
-    clienticon: null
+  steamgriddb:
+    game: 5248470
+    icon: 116450
+    file: bc05aa23b91a3a988e14179077e9696c.png
