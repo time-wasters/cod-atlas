@@ -446,6 +446,88 @@
       }
     }
   ],
+  "levelBanners": {
+    "rtv-altavilla": {
+      "origin": "local",
+      "sourceUrl": "/images/levels/rtv/altavilla.png",
+      "thumbnailUrl": "/images/levels/rtv/altavilla.png",
+      "detailPageUrl": "https://github.com/time-wasters/cod-atlas/blob/main/public/images/levels/rtv/altavilla.png",
+      "author": {
+        "name": "plp-gtr",
+        "userUrl": "https://github.com/plp-gtr",
+        "role": "author"
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "Extracted from the relevant game files or captured as a screenshot by plp-gtr. The underlying copyrighted game artwork remains the property of its respective copyright holders and is used for identification and geographic comparison.",
+        "noticeUrl": "https://www.activision.com/legal/terms-of-use"
+      }
+    },
+    "rtv-glider-crash": {
+      "origin": "local",
+      "sourceUrl": "/images/levels/rtv/glider-crash.png",
+      "thumbnailUrl": "/images/levels/rtv/glider-crash.png",
+      "detailPageUrl": "https://github.com/time-wasters/cod-atlas/blob/main/public/images/levels/rtv/glider-crash.png",
+      "author": {
+        "name": "plp-gtr",
+        "userUrl": "https://github.com/plp-gtr",
+        "role": "author"
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "Extracted from the relevant game files or captured as a screenshot by plp-gtr. The underlying copyrighted game artwork remains the property of its respective copyright holders and is used for identification and geographic comparison.",
+        "noticeUrl": "https://www.activision.com/legal/terms-of-use"
+      }
+    },
+    "rtv-lucky-thirteen": {
+      "origin": "local",
+      "sourceUrl": "/images/levels/rtv/lucky-thirteen.png",
+      "thumbnailUrl": "/images/levels/rtv/lucky-thirteen.png",
+      "detailPageUrl": "https://github.com/time-wasters/cod-atlas/blob/main/public/images/levels/rtv/lucky-thirteen.png",
+      "author": {
+        "name": "plp-gtr",
+        "userUrl": "https://github.com/plp-gtr",
+        "role": "author"
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "Extracted from the relevant game files or captured as a screenshot by plp-gtr. The underlying copyrighted game artwork remains the property of its respective copyright holders and is used for identification and geographic comparison.",
+        "noticeUrl": "https://www.activision.com/legal/terms-of-use"
+      }
+    },
+    "rtv-scavenger-hunt": {
+      "origin": "local",
+      "sourceUrl": "/images/levels/rtv/scavenger-hunt.png",
+      "thumbnailUrl": "/images/levels/rtv/scavenger-hunt.png",
+      "detailPageUrl": "https://github.com/time-wasters/cod-atlas/blob/main/public/images/levels/rtv/scavenger-hunt.png",
+      "author": {
+        "name": "plp-gtr",
+        "userUrl": "https://github.com/plp-gtr",
+        "role": "author"
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "Extracted from the relevant game files or captured as a screenshot by plp-gtr. The underlying copyrighted game artwork remains the property of its respective copyright holders and is used for identification and geographic comparison.",
+        "noticeUrl": "https://www.activision.com/legal/terms-of-use"
+      }
+    }
+  },
   "wikiMedia": {
     "codwiki-88-ridge": {
       "main": {

@@ -9,6 +9,7 @@ const contentRoot = path.join(root, "content");
 const levelsRoot = path.join(contentRoot, "levels");
 const outputPath = path.join(root, "app/data/atlas.generated.json");
 const mapOverlaysOutputPath = path.join(root, "app/data/map-overlays.generated.json");
+const levelBannersRoot = path.join(root, "public/images/levels");
 const checkOnly = process.argv.includes("--check");
 const validModes = new Set(["singleplayer", "multiplayer"]);
 const validPrecisions = new Set(["exact", "approximate", "city", "region", "country", "off-world"]);
@@ -155,6 +156,22 @@ const atlas = YAML.parse(await readFile(path.join(contentRoot, "atlas.yaml"), "u
 const gameFiles = (await filesBelow(path.join(contentRoot, "games"), ".yaml")).sort();
 const levelFiles = (await filesBelow(levelsRoot, ".md")).sort();
 const wikiFiles = (await filesBelow(path.join(contentRoot, "wiki-import/articles"), ".json")).sort();
+let levelBannerFiles = [];
+try {
+  levelBannerFiles = [
+    ...(await filesBelow(levelBannersRoot, ".jpg")),
+    ...(await filesBelow(levelBannersRoot, ".png")),
+  ].sort();
+} catch (error) {
+  if (error?.code !== "ENOENT") throw error;
+}
+const levelBannerFilesByBase = new Map();
+for (const filename of levelBannerFiles) {
+  const relative = path.relative(levelBannersRoot, filename).replaceAll("\\", "/");
+  const base = relative.replace(/\.(?:jpg|png)$/, "");
+  requireValue(!levelBannerFilesByBase.has(base), `public/images/levels/${base}: use either JPG or PNG, not both`);
+  levelBannerFilesByBase.set(base, filename);
+}
 
 const games = new Map();
 for (const filename of gameFiles) {
@@ -201,6 +218,8 @@ for (const filename of wikiFiles) {
 
 const levels = [];
 const mapOverlays = {};
+const levelBanners = {};
+const usedLevelBannerBases = new Set();
 const levelIds = new Set();
 let markerCount = 0;
 for (const filename of levelFiles) {
@@ -215,6 +234,32 @@ for (const filename of levelFiles) {
   requireValue(level.id.startsWith(idPrefix), `${filename}: level id must start with primary game ${idPrefix}`);
   const expectedFilename = path.join(levelsRoot, primaryGame, `${level.id.slice(idPrefix.length)}.md`);
   requireValue(filename === expectedFilename, `${filename}: expected level path ${expectedFilename}`);
+  const levelBannerBase = path.relative(levelsRoot, filename).replaceAll("\\", "/").replace(/\.md$/, "");
+  const levelBannerFilename = levelBannerFilesByBase.get(levelBannerBase);
+  if (levelBannerFilename) {
+    const extension = path.extname(levelBannerFilename);
+    const image = await readFile(levelBannerFilename);
+    const validImage = extension === ".png"
+      ? image.length >= 8 && image[0] === 0x89 && image.toString("ascii", 1, 4) === "PNG"
+      : image.length >= 3 && image[0] === 0xff && image[1] === 0xd8 && image[2] === 0xff;
+    requireValue(validImage, `${levelBannerFilename}: file contents do not match its extension`);
+    const relativeImage = path.relative(path.join(root, "public"), levelBannerFilename).replaceAll("\\", "/");
+    const publicPath = `/${relativeImage}`;
+    levelBanners[level.id] = {
+      origin: "local",
+      sourceUrl: publicPath,
+      thumbnailUrl: publicPath,
+      detailPageUrl: `https://github.com/time-wasters/cod-atlas/blob/main/public/${relativeImage}`,
+      author: { name: "plp-gtr", userUrl: "https://github.com/plp-gtr", role: "author" },
+      license: { name: null, url: null },
+      rights: {
+        status: "non-free",
+        notice: "Extracted from the relevant game files or captured as a screenshot by plp-gtr. The underlying copyrighted game artwork remains the property of its respective copyright holders and is used for identification and geographic comparison.",
+        noticeUrl: "https://www.activision.com/legal/terms-of-use",
+      },
+    };
+    usedLevelBannerBases.add(levelBannerBase);
+  }
   requireValue(wikiArticles.has(level.wikiArticle), `${filename}: unknown wikiArticle ${level.wikiArticle}`);
   requireValue(Array.isArray(level.locations) && level.locations.length, `${filename}: locations must be a non-empty list`);
   if (level.mapOverlay) mapOverlays[level.id] = await validateMapOverlay(level.mapOverlay, level.id, filename);
@@ -308,6 +353,7 @@ const compiled = {
   source: atlas.source,
   updatedAt: atlas.updatedAt,
   games: [...games.values()].sort((a, b) => String(a.released).localeCompare(String(b.released))),
+  levelBanners,
   wikiMedia,
   groups: compiledGroups,
   totals: {
@@ -330,6 +376,10 @@ if (checkOnly) {
 } else {
   await writeFile(outputPath, serialized);
   await writeFile(mapOverlaysOutputPath, mapOverlaysSerialized);
+}
+
+for (const bannerBase of levelBannerFilesByBase.keys()) {
+  requireValue(usedLevelBannerBases.has(bannerBase), `public/images/levels/${bannerBase}: no matching level Markdown file`);
 }
 
 console.log(`Validated ${levels.length} levels, ${markerCount} markers, ${wikiArticles.size} wiki articles and ${games.size} games.`);

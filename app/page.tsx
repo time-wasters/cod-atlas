@@ -28,6 +28,7 @@ type Entry = {
 };
 
 type WikiImage = {
+  origin?: "local";
   sourceUrl: string;
   thumbnailUrl: string;
   detailPageUrl: string;
@@ -125,6 +126,7 @@ type MapOverlayRecord = {
 };
 type AtlasData = {
   games: Game[];
+  levelBanners: Record<string, WikiImage>;
   wikiMedia: Record<string, WikiMedia>;
   groups: Group[];
   totals: {
@@ -598,6 +600,7 @@ export default function Home() {
   const [externalIconManifest, setExternalIconManifest] = useState<ExternalIconManifest | null>(null);
   const [externalIconManifestUnavailable, setExternalIconManifestUnavailable] = useState(false);
   const [failedExternalGameIcons, setFailedExternalGameIcons] = useState<Set<string>>(() => new Set());
+  const [failedLevelBanners, setFailedLevelBanners] = useState<Set<string>>(() => new Set());
   const [disabledMapOverlays, setDisabledMapOverlays] = useState<Set<string>>(() => new Set());
   const externalIconsEnabled = useSyncExternalStore(
     subscribeToExternalIconPreference,
@@ -735,7 +738,11 @@ export default function Home() {
     [groups, selected.entry.id, selected.entry.levelId],
   );
   const selectedMedia = data.wikiMedia[selected.entry.wikiArticle];
-  const selectedImage = selectedMedia?.main ?? selectedMedia?.map ?? null;
+  const selectedLevelBanner = failedLevelBanners.has(selected.entry.levelId)
+    ? null
+    : data.levelBanners[selected.entry.levelId] ?? null;
+  const selectedImage = selectedLevelBanner ?? selectedMedia?.main ?? selectedMedia?.map ?? null;
+  const selectedImageIsLocal = selectedImage?.origin === "local";
   const selectedImageKey = selectedImage
     ? `${selected.entry.id}:${selectedImage.thumbnailUrl}`
     : null;
@@ -1199,15 +1206,20 @@ export default function Home() {
                   {selectedImageFailed ? "Image unavailable" : "Loading image…"}
                 </span>
               )}
-              {/* Preserve the reviewed external thumbnail instead of proxying or transforming it. */}
+              {/* Local reviewed banners take precedence; Wiki thumbnails remain the fallback. */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 className={selectedImageLoaded ? "is-loaded" : ""}
                 src={selectedImage.thumbnailUrl}
-                alt={`${selected.entry.title} media from the Call of Duty Wiki`}
-                referrerPolicy="no-referrer"
+                alt={`${selected.entry.title} level banner`}
+                referrerPolicy={selectedImageIsLocal ? undefined : "no-referrer"}
                 onLoad={() => setLoadedImageKey(selectedImageKey)}
-                onError={() => setFailedImageKey(selectedImageKey)}
+                onError={() => {
+                  setFailedImageKey(selectedImageKey);
+                  if (selectedImageIsLocal) {
+                    setFailedLevelBanners((failed) => new Set(failed).add(selected.entry.levelId));
+                  }
+                }}
               />
               <button
                 className="media-info-button"
@@ -1408,7 +1420,7 @@ export default function Home() {
               )}
               <dl>
                 <div>
-                  <dt>{selectedImage.author.role === "uploader" ? "Uploaded by" : "Author"}</dt>
+                  <dt>{selectedImageIsLocal ? "Captured by" : selectedImage.author.role === "uploader" ? "Uploaded by" : "Author"}</dt>
                   <dd><a href={selectedImage.author.userUrl} target="_blank" rel="noreferrer">{selectedImage.author.name}</a></dd>
                 </div>
                 {selectedImage.license.name && selectedImage.license.url && (
@@ -1420,15 +1432,17 @@ export default function Home() {
                 {selectedImage.rights.noticeUrl && (
                   <div>
                     <dt>Rights notice</dt>
-                    <dd><a href={selectedImage.rights.noticeUrl} target="_blank" rel="noreferrer">Read on CoD Wiki</a></dd>
+                    <dd><a href={selectedImage.rights.noticeUrl} target="_blank" rel="noreferrer">{selectedImageIsLocal ? "Rights terms" : "Read on CoD Wiki"}</a></dd>
                   </div>
                 )}
                 <div>
                   <dt>Source</dt>
-                  <dd><a href={selectedImage.detailPageUrl} target="_blank" rel="noreferrer">Open file page</a></dd>
+                  <dd><a href={selectedImage.detailPageUrl} target="_blank" rel="noreferrer">{selectedImageIsLocal ? "Open repository image" : "Open file page"}</a></dd>
                 </div>
               </dl>
-              <p className="media-notice-credit">Notice reproduced from the Call of Duty Wiki; the image remains subject to its original copyright status.</p>
+              <p className="media-notice-credit">{selectedImageIsLocal
+                ? "Image extracted or captured by plp-gtr; the underlying game artwork remains subject to its original copyright."
+                : "Notice reproduced from the Call of Duty Wiki; the image remains subject to its original copyright status."}</p>
             </div>
           </dialog>
         )}

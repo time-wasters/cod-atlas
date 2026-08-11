@@ -79,6 +79,14 @@ test("preserves the complete statically compiled atlas", async () => {
   }
   assert.ok(atlas.games.some((game) => !game.icon), "game labels remain available as the icon fallback");
   assert.ok(entries.every((entry) => Array.isArray(entry.gameIds) && entry.gameIds.length > 0));
+  assert.deepEqual(Object.keys(atlas.levelBanners).sort(), [
+    "rtv-altavilla",
+    "rtv-glider-crash",
+    "rtv-lucky-thirteen",
+    "rtv-scavenger-hunt",
+  ]);
+  assert.equal(atlas.levelBanners["rtv-altavilla"].thumbnailUrl, "/images/levels/rtv/altavilla.png");
+  assert.equal(atlas.levelBanners["rtv-altavilla"].author.userUrl, "https://github.com/plp-gtr");
   assert.ok(entries.every((entry) =>
     entry.modes.length === 1 && ["singleplayer", "multiplayer"].includes(entry.modes[0])));
 

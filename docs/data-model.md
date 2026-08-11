@@ -104,6 +104,15 @@ must retain the license or non-free notice shown on its source detail page.
 The generated atlas exposes displayable media once per Wiki article through
 the top-level `wikiMedia` object, rather than duplicating it for every marker.
 
+Repository-hosted level banners live at
+`public/images/levels/<primary-game>/<level-filename>.jpg` (or `.png`). The
+build validates their file signatures and matching level Markdown paths, then
+exposes them through `levelBanners`. The frontend prefers these banners and
+uses imported Wiki media when no local banner exists or a local image fails to
+load. These extracted or captured images are credited to
+[plp-gtr](https://github.com/plp-gtr); underlying game artwork retains its
+original copyright.
+
 ## Build flow
 
 ```mermaid
