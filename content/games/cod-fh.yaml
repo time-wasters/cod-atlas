@@ -2,3 +2,8 @@ id: cod-fh
 code: FH
 label: "Call of Duty: Finest Hour"
 released: 2004-11-16
+images:
+  steam:
+    app: null
+    icon: null
+    clienticon: null

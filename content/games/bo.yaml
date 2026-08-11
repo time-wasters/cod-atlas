@@ -2,3 +2,8 @@ id: bo
 code: BO
 label: Black Ops
 released: 2010-11-09
+images:
+  steam:
+    app: 42700
+    icon: ea744d59efded3feaeebcafed224be9eadde90ac
+    clienticon: 0d652160dff1ab3d1352aa83c9cf14a20146519e

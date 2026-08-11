@@ -2,3 +2,8 @@ id: cod
 code: COD
 label: Call of Duty
 released: 2003-10-29
+images:
+  steam:
+    app: 2620
+    icon: b4ce47894dee6ec21b0ad96cfb2b8c0036098e39
+    clienticon: null
