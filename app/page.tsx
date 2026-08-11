@@ -632,6 +632,7 @@ export default function Home() {
   const mapImageOverlayLevelId = useRef<string | null>(null);
   const leaflet = useRef<typeof import("leaflet") | null>(null);
   const mediaDialog = useRef<HTMLDialogElement>(null);
+  const infoDialog = useRef<HTMLDialogElement>(null);
   const intelCard = useRef<HTMLElement>(null);
 
   const groups = data.groups;
@@ -1126,9 +1127,37 @@ export default function Home() {
                 <path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82A7.65 7.65 0 0 1 8 3.87c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z" />
               </svg>
             </a>
+            &nbsp;·&nbsp;
+            <button className="icon-link footer-info-button" type="button" onClick={() => infoDialog.current?.showModal()}>
+              Info
+              <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true">
+                <circle cx="8" cy="8" r="6.5" /><path d="M8 7v4M8 4.5h.01" />
+              </svg>
+            </button>
           </p>
         </footer>
       </aside>
+
+      <dialog
+        ref={infoDialog}
+        className="project-info-dialog"
+        aria-labelledby="project-info-title"
+        onClick={(event) => {
+          if (event.target === event.currentTarget) event.currentTarget.close();
+        }}
+      >
+        <div className="project-info-content">
+          <header>
+            <h2 id="project-info-title">About CoD Atlas</h2>
+            <form method="dialog"><button aria-label="Close project information">×</button></form>
+          </header>
+          <p>This website was made by me, <a href="https://github.com/plp-gtr" target="_blank" rel="noreferrer">Philipp Gächter</a>.</p>
+          <p>It is a pure hobby project that resulted from the urge to start the Call of Duty series from the first game and play all major instances, especially the console games I missed when I was young.</p>
+          <p>While playing I was scouting the locations on Google Streetview and Maps to see how accurate the game is and out of pure interest.</p>
+          <p>When searching for a map of all CoD levels in real life, I stumbled across the map from <a href="https://www.reddit.com/r/CallOfDuty/comments/10c3jbd/cod_every_location_visited_in_the_cod_franchise/" target="_blank" rel="noreferrer">u/robracer97</a>. Unfortunately it is not dynamic or zoomable, so I&apos;ve started this project.</p>
+          <p>Have fun!</p>
+        </div>
+      </dialog>
 
       <section className="map-stage" aria-label="Interactive world map">
         <div ref={mapNode} className="map-canvas" />

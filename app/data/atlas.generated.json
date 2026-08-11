@@ -9252,23 +9252,32 @@
           "levelId": "cod-bocage",
           "locationId": "main",
           "title": "Bocage",
-          "game": "COD",
+          "game": "COD / UO",
           "gameIds": [
-            "cod"
+            "cod",
+            "cod-uo"
           ],
           "wiki": "https://callofduty.fandom.com/wiki/Bocage",
           "wikiArticle": "codwiki-bocage",
           "country": "France",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Saint-Lô",
+          "region": "Normandy",
+          "landmark": "Musée du Bocage Normand (representative regional anchor)",
           "coordinates": [
-            46,
-            2
+            49.10426,
+            -1.07649
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "region",
+          "confidence": "medium",
+          "method": "region-fallback",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Mus%C3%A9e+du+Bocage+Normand%2C+Saint-L%C3%B4%2C+France"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Bocage"
+            }
+          ],
           "modes": [
             "multiplayer"
           ]
@@ -31767,7 +31776,7 @@
     "levels": 967,
     "entries": 987,
     "mapped": 957,
-    "cityMatched": 99,
-    "countryFallback": 858
+    "cityMatched": 100,
+    "countryFallback": 857
   }
 }
