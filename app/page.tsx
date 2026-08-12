@@ -777,6 +777,9 @@ export default function Home() {
   const selectSidebarGroup = useCallback((group: Group) => {
     const entry = group.entries[0];
     if (!entry) return;
+    if (group.kind === "off-world") {
+      setSolarSystemDisplay({ hasSpaceLocations: true, expanded: true });
+    }
     const coordinates = group.entries.flatMap((candidate) => candidate.coordinates ? [candidate.coordinates] : []);
     const fallbackCoordinate = group.coordinates ?? entry.coordinates ?? null;
     const bounds = coordinates.length ? coordinates : fallbackCoordinate ? [fallbackCoordinate] : [];
