@@ -34,6 +34,7 @@ test("renders development preview metadata", async () => {
   assert.match(html, developmentPreviewMeta);
   assert.match(html, /class="intel-country-fallback"/);
   assert.match(html, /class="country-select-trigger"/);
+  assert.match(html, /class="sidebar-toggle"[^>]*aria-expanded="true"[^>]*aria-label="Hide map filters"/);
   assert.match(html, /aria-label="Filter by country"/);
   assert.match(html, /class="solar-system-overlay is-expanded"/);
   assert.match(html, /aria-label="Collapse Solar System overlay"/);

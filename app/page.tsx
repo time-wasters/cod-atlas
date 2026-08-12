@@ -596,6 +596,7 @@ export default function Home() {
   const [showSingleplayer, setShowSingleplayer] = useState(true);
   const [showMultiplayer, setShowMultiplayer] = useState(false);
   const [mapReady, setMapReady] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(true);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [externalIconManifest, setExternalIconManifest] = useState<ExternalIconManifest | null>(null);
   const [externalIconManifestUnavailable, setExternalIconManifestUnavailable] = useState(false);
@@ -988,6 +989,17 @@ export default function Home() {
     }
   }, [mapFitCoordinates, mapReady]);
 
+  useEffect(() => {
+    if (!mapReady || !map.current) return;
+    const refreshMapSize = () => map.current?.invalidateSize({ pan: false });
+    const animationFrame = requestAnimationFrame(refreshMapSize);
+    const transitionEnd = window.setTimeout(refreshMapSize, 340);
+    return () => {
+      cancelAnimationFrame(animationFrame);
+      window.clearTimeout(transitionEnd);
+    };
+  }, [mapReady, sidebarOpen]);
+
   function exportKml() {
     const placemarks = filtered.flatMap((group) => {
       return group.entries.flatMap((entry) => {
@@ -1008,7 +1020,7 @@ export default function Home() {
   }
 
   return (
-    <main className="atlas-shell">
+    <main className={`atlas-shell${sidebarOpen ? "" : " is-sidebar-collapsed"}`}>
       <header className="atlas-header">
         <div className="brand-mark" aria-hidden="true">◎</div>
         <div>
@@ -1168,6 +1180,17 @@ export default function Home() {
             </button>
           </p>
         </footer>
+        <button
+          className="sidebar-toggle"
+          type="button"
+          aria-expanded={sidebarOpen}
+          aria-label={sidebarOpen ? "Hide map filters" : "Show map filters"}
+          onClick={() => setSidebarOpen((open) => !open)}
+        >
+          <svg viewBox="0 0 12 18" aria-hidden="true">
+            <path d={sidebarOpen ? "m8 3-5 6 5 6" : "m4 3 5 6-5 6"} />
+          </svg>
+        </button>
       </aside>
 
       <dialog
