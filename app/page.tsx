@@ -614,6 +614,7 @@ export default function Home() {
   const [loadedImageKey, setLoadedImageKey] = useState<string | null>(null);
   const [failedImageKey, setFailedImageKey] = useState<string | null>(null);
   const [expandedRegionEntryId, setExpandedRegionEntryId] = useState<string | null>(null);
+  const [relatedLevelsOpen, setRelatedLevelsOpen] = useState(true);
   const [expandedLevelNotesId, setExpandedLevelNotesId] = useState<string | null>(null);
   const [levelNotes, setLevelNotes] = useState<{
     levelId: string;
@@ -635,7 +636,7 @@ export default function Home() {
   const leaflet = useRef<typeof import("leaflet") | null>(null);
   const mediaDialog = useRef<HTMLDialogElement>(null);
   const infoDialog = useRef<HTMLDialogElement>(null);
-  const intelCard = useRef<HTMLElement>(null);
+  const intelCard = useRef<HTMLDivElement>(null);
 
   const groups = data.groups;
   const games = useMemo(() => {
@@ -1230,7 +1231,8 @@ export default function Home() {
           </aside>
         )}
 
-        <article className={`intel-card${levelNotesExpanded ? " has-open-briefing" : ""}`} ref={intelCard}>
+        <div className={`intel-column${levelNotesExpanded ? " has-open-briefing" : ""}`} ref={intelCard}>
+        <article className="intel-card">
           <div className="mission-heading">
             <LevelModeIcon multiplayer={selected.entry.modes.includes("multiplayer")} />
             <FittedLevelTitle>{selected.entry.title}</FittedLevelTitle>
@@ -1414,42 +1416,58 @@ export default function Home() {
               <span><small>Level briefing</small><strong>Research &amp; historical context</strong></span>
             </button>
           </section>
-          {regionalLevels.length > 0 && (
-            <div
-              className={`intel-entries${regionLevelsExpanded ? " is-expanded" : ""}`}
-              id="regional-level-list"
-            >
-              {visibleRegionalLevels.map((entry) => (
-                <div className="intel-entry" key={entry.levelId}>
-                  <button onClick={() => selectEntry(selected.group, entry)}><strong>{entry.title}</strong><span>{locationName(entry)} · {entry.game}</span></button>
-                  <a href={entry.wiki} target="_blank" rel="noreferrer" aria-label={`Open ${entry.title} on CoD Wiki`}>↗</a>
-                </div>
-              ))}
-              {hiddenRegionalLevelCount > 0 && (
-                <button
-                  className="more-row"
-                  type="button"
-                  aria-expanded="false"
-                  aria-controls="regional-level-list"
-                  onClick={() => setExpandedRegionEntryId(selected.entry.id)}
-                >
-                  + {hiddenRegionalLevelCount} more {hiddenRegionalLevelCount === 1 ? "level" : "levels"} in this region
-                </button>
-              )}
-              {regionLevelsExpanded && regionalLevels.length > 8 && (
-                <button
-                  className="more-row is-collapse"
-                  type="button"
-                  aria-expanded="true"
-                  aria-controls="regional-level-list"
-                  onClick={() => setExpandedRegionEntryId(null)}
-                >
-                  Show fewer
-                </button>
-              )}
-            </div>
-          )}
         </article>
+        {regionalLevels.length > 0 && (
+          <aside className={`related-levels-panel${relatedLevelsOpen ? "" : " is-collapsed"}`} aria-label="Related levels">
+            <button
+              className="related-levels-toggle"
+              type="button"
+              aria-expanded={relatedLevelsOpen}
+              aria-controls="regional-level-list"
+              onClick={() => setRelatedLevelsOpen((open) => !open)}
+            >
+              <span>Related levels</span>
+              <small>{regionalLevels.length}</small>
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4 6 4 4 4-4" /></svg>
+            </button>
+            {relatedLevelsOpen && (
+              <div
+                className={`intel-entries${regionLevelsExpanded ? " is-expanded" : ""}`}
+                id="regional-level-list"
+              >
+                {visibleRegionalLevels.map((entry) => (
+                  <div className="intel-entry" key={entry.levelId}>
+                    <button onClick={() => selectEntry(selected.group, entry)}><strong>{entry.title}</strong><span>{locationName(entry)} · {entry.game}</span></button>
+                    <a href={entry.wiki} target="_blank" rel="noreferrer" aria-label={`Open ${entry.title} on CoD Wiki`}>↗</a>
+                  </div>
+                ))}
+                {hiddenRegionalLevelCount > 0 && (
+                  <button
+                    className="more-row"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="regional-level-list"
+                    onClick={() => setExpandedRegionEntryId(selected.entry.id)}
+                  >
+                    + {hiddenRegionalLevelCount} more {hiddenRegionalLevelCount === 1 ? "level" : "levels"} in this region
+                  </button>
+                )}
+                {regionLevelsExpanded && regionalLevels.length > 8 && (
+                  <button
+                    className="more-row is-collapse"
+                    type="button"
+                    aria-expanded="true"
+                    aria-controls="regional-level-list"
+                    onClick={() => setExpandedRegionEntryId(null)}
+                  >
+                    Show fewer
+                  </button>
+                )}
+              </div>
+            )}
+          </aside>
+        )}
+        </div>
 
         {selectedImage && (
           <dialog
