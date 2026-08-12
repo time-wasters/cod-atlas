@@ -6479,16 +6479,24 @@
           "wiki": "https://callofduty.fandom.com/wiki/Bois_Jacques",
           "wikiArticle": "codwiki-bois-jacques",
           "country": "Belgium",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Foy",
+          "region": "Wallonia",
+          "landmark": "Bois Jacques Battlefield",
           "coordinates": [
-            50.83333333,
-            4
+            50.036,
+            5.75186
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "approximate",
+          "confidence": "high",
+          "method": "manual-approximate",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Bois+Jacques+Battlefield%2C+Foy%2C+Belgium"
+            },
+            {
+              "wikipedia": "https://fr.wikipedia.org/wiki/Foy_(Bastogne)"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -6505,16 +6513,24 @@
           "wiki": "https://callofduty.fandom.com/wiki/Crossroads_(United_Offensive)",
           "wikiArticle": "codwiki-crossroads-united-offensive",
           "country": "Belgium",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Foy",
+          "region": "Wallonia",
+          "landmark": "Foy crossroads and Chapelle Sainte-Barbe",
           "coordinates": [
-            50.83333333,
-            4
+            50.04467,
+            5.7493
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "approximate",
+          "confidence": "medium",
+          "method": "manual-approximate",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Chapelle+Sainte-Barbe%2C+Foy%2C+Bastogne%2C+Belgium"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Foy%2C_Belgium"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -6588,16 +6604,24 @@
           "wiki": "https://callofduty.fandom.com/wiki/Foy_(Campaign)",
           "wikiArticle": "codwiki-foy-campaign",
           "country": "Belgium",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Foy",
+          "region": "Wallonia",
+          "landmark": "Chapelle Sainte-Barbe and Foy crossroads",
           "coordinates": [
-            50.83333333,
-            4
+            50.04467,
+            5.7493
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "exact",
+          "confidence": "high",
+          "method": "verified-landmark",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Chapelle+Sainte-Barbe%2C+Foy%2C+Bastogne%2C+Belgium"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Foy%2C_Belgium"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -6666,16 +6690,24 @@
           "wiki": "https://callofduty.fandom.com/wiki/Noville",
           "wikiArticle": "codwiki-noville",
           "country": "Belgium",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Noville",
+          "region": "Wallonia",
+          "landmark": "Saint-Étienne Church and Noville crossroads",
           "coordinates": [
-            50.83333333,
-            4
+            50.06337,
+            5.761
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "exact",
+          "confidence": "high",
+          "method": "verified-landmark",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=%C3%89glise+Saint-%C3%89tienne%2C+Noville%2C+Bastogne%2C+Belgium"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Noville%2C_Bastogne"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -32016,7 +32048,7 @@
     "levels": 967,
     "entries": 987,
     "mapped": 957,
-    "cityMatched": 120,
-    "countryFallback": 837
+    "cityMatched": 124,
+    "countryFallback": 833
   }
 }
