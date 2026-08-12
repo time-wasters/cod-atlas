@@ -13206,16 +13206,24 @@
           "wiki": "https://callofduty.fandom.com/wiki/Reichswald",
           "wikiArticle": "codwiki-reichswald",
           "country": "Germany",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Keppeln",
+          "region": "North Rhine-Westphalia",
+          "landmark": "St. Jodokus Church",
           "coordinates": [
-            51,
-            9
+            51.689688,
+            6.26856
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "exact",
+          "confidence": "high",
+          "method": "verified-landmark",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=St.+Jodokus+Church%2C+Keppeln%2C+Uedem%2C+Germany"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Uedem"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -13232,16 +13240,24 @@
           "wiki": "https://callofduty.fandom.com/wiki/Rhine_Crossing",
           "wikiArticle": "codwiki-rhine-crossing",
           "country": "Germany",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Hamminkeln",
+          "region": "North Rhine-Westphalia",
+          "landmark": "Evangelische Kirche Hamminkeln",
           "coordinates": [
-            51,
-            9
+            51.73086,
+            6.59038
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "approximate",
+          "confidence": "medium",
+          "method": "manual-approximate",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Evangelische+Kirche+Hamminkeln%2C+Hamminkeln%2C+Germany"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Hamminkeln"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -18186,15 +18202,23 @@
           "wikiArticle": "codwiki-arnhem-assault",
           "country": "Netherlands",
           "city": "Arnhem",
-          "region": null,
-          "landmark": null,
+          "region": "Gelderland",
+          "landmark": "John Frost Bridge",
           "coordinates": [
-            51.98,
-            5.91111
+            51.97472,
+            5.91194
           ],
-          "precision": "city",
+          "precision": "exact",
           "confidence": "high",
-          "method": "title-mention",
+          "method": "verified-landmark",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=John+Frost+Bridge%2C+Arnhem%2C+Netherlands"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/John_Frost_Bridge"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -18212,15 +18236,23 @@
           "wikiArticle": "codwiki-arnhem-fire",
           "country": "Netherlands",
           "city": "Arnhem",
-          "region": null,
-          "landmark": null,
+          "region": "Gelderland",
+          "landmark": "John Frost Bridge",
           "coordinates": [
-            51.98,
-            5.91111
+            51.97472,
+            5.91194
           ],
-          "precision": "city",
+          "precision": "exact",
           "confidence": "high",
-          "method": "title-mention",
+          "method": "verified-landmark",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=John+Frost+Bridge%2C+Arnhem%2C+Netherlands"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/John_Frost_Bridge"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -18289,16 +18321,24 @@
           "wiki": "https://callofduty.fandom.com/wiki/Hunner_Park",
           "wikiArticle": "codwiki-hunner-park",
           "country": "Netherlands",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Nijmegen",
+          "region": "Gelderland",
+          "landmark": "Monument in het Hunnerpark",
           "coordinates": [
-            52.5,
-            5.75
+            51.847036,
+            5.872769
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "exact",
+          "confidence": "high",
+          "method": "verified-landmark",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Monument+in+het+Hunnerpark%2C+Nijmegen%2C+Netherlands"
+            },
+            {
+              "wikipedia": "https://nl.wikipedia.org/wiki/Hunnerpark"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -18443,16 +18483,24 @@
           "wiki": "https://callofduty.fandom.com/wiki/River_Crossing",
           "wikiArticle": "codwiki-river-crossing",
           "country": "Netherlands",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Lent (Nijmegen)",
+          "region": "Gelderland",
+          "landmark": "Waal Crossing Memorial",
           "coordinates": [
-            52.5,
-            5.75
+            51.863761,
+            5.847231
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "exact",
+          "confidence": "high",
+          "method": "verified-landmark",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Waal+Crossing+Memorial%2C+Oosterhoutsedijk%2C+Lent%2C+Netherlands"
+            },
+            {
+              "wikipedia": "https://nl.wikipedia.org/wiki/Waaloversteek-monument"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -18469,16 +18517,24 @@
           "wiki": "https://callofduty.fandom.com/wiki/Sloedam",
           "wikiArticle": "codwiki-sloedam",
           "country": "Netherlands",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Arnemuiden",
+          "region": "Zeeland",
+          "landmark": "5th Canadian Infantry Brigade Memorial, Sloedam",
           "coordinates": [
-            52.5,
-            5.75
+            51.502181,
+            3.705059
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "exact",
+          "confidence": "high",
+          "method": "verified-landmark",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Sloedam+Memorial%2C+Postweg%2C+Arnemuiden%2C+Netherlands"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Battle_of_Walcheren_Causeway"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -18547,16 +18603,24 @@
           "wiki": "https://callofduty.fandom.com/wiki/Walcheren",
           "wikiArticle": "codwiki-walcheren",
           "country": "Netherlands",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Arnemuiden",
+          "region": "Zeeland",
+          "landmark": "Walcheren-side end of the former Sloedam",
           "coordinates": [
-            52.5,
-            5.75
+            51.502082,
+            3.687976
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "approximate",
+          "confidence": "medium",
+          "method": "manual-approximate",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Sloedam%2C+Arnemuiden%2C+Netherlands"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Walcheren"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -18600,15 +18664,23 @@
           "wikiArticle": "codwiki-woensdrecht",
           "country": "Netherlands",
           "city": "Woensdrecht",
-          "region": null,
-          "landmark": null,
+          "region": "North Brabant",
+          "landmark": "Col. Whitakerplein",
           "coordinates": [
-            51.42897,
-            4.30355
+            51.42913,
+            4.30436
           ],
-          "precision": "city",
+          "precision": "exact",
           "confidence": "high",
-          "method": "title",
+          "method": "verified-landmark",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Col.+Whitakerplein%2C+Woensdrecht%2C+Netherlands"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Woensdrecht_(village)"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -31944,7 +32016,7 @@
     "levels": 967,
     "entries": 987,
     "mapped": 957,
-    "cityMatched": 114,
-    "countryFallback": 843
+    "cityMatched": 120,
+    "countryFallback": 837
   }
 }
