@@ -634,6 +634,7 @@ export default function Home() {
   const mapImageOverlayLevelId = useRef<string | null>(null);
   const mapImageOverlayOpacity = useRef(0);
   const mapImageOverlayAnimation = useRef<number | null>(null);
+  const sidebarSelectionTarget = useRef<[number, number] | null>(null);
   const leaflet = useRef<typeof import("leaflet") | null>(null);
   const mediaDialog = useRef<HTMLDialogElement>(null);
   const infoDialog = useRef<HTMLDialogElement>(null);
@@ -770,6 +771,13 @@ export default function Home() {
     setExpandedLevelNotesId(null);
   }, []);
 
+  const selectSidebarGroup = useCallback((group: Group) => {
+    const entry = group.entries[0];
+    if (!entry) return;
+    sidebarSelectionTarget.current = group.coordinates ?? entry.coordinates ?? null;
+    selectEntry(group, entry);
+  }, [selectEntry]);
+
   const toggleLevelNotes = useCallback(() => {
     const levelId = selected.entry.levelId;
     if (expandedLevelNotesId === levelId) {
@@ -900,6 +908,29 @@ export default function Home() {
     const selectedIsVisible = filtered.some((group) =>
       group.entries.some((entry) => entry.id === selected.entry.id));
     if (selected.entry.coordinates && selectedIsVisible && mapNode.current) {
+      const sidebarTarget = sidebarSelectionTarget.current;
+      if (sidebarTarget) {
+        sidebarSelectionTarget.current = null;
+        const padding = mapViewportPadding(mapNode.current, intelCard.current);
+        const size = currentMap.getSize();
+        const visibleCenter = [
+          (padding.paddingTopLeft[0] + size.x - padding.paddingBottomRight[0]) / 2,
+          (padding.paddingTopLeft[1] + size.y - padding.paddingBottomRight[1]) / 2,
+        ] as [number, number];
+        const mapCenter = [size.x / 2, size.y / 2] as [number, number];
+        const zoom = currentMap.getZoom();
+        const targetPoint = currentMap.project(sidebarTarget, zoom);
+        const centeredTarget = currentMap.unproject(targetPoint.add([
+          mapCenter[0] - visibleCenter[0],
+          mapCenter[1] - visibleCenter[1],
+        ]), zoom);
+        currentMap.stop();
+        currentMap.panTo(centeredTarget, {
+          animate: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+          duration: .45,
+        });
+        return;
+      }
       currentMap.panInside(
         selected.entry.coordinates,
         mapViewportPadding(mapNode.current, intelCard.current),
@@ -1145,7 +1176,7 @@ export default function Home() {
               <button
                 key={`${group.name}-${index}`}
                 className={group.name === selected.group.name ? "location-row is-selected" : "location-row"}
-                onClick={() => selectEntry(group, group.entries[0])}
+                onClick={() => selectSidebarGroup(group)}
               >
                 <i className="location-marker-icon" aria-hidden="true" />
                 <span><b>{group.name}</b><small>{group.entries.length} appearances</small></span>
