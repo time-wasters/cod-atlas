@@ -634,7 +634,10 @@ export default function Home() {
   const mapImageOverlayLevelId = useRef<string | null>(null);
   const mapImageOverlayOpacity = useRef(0);
   const mapImageOverlayAnimation = useRef<number | null>(null);
-  const sidebarSelectionTarget = useRef<[number, number] | null>(null);
+  const sidebarSelectionTarget = useRef<{
+    bounds: [number, number][];
+    maxZoom: number;
+  } | null>(null);
   const leaflet = useRef<typeof import("leaflet") | null>(null);
   const mediaDialog = useRef<HTMLDialogElement>(null);
   const infoDialog = useRef<HTMLDialogElement>(null);
@@ -774,7 +777,17 @@ export default function Home() {
   const selectSidebarGroup = useCallback((group: Group) => {
     const entry = group.entries[0];
     if (!entry) return;
-    sidebarSelectionTarget.current = group.coordinates ?? entry.coordinates ?? null;
+    const coordinates = group.entries.flatMap((candidate) => candidate.coordinates ? [candidate.coordinates] : []);
+    const fallbackCoordinate = group.coordinates ?? entry.coordinates ?? null;
+    const bounds = coordinates.length ? coordinates : fallbackCoordinate ? [fallbackCoordinate] : [];
+    const maxZoom = group.entries.some((candidate) => ["country", "off-world"].includes(candidate.precision))
+      ? 5
+      : group.entries.some((candidate) => candidate.precision === "region")
+        ? 6
+        : group.entries.some((candidate) => candidate.precision === "city")
+          ? 8
+          : 10;
+    sidebarSelectionTarget.current = bounds.length ? { bounds, maxZoom } : null;
     selectEntry(group, entry);
   }, [selectEntry]);
 
@@ -912,23 +925,15 @@ export default function Home() {
       if (sidebarTarget) {
         sidebarSelectionTarget.current = null;
         const padding = mapViewportPadding(mapNode.current, intelCard.current);
-        const size = currentMap.getSize();
-        const visibleCenter = [
-          (padding.paddingTopLeft[0] + size.x - padding.paddingBottomRight[0]) / 2,
-          (padding.paddingTopLeft[1] + size.y - padding.paddingBottomRight[1]) / 2,
-        ] as [number, number];
-        const mapCenter = [size.x / 2, size.y / 2] as [number, number];
-        const zoom = currentMap.getZoom();
-        const targetPoint = currentMap.project(sidebarTarget, zoom);
-        const centeredTarget = currentMap.unproject(targetPoint.add([
-          mapCenter[0] - visibleCenter[0],
-          mapCenter[1] - visibleCenter[1],
-        ]), zoom);
         currentMap.stop();
-        currentMap.panTo(centeredTarget, {
+        const movement = {
+          ...padding,
+          maxZoom: sidebarTarget.maxZoom,
           animate: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-          duration: .45,
-        });
+          duration: .55,
+        };
+        if (movement.animate) currentMap.flyToBounds(sidebarTarget.bounds, movement);
+        else currentMap.fitBounds(sidebarTarget.bounds, movement);
         return;
       }
       currentMap.panInside(
