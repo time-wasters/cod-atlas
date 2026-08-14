@@ -46,8 +46,8 @@ guidance, and copy-ready templates for every source record type.
 
 Create a Markdown file under the primary game's directory. If that game is
 already organized by map type, place it in `campaign/` or `multiplayer/` to
-match its `mode` field. Currently `cod` uses these subdirectories; games that
-have not been reorganized retain their existing flat layout.
+match its `mode` field. Currently `cod` and `cod-uo` use these subdirectories;
+games that have not been reorganized retain their existing flat layout.
 
 Campaign files in a map-type layout are named
 `<order>-<level-slug>.md`, starting at `1` without leading zeros or gaps.
