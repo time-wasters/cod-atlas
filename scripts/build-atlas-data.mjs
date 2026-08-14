@@ -363,7 +363,7 @@ for (const level of levels) {
       title: level.title,
       game: gameCodes,
       gameIds: [...level.games],
-      campaign: level.campaign ?? null,
+      ...(level.campaign ? { campaign: level.campaign } : {}),
       wiki: article.sourceUrl,
       wikiArticle: level.wikiArticle,
       country: location.country,

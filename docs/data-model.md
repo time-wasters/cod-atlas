@@ -70,12 +70,19 @@ Required fields:
 - `wikiArticle`: foreign key to a Wiki import record.
 - `locations`: one or more embedded location records.
 
+Optional level fields include `campaign`, a grouping with a stable string `id`
+and a human-readable `label`.
+
 One level can embed multiple locations. Each location has a locally unique
 `id`, a country, and normally coordinates. Optional geographic detail follows
 the hierarchy `country` → `region` → `city` → `landmark`. A region may be a
 state, province, constituent country, island, territory, or similar area;
 landmarks are named sites such as rivers, castles, and buildings. Coordinates
 are not deduplicated across levels.
+
+Campaign metadata identifies the named campaign section that contains a level;
+it is separate from the numeric play-order prefix in campaign filenames. Keep
+the ID stable even if the display label is later corrected or translated.
 
 Precision values:
 

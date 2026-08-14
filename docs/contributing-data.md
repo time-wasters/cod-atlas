@@ -51,9 +51,22 @@ filesystem metadata only: do not add it to the stable level `id` or title.
 | `title` | yes | Display name of the level or map. |
 | `games` | yes | One or more IDs from `content/games/`; put the primary/earliest release first. |
 | `mode` | yes | `singleplayer` or `multiplayer`. |
+| `campaign` | no | Named campaign grouping as a stable string `id` and display `label`. |
 | `wikiArticle` | yes | ID of a separate Wiki import JSON record. |
 | `locations` | yes | One or more locations owned by this level. Never reference a shared place. |
 | Markdown body | no | Concise research, ambiguity, or editorial notes. |
+
+For a level that belongs to a named campaign section, use an embedded campaign
+object. This grouping is independent from the level's numeric play-order
+filename prefix:
+
+```yaml
+campaign:
+  id: "1"
+  label: American Campaign
+```
+
+Campaign IDs are strings and should remain stable if a label changes.
 
 Each location requires `id`, `country`, `precision`, `confidence`, and `method`.
 The location ID only needs to be unique within its level. The geographic
