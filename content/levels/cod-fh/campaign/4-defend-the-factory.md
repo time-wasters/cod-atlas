@@ -21,24 +21,23 @@ locations:
       - googleMaps: https://www.google.com/maps/search/?api=1&query=Volgograd+Tractor+Plant%2C+Volgograd%2C+Russia
       - wikipedia: https://en.wikipedia.org/wiki/Volgograd_Tractor_Plant
 historyOverlays:
-  - id: the-li-army-corps-assault-14-15-october-1942.png
-    image: /images/maps/cod-fh/4-defend-the-factory/altavilla.png
+  - id: the-li-army-corps-assault-14-15-october-1942
+    image: /images/maps/cod-fh/4-defend-the-factory/the-li-army-corps-assault-14-15-october-1942.png
     opacity: 0.72
     corners:
       topLeft: [48.82027881, 44.57762708]
       topRight: [48.81103475, 44.63242629]
-      bottomLeft: [48.77092579, 44.61682983]
-      bottomRight: [48.78017725, 44.56203062]
+      bottomLeft: [48.78017725, 44.56203062]
+      bottomRight: [48.77092579, 44.61682983]
     attribution:
-      title: "Call of Duty: Roads to Victory — Altavilla loading-screen map"
-      source: "Directly extracted from Call of Duty: Roads to Victory by plp-gtr."
-      sourceUrl: https://github.com/time-wasters/cod-atlas/blob/main/public/images/maps/rtv/altavilla.png
-      extractedBy: plp-gtr
-      extractedByUrl: https://github.com/plp-gtr
-      copyrightHolder: Activision Publishing, Inc.
+      title: "Map 1. The LI Army Corps' assault, 14–15 October 1942"
+      source: "David M. Glantz, ‘The Struggle for Stalingrad City: Opposing Orders of Battle, Combat Orders and Reports, and Operational and Tactical Maps. Part 2: The Fight for Stalingrad's Factory District—14 October–18 November 1942,’ The Journal of Slavic Military Studies 21(2), 2008, pp. 377–471."
+      sourceUrl: https://www.tandfonline.com/doi/full/10.1080/13518040802067383
+      author: David M. Glantz
+      copyrightHolder: Taylor & Francis Group, LLC
       rights: non-free
-      rightsNotice: "The extraction is contributed to CoD Atlas; the underlying copyrighted game artwork remains the property of Activision and is used for identification and geographic comparison."
-      rightsNoticeUrl: https://www.activision.com/legal/terms-of-use
+      rightsNotice: "This non-free map figure is reproduced for historical identification and geographic comparison. It remains subject to the copyright and reuse terms of its author and publisher and is not relicensed by CoD Atlas."
+      rightsNoticeUrl: https://www.tandfonline.com/doi/full/10.1080/13518040802067383
 ---
 
 > **AI-generated research note:** The historical summary below was generated
@@ -141,7 +140,7 @@ real factory.
 - [Volgograd city archive: 80th anniversary of victory at Stalingrad](https://gorarhiv.volgadmin.ru/files/K-80-let-pobedi-v-Stalingradskoy-bitve_mr87i1x1.pdf)
   — October 3 chronology and the reinforcements sent to the Tractor Factory
   sector.
-- [David Glantz: “The Fight for Stalingrad's Factory District”](https://www.tandfonline.com/doi/abs/10.1080/13518040802067383)
+- [David Glantz: “The Fight for Stalingrad's Factory District”](https://www.tandfonline.com/doi/full/10.1080/13518040802067383)
   — operational reports for the October 14 assault and the formations fighting
   in the factory district.
 - [Volgograd regional heritage register](https://base.garant.ru/20103909/53f89421bbdaf741eb2d1ecc4ddb4c33/)

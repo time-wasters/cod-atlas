@@ -250,3 +250,25 @@ test("keeps calibrated game-map overlays in a separate generated store", async (
   assert.equal(scavengerHunt.attribution.extractedBy, "plp-gtr");
   await access(new URL(`../public${scavengerHunt.image}`, import.meta.url));
 });
+
+test("keeps clickable historical overlays in a separate generated store", async () => {
+  const { default: overlays } = await import("../app/data/history-overlays.generated.json", {
+    with: { type: "json" },
+  });
+  const factoryOverlay = overlays["cod-fh-defend-the-factory"][0];
+  assert.equal(factoryOverlay.id, "the-li-army-corps-assault-14-15-october-1942");
+  assert.equal(
+    factoryOverlay.image,
+    "/images/maps/cod-fh/4-defend-the-factory/the-li-army-corps-assault-14-15-october-1942.png",
+  );
+  assert.deepEqual(factoryOverlay.corners, {
+    topLeft: [48.82027881, 44.57762708],
+    topRight: [48.81103475, 44.63242629],
+    bottomLeft: [48.78017725, 44.56203062],
+    bottomRight: [48.77092579, 44.61682983],
+  });
+  assert.equal(factoryOverlay.attribution.author, "David M. Glantz");
+  assert.equal(factoryOverlay.attribution.copyrightHolder, "Taylor & Francis Group, LLC");
+  assert.equal(factoryOverlay.attribution.rights, "non-free");
+  await access(new URL(`../public${factoryOverlay.image}`, import.meta.url));
+});

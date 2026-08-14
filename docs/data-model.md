@@ -111,6 +111,17 @@ non-free rights attribution. The compiler validates these fields and writes
 them to the separate `app/data/map-overlays.generated.json` browser store;
 overlay data is not added to the main atlas JSON.
 
+Optional `historyOverlays` attach one or more geographically calibrated
+historical figures to images embedded in the level's research Markdown. Each
+record has a stable ID, a local PNG under `public/images/maps/`, opacity, four
+corners, and complete author, publication, copyright, and non-free-rights
+attribution. The Markdown body must embed the corresponding PNG filename.
+The compiler validates both the image and that body reference, then writes the
+records to `app/data/history-overlays.generated.json`. The frontend renders a
+matching Markdown image as a control that can place or remove that historical
+figure on the live map. History-overlay data remains separate from the main
+atlas JSON and from game-map overlays.
+
 ## Wiki import record
 
 The stable `id` is the foreign-key target. Import-oriented fields include:

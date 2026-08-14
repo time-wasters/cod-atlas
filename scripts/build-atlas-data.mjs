@@ -9,6 +9,7 @@ const contentRoot = path.join(root, "content");
 const levelsRoot = path.join(contentRoot, "levels");
 const outputPath = path.join(root, "app/data/atlas.generated.json");
 const mapOverlaysOutputPath = path.join(root, "app/data/map-overlays.generated.json");
+const historyOverlaysOutputPath = path.join(root, "app/data/history-overlays.generated.json");
 const levelBannersRoot = path.join(root, "public/images/levels");
 const checkOnly = process.argv.includes("--check");
 const validModes = new Set(["singleplayer", "multiplayer"]);
@@ -145,6 +146,39 @@ async function validateMapOverlay(overlay, levelId, filename) {
   };
 }
 
+async function validateHistoryOverlay(overlay, levelId, body, filename) {
+  requireValue(overlay && typeof overlay === "object" && !Array.isArray(overlay), `${filename}: each historyOverlay must be an object`);
+  requireValue(/^[a-z0-9-]+$/.test(overlay.id ?? ""), `${filename}: historyOverlay.id must use lowercase letters, numbers and hyphens`);
+  requireValue(/^\/images\/maps\/[a-z0-9/_-]+\.png$/.test(overlay.image ?? ""), `${filename}: historyOverlay.image must be a local PNG under /images/maps/`);
+  requireValue(Number.isFinite(overlay.opacity) && overlay.opacity > 0 && overlay.opacity <= 1, `${filename}: historyOverlay.opacity must be greater than 0 and at most 1`);
+  for (const corner of ["topLeft", "topRight", "bottomLeft", "bottomRight"]) {
+    const coordinates = overlay.corners?.[corner];
+    requireValue(Array.isArray(coordinates) && coordinates.length === 2, `${filename}: historyOverlay.corners.${corner} must be [latitude, longitude]`);
+    requireValue(Number.isFinite(coordinates[0]) && coordinates[0] >= -90 && coordinates[0] <= 90, `${filename}: historyOverlay.corners.${corner} latitude is invalid`);
+    requireValue(Number.isFinite(coordinates[1]) && coordinates[1] >= -180 && coordinates[1] <= 180, `${filename}: historyOverlay.corners.${corner} longitude is invalid`);
+  }
+  const attribution = overlay.attribution;
+  requireValue(attribution?.title && attribution.source && attribution.sourceUrl, `${filename}: historyOverlay attribution title, source and sourceUrl are required`);
+  requireValue(attribution.author, `${filename}: historyOverlay attribution author is required`);
+  requireValue(attribution.copyrightHolder, `${filename}: historyOverlay copyright holder is required`);
+  requireValue(attribution.rights === "non-free", `${filename}: historyOverlay attribution rights must be non-free`);
+  requireValue(attribution.rightsNotice && attribution.rightsNoticeUrl, `${filename}: historyOverlay non-free rights notice and URL are required`);
+  for (const field of ["sourceUrl", "rightsNoticeUrl"]) validateHttpsUrl(attribution[field], `historyOverlay.attribution.${field}`, filename);
+  const imageFilename = path.join(root, "public", ...overlay.image.slice(1).split("/"));
+  const image = await readFile(imageFilename);
+  requireValue(image.length >= 8 && image[0] === 0x89 && image.toString("ascii", 1, 4) === "PNG", `${filename}: ${overlay.image} is not a PNG image`);
+  const markdownImage = path.posix.basename(overlay.image);
+  requireValue(body.includes(`](${markdownImage})`), `${filename}: historyOverlay ${overlay.id} must be referenced as ![...](${markdownImage}) in the Markdown body`);
+  return {
+    levelId,
+    id: overlay.id,
+    image: overlay.image,
+    opacity: overlay.opacity,
+    corners: overlay.corners,
+    attribution,
+  };
+}
+
 const atlas = YAML.parse(await readFile(path.join(contentRoot, "atlas.yaml"), "utf8"));
 const gameFiles = (await filesBelow(path.join(contentRoot, "games"), ".yaml")).sort();
 const levelFiles = (await filesBelow(levelsRoot, ".md")).sort();
@@ -215,6 +249,7 @@ for (const filename of wikiFiles) {
 
 const levels = [];
 const mapOverlays = {};
+const historyOverlays = {};
 const levelBanners = {};
 const usedLevelBannerBases = new Set();
 const levelIds = new Set();
@@ -297,6 +332,16 @@ for (const filename of levelFiles) {
   requireValue(wikiArticles.has(level.wikiArticle), `${filename}: unknown wikiArticle ${level.wikiArticle}`);
   requireValue(Array.isArray(level.locations) && level.locations.length, `${filename}: locations must be a non-empty list`);
   if (level.mapOverlay) mapOverlays[level.id] = await validateMapOverlay(level.mapOverlay, level.id, filename);
+  if (level.historyOverlays != null) {
+    requireValue(Array.isArray(level.historyOverlays) && level.historyOverlays.length, `${filename}: historyOverlays must be a non-empty array`);
+    const historyOverlayIds = new Set();
+    historyOverlays[level.id] = [];
+    for (const overlay of level.historyOverlays) {
+      requireValue(!historyOverlayIds.has(overlay?.id), `${filename}: duplicate historyOverlay id ${overlay?.id}`);
+      historyOverlayIds.add(overlay?.id);
+      historyOverlays[level.id].push(await validateHistoryOverlay(overlay, level.id, body, filename));
+    }
+  }
   const locationIds = new Set();
   for (const location of level.locations) {
     requireValue(location.id && !locationIds.has(location.id), `${filename}: duplicate or missing location id`);
@@ -409,15 +454,19 @@ const compiled = {
 };
 const serialized = `${JSON.stringify(compiled, null, 2)}\n`;
 const mapOverlaysSerialized = `${JSON.stringify(mapOverlays, null, 2)}\n`;
+const historyOverlaysSerialized = `${JSON.stringify(historyOverlays, null, 2)}\n`;
 
 if (checkOnly) {
   const existing = await readFile(outputPath, "utf8");
   requireValue(existing === serialized, "app/data/atlas.generated.json is stale; run npm run data:build");
   const existingMapOverlays = await readFile(mapOverlaysOutputPath, "utf8");
   requireValue(existingMapOverlays === mapOverlaysSerialized, "app/data/map-overlays.generated.json is stale; run npm run data:build");
+  const existingHistoryOverlays = await readFile(historyOverlaysOutputPath, "utf8");
+  requireValue(existingHistoryOverlays === historyOverlaysSerialized, "app/data/history-overlays.generated.json is stale; run npm run data:build");
 } else {
   await writeFile(outputPath, serialized);
   await writeFile(mapOverlaysOutputPath, mapOverlaysSerialized);
+  await writeFile(historyOverlaysOutputPath, historyOverlaysSerialized);
 }
 
 for (const bannerBase of levelBannerFilesByBase.keys()) {

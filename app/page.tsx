@@ -5,6 +5,7 @@ import * as Select from "@radix-ui/react-select";
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import ReactMarkdown from "react-markdown";
 import atlasSource from "./data/atlas.generated.json";
+import historyOverlaysSource from "./data/history-overlays.generated.json";
 import mapOverlaysSource from "./data/map-overlays.generated.json";
 
 type Entry = {
@@ -78,6 +79,10 @@ function locationPath(entry: Entry) {
   return [entry.country, entry.region, entry.city, entry.landmark].filter(Boolean).join(" › ");
 }
 
+function imageBasename(source: string) {
+  return source.split(/[?#]/, 1)[0].split("/").at(-1) ?? source;
+}
+
 function atlasMarkerIcon(L: typeof import("leaflet"), entry: Entry, active: boolean) {
   const cityLevel = !["country", "off-world"].includes(entry.precision);
   return L.divIcon({
@@ -128,6 +133,23 @@ type MapOverlayRecord = {
     rightsNoticeUrl: string;
   };
 };
+type HistoryOverlayRecord = {
+  levelId: string;
+  id: string;
+  image: string;
+  opacity: number;
+  corners: MapOverlayRecord["corners"];
+  attribution: {
+    title: string;
+    source: string;
+    sourceUrl: string;
+    author: string;
+    copyrightHolder: string;
+    rights: "non-free";
+    rightsNotice: string;
+    rightsNoticeUrl: string;
+  };
+};
 type AtlasData = {
   games: Game[];
   levelBanners: Record<string, WikiImage>;
@@ -147,6 +169,7 @@ type Selection = { group: Group; entry: Entry };
 type CountryOption = Pick<Group, "name" | "flagCode"> & { available: boolean };
 
 const data = atlasSource as AtlasData;
+const historyOverlays = historyOverlaysSource as Record<string, HistoryOverlayRecord[]>;
 const mapOverlays = mapOverlaysSource as Record<string, MapOverlayRecord>;
 const gamesById = new Map(data.games.map((game) => [game.id, game]));
 const EXTERNAL_ICONS_PREFERENCE = "cod-atlas:external-game-icons";
@@ -173,6 +196,39 @@ function setExternalIconsEnabled(enabled: boolean) {
   externalIconPreferenceListeners.forEach((listener) => listener());
 }
 const MAP_MAX_ZOOM = 18;
+
+function animateMapOverlayOpacity(
+  overlay: import("leaflet").ImageOverlay.Rotated,
+  target: number,
+  animationRef: { current: number | null },
+  opacityRef: { current: number },
+  onComplete?: () => void,
+) {
+  if (animationRef.current !== null) cancelAnimationFrame(animationRef.current);
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    overlay.setOpacity(target);
+    opacityRef.current = target;
+    animationRef.current = null;
+    onComplete?.();
+    return;
+  }
+  const start = opacityRef.current;
+  const startedAt = performance.now();
+  const tick = (now: number) => {
+    const progress = Math.min(1, (now - startedAt) / 320);
+    const eased = 1 - (1 - progress) ** 3;
+    const opacity = start + (target - start) * eased;
+    overlay.setOpacity(opacity);
+    opacityRef.current = opacity;
+    if (progress < 1) animationRef.current = requestAnimationFrame(tick);
+    else {
+      animationRef.current = null;
+      onComplete?.();
+    }
+  };
+  animationRef.current = requestAnimationFrame(tick);
+}
+
 const EXTERNAL_LINK_ICON_PATHS = {
   googleMaps: "M19.527 4.799c1.212 2.608.937 5.678-.405 8.173-1.101 2.047-2.744 3.74-4.098 5.614-.619.858-1.244 1.75-1.669 2.727-.141.325-.263.658-.383.992-.121.333-.224.673-.34 1.008-.109.314-.236.684-.627.687h-.007c-.466-.001-.579-.53-.695-.887-.284-.874-.581-1.713-1.019-2.525-.51-.944-1.145-1.817-1.79-2.671L19.527 4.799zM8.545 7.705l-3.959 4.707c.724 1.54 1.821 2.863 2.871 4.18.247.31.494.622.737.936l4.984-5.925-.029.01c-1.741.601-3.691-.291-4.392-1.987a3.377 3.377 0 0 1-.209-.716c-.063-.437-.077-.761-.004-1.198l.001-.007zM5.492 3.149l-.003.004c-1.947 2.466-2.281 5.88-1.117 8.77l4.785-5.689-.058-.05-3.607-3.035zM14.661.436l-3.838 4.563a.295.295 0 0 1 .027-.01c1.6-.551 3.403.15 4.22 1.626.176.319.323.683.377 1.045.068.446.085.773.012 1.22l-.003.016 3.836-4.561A8.382 8.382 0 0 0 14.67.439l-.009-.003zM9.466 5.868L14.162.285l-.047-.012A8.31 8.31 0 0 0 11.986 0a8.439 8.439 0 0 0-6.169 2.766l-.016.018 3.665 3.084z",
   wikipedia: "M12.09 13.119c-.936 1.932-2.217 4.548-2.853 5.728-.616 1.074-1.127.931-1.532.029-1.406-3.321-4.293-9.144-5.651-12.409-.251-.601-.441-.987-.619-1.139-.181-.15-.554-.24-1.122-.271C.103 5.033 0 4.982 0 4.898v-.455l.052-.045c.924-.005 5.401 0 5.401 0l.051.045v.434c0 .119-.075.176-.225.176l-.564.031c-.485.029-.727.164-.727.436 0 .135.053.33.166.601 1.082 2.646 4.818 10.521 4.818 10.521l.136.046 2.411-4.81-.482-1.067-1.658-3.264s-.318-.654-.428-.872c-.728-1.443-.712-1.518-1.447-1.617-.207-.023-.313-.05-.313-.149v-.468l.06-.045h4.292l.113.037v.451c0 .105-.076.15-.227.15l-.308.047c-.792.061-.661.381-.136 1.422l1.582 3.252 1.758-3.504c.293-.64.233-.801.111-.947-.07-.084-.305-.22-.812-.24l-.201-.021c-.052 0-.098-.015-.145-.051-.045-.031-.067-.076-.067-.129v-.427l.061-.045c1.247-.008 4.043 0 4.043 0l.059.045v.436c0 .121-.059.178-.193.178-.646.03-.782.095-1.023.439-.12.186-.375.589-.646 1.039l-2.301 4.273-.065.135 2.792 5.712.17.048 4.396-10.438c.154-.422.129-.722-.064-.895-.197-.172-.346-.273-.857-.295l-.42-.016c-.061 0-.105-.014-.152-.045-.043-.029-.072-.075-.072-.119v-.436l.059-.045h4.961l.041.045v.437c0 .119-.074.18-.209.18-.648.03-1.127.18-1.443.421-.314.255-.557.616-.736 1.067 0 0-4.043 9.258-5.426 12.339-.525 1.007-1.053.917-1.503-.031-.571-1.171-1.773-3.786-2.646-5.71l.053-.036z",
@@ -612,6 +668,7 @@ export default function Home() {
   const [failedExternalGameIcons, setFailedExternalGameIcons] = useState<Set<string>>(() => new Set());
   const [failedLevelBanners, setFailedLevelBanners] = useState<Set<string>>(() => new Set());
   const [disabledMapOverlays, setDisabledMapOverlays] = useState<Set<string>>(() => new Set());
+  const [activeHistoryOverlay, setActiveHistoryOverlay] = useState<{ levelId: string; id: string } | null>(null);
   const externalIconsEnabled = useSyncExternalStore(
     subscribeToExternalIconPreference,
     externalIconsEnabledSnapshot,
@@ -643,6 +700,10 @@ export default function Home() {
   const mapImageOverlayLevelId = useRef<string | null>(null);
   const mapImageOverlayOpacity = useRef(0);
   const mapImageOverlayAnimation = useRef<number | null>(null);
+  const historyMapImageOverlay = useRef<import("leaflet").ImageOverlay.Rotated | null>(null);
+  const historyMapImageOverlayKey = useRef<string | null>(null);
+  const historyMapImageOverlayOpacity = useRef(0);
+  const historyMapImageOverlayAnimation = useRef<number | null>(null);
   const sidebarSelectionTarget = useRef<{
     bounds: [number, number][];
     maxZoom: number;
@@ -777,12 +838,43 @@ export default function Home() {
   const selectedLevelNotes = levelNotes?.levelId === selected.entry.levelId ? levelNotes : null;
   const selectedMapOverlay = mapOverlays[selected.entry.levelId] ?? null;
   const selectedMapOverlayEnabled = selectedMapOverlay !== null && !disabledMapOverlays.has(selected.entry.levelId);
+  const selectedHistoryOverlays = historyOverlays[selected.entry.levelId] ?? [];
+  const selectedHistoryOverlay = activeHistoryOverlay?.levelId === selected.entry.levelId
+    ? selectedHistoryOverlays.find((overlay) => overlay.id === activeHistoryOverlay.id) ?? null
+    : null;
 
   const selectEntry = useCallback((group: Group, entry: Entry) => {
     setSelected({ group, entry });
     setExpandedRegionEntryId(null);
     setExpandedLevelNotesId(null);
+    setActiveHistoryOverlay(null);
   }, []);
+
+  const toggleHistoryOverlay = useCallback((overlay: HistoryOverlayRecord) => {
+    const isActive = activeHistoryOverlay?.levelId === overlay.levelId
+      && activeHistoryOverlay.id === overlay.id;
+    if (isActive) {
+      setActiveHistoryOverlay(null);
+      return;
+    }
+    setActiveHistoryOverlay({ levelId: overlay.levelId, id: overlay.id });
+    if (!map.current || !leaflet.current || !mapNode.current) return;
+    const boundsCoordinates = [
+      overlay.corners.topLeft,
+      overlay.corners.topRight,
+      overlay.corners.bottomLeft,
+      overlay.corners.bottomRight,
+      ...(selected.entry.coordinates ? [selected.entry.coordinates] : []),
+    ];
+    const movement = {
+      ...mapViewportPadding(mapNode.current, intelCard.current),
+      animate: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+      duration: .55,
+    };
+    map.current.stop();
+    if (movement.animate) map.current.flyToBounds(boundsCoordinates, movement);
+    else map.current.fitBounds(boundsCoordinates, movement);
+  }, [activeHistoryOverlay, selected.entry.coordinates]);
 
   const selectSidebarGroup = useCallback((group: Group) => {
     const entry = group.entries[0];
@@ -898,6 +990,11 @@ export default function Home() {
       if (mapImageOverlayAnimation.current !== null) cancelAnimationFrame(mapImageOverlayAnimation.current);
       mapImageOverlayAnimation.current = null;
       mapImageOverlayOpacity.current = 0;
+      historyMapImageOverlay.current = null;
+      historyMapImageOverlayKey.current = null;
+      if (historyMapImageOverlayAnimation.current !== null) cancelAnimationFrame(historyMapImageOverlayAnimation.current);
+      historyMapImageOverlayAnimation.current = null;
+      historyMapImageOverlayOpacity.current = 0;
       leaflet.current = null;
     };
   }, []);
@@ -998,27 +1095,6 @@ export default function Home() {
 
   useEffect(() => {
     if (!mapReady || !map.current || !leaflet.current) return;
-    const animateOpacity = (overlay: import("leaflet").ImageOverlay.Rotated, target: number) => {
-      if (mapImageOverlayAnimation.current !== null) cancelAnimationFrame(mapImageOverlayAnimation.current);
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        overlay.setOpacity(target);
-        mapImageOverlayOpacity.current = target;
-        mapImageOverlayAnimation.current = null;
-        return;
-      }
-      const start = mapImageOverlayOpacity.current;
-      const startedAt = performance.now();
-      const tick = (now: number) => {
-        const progress = Math.min(1, (now - startedAt) / 320);
-        const eased = 1 - (1 - progress) ** 3;
-        const opacity = start + (target - start) * eased;
-        overlay.setOpacity(opacity);
-        mapImageOverlayOpacity.current = opacity;
-        if (progress < 1) mapImageOverlayAnimation.current = requestAnimationFrame(tick);
-        else mapImageOverlayAnimation.current = null;
-      };
-      mapImageOverlayAnimation.current = requestAnimationFrame(tick);
-    };
     if (!selectedMapOverlay) {
       if (mapImageOverlayAnimation.current !== null) cancelAnimationFrame(mapImageOverlayAnimation.current);
       mapImageOverlay.current?.remove();
@@ -1029,7 +1105,12 @@ export default function Home() {
       return;
     }
     if (mapImageOverlay.current && mapImageOverlayLevelId.current === selected.entry.levelId) {
-      animateOpacity(mapImageOverlay.current, selectedMapOverlayEnabled ? selectedMapOverlay.opacity : 0);
+      animateMapOverlayOpacity(
+        mapImageOverlay.current,
+        selectedMapOverlayEnabled ? selectedMapOverlay.opacity : 0,
+        mapImageOverlayAnimation,
+        mapImageOverlayOpacity,
+      );
       return;
     }
     if (mapImageOverlayAnimation.current !== null) cancelAnimationFrame(mapImageOverlayAnimation.current);
@@ -1051,8 +1132,73 @@ export default function Home() {
     mapImageOverlay.current = overlay;
     mapImageOverlayLevelId.current = selected.entry.levelId;
     mapImageOverlayOpacity.current = 0;
-    animateOpacity(overlay, selectedMapOverlayEnabled ? selectedMapOverlay.opacity : 0);
+    animateMapOverlayOpacity(
+      overlay,
+      selectedMapOverlayEnabled ? selectedMapOverlay.opacity : 0,
+      mapImageOverlayAnimation,
+      mapImageOverlayOpacity,
+    );
   }, [mapReady, selected.entry.levelId, selected.entry.title, selectedMapOverlay, selectedMapOverlayEnabled]);
+
+  useEffect(() => {
+    if (!mapReady || !map.current || !leaflet.current) return;
+    if (!selectedHistoryOverlay) {
+      const existing = historyMapImageOverlay.current;
+      if (!existing) return;
+      animateMapOverlayOpacity(
+        existing,
+        0,
+        historyMapImageOverlayAnimation,
+        historyMapImageOverlayOpacity,
+        () => {
+          if (historyMapImageOverlay.current !== existing) return;
+          existing.remove();
+          historyMapImageOverlay.current = null;
+          historyMapImageOverlayKey.current = null;
+          historyMapImageOverlayOpacity.current = 0;
+        },
+      );
+      return;
+    }
+
+    const overlayKey = `${selectedHistoryOverlay.levelId}:${selectedHistoryOverlay.id}`;
+    if (historyMapImageOverlay.current && historyMapImageOverlayKey.current === overlayKey) {
+      animateMapOverlayOpacity(
+        historyMapImageOverlay.current,
+        selectedHistoryOverlay.opacity,
+        historyMapImageOverlayAnimation,
+        historyMapImageOverlayOpacity,
+      );
+      return;
+    }
+
+    if (historyMapImageOverlayAnimation.current !== null) {
+      cancelAnimationFrame(historyMapImageOverlayAnimation.current);
+    }
+    historyMapImageOverlay.current?.remove();
+    const imageUrl = new URL(selectedHistoryOverlay.image.replace(/^\/+/, ""), document.baseURI).href;
+    const overlay = leaflet.current.imageOverlay.rotated(
+      imageUrl,
+      selectedHistoryOverlay.corners.topLeft,
+      selectedHistoryOverlay.corners.topRight,
+      selectedHistoryOverlay.corners.bottomLeft,
+      {
+        opacity: 0,
+        interactive: false,
+        className: "history-map-overlay",
+        alt: selectedHistoryOverlay.attribution.title,
+      },
+    ).addTo(map.current);
+    historyMapImageOverlay.current = overlay;
+    historyMapImageOverlayKey.current = overlayKey;
+    historyMapImageOverlayOpacity.current = 0;
+    animateMapOverlayOpacity(
+      overlay,
+      selectedHistoryOverlay.opacity,
+      historyMapImageOverlayAnimation,
+      historyMapImageOverlayOpacity,
+    );
+  }, [mapReady, selectedHistoryOverlay]);
 
   useEffect(() => {
     if (!mapReady || !map.current || !mapNode.current) return;
@@ -1334,6 +1480,37 @@ export default function Home() {
                 <ReactMarkdown
                   components={{
                     a: ({ children, ...props }) => <a {...props} target="_blank" rel="noreferrer">{children}</a>,
+                    img: ({ src = "", alt = "" }) => {
+                      const historyOverlay = selectedHistoryOverlays.find(
+                        (overlay) => imageBasename(overlay.image) === imageBasename(src),
+                      );
+                      if (!historyOverlay) {
+                        // Markdown images are authored content and cannot use the Next image optimizer.
+                        // eslint-disable-next-line @next/next/no-img-element
+                        return <img src={src} alt={alt} />;
+                      }
+                      const isActive = selectedHistoryOverlay?.id === historyOverlay.id;
+                      const action = isActive ? "Hide from map" : "Show on map";
+                      const imageUrl = new URL(historyOverlay.image.replace(/^\/+/, ""), document.baseURI).href;
+                      return (
+                        <button
+                          className={`history-overlay-image${isActive ? " is-active" : ""}`}
+                          type="button"
+                          aria-pressed={isActive}
+                          aria-label={`${action}: ${historyOverlay.attribution.title}`}
+                          title={`${action}: ${historyOverlay.attribution.title}`}
+                          onClick={() => toggleHistoryOverlay(historyOverlay)}
+                        >
+                          {/* Repository-hosted research figures do not use the Next image optimizer. */}
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img src={imageUrl} alt={alt || historyOverlay.attribution.title} />
+                          <span>
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5Zm-9 9 9 5 9-5M3 16l9 5 9-5" /></svg>
+                            {action}
+                          </span>
+                        </button>
+                      );
+                    },
                   }}
                 >
                   {selectedLevelNotes.content}

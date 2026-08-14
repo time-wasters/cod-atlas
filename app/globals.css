@@ -402,6 +402,13 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
 .level-briefing-content li + li { margin-top: 7px; }
 .level-briefing-content a { color: #e3b451; text-decoration-color: #8f6d2c; text-underline-offset: 2px; }
 .level-briefing-content a:hover, .level-briefing-content a:focus-visible { color: #ffcf68; }
+.history-overlay-image { position: relative; width: 100%; display: block; overflow: hidden; border: 1px solid #656a57; border-radius: 4px; padding: 0; color: #e6ddc5; background: #f4f1e8; cursor: pointer; transition: border-color .15s ease, box-shadow .15s ease; }
+.history-overlay-image img { width: 100%; max-height: 420px; display: block; object-fit: contain; }
+.history-overlay-image span { position: absolute; right: 8px; bottom: 8px; display: flex; align-items: center; gap: 6px; border: 1px solid #8a805e; border-radius: 3px; padding: 6px 8px; color: #e7dec7; background: #11160eed; box-shadow: 0 3px 12px #0009; font: 700 8px var(--font-geist-mono), monospace; letter-spacing: .08em; text-transform: uppercase; }
+.history-overlay-image span svg { width: 15px; height: 15px; fill: none; stroke: var(--amber); stroke-linejoin: round; stroke-width: 1.5; }
+.history-overlay-image:hover, .history-overlay-image:focus-visible { border-color: var(--amber); box-shadow: 0 0 0 1px #d99a1c55; outline: none; }
+.history-overlay-image.is-active { border-color: var(--amber); box-shadow: 0 0 0 1px #d99a1c88, 0 5px 18px #0008; }
+.history-overlay-image.is-active span { border-color: #b27b1d; color: #fff2ce; background: #4b3514ed; }
 .level-briefing-content code { border: 1px solid #3d4335; border-radius: 2px; padding: 1px 3px; color: #e2d6b8; background: #0b0e0a; font: 10px var(--font-geist-mono), monospace; }
 .level-briefing-state { color: #858b78 !important; font-family: var(--font-geist-mono), monospace; }
 

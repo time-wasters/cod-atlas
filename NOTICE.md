@@ -46,6 +46,14 @@ property of its respective copyright holders. The images are included for
 identification and geographic comparison and are not relicensed under the
 project data license.
 
+## Historical research figures
+
+Repository-hosted historical maps and research figures retain their original
+copyright and attribution. Their source, author or creator, copyright holder,
+and applicable rights information are recorded with the corresponding level
+overlay data. Non-free figures are included for historical identification and
+geographic comparison and are not relicensed under the project data license.
+
 ## Interface icons
 
 The GitHub mark in the site footer is from
