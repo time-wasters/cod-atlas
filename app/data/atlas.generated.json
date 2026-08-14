@@ -4928,6 +4928,28 @@
       },
       "map": null
     },
+    "codwiki-safehouse": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/6/6d/Safehouse_Campaign.png/revision/latest?cb=20121005094619",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/6/6d/Safehouse_Campaign.png/revision/latest?cb=20121005094619",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Safehouse_Campaign.png",
+        "author": {
+          "name": "Synhart",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:Synhart",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
     "codwiki-saint-lo-level": {
       "main": {
         "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/9/9a/SaintLo.jpg/revision/latest?cb=20200810113548",
@@ -6366,6 +6388,28 @@
         "author": {
           "name": "SiPlus",
           "userUrl": "https://callofduty.fandom.com/wiki/User:SiPlus",
+          "role": "uploader"
+        },
+        "license": {
+          "name": null,
+          "url": null
+        },
+        "rights": {
+          "status": "non-free",
+          "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+          "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+        }
+      },
+      "map": null
+    },
+    "codwiki-vendetta": {
+      "main": {
+        "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/8/8e/Vendetta_WaW.png/revision/latest?cb=20121128132659",
+        "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/8/8e/Vendetta_WaW.png/revision/latest/scale-to-width-down/800?cb=20121128132659",
+        "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Vendetta_WaW.png",
+        "author": {
+          "name": "Synhart",
+          "userUrl": "https://callofduty.fandom.com/wiki/User:Synhart",
           "role": "uploader"
         },
         "license": {
@@ -8139,7 +8183,7 @@
           "gameIds": [
             "cod4"
           ],
-          "wiki": "https://callofduty.fandom.com/wiki/Safehouse",
+          "wiki": "https://callofduty.fandom.com/wiki/Safehouse_(level)",
           "wikiArticle": "codwiki-safehouse",
           "country": "Azerbaijan",
           "city": null,
@@ -24645,7 +24689,7 @@
           "gameIds": [
             "waw"
           ],
-          "wiki": "https://callofduty.fandom.com/wiki/Vendetta",
+          "wiki": "https://callofduty.fandom.com/wiki/Vendetta_(level)",
           "wikiArticle": "codwiki-vendetta",
           "country": "Russia",
           "city": null,
