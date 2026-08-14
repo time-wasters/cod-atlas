@@ -20,6 +20,25 @@ locations:
     urls:
       - googleMaps: https://www.google.com/maps/search/?api=1&query=Volgograd+Tractor+Plant%2C+Volgograd%2C+Russia
       - wikipedia: https://en.wikipedia.org/wiki/Volgograd_Tractor_Plant
+historyOverlays:
+  - id: the-li-army-corps-assault-14-15-october-1942.png
+    image: /images/maps/cod-fh/4-defend-the-factory/altavilla.png
+    opacity: 0.72
+    corners:
+      topLeft: [48.82027881, 44.57762708]
+      topRight: [48.81103475, 44.63242629]
+      bottomLeft: [48.77092579, 44.61682983]
+      bottomRight: [48.78017725, 44.56203062]
+    attribution:
+      title: "Call of Duty: Roads to Victory — Altavilla loading-screen map"
+      source: "Directly extracted from Call of Duty: Roads to Victory by plp-gtr."
+      sourceUrl: https://github.com/time-wasters/cod-atlas/blob/main/public/images/maps/rtv/altavilla.png
+      extractedBy: plp-gtr
+      extractedByUrl: https://github.com/plp-gtr
+      copyrightHolder: Activision Publishing, Inc.
+      rights: non-free
+      rightsNotice: "The extraction is contributed to CoD Atlas; the underlying copyrighted game artwork remains the property of Activision and is used for identification and geographic comparison."
+      rightsNoticeUrl: https://www.activision.com/legal/terms-of-use
 ---
 
 > **AI-generated research note:** The historical summary below was generated
@@ -76,6 +95,8 @@ The 37th Guards, 112th Rifle Division, 42nd Rifle Brigade, factory militia, and
 other Soviet formations fought in and around the plant. The mission compresses
 that later factory battle into October 3 and reduces a large, destructive
 combined-arms action to one sniper covering one returning tank crew.
+
+![Map: The LI Army Corps' assault, 14–15 October 1942](the-li-army-corps-assault-14-15-october-1942.png)
 
 The Panzerschreck teams are an additional anachronism. German development of
 that weapon followed the capture of American bazookas in North Africa in
