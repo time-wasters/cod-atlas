@@ -14,6 +14,10 @@ type Entry = {
   title: string;
   game: string;
   gameIds: string[];
+  campaign?: {
+    id: string;
+    label: string;
+  } | null;
   wiki: string;
   country: string;
   region?: string | null;
@@ -367,7 +371,7 @@ type SolarTargetId =
   | "deep-space";
 
 type SolarBody = {
-  id: Exclude<SolarTargetId, "moon" | "europa" | "titan" | "deep-space">;
+  id: Exclude<SolarTargetId, "sun" | "moon" | "europa" | "titan">;
   name: string;
   x: number;
   radius: number;
@@ -377,12 +381,13 @@ const solarBodies: SolarBody[] = [
   { id: "mercury", name: "Mercury", x: 82, radius: 3 },
   { id: "venus", name: "Venus", x: 123, radius: 5 },
   { id: "earth", name: "Earth", x: 168, radius: 5 },
-  { id: "mars", name: "Mars", x: 213, radius: 4 },
+  { id: "mars", name: "Mars", x: 226, radius: 4 },
   { id: "jupiter", name: "Jupiter", x: 267, radius: 14 },
   { id: "saturn", name: "Saturn", x: 330, radius: 11 },
   { id: "uranus", name: "Uranus", x: 389, radius: 7 },
   { id: "neptune", name: "Neptune", x: 437, radius: 7 },
   { id: "pluto", name: "Pluto", x: 478, radius: 3 },
+  { id: "deep-space", name: "Deep Space", x: 535, radius: 8 },
 ];
 
 const solarTargetPoints: Record<SolarTargetId, { x: number; y: number; radius: number }> = {
@@ -390,8 +395,8 @@ const solarTargetPoints: Record<SolarTargetId, { x: number; y: number; radius: n
   mercury: { x: 82, y: 116, radius: 3 },
   venus: { x: 123, y: 116, radius: 5 },
   earth: { x: 168, y: 116, radius: 5 },
-  moon: { x: 179, y: 123, radius: 2 },
-  mars: { x: 213, y: 116, radius: 4 },
+  moon: { x: 184, y: 124, radius: 2 },
+  mars: { x: 226, y: 116, radius: 4 },
   jupiter: { x: 267, y: 116, radius: 14 },
   europa: { x: 285, y: 126, radius: 2 },
   saturn: { x: 330, y: 116, radius: 11 },
@@ -399,7 +404,7 @@ const solarTargetPoints: Record<SolarTargetId, { x: number; y: number; radius: n
   uranus: { x: 389, y: 116, radius: 7 },
   neptune: { x: 437, y: 116, radius: 7 },
   pluto: { x: 478, y: 116, radius: 3 },
-  "deep-space": { x: 486, y: 32, radius: 2 },
+  "deep-space": { x: 535, y: 116, radius: 8 },
 };
 
 function solarTargetForEntry(entry: Entry): SolarTargetId {
@@ -427,6 +432,16 @@ function solarTargetForEntry(entry: Entry): SolarTargetId {
 
 function SolarPlanet({ body }: { body: SolarBody }) {
   const y = 116;
+
+  if (body.id === "deep-space") {
+    return (
+      <g className="solar-galaxy" transform={`translate(${body.x} ${y})`} aria-hidden="true">
+        <ellipse rx="15" ry="5" transform="rotate(-18)" />
+        <path d="M-12 5c4-11 18-13 25-4M-12-3c5 9 18 10 24 2" />
+        <circle r="2.2" />
+      </g>
+    );
+  }
 
   if (body.id === "saturn") {
     return (
@@ -489,7 +504,7 @@ function SolarSystemOverlay({
       aria-label="Solar System mission locations"
     >
       <div className="solar-system-panel" aria-hidden={!expanded}>
-        <svg viewBox="0 0 500 160" role="img" aria-labelledby="solar-system-title solar-system-description">
+        <svg viewBox="0 0 600 160" role="img" aria-labelledby="solar-system-title solar-system-description">
           <title id="solar-system-title">Solar System schematic</title>
           <desc id="solar-system-description">
             Reference planets with markers for filtered off-world Call of Duty levels.
@@ -502,21 +517,15 @@ function SolarSystemOverlay({
           </defs>
 
           <text className="solar-system-caption" x="11" y="15">Solar System // Schematic</text>
-          {(locationsByTarget.get("deep-space")?.length ?? 0) > 0 && (
-            <text className="solar-deep-space-label" x="489" y="15" textAnchor="end">
-              +{locationsByTarget.get("deep-space")?.length} Deep Space
-            </text>
-          )}
 
           <g className="solar-orbits" aria-hidden="true">
-            {solarBodies.map((body) => (
+            {solarBodies.filter((body) => body.id !== "deep-space").map((body) => (
               <ellipse key={body.id} cx="-42" cy="116" rx={body.x + 42} ry="147" />
             ))}
           </g>
 
           <g className="solar-sun" aria-hidden="true">
             <circle cx="-16" cy="116" r="55" />
-            <path d="M8 71q24 43 0 89M18 78q20 37 0 76" />
           </g>
 
           <g className="solar-labels" aria-hidden="true">
@@ -534,7 +543,7 @@ function SolarSystemOverlay({
 
           {solarBodies.map((body) => <SolarPlanet body={body} key={body.id} />)}
           <g className="solar-moons" aria-hidden="true">
-            <circle cx="179" cy="123" r="2" />
+            <circle cx="184" cy="124" r="2" />
             <circle cx="285" cy="126" r="2" />
             <circle cx="349" cy="126" r="2.5" />
           </g>

@@ -4,6 +4,9 @@ title: Pathfinder
 games:
   - cod
 mode: singleplayer
+campaign:
+  id: "1"
+  label: American Campaign
 wikiArticle: codwiki-pathfinder
 locations:
   - id: main

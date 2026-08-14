@@ -4,6 +4,9 @@ title: V-2 Rocket Site
 games:
   - cod
 mode: singleplayer
+campaign:
+  id: "4"
+  label: Epilogue
 wikiArticle: codwiki-v-2-rocket-site
 locations:
   - id: main

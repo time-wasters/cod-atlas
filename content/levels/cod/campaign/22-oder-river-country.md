@@ -4,6 +4,9 @@ title: Oder River Country
 games:
   - cod
 mode: singleplayer
+campaign:
+  id: "3"
+  label: Soviet Campaign
 wikiArticle: codwiki-oder-river-country
 locations:
   - id: main

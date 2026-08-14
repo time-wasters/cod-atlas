@@ -4,6 +4,9 @@ title: Warsaw Railyard
 games:
   - cod
 mode: singleplayer
+campaign:
+  id: "3"
+  label: Soviet Campaign
 wikiArticle: codwiki-warsaw-railyard
 locations:
   - id: main

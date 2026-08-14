@@ -4,6 +4,9 @@ title: Pegasus Bridge
 games:
   - cod
 mode: singleplayer
+campaign:
+  id: "2"
+  label: British Campaign
 wikiArticle: codwiki-pegasus-bridge
 locations:
   - id: main

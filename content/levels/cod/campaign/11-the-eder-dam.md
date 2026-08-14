@@ -4,6 +4,9 @@ title: The Eder Dam
 games:
   - cod
 mode: singleplayer
+campaign:
+  id: "2"
+  label: British Campaign
 wikiArticle: codwiki-the-eder-dam
 locations:
   - id: main

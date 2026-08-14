@@ -4,6 +4,9 @@ title: Red Square
 games:
   - cod
 mode: singleplayer
+campaign:
+  id: "3"
+  label: Soviet Campaign
 wikiArticle: codwiki-red-square-level
 locations:
   - id: main

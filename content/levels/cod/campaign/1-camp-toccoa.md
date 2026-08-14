@@ -4,6 +4,9 @@ title: Camp Toccoa
 games:
   - cod
 mode: singleplayer
+campaign:
+  id: "1"
+  label: American Campaign
 wikiArticle: codwiki-camp-toccoa
 locations:
   - id: main

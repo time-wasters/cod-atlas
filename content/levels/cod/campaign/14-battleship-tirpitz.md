@@ -4,6 +4,9 @@ title: Battleship Tirpitz
 games:
   - cod
 mode: singleplayer
+campaign:
+  id: "2"
+  label: British Campaign
 wikiArticle: codwiki-battleship-tirpitz-level
 locations:
   - id: main

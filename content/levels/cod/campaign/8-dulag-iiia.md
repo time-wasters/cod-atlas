@@ -4,6 +4,9 @@ title: Dulag IIIA
 games:
   - cod
 mode: singleplayer
+campaign:
+  id: "1"
+  label: American Campaign
 wikiArticle: codwiki-dulag-iiia
 locations:
   - id: main

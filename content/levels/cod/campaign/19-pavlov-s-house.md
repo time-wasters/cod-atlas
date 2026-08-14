@@ -4,6 +4,9 @@ title: Pavlov's House
 games:
   - cod
 mode: singleplayer
+campaign:
+  id: "3"
+  label: Soviet Campaign
 wikiArticle: codwiki-pavlov-s-house-level
 locations:
   - id: main

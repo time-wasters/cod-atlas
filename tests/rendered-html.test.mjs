@@ -96,6 +96,38 @@ test("preserves the complete statically compiled atlas", async () => {
   assert.ok(entries.every((entry) =>
     entry.modes.length === 1 && ["singleplayer", "multiplayer"].includes(entry.modes[0])));
 
+  const codCampaigns = new Map([
+    ["1", {
+      label: "American Campaign",
+      levels: ["Camp Toccoa", "Pathfinder", "Ste. Mere-Eglise", "Ste. Mere Eglise-Day", "Normandy Route N13", "Brecourt Manor", "Alps Chateau", "Dulag IIIA"],
+    }],
+    ["2", {
+      label: "British Campaign",
+      levels: ["Pegasus Bridge", "Pegasus Bridge-Day", "The Eder Dam", "Eder Dam Getaway", "Airfield Escape", "Battleship Tirpitz"],
+    }],
+    ["3", {
+      label: "Soviet Campaign",
+      levels: ["Stalingrad", "Red Square", "Train Station", "Stalingrad Sewers", "Pavlov's House", "Warsaw Factory", "Warsaw Railyard", "Oder River Country", "Oder River Town"],
+    }],
+    ["4", {
+      label: "Epilogue",
+      levels: ["Festung Recogne", "V-2 Rocket Site", "The Reichstag"],
+    }],
+  ]);
+  const uniqueCodCampaignLevels = new Map(entries
+    .filter((entry) => entry.gameIds.includes("cod") && entry.modes[0] === "singleplayer")
+    .map((entry) => [entry.levelId, entry]));
+  assert.equal(uniqueCodCampaignLevels.size, 26);
+  for (const [campaignId, campaign] of codCampaigns) {
+    for (const title of campaign.levels) {
+      assert.deepEqual(findEntry("COD", title).campaign, {
+        id: campaignId,
+        label: campaign.label,
+      });
+    }
+  }
+  assert.ok([...uniqueCodCampaignLevels.values()].every((entry) => codCampaigns.has(entry.campaign?.id)));
+
   assert.deepEqual(findEntry("COD2", "The Diversionary Raid").modes, ["singleplayer"]);
   assert.deepEqual(findEntry("COD2", "Holding the Line").modes, ["singleplayer"]);
   assert.deepEqual(findEntry("COD2", "Toujane").modes, ["multiplayer"]);

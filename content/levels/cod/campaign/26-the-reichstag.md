@@ -4,6 +4,9 @@ title: The Reichstag
 games:
   - cod
 mode: singleplayer
+campaign:
+  id: "4"
+  label: Epilogue
 wikiArticle: codwiki-the-reichstag
 locations:
   - id: main

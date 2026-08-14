@@ -4,6 +4,9 @@ title: Stalingrad
 games:
   - cod
 mode: singleplayer
+campaign:
+  id: "3"
+  label: Soviet Campaign
 wikiArticle: codwiki-stalingrad-level
 locations:
   - id: main

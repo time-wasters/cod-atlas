@@ -4,6 +4,9 @@ title: Eder Dam Getaway
 games:
   - cod
 mode: singleplayer
+campaign:
+  id: "2"
+  label: British Campaign
 wikiArticle: codwiki-eder-dam-getaway
 locations:
   - id: main

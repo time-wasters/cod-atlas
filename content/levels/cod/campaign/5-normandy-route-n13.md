@@ -4,6 +4,9 @@ title: Normandy Route N13
 games:
   - cod
 mode: singleplayer
+campaign:
+  id: "1"
+  label: American Campaign
 wikiArticle: codwiki-normandy-route-n13
 locations:
   - id: main

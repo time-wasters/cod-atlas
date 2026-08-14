@@ -4,6 +4,9 @@ title: Pegasus Bridge-Day
 games:
   - cod
 mode: singleplayer
+campaign:
+  id: "2"
+  label: British Campaign
 wikiArticle: codwiki-pegasus-bridge-day
 locations:
   - id: main

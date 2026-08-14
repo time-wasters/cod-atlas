@@ -4,6 +4,9 @@ title: Brecourt Manor
 games:
   - cod
 mode: singleplayer
+campaign:
+  id: "1"
+  label: American Campaign
 wikiArticle: codwiki-brecourt-manor
 locations:
   - id: main

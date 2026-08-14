@@ -4,6 +4,9 @@ title: Stalingrad Sewers
 games:
   - cod
 mode: singleplayer
+campaign:
+  id: "3"
+  label: Soviet Campaign
 wikiArticle: codwiki-stalingrad-sewers
 locations:
   - id: main

@@ -217,17 +217,18 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
 .solar-system-overlay.is-collapsed { transform: translateX(calc(-100% + 30px - var(--solar-inset))); }
 .solar-system-panel { min-width: 0; height: 100%; flex: 1; overflow: hidden; border: 1px solid #5c5f5399; border-radius: 5px 0 0 5px; color: #3f433a; background: #aaa795c7; backdrop-filter: grayscale(.35) sepia(.16) blur(1.5px); }
 .solar-system-panel svg { width: 100%; height: 100%; display: block; }
-.solar-system-caption, .solar-deep-space-label { fill: #484b41; font: 700 8px var(--font-geist-mono), monospace; letter-spacing: .13em; text-transform: uppercase; }
-.solar-deep-space-label { opacity: .72; }
+.solar-system-caption { fill: #484b41; font: 700 8px var(--font-geist-mono), monospace; letter-spacing: .13em; text-transform: uppercase; }
 .solar-orbits ellipse { fill: none; stroke: #55594c61; stroke-width: .8; stroke-dasharray: 2.2 3.5; }
 .solar-sun circle { fill: url("#solar-sun-fill"); stroke: #6d684d; stroke-width: 1.2; }
-.solar-sun path { fill: none; stroke: #756e4e88; stroke-width: .8; }
 .solar-labels text { fill: #000000; font: 500 10px "Noto Sans", Arial, sans-serif; letter-spacing: .015em; opacity: .88; }
 .solar-planet circle { fill: #7d7f70bd; stroke: #51554a; stroke-width: 1; }
 .solar-planet path { fill: none; stroke: #53574b; stroke-width: .75; stroke-linecap: round; opacity: .72; }
 .solar-planet.is-earth circle { fill: #818575cf; }
 .solar-planet.is-mars circle { fill: #817967cf; }
 .solar-planet.is-uranus circle, .solar-planet.is-neptune circle { fill: #79817acf; }
+.solar-galaxy ellipse { fill: #7d7f7066; stroke: #51554a; stroke-width: 1; }
+.solar-galaxy path { fill: none; stroke: #51554a; stroke-width: 1; stroke-linecap: round; }
+.solar-galaxy circle { fill: #65695c; stroke: #45493f; stroke-width: .7; }
 .solar-saturn-ring { fill: none; stroke: #53574b; stroke-width: 2; }
 .solar-moons circle { fill: #6c7062; stroke: #4e5247; stroke-width: .6; }
 .solar-location-marker { outline: none; cursor: pointer; }

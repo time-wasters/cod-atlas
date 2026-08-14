@@ -4,6 +4,9 @@ title: Ste. Mere Eglise-Day
 games:
   - cod
 mode: singleplayer
+campaign:
+  id: "1"
+  label: American Campaign
 wikiArticle: codwiki-ste-mere-eglise-day
 locations:
   - id: main

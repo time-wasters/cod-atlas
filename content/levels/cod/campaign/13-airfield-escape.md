@@ -4,6 +4,9 @@ title: Airfield Escape
 games:
   - cod
 mode: singleplayer
+campaign:
+  id: "2"
+  label: British Campaign
 wikiArticle: codwiki-airfield-escape
 locations:
   - id: main

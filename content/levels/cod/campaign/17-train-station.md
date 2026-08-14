@@ -4,6 +4,9 @@ title: Train Station
 games:
   - cod
 mode: singleplayer
+campaign:
+  id: "3"
+  label: Soviet Campaign
 wikiArticle: codwiki-train-station
 locations:
   - id: main

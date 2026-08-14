@@ -4,6 +4,9 @@ title: Festung Recogne
 games:
   - cod
 mode: singleplayer
+campaign:
+  id: "4"
+  label: Epilogue
 wikiArticle: codwiki-festung-recogne
 locations:
   - id: main

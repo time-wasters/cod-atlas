@@ -227,6 +227,20 @@ for (const filename of levelFiles) {
   requireValue(validModes.has(level.mode), `${filename}: invalid mode ${level.mode}`);
   requireValue(Array.isArray(level.games) && level.games.length, `${filename}: games must be a non-empty list`);
   for (const gameId of level.games) requireValue(games.has(gameId), `${filename}: unknown game ${gameId}`);
+  if (level.campaign != null) {
+    requireValue(
+      level.campaign && typeof level.campaign === "object" && !Array.isArray(level.campaign),
+      `${filename}: campaign must be an object`,
+    );
+    requireValue(
+      typeof level.campaign.id === "string" && level.campaign.id.trim(),
+      `${filename}: campaign id must be a non-empty string`,
+    );
+    requireValue(
+      typeof level.campaign.label === "string" && level.campaign.label.trim(),
+      `${filename}: campaign label must be a non-empty string`,
+    );
+  }
   const primaryGame = level.games[0];
   const idPrefix = `${primaryGame}-`;
   requireValue(level.id.startsWith(idPrefix), `${filename}: level id must start with primary game ${idPrefix}`);
@@ -349,6 +363,7 @@ for (const level of levels) {
       title: level.title,
       game: gameCodes,
       gameIds: [...level.games],
+      campaign: level.campaign ?? null,
       wiki: article.sourceUrl,
       wikiArticle: level.wikiArticle,
       country: location.country,

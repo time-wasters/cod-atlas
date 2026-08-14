@@ -4,6 +4,9 @@ title: Warsaw Factory
 games:
   - cod
 mode: singleplayer
+campaign:
+  id: "3"
+  label: Soviet Campaign
 wikiArticle: codwiki-warsaw-factory
 locations:
   - id: main

@@ -4,6 +4,9 @@ title: Oder River Town
 games:
   - cod
 mode: singleplayer
+campaign:
+  id: "3"
+  label: Soviet Campaign
 wikiArticle: codwiki-oder-river-town
 locations:
   - id: main
