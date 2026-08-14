@@ -12,6 +12,10 @@ const mapOverlaysOutputPath = path.join(root, "app/data/map-overlays.generated.j
 const levelBannersRoot = path.join(root, "public/images/levels");
 const checkOnly = process.argv.includes("--check");
 const validModes = new Set(["singleplayer", "multiplayer"]);
+const mapTypeDirectoryByMode = new Map([
+  ["singleplayer", "campaign"],
+  ["multiplayer", "multiplayer"],
+]);
 const validPrecisions = new Set(["exact", "approximate", "city", "region", "country", "off-world"]);
 const validConfidences = new Set(["high", "medium", "fallback"]);
 const validMethods = new Set([
@@ -144,6 +148,10 @@ async function validateMapOverlay(overlay, levelId, filename) {
 const atlas = YAML.parse(await readFile(path.join(contentRoot, "atlas.yaml"), "utf8"));
 const gameFiles = (await filesBelow(path.join(contentRoot, "games"), ".yaml")).sort();
 const levelFiles = (await filesBelow(levelsRoot, ".md")).sort();
+const gamesWithMapTypeDirectories = new Set(levelFiles.flatMap((filename) => {
+  const parts = path.relative(levelsRoot, filename).split(path.sep);
+  return parts.length === 3 ? [parts[0]] : [];
+}));
 const wikiFiles = (await filesBelow(path.join(contentRoot, "wiki-import/articles"), ".json")).sort();
 let levelBannerFiles = [];
 try {
@@ -221,7 +229,10 @@ for (const filename of levelFiles) {
   const primaryGame = level.games[0];
   const idPrefix = `${primaryGame}-`;
   requireValue(level.id.startsWith(idPrefix), `${filename}: level id must start with primary game ${idPrefix}`);
-  const expectedFilename = path.join(levelsRoot, primaryGame, `${level.id.slice(idPrefix.length)}.md`);
+  const levelSlugFilename = `${level.id.slice(idPrefix.length)}.md`;
+  const expectedFilename = gamesWithMapTypeDirectories.has(primaryGame)
+    ? path.join(levelsRoot, primaryGame, mapTypeDirectoryByMode.get(level.mode), levelSlugFilename)
+    : path.join(levelsRoot, primaryGame, levelSlugFilename);
   requireValue(filename === expectedFilename, `${filename}: expected level path ${expectedFilename}`);
   const levelBannerBase = path.relative(levelsRoot, filename).replaceAll("\\", "/").replace(/\.md$/, "");
   const levelBannerFilename = levelBannerFilesByBase.get(levelBannerBase);

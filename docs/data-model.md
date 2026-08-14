@@ -35,6 +35,22 @@ optional `public/images/games/<game-id>.png` is detected during the build and
 exposed as the game's `icon`; games without one continue to display their
 label.
 
+## Level source layout
+
+Level files use one of two directory layouts while map-type folders are rolled
+out incrementally:
+
+```text
+content/levels/<primary-game>/<level-slug>.md
+content/levels/<primary-game>/<map-type>/<level-slug>.md
+```
+
+A game must use one layout consistently. The first `Call of Duty` (`cod`) uses
+`campaign/` for records whose `mode` is `singleplayer` and `multiplayer/` for
+records whose `mode` is `multiplayer`. Games that have not been reorganized
+remain flat. Map types are broad content categories; they are distinct from
+multiplayer rule sets such as deathmatch or capture the flag.
+
 ## Level record
 
 The YAML frontmatter contains structured data; the Markdown body contains
@@ -104,8 +120,10 @@ required for an article image.
 The generated atlas exposes displayable media once per Wiki article through
 the top-level `wikiMedia` object, rather than duplicating it for every marker.
 
-Repository-hosted level banners live at
-`public/images/levels/<primary-game>/<level-filename>.jpg` (or `.png`). The
+Repository-hosted level banners mirror the level source layout under
+`public/images/levels/`, using either
+`<primary-game>/<level-filename>.jpg` or
+`<primary-game>/<map-type>/<level-filename>.jpg` (PNG is also supported). The
 build validates their file signatures and matching level Markdown paths, then
 exposes them through `levelBanners`. The frontend prefers these banners and
 uses imported Wiki media when no local banner exists or a local image fails to

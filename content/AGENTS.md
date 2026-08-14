@@ -3,9 +3,15 @@
 These instructions apply to everything under `content/`.
 
 - Treat files here as curated source data.
-- Levels live in `levels/<primary-game>/<level-slug>.md` and own their embedded
-  marker locations. The stable `id` is `<primary-game>-<level-slug>`; do not
-  repeat the game prefix in the filename.
+- Levels own their embedded marker locations. Games that have been organized
+  by map type use `levels/<primary-game>/<map-type>/<level-slug>.md`; games not
+  yet reorganized retain `levels/<primary-game>/<level-slug>.md`. Do not mix
+  the two layouts within one game. `cod` uses `campaign` for records with
+  `mode: singleplayer` and `multiplayer` for records with
+  `mode: multiplayer`.
+- The stable `id` remains `<primary-game>-<level-slug>` in either layout; do
+  not include the map-type directory or repeat the game prefix in the ID or
+  filename.
 - Do not create or reference a separate place entity.
 - Every `games` ID must resolve to `games/<id>.yaml`.
 - Every `wikiArticle` ID must resolve to

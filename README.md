@@ -1,148 +1,23 @@
 # CoD Atlas
 
-An open, static atlas of real-world locations represented on an interactive map.
+An open, static atlas of real-world locations represented on an interactive
+map.
 
-## Content model
+## Documentation
 
-The website has no database and no write API: Git is the source of truth, so data corrections can be reviewed as normal pull requests.
+Start with [CONTRIBUTING.md](CONTRIBUTING.md) for project setup, development,
+data changes, validation, and the pull-request workflow.
 
-```text
-content/
-├── atlas.yaml                 # catalog metadata
-├── games/                     # one YAML file per game
-├── levels/<game>/<level>.md   # one MD file per level
-└── wiki-import/articles/      # machine-oriented Wiki import records
-```
+Detailed references:
 
-A level owns its marker coordinates. There is deliberately no shared `place` table: two levels in Berlin, for example, may point to different buildings.
-Leaflet can group nearby markers for display at low zoom without changing their source coordinates.
+- [Atlas data model](docs/data-model.md)
+- [Data contribution guide](docs/contributing-data.md)
+- [Running npm commands through Docker](docs/docker-commands.md)
+- [Wiki import command](docs/wiki-import.md)
+- [AI instructions for level map research](docs/map-research-ai-instructions.md)
+- [Level templates](docs/templates/)
 
-Example level:
+## Licensing and attribution
 
-```md
----
-id: cod3-laison-river
-title: Laison River
-games:
-  - cod3
-mode: singleplayer
-wikiArticle: codwiki-laison-river
-locations:
-  - id: main
-    label: Laizon River near Falaise
-    country: France
-    region: Normandy
-    city: Falaise
-    latitude: 48.944742
-    longitude: -0.229523
-    precision: approximate
-    confidence: medium
-    method: manual-approximate
-    primary: true
----
-
-Historical or editorial notes can live here.
-```
-
-One level can contain several `locations`. Coordinate precision is one of `exact`, `approximate`, `city`, `region`, `country`, or `off-world`.
-
-Wiki import files remain separate so an automated refresh cannot silently overwrite curated coordinates, classifications, or historical notes. Each record has a stable local ID and placeholders for the Fandom page ID, revision, location links, map style, main image, map image, image detail pages, authors or uploaders, licenses or non-free rights notices, and raw import payload.
-
-Optional game icons live under `public/images/games/` as
-`<game-id>.png`. The details pane uses an icon when present and keeps the game
-name as a fallback while the remaining icons are being created.
-
-## Editing data
-
-1. Edit or add a file under `content/levels/`.
-2. Add a referenced game or Wiki import record when needed.
-3. Run `npm run data:build` to validate relationships and regenerate the compact
-   browser dataset.
-   Without host npm, run
-   `docker compose run --rm cod-atlas-tools npm run data:build`.
-4. Open a pull request with both the source change and regenerated
-   `app/data/atlas.generated.json`.
-
-The build fails for duplicate IDs, missing foreign keys, invalid modes, incomplete coordinate pairs, or stale generated data.
-
-## Run with Docker
-
-Requires Docker with the Compose plugin. Build the static site and start it in a background container with one command:
-
-Copy `.env.example` to `.env` when customizing ports or opting into external
-services. Wiki importing is intentionally unconfigured by default.
-
-```sh
-docker compose up --build -d
-```
-
-Open [http://localhost:8080](http://localhost:8080). To stop and remove the
-container, run:
-
-```sh
-docker compose down
-```
-
-All runtime resources have deterministic names: project, service, container, and hostname `cod-atlas`; image `cod-atlas:local`; and bridge network `cod-atlas-network`. The service explicitly uses no Docker volumes. Docker still assigns its mandatory internal IDs, but no command relies on them.
-
-Set `COD_ATLAS_PORT` in your shell or a local `.env` file before starting the container to use a host port other than `8080`. Re-run the startup command after source or content changes to rebuild the static site.
-
-## Local development with Node.js
-
-Requires Node.js 22.13 or newer.
-
-```sh
-npm ci
-npm run dev
-```
-
-Docker equivalent (no host Node.js/npm required):
-
-```sh
-docker compose build cod-atlas-tools
-docker compose run --rm --service-ports cod-atlas-tools npm run dev -- --port 3000
-```
-
-See [Docker npm commands](docs/docker-commands.md) for the reusable command
-pattern and all common equivalents.
-
-Useful commands and their Docker equivalents are listed in
-[Docker npm commands](docs/docker-commands.md). The manual Wiki importer has a
-separate [command reference](docs/wiki-import.md).
-
-The finished `dist-static/` directory can be uploaded as-is by CI. No Supabase or other database service is required.
-
-The included GitHub Actions workflow validates every pull request and attaches the static website as a downloadable build artifact on `main`.
-
-## Codex and VSCodium
-
-Codex automatically reads the repository instructions in `AGENTS.md`. The instructions preserve the data architecture, required checks, and licensing rules so a new session can begin without repeating the project history.
-
-After opening the repository in VSCodium:
-
-```sh
-npm ci
-codex
-```
-
-If npm is unavailable, replace `npm ci` with
-`docker compose build cod-atlas-tools`; `codex` itself still runs on the host.
-
-Sign in to Codex with ChatGPT when prompted. Use **Terminal → Run Task** for one-click data validation, tests, development, and static builds. Personal model, login, and approval settings are intentionally not committed.
-
-See `CONTRIBUTING.md` for the pull-request workflow and `docs/data-model.md` for the complete content relationships.
-
-## License
-
-- Source code: GNU Affero General Public License v3.0 only (`AGPL-3.0-only`). Modified versions offered over a network must provide the corresponding source under the same license.
-- Original project data and editorial content: Creative Commons Attribution-ShareAlike 4.0 International (`CC-BY-SA-4.0`).
-- Third-party Wiki material and media retain their original licenses and attribution requirements. See `NOTICE.md`.
-
-`LICENSE-DATA` applies to original material under `content/` and the generated `app/data/atlas.generated.json`, to the extent copyright or database rights apply. It does not relicense third-party material.
-
-## Provenance
-
-The project was inspired by
-[u/robracer97's CoD location post](https://www.reddit.com/r/CallOfDuty/comments/10c3jbd/cod_every_location_visited_in_the_cod_franchise/).
-CoD Wiki links and imported metadata remain subject to their source
-pages' licensing and attribution requirements.
+See the [source-code license](LICENSE), [data license](LICENSE-DATA), and
+[notices and attribution](NOTICE.md).

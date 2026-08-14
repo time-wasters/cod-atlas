@@ -44,7 +44,10 @@ See the [data contribution guide](docs/contributing-data.md) for every field,
 all allowed `mode`, `precision`, `confidence`, and `method` values, selection
 guidance, and copy-ready templates for every source record type.
 
-Create a Markdown file under the primary game's directory:
+Create a Markdown file under the primary game's directory. If that game is
+already organized by map type, place it in `campaign/` or `multiplayer/` to
+match its `mode` field. Currently `cod` uses these subdirectories; games that
+have not been reorganized retain their existing flat layout.
 
 Name it `<level-slug>.md` without repeating the primary game ID. For example,
 an `id` of `cod3-example-level` belongs at

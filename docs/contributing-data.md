@@ -11,8 +11,8 @@ Without host npm, use
 | Record | Source path | Template |
 | --- | --- | --- |
 | Game | `content/games/<game-id>.yaml` | [game.yaml](templates/game.yaml) |
-| Terrestrial level | `content/levels/<primary-game>/<level-slug>.md` | [level-terrestrial.md](templates/level-terrestrial.md) |
-| Off-world level | `content/levels/<primary-game>/<level-slug>.md` | [level-off-world.md](templates/level-off-world.md) |
+| Terrestrial level | `content/levels/<primary-game>/<level-slug>.md` or `content/levels/<primary-game>/<map-type>/<level-slug>.md` | [level-terrestrial.md](templates/level-terrestrial.md) |
+| Off-world level | `content/levels/<primary-game>/<level-slug>.md` or `content/levels/<primary-game>/<map-type>/<level-slug>.md` | [level-off-world.md](templates/level-off-world.md) |
 | Wiki import | `content/wiki-import/articles/<article-id>.json` | [wiki-article.json](templates/wiki-article.json) |
 
 Most contributions only change a level. Add a game only if it does not exist,
@@ -28,6 +28,14 @@ disclosure and required Markdown headings.
 The primary-game directory supplies the filename's game prefix. For example,
 the level ID `cod3-laison-river` belongs at
 `content/levels/cod3/laison-river.md`, not `cod3/cod3-laison-river.md`.
+
+Map-type directories are being introduced one game at a time. A reorganized
+game must use them for every level: `campaign/` contains records with
+`mode: singleplayer`, while `multiplayer/` contains records with
+`mode: multiplayer`. The `cod` directory uses this structure. Other games
+retain their current flat layout until they are deliberately reorganized.
+These directory names describe broad map types, not multiplayer rule sets such
+as deathmatch or capture the flag.
 
 ## Level fields
 

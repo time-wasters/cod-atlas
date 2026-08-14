@@ -8952,32 +8952,6 @@
       "flagCode": null,
       "entries": [
         {
-          "id": "cod-uo-bomber:main",
-          "levelId": "cod-uo-bomber",
-          "locationId": "main",
-          "title": "Bomber",
-          "game": "UO",
-          "gameIds": [
-            "cod-uo"
-          ],
-          "wiki": "https://callofduty.fandom.com/wiki/Bomber_(United_Offensive)",
-          "wikiArticle": "codwiki-bomber-united-offensive",
-          "country": "English Channel",
-          "city": null,
-          "region": null,
-          "landmark": null,
-          "coordinates": [
-            50.2,
-            -1.2
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "region-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
           "id": "wwii-uss-texas:main",
           "levelId": "wwii-uss-texas",
           "locationId": "main",
@@ -15927,16 +15901,24 @@
           "wiki": "https://callofduty.fandom.com/wiki/Sicily_1",
           "wikiArticle": "codwiki-sicily-1",
           "country": "Italy",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Syracuse",
+          "region": "Sicily",
+          "landmark": "Lamba Doria Battery",
           "coordinates": [
-            42.83333333,
-            12.83333333
+            37.005444,
+            15.327433
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "approximate",
+          "confidence": "high",
+          "method": "manual-approximate",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Batteria+Lamba+Doria%2C+Siracusa%2C+Italy"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Capo_Murro_di_Porco_Lighthouse"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -15945,7 +15927,7 @@
           "id": "cod-uo-sicily-2:main",
           "levelId": "cod-uo-sicily-2",
           "locationId": "main",
-          "title": "Sicily 2",
+          "title": "Sicily Chase",
           "game": "UO",
           "gameIds": [
             "cod-uo"
@@ -15953,16 +15935,24 @@
           "wiki": "https://callofduty.fandom.com/wiki/Sicily_Chase",
           "wikiArticle": "codwiki-sicily-2",
           "country": "Italy",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Syracuse",
+          "region": "Sicily",
+          "landmark": "Masseria Damerio",
           "coordinates": [
-            42.83333333,
-            12.83333333
+            37.010063,
+            15.318188
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "approximate",
+          "confidence": "medium",
+          "method": "manual-approximate",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Masseria+Damerio%2C+Siracusa%2C+Italy"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Capo_Murro_di_Porco_Lighthouse"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -18290,6 +18280,40 @@
           ]
         },
         {
+          "id": "cod-uo-bomber:main",
+          "levelId": "cod-uo-bomber",
+          "locationId": "main",
+          "title": "Bomber",
+          "game": "UO",
+          "gameIds": [
+            "cod-uo"
+          ],
+          "wiki": "https://callofduty.fandom.com/wiki/Bomber_(United_Offensive)",
+          "wikiArticle": "codwiki-bomber-united-offensive",
+          "country": "Netherlands",
+          "city": "Rotterdam",
+          "region": "South Holland",
+          "landmark": null,
+          "coordinates": [
+            51.92,
+            4.48
+          ],
+          "precision": "city",
+          "confidence": "high",
+          "method": "article-context",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Rotterdam%2C+Netherlands"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Rotterdam"
+            }
+          ],
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
           "id": "mwii-breenbergh-hotel:main",
           "levelId": "mwii-breenbergh-hotel",
           "locationId": "main",
@@ -18613,12 +18637,20 @@
           "region": null,
           "landmark": null,
           "coordinates": [
-            52.5,
-            5.75
+            52,
+            6
           ],
           "precision": "country",
           "confidence": "fallback",
           "method": "country-fallback",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Netherlands"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Netherlands"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -32048,7 +32080,7 @@
     "levels": 967,
     "entries": 987,
     "mapped": 957,
-    "cityMatched": 124,
-    "countryFallback": 833
+    "cityMatched": 127,
+    "countryFallback": 830
   }
 }

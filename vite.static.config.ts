@@ -2,6 +2,7 @@ import path from "node:path";
 import { readFile, readdir } from "node:fs/promises";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
+import YAML from "yaml";
 
 const levelsRoot = path.resolve("content/levels");
 
@@ -13,20 +14,20 @@ async function filesBelow(directory: string): Promise<string[]> {
   }))).flat();
 }
 
-function markdownBody(source: string, filename: string) {
-  const match = source.match(/^---\r?\n[\s\S]*?\r?\n---(?:\r?\n|$)([\s\S]*)$/);
+function markdownDocument(source: string, filename: string) {
+  const match = source.match(/^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)([\s\S]*)$/);
   if (!match) throw new Error(`${filename}: missing YAML frontmatter`);
-  return match[1].trim();
+  const data = YAML.parse(match[1]);
+  if (typeof data?.id !== "string" || !data.id) throw new Error(`${filename}: level id is required`);
+  return { levelId: data.id, source: match[2].trim() };
 }
 
 async function levelRouteEntries() {
   return Promise.all((await filesBelow(levelsRoot)).map(async (filename) => {
-    const relative = path.relative(levelsRoot, filename).replaceAll("\\", "/");
-    const [game, levelFile] = relative.split("/");
+    const level = markdownDocument(await readFile(filename, "utf8"), filename);
     return {
       filename,
-      levelId: `${game}-${levelFile.slice(0, -3)}`,
-      source: markdownBody(await readFile(filename, "utf8"), filename),
+      ...level,
     };
   }));
 }
