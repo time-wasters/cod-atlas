@@ -1,10 +1,10 @@
 {
   "id": "codwiki-vendetta",
-  "fandomPageId": null,
+  "fandomPageId": 775595,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Vendetta",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Vendetta",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2882825,
+  "importedAt": "2026-08-14T23:38:54.139Z",
   "levelLocation": {
     "raw": null,
     "label": null,
@@ -40,5 +40,30 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2025-05-20T22:16:43Z",
+    "revisionSha1": "639beb4b18b2780f07388afd45505ba8004ca463",
+    "resolvedTitle": "Vendetta",
+    "mainImageTitle": null,
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "date": {
+    "raw": null,
+    "label": null
+  }
 }

@@ -1,14 +1,14 @@
 {
   "id": "codwiki-shi-no-numa",
-  "fandomPageId": null,
+  "fandomPageId": 10391,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Shi_No_Numa",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Shi_No_Numa",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 3008179,
+  "importedAt": "2026-08-14T23:38:54.122Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "Rising Sun Facility, [[Empire of Japan]]",
+    "label": "Empire of Japan",
+    "url": "https://callofduty.fandom.com/wiki/Empire_of_Japan"
   },
   "mapStyle": "multiplayer",
   "mapStyleDetail": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/2/2f/Shi_No_Numa_Menu_Selection_WaW.png/revision/latest?cb=20161009103553",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/2/2f/Shi_No_Numa_Menu_Selection_WaW.png/revision/latest?cb=20161009103553",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Shi_No_Numa_Menu_Selection_WaW.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Yeebo",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Yeebo",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,63 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-06-13T03:45:50Z",
+    "revisionSha1": "5ae8ef25af7c4868f3375776f59b69ed432c7aec",
+    "resolvedTitle": "Shi No Numa",
+    "mainImageTitle": "File:Shi_No_Numa_Menu_Selection_WaW.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Verrückt]]",
+    "label": "Verrückt",
+    "links": [
+      {
+        "wikiTitle": "Verrückt",
+        "label": "Verrückt",
+        "url": "https://callofduty.fandom.com/wiki/Verr%C3%BCckt"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Der Riese]]",
+    "label": "Der Riese",
+    "links": [
+      {
+        "wikiTitle": "Der Riese",
+        "label": "Der Riese",
+        "url": "https://callofduty.fandom.com/wiki/Der_Riese"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: World at War]]''<br> ''[[Call of Duty: Zombies]]''<br>''[[Call of Duty: Black Ops]]''<br>''[[Call of Duty: Black Ops III]]''",
+    "label": "Call of Duty: World at War, Call of Duty: Zombies, Call of Duty: Black Ops, Call of Duty: Black Ops III",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: World at War",
+        "label": "Call of Duty: World at War",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_World_at_War"
+      },
+      {
+        "wikiTitle": "Call of Duty: Zombies",
+        "label": "Call of Duty: Zombies",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Zombies"
+      },
+      {
+        "wikiTitle": "Call of Duty: Black Ops",
+        "label": "Call of Duty: Black Ops",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops"
+      },
+      {
+        "wikiTitle": "Call of Duty: Black Ops III",
+        "label": "Call of Duty: Black Ops III",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops_III"
+      }
+    ]
+  },
+  "date": {
+    "raw": "October 21st, 1945",
+    "label": "October 21st, 1945"
+  }
 }

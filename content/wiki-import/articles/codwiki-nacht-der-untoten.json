@@ -1,14 +1,14 @@
 {
   "id": "codwiki-nacht-der-untoten",
-  "fandomPageId": null,
+  "fandomPageId": 7582,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Nacht_der_Untoten",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Nacht_der_Untoten",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 3018117,
+  "importedAt": "2026-08-14T23:38:43.306Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "[[Nacht der Untoten (location)|Abandoned Airfield]], German-Occupied Europe",
+    "label": "Abandoned Airfield",
+    "url": "https://callofduty.fandom.com/wiki/Nacht_der_Untoten_(location)"
   },
   "mapStyle": "multiplayer",
   "mapStyleDetail": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/2/2b/Nacht_Der_Untoten_Menu_Selection_WaW.png/revision/latest?cb=20161009103531",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/2/2b/Nacht_Der_Untoten_Menu_Selection_WaW.png/revision/latest?cb=20161009103531",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Nacht_Der_Untoten_Menu_Selection_WaW.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Yeebo",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Yeebo",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,83 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-08-03T15:59:58Z",
+    "revisionSha1": "c3ec603f973c173d153865fce9399e84981f72a4",
+    "resolvedTitle": "Nacht der Untoten",
+    "mainImageTitle": "File:Nacht_Der_Untoten_Menu_Selection_WaW.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Tutorial (Zombies)|Tutorial]] <small>([[Call of Duty: Zombies|iOS]])</small><br>[[Revelations (map)|Revelations]] <small>(canonically, if  [[the Cycle]] remains unbroken.)</small>",
+    "label": "Tutorial (iOS) , Revelations (canonically, if the Cycle remains unbroken.)",
+    "links": [
+      {
+        "wikiTitle": "Tutorial (Zombies)",
+        "label": "Tutorial",
+        "url": "https://callofduty.fandom.com/wiki/Tutorial_(Zombies)"
+      },
+      {
+        "wikiTitle": "Call of Duty: Zombies",
+        "label": "iOS",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Zombies"
+      },
+      {
+        "wikiTitle": "Revelations (map)",
+        "label": "Revelations",
+        "url": "https://callofduty.fandom.com/wiki/Revelations_(map)"
+      },
+      {
+        "wikiTitle": "the Cycle",
+        "label": "the Cycle",
+        "url": "https://callofduty.fandom.com/wiki/the_Cycle"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Verrückt]]",
+    "label": "Verrückt",
+    "links": [
+      {
+        "wikiTitle": "Verrückt",
+        "label": "Verrückt",
+        "url": "https://callofduty.fandom.com/wiki/Verr%C3%BCckt"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: World at War]]''<br>''[[Call of Duty: Black Ops]]''<br>''[[Call of Duty: Zombies]]''<br>''[[Call of Duty: Black Ops III]]''<br>''[[Call of Duty: Mobile]]''",
+    "label": "Call of Duty: World at War, Call of Duty: Black Ops, Call of Duty: Zombies, Call of Duty: Black Ops III, Call of Duty: Mobile",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: World at War",
+        "label": "Call of Duty: World at War",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_World_at_War"
+      },
+      {
+        "wikiTitle": "Call of Duty: Black Ops",
+        "label": "Call of Duty: Black Ops",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops"
+      },
+      {
+        "wikiTitle": "Call of Duty: Zombies",
+        "label": "Call of Duty: Zombies",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Zombies"
+      },
+      {
+        "wikiTitle": "Call of Duty: Black Ops III",
+        "label": "Call of Duty: Black Ops III",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops_III"
+      },
+      {
+        "wikiTitle": "Call of Duty: Mobile",
+        "label": "Call of Duty: Mobile",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Mobile"
+      }
+    ]
+  },
+  "date": {
+    "raw": "June 4th, 1945<br><small>(Original Timeline)</small>",
+    "label": "June 4th, 1945, (Original Timeline)"
+  }
 }

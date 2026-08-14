@@ -1,14 +1,14 @@
 {
   "id": "codwiki-breach-world-at-war-map",
-  "fandomPageId": null,
-  "sourceUrl": "https://callofduty.fandom.com/wiki/Breach_(World_at_War_map)",
-  "canonicalUrl": "https://callofduty.fandom.com/wiki/Breach_(World_at_War_map)",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "fandomPageId": 11950,
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Breach_(World_at_War)",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Breach_(World_at_War)",
+  "latestRevisionId": 2965211,
+  "importedAt": "2026-08-14T23:38:21.713Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "Brandenburg Gate, [[Berlin]], [[Germany]]",
+    "label": "Berlin",
+    "url": "https://callofduty.fandom.com/wiki/Berlin"
   },
   "mapStyle": "multiplayer",
   "mapStyleDetail": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/9/9e/Breach.jpg/revision/latest?cb=20100703082957",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/9/9e/Breach.jpg/revision/latest/scale-to-width-down/800?cb=20100703082957",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Breach.jpg",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "SiPlus",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:SiPlus",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,36 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-02-09T11:45:30Z",
+    "revisionSha1": "31ded251011affbce9e839dee0eee5c199670eaf",
+    "resolvedTitle": "Breach (World at War)",
+    "mainImageTitle": "File:Breach.jpg",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty: World at War]]''",
+    "label": "Call of Duty: World at War",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: World at War",
+        "label": "Call of Duty: World at War",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_World_at_War"
+      }
+    ]
+  },
+  "date": {
+    "raw": null,
+    "label": null
+  }
 }
