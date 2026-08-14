@@ -112,11 +112,8 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
 .search-field input::placeholder { color: #747969; }
 
 .filter-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
-.filter-grid label > span, .filter-field > span, .section-title > span { display: block; margin: 0 0 7px; color: #999d8d; font-family: "Arial Narrow", sans-serif; font-size: 10px; font-weight: 700; letter-spacing: .17em; text-transform: uppercase; }
-.filter-grid label > span small { float: right; color: #686f60; font: 600 8px var(--font-geist-mono), monospace; letter-spacing: .08em; }
-.filter-grid select { width: 100%; height: 40px; appearance: none; border: 1px solid #48503d; border-radius: 4px; padding: 0 34px 0 11px; overflow: hidden; color: #d0cab8; background: #141912 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='m1 1 4 4 4-4' fill='none' stroke='%23aaa27f'/%3E%3C/svg%3E") no-repeat right 11px center; font-size: 12px; text-overflow: ellipsis; cursor: pointer; }
-.filter-grid select:hover { border-color: #697159; background-color: #191f16; }
-.filter-grid select:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; border-color: var(--amber-dark); }
+.filter-field > span, .section-title > span { display: block; margin: 0 0 7px; color: #999d8d; font-family: "Arial Narrow", sans-serif; font-size: 10px; font-weight: 700; letter-spacing: .17em; text-transform: uppercase; }
+.game-filter > span small { float: right; color: #686f60; font: 600 8px var(--font-geist-mono), monospace; letter-spacing: .08em; }
 .country-select-trigger { width: 100%; height: 40px; display: flex; align-items: center; gap: 9px; border: 1px solid #48503d; border-radius: 4px; padding: 0 11px; color: #d0cab8; background: #141912; font-size: 12px; text-align: left; cursor: pointer; }
 .country-select-trigger > span:first-child { min-width: 0; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .country-select-trigger:hover, .country-select-trigger[data-state="open"] { border-color: #697159; background: #191f16; }
@@ -127,7 +124,7 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
 .country-select-chevron svg { width: 10px; height: 6px; display: block; fill: none; stroke: currentColor; }
 .country-select-trigger[data-state="open"] .country-select-chevron { transform: rotate(180deg); }
 .country-select-flag { --CountryFlagIcon-height: 14px; flex: 0 0 21px; }
-.country-select-content { z-index: 1200; width: var(--radix-select-trigger-width); max-height: min(320px, var(--radix-select-content-available-height)); overflow: hidden; border: 1px solid #60684f; border-radius: 5px; color: #d0cab8; background: #151a13f8; box-shadow: 0 12px 30px #000c, inset 0 1px 0 #ffffff0a; backdrop-filter: blur(8px); }
+.country-select-content { z-index: 1200; width: var(--radix-select-trigger-width); max-height: min(420px, var(--radix-select-content-available-height)); overflow: hidden; border: 1px solid #60684f; border-radius: 5px; color: #d0cab8; background: #151a13f8; box-shadow: 0 12px 30px #000c, inset 0 1px 0 #ffffff0a; backdrop-filter: blur(8px); }
 .country-select-viewport { padding: 4px; }
 .country-select-item { min-height: 34px; display: flex; align-items: center; gap: 10px; border-radius: 3px; padding: 0 9px; outline: 0; font-size: 12px; cursor: pointer; user-select: none; }
 .country-select-item > span:first-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
