@@ -6,8 +6,8 @@ These instructions apply to everything under `content/`.
 - Levels own their embedded marker locations. Games that have been organized
   by map type use `levels/<primary-game>/<map-type>/`; games not yet
   reorganized retain `levels/<primary-game>/<level-slug>.md`. Do not mix the
-  two layouts within one game. `cod` and `cod-uo` use `campaign` for records
-  with `mode: singleplayer` and `multiplayer` for records with
+  two layouts within one game. `cod`, `cod-uo`, and `cod-fh` use `campaign`
+  for records with `mode: singleplayer` and `multiplayer` for records with
   `mode: multiplayer`.
 - Campaign filenames are `<order>-<level-slug>.md`, starting at `1`, without
   leading zeros or gaps. Multiplayer filenames remain `<level-slug>.md`.

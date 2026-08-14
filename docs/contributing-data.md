@@ -32,9 +32,9 @@ the level ID `cod3-laison-river` belongs at
 Map-type directories are being introduced one game at a time. A reorganized
 game must use them for every level: `campaign/` contains records with
 `mode: singleplayer`, while `multiplayer/` contains records with
-`mode: multiplayer`. The `cod` and `cod-uo` directories use this structure.
-Other games retain their current flat layout until they are deliberately
-reorganized.
+`mode: multiplayer`. The `cod`, `cod-uo`, and `cod-fh` directories use this
+structure. Other games retain their current flat layout until they are
+deliberately reorganized.
 These directory names describe broad map types, not multiplayer rule sets such
 as deathmatch or capture the flag.
 

@@ -46,11 +46,11 @@ content/levels/<primary-game>/campaign/<order>-<level-slug>.md
 content/levels/<primary-game>/multiplayer/<level-slug>.md
 ```
 
-A game must use one layout consistently. `cod` and `cod-uo` use `campaign/`
-for records whose `mode` is `singleplayer` and `multiplayer/` for records whose
-`mode` is `multiplayer`. Games that have not been reorganized remain flat. Map
-types are broad content categories; they are distinct from multiplayer rule
-sets such as deathmatch or capture the flag.
+A game must use one layout consistently. `cod`, `cod-uo`, and `cod-fh` use
+`campaign/` for records whose `mode` is `singleplayer` and `multiplayer/` for
+records whose `mode` is `multiplayer`. Games that have not been reorganized
+remain flat. Map types are broad content categories; they are distinct from
+multiplayer rule sets such as deathmatch or capture the flag.
 
 Campaign orders start at `1`, have no leading zeros, and must be unique and
 contiguous within their game. The prefix records play order without becoming
