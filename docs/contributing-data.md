@@ -11,8 +11,8 @@ Without host npm, use
 | Record | Source path | Template |
 | --- | --- | --- |
 | Game | `content/games/<game-id>.yaml` | [game.yaml](templates/game.yaml) |
-| Terrestrial level | `content/levels/<primary-game>/<level-slug>.md` or `content/levels/<primary-game>/<map-type>/<level-slug>.md` | [level-terrestrial.md](templates/level-terrestrial.md) |
-| Off-world level | `content/levels/<primary-game>/<level-slug>.md` or `content/levels/<primary-game>/<map-type>/<level-slug>.md` | [level-off-world.md](templates/level-off-world.md) |
+| Terrestrial level | `content/levels/<primary-game>/<level-slug>.md` or the game's map-type directory | [level-terrestrial.md](templates/level-terrestrial.md) |
+| Off-world level | `content/levels/<primary-game>/<level-slug>.md` or the game's map-type directory | [level-off-world.md](templates/level-off-world.md) |
 | Wiki import | `content/wiki-import/articles/<article-id>.json` | [wiki-article.json](templates/wiki-article.json) |
 
 Most contributions only change a level. Add a game only if it does not exist,
@@ -36,6 +36,12 @@ game must use them for every level: `campaign/` contains records with
 retain their current flat layout until they are deliberately reorganized.
 These directory names describe broad map types, not multiplayer rule sets such
 as deathmatch or capture the flag.
+
+Within a map-type layout, campaign filenames are
+`<order>-<level-slug>.md`. Orders start at `1`, use no leading zeros, and must
+be unique and contiguous so they describe the sequence in which the levels are
+played. Multiplayer filenames remain `<level-slug>.md`. The order prefix is
+filesystem metadata only: do not add it to the stable level `id` or title.
 
 ## Level fields
 

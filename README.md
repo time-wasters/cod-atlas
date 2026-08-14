@@ -27,6 +27,22 @@ CoD Atlas is open and community-maintained. Locations are curated with
 attention to source quality, geographic precision, and the difference between
 a confirmed setting and a plausible real-world inspiration.
 
+## How AI is used
+
+AI may assist with researching levels, comparing in-game settings with real
+places and historical events, and drafting cited research notes. It is treated
+as a research and editorial aid, not as an authority.
+
+The exact position of a marker is almost always verified or confirmed by a
+human before it is published. When the evidence supports only an approximate
+area, region, or country, the atlas says so instead of presenting the marker as
+more precise than it is. This review-first approach is intended to keep
+unverified "AI slop" out of the project.
+
+Whenever AI is used to produce content, that content is explicitly marked at
+the point where it appears. The disclosure is kept beside the affected text so
+readers do not have to find a separate policy to understand how it was made.
+
 ## Documentation
 
 Start with [CONTRIBUTING.md](CONTRIBUTING.md) for project setup, development,
