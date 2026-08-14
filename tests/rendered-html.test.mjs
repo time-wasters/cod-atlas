@@ -171,15 +171,19 @@ test("preserves the complete statically compiled atlas", async () => {
   assert.equal(blowtorchAndCorkscrew.method, "manual-approximate");
 
   const aDesertRide = findEntry("FH", "A Desert Ride");
-  assert.deepEqual(aDesertRide.coordinates, [33.216667, 9.8]);
+  assert.deepEqual(aDesertRide.coordinates, [33.216131, 9.800375]);
   assert.equal(aDesertRide.country, "Tunisia");
-  assert.equal(aDesertRide.landmark, "Ksar Tarcine");
-  assert.equal(aDesertRide.precision, "approximate");
-  assert.equal(aDesertRide.confidence, "medium");
-  assert.equal(aDesertRide.method, "manual-approximate");
+  assert.equal(aDesertRide.region, "Kebili Governorate");
+  assert.equal(aDesertRide.landmark, "Centenarium Tibubuci (Ksar Tarcine)");
+  assert.equal(aDesertRide.precision, "exact");
+  assert.equal(aDesertRide.confidence, "high");
+  assert.equal(aDesertRide.method, "verified-landmark");
   assert.deepEqual(aDesertRide.urls, [
-    { googleMaps: "https://maps.app.goo.gl/FVktkscEyG9DtDoy6" },
-    { wikipedia: "https://de.wikipedia.org/wiki/Centenarium_Tibubuci" },
+    {
+      googleMaps:
+        "https://www.google.com/maps/search/?api=1&query=Ksar+Tarcine%2C+Kebili+Governorate%2C+Tunisia",
+    },
+    { wikipedia: "https://fr.wikipedia.org/wiki/Centenarium_de_Tibubuci" },
   ]);
 
   const shuriCastle = findEntry("WAW:FF", "Shuri Castle");

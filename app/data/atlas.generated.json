@@ -6506,6 +6506,40 @@
           ]
         },
         {
+          "id": "cod-fh-come-out-fighting:main",
+          "levelId": "cod-fh-come-out-fighting",
+          "locationId": "main",
+          "title": "Come Out Fighting",
+          "game": "FH",
+          "gameIds": [
+            "cod-fh"
+          ],
+          "wiki": "https://callofduty.fandom.com/wiki/Come_Out_Fighting",
+          "wikiArticle": "codwiki-come-out-fighting",
+          "country": "Belgium",
+          "city": "Tillet",
+          "region": "Luxembourg Province",
+          "landmark": "761st Tank Battalion Battle of the Bulge plaque at Saint-Ouen Church",
+          "coordinates": [
+            50.011059,
+            5.53092
+          ],
+          "precision": "exact",
+          "confidence": "high",
+          "method": "verified-landmark",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=%C3%89glise+Saint-Ouen%2C+Tillet%2C+Sainte-Ode%2C+Belgium"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Sainte-Ode"
+            }
+          ],
+          "modes": [
+            "singleplayer"
+          ]
+        },
+        {
           "id": "cod-uo-crossroads:main",
           "levelId": "cod-uo-crossroads",
           "locationId": "main",
@@ -12306,32 +12340,6 @@
           ]
         },
         {
-          "id": "cod-fh-come-out-fighting:main",
-          "levelId": "cod-fh-come-out-fighting",
-          "locationId": "main",
-          "title": "Come Out Fighting",
-          "game": "FH",
-          "gameIds": [
-            "cod-fh"
-          ],
-          "wiki": "https://callofduty.fandom.com/wiki/Come_Out_Fighting",
-          "wikiArticle": "codwiki-come-out-fighting",
-          "country": "Germany",
-          "city": null,
-          "region": null,
-          "landmark": null,
-          "coordinates": [
-            51,
-            9
-          ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
-          "modes": [
-            "singleplayer"
-          ]
-        },
-        {
           "id": "cod2-crossing-the-rhine:main",
           "levelId": "cod2-crossing-the-rhine",
           "locationId": "main",
@@ -12720,16 +12728,24 @@
           "wiki": "https://callofduty.fandom.com/wiki/First_City_to_Fall",
           "wikiArticle": "codwiki-first-city-to-fall",
           "country": "Germany",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Aachen",
+          "region": "North Rhine-Westphalia",
+          "landmark": "Aachen Town Hall",
           "coordinates": [
-            51,
-            9
+            50.776103,
+            6.083769
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "exact",
+          "confidence": "high",
+          "method": "verified-landmark",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Aachen+Town+Hall%2C+Aachen%2C+Germany"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Aachen_Town_Hall"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -12963,16 +12979,24 @@
           "wiki": "https://callofduty.fandom.com/wiki/Into_the_Heartland",
           "wikiArticle": "codwiki-into-the-heartland",
           "country": "Germany",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Erpel",
+          "region": "Rhineland-Palatinate",
+          "landmark": "Ludendorff Bridge eastern towers and Erpeler Ley tunnel entrance",
           "coordinates": [
-            51,
-            9
+            50.58090647771118,
+            7.244462452899899
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "exact",
+          "confidence": "high",
+          "method": "verified-landmark",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Br%C3%BCckenpfeiler+Erpel%28Rhein%29%2C+Erpel%2C+Germany"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Ludendorff_Bridge"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -13016,16 +13040,24 @@
           "wiki": "https://callofduty.fandom.com/wiki/Last_Bridge_Standing",
           "wikiArticle": "codwiki-last-bridge-standing",
           "country": "Germany",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Remagen",
+          "region": "Rhineland-Palatinate",
+          "landmark": "Ludendorff Bridge western towers (Peace Museum)",
           "coordinates": [
-            51,
-            9
+            50.57803,
+            7.24412
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "exact",
+          "confidence": "high",
+          "method": "verified-landmark",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Friedensmuseum+Br%C3%BCcke+von+Remagen%2C+An+der+Alten+Rheinbr%C3%BCcke+11%2C+Remagen%2C+Germany"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Ludendorff_Bridge"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -13390,15 +13422,23 @@
           "wikiArticle": "codwiki-road-to-remagen",
           "country": "Germany",
           "city": "Remagen",
-          "region": null,
-          "landmark": null,
+          "region": "Rhineland-Palatinate",
+          "landmark": "Remagen Town Hall",
           "coordinates": [
-            50.57879,
-            7.22703
+            50.579341,
+            7.228488
           ],
-          "precision": "city",
+          "precision": "exact",
           "confidence": "high",
-          "method": "title-mention",
+          "method": "verified-landmark",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Rathaus+Remagen%2C+Bachstra%C3%9Fe+2%2C+Remagen%2C+Germany"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Remagen"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -13552,15 +13592,23 @@
           "wikiArticle": "codwiki-surrender-at-aachen",
           "country": "Germany",
           "city": "Aachen",
-          "region": null,
-          "landmark": null,
+          "region": "North Rhine-Westphalia",
+          "landmark": "Former Rütscher Straße air-raid bunker memorial",
           "coordinates": [
-            50.77664,
-            6.08342
+            50.784981,
+            6.075218
           ],
-          "precision": "city",
+          "precision": "exact",
           "confidence": "high",
-          "method": "title-mention",
+          "method": "verified-landmark",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=R%C3%BCtscher+Stra%C3%9Fe+60%2C+Aachen%2C+Germany"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Battle_of_Aachen"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -13939,16 +13987,24 @@
           "wiki": "https://callofduty.fandom.com/wiki/Underground_Passage",
           "wikiArticle": "codwiki-underground-passage",
           "country": "Germany",
-          "city": null,
-          "region": null,
+          "city": "Aachen",
+          "region": "North Rhine-Westphalia",
           "landmark": null,
           "coordinates": [
-            51,
-            9
+            50.77556,
+            6.08361
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "city",
+          "confidence": "high",
+          "method": "wiki-location",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Aachen%2C+Germany"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Aachen"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -20173,16 +20229,24 @@
           "wiki": "https://callofduty.fandom.com/wiki/Airfield_Ambush",
           "wikiArticle": "codwiki-airfield-ambush",
           "country": "Russia",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Tatsinskaya",
+          "region": "Rostov Oblast",
+          "landmark": "Tatsinskaya Airfield",
           "coordinates": [
-            60,
-            100
+            48.16722,
+            41.27778
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "exact",
+          "confidence": "high",
+          "method": "verified-landmark",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Tatsinskaya+Airfield%2C+Tatsinskaya%2C+Rostov+Oblast%2C+Russia"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Tatsinskaya_Airfield"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -20381,16 +20445,24 @@
           "wiki": "https://callofduty.fandom.com/wiki/Breakdown",
           "wikiArticle": "codwiki-breakdown",
           "country": "Russia",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Volgograd",
+          "region": "Volgograd Oblast",
+          "landmark": "6th Guards Tank Brigade combat site (Opolchenskaya Street 8)",
           "coordinates": [
-            60,
-            100
+            48.801617,
+            44.599342
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "exact",
+          "confidence": "medium",
+          "method": "verified-landmark",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Opolchenskaya+Street+8%2C+Volgograd%2C+Russia"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Volgograd_Tractor_Plant"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -20589,16 +20661,24 @@
           "wiki": "https://callofduty.fandom.com/wiki/Dead_In_Her_Sights",
           "wikiArticle": "codwiki-dead-in-her-sights",
           "country": "Russia",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Volgograd",
+          "region": "Volgograd Oblast",
+          "landmark": "Volgograd Tractor Plant main entrance (wartime Stalingrad Tractor Factory site)",
           "coordinates": [
-            60,
-            100
+            48.802193,
+            44.606161
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "exact",
+          "confidence": "high",
+          "method": "verified-landmark",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Volgograd+Tractor+Plant%2C+Volgograd%2C+Russia"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Volgograd_Tractor_Plant"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -20641,16 +20721,24 @@
           "wiki": "https://callofduty.fandom.com/wiki/Defend_the_Factory",
           "wikiArticle": "codwiki-defend-the-factory",
           "country": "Russia",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Volgograd",
+          "region": "Volgograd Oblast",
+          "landmark": "Volgograd Tractor Plant main entrance (wartime Stalingrad Tractor Factory site)",
           "coordinates": [
-            60,
-            100
+            48.802193,
+            44.606161
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "exact",
+          "confidence": "high",
+          "method": "verified-landmark",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Volgograd+Tractor+Plant%2C+Volgograd%2C+Russia"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Volgograd_Tractor_Plant"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -21118,16 +21206,24 @@
           "wiki": "https://callofduty.fandom.com/wiki/Into_Red_Square",
           "wikiArticle": "codwiki-into-red-square",
           "country": "Russia",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Volgograd",
+          "region": "Volgograd Oblast",
+          "landmark": "Volgograd-1 railway station (wartime Stalingrad-1 station site)",
           "coordinates": [
-            60,
-            100
+            48.7125,
+            44.51361
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "exact",
+          "confidence": "high",
+          "method": "verified-landmark",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Volgograd-1+Railway+Station%2C+Volgograd%2C+Russia"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Volgograd_railway_station"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -21438,16 +21534,24 @@
           "wiki": "https://callofduty.fandom.com/wiki/Not_One_Step_Back",
           "wikiArticle": "codwiki-not-one-step-back",
           "country": "Russia",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Volgograd",
+          "region": "Volgograd Oblast",
+          "landmark": "Rodimtsev Wall (central salt-wharf landing)",
           "coordinates": [
-            60,
-            100
+            48.7147,
+            44.5361
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "exact",
+          "confidence": "high",
+          "method": "verified-landmark",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Rodimtsev%27s+Wall%2C+Volgograd%2C+Russia"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Volgograd"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -21516,16 +21620,24 @@
           "wiki": "https://callofduty.fandom.com/wiki/Operation_Little_Saturn_(level)",
           "wikiArticle": "codwiki-operation-little-saturn-level",
           "country": "Russia",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Tatsinskaya",
+          "region": "Rostov Oblast",
+          "landmark": "Tatsinskaya Airfield",
           "coordinates": [
-            60,
-            100
+            48.16722,
+            41.27778
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "exact",
+          "confidence": "high",
+          "method": "verified-landmark",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Tatsinskaya+Airfield%2C+Tatsinskaya%2C+Rostov+Oblast%2C+Russia"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Tatsinskaya_Airfield"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -22400,16 +22512,24 @@
           "wiki": "https://callofduty.fandom.com/wiki/The_Flag_Must_Fall",
           "wikiArticle": "codwiki-the-flag-must-fall",
           "country": "Russia",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Volgograd",
+          "region": "Volgograd Oblast",
+          "landmark": "Mamayev Kurgan (Height 102.0 summit)",
           "coordinates": [
-            60,
-            100
+            48.74242,
+            44.53694
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "exact",
+          "confidence": "high",
+          "method": "verified-landmark",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Mamayev+Kurgan%2C+Volgograd%2C+Russia"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Mamayev_Kurgan"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -25234,8 +25354,8 @@
     {
       "name": "Tunisia",
       "coordinates": [
-        34,
-        9
+        33.542639,
+        9.966806
       ],
       "kind": "terrestrial",
       "flagCode": "TN",
@@ -25253,21 +25373,21 @@
           "wikiArticle": "codwiki-a-desert-ride",
           "country": "Tunisia",
           "city": null,
-          "region": null,
-          "landmark": "Ksar Tarcine",
+          "region": "Kebili Governorate",
+          "landmark": "Centenarium Tibubuci (Ksar Tarcine)",
           "coordinates": [
-            33.216667,
-            9.8
+            33.216131,
+            9.800375
           ],
-          "precision": "approximate",
-          "confidence": "medium",
-          "method": "manual-approximate",
+          "precision": "exact",
+          "confidence": "high",
+          "method": "verified-landmark",
           "urls": [
             {
-              "googleMaps": "https://maps.app.goo.gl/FVktkscEyG9DtDoy6"
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Ksar+Tarcine%2C+Kebili+Governorate%2C+Tunisia"
             },
             {
-              "wikipedia": "https://de.wikipedia.org/wiki/Centenarium_Tibubuci"
+              "wikipedia": "https://fr.wikipedia.org/wiki/Centenarium_de_Tibubuci"
             }
           ],
           "modes": [
@@ -25364,16 +25484,24 @@
           "wiki": "https://callofduty.fandom.com/wiki/Depot_Saboteurs",
           "wikiArticle": "codwiki-depot-saboteurs",
           "country": "Tunisia",
-          "city": null,
-          "region": null,
+          "city": "Matmata",
+          "region": "Gabès Governorate",
           "landmark": null,
           "coordinates": [
-            34,
-            9
+            33.542639,
+            9.966806
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "city",
+          "confidence": "high",
+          "method": "wiki-location",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Matmata%2C+Gab%C3%A8s+Governorate%2C+Tunisia"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Matmata%2C_Tunisia"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -25442,16 +25570,24 @@
           "wiki": "https://callofduty.fandom.com/wiki/Mission:_Matmata",
           "wikiArticle": "codwiki-mission-matmata",
           "country": "Tunisia",
-          "city": null,
-          "region": null,
+          "city": "Matmata",
+          "region": "Gabès Governorate",
           "landmark": null,
           "coordinates": [
-            34,
-            9
+            33.542639,
+            9.966806
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "city",
+          "confidence": "high",
+          "method": "wiki-location",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Matmata%2C+Gab%C3%A8s+Governorate%2C+Tunisia"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Matmata%2C_Tunisia"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -25521,15 +25657,23 @@
           "wikiArticle": "codwiki-raiding-the-fortress",
           "country": "Tunisia",
           "city": null,
-          "region": null,
-          "landmark": null,
+          "region": "Kebili Governorate",
+          "landmark": "Centenarium Tibubuci (Ksar Tarcine)",
           "coordinates": [
-            34,
-            9
+            33.216131,
+            9.800375
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "exact",
+          "confidence": "high",
+          "method": "article-context",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Ksar+Tarcine%2C+Kebili+Governorate%2C+Tunisia"
+            },
+            {
+              "wikipedia": "https://fr.wikipedia.org/wiki/Centenarium_de_Tibubuci"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -32224,7 +32368,7 @@
     "levels": 967,
     "entries": 987,
     "mapped": 957,
-    "cityMatched": 128,
-    "countryFallback": 829
+    "cityMatched": 144,
+    "countryFallback": 813
   }
 }
