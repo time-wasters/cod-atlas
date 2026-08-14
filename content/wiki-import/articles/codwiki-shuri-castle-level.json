@@ -1,14 +1,14 @@
 {
   "id": "codwiki-shuri-castle-level",
-  "fandomPageId": null,
+  "fandomPageId": 25657,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Shuri_Castle_(level)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Shuri_Castle_(level)",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2862708,
+  "importedAt": "2026-08-14T23:39:56.037Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "[[Shuri Castle]], Okinawa, Japan",
+    "label": "Shuri Castle",
+    "url": "https://callofduty.fandom.com/wiki/Shuri_Castle"
   },
   "mapStyle": "singleplayer",
   "mapStyleDetail": null,
@@ -40,5 +40,42 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2025-03-19T11:14:56Z",
+    "revisionSha1": "855510c97868363162a364577f3399093e39be91",
+    "resolvedTitle": "Shuri Castle (level)",
+    "mainImageTitle": null,
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Typhoon of Steel]]",
+    "label": "Typhoon of Steel",
+    "links": [
+      {
+        "wikiTitle": "Typhoon of Steel",
+        "label": "Typhoon of Steel",
+        "url": "https://callofduty.fandom.com/wiki/Typhoon_of_Steel"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty: World at War: Final Fronts]]''",
+    "label": "Call of Duty: World at War: Final Fronts",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: World at War: Final Fronts",
+        "label": "Call of Duty: World at War: Final Fronts",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_World_at_War%3A_Final_Fronts"
+      }
+    ]
+  },
+  "date": {
+    "raw": "May 28th, 1945",
+    "label": "May 28th, 1945"
+  }
 }
