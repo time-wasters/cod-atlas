@@ -1,0 +1,9 @@
+id: cod-uo
+code: UO
+label: "Call of Duty: United Offensive"
+released: 2004-09-14
+images:
+  steam:
+    app: 2640
+    icon: e5fbc61fce98c303a9c49dc988163499b183f037
+    clienticon: null

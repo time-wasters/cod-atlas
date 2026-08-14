@@ -2,3 +2,8 @@ id: mw2
 code: MW2
 label: Modern Warfare 2 (2009)
 released: 2009-11-10
+images:
+  steam:
+    app: 10180
+    icon: ad502494f1658220f9166c7e17ac90422bf6a479
+    clienticon: 5832406b04c416771fe0b20549b10d0dc7c679de

@@ -2,3 +2,8 @@ id: wwii
 code: WWII
 label: WWII
 released: 2017-11-03
+images:
+  steam:
+    app: 476600
+    icon: 9cc56555b04419785037d36362b71e2854daa69c
+    clienticon: 4198e9d08d4ac9276c621adc6ae5c81d6dc9b94c

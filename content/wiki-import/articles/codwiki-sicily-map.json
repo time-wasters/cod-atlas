@@ -1,14 +1,14 @@
 {
   "id": "codwiki-sicily-map",
-  "fandomPageId": null,
+  "fandomPageId": 15326,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Sicily_(map)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Sicily_(map)",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2991596,
+  "importedAt": "2026-08-09T21:34:07.027Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "[[Sicily|Sicily, Italy]]",
+    "label": "Sicily, Italy",
+    "url": "https://callofduty.fandom.com/wiki/Sicily"
   },
   "mapStyle": "multiplayer",
   "mapStyleDetail": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/2/29/Sicily_map_UO.jpg/revision/latest?cb=20091023041729",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/2/29/Sicily_map_UO.jpg/revision/latest?cb=20091023041729",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Sicily_map_UO.jpg",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "BC Matsuyama",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:BC_Matsuyama",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,11 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-04-12T11:12:08Z",
+    "revisionSha1": "4f3ed905f6f4fdbde8b7ed9c2a3d98a2a19bbb3b",
+    "resolvedTitle": "Sicily (map)",
+    "mainImageTitle": "File:Sicily_map_UO.jpg",
+    "mapImageTitle": null
+  }
 }

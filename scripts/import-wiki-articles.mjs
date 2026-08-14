@@ -2,23 +2,38 @@ import { readFile, readdir, rename, writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 import { fileURLToPath } from "node:url";
+import YAML from "yaml";
 
-const API_URL = "https://callofduty.fandom.com/api.php";
 const DEFAULT_DELAY_MS = 5_000;
 const MIN_DELAY_MS = 2_000;
 const BATCH_SIZE = 10;
-const USER_AGENT = process.env.COD_ATLAS_WIKI_USER_AGENT
-  ?? "CoDAtlasWikiImporter/0.1 (+https://github.com/time-wasters/cod-atlas)";
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+const COPYRIGHTED_MEDIA_TEMPLATE = /{{\s*Copyrighted[ _]Media(?:\s*[|}])/i;
+const COPYRIGHTED_MEDIA_NOTICE = `This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots
+
+for identification and critical commentary on
+  • the computer or video game in question or
+  • the copyrighted character(s) or item(s) depicted on the screenshot in question
+on the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,
+
+qualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.`;
+
+try {
+  process.loadEnvFile?.();
+} catch (error) {
+  if (error?.code !== "ENOENT") throw error;
+}
 
 function usage() {
   return `Usage:
   npm run wiki:import -- --id codwiki-88-ridge
+  npm run wiki:import -- --game cod3
   npm run wiki:import -- --limit 10
   npm run wiki:import -- --all
 
 Options:
   --id <id>       Import one record; repeat for several records
+  --game <id>     Import records used by every level of a game; repeatable
   --limit <n>     Import the first n incomplete records
   --all           Check every Wiki import record
   --force         Rewrite records whose revision is unchanged
@@ -26,14 +41,57 @@ Options:
   --delay-ms <n>  Delay between API calls (minimum 2000; default 5000)
   --help          Show this message
 
-Set COD_ATLAS_WIKI_USER_AGENT to include maintainer contact information.`;
+Configure COD_ATLAS_WIKI_ORIGIN and COD_ATLAS_WIKI_USER_AGENT in .env first.`;
+}
+
+export class WikiConfigurationError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = "WikiConfigurationError";
+  }
+}
+
+export function formatWikiConfigurationError(error) {
+  return `Wiki import configuration required
+
+${error.message}
+
+Add these values to .env and replace the contact details:
+
+  COD_ATLAS_WIKI_ORIGIN=https://callofduty.fandom.com
+  COD_ATLAS_WIKI_USER_AGENT=CoDAtlasWikiImporter/0.1 (you@example.com; https://github.com/time-wasters/cod-atlas)
+
+See .env.example for details.`;
+}
+
+export function resolveWikiConfiguration(environment = process.env) {
+  const originValue = environment.COD_ATLAS_WIKI_ORIGIN?.trim().replace(/\/+$/, "");
+  const userAgent = environment.COD_ATLAS_WIKI_USER_AGENT?.trim();
+  if (!originValue) throw new WikiConfigurationError("COD_ATLAS_WIKI_ORIGIN is not configured.");
+  if (!userAgent) throw new WikiConfigurationError("COD_ATLAS_WIKI_USER_AGENT is not configured; include maintainer contact information.");
+  let origin;
+  try {
+    origin = new URL(originValue);
+  } catch {
+    throw new WikiConfigurationError("COD_ATLAS_WIKI_ORIGIN must be a valid HTTP(S) origin without a path.");
+  }
+  if (!["http:", "https:"].includes(origin.protocol) || origin.pathname !== "/") {
+    throw new WikiConfigurationError("COD_ATLAS_WIKI_ORIGIN must be an HTTP(S) origin without a path.");
+  }
+  return { origin: origin.origin, apiUrl: new URL("/api.php", origin), userAgent };
 }
 
 export function parseArguments(argv) {
-  const options = { ids: [], limit: null, all: false, force: false, dryRun: false, delayMs: DEFAULT_DELAY_MS };
+  const options = { ids: [], gameIds: [], limit: null, all: false, force: false, dryRun: false, delayMs: DEFAULT_DELAY_MS };
   for (let index = 0; index < argv.length; index += 1) {
     const argument = argv[index];
-    if (argument === "--id") options.ids.push(argv[++index]);
+    if (argument === "--id" || argument === "--game") {
+      const value = argv[index + 1];
+      if (!value || value.startsWith("--")) throw new Error(`${argument} requires a value`);
+      if (argument === "--id") options.ids.push(value);
+      else options.gameIds.push(value);
+      index += 1;
+    }
     else if (argument === "--limit") options.limit = Number(argv[++index]);
     else if (argument === "--delay-ms") options.delayMs = Number(argv[++index]);
     else if (argument === "--all") options.all = true;
@@ -43,11 +101,48 @@ export function parseArguments(argv) {
     else throw new Error(`Unknown option: ${argument}`);
   }
   if (options.help) return options;
-  if (!options.ids.length && options.limit === null && !options.all) throw new Error("Select records with --id, --limit, or --all");
-  if (options.ids.some((id) => !id)) throw new Error("--id requires a value");
+  if (!options.ids.length && !options.gameIds.length && options.limit === null && !options.all) throw new Error("Select records with --id, --game, --limit, or --all");
   if (options.limit !== null && (!Number.isInteger(options.limit) || options.limit < 1)) throw new Error("--limit must be a positive integer");
   if (!Number.isInteger(options.delayMs) || options.delayMs < MIN_DELAY_MS) throw new Error(`--delay-ms must be at least ${MIN_DELAY_MS}`);
   return options;
+}
+
+async function filesBelow(directory, extension) {
+  const entries = await readdir(directory, { withFileTypes: true });
+  const nested = await Promise.all(entries.map(async (entry) => {
+    const target = path.join(directory, entry.name);
+    if (entry.isDirectory()) return filesBelow(target, extension);
+    return entry.name.endsWith(extension) ? [target] : [];
+  }));
+  return nested.flat();
+}
+
+function frontmatter(text, filename) {
+  const match = text.match(/^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/);
+  if (!match) throw new Error(`${filename}: missing YAML frontmatter`);
+  return YAML.parse(match[1]);
+}
+
+export function wikiArticleIdsForGames(levels, gameIds) {
+  const selectedGames = new Set(gameIds);
+  return [...new Set(levels
+    .filter((level) => level.games?.some((gameId) => selectedGames.has(gameId)))
+    .map((level) => level.wikiArticle)
+    .filter(Boolean))].sort();
+}
+
+export async function loadWikiArticleIdsForGames(gameIds) {
+  const contentRoot = path.join(process.cwd(), "content");
+  const gameFilenames = await filesBelow(path.join(contentRoot, "games"), ".yaml");
+  const knownGameIds = new Set(await Promise.all(gameFilenames.map(async (filename) =>
+    YAML.parse(await readFile(filename, "utf8")).id)));
+  const unknownGameIds = [...new Set(gameIds)].filter((gameId) => !knownGameIds.has(gameId));
+  if (unknownGameIds.length) throw new Error(`Unknown game IDs: ${unknownGameIds.join(", ")}`);
+
+  const levelFilenames = await filesBelow(path.join(contentRoot, "levels"), ".md");
+  const levels = await Promise.all(levelFilenames.map(async (filename) =>
+    frontmatter(await readFile(filename, "utf8"), filename)));
+  return wikiArticleIdsForGames(levels, gameIds);
 }
 
 function splitTopLevel(value, separator) {
@@ -103,15 +198,37 @@ function stripMarkup(value) {
   return text || null;
 }
 
-export function parseWikiLink(value) {
+export function parseWikiLink(value, wikiOrigin) {
   if (!value) return { raw: null, label: null, url: null };
   const match = value.match(/\[\[([^\]|#]+)(?:#[^\]|]*)?(?:\|([^\]]+))?\]\]/);
   const target = match?.[1]?.trim();
   return {
     raw: value.trim(),
     label: stripMarkup(match?.[2] ?? match?.[1] ?? value),
-    url: target ? `https://callofduty.fandom.com/wiki/${encodeURIComponent(target.replace(/ /g, "_"))}` : null,
+    url: target ? `${wikiOrigin}/wiki/${encodeURIComponent(target.replace(/ /g, "_"))}` : null,
   };
+}
+
+export function parseWikiReferences(value, wikiOrigin) {
+  if (!value) return { raw: null, label: null, links: [] };
+  const links = [...value.matchAll(/\[\[([^\]|#]+)(?:#[^\]|]*)?(?:\|([^\]]+))?\]\]/g)].map((match) => {
+    const wikiTitle = match[1].trim();
+    return {
+      wikiTitle,
+      label: stripMarkup(match[2] ?? match[1]),
+      url: `${wikiOrigin}/wiki/${encodeURIComponent(wikiTitle.replace(/ /g, "_"))}`,
+    };
+  });
+  return { raw: value.trim(), label: stripMarkup(value), links };
+}
+
+export function parseWikiValue(value) {
+  return value ? { raw: value.trim(), label: stripMarkup(value) } : { raw: null, label: null };
+}
+
+export function hasSequenceMetadata(article) {
+  return ["previousLevels", "nextLevels", "games", "date"]
+    .every((field) => Object.hasOwn(article, field));
 }
 
 function fileTitle(value) {
@@ -124,51 +241,68 @@ function fileTitle(value) {
 
 const firstValue = (object, names) => names.map((name) => object[name]).find(Boolean) ?? null;
 const htmlText = (value) => stripMarkup(value?.value?.replace(/&nbsp;/g, " ").replace(/&amp;/g, "&"));
-function htmlUrl(value) {
+function htmlUrl(value, wikiOrigin) {
   const href = value?.value?.match(/href=["']([^"']+)/i)?.[1];
-  return href?.startsWith("/") ? `https://callofduty.fandom.com${href}` : href ?? null;
+  return href?.startsWith("/") ? `${wikiOrigin}${href}` : href ?? null;
 }
 
-export function imageRecord(page) {
+export function imageRecord(page, wikiOrigin) {
   const info = page?.imageinfo?.[0];
   if (!info) return null;
   const metadata = info.extmetadata ?? {};
+  const artist = htmlText(metadata.Artist) ?? htmlText(metadata.Credit);
+  const artistUrl = htmlUrl(metadata.Artist, wikiOrigin) ?? htmlUrl(metadata.Credit, wikiOrigin);
+  const licenseName = htmlText(metadata.LicenseShortName) ?? htmlText(metadata.License);
+  const licenseUrl = metadata.LicenseUrl?.value ?? null;
+  const wikitext = page.revisions?.[0]?.slots?.main?.content ?? "";
+  const copyrightedMedia = COPYRIGHTED_MEDIA_TEMPLATE.test(wikitext);
   return {
     sourceUrl: info.url ?? null,
+    thumbnailUrl: info.thumburl ?? info.url ?? null,
     detailPageUrl: page.canonicalurl ?? page.fullurl ?? null,
     author: {
-      name: htmlText(metadata.Artist) ?? htmlText(metadata.Credit) ?? info.user ?? null,
-      userUrl: htmlUrl(metadata.Artist) ?? htmlUrl(metadata.Credit)
-        ?? (info.user ? `https://callofduty.fandom.com/wiki/User:${encodeURIComponent(info.user.replace(/ /g, "_"))}` : null),
+      name: artist ?? info.user ?? null,
+      userUrl: artistUrl
+        ?? (info.user ? `${wikiOrigin}/wiki/User:${encodeURIComponent(info.user.replace(/ /g, "_"))}` : null),
+      role: artist ? "author" : info.user ? "uploader" : null,
     },
-    license: { name: htmlText(metadata.LicenseShortName) ?? htmlText(metadata.License), url: metadata.LicenseUrl?.value ?? null },
+    license: { name: licenseName, url: licenseUrl },
+    rights: copyrightedMedia ? {
+      status: "non-free",
+      notice: COPYRIGHTED_MEDIA_NOTICE,
+      noticeUrl: `${wikiOrigin}/wiki/Template:Copyrighted_Media`,
+    } : {
+      status: licenseName && licenseUrl ? "licensed" : "unknown",
+      notice: null,
+      noticeUrl: licenseUrl,
+    },
   };
 }
 
-export function hasCompleteAttribution(image) {
-  return Boolean(image?.sourceUrl && image.detailPageUrl && image.author?.name
-    && image.author.userUrl && image.license?.name && image.license.url);
+export function hasUsableWikiImage(image) {
+  return Boolean(image?.sourceUrl && image.thumbnailUrl && image.detailPageUrl);
 }
 
-function titleFromSource(sourceUrl) {
+function titleFromSource(sourceUrl, wikiOrigin) {
   const url = new URL(sourceUrl);
+  if (url.origin !== wikiOrigin) throw new Error(`Wiki record origin does not match COD_ATLAS_WIKI_ORIGIN: ${sourceUrl}`);
   const index = url.pathname.indexOf("/wiki/");
   if (index < 0) throw new Error(`Unsupported Wiki URL: ${sourceUrl}`);
   return decodeURIComponent(url.pathname.slice(index + 6));
 }
 
-function apiUrl(parameters) {
-  const url = new URL(API_URL);
+function apiUrl(parameters, configuration) {
+  const url = new URL(configuration.apiUrl);
   for (const [name, value] of Object.entries({ action: "query", format: "json", formatversion: "2", maxlag: "1", ...parameters })) url.searchParams.set(name, String(value));
   return url;
 }
 
-async function request(parameters, options, state) {
+async function request(parameters, options, state, configuration) {
   if (state.count) await sleep(options.delayMs);
   state.count += 1;
-  const url = apiUrl(parameters);
+  const url = apiUrl(parameters, configuration);
   for (let attempt = 0; attempt < 4; attempt += 1) {
-    const response = await fetch(url, { headers: { Accept: "application/json", "User-Agent": USER_AGENT }, signal: AbortSignal.timeout(30_000) });
+    const response = await fetch(url, { headers: { Accept: "application/json", "User-Agent": configuration.userAgent }, signal: AbortSignal.timeout(30_000) });
     const payload = response.ok ? await response.json() : null;
     const temporary = response.status === 429 || response.status === 503 || ["maxlag", "ratelimited"].includes(payload?.error?.code);
     if (!temporary) {
@@ -183,16 +317,23 @@ async function request(parameters, options, state) {
   }
 }
 
-const emptyImage = () => ({ sourceUrl: null, detailPageUrl: null, author: { name: null, userUrl: null }, license: { name: null, url: null } });
+const emptyImage = () => ({
+  sourceUrl: null,
+  thumbnailUrl: null,
+  detailPageUrl: null,
+  author: { name: null, userUrl: null, role: null },
+  license: { name: null, url: null },
+  rights: { status: "unknown", notice: null, noticeUrl: null },
+});
 async function writeJsonAtomic(filename, value) {
   const temporary = `${filename}.tmp`;
   await writeFile(temporary, `${JSON.stringify(value, null, 2)}\n`, "utf8");
   await rename(temporary, filename);
 }
 
-async function importBatch(records, options, state) {
-  const titles = records.map(({ article }) => titleFromSource(article.sourceUrl));
-  const payload = await request({ redirects: "1", prop: "info|revisions|pageimages", inprop: "url", rvprop: "ids|timestamp|sha1|content", rvslots: "main", piprop: "name", titles: titles.join("|") }, options, state);
+async function importBatch(records, options, state, configuration) {
+  const titles = records.map(({ article }) => titleFromSource(article.sourceUrl, configuration.origin));
+  const payload = await request({ redirects: "1", prop: "info|revisions|pageimages", inprop: "url", rvprop: "ids|timestamp|sha1|content", rvslots: "main", piprop: "name", titles: titles.join("|") }, options, state, configuration);
   const aliases = new Map(titles.map((title) => [title.replace(/_/g, " "), title]));
   for (const item of payload.query?.normalized ?? []) aliases.set(item.to, aliases.get(item.from) ?? item.from);
   for (const item of payload.query?.redirects ?? []) aliases.set(item.to, aliases.get(item.from) ?? item.from);
@@ -206,7 +347,10 @@ async function importBatch(records, options, state) {
     if (page.missing) { console.warn(`missing ${record.article.id}: ${record.article.sourceUrl}`); continue; }
     const revision = page.revisions?.[0];
     if (!revision) { console.warn(`no revision ${record.article.id}`); continue; }
-    if (!options.force && record.article.latestRevisionId === revision.revid) { console.log(`unchanged ${record.article.id} (revision ${revision.revid})`); continue; }
+    if (!options.force && record.article.latestRevisionId === revision.revid && hasSequenceMetadata(record.article)) {
+      console.log(`unchanged ${record.article.id} (revision ${revision.revid})`);
+      continue;
+    }
     const infobox = extractInfobox(revision.slots?.main?.content ?? "");
     const mainTitle = page.pageimage ? fileTitle(page.pageimage) : fileTitle(firstValue(infobox, ["image", "image1", "cover"]));
     const mapTitle = fileTitle(firstValue(infobox, ["map", "map_image", "mapimage", "layout"]));
@@ -216,12 +360,12 @@ async function importBatch(records, options, state) {
   }
   const images = new Map();
   if (imageTitles.size) {
-    const imagePayload = await request({ redirects: "1", prop: "info|imageinfo", inprop: "url", iiprop: "url|mime|size|sha1|user|extmetadata", titles: [...imageTitles].join("|") }, options, state);
+    const imagePayload = await request({ redirects: "1", prop: "info|imageinfo|revisions", inprop: "url", iiprop: "url|mime|size|sha1|user|extmetadata", iiurlwidth: "800", rvprop: "content", rvslots: "main", titles: [...imageTitles].join("|") }, options, state, configuration);
     for (const page of imagePayload.query?.pages ?? []) {
-      const image = imageRecord(page);
+      const image = imageRecord(page, configuration.origin);
       const title = page.title.replace(/ /g, "_");
-      if (hasCompleteAttribution(image)) images.set(title, image);
-      else console.warn(`skipping media without complete attribution: ${page.title}`);
+      if (hasUsableWikiImage(image)) images.set(title, image);
+      else console.warn(`skipping media without a usable display URL: ${page.title}`);
     }
   }
   for (const update of updates) {
@@ -232,7 +376,11 @@ async function importBatch(records, options, state) {
       canonicalUrl: update.page.canonicalurl ?? update.page.fullurl ?? article.canonicalUrl,
       latestRevisionId: update.revision.revid,
       importedAt: new Date().toISOString(),
-      levelLocation: parseWikiLink(firstValue(update.infobox, ["location", "place", "setting"])),
+      levelLocation: parseWikiLink(firstValue(update.infobox, ["location", "place", "setting"]), configuration.origin),
+      previousLevels: parseWikiReferences(firstValue(update.infobox, ["previous_level", "previouslevel", "previous", "prev"]), configuration.origin),
+      nextLevels: parseWikiReferences(firstValue(update.infobox, ["next_level", "nextlevel", "next"]), configuration.origin),
+      games: parseWikiReferences(firstValue(update.infobox, ["game", "games"]), configuration.origin),
+      date: parseWikiValue(firstValue(update.infobox, ["date"])),
       images: {
         main: images.get(update.mainTitle?.replace(/ /g, "_")) ?? article.images?.main ?? emptyImage(),
         map: images.get(update.mapTitle?.replace(/ /g, "_")) ?? article.images?.map ?? emptyImage(),
@@ -251,6 +399,7 @@ async function main() {
   try { options = parseArguments(process.argv.slice(2)); }
   catch (error) { console.error(error.message); console.error(usage()); process.exitCode = 1; return; }
   if (options.help) { console.log(usage()); return; }
+  const configuration = resolveWikiConfiguration();
   const directory = path.join(process.cwd(), "content/wiki-import/articles");
   const filenames = (await readdir(directory)).filter((name) => name.endsWith(".json")).sort();
   const records = await Promise.all(filenames.map(async (name) => {
@@ -258,6 +407,9 @@ async function main() {
     return { filename, article: JSON.parse(await readFile(filename, "utf8")) };
   }));
   const ids = new Set(options.ids);
+  if (options.gameIds.length) {
+    for (const id of await loadWikiArticleIdsForGames(options.gameIds)) ids.add(id);
+  }
   let selected = ids.size ? records.filter(({ article }) => ids.has(article.id)) : records;
   const missing = [...ids].filter((id) => !selected.some(({ article }) => article.id === id));
   if (missing.length) throw new Error(`Unknown Wiki import IDs: ${missing.join(", ")}`);
@@ -266,10 +418,13 @@ async function main() {
   console.log(`Checking ${selected.length} record(s) in batches of ${BATCH_SIZE}; API delay ${options.delayMs}ms.`);
   const state = { count: 0 };
   let changed = 0;
-  for (let index = 0; index < selected.length; index += BATCH_SIZE) changed += await importBatch(selected.slice(index, index + BATCH_SIZE), options, state);
+  for (let index = 0; index < selected.length; index += BATCH_SIZE) changed += await importBatch(selected.slice(index, index + BATCH_SIZE), options, state, configuration);
   console.log(`Finished: ${changed} changed record(s), ${state.count} API request(s).`);
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  main().catch((error) => { console.error(error.stack ?? error); process.exitCode = 1; });
+  main().catch((error) => {
+    console.error(error instanceof WikiConfigurationError ? formatWikiConfigurationError(error) : error.stack ?? error);
+    process.exitCode = 1;
+  });
 }

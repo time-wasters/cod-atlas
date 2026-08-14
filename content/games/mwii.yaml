@@ -2,3 +2,8 @@ id: mwii
 code: MWII
 label: Modern Warfare II (2022)
 released: 2022-10-28
+images:
+  steam:
+    app: 3595230
+    icon: 4e557bc86b950518cf3d8bd8ebec5f91d867bb9b
+    clienticon: 62a85dd81cffb687139bc757fca6320c1592e7a1

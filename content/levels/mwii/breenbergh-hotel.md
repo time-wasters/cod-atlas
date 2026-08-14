@@ -1,0 +1,17 @@
+---
+id: mwii-breenbergh-hotel
+title: Breenbergh Hotel
+games:
+  - mwii
+mode: multiplayer
+wikiArticle: codwiki-breenbergh-hotel
+locations:
+  - id: main
+    country: Netherlands
+    latitude: 52.5
+    longitude: 5.75
+    precision: country
+    confidence: fallback
+    method: country-fallback
+    primary: true
+---

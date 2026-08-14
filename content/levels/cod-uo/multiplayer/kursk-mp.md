@@ -1,0 +1,18 @@
+---
+id: cod-uo-kursk-mp
+title: Kursk MP
+games:
+  - cod-uo
+mode: multiplayer
+wikiArticle: codwiki-kursk-map
+locations:
+  - id: main
+    country: Russia
+    city: Kursk
+    latitude: 51.72689
+    longitude: 36.18457
+    precision: city
+    confidence: high
+    method: title-mention
+    primary: true
+---

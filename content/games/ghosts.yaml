@@ -2,3 +2,8 @@ id: ghosts
 code: G
 label: Ghosts
 released: 2013-11-05
+images:
+  steam:
+    app: 209160
+    icon: 634577eb0ac94ce620c328885961ed6756823474
+    clienticon: 4c96165b43204485761d7e79ca209a5ba4b644ec

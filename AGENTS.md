@@ -21,17 +21,17 @@ changes are intended to be reviewable through pull requests.
   with `wikiArticle` IDs.
 - Never let a Wiki refresh overwrite curated coordinates, precision, mode, or
   editorial notes without an explicit, reviewed change.
-- Do not re-synchronize from the original Google document. It is historical
-  provenance, not an active data source.
 - Do not introduce a database, Supabase, or a runtime locations API unless the
   user explicitly changes the architecture.
-- Preserve the plain static build produced by `npm run build:static`.
+- Preserve the plain static build produced by `npm run build:static` (Docker:
+  `docker compose run --rm cod-atlas-tools npm run build:static`).
 
 ## Generated data
 
 - `app/data/atlas.generated.json` is generated; never edit it manually.
-- After changing `content/`, run `npm run data:build` and commit the regenerated
-  file together with the source change.
+- After changing `content/`, run `npm run data:build` (Docker:
+  `docker compose run --rm cod-atlas-tools npm run data:build`) and commit the
+  regenerated file together with the source change.
 - The current regression baseline is 987 marker locations. A count change must
   be intentional and accompanied by an appropriate test update.
 
@@ -48,6 +48,8 @@ changes are intended to be reviewable through pull requests.
   image's `/app/node_modules` separately so generated output is written back to
   the workspace without hiding installed dependencies.
 - Do not install Node.js or npm on the host merely to run repository commands.
+- Prefer `docker compose run --rm cod-atlas-tools npm ...` as the Docker
+  equivalent of a local npm command. See `docs/docker-commands.md`.
 
 1. Read `README.md`, `CONTRIBUTING.md`, and `docs/data-model.md` when relevant.
 2. Make the smallest coherent change.
@@ -61,12 +63,23 @@ changes are intended to be reviewable through pull requests.
    npm run build:static
    ```
 
+   Docker equivalents:
+
+   ```sh
+   docker compose run --rm cod-atlas-tools npm run data:check
+   docker compose run --rm cod-atlas-tools npm run lint
+   docker compose run --rm cod-atlas-tools npm test
+   docker compose run --rm cod-atlas-tools npm run build:static
+   ```
+
 5. Do not deploy, publish, push to a different remote, or change site access
    unless the user explicitly requests it.
 
 ## Code and content conventions
 
 - Use TypeScript/React patterns already present in the repository.
+- For AI-assisted research or editing of level locations and historical notes,
+  read and follow `docs/map-research-ai-instructions.md` in full.
 - Keep game labels short, human-readable, and ordered by release date.
 - A level may contain more than one location.
 - Valid modes are `singleplayer` and `multiplayer`.

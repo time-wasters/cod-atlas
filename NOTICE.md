@@ -25,9 +25,10 @@ by Reddit user **u/robracer97**.
 
 Atlas records link to pages on the
 [CoD Wiki](https://callofduty.fandom.com/wiki/Call_of_Duty_Wiki).
-Imported article or media material remains subject to the license and
-attribution displayed on its source page or file-detail page. Import records
-must retain the source URL, author information, and applicable license links.
+Imported article or media material remains subject to the terms displayed on
+its source page or file-detail page. Image records retain source links and any
+author, uploader, license, or rights metadata returned by Fandom, but that
+optional metadata is not required in order to display an article's main image.
 
 ## Maps
 
@@ -35,6 +36,41 @@ The live map uses OpenStreetMap tiles and displays the required OpenStreetMap
 copyright attribution in the map interface. OpenStreetMap data is subject to
 the Open Database License; tile usage is governed by the applicable tile
 service policy.
+
+All repository-hosted in-game images included in CoD Atlas, including map
+overlays and level banners, were extracted from the relevant game files or
+captured as screenshots by
+[plp-gtr](https://github.com/plp-gtr). These reproductions are contributed to
+the project by plp-gtr, but the underlying non-free game artwork remains the
+property of its respective copyright holders. The images are included for
+identification and geographic comparison and are not relicensed under the
+project data license.
+
+## Historical research figures
+
+Repository-hosted historical maps and research figures retain their original
+copyright and attribution. Their source, author or creator, copyright holder,
+and applicable rights information are recorded with the corresponding level
+overlay data. Non-free figures are included for historical identification and
+geographic comparison and are not relicensed under the project data license.
+
+## Interface icons
+
+The GitHub mark in the site footer is from
+[Primer Octicons](https://github.com/primer/octicons), copyright GitHub, Inc.
+Octicons code is distributed under the MIT License; the GitHub logo remains
+subject to GitHub's logo guidelines.
+
+The Reddit mark in the site footer and the Google Maps, Wikipedia, and Fandom
+marks in the details pane are from
+[Simple Icons](https://github.com/simple-icons/simple-icons), whose icon set is
+distributed under CC0-1.0. The individual logos remain subject to their
+respective brand and trademark terms.
+
+Country flag artwork is provided by
+[country-flag-icons](https://gitlab.com/catamphetamine/country-flag-icons),
+copyright Nikolay Kuchumov and contributors, and is distributed under the MIT
+License.
 
 ## Trademarks
 

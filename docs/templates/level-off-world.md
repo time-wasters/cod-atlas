@@ -7,7 +7,6 @@ mode: multiplayer
 wikiArticle: codwiki-example-level
 locations:
   - id: main
-    label: Example off-world setting
     country: Off-world
     precision: off-world
     confidence: fallback

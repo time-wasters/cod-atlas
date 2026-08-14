@@ -2,3 +2,8 @@ id: mw3
 code: MW3
 label: Modern Warfare 3 (2011)
 released: 2011-11-08
+images:
+  steam:
+    app: 42680
+    icon: c3330a875925437d8216949b6571f6e941ba0679
+    clienticon: d95d20dd4381f6935fbc1a62be592d21a64c2af7

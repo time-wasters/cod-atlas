@@ -1,0 +1,17 @@
+---
+id: aw-overload
+title: Overload
+games:
+  - aw
+mode: multiplayer
+wikiArticle: codwiki-overload
+locations:
+  - id: main
+    country: Iraq
+    latitude: 33
+    longitude: 44
+    precision: country
+    confidence: fallback
+    method: country-fallback
+    primary: true
+---

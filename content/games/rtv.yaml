@@ -1,4 +1,9 @@
 id: rtv
 code: RTV
-label: Roads to Victory
+label: "Call of Duty: Roads to Victory"
 released: 2007-03-13
+images:
+  steamgriddb:
+    game: 5258603
+    icon: 17271
+    file: 5cd8270fa6b6f7b7e7ee19ab22b8024a.ico

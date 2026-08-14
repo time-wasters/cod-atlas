@@ -1,133 +1,63 @@
 # CoD Atlas
 
-An open, static atlas of real-world locations represented on an interactive map.
+CoD Atlas is an interactive map tracing the real-world geography portrayed
+throughout the Call of Duty series. It connects campaign missions and
+multiplayer maps with the countries, regions, cities, landmarks, and historical
+sites they depict, adapt, or draw inspiration from.
 
-## Content model
+![CoD Atlas showing its interactive map, filters, and level details](docs/readme_screenshot.png)
 
-The website has no database and no write API: Git is the source of truth, so data corrections can be reviewed as normal pull requests.
+## Explore the geography of the series
 
-```text
-content/
-├── atlas.yaml                 # catalog metadata and original source
-├── games/                     # one small YAML file per game
-├── levels/<game>/             # one Markdown file per level
-└── wiki-import/articles/      # machine-oriented Wiki import records
-```
+Browse the atlas on the map or search for a mission, multiplayer map, country,
+or place. Results can be filtered by game, country, mode, and how precisely a
+location has been identified.
 
-A level owns its marker coordinates. There is deliberately no shared `place` table: two levels in Berlin, for example, may point to different buildings.
-Leaflet can group nearby markers for display at low zoom without changing their source coordinates.
+Each entry explains what the marker represents and distinguishes a well-sourced
+location from an approximate, regional, or country-level fallback. Where
+available, the details include historical context, research notes, source
+links, related levels, images, and geographically aligned map overlays.
 
-Example level:
+Filtered locations can also be exported as KML for use in Google Maps and
+other compatible mapping tools. Settings without a terrestrial location are
+kept in the atlas and presented separately instead of being assigned a
+misleading point on Earth.
 
-```md
----
-id: cod3-laison-river
-title: Laison River
-games:
-  - cod3
-mode: singleplayer
-wikiArticle: codwiki-laison-river
-locations:
-  - id: main
-    label: Laizon River near Falaise
-    country: France
-    region: Normandy
-    city: Falaise
-    latitude: 48.944742
-    longitude: -0.229523
-    precision: approximate
-    confidence: medium
-    method: manual-approximate
-    primary: true
----
+CoD Atlas is open and community-maintained. Locations are curated with
+attention to source quality, geographic precision, and the difference between
+a confirmed setting and a plausible real-world inspiration.
 
-Historical or editorial notes can live here.
-```
+## How AI is used
 
-One level can contain several `locations`. Coordinate precision is one of `exact`, `approximate`, `city`, `region`, `country`, or `off-world`.
+AI may assist with researching levels, comparing in-game settings with real
+places and historical events, and drafting cited research notes. It is treated
+as a research and editorial aid, not as an authority.
 
-Wiki import files remain separate so an automated refresh cannot silently overwrite curated coordinates, classifications, or historical notes. Each record has a stable local ID and placeholders for the Fandom page ID, revision, location links, map style, main image, map image, image detail pages, authors, licenses, and raw import payload.
+The exact position of a marker is almost always verified or confirmed by a
+human before it is published. When the evidence supports only an approximate
+area, region, or country, the atlas says so instead of presenting the marker as
+more precise than it is. This review-first approach is intended to keep
+unverified "AI slop" out of the project.
 
-## Editing data
+Whenever AI is used to produce content, that content is explicitly marked at
+the point where it appears. The disclosure is kept beside the affected text so
+readers do not have to find a separate policy to understand how it was made.
 
-1. Edit or add a file under `content/levels/`.
-2. Add a referenced game or Wiki import record when needed.
-3. Run `npm run data:build` to validate relationships and regenerate the compact
-   browser dataset.
-4. Open a pull request with both the source change and regenerated
-   `app/data/atlas.generated.json`.
+## Documentation
 
-The build fails for duplicate IDs, missing foreign keys, invalid modes, incomplete coordinate pairs, or stale generated data.
+Start with [CONTRIBUTING.md](CONTRIBUTING.md) for project setup, development,
+data changes, validation, and the pull-request workflow.
 
-## Run with Docker
+Detailed references:
 
-Requires Docker with the Compose plugin. Build the static site and start it in a background container with one command:
+- [Atlas data model](docs/data-model.md)
+- [Data contribution guide](docs/contributing-data.md)
+- [Running npm commands through Docker](docs/docker-commands.md)
+- [Wiki import command](docs/wiki-import.md)
+- [AI instructions for level map research](docs/map-research-ai-instructions.md)
+- [Level templates](docs/templates/)
 
-```sh
-docker compose up --build -d
-```
+## Licensing and attribution
 
-Open [http://localhost:8080](http://localhost:8080). To stop and remove the
-container, run:
-
-```sh
-docker compose down
-```
-
-All runtime resources have deterministic names: project, service, container, and hostname `cod-atlas`; image `cod-atlas:local`; and bridge network `cod-atlas-network`. The service explicitly uses no Docker volumes. Docker still assigns its mandatory internal IDs, but no command relies on them.
-
-Set `COD_ATLAS_PORT` in your shell or a local `.env` file before starting the container to use a host port other than `8080`. Re-run the startup command after source or content changes to rebuild the static site.
-
-## Local development with Node.js
-
-Requires Node.js 22.13 or newer.
-
-```sh
-npm ci
-npm run dev
-```
-
-Useful commands:
-
-- `npm run data:build` validates content and refreshes the generated dataset.
-- `npm run data:check` verifies that the committed generated dataset is current.
-- `npm run wiki:import -- --help` documents the manual Wiki import command; see
-  [`docs/wiki-import.md`](docs/wiki-import.md) for its Docker workflow.
-- `npm test` builds the static site and checks important migrated records.
-- `npm run build` creates the Sites/Worker deployment in `dist/`.
-- `npm run build:static` creates a plain, relative-path website in
-  `dist-static/` for GitHub Pages, Nginx, or basic webspace.
-
-The finished `dist-static/` directory can be uploaded as-is by CI. No Supabase or other database service is required.
-
-The included GitHub Actions workflow validates every pull request and attaches the static website as a downloadable build artifact on `main`.
-
-## Codex and VSCodium
-
-Codex automatically reads the repository instructions in `AGENTS.md`. The instructions preserve the data architecture, required checks, and licensing rules so a new session can begin without repeating the project history.
-
-After opening the repository in VSCodium:
-
-```sh
-npm ci
-codex
-```
-
-Sign in to Codex with ChatGPT when prompted. Use **Terminal → Run Task** for one-click data validation, tests, development, and static builds. Personal model, login, and approval settings are intentionally not committed.
-
-See `CONTRIBUTING.md` for the pull-request workflow and `docs/data-model.md` for the complete content relationships.
-
-## License
-
-- Source code: GNU Affero General Public License v3.0 only (`AGPL-3.0-only`). Modified versions offered over a network must provide the corresponding source under the same license.
-- Original project data and editorial content: Creative Commons Attribution-ShareAlike 4.0 International (`CC-BY-SA-4.0`).
-- Third-party Wiki material and media retain their original licenses and attribution requirements. See `NOTICE.md`.
-
-`LICENSE-DATA` applies to original material under `content/` and the generated `app/data/atlas.generated.json`, to the extent copyright or database rights apply. It does not relicense third-party material.
-
-## Provenance
-
-The project was inspired by
-[u/robracer97's CoD location post](https://www.reddit.com/r/CallOfDuty/comments/10c3jbd/cod_every_location_visited_in_the_cod_franchise/).
-CoD Wiki links and imported metadata remain subject to their source
-pages' licensing and attribution requirements.
+See the [source-code license](LICENSE), [data license](LICENSE-DATA), and
+[notices and attribution](NOTICE.md).

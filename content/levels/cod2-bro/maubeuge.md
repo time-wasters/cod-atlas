@@ -1,0 +1,18 @@
+---
+id: cod2-bro-maubeuge
+title: Maubeuge
+games:
+  - cod2-bro
+mode: multiplayer
+wikiArticle: codwiki-maubeuge
+locations:
+  - id: main
+    country: France
+    city: Maubeuge
+    latitude: 50.27875
+    longitude: 3.97267
+    precision: city
+    confidence: high
+    method: title
+    primary: true
+---

@@ -1,4 +1,9 @@
 id: waw-ff
 code: WAW:FF
-label: Final Fronts
+label: "World at War: Final Fronts"
 released: 2008-11-11
+images:
+  steamgriddb:
+    game: 5252157
+    icon: 88121
+    file: b7d1f1c8d305db3a7f5bced270c7a47a.png

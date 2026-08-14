@@ -2,3 +2,8 @@ id: bo3
 code: BO3
 label: Black Ops III
 released: 2015-11-06
+images:
+  steam:
+    app: 311210
+    icon: bd3e3a9516b480164df25d16e49ae4ce4a063cb4
+    clienticon: d5163ea762a63dca461ab6287694f9f1cf55663b

@@ -1,13 +1,13 @@
 {
   "id": "codwiki-eder-dam-getaway",
-  "fandomPageId": null,
+  "fandomPageId": 5287,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Eder_Dam_Getaway",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Eder_Dam_Getaway",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2992542,
+  "importedAt": "2026-08-10T19:23:50.591Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
+    "raw": "Vicinity of the Edersee Dam, Waldeck, Kurhessen, Germany",
+    "label": "Vicinity of the Edersee Dam, Waldeck, Kurhessen, Germany",
     "url": null
   },
   "mapStyle": "singleplayer",
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/6/69/EderDamGetaway_SaveScreen_Recreation_CoD1.jpg/revision/latest?cb=20230615173929",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/6/69/EderDamGetaway_SaveScreen_Recreation_CoD1.jpg/revision/latest/scale-to-width-down/800?cb=20230615173929",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:EderDamGetaway_SaveScreen_Recreation_CoD1.jpg",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Dead53",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Dead53",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,53 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-04-14T06:14:48Z",
+    "revisionSha1": "e7b9b409dc0493c6fa210140b656b56e53525c02",
+    "resolvedTitle": "Eder Dam Getaway",
+    "mainImageTitle": "File:EderDamGetaway_SaveScreen_Recreation_CoD1.jpg",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[The Eder Dam]]",
+    "label": "The Eder Dam",
+    "links": [
+      {
+        "wikiTitle": "The Eder Dam",
+        "label": "The Eder Dam",
+        "url": "https://callofduty.fandom.com/wiki/The_Eder_Dam"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Airfield Escape]]",
+    "label": "Airfield Escape",
+    "links": [
+      {
+        "wikiTitle": "Airfield Escape",
+        "label": "Airfield Escape",
+        "url": "https://callofduty.fandom.com/wiki/Airfield_Escape"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty]]''<br>''[[Call of Duty: Classic]]''",
+    "label": "Call of Duty, Call of Duty: Classic",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty",
+        "label": "Call of Duty",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty"
+      },
+      {
+        "wikiTitle": "Call of Duty: Classic",
+        "label": "Call of Duty: Classic",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Classic"
+      }
+    ]
+  },
+  "date": {
+    "raw": "September 2, 1944",
+    "label": "September 2, 1944"
+  }
 }

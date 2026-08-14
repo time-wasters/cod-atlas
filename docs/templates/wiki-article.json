@@ -1,14 +1,33 @@
 {
   "id": "codwiki-example-level",
   "fandomPageId": null,
-  "sourceUrl": "https://callofduty.fandom.com/wiki/Example_Level",
-  "canonicalUrl": "https://callofduty.fandom.com/wiki/Example_Level",
+  "sourceUrl": "https://wiki.example.test/wiki/Example_Level",
+  "canonicalUrl": "https://wiki.example.test/wiki/Example_Level",
   "latestRevisionId": null,
   "importedAt": null,
   "levelLocation": {
     "raw": null,
     "label": null,
     "url": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "date": {
+    "raw": null,
+    "label": null
   },
   "mapStyle": "singleplayer",
   "mapStyleDetail": null,
@@ -17,26 +36,40 @@
   "images": {
     "main": {
       "sourceUrl": null,
+      "thumbnailUrl": null,
       "detailPageUrl": null,
       "author": {
         "name": null,
-        "userUrl": null
+        "userUrl": null,
+        "role": null
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "unknown",
+        "notice": null,
+        "noticeUrl": null
       }
     },
     "map": {
       "sourceUrl": null,
+      "thumbnailUrl": null,
       "detailPageUrl": null,
       "author": {
         "name": null,
-        "userUrl": null
+        "userUrl": null,
+        "role": null
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "unknown",
+        "notice": null,
+        "noticeUrl": null
       }
     }
   },

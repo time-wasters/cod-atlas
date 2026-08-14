@@ -1,0 +1,10 @@
+id: mw4
+code: MW4
+label: Modern Warfare 4
+released: 2026-10-23
+images:
+  steam:
+    app: 4435490
+    icon: 91af283eab8b68667d9121cfd3d3b322abc4eb3b
+    clienticon: null
+

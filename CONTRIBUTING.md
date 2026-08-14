@@ -7,10 +7,22 @@ and additions should arrive as focused pull requests with supporting sources.
 
 Requires Node.js 22.13 or newer.
 
+Use the ignored `.env` for local settings. `.env.example` documents available
+variables; its Wiki settings are commented because imports are opt-in.
+
 ```sh
 npm ci
 npm run dev
 ```
+
+Docker equivalent (no host Node.js/npm required):
+
+```sh
+docker compose build cod-atlas-tools
+docker compose run --rm --service-ports cod-atlas-tools npm run dev -- --port 3000
+```
+
+See [Docker npm commands](docs/docker-commands.md) for other commands.
 
 VSCodium users can run the common commands through **Terminal → Run Task**.
 
@@ -19,7 +31,8 @@ VSCodium users can run the common commands through **Terminal → Run Task**.
 1. Find the Markdown file under `content/levels/`.
 2. Change the curated frontmatter or add a concise note to the Markdown body.
 3. Include a reliable source link in the pull-request description.
-4. Run `npm run data:build`.
+4. Run `npm run data:build`, or its Docker equivalent:
+   `docker compose run --rm cod-atlas-tools npm run data:build`.
 5. Commit the level file and `app/data/atlas.generated.json` together.
 
 Coordinates belong to the level location itself. Do not create a shared place
@@ -31,7 +44,19 @@ See the [data contribution guide](docs/contributing-data.md) for every field,
 all allowed `mode`, `precision`, `confidence`, and `method` values, selection
 guidance, and copy-ready templates for every source record type.
 
-Create a Markdown file under the primary game's directory:
+Create a Markdown file under the primary game's directory. If that game is
+already organized by map type, place it in `campaign/` or `multiplayer/` to
+match its `mode` field. Currently `cod`, `cod-uo`, and `cod-fh` use this
+layout; games that have not been reorganized retain their existing flat
+layout.
+
+Campaign files in a map-type layout are named
+`<order>-<level-slug>.md`, starting at `1` without leading zeros or gaps.
+Multiplayer and flat-layout files use `<level-slug>.md`. Never repeat the
+primary game ID or include the campaign order in the stable ID. For example,
+an `id` of `cod3-example-level` belongs at
+`content/levels/cod3/example-level.md` while `cod-example-level` could belong
+at `content/levels/cod/campaign/27-example-level.md`.
 
 ```md
 ---
@@ -61,6 +86,10 @@ Optional research notes belong here.
 Add a game YAML file only when its referenced game does not already exist. Add
 or reference a separate Wiki import JSON record for `wikiArticle`.
 
+An optional interface icon can be added at
+`public/images/games/<game-id>.png`. The filename must exactly match the game
+ID; no game record change is needed.
+
 Copy templates from [`docs/templates/`](docs/templates/) instead of using an
 existing record whose assumptions may not fit the new contribution.
 
@@ -74,8 +103,10 @@ Use the manual [Wiki import command](docs/wiki-import.md) to refresh records.
 The reference documents Docker execution, dry runs, selection options, request
 pacing, imported fields, and media-attribution safeguards.
 
-Do not add an image unless its import record contains the source URL, image
-detail page, author, author profile link, license name, and license URL.
+Imported Fandom images require a source URL, web-resolution URL, and image
+detail page. Author, uploader, license, and rights metadata are optional; the
+importer preserves them when Fandom provides them. Never invent missing
+attribution or describe a copyright exception as a license.
 
 ## Required checks
 
@@ -84,6 +115,15 @@ npm run data:check
 npm run lint
 npm test
 npm run build:static
+```
+
+Docker equivalents:
+
+```sh
+docker compose run --rm cod-atlas-tools npm run data:check
+docker compose run --rm cod-atlas-tools npm run lint
+docker compose run --rm cod-atlas-tools npm test
+docker compose run --rm cod-atlas-tools npm run build:static
 ```
 
 If a change intentionally adds or removes marker locations, update the explicit

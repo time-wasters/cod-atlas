@@ -7,13 +7,38 @@ services:
     hostname: cod-atlas
     build:
       context: .
+      args:
+        STEAM_ICON_URL: "${STEAM_ICON_URL:-}"
+        STEAMGRIDDB_ICON_URL: "${STEAMGRIDDB_ICON_URL:-}"
     ports:
       - "${COD_ATLAS_PORT:-8080}:80"
     networks:
       - cod-atlas-network
     volumes: []
 
+  cod-atlas-tools:
+    profiles: ["tools"]
+    image: cod-atlas-builder:local
+    build:
+      context: .
+      target: builder
+    working_dir: /app
+    environment:
+      COD_ATLAS_WIKI_ORIGIN: "${COD_ATLAS_WIKI_ORIGIN:-}"
+      COD_ATLAS_WIKI_USER_AGENT: "${COD_ATLAS_WIKI_USER_AGENT:-}"
+      STEAM_ICON_URL: "${STEAM_ICON_URL:-}"
+      STEAMGRIDDB_ICON_URL: "${STEAMGRIDDB_ICON_URL:-}"
+    ports:
+      - "${COD_ATLAS_DEV_PORT:-3000}:3000"
+    volumes:
+      - .:/app
+      - cod-atlas-node-modules:/app/node_modules
+
 networks:
   cod-atlas-network:
     name: cod-atlas-network
     driver: bridge
+
+volumes:
+  cod-atlas-node-modules:
+    name: cod-atlas-node-modules
