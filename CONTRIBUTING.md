@@ -49,9 +49,13 @@ already organized by map type, place it in `campaign/` or `multiplayer/` to
 match its `mode` field. Currently `cod` uses these subdirectories; games that
 have not been reorganized retain their existing flat layout.
 
-Name it `<level-slug>.md` without repeating the primary game ID. For example,
+Campaign files in a map-type layout are named
+`<order>-<level-slug>.md`, starting at `1` without leading zeros or gaps.
+Multiplayer and flat-layout files use `<level-slug>.md`. Never repeat the
+primary game ID or include the campaign order in the stable ID. For example,
 an `id` of `cod3-example-level` belongs at
-`content/levels/cod3/example-level.md`.
+`content/levels/cod3/example-level.md` while `cod-example-level` could belong
+at `content/levels/cod/campaign/27-example-level.md`.
 
 ```md
 ---
