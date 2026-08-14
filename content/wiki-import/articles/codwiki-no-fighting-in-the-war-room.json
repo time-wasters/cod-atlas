@@ -1,13 +1,13 @@
 {
   "id": "codwiki-no-fighting-in-the-war-room",
-  "fandomPageId": null,
+  "fandomPageId": 2627,
   "sourceUrl": "https://callofduty.fandom.com/wiki/No_Fighting_In_The_War_Room",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/No_Fighting_In_The_War_Room",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2971709,
+  "importedAt": "2026-08-14T23:37:09.159Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
+    "raw": "Altay Mountains, Russia",
+    "label": "Altay Mountains, Russia",
     "url": null
   },
   "mapStyle": "singleplayer",
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/9/98/No_Fighting_in_the_War_Room.jpg/revision/latest?cb=20110415122254",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/9/98/No_Fighting_in_the_War_Room.jpg/revision/latest?cb=20110415122254",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:No_Fighting_in_the_War_Room.jpg",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Synhart",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Synhart",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,53 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-03-02T05:49:09Z",
+    "revisionSha1": "dc28ba173ddf9380581ee2bb03d300f487d5332b",
+    "resolvedTitle": "No Fighting In The War Room",
+    "mainImageTitle": "File:No_Fighting_in_the_War_Room.jpg",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[All In]]",
+    "label": "All In",
+    "links": [
+      {
+        "wikiTitle": "All In",
+        "label": "All In",
+        "url": "https://callofduty.fandom.com/wiki/All_In"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Game Over]]",
+    "label": "Game Over",
+    "links": [
+      {
+        "wikiTitle": "Game Over",
+        "label": "Game Over",
+        "url": "https://callofduty.fandom.com/wiki/Game_Over"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty 4: Modern Warfare]]''<br>''[[Call of Duty: Modern Warfare Remastered]]''",
+    "label": "Call of Duty 4: Modern Warfare, Call of Duty: Modern Warfare Remastered",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty 4: Modern Warfare",
+        "label": "Call of Duty 4: Modern Warfare",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_4%3A_Modern_Warfare"
+      },
+      {
+        "wikiTitle": "Call of Duty: Modern Warfare Remastered",
+        "label": "Call of Duty: Modern Warfare Remastered",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Modern_Warfare_Remastered"
+      }
+    ]
+  },
+  "date": {
+    "raw": "Day 6, 2011 - 07:35:17",
+    "label": "Day 6, 2011 - 07:35:17"
+  }
 }

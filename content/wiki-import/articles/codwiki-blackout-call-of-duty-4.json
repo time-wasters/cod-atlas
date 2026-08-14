@@ -1,13 +1,13 @@
 {
   "id": "codwiki-blackout-call-of-duty-4",
-  "fandomPageId": null,
+  "fandomPageId": 2615,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Blackout_(Call_of_Duty_4)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Blackout_(Call_of_Duty_4)",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2996308,
+  "importedAt": "2026-08-14T23:36:47.649Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
+    "raw": "{{w|Caucasus Mountains}}, Russia",
+    "label": ", Russia",
     "url": null
   },
   "mapStyle": "singleplayer",
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/3/38/Blackout.JPG/revision/latest?cb=20080530150432",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/3/38/Blackout.JPG/revision/latest?cb=20080530150432",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Blackout.JPG",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Rs4life07",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Rs4life07",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,58 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-04-22T15:34:47Z",
+    "revisionSha1": "2549ca5ba5bcdf6829fc21374abb08810bcb3d66",
+    "resolvedTitle": "Blackout (Call of Duty 4)",
+    "mainImageTitle": "File:Blackout.JPG",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[The Coup]]",
+    "label": "The Coup",
+    "links": [
+      {
+        "wikiTitle": "The Coup",
+        "label": "The Coup",
+        "url": "https://callofduty.fandom.com/wiki/The_Coup"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Charlie Don't Surf]] (in-game)<br>[[Hunted (Call of Duty 4)|Hunted]] (chronologically)",
+    "label": "Charlie Don't Surf (in-game), Hunted (chronologically)",
+    "links": [
+      {
+        "wikiTitle": "Charlie Don't Surf",
+        "label": "Charlie Don't Surf",
+        "url": "https://callofduty.fandom.com/wiki/Charlie_Don't_Surf"
+      },
+      {
+        "wikiTitle": "Hunted (Call of Duty 4)",
+        "label": "Hunted",
+        "url": "https://callofduty.fandom.com/wiki/Hunted_(Call_of_Duty_4)"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty 4: Modern Warfare]]''<br>''[[Call of Duty: Modern Warfare Remastered]]''",
+    "label": "Call of Duty 4: Modern Warfare, Call of Duty: Modern Warfare Remastered",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty 4: Modern Warfare",
+        "label": "Call of Duty 4: Modern Warfare",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_4%3A_Modern_Warfare"
+      },
+      {
+        "wikiTitle": "Call of Duty: Modern Warfare Remastered",
+        "label": "Call of Duty: Modern Warfare Remastered",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Modern_Warfare_Remastered"
+      }
+    ]
+  },
+  "date": {
+    "raw": "Day 2, 2011 - 01:31:24",
+    "label": "Day 2, 2011 - 01:31:24"
+  }
 }

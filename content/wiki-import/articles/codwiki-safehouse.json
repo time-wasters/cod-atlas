@@ -1,10 +1,10 @@
 {
   "id": "codwiki-safehouse",
-  "fandomPageId": null,
+  "fandomPageId": 757763,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Safehouse",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Safehouse",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2870731,
+  "importedAt": "2026-08-14T23:37:09.210Z",
   "levelLocation": {
     "raw": null,
     "label": null,
@@ -40,5 +40,30 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2025-04-04T19:14:41Z",
+    "revisionSha1": "849d2c68c485e88da2bf62460ae240ee307be027",
+    "resolvedTitle": "Safehouse",
+    "mainImageTitle": null,
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "date": {
+    "raw": null,
+    "label": null
+  }
 }

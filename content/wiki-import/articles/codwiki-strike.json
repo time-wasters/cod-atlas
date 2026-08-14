@@ -1,10 +1,10 @@
 {
   "id": "codwiki-strike",
-  "fandomPageId": null,
+  "fandomPageId": 720998,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Strike",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Strike",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2965929,
+  "importedAt": "2026-08-14T23:37:20.066Z",
   "levelLocation": {
     "raw": null,
     "label": null,
@@ -40,5 +40,30 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-02-11T16:22:59Z",
+    "revisionSha1": "d61d7b0aaadb99052bcdf234b668d401bb9332c1",
+    "resolvedTitle": "Strike",
+    "mainImageTitle": null,
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "date": {
+    "raw": null,
+    "label": null
+  }
 }

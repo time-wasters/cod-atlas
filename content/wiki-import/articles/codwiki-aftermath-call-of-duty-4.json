@@ -1,13 +1,13 @@
 {
   "id": "codwiki-aftermath-call-of-duty-4",
-  "fandomPageId": null,
+  "fandomPageId": 2620,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Aftermath_(Call_of_Duty_4)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Aftermath_(Call_of_Duty_4)",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 3016618,
+  "importedAt": "2026-08-14T23:36:47.666Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
+    "raw": "Middle East {{ConflictingInfo|Location never explicitly mentioned. The conflict depicted in-game spans multiple real countries.}}",
+    "label": "Middle East",
     "url": null
   },
   "mapStyle": "singleplayer",
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/1/1b/Aftermath_CoD4.jpg/revision/latest?cb=20170713053858",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/1/1b/Aftermath_CoD4.jpg/revision/latest/scale-to-width-down/800?cb=20170713053858",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Aftermath_CoD4.jpg",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Teapwn",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Teapwn",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,53 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-07-27T15:51:01Z",
+    "revisionSha1": "82fcd2b7df491b7fd1974c67f3d7591b091b2f41",
+    "resolvedTitle": "Aftermath (Call of Duty 4)",
+    "mainImageTitle": "File:Aftermath_CoD4.jpg",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Shock and Awe]]",
+    "label": "Shock and Awe",
+    "links": [
+      {
+        "wikiTitle": "Shock and Awe",
+        "label": "Shock and Awe",
+        "url": "https://callofduty.fandom.com/wiki/Shock_and_Awe"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Safehouse (level)|Safehouse]]",
+    "label": "Safehouse",
+    "links": [
+      {
+        "wikiTitle": "Safehouse (level)",
+        "label": "Safehouse",
+        "url": "https://callofduty.fandom.com/wiki/Safehouse_(level)"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty 4: Modern Warfare]]''<br>''[[Call of Duty: Modern Warfare Remastered]]''",
+    "label": "Call of Duty 4: Modern Warfare, Call of Duty: Modern Warfare Remastered",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty 4: Modern Warfare",
+        "label": "Call of Duty 4: Modern Warfare",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_4%3A_Modern_Warfare"
+      },
+      {
+        "wikiTitle": "Call of Duty: Modern Warfare Remastered",
+        "label": "Call of Duty: Modern Warfare Remastered",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Modern_Warfare_Remastered"
+      }
+    ]
+  },
+  "date": {
+    "raw": "Day 3, 2011",
+    "label": "Day 3, 2011"
+  }
 }
