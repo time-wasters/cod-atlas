@@ -42,7 +42,8 @@ out incrementally:
 
 ```text
 content/levels/<primary-game>/<level-slug>.md
-content/levels/<primary-game>/<map-type>/<level-slug>.md
+content/levels/<primary-game>/campaign/<order>-<level-slug>.md
+content/levels/<primary-game>/multiplayer/<level-slug>.md
 ```
 
 A game must use one layout consistently. The first `Call of Duty` (`cod`) uses
@@ -50,6 +51,10 @@ A game must use one layout consistently. The first `Call of Duty` (`cod`) uses
 records whose `mode` is `multiplayer`. Games that have not been reorganized
 remain flat. Map types are broad content categories; they are distinct from
 multiplayer rule sets such as deathmatch or capture the flag.
+
+Campaign orders start at `1`, have no leading zeros, and must be unique and
+contiguous within their game. The prefix records play order without becoming
+part of the stable level `id` or display title.
 
 ## Level record
 
@@ -124,8 +129,9 @@ Repository-hosted level banners mirror the level source layout under
 `public/images/levels/`, using either
 `<primary-game>/<level-filename>.jpg` or
 `<primary-game>/<map-type>/<level-filename>.jpg` (PNG is also supported). The
-build validates their file signatures and matching level Markdown paths, then
-exposes them through `levelBanners`. The frontend prefers these banners and
+campaign `level-filename` includes its numeric order prefix. The build
+validates file signatures and matching level Markdown paths, then exposes them
+through `levelBanners`. The frontend prefers these banners and
 uses imported Wiki media when no local banner exists or a local image fails to
 load. These extracted or captured images are credited to
 [plp-gtr](https://github.com/plp-gtr); underlying game artwork retains its
