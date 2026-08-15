@@ -1,13 +1,13 @@
 {
   "id": "codwiki-sin-city",
-  "fandomPageId": null,
+  "fandomPageId": 571991,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Sin_City",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Sin_City",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2969164,
+  "importedAt": "2026-08-15T09:49:35.344Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
+    "raw": "Luxor Las Vegas, Las Vegas, Nevada, USA",
+    "label": "Luxor Las Vegas, Las Vegas, Nevada, USA",
     "url": null
   },
   "mapStyle": "singleplayer",
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/b/b8/Sin_City_CoDG.jpg/revision/latest?cb=20140925130812",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/b/b8/Sin_City_CoDG.jpg/revision/latest/scale-to-width-down/800?cb=20140925130812",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Sin_City_CoDG.jpg",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Louis Bancroft",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Louis_Bancroft",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,48 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-02-22T00:54:06Z",
+    "revisionSha1": "b9507e61b0301797b314cdcb8d8fe2b5bd05940f",
+    "resolvedTitle": "Sin City",
+    "mainImageTitle": "File:Sin_City_CoDG.jpg",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[End of the Line (Ghosts)|End of the Line]]",
+    "label": "End of the Line",
+    "links": [
+      {
+        "wikiTitle": "End of the Line (Ghosts)",
+        "label": "End of the Line",
+        "url": "https://callofduty.fandom.com/wiki/End_of_the_Line_(Ghosts)"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[All or Nothing (Ghosts)|All or Nothing]]",
+    "label": "All or Nothing",
+    "links": [
+      {
+        "wikiTitle": "All or Nothing (Ghosts)",
+        "label": "All or Nothing",
+        "url": "https://callofduty.fandom.com/wiki/All_or_Nothing_(Ghosts)"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Ghosts]]''",
+    "label": "Call of Duty: Ghosts",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Ghosts",
+        "label": "Call of Duty: Ghosts",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Ghosts"
+      }
+    ]
+  },
+  "date": {
+    "raw": "June 28th, 2028 -<br>08:09:11 (Ambush)<br>09:34:36 (Dragged)<br>11:11:49 (Tragedy)<br>12:02:38 (Comeback)<br>12:06:12 (Start of Mission)<ref>https://archive.org/details/119913398f-8ff-1ee-09640d-5d-0bca-716d-07f-46764/Call%20of%20Duty%20Ghosts%20-%20BRADYGAMES%20Game%20Guide.pdf. page 80</ref>",
+    "label": "June 28th, 2028 -, 08:09:11 (Ambush), 09:34:36 (Dragged), 11:11:49 (Tragedy), 12:02:38 (Comeback), 12:06:12 (Start of Mission)"
+  }
 }

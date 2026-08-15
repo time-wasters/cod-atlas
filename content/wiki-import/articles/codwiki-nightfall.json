@@ -1,13 +1,13 @@
 {
   "id": "codwiki-nightfall",
-  "fandomPageId": null,
+  "fandomPageId": 582299,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Nightfall",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Nightfall",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2979487,
+  "importedAt": "2026-08-15T09:49:24.675Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
+    "raw": "Nightfall Facility, Point Barrow, Alaska, United States",
+    "label": "Nightfall Facility, Point Barrow, Alaska, United States",
     "url": null
   },
   "mapStyle": "multiplayer",
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/f/f8/Nightfall_Loading_Screen_CoDG.png/revision/latest?cb=20260221034242",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/f/f8/Nightfall_Loading_Screen_CoDG.png/revision/latest/scale-to-width-down/800?cb=20260221034242",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Nightfall_Loading_Screen_CoDG.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Mxtive",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Mxtive",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,53 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-03-24T15:04:21Z",
+    "revisionSha1": "88055442d2e3a4f189f658bc24fe9210b4f81845",
+    "resolvedTitle": "Nightfall",
+    "mainImageTitle": "File:Nightfall_Loading_Screen_CoDG.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Point of Contact]]",
+    "label": "Point of Contact",
+    "links": [
+      {
+        "wikiTitle": "Point of Contact",
+        "label": "Point of Contact",
+        "url": "https://callofduty.fandom.com/wiki/Point_of_Contact"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Mayday (Extinction)|Mayday]]",
+    "label": "Mayday",
+    "links": [
+      {
+        "wikiTitle": "Mayday (Extinction)",
+        "label": "Mayday",
+        "url": "https://callofduty.fandom.com/wiki/Mayday_(Extinction)"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Ghosts]]''<br>''[[Call of Duty: Infinite Warfare]]'' (mentioned only)",
+    "label": "Call of Duty: Ghosts, Call of Duty: Infinite Warfare (mentioned only)",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Ghosts",
+        "label": "Call of Duty: Ghosts",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Ghosts"
+      },
+      {
+        "wikiTitle": "Call of Duty: Infinite Warfare",
+        "label": "Call of Duty: Infinite Warfare",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Infinite_Warfare"
+      }
+    ]
+  },
+  "date": {
+    "raw": "October 30th, 2017 - 22:10:16. 14 weeks after the [[Point of Contact|Colorado outbreak]]",
+    "label": "October 30th, 2017 - 22:10:16. 14 weeks after the Colorado outbreak"
+  }
 }

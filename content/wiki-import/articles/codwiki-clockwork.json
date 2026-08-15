@@ -1,13 +1,13 @@
 {
   "id": "codwiki-clockwork",
-  "fandomPageId": null,
+  "fandomPageId": 571988,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Clockwork",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Clockwork",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 3002834,
+  "importedAt": "2026-08-15T09:49:03.127Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
+    "raw": "The Andes, Patagonia, Argentina",
+    "label": "The Andes, Patagonia, Argentina",
     "url": null
   },
   "mapStyle": "singleplayer",
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/d/d4/Clockwork_CoDG.jpg/revision/latest?cb=20140925130341",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/d/d4/Clockwork_CoDG.jpg/revision/latest/scale-to-width-down/800?cb=20140925130341",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Clockwork_CoDG.jpg",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Louis Bancroft",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Louis_Bancroft",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,48 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-05-18T14:45:39Z",
+    "revisionSha1": "1eeae60839bf9324d202602bdc8e21f0192a62d6",
+    "resolvedTitle": "Clockwork",
+    "mainImageTitle": "File:Clockwork_CoDG.jpg",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[The Hunted]]",
+    "label": "The Hunted",
+    "links": [
+      {
+        "wikiTitle": "The Hunted",
+        "label": "The Hunted",
+        "url": "https://callofduty.fandom.com/wiki/The_Hunted"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Atlas Falls]]",
+    "label": "Atlas Falls",
+    "links": [
+      {
+        "wikiTitle": "Atlas Falls",
+        "label": "Atlas Falls",
+        "url": "https://callofduty.fandom.com/wiki/Atlas_Falls"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Ghosts]]''",
+    "label": "Call of Duty: Ghosts",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Ghosts",
+        "label": "Call of Duty: Ghosts",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Ghosts"
+      }
+    ]
+  },
+  "date": {
+    "raw": "June 20th, 2028 - 22:35:39<ref>https://archive.org/details/119913398f-8ff-1ee-09640d-5d-0bca-716d-07f-46764/Call%20of%20Duty%20Ghosts%20-%20BRADYGAMES%20Game%20Guide.pdf. page 61</ref>",
+    "label": "June 20th, 2028 - 22:35:39"
+  }
 }
