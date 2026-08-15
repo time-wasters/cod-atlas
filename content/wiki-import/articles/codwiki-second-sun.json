@@ -1,14 +1,14 @@
 {
   "id": "codwiki-second-sun",
-  "fandomPageId": null,
+  "fandomPageId": 16662,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Second_Sun",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Second_Sun",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2968265,
+  "importedAt": "2026-08-15T11:05:15.597Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "[[Washington D.C.]], [[United States of America]]<br/>[[International Space Station]], Outer Space",
+    "label": "Washington D.C.",
+    "url": "https://callofduty.fandom.com/wiki/Washington_D.C."
   },
   "mapStyle": "singleplayer",
   "mapStyleDetail": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/6/67/Second_Sun_menu_image_MW2.png/revision/latest?cb=20130314124751",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/6/67/Second_Sun_menu_image_MW2.png/revision/latest?cb=20130314124751",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Second_Sun_menu_image_MW2.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Laagone",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Laagone",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,58 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-02-17T13:07:51Z",
+    "revisionSha1": "3e4333f224f7da6fadaa0a6d7428c0158e4e9406",
+    "resolvedTitle": "Second Sun",
+    "mainImageTitle": "File:Second_Sun_menu_image_MW2.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Contingency (mission)|Contingency]] (in-game)<br>[[Of Their Own Accord]] (chronologically)",
+    "label": "Contingency (in-game), Of Their Own Accord (chronologically)",
+    "links": [
+      {
+        "wikiTitle": "Contingency (mission)",
+        "label": "Contingency",
+        "url": "https://callofduty.fandom.com/wiki/Contingency_(mission)"
+      },
+      {
+        "wikiTitle": "Of Their Own Accord",
+        "label": "Of Their Own Accord",
+        "url": "https://callofduty.fandom.com/wiki/Of_Their_Own_Accord"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Whiskey Hotel]]",
+    "label": "Whiskey Hotel",
+    "links": [
+      {
+        "wikiTitle": "Whiskey Hotel",
+        "label": "Whiskey Hotel",
+        "url": "https://callofduty.fandom.com/wiki/Whiskey_Hotel"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Modern Warfare 2]]''<br/>''[[Call of Duty: Modern Warfare 2 Campaign Remastered]]''",
+    "label": "Call of Duty: Modern Warfare 2, Call of Duty: Modern Warfare 2 Campaign Remastered",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Modern Warfare 2",
+        "label": "Call of Duty: Modern Warfare 2",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Modern_Warfare_2"
+      },
+      {
+        "wikiTitle": "Call of Duty: Modern Warfare 2 Campaign Remastered",
+        "label": "Call of Duty: Modern Warfare 2 Campaign Remastered",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Modern_Warfare_2_Campaign_Remastered"
+      }
+    ]
+  },
+  "date": {
+    "raw": "Day 5 (August 14th), 2016 - 18:57:20",
+    "label": "Day 5 (August 14th), 2016 - 18:57:20"
+  }
 }

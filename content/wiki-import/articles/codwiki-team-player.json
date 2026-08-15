@@ -1,13 +1,13 @@
 {
   "id": "codwiki-team-player",
-  "fandomPageId": null,
+  "fandomPageId": 6706,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Team_Player",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Team_Player",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2966173,
+  "importedAt": "2026-08-15T11:05:26.376Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
+    "raw": "The Red Zone, Afghanistan",
+    "label": "The Red Zone, Afghanistan",
     "url": null
   },
   "mapStyle": "singleplayer",
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/e/e2/Team_Player_menu_image_MW2.png/revision/latest?cb=20160206055404",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/e/e2/Team_Player_menu_image_MW2.png/revision/latest?cb=20160206055404",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Team_Player_menu_image_MW2.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Laagone",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Laagone",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,53 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-02-12T12:03:11Z",
+    "revisionSha1": "fae70aed1f58ac36787dae1fbeebed73485333d1",
+    "resolvedTitle": "Team Player",
+    "mainImageTitle": "File:Team_Player_menu_image_MW2.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[S.S.D.D.]]",
+    "label": "S.S.D.D.",
+    "links": [
+      {
+        "wikiTitle": "S.S.D.D.",
+        "label": "S.S.D.D.",
+        "url": "https://callofduty.fandom.com/wiki/S.S.D.D."
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Cliffhanger (mission)|Cliffhanger]]",
+    "label": "Cliffhanger",
+    "links": [
+      {
+        "wikiTitle": "Cliffhanger (mission)",
+        "label": "Cliffhanger",
+        "url": "https://callofduty.fandom.com/wiki/Cliffhanger_(mission)"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Modern Warfare 2]]''<br />''[[Call of Duty: Modern Warfare 2 Campaign Remastered]]''",
+    "label": "Call of Duty: Modern Warfare 2, Call of Duty: Modern Warfare 2 Campaign Remastered",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Modern Warfare 2",
+        "label": "Call of Duty: Modern Warfare 2",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Modern_Warfare_2"
+      },
+      {
+        "wikiTitle": "Call of Duty: Modern Warfare 2 Campaign Remastered",
+        "label": "Call of Duty: Modern Warfare 2 Campaign Remastered",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Modern_Warfare_2_Campaign_Remastered"
+      }
+    ]
+  },
+  "date": {
+    "raw": "Day 1 (August 10th), 2016 - 16:08:35<ref>The Remastered version of this level states the time in which the mission takes place.</ref>",
+    "label": "Day 1 (August 10th), 2016 - 16:08:35"
+  }
 }
