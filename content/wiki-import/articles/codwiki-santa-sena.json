@@ -1,14 +1,14 @@
 {
   "id": "codwiki-santa-sena",
-  "fandomPageId": null,
-  "sourceUrl": "https://callofduty.fandom.com/wiki/Santa_Seña",
-  "canonicalUrl": "https://callofduty.fandom.com/wiki/Santa_Seña",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "fandomPageId": 718398,
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Santa_Se%C3%B1a",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Santa_Se%C3%B1a",
+  "latestRevisionId": 2963820,
+  "importedAt": "2026-08-15T13:23:59.896Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "[[United States of America|US]]-[[Mexico]] border",
+    "label": "US",
+    "url": "https://callofduty.fandom.com/wiki/United_States_of_America"
   },
   "mapStyle": "multiplayer",
   "mapStyleDetail": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/b/bc/SantaSenaBorderCrossing_LoadingScreen_MWII.png/revision/latest?cb=20221102131739",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/b/bc/SantaSenaBorderCrossing_LoadingScreen_MWII.png/revision/latest/scale-to-width-down/800?cb=20221102131739",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:SantaSenaBorderCrossing_LoadingScreen_MWII.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Kalinine",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Kalinine",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,36 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-02-04T11:12:27Z",
+    "revisionSha1": "f98c8f7dfb54d35c8b56464b1408bbbc28dfdd08",
+    "resolvedTitle": "Santa Seña",
+    "mainImageTitle": "File:SantaSenaBorderCrossing_LoadingScreen_MWII.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Modern Warfare II]]''",
+    "label": "Call of Duty: Modern Warfare II",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Modern Warfare II",
+        "label": "Call of Duty: Modern Warfare II",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Modern_Warfare_II"
+      }
+    ]
+  },
+  "date": {
+    "raw": "Day 31 13:02 <small>(Core Map)</small><br>Day 32 16:03 <small>(Battle Map)</small>",
+    "label": "Day 31 13:02 (Core Map) , Day 32 16:03 (Battle Map)"
+  }
 }

@@ -1,14 +1,14 @@
 {
   "id": "codwiki-violence-and-timing",
-  "fandomPageId": null,
+  "fandomPageId": 715802,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Violence_and_Timing",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Violence_and_Timing",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2963077,
+  "importedAt": "2026-08-15T13:24:10.588Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "[[Urzikstan]]<br>[[Al Mazrah]], [[United Republic of Adal]]",
+    "label": "Urzikstan",
+    "url": "https://callofduty.fandom.com/wiki/Urzikstan"
   },
   "mapStyle": "singleplayer",
   "mapStyleDetail": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/3/3a/ViolenceAndTiming_LoadingScreen_MWII.jpg/revision/latest?cb=20221026102649",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/3/3a/ViolenceAndTiming_LoadingScreen_MWII.jpg/revision/latest/scale-to-width-down/800?cb=20221026102649",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:ViolenceAndTiming_LoadingScreen_MWII.jpg",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Kalinine",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Kalinine",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,48 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-02-01T01:41:23Z",
+    "revisionSha1": "111e903014507d253a5b6590572708c2163531f4",
+    "resolvedTitle": "Violence and Timing",
+    "mainImageTitle": "File:ViolenceAndTiming_LoadingScreen_MWII.jpg",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Recon by Fire]]",
+    "label": "Recon by Fire",
+    "links": [
+      {
+        "wikiTitle": "Recon by Fire",
+        "label": "Recon by Fire",
+        "url": "https://callofduty.fandom.com/wiki/Recon_by_Fire"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[El Sin Nombre (level)|El Sin Nombre]]",
+    "label": "El Sin Nombre",
+    "links": [
+      {
+        "wikiTitle": "El Sin Nombre (level)",
+        "label": "El Sin Nombre",
+        "url": "https://callofduty.fandom.com/wiki/El_Sin_Nombre_(level)"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Modern Warfare II]]''",
+    "label": "Call of Duty: Modern Warfare II",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Modern Warfare II",
+        "label": "Call of Duty: Modern Warfare II",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Modern_Warfare_II"
+      }
+    ]
+  },
+  "date": {
+    "raw": "November 1st, 2022 16H00",
+    "label": "November 1st, 2022 16H00"
+  }
 }
