@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Arnhem_(Map)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Arnhem_(Map)",
   "latestRevisionId": 2991510,
-  "importedAt": "2026-08-09T21:33:45.157Z",
+  "importedAt": "2026-08-15T09:24:22.728Z",
   "levelLocation": {
     "raw": "[[Wikipedia:Arnhem|Arnhem]], [[Wikipedia:Netherlands|Netherlands]]",
     "label": "Arnhem",
@@ -53,5 +53,30 @@
     "resolvedTitle": "Arnhem (Map)",
     "mainImageTitle": "File:Arnhem_Map_UO.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty: United Offensive]]''",
+    "label": "Call of Duty: United Offensive",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: United Offensive",
+        "label": "Call of Duty: United Offensive",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_United_Offensive"
+      }
+    ]
+  },
+  "date": {
+    "raw": "September 17-September 25, 1944",
+    "label": "September 17-September 25, 1944"
   }
 }

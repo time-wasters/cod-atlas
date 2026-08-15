@@ -1,14 +1,14 @@
 {
   "id": "codwiki-firebase-z",
-  "fandomPageId": null,
+  "fandomPageId": 697655,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Firebase_Z",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Firebase_Z",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2979328,
+  "importedAt": "2026-08-15T09:25:19.011Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "[[Omega Group|Omega]] Outpost 25, [[Wikipedia:A Sầu Valley|A Shau Valley]], [[Vietnam|Socialist Republic of Vietnam]]",
+    "label": "Omega",
+    "url": "https://callofduty.fandom.com/wiki/Omega_Group"
   },
   "mapStyle": "multiplayer",
   "mapStyleDetail": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/7/7a/FirebaseZ_Promo_BOCW.jpg/revision/latest?cb=20210114170936",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/7/7a/FirebaseZ_Promo_BOCW.jpg/revision/latest/scale-to-width-down/800?cb=20210114170936",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:FirebaseZ_Promo_BOCW.jpg",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Kalinine",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Kalinine",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,48 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-03-24T10:14:03Z",
+    "revisionSha1": "ff7325eebb8a172fa18354aa437caa7dc4ea4842",
+    "resolvedTitle": "Firebase Z",
+    "mainImageTitle": "File:FirebaseZ_Promo_BOCW.jpg",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Die Maschine]]",
+    "label": "Die Maschine",
+    "links": [
+      {
+        "wikiTitle": "Die Maschine",
+        "label": "Die Maschine",
+        "url": "https://callofduty.fandom.com/wiki/Die_Maschine"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Outbreak (Cold War)|Outbreak]]",
+    "label": "Outbreak",
+    "links": [
+      {
+        "wikiTitle": "Outbreak (Cold War)",
+        "label": "Outbreak",
+        "url": "https://callofduty.fandom.com/wiki/Outbreak_(Cold_War)"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Black Ops Cold War]]''",
+    "label": "Call of Duty: Black Ops Cold War",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Black Ops Cold War",
+        "label": "Call of Duty: Black Ops Cold War",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops_Cold_War"
+      }
+    ]
+  },
+  "date": {
+    "raw": "June 15th, 1984",
+    "label": "June 15th, 1984"
+  }
 }

@@ -1,14 +1,14 @@
 {
   "id": "codwiki-end-of-the-line-cold-war",
-  "fandomPageId": null,
+  "fandomPageId": 693600,
   "sourceUrl": "https://callofduty.fandom.com/wiki/End_of_the_Line_(Cold_War)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/End_of_the_Line_(Cold_War)",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 3002166,
+  "importedAt": "2026-08-15T09:25:18.997Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "Abandoned Compound, South of [[Havana]], [[Cuba]]",
+    "label": "Havana",
+    "url": "https://callofduty.fandom.com/wiki/Havana"
   },
   "mapStyle": "singleplayer",
   "mapStyleDetail": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/7/70/EndOfTheLine_MenuScreen_BOCW.png/revision/latest?cb=20201118155946",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/7/70/EndOfTheLine_MenuScreen_BOCW.png/revision/latest/scale-to-width-down/800?cb=20201118155946",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:EndOfTheLine_MenuScreen_BOCW.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Kalinine",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Kalinine",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,48 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-05-13T23:52:16Z",
+    "revisionSha1": "0418907731f8ff17e90ff7627f5506a34fb517ca",
+    "resolvedTitle": "End of the Line (Cold War)",
+    "mainImageTitle": "File:EndOfTheLine_MenuScreen_BOCW.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Cuba Briefing]]",
+    "label": "Cuba Briefing",
+    "links": [
+      {
+        "wikiTitle": "Cuba Briefing",
+        "label": "Cuba Briefing",
+        "url": "https://callofduty.fandom.com/wiki/Cuba_Briefing"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Interrogation]]",
+    "label": "Interrogation",
+    "links": [
+      {
+        "wikiTitle": "Interrogation",
+        "label": "Interrogation",
+        "url": "https://callofduty.fandom.com/wiki/Interrogation"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Black Ops Cold War]]''",
+    "label": "Call of Duty: Black Ops Cold War",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Black Ops Cold War",
+        "label": "Call of Duty: Black Ops Cold War",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops_Cold_War"
+      }
+    ]
+  },
+  "date": {
+    "raw": "March 13, 1981",
+    "label": "March 13, 1981"
+  }
 }

@@ -1,14 +1,14 @@
 {
   "id": "codwiki-afghan",
-  "fandomPageId": null,
+  "fandomPageId": 14383,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Afghan",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Afghan",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 3017623,
+  "importedAt": "2026-08-15T09:23:39.810Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "[[Site Hotel Bravo]], [[Afghanistan]]",
+    "label": "Site Hotel Bravo",
+    "url": "https://callofduty.fandom.com/wiki/Site_Hotel_Bravo"
   },
   "mapStyle": "multiplayer",
   "mapStyleDetail": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/8/83/Afghan_loading_screen_MW2.png/revision/latest?cb=20130310131229",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/8/83/Afghan_loading_screen_MW2.png/revision/latest?cb=20130310131229",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Afghan_loading_screen_MW2.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Laagone",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Laagone",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,46 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-08-01T07:04:15Z",
+    "revisionSha1": "76e08c40585d9f8b10b00c685663d64f741b6018",
+    "resolvedTitle": "Afghan",
+    "mainImageTitle": "File:Afghan_loading_screen_MW2.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Modern Warfare 2]]''<br>''[[Call of Duty Online]]''<br>''[[Call of Duty: Modern Warfare III]]''",
+    "label": "Call of Duty: Modern Warfare 2, Call of Duty Online, Call of Duty: Modern Warfare III",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Modern Warfare 2",
+        "label": "Call of Duty: Modern Warfare 2",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Modern_Warfare_2"
+      },
+      {
+        "wikiTitle": "Call of Duty Online",
+        "label": "Call of Duty Online",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_Online"
+      },
+      {
+        "wikiTitle": "Call of Duty: Modern Warfare III",
+        "label": "Call of Duty: Modern Warfare III",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Modern_Warfare_III"
+      }
+    ]
+  },
+  "date": {
+    "raw": "Day 6 14:02 (''MWIII'')",
+    "label": "Day 6 14:02 (MWIII)"
+  }
 }

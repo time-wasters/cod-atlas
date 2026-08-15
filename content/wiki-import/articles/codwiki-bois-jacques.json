@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Bois_Jacques",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Bois_Jacques",
   "latestRevisionId": 2997104,
-  "importedAt": "2026-08-09T21:33:45.121Z",
+  "importedAt": "2026-08-15T09:20:27.793Z",
   "levelLocation": {
     "raw": "Bastogne, Belgium",
     "label": "Bastogne, Belgium",
@@ -53,5 +53,42 @@
     "resolvedTitle": "Bois Jacques",
     "mainImageTitle": "File:BoisJacques_LevelSelect_CoDUO.jpg",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Kharkov Station]] (Chronologically)",
+    "label": "Kharkov Station (Chronologically)",
+    "links": [
+      {
+        "wikiTitle": "Kharkov Station",
+        "label": "Kharkov Station",
+        "url": "https://callofduty.fandom.com/wiki/Kharkov_Station"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Crossroads (United Offensive)|Crossroads]]",
+    "label": "Crossroads",
+    "links": [
+      {
+        "wikiTitle": "Crossroads (United Offensive)",
+        "label": "Crossroads",
+        "url": "https://callofduty.fandom.com/wiki/Crossroads_(United_Offensive)"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: United Offensive]]''",
+    "label": "Call of Duty: United Offensive",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: United Offensive",
+        "label": "Call of Duty: United Offensive",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_United_Offensive"
+      }
+    ]
+  },
+  "date": {
+    "raw": "December 26, 1944, 1530 hrs",
+    "label": "December 26, 1944, 1530 hrs"
   }
 }

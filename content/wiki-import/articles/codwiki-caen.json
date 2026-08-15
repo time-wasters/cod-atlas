@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Caen",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Caen",
   "latestRevisionId": 2795576,
-  "importedAt": "2026-08-10T19:02:22.792Z",
+  "importedAt": "2026-08-15T09:20:49.385Z",
   "levelLocation": {
     "raw": null,
     "label": null,
@@ -53,5 +53,30 @@
     "resolvedTitle": "Caen",
     "mainImageTitle": "File:Caen_Map_CoD2.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty 2]]''",
+    "label": "Call of Duty 2",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty 2",
+        "label": "Call of Duty 2",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_2"
+      }
+    ]
+  },
+  "date": {
+    "raw": null,
+    "label": null
   }
 }

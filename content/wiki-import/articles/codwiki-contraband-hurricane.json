@@ -1,12 +1,12 @@
 {
   "id": "codwiki-contraband-hurricane",
-  "fandomPageId": null,
+  "fandomPageId": 679810,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Contraband_Hurricane",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Contraband_Hurricane",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2971280,
+  "importedAt": "2026-08-15T08:58:25.969Z",
   "levelLocation": {
-    "raw": null,
+    "raw": "{{w|Colombia}}",
     "label": null,
     "url": null
   },
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/6/6f/Contraband_Hurricane_MenuScreen_BO4.jpg/revision/latest?cb=20190823130127",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/6/6f/Contraband_Hurricane_MenuScreen_BO4.jpg/revision/latest/scale-to-width-down/800?cb=20190823130127",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Contraband_Hurricane_MenuScreen_BO4.jpg",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Kalinine",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Kalinine",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,36 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-02-28T09:26:27Z",
+    "revisionSha1": "35d746c3329aab1ab2405e62d6e1f56b4cbe3f81",
+    "resolvedTitle": "Contraband Hurricane",
+    "mainImageTitle": "File:Contraband_Hurricane_MenuScreen_BO4.jpg",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Black Ops 4]]''",
+    "label": "Call of Duty: Black Ops 4",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Black Ops 4",
+        "label": "Call of Duty: Black Ops 4",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops_4"
+      }
+    ]
+  },
+  "date": {
+    "raw": "2045",
+    "label": "2045"
+  }
 }
