@@ -1,10 +1,10 @@
 {
   "id": "codwiki-hunter-killer",
-  "fandomPageId": null,
+  "fandomPageId": 808635,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Hunter_Killer",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Hunter_Killer",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 3005428,
+  "importedAt": "2026-08-15T11:15:31.024Z",
   "levelLocation": {
     "raw": null,
     "label": null,
@@ -40,5 +40,30 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-05-28T16:54:20Z",
+    "revisionSha1": "4d7656bd1cde8621ca210bed1a3a38bac792a73c",
+    "resolvedTitle": "Hunter Killer",
+    "mainImageTitle": null,
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "date": {
+    "raw": null,
+    "label": null
+  }
 }

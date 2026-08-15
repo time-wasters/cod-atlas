@@ -1,10 +1,10 @@
 {
   "id": "codwiki-liberation",
-  "fandomPageId": null,
+  "fandomPageId": 721895,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Liberation",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Liberation",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2682792,
+  "importedAt": "2026-08-15T11:15:41.766Z",
   "levelLocation": {
     "raw": null,
     "label": null,
@@ -40,5 +40,30 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2023-01-15T20:08:16Z",
+    "revisionSha1": "6bafa766acbe7a722da0aad6de7b40aaa375bdac",
+    "resolvedTitle": "Liberation",
+    "mainImageTitle": null,
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "date": {
+    "raw": null,
+    "label": null
+  }
 }

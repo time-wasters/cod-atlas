@@ -1,10 +1,10 @@
 {
   "id": "codwiki-lockdown",
-  "fandomPageId": null,
+  "fandomPageId": 728399,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Lockdown",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Lockdown",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2936722,
+  "importedAt": "2026-08-15T11:15:41.773Z",
   "levelLocation": {
     "raw": null,
     "label": null,
@@ -40,5 +40,30 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2025-11-16T02:43:41Z",
+    "revisionSha1": "ee895841c073a6fc0f900e65d756fd9978786e98",
+    "resolvedTitle": "Lockdown",
+    "mainImageTitle": null,
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "date": {
+    "raw": null,
+    "label": null
+  }
 }

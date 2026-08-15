@@ -1,10 +1,10 @@
 {
   "id": "codwiki-vertigo-special-ops",
-  "fandomPageId": null,
+  "fandomPageId": 484410,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Vertigo_(Special_Ops)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Vertigo_(Special_Ops)",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2859586,
+  "importedAt": "2026-08-15T11:16:03.311Z",
   "levelLocation": {
     "raw": null,
     "label": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/6/64/Loading_Screen_Vertigo_MW3.png/revision/latest?cb=20121005071937",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/6/64/Loading_Screen_Vertigo_MW3.png/revision/latest?cb=20121005071937",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Loading_Screen_Vertigo_MW3.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "ParagonX7",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:ParagonX7",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,30 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2025-03-09T15:59:07Z",
+    "revisionSha1": "d495e8ee0d1979c666c60b0f5210bc547ac804b3",
+    "resolvedTitle": "Vertigo (Special Ops)",
+    "mainImageTitle": "File:Loading_Screen_Vertigo_MW3.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "date": {
+    "raw": null,
+    "label": null
+  }
 }

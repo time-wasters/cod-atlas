@@ -1,13 +1,13 @@
 {
   "id": "codwiki-piazza",
-  "fandomPageId": null,
+  "fandomPageId": 418826,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Piazza",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Piazza",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2972850,
+  "importedAt": "2026-08-15T11:15:52.540Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
+    "raw": "Amalfi Coast, Italy",
+    "label": "Amalfi Coast, Italy",
     "url": null
   },
   "mapStyle": "multiplayer",
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/3/38/Bare_Load_Screen_Piazza_MW3.jpg/revision/latest?cb=20120110185200",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/3/38/Bare_Load_Screen_Piazza_MW3.jpg/revision/latest/scale-to-width-down/800?cb=20120110185200",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Bare_Load_Screen_Piazza_MW3.jpg",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Kalinine",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Kalinine",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,36 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-03-05T00:07:45Z",
+    "revisionSha1": "8d7118112d1f6fdf65f4aaf46809f5d6ad1bcc51",
+    "resolvedTitle": "Piazza",
+    "mainImageTitle": "File:Bare_Load_Screen_Piazza_MW3.jpg",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Modern Warfare 3]]''",
+    "label": "Call of Duty: Modern Warfare 3",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Modern Warfare 3",
+        "label": "Call of Duty: Modern Warfare 3",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Modern_Warfare_3"
+      }
+    ]
+  },
+  "date": {
+    "raw": null,
+    "label": null
+  }
 }
