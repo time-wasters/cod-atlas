@@ -1,13 +1,13 @@
 {
   "id": "codwiki-heavy-metal-level",
-  "fandomPageId": null,
+  "fandomPageId": 398218,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Heavy_Metal_(level)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Heavy_Metal_(level)",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 3018233,
+  "importedAt": "2026-08-15T11:07:21.896Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
+    "raw": "Baltimore suburb",
+    "label": "Baltimore suburb",
     "url": null
   },
   "mapStyle": "singleplayer",
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/8/86/Heavy_Metal_%28level%29_MW3DS.PNG/revision/latest?cb=20260804062301",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/8/86/Heavy_Metal_%28level%29_MW3DS.PNG/revision/latest/scale-to-width-down/800?cb=20260804062301",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Heavy_Metal_(level)_MW3DS.PNG",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Mxtive",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Mxtive",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,48 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-08-04T06:23:24Z",
+    "revisionSha1": "b4ab79fb45c4c7b60f9a590504ddaf7511f6c1c7",
+    "resolvedTitle": "Heavy Metal (level)",
+    "mainImageTitle": "File:Heavy_Metal_(level)_MW3DS.PNG",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Clean Up]]",
+    "label": "Clean Up",
+    "links": [
+      {
+        "wikiTitle": "Clean Up",
+        "label": "Clean Up",
+        "url": "https://callofduty.fandom.com/wiki/Clean_Up"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Dangerous Cargo]]",
+    "label": "Dangerous Cargo",
+    "links": [
+      {
+        "wikiTitle": "Dangerous Cargo",
+        "label": "Dangerous Cargo",
+        "url": "https://callofduty.fandom.com/wiki/Dangerous_Cargo"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Modern Warfare 3: Defiance]]''",
+    "label": "Call of Duty: Modern Warfare 3: Defiance",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Modern Warfare 3: Defiance",
+        "label": "Call of Duty: Modern Warfare 3: Defiance",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Modern_Warfare_3%3A_Defiance"
+      }
+    ]
+  },
+  "date": {
+    "raw": "1200h",
+    "label": "1200h"
+  }
 }
