@@ -1,14 +1,14 @@
 {
   "id": "codwiki-the-archon",
-  "fandomPageId": null,
+  "fandomPageId": 717350,
   "sourceUrl": "https://callofduty.fandom.com/wiki/The_Archon",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/The_Archon",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 3008141,
+  "importedAt": "2026-08-15T13:26:39.849Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "*Eastern Desert, [[Egypt]]\n*\"Corrupted Lands\", [[Dark Aether]]",
+    "label": "Egypt",
+    "url": "https://callofduty.fandom.com/wiki/Egypt"
   },
   "mapStyle": "multiplayer",
   "mapStyleDetail": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/c/cc/TheArchon_LoadingScreen_CODV.jpg/revision/latest?cb=20220818191136",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/c/cc/TheArchon_LoadingScreen_CODV.jpg/revision/latest/scale-to-width-down/800?cb=20220818191136",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:TheArchon_LoadingScreen_CODV.jpg",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Kalinine",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Kalinine",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,48 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-06-12T16:59:13Z",
+    "revisionSha1": "8dc44a1c41ec6f96234a17c1ad5b5cec867229f5",
+    "resolvedTitle": "The Archon",
+    "mainImageTitle": "File:TheArchon_LoadingScreen_CODV.jpg",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Shi No Numa/Vanguard|Shi No Numa]]",
+    "label": "Shi No Numa",
+    "links": [
+      {
+        "wikiTitle": "Shi No Numa/Vanguard",
+        "label": "Shi No Numa",
+        "url": "https://callofduty.fandom.com/wiki/Shi_No_Numa%2FVanguard"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Die Maschine]] (chronologically)",
+    "label": "Die Maschine (chronologically)",
+    "links": [
+      {
+        "wikiTitle": "Die Maschine",
+        "label": "Die Maschine",
+        "url": "https://callofduty.fandom.com/wiki/Die_Maschine"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Vanguard]]''",
+    "label": "Call of Duty: Vanguard",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Vanguard",
+        "label": "Call of Duty: Vanguard",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Vanguard"
+      }
+    ]
+  },
+  "date": {
+    "raw": "Sometime after [[Shi No Numa]], 1944",
+    "label": "Sometime after Shi No Numa, 1944"
+  }
 }
