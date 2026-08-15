@@ -1,13 +1,13 @@
 {
   "id": "codwiki-the-tortured-path",
-  "fandomPageId": null,
+  "fandomPageId": 676088,
   "sourceUrl": "https://callofduty.fandom.com/wiki/The_Tortured_Path",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/The_Tortured_Path",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 3006504,
+  "importedAt": "2026-08-15T13:28:29.404Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
+    "raw": "Northern Spain <small>(Into the Storm)</small><br>''{{W|USS Mount Olympus|U.S.S. Mount Olympus}}'', Atlantic Ocean <small>(Across the Depths)</small><br>{{w|Deception Island}}, {{w|New Swabia}}, Antarctica<ref>\"The Nazi territory of Neuschwabenland hides an ancient secret, a horror buried in frost for millennia.\"</ref> <small>(Beneath the Ice)</small>",
+    "label": "Northern Spain (Into the Storm) , , Atlantic Ocean (Across the Depths) , , , Antarctica (Beneath the Ice)",
     "url": null
   },
   "mapStyle": "multiplayer",
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/e/ed/The_Tortured_Path_Logo.png/revision/latest?cb=20180625195418",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/e/ed/The_Tortured_Path_Logo.png/revision/latest/scale-to-width-down/800?cb=20180625195418",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:The_Tortured_Path_Logo.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "RoachTheIntelCollector",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:RoachTheIntelCollector",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,48 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-06-03T03:58:11Z",
+    "revisionSha1": "efe7b6ba4817b7b16e2a0132201eb78dd591035c",
+    "resolvedTitle": "The Tortured Path",
+    "mainImageTitle": "File:The_Tortured_Path_Logo.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[The Shadowed Throne]]",
+    "label": "The Shadowed Throne",
+    "links": [
+      {
+        "wikiTitle": "The Shadowed Throne",
+        "label": "The Shadowed Throne",
+        "url": "https://callofduty.fandom.com/wiki/The_Shadowed_Throne"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[The Frozen Dawn]]",
+    "label": "The Frozen Dawn",
+    "links": [
+      {
+        "wikiTitle": "The Frozen Dawn",
+        "label": "The Frozen Dawn",
+        "url": "https://callofduty.fandom.com/wiki/The_Frozen_Dawn"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: WWII]]''",
+    "label": "Call of Duty: WWII",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: WWII",
+        "label": "Call of Duty: WWII",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_WWII"
+      }
+    ]
+  },
+  "date": {
+    "raw": "Months<ref>https://twitter.com/CameronDayton/status/1022604181633290241</ref> after April 18-19th, 1945",
+    "label": "Months after April 18-19th, 1945"
+  }
 }
