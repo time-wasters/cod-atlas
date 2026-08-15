@@ -1306,9 +1306,12 @@ export default function Home() {
   return (
     <main className={`atlas-shell${sidebarOpen ? "" : " is-sidebar-collapsed"}`}>
       <header className="atlas-header">
-        <div className="brand-mark" aria-hidden="true">◎</div>
-        <div>
-          <h1>CoD Atlas</h1>
+        <div className="atlas-brand">
+          <h1>
+            {/* This reviewed local brand asset does not need runtime image optimization. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="images/banner.png" width="790" height="153" alt="CoD Atlas" />
+          </h1>
           <p>Real-world geography of the series</p>
         </div>
         <div className="header-stat">
