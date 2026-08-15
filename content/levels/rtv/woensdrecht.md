@@ -5,6 +5,24 @@ games:
   - rtv
 mode: singleplayer
 wikiArticle: codwiki-woensdrecht
+mapOverlay:
+  image: /images/maps/rtv/woensdrecht.png
+  opacity: 0.72
+  corners:
+    topLeft: [51.55571392, 3.74887403]
+    topRight: [51.58735671, 4.59079982]
+    bottomLeft: [51.25491323, 3.77803249]
+    bottomRight: [51.2867649, 4.61995828]
+  attribution:
+    title: "Call of Duty: Roads to Victory — Woensdrecht loading-screen map"
+    source: "Directly extracted from Call of Duty: Roads to Victory by plp-gtr."
+    sourceUrl: https://github.com/time-wasters/cod-atlas/blob/main/public/images/maps/rtv/woensdrecht.png
+    extractedBy: plp-gtr
+    extractedByUrl: https://github.com/plp-gtr
+    copyrightHolder: Activision Publishing, Inc.
+    rights: non-free
+    rightsNotice: "The extraction is contributed to CoD Atlas; the underlying copyrighted game artwork remains the property of Activision and is used for identification and geographic comparison."
+    rightsNoticeUrl: https://www.activision.com/legal/terms-of-use
 locations:
   - id: main
     country: Netherlands
