@@ -38673,16 +38673,24 @@
           "wiki": "https://callofduty.fandom.com/wiki/Retaking_Toujane",
           "wikiArticle": "codwiki-retaking-lost-ground",
           "country": "Tunisia",
-          "city": null,
-          "region": null,
-          "landmark": null,
+          "city": "Toujane",
+          "region": "Gabès Governorate",
+          "landmark": "Toujane village center (representative settlement marker)",
           "coordinates": [
-            34,
-            9
+            33.465179,
+            10.133748
           ],
-          "precision": "country",
-          "confidence": "fallback",
-          "method": "country-fallback",
+          "precision": "city",
+          "confidence": "high",
+          "method": "article-context",
+          "urls": [
+            {
+              "googleMaps": "https://www.google.com/maps/search/?api=1&query=Toujane%2C+Tunisia"
+            },
+            {
+              "wikipedia": "https://en.wikipedia.org/wiki/Toujane"
+            }
+          ],
           "modes": [
             "singleplayer"
           ]
@@ -45351,7 +45359,7 @@
     "levels": 967,
     "entries": 987,
     "mapped": 957,
-    "cityMatched": 159,
-    "countryFallback": 798
+    "cityMatched": 160,
+    "countryFallback": 797
   }
 }
