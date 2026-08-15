@@ -732,6 +732,7 @@ export default function Home() {
   const [showMultiplayer, setShowMultiplayer] = useState(false);
   const [mapReady, setMapReady] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [detailsOpen, setDetailsOpen] = useState(true);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [externalIconManifest, setExternalIconManifest] = useState<ExternalIconManifest | null>(null);
   const [externalIconManifestUnavailable, setExternalIconManifestUnavailable] = useState(false);
@@ -1542,7 +1543,7 @@ export default function Home() {
           onSelect={selectEntry}
         />
 
-        {levelNotesExpanded && (
+        {detailsOpen && levelNotesExpanded && (
           <aside id="selected-level-briefing" className="level-briefing-pane" aria-labelledby="level-briefing-title">
             <header>
               <div>
@@ -1598,8 +1599,31 @@ export default function Home() {
           </aside>
         )}
 
-        <div className={`intel-column${levelNotesExpanded ? " has-open-briefing" : ""}`} ref={intelCard}>
-        <article className="intel-card">
+        <div
+          className={`intel-column${detailsOpen ? "" : " is-collapsed"}${detailsOpen && levelNotesExpanded ? " has-open-briefing" : ""}`}
+          ref={intelCard}
+        >
+        <button
+          className="details-toggle"
+          type="button"
+          aria-expanded={detailsOpen}
+          aria-controls="selected-level-details"
+          aria-label={detailsOpen ? "Hide level details" : "Show level details"}
+          onClick={() => setDetailsOpen((open) => !open)}
+        >
+          <svg viewBox="0 0 12 18" aria-hidden="true">
+            <path d={detailsOpen ? "m4 3 5 6-5 6" : "m8 3-5 6 5 6"} />
+          </svg>
+        </button>
+        <button
+          className="collapsed-level-title"
+          type="button"
+          aria-label={`Show details for ${selected.entry.title}`}
+          onClick={() => setDetailsOpen(true)}
+        >
+          <span>{selected.entry.title}</span>
+        </button>
+        <article className="intel-card" id="selected-level-details">
           <div className="mission-heading">
             <LevelModeIcon multiplayer={selected.entry.modes.includes("multiplayer")} />
             <FittedLevelTitle

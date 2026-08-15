@@ -36,6 +36,8 @@ test("renders development preview metadata", async () => {
   assert.match(html, /class="intel-country-fallback"/);
   assert.match(html, /class="country-select-trigger"/);
   assert.match(html, /class="sidebar-toggle"[^>]*aria-expanded="true"[^>]*aria-label="Hide map filters"/);
+  assert.match(html, /class="details-toggle"[^>]*aria-expanded="true"[^>]*aria-label="Hide level details"/);
+  assert.match(html, /class="collapsed-level-title"[^>]*aria-label="Show details for [^"]+"/);
   assert.match(html, /aria-label="Filter by game, ordered by release date"/);
   assert.match(html, /aria-label="Filter by country"/);
   assert.match(html, /class="solar-system-overlay is-expanded"/);
