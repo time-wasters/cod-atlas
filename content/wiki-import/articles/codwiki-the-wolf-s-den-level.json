@@ -1,14 +1,14 @@
 {
   "id": "codwiki-the-wolf-s-den-level",
-  "fandomPageId": null,
-  "sourceUrl": "https://callofduty.fandom.com/wiki/The_Wolf's_Den_(level)",
-  "canonicalUrl": "https://callofduty.fandom.com/wiki/The_Wolf's_Den_(level)",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "fandomPageId": 683105,
+  "sourceUrl": "https://callofduty.fandom.com/wiki/The_Wolf%27s_Den_(level)",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/The_Wolf%27s_Den_(level)",
+  "latestRevisionId": 2950137,
+  "importedAt": "2026-08-15T13:20:56.740Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "Takkari, [[Urzikstan]]",
+    "label": "Urzikstan",
+    "url": "https://callofduty.fandom.com/wiki/Urzikstan"
   },
   "mapStyle": "singleplayer",
   "mapStyleDetail": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/a/a9/Tunnel_Rat_achievement_image_CoDMW.png/revision/latest?cb=20191203044915",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/a/a9/Tunnel_Rat_achievement_image_CoDMW.png/revision/latest/scale-to-width-down/800?cb=20191203044915",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Tunnel_Rat_achievement_image_CoDMW.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Louis Bancroft",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Louis_Bancroft",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "unknown",
+        "notice": null,
+        "noticeUrl": null
       }
     },
     "map": {
@@ -40,5 +47,58 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2025-12-31T08:40:24Z",
+    "revisionSha1": "4460f6ccf720bb4869af3bf318420cc1e14a9194",
+    "resolvedTitle": "The Wolf's Den (level)",
+    "mainImageTitle": "File:Tunnel_Rat_achievement_image_CoDMW.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Hometown]] (In-game)<br>[[Highway of Death]] (Chronologically)",
+    "label": "Hometown (In-game), Highway of Death (Chronologically)",
+    "links": [
+      {
+        "wikiTitle": "Hometown",
+        "label": "Hometown",
+        "url": "https://callofduty.fandom.com/wiki/Hometown"
+      },
+      {
+        "wikiTitle": "Highway of Death",
+        "label": "Highway of Death",
+        "url": "https://callofduty.fandom.com/wiki/Highway_of_Death"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Captive]] (In-game)<br>[[Old Comrades]] (Chronologically)",
+    "label": "Captive (In-game), Old Comrades (Chronologically)",
+    "links": [
+      {
+        "wikiTitle": "Captive",
+        "label": "Captive",
+        "url": "https://callofduty.fandom.com/wiki/Captive"
+      },
+      {
+        "wikiTitle": "Old Comrades",
+        "label": "Old Comrades",
+        "url": "https://callofduty.fandom.com/wiki/Old_Comrades"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Modern Warfare (2019)|Call of Duty: Modern Warfare]]''",
+    "label": "Call of Duty: Modern Warfare",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Modern Warfare (2019)",
+        "label": "Call of Duty: Modern Warfare",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Modern_Warfare_(2019)"
+      }
+    ]
+  },
+  "date": {
+    "raw": "29th October, 2019 - 22:30",
+    "label": "29th October, 2019 - 22:30"
+  }
 }

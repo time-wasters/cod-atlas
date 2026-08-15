@@ -1,14 +1,14 @@
 {
   "id": "codwiki-rebirth-island-warzone",
-  "fandomPageId": null,
+  "fandomPageId": 694617,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Rebirth_Island_(Warzone)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Rebirth_Island_(Warzone)",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 3012290,
+  "importedAt": "2026-08-15T13:19:45.134Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "[[Rebirth Island]]",
+    "label": "Rebirth Island",
+    "url": "https://callofduty.fandom.com/wiki/Rebirth_Island"
   },
   "mapStyle": "multiplayer",
   "mapStyleDetail": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/9/95/RebirthIsland_LoadingScreen_Season4Reloaded_BO7_WZ2.jpg/revision/latest?cb=20260702150757",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/9/95/RebirthIsland_LoadingScreen_Season4Reloaded_BO7_WZ2.jpg/revision/latest/scale-to-width-down/800?cb=20260702150757",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:RebirthIsland_LoadingScreen_Season4Reloaded_BO7_WZ2.jpg",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Kalinine",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Kalinine",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,51 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-07-02T14:54:58Z",
+    "revisionSha1": "0560b6bd71012b05d1a7ece03362e9f8e9fb1f2e",
+    "resolvedTitle": "Rebirth Island (Warzone)",
+    "mainImageTitle": "File:RebirthIsland_LoadingScreen_Season4Reloaded_BO7_WZ2.jpg",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Warzone]]''<br>''[[Call of Duty: Warzone Mobile]]''<br>''[[Call of Duty: Warzone 2.0]]''<br>''[[Call of Duty: Mobile]]''",
+    "label": "Call of Duty: Warzone, Call of Duty: Warzone Mobile, Call of Duty: Warzone 2.0, Call of Duty: Mobile",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Warzone",
+        "label": "Call of Duty: Warzone",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Warzone"
+      },
+      {
+        "wikiTitle": "Call of Duty: Warzone Mobile",
+        "label": "Call of Duty: Warzone Mobile",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Warzone_Mobile"
+      },
+      {
+        "wikiTitle": "Call of Duty: Warzone 2.0",
+        "label": "Call of Duty: Warzone 2.0",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Warzone_2.0"
+      },
+      {
+        "wikiTitle": "Call of Duty: Mobile",
+        "label": "Call of Duty: Mobile",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Mobile"
+      }
+    ]
+  },
+  "date": {
+    "raw": null,
+    "label": null
+  }
 }
