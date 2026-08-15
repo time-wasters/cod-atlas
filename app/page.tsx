@@ -256,7 +256,15 @@ function LevelModeIcon({ multiplayer }: { multiplayer: boolean }) {
   );
 }
 
-function FittedLevelTitle({ children }: { children: string }) {
+function FittedLevelTitle({
+  children,
+  disabled,
+  onActivate,
+}: {
+  children: string;
+  disabled: boolean;
+  onActivate: () => void;
+}) {
   const title = useRef<HTMLHeadingElement>(null);
 
   useLayoutEffect(() => {
@@ -280,7 +288,20 @@ function FittedLevelTitle({ children }: { children: string }) {
     return () => observer.disconnect();
   }, [children]);
 
-  return <h2 ref={title}>{children}</h2>;
+  return (
+    <h2 ref={title}>
+      <button
+        className="mission-title-button"
+        type="button"
+        disabled={disabled}
+        aria-label={`Show ${children} on map`}
+        title="Show on map"
+        onClick={onActivate}
+      >
+        {children}
+      </button>
+    </h2>
+  );
 }
 
 function gameCodes(value: string) {
@@ -950,6 +971,22 @@ export default function Home() {
     selectEntry(group, entry);
   }, [selectEntry]);
 
+  const focusSelectedMarker = useCallback(() => {
+    const currentMap = map.current;
+    const layer = markerLayer.current;
+    const selectedMarker = markers.current.get(selected.entry.id)?.marker;
+    if (!currentMap || !layer || !selectedMarker) return;
+
+    currentMap.stop();
+    layer.zoomToShowLayer(selectedMarker, () => {
+      if (map.current !== currentMap || !mapNode.current) return;
+      currentMap.panInside(
+        selectedMarker.getLatLng(),
+        mapViewportPadding(mapNode.current, intelCard.current),
+      );
+    });
+  }, [selected.entry.id]);
+
   const toggleLevelNotes = useCallback(() => {
     const levelId = selected.entry.levelId;
     if (expandedLevelNotesId === levelId) {
@@ -1565,7 +1602,12 @@ export default function Home() {
         <article className="intel-card">
           <div className="mission-heading">
             <LevelModeIcon multiplayer={selected.entry.modes.includes("multiplayer")} />
-            <FittedLevelTitle>{selected.entry.title}</FittedLevelTitle>
+            <FittedLevelTitle
+              disabled={!selected.entry.coordinates}
+              onActivate={focusSelectedMarker}
+            >
+              {selected.entry.title}
+            </FittedLevelTitle>
             <div className="mission-games">
               {selected.entry.gameIds.map((gameId) => {
                 const selectedGame = gamesById.get(gameId);

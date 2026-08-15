@@ -47,6 +47,7 @@ test("renders development preview metadata", async () => {
   assert.doesNotMatch(html, /Selected location/);
   assert.doesNotMatch(html, />Level<\/span>/);
   assert.match(html, /aria-label="(Singleplayer|Multiplayer)"/);
+  assert.match(html, /class="mission-title-button"/);
   assert.match(html, /Made with ♥️ by <a href="https:\/\/github\.com\/plp-gtr"[^>]*>plp-GTR<\/a>/);
   assert.match(html, /class="icon-link footer-info-button"/);
   assert.match(html, /id="project-info-title">About CoD Atlas/);
@@ -91,6 +92,7 @@ test("preserves the complete statically compiled atlas", async () => {
     "rtv-altavilla",
     "rtv-glider-crash",
     "rtv-lucky-thirteen",
+    "rtv-nijmegen",
     "rtv-scavenger-hunt",
   ]);
   assert.equal(atlas.levelBanners["rtv-altavilla"].thumbnailUrl, "/images/levels/rtv/altavilla.png");
