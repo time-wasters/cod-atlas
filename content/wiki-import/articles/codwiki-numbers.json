@@ -1,14 +1,14 @@
 {
   "id": "codwiki-numbers",
-  "fandomPageId": null,
+  "fandomPageId": 171672,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Numbers",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Numbers",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 3017553,
+  "importedAt": "2026-08-15T00:29:28.726Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "[[wikipedia:Kowloon Walled City|Kowloon Walled City]], [[Hong Kong]]",
+    "label": "Kowloon Walled City",
+    "url": "https://callofduty.fandom.com/wiki/wikipedia%3AKowloon_Walled_City"
   },
   "mapStyle": "singleplayer",
   "mapStyleDetail": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/1/19/Numbers_MenuScreen_BO.png/revision/latest?cb=20251016203645",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/1/19/Numbers_MenuScreen_BO.png/revision/latest/scale-to-width-down/800?cb=20251016203645",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Numbers_MenuScreen_BO.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Pothas",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Pothas",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,58 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-07-31T19:51:15Z",
+    "revisionSha1": "5fb18429a8966fa7fbc56c59010cc6e657816159",
+    "resolvedTitle": "Numbers",
+    "mainImageTitle": "File:Numbers_MenuScreen_BO.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[The Defector]] (in-game)<br>[[Victor Charlie]] (chronologically)",
+    "label": "The Defector (in-game), Victor Charlie (chronologically)",
+    "links": [
+      {
+        "wikiTitle": "The Defector",
+        "label": "The Defector",
+        "url": "https://callofduty.fandom.com/wiki/The_Defector"
+      },
+      {
+        "wikiTitle": "Victor Charlie",
+        "label": "Victor Charlie",
+        "url": "https://callofduty.fandom.com/wiki/Victor_Charlie"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Project Nova]] (in-game)<br >[[Crash Site (Black Ops)|Crash Site]] (chronologically)",
+    "label": "Project Nova (in-game), Crash Site (chronologically)",
+    "links": [
+      {
+        "wikiTitle": "Project Nova",
+        "label": "Project Nova",
+        "url": "https://callofduty.fandom.com/wiki/Project_Nova"
+      },
+      {
+        "wikiTitle": "Crash Site (Black Ops)",
+        "label": "Crash Site",
+        "url": "https://callofduty.fandom.com/wiki/Crash_Site_(Black_Ops)"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Black Ops]]''",
+    "label": "Call of Duty: Black Ops",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Black Ops",
+        "label": "Call of Duty: Black Ops",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops"
+      }
+    ]
+  },
+  "date": {
+    "raw": "1700 hours February 9, 1968",
+    "label": "1700 hours February 9, 1968"
+  }
 }

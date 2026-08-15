@@ -1,13 +1,13 @@
 {
   "id": "codwiki-uplink",
-  "fandomPageId": null,
+  "fandomPageId": 555347,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Uplink",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Uplink",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2974681,
+  "importedAt": "2026-08-15T08:53:56.929Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
+    "raw": "Arakan Range, Rakhine, Myanmar",
+    "label": "Arakan Range, Rakhine, Myanmar",
     "url": null
   },
   "mapStyle": "multiplayer",
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/f/fc/Uplink_loadscreen_BOII.png/revision/latest?cb=20130905095254",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/f/fc/Uplink_loadscreen_BOII.png/revision/latest/scale-to-width-down/800?cb=20130905095254",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Uplink_loadscreen_BOII.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Verantha",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Verantha",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,36 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-03-09T09:22:35Z",
+    "revisionSha1": "dc893ff9e190d84131079cc913e7619be0c183de",
+    "resolvedTitle": "Uplink",
+    "mainImageTitle": "File:Uplink_loadscreen_BOII.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Black Ops II]]''",
+    "label": "Call of Duty: Black Ops II",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Black Ops II",
+        "label": "Call of Duty: Black Ops II",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops_II"
+      }
+    ]
+  },
+  "date": {
+    "raw": null,
+    "label": null
+  }
 }

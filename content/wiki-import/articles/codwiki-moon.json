@@ -1,14 +1,14 @@
 {
   "id": "codwiki-moon",
-  "fandomPageId": null,
+  "fandomPageId": 330385,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Moon",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Moon",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 3011815,
+  "importedAt": "2026-08-15T00:29:28.761Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "Area 51, Nevada, [[United States of America]]<br>Griffin Station, {{W|Mare Crisium}}, [[Luna]]",
+    "label": "United States of America",
+    "url": "https://callofduty.fandom.com/wiki/United_States_of_America"
   },
   "mapStyle": "multiplayer",
   "mapStyleDetail": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/c/cc/Moon_Menu_Selection_BO.png/revision/latest?cb=20240710075602",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/c/cc/Moon_Menu_Selection_BO.png/revision/latest?cb=20240710075602",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Moon_Menu_Selection_BO.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Larsendog",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Larsendog",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,68 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-06-30T19:44:39Z",
+    "revisionSha1": "624aaa4ccf2921c204ccf5b697f13c285ed18d62",
+    "resolvedTitle": "Moon",
+    "mainImageTitle": "File:Moon_Menu_Selection_BO.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Shangri-La]] <small>(in-game)</small><br>[[Classified]] <small>(chronologically by events)</small>",
+    "label": "Shangri-La (in-game) , Classified (chronologically by events)",
+    "links": [
+      {
+        "wikiTitle": "Shangri-La",
+        "label": "Shangri-La",
+        "url": "https://callofduty.fandom.com/wiki/Shangri-La"
+      },
+      {
+        "wikiTitle": "Classified",
+        "label": "Classified",
+        "url": "https://callofduty.fandom.com/wiki/Classified"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[TranZit]] <small>(chronologically by release)</small><br>[[Nuketown Zombies]] <small>(simultaneous)</small><br>[[Classified]] <small>(ending cinematic only)</small>{{H:title|The ending cutscene of Classified takes place after the events of Moon.|<sup>#</sup>}}",
+    "label": "TranZit (chronologically by release) , Nuketown Zombies (simultaneous) , Classified (ending cinematic only)",
+    "links": [
+      {
+        "wikiTitle": "TranZit",
+        "label": "TranZit",
+        "url": "https://callofduty.fandom.com/wiki/TranZit"
+      },
+      {
+        "wikiTitle": "Nuketown Zombies",
+        "label": "Nuketown Zombies",
+        "url": "https://callofduty.fandom.com/wiki/Nuketown_Zombies"
+      },
+      {
+        "wikiTitle": "Classified",
+        "label": "Classified",
+        "url": "https://callofduty.fandom.com/wiki/Classified"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Black Ops]]'' <br> ''[[Call of Duty: Black Ops III]]''",
+    "label": "Call of Duty: Black Ops , Call of Duty: Black Ops III",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Black Ops",
+        "label": "Call of Duty: Black Ops",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops"
+      },
+      {
+        "wikiTitle": "Call of Duty: Black Ops III",
+        "label": "Call of Duty: Black Ops III",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops_III"
+      }
+    ]
+  },
+  "date": {
+    "raw": "October 13th, 2025<br>(Original Timeline)",
+    "label": "October 13th, 2025, (Original Timeline)"
+  }
 }

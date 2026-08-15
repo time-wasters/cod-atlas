@@ -1,13 +1,13 @@
 {
   "id": "codwiki-induction",
-  "fandomPageId": null,
+  "fandomPageId": 596741,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Induction",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Induction",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2958106,
+  "importedAt": "2026-08-15T00:28:12.016Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
+    "raw": "Seoul, South Korea",
+    "label": "Seoul, South Korea",
     "url": null
   },
   "mapStyle": "singleplayer",
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/0/0b/Seoul_Mates_XBOX_One_Achievement_Image_CoDAW.jpg/revision/latest?cb=20160918211115",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/0/0b/Seoul_Mates_XBOX_One_Achievement_Image_CoDAW.jpg/revision/latest/scale-to-width-down/800?cb=20160918211115",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Seoul_Mates_XBOX_One_Achievement_Image_CoDAW.jpg",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Louis Bancroft",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Louis_Bancroft",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,42 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-01-19T14:31:56Z",
+    "revisionSha1": "7eb37730709ef07dc00ab0b1a1a4fe513fb128dd",
+    "resolvedTitle": "Induction",
+    "mainImageTitle": "File:Seoul_Mates_XBOX_One_Achievement_Image_CoDAW.jpg",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": "[[Atlas (mission)|Atlas]]",
+    "label": "Atlas",
+    "links": [
+      {
+        "wikiTitle": "Atlas (mission)",
+        "label": "Atlas",
+        "url": "https://callofduty.fandom.com/wiki/Atlas_(mission)"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Advanced Warfare]]''",
+    "label": "Call of Duty: Advanced Warfare",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Advanced Warfare",
+        "label": "Call of Duty: Advanced Warfare",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Advanced_Warfare"
+      }
+    ]
+  },
+  "date": {
+    "raw": "July 10, 2054 - 0500 HRS",
+    "label": "July 10, 2054 - 0500 HRS"
+  }
 }

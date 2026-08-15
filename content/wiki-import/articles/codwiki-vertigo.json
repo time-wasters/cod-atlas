@@ -1,10 +1,10 @@
 {
   "id": "codwiki-vertigo",
-  "fandomPageId": null,
+  "fandomPageId": 483257,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Vertigo",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Vertigo",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 3007856,
+  "importedAt": "2026-08-15T08:53:56.915Z",
   "levelLocation": {
     "raw": null,
     "label": null,
@@ -40,5 +40,30 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-06-10T21:13:08Z",
+    "revisionSha1": "94b05ab897d6732a0b61268f2e3c9e81b7ec25c4",
+    "resolvedTitle": "Vertigo",
+    "mainImageTitle": null,
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "date": {
+    "raw": null,
+    "label": null
+  }
 }

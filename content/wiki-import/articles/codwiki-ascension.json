@@ -1,14 +1,14 @@
 {
   "id": "codwiki-ascension",
-  "fandomPageId": null,
+  "fandomPageId": 246281,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Ascension",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Ascension",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2973998,
+  "importedAt": "2026-08-15T00:29:07.168Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "[[Baikonur Cosmodrome]], {{W|Kyzylorda}}, {{W|Kazakh Soviet Socialist Republic}}, [[Soviet Union]]",
+    "label": "Baikonur Cosmodrome",
+    "url": "https://callofduty.fandom.com/wiki/Baikonur_Cosmodrome"
   },
   "mapStyle": "multiplayer",
   "mapStyleDetail": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/f/fd/Ascension_Menu_Selection_BO.png/revision/latest?cb=20240710071357",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/f/fd/Ascension_Menu_Selection_BO.png/revision/latest?cb=20240710071357",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Ascension_Menu_Selection_BO.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Larsendog",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Larsendog",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,63 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-03-08T05:34:27Z",
+    "revisionSha1": "9d27cad80500bc449ba5d2e9feb474390930b142",
+    "resolvedTitle": "Ascension",
+    "mainImageTitle": "File:Ascension_Menu_Selection_BO.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Kino der Toten]] <small>(chronologically)</small><br/>[[\"Five\"]] <small>(simultaneous)</small>",
+    "label": "Kino der Toten (chronologically) , \"Five\" (simultaneous)",
+    "links": [
+      {
+        "wikiTitle": "Kino der Toten",
+        "label": "Kino der Toten",
+        "url": "https://callofduty.fandom.com/wiki/Kino_der_Toten"
+      },
+      {
+        "wikiTitle": "\"Five\"",
+        "label": "\"Five\"",
+        "url": "https://callofduty.fandom.com/wiki/%22Five%22"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Call of the Dead]]",
+    "label": "Call of the Dead",
+    "links": [
+      {
+        "wikiTitle": "Call of the Dead",
+        "label": "Call of the Dead",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_the_Dead"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Black Ops]]''<br>''[[Call of Duty: Black Ops Zombies]]''<br>''[[Call of Duty: Black Ops III]]''",
+    "label": "Call of Duty: Black Ops, Call of Duty: Black Ops Zombies, Call of Duty: Black Ops III",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Black Ops",
+        "label": "Call of Duty: Black Ops",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops"
+      },
+      {
+        "wikiTitle": "Call of Duty: Black Ops Zombies",
+        "label": "Call of Duty: Black Ops Zombies",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops_Zombies"
+      },
+      {
+        "wikiTitle": "Call of Duty: Black Ops III",
+        "label": "Call of Duty: Black Ops III",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops_III"
+      }
+    ]
+  },
+  "date": {
+    "raw": "November 6th, 1963 <small>(Original Timeline/Agonia Fracture)</small>",
+    "label": "November 6th, 1963 (Original Timeline/Agonia Fracture)"
+  }
 }

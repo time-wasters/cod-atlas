@@ -1,10 +1,10 @@
 {
   "id": "codwiki-terminus",
-  "fandomPageId": null,
+  "fandomPageId": 753754,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Terminus",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Terminus",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2873604,
+  "importedAt": "2026-08-15T00:28:22.912Z",
   "levelLocation": {
     "raw": null,
     "label": null,
@@ -40,5 +40,30 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2025-04-19T12:46:06Z",
+    "revisionSha1": "4996b1ba0ffb097cddbc30450831013ba78b52ee",
+    "resolvedTitle": "Terminus",
+    "mainImageTitle": null,
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "date": {
+    "raw": null,
+    "label": null
+  }
 }

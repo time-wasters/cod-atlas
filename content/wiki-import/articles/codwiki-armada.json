@@ -1,10 +1,10 @@
 {
   "id": "codwiki-armada",
-  "fandomPageId": null,
+  "fandomPageId": 726014,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Armada",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Armada",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2706363,
+  "importedAt": "2026-08-15T00:27:50.422Z",
   "levelLocation": {
     "raw": null,
     "label": null,
@@ -40,5 +40,30 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2023-05-24T02:21:53Z",
+    "revisionSha1": "fd6d072e418c3783485b7d7f9003c36ad9ab8ed1",
+    "resolvedTitle": "Armada",
+    "mainImageTitle": null,
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "date": {
+    "raw": null,
+    "label": null
+  }
 }

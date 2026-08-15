@@ -1,13 +1,13 @@
 {
   "id": "codwiki-site-244",
-  "fandomPageId": null,
+  "fandomPageId": 618867,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Site_244",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Site_244",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2991817,
+  "importedAt": "2026-08-15T00:28:22.891Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
+    "raw": "Site 244, Mount Rushmore, South Dakota, United States of America",
+    "label": "Site 244, Mount Rushmore, South Dakota, United States of America",
     "url": null
   },
   "mapStyle": "multiplayer",
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/1/14/Site_244_Environment_AW.png/revision/latest?cb=20150429183525",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/1/14/Site_244_Environment_AW.png/revision/latest/scale-to-width-down/800?cb=20150429183525",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Site_244_Environment_AW.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Soap Shadow",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Soap_Shadow",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,36 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-04-12T13:38:14Z",
+    "revisionSha1": "927288c32e0b19b59c53c42255625ee02b9049ea",
+    "resolvedTitle": "Site 244",
+    "mainImageTitle": "File:Site_244_Environment_AW.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Advanced Warfare]]''",
+    "label": "Call of Duty: Advanced Warfare",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Advanced Warfare",
+        "label": "Call of Duty: Advanced Warfare",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Advanced_Warfare"
+      }
+    ]
+  },
+  "date": {
+    "raw": null,
+    "label": null
+  }
 }

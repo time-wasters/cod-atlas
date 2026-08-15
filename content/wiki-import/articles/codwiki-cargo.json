@@ -1,10 +1,10 @@
 {
   "id": "codwiki-cargo",
-  "fandomPageId": null,
+  "fandomPageId": 811670,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Cargo",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Cargo",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 3017276,
+  "importedAt": "2026-08-15T08:53:03.604Z",
   "levelLocation": {
     "raw": null,
     "label": null,
@@ -40,5 +40,30 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-07-30T11:03:12Z",
+    "revisionSha1": "fa9475624f776c8d98c8212147007ea59cae2265",
+    "resolvedTitle": "Cargo",
+    "mainImageTitle": null,
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "date": {
+    "raw": null,
+    "label": null
+  }
 }

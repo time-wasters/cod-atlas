@@ -1,14 +1,14 @@
 {
   "id": "codwiki-project-nova",
-  "fandomPageId": null,
+  "fandomPageId": 197622,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Project_Nova",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Project_Nova",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 3017556,
+  "importedAt": "2026-08-15T00:29:28.740Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "Baffin Island, Northwest Territories, Canada, in the [[Arctic Circle]]",
+    "label": "Arctic Circle",
+    "url": "https://callofduty.fandom.com/wiki/Arctic_Circle"
   },
   "mapStyle": "singleplayer",
   "mapStyleDetail": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/c/c6/ProjectNova_MenuScreen_BO.png/revision/latest?cb=20251016205212",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/c/c6/ProjectNova_MenuScreen_BO.png/revision/latest/scale-to-width-down/800?cb=20251016205212",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:ProjectNova_MenuScreen_BO.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Pothas",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Pothas",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,63 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-07-31T19:52:45Z",
+    "revisionSha1": "d0cd6837a25725af027a2b108ebe5b46637271af",
+    "resolvedTitle": "Project Nova",
+    "mainImageTitle": "File:ProjectNova_MenuScreen_BO.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Numbers]] <small>(in-game)</small> <br>[[Downfall (campaign)|Downfall]] <small>(chronologically, storywise)</small><br>[[Breaking Point]] <small>(chronologically, gamewise)</small>",
+    "label": "Numbers (in-game) , Downfall (chronologically, storywise) , Breaking Point (chronologically, gamewise)",
+    "links": [
+      {
+        "wikiTitle": "Numbers",
+        "label": "Numbers",
+        "url": "https://callofduty.fandom.com/wiki/Numbers"
+      },
+      {
+        "wikiTitle": "Downfall (campaign)",
+        "label": "Downfall",
+        "url": "https://callofduty.fandom.com/wiki/Downfall_(campaign)"
+      },
+      {
+        "wikiTitle": "Breaking Point",
+        "label": "Breaking Point",
+        "url": "https://callofduty.fandom.com/wiki/Breaking_Point"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Victor Charlie]] <small>(in-game)</small> <br > [[Operation 40]] <small>(chronologically)</small>",
+    "label": "Victor Charlie (in-game) , Operation 40 (chronologically)",
+    "links": [
+      {
+        "wikiTitle": "Victor Charlie",
+        "label": "Victor Charlie",
+        "url": "https://callofduty.fandom.com/wiki/Victor_Charlie"
+      },
+      {
+        "wikiTitle": "Operation 40",
+        "label": "Operation 40",
+        "url": "https://callofduty.fandom.com/wiki/Operation_40"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Black Ops]]''",
+    "label": "Call of Duty: Black Ops",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Black Ops",
+        "label": "Call of Duty: Black Ops",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops"
+      }
+    ]
+  },
+  "date": {
+    "raw": "1200 hours October 29, 1945",
+    "label": "1200 hours October 29, 1945"
+  }
 }

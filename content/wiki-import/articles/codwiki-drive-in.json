@@ -1,14 +1,14 @@
 {
   "id": "codwiki-drive-in",
-  "fandomPageId": null,
+  "fandomPageId": 304728,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Drive-In",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Drive-In",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2996452,
+  "importedAt": "2026-08-15T00:29:18.011Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "Galactic Drive-In, {{w|Omaha, Nebraska|Omaha}}, {{w|Nebraska}}, [[United States of America]]",
+    "label": "United States of America",
+    "url": "https://callofduty.fandom.com/wiki/United_States_of_America"
   },
   "mapStyle": "multiplayer",
   "mapStyleDetail": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/9/9e/Galactic_Sign_Drive-In_BO.png/revision/latest?cb=20120118175649",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/9/9e/Galactic_Sign_Drive-In_BO.png/revision/latest?cb=20120118175649",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Galactic_Sign_Drive-In_BO.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "URL",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:URL",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,41 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-04-23T04:36:36Z",
+    "revisionSha1": "26f61708f0b6975eb67692621c18bdaf6da16fa6",
+    "resolvedTitle": "Drive-In",
+    "mainImageTitle": "File:Galactic_Sign_Drive-In_BO.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Black Ops]]''<br>''[[Call of Duty: Black Ops Cold War]]''",
+    "label": "Call of Duty: Black Ops, Call of Duty: Black Ops Cold War",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Black Ops",
+        "label": "Call of Duty: Black Ops",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops"
+      },
+      {
+        "wikiTitle": "Call of Duty: Black Ops Cold War",
+        "label": "Call of Duty: Black Ops Cold War",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops_Cold_War"
+      }
+    ]
+  },
+  "date": {
+    "raw": "1968 (''BO'')<br>May 3, 1984 (''BOCW'') <small>(Multiplayer)</small><br>March 8, 1985 (''BOCW'') <small>(Zombies)</small>",
+    "label": "1968 (BO), May 3, 1984 (BOCW) (Multiplayer) , March 8, 1985 (BOCW) (Zombies)"
+  }
 }

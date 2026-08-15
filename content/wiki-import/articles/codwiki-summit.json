@@ -1,14 +1,14 @@
 {
   "id": "codwiki-summit",
-  "fandomPageId": null,
+  "fandomPageId": 142361,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Summit",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Summit",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 3002794,
+  "importedAt": "2026-08-15T00:29:50.302Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "[[Mount Yamantau]], {{w|Russian Soviet Federative Socialist Republic|Russian SFSR}}, [[Soviet Union]] (''BO'')<br>Mount Yamantau, [[Russia]] (''BOIII'', ''BO4'' & ''BO7'')",
+    "label": "Mount Yamantau",
+    "url": "https://callofduty.fandom.com/wiki/Mount_Yamantau"
   },
   "mapStyle": "multiplayer",
   "mapStyleDetail": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/5/54/Bare_Load_Screen_Summit_BO.jpg/revision/latest?cb=20110303122702",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/5/54/Bare_Load_Screen_Summit_BO.jpg/revision/latest/scale-to-width-down/800?cb=20110303122702",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Bare_Load_Screen_Summit_BO.jpg",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "GoldenBluebird",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:GoldenBluebird",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,61 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-05-18T12:21:23Z",
+    "revisionSha1": "247c7e3e20c8abd35c62d88589d97571c0605d24",
+    "resolvedTitle": "Summit",
+    "mainImageTitle": "File:Bare_Load_Screen_Summit_BO.jpg",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Black Ops]]''<br>''[[Call of Duty Online]]''<br>''[[Call of Duty: Black Ops III]]''<br>''[[Call of Duty: Black Ops 4]]''<br>''[[Call of Duty: Mobile]]''<br>''[[Call of Duty: Black Ops 7]]''",
+    "label": "Call of Duty: Black Ops, Call of Duty Online, Call of Duty: Black Ops III, Call of Duty: Black Ops 4, Call of Duty: Mobile, Call of Duty: Black Ops 7",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Black Ops",
+        "label": "Call of Duty: Black Ops",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops"
+      },
+      {
+        "wikiTitle": "Call of Duty Online",
+        "label": "Call of Duty Online",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_Online"
+      },
+      {
+        "wikiTitle": "Call of Duty: Black Ops III",
+        "label": "Call of Duty: Black Ops III",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops_III"
+      },
+      {
+        "wikiTitle": "Call of Duty: Black Ops 4",
+        "label": "Call of Duty: Black Ops 4",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops_4"
+      },
+      {
+        "wikiTitle": "Call of Duty: Mobile",
+        "label": "Call of Duty: Mobile",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Mobile"
+      },
+      {
+        "wikiTitle": "Call of Duty: Black Ops 7",
+        "label": "Call of Duty: Black Ops 7",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops_7"
+      }
+    ]
+  },
+  "date": {
+    "raw": "1968 (''BO'')<br>2065 (''BOIII'')<br>2045 (''BO4'')<br>2035 (''BO7'')",
+    "label": "1968 (BO), 2065 (BOIII), 2045 (BO4), 2035 (BO7)"
+  }
 }

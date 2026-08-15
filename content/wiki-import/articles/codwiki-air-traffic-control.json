@@ -1,13 +1,13 @@
 {
   "id": "codwiki-air-traffic-control",
-  "fandomPageId": null,
+  "fandomPageId": 523012,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Air_Traffic_Control",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Air_Traffic_Control",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2985934,
+  "importedAt": "2026-08-15T00:28:54.773Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
+    "raw": "Tan Son Nhut Air Base, South Vietnam",
+    "label": "Tan Son Nhut Air Base, South Vietnam",
     "url": null
   },
   "mapStyle": "singleplayer",
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/d/d2/AirTrafficControl_MenuScreen_BOD.png/revision/latest?cb=20231001151051",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/d/d2/AirTrafficControl_MenuScreen_BOD.png/revision/latest?cb=20231001151051",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:AirTrafficControl_MenuScreen_BOD.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Kalinine",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Kalinine",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,48 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-04-03T09:23:18Z",
+    "revisionSha1": "1a1bee6676c74984f1a93f7dbe53a1a56c9e85ec",
+    "resolvedTitle": "Air Traffic Control",
+    "mainImageTitle": "File:AirTrafficControl_MenuScreen_BOD.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Checking Out]]",
+    "label": "Checking Out",
+    "links": [
+      {
+        "wikiTitle": "Checking Out",
+        "label": "Checking Out",
+        "url": "https://callofduty.fandom.com/wiki/Checking_Out"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Active Measures]]",
+    "label": "Active Measures",
+    "links": [
+      {
+        "wikiTitle": "Active Measures",
+        "label": "Active Measures",
+        "url": "https://callofduty.fandom.com/wiki/Active_Measures"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Black Ops: Declassified]]''",
+    "label": "Call of Duty: Black Ops: Declassified",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Black Ops: Declassified",
+        "label": "Call of Duty: Black Ops: Declassified",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops%3A_Declassified"
+      }
+    ]
+  },
+  "date": {
+    "raw": "1975",
+    "label": "1975"
+  }
 }

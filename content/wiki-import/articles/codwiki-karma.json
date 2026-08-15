@@ -1,13 +1,13 @@
 {
   "id": "codwiki-karma",
-  "fandomPageId": null,
+  "fandomPageId": 508278,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Karma",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Karma",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 3019191,
+  "importedAt": "2026-08-15T08:53:25.028Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
+    "raw": "Colossus, Cayman Islands",
+    "label": "Colossus, Cayman Islands",
     "url": null
   },
   "mapStyle": "singleplayer",
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/d/d4/Karma_Menu_BOII.png/revision/latest?cb=20121209091116",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/d/d4/Karma_Menu_BOII.png/revision/latest/scale-to-width-down/800?cb=20121209091116",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Karma_Menu_BOII.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Synhart",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Synhart",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,57 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-08-11T00:19:42Z",
+    "revisionSha1": "50bb5a9e24d104c6ae06c6c841f06a0c1389418d",
+    "resolvedTitle": "Karma",
+    "mainImageTitle": "File:Karma_Menu_BOII.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Fallen Angel]]",
+    "label": "Fallen Angel",
+    "links": [
+      {
+        "wikiTitle": "Fallen Angel",
+        "label": "Fallen Angel",
+        "url": "https://callofduty.fandom.com/wiki/Fallen_Angel"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Second Chance (Strike Force)|Second Chance]] <small>(Strike Force Mission){{H:title|Player-determined|<sup>#</sup>}}</small> <br > [[Dispatch]] <small>(Strike Force Mission){{H:title|Player-determined|<sup>#</sup>}}</small> <br > [[Suffer With Me]] <small>(in-game)</small> <br > [[Achilles' Veil]] <small>(chronologically)</small>",
+    "label": "Second Chance (Strike Force Mission) , Dispatch (Strike Force Mission) , Suffer With Me (in-game) , Achilles' Veil (chronologically)",
+    "links": [
+      {
+        "wikiTitle": "Second Chance (Strike Force)",
+        "label": "Second Chance",
+        "url": "https://callofduty.fandom.com/wiki/Second_Chance_(Strike_Force)"
+      },
+      {
+        "wikiTitle": "Dispatch",
+        "label": "Dispatch",
+        "url": "https://callofduty.fandom.com/wiki/Dispatch"
+      },
+      {
+        "wikiTitle": "Suffer With Me",
+        "label": "Suffer With Me",
+        "url": "https://callofduty.fandom.com/wiki/Suffer_With_Me"
+      },
+      {
+        "wikiTitle": "Achilles' Veil",
+        "label": "Achilles' Veil",
+        "url": "https://callofduty.fandom.com/wiki/Achilles'_Veil"
+      }
+    ]
+  },
+  "games": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "date": {
+    "raw": "June 12th, 2025",
+    "label": "June 12th, 2025"
+  }
 }
