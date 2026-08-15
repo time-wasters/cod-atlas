@@ -1,14 +1,14 @@
 {
   "id": "codwiki-new-world",
-  "fandomPageId": null,
+  "fandomPageId": 633084,
   "sourceUrl": "https://callofduty.fandom.com/wiki/New_World",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/New_World",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2998823,
+  "importedAt": "2026-08-15T08:56:25.668Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "[[Coalescence Corporation]] Hospital <br><br/>'''Mind Simulation:''' <br> Coalescence Commuter Train <br> Abandoned Steel Mill <br> High Rise Apartments <br> Old Subway Tunnels <br><br/><u>'''All in Zürich, Canton of Zürich, Switzerland'''</u>",
+    "label": "Coalescence Corporation",
+    "url": "https://callofduty.fandom.com/wiki/Coalescence_Corporation"
   },
   "mapStyle": "singleplayer",
   "mapStyleDetail": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/6/62/A_Second_Chance_achievement_image_BO3.jpg/revision/latest?cb=20161013213722",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/6/62/A_Second_Chance_achievement_image_BO3.jpg/revision/latest/scale-to-width-down/800?cb=20161013213722",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:A_Second_Chance_achievement_image_BO3.jpg",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Louis Bancroft",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Louis_Bancroft",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,73 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-04-30T03:58:25Z",
+    "revisionSha1": "212811a2c8b1d8e288d758d52109c74e2c155822",
+    "resolvedTitle": "New World",
+    "mainImageTitle": "File:A_Second_Chance_achievement_image_BO3.jpg",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Black Ops (level)|Black Ops]]<br>[[Hypocenter]] <small>([[Nightmares]])</small>",
+    "label": "Black Ops, Hypocenter (Nightmares)",
+    "links": [
+      {
+        "wikiTitle": "Black Ops (level)",
+        "label": "Black Ops",
+        "url": "https://callofduty.fandom.com/wiki/Black_Ops_(level)"
+      },
+      {
+        "wikiTitle": "Hypocenter",
+        "label": "Hypocenter",
+        "url": "https://callofduty.fandom.com/wiki/Hypocenter"
+      },
+      {
+        "wikiTitle": "Nightmares",
+        "label": "Nightmares",
+        "url": "https://callofduty.fandom.com/wiki/Nightmares"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[In Darkness]]<br>[[Life]] <small>(chronologically, reality)</small><br>[[Provocation]] <small>([[Nightmares]])</small>",
+    "label": "In Darkness, Life (chronologically, reality) , Provocation (Nightmares)",
+    "links": [
+      {
+        "wikiTitle": "In Darkness",
+        "label": "In Darkness",
+        "url": "https://callofduty.fandom.com/wiki/In_Darkness"
+      },
+      {
+        "wikiTitle": "Life",
+        "label": "Life",
+        "url": "https://callofduty.fandom.com/wiki/Life"
+      },
+      {
+        "wikiTitle": "Provocation",
+        "label": "Provocation",
+        "url": "https://callofduty.fandom.com/wiki/Provocation"
+      },
+      {
+        "wikiTitle": "Nightmares",
+        "label": "Nightmares",
+        "url": "https://callofduty.fandom.com/wiki/Nightmares"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Black Ops III]]''",
+    "label": "Call of Duty: Black Ops III",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Black Ops III",
+        "label": "Call of Duty: Black Ops III",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops_III"
+      }
+    ]
+  },
+  "date": {
+    "raw": "06:00Hrs October 29th, 2065 <br> '''Mind Simulation:'''<br> 7:25/7:30 (Train) and 7:00 (Subway Tunnels) December 12th, 2054 <br/><br> 11:30 (Steel Mill) and 17:00 (High Rise Apartments) December 11th, 2054",
+    "label": "06:00Hrs October 29th, 2065 , Mind Simulation:, 7:25/7:30 (Train) and 7:00 (Subway Tunnels) December 12th, 2054 , , 11:30 (Steel Mill) and 17:00 (High Rise Apartments) December 11th, 2054"
+  }
 }

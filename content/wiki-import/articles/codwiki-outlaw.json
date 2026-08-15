@@ -1,10 +1,10 @@
 {
   "id": "codwiki-outlaw",
-  "fandomPageId": null,
+  "fandomPageId": 754192,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Outlaw",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Outlaw",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2808089,
+  "importedAt": "2026-08-15T08:56:36.461Z",
   "levelLocation": {
     "raw": null,
     "label": null,
@@ -40,5 +40,30 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2024-08-25T17:15:29Z",
+    "revisionSha1": "474a3ef21eab3d4bf0c15adc71439f6ec2467feb",
+    "resolvedTitle": "Outlaw",
+    "mainImageTitle": null,
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "date": {
+    "raw": null,
+    "label": null
+  }
 }
