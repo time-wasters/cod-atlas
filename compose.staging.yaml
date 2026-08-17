@@ -1,21 +1,21 @@
 services:
   cod-atlas:
-    restart: unless-stopped
-    image: cod-atlas:staging
-
-    build:
-      context: .
-      args:
-        STEAM_ICON_URL: "${STEAM_ICON_URL:-}"
-        STEAMGRIDDB_ICON_URL: "${STEAMGRIDDB_ICON_URL:-}"
+    # Built by GitHub Actions and pulled from GHCR
+    image: ghcr.io/time-wasters/cod-atlas:staging
 
     ports:
-      - "${COD_ATLAS_PORT:-8080}:80"
+      - "8080:80"
 
     networks:
       - cod-atlas-staging-network
 
+    deploy:
+      replicas: 1
+
+      restart_policy:
+        condition: any
+
 networks:
   cod-atlas-staging-network:
     name: cod-atlas-staging-network
-    driver: bridge
+    driver: overlay
