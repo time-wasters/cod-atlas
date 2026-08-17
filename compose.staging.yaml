@@ -1,16 +1,17 @@
-name: cod-atlas-staging
-
 services:
   cod-atlas:
     restart: unless-stopped
     image: cod-atlas:staging
+
     build:
       context: .
       args:
         STEAM_ICON_URL: "${STEAM_ICON_URL:-}"
         STEAMGRIDDB_ICON_URL: "${STEAMGRIDDB_ICON_URL:-}"
+
     ports:
       - "${COD_ATLAS_PORT:-8080}:80"
+
     networks:
       - cod-atlas-staging-network
 
