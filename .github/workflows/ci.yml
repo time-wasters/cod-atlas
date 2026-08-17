@@ -1,26 +1,43 @@
 name: Validate and build
 
 on:
+  # Run validation for pull requests and for changes merged into main.
   pull_request:
   push:
     branches: [main]
 
+# Minimal default permission for all jobs. Override individually.
 permissions:
   contents: read
 
 jobs:
   atlas:
+    # Validate the atlas data and build the static site.
     runs-on: ubuntu-latest
+
     steps:
+      # Check out the repository contents.
       - uses: actions/checkout@v7
+
+      # Install Node.js and enable npm dependency caching.
       - uses: actions/setup-node@v7
         with:
           node-version: 22
           cache: npm
+
+      # Install dependencies from package-lock.json.
       - run: npm ci
+
+      # Ensure generated atlas data is up to date.
       - run: npm run data:check
+
+      # Run the test suite.
       - run: npm test
+
+      # Build the static site output.
       - run: npm run build:static
+
+      # Upload the static build as a workflow artifact for inspection/download.
       - uses: actions/upload-artifact@v7
         with:
           name: call-of-duty-atlas-static
@@ -28,27 +45,46 @@ jobs:
           if-no-files-found: error
 
   publish:
+    # Only publish after atlas validation succeeded.
     needs: atlas
+
+    # Only publish container images on pushes to main, not on pull requests.
     if: github.event_name == 'push'
+
     runs-on: ubuntu-latest
+
+    # This job needs package write access to publish to GHCR.
     permissions:
       contents: read
       packages: write
+
     steps:
+      # Check out the repository so Docker can build the image.
       - uses: actions/checkout@v7
+
+      # Enable emulation so buildx can build ARM images on the GitHub runner.
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      # Set up Docker Buildx for multi-architecture builds.
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v4
+
+      # Authenticate to GitHub Container Registry using GitHub's automatic GITHUB_TOKEN.
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v4
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
+      # Build and publish the staging image for both amd64 and arm64.
       - name: Build and push staging image
         uses: docker/build-push-action@v7
         with:
           context: .
           push: true
+          platforms: linux/amd64,linux/arm64
           tags: |
             ghcr.io/time-wasters/cod-atlas:staging
             ghcr.io/time-wasters/cod-atlas:${{ github.sha }}
