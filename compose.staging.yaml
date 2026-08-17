@@ -1,21 +1,17 @@
 services:
   cod-atlas:
-    # Built by GitHub Actions and pulled from GHCR
+    # Built by GitHub Actions and pulled from GHCR.
     image: ghcr.io/time-wasters/cod-atlas:staging
 
-    ports:
-      - "8080:80"
-
     networks:
-      - cod-atlas-staging-network
+      - proxy-network
 
     deploy:
       replicas: 1
-
       restart_policy:
         condition: any
 
 networks:
-  cod-atlas-staging-network:
-    name: cod-atlas-staging-network
-    driver: overlay
+  proxy-network:
+    external: true
+    name: proxy-network
