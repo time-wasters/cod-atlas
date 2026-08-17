@@ -57,7 +57,27 @@ Detailed references:
 - [AI instructions for level map research](docs/map-research-ai-instructions.md)
 - [Level templates](docs/templates/)
 
+
 ## Licensing and attribution
 
 See the [source-code license](LICENSE), [data license](LICENSE-DATA), and
 [notices and attribution](NOTICE.md).
+
+### Project status
+
+CoD Atlas is an unofficial, non-commercial community project and is not
+affiliated with, endorsed by, or sponsored by Activision or any other
+relevant rights holder. The project is provided free of charge and is not
+operated for commercial gain.
+
+### Copyright and trademarks
+
+Call of Duty and related game names, logos, imagery, artwork, screenshots,
+textures, and other game assets are trademarks and/or copyrighted material
+of their respective owners.
+
+Third-party material included or referenced by the project remains subject
+to the rights and terms of its respective owners and is not relicensed under
+the CoD Atlas source-code or data licenses.
+
+See [NOTICE.md](NOTICE.md) for detailed attribution and rights information.
