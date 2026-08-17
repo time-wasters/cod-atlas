@@ -1,23 +1,37 @@
 name: Validate and build
 
 on:
+  # Validate pull requests and every push to main.
   pull_request:
   push:
     branches: [main]
 
+# Default to read-only repository access.
+permissions:
+  contents: read
+
 jobs:
   atlas:
+    # Validate the atlas data, run tests and build the static site.
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v7
+
       - uses: actions/setup-node@v7
         with:
           node-version: 22
           cache: npm
+
       - run: npm ci
+
+      # Ensure generated atlas data matches its source files.
       - run: npm run data:check
+
       - run: npm test
       - run: npm run build:static
+
+      # Keep the static build available as a workflow artifact.
       - uses: actions/upload-artifact@v7
         with:
           name: call-of-duty-atlas-static
@@ -25,27 +39,44 @@ jobs:
           if-no-files-found: error
 
   publish:
+    # Only publish after validation succeeded and changes reached main.
     needs: atlas
     if: github.event_name == 'push'
+
     runs-on: ubuntu-latest
+
+    # GHCR publishing requires package write access.
     permissions:
       contents: read
       packages: write
+
     steps:
       - uses: actions/checkout@v7
+
+      # Enable ARM builds on the amd64 GitHub runner.
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      # Build multi-platform container images.
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v4
+
+      # Authenticate to GHCR using GitHub's automatic GITHUB_TOKEN.
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v4
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
+      # Publish staging for amd64 and arm64.
+      # The commit SHA tag provides an immutable version for each deployment.
       - name: Build and push staging image
         uses: docker/build-push-action@v7
         with:
           context: .
           push: true
+          platforms: linux/amd64,linux/arm64
           tags: |
             ghcr.io/time-wasters/cod-atlas:staging
             ghcr.io/time-wasters/cod-atlas:${{ github.sha }}
