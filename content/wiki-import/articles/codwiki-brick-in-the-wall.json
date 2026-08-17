@@ -1,14 +1,14 @@
 {
   "id": "codwiki-brick-in-the-wall",
-  "fandomPageId": null,
+  "fandomPageId": 693496,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Brick_in_the_Wall",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Brick_in_the_Wall",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 3001985,
+  "importedAt": "2026-08-15T09:24:57.486Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "[[East Berlin]], {{W|East Germany|East}} [[Germany]]",
+    "label": "East Berlin",
+    "url": "https://callofduty.fandom.com/wiki/East_Berlin"
   },
   "mapStyle": "singleplayer",
   "mapStyleDetail": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/9/99/BrickInTheWall_MenuScreen_BOCW.png/revision/latest?cb=20201118155931",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/9/99/BrickInTheWall_MenuScreen_BOCW.png/revision/latest/scale-to-width-down/800?cb=20201118155931",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:BrickInTheWall_MenuScreen_BOCW.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Kalinine",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Kalinine",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,48 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-05-13T13:48:35Z",
+    "revisionSha1": "2ffd0b0968c07ac3bf05c8353f71d1340d2b8751",
+    "resolvedTitle": "Brick in the Wall",
+    "mainImageTitle": "File:BrickInTheWall_MenuScreen_BOCW.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[East Berlin Briefing]]",
+    "label": "East Berlin Briefing",
+    "links": [
+      {
+        "wikiTitle": "East Berlin Briefing",
+        "label": "East Berlin Briefing",
+        "url": "https://callofduty.fandom.com/wiki/East_Berlin_Briefing"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Redlight, Greenlight]]",
+    "label": "Redlight, Greenlight",
+    "links": [
+      {
+        "wikiTitle": "Redlight, Greenlight",
+        "label": "Redlight, Greenlight",
+        "url": "https://callofduty.fandom.com/wiki/Redlight%2C_Greenlight"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Black Ops Cold War]]''",
+    "label": "Call of Duty: Black Ops Cold War",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Black Ops Cold War",
+        "label": "Call of Duty: Black Ops Cold War",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops_Cold_War"
+      }
+    ]
+  },
+  "date": {
+    "raw": "February 24, 1981",
+    "label": "February 24, 1981"
+  }
 }

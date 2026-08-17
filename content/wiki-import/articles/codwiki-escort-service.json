@@ -1,14 +1,14 @@
 {
   "id": "codwiki-escort-service",
-  "fandomPageId": null,
+  "fandomPageId": 523242,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Escort_Service",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Escort_Service",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2985949,
+  "importedAt": "2026-08-15T00:28:54.823Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "Kabul, [[Afghanistan]]",
+    "label": "Afghanistan",
+    "url": "https://callofduty.fandom.com/wiki/Afghanistan"
   },
   "mapStyle": "singleplayer",
   "mapStyleDetail": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/e/e5/EscortService_MenuScreen_BOD.png/revision/latest?cb=20231001151054",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/e/e5/EscortService_MenuScreen_BOD.png/revision/latest?cb=20231001151054",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:EscortService_MenuScreen_BOD.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Kalinine",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Kalinine",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,53 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-04-03T09:30:15Z",
+    "revisionSha1": "4d01147f26c31add61c47acfee9db17bdc3f0301",
+    "resolvedTitle": "Escort Service",
+    "mainImageTitle": "File:EscortService_MenuScreen_BOD.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Ops M.I.A.]]",
+    "label": "Ops M.I.A.",
+    "links": [
+      {
+        "wikiTitle": "Ops M.I.A.",
+        "label": "Ops M.I.A.",
+        "url": "https://callofduty.fandom.com/wiki/Ops_M.I.A."
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Nowhere Left to Run]] (chronologically)<br>[[Hostile Takeover]] (chronologically, game-wise)",
+    "label": "Nowhere Left to Run (chronologically), Hostile Takeover (chronologically, game-wise)",
+    "links": [
+      {
+        "wikiTitle": "Nowhere Left to Run",
+        "label": "Nowhere Left to Run",
+        "url": "https://callofduty.fandom.com/wiki/Nowhere_Left_to_Run"
+      },
+      {
+        "wikiTitle": "Hostile Takeover",
+        "label": "Hostile Takeover",
+        "url": "https://callofduty.fandom.com/wiki/Hostile_Takeover"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Black Ops: Declassified]]''",
+    "label": "Call of Duty: Black Ops: Declassified",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Black Ops: Declassified",
+        "label": "Call of Duty: Black Ops: Declassified",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops%3A_Declassified"
+      }
+    ]
+  },
+  "date": {
+    "raw": "December 27th, 1979",
+    "label": "December 27th, 1979"
+  }
 }

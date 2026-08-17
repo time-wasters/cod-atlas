@@ -1,14 +1,14 @@
 {
   "id": "codwiki-der-anfang",
-  "fandomPageId": null,
+  "fandomPageId": 708608,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Der_Anfang",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Der_Anfang",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 3008132,
+  "importedAt": "2026-08-15T13:26:07.440Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "*Stalingrad, [[Soviet Union]]\n*Okinawa Prefecture, [[Empire of Japan]]\n*[[Paris]], [[France]]\n*[[Normandy]], France",
+    "label": "Soviet Union",
+    "url": "https://callofduty.fandom.com/wiki/Soviet_Union"
   },
   "mapStyle": "multiplayer",
   "mapStyleDetail": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/7/7e/DerAnfang_LoadingScreen_CODV.jpg/revision/latest?cb=20211106110509",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/7/7e/DerAnfang_LoadingScreen_CODV.jpg/revision/latest/scale-to-width-down/800?cb=20211106110509",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:DerAnfang_LoadingScreen_CODV.jpg",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Kalinine",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Kalinine",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,48 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-06-12T16:52:58Z",
+    "revisionSha1": "8a5b195c175148da6ca5189fd53cab587f462608",
+    "resolvedTitle": "Der Anfang",
+    "mainImageTitle": "File:DerAnfang_LoadingScreen_CODV.jpg",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Tag der Toten]] <small>(chronologically by events)</small>",
+    "label": "Tag der Toten (chronologically by events)",
+    "links": [
+      {
+        "wikiTitle": "Tag der Toten",
+        "label": "Tag der Toten",
+        "url": "https://callofduty.fandom.com/wiki/Tag_der_Toten"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Terra Maledicta]]",
+    "label": "Terra Maledicta",
+    "links": [
+      {
+        "wikiTitle": "Terra Maledicta",
+        "label": "Terra Maledicta",
+        "url": "https://callofduty.fandom.com/wiki/Terra_Maledicta"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Vanguard]]''",
+    "label": "Call of Duty: Vanguard",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Vanguard",
+        "label": "Call of Duty: Vanguard",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Vanguard"
+      }
+    ]
+  },
+  "date": {
+    "raw": "March 1944",
+    "label": "March 1944"
+  }
 }

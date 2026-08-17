@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Breakdown",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Breakdown",
   "latestRevisionId": 2951055,
-  "importedAt": "2026-08-09T21:34:40.173Z",
+  "importedAt": "2026-08-15T09:20:38.472Z",
   "levelLocation": {
     "raw": "[[Stalingrad]], Soviet Union",
     "label": "Stalingrad",
@@ -53,5 +53,42 @@
     "resolvedTitle": "Breakdown",
     "mainImageTitle": "File:CoDFH_Breakdown_loading_screen.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Defend the Factory]]",
+    "label": "Defend the Factory",
+    "links": [
+      {
+        "wikiTitle": "Defend the Factory",
+        "label": "Defend the Factory",
+        "url": "https://callofduty.fandom.com/wiki/Defend_the_Factory"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Into Red Square]]",
+    "label": "Into Red Square",
+    "links": [
+      {
+        "wikiTitle": "Into Red Square",
+        "label": "Into Red Square",
+        "url": "https://callofduty.fandom.com/wiki/Into_Red_Square"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Finest Hour]]''",
+    "label": "Call of Duty: Finest Hour",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Finest Hour",
+        "label": "Call of Duty: Finest Hour",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Finest_Hour"
+      }
+    ]
+  },
+  "date": {
+    "raw": "October 3rd, 1942",
+    "label": "October 3rd, 1942"
   }
 }

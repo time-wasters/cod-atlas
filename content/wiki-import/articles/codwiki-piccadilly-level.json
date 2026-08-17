@@ -1,14 +1,14 @@
 {
   "id": "codwiki-piccadilly-level",
-  "fandomPageId": null,
+  "fandomPageId": 683077,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Piccadilly_(level)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Piccadilly_(level)",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2978514,
+  "importedAt": "2026-08-15T13:20:35.057Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "[[wikipedia:Piccadilly Circus|Piccadilly Circus]], [[London]], [[United Kingdom]]",
+    "label": "Piccadilly Circus",
+    "url": "https://callofduty.fandom.com/wiki/wikipedia%3APiccadilly_Circus"
   },
   "mapStyle": "singleplayer",
   "mapStyleDetail": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/2/29/Trigger_Discipline_achievement_image_CoDMW.png/revision/latest?cb=20191203044914",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/2/29/Trigger_Discipline_achievement_image_CoDMW.png/revision/latest/scale-to-width-down/800?cb=20191203044914",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Trigger_Discipline_achievement_image_CoDMW.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Louis Bancroft",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Louis_Bancroft",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "unknown",
+        "notice": null,
+        "noticeUrl": null
       }
     },
     "map": {
@@ -40,5 +47,48 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-03-22T20:50:04Z",
+    "revisionSha1": "048297642f4c6829850cf03dd3264bcebb3c08b4",
+    "resolvedTitle": "Piccadilly (level)",
+    "mainImageTitle": "File:Trigger_Discipline_achievement_image_CoDMW.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Fog of War (level)|Fog of War]]",
+    "label": "Fog of War",
+    "links": [
+      {
+        "wikiTitle": "Fog of War (level)",
+        "label": "Fog of War",
+        "url": "https://callofduty.fandom.com/wiki/Fog_of_War_(level)"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Embedded]]",
+    "label": "Embedded",
+    "links": [
+      {
+        "wikiTitle": "Embedded",
+        "label": "Embedded",
+        "url": "https://callofduty.fandom.com/wiki/Embedded"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Modern Warfare (2019)|Call of Duty: Modern Warfare]]''",
+    "label": "Call of Duty: Modern Warfare",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Modern Warfare (2019)",
+        "label": "Call of Duty: Modern Warfare",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Modern_Warfare_(2019)"
+      }
+    ]
+  },
+  "date": {
+    "raw": "October 25th, 2019 - 18:00HRS",
+    "label": "October 25th, 2019 - 18:00HRS"
+  }
 }

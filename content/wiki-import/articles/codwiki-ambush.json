@@ -1,10 +1,10 @@
 {
   "id": "codwiki-ambush",
-  "fandomPageId": null,
+  "fandomPageId": 780352,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Ambush",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Ambush",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2900013,
+  "importedAt": "2026-08-15T09:24:12.068Z",
   "levelLocation": {
     "raw": null,
     "label": null,
@@ -40,5 +40,30 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2025-07-29T14:34:08Z",
+    "revisionSha1": "7563199b660a0451e1fe944a4b92a324f06d86c7",
+    "resolvedTitle": "Ambush",
+    "mainImageTitle": null,
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "date": {
+    "raw": null,
+    "label": null
+  }
 }

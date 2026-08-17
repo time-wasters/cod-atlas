@@ -46,8 +46,8 @@ guidance, and copy-ready templates for every source record type.
 
 Create a Markdown file under the primary game's directory. If that game is
 already organized by map type, place it in `campaign/` or `multiplayer/` to
-match its `mode` field. Currently `cod`, `cod-uo`, and `cod-fh` use this
-layout; games that have not been reorganized retain their existing flat
+match its `mode` field. Currently `cod`, `cod-uo`, `cod-fh`, and `cod2` use
+this layout; games that have not been reorganized retain their existing flat
 layout.
 
 Campaign files in a map-type layout are named

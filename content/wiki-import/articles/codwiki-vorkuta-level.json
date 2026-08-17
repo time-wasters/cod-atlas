@@ -1,14 +1,14 @@
 {
   "id": "codwiki-vorkuta-level",
-  "fandomPageId": null,
+  "fandomPageId": 300259,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Vorkuta_(level)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Vorkuta_(level)",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2968279,
+  "importedAt": "2026-08-15T00:29:50.345Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "Mine N1, labor camp in [[wikipedia:Vorkuta|Vorkuta]], Komi ASSR, Russian SFSR, [[Soviet Union]]",
+    "label": "Vorkuta",
+    "url": "https://callofduty.fandom.com/wiki/wikipedia%3AVorkuta"
   },
   "mapStyle": "singleplayer",
   "mapStyleDetail": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/7/7d/Vorkuta_MenuScreen_BO.png/revision/latest?cb=20251016200125",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/7/7d/Vorkuta_MenuScreen_BO.png/revision/latest?cb=20251016200125",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Vorkuta_MenuScreen_BO.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Pothas",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Pothas",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,48 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-02-17T13:58:47Z",
+    "revisionSha1": "52e233a28b9c30f9b3e5451ff0c6c1258d7a03c3",
+    "resolvedTitle": "Vorkuta (level)",
+    "mainImageTitle": "File:Vorkuta_MenuScreen_BO.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Operation 40]]",
+    "label": "Operation 40",
+    "links": [
+      {
+        "wikiTitle": "Operation 40",
+        "label": "Operation 40",
+        "url": "https://callofduty.fandom.com/wiki/Operation_40"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[U.S.D.D.]]",
+    "label": "U.S.D.D.",
+    "links": [
+      {
+        "wikiTitle": "U.S.D.D.",
+        "label": "U.S.D.D.",
+        "url": "https://callofduty.fandom.com/wiki/U.S.D.D."
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Black Ops]]''",
+    "label": "Call of Duty: Black Ops",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Black Ops",
+        "label": "Call of Duty: Black Ops",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops"
+      }
+    ]
+  },
+  "date": {
+    "raw": "0600 hrs October 6, 1963",
+    "label": "0600 hrs October 6, 1963"
+  }
 }

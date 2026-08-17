@@ -1,10 +1,10 @@
 {
   "id": "codwiki-battery",
-  "fandomPageId": null,
+  "fandomPageId": 812359,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Battery",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Battery",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 3019593,
+  "importedAt": "2026-08-15T09:19:44.795Z",
   "levelLocation": {
     "raw": null,
     "label": null,
@@ -40,5 +40,30 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-08-12T15:33:40Z",
+    "revisionSha1": "e4fda3985e791c812d22e56023a72367de3b824c",
+    "resolvedTitle": "Battery",
+    "mainImageTitle": null,
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "date": {
+    "raw": null,
+    "label": null
+  }
 }

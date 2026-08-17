@@ -1,14 +1,14 @@
 {
   "id": "codwiki-breenbergh-hotel",
-  "fandomPageId": null,
+  "fandomPageId": 718074,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Breenbergh_Hotel",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Breenbergh_Hotel",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2972496,
+  "importedAt": "2026-08-15T13:23:38.290Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "{{w|Amsterdam}}, [[Netherlands]]",
+    "label": "Netherlands",
+    "url": "https://callofduty.fandom.com/wiki/Netherlands"
   },
   "mapStyle": "multiplayer",
   "mapStyleDetail": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/8/86/BreenberghHotel_LoadingScreen_MWII.jpg/revision/latest?cb=20230221185709",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/8/86/BreenberghHotel_LoadingScreen_MWII.jpg/revision/latest/scale-to-width-down/800?cb=20230221185709",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:BreenberghHotel_LoadingScreen_MWII.jpg",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Kalinine",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Kalinine",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,46 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-03-03T11:28:55Z",
+    "revisionSha1": "fdb73bc5ff159765624784208151464f5026290b",
+    "resolvedTitle": "Breenbergh Hotel",
+    "mainImageTitle": "File:BreenberghHotel_LoadingScreen_MWII.jpg",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Modern Warfare II]]''<br>''[[Call of Duty: Modern Warfare III]]''<br>''[[Call of Duty: Warzone Mobile]]''",
+    "label": "Call of Duty: Modern Warfare II, Call of Duty: Modern Warfare III, Call of Duty: Warzone Mobile",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Modern Warfare II",
+        "label": "Call of Duty: Modern Warfare II",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Modern_Warfare_II"
+      },
+      {
+        "wikiTitle": "Call of Duty: Modern Warfare III",
+        "label": "Call of Duty: Modern Warfare III",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Modern_Warfare_III"
+      },
+      {
+        "wikiTitle": "Call of Duty: Warzone Mobile",
+        "label": "Call of Duty: Warzone Mobile",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Warzone_Mobile"
+      }
+    ]
+  },
+  "date": {
+    "raw": "Day 52 11:23",
+    "label": "Day 52 11:23"
+  }
 }

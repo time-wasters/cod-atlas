@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Assault_on_Matmata",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Assault_on_Matmata",
   "latestRevisionId": 2951070,
-  "importedAt": "2026-08-10T19:02:22.752Z",
+  "importedAt": "2026-08-15T09:24:33.376Z",
   "levelLocation": {
     "raw": "Matmata, Tunisia",
     "label": "Matmata, Tunisia",
@@ -53,5 +53,42 @@
     "resolvedTitle": "Assault on Matmata",
     "mainImageTitle": "File:Matrightroof.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Retaking Toujane]]",
+    "label": "Retaking Toujane",
+    "links": [
+      {
+        "wikiTitle": "Retaking Toujane",
+        "label": "Retaking Toujane",
+        "url": "https://callofduty.fandom.com/wiki/Retaking_Toujane"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[The Battle of Pointe du Hoc]]",
+    "label": "The Battle of Pointe du Hoc",
+    "links": [
+      {
+        "wikiTitle": "The Battle of Pointe du Hoc",
+        "label": "The Battle of Pointe du Hoc",
+        "url": "https://callofduty.fandom.com/wiki/The_Battle_of_Pointe_du_Hoc"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty 2]]''",
+    "label": "Call of Duty 2",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty 2",
+        "label": "Call of Duty 2",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_2"
+      }
+    ]
+  },
+  "date": {
+    "raw": "March 30, 1943",
+    "label": "March 30, 1943"
   }
 }

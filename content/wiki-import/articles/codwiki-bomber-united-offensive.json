@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Bomber_(United_Offensive)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Bomber_(United_Offensive)",
   "latestRevisionId": 2992594,
-  "importedAt": "2026-08-09T21:33:45.112Z",
+  "importedAt": "2026-08-15T09:20:27.786Z",
   "levelLocation": {
     "raw": "Somewhere over the English Channel",
     "label": "Somewhere over the English Channel",
@@ -53,5 +53,42 @@
     "resolvedTitle": "Bomber (United Offensive)",
     "mainImageTitle": "File:B-17_Bomber_Dropping_Bombs.jpg",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Noville]] (In-game)",
+    "label": "Noville (In-game)",
+    "links": [
+      {
+        "wikiTitle": "Noville",
+        "label": "Noville",
+        "url": "https://callofduty.fandom.com/wiki/Noville"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Train Bridge]]",
+    "label": "Train Bridge",
+    "links": [
+      {
+        "wikiTitle": "Train Bridge",
+        "label": "Train Bridge",
+        "url": "https://callofduty.fandom.com/wiki/Train_Bridge"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: United Offensive]]''",
+    "label": "Call of Duty: United Offensive",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: United Offensive",
+        "label": "Call of Duty: United Offensive",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_United_Offensive"
+      }
+    ]
+  },
+  "date": {
+    "raw": "September 2, 1941",
+    "label": "September 2, 1941"
   }
 }

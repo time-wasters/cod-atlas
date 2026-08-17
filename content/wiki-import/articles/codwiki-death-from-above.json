@@ -1,13 +1,13 @@
 {
   "id": "codwiki-death-from-above",
-  "fandomPageId": null,
+  "fandomPageId": 2619,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Death_From_Above",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Death_From_Above",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 3007826,
+  "importedAt": "2026-08-14T23:36:58.444Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
+    "raw": "Verkhnetoyemsky, Arkhangelsk Oblast, Russia",
+    "label": "Verkhnetoyemsky, Arkhangelsk Oblast, Russia",
     "url": null
   },
   "mapStyle": "singleplayer",
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/c/ca/Death_From_Above_Campaign.jpg/revision/latest?cb=20110511162512",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/c/ca/Death_From_Above_Campaign.jpg/revision/latest?cb=20110511162512",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Death_From_Above_Campaign.jpg",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Synhart",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Synhart",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,58 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-06-10T14:57:44Z",
+    "revisionSha1": "23d6ef0b7f41a9aba8bbdf4beed356976bf320fa",
+    "resolvedTitle": "Death From Above",
+    "mainImageTitle": "File:Death_From_Above_Campaign.jpg",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Hunted (Call of Duty 4)|Hunted]]",
+    "label": "Hunted",
+    "links": [
+      {
+        "wikiTitle": "Hunted (Call of Duty 4)",
+        "label": "Hunted",
+        "url": "https://callofduty.fandom.com/wiki/Hunted_(Call_of_Duty_4)"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[War Pig (mission)|War Pig]] (in-game)<br>[[Charlie Don't Surf]] (chronologically)",
+    "label": "War Pig (in-game), Charlie Don't Surf (chronologically)",
+    "links": [
+      {
+        "wikiTitle": "War Pig (mission)",
+        "label": "War Pig",
+        "url": "https://callofduty.fandom.com/wiki/War_Pig_(mission)"
+      },
+      {
+        "wikiTitle": "Charlie Don't Surf",
+        "label": "Charlie Don't Surf",
+        "url": "https://callofduty.fandom.com/wiki/Charlie_Don't_Surf"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty 4: Modern Warfare]]''<br>''[[Call of Duty: Modern Warfare Remastered]]''",
+    "label": "Call of Duty 4: Modern Warfare, Call of Duty: Modern Warfare Remastered",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty 4: Modern Warfare",
+        "label": "Call of Duty 4: Modern Warfare",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_4%3A_Modern_Warfare"
+      },
+      {
+        "wikiTitle": "Call of Duty: Modern Warfare Remastered",
+        "label": "Call of Duty: Modern Warfare Remastered",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Modern_Warfare_Remastered"
+      }
+    ]
+  },
+  "date": {
+    "raw": "Day 2, 2011 - 04:20:18",
+    "label": "Day 2, 2011 - 04:20:18"
+  }
 }

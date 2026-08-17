@@ -1,10 +1,10 @@
 {
   "id": "codwiki-containment",
-  "fandomPageId": null,
+  "fandomPageId": 789277,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Containment",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Containment",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2937850,
+  "importedAt": "2026-08-15T09:49:13.961Z",
   "levelLocation": {
     "raw": null,
     "label": null,
@@ -40,5 +40,30 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2025-11-18T23:47:40Z",
+    "revisionSha1": "dfa66531f7187d8a03d87cff8f0280294e4aeeb8",
+    "resolvedTitle": "Containment",
+    "mainImageTitle": null,
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "date": {
+    "raw": null,
+    "label": null
+  }
 }

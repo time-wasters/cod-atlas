@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/88_Ridge",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/88_Ridge",
   "latestRevisionId": 2784968,
-  "importedAt": "2026-08-10T19:02:22.745Z",
+  "importedAt": "2026-08-15T09:23:39.803Z",
   "levelLocation": {
     "raw": "Northwestern Libya",
     "label": "Northwestern Libya",
@@ -53,5 +53,42 @@
     "resolvedTitle": "88 Ridge",
     "mainImageTitle": "File:88Gun_88_Ridge_CoD2.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Crusader Charge]]",
+    "label": "Crusader Charge",
+    "links": [
+      {
+        "wikiTitle": "Crusader Charge",
+        "label": "Crusader Charge",
+        "url": "https://callofduty.fandom.com/wiki/Crusader_Charge"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Armored Car Escape]]",
+    "label": "Armored Car Escape",
+    "links": [
+      {
+        "wikiTitle": "Armored Car Escape",
+        "label": "Armored Car Escape",
+        "url": "https://callofduty.fandom.com/wiki/Armored_Car_Escape"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty 2]]''",
+    "label": "Call of Duty 2",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty 2",
+        "label": "Call of Duty 2",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_2"
+      }
+    ]
+  },
+  "date": {
+    "raw": "January 18, 1943",
+    "label": "January 18, 1943"
   }
 }

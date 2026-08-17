@@ -1,14 +1,14 @@
 {
   "id": "codwiki-al-raab-airbase",
-  "fandomPageId": null,
+  "fandomPageId": 700210,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Al-Raab_Airbase",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Al-Raab_Airbase",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2965524,
+  "importedAt": "2026-08-15T13:20:02.763Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "Al-Raab, [[Urzikstan]]",
+    "label": "Urzikstan",
+    "url": "https://callofduty.fandom.com/wiki/Urzikstan"
   },
   "mapStyle": "multiplayer",
   "mapStyleDetail": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/e/ea/AlRaabAirbase_LoadingScreen_MW.png/revision/latest?cb=20210331102503",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/e/ea/AlRaabAirbase_LoadingScreen_MW.png/revision/latest/scale-to-width-down/800?cb=20210331102503",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:AlRaabAirbase_LoadingScreen_MW.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Kalinine",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Kalinine",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,36 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-02-10T11:36:49Z",
+    "revisionSha1": "231afbbc4757dbcb7905d338a440d7596b6c8e4f",
+    "resolvedTitle": "Al-Raab Airbase",
+    "mainImageTitle": "File:AlRaabAirbase_LoadingScreen_MW.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Modern Warfare (2019)|Call of Duty: Modern Warfare]]''",
+    "label": "Call of Duty: Modern Warfare",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Modern Warfare (2019)",
+        "label": "Call of Duty: Modern Warfare",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Modern_Warfare_(2019)"
+      }
+    ]
+  },
+  "date": {
+    "raw": "Day 480 14:32:23",
+    "label": "Day 480 14:32:23"
+  }
 }

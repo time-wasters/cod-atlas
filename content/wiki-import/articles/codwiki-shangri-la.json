@@ -1,13 +1,13 @@
 {
   "id": "codwiki-shangri-la",
-  "fandomPageId": null,
+  "fandomPageId": 305450,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Shangri-La",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Shangri-La",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 3015559,
+  "importedAt": "2026-08-15T08:56:36.405Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
+    "raw": "Somewhere in the Himalayas",
+    "label": "Somewhere in the Himalayas",
     "url": null
   },
   "mapStyle": "multiplayer",
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/d/d5/Shangri-La_Menu_Selection_BO.png/revision/latest?cb=20240710075204",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/d/d5/Shangri-La_Menu_Selection_BO.png/revision/latest?cb=20240710075204",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Shangri-La_Menu_Selection_BO.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Larsendog",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Larsendog",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,58 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-07-21T05:15:26Z",
+    "revisionSha1": "7a7e120740893f7aae34ae5c2f4ab129195c8905",
+    "resolvedTitle": "Shangri-La",
+    "mainImageTitle": "File:Shangri-La_Menu_Selection_BO.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Call of the Dead]]",
+    "label": "Call of the Dead",
+    "links": [
+      {
+        "wikiTitle": "Call of the Dead",
+        "label": "Call of the Dead",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_the_Dead"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Moon]] <small>(in-game)</small><br>[[Classified]] <small>(chronologically)</small>",
+    "label": "Moon (in-game) , Classified (chronologically)",
+    "links": [
+      {
+        "wikiTitle": "Moon",
+        "label": "Moon",
+        "url": "https://callofduty.fandom.com/wiki/Moon"
+      },
+      {
+        "wikiTitle": "Classified",
+        "label": "Classified",
+        "url": "https://callofduty.fandom.com/wiki/Classified"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Black Ops]]''<br>''[[Call of Duty: Black Ops III]]''",
+    "label": "Call of Duty: Black Ops, Call of Duty: Black Ops III",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Black Ops",
+        "label": "Call of Duty: Black Ops",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops"
+      },
+      {
+        "wikiTitle": "Call of Duty: Black Ops III",
+        "label": "Call of Duty: Black Ops III",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops_III"
+      }
+    ]
+  },
+  "date": {
+    "raw": "April 25th, 1956<br><small>(Original Timeline)</small>",
+    "label": "April 25th, 1956, (Original Timeline)"
+  }
 }

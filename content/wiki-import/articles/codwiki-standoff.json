@@ -1,14 +1,14 @@
 {
   "id": "codwiki-standoff",
-  "fandomPageId": null,
+  "fandomPageId": 505565,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Standoff",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Standoff",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 3006001,
+  "importedAt": "2026-08-15T09:25:51.147Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "Unknown Border Town, China-Kyrgyzstan Border (''BOII'' & ''BO7'')<br>Kyrgyzstan, [[Soviet Union]] (''BOCW'')",
+    "label": "Soviet Union",
+    "url": "https://callofduty.fandom.com/wiki/Soviet_Union"
   },
   "mapStyle": "multiplayer",
   "mapStyleDetail": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/1/1f/Standoff_Load_Screen_BOII.png/revision/latest?cb=20121209080838",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/1/1f/Standoff_Load_Screen_BOII.png/revision/latest/scale-to-width-down/800?cb=20121209080838",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Standoff_Load_Screen_BOII.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Synhart",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Synhart",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,56 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-05-31T23:49:20Z",
+    "revisionSha1": "b69fab9542b4a798caf08808db683d1f4cd71b1d",
+    "resolvedTitle": "Standoff",
+    "mainImageTitle": "File:Standoff_Load_Screen_BOII.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Black Ops II]]''<br>''[[Call of Duty Online]]''<br>''[[Call of Duty: Mobile]]''<br>''[[Call of Duty: Black Ops Cold War]]''<br>''[[Call of Duty: Black Ops 7]]''",
+    "label": "Call of Duty: Black Ops II, Call of Duty Online, Call of Duty: Mobile, Call of Duty: Black Ops Cold War, Call of Duty: Black Ops 7",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Black Ops II",
+        "label": "Call of Duty: Black Ops II",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops_II"
+      },
+      {
+        "wikiTitle": "Call of Duty Online",
+        "label": "Call of Duty Online",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_Online"
+      },
+      {
+        "wikiTitle": "Call of Duty: Mobile",
+        "label": "Call of Duty: Mobile",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Mobile"
+      },
+      {
+        "wikiTitle": "Call of Duty: Black Ops Cold War",
+        "label": "Call of Duty: Black Ops Cold War",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops_Cold_War"
+      },
+      {
+        "wikiTitle": "Call of Duty: Black Ops 7",
+        "label": "Call of Duty: Black Ops 7",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops_7"
+      }
+    ]
+  },
+  "date": {
+    "raw": "2025 (''BOII'')<br>January 10, 1984 (''BOCW'') <small>(Multiplayer)</small><br>2035 (''BO7'')",
+    "label": "2025 (BOII), January 10, 1984 (BOCW) (Multiplayer) , 2035 (BO7)"
+  }
 }

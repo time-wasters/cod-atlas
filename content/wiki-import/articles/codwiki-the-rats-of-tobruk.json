@@ -1,13 +1,13 @@
 {
   "id": "codwiki-the-rats-of-tobruk",
-  "fandomPageId": null,
+  "fandomPageId": 709768,
   "sourceUrl": "https://callofduty.fandom.com/wiki/The_Rats_of_Tobruk",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/The_Rats_of_Tobruk",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2975450,
+  "importedAt": "2026-08-15T13:26:39.811Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
+    "raw": "{{w|Tobruk}}, {{w|Libya}}",
+    "label": ",",
     "url": null
   },
   "mapStyle": "singleplayer",
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/3/37/TheRatsOfTobruk_Background_CODV.png/revision/latest?cb=20211106105520",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/3/37/TheRatsOfTobruk_Background_CODV.png/revision/latest/scale-to-width-down/800?cb=20211106105520",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:TheRatsOfTobruk_Background_CODV.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Kalinine",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Kalinine",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,53 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-03-11T09:35:00Z",
+    "revisionSha1": "2abe723bb59b58467c298d8f949792aca2adee2a",
+    "resolvedTitle": "The Rats of Tobruk",
+    "mainImageTitle": "File:TheRatsOfTobruk_Background_CODV.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Lady Nightingale]] (in-game)",
+    "label": "Lady Nightingale (in-game)",
+    "links": [
+      {
+        "wikiTitle": "Lady Nightingale",
+        "label": "Lady Nightingale",
+        "url": "https://callofduty.fandom.com/wiki/Lady_Nightingale"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[The Battle of El Alamein]] (in-game)\n[[The Battle of Midway]] (chronologically)",
+    "label": "The Battle of El Alamein (in-game) The Battle of Midway (chronologically)",
+    "links": [
+      {
+        "wikiTitle": "The Battle of El Alamein",
+        "label": "The Battle of El Alamein",
+        "url": "https://callofduty.fandom.com/wiki/The_Battle_of_El_Alamein"
+      },
+      {
+        "wikiTitle": "The Battle of Midway",
+        "label": "The Battle of Midway",
+        "url": "https://callofduty.fandom.com/wiki/The_Battle_of_Midway"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Vanguard]]''",
+    "label": "Call of Duty: Vanguard",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Vanguard",
+        "label": "Call of Duty: Vanguard",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Vanguard"
+      }
+    ]
+  },
+  "date": {
+    "raw": "August 1941",
+    "label": "August 1941"
+  }
 }

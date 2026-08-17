@@ -256,7 +256,15 @@ function LevelModeIcon({ multiplayer }: { multiplayer: boolean }) {
   );
 }
 
-function FittedLevelTitle({ children }: { children: string }) {
+function FittedLevelTitle({
+  children,
+  disabled,
+  onActivate,
+}: {
+  children: string;
+  disabled: boolean;
+  onActivate: () => void;
+}) {
   const title = useRef<HTMLHeadingElement>(null);
 
   useLayoutEffect(() => {
@@ -280,7 +288,20 @@ function FittedLevelTitle({ children }: { children: string }) {
     return () => observer.disconnect();
   }, [children]);
 
-  return <h2 ref={title}>{children}</h2>;
+  return (
+    <h2 ref={title}>
+      <button
+        className="mission-title-button"
+        type="button"
+        disabled={disabled}
+        aria-label={`Show ${children} on map`}
+        title="Show on map"
+        onClick={onActivate}
+      >
+        {children}
+      </button>
+    </h2>
+  );
 }
 
 function gameCodes(value: string) {
@@ -711,6 +732,7 @@ export default function Home() {
   const [showMultiplayer, setShowMultiplayer] = useState(false);
   const [mapReady, setMapReady] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [detailsOpen, setDetailsOpen] = useState(true);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [externalIconManifest, setExternalIconManifest] = useState<ExternalIconManifest | null>(null);
   const [externalIconManifestUnavailable, setExternalIconManifestUnavailable] = useState(false);
@@ -949,6 +971,22 @@ export default function Home() {
     markerOverlaySelectionLevelId.current = mapOverlays[entry.levelId] ? entry.levelId : null;
     selectEntry(group, entry);
   }, [selectEntry]);
+
+  const focusSelectedMarker = useCallback(() => {
+    const currentMap = map.current;
+    const layer = markerLayer.current;
+    const selectedMarker = markers.current.get(selected.entry.id)?.marker;
+    if (!currentMap || !layer || !selectedMarker) return;
+
+    currentMap.stop();
+    layer.zoomToShowLayer(selectedMarker, () => {
+      if (map.current !== currentMap || !mapNode.current) return;
+      currentMap.panInside(
+        selectedMarker.getLatLng(),
+        mapViewportPadding(mapNode.current, intelCard.current),
+      );
+    });
+  }, [selected.entry.id]);
 
   const toggleLevelNotes = useCallback(() => {
     const levelId = selected.entry.levelId;
@@ -1306,9 +1344,12 @@ export default function Home() {
   return (
     <main className={`atlas-shell${sidebarOpen ? "" : " is-sidebar-collapsed"}`}>
       <header className="atlas-header">
-        <div className="brand-mark" aria-hidden="true">◎</div>
-        <div>
-          <h1>CoD Atlas</h1>
+        <div className="atlas-brand">
+          <h1>
+            {/* This reviewed local brand asset does not need runtime image optimization. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="images/banner.png" width="790" height="153" alt="CoD Atlas" />
+          </h1>
           <p>Real-world geography of the series</p>
         </div>
         <div className="header-stat">
@@ -1502,7 +1543,7 @@ export default function Home() {
           onSelect={selectEntry}
         />
 
-        {levelNotesExpanded && (
+        {detailsOpen && levelNotesExpanded && (
           <aside id="selected-level-briefing" className="level-briefing-pane" aria-labelledby="level-briefing-title">
             <header>
               <div>
@@ -1558,11 +1599,39 @@ export default function Home() {
           </aside>
         )}
 
-        <div className={`intel-column${levelNotesExpanded ? " has-open-briefing" : ""}`} ref={intelCard}>
-        <article className="intel-card">
+        <div
+          className={`intel-column${detailsOpen ? "" : " is-collapsed"}${detailsOpen && levelNotesExpanded ? " has-open-briefing" : ""}`}
+          ref={intelCard}
+        >
+        <button
+          className="details-toggle"
+          type="button"
+          aria-expanded={detailsOpen}
+          aria-controls="selected-level-details"
+          aria-label={detailsOpen ? "Hide level details" : "Show level details"}
+          onClick={() => setDetailsOpen((open) => !open)}
+        >
+          <svg viewBox="0 0 12 18" aria-hidden="true">
+            <path d={detailsOpen ? "m4 3 5 6-5 6" : "m8 3-5 6 5 6"} />
+          </svg>
+        </button>
+        <button
+          className="collapsed-level-title"
+          type="button"
+          aria-label={`Show details for ${selected.entry.title}`}
+          onClick={() => setDetailsOpen(true)}
+        >
+          <span>{selected.entry.title}</span>
+        </button>
+        <article className="intel-card" id="selected-level-details">
           <div className="mission-heading">
             <LevelModeIcon multiplayer={selected.entry.modes.includes("multiplayer")} />
-            <FittedLevelTitle>{selected.entry.title}</FittedLevelTitle>
+            <FittedLevelTitle
+              disabled={!selected.entry.coordinates}
+              onActivate={focusSelectedMarker}
+            >
+              {selected.entry.title}
+            </FittedLevelTitle>
             <div className="mission-games">
               {selected.entry.gameIds.map((gameId) => {
                 const selectedGame = gamesById.get(gameId);

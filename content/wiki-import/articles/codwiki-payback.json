@@ -1,13 +1,13 @@
 {
   "id": "codwiki-payback",
-  "fandomPageId": null,
+  "fandomPageId": 94391,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Payback",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Payback",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2968294,
+  "importedAt": "2026-08-15T00:29:28.703Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
+    "raw": "Sekong, Laos",
+    "label": "Sekong, Laos",
     "url": null
   },
   "mapStyle": "singleplayer",
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/7/77/Payback_MenuScreen_BO.png/revision/latest?cb=20251016205210",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/7/77/Payback_MenuScreen_BO.png/revision/latest/scale-to-width-down/800?cb=20251016205210",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Payback_MenuScreen_BO.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Pothas",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Pothas",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,48 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-02-17T14:39:01Z",
+    "revisionSha1": "067f7d0a598bf8fac85a3dd588303f5edf96419f",
+    "resolvedTitle": "Payback",
+    "mainImageTitle": "File:Payback_MenuScreen_BO.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[WMD (mission)|WMD]]",
+    "label": "WMD",
+    "links": [
+      {
+        "wikiTitle": "WMD (mission)",
+        "label": "WMD",
+        "url": "https://callofduty.fandom.com/wiki/WMD_(mission)"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Rebirth]]",
+    "label": "Rebirth",
+    "links": [
+      {
+        "wikiTitle": "Rebirth",
+        "label": "Rebirth",
+        "url": "https://callofduty.fandom.com/wiki/Rebirth"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Black Ops]]''",
+    "label": "Call of Duty: Black Ops",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Black Ops",
+        "label": "Call of Duty: Black Ops",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops"
+      }
+    ]
+  },
+  "date": {
+    "raw": "1100 hours, February 19, 1968",
+    "label": "1100 hours, February 19, 1968"
+  }
 }

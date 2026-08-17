@@ -1,14 +1,14 @@
 {
   "id": "codwiki-rush",
-  "fandomPageId": null,
+  "fandomPageId": 555349,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Rush",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Rush",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2992456,
+  "importedAt": "2026-08-15T09:25:40.438Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "{{w|Georgia (U.S. state)|Georgia}}, [[United States of America]]",
+    "label": "United States of America",
+    "url": "https://callofduty.fandom.com/wiki/United_States_of_America"
   },
   "mapStyle": "multiplayer",
   "mapStyleDetail": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/2/2e/Rush_loadscreen_BOII.png/revision/latest?cb=20130905095938",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/2/2e/Rush_loadscreen_BOII.png/revision/latest/scale-to-width-down/800?cb=20130905095938",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Rush_loadscreen_BOII.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Verantha",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Verantha",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,46 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-04-14T02:15:33Z",
+    "revisionSha1": "aea5d5d0f8f66ad7e7f9a2ffa8e7ce1fcf5b9fe6",
+    "resolvedTitle": "Rush",
+    "mainImageTitle": "File:Rush_loadscreen_BOII.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Black Ops II]]''<br>''[[Call of Duty: Black Ops Cold War]]''<br>''[[Call of Duty: Mobile]]''",
+    "label": "Call of Duty: Black Ops II, Call of Duty: Black Ops Cold War, Call of Duty: Mobile",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Black Ops II",
+        "label": "Call of Duty: Black Ops II",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops_II"
+      },
+      {
+        "wikiTitle": "Call of Duty: Black Ops Cold War",
+        "label": "Call of Duty: Black Ops Cold War",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops_Cold_War"
+      },
+      {
+        "wikiTitle": "Call of Duty: Mobile",
+        "label": "Call of Duty: Mobile",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Mobile"
+      }
+    ]
+  },
+  "date": {
+    "raw": "2025 (''BOII'')<br> December 8, 1984 (''BOCW'') <small>(Multiplayer)</small>",
+    "label": "2025 (BOII), December 8, 1984 (BOCW) (Multiplayer)"
+  }
 }

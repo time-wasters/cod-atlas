@@ -1,10 +1,10 @@
 {
   "id": "codwiki-traffic",
-  "fandomPageId": null,
+  "fandomPageId": 812300,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Traffic",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Traffic",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 3019337,
+  "importedAt": "2026-08-15T00:28:33.675Z",
   "levelLocation": {
     "raw": null,
     "label": null,
@@ -40,5 +40,30 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-08-11T17:18:20Z",
+    "revisionSha1": "d87001797542e5d6a66fac315a0e6e571d96df37",
+    "resolvedTitle": "Traffic",
+    "mainImageTitle": null,
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "date": {
+    "raw": null,
+    "label": null
+  }
 }

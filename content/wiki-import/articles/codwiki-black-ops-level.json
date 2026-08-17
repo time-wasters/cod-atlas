@@ -1,13 +1,13 @@
 {
   "id": "codwiki-black-ops-level",
-  "fandomPageId": null,
+  "fandomPageId": 633083,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Black_Ops_(level)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Black_Ops_(level)",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 3001663,
+  "importedAt": "2026-08-15T09:20:06.297Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
+    "raw": "Abu Simbel Airport, Semien Mountains, North Gondar, Amhara, Ethiopia",
+    "label": "Abu Simbel Airport, Semien Mountains, North Gondar, Amhara, Ethiopia",
     "url": null
   },
   "mapStyle": "singleplayer",
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/0/05/Disavowed_achievement_image_BO3.jpg/revision/latest?cb=20161013231343",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/0/05/Disavowed_achievement_image_BO3.jpg/revision/latest/scale-to-width-down/800?cb=20161013231343",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Disavowed_achievement_image_BO3.jpg",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Louis Bancroft",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Louis_Bancroft",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,68 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-05-11T16:17:16Z",
+    "revisionSha1": "44a7dccce2f2319cffeb00819b8b7d3992956b96",
+    "resolvedTitle": "Black Ops (level)",
+    "mainImageTitle": "File:Disavowed_achievement_image_BO3.jpg",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Specialist HQ]] Events <small>(game-wise)</small> <br> [[Sand Castle]] <small>([[Nightmares]])</small>",
+    "label": "Specialist HQ Events (game-wise) , Sand Castle (Nightmares)",
+    "links": [
+      {
+        "wikiTitle": "Specialist HQ",
+        "label": "Specialist HQ",
+        "url": "https://callofduty.fandom.com/wiki/Specialist_HQ"
+      },
+      {
+        "wikiTitle": "Sand Castle",
+        "label": "Sand Castle",
+        "url": "https://callofduty.fandom.com/wiki/Sand_Castle"
+      },
+      {
+        "wikiTitle": "Nightmares",
+        "label": "Nightmares",
+        "url": "https://callofduty.fandom.com/wiki/Nightmares"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[New World]] <br> [[Vengeance (level)|Vengeance]] <small>([[Nightmares]])</small>",
+    "label": "New World , Vengeance (Nightmares)",
+    "links": [
+      {
+        "wikiTitle": "New World",
+        "label": "New World",
+        "url": "https://callofduty.fandom.com/wiki/New_World"
+      },
+      {
+        "wikiTitle": "Vengeance (level)",
+        "label": "Vengeance",
+        "url": "https://callofduty.fandom.com/wiki/Vengeance_(level)"
+      },
+      {
+        "wikiTitle": "Nightmares",
+        "label": "Nightmares",
+        "url": "https://callofduty.fandom.com/wiki/Nightmares"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Black Ops III]]''",
+    "label": "Call of Duty: Black Ops III",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Black Ops III",
+        "label": "Call of Duty: Black Ops III",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops_III"
+      }
+    ]
+  },
+  "date": {
+    "raw": "21:00Hrs October 27th, 2065",
+    "label": "21:00Hrs October 27th, 2065"
+  }
 }

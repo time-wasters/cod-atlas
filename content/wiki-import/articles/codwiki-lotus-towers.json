@@ -1,13 +1,13 @@
 {
   "id": "codwiki-lotus-towers",
-  "fandomPageId": null,
+  "fandomPageId": 633110,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Lotus_Towers",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Lotus_Towers",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 3014771,
+  "importedAt": "2026-08-15T08:56:25.677Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
+    "raw": "Lotus Towers, Cairo, Cairo Governorate, Egypt",
+    "label": "Lotus Towers, Cairo, Cairo Governorate, Egypt",
     "url": null
   },
   "mapStyle": "singleplayer",
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/c/c0/200_Stories_of_Sheer_Adventure%21_achievement_image_BO3.jpg/revision/latest?cb=20161013213634",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/c/c0/200_Stories_of_Sheer_Adventure%21_achievement_image_BO3.jpg/revision/latest/scale-to-width-down/800?cb=20161013213634",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:200_Stories_of_Sheer_Adventure!_achievement_image_BO3.jpg",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Louis Bancroft",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Louis_Bancroft",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,63 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-07-15T20:42:11Z",
+    "revisionSha1": "5f18056f96012fea1e5aa074a890598812ff5a35",
+    "resolvedTitle": "Lotus Towers",
+    "mainImageTitle": "File:200_Stories_of_Sheer_Adventure!_achievement_image_BO3.jpg",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Sand Castle]]<br>[[Demon Within]] <small>([[Nightmares]])</small>",
+    "label": "Sand Castle, Demon Within (Nightmares)",
+    "links": [
+      {
+        "wikiTitle": "Sand Castle",
+        "label": "Sand Castle",
+        "url": "https://callofduty.fandom.com/wiki/Sand_Castle"
+      },
+      {
+        "wikiTitle": "Demon Within",
+        "label": "Demon Within",
+        "url": "https://callofduty.fandom.com/wiki/Demon_Within"
+      },
+      {
+        "wikiTitle": "Nightmares",
+        "label": "Nightmares",
+        "url": "https://callofduty.fandom.com/wiki/Nightmares"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Life]]<br>[[Black Ops (level)|Black Ops]] (chronologically, reality)",
+    "label": "Life, Black Ops (chronologically, reality)",
+    "links": [
+      {
+        "wikiTitle": "Life",
+        "label": "Life",
+        "url": "https://callofduty.fandom.com/wiki/Life"
+      },
+      {
+        "wikiTitle": "Black Ops (level)",
+        "label": "Black Ops",
+        "url": "https://callofduty.fandom.com/wiki/Black_Ops_(level)"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Black Ops III]]''",
+    "label": "Call of Duty: Black Ops III",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Black Ops III",
+        "label": "Call of Duty: Black Ops III",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops_III"
+      }
+    ]
+  },
+  "date": {
+    "raw": "Day 7, 2070<br>June 9th, 2064 <small>(reality)</small><br>Year: 2075 <small>([[Nightmares]])</small>",
+    "label": "Day 7, 2070, June 9th, 2064 (reality) , Year: 2075 (Nightmares)"
+  }
 }

@@ -1,13 +1,13 @@
 {
   "id": "codwiki-operation-black-flag",
-  "fandomPageId": null,
+  "fandomPageId": 657528,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Operation_Black_Flag",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Operation_Black_Flag",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2948110,
+  "importedAt": "2026-08-15T10:03:15.086Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
+    "raw": "Geneva, Canton of Geneva, Switzerland, Earth",
+    "label": "Geneva, Canton of Geneva, Switzerland, Earth",
     "url": null
   },
   "mapStyle": "singleplayer",
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/e/e1/Operation_Black_Flag_achievement_image_IW.jpg/revision/latest?cb=20161031232550",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/e/e1/Operation_Black_Flag_achievement_image_IW.jpg/revision/latest/scale-to-width-down/800?cb=20161031232550",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Operation_Black_Flag_achievement_image_IW.jpg",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Louis Bancroft",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Louis_Bancroft",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,53 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2025-12-20T05:48:51Z",
+    "revisionSha1": "298ffd32392aa26f3f586cb87c26d5e3a7b1ea01",
+    "resolvedTitle": "Operation Black Flag",
+    "mainImageTitle": "File:Operation_Black_Flag_achievement_image_IW.jpg",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Operation Dark Quarry]]<br>[[Operation Trace Kill]] (optional)",
+    "label": "Operation Dark Quarry, Operation Trace Kill (optional)",
+    "links": [
+      {
+        "wikiTitle": "Operation Dark Quarry",
+        "label": "Operation Dark Quarry",
+        "url": "https://callofduty.fandom.com/wiki/Operation_Dark_Quarry"
+      },
+      {
+        "wikiTitle": "Operation Trace Kill",
+        "label": "Operation Trace Kill",
+        "url": "https://callofduty.fandom.com/wiki/Operation_Trace_Kill"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Operation Blood Storm]]",
+    "label": "Operation Blood Storm",
+    "links": [
+      {
+        "wikiTitle": "Operation Blood Storm",
+        "label": "Operation Blood Storm",
+        "url": "https://callofduty.fandom.com/wiki/Operation_Blood_Storm"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Infinite Warfare]]''",
+    "label": "Call of Duty: Infinite Warfare",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Infinite Warfare",
+        "label": "Call of Duty: Infinite Warfare",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Infinite_Warfare"
+      }
+    ]
+  },
+  "date": {
+    "raw": "May 7th",
+    "label": "May 7th"
+  }
 }

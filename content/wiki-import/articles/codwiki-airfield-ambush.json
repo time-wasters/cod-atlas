@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Airfield_Ambush",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Airfield_Ambush",
   "latestRevisionId": 2763595,
-  "importedAt": "2026-08-09T21:34:40.115Z",
+  "importedAt": "2026-08-15T09:23:50.469Z",
   "levelLocation": {
     "raw": "German Airfield 32, Tatsinskaya, [[Soviet Union]]",
     "label": "Soviet Union",
@@ -53,5 +53,42 @@
     "resolvedTitle": "Airfield Ambush",
     "mainImageTitle": "File:CoDFH_Airfield_Ambush_loading_screen.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Operation Little Saturn (level)|Operation Little Saturn]]",
+    "label": "Operation Little Saturn",
+    "links": [
+      {
+        "wikiTitle": "Operation Little Saturn (level)",
+        "label": "Operation Little Saturn",
+        "url": "https://callofduty.fandom.com/wiki/Operation_Little_Saturn_(level)"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Mission: Matmata]]",
+    "label": "Mission: Matmata",
+    "links": [
+      {
+        "wikiTitle": "Mission: Matmata",
+        "label": "Mission: Matmata",
+        "url": "https://callofduty.fandom.com/wiki/Mission%3A_Matmata"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Finest Hour]]''",
+    "label": "Call of Duty: Finest Hour",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Finest Hour",
+        "label": "Call of Duty: Finest Hour",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Finest_Hour"
+      }
+    ]
+  },
+  "date": {
+    "raw": "December 24, 1942",
+    "label": "December 24, 1942"
   }
 }

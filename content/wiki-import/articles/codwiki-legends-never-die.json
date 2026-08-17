@@ -1,14 +1,14 @@
 {
   "id": "codwiki-legends-never-die",
-  "fandomPageId": null,
+  "fandomPageId": 571985,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Legends_Never_Die",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Legends_Never_Die",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2999574,
+  "importedAt": "2026-08-15T09:49:24.656Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "[[Caracas]], Venezuela (Federation Capital)",
+    "label": "Caracas",
+    "url": "https://callofduty.fandom.com/wiki/Caracas"
   },
   "mapStyle": "singleplayer",
   "mapStyleDetail": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/2/29/Legends_Never_Die_CoDG.jpg/revision/latest?cb=20140925125913",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/2/29/Legends_Never_Die_CoDG.jpg/revision/latest/scale-to-width-down/800?cb=20140925125913",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Legends_Never_Die_CoDG.jpg",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Louis Bancroft",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Louis_Bancroft",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "unknown",
+        "notice": null,
+        "noticeUrl": null
       }
     },
     "map": {
@@ -40,5 +47,53 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-05-02T03:23:33Z",
+    "revisionSha1": "1f06b6b3132db297f63471086224b8b7ec5c751c",
+    "resolvedTitle": "Legends Never Die",
+    "mainImageTitle": "File:Legends_Never_Die_CoDG.jpg",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Homecoming (Ghosts)|Homecoming]] (in-game)",
+    "label": "Homecoming (in-game)",
+    "links": [
+      {
+        "wikiTitle": "Homecoming (Ghosts)",
+        "label": "Homecoming",
+        "url": "https://callofduty.fandom.com/wiki/Homecoming_(Ghosts)"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Federation Day]] (in-game)<br>[[Ghost Stories]] (chronologically)",
+    "label": "Federation Day (in-game), Ghost Stories (chronologically)",
+    "links": [
+      {
+        "wikiTitle": "Federation Day",
+        "label": "Federation Day",
+        "url": "https://callofduty.fandom.com/wiki/Federation_Day"
+      },
+      {
+        "wikiTitle": "Ghost Stories",
+        "label": "Ghost Stories",
+        "url": "https://callofduty.fandom.com/wiki/Ghost_Stories"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Ghosts]]''",
+    "label": "Call of Duty: Ghosts",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Ghosts",
+        "label": "Call of Duty: Ghosts",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Ghosts"
+      }
+    ]
+  },
+  "date": {
+    "raw": "July 8th, 2016 - 12:46:13<ref>https://archive.org/details/119913398f-8ff-1ee-09640d-5d-0bca-716d-07f-46764/Call%20of%20Duty%20Ghosts%20-%20BRADYGAMES%20Game%20Guide.pdf. page 38</ref>",
+    "label": "July 8th, 2016 - 12:46:13"
+  }
 }

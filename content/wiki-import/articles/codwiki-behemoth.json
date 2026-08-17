@@ -1,12 +1,12 @@
 {
   "id": "codwiki-behemoth",
-  "fandomPageId": null,
+  "fandomPageId": 588069,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Behemoth",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Behemoth",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 3015781,
+  "importedAt": "2026-08-15T09:49:03.155Z",
   "levelLocation": {
-    "raw": null,
+    "raw": "{{w|Colombia}}<ref>https://store.steampowered.com/app/259251/Call_of_Duty_Ghosts__Devastation/</ref>",
     "label": null,
     "url": null
   },
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/e/ee/Behemoth_Loading_Screen_CoDG.png/revision/latest?cb=20260221023329",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/e/ee/Behemoth_Loading_Screen_CoDG.png/revision/latest/scale-to-width-down/800?cb=20260221023329",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Behemoth_Loading_Screen_CoDG.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Mxtive",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Mxtive",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,36 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-07-22T15:15:24Z",
+    "revisionSha1": "05f80202fd96bf70cbdb69115f3078dd8648ce02",
+    "resolvedTitle": "Behemoth",
+    "mainImageTitle": "File:Behemoth_Loading_Screen_CoDG.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Ghosts]]''",
+    "label": "Call of Duty: Ghosts",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Ghosts",
+        "label": "Call of Duty: Ghosts",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Ghosts"
+      }
+    ]
+  },
+  "date": {
+    "raw": null,
+    "label": null
+  }
 }

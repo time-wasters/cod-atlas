@@ -1,14 +1,14 @@
 {
   "id": "codwiki-fracture-jaw",
-  "fandomPageId": null,
+  "fandomPageId": 693048,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Fracture_Jaw",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Fracture_Jaw",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 3003172,
+  "importedAt": "2026-08-15T09:25:18.983Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "Camp Haskins,<br>\nA Shau Village,<br>\nFirebase Ripcord, [[Vietnam]]",
+    "label": "Vietnam",
+    "url": "https://callofduty.fandom.com/wiki/Vietnam"
   },
   "mapStyle": "singleplayer",
   "mapStyleDetail": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/e/ec/FractureJaw_MenuScreen_BOCW.png/revision/latest?cb=20201118155948",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/e/ec/FractureJaw_MenuScreen_BOCW.png/revision/latest/scale-to-width-down/800?cb=20201118155948",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:FractureJaw_MenuScreen_BOCW.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Kalinine",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Kalinine",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,58 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-05-21T10:00:38Z",
+    "revisionSha1": "e02621f6c3df4745d8aa0851d4c8009c0d8d0e0b",
+    "resolvedTitle": "Fracture Jaw",
+    "mainImageTitle": "File:FractureJaw_MenuScreen_BOCW.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[CIA Safehouse E9]] (in-game)\n[[S.O.G.]] (chronologically)",
+    "label": "CIA Safehouse E9 (in-game) S.O.G. (chronologically)",
+    "links": [
+      {
+        "wikiTitle": "CIA Safehouse E9",
+        "label": "CIA Safehouse E9",
+        "url": "https://callofduty.fandom.com/wiki/CIA_Safehouse_E9"
+      },
+      {
+        "wikiTitle": "S.O.G.",
+        "label": "S.O.G.",
+        "url": "https://callofduty.fandom.com/wiki/S.O.G."
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[East Berlin Briefing]] (in-game)\n[[The Defector]] (chronologically)",
+    "label": "East Berlin Briefing (in-game) The Defector (chronologically)",
+    "links": [
+      {
+        "wikiTitle": "East Berlin Briefing",
+        "label": "East Berlin Briefing",
+        "url": "https://callofduty.fandom.com/wiki/East_Berlin_Briefing"
+      },
+      {
+        "wikiTitle": "The Defector",
+        "label": "The Defector",
+        "url": "https://callofduty.fandom.com/wiki/The_Defector"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Black Ops Cold War]]''",
+    "label": "Call of Duty: Black Ops Cold War",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Black Ops Cold War",
+        "label": "Call of Duty: Black Ops Cold War",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops_Cold_War"
+      }
+    ]
+  },
+  "date": {
+    "raw": "January 26, 1968",
+    "label": "January 26, 1968"
+  }
 }

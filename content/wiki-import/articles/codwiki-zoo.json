@@ -1,14 +1,14 @@
 {
   "id": "codwiki-zoo",
-  "fandomPageId": null,
+  "fandomPageId": 264944,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Zoo",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Zoo",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2996435,
+  "importedAt": "2026-08-15T09:25:51.134Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "{{w|Ukrainian Soviet Socialist Republic|Ukrainian SSR}}, [[Soviet Union]] (''BO'')<br>Ural Flats, [[Soviet Union]] (''BOCW'')",
+    "label": "Soviet Union",
+    "url": "https://callofduty.fandom.com/wiki/Soviet_Union"
   },
   "mapStyle": "multiplayer",
   "mapStyleDetail": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/7/78/Recreated_Load_Screen_Zoo_BO.jpg/revision/latest?cb=20110606065905",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/7/78/Recreated_Load_Screen_Zoo_BO.jpg/revision/latest/scale-to-width-down/800?cb=20110606065905",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Recreated_Load_Screen_Zoo_BO.jpg",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Synhart",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Synhart",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,46 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-04-23T04:25:00Z",
+    "revisionSha1": "4a7addbad2bd49b11476243187db65fdc016dea3",
+    "resolvedTitle": "Zoo",
+    "mainImageTitle": "File:Recreated_Load_Screen_Zoo_BO.jpg",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Black Ops]]''<br>''[[Call of Duty: Black Ops Cold War]]''<br>''[[Call of Duty: Mobile]]''",
+    "label": "Call of Duty: Black Ops, Call of Duty: Black Ops Cold War, Call of Duty: Mobile",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Black Ops",
+        "label": "Call of Duty: Black Ops",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops"
+      },
+      {
+        "wikiTitle": "Call of Duty: Black Ops Cold War",
+        "label": "Call of Duty: Black Ops Cold War",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops_Cold_War"
+      },
+      {
+        "wikiTitle": "Call of Duty: Mobile",
+        "label": "Call of Duty: Mobile",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Mobile"
+      }
+    ]
+  },
+  "date": {
+    "raw": "1968 (''BO'')<br>September 18, 1984 (''BOCW'')",
+    "label": "1968 (BO), September 18, 1984 (BOCW)"
+  }
 }

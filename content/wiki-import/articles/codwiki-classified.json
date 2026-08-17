@@ -1,14 +1,14 @@
 {
   "id": "codwiki-classified",
-  "fandomPageId": null,
+  "fandomPageId": 676001,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Classified",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Classified",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 3017198,
+  "importedAt": "2026-08-15T08:58:15.204Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "[[The Pentagon]], Arlington, Virginia, [[United States of America]]<br>Area 51, Groom Lake, Nevada, United States of America",
+    "label": "The Pentagon",
+    "url": "https://callofduty.fandom.com/wiki/The_Pentagon"
   },
   "mapStyle": "multiplayer",
   "mapStyleDetail": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/f/f0/Classified_Loading_Screen.jpg/revision/latest?cb=20181218012248",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/f/f0/Classified_Loading_Screen.jpg/revision/latest/scale-to-width-down/800?cb=20181218012248",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Classified_Loading_Screen.jpg",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Brian82027",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Brian82027",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,68 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-07-30T01:53:19Z",
+    "revisionSha1": "3e6ad8daee20ae30a1597955e9997f73a6eede93",
+    "resolvedTitle": "Classified",
+    "mainImageTitle": "File:Classified_Loading_Screen.jpg",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Shangri-La]] <small>(chronologically by events)</small><br>[[Moon]] <small>(ending cutscene only){{H:title|The ending cutscene of Classified takes place after the events of Moon.|<sup>#</sup>}}</small><br>[[Blood of the Dead]] <small>(in-game)</small>",
+    "label": "Shangri-La (chronologically by events) , Moon (ending cutscene only) , Blood of the Dead (in-game)",
+    "links": [
+      {
+        "wikiTitle": "Shangri-La",
+        "label": "Shangri-La",
+        "url": "https://callofduty.fandom.com/wiki/Shangri-La"
+      },
+      {
+        "wikiTitle": "Moon",
+        "label": "Moon",
+        "url": "https://callofduty.fandom.com/wiki/Moon"
+      },
+      {
+        "wikiTitle": "Blood of the Dead",
+        "label": "Blood of the Dead",
+        "url": "https://callofduty.fandom.com/wiki/Blood_of_the_Dead"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[\"Five\"]] <small>(chronologically by date)</small><br>[[Moon]] <small>(chronologically by events)</small><br>[[Alpha Omega]] <small>(in-game)</small><br>",
+    "label": "\"Five\" (chronologically by date) , Moon (chronologically by events) , Alpha Omega (in-game) ,",
+    "links": [
+      {
+        "wikiTitle": "\"Five\"",
+        "label": "\"Five\"",
+        "url": "https://callofduty.fandom.com/wiki/%22Five%22"
+      },
+      {
+        "wikiTitle": "Moon",
+        "label": "Moon",
+        "url": "https://callofduty.fandom.com/wiki/Moon"
+      },
+      {
+        "wikiTitle": "Alpha Omega",
+        "label": "Alpha Omega",
+        "url": "https://callofduty.fandom.com/wiki/Alpha_Omega"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Black Ops 4]]''",
+    "label": "Call of Duty: Black Ops 4",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Black Ops 4",
+        "label": "Call of Duty: Black Ops 4",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops_4"
+      }
+    ]
+  },
+  "date": {
+    "raw": "Sometime between November 2nd, 1963 and November 6th, 1963 <small>(Original Timeline)</small>",
+    "label": "Sometime between November 2nd, 1963 and November 6th, 1963 (Original Timeline)"
+  }
 }

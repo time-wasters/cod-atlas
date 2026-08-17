@@ -1,14 +1,14 @@
 {
   "id": "codwiki-das-haus",
-  "fandomPageId": null,
+  "fandomPageId": 709342,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Das_Haus",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Das_Haus",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2965479,
+  "importedAt": "2026-08-15T13:26:07.462Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "{{w|Black Forest}}, [[Nazi Germany]] (''Vanguard'')<br>[[New York City]], {{w|New York (state)|New York}}, [[United States of America]] (''Modern Warfare III'')",
+    "label": "Nazi Germany",
+    "url": "https://callofduty.fandom.com/wiki/Nazi_Germany"
   },
   "mapStyle": "multiplayer",
   "mapStyleDetail": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/a/ac/DasHaus_LoadingScreen1_CODV.png/revision/latest?cb=20211109130754",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/a/ac/DasHaus_LoadingScreen1_CODV.png/revision/latest/scale-to-width-down/800?cb=20211109130754",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:DasHaus_LoadingScreen1_CODV.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Kalinine",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Kalinine",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,41 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-02-10T11:06:04Z",
+    "revisionSha1": "799bbd1e4705cb6da5a0a8024c4cf1e3c007c7fb",
+    "resolvedTitle": "Das Haus",
+    "mainImageTitle": "File:DasHaus_LoadingScreen1_CODV.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Vanguard]]''<br>''[[Call of Duty: Modern Warfare III]]''",
+    "label": "Call of Duty: Vanguard, Call of Duty: Modern Warfare III",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Vanguard",
+        "label": "Call of Duty: Vanguard",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Vanguard"
+      },
+      {
+        "wikiTitle": "Call of Duty: Modern Warfare III",
+        "label": "Call of Duty: Modern Warfare III",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Modern_Warfare_III"
+      }
+    ]
+  },
+  "date": {
+    "raw": "June 1943 (''Vanguard'')<br>Day 4 11:04 (''Modern Warfare III'')",
+    "label": "June 1943 (Vanguard), Day 4 11:04 (Modern Warfare III)"
+  }
 }

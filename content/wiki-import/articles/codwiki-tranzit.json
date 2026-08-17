@@ -1,14 +1,14 @@
 {
   "id": "codwiki-tranzit",
-  "fandomPageId": null,
+  "fandomPageId": 499151,
   "sourceUrl": "https://callofduty.fandom.com/wiki/TranZit",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/TranZit",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 3018556,
+  "importedAt": "2026-08-15T08:53:46.340Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "Northeast of {{W|Hanford Site}}, Washington, [[United States of America]]",
+    "label": "United States of America",
+    "url": "https://callofduty.fandom.com/wiki/United_States_of_America"
   },
   "mapStyle": "multiplayer",
   "mapStyleDetail": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/f/f9/TranZit_lobby_BOII.png/revision/latest?cb=20161102222339",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/f/f9/TranZit_lobby_BOII.png/revision/latest?cb=20161102222339",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:TranZit_lobby_BOII.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Yeebo",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Yeebo",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "unknown",
+        "notice": null,
+        "noticeUrl": null
       }
     },
     "map": {
@@ -40,5 +47,58 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-08-06T02:20:22Z",
+    "revisionSha1": "345498c46f3ba7a05e86ebcc2059fcfa9a6adec4",
+    "resolvedTitle": "TranZit",
+    "mainImageTitle": "File:TranZit_lobby_BOII.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Moon]] (in-game/chronologically)<br>[[Nuketown Zombies]] (chronologically)",
+    "label": "Moon (in-game/chronologically), Nuketown Zombies (chronologically)",
+    "links": [
+      {
+        "wikiTitle": "Moon",
+        "label": "Moon",
+        "url": "https://callofduty.fandom.com/wiki/Moon"
+      },
+      {
+        "wikiTitle": "Nuketown Zombies",
+        "label": "Nuketown Zombies",
+        "url": "https://callofduty.fandom.com/wiki/Nuketown_Zombies"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Nuketown Zombies]] (in-game)<br>[[Die Rise]] (chronologically)",
+    "label": "Nuketown Zombies (in-game), Die Rise (chronologically)",
+    "links": [
+      {
+        "wikiTitle": "Nuketown Zombies",
+        "label": "Nuketown Zombies",
+        "url": "https://callofduty.fandom.com/wiki/Nuketown_Zombies"
+      },
+      {
+        "wikiTitle": "Die Rise",
+        "label": "Die Rise",
+        "url": "https://callofduty.fandom.com/wiki/Die_Rise"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Black Ops II]]''",
+    "label": "Call of Duty: Black Ops II",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Black Ops II",
+        "label": "Call of Duty: Black Ops II",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops_II"
+      }
+    ]
+  },
+  "date": {
+    "raw": "October 21st, 2035<br><small>(Original Timeline)</small>",
+    "label": "October 21st, 2035, (Original Timeline)"
+  }
 }

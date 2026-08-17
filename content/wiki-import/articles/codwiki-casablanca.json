@@ -1,13 +1,13 @@
 {
   "id": "codwiki-casablanca",
-  "fandomPageId": null,
+  "fandomPageId": 712929,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Casablanca",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Casablanca",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2969117,
+  "importedAt": "2026-08-15T13:26:07.484Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
+    "raw": "{{w|Casablanca}}, {{w|French protectorate in Morocco}}",
+    "label": ",",
     "url": null
   },
   "mapStyle": "multiplayer",
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/4/44/Casablanca_LoadingScreen1_CODV.jpg/revision/latest?cb=20220212115457",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/4/44/Casablanca_LoadingScreen1_CODV.jpg/revision/latest/scale-to-width-down/800?cb=20220212115457",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Casablanca_LoadingScreen1_CODV.jpg",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Kalinine",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Kalinine",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,36 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-02-21T13:19:33Z",
+    "revisionSha1": "860eb831d999d88b07a46a24cf4143ca6e38ba8d",
+    "resolvedTitle": "Casablanca",
+    "mainImageTitle": "File:Casablanca_LoadingScreen1_CODV.jpg",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Vanguard]]''",
+    "label": "Call of Duty: Vanguard",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Vanguard",
+        "label": "Call of Duty: Vanguard",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Vanguard"
+      }
+    ]
+  },
+  "date": {
+    "raw": "November 1942",
+    "label": "November 1942"
+  }
 }

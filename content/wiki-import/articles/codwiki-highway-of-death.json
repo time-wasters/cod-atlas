@@ -1,14 +1,14 @@
 {
   "id": "codwiki-highway-of-death",
-  "fandomPageId": null,
+  "fandomPageId": 683098,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Highway_of_Death",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Highway_of_Death",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 3018122,
+  "importedAt": "2026-08-15T13:20:24.280Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "Darus, [[Urzikstan]]",
+    "label": "Urzikstan",
+    "url": "https://callofduty.fandom.com/wiki/Urzikstan"
   },
   "mapStyle": "singleplayer",
   "mapStyleDetail": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/2/27/Pit_Stop_achievement_image_CoDMW.png/revision/latest?cb=20191203044443",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/2/27/Pit_Stop_achievement_image_CoDMW.png/revision/latest/scale-to-width-down/800?cb=20191203044443",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Pit_Stop_achievement_image_CoDMW.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Louis Bancroft",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Louis_Bancroft",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "unknown",
+        "notice": null,
+        "noticeUrl": null
       }
     },
     "map": {
@@ -40,5 +47,47 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-08-03T18:01:59Z",
+    "revisionSha1": "ef2b91ac23d1024ac0ce1259d931b6e92006cd5a",
+    "resolvedTitle": "Highway of Death",
+    "mainImageTitle": "File:Pit_Stop_achievement_image_CoDMW.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[The Embassy]]",
+    "label": "The Embassy",
+    "links": [
+      {
+        "wikiTitle": "The Embassy",
+        "label": "The Embassy",
+        "url": "https://callofduty.fandom.com/wiki/The_Embassy"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Hometown]] (In-game)<br>[[The Wolf's Den (level)|The Wolf's Den]] (Chronologically)",
+    "label": "Hometown (In-game), The Wolf's Den (Chronologically)",
+    "links": [
+      {
+        "wikiTitle": "Hometown",
+        "label": "Hometown",
+        "url": "https://callofduty.fandom.com/wiki/Hometown"
+      },
+      {
+        "wikiTitle": "The Wolf's Den (level)",
+        "label": "The Wolf's Den",
+        "url": "https://callofduty.fandom.com/wiki/The_Wolf's_Den_(level)"
+      }
+    ]
+  },
+  "games": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "date": {
+    "raw": "October 29th, 2019 19:00",
+    "label": "October 29th, 2019 19:00"
+  }
 }

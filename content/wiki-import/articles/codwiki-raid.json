@@ -1,14 +1,14 @@
 {
   "id": "codwiki-raid",
-  "fandomPageId": null,
+  "fandomPageId": 503791,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Raid",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Raid",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2996471,
+  "importedAt": "2026-08-15T09:25:40.430Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "{{w|Hollywood Hills}}, [[Los Angeles]], {{w|California}}, [[United States of America]] (''BOII'' & ''BOCW'')<br>[[Tokyo]], [[Japan]] (''BO7'')",
+    "label": "Los Angeles",
+    "url": "https://callofduty.fandom.com/wiki/Los_Angeles"
   },
   "mapStyle": "multiplayer",
   "mapStyleDetail": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/2/29/Raid_Load_Screen_BOII.png/revision/latest?cb=20121209080157",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/2/29/Raid_Load_Screen_BOII.png/revision/latest/scale-to-width-down/800?cb=20121209080157",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Raid_Load_Screen_BOII.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Synhart",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Synhart",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,56 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-04-23T05:12:00Z",
+    "revisionSha1": "dd114675ae2bfb900f83ef2d8e9d8abe71abb73a",
+    "resolvedTitle": "Raid",
+    "mainImageTitle": "File:Raid_Load_Screen_BOII.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Black Ops II]]''<br>''[[Call of Duty Online]]''<br>''[[Call of Duty: Mobile]]''<br>''[[Call of Duty: Black Ops Cold War]]''<br>''[[Call of Duty: Black Ops 7]]''",
+    "label": "Call of Duty: Black Ops II, Call of Duty Online, Call of Duty: Mobile, Call of Duty: Black Ops Cold War, Call of Duty: Black Ops 7",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Black Ops II",
+        "label": "Call of Duty: Black Ops II",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops_II"
+      },
+      {
+        "wikiTitle": "Call of Duty Online",
+        "label": "Call of Duty Online",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_Online"
+      },
+      {
+        "wikiTitle": "Call of Duty: Mobile",
+        "label": "Call of Duty: Mobile",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Mobile"
+      },
+      {
+        "wikiTitle": "Call of Duty: Black Ops Cold War",
+        "label": "Call of Duty: Black Ops Cold War",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops_Cold_War"
+      },
+      {
+        "wikiTitle": "Call of Duty: Black Ops 7",
+        "label": "Call of Duty: Black Ops 7",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops_7"
+      }
+    ]
+  },
+  "date": {
+    "raw": "2025 (''BOII'')<br>January 1, 1984 (''BOCW'') <small>(Multiplayer)</small><br>2035 (''BO7'')",
+    "label": "2025 (BOII), January 1, 1984 (BOCW) (Multiplayer) , 2035 (BO7)"
+  }
 }

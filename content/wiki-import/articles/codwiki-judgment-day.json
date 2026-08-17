@@ -1,13 +1,13 @@
 {
   "id": "codwiki-judgment-day",
-  "fandomPageId": null,
+  "fandomPageId": 508856,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Judgment_Day",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Judgment_Day",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 3014929,
+  "importedAt": "2026-08-15T08:53:25.035Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
+    "raw": "Saint-Marc, Artibonite, Haiti",
+    "label": "Saint-Marc, Artibonite, Haiti",
     "url": null
   },
   "mapStyle": "singleplayer",
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/b/b5/Judgment_Day_Menu_BOII.png/revision/latest?cb=20121209093225",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/b/b5/Judgment_Day_Menu_BOII.png/revision/latest?cb=20121209093225",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Judgment_Day_Menu_BOII.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Synhart",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Synhart",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,48 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-07-16T20:12:58Z",
+    "revisionSha1": "990aebfb48949703f44f328affb0f2c7da484ac0",
+    "resolvedTitle": "Judgment Day",
+    "mainImageTitle": "File:Judgment_Day_Menu_BOII.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Cordis Die (mission)|Cordis Die]]",
+    "label": "Cordis Die",
+    "links": [
+      {
+        "wikiTitle": "Cordis Die (mission)",
+        "label": "Cordis Die",
+        "url": "https://callofduty.fandom.com/wiki/Cordis_Die_(mission)"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Exposure (mission)|Exposure]] <small>(chronologically)</small>",
+    "label": "Exposure (chronologically)",
+    "links": [
+      {
+        "wikiTitle": "Exposure (mission)",
+        "label": "Exposure",
+        "url": "https://callofduty.fandom.com/wiki/Exposure_(mission)"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Black Ops II]]''",
+    "label": "Call of Duty: Black Ops II",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Black Ops II",
+        "label": "Call of Duty: Black Ops II",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops_II"
+      }
+    ]
+  },
+  "date": {
+    "raw": "June 19th, 2025",
+    "label": "June 19th, 2025"
+  }
 }

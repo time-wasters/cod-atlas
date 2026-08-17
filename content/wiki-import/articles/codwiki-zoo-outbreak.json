@@ -1,14 +1,14 @@
 {
   "id": "codwiki-zoo-outbreak",
-  "fandomPageId": null,
+  "fandomPageId": 704361,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Zoo_(Outbreak)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Zoo_(Outbreak)",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2862144,
+  "importedAt": "2026-08-15T09:25:51.184Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "Ural Mountains, [[Soviet Union]]",
+    "label": "Soviet Union",
+    "url": "https://callofduty.fandom.com/wiki/Soviet_Union"
   },
   "mapStyle": "multiplayer",
   "mapStyleDetail": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/a/a1/Zoo_LoadingMovie_2_Outbreak_BOCW.jpg/revision/latest?cb=20210712172121",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/a/a1/Zoo_LoadingMovie_2_Outbreak_BOCW.jpg/revision/latest/scale-to-width-down/800?cb=20210712172121",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Zoo_LoadingMovie_2_Outbreak_BOCW.jpg",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Kalinine",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Kalinine",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,36 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2025-03-18T15:39:09Z",
+    "revisionSha1": "47cddc7dad365e1bc7c06df68424e5bfaa8fdcd1",
+    "resolvedTitle": "Zoo (Outbreak)",
+    "mainImageTitle": "File:Zoo_LoadingMovie_2_Outbreak_BOCW.jpg",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Black Ops Cold War]]''",
+    "label": "Call of Duty: Black Ops Cold War",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Black Ops Cold War",
+        "label": "Call of Duty: Black Ops Cold War",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops_Cold_War"
+      }
+    ]
+  },
+  "date": {
+    "raw": "Sometime between June 20 and December 14, 1984",
+    "label": "Sometime between June 20 and December 14, 1984"
+  }
 }

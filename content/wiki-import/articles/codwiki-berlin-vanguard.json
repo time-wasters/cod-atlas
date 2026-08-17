@@ -1,14 +1,14 @@
 {
   "id": "codwiki-berlin-vanguard",
-  "fandomPageId": null,
+  "fandomPageId": 709340,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Berlin_(Vanguard)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Berlin_(Vanguard)",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2920896,
+  "importedAt": "2026-08-15T13:26:07.447Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "[[Berlin]], [[Nazi Germany]]",
+    "label": "Berlin",
+    "url": "https://callofduty.fandom.com/wiki/Berlin"
   },
   "mapStyle": "multiplayer",
   "mapStyleDetail": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/9/92/Berlin_LoadingScreen1_CODV.png/revision/latest?cb=20211109130701",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/9/92/Berlin_LoadingScreen1_CODV.png/revision/latest/scale-to-width-down/800?cb=20211109130701",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Berlin_LoadingScreen1_CODV.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Kalinine",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Kalinine",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,36 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2025-10-11T10:07:20Z",
+    "revisionSha1": "8896da9b8e71011fae2e6e9904c5c54b3d514fba",
+    "resolvedTitle": "Berlin (Vanguard)",
+    "mainImageTitle": "File:Berlin_LoadingScreen1_CODV.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Vanguard]]''",
+    "label": "Call of Duty: Vanguard",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Vanguard",
+        "label": "Call of Duty: Vanguard",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Vanguard"
+      }
+    ]
+  },
+  "date": {
+    "raw": "April 1945",
+    "label": "April 1945"
+  }
 }

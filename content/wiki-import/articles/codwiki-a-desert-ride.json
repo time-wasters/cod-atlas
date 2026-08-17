@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/A_Desert_Ride",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/A_Desert_Ride",
   "latestRevisionId": 2763594,
-  "importedAt": "2026-08-09T21:34:40.131Z",
+  "importedAt": "2026-08-15T09:23:39.796Z",
   "levelLocation": {
     "raw": "Ksar Tarsine, Tunisia",
     "label": "Ksar Tarsine, Tunisia",
@@ -53,5 +53,42 @@
     "resolvedTitle": "A Desert Ride",
     "mainImageTitle": "File:CoDFH_A_Desert_Ride_loading_screen.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Depot Saboteurs]]",
+    "label": "Depot Saboteurs",
+    "links": [
+      {
+        "wikiTitle": "Depot Saboteurs",
+        "label": "Depot Saboteurs",
+        "url": "https://callofduty.fandom.com/wiki/Depot_Saboteurs"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Raiding the Fortress]]",
+    "label": "Raiding the Fortress",
+    "links": [
+      {
+        "wikiTitle": "Raiding the Fortress",
+        "label": "Raiding the Fortress",
+        "url": "https://callofduty.fandom.com/wiki/Raiding_the_Fortress"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Finest Hour]]''",
+    "label": "Call of Duty: Finest Hour",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Finest Hour",
+        "label": "Call of Duty: Finest Hour",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Finest_Hour"
+      }
+    ]
+  },
+  "date": {
+    "raw": "January 23, 1943",
+    "label": "January 23, 1943"
   }
 }

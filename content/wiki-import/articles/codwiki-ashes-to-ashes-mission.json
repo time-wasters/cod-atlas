@@ -1,13 +1,13 @@
 {
   "id": "codwiki-ashes-to-ashes-mission",
-  "fandomPageId": null,
+  "fandomPageId": 693497,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Ashes_to_Ashes_(mission)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Ashes_to_Ashes_(mission)",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 3008830,
+  "importedAt": "2026-08-15T09:24:57.492Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
+    "raw": "Duga-2 Radar Array, Khabarovsk Krai{{sic}}, Ukrainian Soviet Socialist Republic",
+    "label": "Duga-2 Radar Array, Khabarovsk Krai , Ukrainian Soviet Socialist Republic",
     "url": null
   },
   "mapStyle": "singleplayer",
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/b/b8/AshesToAshes_MenuScreen_BOCW.png/revision/latest?cb=20201118155926",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/b/b8/AshesToAshes_MenuScreen_BOCW.png/revision/latest/scale-to-width-down/800?cb=20201118155926",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:AshesToAshes_MenuScreen_BOCW.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Kalinine",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Kalinine",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,42 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-06-17T13:48:45Z",
+    "revisionSha1": "612ea66655a92a550aa7972c4c17b1c5a02a29ba",
+    "resolvedTitle": "Ashes to Ashes (mission)",
+    "mainImageTitle": "File:AshesToAshes_MenuScreen_BOCW.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Identity Crisis]]",
+    "label": "Identity Crisis",
+    "links": [
+      {
+        "wikiTitle": "Identity Crisis",
+        "label": "Identity Crisis",
+        "url": "https://callofduty.fandom.com/wiki/Identity_Crisis"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Black Ops Cold War]]''",
+    "label": "Call of Duty: Black Ops Cold War",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Black Ops Cold War",
+        "label": "Call of Duty: Black Ops Cold War",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops_Cold_War"
+      }
+    ]
+  },
+  "date": {
+    "raw": "March 15, 1981",
+    "label": "March 15, 1981"
+  }
 }

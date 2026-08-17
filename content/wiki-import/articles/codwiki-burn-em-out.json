@@ -1,14 +1,14 @@
 {
   "id": "codwiki-burn-em-out",
-  "fandomPageId": null,
-  "sourceUrl": "https://callofduty.fandom.com/wiki/Burn_'em_Out",
-  "canonicalUrl": "https://callofduty.fandom.com/wiki/Burn_'em_Out",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "fandomPageId": 7813,
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Burn_%27em_Out",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Burn_%27em_Out",
+  "latestRevisionId": 3004512,
+  "importedAt": "2026-08-15T09:20:49.371Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "White Beach, [[Peleliu]], Palau islands",
+    "label": "Peleliu",
+    "url": "https://callofduty.fandom.com/wiki/Peleliu"
   },
   "mapStyle": "singleplayer",
   "mapStyleDetail": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/3/3a/Burn_%27em_Out_WaW.png/revision/latest?cb=20121128135154",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/3/3a/Burn_%27em_Out_WaW.png/revision/latest/scale-to-width-down/800?cb=20121128135154",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Burn_%27em_Out_WaW.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Synhart",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Synhart",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,53 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-05-25T02:25:59Z",
+    "revisionSha1": "eb12d0de0fddb75d9865d8012e5ac16f9d094081",
+    "resolvedTitle": "Burn 'em Out",
+    "mainImageTitle": "File:Burn_'em_Out_WaW.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Their Land, Their Blood]] (in-game)<br>[[Hard Landing]] (chronologically)",
+    "label": "Their Land, Their Blood (in-game), Hard Landing (chronologically)",
+    "links": [
+      {
+        "wikiTitle": "Their Land, Their Blood",
+        "label": "Their Land, Their Blood",
+        "url": "https://callofduty.fandom.com/wiki/Their_Land%2C_Their_Blood"
+      },
+      {
+        "wikiTitle": "Hard Landing",
+        "label": "Hard Landing",
+        "url": "https://callofduty.fandom.com/wiki/Hard_Landing"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Relentless]]",
+    "label": "Relentless",
+    "links": [
+      {
+        "wikiTitle": "Relentless",
+        "label": "Relentless",
+        "url": "https://callofduty.fandom.com/wiki/Relentless"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: World at War]]''",
+    "label": "Call of Duty: World at War",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: World at War",
+        "label": "Call of Duty: World at War",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_World_at_War"
+      }
+    ]
+  },
+  "date": {
+    "raw": "September 15, 1944",
+    "label": "September 15, 1944"
+  }
 }

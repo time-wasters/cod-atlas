@@ -5,6 +5,24 @@ games:
   - rtv
 mode: singleplayer
 wikiArticle: codwiki-river-crossing
+mapOverlay:
+  image: /images/maps/rtv/river-crossing.png
+  opacity: 0.72
+  corners:
+    topLeft: [52.10987848, 4.98518402]
+    topRight: [52.09332931, 6.76010737]
+    bottomLeft: [51.51977365, 4.97069259]
+    bottomRight: [51.50300626, 6.74562017]
+  attribution:
+    title: "Call of Duty: Roads to Victory — River Crossing loading-screen map"
+    source: "Directly extracted from Call of Duty: Roads to Victory by plp-gtr."
+    sourceUrl: https://github.com/time-wasters/cod-atlas/blob/main/public/images/maps/rtv/river-crossing.png
+    extractedBy: plp-gtr
+    extractedByUrl: https://github.com/plp-gtr
+    copyrightHolder: Activision Publishing, Inc.
+    rights: non-free
+    rightsNotice: "The extraction is contributed to CoD Atlas; the underlying copyrighted game artwork remains the property of Activision and is used for identification and geographic comparison."
+    rightsNoticeUrl: https://www.activision.com/legal/terms-of-use
 locations:
   - id: main
     country: Netherlands

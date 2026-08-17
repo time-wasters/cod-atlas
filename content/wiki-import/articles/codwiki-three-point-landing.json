@@ -1,14 +1,14 @@
 {
   "id": "codwiki-three-point-landing",
-  "fandomPageId": null,
+  "fandomPageId": 523139,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Three_Point_Landing",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Three_Point_Landing",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2985945,
+  "importedAt": "2026-08-15T00:28:54.794Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "[[Mount Yamantau|Mt. Yamantau]], [[Soviet Union]]",
+    "label": "Mt. Yamantau",
+    "url": "https://callofduty.fandom.com/wiki/Mount_Yamantau"
   },
   "mapStyle": "singleplayer",
   "mapStyleDetail": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/1/12/ThreePointLanding_MenuScreen_BOD.png/revision/latest?cb=20231001151104",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/1/12/ThreePointLanding_MenuScreen_BOD.png/revision/latest?cb=20231001151104",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:ThreePointLanding_MenuScreen_BOD.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Kalinine",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Kalinine",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,48 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-04-03T09:27:57Z",
+    "revisionSha1": "a835843a0ac7939e454781accd1b3816ae671b99",
+    "resolvedTitle": "Three Point Landing",
+    "mainImageTitle": "File:ThreePointLanding_MenuScreen_BOD.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Got Your Back]]",
+    "label": "Got Your Back",
+    "links": [
+      {
+        "wikiTitle": "Got Your Back",
+        "label": "Got Your Back",
+        "url": "https://callofduty.fandom.com/wiki/Got_Your_Back"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Rocket's Red Glare]]",
+    "label": "Rocket's Red Glare",
+    "links": [
+      {
+        "wikiTitle": "Rocket's Red Glare",
+        "label": "Rocket's Red Glare",
+        "url": "https://callofduty.fandom.com/wiki/Rocket's_Red_Glare"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Black Ops: Declassified]]''",
+    "label": "Call of Duty: Black Ops: Declassified",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Black Ops: Declassified",
+        "label": "Call of Duty: Black Ops: Declassified",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops%3A_Declassified"
+      }
+    ]
+  },
+  "date": {
+    "raw": "Winter 1977",
+    "label": "Winter 1977"
+  }
 }

@@ -1,13 +1,13 @@
 {
   "id": "codwiki-warhawk",
-  "fandomPageId": null,
+  "fandomPageId": 574727,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Warhawk",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Warhawk",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2973990,
+  "importedAt": "2026-08-15T09:49:56.738Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
+    "raw": "Morrowville, Nebraska, United States of America",
+    "label": "Morrowville, Nebraska, United States of America",
     "url": null
   },
   "mapStyle": "multiplayer",
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/4/43/Warhawk_Loading_Screen_CoDG.png/revision/latest?cb=20260221033858",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/4/43/Warhawk_Loading_Screen_CoDG.png/revision/latest/scale-to-width-down/800?cb=20260221033858",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Warhawk_Loading_Screen_CoDG.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Mxtive",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Mxtive",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,36 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-03-08T04:12:09Z",
+    "revisionSha1": "772264cb1d48d40e0cbe95283ef05feeee710bac",
+    "resolvedTitle": "Warhawk",
+    "mainImageTitle": "File:Warhawk_Loading_Screen_CoDG.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Ghosts]]''",
+    "label": "Call of Duty: Ghosts",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Ghosts",
+        "label": "Call of Duty: Ghosts",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Ghosts"
+      }
+    ]
+  },
+  "date": {
+    "raw": null,
+    "label": null
+  }
 }

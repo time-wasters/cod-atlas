@@ -1,14 +1,14 @@
 {
   "id": "codwiki-scorched-earth-mission",
-  "fandomPageId": null,
+  "fandomPageId": 383250,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Scorched_Earth_(mission)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Scorched_Earth_(mission)",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2910344,
+  "importedAt": "2026-08-15T11:15:52.526Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "[[Berlin]], [[Germany]]",
+    "label": "Berlin",
+    "url": "https://callofduty.fandom.com/wiki/Berlin"
   },
   "mapStyle": "singleplayer",
   "mapStyleDetail": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/b/b1/Mw3_berlin.png/revision/latest?cb=20120318225019",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/b/b1/Mw3_berlin.png/revision/latest?cb=20120318225019",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Mw3_berlin.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Flightmare",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Flightmare",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,48 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2025-09-14T02:55:44Z",
+    "revisionSha1": "f88db0e7e0e7443b77b7cf42e48649ce0fc2d0c4",
+    "resolvedTitle": "Scorched Earth (mission)",
+    "mainImageTitle": "File:Mw3_berlin.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Stronghold (Mission)|Stronghold]]",
+    "label": "Stronghold",
+    "links": [
+      {
+        "wikiTitle": "Stronghold (Mission)",
+        "label": "Stronghold",
+        "url": "https://callofduty.fandom.com/wiki/Stronghold_(Mission)"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Down the Rabbit Hole]]",
+    "label": "Down the Rabbit Hole",
+    "links": [
+      {
+        "wikiTitle": "Down the Rabbit Hole",
+        "label": "Down the Rabbit Hole",
+        "url": "https://callofduty.fandom.com/wiki/Down_the_Rabbit_Hole"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Modern Warfare 3]]''",
+    "label": "Call of Duty: Modern Warfare 3",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Modern Warfare 3",
+        "label": "Call of Duty: Modern Warfare 3",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Modern_Warfare_3"
+      }
+    ]
+  },
+  "date": {
+    "raw": "October 13th, 2016 - 10:18:33",
+    "label": "October 13th, 2016 - 10:18:33"
+  }
 }

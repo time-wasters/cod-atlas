@@ -1,13 +1,13 @@
 {
   "id": "codwiki-time-and-fate",
-  "fandomPageId": null,
+  "fandomPageId": 508241,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Time_and_Fate",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Time_and_Fate",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2970139,
+  "importedAt": "2026-08-15T08:53:46.361Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
+    "raw": "Wasa King, Atlantico Norte, Nicaragua (1986)<br>The Vault (2025)",
+    "label": "Wasa King, Atlantico Norte, Nicaragua (1986), The Vault (2025)",
     "url": null
   },
   "mapStyle": "singleplayer",
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/4/4b/Time_and_Fate_Menu_BOII.png/revision/latest?cb=20121209090419",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/4/4b/Time_and_Fate_Menu_BOII.png/revision/latest/scale-to-width-down/800?cb=20121209090419",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Time_and_Fate_Menu_BOII.png",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Synhart",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Synhart",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,47 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-02-23T10:14:02Z",
+    "revisionSha1": "13c1024173022cc7b879213531f11305035b5142",
+    "resolvedTitle": "Time and Fate",
+    "mainImageTitle": "File:Time_and_Fate_Menu_BOII.png",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Old Wounds]]",
+    "label": "Old Wounds",
+    "links": [
+      {
+        "wikiTitle": "Old Wounds",
+        "label": "Old Wounds",
+        "url": "https://callofduty.fandom.com/wiki/Old_Wounds"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Fallen Angel]] (in-game) <br > [[Suffer With Me]] (chronologically)",
+    "label": "Fallen Angel (in-game) , Suffer With Me (chronologically)",
+    "links": [
+      {
+        "wikiTitle": "Fallen Angel",
+        "label": "Fallen Angel",
+        "url": "https://callofduty.fandom.com/wiki/Fallen_Angel"
+      },
+      {
+        "wikiTitle": "Suffer With Me",
+        "label": "Suffer With Me",
+        "url": "https://callofduty.fandom.com/wiki/Suffer_With_Me"
+      }
+    ]
+  },
+  "games": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "date": {
+    "raw": "September 25th, 1986<br>April 19, 2025 (The Vault)",
+    "label": "September 25th, 1986, April 19, 2025 (The Vault)"
+  }
 }

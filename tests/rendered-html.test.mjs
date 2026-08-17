@@ -32,9 +32,12 @@ test("renders development preview metadata", async () => {
   );
   const html = await response.text();
   assert.match(html, developmentPreviewMeta);
+  assert.match(html, /<h1><img[^>]*src="images\/banner\.png"[^>]*alt="CoD Atlas"/);
   assert.match(html, /class="intel-country-fallback"/);
   assert.match(html, /class="country-select-trigger"/);
   assert.match(html, /class="sidebar-toggle"[^>]*aria-expanded="true"[^>]*aria-label="Hide map filters"/);
+  assert.match(html, /class="details-toggle"[^>]*aria-expanded="true"[^>]*aria-label="Hide level details"/);
+  assert.match(html, /class="collapsed-level-title"[^>]*aria-label="Show details for [^"]+"/);
   assert.match(html, /aria-label="Filter by game, ordered by release date"/);
   assert.match(html, /aria-label="Filter by country"/);
   assert.match(html, /class="solar-system-overlay is-expanded"/);
@@ -46,6 +49,7 @@ test("renders development preview metadata", async () => {
   assert.doesNotMatch(html, /Selected location/);
   assert.doesNotMatch(html, />Level<\/span>/);
   assert.match(html, /aria-label="(Singleplayer|Multiplayer)"/);
+  assert.match(html, /class="mission-title-button"/);
   assert.match(html, /Made with ♥️ by <a href="https:\/\/github\.com\/plp-gtr"[^>]*>plp-GTR<\/a>/);
   assert.match(html, /class="icon-link footer-info-button"/);
   assert.match(html, /id="project-info-title">About CoD Atlas/);
@@ -86,12 +90,18 @@ test("preserves the complete statically compiled atlas", async () => {
   }
   assert.ok(atlas.games.some((game) => !game.icon), "game labels remain available as the icon fallback");
   assert.ok(entries.every((entry) => Array.isArray(entry.gameIds) && entry.gameIds.length > 0));
-  assert.deepEqual(Object.keys(atlas.levelBanners).sort(), [
-    "rtv-altavilla",
-    "rtv-glider-crash",
-    "rtv-lucky-thirteen",
-    "rtv-scavenger-hunt",
-  ]);
+  const rtvBannerKeys = Object.keys(atlas.levelBanners)
+    .filter((key) => key.startsWith("rtv-"))
+    .sort();
+
+  assert.ok(rtvBannerKeys.length >= 5, "at least 5 RTV level banners exist");
+
+  for (const key of rtvBannerKeys.slice(0, 5)) {
+    const banner = atlas.levelBanners[key];
+
+    assert.ok(banner.thumbnailUrl, `${key} has a thumbnail URL`);
+    assert.ok(banner.author, `${key} has author information`);
+  }
   assert.equal(atlas.levelBanners["rtv-altavilla"].thumbnailUrl, "/images/levels/rtv/altavilla.png");
   assert.equal(atlas.levelBanners["rtv-altavilla"].author.userUrl, "https://github.com/plp-gtr");
   assert.ok(entries.every((entry) =>

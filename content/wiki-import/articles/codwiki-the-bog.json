@@ -1,13 +1,13 @@
 {
   "id": "codwiki-the-bog",
-  "fandomPageId": null,
+  "fandomPageId": 2617,
   "sourceUrl": "https://callofduty.fandom.com/wiki/The_Bog",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/The_Bog",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 3008913,
+  "importedAt": "2026-08-14T23:37:20.025Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
+    "raw": "Middle East {{ConflictingInfo|Location never explicitly mentioned. The conflict depicted in-game spans multiple real countries.}}",
+    "label": "Middle East",
     "url": null
   },
   "mapStyle": "singleplayer",
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/6/63/The_Bog_Campaign.jpg/revision/latest?cb=20110511161841",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/6/63/The_Bog_Campaign.jpg/revision/latest?cb=20110511161841",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:The_Bog_Campaign.jpg",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "Synhart",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Synhart",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,58 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-06-18T10:48:04Z",
+    "revisionSha1": "81ff68b03d2e9bb54cf58c1a506e9f7e80b68aca",
+    "resolvedTitle": "The Bog",
+    "mainImageTitle": "File:The_Bog_Campaign.jpg",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Charlie Don't Surf]]",
+    "label": "Charlie Don't Surf",
+    "links": [
+      {
+        "wikiTitle": "Charlie Don't Surf",
+        "label": "Charlie Don't Surf",
+        "url": "https://callofduty.fandom.com/wiki/Charlie_Don't_Surf"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Hunted (Call of Duty 4)|Hunted]] (in-game)<br>[[War Pig (mission)|War Pig]] (chronologically)",
+    "label": "Hunted (in-game), War Pig (chronologically)",
+    "links": [
+      {
+        "wikiTitle": "Hunted (Call of Duty 4)",
+        "label": "Hunted",
+        "url": "https://callofduty.fandom.com/wiki/Hunted_(Call_of_Duty_4)"
+      },
+      {
+        "wikiTitle": "War Pig (mission)",
+        "label": "War Pig",
+        "url": "https://callofduty.fandom.com/wiki/War_Pig_(mission)"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty 4: Modern Warfare]]''<br>''[[Call of Duty: Modern Warfare Remastered]]''",
+    "label": "Call of Duty 4: Modern Warfare, Call of Duty: Modern Warfare Remastered",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty 4: Modern Warfare",
+        "label": "Call of Duty 4: Modern Warfare",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_4%3A_Modern_Warfare"
+      },
+      {
+        "wikiTitle": "Call of Duty: Modern Warfare Remastered",
+        "label": "Call of Duty: Modern Warfare Remastered",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Modern_Warfare_Remastered"
+      }
+    ]
+  },
+  "date": {
+    "raw": "Day 3, 2011 - 05:00:13",
+    "label": "Day 3, 2011 - 05:00:13"
+  }
 }

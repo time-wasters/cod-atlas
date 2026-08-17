@@ -1,10 +1,10 @@
 {
   "id": "codwiki-heat",
-  "fandomPageId": null,
+  "fandomPageId": 718617,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Heat",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Heat",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 3000856,
+  "importedAt": "2026-08-14T23:37:09.203Z",
   "levelLocation": {
     "raw": null,
     "label": null,
@@ -40,5 +40,30 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-05-08T10:43:14Z",
+    "revisionSha1": "eb319461bc356e9d6a77a71c0bc2f3a189603600",
+    "resolvedTitle": "Heat",
+    "mainImageTitle": null,
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "date": {
+    "raw": null,
+    "label": null
+  }
 }

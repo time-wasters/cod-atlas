@@ -1,14 +1,14 @@
 {
   "id": "codwiki-nuketown-map",
-  "fandomPageId": null,
+  "fandomPageId": 193929,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Nuketown_(map)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Nuketown_(map)",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 3017146,
+  "importedAt": "2026-08-15T00:29:28.733Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "Nuketown, {{w|Nevada Test Site|Nevada National Security Site}}, {{w|Nevada}}, [[United States of America]]",
+    "label": "United States of America",
+    "url": "https://callofduty.fandom.com/wiki/United_States_of_America"
   },
   "mapStyle": "multiplayer",
   "mapStyleDetail": null,
@@ -16,15 +16,22 @@
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/2/2c/Bare_Load_Screen_Nuketown_BO.jpg/revision/latest?cb=20110303122337",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/2/2c/Bare_Load_Screen_Nuketown_BO.jpg/revision/latest/scale-to-width-down/800?cb=20110303122337",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Bare_Load_Screen_Nuketown_BO.jpg",
       "author": {
-        "name": null,
-        "userUrl": null
+        "name": "GoldenBluebird",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:GoldenBluebird",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -40,5 +47,56 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-07-29T19:56:41Z",
+    "revisionSha1": "8c925abcb3c6dbad3b3487ec19d2d8da8fb1813d",
+    "resolvedTitle": "Nuketown (map)",
+    "mainImageTitle": "File:Bare_Load_Screen_Nuketown_BO.jpg",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Black Ops]]''<br>''[[Call of Duty Online]]''<br>''[[Call of Duty: Mobile]]''<br>''[[Call of Duty: Black Ops 6]]''<br>''[[Call of Duty: Warzone Mobile]]''",
+    "label": "Call of Duty: Black Ops, Call of Duty Online, Call of Duty: Mobile, Call of Duty: Black Ops 6, Call of Duty: Warzone Mobile",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Black Ops",
+        "label": "Call of Duty: Black Ops",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops"
+      },
+      {
+        "wikiTitle": "Call of Duty Online",
+        "label": "Call of Duty Online",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_Online"
+      },
+      {
+        "wikiTitle": "Call of Duty: Mobile",
+        "label": "Call of Duty: Mobile",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Mobile"
+      },
+      {
+        "wikiTitle": "Call of Duty: Black Ops 6",
+        "label": "Call of Duty: Black Ops 6",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops_6"
+      },
+      {
+        "wikiTitle": "Call of Duty: Warzone Mobile",
+        "label": "Call of Duty: Warzone Mobile",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Warzone_Mobile"
+      }
+    ]
+  },
+  "date": {
+    "raw": "1961 (''BO'')<br>November 9, 1991 (''BO6'')",
+    "label": "1961 (BO), November 9, 1991 (BO6)"
+  }
 }
