@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/The_Brigade_Box",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/The_Brigade_Box",
   "latestRevisionId": 2951073,
-  "importedAt": "2026-08-10T19:02:55.566Z",
+  "importedAt": "2026-08-18T20:41:13.825Z",
   "levelLocation": {
     "raw": "Amayé-sur-Seulles, France",
     "label": "Amayé-sur-Seulles, France",
@@ -53,5 +53,47 @@
     "resolvedTitle": "The Brigade Box",
     "mainImageTitle": "File:Brigade_Box_tohouse1.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[The Tiger]]",
+    "label": "The Tiger",
+    "links": [
+      {
+        "wikiTitle": "The Tiger",
+        "label": "The Tiger",
+        "url": "https://callofduty.fandom.com/wiki/The_Tiger"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Bergstein]]<br>[[The Silo]] (Chronologically)",
+    "label": "Bergstein, The Silo (Chronologically)",
+    "links": [
+      {
+        "wikiTitle": "Bergstein",
+        "label": "Bergstein",
+        "url": "https://callofduty.fandom.com/wiki/Bergstein"
+      },
+      {
+        "wikiTitle": "The Silo",
+        "label": "The Silo",
+        "url": "https://callofduty.fandom.com/wiki/The_Silo"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty 2]]''",
+    "label": "Call of Duty 2",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty 2",
+        "label": "Call of Duty 2",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_2"
+      }
+    ]
+  },
+  "date": {
+    "raw": "June 14th, 1944",
+    "label": "June 14th, 1944"
   }
 }

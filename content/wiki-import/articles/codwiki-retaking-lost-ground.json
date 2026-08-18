@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Retaking_Toujane",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Retaking_Toujane",
   "latestRevisionId": 3003845,
-  "importedAt": "2026-08-10T19:02:55.546Z",
+  "importedAt": "2026-08-18T20:41:13.804Z",
   "levelLocation": {
     "raw": null,
     "label": null,
@@ -53,5 +53,42 @@
     "resolvedTitle": "Retaking Toujane",
     "mainImageTitle": "File:CoD2_-_Retaking_Lost_Ground.jpg",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Armored Car Escape]]",
+    "label": "Armored Car Escape",
+    "links": [
+      {
+        "wikiTitle": "Armored Car Escape",
+        "label": "Armored Car Escape",
+        "url": "https://callofduty.fandom.com/wiki/Armored_Car_Escape"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Assault on Matmata]]",
+    "label": "Assault on Matmata",
+    "links": [
+      {
+        "wikiTitle": "Assault on Matmata",
+        "label": "Assault on Matmata",
+        "url": "https://callofduty.fandom.com/wiki/Assault_on_Matmata"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty 2]]''",
+    "label": "Call of Duty 2",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty 2",
+        "label": "Call of Duty 2",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_2"
+      }
+    ]
+  },
+  "date": {
+    "raw": "March 11, 1943, 1100 hrs",
+    "label": "March 11, 1943, 1100 hrs"
   }
 }

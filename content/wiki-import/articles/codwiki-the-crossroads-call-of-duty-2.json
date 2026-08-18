@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/The_Crossroads_(Call_of_Duty_2)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/The_Crossroads_(Call_of_Duty_2)",
   "latestRevisionId": 2860311,
-  "importedAt": "2026-08-10T19:02:55.560Z",
+  "importedAt": "2026-08-18T20:41:13.818Z",
   "levelLocation": {
     "raw": "Anctoville, France",
     "label": "Anctoville, France",
@@ -53,5 +53,42 @@
     "resolvedTitle": "The Crossroads (Call of Duty 2)",
     "mainImageTitle": "File:Price_in_The_Crossroads.jpg",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Prisoners of War]]",
+    "label": "Prisoners of War",
+    "links": [
+      {
+        "wikiTitle": "Prisoners of War",
+        "label": "Prisoners of War",
+        "url": "https://callofduty.fandom.com/wiki/Prisoners_of_War"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[The Tiger]]",
+    "label": "The Tiger",
+    "links": [
+      {
+        "wikiTitle": "The Tiger",
+        "label": "The Tiger",
+        "url": "https://callofduty.fandom.com/wiki/The_Tiger"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty 2]]''",
+    "label": "Call of Duty 2",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty 2",
+        "label": "Call of Duty 2",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_2"
+      }
+    ]
+  },
+  "date": {
+    "raw": "June 12th, 1944",
+    "label": "June 12th, 1944"
   }
 }

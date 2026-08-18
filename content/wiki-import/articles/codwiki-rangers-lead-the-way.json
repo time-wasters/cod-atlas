@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Rangers_Lead_the_Way",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Rangers_Lead_the_Way",
   "latestRevisionId": 2901237,
-  "importedAt": "2026-08-10T19:02:44.631Z",
+  "importedAt": "2026-08-18T20:41:02.921Z",
   "levelLocation": {
     "raw": "Bergstein, Germany (At the base of [[Hill 400]])",
     "label": "Hill 400",
@@ -53,5 +53,42 @@
     "resolvedTitle": "Rangers Lead the Way",
     "mainImageTitle": "File:CoD2_-_Rangers_Lead_the_Way.jpg",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Bergstein]]",
+    "label": "Bergstein",
+    "links": [
+      {
+        "wikiTitle": "Bergstein",
+        "label": "Bergstein",
+        "url": "https://callofduty.fandom.com/wiki/Bergstein"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[The Battle for Hill 400]]",
+    "label": "The Battle for Hill 400",
+    "links": [
+      {
+        "wikiTitle": "The Battle for Hill 400",
+        "label": "The Battle for Hill 400",
+        "url": "https://callofduty.fandom.com/wiki/The_Battle_for_Hill_400"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty 2]]''",
+    "label": "Call of Duty 2",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty 2",
+        "label": "Call of Duty 2",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_2"
+      }
+    ]
+  },
+  "date": {
+    "raw": "December 7, 1944",
+    "label": "December 7, 1944"
   }
 }

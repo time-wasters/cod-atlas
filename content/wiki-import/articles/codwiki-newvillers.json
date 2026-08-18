@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Newvillers",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Newvillers",
   "latestRevisionId": 2795268,
-  "importedAt": "2026-08-10T19:02:44.659Z",
+  "importedAt": "2026-08-18T20:41:02.948Z",
   "levelLocation": {
     "raw": "{{w|Louet}}, [[France]]",
     "label": "France",
@@ -53,5 +53,30 @@
     "resolvedTitle": "Newvillers",
     "mainImageTitle": "File:Newvillers_Map_CoD2.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty 2]]''",
+    "label": "Call of Duty 2",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty 2",
+        "label": "Call of Duty 2",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_2"
+      }
+    ]
+  },
+  "date": {
+    "raw": null,
+    "label": null
   }
 }

@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/The_Tiger",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/The_Tiger",
   "latestRevisionId": 3003844,
-  "importedAt": "2026-08-10T19:03:06.675Z",
+  "importedAt": "2026-08-18T20:41:24.568Z",
   "levelLocation": {
     "raw": "St. Louet, Normandy, France",
     "label": "St. Louet, Normandy, France",
@@ -53,5 +53,42 @@
     "resolvedTitle": "The Tiger",
     "mainImageTitle": "File:Tialley.gif",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[The Crossroads (Call of Duty 2)|The Crossroads]]",
+    "label": "The Crossroads",
+    "links": [
+      {
+        "wikiTitle": "The Crossroads (Call of Duty 2)",
+        "label": "The Crossroads",
+        "url": "https://callofduty.fandom.com/wiki/The_Crossroads_(Call_of_Duty_2)"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[The Brigade Box]]",
+    "label": "The Brigade Box",
+    "links": [
+      {
+        "wikiTitle": "The Brigade Box",
+        "label": "The Brigade Box",
+        "url": "https://callofduty.fandom.com/wiki/The_Brigade_Box"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty 2]]''",
+    "label": "Call of Duty 2",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty 2",
+        "label": "Call of Duty 2",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_2"
+      }
+    ]
+  },
+  "date": {
+    "raw": "June 12th, 1944",
+    "label": "June 12th, 1944"
   }
 }

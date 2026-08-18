@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/The_Crossing_Point",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/The_Crossing_Point",
   "latestRevisionId": 2901230,
-  "importedAt": "2026-08-10T19:02:33.642Z",
+  "importedAt": "2026-08-18T20:40:52.166Z",
   "levelLocation": {
     "raw": "Wallendar, [[Germany]]",
     "label": "Germany",
@@ -53,5 +53,36 @@
     "resolvedTitle": "The Crossing Point",
     "mainImageTitle": "File:Crossing_The_Rhine.jpg",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[The Battle for Hill 400]]",
+    "label": "The Battle for Hill 400",
+    "links": [
+      {
+        "wikiTitle": "The Battle for Hill 400",
+        "label": "The Battle for Hill 400",
+        "url": "https://callofduty.fandom.com/wiki/The_Battle_for_Hill_400"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty 2]]''",
+    "label": "Call of Duty 2",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty 2",
+        "label": "Call of Duty 2",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_2"
+      }
+    ]
+  },
+  "date": {
+    "raw": "March 24, 1945",
+    "label": "March 24, 1945"
   }
 }

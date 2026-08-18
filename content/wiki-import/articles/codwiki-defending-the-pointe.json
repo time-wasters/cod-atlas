@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Defending_the_Pointe",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Defending_the_Pointe",
   "latestRevisionId": 2901238,
-  "importedAt": "2026-08-10T19:02:33.635Z",
+  "importedAt": "2026-08-18T20:40:52.159Z",
   "levelLocation": {
     "raw": "Pointe du Hoc, France",
     "label": "Pointe du Hoc, France",
@@ -53,5 +53,47 @@
     "resolvedTitle": "Defending the Pointe",
     "mainImageTitle": "File:Defending_The_Pointe.jpg",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[The Battle of Pointe du Hoc]]",
+    "label": "The Battle of Pointe du Hoc",
+    "links": [
+      {
+        "wikiTitle": "The Battle of Pointe du Hoc",
+        "label": "The Battle of Pointe du Hoc",
+        "url": "https://callofduty.fandom.com/wiki/The_Battle_of_Pointe_du_Hoc"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[The Silo]]\n[[Prisoners of War]] (Chronologically)",
+    "label": "The Silo Prisoners of War (Chronologically)",
+    "links": [
+      {
+        "wikiTitle": "The Silo",
+        "label": "The Silo",
+        "url": "https://callofduty.fandom.com/wiki/The_Silo"
+      },
+      {
+        "wikiTitle": "Prisoners of War",
+        "label": "Prisoners of War",
+        "url": "https://callofduty.fandom.com/wiki/Prisoners_of_War"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty 2]]''",
+    "label": "Call of Duty 2",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty 2",
+        "label": "Call of Duty 2",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_2"
+      }
+    ]
+  },
+  "date": {
+    "raw": "June 7, 1944",
+    "label": "June 7, 1944"
   }
 }

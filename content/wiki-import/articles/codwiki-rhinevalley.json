@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Rhinevalley",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Rhinevalley",
   "latestRevisionId": 2991592,
-  "importedAt": "2026-08-10T19:02:55.580Z",
+  "importedAt": "2026-08-18T20:41:13.840Z",
   "levelLocation": {
     "raw": "{{w|Rhine River}}, {{w|Nazi Germany}}",
     "label": ",",
@@ -53,5 +53,30 @@
     "resolvedTitle": "Rhinevalley",
     "mainImageTitle": "File:United_Offensive_Rhinevalley_Preview.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty: United Offensive]]''",
+    "label": "Call of Duty: United Offensive",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: United Offensive",
+        "label": "Call of Duty: United Offensive",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_United_Offensive"
+      }
+    ]
+  },
+  "date": {
+    "raw": null,
+    "label": null
   }
 }

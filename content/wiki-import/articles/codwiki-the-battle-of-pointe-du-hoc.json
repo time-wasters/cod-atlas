@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/The_Battle_of_Pointe_du_Hoc",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/The_Battle_of_Pointe_du_Hoc",
   "latestRevisionId": 3012657,
-  "importedAt": "2026-08-10T19:02:55.553Z",
+  "importedAt": "2026-08-18T20:41:13.811Z",
   "levelLocation": {
     "raw": "Pointe du Hoc, France",
     "label": "Pointe du Hoc, France",
@@ -53,5 +53,42 @@
     "resolvedTitle": "The Battle of Pointe du Hoc",
     "mainImageTitle": "File:Tbopdh.jpg",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Assault on Matmata]]",
+    "label": "Assault on Matmata",
+    "links": [
+      {
+        "wikiTitle": "Assault on Matmata",
+        "label": "Assault on Matmata",
+        "url": "https://callofduty.fandom.com/wiki/Assault_on_Matmata"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Defending the Pointe]]",
+    "label": "Defending the Pointe",
+    "links": [
+      {
+        "wikiTitle": "Defending the Pointe",
+        "label": "Defending the Pointe",
+        "url": "https://callofduty.fandom.com/wiki/Defending_the_Pointe"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty 2]]''",
+    "label": "Call of Duty 2",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty 2",
+        "label": "Call of Duty 2",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_2"
+      }
+    ]
+  },
+  "date": {
+    "raw": "June 6, 1944",
+    "label": "June 6, 1944"
   }
 }

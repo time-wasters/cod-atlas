@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Crusader_Charge",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Crusader_Charge",
   "latestRevisionId": 2901235,
-  "importedAt": "2026-08-10T19:02:33.627Z",
+  "importedAt": "2026-08-18T20:40:52.152Z",
   "levelLocation": {
     "raw": "Northwestern Libya",
     "label": "Northwestern Libya",
@@ -53,5 +53,47 @@
     "resolvedTitle": "Crusader Charge",
     "mainImageTitle": "File:North_African_Campaign_CoD2.jpg",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[The End of the Beginning]]<br>[[Comrade Sniper]] (Chronologically)",
+    "label": "The End of the Beginning, Comrade Sniper (Chronologically)",
+    "links": [
+      {
+        "wikiTitle": "The End of the Beginning",
+        "label": "The End of the Beginning",
+        "url": "https://callofduty.fandom.com/wiki/The_End_of_the_Beginning"
+      },
+      {
+        "wikiTitle": "Comrade Sniper",
+        "label": "Comrade Sniper",
+        "url": "https://callofduty.fandom.com/wiki/Comrade_Sniper"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[88 Ridge]]",
+    "label": "88 Ridge",
+    "links": [
+      {
+        "wikiTitle": "88 Ridge",
+        "label": "88 Ridge",
+        "url": "https://callofduty.fandom.com/wiki/88_Ridge"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty 2]]''",
+    "label": "Call of Duty 2",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty 2",
+        "label": "Call of Duty 2",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_2"
+      }
+    ]
+  },
+  "date": {
+    "raw": "15th January 1943",
+    "label": "15th January 1943"
   }
 }

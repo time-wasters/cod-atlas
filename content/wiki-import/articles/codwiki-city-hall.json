@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/City_Hall",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/City_Hall",
   "latestRevisionId": 2901245,
-  "importedAt": "2026-08-10T19:02:22.737Z",
+  "importedAt": "2026-08-18T20:40:41.306Z",
   "levelLocation": {
     "raw": "[[Stalingrad]], U.S.S.R.",
     "label": "Stalingrad",
@@ -53,5 +53,42 @@
     "resolvedTitle": "City Hall",
     "mainImageTitle": "File:Chstreet1.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Downtown Assault]]",
+    "label": "Downtown Assault",
+    "links": [
+      {
+        "wikiTitle": "Downtown Assault",
+        "label": "Downtown Assault",
+        "url": "https://callofduty.fandom.com/wiki/Downtown_Assault"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Comrade Sniper]]",
+    "label": "Comrade Sniper",
+    "links": [
+      {
+        "wikiTitle": "Comrade Sniper",
+        "label": "Comrade Sniper",
+        "url": "https://callofduty.fandom.com/wiki/Comrade_Sniper"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty 2]]''",
+    "label": "Call of Duty 2",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty 2",
+        "label": "Call of Duty 2",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_2"
+      }
+    ]
+  },
+  "date": {
+    "raw": "January 15, 1943, 1420 hrs",
+    "label": "January 15, 1943, 1420 hrs"
   }
 }

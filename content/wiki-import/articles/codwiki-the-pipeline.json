@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Railroad_Station_No._1",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Railroad_Station_No._1",
   "latestRevisionId": 2951065,
-  "importedAt": "2026-08-10T19:03:06.658Z",
+  "importedAt": "2026-08-18T20:41:24.547Z",
   "levelLocation": {
     "raw": "[[Stalingrad]], U.S.S.R.",
     "label": "Stalingrad",
@@ -53,5 +53,42 @@
     "resolvedTitle": "Railroad Station No. 1",
     "mainImageTitle": "File:Pipetroops1.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Repairing the Wire]]",
+    "label": "Repairing the Wire",
+    "links": [
+      {
+        "wikiTitle": "Repairing the Wire",
+        "label": "Repairing the Wire",
+        "url": "https://callofduty.fandom.com/wiki/Repairing_the_Wire"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Downtown Assault]]",
+    "label": "Downtown Assault",
+    "links": [
+      {
+        "wikiTitle": "Downtown Assault",
+        "label": "Downtown Assault",
+        "url": "https://callofduty.fandom.com/wiki/Downtown_Assault"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty 2]]''",
+    "label": "Call of Duty 2",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty 2",
+        "label": "Call of Duty 2",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_2"
+      }
+    ]
+  },
+  "date": {
+    "raw": "December 8, 1942",
+    "label": "December 8, 1942"
   }
 }

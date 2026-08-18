@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Operation_Supercharge",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Operation_Supercharge",
   "latestRevisionId": 2951066,
-  "importedAt": "2026-08-10T19:02:44.610Z",
+  "importedAt": "2026-08-18T20:41:02.900Z",
   "levelLocation": {
     "raw": "Northern Egypt, Africa",
     "label": "Northern Egypt, Africa",
@@ -53,5 +53,42 @@
     "resolvedTitle": "Operation Supercharge",
     "mainImageTitle": "File:CoD2_-_Operation_Supercharge.jpg",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Hold The Line]]",
+    "label": "Hold The Line",
+    "links": [
+      {
+        "wikiTitle": "Hold The Line",
+        "label": "Hold The Line",
+        "url": "https://callofduty.fandom.com/wiki/Hold_The_Line"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[The End of the Beginning]]",
+    "label": "The End of the Beginning",
+    "links": [
+      {
+        "wikiTitle": "The End of the Beginning",
+        "label": "The End of the Beginning",
+        "url": "https://callofduty.fandom.com/wiki/The_End_of_the_Beginning"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty 2]]''",
+    "label": "Call of Duty 2",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty 2",
+        "label": "Call of Duty 2",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_2"
+      }
+    ]
+  },
+  "date": {
+    "raw": "November 3, 1942",
+    "label": "November 3, 1942"
   }
 }

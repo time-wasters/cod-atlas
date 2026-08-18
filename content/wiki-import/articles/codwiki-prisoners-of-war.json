@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Prisoners_of_War",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Prisoners_of_War",
   "latestRevisionId": 2901231,
-  "importedAt": "2026-08-10T19:02:44.624Z",
+  "importedAt": "2026-08-18T20:41:02.914Z",
   "levelLocation": {
     "raw": "Beltot, France",
     "label": "Beltot, France",
@@ -53,5 +53,47 @@
     "resolvedTitle": "Prisoners of War",
     "mainImageTitle": "File:Prisoners_of_War_CoD2.jpg",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[The Silo]]\n[[Defending the Pointe]] (Chronologically)",
+    "label": "The Silo Defending the Pointe (Chronologically)",
+    "links": [
+      {
+        "wikiTitle": "The Silo",
+        "label": "The Silo",
+        "url": "https://callofduty.fandom.com/wiki/The_Silo"
+      },
+      {
+        "wikiTitle": "Defending the Pointe",
+        "label": "Defending the Pointe",
+        "url": "https://callofduty.fandom.com/wiki/Defending_the_Pointe"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[The Crossroads (Call of Duty 2)|The Crossroads]]",
+    "label": "The Crossroads",
+    "links": [
+      {
+        "wikiTitle": "The Crossroads (Call of Duty 2)",
+        "label": "The Crossroads",
+        "url": "https://callofduty.fandom.com/wiki/The_Crossroads_(Call_of_Duty_2)"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty 2]]''",
+    "label": "Call of Duty 2",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty 2",
+        "label": "Call of Duty 2",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_2"
+      }
+    ]
+  },
+  "date": {
+    "raw": "June 11th, 1944",
+    "label": "June 11th, 1944"
   }
 }

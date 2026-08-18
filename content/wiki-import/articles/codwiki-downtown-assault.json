@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Downtown_Assault",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Downtown_Assault",
   "latestRevisionId": 2901247,
-  "importedAt": "2026-08-10T19:02:33.613Z",
+  "importedAt": "2026-08-18T20:40:52.146Z",
   "levelLocation": {
     "raw": "[[Stalingrad]], U.S.S.R.",
     "label": "Stalingrad",
@@ -53,5 +53,42 @@
     "resolvedTitle": "Downtown Assault",
     "mainImageTitle": "File:Datoapartment1.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[The Pipeline]]",
+    "label": "The Pipeline",
+    "links": [
+      {
+        "wikiTitle": "The Pipeline",
+        "label": "The Pipeline",
+        "url": "https://callofduty.fandom.com/wiki/The_Pipeline"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[City Hall]]",
+    "label": "City Hall",
+    "links": [
+      {
+        "wikiTitle": "City Hall",
+        "label": "City Hall",
+        "url": "https://callofduty.fandom.com/wiki/City_Hall"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty 2]]''",
+    "label": "Call of Duty 2",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty 2",
+        "label": "Call of Duty 2",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_2"
+      }
+    ]
+  },
+  "date": {
+    "raw": "January 15, 1943, 0135 hrs",
+    "label": "January 15, 1943, 0135 hrs"
   }
 }

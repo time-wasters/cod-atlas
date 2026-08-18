@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Sainte-M%C3%A8re-%C3%89glise",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Sainte-M%C3%A8re-%C3%89glise",
   "latestRevisionId": 2992277,
-  "importedAt": "2026-08-10T19:02:55.516Z",
+  "importedAt": "2026-08-18T20:41:13.775Z",
   "levelLocation": {
     "raw": "Sainte-Mère-Église, [[France]]",
     "label": "France",
@@ -53,5 +53,30 @@
     "resolvedTitle": "Sainte-Mère-Église",
     "mainImageTitle": "File:St._Mere_Eglise_Map_CoD2.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty 2]]''",
+    "label": "Call of Duty 2",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty 2",
+        "label": "Call of Duty 2",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_2"
+      }
+    ]
+  },
+  "date": {
+    "raw": null,
+    "label": null
   }
 }
