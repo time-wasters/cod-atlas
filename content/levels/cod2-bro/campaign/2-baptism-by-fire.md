@@ -4,6 +4,9 @@ title: Baptism By Fire
 games:
   - cod2-bro
 mode: singleplayer
+campaign:
+  id: "2"
+  label: North Africa
 wikiArticle: codwiki-baptism-by-fire
 locations:
   - id: main

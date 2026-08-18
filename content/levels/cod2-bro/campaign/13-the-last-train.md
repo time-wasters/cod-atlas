@@ -4,6 +4,9 @@ title: The Last Train
 games:
   - cod2-bro
 mode: singleplayer
+campaign:
+  id: "4"
+  label: Western Europe
 wikiArticle: codwiki-the-last-train
 locations:
   - id: main

@@ -4,6 +4,9 @@ title: We've Been Through Worse
 games:
   - cod2-bro
 mode: singleplayer
+campaign:
+  id: "1"
+  label: Prologue
 wikiArticle: codwiki-we-ve-been-through-worse
 locations:
   - id: main

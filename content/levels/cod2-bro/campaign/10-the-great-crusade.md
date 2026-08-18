@@ -4,6 +4,9 @@ title: The Great Crusade
 games:
   - cod2-bro
 mode: singleplayer
+campaign:
+  id: "4"
+  label: Western Europe
 wikiArticle: codwiki-the-great-crusade
 locations:
   - id: main

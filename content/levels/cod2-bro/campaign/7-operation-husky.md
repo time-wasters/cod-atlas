@@ -4,6 +4,9 @@ title: Operation Husky
 games:
   - cod2-bro
 mode: singleplayer
+campaign:
+  id: "3"
+  label: Sicily
 wikiArticle: codwiki-operation-husky-level
 locations:
   - id: main

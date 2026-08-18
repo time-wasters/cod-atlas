@@ -4,6 +4,9 @@ title: Liberators
 games:
   - cod2-bro
 mode: singleplayer
+campaign:
+  id: "2"
+  label: North Africa
 wikiArticle: codwiki-liberators
 locations:
   - id: main

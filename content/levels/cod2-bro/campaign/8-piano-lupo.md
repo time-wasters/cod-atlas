@@ -4,6 +4,9 @@ title: Piano Lupo
 games:
   - cod2-bro
 mode: singleplayer
+campaign:
+  id: "3"
+  label: Sicily
 wikiArticle: codwiki-piano-lupo
 locations:
   - id: main

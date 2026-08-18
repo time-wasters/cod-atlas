@@ -4,6 +4,9 @@ title: Farewell to Friends
 games:
   - cod2-bro
 mode: singleplayer
+campaign:
+  id: "3"
+  label: Sicily
 wikiArticle: codwiki-farewell-to-friends
 locations:
   - id: main

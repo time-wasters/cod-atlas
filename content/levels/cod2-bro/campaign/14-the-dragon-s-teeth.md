@@ -4,6 +4,9 @@ title: The Dragon's Teeth
 games:
   - cod2-bro
 mode: singleplayer
+campaign:
+  id: "4"
+  label: Western Europe
 wikiArticle: codwiki-the-dragon-s-teeth
 locations:
   - id: main

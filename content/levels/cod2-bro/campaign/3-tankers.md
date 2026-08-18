@@ -4,6 +4,9 @@ title: Tankers
 games:
   - cod2-bro
 mode: singleplayer
+campaign:
+  id: "2"
+  label: North Africa
 wikiArticle: codwiki-tankers
 locations:
   - id: main

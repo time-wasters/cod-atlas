@@ -4,6 +4,9 @@ title: An Easy Detail
 games:
   - cod2-bro
 mode: singleplayer
+campaign:
+  id: "4"
+  label: Western Europe
 wikiArticle: codwiki-an-easy-detail
 locations:
   - id: main
