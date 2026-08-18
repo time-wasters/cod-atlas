@@ -1,10 +1,16 @@
 ---
-id: cod2-the-battle-for-hill-400
-title: The Battle for Hill 400
+id: cod2-rangers-lead-the-way
+title: Rangers Lead the Way
 games:
   - cod2
 mode: singleplayer
-wikiArticle: codwiki-the-battle-for-hill-400
+campaign:
+  id: "3"
+  label: America
+  subcampaign:
+    id: "2"
+    label: Hill 400
+wikiArticle: codwiki-rangers-lead-the-way
 locations:
   - id: main
     country: Germany

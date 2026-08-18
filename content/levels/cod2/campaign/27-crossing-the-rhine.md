@@ -4,6 +4,12 @@ title: Crossing the Rhine
 games:
   - cod2
 mode: singleplayer
+campaign:
+  id: "3"
+  label: America
+  subcampaign:
+    id: "3"
+    label: Crossing the Rhine
 wikiArticle: codwiki-crossing-the-rhine
 locations:
   - id: main
