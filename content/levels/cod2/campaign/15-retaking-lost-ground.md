@@ -4,6 +4,12 @@ title: Retaking Lost Ground
 games:
   - cod2
 mode: singleplayer
+campaign:
+  id: "2"
+  label: Britain
+  subcampaign:
+    id: "3"
+    label: Rommel's Last Stand
 wikiArticle: codwiki-retaking-lost-ground
 locations:
   - id: main

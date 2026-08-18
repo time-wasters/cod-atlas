@@ -4,6 +4,12 @@ title: 88 Ridge
 games:
   - cod2
 mode: singleplayer
+campaign:
+  id: "2"
+  label: Britain
+  subcampaign:
+    id: "2"
+    label: The Tank Squadrons
 wikiArticle: codwiki-88-ridge
 locations:
   - id: main

@@ -4,6 +4,12 @@ title: Crusader Charge
 games:
   - cod2
 mode: singleplayer
+campaign:
+  id: "2"
+  label: Britain
+  subcampaign:
+    id: "2"
+    label: The Tank Squadrons
 wikiArticle: codwiki-crusader-charge
 locations:
   - id: main

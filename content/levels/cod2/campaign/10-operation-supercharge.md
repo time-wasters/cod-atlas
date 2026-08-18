@@ -4,6 +4,12 @@ title: Operation Supercharge
 games:
   - cod2
 mode: singleplayer
+campaign:
+  id: "2"
+  label: Britain
+  subcampaign:
+    id: "1"
+    label: The Battle of El Alamein
 wikiArticle: codwiki-operation-supercharge
 locations:
   - id: main

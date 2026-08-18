@@ -4,6 +4,12 @@ title: Prisoners of War
 games:
   - cod2
 mode: singleplayer
+campaign:
+  id: "2"
+  label: Britain
+  subcampaign:
+    id: "4"
+    label: The Battle for Caen
 wikiArticle: codwiki-prisoners-of-war
 locations:
   - id: main

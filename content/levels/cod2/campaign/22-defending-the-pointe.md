@@ -4,6 +4,12 @@ title: Defending the Pointe
 games:
   - cod2
 mode: singleplayer
+campaign:
+  id: "3"
+  label: America
+  subcampaign:
+    id: "1"
+    label: D-Day
 wikiArticle: codwiki-defending-the-pointe
 locations:
   - id: main

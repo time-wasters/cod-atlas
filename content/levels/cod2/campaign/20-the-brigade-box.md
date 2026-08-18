@@ -4,6 +4,12 @@ title: The Brigade Box
 games:
   - cod2
 mode: singleplayer
+campaign:
+  id: "2"
+  label: Britain
+  subcampaign:
+    id: "4"
+    label: The Battle for Caen
 wikiArticle: codwiki-the-brigade-box
 locations:
   - id: main
