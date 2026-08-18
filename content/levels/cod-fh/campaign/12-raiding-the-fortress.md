@@ -4,6 +4,9 @@ title: Raiding the Fortress
 games:
   - cod-fh
 mode: singleplayer
+campaign:
+  id: "2"
+  label: North Africa
 wikiArticle: codwiki-raiding-the-fortress
 locations:
   - id: main

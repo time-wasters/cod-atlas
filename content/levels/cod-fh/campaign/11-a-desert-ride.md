@@ -4,6 +4,9 @@ title: A Desert Ride
 games:
   - cod-fh
 mode: singleplayer
+campaign:
+  id: "2"
+  label: North Africa
 wikiArticle: codwiki-a-desert-ride
 locations:
   - id: main

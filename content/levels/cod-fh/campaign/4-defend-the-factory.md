@@ -4,6 +4,9 @@ title: Defend the Factory
 games:
   - cod-fh
 mode: singleplayer
+campaign:
+  id: "1"
+  label: Eastern Front
 wikiArticle: codwiki-defend-the-factory
 locations:
   - id: main

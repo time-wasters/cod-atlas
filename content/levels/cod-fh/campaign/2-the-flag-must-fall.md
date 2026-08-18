@@ -4,6 +4,9 @@ title: The Flag Must Fall
 games:
   - cod-fh
 mode: singleplayer
+campaign:
+  id: "1"
+  label: Eastern Front
 wikiArticle: codwiki-the-flag-must-fall
 locations:
   - id: main

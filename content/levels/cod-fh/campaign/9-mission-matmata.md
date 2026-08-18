@@ -4,6 +4,9 @@ title: "Mission: Matmata"
 games:
   - cod-fh
 mode: singleplayer
+campaign:
+  id: "2"
+  label: North Africa
 wikiArticle: codwiki-mission-matmata
 locations:
   - id: main

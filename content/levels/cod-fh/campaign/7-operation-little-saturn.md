@@ -4,6 +4,9 @@ title: Operation Little Saturn
 games:
   - cod-fh
 mode: singleplayer
+campaign:
+  id: "1"
+  label: Eastern Front
 wikiArticle: codwiki-operation-little-saturn-level
 locations:
   - id: main

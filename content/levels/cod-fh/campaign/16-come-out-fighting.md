@@ -4,6 +4,9 @@ title: Come Out Fighting
 games:
   - cod-fh
 mode: singleplayer
+campaign:
+  id: "3"
+  label: Western Front
 wikiArticle: codwiki-come-out-fighting
 locations:
   - id: main

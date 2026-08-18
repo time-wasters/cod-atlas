@@ -4,6 +4,9 @@ title: Dead In Her Sights
 games:
   - cod-fh
 mode: singleplayer
+campaign:
+  id: "1"
+  label: Eastern Front
 wikiArticle: codwiki-dead-in-her-sights
 locations:
   - id: main

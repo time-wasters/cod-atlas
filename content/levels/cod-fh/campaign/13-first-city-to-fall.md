@@ -4,6 +4,9 @@ title: First City to Fall
 games:
   - cod-fh
 mode: singleplayer
+campaign:
+  id: "3"
+  label: Western Front
 wikiArticle: codwiki-first-city-to-fall
 locations:
   - id: main

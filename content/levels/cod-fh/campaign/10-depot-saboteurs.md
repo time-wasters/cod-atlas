@@ -4,6 +4,9 @@ title: Depot Saboteurs
 games:
   - cod-fh
 mode: singleplayer
+campaign:
+  id: "2"
+  label: North Africa
 wikiArticle: codwiki-depot-saboteurs
 locations:
   - id: main

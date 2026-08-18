@@ -4,6 +4,9 @@ title: Not One Step Back
 games:
   - cod-fh
 mode: singleplayer
+campaign:
+  id: "1"
+  label: Eastern Front
 wikiArticle: codwiki-not-one-step-back
 locations:
   - id: main

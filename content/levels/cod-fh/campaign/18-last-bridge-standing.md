@@ -4,6 +4,9 @@ title: Last Bridge Standing
 games:
   - cod-fh
 mode: singleplayer
+campaign:
+  id: "3"
+  label: Western Front
 wikiArticle: codwiki-last-bridge-standing
 locations:
   - id: main
