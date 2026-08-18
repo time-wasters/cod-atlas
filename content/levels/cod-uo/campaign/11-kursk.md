@@ -4,6 +4,9 @@ title: Kursk
 games:
   - cod-uo
 mode: singleplayer
+campaign:
+  id: "3"
+  label: Russia
 wikiArticle: codwiki-kursk-campaign
 locations:
   - id: main

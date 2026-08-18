@@ -4,6 +4,9 @@ title: Kharkov Outskirts
 games:
   - cod-uo
 mode: singleplayer
+campaign:
+  id: "3"
+  label: Russia
 wikiArticle: codwiki-kharkov-1
 locations:
   - id: main

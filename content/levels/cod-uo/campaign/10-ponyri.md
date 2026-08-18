@@ -4,6 +4,9 @@ title: Ponyri
 games:
   - cod-uo
 mode: singleplayer
+campaign:
+  id: "3"
+  label: Russia
 wikiArticle: codwiki-ponyri
 locations:
   - id: main

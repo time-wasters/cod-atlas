@@ -4,6 +4,9 @@ title: Sicily 1
 games:
   - cod-uo
 mode: singleplayer
+campaign:
+  id: "2"
+  label: Britain
 wikiArticle: codwiki-sicily-1
 locations:
   - id: main

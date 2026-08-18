@@ -4,6 +4,9 @@ title: Crossroads
 games:
   - cod-uo
 mode: singleplayer
+campaign:
+  id: "1"
+  label: America
 wikiArticle: codwiki-crossroads-united-offensive
 locations:
   - id: main
