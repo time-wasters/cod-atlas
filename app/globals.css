@@ -398,7 +398,7 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
 .intel-card::-webkit-scrollbar-track, .intel-entries::-webkit-scrollbar-track, .level-briefing-content::-webkit-scrollbar-track { border-radius: 4px; background: #171b14; }
 .intel-card::-webkit-scrollbar-thumb, .intel-entries::-webkit-scrollbar-thumb, .level-briefing-content::-webkit-scrollbar-thumb { border: 2px solid #171b14; border-radius: 4px; background: #6f674b; }
 .intel-card::-webkit-scrollbar-thumb:hover, .intel-entries::-webkit-scrollbar-thumb:hover, .level-briefing-content::-webkit-scrollbar-thumb:hover { background: #9a895d; }
-.level-briefing-content p, .level-briefing-content li { color: #c8c1ae; font-size: 11px; line-height: 1.65; }
+.level-briefing-content p, .level-briefing-content li { color: #c8c1ae; font-size: 12px; line-height: 1.65; }
 .level-briefing-content p { margin: 0 0 12px; }
 .level-briefing-content h2, .level-briefing-content h3 { margin: 20px 0 9px; color: #e9dcb9; font: 700 11px var(--font-geist-mono), monospace; letter-spacing: .08em; text-transform: uppercase; }
 .level-briefing-content blockquote { margin: 2px 0 15px; border-left: 2px solid #a8731d; padding: 8px 10px; background: #d99a1c0b; }
