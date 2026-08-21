@@ -46,24 +46,18 @@ The pipeline:
 Install dependencies
         |
         v
-Validate generated data
+Validate curated data
         |
         v
-      Tests
+Generate, test
         |
         v
    Static build
 ```
 
-Generated atlas data must remain synchronized with its source files.
-
-If `npm run data:check` reports that the generated atlas data is stale, rebuild it locally with:
-
-```bash
-npm run data:build
-```
-
-and commit the updated generated file.
+`npm run data:check` validates the curated source without requiring generated
+files. Tests, application builds and container builds generate fresh ignored
+JSON artifacts before compiling the application.
 
 ## Container publishing
 

@@ -1,4 +1,4 @@
-import { readFile, readdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 import countries from "world-countries";
@@ -7,9 +7,10 @@ import YAML from "yaml";
 const root = process.cwd();
 const contentRoot = path.join(root, "content");
 const levelsRoot = path.join(contentRoot, "levels");
-const outputPath = path.join(root, "app/data/atlas.generated.json");
-const mapOverlaysOutputPath = path.join(root, "app/data/map-overlays.generated.json");
-const historyOverlaysOutputPath = path.join(root, "app/data/history-overlays.generated.json");
+const outputDirectory = path.join(root, "app/data");
+const outputPath = path.join(outputDirectory, "atlas.generated.json");
+const mapOverlaysOutputPath = path.join(outputDirectory, "map-overlays.generated.json");
+const historyOverlaysOutputPath = path.join(outputDirectory, "history-overlays.generated.json");
 const levelBannersRoot = path.join(root, "public/images/levels");
 const checkOnly = process.argv.includes("--check");
 const validModes = new Set(["singleplayer", "multiplayer"]);
@@ -456,17 +457,13 @@ const serialized = `${JSON.stringify(compiled, null, 2)}\n`;
 const mapOverlaysSerialized = `${JSON.stringify(mapOverlays, null, 2)}\n`;
 const historyOverlaysSerialized = `${JSON.stringify(historyOverlays, null, 2)}\n`;
 
-if (checkOnly) {
-  const existing = await readFile(outputPath, "utf8");
-  requireValue(existing === serialized, "app/data/atlas.generated.json is stale; run npm run data:build");
-  const existingMapOverlays = await readFile(mapOverlaysOutputPath, "utf8");
-  requireValue(existingMapOverlays === mapOverlaysSerialized, "app/data/map-overlays.generated.json is stale; run npm run data:build");
-  const existingHistoryOverlays = await readFile(historyOverlaysOutputPath, "utf8");
-  requireValue(existingHistoryOverlays === historyOverlaysSerialized, "app/data/history-overlays.generated.json is stale; run npm run data:build");
-} else {
-  await writeFile(outputPath, serialized);
-  await writeFile(mapOverlaysOutputPath, mapOverlaysSerialized);
-  await writeFile(historyOverlaysOutputPath, historyOverlaysSerialized);
+if (!checkOnly) {
+  await mkdir(outputDirectory, { recursive: true });
+  await Promise.all([
+    writeFile(outputPath, serialized),
+    writeFile(mapOverlaysOutputPath, mapOverlaysSerialized),
+    writeFile(historyOverlaysOutputPath, historyOverlaysSerialized),
+  ]);
 }
 
 for (const bannerBase of levelBannerFilesByBase.keys()) {

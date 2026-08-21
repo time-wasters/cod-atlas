@@ -206,7 +206,7 @@ found” where certainty is limited.
 
 ## Finishing the change
 
-After editing a level, regenerate `app/data/atlas.generated.json` with
-`npm run data:build` or its documented Docker equivalent. Run the repository's
-required data check, lint, tests and static build. Report the selected location,
-coordinates, main historical conclusion, uncertainty and validation results.
+After editing a level, run the repository's required data check, lint, tests
+and static build. These commands generate ignored JSON build artifacts when
+needed; do not commit them. Report the selected location, coordinates, main
+historical conclusion, uncertainty and validation results.

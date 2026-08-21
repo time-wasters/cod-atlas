@@ -2,9 +2,8 @@
 
 This is the reference for hand-authored data under `content/`. Start from a
 file in [`docs/templates/`](templates/) and replace every example value. Do not
-edit `app/data/atlas.generated.json`; `npm run data:build` regenerates it.
-Without host npm, use
-`docker compose run --rm cod-atlas-tools npm run data:build`.
+edit or commit `app/data/*.generated.json`; build commands regenerate these
+ignored artifacts. Without host npm, use the documented Docker commands.
 
 ## What to contribute
 
@@ -209,8 +208,9 @@ around a block. Review imported location and media attribution before commit.
 
 ## Submit and validate
 
-After editing `content/`, run `npm run data:build` and include the regenerated
-`app/data/atlas.generated.json` in the same pull request. Then run:
+After editing `content/`, commit only the curated source files. Generated JSON
+is created automatically by commands that need it. When a local toolchain is
+available, run:
 
 ```sh
 npm run data:check

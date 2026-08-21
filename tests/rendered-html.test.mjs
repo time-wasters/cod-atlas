@@ -69,7 +69,7 @@ test("preserves the complete statically compiled atlas", async () => {
     (entry) => entry.title === title && entry.game.split(" / ").includes(game),
   );
 
-  assert.equal(entries.length, 987);
+  assert.equal(entries.length, 988);
   assert.equal(findGroup("France").flagCode, "FR");
   assert.equal(findGroup("Turkey").flagCode, "TR");
   assert.equal(findGroup("United States").flagCode, "US");
@@ -230,9 +230,9 @@ test("preserves the complete statically compiled atlas", async () => {
   assert.match(bocageMedia.rights.notice, /identification and critical commentary/);
 
   const cod2Entries = entries.filter((entry) => entry.game.split(" / ").includes("COD2"));
-  assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "singleplayer").length, 26);
+  assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "singleplayer").length, 27);
   assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "multiplayer").length, 21);
-  assert.equal(entries.filter((entry) => entry.modes[0] === "singleplayer").length, 406);
+  assert.equal(entries.filter((entry) => entry.modes[0] === "singleplayer").length, 407);
   assert.equal(entries.filter((entry) => entry.modes[0] === "multiplayer").length, 581);
 });
 

@@ -18,7 +18,7 @@ erDiagram
   coordinates, precision, and notes.
 - `content/wiki-import/articles/*.json` stores repeatable Wiki-import results
   and media attribution.
-- `app/data/atlas.generated.json` is a derived browser dataset.
+- `app/data/atlas.generated.json` is a derived, ignored browser build artifact.
 
 ## Game record
 
@@ -161,13 +161,14 @@ original copyright.
 flowchart LR
   A["Curated content"] --> B["Validate and compile"]
   C["Wiki imports"] --> B
-  B --> D["Generated atlas JSON"]
+  B --> D["Generated atlas JSON (ignored)"]
   D --> E["Static map build"]
 ```
 
 Run `npm run data:build` to validate IDs, foreign keys, enum values, coordinate
-pairs, and ranges before regenerating the browser dataset. Never manually edit
-the generated JSON.
+pairs, and ranges before regenerating the browser dataset. Use
+`npm run data:check` to perform the same validation without writing build
+artifacts. Never manually edit or commit the generated JSON.
 
 Docker equivalent:
 
