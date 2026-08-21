@@ -17,8 +17,8 @@ locations:
     method: real-world-inspiration
     primary: true
     urls:
-      - googleMaps: <Google Maps search for "Villers-Bocage, Calvados, France">
-      - wikipedia: <English Wikipedia article for "Villers-Bocage, Calvados">
+      - googleMaps: https://www.google.com/maps/search/?api=1&query=Villers-Bocage%2C+Calvados%2C+France
+      - wikipedia: https://en.wikipedia.org/wiki/Villers-Bocage,_Calvados
 ---
 
 > **AI-generated research note:** The historical summary below was generated
