@@ -1,28 +1,24 @@
 ---
-
 id: cod2-assault-on-matmata
 title: Assault on Matmata
 games:
-
-* cod2
-  mode: singleplayer
-  wikiArticle: codwiki-assault-on-matmata
-  locations:
-* id: main
-  country: Tunisia
-  region: Gabès Governorate
-  city: Matmata
-  latitude: 33.54445
-  longitude: 9.97157
-  precision: city
-  confidence: high
-  method: wiki-location
-  primary: true
-  urls:
-
-  * googleMaps: https://www.google.com/maps/search/?api=1&query=Matmata%2C+Tunisia
-  * wikipedia: https://en.wikipedia.org/wiki/Matmata%2C_Tunisia
-
+  - cod2
+mode: singleplayer
+wikiArticle: codwiki-assault-on-matmata
+locations:
+  - id: main
+    country: Tunisia
+    region: Gabès Governorate
+    city: Matmata
+    latitude: 33.54445
+    longitude: 9.97157
+    precision: city
+    confidence: high
+    method: wiki-location
+    primary: true
+    urls:
+      - googleMaps: https://www.google.com/maps/search/?api=1&query=Matmata%2C+Tunisia
+      - wikipedia: https://en.wikipedia.org/wiki/Matmata%2C_Tunisia
 ---
 
 > **AI-generated research note:** The historical summary below was generated
@@ -160,31 +156,31 @@ article for the real settlement.
 
 ## Sources
 
-* [Call of Duty Wiki: Assault on Matmata](https://callofduty.fandom.com/wiki/Assault_on_Matmata)
+- [Call of Duty Wiki: Assault on Matmata](https://callofduty.fandom.com/wiki/Assault_on_Matmata)
   — character, 7th Armoured Division affiliation, March 30, 1943 date, Matmata
   setting, mission objectives and the old-fortress/Flakvierling sequence.
-* [Call of Duty Wiki: Assault on Matmata transcript](https://callofduty.fandom.com/wiki/Assault_on_Matmata/Transcript)
+- [Call of Duty Wiki: Assault on Matmata transcript](https://callofduty.fandom.com/wiki/Assault_on_Matmata/Transcript)
   — loading journal, convoy composition, Boyle and Carver's deaths, rally point
   Baker, calls for reinforcements, German strafing attacks and the mission's
   ending.
-* [Supplement to the *London Gazette*: The African Campaign from El Alamein to Tunis](https://www.ibiblio.org/hyperwar/UN/UK/LondonGazette/38196.pdf)
+- [Supplement to the *London Gazette*: The African Campaign from El Alamein to Tunis](https://www.ibiblio.org/hyperwar/UN/UK/LondonGazette/38196.pdf)
   — official British account of Operation PUGILIST, the roles assigned to X and
   XXX Corps, the Matmata Mountains and Gabès–Matmata road, 4th Indian
   Division's mountain advance, the Axis withdrawal, evacuation of El Hamma and
   entry into Gabès on March 29.
-* [Queen's Royal Surreys: Mareth and Beyond](https://queensroyalsurreys.org.uk/ww2/middle_east/qme021.html)
+- [Queen's Royal Surreys: Mareth and Beyond](https://queensroyalsurreys.org.uk/ww2/middle_east/qme021.html)
   — regimental history of the Queen's Brigade during the Mareth fighting and
   its March 31 movement through the Matmata Hills to El Mdou, where 7th
   Armoured Division concentrated in reserve.
-* [Queen's Royal Surreys: The Queen's in the Second World War](https://www.queensroyalsurreys.org.uk/short_history/the-queenss-second-world-war.html)
+- [Queen's Royal Surreys: The Queen's in the Second World War](https://www.queensroyalsurreys.org.uk/short_history/the-queenss-second-world-war.html)
   — confirms 131 Brigade's incorporation into 7th Armoured Division and its
   participation in the North African campaign.
-* [Discover Tunisia: From Gabes to Matmata](https://www.discovertunisia.com/en/discover/gabes-matmata)
+- [Discover Tunisia: From Gabes to Matmata](https://www.discovertunisia.com/en/discover/gabes-matmata)
   — Tunisia's official tourism description of the Matmata hill landscape,
   Berber settlements and characteristic subterranean dwellings.
-* [GeoNames: Matmata, Tunisia](https://www.geonames.org/2463810/matmata.html)
+- [GeoNames: Matmata, Tunisia](https://www.geonames.org/2463810/matmata.html)
   — populated-place identification, Gabès Governorate, elevation and the
   `33.54445, 9.97157` settlement coordinate used for the atlas marker.
-* [Wikipedia: Matmata, Tunisia](https://en.wikipedia.org/wiki/Matmata%2C_Tunisia)
+- [Wikipedia: Matmata, Tunisia](https://en.wikipedia.org/wiki/Matmata%2C_Tunisia)
   — English-language location article used for the curated outbound Wikipedia
   URL and supplementary context on Matmata's troglodyte settlement.
