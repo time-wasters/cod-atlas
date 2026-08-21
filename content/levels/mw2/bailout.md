@@ -9,10 +9,12 @@ locations:
   - id: main
     country: United States
     region: Virginia
-    latitude: 37.5
-    longitude: -78.8
-    precision: country
-    confidence: fallback
-    method: country-fallback
+    latitude: 37.4315734
+    longitude: -78.6568942
+    precision: approximate
+    confidence: medium
+    method: manual-approximate
     primary: true
+    urls:
+      - callOfDutyMaps: https://callofdutymaps.com/modern-warfare-2/bailout
 ---

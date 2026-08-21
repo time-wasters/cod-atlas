@@ -9,10 +9,12 @@ locations:
   - id: main
     country: Pakistan
     city: Karachi
-    latitude: 24.8608
-    longitude: 67.0104
-    precision: city
-    confidence: high
-    method: title
+    latitude: 24.8607343
+    longitude: 67.0011364
+    precision: approximate
+    confidence: medium
+    method: manual-approximate
     primary: true
+    urls:
+      - callOfDutyMaps: https://callofdutymaps.com/modern-warfare-2/karachi
 ---

@@ -8,10 +8,12 @@ wikiArticle: codwiki-quarry
 locations:
   - id: main
     country: Brazil
-    latitude: -10
-    longitude: -55
-    precision: country
-    confidence: fallback
-    method: country-fallback
+    latitude: -23.9475247
+    longitude: -46.3367247
+    precision: approximate
+    confidence: medium
+    method: manual-approximate
     primary: true
+    urls:
+      - callOfDutyMaps: https://callofdutymaps.com/modern-warfare-2/quarry
 ---

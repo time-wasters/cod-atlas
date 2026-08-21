@@ -8,10 +8,12 @@ wikiArticle: codwiki-wasteland
 locations:
   - id: main
     country: Ukraine
-    latitude: 49
-    longitude: 32
-    precision: country
-    confidence: fallback
-    method: country-fallback
+    latitude: 50.0529506
+    longitude: 30.7667133
+    precision: approximate
+    confidence: medium
+    method: manual-approximate
     primary: true
+    urls:
+      - callOfDutyMaps: https://callofdutymaps.com/modern-warfare-2/wasteland
 ---
