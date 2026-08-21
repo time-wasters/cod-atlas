@@ -4,6 +4,12 @@ title: The Battle of Pointe du Hoc
 games:
   - cod2
 mode: singleplayer
+campaign:
+  id: "3"
+  label: America
+  subcampaign:
+    id: "1"
+    label: D-Day
 wikiArticle: codwiki-the-battle-of-pointe-du-hoc
 locations:
   - id: main
