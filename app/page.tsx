@@ -570,20 +570,17 @@ function AdvancedFilterGroup({
   selected,
   onToggle,
   onClear,
-  sourceUrl,
 }: {
   title: string;
   options: FilterOption[];
   selected: Set<string>;
   onToggle: (value: string) => void;
   onClear: () => void;
-  sourceUrl?: string;
 }) {
   return (
     <section className="advanced-filter-group">
       <header>
         <h3>{title}</h3>
-        {sourceUrl ? <a href={sourceUrl} target="_blank" rel="noreferrer" aria-label={`${title} definitions`}>Issue #11 â†—</a> : null}
       </header>
       <div className="advanced-filter-options">
         <button
@@ -1811,7 +1808,6 @@ export default function Home() {
                 title="Era"
                 options={gameEraOptions}
                 selected={gameEras}
-                sourceUrl="https://github.com/time-wasters/cod-atlas/issues/11"
                 onToggle={(value) => {
                   urlHistoryMode.current = "push";
                   setGameEras((current) => toggledFilterValue(current, value));
