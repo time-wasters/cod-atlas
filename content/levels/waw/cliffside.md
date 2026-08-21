@@ -9,10 +9,10 @@ locations:
   - id: main
     country: Japan
     region: Okinawa
-    latitude: 36
-    longitude: 138
-    precision: country
-    confidence: fallback
-    method: country-fallback
+    latitude: 26.120191099999992
+    longitude: 127.7025012000000
+    precision: approximate
+    confidence: medium
+    method: manual-approximate
     primary: true
 ---

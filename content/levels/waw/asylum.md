@@ -8,10 +8,10 @@ wikiArticle: codwiki-asylum
 locations:
   - id: main
     country: Germany
-    latitude: 51
-    longitude: 9
-    precision: country
-    confidence: fallback
-    method: country-fallback
+    latitude: 52.59287869999998
+    longitude: 13.431700099999992
+    precision: approximate
+    confidence: medium
+    method: manual-approximate
     primary: true
 ---
