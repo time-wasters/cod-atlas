@@ -370,10 +370,9 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
 .more-row { width: 100%; border: 0; border-top: 1px solid #33392d; padding: 10px 0; color: #c28e30; background: transparent; font: 700 9px var(--font-geist-mono), monospace; letter-spacing: .04em; text-align: left; cursor: pointer; }
 .more-row:hover, .more-row:focus-visible { color: #f0bd58; outline: none; }
 .more-row.is-collapse { color: #858b78; }
-.place-links { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 6px; margin: 0 0 10px; }
-.place-links a { min-width: 0; min-height: 36px; display: flex; align-items: center; justify-content: center; gap: 6px; border: 1px solid #676b55; border-radius: 4px; padding: 0 6px; color: #d8cfb2; background: #20251c; font-size: 9px; font-weight: 700; text-decoration: none; white-space: nowrap; }
-.place-links svg { width: 15px; height: 15px; flex: 0 0 15px; fill: currentColor; }
-.place-links span { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.place-links { display: flex; align-items: center; gap: 6px; margin: 0 0 10px; }
+.place-links a { width: 36px; height: 36px; flex: 0 0 36px; display: grid; place-items: center; border: 1px solid #676b55; border-radius: 4px; padding: 0; color: #d8cfb2; background: #20251c; text-decoration: none; }
+.place-links img { width: 22px; height: 22px; object-fit: contain; border-radius: 2px; }
 .place-links a:hover { border-color: var(--amber); color: var(--amber); background: #dfa12712; }
 .map-overlay-toggle { width: 34px; height: 34px; flex: 0 0 34px; display: grid; place-items: center; border: 1px solid #5d624c; border-radius: 4px; padding: 0; color: #aaa995; background: #1a1f17; cursor: pointer; }
 .map-overlay-toggle svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-linejoin: round; stroke-width: 1.5; }

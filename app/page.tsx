@@ -229,18 +229,18 @@ function animateMapOverlayOpacity(
   animationRef.current = requestAnimationFrame(tick);
 }
 
-const EXTERNAL_LINK_ICON_PATHS = {
-  googleMaps: "M19.527 4.799c1.212 2.608.937 5.678-.405 8.173-1.101 2.047-2.744 3.74-4.098 5.614-.619.858-1.244 1.75-1.669 2.727-.141.325-.263.658-.383.992-.121.333-.224.673-.34 1.008-.109.314-.236.684-.627.687h-.007c-.466-.001-.579-.53-.695-.887-.284-.874-.581-1.713-1.019-2.525-.51-.944-1.145-1.817-1.79-2.671L19.527 4.799zM8.545 7.705l-3.959 4.707c.724 1.54 1.821 2.863 2.871 4.18.247.31.494.622.737.936l4.984-5.925-.029.01c-1.741.601-3.691-.291-4.392-1.987a3.377 3.377 0 0 1-.209-.716c-.063-.437-.077-.761-.004-1.198l.001-.007zM5.492 3.149l-.003.004c-1.947 2.466-2.281 5.88-1.117 8.77l4.785-5.689-.058-.05-3.607-3.035zM14.661.436l-3.838 4.563a.295.295 0 0 1 .027-.01c1.6-.551 3.403.15 4.22 1.626.176.319.323.683.377 1.045.068.446.085.773.012 1.22l-.003.016 3.836-4.561A8.382 8.382 0 0 0 14.67.439l-.009-.003zM9.466 5.868L14.162.285l-.047-.012A8.31 8.31 0 0 0 11.986 0a8.439 8.439 0 0 0-6.169 2.766l-.016.018 3.665 3.084z",
-  wikipedia: "M12.09 13.119c-.936 1.932-2.217 4.548-2.853 5.728-.616 1.074-1.127.931-1.532.029-1.406-3.321-4.293-9.144-5.651-12.409-.251-.601-.441-.987-.619-1.139-.181-.15-.554-.24-1.122-.271C.103 5.033 0 4.982 0 4.898v-.455l.052-.045c.924-.005 5.401 0 5.401 0l.051.045v.434c0 .119-.075.176-.225.176l-.564.031c-.485.029-.727.164-.727.436 0 .135.053.33.166.601 1.082 2.646 4.818 10.521 4.818 10.521l.136.046 2.411-4.81-.482-1.067-1.658-3.264s-.318-.654-.428-.872c-.728-1.443-.712-1.518-1.447-1.617-.207-.023-.313-.05-.313-.149v-.468l.06-.045h4.292l.113.037v.451c0 .105-.076.15-.227.15l-.308.047c-.792.061-.661.381-.136 1.422l1.582 3.252 1.758-3.504c.293-.64.233-.801.111-.947-.07-.084-.305-.22-.812-.24l-.201-.021c-.052 0-.098-.015-.145-.051-.045-.031-.067-.076-.067-.129v-.427l.061-.045c1.247-.008 4.043 0 4.043 0l.059.045v.436c0 .121-.059.178-.193.178-.646.03-.782.095-1.023.439-.12.186-.375.589-.646 1.039l-2.301 4.273-.065.135 2.792 5.712.17.048 4.396-10.438c.154-.422.129-.722-.064-.895-.197-.172-.346-.273-.857-.295l-.42-.016c-.061 0-.105-.014-.152-.045-.043-.029-.072-.075-.072-.119v-.436l.059-.045h4.961l.041.045v.437c0 .119-.074.18-.209.18-.648.03-1.127.18-1.443.421-.314.255-.557.616-.736 1.067 0 0-4.043 9.258-5.426 12.339-.525 1.007-1.053.917-1.503-.031-.571-1.171-1.773-3.786-2.646-5.71l.053-.036z",
-  callOfDutyMaps: "M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9A.5.5 0 0 0 3 5.38V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5a.5.5 0 0 0-.5-.5zM10 5.47l4 1.4v11.66l-4-1.4V5.47zM5 6.46l3-1.01v11.7l-3 1.16V6.46zm14 11.08-3 1.01V6.85l3-1.16v11.85z",
-  fandom: "M22.192 11.317c0 .2-.08.392-.222.533l-9.28 9.306a.686.686 0 0 1-.512.224.743.743 0 0 1-.534-.225l-.654-.614a.284.284 0 0 1-.007-.41l10.713-10.72c.182-.182.497-.054.497.201v1.706zm-11.904 7.018-.532.475a.445.445 0 0 1-.604-.014l-7.065-6.897a.918.918 0 0 1-.277-.66V9.952c0-.464.566-.698.9-.371l7.499 7.322c.13.13.35.396.35.717 0 .205-.047.495-.27.717zM3.973 4.987l2.431-2.402a.292.292 0 0 1 .41 0l8.139 8.045a2.19 2.19 0 0 1 0 3.12l-2.43 2.401a.293.293 0 0 1-.408 0l-8.14-8.047a2.172 2.172 0 0 1-.65-1.56c0-.59.23-1.144.648-1.557zm9.632 1.375 2.54-2.51a2.241 2.241 0 0 1 1.897-.623c.5.068.956.326 1.313.679l2.571 2.542a.284.284 0 0 1 0 .406l-3.91 3.867a.29.29 0 0 1-.41 0l-4.001-3.956a.285.285 0 0 1 0-.405zM23.7 5.885 18.04.19a.603.603 0 0 0-.852-.002l-4.493 4.485a.898.898 0 0 1-1.262.002L6.94.237a.603.603 0 0 0-.842-.002L.31 5.871c-.2.194-.31.458-.31.733v5.34c0 .271.11.534.305.726l11.277 11.145a.603.603 0 0 0 .846 0L23.696 12.67c.194-.193.304-.455.304-.727V6.606c0-.27-.106-.529-.298-.72z",
+const EXTERNAL_LINK_ICONS = {
+  googleMaps: "webpage_icons/maps-google-com.ico",
+  wikipedia: "webpage_icons/wikipedia-com.ico",
+  callOfDutyMaps: "webpage_icons/callofdutymaps-com.webp",
+  fandom: "webpage_icons/callofduty-fandom-com.webp",
 } as const;
 
-function ExternalLinkIcon({ name }: { name: keyof typeof EXTERNAL_LINK_ICON_PATHS }) {
+function ExternalLinkIcon({ name }: { name: keyof typeof EXTERNAL_LINK_ICONS }) {
   return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d={EXTERNAL_LINK_ICON_PATHS[name]} />
-    </svg>
+    // These tiny reviewed favicon assets do not need runtime image optimization.
+    // eslint-disable-next-line @next/next/no-img-element
+    <img src={EXTERNAL_LINK_ICONS[name]} width="24" height="24" alt="" aria-hidden="true" />
   );
 }
 
@@ -1786,15 +1786,25 @@ export default function Home() {
           )}
           <div className="place-links" aria-label="External place links">
             {selectedGoogleMapsUrl && (
-              <a href={selectedGoogleMapsUrl} target="_blank" rel="noreferrer">
+              <a
+                href={selectedGoogleMapsUrl}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Open in Google Maps"
+                title="Google Maps"
+              >
                 <ExternalLinkIcon name="googleMaps" />
-                <span>Google Maps</span>
               </a>
             )}
             {selectedWikipediaUrl && (
-              <a href={selectedWikipediaUrl} target="_blank" rel="noreferrer">
+              <a
+                href={selectedWikipediaUrl}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Open on Wikipedia"
+                title="Wikipedia"
+              >
                 <ExternalLinkIcon name="wikipedia" />
-                <span>Wikipedia</span>
               </a>
             )}
             {selectedCallOfDutyMapsUrl && (
@@ -1806,12 +1816,16 @@ export default function Home() {
                 title="Call of Duty Maps"
               >
                 <ExternalLinkIcon name="callOfDutyMaps" />
-                <span>CoD Maps</span>
               </a>
             )}
-            <a href={selected.entry.wiki} target="_blank" rel="noreferrer">
+            <a
+              href={selected.entry.wiki}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Open on Call of Duty Wiki"
+              title="Call of Duty Wiki"
+            >
               <ExternalLinkIcon name="fandom" />
-              <span>CoD Wiki</span>
             </a>
           </div>
           <section className="level-briefing">

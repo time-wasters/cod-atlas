@@ -56,7 +56,24 @@ test("renders development preview metadata", async () => {
   assert.match(html, /This website was made by me, <a href="https:\/\/github\.com\/plp-gtr"[^>]*>Philipp Gächter<\/a>/);
   assert.doesNotMatch(html, /> Localized /);
   assert.match(html, /https:\/\/www\.google\.com\/maps\/search\/\?api=1(?:&|&amp;)query=Adriatic%20Sea/);
+  assert.match(html, /aria-label="Open in Google Maps"/);
+  assert.match(html, /src="webpage_icons\/maps-google-com\.ico"/);
+  assert.match(html, /aria-label="Open on Call of Duty Wiki"/);
+  assert.match(html, /src="webpage_icons\/callofduty-fandom-com\.webp"/);
+  assert.doesNotMatch(html, />Google Maps<\/span>/);
+  assert.doesNotMatch(html, />CoD Wiki<\/span>/);
   assert.ok(html.indexOf('class="mission-heading"') < html.indexOf('class="intel-kicker"'));
+});
+
+test("bundles the details-panel website icons", async () => {
+  for (const filename of [
+    "maps-google-com.ico",
+    "wikipedia-com.ico",
+    "callofdutymaps-com.webp",
+    "callofduty-fandom-com.webp",
+  ]) {
+    await access(new URL(`../public/webpage_icons/${filename}`, import.meta.url));
+  }
 });
 
 test("preserves the complete statically compiled atlas", async () => {
