@@ -21,6 +21,7 @@ locations:
     urls:
       - googleMaps: https://www.google.com/maps/search/?api=1&query=Tirpitz+wreck+site%2C+H%C3%A5k%C3%B8ya%2C+Troms%C3%B8%2C+Norway
       - wikipedia: https://en.wikipedia.org/wiki/German_battleship_Tirpitz
+      - callOfDutyMaps: https://callofdutymaps.com/call-of-duty-1/ship/
 ---
 
 > **AI-generated research note:** The historical summary below was generated

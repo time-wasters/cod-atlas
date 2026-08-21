@@ -107,6 +107,38 @@ test("preserves the complete statically compiled atlas", async () => {
   assert.ok(entries.every((entry) =>
     entry.modes.length === 1 && ["singleplayer", "multiplayer"].includes(entry.modes[0])));
 
+  const expectedCod1MapLinks = new Map([
+    ["cod-bocage", "bocage"],
+    ["cod-brecourt", "brecourt"],
+    ["cod-cod2-wwii-carentan", "carentan"],
+    ["cod-chateau", "chateau"],
+    ["cod-dawnville", "dawnville"],
+    ["cod-depot", "depot"],
+    ["cod-harbor", "harbor"],
+    ["cod-hurtgen", "hurtgen"],
+    ["cod-neuville", "neuville"],
+    ["cod-pavlov", "pavlov"],
+    ["cod-pow-camp", "pow-camp"],
+    ["cod-railyard", "railyard"],
+    ["cod-rocket", "rocket"],
+    ["cod-ship", "ship"],
+    ["cod-stalingrad-mp", "stalingrad"],
+    ["cod-tigertown", "tigertown"],
+  ]);
+  const codMapEntries = entries.filter((entry) =>
+    entry.urls?.some((url) => url.callOfDutyMaps));
+  assert.deepEqual(
+    codMapEntries.map((entry) => entry.levelId).sort(),
+    [...expectedCod1MapLinks.keys()].sort(),
+  );
+  for (const entry of codMapEntries) {
+    const slug = expectedCod1MapLinks.get(entry.levelId);
+    const url = entry.urls.find((item) => item.callOfDutyMaps).callOfDutyMaps;
+    assert.equal(url, `https://callofdutymaps.com/call-of-duty-1/${slug}/`);
+    assert.ok(entry.gameIds.includes("cod"));
+    assert.deepEqual(entry.modes, ["multiplayer"]);
+  }
+
   const codCampaigns = new Map([
     ["1", {
       label: "American Campaign",

@@ -21,6 +21,7 @@ locations:
     urls:
       - googleMaps: https://www.google.com/maps/search/?api=1&query=Pavlov%27s+House%2C+Volgograd%2C+Russia
       - wikipedia: https://en.wikipedia.org/wiki/Pavlov%27s_House
+      - callOfDutyMaps: https://callofdutymaps.com/call-of-duty-1/pavlov/
 ---
 
 > **AI-generated research note:** The historical summary below was generated

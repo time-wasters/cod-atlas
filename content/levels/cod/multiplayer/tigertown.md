@@ -20,6 +20,7 @@ locations:
     urls:
       - googleMaps: https://www.google.com/maps/search/?api=1&query=Villedieu-les-Po%C3%AAles%2C+France
       - wikipedia: https://en.wikipedia.org/wiki/Villedieu-les-Po%C3%AAles-Rouffigny
+      - callOfDutyMaps: https://callofdutymaps.com/call-of-duty-1/tigertown/
 ---
 
 > **AI-generated research note:** The historical summary below was generated

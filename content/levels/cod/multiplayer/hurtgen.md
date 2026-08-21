@@ -21,6 +21,7 @@ locations:
     urls:
       - googleMaps: https://www.google.com/maps/search/?api=1&query=Museum+H%C3%BCrtgenwald+1944%2C+Vossenack%2C+Germany
       - wikipedia: https://en.wikipedia.org/wiki/1944_H%C3%BCrtgen_Forest_Museum
+      - callOfDutyMaps: https://callofdutymaps.com/call-of-duty-1/hurtgen/
 ---
 
 > **AI-generated research note:** The historical summary below was generated

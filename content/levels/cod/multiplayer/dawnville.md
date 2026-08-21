@@ -21,6 +21,7 @@ locations:
     urls:
       - googleMaps: https://www.google.com/maps/search/?api=1&query=%C3%89glise+Notre-Dame-de-l%27Assomption%2C+Sainte-M%C3%A8re-%C3%89glise%2C+France
       - wikipedia: https://en.wikipedia.org/wiki/Sainte-M%C3%A8re-%C3%89glise
+      - callOfDutyMaps: https://callofdutymaps.com/call-of-duty-1/dawnville/
 ---
 
 > **AI-generated research note:** The historical summary below was generated

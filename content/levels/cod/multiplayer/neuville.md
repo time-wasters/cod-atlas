@@ -20,6 +20,7 @@ locations:
     urls:
       - googleMaps: https://www.google.com/maps/search/?api=1&query=Neuville-au-Plain%2C+France
       - wikipedia: https://en.wikipedia.org/wiki/Neuville-au-Plain
+      - callOfDutyMaps: https://callofdutymaps.com/call-of-duty-1/neuville/
 ---
 
 > **AI-generated research note:** The historical summary below was generated

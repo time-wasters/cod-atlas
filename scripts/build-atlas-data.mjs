@@ -86,6 +86,7 @@ function validateLocationUrls(urls, filename) {
   const providers = new Map([
     ["googleMaps", (hostname) => hostname === "maps.app.goo.gl" || hostname === "maps.google.com" || hostname === "www.google.com"],
     ["wikipedia", (hostname) => hostname === "wikipedia.org" || hostname.endsWith(".wikipedia.org")],
+    ["callOfDutyMaps", (hostname) => hostname === "callofdutymaps.com" || hostname === "www.callofdutymaps.com"],
   ]);
   const seenProviders = new Set();
   for (const item of urls) {

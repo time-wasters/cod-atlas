@@ -21,6 +21,7 @@ locations:
     urls:
       - googleMaps: https://www.google.com/maps/search/?api=1&query=Erinnerungsmal+f%C3%BCr+die+Opfer+des+Durchgangslagers+Strasshof%2C+Helmahofstra%C3%9Fe%2C+2231+Strasshof+an+der+Nordbahn%2C+Austria
       - wikipedia: https://de.wikipedia.org/wiki/Durchgangslager_Strasshof
+      - callOfDutyMaps: https://callofdutymaps.com/call-of-duty-1/pow-camp/
 ---
 
 > **AI-generated research note:** The historical summary below was generated
