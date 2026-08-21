@@ -172,7 +172,6 @@ type CountryOption = Pick<Group, "name" | "flagCode"> & { available: boolean };
 type CampaignOption = {
   key: string;
   gameId: string;
-  gameLabel: string;
   id: string;
   label: string;
   levels: Selection[];
@@ -873,19 +872,19 @@ export default function Home() {
       .filter((group) => group.entries.length && (country === "all" || group.name === country));
   }, [country, groups, game, precision, query, showMultiplayer, showSingleplayer]);
   const campaigns = useMemo<CampaignOption[]>(() => {
+    if (game === "all") return [];
     const campaignsByKey = new Map<string, CampaignOption & { levelIds: Set<string> }>();
     for (const group of groups) {
       for (const entry of group.entries) {
         if (!entry.campaign) continue;
         const campaignGame = gamesById.get(entry.gameIds[0]);
-        if (!campaignGame || (game !== "all" && campaignGame.code !== game)) continue;
+        if (!campaignGame || campaignGame.code !== game) continue;
         const key = `${campaignGame.id}:${entry.campaign.id}`;
         let campaign = campaignsByKey.get(key);
         if (!campaign) {
           campaign = {
             key,
             gameId: campaignGame.id,
-            gameLabel: campaignGame.label,
             id: entry.campaign.id,
             label: entry.campaign.label,
             levels: [],
@@ -900,10 +899,9 @@ export default function Home() {
       }
     }
     return [...campaignsByKey.values()]
-      .map(({ key, gameId, gameLabel, id, label, levels }) => ({
+      .map(({ key, gameId, id, label, levels }) => ({
         key,
         gameId,
-        gameLabel,
         id,
         label,
         levels: levels.sort((a, b) =>
@@ -1488,6 +1486,7 @@ export default function Home() {
                 setGame(value);
                 setSelectedCampaignKey(null);
                 setExpandedRegionEntryId(null);
+                if (value === "all") setSidebarListMode("locations");
               }}
             />
           </div>
@@ -1553,6 +1552,8 @@ export default function Home() {
               role="tab"
               aria-selected={sidebarListMode === "campaigns"}
               aria-controls="sidebar-campaigns"
+              disabled={game === "all"}
+              title={game === "all" ? "Choose a game to browse campaigns" : undefined}
               onClick={() => setSidebarListMode("campaigns")}
             >
               <span>Campaigns</span><small>{campaigns.length}</small>
@@ -1584,7 +1585,7 @@ export default function Home() {
                   <i aria-hidden="true">{String(index + 1).padStart(2, "0")}</i>
                   <span>
                     <b>{campaign.label}</b>
-                    <small>{game === "all" ? `${campaign.gameLabel} · ` : ""}{campaign.levels.length} levels</small>
+                    <small>{campaign.levels.length} levels</small>
                   </span>
                   <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5" /></svg>
                 </button>

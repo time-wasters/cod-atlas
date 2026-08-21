@@ -163,9 +163,11 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
 .sidebar-list-switch button + button { border-left: 1px solid #30362b; }
 .sidebar-list-switch button:hover { color: #d4ceba; background: #20251c; }
 .sidebar-list-switch button.is-active { border-bottom-color: var(--amber); color: #eee5ce; background: #24281d; }
+.sidebar-list-switch button:disabled { color: #4f554a; background: transparent; cursor: not-allowed; }
 .sidebar-list-switch span { overflow: hidden; font-size: 10px; font-weight: 750; letter-spacing: .08em; text-overflow: ellipsis; text-transform: uppercase; white-space: nowrap; }
 .sidebar-list-switch small { flex: none; color: #858b78; font: 700 9px var(--font-geist-mono), monospace; }
 .sidebar-list-switch button.is-active small { color: #c99737; }
+.sidebar-list-switch button:disabled small { color: #4a5046; }
 .sidebar-list-switch button:focus-visible, .campaign-row:focus-visible { position: relative; z-index: 1; outline: 2px solid var(--amber); outline-offset: -2px; }
 .scroll-list { min-height: 0; overflow: auto; padding: 6px 4px 6px 0; scrollbar-color: #5f684e transparent; scrollbar-width: thin; }
 .location-row { width: 100%; display: grid; grid-template-columns: 22px 1fr auto; align-items: center; gap: 8px; border: 0; border-left: 2px solid transparent; padding: 9px 8px; color: #c9c4b4; background: transparent; text-align: left; cursor: pointer; }

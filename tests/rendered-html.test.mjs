@@ -46,7 +46,7 @@ test("renders development preview metadata", async () => {
   assert.match(html, />Mercury<\/text>/);
   assert.match(html, /aria-pressed="false"[^>]*>[\s\S]{0,120}Multiplayer/);
   assert.match(html, /role="tab"[^>]*aria-selected="true"[^>]*aria-controls="sidebar-locations"/);
-  assert.match(html, />Campaigns<\/span>/);
+  assert.match(html, /<button(?=[^>]*role="tab")(?=[^>]*aria-controls="sidebar-campaigns")(?=[^>]*disabled="")[^>]*>/);
   assert.match(html, />Adriatic Sea<\/span>/);
   assert.doesNotMatch(html, /Selected location/);
   assert.doesNotMatch(html, />Level<\/span>/);
