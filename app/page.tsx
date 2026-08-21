@@ -29,6 +29,7 @@ type Entry = {
   confidence?: "high" | "medium" | "fallback";
   method?: string;
   urls?: Partial<Record<"googleMaps" | "wikipedia" | "callOfDutyMaps", string>>[];
+  hasLevelNotes: boolean;
   modes: ("singleplayer" | "multiplayer")[];
 };
 
@@ -907,7 +908,8 @@ export default function Home() {
     && entries.findIndex((candidate) => candidate.levelId === entry.levelId) === index);
   const visibleRegionalLevels = regionLevelsExpanded ? regionalLevels : regionalLevels.slice(0, 8);
   const hiddenRegionalLevelCount = regionalLevels.length - visibleRegionalLevels.length;
-  const levelNotesExpanded = expandedLevelNotesId === selected.entry.levelId;
+  const levelNotesExpanded = selected.entry.hasLevelNotes
+    && expandedLevelNotesId === selected.entry.levelId;
   const selectedLevelNotes = levelNotes?.levelId === selected.entry.levelId ? levelNotes : null;
   const selectedMapOverlay = mapOverlays[selected.entry.levelId] ?? null;
   const selectedMapOverlayEnabled = selectedMapOverlay !== null && !disabledMapOverlays.has(selected.entry.levelId);
@@ -991,6 +993,7 @@ export default function Home() {
   }, [selected.entry.id]);
 
   const toggleLevelNotes = useCallback(() => {
+    if (!selected.entry.hasLevelNotes) return;
     const levelId = selected.entry.levelId;
     if (expandedLevelNotesId === levelId) {
       setExpandedLevelNotesId(null);
@@ -1011,7 +1014,7 @@ export default function Home() {
         content,
       }))
       .catch(() => setLevelNotes({ levelId, status: "missing", content: null }));
-  }, [expandedLevelNotesId, levelNotes?.levelId, selected.entry.levelId]);
+  }, [expandedLevelNotesId, levelNotes?.levelId, selected.entry.hasLevelNotes, selected.entry.levelId]);
 
   useEffect(() => {
     mediaDialog.current?.close();
@@ -1837,11 +1840,16 @@ export default function Home() {
               className="level-briefing-toggle"
               type="button"
               aria-expanded={levelNotesExpanded}
-              aria-controls="selected-level-briefing"
+              aria-controls={selected.entry.hasLevelNotes ? "selected-level-briefing" : undefined}
               onClick={toggleLevelNotes}
+              disabled={!selected.entry.hasLevelNotes}
+              title={selected.entry.hasLevelNotes ? undefined : "No level briefing available"}
             >
               <b aria-hidden="true">{levelNotesExpanded ? "›" : "‹"}</b>
-              <span><small>Level briefing</small><strong>Research &amp; historical context</strong></span>
+              <span>
+                <small>Level briefing</small>
+                <strong>{selected.entry.hasLevelNotes ? "Research & historical context" : "No briefing available"}</strong>
+              </span>
             </button>
           </section>
         </article>

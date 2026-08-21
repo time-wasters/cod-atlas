@@ -422,6 +422,7 @@ for (const level of levels) {
       confidence: location.confidence ?? (location.precision === "country" ? "fallback" : "medium"),
       method: location.method ?? null,
       ...(location.urls ? { urls: location.urls } : {}),
+      hasLevelNotes: Boolean(level.notes.trim()),
       modes: [level.mode],
     });
   }

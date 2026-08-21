@@ -387,8 +387,12 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
 .level-briefing-toggle small { color: var(--amber); font: 700 8px var(--font-geist-mono), monospace; letter-spacing: .15em; text-transform: uppercase; }
 .level-briefing-toggle strong { color: #d9d2c0; font-size: 11px; font-weight: 600; }
 .level-briefing-toggle > b { width: 22px; height: 38px; flex: 0 0 22px; display: grid; place-items: center; border: 1px solid #5d624c; border-radius: 3px; color: var(--amber); background: #181d16; font: 400 20px/1 var(--font-geist-mono), monospace; }
-.level-briefing-toggle:hover strong, .level-briefing-toggle:focus-visible strong { color: #fff4d7; }
+.level-briefing-toggle:not(:disabled):hover strong, .level-briefing-toggle:focus-visible strong { color: #fff4d7; }
 .level-briefing-toggle:focus-visible { outline: 1px solid var(--amber); outline-offset: 3px; }
+.level-briefing-toggle:disabled { cursor: not-allowed; }
+.level-briefing-toggle:disabled small { color: #5f6357; }
+.level-briefing-toggle:disabled strong { color: #6f7367; }
+.level-briefing-toggle:disabled > b { border-color: #383d34; color: #5f6358; background: #141713; }
 .level-briefing-pane { position: absolute; z-index: 499; top: 24px; right: 365px; width: min(430px, calc(100% - 389px)); max-height: calc(100% - 48px); display: flex; flex-direction: column; overflow: hidden; border: 1px solid #77715b; border-right-color: #4d4e40; border-radius: 7px 0 0 7px; color: #ddd6c3; background: linear-gradient(145deg, #171c15f8, #0d110cf7); box-shadow: 0 16px 50px #000a; backdrop-filter: blur(7px); }
 .level-briefing-pane > header { flex: 0 0 auto; display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; border-bottom: 1px solid #464c3b; padding: 16px 17px 13px; }
 .level-briefing-pane > header span { color: var(--amber); font: 700 8px var(--font-geist-mono), monospace; letter-spacing: .15em; text-transform: uppercase; }

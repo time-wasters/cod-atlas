@@ -50,6 +50,8 @@ test("renders development preview metadata", async () => {
   assert.doesNotMatch(html, />Level<\/span>/);
   assert.match(html, /aria-label="(Singleplayer|Multiplayer)"/);
   assert.match(html, /class="mission-title-button"/);
+  assert.match(html, /<button(?=[^>]*class="level-briefing-toggle")(?=[^>]*disabled="")[^>]*>/);
+  assert.match(html, />No briefing available<\/strong>/);
   assert.match(html, /Made with ♥️ by <a href="https:\/\/github\.com\/plp-gtr"[^>]*>plp-GTR<\/a>/);
   assert.match(html, /class="icon-link footer-info-button"/);
   assert.match(html, /id="project-info-title">About CoD Atlas/);
@@ -123,6 +125,9 @@ test("preserves the complete statically compiled atlas", async () => {
   assert.equal(atlas.levelBanners["rtv-altavilla"].author.userUrl, "https://github.com/plp-gtr");
   assert.ok(entries.every((entry) =>
     entry.modes.length === 1 && ["singleplayer", "multiplayer"].includes(entry.modes[0])));
+  assert.ok(entries.every((entry) => typeof entry.hasLevelNotes === "boolean"));
+  assert.equal(entries.find((entry) => entry.levelId === "mw19-wz-fortune-s-keep").hasLevelNotes, false);
+  assert.equal(entries.find((entry) => entry.levelId === "cod-pavlov").hasLevelNotes, true);
 
   const expectedCod1MapLinks = new Map([
     ["cod-bocage", "bocage"],
@@ -142,17 +147,53 @@ test("preserves the complete statically compiled atlas", async () => {
     ["cod-stalingrad-mp", "stalingrad"],
     ["cod-tigertown", "tigertown"],
   ]);
-  const codMapEntries = entries.filter((entry) =>
-    entry.urls?.some((url) => url.callOfDutyMaps));
+  const cod1MapEntries = entries.filter((entry) =>
+    entry.urls?.some((url) => url.callOfDutyMaps?.startsWith("https://callofdutymaps.com/call-of-duty-1/")));
   assert.deepEqual(
-    codMapEntries.map((entry) => entry.levelId).sort(),
+    cod1MapEntries.map((entry) => entry.levelId).sort(),
     [...expectedCod1MapLinks.keys()].sort(),
   );
-  for (const entry of codMapEntries) {
+  for (const entry of cod1MapEntries) {
     const slug = expectedCod1MapLinks.get(entry.levelId);
     const url = entry.urls.find((item) => item.callOfDutyMaps).callOfDutyMaps;
     assert.equal(url, `https://callofdutymaps.com/call-of-duty-1/${slug}/`);
     assert.ok(entry.gameIds.includes("cod"));
+    assert.deepEqual(entry.modes, ["multiplayer"]);
+  }
+
+  const expectedCod4MapLinks = new Map([
+    ["cod4-ambush", "ambush/"],
+    ["cod4-backlot", "backlot/"],
+    ["cod4-bloc", "bloc"],
+    ["cod4-bog", "bog"],
+    ["cod4-broadcast", "broadcast"],
+    ["cod4-chinatown", "chinatown"],
+    ["cod4-countdown", "countdown/"],
+    ["cod4-creek", "creek"],
+    ["cod4-crossfire", "crossfire"],
+    ["cod4-district", "district/"],
+    ["cod4-downpour", "downpour"],
+    ["cod4-killhouse", "killhouse"],
+    ["cod4-mw2-crash", "crash"],
+    ["cod4-mw2-mw19-vacant", "vacant"],
+    ["cod4-mw2-overgrown", "overgrown"],
+    ["cod4-mw2-strike", "strike"],
+    ["cod4-pipeline", "pipeline"],
+    ["cod4-shipment", "shipment"],
+    ["cod4-showdown", "showdown"],
+    ["cod4-wet-work", "wet-work"],
+  ]);
+  const cod4MapEntries = entries.filter((entry) =>
+    entry.urls?.some((url) => url.callOfDutyMaps?.startsWith("https://callofdutymaps.com/cod-4-modern-warfare/")));
+  assert.deepEqual(
+    cod4MapEntries.map((entry) => entry.levelId).sort(),
+    [...expectedCod4MapLinks.keys()].sort(),
+  );
+  for (const entry of cod4MapEntries) {
+    const slug = expectedCod4MapLinks.get(entry.levelId);
+    const url = entry.urls.find((item) => item.callOfDutyMaps).callOfDutyMaps;
+    assert.equal(url, `https://callofdutymaps.com/cod-4-modern-warfare/${slug}`);
+    assert.ok(entry.gameIds.includes("cod4"));
     assert.deepEqual(entry.modes, ["multiplayer"]);
   }
 
