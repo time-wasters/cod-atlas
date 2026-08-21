@@ -1,9 +1,56 @@
 import assert from "node:assert/strict";
 import { access } from "node:fs/promises";
 import test from "node:test";
+import { atlasUrlWithState, parseAtlasUrl } from "../app/url-state.js";
 
 const developmentPreviewMeta =
   /<meta(?=[^>]*\bname=["']codex-preview["'])(?=[^>]*\bcontent=["']development["'])[^>]*>/i;
+
+test("round-trips shareable atlas filters and the selected location", () => {
+  const source = new URL("https://example.com/atlas/?utm_source=test#map");
+  const state = {
+    query: "Safehouse",
+    gameId: "cod4",
+    country: "Azerbaijan",
+    precision: "localized",
+    showSingleplayer: true,
+    showMultiplayer: true,
+    levelId: "cod4-safehouse",
+    locationId: "main",
+  };
+  const sharedUrl = atlasUrlWithState(source, state);
+
+  assert.equal(sharedUrl.searchParams.get("utm_source"), "test");
+  assert.equal(sharedUrl.hash, "#map");
+  assert.deepEqual(parseAtlasUrl(sharedUrl), state);
+});
+
+test("uses concise defaults and preserves every mode-filter state", () => {
+  const defaults = {
+    query: "",
+    gameId: "all",
+    country: "all",
+    precision: "all",
+    showSingleplayer: true,
+    showMultiplayer: false,
+    levelId: null,
+    locationId: null,
+  };
+  const defaultUrl = atlasUrlWithState("https://example.com/?game=old&level=old", defaults);
+  assert.equal(defaultUrl.search, "");
+  assert.deepEqual(parseAtlasUrl(defaultUrl), defaults);
+
+  for (const [mode, showSingleplayer, showMultiplayer] of [
+    ["both", true, true],
+    ["multiplayer", false, true],
+    ["none", false, false],
+  ]) {
+    const url = atlasUrlWithState(defaultUrl, { ...defaults, showSingleplayer, showMultiplayer });
+    assert.equal(url.searchParams.get("mode"), mode);
+    assert.equal(parseAtlasUrl(url).showSingleplayer, showSingleplayer);
+    assert.equal(parseAtlasUrl(url).showMultiplayer, showMultiplayer);
+  }
+});
 
 test("renders development preview metadata", async () => {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);

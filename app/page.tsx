@@ -7,6 +7,7 @@ import ReactMarkdown from "react-markdown";
 import atlasSource from "./data/atlas.generated.json";
 import historyOverlaysSource from "./data/history-overlays.generated.json";
 import mapOverlaysSource from "./data/map-overlays.generated.json";
+import { atlasUrlWithState, parseAtlasUrl } from "./url-state";
 
 type Entry = {
   id: string;
@@ -181,6 +182,10 @@ const data = atlasSource as AtlasData;
 const historyOverlays = historyOverlaysSource as Record<string, HistoryOverlayRecord[]>;
 const mapOverlays = mapOverlaysSource as Record<string, MapOverlayRecord>;
 const gamesById = new Map(data.games.map((game) => [game.id, game]));
+const gamesByCode = new Map(data.games.map((game) => [game.code, game]));
+const countryNames = new Set(data.groups.map((group) => group.name));
+const urlPrecisions = new Set(["all", "localized", "country"]);
+const selections = data.groups.flatMap((group) => group.entries.map((entry) => ({ group, entry })));
 const EXTERNAL_ICONS_PREFERENCE = "cod-atlas:external-game-icons";
 const externalIconPreferenceListeners = new Set<() => void>();
 
@@ -775,6 +780,8 @@ export default function Home() {
     group: initialGroup,
     entry: initialEntry,
   });
+  const [selectionInUrl, setSelectionInUrl] = useState(false);
+  const [urlSyncReady, setUrlSyncReady] = useState(false);
   const mapNode = useRef<HTMLDivElement>(null);
   const map = useRef<LeafletMap | null>(null);
   const markerLayer = useRef<MarkerClusterGroup | null>(null);
@@ -798,6 +805,8 @@ export default function Home() {
   const mediaDialog = useRef<HTMLDialogElement>(null);
   const infoDialog = useRef<HTMLDialogElement>(null);
   const intelCard = useRef<HTMLDivElement>(null);
+  const urlHistoryMode = useRef<"push" | "replace">("replace");
+  const searchEditActive = useRef(false);
 
   const groups = data.groups;
   const games = useMemo(() => {
@@ -814,6 +823,69 @@ export default function Home() {
       ? new URL(externalPath.replace(/^\/+/, ""), document.baseURI).href
       : game.icon;
   }, [externalIconManifest, externalIconsEnabled, failedExternalGameIcons]);
+
+  useEffect(() => {
+    const applyUrl = () => {
+      const urlState = parseAtlasUrl(window.location.href);
+      const requestedGame = gamesById.get(urlState.gameId);
+      const requestedSelection = urlState.levelId
+        ? selections.find(({ entry }) => entry.levelId === urlState.levelId
+          && (!urlState.locationId || entry.locationId === urlState.locationId)) ?? null
+        : null;
+
+      urlHistoryMode.current = "replace";
+      searchEditActive.current = false;
+      setQuery(urlState.query);
+      setGame(requestedGame?.code ?? "all");
+      setCountry(countryNames.has(urlState.country) ? urlState.country : "all");
+      setPrecision(urlPrecisions.has(urlState.precision) ? urlState.precision : "all");
+      setShowSingleplayer(urlState.showSingleplayer);
+      setShowMultiplayer(urlState.showMultiplayer);
+      setSelected(requestedSelection ?? { group: initialGroup, entry: initialEntry });
+      setSelectionInUrl(requestedSelection !== null);
+      setSelectedCampaignKey(null);
+      setExpandedRegionEntryId(null);
+      setExpandedLevelNotesId(null);
+      setActiveHistoryOverlay(null);
+      setUrlSyncReady(true);
+    };
+
+    applyUrl();
+    window.addEventListener("popstate", applyUrl);
+    return () => window.removeEventListener("popstate", applyUrl);
+  }, []);
+
+  useEffect(() => {
+    if (!urlSyncReady) return;
+    const nextUrl = atlasUrlWithState(window.location.href, {
+      query,
+      gameId: gamesByCode.get(game)?.id ?? "all",
+      country,
+      precision,
+      showSingleplayer,
+      showMultiplayer,
+      levelId: selectionInUrl ? selected.entry.levelId : null,
+      locationId: selectionInUrl ? selected.entry.locationId : null,
+    });
+    const currentRelativeUrl = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+    const nextRelativeUrl = `${nextUrl.pathname}${nextUrl.search}${nextUrl.hash}`;
+    if (nextRelativeUrl !== currentRelativeUrl) {
+      const method = urlHistoryMode.current === "replace" ? "replaceState" : "pushState";
+      window.history[method](window.history.state, "", nextRelativeUrl);
+    }
+    urlHistoryMode.current = "push";
+  }, [
+    country,
+    game,
+    precision,
+    query,
+    selected.entry.levelId,
+    selected.entry.locationId,
+    selectionInUrl,
+    showMultiplayer,
+    showSingleplayer,
+    urlSyncReady,
+  ]);
 
   useEffect(() => {
     if (!externalIconsEnabled || externalIconManifest || externalIconManifestUnavailable) return;
@@ -980,7 +1052,9 @@ export default function Home() {
     : null;
 
   const selectEntry = useCallback((group: Group, entry: Entry) => {
+    urlHistoryMode.current = "push";
     setSelected({ group, entry });
+    setSelectionInUrl(true);
     setExpandedRegionEntryId(null);
     setExpandedLevelNotesId(null);
     setActiveHistoryOverlay(null);
@@ -1484,7 +1558,14 @@ export default function Home() {
           <span aria-hidden="true">⌕</span>
           <input
             value={query}
-            onChange={(event) => setQuery(event.target.value)}
+            onChange={(event) => {
+              urlHistoryMode.current = searchEditActive.current ? "replace" : "push";
+              searchEditActive.current = true;
+              setQuery(event.target.value);
+            }}
+            onBlur={() => {
+              searchEditActive.current = false;
+            }}
             placeholder="Search missions, maps, countries…"
             aria-label="Search locations"
           />
@@ -1497,6 +1578,7 @@ export default function Home() {
               games={games}
               value={game}
               onValueChange={(value) => {
+                urlHistoryMode.current = "push";
                 setGame(value);
                 setSelectedCampaignKey(null);
                 setExpandedRegionEntryId(null);
@@ -1506,28 +1588,50 @@ export default function Home() {
           </div>
           <div className="filter-field">
             <span>Country</span>
-            <CountrySelect countries={countries} value={country} onValueChange={setCountry} />
+            <CountrySelect
+              countries={countries}
+              value={country}
+              onValueChange={(value) => {
+                urlHistoryMode.current = "push";
+                setCountry(value);
+              }}
+            />
           </div>
         </div>
 
         <div className="precision-filter" aria-label="Location precision">
-          <button className={precision === "all" ? "is-active" : ""} onClick={() => setPrecision("all")}>All</button>
-          <button className={precision === "localized" ? "is-active" : ""} onClick={() => setPrecision("localized")}>Localized</button>
-          <button className={precision === "country" ? "is-active" : ""} onClick={() => setPrecision("country")}>Country fallback</button>
+          <button className={precision === "all" ? "is-active" : ""} onClick={() => {
+            urlHistoryMode.current = "push";
+            setPrecision("all");
+          }}>All</button>
+          <button className={precision === "localized" ? "is-active" : ""} onClick={() => {
+            urlHistoryMode.current = "push";
+            setPrecision("localized");
+          }}>Localized</button>
+          <button className={precision === "country" ? "is-active" : ""} onClick={() => {
+            urlHistoryMode.current = "push";
+            setPrecision("country");
+          }}>Country fallback</button>
         </div>
 
         <div className="mode-filter" aria-label="Game mode visibility">
           <button
             className={showSingleplayer ? "is-active" : ""}
             aria-pressed={showSingleplayer}
-            onClick={() => setShowSingleplayer((visible) => !visible)}
+            onClick={() => {
+              urlHistoryMode.current = "push";
+              setShowSingleplayer((visible) => !visible);
+            }}
           >
             <span aria-hidden="true">{showSingleplayer ? "✓" : "○"}</span> Singleplayer
           </button>
           <button
             className={showMultiplayer ? "is-active" : ""}
             aria-pressed={showMultiplayer}
-            onClick={() => setShowMultiplayer((visible) => !visible)}
+            onClick={() => {
+              urlHistoryMode.current = "push";
+              setShowMultiplayer((visible) => !visible);
+            }}
           >
             <span aria-hidden="true">{showMultiplayer ? "✓" : "○"}</span> Multiplayer
           </button>
