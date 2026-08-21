@@ -1038,7 +1038,7 @@ export default function Home() {
   }, [selectEntry]);
 
   const selectCampaign = useCallback((campaign: CampaignOption) => {
-    setSelectedCampaignKey(campaign.key);
+    setSelectedCampaignKey((currentKey) => currentKey === campaign.key ? null : campaign.key);
     setExpandedRegionEntryId(null);
     setRelatedLevelsOpen(true);
     setDetailsOpen(true);
