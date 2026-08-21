@@ -9,10 +9,10 @@ wikiArticle: codwiki-crash-map
 locations:
   - id: main
     country: Iraq
-    latitude: 33
-    longitude: 44
-    precision: country
-    confidence: fallback
-    method: country-fallback
+    latitude: 30.5257657
+    longitude: 47.773797
+    precision: approximate
+    confidence: medium
+    method: manual-approximate
     primary: true
 ---

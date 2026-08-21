@@ -8,10 +8,10 @@ wikiArticle: codwiki-countdown
 locations:
   - id: main
     country: Russia
-    latitude: 60
-    longitude: 100
-    precision: country
-    confidence: fallback
-    method: country-fallback
+    latitude: 49
+    longitude: 89
+    precision: approximate
+    confidence: medium
+    method: manual-approximate
     primary: true
 ---

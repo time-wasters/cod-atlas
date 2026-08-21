@@ -8,10 +8,10 @@ wikiArticle: codwiki-downpour
 locations:
   - id: main
     country: Russia
-    latitude: 60
-    longitude: 100
-    precision: country
-    confidence: fallback
-    method: country-fallback
+    latitude: 63.8630539
+    longitude: 54.8312689
+    precision: approximate
+    confidence: medium
+    method: manual-approximate
     primary: true
 ---

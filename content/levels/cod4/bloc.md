@@ -8,10 +8,10 @@ wikiArticle: codwiki-bloc
 locations:
   - id: main
     country: Ukraine
-    latitude: 49
-    longitude: 32
-    precision: country
-    confidence: fallback
-    method: country-fallback
+    latitude: 51.4045007
+    longitude: 30.0542398
+    precision: approximate
+    confidence: medium
+    method: manual-approximate
     primary: true
 ---

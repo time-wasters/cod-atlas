@@ -8,10 +8,10 @@ wikiArticle: codwiki-backlot
 locations:
   - id: main
     country: Iraq
-    latitude: 33
-    longitude: 44
-    precision: country
-    confidence: fallback
-    method: country-fallback
+    latitude: 30.5257368
+    longitude: 47.7737997
+    precision: approximate
+    confidence: medium
+    method: manual-approximate
     primary: true
 ---

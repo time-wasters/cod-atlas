@@ -8,10 +8,10 @@ wikiArticle: codwiki-district
 locations:
   - id: main
     country: Iraq
-    latitude: 33
-    longitude: 44
-    precision: country
-    confidence: fallback
-    method: country-fallback
+    latitude: 19.1281436
+    longitude: 41.0787513
+    precision: approximate
+    confidence: medium
+    method: manual-approximate
     primary: true
 ---
