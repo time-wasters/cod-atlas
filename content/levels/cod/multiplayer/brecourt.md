@@ -21,6 +21,7 @@ locations:
     urls:
       - googleMaps: https://www.google.com/maps/search/?api=1&query=Manoir+de+Br%C3%A9court%2C+Sainte-Marie-du-Mont%2C+France
       - wikipedia: https://en.wikipedia.org/wiki/Br%C3%A9court_Manor_Assault
+      - callOfDutyMaps: https://callofdutymaps.com/call-of-duty-1/brecourt/
 ---
 
 > **AI-generated research note:** The historical summary below was generated

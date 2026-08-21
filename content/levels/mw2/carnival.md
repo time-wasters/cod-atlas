@@ -8,10 +8,12 @@ wikiArticle: codwiki-carnival
 locations:
   - id: main
     country: Brazil
-    latitude: -10
-    longitude: -55
-    precision: country
-    confidence: fallback
-    method: country-fallback
+    latitude: -23.5505199
+    longitude: -46.6333094
+    precision: approximate
+    confidence: medium
+    method: manual-approximate
     primary: true
+    urls:
+      - callOfDutyMaps: https://callofdutymaps.com/modern-warfare-2/carnival
 ---

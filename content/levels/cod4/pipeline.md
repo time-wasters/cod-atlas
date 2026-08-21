@@ -8,10 +8,12 @@ wikiArticle: codwiki-pipeline
 locations:
   - id: main
     country: Ukraine
-    latitude: 49
-    longitude: 32
-    precision: country
-    confidence: fallback
-    method: country-fallback
+    latitude: 51.3921372
+    longitude: 30.0520679
+    precision: approximate
+    confidence: medium
+    method: manual-approximate
     primary: true
+    urls:
+      - callOfDutyMaps: https://callofdutymaps.com/cod-4-modern-warfare/pipeline
 ---

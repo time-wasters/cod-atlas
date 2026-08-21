@@ -79,15 +79,19 @@ present or both be absent. Latitude is -90 through 90 and longitude is -180
 through 180. Use decimal degrees. Set `primary: true` on the main location when
 a level contains multiple locations; use it at most once.
 
-Locations may also include a `urls` array of curated HTTPS links to the specific
-place. Each item is a single-key object using the `googleMaps` or `wikipedia`
-provider, and duplicate providers are not allowed. These links stay on the
-location rather than in a shared places record. A Google Maps URL is only an
-outbound link and does not require an API key. Prefer a standard Maps URL such
+Locations may also include a `urls` array of curated HTTPS links. Each item is a
+single-key object using the `googleMaps`, `wikipedia`, or `callOfDutyMaps`
+provider, and duplicate providers are not allowed. These links stay embedded
+in the level's location record rather than in a shared places record. A Google
+Maps URL is only an outbound link and does not require an API key. Prefer a
+standard Maps URL such
 as `https://www.google.com/maps/search/?api=1&query=...`; an exact Google Maps
 share link is also accepted when it identifies the intended listing. Wikipedia
 links should prefer the direct English Wikipedia article for the real location. If
-that location has no English Wikipedia article, , use the language of the country and check if an article exists in the corresponding wikipedia.
+that location has no English Wikipedia article, use the language of the country
+and check if an article exists in the corresponding Wikipedia.
+Call of Duty Maps links must target the guide for the specific in-game map,
+such as `https://callofdutymaps.com/call-of-duty-1/pavlov/`.
 
 For `off-world`, omit both coordinates. For terrestrial records, provide the
 best evidence-supported coordinates. A country or region centroid is allowed

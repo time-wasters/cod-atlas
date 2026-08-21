@@ -17,4 +17,6 @@ locations:
     confidence: high
     method: title
     primary: true
+    urls:
+      - callOfDutyMaps: https://callofdutymaps.com/call-of-duty-1/carentan/
 ---

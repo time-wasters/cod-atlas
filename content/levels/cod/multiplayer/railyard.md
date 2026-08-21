@@ -20,6 +20,7 @@ locations:
     primary: true
     urls:
       - googleMaps: https://www.google.com/maps/search/?api=1&query=Warszawa+Ursus+railway+station%2C+Warsaw%2C+Poland
+      - callOfDutyMaps: https://callofdutymaps.com/call-of-duty-1/railyard/
 ---
 
 > **AI-generated research note:** The historical summary below was generated

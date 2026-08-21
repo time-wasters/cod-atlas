@@ -20,6 +20,7 @@ locations:
     primary: true
     urls:
       - googleMaps: https://www.google.com/maps/search/?api=1&query=Erinnerung+an+die+Opfer+der+V2-Raketen%2C+48619+Heek%2C+Germany
+      - callOfDutyMaps: https://callofdutymaps.com/call-of-duty-1/rocket/
 ---
 
 > **AI-generated research note:** The historical summary below was generated

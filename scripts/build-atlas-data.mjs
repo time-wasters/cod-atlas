@@ -86,6 +86,7 @@ function validateLocationUrls(urls, filename) {
   const providers = new Map([
     ["googleMaps", (hostname) => hostname === "maps.app.goo.gl" || hostname === "maps.google.com" || hostname === "www.google.com"],
     ["wikipedia", (hostname) => hostname === "wikipedia.org" || hostname.endsWith(".wikipedia.org")],
+    ["callOfDutyMaps", (hostname) => hostname === "callofdutymaps.com" || hostname === "www.callofdutymaps.com"],
   ]);
   const seenProviders = new Set();
   for (const item of urls) {
@@ -282,6 +283,7 @@ for (const filename of levelFiles) {
   requireValue(level.id.startsWith(idPrefix), `${filename}: level id must start with primary game ${idPrefix}`);
   const levelSlug = level.id.slice(idPrefix.length);
   const levelSlugFilename = `${levelSlug}.md`;
+  let campaignOrder = null;
   if (gamesWithMapTypeDirectories.has(primaryGame)) {
     const mapTypeDirectory = mapTypeDirectoryByMode.get(level.mode);
     const expectedDirectory = path.join(levelsRoot, primaryGame, mapTypeDirectory);
@@ -290,7 +292,7 @@ for (const filename of levelFiles) {
       const campaignFilename = path.basename(filename).match(/^([1-9]\d*)-(.+)\.md$/);
       requireValue(campaignFilename, `${filename}: campaign filename must start with a positive order number without leading zeros`);
       requireValue(campaignFilename[2] === levelSlug, `${filename}: campaign filename must end with ${levelSlugFilename}`);
-      const campaignOrder = Number(campaignFilename[1]);
+      campaignOrder = Number(campaignFilename[1]);
       requireValue(Number.isSafeInteger(campaignOrder), `${filename}: campaign order is too large`);
       if (!campaignOrdersByGame.has(primaryGame)) campaignOrdersByGame.set(primaryGame, new Map());
       const campaignOrders = campaignOrdersByGame.get(primaryGame);
@@ -371,7 +373,11 @@ for (const filename of levelFiles) {
     markerCount += 1;
   }
   levelIds.add(level.id);
-  levels.push({ ...level, notes: body });
+  levels.push({
+    ...level,
+    ...(campaignOrder !== null ? { campaignOrder } : {}),
+    notes: body,
+  });
 }
 
 for (const [gameId, campaignOrders] of campaignOrdersByGame) {
@@ -410,6 +416,7 @@ for (const level of levels) {
       game: gameCodes,
       gameIds: [...level.games],
       ...(level.campaign ? { campaign: level.campaign } : {}),
+      ...(level.campaignOrder ? { campaignOrder: level.campaignOrder } : {}),
       wiki: article.sourceUrl,
       wikiArticle: level.wikiArticle,
       country: location.country,
@@ -421,6 +428,7 @@ for (const level of levels) {
       confidence: location.confidence ?? (location.precision === "country" ? "fallback" : "medium"),
       method: location.method ?? null,
       ...(location.urls ? { urls: location.urls } : {}),
+      hasLevelNotes: Boolean(level.notes.trim()),
       modes: [level.mode],
     });
   }

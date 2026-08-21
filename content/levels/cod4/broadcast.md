@@ -8,10 +8,12 @@ wikiArticle: codwiki-broadcast
 locations:
   - id: main
     country: Iraq
-    latitude: 33
-    longitude: 44
-    precision: country
-    confidence: fallback
-    method: country-fallback
+    latitude: 29.375859
+    longitude: 47.9774052
+    precision: approximate
+    confidence: medium
+    method: manual-approximate
     primary: true
+    urls:
+      - callOfDutyMaps: https://callofdutymaps.com/cod-4-modern-warfare/broadcast
 ---

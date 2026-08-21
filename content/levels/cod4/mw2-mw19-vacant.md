@@ -10,10 +10,12 @@ wikiArticle: codwiki-vacant
 locations:
   - id: main
     country: Ukraine
-    latitude: 49
-    longitude: 32
-    precision: country
-    confidence: fallback
-    method: country-fallback
+    latitude: 48.379433
+    longitude: 31.16558
+    precision: approximate
+    confidence: medium
+    method: manual-approximate
     primary: true
+    urls:
+      - callOfDutyMaps: https://callofdutymaps.com/cod-4-modern-warfare/vacant
 ---

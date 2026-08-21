@@ -45,18 +45,39 @@ test("renders development preview metadata", async () => {
   assert.match(html, />Solar System \/\/ Schematic<\/text>/);
   assert.match(html, />Mercury<\/text>/);
   assert.match(html, /aria-pressed="false"[^>]*>[\s\S]{0,120}Multiplayer/);
+  assert.match(html, /role="tab"[^>]*aria-selected="true"[^>]*aria-controls="sidebar-locations"/);
+  assert.match(html, /<button(?=[^>]*role="tab")(?=[^>]*aria-controls="sidebar-campaigns")(?=[^>]*disabled="")[^>]*>/);
   assert.match(html, />Adriatic Sea<\/span>/);
   assert.doesNotMatch(html, /Selected location/);
   assert.doesNotMatch(html, />Level<\/span>/);
   assert.match(html, /aria-label="(Singleplayer|Multiplayer)"/);
   assert.match(html, /class="mission-title-button"/);
+  assert.match(html, /<button(?=[^>]*class="level-briefing-toggle")(?=[^>]*disabled="")[^>]*>/);
+  assert.match(html, />No briefing available<\/strong>/);
   assert.match(html, /Made with ♥️ by <a href="https:\/\/github\.com\/plp-gtr"[^>]*>plp-GTR<\/a>/);
   assert.match(html, /class="icon-link footer-info-button"/);
   assert.match(html, /id="project-info-title">About CoD Atlas/);
   assert.match(html, /This website was made by me, <a href="https:\/\/github\.com\/plp-gtr"[^>]*>Philipp Gächter<\/a>/);
   assert.doesNotMatch(html, /> Localized /);
   assert.match(html, /https:\/\/www\.google\.com\/maps\/search\/\?api=1(?:&|&amp;)query=Adriatic%20Sea/);
+  assert.match(html, /aria-label="Open in Google Maps"/);
+  assert.match(html, /src="webpage_icons\/maps-google-com\.ico"/);
+  assert.match(html, /aria-label="Open on Call of Duty Wiki"/);
+  assert.match(html, /src="webpage_icons\/callofduty-fandom-com\.webp"/);
+  assert.match(html, />Google Maps<\/span>/);
+  assert.match(html, />CoD Wiki<\/span>/);
   assert.ok(html.indexOf('class="mission-heading"') < html.indexOf('class="intel-kicker"'));
+});
+
+test("bundles the details-panel website icons", async () => {
+  for (const filename of [
+    "maps-google-com.ico",
+    "wikipedia-com.ico",
+    "callofdutymaps-com.webp",
+    "callofduty-fandom-com.webp",
+  ]) {
+    await access(new URL(`../public/webpage_icons/${filename}`, import.meta.url));
+  }
 });
 
 test("preserves the complete statically compiled atlas", async () => {
@@ -106,6 +127,113 @@ test("preserves the complete statically compiled atlas", async () => {
   assert.equal(atlas.levelBanners["rtv-altavilla"].author.userUrl, "https://github.com/plp-gtr");
   assert.ok(entries.every((entry) =>
     entry.modes.length === 1 && ["singleplayer", "multiplayer"].includes(entry.modes[0])));
+  assert.ok(entries.every((entry) => typeof entry.hasLevelNotes === "boolean"));
+  assert.equal(entries.find((entry) => entry.levelId === "mw19-wz-fortune-s-keep").hasLevelNotes, false);
+  assert.equal(entries.find((entry) => entry.levelId === "cod-pavlov").hasLevelNotes, true);
+
+  const expectedCod1MapLinks = new Map([
+    ["cod-bocage", "bocage"],
+    ["cod-brecourt", "brecourt"],
+    ["cod-cod2-wwii-carentan", "carentan"],
+    ["cod-chateau", "chateau"],
+    ["cod-dawnville", "dawnville"],
+    ["cod-depot", "depot"],
+    ["cod-harbor", "harbor"],
+    ["cod-hurtgen", "hurtgen"],
+    ["cod-neuville", "neuville"],
+    ["cod-pavlov", "pavlov"],
+    ["cod-pow-camp", "pow-camp"],
+    ["cod-railyard", "railyard"],
+    ["cod-rocket", "rocket"],
+    ["cod-ship", "ship"],
+    ["cod-stalingrad-mp", "stalingrad"],
+    ["cod-tigertown", "tigertown"],
+  ]);
+  const cod1MapEntries = entries.filter((entry) =>
+    entry.urls?.some((url) => url.callOfDutyMaps?.startsWith("https://callofdutymaps.com/call-of-duty-1/")));
+  assert.deepEqual(
+    cod1MapEntries.map((entry) => entry.levelId).sort(),
+    [...expectedCod1MapLinks.keys()].sort(),
+  );
+  for (const entry of cod1MapEntries) {
+    const slug = expectedCod1MapLinks.get(entry.levelId);
+    const url = entry.urls.find((item) => item.callOfDutyMaps).callOfDutyMaps;
+    assert.equal(url, `https://callofdutymaps.com/call-of-duty-1/${slug}/`);
+    assert.ok(entry.gameIds.includes("cod"));
+    assert.deepEqual(entry.modes, ["multiplayer"]);
+  }
+
+  const expectedCod4MapLinks = new Map([
+    ["cod4-ambush", "ambush/"],
+    ["cod4-backlot", "backlot/"],
+    ["cod4-bloc", "bloc"],
+    ["cod4-bog", "bog"],
+    ["cod4-broadcast", "broadcast"],
+    ["cod4-chinatown", "chinatown"],
+    ["cod4-countdown", "countdown/"],
+    ["cod4-creek", "creek"],
+    ["cod4-crossfire", "crossfire"],
+    ["cod4-district", "district/"],
+    ["cod4-downpour", "downpour"],
+    ["cod4-killhouse", "killhouse"],
+    ["cod4-mw2-crash", "crash"],
+    ["cod4-mw2-mw19-vacant", "vacant"],
+    ["cod4-mw2-overgrown", "overgrown"],
+    ["cod4-mw2-strike", "strike"],
+    ["cod4-pipeline", "pipeline"],
+    ["cod4-shipment", "shipment"],
+    ["cod4-showdown", "showdown"],
+    ["cod4-wet-work", "wet-work"],
+  ]);
+  const cod4MapEntries = entries.filter((entry) =>
+    entry.urls?.some((url) => url.callOfDutyMaps?.startsWith("https://callofdutymaps.com/cod-4-modern-warfare/")));
+  assert.deepEqual(
+    cod4MapEntries.map((entry) => entry.levelId).sort(),
+    [...expectedCod4MapLinks.keys()].sort(),
+  );
+  for (const entry of cod4MapEntries) {
+    const slug = expectedCod4MapLinks.get(entry.levelId);
+    const url = entry.urls.find((item) => item.callOfDutyMaps).callOfDutyMaps;
+    assert.equal(url, `https://callofdutymaps.com/cod-4-modern-warfare/${slug}`);
+    assert.ok(entry.gameIds.includes("cod4"));
+    assert.deepEqual(entry.modes, ["multiplayer"]);
+  }
+
+  const expectedMw2MapLinks = new Map([
+    ["mw2-afgan", "afghan"],
+    ["mw2-bailout", "bailout"],
+    ["mw2-carnival", "carnival"],
+    ["mw2-derail", "derail"],
+    ["mw2-estate", "estate"],
+    ["mw2-ghosts-favela", "favela"],
+    ["mw2-highrise", "highrise"],
+    ["mw2-invasion", "invasion"],
+    ["mw2-karachi", "karachi"],
+    ["mw2-mw3-terminal", "terminal"],
+    ["mw2-quarry", "quarry"],
+    ["mw2-rundown", "rundown"],
+    ["mw2-rust", "rust"],
+    ["mw2-salvage", "salvage"],
+    ["mw2-scrapyard", "scrapyard"],
+    ["mw2-skidrow", "skidrow"],
+    ["mw2-sub-base", "sub-base"],
+    ["mw2-trailer-park", "trailer-park"],
+    ["mw2-underpass", "underpass"],
+    ["mw2-wasteland", "wasteland"],
+  ]);
+  const mw2MapEntries = entries.filter((entry) =>
+    entry.urls?.some((url) => url.callOfDutyMaps?.startsWith("https://callofdutymaps.com/modern-warfare-2/")));
+  assert.deepEqual(
+    mw2MapEntries.map((entry) => entry.levelId).sort(),
+    [...expectedMw2MapLinks.keys()].sort(),
+  );
+  for (const entry of mw2MapEntries) {
+    const slug = expectedMw2MapLinks.get(entry.levelId);
+    const url = entry.urls.find((item) => item.callOfDutyMaps).callOfDutyMaps;
+    assert.equal(url, `https://callofdutymaps.com/modern-warfare-2/${slug}`);
+    assert.ok(entry.gameIds.includes("mw2"));
+    assert.deepEqual(entry.modes, ["multiplayer"]);
+  }
 
   const codCampaigns = new Map([
     ["1", {
@@ -138,6 +266,12 @@ test("preserves the complete statically compiled atlas", async () => {
     }
   }
   assert.ok([...uniqueCodCampaignLevels.values()].every((entry) => codCampaigns.has(entry.campaign?.id)));
+  assert.deepEqual(
+    [...uniqueCodCampaignLevels.values()]
+      .sort((a, b) => a.campaignOrder - b.campaignOrder)
+      .map((entry) => entry.title),
+    [...codCampaigns.values()].flatMap((campaign) => campaign.levels),
+  );
 
   assert.deepEqual(findEntry("COD2", "The Diversionary Raid").modes, ["singleplayer"]);
   assert.deepEqual(findEntry("COD2", "Holding the Line").modes, ["singleplayer"]);

@@ -20,6 +20,7 @@ locations:
     # urls:
     #   - googleMaps: https://www.google.com/maps/search/?api=1&query=Example%20landmark
     #   - wikipedia: https://en.wikipedia.org/wiki/Example_landmark
+    #   - callOfDutyMaps: https://callofdutymaps.com/example-game/example-map/
 ---
 
 > **AI-generated research note:** The historical summary below was generated

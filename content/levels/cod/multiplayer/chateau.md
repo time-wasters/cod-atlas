@@ -21,6 +21,7 @@ locations:
     urls:
       - googleMaps: https://www.google.com/maps/search/?api=1&query=Schloss+Elmau%2C+In+Elmau+2%2C+82493+Kr%C3%BCn%2C+Germany
       - wikipedia: https://en.wikipedia.org/wiki/Schloss_Elmau
+      - callOfDutyMaps: https://callofdutymaps.com/call-of-duty-1/chateau/
 ---
 
 > **AI-generated research note:** The historical summary below was generated

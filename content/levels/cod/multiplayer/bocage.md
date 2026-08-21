@@ -21,6 +21,7 @@ locations:
     urls:
       - googleMaps: https://www.google.com/maps/search/?api=1&query=Mus%C3%A9e+du+Bocage+Normand%2C+Saint-L%C3%B4%2C+France
       - wikipedia: https://en.wikipedia.org/wiki/Bocage
+      - callOfDutyMaps: https://callofdutymaps.com/call-of-duty-1/bocage/
 ---
 
 > **AI-generated research note:** The historical summary below was generated

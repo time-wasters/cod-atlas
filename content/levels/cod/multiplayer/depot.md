@@ -21,6 +21,7 @@ locations:
     urls:
       - googleMaps: https://www.google.com/maps/search/?api=1&query=Volgograd-1+Railway+Station%2C+Volgograd%2C+Russia
       - wikipedia: https://en.wikipedia.org/wiki/Volgograd_railway_station
+      - callOfDutyMaps: https://callofdutymaps.com/call-of-duty-1/depot/
 ---
 
 > **AI-generated research note:** The historical summary below was generated

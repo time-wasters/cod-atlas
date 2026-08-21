@@ -9,10 +9,10 @@ wikiArticle: codwiki-dome-world-at-war
 locations:
   - id: main
     country: Germany
-    latitude: 51
-    longitude: 9
-    precision: country
-    confidence: fallback
-    method: country-fallback
+    latitude: 52.51862019999998
+    longitude: 13.376187099999992
+    precision: approximate
+    confidence: medium
+    method: manual-approximate
     primary: true
 ---

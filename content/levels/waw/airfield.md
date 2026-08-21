@@ -8,10 +8,10 @@ wikiArticle: codwiki-airfield-multiplayer
 locations:
   - id: main
     country: Palau
-    latitude: 7.5
-    longitude: 134.5
-    precision: country
-    confidence: fallback
-    method: country-fallback
+    latitude: 6.998333300000015
+    longitude: 134.2327778
+    precision: approximate
+    confidence: medium
+    method: manual-approximate
     primary: true
 ---

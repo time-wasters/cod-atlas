@@ -9,10 +9,12 @@ wikiArticle: codwiki-strike
 locations:
   - id: main
     country: Iraq
-    latitude: 33
-    longitude: 44
-    precision: country
-    confidence: fallback
-    method: country-fallback
+    latitude: 33.93911
+    longitude: 67.709953
+    precision: approximate
+    confidence: medium
+    method: manual-approximate
     primary: true
+    urls:
+      - callOfDutyMaps: https://callofdutymaps.com/cod-4-modern-warfare/strike
 ---

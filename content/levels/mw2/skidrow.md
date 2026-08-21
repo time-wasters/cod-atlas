@@ -9,10 +9,12 @@ locations:
   - id: main
     country: United States
     region: California
-    latitude: 36.8
-    longitude: -119.4
-    precision: country
-    confidence: fallback
-    method: country-fallback
+    latitude: 36.778261
+    longitude: -119.4179324
+    precision: approximate
+    confidence: medium
+    method: manual-approximate
     primary: true
+    urls:
+      - callOfDutyMaps: https://callofdutymaps.com/modern-warfare-2/skidrow
 ---

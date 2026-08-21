@@ -21,6 +21,7 @@ locations:
     urls:
       - googleMaps: https://www.google.com/maps/search/?api=1&query=Square+of+the+Fallen+Fighters%2C+Volgograd%2C+Russia
       - wikipedia: https://en.wikipedia.org/wiki/Square_of_the_Fallen_Fighters
+      - callOfDutyMaps: https://callofdutymaps.com/call-of-duty-1/stalingrad/
 ---
 
 > **AI-generated research note:** The historical summary below was generated

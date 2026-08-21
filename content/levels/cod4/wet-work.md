@@ -8,10 +8,12 @@ wikiArticle: codwiki-wet-work
 locations:
   - id: main
     country: Bering Strait
-    latitude: 65.8
-    longitude: -168.8
-    precision: country
-    confidence: fallback
-    method: region-fallback
+    latitude: 65.8938131
+    longitude: -168.3953957
+    precision: approximate
+    confidence: medium
+    method: manual-approximate
     primary: true
+    urls:
+      - callOfDutyMaps: https://callofdutymaps.com/cod-4-modern-warfare/wet-work
 ---
