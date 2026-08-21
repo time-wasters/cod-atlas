@@ -85,11 +85,11 @@ function imageBasename(source: string) {
   return source.split(/[?#]/, 1)[0].split("/").at(-1) ?? source;
 }
 
-function atlasMarkerIcon(L: typeof import("leaflet"), entry: Entry, active: boolean) {
+function atlasMarkerIcon(L: typeof import("leaflet"), entry: Entry, active: boolean, campaignDimmed = false) {
   const cityLevel = !["country", "off-world"].includes(entry.precision);
   return L.divIcon({
     className: "atlas-marker-wrap",
-    html: `<span class="atlas-marker ${cityLevel ? "is-city" : "is-country"}${active ? " is-active" : ""}"><b></b></span>`,
+    html: `<span class="atlas-marker ${cityLevel ? "is-city" : "is-country"}${active ? " is-active" : ""}${campaignDimmed ? " is-campaign-dimmed" : ""}"><b></b></span>`,
     iconSize: [active ? 30 : 18, active ? 30 : 18],
     iconAnchor: [active ? 15 : 9, active ? 15 : 9],
   });
@@ -779,6 +779,8 @@ export default function Home() {
   const map = useRef<LeafletMap | null>(null);
   const markerLayer = useRef<MarkerClusterGroup | null>(null);
   const markers = useRef<Map<string, { marker: LeafletMarker; entry: Entry }>>(new Map());
+  const markerEntries = useRef<WeakMap<LeafletMarker, Entry>>(new WeakMap());
+  const campaignFocusLevelIds = useRef<Set<string> | null>(null);
   const mapImageOverlay = useRef<import("leaflet").ImageOverlay.Rotated | null>(null);
   const mapImageOverlayLevelId = useRef<string | null>(null);
   const mapImageOverlayOpacity = useRef(0);
@@ -1127,9 +1129,14 @@ export default function Home() {
           const count = cluster.getChildCount();
           const size = count < 10 ? 34 : count < 100 ? 40 : 46;
           const scale = count < 10 ? "is-small" : count < 100 ? "is-medium" : "is-large";
+          const focusedLevelIds = campaignFocusLevelIds.current;
+          const containsCampaignLevel = !focusedLevelIds || cluster.getAllChildMarkers().some((marker) => {
+            const entry = markerEntries.current.get(marker);
+            return entry ? focusedLevelIds.has(entry.levelId) : false;
+          });
           return L.divIcon({
             className: "atlas-cluster-wrap",
-            html: `<span class="atlas-cluster ${scale}">${count}</span>`,
+            html: `<span class="atlas-cluster ${scale}${containsCampaignLevel ? "" : " is-campaign-dimmed"}">${count}</span>`,
             iconSize: [size, size],
           });
         },
@@ -1176,6 +1183,7 @@ export default function Home() {
           direction: "top",
           offset: [0, -8],
         });
+        markerEntries.current.set(marker, entry);
         marker.addTo(layer);
         markers.current.set(entry.id, { marker, entry });
       });
@@ -1186,11 +1194,17 @@ export default function Home() {
     if (!mapReady || !map.current || !leaflet.current) return;
     const currentMap = map.current;
     const L = leaflet.current;
+    const focusedLevelIds = selectedCampaign
+      ? new Set(selectedCampaign.levels.map(({ entry }) => entry.levelId))
+      : null;
+    campaignFocusLevelIds.current = focusedLevelIds;
     markers.current.forEach(({ marker, entry }) => {
       const active = entry.id === selected.entry.id;
-      marker.setIcon(atlasMarkerIcon(L, entry, active));
+      const campaignDimmed = focusedLevelIds !== null && !focusedLevelIds.has(entry.levelId);
+      marker.setIcon(atlasMarkerIcon(L, entry, active, campaignDimmed));
       marker.setZIndexOffset(active ? 1000 : 0);
     });
+    markerLayer.current?.refreshClusters();
     const selectedIsVisible = filtered.some((group) =>
       group.entries.some((entry) => entry.id === selected.entry.id));
     if (selected.entry.coordinates && selectedIsVisible && mapNode.current) {
@@ -1249,7 +1263,7 @@ export default function Home() {
         mapViewportPadding(mapNode.current, intelCard.current),
       );
     }
-  }, [filtered, mapReady, selected]);
+  }, [filtered, mapReady, selected, selectedCampaign]);
 
   useEffect(() => {
     if (!mapReady || !map.current || !leaflet.current) return;

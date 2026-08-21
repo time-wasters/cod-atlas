@@ -274,12 +274,14 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
   background: #3d4b2ff2;
   box-shadow: 0 0 0 3px #11190dcc, 0 3px 12px #000b;
   font: 700 11px/1 var(--font-geist-mono), monospace;
+  transition: filter .18s ease-out, opacity .18s ease-out;
 }
 .atlas-cluster.is-medium { background: #68552df2; }
 .atlas-cluster.is-large { background: #74402bf2; }
+.atlas-cluster.is-campaign-dimmed { opacity: .28; filter: grayscale(.9); }
 .marker-cluster-spider-leg { stroke: #d8bb65; stroke-width: 1.5; stroke-opacity: .8; }
 .atlas-marker-wrap { background: none !important; border: 0 !important; }
-.atlas-marker { width: 18px; height: 18px; display: grid; place-items: center; border: 2px solid #b8af80; border-radius: 50%; color: #16160e; background: #aaa476cc; box-shadow: 0 0 0 3px #0f140dcc, 0 2px 8px #000b; transition: transform .15s ease-out, filter .15s ease-out; }
+.atlas-marker { width: 18px; height: 18px; display: grid; place-items: center; border: 2px solid #b8af80; border-radius: 50%; color: #16160e; background: #aaa476cc; box-shadow: 0 0 0 3px #0f140dcc, 0 2px 8px #000b; transition: transform .15s ease-out, filter .15s ease-out, opacity .15s ease-out; }
 .atlas-marker::after { content: ""; position: absolute; inset: 4px; border: 1px solid #3e412d; border-radius: 50%; }
 .atlas-marker.is-city { border-color: #ffc13b; background: #c58a21; }
 .atlas-marker.is-country { border-color: #ffc13b; border-style: solid; background: #777a72; }
@@ -287,6 +289,8 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
 .atlas-marker.is-active { width: 30px; height: 30px; border-style: solid; border-color: #ffc13b; background: #d99819; box-shadow: 0 0 0 4px #12160f, 0 0 0 6px #d99819aa, 0 0 22px #d9981988; }
 .atlas-marker.is-country.is-active { background: #777a72; }
 .atlas-marker.is-active::after { inset: 7px; }
+.atlas-marker.is-campaign-dimmed { opacity: .24; filter: grayscale(.9); }
+.atlas-marker.is-campaign-dimmed:hover { opacity: .6; filter: grayscale(.6) brightness(1.1); }
 
 .intel-column { position: absolute; z-index: 500; top: 24px; right: 24px; width: min(330px, calc(100% - 48px)); max-height: calc(100% - 48px); display: flex; flex-direction: column; gap: 10px; transition: right .3s cubic-bezier(.22, .8, .32, 1), width .3s cubic-bezier(.22, .8, .32, 1); }
 .intel-column.is-collapsed { right: 0; width: 20px; gap: 0; }
