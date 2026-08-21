@@ -45,6 +45,8 @@ test("renders development preview metadata", async () => {
   assert.match(html, />Solar System \/\/ Schematic<\/text>/);
   assert.match(html, />Mercury<\/text>/);
   assert.match(html, /aria-pressed="false"[^>]*>[\s\S]{0,120}Multiplayer/);
+  assert.match(html, /role="tab"[^>]*aria-selected="true"[^>]*aria-controls="sidebar-locations"/);
+  assert.match(html, />Campaigns<\/span>/);
   assert.match(html, />Adriatic Sea<\/span>/);
   assert.doesNotMatch(html, /Selected location/);
   assert.doesNotMatch(html, />Level<\/span>/);
@@ -197,6 +199,42 @@ test("preserves the complete statically compiled atlas", async () => {
     assert.deepEqual(entry.modes, ["multiplayer"]);
   }
 
+  const expectedMw2MapLinks = new Map([
+    ["mw2-afgan", "afghan"],
+    ["mw2-bailout", "bailout"],
+    ["mw2-carnival", "carnival"],
+    ["mw2-derail", "derail"],
+    ["mw2-estate", "estate"],
+    ["mw2-ghosts-favela", "favela"],
+    ["mw2-highrise", "highrise"],
+    ["mw2-invasion", "invasion"],
+    ["mw2-karachi", "karachi"],
+    ["mw2-mw3-terminal", "terminal"],
+    ["mw2-quarry", "quarry"],
+    ["mw2-rundown", "rundown"],
+    ["mw2-rust", "rust"],
+    ["mw2-salvage", "salvage"],
+    ["mw2-scrapyard", "scrapyard"],
+    ["mw2-skidrow", "skidrow"],
+    ["mw2-sub-base", "sub-base"],
+    ["mw2-trailer-park", "trailer-park"],
+    ["mw2-underpass", "underpass"],
+    ["mw2-wasteland", "wasteland"],
+  ]);
+  const mw2MapEntries = entries.filter((entry) =>
+    entry.urls?.some((url) => url.callOfDutyMaps?.startsWith("https://callofdutymaps.com/modern-warfare-2/")));
+  assert.deepEqual(
+    mw2MapEntries.map((entry) => entry.levelId).sort(),
+    [...expectedMw2MapLinks.keys()].sort(),
+  );
+  for (const entry of mw2MapEntries) {
+    const slug = expectedMw2MapLinks.get(entry.levelId);
+    const url = entry.urls.find((item) => item.callOfDutyMaps).callOfDutyMaps;
+    assert.equal(url, `https://callofdutymaps.com/modern-warfare-2/${slug}`);
+    assert.ok(entry.gameIds.includes("mw2"));
+    assert.deepEqual(entry.modes, ["multiplayer"]);
+  }
+
   const codCampaigns = new Map([
     ["1", {
       label: "American Campaign",
@@ -228,6 +266,12 @@ test("preserves the complete statically compiled atlas", async () => {
     }
   }
   assert.ok([...uniqueCodCampaignLevels.values()].every((entry) => codCampaigns.has(entry.campaign?.id)));
+  assert.deepEqual(
+    [...uniqueCodCampaignLevels.values()]
+      .sort((a, b) => a.campaignOrder - b.campaignOrder)
+      .map((entry) => entry.title),
+    [...codCampaigns.values()].flatMap((campaign) => campaign.levels),
+  );
 
   assert.deepEqual(findEntry("COD2", "The Diversionary Raid").modes, ["singleplayer"]);
   assert.deepEqual(findEntry("COD2", "Holding the Line").modes, ["singleplayer"]);

@@ -19,6 +19,7 @@ type Entry = {
     id: string;
     label: string;
   } | null;
+  campaignOrder?: number;
   wiki: string;
   country: string;
   region?: string | null;
@@ -168,6 +169,14 @@ type AtlasData = {
 
 type Selection = { group: Group; entry: Entry };
 type CountryOption = Pick<Group, "name" | "flagCode"> & { available: boolean };
+type CampaignOption = {
+  key: string;
+  gameId: string;
+  gameLabel: string;
+  id: string;
+  label: string;
+  levels: Selection[];
+};
 
 const data = atlasSource as AtlasData;
 const historyOverlays = historyOverlaysSource as Record<string, HistoryOverlayRecord[]>;
@@ -755,6 +764,8 @@ export default function Home() {
   const [failedImageKey, setFailedImageKey] = useState<string | null>(null);
   const [expandedRegionEntryId, setExpandedRegionEntryId] = useState<string | null>(null);
   const [relatedLevelsOpen, setRelatedLevelsOpen] = useState(true);
+  const [sidebarListMode, setSidebarListMode] = useState<"locations" | "campaigns">("locations");
+  const [selectedCampaignKey, setSelectedCampaignKey] = useState<string | null>(null);
   const [expandedLevelNotesId, setExpandedLevelNotesId] = useState<string | null>(null);
   const [levelNotes, setLevelNotes] = useState<{
     levelId: string;
@@ -861,6 +872,53 @@ export default function Home() {
       }))
       .filter((group) => group.entries.length && (country === "all" || group.name === country));
   }, [country, groups, game, precision, query, showMultiplayer, showSingleplayer]);
+  const campaigns = useMemo<CampaignOption[]>(() => {
+    const campaignsByKey = new Map<string, CampaignOption & { levelIds: Set<string> }>();
+    for (const group of groups) {
+      for (const entry of group.entries) {
+        if (!entry.campaign) continue;
+        const campaignGame = gamesById.get(entry.gameIds[0]);
+        if (!campaignGame || (game !== "all" && campaignGame.code !== game)) continue;
+        const key = `${campaignGame.id}:${entry.campaign.id}`;
+        let campaign = campaignsByKey.get(key);
+        if (!campaign) {
+          campaign = {
+            key,
+            gameId: campaignGame.id,
+            gameLabel: campaignGame.label,
+            id: entry.campaign.id,
+            label: entry.campaign.label,
+            levels: [],
+            levelIds: new Set(),
+          };
+          campaignsByKey.set(key, campaign);
+        }
+        if (!campaign.levelIds.has(entry.levelId)) {
+          campaign.levelIds.add(entry.levelId);
+          campaign.levels.push({ group, entry });
+        }
+      }
+    }
+    return [...campaignsByKey.values()]
+      .map(({ key, gameId, gameLabel, id, label, levels }) => ({
+        key,
+        gameId,
+        gameLabel,
+        id,
+        label,
+        levels: levels.sort((a, b) =>
+          (a.entry.campaignOrder ?? Number.MAX_SAFE_INTEGER) - (b.entry.campaignOrder ?? Number.MAX_SAFE_INTEGER)
+          || a.entry.title.localeCompare(b.entry.title)),
+      }))
+      .sort((a, b) => {
+        const gameComparison = compareGames(gamesById.get(a.gameId)!, gamesById.get(b.gameId)!);
+        if (gameComparison) return gameComparison;
+        return (a.levels[0]?.entry.campaignOrder ?? Number.MAX_SAFE_INTEGER)
+          - (b.levels[0]?.entry.campaignOrder ?? Number.MAX_SAFE_INTEGER)
+          || a.label.localeCompare(b.label);
+      });
+  }, [game, groups]);
+  const selectedCampaign = campaigns.find((campaign) => campaign.key === selectedCampaignKey) ?? null;
   const mapFitCoordinates = useMemo(() => {
     const seen = new Set<string>();
     return filtered.flatMap((group) => group.entries.flatMap((entry) => {
@@ -902,12 +960,15 @@ export default function Home() {
     : null;
   const selectedImageLoaded = selectedImageKey !== null && loadedImageKey === selectedImageKey;
   const selectedImageFailed = selectedImageKey !== null && failedImageKey === selectedImageKey;
-  const regionLevelsExpanded = expandedRegionEntryId === selected.entry.id;
   const regionalLevels = selected.group.entries.filter((entry, index, entries) =>
     entry.levelId !== selected.entry.levelId
     && entries.findIndex((candidate) => candidate.levelId === entry.levelId) === index);
-  const visibleRegionalLevels = regionLevelsExpanded ? regionalLevels : regionalLevels.slice(0, 8);
-  const hiddenRegionalLevelCount = regionalLevels.length - visibleRegionalLevels.length;
+  const relatedLevels = selectedCampaign?.levels
+    ?? regionalLevels.map((entry) => ({ group: selected.group, entry }));
+  const relatedLevelsExpansionKey = selectedCampaign ? `campaign:${selectedCampaign.key}` : selected.entry.id;
+  const relatedLevelsExpanded = expandedRegionEntryId === relatedLevelsExpansionKey;
+  const visibleRelatedLevels = relatedLevelsExpanded ? relatedLevels : relatedLevels.slice(0, 8);
+  const hiddenRelatedLevelCount = relatedLevels.length - visibleRelatedLevels.length;
   const levelNotesExpanded = selected.entry.hasLevelNotes
     && expandedLevelNotesId === selected.entry.levelId;
   const selectedLevelNotes = levelNotes?.levelId === selected.entry.levelId ? levelNotes : null;
@@ -975,6 +1036,13 @@ export default function Home() {
     markerOverlaySelectionLevelId.current = mapOverlays[entry.levelId] ? entry.levelId : null;
     selectEntry(group, entry);
   }, [selectEntry]);
+
+  const selectCampaign = useCallback((campaign: CampaignOption) => {
+    setSelectedCampaignKey(campaign.key);
+    setExpandedRegionEntryId(null);
+    setRelatedLevelsOpen(true);
+    setDetailsOpen(true);
+  }, []);
 
   const focusSelectedMarker = useCallback(() => {
     const currentMap = map.current;
@@ -1413,7 +1481,15 @@ export default function Home() {
         <div className="filter-grid">
           <div className="filter-field game-filter">
             <span>Game <small>Oldest to newest</small></span>
-            <GameSelect games={games} value={game} onValueChange={setGame} />
+            <GameSelect
+              games={games}
+              value={game}
+              onValueChange={(value) => {
+                setGame(value);
+                setSelectedCampaignKey(null);
+                setExpandedRegionEntryId(null);
+              }}
+            />
           </div>
           <div className="filter-field">
             <span>Country</span>
@@ -1456,22 +1532,68 @@ export default function Home() {
         <button className="kml-button" onClick={exportKml}>↓ Export filtered KML for Google Maps</button>
 
         <section className="mission-list">
-          <div className="section-title">
-            <span>Locations</span><small>{filtered.length} groups</small>
+          <div className="sidebar-list-switch" role="tablist" aria-label="Browse atlas data">
+            <button
+              className={sidebarListMode === "locations" ? "is-active" : ""}
+              type="button"
+              role="tab"
+              aria-selected={sidebarListMode === "locations"}
+              aria-controls="sidebar-locations"
+              onClick={() => {
+                setSidebarListMode("locations");
+                setSelectedCampaignKey(null);
+                setExpandedRegionEntryId(null);
+              }}
+            >
+              <span>Locations</span><small>{filtered.length}</small>
+            </button>
+            <button
+              className={sidebarListMode === "campaigns" ? "is-active" : ""}
+              type="button"
+              role="tab"
+              aria-selected={sidebarListMode === "campaigns"}
+              aria-controls="sidebar-campaigns"
+              onClick={() => setSidebarListMode("campaigns")}
+            >
+              <span>Campaigns</span><small>{campaigns.length}</small>
+            </button>
           </div>
-          <div className="scroll-list">
-            {filtered.map((group, index) => (
-              <button
-                key={`${group.name}-${index}`}
-                className={group.name === selected.group.name ? "location-row is-selected" : "location-row"}
-                onClick={() => selectSidebarGroup(group)}
-              >
-                <i className="location-marker-icon" aria-hidden="true" />
-                <span><b>{group.name}</b><small>{group.entries.length} appearances</small></span>
-                <em>{group.coordinates ? "MAP" : "ORBIT"}</em>
-              </button>
-            ))}
-          </div>
+          {sidebarListMode === "locations" ? (
+            <div className="scroll-list" id="sidebar-locations" role="tabpanel">
+              {filtered.map((group, index) => (
+                <button
+                  key={`${group.name}-${index}`}
+                  className={group.name === selected.group.name ? "location-row is-selected" : "location-row"}
+                  onClick={() => selectSidebarGroup(group)}
+                >
+                  <i className="location-marker-icon" aria-hidden="true" />
+                  <span><b>{group.name}</b><small>{group.entries.length} appearances</small></span>
+                  <em>{group.coordinates ? "MAP" : "ORBIT"}</em>
+                </button>
+              ))}
+            </div>
+          ) : (
+            <div className="scroll-list" id="sidebar-campaigns" role="tabpanel">
+              {campaigns.map((campaign, index) => (
+                <button
+                  key={campaign.key}
+                  className={campaign.key === selectedCampaignKey ? "campaign-row is-selected" : "campaign-row"}
+                  type="button"
+                  onClick={() => selectCampaign(campaign)}
+                >
+                  <i aria-hidden="true">{String(index + 1).padStart(2, "0")}</i>
+                  <span>
+                    <b>{campaign.label}</b>
+                    <small>{game === "all" ? `${campaign.gameLabel} · ` : ""}{campaign.levels.length} levels</small>
+                  </span>
+                  <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5" /></svg>
+                </button>
+              ))}
+              {campaigns.length === 0 && (
+                <p className="campaign-list-empty">No campaign data is available for this game.</p>
+              )}
+            </div>
+          )}
         </section>
 
         <footer>
@@ -1853,47 +1975,47 @@ export default function Home() {
             </button>
           </section>
         </article>
-        {regionalLevels.length > 0 && (
-          <aside className={`related-levels-panel${relatedLevelsOpen ? "" : " is-collapsed"}`} aria-label="Related levels">
+        {relatedLevels.length > 0 && (
+          <aside className={`related-levels-panel${relatedLevelsOpen ? "" : " is-collapsed"}`} aria-label={selectedCampaign ? `${selectedCampaign.label} levels` : "Related levels"}>
             <button
               className="related-levels-toggle"
               type="button"
               aria-expanded={relatedLevelsOpen}
-              aria-controls="regional-level-list"
+              aria-controls="related-level-list"
               onClick={() => setRelatedLevelsOpen((open) => !open)}
             >
-              <span>Related levels</span>
-              <small>{regionalLevels.length}</small>
+              <span>{selectedCampaign?.label ?? "Related levels"}</span>
+              <small>{relatedLevels.length}</small>
               <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4 6 4 4 4-4" /></svg>
             </button>
             {relatedLevelsOpen && (
               <div
-                className={`intel-entries${regionLevelsExpanded ? " is-expanded" : ""}`}
-                id="regional-level-list"
+                className={`intel-entries${relatedLevelsExpanded ? " is-expanded" : ""}`}
+                id="related-level-list"
               >
-                {visibleRegionalLevels.map((entry) => (
-                  <div className="intel-entry" key={entry.levelId}>
-                    <button onClick={() => selectEntry(selected.group, entry)}><strong>{entry.title}</strong><span>{locationName(entry)} · {entry.game}</span></button>
+                {visibleRelatedLevels.map(({ group, entry }) => (
+                  <div className={`intel-entry${entry.levelId === selected.entry.levelId ? " is-selected" : ""}`} key={entry.levelId}>
+                    <button onClick={() => selectEntry(group, entry)}><strong>{entry.title}</strong><span>{locationName(entry)} · {entry.game}</span></button>
                     <a href={entry.wiki} target="_blank" rel="noreferrer" aria-label={`Open ${entry.title} on CoD Wiki`}>↗</a>
                   </div>
                 ))}
-                {hiddenRegionalLevelCount > 0 && (
+                {hiddenRelatedLevelCount > 0 && (
                   <button
                     className="more-row"
                     type="button"
                     aria-expanded="false"
-                    aria-controls="regional-level-list"
-                    onClick={() => setExpandedRegionEntryId(selected.entry.id)}
+                    aria-controls="related-level-list"
+                    onClick={() => setExpandedRegionEntryId(relatedLevelsExpansionKey)}
                   >
-                    + {hiddenRegionalLevelCount} more {hiddenRegionalLevelCount === 1 ? "level" : "levels"} in this region
+                    + {hiddenRelatedLevelCount} more {hiddenRelatedLevelCount === 1 ? "level" : "levels"} in this {selectedCampaign ? "campaign" : "region"}
                   </button>
                 )}
-                {regionLevelsExpanded && regionalLevels.length > 8 && (
+                {relatedLevelsExpanded && relatedLevels.length > 8 && (
                   <button
                     className="more-row is-collapse"
                     type="button"
                     aria-expanded="true"
-                    aria-controls="regional-level-list"
+                    aria-controls="related-level-list"
                     onClick={() => setExpandedRegionEntryId(null)}
                   >
                     Show fewer
