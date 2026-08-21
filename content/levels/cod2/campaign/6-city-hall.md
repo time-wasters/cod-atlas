@@ -4,6 +4,12 @@ title: City Hall
 games:
   - cod2
 mode: singleplayer
+campaign:
+  id: "1"
+  label: Russian
+  subcampaign:
+    id: "3"
+    label: Fortress Stalingrad
 wikiArticle: codwiki-city-hall
 locations:
   - id: main

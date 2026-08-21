@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Red_Army_Training",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Red_Army_Training",
   "latestRevisionId": 2926272,
-  "importedAt": "2026-08-10T19:02:44.602Z",
+  "importedAt": "2026-08-18T20:41:13.783Z",
   "levelLocation": {
     "raw": "[[wikipedia:Moscow|Moscow]], U.S.S.R.",
     "label": "Moscow",
@@ -53,5 +53,41 @@
     "resolvedTitle": "Red Army Training",
     "mainImageTitle": "File:Ratbears.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": "[[Demolition (level)|Demolition]]<br>[[The Diversionary Raid]] (Chronologically)",
+    "label": "Demolition, The Diversionary Raid (Chronologically)",
+    "links": [
+      {
+        "wikiTitle": "Demolition (level)",
+        "label": "Demolition",
+        "url": "https://callofduty.fandom.com/wiki/Demolition_(level)"
+      },
+      {
+        "wikiTitle": "The Diversionary Raid",
+        "label": "The Diversionary Raid",
+        "url": "https://callofduty.fandom.com/wiki/The_Diversionary_Raid"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty 2]]''",
+    "label": "Call of Duty 2",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty 2",
+        "label": "Call of Duty 2",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_2"
+      }
+    ]
+  },
+  "date": {
+    "raw": "December 17, 1941",
+    "label": "December 17, 1941"
   }
 }

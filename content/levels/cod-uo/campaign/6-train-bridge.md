@@ -4,6 +4,9 @@ title: Train Bridge
 games:
   - cod-uo
 mode: singleplayer
+campaign:
+  id: "2"
+  label: Britain
 wikiArticle: codwiki-train-bridge
 locations:
   - id: main

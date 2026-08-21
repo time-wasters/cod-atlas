@@ -4,6 +4,9 @@ title: Noville
 games:
   - cod-uo
 mode: singleplayer
+campaign:
+  id: "1"
+  label: America
 wikiArticle: codwiki-noville
 locations:
   - id: main

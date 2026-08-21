@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Wallendar",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Wallendar",
   "latestRevisionId": 2929914,
-  "importedAt": "2026-08-10T19:03:06.696Z",
+  "importedAt": "2026-08-18T20:41:24.589Z",
   "levelLocation": {
     "raw": "Wallendar, [[Germany]]",
     "label": "Germany",
@@ -53,5 +53,30 @@
     "resolvedTitle": "Wallendar",
     "mainImageTitle": "File:Wallendar_Map_CoD2.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty 2]]''",
+    "label": "Call of Duty 2",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty 2",
+        "label": "Call of Duty 2",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_2"
+      }
+    ]
+  },
+  "date": {
+    "raw": null,
+    "label": null
   }
 }

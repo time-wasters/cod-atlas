@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Holding_the_Line",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Holding_the_Line",
   "latestRevisionId": 2936612,
-  "importedAt": "2026-08-10T19:02:33.620Z",
+  "importedAt": "2026-08-18T20:41:02.892Z",
   "levelLocation": {
     "raw": "Northern Egypt, Africa",
     "label": "Northern Egypt, Africa",
@@ -53,5 +53,42 @@
     "resolvedTitle": "Holding the Line",
     "mainImageTitle": "File:CoD2_-_Hold_the_Line.jpg",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[The Diversionary Raid]]",
+    "label": "The Diversionary Raid",
+    "links": [
+      {
+        "wikiTitle": "The Diversionary Raid",
+        "label": "The Diversionary Raid",
+        "url": "https://callofduty.fandom.com/wiki/The_Diversionary_Raid"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Operation Supercharge]]",
+    "label": "Operation Supercharge",
+    "links": [
+      {
+        "wikiTitle": "Operation Supercharge",
+        "label": "Operation Supercharge",
+        "url": "https://callofduty.fandom.com/wiki/Operation_Supercharge"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty 2]]''",
+    "label": "Call of Duty 2",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty 2",
+        "label": "Call of Duty 2",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_2"
+      }
+    ]
+  },
+  "date": {
+    "raw": "October 29th, 1942",
+    "label": "October 29th, 1942"
   }
 }

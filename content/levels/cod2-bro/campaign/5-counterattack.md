@@ -1,14 +1,17 @@
 ---
-id: cod2-bro-the-last-train
-title: The Last Train
+id: cod2-bro-counterattack
+title: Counterattack
 games:
   - cod2-bro
 mode: singleplayer
-wikiArticle: codwiki-the-last-train
+campaign:
+  id: "2"
+  label: North Africa
+wikiArticle: codwiki-counterattack
 locations:
   - id: main
-    country: Germany
-    latitude: 51
+    country: Tunisia
+    latitude: 34
     longitude: 9
     precision: country
     confidence: fallback

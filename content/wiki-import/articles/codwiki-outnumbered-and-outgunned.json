@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Armored_Car_Escape",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Armored_Car_Escape",
   "latestRevisionId": 2951068,
-  "importedAt": "2026-08-10T19:02:44.617Z",
+  "importedAt": "2026-08-18T20:41:02.907Z",
   "levelLocation": {
     "raw": "Toujane, Tunisia",
     "label": "Toujane, Tunisia",
@@ -53,5 +53,42 @@
     "resolvedTitle": "Armored Car Escape",
     "mainImageTitle": "File:Outr2.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[88 Ridge]]",
+    "label": "88 Ridge",
+    "links": [
+      {
+        "wikiTitle": "88 Ridge",
+        "label": "88 Ridge",
+        "url": "https://callofduty.fandom.com/wiki/88_Ridge"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Retaking Toujane]]",
+    "label": "Retaking Toujane",
+    "links": [
+      {
+        "wikiTitle": "Retaking Toujane",
+        "label": "Retaking Toujane",
+        "url": "https://callofduty.fandom.com/wiki/Retaking_Toujane"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty 2]]''",
+    "label": "Call of Duty 2",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty 2",
+        "label": "Call of Duty 2",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_2"
+      }
+    ]
+  },
+  "date": {
+    "raw": "March 10, 1943, 1800 hrs",
+    "label": "March 10, 1943, 1800 hrs"
   }
 }

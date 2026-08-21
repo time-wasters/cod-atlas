@@ -23,6 +23,7 @@ These instructions apply to everything under `content/`.
   attribution fields, and stable ID when refreshing them.
 - Use `precision: approximate` whenever coordinates represent a researched
   estimate rather than a verified point.
-- Run `npm run data:build` after every content change. If host npm is
-  unavailable, run
-  `docker compose run --rm cod-atlas-tools npm run data:build` instead.
+- Use `npm run data:check` for focused validation after a content change. If
+  host npm is unavailable, use
+  `docker compose run --rm cod-atlas-tools npm run data:check`. Generated JSON
+  is an ignored build artifact and must not be committed.

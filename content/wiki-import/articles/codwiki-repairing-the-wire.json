@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Repairing_the_Wire",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Repairing_the_Wire",
   "latestRevisionId": 2741336,
-  "importedAt": "2026-08-10T19:02:55.525Z",
+  "importedAt": "2026-08-18T20:41:13.790Z",
   "levelLocation": {
     "raw": "[[Stalingrad]], U.S.S.R.",
     "label": "Stalingrad",
@@ -53,5 +53,42 @@
     "resolvedTitle": "Repairing the Wire",
     "mainImageTitle": "File:Repairing_The_Wire.jpg",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Demolition (level)|Demolition]]",
+    "label": "Demolition",
+    "links": [
+      {
+        "wikiTitle": "Demolition (level)",
+        "label": "Demolition",
+        "url": "https://callofduty.fandom.com/wiki/Demolition_(level)"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[The Pipeline]]",
+    "label": "The Pipeline",
+    "links": [
+      {
+        "wikiTitle": "The Pipeline",
+        "label": "The Pipeline",
+        "url": "https://callofduty.fandom.com/wiki/The_Pipeline"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty 2]]''",
+    "label": "Call of Duty 2",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty 2",
+        "label": "Call of Duty 2",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_2"
+      }
+    ]
+  },
+  "date": {
+    "raw": "December 8, 1942, 1300 hrs",
+    "label": "December 8, 1942, 1300 hrs"
   }
 }

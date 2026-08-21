@@ -1,10 +1,13 @@
 ---
-id: cod2-bro-crucifix-hill
-title: Crucifix Hill
+id: cod2-bro-the-last-train
+title: The Last Train
 games:
   - cod2-bro
 mode: singleplayer
-wikiArticle: codwiki-crucifix-hill
+campaign:
+  id: "4"
+  label: Western Europe
+wikiArticle: codwiki-the-last-train
 locations:
   - id: main
     country: Germany

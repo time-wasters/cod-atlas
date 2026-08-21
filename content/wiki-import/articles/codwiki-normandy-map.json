@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Normandy_(map)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Normandy_(map)",
   "latestRevisionId": 2862175,
-  "importedAt": "2026-08-10T19:02:44.666Z",
+  "importedAt": "2026-08-18T20:41:02.955Z",
   "levelLocation": {
     "raw": "{{w|Amaye sur Seulles}}, [[France]]",
     "label": "France",
@@ -53,5 +53,30 @@
     "resolvedTitle": "Normandy (map)",
     "mainImageTitle": "File:Normandy_Map_CoD2.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty 2]]''",
+    "label": "Call of Duty 2",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty 2",
+        "label": "Call of Duty 2",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_2"
+      }
+    ]
+  },
+  "date": {
+    "raw": null,
+    "label": null
   }
 }

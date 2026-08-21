@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/El_Alamein",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/El_Alamein",
   "latestRevisionId": 2795581,
-  "importedAt": "2026-08-10T19:02:33.649Z",
+  "importedAt": "2026-08-18T20:40:52.172Z",
   "levelLocation": {
     "raw": "El Alamein, Egypt",
     "label": "El Alamein, Egypt",
@@ -53,5 +53,35 @@
     "resolvedTitle": "El Alamein",
     "mainImageTitle": "File:El_Alamein_Map_CoD2.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty 2]]''<br>''[[Call of Duty: Roads to Victory]]''",
+    "label": "Call of Duty 2, Call of Duty: Roads to Victory",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty 2",
+        "label": "Call of Duty 2",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_2"
+      },
+      {
+        "wikiTitle": "Call of Duty: Roads to Victory",
+        "label": "Call of Duty: Roads to Victory",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Roads_to_Victory"
+      }
+    ]
+  },
+  "date": {
+    "raw": null,
+    "label": null
   }
 }

@@ -1,10 +1,13 @@
 ---
-id: cod2-defending-the-pointe
-title: Defending the Pointe
+id: cod2-bro-we-ve-been-through-worse
+title: We've Been Through Worse
 games:
-  - cod2
+  - cod2-bro
 mode: singleplayer
-wikiArticle: codwiki-defending-the-pointe
+campaign:
+  id: "1"
+  label: Prologue
+wikiArticle: codwiki-we-ve-been-through-worse
 locations:
   - id: main
     country: France

@@ -28,11 +28,12 @@ changes are intended to be reviewable through pull requests.
 
 ## Generated data
 
-- `app/data/atlas.generated.json` is generated; never edit it manually.
-- After changing `content/`, run `npm run data:build` (Docker:
-  `docker compose run --rm cod-atlas-tools npm run data:build`) and commit the
-  regenerated file together with the source change.
-- The current regression baseline is 987 marker locations. A count change must
+- `app/data/*.generated.json` files are ignored build artifacts; never edit or
+  commit them. Commands that need them generate them automatically.
+- After changing `content/`, use `npm run data:check` (Docker:
+  `docker compose run --rm cod-atlas-tools npm run data:check`) for focused
+  validation without generating build artifacts.
+- The current regression baseline is 988 marker locations. A count change must
   be intentional and accompanied by an appropriate test update.
 
 ## Working procedure
@@ -43,10 +44,9 @@ changes are intended to be reviewable through pull requests.
   before using host-side Node/npm commands.
 - Prefer Docker for installs, data commands, linting, tests, and builds. Use the
   `builder` stage in `Dockerfile`, which contains the locked Node/npm toolchain.
-- When a command must update a tracked file (for example `npm run data:build`),
-  run the builder with the repository bind-mounted at `/app` and preserve the
-  image's `/app/node_modules` separately so generated output is written back to
-  the workspace without hiding installed dependencies.
+- When a command must write generated output to the workspace, run the builder
+  with the repository bind-mounted at `/app` and preserve the image's
+  `/app/node_modules` separately so dependencies remain available.
 - Do not install Node.js or npm on the host merely to run repository commands.
 - Prefer `docker compose run --rm cod-atlas-tools npm ...` as the Docker
   equivalent of a local npm command. See `docs/docker-commands.md`.

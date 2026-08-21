@@ -4,6 +4,9 @@ title: Kharkov Station
 games:
   - cod-uo
 mode: singleplayer
+campaign:
+  id: "3"
+  label: Russia
 wikiArticle: codwiki-kharkov-2
 locations:
   - id: main

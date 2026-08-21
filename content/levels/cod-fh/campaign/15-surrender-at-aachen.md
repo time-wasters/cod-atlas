@@ -4,6 +4,9 @@ title: Surrender at Aachen
 games:
   - cod-fh
 mode: singleplayer
+campaign:
+  id: "3"
+  label: Western Front
 wikiArticle: codwiki-surrender-at-aachen
 locations:
   - id: main

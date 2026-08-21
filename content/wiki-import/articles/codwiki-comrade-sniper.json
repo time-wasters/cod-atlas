@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Comrade_Sniper",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Comrade_Sniper",
   "latestRevisionId": 2784973,
-  "importedAt": "2026-08-10T19:02:22.724Z",
+  "importedAt": "2026-08-18T20:40:52.131Z",
   "levelLocation": {
     "raw": "[[Stalingrad]], U.S.S.R.",
     "label": "Stalingrad",
@@ -53,5 +53,47 @@
     "resolvedTitle": "Comrade Sniper",
     "mainImageTitle": "File:Iced_Sniper_Scope.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[City Hall]]",
+    "label": "City Hall",
+    "links": [
+      {
+        "wikiTitle": "City Hall",
+        "label": "City Hall",
+        "url": "https://callofduty.fandom.com/wiki/City_Hall"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[The Diversionary Raid]]\n[[Crusader Charge]] (Chronologically)",
+    "label": "The Diversionary Raid Crusader Charge (Chronologically)",
+    "links": [
+      {
+        "wikiTitle": "The Diversionary Raid",
+        "label": "The Diversionary Raid",
+        "url": "https://callofduty.fandom.com/wiki/The_Diversionary_Raid"
+      },
+      {
+        "wikiTitle": "Crusader Charge",
+        "label": "Crusader Charge",
+        "url": "https://callofduty.fandom.com/wiki/Crusader_Charge"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty 2]]''",
+    "label": "Call of Duty 2",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty 2",
+        "label": "Call of Duty 2",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_2"
+      }
+    ]
+  },
+  "date": {
+    "raw": "January 15, 1943, 1630 hrs",
+    "label": "January 15, 1943, 1630 hrs"
   }
 }

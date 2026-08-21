@@ -4,6 +4,9 @@ title: Trenches
 games:
   - cod-uo
 mode: singleplayer
+campaign:
+  id: "3"
+  label: Russia
 wikiArticle: codwiki-trenches-united-offensive
 locations:
   - id: main

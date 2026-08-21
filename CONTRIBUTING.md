@@ -31,9 +31,11 @@ VSCodium users can run the common commands through **Terminal → Run Task**.
 1. Find the Markdown file under `content/levels/`.
 2. Change the curated frontmatter or add a concise note to the Markdown body.
 3. Include a reliable source link in the pull-request description.
-4. Run `npm run data:build`, or its Docker equivalent:
-   `docker compose run --rm cod-atlas-tools npm run data:build`.
-5. Commit the level file and `app/data/atlas.generated.json` together.
+4. If a local Node or Docker toolchain is available, run `npm run data:check`
+   or `docker compose run --rm cod-atlas-tools npm run data:check`. CI runs the
+   same validation for every pull request.
+5. Commit the curated source change. Generated JSON is built automatically and
+   is not committed.
 
 Coordinates belong to the level location itself. Do not create a shared place
 record even when several levels use the same city name.

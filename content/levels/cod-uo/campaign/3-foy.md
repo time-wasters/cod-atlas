@@ -4,6 +4,9 @@ title: Foy
 games:
   - cod-uo
 mode: singleplayer
+campaign:
+  id: "1"
+  label: America
 wikiArticle: codwiki-foy-campaign
 locations:
   - id: main

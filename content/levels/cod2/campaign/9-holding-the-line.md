@@ -4,6 +4,12 @@ title: Holding the Line
 games:
   - cod2
 mode: singleplayer
+campaign:
+  id: "2"
+  label: Britain
+  subcampaign:
+    id: "1"
+    label: The Battle of El Alamein
 wikiArticle: codwiki-holding-the-line
 locations:
   - id: main

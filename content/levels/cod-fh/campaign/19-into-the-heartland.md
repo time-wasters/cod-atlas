@@ -4,6 +4,9 @@ title: Into the Heartland
 games:
   - cod-fh
 mode: singleplayer
+campaign:
+  id: "3"
+  label: Western Front
 wikiArticle: codwiki-into-the-heartland
 locations:
   - id: main

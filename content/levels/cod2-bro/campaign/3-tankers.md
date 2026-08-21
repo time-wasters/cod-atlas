@@ -1,15 +1,18 @@
 ---
-id: cod2-bro-piano-lupo
-title: Piano Lupo
+id: cod2-bro-tankers
+title: Tankers
 games:
   - cod2-bro
 mode: singleplayer
-wikiArticle: codwiki-piano-lupo
+campaign:
+  id: "2"
+  label: North Africa
+wikiArticle: codwiki-tankers
 locations:
   - id: main
-    country: Italy
-    latitude: 42.83333333
-    longitude: 12.83333333
+    country: Tunisia
+    latitude: 34
+    longitude: 9
     precision: country
     confidence: fallback
     method: country-fallback

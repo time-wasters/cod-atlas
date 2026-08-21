@@ -4,6 +4,12 @@ title: The End of the Beginning
 games:
   - cod2
 mode: singleplayer
+campaign:
+  id: "2"
+  label: Britain
+  subcampaign:
+    id: "1"
+    label: The Battle of El Alamein
 wikiArticle: codwiki-the-end-of-the-beginning
 locations:
   - id: main

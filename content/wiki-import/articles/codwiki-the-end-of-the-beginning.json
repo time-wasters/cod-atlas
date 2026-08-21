@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/The_End_of_the_Beginning",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/The_End_of_the_Beginning",
   "latestRevisionId": 2951067,
-  "importedAt": "2026-08-10T19:02:55.539Z",
+  "importedAt": "2026-08-18T20:41:24.561Z",
   "levelLocation": {
     "raw": "El Daba, Egypt",
     "label": "El Daba, Egypt",
@@ -53,5 +53,47 @@
     "resolvedTitle": "The End of the Beginning",
     "mainImageTitle": "File:MacGregor_Burwell_CoD2.jpg",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Operation Supercharge]]",
+    "label": "Operation Supercharge",
+    "links": [
+      {
+        "wikiTitle": "Operation Supercharge",
+        "label": "Operation Supercharge",
+        "url": "https://callofduty.fandom.com/wiki/Operation_Supercharge"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Crusader Charge]]<br>[[Demolition (level)|Demolition]] (Chronologically)",
+    "label": "Crusader Charge, Demolition (Chronologically)",
+    "links": [
+      {
+        "wikiTitle": "Crusader Charge",
+        "label": "Crusader Charge",
+        "url": "https://callofduty.fandom.com/wiki/Crusader_Charge"
+      },
+      {
+        "wikiTitle": "Demolition (level)",
+        "label": "Demolition",
+        "url": "https://callofduty.fandom.com/wiki/Demolition_(level)"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty 2]]''",
+    "label": "Call of Duty 2",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty 2",
+        "label": "Call of Duty 2",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_2"
+      }
+    ]
+  },
+  "date": {
+    "raw": "November 6, 1942",
+    "label": "November 6, 1942"
   }
 }

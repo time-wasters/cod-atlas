@@ -4,6 +4,9 @@ title: Bois Jacques
 games:
   - cod-uo
 mode: singleplayer
+campaign:
+  id: "1"
+  label: America
 wikiArticle: codwiki-bois-jacques
 locations:
   - id: main

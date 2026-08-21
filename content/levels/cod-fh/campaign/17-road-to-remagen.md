@@ -4,6 +4,9 @@ title: Road to Remagen
 games:
   - cod-fh
 mode: singleplayer
+campaign:
+  id: "3"
+  label: Western Front
 wikiArticle: codwiki-road-to-remagen
 locations:
   - id: main

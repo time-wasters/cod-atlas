@@ -4,6 +4,9 @@ title: Sicily Chase
 games:
   - cod-uo
 mode: singleplayer
+campaign:
+  id: "2"
+  label: Britain
 wikiArticle: codwiki-sicily-2
 locations:
   - id: main

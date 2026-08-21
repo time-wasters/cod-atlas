@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/The_Diversionary_Raid",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/The_Diversionary_Raid",
   "latestRevisionId": 2901232,
-  "importedAt": "2026-08-10T19:02:55.532Z",
+  "importedAt": "2026-08-18T20:41:13.797Z",
   "levelLocation": {
     "raw": "Northern Egypt, Africa",
     "label": "Northern Egypt, Africa",
@@ -53,5 +53,47 @@
     "resolvedTitle": "The Diversionary Raid",
     "mainImageTitle": "File:Drshoothere.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Comrade Sniper]]\n[[Red Army Training]] (Chronologically)",
+    "label": "Comrade Sniper Red Army Training (Chronologically)",
+    "links": [
+      {
+        "wikiTitle": "Comrade Sniper",
+        "label": "Comrade Sniper",
+        "url": "https://callofduty.fandom.com/wiki/Comrade_Sniper"
+      },
+      {
+        "wikiTitle": "Red Army Training",
+        "label": "Red Army Training",
+        "url": "https://callofduty.fandom.com/wiki/Red_Army_Training"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Holding the Line]]",
+    "label": "Holding the Line",
+    "links": [
+      {
+        "wikiTitle": "Holding the Line",
+        "label": "Holding the Line",
+        "url": "https://callofduty.fandom.com/wiki/Holding_the_Line"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty 2]]''",
+    "label": "Call of Duty 2",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty 2",
+        "label": "Call of Duty 2",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_2"
+      }
+    ]
+  },
+  "date": {
+    "raw": "October 29, 1942",
+    "label": "October 29, 1942"
   }
 }

@@ -8,6 +8,7 @@
 coverage
 dist
 dist-static
+app/data/*.generated.json
 node_modules
 outputs
 work

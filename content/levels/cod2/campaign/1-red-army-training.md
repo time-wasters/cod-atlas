@@ -4,6 +4,12 @@ title: Red Army Training
 games:
   - cod2
 mode: singleplayer
+campaign:
+  id: "1"
+  label: Russian
+  subcampaign:
+    id: "1"
+    label: The Winter War
 wikiArticle: codwiki-red-army-training
 locations:
   - id: main

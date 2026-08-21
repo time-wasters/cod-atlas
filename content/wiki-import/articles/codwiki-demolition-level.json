@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Demolition_(level)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Demolition_(level)",
   "latestRevisionId": 2953515,
-  "importedAt": "2026-08-10T19:02:33.606Z",
+  "importedAt": "2026-08-18T20:40:52.139Z",
   "levelLocation": {
     "raw": "[[Stalingrad]], U.S.S.R.",
     "label": "Stalingrad",
@@ -53,5 +53,42 @@
     "resolvedTitle": "Demolition (level)",
     "mainImageTitle": "File:Demexit.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Red Army Training]]",
+    "label": "Red Army Training",
+    "links": [
+      {
+        "wikiTitle": "Red Army Training",
+        "label": "Red Army Training",
+        "url": "https://callofduty.fandom.com/wiki/Red_Army_Training"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Repairing the Wire]]",
+    "label": "Repairing the Wire",
+    "links": [
+      {
+        "wikiTitle": "Repairing the Wire",
+        "label": "Repairing the Wire",
+        "url": "https://callofduty.fandom.com/wiki/Repairing_the_Wire"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty 2]]''",
+    "label": "Call of Duty 2",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty 2",
+        "label": "Call of Duty 2",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_2"
+      }
+    ]
+  },
+  "date": {
+    "raw": "December 2, 1942",
+    "label": "December 2, 1942"
   }
 }

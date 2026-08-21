@@ -1,10 +1,13 @@
 ---
-id: cod2-the-battle-for-hill-400
-title: The Battle for Hill 400
+id: cod2-bro-the-dragon-s-teeth
+title: The Dragon's Teeth
 games:
-  - cod2
+  - cod2-bro
 mode: singleplayer
-wikiArticle: codwiki-the-battle-for-hill-400
+campaign:
+  id: "4"
+  label: Western Europe
+wikiArticle: codwiki-the-dragon-s-teeth
 locations:
   - id: main
     country: Germany

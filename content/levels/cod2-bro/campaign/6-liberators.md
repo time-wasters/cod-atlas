@@ -1,10 +1,13 @@
 ---
-id: cod2-bro-baptism-by-fire
-title: Baptism By Fire
+id: cod2-bro-liberators
+title: Liberators
 games:
   - cod2-bro
 mode: singleplayer
-wikiArticle: codwiki-baptism-by-fire
+campaign:
+  id: "2"
+  label: North Africa
+wikiArticle: codwiki-liberators
 locations:
   - id: main
     country: Algeria

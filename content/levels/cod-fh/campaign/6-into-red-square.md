@@ -4,6 +4,9 @@ title: Into Red Square
 games:
   - cod-fh
 mode: singleplayer
+campaign:
+  id: "1"
+  label: Eastern Front
 wikiArticle: codwiki-into-red-square
 locations:
   - id: main

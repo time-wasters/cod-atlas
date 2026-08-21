@@ -4,6 +4,9 @@ title: The Desert Fox
 games:
   - cod2-bro
 mode: singleplayer
+campaign:
+  id: "2"
+  label: North Africa
 wikiArticle: codwiki-the-desert-fox
 locations:
   - id: main

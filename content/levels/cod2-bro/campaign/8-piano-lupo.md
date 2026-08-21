@@ -1,10 +1,13 @@
 ---
-id: cod2-bro-farewell-to-friends
-title: Farewell to Friends
+id: cod2-bro-piano-lupo
+title: Piano Lupo
 games:
   - cod2-bro
 mode: singleplayer
-wikiArticle: codwiki-farewell-to-friends
+campaign:
+  id: "3"
+  label: Sicily
+wikiArticle: codwiki-piano-lupo
 locations:
   - id: main
     country: Italy

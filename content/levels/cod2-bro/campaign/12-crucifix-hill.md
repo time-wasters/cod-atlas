@@ -1,10 +1,13 @@
 ---
-id: cod2-crossing-the-rhine
-title: Crossing the Rhine
+id: cod2-bro-crucifix-hill
+title: Crucifix Hill
 games:
-  - cod2
+  - cod2-bro
 mode: singleplayer
-wikiArticle: codwiki-crossing-the-rhine
+campaign:
+  id: "4"
+  label: Western Europe
+wikiArticle: codwiki-crucifix-hill
 locations:
   - id: main
     country: Germany

@@ -4,6 +4,9 @@ title: Bomber
 games:
   - cod-uo
 mode: singleplayer
+campaign:
+  id: "2"
+  label: Britain
 wikiArticle: codwiki-bomber-united-offensive
 locations:
   - id: main

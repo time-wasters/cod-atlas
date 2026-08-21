@@ -4,6 +4,9 @@ title: Underground Passage
 games:
   - cod-fh
 mode: singleplayer
+campaign:
+  id: "3"
+  label: Western Front
 wikiArticle: codwiki-underground-passage
 locations:
   - id: main

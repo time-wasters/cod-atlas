@@ -3,7 +3,8 @@
 Node.js and npm are optional on the host. The `cod-atlas-tools` Compose service
 uses the locked builder stage from `Dockerfile`, mounts the repository at
 `/app`, and keeps container dependencies in a named volume. Generated files
-are therefore written back to the working tree.
+are therefore written back to the working tree, but
+`app/data/*.generated.json` remains ignored and must not be committed.
 
 Copy `.env.example` to the ignored `.env` for local configuration. The checked
 out repository already works with the documented port defaults; Wiki access

@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/The_Battle_for_Hill_400",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/The_Battle_for_Hill_400",
   "latestRevisionId": 2901236,
-  "importedAt": "2026-08-10T19:02:55.573Z",
+  "importedAt": "2026-08-18T20:41:13.833Z",
   "levelLocation": {
     "raw": "Hill 400 near Bergstein, Germany",
     "label": "Hill 400 near Bergstein, Germany",
@@ -53,5 +53,42 @@
     "resolvedTitle": "The Battle for Hill 400",
     "mainImageTitle": "File:Battle_For_Hill_400_exit.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Rangers Lead the Way]]",
+    "label": "Rangers Lead the Way",
+    "links": [
+      {
+        "wikiTitle": "Rangers Lead the Way",
+        "label": "Rangers Lead the Way",
+        "url": "https://callofduty.fandom.com/wiki/Rangers_Lead_the_Way"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[The Crossing Point]]",
+    "label": "The Crossing Point",
+    "links": [
+      {
+        "wikiTitle": "The Crossing Point",
+        "label": "The Crossing Point",
+        "url": "https://callofduty.fandom.com/wiki/The_Crossing_Point"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty 2]]''",
+    "label": "Call of Duty 2",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty 2",
+        "label": "Call of Duty 2",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_2"
+      }
+    ]
+  },
+  "date": {
+    "raw": "December 8, 1944",
+    "label": "December 8, 1944"
   }
 }

@@ -1,14 +1,17 @@
 ---
-id: cod2-bro-counterattack
-title: Counterattack
+id: cod2-bro-an-easy-detail
+title: An Easy Detail
 games:
   - cod2-bro
 mode: singleplayer
-wikiArticle: codwiki-counterattack
+campaign:
+  id: "4"
+  label: Western Europe
+wikiArticle: codwiki-an-easy-detail
 locations:
   - id: main
-    country: Tunisia
-    latitude: 34
+    country: Germany
+    latitude: 51
     longitude: 9
     precision: country
     confidence: fallback

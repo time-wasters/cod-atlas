@@ -4,6 +4,12 @@ title: The Pipeline
 games:
   - cod2
 mode: singleplayer
+campaign:
+  id: "1"
+  label: Russian
+  subcampaign:
+    id: "2"
+    label: Not One Step Backwards!
 wikiArticle: codwiki-the-pipeline
 locations:
   - id: main

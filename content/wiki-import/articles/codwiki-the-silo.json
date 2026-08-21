@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/The_Silo",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/The_Silo",
   "latestRevisionId": 2951071,
-  "importedAt": "2026-08-10T19:03:06.667Z",
+  "importedAt": "2026-08-18T20:41:24.554Z",
   "levelLocation": {
     "raw": "Beaumont-Hague, France",
     "label": "Beaumont-Hague, France",
@@ -53,5 +53,52 @@
     "resolvedTitle": "The Silo",
     "mainImageTitle": "File:Silosniping.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Defending the Pointe]]\n[[The Brigade Box]] (Chronologically)",
+    "label": "Defending the Pointe The Brigade Box (Chronologically)",
+    "links": [
+      {
+        "wikiTitle": "Defending the Pointe",
+        "label": "Defending the Pointe",
+        "url": "https://callofduty.fandom.com/wiki/Defending_the_Pointe"
+      },
+      {
+        "wikiTitle": "The Brigade Box",
+        "label": "The Brigade Box",
+        "url": "https://callofduty.fandom.com/wiki/The_Brigade_Box"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Prisoners of War]]<br>[[Bergstein]] (Chronologically)",
+    "label": "Prisoners of War, Bergstein (Chronologically)",
+    "links": [
+      {
+        "wikiTitle": "Prisoners of War",
+        "label": "Prisoners of War",
+        "url": "https://callofduty.fandom.com/wiki/Prisoners_of_War"
+      },
+      {
+        "wikiTitle": "Bergstein",
+        "label": "Bergstein",
+        "url": "https://callofduty.fandom.com/wiki/Bergstein"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty 2]]''",
+    "label": "Call of Duty 2",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty 2",
+        "label": "Call of Duty 2",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_2"
+      }
+    ]
+  },
+  "date": {
+    "raw": "July 14, 1944",
+    "label": "July 14, 1944"
   }
 }
