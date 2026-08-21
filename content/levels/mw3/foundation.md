@@ -8,10 +8,12 @@ wikiArticle: codwiki-foundation
 locations:
   - id: main
     country: South Korea
-    latitude: 37
-    longitude: 127.5
-    precision: country
-    confidence: fallback
-    method: country-fallback
+    latitude: 35.907757
+    longitude: 127.766922
+    precision: approximate
+    confidence: medium
+    method: manual-approximate
     primary: true
+    urls:
+      - callOfDutyMaps: https://callofdutymaps.com/modern-warfare-3/foundation
 ---

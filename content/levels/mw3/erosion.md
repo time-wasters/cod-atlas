@@ -8,10 +8,12 @@ wikiArticle: codwiki-erosion
 locations:
   - id: main
     country: Italy
-    latitude: 42.83333333
-    longitude: 12.83333333
-    precision: country
-    confidence: fallback
-    method: country-fallback
+    latitude: 40.8517983
+    longitude: 14.26812
+    precision: approximate
+    confidence: medium
+    method: manual-approximate
     primary: true
+    urls:
+      - callOfDutyMaps: https://callofdutymaps.com/modern-warfare-3/erosion
 ---

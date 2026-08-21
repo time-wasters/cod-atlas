@@ -8,10 +8,12 @@ wikiArticle: codwiki-resistance-map
 locations:
   - id: main
     country: France
-    latitude: 46
-    longitude: 2
-    precision: country
-    confidence: fallback
-    method: country-fallback
+    latitude: 48.8885668
+    longitude: 2.338071
+    precision: approximate
+    confidence: medium
+    method: manual-approximate
     primary: true
+    urls:
+      - callOfDutyMaps: https://callofdutymaps.com/modern-warfare-3/resistance
 ---

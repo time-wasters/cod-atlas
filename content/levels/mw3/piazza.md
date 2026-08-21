@@ -8,10 +8,12 @@ wikiArticle: codwiki-piazza
 locations:
   - id: main
     country: Italy
-    latitude: 42.83333333
-    longitude: 12.83333333
-    precision: country
-    confidence: fallback
-    method: country-fallback
+    latitude: 40.6333389
+    longitude: 14.6028963
+    precision: approximate
+    confidence: medium
+    method: manual-approximate
     primary: true
+    urls:
+      - callOfDutyMaps: https://callofdutymaps.com/modern-warfare-3/piazza
 ---

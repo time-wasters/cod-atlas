@@ -8,10 +8,12 @@ wikiArticle: codwiki-sanctuary
 locations:
   - id: main
     country: Greece
-    latitude: 39
-    longitude: 22
-    precision: country
-    confidence: fallback
-    method: country-fallback
+    latitude: 38.6043984
+    longitude: 22.7152131
+    precision: approximate
+    confidence: medium
+    method: manual-approximate
     primary: true
+    urls:
+      - callOfDutyMaps: https://callofdutymaps.com/modern-warfare-3/sanctuary
 ---

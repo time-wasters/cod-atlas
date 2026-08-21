@@ -9,10 +9,12 @@ locations:
   - id: main
     country: United States
     region: California
-    latitude: 36.8
-    longitude: -119.4
-    precision: country
-    confidence: fallback
-    method: country-fallback
+    latitude: 34.0522342
+    longitude: -118.2436849
+    precision: approximate
+    confidence: medium
+    method: manual-approximate
     primary: true
+    urls:
+      - callOfDutyMaps: https://callofdutymaps.com/modern-warfare-3/black-box
 ---

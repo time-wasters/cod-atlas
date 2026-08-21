@@ -9,10 +9,12 @@ locations:
   - id: main
     country: United States
     region: New York
-    latitude: 42.9
-    longitude: -75.5
-    precision: country
-    confidence: fallback
-    method: country-fallback
+    latitude: 40.7208595
+    longitude: -74.0006686
+    precision: approximate
+    confidence: medium
+    method: manual-approximate
     primary: true
+    urls:
+      - callOfDutyMaps: https://callofdutymaps.com/modern-warfare-3/overwatch
 ---

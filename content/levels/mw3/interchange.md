@@ -9,10 +9,12 @@ locations:
   - id: main
     country: United States
     region: New Jersey
-    latitude: 40.1
-    longitude: -74.5
-    precision: country
-    confidence: fallback
-    method: country-fallback
+    latitude: 40.0583238
+    longitude: -74.4056612
+    precision: approximate
+    confidence: medium
+    method: manual-approximate
     primary: true
+    urls:
+      - callOfDutyMaps: https://callofdutymaps.com/modern-warfare-3/interchange
 ---
