@@ -2,6 +2,8 @@ id: mw3
 code: MW3
 label: Modern Warfare 3 (2011)
 released: 2011-11-08
+category: modern-warfare
+era: golden
 images:
   steam:
     app: 42680

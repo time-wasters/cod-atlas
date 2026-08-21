@@ -98,6 +98,7 @@ function atlasMarkerIcon(L: typeof import("leaflet"), entry: Entry, active: bool
 
 type Group = {
   name: string;
+  continent: string;
   coordinates: [number, number] | null;
   kind: "terrestrial" | "off-world";
   flagCode: string | null;
@@ -108,8 +109,11 @@ type Game = {
   code: string;
   label: string;
   released: string;
+  category: "world-war" | "modern-warfare" | "black-ops" | "standalone";
+  era: "classic" | "golden" | "sci-fi" | "reboot" | "live-service";
   icon?: string;
 };
+type FilterOption = { value: string; label: string };
 type ExternalIconManifest = Record<string, {
   icon?: { provider: "steam" | "steamgriddb"; path: string };
   clienticon?: { provider: "steam"; path: string };
@@ -184,8 +188,66 @@ const mapOverlays = mapOverlaysSource as Record<string, MapOverlayRecord>;
 const gamesById = new Map(data.games.map((game) => [game.id, game]));
 const gamesByCode = new Map(data.games.map((game) => [game.code, game]));
 const countryNames = new Set(data.groups.map((group) => group.name));
-const urlPrecisions = new Set(["all", "localized", "country"]);
 const selections = data.groups.flatMap((group) => group.entries.map((entry) => ({ group, entry })));
+const gameCategoryOptions: FilterOption[] = [
+  { value: "world-war", label: "World War" },
+  { value: "modern-warfare", label: "Modern Warfare" },
+  { value: "black-ops", label: "Black Ops" },
+  { value: "standalone", label: "Standalone" },
+];
+const gameEraOptions: FilterOption[] = [
+  { value: "classic", label: "Classic" },
+  { value: "golden", label: "Golden" },
+  { value: "sci-fi", label: "Sci-Fi" },
+  { value: "reboot", label: "Reboot" },
+  { value: "live-service", label: "Live-Service" },
+];
+const continentOrder = [
+  "Africa",
+  "Antarctica",
+  "Arctic",
+  "Asia",
+  "Europe",
+  "North America",
+  "South America",
+  "Oceania",
+  "Oceans",
+  "Off-world",
+];
+const continentOptions: FilterOption[] = [...new Set(data.groups.map((group) => group.continent))]
+  .sort((a, b) => continentOrder.indexOf(a) - continentOrder.indexOf(b) || a.localeCompare(b))
+  .map((value) => ({ value, label: value }));
+const precisionOptions: FilterOption[] = [
+  { value: "exact", label: "Exact" },
+  { value: "approximate", label: "Approximate" },
+  { value: "city", label: "City" },
+  { value: "region", label: "Region" },
+  { value: "country", label: "Country" },
+  { value: "off-world", label: "Off-world" },
+];
+const confidenceOptions: FilterOption[] = [
+  { value: "high", label: "High" },
+  { value: "medium", label: "Medium" },
+  { value: "fallback", label: "Fallback" },
+];
+const methodOptions: FilterOption[] = [
+  { value: "verified-landmark", label: "Verified landmark" },
+  { value: "real-world-inspiration", label: "Real-world inspiration" },
+  { value: "manual-approximate", label: "Manual approximate" },
+  { value: "wiki-location", label: "Wiki location" },
+  { value: "article-context", label: "Article context" },
+  { value: "title", label: "Title" },
+  { value: "title-mention", label: "Title mention" },
+  { value: "region-fallback", label: "Region fallback" },
+  { value: "country-fallback", label: "Country fallback" },
+];
+const valuesFor = (options: FilterOption[]) => new Set(options.map((option) => option.value));
+const gameCategoryValues = valuesFor(gameCategoryOptions);
+const gameEraValues = valuesFor(gameEraOptions);
+const continentValues = valuesFor(continentOptions);
+const precisionValues = valuesFor(precisionOptions);
+const confidenceValues = valuesFor(confidenceOptions);
+const methodValues = valuesFor(methodOptions);
 const EXTERNAL_ICONS_PREFERENCE = "cod-atlas:external-game-icons";
 const externalIconPreferenceListeners = new Set<() => void>();
 
@@ -321,6 +383,13 @@ function FittedLevelTitle({
 
 function gameCodes(value: string) {
   return value.split(" / ").filter((code) => code && code !== "MP");
+}
+
+function toggledFilterValue(current: Set<string>, value: string) {
+  const next = new Set(current);
+  if (next.has(value)) next.delete(value);
+  else next.add(value);
+  return next;
 }
 
 function compareGames(a: Game, b: Game) {
@@ -492,6 +561,52 @@ function GameSelect({
         </Select.Content>
       </Select.Portal>
     </Select.Root>
+  );
+}
+
+function AdvancedFilterGroup({
+  title,
+  options,
+  selected,
+  onToggle,
+  onClear,
+  sourceUrl,
+}: {
+  title: string;
+  options: FilterOption[];
+  selected: Set<string>;
+  onToggle: (value: string) => void;
+  onClear: () => void;
+  sourceUrl?: string;
+}) {
+  return (
+    <section className="advanced-filter-group">
+      <header>
+        <h3>{title}</h3>
+        {sourceUrl ? <a href={sourceUrl} target="_blank" rel="noreferrer" aria-label={`${title} definitions`}>Issue #11 â†—</a> : null}
+      </header>
+      <div className="advanced-filter-options">
+        <button
+          className={selected.size === 0 ? "is-active" : ""}
+          type="button"
+          aria-pressed={selected.size === 0}
+          onClick={onClear}
+        >
+          Any
+        </button>
+        {options.map((option) => (
+          <button
+            className={selected.has(option.value) ? "is-active" : ""}
+            type="button"
+            key={option.value}
+            aria-pressed={selected.has(option.value)}
+            onClick={() => onToggle(option.value)}
+          >
+            {option.label}
+          </button>
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -742,9 +857,15 @@ export default function Home() {
   const [query, setQuery] = useState("");
   const [game, setGame] = useState("all");
   const [country, setCountry] = useState("all");
-  const [precision, setPrecision] = useState("all");
+  const [gameCategories, setGameCategories] = useState<Set<string>>(() => new Set());
+  const [gameEras, setGameEras] = useState<Set<string>>(() => new Set());
+  const [continents, setContinents] = useState<Set<string>>(() => new Set());
+  const [precisions, setPrecisions] = useState<Set<string>>(() => new Set());
+  const [confidences, setConfidences] = useState<Set<string>>(() => new Set());
+  const [methods, setMethods] = useState<Set<string>>(() => new Set());
   const [showSingleplayer, setShowSingleplayer] = useState(true);
   const [showMultiplayer, setShowMultiplayer] = useState(false);
+  const [advancedFiltersOpen, setAdvancedFiltersOpen] = useState(false);
   const [mapReady, setMapReady] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [detailsOpen, setDetailsOpen] = useState(true);
@@ -838,7 +959,12 @@ export default function Home() {
       setQuery(urlState.query);
       setGame(requestedGame?.code ?? "all");
       setCountry(countryNames.has(urlState.country) ? urlState.country : "all");
-      setPrecision(urlPrecisions.has(urlState.precision) ? urlState.precision : "all");
+      setGameCategories(new Set(urlState.categories.filter((value) => gameCategoryValues.has(value))));
+      setGameEras(new Set(urlState.eras.filter((value) => gameEraValues.has(value))));
+      setContinents(new Set(urlState.continents.filter((value) => continentValues.has(value))));
+      setPrecisions(new Set(urlState.precisions.filter((value) => precisionValues.has(value))));
+      setConfidences(new Set(urlState.confidences.filter((value) => confidenceValues.has(value))));
+      setMethods(new Set(urlState.methods.filter((value) => methodValues.has(value))));
       setShowSingleplayer(urlState.showSingleplayer);
       setShowMultiplayer(urlState.showMultiplayer);
       setSelected(requestedSelection ?? { group: initialGroup, entry: initialEntry });
@@ -861,7 +987,12 @@ export default function Home() {
       query,
       gameId: gamesByCode.get(game)?.id ?? "all",
       country,
-      precision,
+      categories: [...gameCategories],
+      eras: [...gameEras],
+      continents: [...continents],
+      precisions: [...precisions],
+      confidences: [...confidences],
+      methods: [...methods],
       showSingleplayer,
       showMultiplayer,
       levelId: selectionInUrl ? selected.entry.levelId : null,
@@ -876,8 +1007,13 @@ export default function Home() {
     urlHistoryMode.current = "push";
   }, [
     country,
+    confidences,
+    continents,
     game,
-    precision,
+    gameCategories,
+    gameEras,
+    methods,
+    precisions,
     query,
     selected.entry.levelId,
     selected.entry.locationId,
@@ -903,21 +1039,41 @@ export default function Home() {
       });
     return () => controller.abort();
   }, [externalIconManifest, externalIconManifestUnavailable, externalIconsEnabled]);
+  const matchesStructuredFilters = useCallback((entry: Entry) => {
+    const matchesGame = game === "all" || entry.game.split(" / ").includes(game);
+    const matchesCategory = gameCategories.size === 0 || entry.gameIds.some((gameId) => {
+      const entryGame = gamesById.get(gameId);
+      return entryGame ? gameCategories.has(entryGame.category) : false;
+    });
+    const matchesEra = gameEras.size === 0 || entry.gameIds.some((gameId) => {
+      const entryGame = gamesById.get(gameId);
+      return entryGame ? gameEras.has(entryGame.era) : false;
+    });
+    const matchesPrecision = precisions.size === 0 || precisions.has(entry.precision);
+    const matchesConfidence = confidences.size === 0
+      || (entry.confidence ? confidences.has(entry.confidence) : false);
+    const matchesMethod = methods.size === 0 || (entry.method ? methods.has(entry.method) : false);
+    const matchesMode =
+      (showSingleplayer && entry.modes.includes("singleplayer"))
+      || (showMultiplayer && entry.modes.includes("multiplayer"));
+    return matchesGame
+      && matchesCategory
+      && matchesEra
+      && matchesPrecision
+      && matchesConfidence
+      && matchesMethod
+      && matchesMode;
+  }, [confidences, game, gameCategories, gameEras, methods, precisions, showMultiplayer, showSingleplayer]);
   const countries = useMemo(
     () => groups
-      .map(({ name, flagCode, entries }) => ({
+      .map(({ name, flagCode, continent, entries }) => ({
         name,
         flagCode,
-        available: entries.some((entry) => {
-          const matchesGame = game === "all" || entry.game.split(" / ").includes(game);
-          const matchesMode =
-            (showSingleplayer && entry.modes.includes("singleplayer")) ||
-            (showMultiplayer && entry.modes.includes("multiplayer"));
-          return matchesGame && matchesMode;
-        }),
+        available: (continents.size === 0 || continents.has(continent))
+          && entries.some(matchesStructuredFilters),
       }))
       .sort((a, b) => a.name.localeCompare(b.name)),
-    [game, groups, showMultiplayer, showSingleplayer],
+    [continents, groups, matchesStructuredFilters],
   );
   const filtered = useMemo(() => {
     const needle = query.trim().toLowerCase();
@@ -925,13 +1081,6 @@ export default function Home() {
       .map((group) => ({
         ...group,
         entries: group.entries.filter((entry) => {
-          const matchesGame = game === "all" || entry.game.split(" / ").includes(game);
-          const matchesPrecision = precision === "all"
-            || (precision === "localized" && !["country", "off-world"].includes(entry.precision))
-            || entry.precision === precision;
-          const matchesMode =
-            (showSingleplayer && entry.modes.includes("singleplayer")) ||
-            (showMultiplayer && entry.modes.includes("multiplayer"));
           const matchesText =
             !needle ||
             group.name.toLowerCase().includes(needle) ||
@@ -940,11 +1089,13 @@ export default function Home() {
             entry.landmark?.toLowerCase().includes(needle) ||
             entry.title.toLowerCase().includes(needle) ||
             entry.game.toLowerCase().includes(needle);
-          return matchesGame && matchesPrecision && matchesMode && matchesText;
+          return matchesStructuredFilters(entry) && matchesText;
         }),
       }))
-      .filter((group) => group.entries.length && (country === "all" || group.name === country));
-  }, [country, groups, game, precision, query, showMultiplayer, showSingleplayer]);
+      .filter((group) => group.entries.length
+        && (country === "all" || group.name === country)
+        && (continents.size === 0 || continents.has(group.continent)));
+  }, [continents, country, groups, matchesStructuredFilters, query]);
   const campaigns = useMemo<CampaignOption[]>(() => {
     if (game === "all") return [];
     const campaignsByKey = new Map<string, CampaignOption & { levelIds: Set<string> }>();
@@ -1002,6 +1153,24 @@ export default function Home() {
     }));
   }, [filtered]);
   const resultCount = filtered.reduce((sum, group) => sum + group.entries.length, 0);
+  const advancedFilterCount = gameCategories.size
+    + gameEras.size
+    + continents.size
+    + precisions.size
+    + confidences.size
+    + methods.size
+    + Number(!(showSingleplayer && !showMultiplayer));
+  const resetAdvancedFilters = useCallback(() => {
+    urlHistoryMode.current = "push";
+    setGameCategories(new Set());
+    setGameEras(new Set());
+    setContinents(new Set());
+    setPrecisions(new Set());
+    setConfidences(new Set());
+    setMethods(new Set());
+    setShowSingleplayer(true);
+    setShowMultiplayer(false);
+  }, []);
   const spaceLocations = useMemo(
     () => filtered.flatMap((group) => group.entries
       .filter((entry) => entry.precision === "off-world")
@@ -1599,45 +1768,166 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="precision-filter" aria-label="Location precision">
-          <button className={precision === "all" ? "is-active" : ""} onClick={() => {
-            urlHistoryMode.current = "push";
-            setPrecision("all");
-          }}>All</button>
-          <button className={precision === "localized" ? "is-active" : ""} onClick={() => {
-            urlHistoryMode.current = "push";
-            setPrecision("localized");
-          }}>Localized</button>
-          <button className={precision === "country" ? "is-active" : ""} onClick={() => {
-            urlHistoryMode.current = "push";
-            setPrecision("country");
-          }}>Country fallback</button>
-        </div>
+        {advancedFiltersOpen ? (
+          <section className="advanced-filters" aria-labelledby="advanced-filters-title">
+            <header className="advanced-filters-header">
+              <button
+                className="advanced-filters-back"
+                type="button"
+                aria-label="Close advanced filters"
+                onClick={() => setAdvancedFiltersOpen(false)}
+              >
+                <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m10 3-5 5 5 5" /></svg>
+              </button>
+              <div>
+                <span>Filter matrix</span>
+                <h2 id="advanced-filters-title">Advanced filters</h2>
+              </div>
+              <button
+                className="advanced-filters-reset"
+                type="button"
+                disabled={advancedFilterCount === 0}
+                onClick={resetAdvancedFilters}
+              >
+                Reset
+              </button>
+            </header>
 
-        <div className="mode-filter" aria-label="Game mode visibility">
-          <button
-            className={showSingleplayer ? "is-active" : ""}
-            aria-pressed={showSingleplayer}
-            onClick={() => {
-              urlHistoryMode.current = "push";
-              setShowSingleplayer((visible) => !visible);
-            }}
-          >
-            <span aria-hidden="true">{showSingleplayer ? "✓" : "○"}</span> Singleplayer
-          </button>
-          <button
-            className={showMultiplayer ? "is-active" : ""}
-            aria-pressed={showMultiplayer}
-            onClick={() => {
-              urlHistoryMode.current = "push";
-              setShowMultiplayer((visible) => !visible);
-            }}
-          >
-            <span aria-hidden="true">{showMultiplayer ? "✓" : "○"}</span> Multiplayer
-          </button>
-        </div>
+            <div className="advanced-filters-scroll">
+              <AdvancedFilterGroup
+                title="Game category"
+                options={gameCategoryOptions}
+                selected={gameCategories}
+                onToggle={(value) => {
+                  urlHistoryMode.current = "push";
+                  setGameCategories((current) => toggledFilterValue(current, value));
+                }}
+                onClear={() => {
+                  urlHistoryMode.current = "push";
+                  setGameCategories(new Set());
+                }}
+              />
+              <AdvancedFilterGroup
+                title="Era"
+                options={gameEraOptions}
+                selected={gameEras}
+                sourceUrl="https://github.com/time-wasters/cod-atlas/issues/11"
+                onToggle={(value) => {
+                  urlHistoryMode.current = "push";
+                  setGameEras((current) => toggledFilterValue(current, value));
+                }}
+                onClear={() => {
+                  urlHistoryMode.current = "push";
+                  setGameEras(new Set());
+                }}
+              />
+              <AdvancedFilterGroup
+                title="Continent"
+                options={continentOptions}
+                selected={continents}
+                onToggle={(value) => {
+                  urlHistoryMode.current = "push";
+                  setContinents((current) => toggledFilterValue(current, value));
+                }}
+                onClear={() => {
+                  urlHistoryMode.current = "push";
+                  setContinents(new Set());
+                }}
+              />
 
-        <section className="result-panel" aria-live="polite">
+              <section className="advanced-filter-group">
+                <header><h3>Mode</h3></header>
+                <div className="mode-filter advanced-mode-filter" aria-label="Game mode visibility">
+                  <button
+                    className={showSingleplayer ? "is-active" : ""}
+                    type="button"
+                    aria-pressed={showSingleplayer}
+                    onClick={() => {
+                      urlHistoryMode.current = "push";
+                      setShowSingleplayer((visible) => !visible);
+                    }}
+                  >
+                    <span aria-hidden="true">{showSingleplayer ? "✓" : "○"}</span> Singleplayer
+                  </button>
+                  <button
+                    className={showMultiplayer ? "is-active" : ""}
+                    type="button"
+                    aria-pressed={showMultiplayer}
+                    onClick={() => {
+                      urlHistoryMode.current = "push";
+                      setShowMultiplayer((visible) => !visible);
+                    }}
+                  >
+                    <span aria-hidden="true">{showMultiplayer ? "✓" : "○"}</span> Multiplayer
+                  </button>
+                  <button type="button" disabled aria-pressed="false" title="Zombies filtering will be added later">
+                    <span aria-hidden="true">○</span> Zombies <small>Later</small>
+                  </button>
+                </div>
+              </section>
+
+              <AdvancedFilterGroup
+                title="Precision"
+                options={precisionOptions}
+                selected={precisions}
+                onToggle={(value) => {
+                  urlHistoryMode.current = "push";
+                  setPrecisions((current) => toggledFilterValue(current, value));
+                }}
+                onClear={() => {
+                  urlHistoryMode.current = "push";
+                  setPrecisions(new Set());
+                }}
+              />
+              <AdvancedFilterGroup
+                title="Confidence"
+                options={confidenceOptions}
+                selected={confidences}
+                onToggle={(value) => {
+                  urlHistoryMode.current = "push";
+                  setConfidences((current) => toggledFilterValue(current, value));
+                }}
+                onClear={() => {
+                  urlHistoryMode.current = "push";
+                  setConfidences(new Set());
+                }}
+              />
+              <AdvancedFilterGroup
+                title="Method"
+                options={methodOptions}
+                selected={methods}
+                onToggle={(value) => {
+                  urlHistoryMode.current = "push";
+                  setMethods((current) => toggledFilterValue(current, value));
+                }}
+                onClear={() => {
+                  urlHistoryMode.current = "push";
+                  setMethods(new Set());
+                }}
+              />
+            </div>
+
+            <button className="advanced-filters-results" type="button" onClick={() => setAdvancedFiltersOpen(false)}>
+              Show <strong>{resultCount}</strong> results
+            </button>
+          </section>
+        ) : (
+          <>
+            <button
+              className={`advanced-filter-trigger${advancedFilterCount ? " is-active" : ""}`}
+              type="button"
+              aria-expanded="false"
+              onClick={() => setAdvancedFiltersOpen(true)}
+            >
+              <span>
+                <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3 5h12M5 9h8M7 13h4" /></svg>
+                Advanced filters
+              </span>
+              <strong>{advancedFilterCount || "All"}</strong>
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5" /></svg>
+            </button>
+
+            <section className="result-panel" aria-live="polite">
           <div><strong>{resultCount}</strong><span>results</span></div>
           <dl>
             <div><dt>Localized</dt><dd>{filtered.flatMap((item) => item.entries).filter((item) => !["country", "off-world"].includes(item.precision)).length}</dd></div>
@@ -1739,7 +2029,9 @@ export default function Home() {
               </svg>
             </button>
           </p>
-        </footer>
+            </footer>
+          </>
+        )}
         <button
           className="sidebar-toggle"
           type="button"

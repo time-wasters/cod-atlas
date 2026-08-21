@@ -43,6 +43,14 @@ be unique and contiguous so they describe the sequence in which the levels are
 played. Multiplayer filenames remain `<level-slug>.md`. The order prefix is
 filesystem metadata only: do not add it to the stable level `id` or title.
 
+## Game fields
+
+Every game record requires `id`, `code`, `label`, `released`, `category`, and
+`era`. Categories are `world-war`, `modern-warfare`, `black-ops`, or
+`standalone`. Eras are `classic`, `golden`, `sci-fi`, `reboot`, or
+`live-service`; classify spinoffs and remasters by the release period of that
+edition. Optional image-provider metadata follows the existing game records.
+
 ## Level fields
 
 | Field | Required | Meaning |

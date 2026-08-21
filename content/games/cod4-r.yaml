@@ -2,6 +2,8 @@ id: cod4-r
 code: COD4:R
 label: Modern Warfare Remastered
 released: 2016-11-04
+category: modern-warfare
+era: sci-fi
 images:
   steam:
     app: 393080

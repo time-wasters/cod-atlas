@@ -2,6 +2,8 @@ id: aw
 code: AW
 label: Advanced Warfare
 released: 2014-11-04
+category: standalone
+era: sci-fi
 images:
   steam:
     app: 209650

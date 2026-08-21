@@ -2,7 +2,12 @@ const atlasUrlParameters = [
   "q",
   "game",
   "country",
+  "category",
+  "era",
+  "continent",
   "precision",
+  "confidence",
+  "method",
   "mode",
   "level",
   "location",
@@ -13,7 +18,12 @@ const atlasUrlParameters = [
  * @property {string} query
  * @property {string} gameId
  * @property {string} country
- * @property {string} precision
+ * @property {string[]} categories
+ * @property {string[]} eras
+ * @property {string[]} continents
+ * @property {string[]} precisions
+ * @property {string[]} confidences
+ * @property {string[]} methods
  * @property {boolean} showSingleplayer
  * @property {boolean} showMultiplayer
  * @property {string | null} levelId
@@ -24,12 +34,24 @@ const atlasUrlParameters = [
 export function parseAtlasUrl(input) {
   const url = input instanceof URL ? input : new URL(input);
   const mode = url.searchParams.get("mode");
+  const values = (name) => (url.searchParams.get(name) ?? "").split(",").filter(Boolean);
+  const precision = url.searchParams.get("precision");
+  const precisions = precision === "localized"
+    ? ["exact", "approximate", "city", "region"]
+    : precision === "country"
+      ? ["country"]
+      : values("precision");
 
   return {
     query: url.searchParams.get("q") ?? "",
     gameId: url.searchParams.get("game") || "all",
     country: url.searchParams.get("country") || "all",
-    precision: url.searchParams.get("precision") || "all",
+    categories: values("category"),
+    eras: values("era"),
+    continents: values("continent"),
+    precisions,
+    confidences: values("confidence"),
+    methods: values("method"),
     showSingleplayer: mode !== "multiplayer" && mode !== "none",
     showMultiplayer: mode === "multiplayer" || mode === "both",
     levelId: url.searchParams.get("level") || null,
@@ -48,7 +70,15 @@ export function atlasUrlWithState(input, state) {
   if (state.query) url.searchParams.set("q", state.query);
   if (state.gameId !== "all") url.searchParams.set("game", state.gameId);
   if (state.country !== "all") url.searchParams.set("country", state.country);
-  if (state.precision !== "all") url.searchParams.set("precision", state.precision);
+  const setValues = (name, values) => {
+    if (values.length) url.searchParams.set(name, [...values].sort().join(","));
+  };
+  setValues("category", state.categories);
+  setValues("era", state.eras);
+  setValues("continent", state.continents);
+  setValues("precision", state.precisions);
+  setValues("confidence", state.confidences);
+  setValues("method", state.methods);
 
   if (state.showSingleplayer && state.showMultiplayer) url.searchParams.set("mode", "both");
   else if (!state.showSingleplayer && state.showMultiplayer) url.searchParams.set("mode", "multiplayer");

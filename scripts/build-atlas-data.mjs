@@ -20,6 +20,8 @@ const mapTypeDirectoryByMode = new Map([
 ]);
 const validPrecisions = new Set(["exact", "approximate", "city", "region", "country", "off-world"]);
 const validConfidences = new Set(["high", "medium", "fallback"]);
+const validGameCategories = new Set(["world-war", "modern-warfare", "black-ops", "standalone"]);
+const validGameEras = new Set(["classic", "golden", "sci-fi", "reboot", "live-service"]);
 const validMethods = new Set([
   "verified-landmark",
   "real-world-inspiration",
@@ -40,10 +42,45 @@ const flagCodesByCountryName = new Map(countries.flatMap((country) => [
   [country.name.common, country.cca2],
   [country.name.official, country.cca2],
 ]));
+const countriesByName = new Map(countries.flatMap((country) => [
+  [country.name.common, country],
+  [country.name.official, country],
+]));
+const specialContinents = new Map([
+  ["Adriatic Sea", "Oceans"],
+  ["Arctic Circle", "Arctic"],
+  ["Atlantic Ocean", "Oceans"],
+  ["Baltic Sea", "Oceans"],
+  ["Bering Strait", "Oceans"],
+  ["Caribbean Sea", "Oceans"],
+  ["Dead Sea", "Oceans"],
+  ["English Channel", "Oceans"],
+  ["Europa (Jupiter Moon)", "Off-world"],
+  ["Gulf of Mexico", "Oceans"],
+  ["Indian Ocean", "Oceans"],
+  ["Mars", "Off-world"],
+  ["Moon", "Off-world"],
+  ["Pacific Ocean", "Oceans"],
+  ["Philippine Sea", "Oceans"],
+  ["Polynesia", "Oceania"],
+  ["Space", "Off-world"],
+]);
 
 function flagCodeForGroup(name) {
   const countryName = countryAliases.get(name) ?? name;
   return flagCodesByCountryName.get(countryName) ?? null;
+}
+
+function continentForGroup(name) {
+  const special = specialContinents.get(name);
+  if (special) return special;
+  const countryName = countryAliases.get(name) ?? name;
+  const country = countriesByName.get(countryName);
+  if (!country) return null;
+  if (country.region === "Americas") {
+    return country.subregion === "South America" ? "South America" : "North America";
+  }
+  return country.region === "Antarctic" ? "Antarctica" : country.region;
 }
 
 async function filesBelow(directory, extension) {
@@ -212,6 +249,8 @@ for (const filename of gameFiles) {
   requireValue(game?.id, `${filename}: game id is required`);
   requireValue(!games.has(game.id), `${filename}: duplicate game id ${game.id}`);
   requireValue(game.code && game.label && game.released, `${filename}: code, label and released are required`);
+  requireValue(validGameCategories.has(game.category), `${filename}: unsupported game category ${game.category}`);
+  requireValue(validGameEras.has(game.era), `${filename}: unsupported game era ${game.era}`);
   games.set(game.id, game);
 }
 
@@ -395,8 +434,11 @@ for (const level of levels) {
   for (const location of level.locations) {
     const key = location.country;
     if (!groups.has(key)) {
+      const continent = continentForGroup(key);
+      requireValue(continent, `${key}: no continent classification is available`);
       groups.set(key, {
         name: key,
+        continent,
         coordinates: null,
         kind: location.precision === "off-world" ? "off-world" : "terrestrial",
         flagCode: flagCodeForGroup(key),

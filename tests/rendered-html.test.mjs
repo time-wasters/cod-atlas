@@ -12,7 +12,12 @@ test("round-trips shareable atlas filters and the selected location", () => {
     query: "Safehouse",
     gameId: "cod4",
     country: "Azerbaijan",
-    precision: "localized",
+    categories: ["modern-warfare"],
+    eras: ["golden"],
+    continents: ["Asia"],
+    precisions: ["approximate", "exact"],
+    confidences: ["high"],
+    methods: ["verified-landmark"],
     showSingleplayer: true,
     showMultiplayer: true,
     levelId: "cod4-safehouse",
@@ -30,7 +35,12 @@ test("uses concise defaults and preserves every mode-filter state", () => {
     query: "",
     gameId: "all",
     country: "all",
-    precision: "all",
+    categories: [],
+    eras: [],
+    continents: [],
+    precisions: [],
+    confidences: [],
+    methods: [],
     showSingleplayer: true,
     showMultiplayer: false,
     levelId: null,
@@ -39,6 +49,12 @@ test("uses concise defaults and preserves every mode-filter state", () => {
   const defaultUrl = atlasUrlWithState("https://example.com/?game=old&level=old", defaults);
   assert.equal(defaultUrl.search, "");
   assert.deepEqual(parseAtlasUrl(defaultUrl), defaults);
+
+  assert.deepEqual(
+    parseAtlasUrl("https://example.com/?precision=localized").precisions,
+    ["exact", "approximate", "city", "region"],
+    "legacy precision links remain compatible",
+  );
 
   for (const [mode, showSingleplayer, showMultiplayer] of [
     ["both", true, true],
@@ -91,7 +107,8 @@ test("renders development preview metadata", async () => {
   assert.match(html, /aria-label="Collapse Solar System overlay"/);
   assert.match(html, />Solar System \/\/ Schematic<\/text>/);
   assert.match(html, />Mercury<\/text>/);
-  assert.match(html, /aria-pressed="false"[^>]*>[\s\S]{0,120}Multiplayer/);
+  assert.match(html, /class="advanced-filter-trigger"[^>]*aria-expanded="false"/);
+  assert.doesNotMatch(html, /class="precision-filter"/);
   assert.match(html, /role="tab"[^>]*aria-selected="true"[^>]*aria-controls="sidebar-locations"/);
   assert.match(html, /<button(?=[^>]*role="tab")(?=[^>]*aria-controls="sidebar-campaigns")(?=[^>]*disabled="")[^>]*>/);
   assert.match(html, />Adriatic Sea<\/span>/);
@@ -142,6 +159,24 @@ test("preserves the complete statically compiled atlas", async () => {
   assert.equal(findGroup("Turkey").flagCode, "TR");
   assert.equal(findGroup("United States").flagCode, "US");
   assert.equal(findGroup("Adriatic Sea").flagCode, null);
+  assert.equal(findGroup("France").continent, "Europe");
+  assert.equal(findGroup("United States").continent, "North America");
+  assert.equal(findGroup("Brazil").continent, "South America");
+  assert.equal(findGroup("Antarctica").continent, "Antarctica");
+  assert.equal(findGroup("Adriatic Sea").continent, "Oceans");
+  assert.equal(findGroup("Mars").continent, "Off-world");
+  assert.ok(atlas.groups.every((group) => [
+    "Africa",
+    "Antarctica",
+    "Arctic",
+    "Asia",
+    "Europe",
+    "North America",
+    "South America",
+    "Oceania",
+    "Oceans",
+    "Off-world",
+  ].includes(group.continent)));
   assert.ok(atlas.groups.every((group) => group.entries.every((entry) => entry.country === group.name)));
   assert.ok(entries.every((entry) => !Object.hasOwn(entry, "label")));
   assert.ok(findGroup("United States").entries.some((entry) => entry.region === "California"));
@@ -152,6 +187,25 @@ test("preserves the complete statically compiled atlas", async () => {
   );
   const codGame = atlas.games.find((game) => game.id === "cod");
   assert.equal(codGame.icon, "/images/games/cod.png");
+  assert.equal(codGame.category, "world-war");
+  assert.equal(codGame.era, "classic");
+  assert.equal(atlas.games.find((game) => game.id === "cod4").era, "golden");
+  assert.equal(atlas.games.find((game) => game.id === "ghosts").era, "sci-fi");
+  assert.equal(atlas.games.find((game) => game.id === "mw19").era, "reboot");
+  assert.equal(atlas.games.find((game) => game.id === "bo6").era, "live-service");
+  assert.ok(atlas.games.every((game) => [
+    "world-war",
+    "modern-warfare",
+    "black-ops",
+    "standalone",
+  ].includes(game.category)));
+  assert.ok(atlas.games.every((game) => [
+    "classic",
+    "golden",
+    "sci-fi",
+    "reboot",
+    "live-service",
+  ].includes(game.era)));
   for (const game of atlas.games.filter((item) => item.icon)) {
     assert.equal(game.icon, `/images/games/${game.id}.png`);
     await access(new URL(`../public${game.icon}`, import.meta.url));

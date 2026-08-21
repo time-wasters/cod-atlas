@@ -2,6 +2,8 @@ id: mwii-wz
 code: MWII-WZ
 label: Warzone 2.0
 released: 2022-11-16
+category: modern-warfare
+era: live-service
 images:
   steamgriddb:
     game: 5358697

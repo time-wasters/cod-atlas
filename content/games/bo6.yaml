@@ -2,6 +2,8 @@ id: bo6
 code: BO6
 label: Black Ops 6
 released: 2024-10-25
+category: black-ops
+era: live-service
 images:
   steam:
     app: 4384550

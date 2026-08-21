@@ -2,6 +2,8 @@ id: mw4
 code: MW4
 label: Modern Warfare 4
 released: 2026-10-23
+category: modern-warfare
+era: live-service
 images:
   steam:
     app: 4435490

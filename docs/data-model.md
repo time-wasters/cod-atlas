@@ -12,8 +12,8 @@ erDiagram
   LEVEL ||--|{ LOCATION : "embeds"
 ```
 
-- `content/games/*.yaml` supplies stable game IDs, readable labels, codes, and
-  release dates.
+- `content/games/*.yaml` supplies stable game IDs, readable labels, codes,
+  release dates, franchise categories, and release eras.
 - `content/levels/**/*.md` is the curated source for level classification,
   coordinates, precision, and notes.
 - `content/wiki-import/articles/*.json` stores repeatable Wiki-import results
@@ -27,6 +27,8 @@ id: cod3
 code: COD3
 label: CoD 3
 released: 2006-11-07
+category: world-war
+era: classic
 ```
 
 The release date controls the game-filter ordering. Labels should be concise
@@ -34,6 +36,15 @@ but understandable without prior knowledge of internal abbreviations. An
 optional `public/images/games/<game-id>.png` is detected during the build and
 exposed as the game's `icon`; games without one continue to display their
 label.
+
+Game categories are `world-war`, `modern-warfare`, `black-ops`, and
+`standalone`. Release eras are `classic`, `golden`, `sci-fi`, `reboot`, and
+`live-service`. Expansions, handheld releases, remasters, and other spinoffs
+use the era in which that edition was released.
+
+The generated country groups include a `continent` used by the advanced
+filters. Standard countries are classified through `world-countries`; named
+waters, the Arctic, and off-world settings use explicit supplemental buckets.
 
 ## Level source layout
 

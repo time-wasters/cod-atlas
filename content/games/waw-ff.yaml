@@ -2,6 +2,8 @@ id: waw-ff
 code: WAW:FF
 label: "World at War: Final Fronts"
 released: 2008-11-11
+category: world-war
+era: golden
 images:
   steamgriddb:
     game: 5252157
