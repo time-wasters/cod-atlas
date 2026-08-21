@@ -114,6 +114,16 @@ type Game = {
   icon?: string;
 };
 type FilterOption = { value: string; label: string };
+const advancedFilterGroupIds = [
+  "game-category",
+  "era",
+  "continent",
+  "mode",
+  "precision",
+  "confidence",
+  "method",
+] as const;
+type AdvancedFilterGroupId = (typeof advancedFilterGroupIds)[number];
 type ExternalIconManifest = Record<string, {
   icon?: { provider: "steam" | "steamgriddb"; path: string };
   clienticon?: { provider: "steam"; path: string };
@@ -565,44 +575,66 @@ function GameSelect({
 }
 
 function AdvancedFilterGroup({
+  id,
   title,
   options,
   selected,
+  expanded,
+  onExpandedChange,
   onToggle,
   onClear,
 }: {
+  id: AdvancedFilterGroupId;
   title: string;
   options: FilterOption[];
   selected: Set<string>;
+  expanded: boolean;
+  onExpandedChange: (expanded: boolean) => void;
   onToggle: (value: string) => void;
   onClear: () => void;
 }) {
+  const panelId = `advanced-filter-${id}`;
+
   return (
-    <section className="advanced-filter-group">
+    <section className={`advanced-filter-group${expanded ? " is-expanded" : ""}`}>
       <header>
-        <h3>{title}</h3>
-      </header>
-      <div className="advanced-filter-options">
         <button
-          className={selected.size === 0 ? "is-active" : ""}
+          className="advanced-filter-group-toggle"
           type="button"
-          aria-pressed={selected.size === 0}
-          onClick={onClear}
+          aria-expanded={expanded}
+          aria-controls={panelId}
+          onClick={() => onExpandedChange(!expanded)}
         >
-          Any
+          <span>
+            <h3>{title}</h3>
+            <small>{selected.size === 0 ? "Any" : `${selected.size} selected`}</small>
+          </span>
+          <svg viewBox="0 0 12 8" aria-hidden="true"><path d="m1 1 5 5 5-5" /></svg>
         </button>
-        {options.map((option) => (
+      </header>
+      {expanded && (
+        <div id={panelId} className="advanced-filter-options">
           <button
-            className={selected.has(option.value) ? "is-active" : ""}
+            className={selected.size === 0 ? "is-active" : ""}
             type="button"
-            key={option.value}
-            aria-pressed={selected.has(option.value)}
-            onClick={() => onToggle(option.value)}
+            aria-pressed={selected.size === 0}
+            onClick={onClear}
           >
-            {option.label}
+            Any
           </button>
-        ))}
-      </div>
+          {options.map((option) => (
+            <button
+              className={selected.has(option.value) ? "is-active" : ""}
+              type="button"
+              key={option.value}
+              aria-pressed={selected.has(option.value)}
+              onClick={() => onToggle(option.value)}
+            >
+              {option.label}
+            </button>
+          ))}
+        </div>
+      )}
     </section>
   );
 }
@@ -863,6 +895,9 @@ export default function Home() {
   const [showSingleplayer, setShowSingleplayer] = useState(true);
   const [showMultiplayer, setShowMultiplayer] = useState(false);
   const [advancedFiltersOpen, setAdvancedFiltersOpen] = useState(false);
+  const [expandedAdvancedFilterGroups, setExpandedAdvancedFilterGroups] = useState<Set<AdvancedFilterGroupId>>(
+    () => new Set(),
+  );
   const [mapReady, setMapReady] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [detailsOpen, setDetailsOpen] = useState(true);
@@ -1157,6 +1192,22 @@ export default function Home() {
     + confidences.size
     + methods.size
     + Number(!(showSingleplayer && !showMultiplayer));
+  const allAdvancedFilterGroupsExpanded = advancedFilterGroupIds.every((id) =>
+    expandedAdvancedFilterGroups.has(id));
+  const setAdvancedFilterGroupExpanded = useCallback((id: AdvancedFilterGroupId, expanded: boolean) => {
+    setExpandedAdvancedFilterGroups((current) => {
+      const next = new Set(current);
+      if (expanded) next.add(id);
+      else next.delete(id);
+      return next;
+    });
+  }, []);
+  const toggleAllAdvancedFilterGroups = useCallback(() => {
+    setExpandedAdvancedFilterGroups((current) => {
+      const allExpanded = advancedFilterGroupIds.every((id) => current.has(id));
+      return allExpanded ? new Set() : new Set(advancedFilterGroupIds);
+    });
+  }, []);
   const resetAdvancedFilters = useCallback(() => {
     urlHistoryMode.current = "push";
     setGameCategories(new Set());
@@ -1776,25 +1827,37 @@ export default function Home() {
               >
                 <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m10 3-5 5 5 5" /></svg>
               </button>
-              <div>
+              <div className="advanced-filters-title">
                 <span>Filter matrix</span>
                 <h2 id="advanced-filters-title">Advanced filters</h2>
               </div>
-              <button
-                className="advanced-filters-reset"
-                type="button"
-                disabled={advancedFilterCount === 0}
-                onClick={resetAdvancedFilters}
-              >
-                Reset
-              </button>
+              <div className="advanced-filters-actions">
+                <button
+                  className="advanced-filters-expand"
+                  type="button"
+                  onClick={toggleAllAdvancedFilterGroups}
+                >
+                  {allAdvancedFilterGroupsExpanded ? "Collapse all" : "Expand all"}
+                </button>
+                <button
+                  className="advanced-filters-reset"
+                  type="button"
+                  disabled={advancedFilterCount === 0}
+                  onClick={resetAdvancedFilters}
+                >
+                  Reset
+                </button>
+              </div>
             </header>
 
             <div className="advanced-filters-scroll">
               <AdvancedFilterGroup
+                id="game-category"
                 title="Game category"
                 options={gameCategoryOptions}
                 selected={gameCategories}
+                expanded={expandedAdvancedFilterGroups.has("game-category")}
+                onExpandedChange={(expanded) => setAdvancedFilterGroupExpanded("game-category", expanded)}
                 onToggle={(value) => {
                   urlHistoryMode.current = "push";
                   setGameCategories((current) => toggledFilterValue(current, value));
@@ -1805,9 +1868,12 @@ export default function Home() {
                 }}
               />
               <AdvancedFilterGroup
+                id="era"
                 title="Era"
                 options={gameEraOptions}
                 selected={gameEras}
+                expanded={expandedAdvancedFilterGroups.has("era")}
+                onExpandedChange={(expanded) => setAdvancedFilterGroupExpanded("era", expanded)}
                 onToggle={(value) => {
                   urlHistoryMode.current = "push";
                   setGameEras((current) => toggledFilterValue(current, value));
@@ -1818,9 +1884,12 @@ export default function Home() {
                 }}
               />
               <AdvancedFilterGroup
+                id="continent"
                 title="Continent"
                 options={continentOptions}
                 selected={continents}
+                expanded={expandedAdvancedFilterGroups.has("continent")}
+                onExpandedChange={(expanded) => setAdvancedFilterGroupExpanded("continent", expanded)}
                 onToggle={(value) => {
                   urlHistoryMode.current = "push";
                   setContinents((current) => toggledFilterValue(current, value));
@@ -1831,41 +1900,60 @@ export default function Home() {
                 }}
               />
 
-              <section className="advanced-filter-group">
-                <header><h3>Mode</h3></header>
-                <div className="mode-filter advanced-mode-filter" aria-label="Game mode visibility">
+              <section className={`advanced-filter-group${expandedAdvancedFilterGroups.has("mode") ? " is-expanded" : ""}`}>
+                <header>
                   <button
-                    className={showSingleplayer ? "is-active" : ""}
+                    className="advanced-filter-group-toggle"
                     type="button"
-                    aria-pressed={showSingleplayer}
-                    onClick={() => {
-                      urlHistoryMode.current = "push";
-                      setShowSingleplayer((visible) => !visible);
-                    }}
+                    aria-expanded={expandedAdvancedFilterGroups.has("mode")}
+                    aria-controls="advanced-filter-mode"
+                    onClick={() => setAdvancedFilterGroupExpanded("mode", !expandedAdvancedFilterGroups.has("mode"))}
                   >
-                    <span aria-hidden="true">{showSingleplayer ? "✓" : "○"}</span> Singleplayer
+                    <span>
+                      <h3>Mode</h3>
+                      <small>{Number(showSingleplayer) + Number(showMultiplayer)} selected</small>
+                    </span>
+                    <svg viewBox="0 0 12 8" aria-hidden="true"><path d="m1 1 5 5 5-5" /></svg>
                   </button>
-                  <button
-                    className={showMultiplayer ? "is-active" : ""}
-                    type="button"
-                    aria-pressed={showMultiplayer}
-                    onClick={() => {
-                      urlHistoryMode.current = "push";
-                      setShowMultiplayer((visible) => !visible);
-                    }}
-                  >
-                    <span aria-hidden="true">{showMultiplayer ? "✓" : "○"}</span> Multiplayer
-                  </button>
-                  <button type="button" disabled aria-pressed="false" title="Zombies filtering will be added later">
-                    <span aria-hidden="true">○</span> Zombies <small>Later</small>
-                  </button>
-                </div>
+                </header>
+                {expandedAdvancedFilterGroups.has("mode") && (
+                  <div id="advanced-filter-mode" className="mode-filter advanced-mode-filter" aria-label="Game mode visibility">
+                    <button
+                      className={showSingleplayer ? "is-active" : ""}
+                      type="button"
+                      aria-pressed={showSingleplayer}
+                      onClick={() => {
+                        urlHistoryMode.current = "push";
+                        setShowSingleplayer((visible) => !visible);
+                      }}
+                    >
+                      <span aria-hidden="true">{showSingleplayer ? "✓" : "○"}</span> Singleplayer
+                    </button>
+                    <button
+                      className={showMultiplayer ? "is-active" : ""}
+                      type="button"
+                      aria-pressed={showMultiplayer}
+                      onClick={() => {
+                        urlHistoryMode.current = "push";
+                        setShowMultiplayer((visible) => !visible);
+                      }}
+                    >
+                      <span aria-hidden="true">{showMultiplayer ? "✓" : "○"}</span> Multiplayer
+                    </button>
+                    <button type="button" disabled aria-pressed="false" title="Zombies filtering will be added later">
+                      <span aria-hidden="true">○</span> Zombies <small>Later</small>
+                    </button>
+                  </div>
+                )}
               </section>
 
               <AdvancedFilterGroup
+                id="precision"
                 title="Precision"
                 options={precisionOptions}
                 selected={precisions}
+                expanded={expandedAdvancedFilterGroups.has("precision")}
+                onExpandedChange={(expanded) => setAdvancedFilterGroupExpanded("precision", expanded)}
                 onToggle={(value) => {
                   urlHistoryMode.current = "push";
                   setPrecisions((current) => toggledFilterValue(current, value));
@@ -1876,9 +1964,12 @@ export default function Home() {
                 }}
               />
               <AdvancedFilterGroup
+                id="confidence"
                 title="Confidence"
                 options={confidenceOptions}
                 selected={confidences}
+                expanded={expandedAdvancedFilterGroups.has("confidence")}
+                onExpandedChange={(expanded) => setAdvancedFilterGroupExpanded("confidence", expanded)}
                 onToggle={(value) => {
                   urlHistoryMode.current = "push";
                   setConfidences((current) => toggledFilterValue(current, value));
@@ -1889,9 +1980,12 @@ export default function Home() {
                 }}
               />
               <AdvancedFilterGroup
+                id="method"
                 title="Method"
                 options={methodOptions}
                 selected={methods}
+                expanded={expandedAdvancedFilterGroups.has("method")}
+                onExpandedChange={(expanded) => setAdvancedFilterGroupExpanded("method", expanded)}
                 onToggle={(value) => {
                   urlHistoryMode.current = "push";
                   setMethods((current) => toggledFilterValue(current, value));
