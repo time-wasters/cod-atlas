@@ -370,10 +370,13 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
 .more-row { width: 100%; border: 0; border-top: 1px solid #33392d; padding: 10px 0; color: #c28e30; background: transparent; font: 700 9px var(--font-geist-mono), monospace; letter-spacing: .04em; text-align: left; cursor: pointer; }
 .more-row:hover, .more-row:focus-visible { color: #f0bd58; outline: none; }
 .more-row.is-collapse { color: #858b78; }
-.place-links { display: flex; align-items: center; gap: 6px; margin: 0 0 10px; }
-.place-links a { width: 36px; height: 36px; flex: 0 0 36px; display: grid; place-items: center; border: 1px solid #676b55; border-radius: 4px; padding: 0; color: #d8cfb2; background: #20251c; text-decoration: none; }
-.place-links img { width: 22px; height: 22px; object-fit: contain; border-radius: 2px; }
-.place-links a:hover { border-color: var(--amber); color: var(--amber); background: #dfa12712; }
+.place-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2px 10px; margin: 0 0 10px; }
+.place-links a { min-width: 0; min-height: 34px; display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; align-items: center; gap: 7px; border-radius: 2px; padding: 4px 3px; color: #bbb9aa; font-size: 9px; font-weight: 700; text-decoration: none; }
+.place-links a::after { content: "\2197"; align-self: start; margin-top: 3px; color: #777c6b; font: 11px var(--font-geist-mono), monospace; }
+.place-links img { width: 20px; height: 20px; object-fit: contain; border-radius: 2px; }
+.place-links span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.place-links a:hover { color: var(--amber); background: #dfa1270c; text-decoration: underline; text-underline-offset: 3px; }
+.place-links a:hover::after { color: var(--amber); }
 .map-overlay-toggle { width: 34px; height: 34px; flex: 0 0 34px; display: grid; place-items: center; border: 1px solid #5d624c; border-radius: 4px; padding: 0; color: #aaa995; background: #1a1f17; cursor: pointer; }
 .map-overlay-toggle svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-linejoin: round; stroke-width: 1.5; }
 .map-overlay-toggle.is-enabled { border-color: #a8731d; color: #e3b451; background: #dfa12712; }

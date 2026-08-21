@@ -60,8 +60,8 @@ test("renders development preview metadata", async () => {
   assert.match(html, /src="webpage_icons\/maps-google-com\.ico"/);
   assert.match(html, /aria-label="Open on Call of Duty Wiki"/);
   assert.match(html, /src="webpage_icons\/callofduty-fandom-com\.webp"/);
-  assert.doesNotMatch(html, />Google Maps<\/span>/);
-  assert.doesNotMatch(html, />CoD Wiki<\/span>/);
+  assert.match(html, />Google Maps<\/span>/);
+  assert.match(html, />CoD Wiki<\/span>/);
   assert.ok(html.indexOf('class="mission-heading"') < html.indexOf('class="intel-kicker"'));
 });
 

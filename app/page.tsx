@@ -1794,6 +1794,7 @@ export default function Home() {
                 title="Google Maps"
               >
                 <ExternalLinkIcon name="googleMaps" />
+                <span>Google Maps</span>
               </a>
             )}
             {selectedWikipediaUrl && (
@@ -1805,6 +1806,7 @@ export default function Home() {
                 title="Wikipedia"
               >
                 <ExternalLinkIcon name="wikipedia" />
+                <span>Wikipedia</span>
               </a>
             )}
             {selectedCallOfDutyMapsUrl && (
@@ -1816,6 +1818,7 @@ export default function Home() {
                 title="Call of Duty Maps"
               >
                 <ExternalLinkIcon name="callOfDutyMaps" />
+                <span>CoD Maps</span>
               </a>
             )}
             <a
@@ -1826,6 +1829,7 @@ export default function Home() {
               title="Call of Duty Wiki"
             >
               <ExternalLinkIcon name="fandom" />
+              <span>CoD Wiki</span>
             </a>
           </div>
           <section className="level-briefing">
