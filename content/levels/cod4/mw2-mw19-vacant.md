@@ -16,4 +16,6 @@ locations:
     confidence: medium
     method: manual-approximate
     primary: true
+    urls:
+      - callOfDutyMaps: https://callofdutymaps.com/cod-4-modern-warfare/vacant
 ---
