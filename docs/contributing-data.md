@@ -61,7 +61,7 @@ edition. Optional image-provider metadata follows the existing game records.
 | `mode` | yes | `singleplayer` or `multiplayer`. |
 | `campaign` | no | Named campaign grouping as a stable string `id` and display `label`. |
 | `wikiArticle` | yes | ID of a separate Wiki import JSON record. |
-| `locations` | yes | One or more locations owned by this level. Never reference a shared place. |
+| `locations` | yes | Locations owned by this level. Use `[]` only while its location remains uncurated. Never reference a shared place. |
 | Markdown body | no | Concise research, ambiguity, or editorial notes. |
 
 For a level that belongs to a named campaign section, use an embedded campaign

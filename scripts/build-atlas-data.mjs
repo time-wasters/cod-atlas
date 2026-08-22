@@ -372,7 +372,7 @@ for (const filename of levelFiles) {
     usedLevelBannerBases.add(levelBannerBase);
   }
   requireValue(wikiArticles.has(level.wikiArticle), `${filename}: unknown wikiArticle ${level.wikiArticle}`);
-  requireValue(Array.isArray(level.locations) && level.locations.length, `${filename}: locations must be a non-empty list`);
+  requireValue(Array.isArray(level.locations), `${filename}: locations must be a list`);
   if (level.mapOverlay) mapOverlays[level.id] = await validateMapOverlay(level.mapOverlay, level.id, filename);
   if (level.historyOverlays != null) {
     requireValue(Array.isArray(level.historyOverlays) && level.historyOverlays.length, `${filename}: historyOverlays must be a non-empty array`);

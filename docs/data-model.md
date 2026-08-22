@@ -9,7 +9,7 @@ Wiki imports. There is no database and no shared place entity.
 erDiagram
   GAME ||--o{ LEVEL : "referenced by games"
   WIKI_ARTICLE ||--o{ LEVEL : "referenced by wikiArticle"
-  LEVEL ||--|{ LOCATION : "embeds"
+  LEVEL ||--o{ LOCATION : "embeds"
 ```
 
 - `content/games/*.yaml` supplies stable game IDs, readable labels, codes,
@@ -79,13 +79,15 @@ Required fields:
 - `games`: one or more game IDs.
 - `mode`: `singleplayer` or `multiplayer`.
 - `wikiArticle`: foreign key to a Wiki import record.
-- `locations`: one or more embedded location records.
+- `locations`: embedded location records. Use an empty list only when the
+  level is known but its real-world location has not yet been curated.
 
 Optional level fields include `campaign`, a grouping with a stable string `id`
 and a human-readable `label`.
 
-One level can embed multiple locations. Each location has a locally unique
-`id`, a country, and normally coordinates. Optional geographic detail follows
+One level can embed multiple locations, or temporarily use `locations: []`
+until location research is complete. Each location has a locally unique `id`,
+a country, and normally coordinates. Optional geographic detail follows
 the hierarchy `country` → `region` → `city` → `landmark`. A region may be a
 state, province, constituent country, island, territory, or similar area;
 landmarks are named sites such as rivers, castles, and buildings. Coordinates
