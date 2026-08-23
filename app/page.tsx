@@ -139,7 +139,6 @@ type FilterHoverDetail = {
 };
 type AdvancedFilterGroupId =
   | "game-category"
-  | "era"
   | "continent"
   | "precision"
   | "confidence"
@@ -246,34 +245,6 @@ const gameCategoryDetails = new Map<string, FilterHoverDetail>(gameCategoryOptio
     games: games.map((game) => ({ label: game.label, year: game.released.slice(0, 4) })),
   }];
 }));
-const gameEraOptions: FilterOption[] = [
-  { value: "classic", label: "Classic" },
-  { value: "golden", label: "Golden" },
-  { value: "sci-fi", label: "Sci-Fi" },
-  { value: "reboot", label: "Reboot" },
-  { value: "live-service", label: "Live-Service" },
-];
-const gameEraDescriptions: Record<Game["era"], string> = {
-  classic: "The early releases that established Call of Duty, led by the original World War II games and their spin-offs.",
-  golden: "The run that established the modern Call of Duty formula and the original Modern Warfare and Black Ops series.",
-  "sci-fi": "The experimental period focused on near-future, futuristic, and space-based settings.",
-  reboot: "The transition period that returned to historical combat and rebooted Modern Warfare.",
-  "live-service": "The connected era shaped by seasonal releases, Warzone, and ongoing live content.",
-};
-const gameEraDetails = new Map<string, FilterHoverDetail>(gameEraOptions.map((option) => {
-  const era = option.value as Game["era"];
-  const games = data.games
-    .filter((game) => game.era === era)
-    .sort((left, right) => left.released.localeCompare(right.released));
-  const firstYear = games[0]?.released.slice(0, 4) ?? "Unknown";
-  const lastYear = games.at(-1)?.released.slice(0, 4) ?? firstYear;
-  return [option.value, {
-    label: option.label,
-    description: gameEraDescriptions[era],
-    years: firstYear === lastYear ? firstYear : `${firstYear}\u2013${lastYear}`,
-    games: games.map((game) => ({ label: game.label, year: game.released.slice(0, 4) })),
-  }];
-}));
 const continentOrder = [
   "Africa",
   "Antarctica",
@@ -315,7 +286,6 @@ const methodOptions: FilterOption[] = [
 ];
 const valuesFor = (options: FilterOption[]) => new Set(options.map((option) => option.value));
 const gameCategoryValues = valuesFor(gameCategoryOptions);
-const gameEraValues = valuesFor(gameEraOptions);
 const continentValues = valuesFor(continentOptions);
 const precisionValues = valuesFor(precisionOptions);
 const confidenceValues = valuesFor(confidenceOptions);
@@ -1043,7 +1013,6 @@ export default function Home() {
   const [game, setGame] = useState("all");
   const [country, setCountry] = useState("all");
   const [gameCategories, setGameCategories] = useState<Set<string>>(() => new Set());
-  const [gameEras, setGameEras] = useState<Set<string>>(() => new Set());
   const [continents, setContinents] = useState<Set<string>>(() => new Set());
   const [precisions, setPrecisions] = useState<Set<string>>(() => new Set());
   const [confidences, setConfidences] = useState<Set<string>>(() => new Set());
@@ -1149,7 +1118,6 @@ export default function Home() {
       setGame(requestedGame?.code ?? "all");
       setCountry(countryNames.has(urlState.country) ? urlState.country : "all");
       setGameCategories(new Set(urlState.categories.filter((value) => gameCategoryValues.has(value))));
-      setGameEras(new Set(urlState.eras.filter((value) => gameEraValues.has(value))));
       setContinents(new Set(urlState.continents.filter((value) => continentValues.has(value))));
       setPrecisions(new Set(urlState.precisions.filter((value) => precisionValues.has(value))));
       setConfidences(new Set(urlState.confidences.filter((value) => confidenceValues.has(value))));
@@ -1177,7 +1145,6 @@ export default function Home() {
       gameId: gamesByCode.get(game)?.id ?? "all",
       country,
       categories: [...gameCategories],
-      eras: [...gameEras],
       continents: [...continents],
       precisions: [...precisions],
       confidences: [...confidences],
@@ -1200,7 +1167,6 @@ export default function Home() {
     continents,
     game,
     gameCategories,
-    gameEras,
     methods,
     precisions,
     query,
@@ -1234,10 +1200,6 @@ export default function Home() {
       const entryGame = gamesById.get(gameId);
       return entryGame ? gameCategories.has(entryGame.category) : false;
     });
-    const matchesEra = gameEras.size === 0 || entry.gameIds.some((gameId) => {
-      const entryGame = gamesById.get(gameId);
-      return entryGame ? gameEras.has(entryGame.era) : false;
-    });
     const matchesPrecision = precisions.size === 0 || precisions.has(entry.precision);
     const matchesConfidence = confidences.size === 0
       || (entry.confidence ? confidences.has(entry.confidence) : false);
@@ -1247,12 +1209,11 @@ export default function Home() {
       || (showMultiplayer && entry.modes.includes("multiplayer"));
     return matchesGame
       && matchesCategory
-      && matchesEra
       && matchesPrecision
       && matchesConfidence
       && matchesMethod
       && matchesMode;
-  }, [confidences, game, gameCategories, gameEras, methods, precisions, showMultiplayer, showSingleplayer]);
+  }, [confidences, game, gameCategories, methods, precisions, showMultiplayer, showSingleplayer]);
   const countries = useMemo(
     () => groups
       .map(({ name, flagCode, continent, entries }) => ({
@@ -1344,7 +1305,6 @@ export default function Home() {
   }, [filtered]);
   const resultCount = filtered.reduce((sum, group) => sum + group.entries.length, 0);
   const advancedFilterCount = gameCategories.size
-    + gameEras.size
     + continents.size
     + precisions.size
     + confidences.size
@@ -1355,7 +1315,6 @@ export default function Home() {
   const resetAdvancedFilters = useCallback(() => {
     urlHistoryMode.current = "push";
     setGameCategories(new Set());
-    setGameEras(new Set());
     setContinents(new Set());
     setPrecisions(new Set());
     setConfidences(new Set());
@@ -2040,23 +1999,6 @@ export default function Home() {
                 onClear={() => {
                   urlHistoryMode.current = "push";
                   setGameCategories(new Set());
-                }}
-              />
-              <AdvancedFilterDropdown
-                id="era"
-                title="Era"
-                options={gameEraOptions}
-                selected={gameEras}
-                open={openAdvancedFilterDropdown === "era"}
-                hoverDetails={gameEraDetails}
-                onOpenChange={(open) => setAdvancedFilterDropdownOpen("era", open)}
-                onToggle={(value) => {
-                  urlHistoryMode.current = "push";
-                  setGameEras((current) => toggledFilterValue(current, value));
-                }}
-                onClear={() => {
-                  urlHistoryMode.current = "push";
-                  setGameEras(new Set());
                 }}
               />
               <AdvancedFilterDropdown

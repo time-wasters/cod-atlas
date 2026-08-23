@@ -3,7 +3,7 @@ const atlasUrlParameters = [
   "game",
   "country",
   "category",
-  "era",
+  "era", // Obsolete filter parameter; retained here only to remove it from old URLs.
   "continent",
   "precision",
   "confidence",
@@ -19,7 +19,6 @@ const atlasUrlParameters = [
  * @property {string} gameId
  * @property {string} country
  * @property {string[]} categories
- * @property {string[]} eras
  * @property {string[]} continents
  * @property {string[]} precisions
  * @property {string[]} confidences
@@ -47,7 +46,6 @@ export function parseAtlasUrl(input) {
     gameId: url.searchParams.get("game") || "all",
     country: url.searchParams.get("country") || "all",
     categories: values("category"),
-    eras: values("era"),
     continents: values("continent"),
     precisions,
     confidences: values("confidence"),
@@ -74,7 +72,6 @@ export function atlasUrlWithState(input, state) {
     if (values.length) url.searchParams.set(name, [...values].sort().join(","));
   };
   setValues("category", state.categories);
-  setValues("era", state.eras);
   setValues("continent", state.continents);
   setValues("precision", state.precisions);
   setValues("confidence", state.confidences);

@@ -7,13 +7,12 @@ const developmentPreviewMeta =
   /<meta(?=[^>]*\bname=["']codex-preview["'])(?=[^>]*\bcontent=["']development["'])[^>]*>/i;
 
 test("round-trips shareable atlas filters and the selected location", () => {
-  const source = new URL("https://example.com/atlas/?utm_source=test#map");
+  const source = new URL("https://example.com/atlas/?utm_source=test&era=golden#map");
   const state = {
     query: "Safehouse",
     gameId: "cod4",
     country: "Azerbaijan",
     categories: ["modern-warfare"],
-    eras: ["golden"],
     continents: ["Asia"],
     precisions: ["approximate", "exact"],
     confidences: ["high"],
@@ -26,6 +25,7 @@ test("round-trips shareable atlas filters and the selected location", () => {
   const sharedUrl = atlasUrlWithState(source, state);
 
   assert.equal(sharedUrl.searchParams.get("utm_source"), "test");
+  assert.equal(sharedUrl.searchParams.has("era"), false);
   assert.equal(sharedUrl.hash, "#map");
   assert.deepEqual(parseAtlasUrl(sharedUrl), state);
 });
@@ -36,7 +36,6 @@ test("uses concise defaults and preserves every mode-filter state", () => {
     gameId: "all",
     country: "all",
     categories: [],
-    eras: [],
     continents: [],
     precisions: [],
     confidences: [],
