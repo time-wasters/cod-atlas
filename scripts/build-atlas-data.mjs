@@ -21,7 +21,7 @@ const mapTypeDirectoryByMode = new Map([
 const validPrecisions = new Set(["exact", "approximate", "city", "region", "country", "off-world"]);
 const validConfidences = new Set(["high", "medium", "fallback"]);
 const validGameSeries = new Set(["world-war-ii", "modern-warfare", "black-ops", "standalone"]);
-const validGameSubseries = new Set(["main", "reboot", "add-on", "spin-off"]);
+const validGameSubseries = new Set(["main", "reboot", "remaster", "add-on", "spin-off"]);
 const validMethods = new Set([
   "verified-landmark",
   "real-world-inspiration",
@@ -266,7 +266,22 @@ for (const filename of gameFiles) {
     game.subseries == null || validGameSubseries.has(game.subseries),
     `${filename}: unsupported game sub-series ${game.subseries}`,
   );
-  games.set(game.id, { ...game, subseries: game.subseries ?? null });
+  games.set(game.id, {
+    ...game,
+    subseries: game.subseries ?? null,
+    remasterOf: game.remasterOf ?? null,
+  });
+}
+for (const [gameId, game] of games) {
+  const isRemaster = game.subseries === "remaster";
+  requireValue(
+    isRemaster === (game.remasterOf !== null),
+    `${gameId}: remaster games require remasterOf and other games must omit it`,
+  );
+  if (game.remasterOf !== null) {
+    requireValue(game.remasterOf !== gameId, `${gameId}: remasterOf cannot reference the same game`);
+    requireValue(games.has(game.remasterOf), `${gameId}: remasterOf references unknown game ID ${game.remasterOf}`);
+  }
 }
 
 const gameIconDirectory = path.join(root, "public/images/games");

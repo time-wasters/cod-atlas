@@ -48,10 +48,11 @@ filesystem metadata only: do not add it to the stable level `id` or title.
 
 Every game record requires `id`, `code`, `label`, `released`, and `series`.
 Series values are `world-war-ii`, `modern-warfare`, `black-ops`, or
-`standalone`. The optional `subseries` field is `main`, `reboot`, `add-on`, or
-`spin-off`; omit it when the game does not belong to a sub-series. Use `reboot`
-for a reboot continuity and `add-on` for an expansion of an existing game,
-such as *Call of Duty: United Offensive*.
+`standalone`. The optional `subseries` field is `main`, `reboot`, `remaster`,
+`add-on`, or `spin-off`; omit it when the game does not belong to a sub-series.
+Use `reboot` for a reboot continuity and `add-on` for an expansion of an
+existing game, such as *Call of Duty: United Offensive*. A `remaster` requires
+`remasterOf` containing the original game's ID; other games must omit it.
 Optional image-provider metadata follows the existing game records.
 
 ## Level fields

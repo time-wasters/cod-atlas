@@ -196,12 +196,16 @@ test("preserves the complete statically compiled atlas", async () => {
   assert.equal(codGame.icon, "/images/games/cod.png");
   assert.equal(codGame.series, "world-war-ii");
   assert.equal(codGame.subseries, "main");
+  assert.equal(codGame.remasterOf, null);
   assert.equal(atlas.games.find((game) => game.id === "cod-uo").subseries, "add-on");
   assert.equal(atlas.games.find((game) => game.id === "cod-fh").subseries, "spin-off");
   assert.equal(atlas.games.find((game) => game.id === "mw19").subseries, "reboot");
   assert.equal(atlas.games.find((game) => game.id === "mwii").subseries, "reboot");
   assert.equal(atlas.games.find((game) => game.id === "mwiii").subseries, "reboot");
   assert.equal(atlas.games.find((game) => game.id === "mw4").subseries, "reboot");
+  const cod4Remastered = atlas.games.find((game) => game.id === "cod4-r");
+  assert.equal(cod4Remastered.subseries, "remaster");
+  assert.equal(cod4Remastered.remasterOf, "cod4");
   assert.equal(atlas.games.find((game) => game.id === "ghosts").subseries, null);
   assert.equal(atlas.games.find((game) => game.id === "wz").code, "WZ");
   assert.equal(atlas.games.find((game) => game.id === "wz2").code, "WZ2");
@@ -212,7 +216,10 @@ test("preserves the complete statically compiled atlas", async () => {
     "standalone",
   ].includes(game.series)));
   assert.ok(atlas.games.every((game) => game.subseries === null
-    || ["main", "reboot", "add-on", "spin-off"].includes(game.subseries)));
+    || ["main", "reboot", "remaster", "add-on", "spin-off"].includes(game.subseries)));
+  assert.ok(atlas.games.every((game) => game.subseries === "remaster"
+    ? atlas.games.some((original) => original.id === game.remasterOf)
+    : game.remasterOf === null));
   assert.ok(atlas.games.every((game) => !Object.hasOwn(game, "era")));
   for (const game of atlas.games.filter((item) => item.icon)) {
     assert.equal(game.icon, `/images/games/${game.id}.png`);

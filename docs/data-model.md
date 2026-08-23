@@ -39,11 +39,20 @@ exposed as the game's `icon`; games without one continue to display their
 label.
 
 Game series values are `world-war-ii`, `modern-warfare`, `black-ops`, and
-`standalone`. The optional sub-series values are `main`, `reboot`, `add-on`,
-and `spin-off`. Use `reboot` for reboot-continuity releases and `add-on` for
-expansions of an existing game, such as *Call of Duty: United Offensive*. Omit
-`subseries` for a standalone game such as *Call of Duty: Ghosts*; the compiler
-represents the missing value as `null` in generated data.
+`standalone`. The optional sub-series values are `main`, `reboot`, `remaster`,
+`add-on`, and `spin-off`. Use `reboot` for reboot-continuity releases and
+`add-on` for expansions of an existing game, such as *Call of Duty: United
+Offensive*. A `remaster` must link to the original game through its stable ID:
+
+```yaml
+series: modern-warfare
+subseries: remaster
+remasterOf: cod4
+```
+
+Other games must omit `remasterOf`. Omit `subseries` for a standalone game such
+as *Call of Duty: Ghosts*; the compiler represents missing optional values as
+`null` in generated data.
 
 The generated country groups include a `continent` used by the advanced
 filters. Standard countries are classified through `world-countries`; named
