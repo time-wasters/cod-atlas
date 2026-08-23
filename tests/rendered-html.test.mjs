@@ -7,7 +7,7 @@ const developmentPreviewMeta =
   /<meta(?=[^>]*\bname=["']codex-preview["'])(?=[^>]*\bcontent=["']development["'])[^>]*>/i;
 
 test("round-trips shareable atlas filters and the selected location", () => {
-  const source = new URL("https://example.com/atlas/?utm_source=test&era=golden#map");
+  const source = new URL("https://example.com/atlas/?utm_source=test#map");
   const state = {
     query: "Safehouse",
     gameId: "cod4",
@@ -25,7 +25,6 @@ test("round-trips shareable atlas filters and the selected location", () => {
   const sharedUrl = atlasUrlWithState(source, state);
 
   assert.equal(sharedUrl.searchParams.get("utm_source"), "test");
-  assert.equal(sharedUrl.searchParams.has("era"), false);
   assert.equal(sharedUrl.hash, "#map");
   assert.deepEqual(parseAtlasUrl(sharedUrl), state);
 });
@@ -194,26 +193,15 @@ test("preserves the complete statically compiled atlas", async () => {
   const codGame = atlas.games.find((game) => game.id === "cod");
   assert.equal(codGame.icon, "/images/games/cod.png");
   assert.equal(codGame.category, "world-war");
-  assert.equal(codGame.era, "classic");
-  assert.equal(atlas.games.find((game) => game.id === "cod4").era, "golden");
-  assert.equal(atlas.games.find((game) => game.id === "ghosts").era, "sci-fi");
-  assert.equal(atlas.games.find((game) => game.id === "mw19").era, "reboot");
   assert.equal(atlas.games.find((game) => game.id === "wz").code, "WZ");
   assert.equal(atlas.games.find((game) => game.id === "wz2").code, "WZ2");
-  assert.equal(atlas.games.find((game) => game.id === "bo6").era, "live-service");
   assert.ok(atlas.games.every((game) => [
     "world-war",
     "modern-warfare",
     "black-ops",
     "standalone",
   ].includes(game.category)));
-  assert.ok(atlas.games.every((game) => [
-    "classic",
-    "golden",
-    "sci-fi",
-    "reboot",
-    "live-service",
-  ].includes(game.era)));
+  assert.ok(atlas.games.every((game) => !Object.hasOwn(game, "era")));
   for (const game of atlas.games.filter((item) => item.icon)) {
     assert.equal(game.icon, `/images/games/${game.id}.png`);
     await access(new URL(`../public${game.icon}`, import.meta.url));
@@ -249,7 +237,7 @@ test("preserves the complete statically compiled atlas", async () => {
   const expectedCod1MapLinks = new Map([
     ["cod-bocage", "bocage-2"],
     ["cod-brecourt", "brecourt"],
-    ["cod-carentan", "carentan"],
+    ["cod-carentan", "Carentan-2"],
     ["cod-chateau", "chateau"],
     ["cod-dawnville", "dawnville"],
     ["cod-depot", "depot"],

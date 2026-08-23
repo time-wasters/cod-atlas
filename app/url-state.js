@@ -3,7 +3,6 @@ const atlasUrlParameters = [
   "game",
   "country",
   "category",
-  "era", // Obsolete filter parameter; retained here only to remove it from old URLs.
   "continent",
   "precision",
   "confidence",

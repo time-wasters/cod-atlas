@@ -21,7 +21,6 @@ const mapTypeDirectoryByMode = new Map([
 const validPrecisions = new Set(["exact", "approximate", "city", "region", "country", "off-world"]);
 const validConfidences = new Set(["high", "medium", "fallback"]);
 const validGameCategories = new Set(["world-war", "modern-warfare", "black-ops", "standalone"]);
-const validGameEras = new Set(["classic", "golden", "sci-fi", "reboot", "live-service"]);
 const validMethods = new Set([
   "verified-landmark",
   "real-world-inspiration",
@@ -262,7 +261,6 @@ for (const filename of gameFiles) {
   requireValue(!games.has(game.id), `${filename}: duplicate game id ${game.id}`);
   requireValue(game.code && game.label && game.released, `${filename}: code, label and released are required`);
   requireValue(validGameCategories.has(game.category), `${filename}: unsupported game category ${game.category}`);
-  requireValue(validGameEras.has(game.era), `${filename}: unsupported game era ${game.era}`);
   games.set(game.id, game);
 }
 

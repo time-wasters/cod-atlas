@@ -127,7 +127,6 @@ type Game = {
   label: string;
   released: string;
   category: "world-war" | "modern-warfare" | "black-ops" | "standalone";
-  era: "classic" | "golden" | "sci-fi" | "reboot" | "live-service";
   icon?: string;
 };
 type FilterOption = { value: string; label: string; disabled?: boolean; note?: string };
