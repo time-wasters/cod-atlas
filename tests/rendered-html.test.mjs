@@ -13,6 +13,7 @@ test("round-trips shareable atlas filters and the selected location", () => {
     gameId: "cod4",
     country: "Azerbaijan",
     series: ["modern-warfare"],
+    subseries: ["main"],
     continents: ["Asia"],
     precisions: ["approximate", "exact"],
     confidences: ["high"],
@@ -35,6 +36,7 @@ test("uses concise defaults and preserves every mode-filter state", () => {
     gameId: "all",
     country: "all",
     series: [],
+    subseries: [],
     continents: [],
     precisions: [],
     confidences: [],
@@ -192,15 +194,20 @@ test("preserves the complete statically compiled atlas", async () => {
   );
   const codGame = atlas.games.find((game) => game.id === "cod");
   assert.equal(codGame.icon, "/images/games/cod.png");
-  assert.equal(codGame.series, "world-war");
+  assert.equal(codGame.series, "world-war-ii");
+  assert.equal(codGame.subseries, "main");
+  assert.equal(atlas.games.find((game) => game.id === "cod-fh").subseries, "spin-off");
+  assert.equal(atlas.games.find((game) => game.id === "ghosts").subseries, null);
   assert.equal(atlas.games.find((game) => game.id === "wz").code, "WZ");
   assert.equal(atlas.games.find((game) => game.id === "wz2").code, "WZ2");
   assert.ok(atlas.games.every((game) => [
-    "world-war",
+    "world-war-ii",
     "modern-warfare",
     "black-ops",
     "standalone",
   ].includes(game.series)));
+  assert.ok(atlas.games.every((game) => game.subseries === null
+    || ["main", "spin-off"].includes(game.subseries)));
   assert.ok(atlas.games.every((game) => !Object.hasOwn(game, "era")));
   for (const game of atlas.games.filter((item) => item.icon)) {
     assert.equal(game.icon, `/images/games/${game.id}.png`);

@@ -28,7 +28,8 @@ id: cod3
 code: COD3
 label: CoD 3
 released: 2006-11-07
-series: world-war
+series: world-war-ii
+subseries: main
 ```
 
 The release date controls the game-filter ordering. Labels should be concise
@@ -37,8 +38,10 @@ optional `public/images/games/<game-id>.png` is detected during the build and
 exposed as the game's `icon`; games without one continue to display their
 label.
 
-Game series values are `world-war`, `modern-warfare`, `black-ops`, and
-`standalone`.
+Game series values are `world-war-ii`, `modern-warfare`, `black-ops`, and
+`standalone`. The optional sub-series values are `main` and `spin-off`. Omit
+`subseries` for a standalone game such as *Call of Duty: Ghosts*; the compiler
+represents the missing value as `null` in generated data.
 
 The generated country groups include a `continent` used by the advanced
 filters. Standard countries are classified through `world-countries`; named

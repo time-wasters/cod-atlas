@@ -3,7 +3,8 @@ code: COD
 label: Call of Duty
 labelLong: Call of Duty
 released: 2003-10-29
-series: world-war
+series: world-war-ii
+subseries: main
 images:
   steam:
     app: 2620

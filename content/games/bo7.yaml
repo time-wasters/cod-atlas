@@ -4,6 +4,7 @@ label: Black Ops 7
 labelLong: "Call of Duty: Black Ops 7"
 released: 2025-11-14
 series: black-ops
+subseries: main
 images:
   steamgriddb:
     game: 5491818

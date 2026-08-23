@@ -4,6 +4,7 @@ label: Black Ops
 labelLong: "Call of Duty: Black Ops"
 released: 2010-11-09
 series: black-ops
+subseries: main
 images:
   steam:
     app: 42700

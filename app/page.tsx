@@ -126,7 +126,8 @@ type Game = {
   code: string;
   label: string;
   released: string;
-  series: "world-war" | "modern-warfare" | "black-ops" | "standalone";
+  series: "world-war-ii" | "modern-warfare" | "black-ops" | "standalone";
+  subseries: "main" | "spin-off" | null;
   icon?: string;
 };
 type FilterOption = { value: string; label: string; disabled?: boolean; note?: string };
@@ -138,6 +139,7 @@ type FilterHoverDetail = {
 };
 type AdvancedFilterGroupId =
   | "game-series"
+  | "game-subseries"
   | "continent"
   | "precision"
   | "confidence"
@@ -219,13 +221,13 @@ const gamesByCode = new Map(data.games.map((game) => [game.code, game]));
 const countryNames = new Set(data.groups.map((group) => group.name));
 const selections = data.groups.flatMap((group) => group.entries.map((entry) => ({ group, entry })));
 const gameSeriesOptions: FilterOption[] = [
-  { value: "world-war", label: "World War" },
+  { value: "world-war-ii", label: "World War II" },
   { value: "modern-warfare", label: "Modern Warfare" },
   { value: "black-ops", label: "Black Ops" },
   { value: "standalone", label: "Standalone" },
 ];
 const gameSeriesDescriptions: Record<Game["series"], string> = {
-  "world-war": "Games centered on the World Wars and related twentieth-century conflicts.",
+  "world-war-ii": "Games centered on World War II and related releases.",
   "modern-warfare": "Games and spin-offs connected to the Modern Warfare series and its reimagined continuity.",
   "black-ops": "Games in the Black Ops series, including its Cold War stories and related spin-offs.",
   standalone: "Games outside the World War, Modern Warfare, and Black Ops branches, with their own settings and continuities.",
@@ -240,6 +242,28 @@ const gameSeriesDetails = new Map<string, FilterHoverDetail>(gameSeriesOptions.m
   return [option.value, {
     label: option.label,
     description: gameSeriesDescriptions[series],
+    years: firstYear === lastYear ? firstYear : `${firstYear}\u2013${lastYear}`,
+    games: games.map((game) => ({ label: game.label, year: game.released.slice(0, 4) })),
+  }];
+}));
+const gameSubseriesOptions: FilterOption[] = [
+  { value: "main", label: "Main" },
+  { value: "spin-off", label: "Spin-off" },
+];
+const gameSubseriesDescriptions: Record<Exclude<Game["subseries"], null>, string> = {
+  main: "Core releases within a named Call of Duty series.",
+  "spin-off": "Expansions, platform-specific editions, remasters, and other related releases within a named series.",
+};
+const gameSubseriesDetails = new Map<string, FilterHoverDetail>(gameSubseriesOptions.map((option) => {
+  const subseries = option.value as Exclude<Game["subseries"], null>;
+  const games = data.games
+    .filter((game) => game.subseries === subseries)
+    .sort((left, right) => left.released.localeCompare(right.released));
+  const firstYear = games[0]?.released.slice(0, 4) ?? "Unknown";
+  const lastYear = games.at(-1)?.released.slice(0, 4) ?? firstYear;
+  return [option.value, {
+    label: option.label,
+    description: gameSubseriesDescriptions[subseries],
     years: firstYear === lastYear ? firstYear : `${firstYear}\u2013${lastYear}`,
     games: games.map((game) => ({ label: game.label, year: game.released.slice(0, 4) })),
   }];
@@ -285,6 +309,7 @@ const methodOptions: FilterOption[] = [
 ];
 const valuesFor = (options: FilterOption[]) => new Set(options.map((option) => option.value));
 const gameSeriesValues = valuesFor(gameSeriesOptions);
+const gameSubseriesValues = valuesFor(gameSubseriesOptions);
 const continentValues = valuesFor(continentOptions);
 const precisionValues = valuesFor(precisionOptions);
 const confidenceValues = valuesFor(confidenceOptions);
@@ -1012,6 +1037,7 @@ export default function Home() {
   const [game, setGame] = useState("all");
   const [country, setCountry] = useState("all");
   const [gameSeries, setGameSeries] = useState<Set<string>>(() => new Set());
+  const [gameSubseries, setGameSubseries] = useState<Set<string>>(() => new Set());
   const [continents, setContinents] = useState<Set<string>>(() => new Set());
   const [precisions, setPrecisions] = useState<Set<string>>(() => new Set());
   const [confidences, setConfidences] = useState<Set<string>>(() => new Set());
@@ -1117,6 +1143,7 @@ export default function Home() {
       setGame(requestedGame?.code ?? "all");
       setCountry(countryNames.has(urlState.country) ? urlState.country : "all");
       setGameSeries(new Set(urlState.series.filter((value) => gameSeriesValues.has(value))));
+      setGameSubseries(new Set(urlState.subseries.filter((value) => gameSubseriesValues.has(value))));
       setContinents(new Set(urlState.continents.filter((value) => continentValues.has(value))));
       setPrecisions(new Set(urlState.precisions.filter((value) => precisionValues.has(value))));
       setConfidences(new Set(urlState.confidences.filter((value) => confidenceValues.has(value))));
@@ -1144,6 +1171,7 @@ export default function Home() {
       gameId: gamesByCode.get(game)?.id ?? "all",
       country,
       series: [...gameSeries],
+      subseries: [...gameSubseries],
       continents: [...continents],
       precisions: [...precisions],
       confidences: [...confidences],
@@ -1166,6 +1194,7 @@ export default function Home() {
     continents,
     game,
     gameSeries,
+    gameSubseries,
     methods,
     precisions,
     query,
@@ -1199,6 +1228,10 @@ export default function Home() {
       const entryGame = gamesById.get(gameId);
       return entryGame ? gameSeries.has(entryGame.series) : false;
     });
+    const matchesSubseries = gameSubseries.size === 0 || entry.gameIds.some((gameId) => {
+      const entryGame = gamesById.get(gameId);
+      return entryGame?.subseries ? gameSubseries.has(entryGame.subseries) : false;
+    });
     const matchesPrecision = precisions.size === 0 || precisions.has(entry.precision);
     const matchesConfidence = confidences.size === 0
       || (entry.confidence ? confidences.has(entry.confidence) : false);
@@ -1208,11 +1241,12 @@ export default function Home() {
       || (showMultiplayer && entry.modes.includes("multiplayer"));
     return matchesGame
       && matchesSeries
+      && matchesSubseries
       && matchesPrecision
       && matchesConfidence
       && matchesMethod
       && matchesMode;
-  }, [confidences, game, gameSeries, methods, precisions, showMultiplayer, showSingleplayer]);
+  }, [confidences, game, gameSeries, gameSubseries, methods, precisions, showMultiplayer, showSingleplayer]);
   const countries = useMemo(
     () => groups
       .map(({ name, flagCode, continent, entries }) => ({
@@ -1304,6 +1338,7 @@ export default function Home() {
   }, [filtered]);
   const resultCount = filtered.reduce((sum, group) => sum + group.entries.length, 0);
   const advancedFilterCount = gameSeries.size
+    + gameSubseries.size
     + continents.size
     + precisions.size
     + confidences.size
@@ -1314,6 +1349,7 @@ export default function Home() {
   const resetAdvancedFilters = useCallback(() => {
     urlHistoryMode.current = "push";
     setGameSeries(new Set());
+    setGameSubseries(new Set());
     setContinents(new Set());
     setPrecisions(new Set());
     setConfidences(new Set());
@@ -1998,6 +2034,23 @@ export default function Home() {
                 onClear={() => {
                   urlHistoryMode.current = "push";
                   setGameSeries(new Set());
+                }}
+              />
+              <AdvancedFilterDropdown
+                id="game-subseries"
+                title="Sub-series"
+                options={gameSubseriesOptions}
+                selected={gameSubseries}
+                open={openAdvancedFilterDropdown === "game-subseries"}
+                hoverDetails={gameSubseriesDetails}
+                onOpenChange={(open) => setAdvancedFilterDropdownOpen("game-subseries", open)}
+                onToggle={(value) => {
+                  urlHistoryMode.current = "push";
+                  setGameSubseries((current) => toggledFilterValue(current, value));
+                }}
+                onClear={() => {
+                  urlHistoryMode.current = "push";
+                  setGameSubseries(new Set());
                 }}
               />
               <AdvancedFilterDropdown

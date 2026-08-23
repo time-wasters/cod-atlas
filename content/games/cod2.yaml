@@ -3,7 +3,8 @@ code: COD2
 label: Call of Duty 2
 labelLong: Call of Duty 2
 released: 2005-10-25
-series: world-war
+series: world-war-ii
+subseries: main
 images:
   steam:
     app: 2630

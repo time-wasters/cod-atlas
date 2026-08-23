@@ -3,3 +3,5 @@ code: EXAMPLE
 label: Example Game
 released: 2026-01-01
 series: standalone
+# Optional for games within a named series: main or spin-off
+# subseries: main

@@ -20,7 +20,8 @@ const mapTypeDirectoryByMode = new Map([
 ]);
 const validPrecisions = new Set(["exact", "approximate", "city", "region", "country", "off-world"]);
 const validConfidences = new Set(["high", "medium", "fallback"]);
-const validGameSeries = new Set(["world-war", "modern-warfare", "black-ops", "standalone"]);
+const validGameSeries = new Set(["world-war-ii", "modern-warfare", "black-ops", "standalone"]);
+const validGameSubseries = new Set(["main", "spin-off"]);
 const validMethods = new Set([
   "verified-landmark",
   "real-world-inspiration",
@@ -261,7 +262,11 @@ for (const filename of gameFiles) {
   requireValue(!games.has(game.id), `${filename}: duplicate game id ${game.id}`);
   requireValue(game.code && game.label && game.released, `${filename}: code, label and released are required`);
   requireValue(validGameSeries.has(game.series), `${filename}: unsupported game series ${game.series}`);
-  games.set(game.id, game);
+  requireValue(
+    game.subseries == null || validGameSubseries.has(game.subseries),
+    `${filename}: unsupported game sub-series ${game.subseries}`,
+  );
+  games.set(game.id, { ...game, subseries: game.subseries ?? null });
 }
 
 const gameIconDirectory = path.join(root, "public/images/games");

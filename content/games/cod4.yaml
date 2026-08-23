@@ -4,6 +4,7 @@ label: Modern Warfare (2007)
 labelLong: "Call of Duty 4: Modern Warfare"
 released: 2007-11-05
 series: modern-warfare
+subseries: main
 images:
   steam:
     app: 7940

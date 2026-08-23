@@ -4,6 +4,7 @@ label: Modern Warfare III (2023)
 labelLong: "Call of Duty: Modern Warfare III [2023]"
 released: 2023-11-10
 series: modern-warfare
+subseries: main
 images:
   steam:
     app: 3595270

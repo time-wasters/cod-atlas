@@ -3,7 +3,8 @@ code: FH
 label: "Call of Duty: Finest Hour"
 labelLong: "Call of Duty: Finest Hour"
 released: 2004-11-16
-series: world-war
+series: world-war-ii
+subseries: spin-off
 images:
   steamgriddb:
     game: 5252406

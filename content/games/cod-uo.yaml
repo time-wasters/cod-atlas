@@ -3,7 +3,8 @@ code: UO
 label: "Call of Duty: United Offensive"
 labelLong: "Call of Duty: United Offensive"
 released: 2004-09-14
-series: world-war
+series: world-war-ii
+subseries: spin-off
 images:
   steam:
     app: 2640
