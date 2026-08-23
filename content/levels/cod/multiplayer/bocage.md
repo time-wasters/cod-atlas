@@ -3,7 +3,6 @@ id: cod-bocage
 title: Bocage
 games:
   - cod
-  - cod-uo
 mode: multiplayer
 wikiArticle: codwiki-bocage
 locations:

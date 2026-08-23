@@ -3,7 +3,6 @@ id: cod-rocket
 title: Rocket
 games:
   - cod
-  - cod-uo
 mode: multiplayer
 wikiArticle: codwiki-rocket-map
 locations:

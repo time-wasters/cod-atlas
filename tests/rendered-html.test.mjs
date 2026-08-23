@@ -154,8 +154,8 @@ test("preserves the complete statically compiled atlas", async () => {
     (entry) => entry.title === title && entry.game.split(" / ").includes(game),
   );
 
-  assert.equal(entries.length, 988);
-  assert.equal(atlas.totals.levels, 970);
+  assert.equal(entries.length, 991);
+  assert.equal(atlas.totals.levels, 971);
   assert.equal(findGroup("France").flagCode, "FR");
   assert.equal(findGroup("Turkey").flagCode, "TR");
   assert.equal(findGroup("United States").flagCode, "US");
@@ -225,8 +225,14 @@ test("preserves the complete statically compiled atlas", async () => {
     assert.ok(banner.thumbnailUrl, `${key} has a thumbnail URL`);
     assert.ok(banner.author, `${key} has author information`);
   }
-  assert.equal(atlas.levelBanners["rtv-altavilla"].thumbnailUrl, "/images/levels/rtv/altavilla.png");
-  assert.equal(atlas.levelBanners["rtv-altavilla"].author.userUrl, "https://github.com/plp-gtr");
+  assert.equal(atlas.levelBanners["rtv-altavilla@rtv"].thumbnailUrl, "/images/levels/rtv/altavilla/main.png");
+  assert.equal(atlas.levelBanners["rtv-altavilla@rtv"].author.userUrl, "https://github.com/plp-gtr");
+  assert.equal(atlas.levelIdAliases["cod-cod2-wwii-carentan"], "cod-carentan");
+  const carentanAppearanceEntry = entries.find((entry) => entry.levelId === "cod-carentan");
+  assert.deepEqual(carentanAppearanceEntry.gameIds, ["cod", "cod2", "wwii"]);
+  assert.deepEqual(carentanAppearanceEntry.appearances.map((appearance) => appearance.gameId), ["cod", "cod2", "wwii"]);
+  assert.ok(carentanAppearanceEntry.appearances.every((appearance) => appearance.wikiArticle === carentanAppearanceEntry.wikiArticle));
+  assert.ok(carentanAppearanceEntry.appearances.every((appearance) => appearance.notesId === "cod-carentan"));
   assert.ok(entries.every((entry) =>
     entry.modes.length === 1 && ["singleplayer", "multiplayer"].includes(entry.modes[0])));
   assert.ok(entries.every((entry) => typeof entry.hasLevelNotes === "boolean"));
@@ -236,7 +242,7 @@ test("preserves the complete statically compiled atlas", async () => {
   const expectedCod1MapLinks = new Map([
     ["cod-bocage", "bocage"],
     ["cod-brecourt", "brecourt"],
-    ["cod-cod2-wwii-carentan", "carentan"],
+    ["cod-carentan", "carentan"],
     ["cod-chateau", "chateau"],
     ["cod-dawnville", "dawnville"],
     ["cod-depot", "depot"],
@@ -252,7 +258,8 @@ test("preserves the complete statically compiled atlas", async () => {
     ["cod-tigertown", "tigertown"],
   ]);
   const cod1MapEntries = entries.filter((entry) =>
-    entry.urls?.some((url) => url.callOfDutyMaps?.startsWith("https://callofdutymaps.com/call-of-duty-1/")));
+    entry.gameIds.includes("cod")
+    && entry.urls?.some((url) => url.callOfDutyMaps?.startsWith("https://callofdutymaps.com/call-of-duty-1/")));
   assert.deepEqual(
     cod1MapEntries.map((entry) => entry.levelId).sort(),
     [...expectedCod1MapLinks.keys()].sort(),
@@ -278,10 +285,10 @@ test("preserves the complete statically compiled atlas", async () => {
     ["cod4-district", "district/"],
     ["cod4-downpour", "downpour"],
     ["cod4-killhouse", "killhouse"],
-    ["cod4-mw2-crash", "crash"],
-    ["cod4-mw2-mw19-vacant", "vacant"],
-    ["cod4-mw2-overgrown", "overgrown"],
-    ["cod4-mw2-strike", "strike"],
+    ["cod4-crash", "crash"],
+    ["cod4-vacant", "vacant"],
+    ["cod4-overgrown", "overgrown"],
+    ["cod4-strike", "strike"],
     ["cod4-pipeline", "pipeline"],
     ["cod4-shipment", "shipment"],
     ["cod4-showdown", "showdown"],
@@ -307,11 +314,11 @@ test("preserves the complete statically compiled atlas", async () => {
     ["mw2-carnival", "carnival"],
     ["mw2-derail", "derail"],
     ["mw2-estate", "estate"],
-    ["mw2-ghosts-favela", "favela"],
+    ["mw2-favela", "favela"],
     ["mw2-highrise", "highrise"],
     ["mw2-invasion", "invasion"],
     ["mw2-karachi", "karachi"],
-    ["mw2-mw3-terminal", "terminal"],
+    ["mw2-terminal", "terminal"],
     ["mw2-quarry", "quarry"],
     ["mw2-rundown", "rundown"],
     ["mw2-rust", "rust"],
@@ -467,9 +474,9 @@ test("preserves the complete statically compiled atlas", async () => {
 
   const cod2Entries = entries.filter((entry) => entry.game.split(" / ").includes("COD2"));
   assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "singleplayer").length, 27);
-  assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "multiplayer").length, 21);
+  assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "multiplayer").length, 20);
   assert.equal(entries.filter((entry) => entry.modes[0] === "singleplayer").length, 407);
-  assert.equal(entries.filter((entry) => entry.modes[0] === "multiplayer").length, 581);
+  assert.equal(entries.filter((entry) => entry.modes[0] === "multiplayer").length, 584);
 });
 
 test("keeps calibrated game-map overlays in a separate generated store", async () => {
@@ -477,7 +484,7 @@ test("keeps calibrated game-map overlays in a separate generated store", async (
     with: { type: "json" },
   });
   const altavilla = overlays["rtv-altavilla"];
-  assert.equal(altavilla.image, "/images/maps/rtv/altavilla.png");
+  assert.equal(altavilla.image, "/images/levels/rtv/altavilla/maps/briefing-map.png");
   assert.deepEqual(altavilla.corners, {
     topLeft: [40.59997, 14.78375],
     topRight: [40.59054, 15.29434],
@@ -487,7 +494,7 @@ test("keeps calibrated game-map overlays in a separate generated store", async (
   assert.equal(altavilla.attribution.rights, "non-free");
   await access(new URL(`../public${altavilla.image}`, import.meta.url));
   const scavengerHunt = overlays["rtv-scavenger-hunt"];
-  assert.equal(scavengerHunt.image, "/images/maps/rtv/scavenger-hunt.png");
+  assert.equal(scavengerHunt.image, "/images/levels/rtv/scavenger-hunt/maps/briefing-map.png");
   assert.deepEqual(scavengerHunt.corners, {
     topLeft: [49.41909, -1.36634],
     topRight: [49.42172, -1.26404],
@@ -506,7 +513,7 @@ test("keeps clickable historical overlays in a separate generated store", async 
   assert.equal(factoryOverlay.id, "the-li-army-corps-assault-14-15-october-1942");
   assert.equal(
     factoryOverlay.image,
-    "/images/maps/cod-fh/4-defend-the-factory/the-li-army-corps-assault-14-15-october-1942.png",
+    "/images/levels/cod-fh/defend-the-factory/extra/the-li-army-corps-assault-14-15-october-1942.png",
   );
   assert.deepEqual(factoryOverlay.corners, {
     topLeft: [48.82027881, 44.57762708],

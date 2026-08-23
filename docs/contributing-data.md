@@ -12,6 +12,7 @@ ignored artifacts. Without host npm, use the documented Docker commands.
 | Game | `content/games/<game-id>.yaml` | [game.yaml](templates/game.yaml) |
 | Terrestrial level | `content/levels/<primary-game>/<level-slug>.md` or the game's map-type directory | [level-terrestrial.md](templates/level-terrestrial.md) |
 | Off-world level | `content/levels/<primary-game>/<level-slug>.md` or the game's map-type directory | [level-off-world.md](templates/level-off-world.md) |
+| Level appearance | `content/levels/<appearance-game>/<level-slug>.ref.md` or the game's map-type directory | create the minimal reference shown below |
 | Wiki import | `content/wiki-import/articles/<article-id>.json` | [wiki-article.json](templates/wiki-article.json) |
 
 Most contributions only change a level. Add a game only if it does not exist,
@@ -57,7 +58,7 @@ edition. Optional image-provider metadata follows the existing game records.
 | --- | --- | --- |
 | `id` | yes | Repository-wide level ID, normally prefixed with the primary game ID. |
 | `title` | yes | Display name of the level or map. |
-| `games` | yes | One or more IDs from `content/games/`; put the primary/earliest release first. |
+| `games` | yes | Exactly one owner ID from `content/games/`; use appearance references for other games. |
 | `mode` | yes | `singleplayer` or `multiplayer`. |
 | `campaign` | no | Named campaign grouping as a stable string `id` and display `label`. |
 | `wikiArticle` | yes | ID of a separate Wiki import JSON record. |
@@ -75,6 +76,21 @@ campaign:
 ```
 
 Campaign IDs are strings and should remain stable if a label changes.
+
+When an unchanged level appears in another game, create a reference under that
+game so its levels remain easy to find:
+
+```md
+---
+level: cod-carentan
+---
+```
+
+The optional appearance fields are `title`, `wikiArticle`, `campaign`, and
+`metadata`. An optional Markdown body supplies appearance-specific notes and
+is displayed before the inherited canonical notes. Everything omitted inherits from the canonical level. Protected canonical
+fields—including locations and their precision, confidence, and method—cannot
+be supplied by a reference.
 
 Each location requires `id`, `country`, `precision`, `confidence`, and `method`.
 The location ID only needs to be unique within its level. The geographic

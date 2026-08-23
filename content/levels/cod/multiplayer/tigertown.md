@@ -3,7 +3,6 @@ id: cod-tigertown
 title: Tigertown
 games:
   - cod
-  - cod-uo
 mode: multiplayer
 wikiArticle: codwiki-tigertown
 locations:

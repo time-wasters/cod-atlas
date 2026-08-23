@@ -3,7 +3,6 @@ id: cod-neuville
 title: Neuville
 games:
   - cod
-  - cod-uo
 mode: multiplayer
 wikiArticle: codwiki-neuville
 locations:

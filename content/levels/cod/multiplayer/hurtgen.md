@@ -3,7 +3,6 @@ id: cod-hurtgen
 title: Hurtgen
 games:
   - cod
-  - cod-uo
 mode: multiplayer
 wikiArticle: codwiki-hurtgen-map
 locations:

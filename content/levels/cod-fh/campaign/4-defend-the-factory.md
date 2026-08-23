@@ -25,7 +25,7 @@ locations:
       - wikipedia: https://en.wikipedia.org/wiki/Volgograd_Tractor_Plant
 historyOverlays:
   - id: the-li-army-corps-assault-14-15-october-1942
-    image: /images/maps/cod-fh/4-defend-the-factory/the-li-army-corps-assault-14-15-october-1942.png
+    image: /images/levels/cod-fh/defend-the-factory/extra/the-li-army-corps-assault-14-15-october-1942.png
     opacity: 0.72
     corners:
       topLeft: [48.82027881, 44.57762708]

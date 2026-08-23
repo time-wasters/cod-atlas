@@ -3,6 +3,7 @@
 import type { Map as LeafletMap, Marker as LeafletMarker, MarkerClusterGroup } from "leaflet";
 import * as Select from "@radix-ui/react-select";
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
+import { createPortal } from "react-dom";
 import ReactMarkdown from "react-markdown";
 import atlasSource from "./data/atlas.generated.json";
 import historyOverlaysSource from "./data/history-overlays.generated.json";
@@ -22,6 +23,7 @@ type Entry = {
   } | null;
   campaignOrder?: number;
   wiki: string;
+  wikiArticle: string;
   country: string;
   region?: string | null;
   city?: string | null;
@@ -33,10 +35,25 @@ type Entry = {
   urls?: Partial<Record<"googleMaps" | "wikipedia" | "callOfDutyMaps", string>>[];
   hasLevelNotes: boolean;
   modes: ("singleplayer" | "multiplayer")[];
+  appearances: LevelAppearance[];
+};
+
+type LevelAppearance = {
+  gameId: string;
+  title: string;
+  wiki: string;
+  wikiArticle: string;
+  notesId: string;
+  hasLevelNotes: boolean;
+  bannerKey: string;
+  campaign?: Entry["campaign"];
+  campaignOrder?: number;
+  metadata?: Record<string, unknown>;
 };
 
 type WikiImage = {
   origin?: "local";
+  mediaType?: "image" | "video";
   sourceUrl: string;
   thumbnailUrl: string;
   detailPageUrl: string;
@@ -113,17 +130,21 @@ type Game = {
   era: "classic" | "golden" | "sci-fi" | "reboot" | "live-service";
   icon?: string;
 };
-type FilterOption = { value: string; label: string };
-const advancedFilterGroupIds = [
-  "game-category",
-  "era",
-  "continent",
-  "mode",
-  "precision",
-  "confidence",
-  "method",
-] as const;
-type AdvancedFilterGroupId = (typeof advancedFilterGroupIds)[number];
+type FilterOption = { value: string; label: string; disabled?: boolean; note?: string };
+type FilterHoverDetail = {
+  label: string;
+  description: string;
+  years: string;
+  games: { label: string; year: string }[];
+};
+type AdvancedFilterGroupId =
+  | "game-category"
+  | "era"
+  | "continent"
+  | "mode"
+  | "precision"
+  | "confidence"
+  | "method";
 type ExternalIconManifest = Record<string, {
   icon?: { provider: "steam" | "steamgriddb"; path: string };
   clienticon?: { provider: "steam"; path: string };
@@ -169,6 +190,7 @@ type HistoryOverlayRecord = {
 };
 type AtlasData = {
   games: Game[];
+  levelIdAliases: Record<string, string>;
   levelBanners: Record<string, WikiImage>;
   wikiMedia: Record<string, WikiMedia>;
   groups: Group[];
@@ -205,6 +227,26 @@ const gameCategoryOptions: FilterOption[] = [
   { value: "black-ops", label: "Black Ops" },
   { value: "standalone", label: "Standalone" },
 ];
+const gameCategoryDescriptions: Record<Game["category"], string> = {
+  "world-war": "Games centered on the World Wars and related twentieth-century conflicts.",
+  "modern-warfare": "Games and spin-offs connected to the Modern Warfare series and its reimagined continuity.",
+  "black-ops": "Games in the Black Ops series, including its Cold War stories and related spin-offs.",
+  standalone: "Games outside the World War, Modern Warfare, and Black Ops branches, with their own settings and continuities.",
+};
+const gameCategoryDetails = new Map<string, FilterHoverDetail>(gameCategoryOptions.map((option) => {
+  const category = option.value as Game["category"];
+  const games = data.games
+    .filter((game) => game.category === category)
+    .sort((left, right) => left.released.localeCompare(right.released));
+  const firstYear = games[0]?.released.slice(0, 4) ?? "Unknown";
+  const lastYear = games.at(-1)?.released.slice(0, 4) ?? firstYear;
+  return [option.value, {
+    label: option.label,
+    description: gameCategoryDescriptions[category],
+    years: firstYear === lastYear ? firstYear : `${firstYear}\u2013${lastYear}`,
+    games: games.map((game) => ({ label: game.label, year: game.released.slice(0, 4) })),
+  }];
+}));
 const gameEraOptions: FilterOption[] = [
   { value: "classic", label: "Classic" },
   { value: "golden", label: "Golden" },
@@ -212,6 +254,27 @@ const gameEraOptions: FilterOption[] = [
   { value: "reboot", label: "Reboot" },
   { value: "live-service", label: "Live-Service" },
 ];
+const gameEraDescriptions: Record<Game["era"], string> = {
+  classic: "The early releases that established Call of Duty, led by the original World War II games and their spin-offs.",
+  golden: "The run that established the modern Call of Duty formula and the original Modern Warfare and Black Ops series.",
+  "sci-fi": "The experimental period focused on near-future, futuristic, and space-based settings.",
+  reboot: "The transition period that returned to historical combat and rebooted Modern Warfare.",
+  "live-service": "The connected era shaped by seasonal releases, Warzone, and ongoing live content.",
+};
+const gameEraDetails = new Map<string, FilterHoverDetail>(gameEraOptions.map((option) => {
+  const era = option.value as Game["era"];
+  const games = data.games
+    .filter((game) => game.era === era)
+    .sort((left, right) => left.released.localeCompare(right.released));
+  const firstYear = games[0]?.released.slice(0, 4) ?? "Unknown";
+  const lastYear = games.at(-1)?.released.slice(0, 4) ?? firstYear;
+  return [option.value, {
+    label: option.label,
+    description: gameEraDescriptions[era],
+    years: firstYear === lastYear ? firstYear : `${firstYear}\u2013${lastYear}`,
+    games: games.map((game) => ({ label: game.label, year: game.released.slice(0, 4) })),
+  }];
+}));
 const continentOrder = [
   "Africa",
   "Antarctica",
@@ -250,6 +313,11 @@ const methodOptions: FilterOption[] = [
   { value: "title-mention", label: "Title mention" },
   { value: "region-fallback", label: "Region fallback" },
   { value: "country-fallback", label: "Country fallback" },
+];
+const modeOptions: FilterOption[] = [
+  { value: "singleplayer", label: "Singleplayer" },
+  { value: "multiplayer", label: "Multiplayer" },
+  { value: "zombies", label: "Zombies", disabled: true, note: "Later" },
 ];
 const valuesFor = (options: FilterOption[]) => new Set(options.map((option) => option.value));
 const gameCategoryValues = valuesFor(gameCategoryOptions);
@@ -574,13 +642,15 @@ function GameSelect({
   );
 }
 
-function AdvancedFilterGroup({
+function AdvancedFilterDropdown({
   id,
   title,
   options,
   selected,
-  expanded,
-  onExpandedChange,
+  open,
+  emptyLabel = "Any",
+  hoverDetails,
+  onOpenChange,
   onToggle,
   onClear,
 }: {
@@ -588,52 +658,144 @@ function AdvancedFilterGroup({
   title: string;
   options: FilterOption[];
   selected: Set<string>;
-  expanded: boolean;
-  onExpandedChange: (expanded: boolean) => void;
+  open: boolean;
+  emptyLabel?: string;
+  hoverDetails?: ReadonlyMap<string, FilterHoverDetail>;
+  onOpenChange: (open: boolean) => void;
   onToggle: (value: string) => void;
   onClear: () => void;
 }) {
-  const panelId = `advanced-filter-${id}`;
+  const menuId = `advanced-filter-${id}`;
+  const labelId = `${menuId}-label`;
+  const dropdown = useRef<HTMLElement>(null);
+  const [hoveredOption, setHoveredOption] = useState<string | null>(null);
+  const [hoverCardPosition, setHoverCardPosition] = useState({ top: 8, left: 8, side: "right" as "left" | "right" });
+  const selectedOptions = options.filter((option) => selected.has(option.value));
+  const summary = selectedOptions.length === 0
+    ? emptyLabel
+    : selectedOptions.length === 1
+      ? selectedOptions[0].label
+      : `${selectedOptions.length} selected`;
+  const hoveredDetail = hoveredOption ? hoverDetails?.get(hoveredOption) ?? null : null;
+
+  const showHoverDetail = (value: string) => {
+    if (!hoverDetails?.has(value) || !dropdown.current) return;
+    const rect = dropdown.current.getBoundingClientRect();
+    const width = 300;
+    const gap = 9;
+    const margin = 8;
+    const fitsRight = rect.right + gap + width <= window.innerWidth - margin;
+    const fitsLeft = rect.left - gap - width >= margin;
+    const side = fitsRight || !fitsLeft ? "right" : "left";
+    const preferredLeft = side === "right" ? rect.right + gap : rect.left - gap - width;
+    setHoverCardPosition({
+      top: Math.min(Math.max(margin, rect.top), Math.max(margin, window.innerHeight - 420)),
+      left: Math.min(Math.max(margin, preferredLeft), Math.max(margin, window.innerWidth - width - margin)),
+      side,
+    });
+    setHoveredOption(value);
+  };
+
+  const requestOpenChange = (nextOpen: boolean) => {
+    if (!nextOpen) setHoveredOption(null);
+    onOpenChange(nextOpen);
+  };
+
+  useEffect(() => {
+    if (!open) return;
+    const closeOnOutsidePointer = (event: PointerEvent) => {
+      if (!dropdown.current?.contains(event.target as Node)) {
+        setHoveredOption(null);
+        onOpenChange(false);
+      }
+    };
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setHoveredOption(null);
+        onOpenChange(false);
+      }
+    };
+    document.addEventListener("pointerdown", closeOnOutsidePointer);
+    document.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.removeEventListener("pointerdown", closeOnOutsidePointer);
+      document.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [onOpenChange, open]);
 
   return (
-    <section className={`advanced-filter-group${expanded ? " is-expanded" : ""}`}>
-      <header>
-        <button
-          className="advanced-filter-group-toggle"
-          type="button"
-          aria-expanded={expanded}
-          aria-controls={panelId}
-          onClick={() => onExpandedChange(!expanded)}
-        >
-          <span>
-            <h3>{title}</h3>
-            <small>{selected.size === 0 ? "Any" : `${selected.size} selected`}</small>
-          </span>
-          <svg viewBox="0 0 12 8" aria-hidden="true"><path d="m1 1 5 5 5-5" /></svg>
-        </button>
-      </header>
-      {expanded && (
-        <div id={panelId} className="advanced-filter-options">
-          <button
-            className={selected.size === 0 ? "is-active" : ""}
-            type="button"
-            aria-pressed={selected.size === 0}
-            onClick={onClear}
+    <section className={`advanced-filter-dropdown${open ? " is-open" : ""}`} ref={dropdown}>
+      <h3 id={labelId}>{title}</h3>
+      <button
+        className="advanced-filter-dropdown-trigger"
+        type="button"
+        aria-expanded={open}
+        aria-controls={menuId}
+        onClick={() => requestOpenChange(!open)}
+      >
+        <span>{summary}</span>
+        {selected.size > 0 && <small>{selected.size}</small>}
+        <svg viewBox="0 0 12 8" aria-hidden="true"><path d="m1 1 5 5 5-5" /></svg>
+      </button>
+      {open && (
+        <div id={menuId} className="advanced-filter-dropdown-menu" role="group" aria-labelledby={labelId}>
+          <div className="advanced-filter-dropdown-menu-header">
+            <span>Select one or more</span>
+            <button type="button" disabled={selected.size === 0} onClick={onClear}>Clear</button>
+          </div>
+          <div
+            className="advanced-filter-checkboxes"
+            onPointerLeave={() => setHoveredOption(null)}
+            onScroll={() => setHoveredOption(null)}
           >
-            Any
-          </button>
-          {options.map((option) => (
-            <button
-              className={selected.has(option.value) ? "is-active" : ""}
-              type="button"
-              key={option.value}
-              aria-pressed={selected.has(option.value)}
-              onClick={() => onToggle(option.value)}
-            >
-              {option.label}
-            </button>
-          ))}
+            {options.map((option) => (
+              <label
+                className={option.disabled ? "is-disabled" : ""}
+                key={option.value}
+                aria-describedby={hoveredOption === option.value ? `${menuId}-hover-detail` : undefined}
+                onPointerEnter={() => showHoverDetail(option.value)}
+                onFocus={() => showHoverDetail(option.value)}
+                onBlur={() => setHoveredOption(null)}
+              >
+                <input
+                  type="checkbox"
+                  checked={selected.has(option.value)}
+                  disabled={option.disabled}
+                  onChange={() => onToggle(option.value)}
+                />
+                <span>{option.label}</span>
+                {option.note && <small>{option.note}</small>}
+              </label>
+            ))}
+          </div>
         </div>
+      )}
+      {open && hoveredDetail && typeof document !== "undefined" && createPortal(
+        <aside
+          id={`${menuId}-hover-detail`}
+          className={`advanced-filter-hover-info is-${hoverCardPosition.side}`}
+          style={{ top: hoverCardPosition.top, left: hoverCardPosition.left }}
+          role="tooltip"
+        >
+          <header>
+            <span>{title}</span>
+            <h4>{hoveredDetail.label}</h4>
+          </header>
+          <p>{hoveredDetail.description}</p>
+          <dl>
+            <div>
+              <dt>Years</dt>
+              <dd>{hoveredDetail.years}</dd>
+            </div>
+          </dl>
+          <strong>Included games</strong>
+          <ul>
+            {hoveredDetail.games.map((game) => (
+              <li key={`${game.year}-${game.label}`}><time>{game.year}</time><span>{game.label}</span></li>
+            ))}
+          </ul>
+        </aside>,
+        document.body,
       )}
     </section>
   );
@@ -895,9 +1057,7 @@ export default function Home() {
   const [showSingleplayer, setShowSingleplayer] = useState(true);
   const [showMultiplayer, setShowMultiplayer] = useState(false);
   const [advancedFiltersOpen, setAdvancedFiltersOpen] = useState(false);
-  const [expandedAdvancedFilterGroups, setExpandedAdvancedFilterGroups] = useState<Set<AdvancedFilterGroupId>>(
-    () => new Set(),
-  );
+  const [openAdvancedFilterDropdown, setOpenAdvancedFilterDropdown] = useState<AdvancedFilterGroupId | null>(null);
   const [mapReady, setMapReady] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [detailsOpen, setDetailsOpen] = useState(true);
@@ -981,8 +1141,11 @@ export default function Home() {
     const applyUrl = () => {
       const urlState = parseAtlasUrl(window.location.href);
       const requestedGame = gamesById.get(urlState.gameId);
+      const requestedLevelId = urlState.levelId
+        ? data.levelIdAliases[urlState.levelId] ?? urlState.levelId
+        : null;
       const requestedSelection = urlState.levelId
-        ? selections.find(({ entry }) => entry.levelId === urlState.levelId
+        ? selections.find(({ entry }) => entry.levelId === requestedLevelId
           && (!urlState.locationId || entry.locationId === urlState.locationId)) ?? null
         : null;
 
@@ -1120,6 +1283,7 @@ export default function Home() {
             entry.city?.toLowerCase().includes(needle) ||
             entry.landmark?.toLowerCase().includes(needle) ||
             entry.title.toLowerCase().includes(needle) ||
+            entry.appearances.some((appearance) => appearance.title.toLowerCase().includes(needle)) ||
             entry.game.toLowerCase().includes(needle);
           return matchesStructuredFilters(entry) && matchesText;
         }),
@@ -1192,21 +1356,12 @@ export default function Home() {
     + confidences.size
     + methods.size
     + Number(!(showSingleplayer && !showMultiplayer));
-  const allAdvancedFilterGroupsExpanded = advancedFilterGroupIds.every((id) =>
-    expandedAdvancedFilterGroups.has(id));
-  const setAdvancedFilterGroupExpanded = useCallback((id: AdvancedFilterGroupId, expanded: boolean) => {
-    setExpandedAdvancedFilterGroups((current) => {
-      const next = new Set(current);
-      if (expanded) next.add(id);
-      else next.delete(id);
-      return next;
-    });
-  }, []);
-  const toggleAllAdvancedFilterGroups = useCallback(() => {
-    setExpandedAdvancedFilterGroups((current) => {
-      const allExpanded = advancedFilterGroupIds.every((id) => current.has(id));
-      return allExpanded ? new Set() : new Set(advancedFilterGroupIds);
-    });
+  const selectedModes = useMemo(() => new Set([
+    ...(showSingleplayer ? ["singleplayer"] : []),
+    ...(showMultiplayer ? ["multiplayer"] : []),
+  ]), [showMultiplayer, showSingleplayer]);
+  const setAdvancedFilterDropdownOpen = useCallback((id: AdvancedFilterGroupId, open: boolean) => {
+    setOpenAdvancedFilterDropdown((current) => open ? id : current === id ? null : current);
   }, []);
   const resetAdvancedFilters = useCallback(() => {
     urlHistoryMode.current = "push";
@@ -1238,10 +1393,18 @@ export default function Home() {
       .map((entry) => ({ group, entry }))),
     [groups, selected.entry.id, selected.entry.levelId],
   );
-  const selectedMedia = data.wikiMedia[selected.entry.wikiArticle];
-  const selectedLevelBanner = failedLevelBanners.has(selected.entry.levelId)
+  const selectedGameId = gamesByCode.get(game)?.id ?? null;
+  const selectedAppearance = selected.entry.appearances.find((appearance) => appearance.gameId === selectedGameId)
+    ?? selected.entry.appearances[0];
+  const ownerAppearance = selected.entry.appearances[0];
+  const selectedMedia = data.wikiMedia[selectedAppearance.wikiArticle];
+  const selectedAppearanceBanner = failedLevelBanners.has(selectedAppearance.bannerKey)
     ? null
-    : data.levelBanners[selected.entry.levelId] ?? null;
+    : data.levelBanners[selectedAppearance.bannerKey] ?? null;
+  const ownerLevelBanner = failedLevelBanners.has(ownerAppearance.bannerKey)
+    ? null
+    : data.levelBanners[ownerAppearance.bannerKey] ?? null;
+  const selectedLevelBanner = selectedAppearanceBanner ?? ownerLevelBanner;
   const selectedImage = selectedLevelBanner ?? selectedMedia?.main ?? selectedMedia?.map ?? null;
   const selectedImageIsLocal = selectedImage?.origin === "local";
   const selectedImageKey = selectedImage
@@ -1258,9 +1421,9 @@ export default function Home() {
   const relatedLevelsExpanded = expandedRegionEntryId === relatedLevelsExpansionKey;
   const visibleRelatedLevels = relatedLevelsExpanded ? relatedLevels : relatedLevels.slice(0, 8);
   const hiddenRelatedLevelCount = relatedLevels.length - visibleRelatedLevels.length;
-  const levelNotesExpanded = selected.entry.hasLevelNotes
-    && expandedLevelNotesId === selected.entry.levelId;
-  const selectedLevelNotes = levelNotes?.levelId === selected.entry.levelId ? levelNotes : null;
+  const levelNotesExpanded = selectedAppearance.hasLevelNotes
+    && expandedLevelNotesId === selectedAppearance.notesId;
+  const selectedLevelNotes = levelNotes?.levelId === selectedAppearance.notesId ? levelNotes : null;
   const selectedMapOverlay = mapOverlays[selected.entry.levelId] ?? null;
   const selectedMapOverlayEnabled = selectedMapOverlay !== null && !disabledMapOverlays.has(selected.entry.levelId);
   const selectedHistoryOverlays = historyOverlays[selected.entry.levelId] ?? [];
@@ -1352,28 +1515,28 @@ export default function Home() {
   }, [selected.entry.id]);
 
   const toggleLevelNotes = useCallback(() => {
-    if (!selected.entry.hasLevelNotes) return;
-    const levelId = selected.entry.levelId;
-    if (expandedLevelNotesId === levelId) {
+    if (!selectedAppearance.hasLevelNotes) return;
+    const notesId = selectedAppearance.notesId;
+    if (expandedLevelNotesId === notesId) {
       setExpandedLevelNotesId(null);
       return;
     }
-    setExpandedLevelNotesId(levelId);
-    if (levelNotes?.levelId === levelId) return;
-    setLevelNotes({ levelId, status: "loading", content: null });
-    const notesUrl = new URL(`level-notes/${levelId}.md`, document.baseURI);
+    setExpandedLevelNotesId(notesId);
+    if (levelNotes?.levelId === notesId) return;
+    setLevelNotes({ levelId: notesId, status: "loading", content: null });
+    const notesUrl = new URL(`level-notes/${notesId}.md`, document.baseURI);
     fetch(notesUrl)
       .then((response) => {
         if (!response.ok) throw new Error(`Level notes returned ${response.status}`);
         return response.text();
       })
       .then((content) => setLevelNotes({
-        levelId,
+        levelId: notesId,
         status: content.trim() ? "ready" : "missing",
         content,
       }))
-      .catch(() => setLevelNotes({ levelId, status: "missing", content: null }));
-  }, [expandedLevelNotesId, levelNotes?.levelId, selected.entry.hasLevelNotes, selected.entry.levelId]);
+      .catch(() => setLevelNotes({ levelId: notesId, status: "missing", content: null }));
+  }, [expandedLevelNotesId, levelNotes?.levelId, selectedAppearance.hasLevelNotes, selectedAppearance.notesId]);
 
   useEffect(() => {
     mediaDialog.current?.close();
@@ -1589,7 +1752,7 @@ export default function Home() {
         opacity: 0,
         interactive: false,
         className: "game-map-overlay",
-        alt: `${selected.entry.title} historical game map overlay`,
+        alt: `${selectedAppearance.title} historical game map overlay`,
       },
     ).addTo(map.current);
     mapImageOverlay.current = overlay;
@@ -1601,7 +1764,7 @@ export default function Home() {
       mapImageOverlayAnimation,
       mapImageOverlayOpacity,
     );
-  }, [mapReady, selected.entry.levelId, selected.entry.title, selectedMapOverlay, selectedMapOverlayEnabled]);
+  }, [mapReady, selected.entry.levelId, selectedAppearance.title, selectedMapOverlay, selectedMapOverlayEnabled]);
 
   useEffect(() => {
     if (!mapReady || !map.current || !leaflet.current) return;
@@ -1823,7 +1986,10 @@ export default function Home() {
                 className="advanced-filters-back"
                 type="button"
                 aria-label="Close advanced filters"
-                onClick={() => setAdvancedFiltersOpen(false)}
+                onClick={() => {
+                  setAdvancedFiltersOpen(false);
+                  setOpenAdvancedFilterDropdown(null);
+                }}
               >
                 <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m10 3-5 5 5 5" /></svg>
               </button>
@@ -1832,13 +1998,6 @@ export default function Home() {
                 <h2 id="advanced-filters-title">Advanced filters</h2>
               </div>
               <div className="advanced-filters-actions">
-                <button
-                  className="advanced-filters-expand"
-                  type="button"
-                  onClick={toggleAllAdvancedFilterGroups}
-                >
-                  {allAdvancedFilterGroupsExpanded ? "Collapse all" : "Expand all"}
-                </button>
                 <button
                   className="advanced-filters-reset"
                   type="button"
@@ -1851,13 +2010,14 @@ export default function Home() {
             </header>
 
             <div className="advanced-filters-scroll">
-              <AdvancedFilterGroup
+              <AdvancedFilterDropdown
                 id="game-category"
-                title="Game category"
+                title="Sub-series"
                 options={gameCategoryOptions}
                 selected={gameCategories}
-                expanded={expandedAdvancedFilterGroups.has("game-category")}
-                onExpandedChange={(expanded) => setAdvancedFilterGroupExpanded("game-category", expanded)}
+                open={openAdvancedFilterDropdown === "game-category"}
+                hoverDetails={gameCategoryDetails}
+                onOpenChange={(open) => setAdvancedFilterDropdownOpen("game-category", open)}
                 onToggle={(value) => {
                   urlHistoryMode.current = "push";
                   setGameCategories((current) => toggledFilterValue(current, value));
@@ -1867,13 +2027,14 @@ export default function Home() {
                   setGameCategories(new Set());
                 }}
               />
-              <AdvancedFilterGroup
+              <AdvancedFilterDropdown
                 id="era"
                 title="Era"
                 options={gameEraOptions}
                 selected={gameEras}
-                expanded={expandedAdvancedFilterGroups.has("era")}
-                onExpandedChange={(expanded) => setAdvancedFilterGroupExpanded("era", expanded)}
+                open={openAdvancedFilterDropdown === "era"}
+                hoverDetails={gameEraDetails}
+                onOpenChange={(open) => setAdvancedFilterDropdownOpen("era", open)}
                 onToggle={(value) => {
                   urlHistoryMode.current = "push";
                   setGameEras((current) => toggledFilterValue(current, value));
@@ -1883,13 +2044,13 @@ export default function Home() {
                   setGameEras(new Set());
                 }}
               />
-              <AdvancedFilterGroup
+              <AdvancedFilterDropdown
                 id="continent"
                 title="Continent"
                 options={continentOptions}
                 selected={continents}
-                expanded={expandedAdvancedFilterGroups.has("continent")}
-                onExpandedChange={(expanded) => setAdvancedFilterGroupExpanded("continent", expanded)}
+                open={openAdvancedFilterDropdown === "continent"}
+                onOpenChange={(open) => setAdvancedFilterDropdownOpen("continent", open)}
                 onToggle={(value) => {
                   urlHistoryMode.current = "push";
                   setContinents((current) => toggledFilterValue(current, value));
@@ -1900,60 +2061,33 @@ export default function Home() {
                 }}
               />
 
-              <section className={`advanced-filter-group${expandedAdvancedFilterGroups.has("mode") ? " is-expanded" : ""}`}>
-                <header>
-                  <button
-                    className="advanced-filter-group-toggle"
-                    type="button"
-                    aria-expanded={expandedAdvancedFilterGroups.has("mode")}
-                    aria-controls="advanced-filter-mode"
-                    onClick={() => setAdvancedFilterGroupExpanded("mode", !expandedAdvancedFilterGroups.has("mode"))}
-                  >
-                    <span>
-                      <h3>Mode</h3>
-                      <small>{Number(showSingleplayer) + Number(showMultiplayer)} selected</small>
-                    </span>
-                    <svg viewBox="0 0 12 8" aria-hidden="true"><path d="m1 1 5 5 5-5" /></svg>
-                  </button>
-                </header>
-                {expandedAdvancedFilterGroups.has("mode") && (
-                  <div id="advanced-filter-mode" className="mode-filter advanced-mode-filter" aria-label="Game mode visibility">
-                    <button
-                      className={showSingleplayer ? "is-active" : ""}
-                      type="button"
-                      aria-pressed={showSingleplayer}
-                      onClick={() => {
-                        urlHistoryMode.current = "push";
-                        setShowSingleplayer((visible) => !visible);
-                      }}
-                    >
-                      <span aria-hidden="true">{showSingleplayer ? "✓" : "○"}</span> Singleplayer
-                    </button>
-                    <button
-                      className={showMultiplayer ? "is-active" : ""}
-                      type="button"
-                      aria-pressed={showMultiplayer}
-                      onClick={() => {
-                        urlHistoryMode.current = "push";
-                        setShowMultiplayer((visible) => !visible);
-                      }}
-                    >
-                      <span aria-hidden="true">{showMultiplayer ? "✓" : "○"}</span> Multiplayer
-                    </button>
-                    <button type="button" disabled aria-pressed="false" title="Zombies filtering will be added later">
-                      <span aria-hidden="true">○</span> Zombies <small>Later</small>
-                    </button>
-                  </div>
-                )}
-              </section>
+              <AdvancedFilterDropdown
+                id="mode"
+                title="Mode"
+                options={modeOptions}
+                selected={selectedModes}
+                open={openAdvancedFilterDropdown === "mode"}
+                emptyLabel="None selected"
+                onOpenChange={(open) => setAdvancedFilterDropdownOpen("mode", open)}
+                onToggle={(value) => {
+                  urlHistoryMode.current = "push";
+                  if (value === "singleplayer") setShowSingleplayer((visible) => !visible);
+                  if (value === "multiplayer") setShowMultiplayer((visible) => !visible);
+                }}
+                onClear={() => {
+                  urlHistoryMode.current = "push";
+                  setShowSingleplayer(false);
+                  setShowMultiplayer(false);
+                }}
+              />
 
-              <AdvancedFilterGroup
+              <AdvancedFilterDropdown
                 id="precision"
                 title="Precision"
                 options={precisionOptions}
                 selected={precisions}
-                expanded={expandedAdvancedFilterGroups.has("precision")}
-                onExpandedChange={(expanded) => setAdvancedFilterGroupExpanded("precision", expanded)}
+                open={openAdvancedFilterDropdown === "precision"}
+                onOpenChange={(open) => setAdvancedFilterDropdownOpen("precision", open)}
                 onToggle={(value) => {
                   urlHistoryMode.current = "push";
                   setPrecisions((current) => toggledFilterValue(current, value));
@@ -1963,13 +2097,13 @@ export default function Home() {
                   setPrecisions(new Set());
                 }}
               />
-              <AdvancedFilterGroup
+              <AdvancedFilterDropdown
                 id="confidence"
                 title="Confidence"
                 options={confidenceOptions}
                 selected={confidences}
-                expanded={expandedAdvancedFilterGroups.has("confidence")}
-                onExpandedChange={(expanded) => setAdvancedFilterGroupExpanded("confidence", expanded)}
+                open={openAdvancedFilterDropdown === "confidence"}
+                onOpenChange={(open) => setAdvancedFilterDropdownOpen("confidence", open)}
                 onToggle={(value) => {
                   urlHistoryMode.current = "push";
                   setConfidences((current) => toggledFilterValue(current, value));
@@ -1979,13 +2113,13 @@ export default function Home() {
                   setConfidences(new Set());
                 }}
               />
-              <AdvancedFilterGroup
+              <AdvancedFilterDropdown
                 id="method"
                 title="Method"
                 options={methodOptions}
                 selected={methods}
-                expanded={expandedAdvancedFilterGroups.has("method")}
-                onExpandedChange={(expanded) => setAdvancedFilterGroupExpanded("method", expanded)}
+                open={openAdvancedFilterDropdown === "method"}
+                onOpenChange={(open) => setAdvancedFilterDropdownOpen("method", open)}
                 onToggle={(value) => {
                   urlHistoryMode.current = "push";
                   setMethods((current) => toggledFilterValue(current, value));
@@ -1997,7 +2131,14 @@ export default function Home() {
               />
             </div>
 
-            <button className="advanced-filters-results" type="button" onClick={() => setAdvancedFiltersOpen(false)}>
+            <button
+              className="advanced-filters-results"
+              type="button"
+              onClick={() => {
+                setAdvancedFiltersOpen(false);
+                setOpenAdvancedFilterDropdown(null);
+              }}
+            >
               Show <strong>{resultCount}</strong> results
             </button>
           </section>
@@ -2176,7 +2317,7 @@ export default function Home() {
             <header>
               <div>
                 <span>Level briefing</span>
-                <h2 id="level-briefing-title">{selected.entry.title}</h2>
+                <h2 id="level-briefing-title">{selectedAppearance.title}</h2>
               </div>
               <button type="button" aria-label="Close level briefing" onClick={toggleLevelNotes}>×</button>
             </header>
@@ -2246,10 +2387,10 @@ export default function Home() {
         <button
           className="collapsed-level-title"
           type="button"
-          aria-label={`Show details for ${selected.entry.title}`}
+          aria-label={`Show details for ${selectedAppearance.title}`}
           onClick={() => setDetailsOpen(true)}
         >
-          <span>{selected.entry.title}</span>
+          <span>{selectedAppearance.title}</span>
         </button>
         <article className="intel-card" id="selected-level-details">
           <div className="mission-heading">
@@ -2258,7 +2399,7 @@ export default function Home() {
               disabled={!selected.entry.coordinates}
               onActivate={focusSelectedMarker}
             >
-              {selected.entry.title}
+              {selectedAppearance.title}
             </FittedLevelTitle>
             <div className="mission-games">
               {selected.entry.gameIds.map((gameId) => {
@@ -2294,21 +2435,38 @@ export default function Home() {
                   {selectedImageFailed ? "Image unavailable" : "Loading image…"}
                 </span>
               )}
-              {/* Local reviewed banners take precedence; Wiki thumbnails remain the fallback. */}
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                className={selectedImageLoaded ? "is-loaded" : ""}
-                src={selectedImage.thumbnailUrl}
-                alt={`${selected.entry.title} level banner`}
-                referrerPolicy={selectedImageIsLocal ? undefined : "no-referrer"}
-                onLoad={() => setLoadedImageKey(selectedImageKey)}
-                onError={() => {
-                  setFailedImageKey(selectedImageKey);
-                  if (selectedImageIsLocal) {
-                    setFailedLevelBanners((failed) => new Set(failed).add(selected.entry.levelId));
-                  }
-                }}
-              />
+              {/* Local reviewed media take precedence; Wiki thumbnails remain the fallback. */}
+              {selectedImage.mediaType === "video" ? (
+                <video
+                  className={selectedImageLoaded ? "is-loaded" : ""}
+                  src={selectedImage.thumbnailUrl}
+                  aria-label={`${selectedAppearance.title} level banner`}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  onLoadedData={() => setLoadedImageKey(selectedImageKey)}
+                  onError={() => {
+                    setFailedImageKey(selectedImageKey);
+                    setFailedLevelBanners((failed) => new Set(failed).add(selectedAppearance.bannerKey));
+                  }}
+                />
+              ) : (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  className={selectedImageLoaded ? "is-loaded" : ""}
+                  src={selectedImage.thumbnailUrl}
+                  alt={`${selectedAppearance.title} level banner`}
+                  referrerPolicy={selectedImageIsLocal ? undefined : "no-referrer"}
+                  onLoad={() => setLoadedImageKey(selectedImageKey)}
+                  onError={() => {
+                    setFailedImageKey(selectedImageKey);
+                    if (selectedImageIsLocal) {
+                      setFailedLevelBanners((failed) => new Set(failed).add(selectedAppearance.bannerKey));
+                    }
+                  }}
+                />
+              )}
               <button
                 className="media-info-button"
                 type="button"
@@ -2448,7 +2606,7 @@ export default function Home() {
               </a>
             )}
             <a
-              href={selected.entry.wiki}
+              href={selectedAppearance.wiki}
               target="_blank"
               rel="noreferrer"
               aria-label="Open on Call of Duty Wiki"
@@ -2463,15 +2621,15 @@ export default function Home() {
               className="level-briefing-toggle"
               type="button"
               aria-expanded={levelNotesExpanded}
-              aria-controls={selected.entry.hasLevelNotes ? "selected-level-briefing" : undefined}
+              aria-controls={selectedAppearance.hasLevelNotes ? "selected-level-briefing" : undefined}
               onClick={toggleLevelNotes}
-              disabled={!selected.entry.hasLevelNotes}
-              title={selected.entry.hasLevelNotes ? undefined : "No level briefing available"}
+              disabled={!selectedAppearance.hasLevelNotes}
+              title={selectedAppearance.hasLevelNotes ? undefined : "No level briefing available"}
             >
               <b aria-hidden="true">{levelNotesExpanded ? "›" : "‹"}</b>
               <span>
                 <small>Level briefing</small>
-                <strong>{selected.entry.hasLevelNotes ? "Research & historical context" : "No briefing available"}</strong>
+                <strong>{selectedAppearance.hasLevelNotes ? "Research & historical context" : "No briefing available"}</strong>
               </span>
             </button>
           </section>

@@ -3,7 +3,6 @@ id: cod-pow-camp
 title: POW Camp
 games:
   - cod
-  - cod-uo
 mode: multiplayer
 wikiArticle: codwiki-pow-camp-map
 locations:

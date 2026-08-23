@@ -3,7 +3,6 @@ id: cod-chateau
 title: Chateau
 games:
   - cod
-  - cod-uo
 mode: multiplayer
 wikiArticle: codwiki-chateau-map
 locations:

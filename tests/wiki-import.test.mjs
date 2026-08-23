@@ -168,13 +168,16 @@ test("arguments require explicit scope and enforce a polite delay", () => {
 
 test("game selection includes every matching level and deduplicates Wiki articles", () => {
   const levels = [
-    { games: ["cod3"], wikiArticle: "codwiki-one" },
-    { games: ["cod3", "cod4-r"], wikiArticle: "codwiki-shared" },
+    { id: "cod3-one", games: ["cod3"], wikiArticle: "codwiki-one" },
+    { id: "cod3-shared", games: ["cod3"], wikiArticle: "codwiki-shared" },
+    { level: "cod3-shared", appearanceGame: "cod4-r" },
+    { level: "cod3-shared", appearanceGame: "cod4", wikiArticle: "codwiki-remake" },
     { games: ["cod4-r"], wikiArticle: "codwiki-shared" },
     { games: ["cod4"], wikiArticle: "codwiki-other" },
   ];
   assert.deepEqual(wikiArticleIdsForGames(levels, ["cod3"]), ["codwiki-one", "codwiki-shared"]);
   assert.deepEqual(wikiArticleIdsForGames(levels, ["cod3", "cod4-r"]), ["codwiki-one", "codwiki-shared"]);
+  assert.deepEqual(wikiArticleIdsForGames(levels, ["cod4"]), ["codwiki-other", "codwiki-remake"]);
 });
 
 test("game selection resolves curated levels and rejects unknown game IDs", async () => {

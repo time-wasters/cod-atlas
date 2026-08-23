@@ -18,18 +18,51 @@ function markdownDocument(source: string, filename: string) {
   const match = source.match(/^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)([\s\S]*)$/);
   if (!match) throw new Error(`${filename}: missing YAML frontmatter`);
   const data = YAML.parse(match[1]);
-  if (typeof data?.id !== "string" || !data.id) throw new Error(`${filename}: level id is required`);
-  return { levelId: data.id, source: match[2].trim() };
+  return { data, source: match[2].trim() };
 }
 
 async function levelRouteEntries() {
-  return Promise.all((await filesBelow(levelsRoot)).map(async (filename) => {
-    const level = markdownDocument(await readFile(filename, "utf8"), filename);
-    return {
-      filename,
-      ...level,
-    };
-  }));
+  const documents = await Promise.all((await filesBelow(levelsRoot)).map(async (filename) => ({
+    filename,
+    ...markdownDocument(await readFile(filename, "utf8"), filename),
+  })));
+  const canonicalById = new Map(documents
+    .filter((document) => !document.filename.endsWith(".ref.md"))
+    .map((document) => [document.data?.id, document]));
+  const notesSource = (source: string, gameId: string, slug: string) => source.replace(
+    /(!\[[^\]]*\]\()([^)/][^)]*)(\))/g,
+    (_match, opening, target, closing) => `${opening}/images/levels/${gameId}/${slug}/extra/${target}${closing}`,
+  );
+  return documents.flatMap((document) => {
+    if (!document.filename.endsWith(".ref.md")) {
+      if (typeof document.data?.id !== "string" || !document.data.id) {
+        throw new Error(`${document.filename}: level id is required`);
+      }
+      const gameId = document.data.games?.[0];
+      if (typeof gameId !== "string" || !document.data.id.startsWith(`${gameId}-`)) {
+        throw new Error(`${document.filename}: owner game is required`);
+      }
+      const slug = document.data.id.slice(gameId.length + 1);
+      return [{ filename: document.filename, levelId: document.data.id, source: notesSource(document.source, gameId, slug) }];
+    }
+    if (!document.source) return [];
+    if (typeof document.data?.level !== "string" || !document.data.level) {
+      throw new Error(`${document.filename}: canonical level reference is required`);
+    }
+    const gameId = path.relative(levelsRoot, document.filename).split(path.sep)[0];
+    const canonical = canonicalById.get(document.data.level);
+    if (!canonical) throw new Error(`${document.filename}: unknown canonical level ${document.data.level}`);
+    const ownerGameId = canonical.data.games?.[0];
+    if (typeof ownerGameId !== "string") throw new Error(`${canonical.filename}: owner game is required`);
+    const slug = document.data.level.slice(ownerGameId.length + 1);
+    const appearanceNotes = notesSource(document.source, gameId, slug);
+    const canonicalNotes = notesSource(canonical.source, ownerGameId, slug);
+    return [{
+      filename: document.filename,
+      levelId: `${document.data.level}--${gameId}`,
+      source: [appearanceNotes, canonicalNotes].filter(Boolean).join("\n\n"),
+    }];
+  });
 }
 
 function levelMarkdownRoutes() {

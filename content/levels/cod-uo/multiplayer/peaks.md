@@ -3,7 +3,6 @@ id: cod-uo-peaks
 title: Peaks
 games:
   - cod-uo
-  - cod2-bro
 mode: multiplayer
 wikiArticle: codwiki-peaks
 locations:

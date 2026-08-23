@@ -14,6 +14,11 @@ These instructions apply to everything under `content/`.
 - The stable `id` remains `<primary-game>-<level-slug>` in either layout; do
   not include the campaign order or map-type directory, and do not repeat the
   game prefix in the ID or filename.
+- Canonical level files contain exactly one owner in `games`. Represent an
+  unchanged appearance in another game with `<level-slug>.ref.md` under that
+  game's directory. References may override only `title`, `wikiArticle`,
+  `campaign`, `metadata`, and their Markdown body; all protected geographic
+  and canonical fields inherit unchanged.
 - Do not create or reference a separate place entity.
 - Every `games` ID must resolve to `games/<id>.yaml`.
 - Every `wikiArticle` ID must resolve to

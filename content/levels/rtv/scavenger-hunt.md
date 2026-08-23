@@ -6,7 +6,7 @@ games:
 mode: singleplayer
 wikiArticle: codwiki-scavenger-hunt
 mapOverlay:
-  image: /images/maps/rtv/scavenger-hunt.png
+  image: /images/levels/rtv/scavenger-hunt/maps/briefing-map.png
   opacity: 0.72
   corners:
     topLeft: [49.41909, -1.36634]

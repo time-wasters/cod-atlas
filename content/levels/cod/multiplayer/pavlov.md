@@ -3,7 +3,6 @@ id: cod-pavlov
 title: Pavlov
 games:
   - cod
-  - cod-uo
 mode: multiplayer
 wikiArticle: codwiki-pavlov-map
 locations:
