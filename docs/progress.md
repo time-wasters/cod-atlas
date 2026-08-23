@@ -15,13 +15,13 @@ research from their canonical level.
 <!-- research-progress:start -->
 | Scope | Researched | Remaining |
 | --- | ---: | ---: |
-| All currently catalogued levels | 133 / 971 (14%) | 838 / 971 (86%) |
+| All currently catalogued levels | 134 / 971 (14%) | 837 / 971 (86%) |
 | Campaign levels | 101 / 392 (26%) | 291 / 392 (74%) |
-| Multiplayer maps | 32 / 579 (6%) | 547 / 579 (94%) |
+| Multiplayer maps | 33 / 579 (6%) | 546 / 579 (94%) |
 
 | Game | Campaign | Multiplayer | Overall |
 | --- | ---: | ---: | ---: |
-| Call of Duty | 26 / 26 (100%) | 15 / 16 (94%) | 41 / 42 (98%) |
+| Call of Duty | 26 / 26 (100%) | 16 / 16 (100%) | 42 / 42 (100%) |
 | Call of Duty: United Offensive | 13 / 13 (100%) | 14 / 14 (100%) | 27 / 27 (100%) |
 | Call of Duty: Finest Hour | 19 / 19 (100%) | — | 19 / 19 (100%) |
 | Call of Duty 2 | 27 / 27 (100%) | 0 / 19 (0%) | 27 / 46 (59%) |
