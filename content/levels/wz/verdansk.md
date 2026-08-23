@@ -1,8 +1,8 @@
 ---
-id: mw19-wz-verdansk
+id: wz-verdansk
 title: Verdansk
 games:
-  - mw19-wz
+  - wz
 mode: multiplayer
 wikiArticle: codwiki-verdansk
 locations:

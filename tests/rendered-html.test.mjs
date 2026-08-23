@@ -193,6 +193,7 @@ test("preserves the complete statically compiled atlas", async () => {
   assert.equal(atlas.games.find((game) => game.id === "cod4").era, "golden");
   assert.equal(atlas.games.find((game) => game.id === "ghosts").era, "sci-fi");
   assert.equal(atlas.games.find((game) => game.id === "mw19").era, "reboot");
+  assert.equal(atlas.games.find((game) => game.id === "wz").code, "WZ");
   assert.equal(atlas.games.find((game) => game.id === "bo6").era, "live-service");
   assert.ok(atlas.games.every((game) => [
     "world-war",
@@ -236,7 +237,7 @@ test("preserves the complete statically compiled atlas", async () => {
   assert.ok(entries.every((entry) =>
     entry.modes.length === 1 && ["singleplayer", "multiplayer"].includes(entry.modes[0])));
   assert.ok(entries.every((entry) => typeof entry.hasLevelNotes === "boolean"));
-  assert.equal(entries.find((entry) => entry.levelId === "mw19-wz-fortune-s-keep").hasLevelNotes, false);
+  assert.equal(entries.find((entry) => entry.levelId === "wz-fortune-s-keep").hasLevelNotes, false);
   assert.equal(entries.find((entry) => entry.levelId === "cod-pavlov").hasLevelNotes, true);
 
   const expectedCod1MapLinks = new Map([

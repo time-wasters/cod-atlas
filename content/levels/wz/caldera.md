@@ -1,8 +1,8 @@
 ---
-id: mw19-wz-caldera
+id: wz-caldera
 title: Caldera
 games:
-  - mw19-wz
+  - wz
 mode: multiplayer
 wikiArticle: codwiki-caldera
 locations:

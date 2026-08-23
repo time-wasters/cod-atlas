@@ -1,8 +1,8 @@
 ---
-id: mw19-wz-rebirth-island
+id: wz-rebirth-island
 title: Rebirth Island
 games:
-  - mw19-wz
+  - wz
 mode: multiplayer
 wikiArticle: codwiki-rebirth-island-warzone
 locations:
