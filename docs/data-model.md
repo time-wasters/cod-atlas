@@ -39,9 +39,11 @@ exposed as the game's `icon`; games without one continue to display their
 label.
 
 Game series values are `world-war-ii`, `modern-warfare`, `black-ops`, and
-`standalone`. The optional sub-series values are `main` and `spin-off`. Omit
-`subseries` for a standalone game such as *Call of Duty: Ghosts*; the compiler
-represents the missing value as `null` in generated data.
+`standalone`. The optional sub-series values are `main`, `add-on`, and
+`spin-off`. Use `add-on` for expansions of an existing game, such as
+*Call of Duty: United Offensive*. Omit `subseries` for a standalone game such
+as *Call of Duty: Ghosts*; the compiler represents the missing value as `null`
+in generated data.
 
 The generated country groups include a `continent` used by the advanced
 filters. Standard countries are classified through `world-countries`; named

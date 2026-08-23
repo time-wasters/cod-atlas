@@ -196,6 +196,7 @@ test("preserves the complete statically compiled atlas", async () => {
   assert.equal(codGame.icon, "/images/games/cod.png");
   assert.equal(codGame.series, "world-war-ii");
   assert.equal(codGame.subseries, "main");
+  assert.equal(atlas.games.find((game) => game.id === "cod-uo").subseries, "add-on");
   assert.equal(atlas.games.find((game) => game.id === "cod-fh").subseries, "spin-off");
   assert.equal(atlas.games.find((game) => game.id === "ghosts").subseries, null);
   assert.equal(atlas.games.find((game) => game.id === "wz").code, "WZ");
@@ -207,7 +208,7 @@ test("preserves the complete statically compiled atlas", async () => {
     "standalone",
   ].includes(game.series)));
   assert.ok(atlas.games.every((game) => game.subseries === null
-    || ["main", "spin-off"].includes(game.subseries)));
+    || ["main", "add-on", "spin-off"].includes(game.subseries)));
   assert.ok(atlas.games.every((game) => !Object.hasOwn(game, "era")));
   for (const game of atlas.games.filter((item) => item.icon)) {
     assert.equal(game.icon, `/images/games/${game.id}.png`);

@@ -127,7 +127,7 @@ type Game = {
   label: string;
   released: string;
   series: "world-war-ii" | "modern-warfare" | "black-ops" | "standalone";
-  subseries: "main" | "spin-off" | null;
+  subseries: "main" | "add-on" | "spin-off" | null;
   icon?: string;
 };
 type FilterOption = { value: string; label: string; disabled?: boolean; note?: string };
@@ -248,11 +248,13 @@ const gameSeriesDetails = new Map<string, FilterHoverDetail>(gameSeriesOptions.m
 }));
 const gameSubseriesOptions: FilterOption[] = [
   { value: "main", label: "Main" },
+  { value: "add-on", label: "Add-on" },
   { value: "spin-off", label: "Spin-off" },
 ];
 const gameSubseriesDescriptions: Record<Exclude<Game["subseries"], null>, string> = {
   main: "Core releases within a named Call of Duty series.",
-  "spin-off": "Expansions, platform-specific editions, remasters, and other related releases within a named series.",
+  "add-on": "Expansion releases that extend an existing main-series game.",
+  "spin-off": "Platform-specific editions, remasters, and other related releases within a named series.",
 };
 const gameSubseriesDetails = new Map<string, FilterHoverDetail>(gameSubseriesOptions.map((option) => {
   const subseries = option.value as Exclude<Game["subseries"], null>;

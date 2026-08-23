@@ -21,7 +21,7 @@ const mapTypeDirectoryByMode = new Map([
 const validPrecisions = new Set(["exact", "approximate", "city", "region", "country", "off-world"]);
 const validConfidences = new Set(["high", "medium", "fallback"]);
 const validGameSeries = new Set(["world-war-ii", "modern-warfare", "black-ops", "standalone"]);
-const validGameSubseries = new Set(["main", "spin-off"]);
+const validGameSubseries = new Set(["main", "add-on", "spin-off"]);
 const validMethods = new Set([
   "verified-landmark",
   "real-world-inspiration",

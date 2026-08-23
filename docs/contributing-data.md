@@ -48,8 +48,9 @@ filesystem metadata only: do not add it to the stable level `id` or title.
 
 Every game record requires `id`, `code`, `label`, `released`, and `series`.
 Series values are `world-war-ii`, `modern-warfare`, `black-ops`, or
-`standalone`. The optional `subseries` field is `main` or `spin-off`; omit it
-when the game does not belong to a sub-series.
+`standalone`. The optional `subseries` field is `main`, `add-on`, or `spin-off`;
+omit it when the game does not belong to a sub-series. Use `add-on` for an
+expansion of an existing game, such as *Call of Duty: United Offensive*.
 Optional image-provider metadata follows the existing game records.
 
 ## Level fields
