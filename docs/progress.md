@@ -15,9 +15,9 @@ research from their canonical level.
 <!-- research-progress:start -->
 | Scope | Researched | Remaining |
 | --- | ---: | ---: |
-| All currently catalogued levels | 134 / 971 (14%) | 837 / 971 (86%) |
+| All currently catalogued levels | 134 / 973 (14%) | 839 / 973 (86%) |
 | Campaign levels | 101 / 392 (26%) | 291 / 392 (74%) |
-| Multiplayer maps | 33 / 579 (6%) | 546 / 579 (94%) |
+| Multiplayer maps | 33 / 581 (6%) | 548 / 581 (94%) |
 
 | Game | Campaign | Multiplayer | Overall |
 | --- | ---: | ---: | ---: |
@@ -49,7 +49,7 @@ research from their canonical level.
 | Black Ops Cold War | 0 / 13 (0%) | 0 / 38 (0%) | 0 / 51 (0%) |
 | Vanguard | 0 / 9 (0%) | 0 / 29 (0%) | 0 / 38 (0%) |
 | Modern Warfare II (2022) | 0 / 17 (0%) | 0 / 16 (0%) | 0 / 33 (0%) |
-| Warzone 2.0 | — | 0 / 1 (0%) | 0 / 1 (0%) |
+| Warzone 2.0 | — | 0 / 3 (0%) | 0 / 3 (0%) |
 <!-- research-progress:end -->
 
 ## Geographic localization progress
@@ -65,9 +65,9 @@ The per-game table assigns each marker to its canonical level's owner game.
 <!-- localization-progress:start -->
 | Scope | Localized | Country fallback | Off-world |
 | --- | ---: | ---: | ---: |
-| All marker locations | 263 / 961 (27%) | 698 / 961 (73%) | 30 |
+| All marker locations | 263 / 963 (27%) | 700 / 963 (73%) | 30 |
 | Campaign marker locations | 118 / 390 (30%) | 272 / 390 (70%) | 17 |
-| Multiplayer marker locations | 145 / 571 (25%) | 426 / 571 (75%) | 13 |
+| Multiplayer marker locations | 145 / 573 (25%) | 428 / 573 (75%) | 13 |
 
 | Precision | Marker locations | Share of all markers |
 | --- | ---: | ---: |
@@ -75,7 +75,7 @@ The per-game table assigns each marker to its canonical level's owner game.
 | Approximate | 113 | 11% |
 | City | 75 | 8% |
 | Region | 5 | 1% |
-| Country | 698 | 70% |
+| Country | 700 | 70% |
 | Off-world | 30 | 3% |
 
 | Game | Campaign | Multiplayer | Overall |
@@ -108,5 +108,5 @@ The per-game table assigns each marker to its canonical level's owner game.
 | Black Ops Cold War | 2 / 14 (14%) | 2 / 38 (5%) | 4 / 52 (8%) |
 | Vanguard | 3 / 9 (33%) | 3 / 31 (10%) | 6 / 40 (15%) |
 | Modern Warfare II (2022) | 0 / 19 (0%) | 0 / 16 (0%) | 0 / 35 (0%) |
-| Warzone 2.0 | — | 0 / 1 (0%) | 0 / 1 (0%) |
+| Warzone 2.0 | — | 0 / 3 (0%) | 0 / 3 (0%) |
 <!-- localization-progress:end -->

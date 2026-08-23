@@ -160,8 +160,8 @@ test("preserves the complete statically compiled atlas", async () => {
     (entry) => entry.title === title && entry.game.split(" / ").includes(game),
   );
 
-  assert.equal(entries.length, 991);
-  assert.equal(atlas.totals.levels, 971);
+  assert.equal(entries.length, 993);
+  assert.equal(atlas.totals.levels, 973);
   assert.equal(findGroup("France").flagCode, "FR");
   assert.equal(findGroup("Turkey").flagCode, "TR");
   assert.equal(findGroup("United States").flagCode, "US");
@@ -247,6 +247,11 @@ test("preserves the complete statically compiled atlas", async () => {
   assert.deepEqual(carentanAppearanceEntry.appearances.map((appearance) => appearance.gameId), ["cod", "cod2", "wwii"]);
   assert.ok(carentanAppearanceEntry.appearances.every((appearance) => appearance.wikiArticle === carentanAppearanceEntry.wikiArticle));
   assert.ok(carentanAppearanceEntry.appearances.every((appearance) => appearance.notesId === "cod-carentan"));
+  const ashikaIslandEntry = entries.find((entry) => entry.levelId === "wz2-ashika-island");
+  assert.deepEqual(ashikaIslandEntry.gameIds.toSorted(), ["mwii", "wz2"]);
+  const vondelEntry = entries.find((entry) => entry.levelId === "wz2-vondel");
+  assert.deepEqual(vondelEntry.gameIds.toSorted(), ["mwii", "mwiii", "wz2"]);
+  assert.equal(vondelEntry.appearances.find((appearance) => appearance.gameId === "mwiii").title, "Vondel Night");
   assert.ok(entries.every((entry) =>
     entry.modes.length === 1 && ["singleplayer", "multiplayer"].includes(entry.modes[0])));
   assert.ok(entries.every((entry) => typeof entry.hasLevelNotes === "boolean"));
@@ -490,7 +495,7 @@ test("preserves the complete statically compiled atlas", async () => {
   assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "singleplayer").length, 27);
   assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "multiplayer").length, 20);
   assert.equal(entries.filter((entry) => entry.modes[0] === "singleplayer").length, 407);
-  assert.equal(entries.filter((entry) => entry.modes[0] === "multiplayer").length, 584);
+  assert.equal(entries.filter((entry) => entry.modes[0] === "multiplayer").length, 586);
 });
 
 test("keeps calibrated game-map overlays in a separate generated store", async () => {
