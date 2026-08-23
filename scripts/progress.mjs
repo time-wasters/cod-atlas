@@ -20,7 +20,7 @@ export const requiredResearchHeadings = [
 const aiReferencePattern = /\bAI(?:-generated|[- ]assisted| assistance)\b/i;
 const aiDisclosurePattern = /^>\s+\*\*AI-generated (?:research|historical) note[.:]\*\*/im;
 const precisionOrder = ["exact", "approximate", "city", "region", "country", "off-world"];
-const localizedPrecisions = new Set(["exact", "approximate", "city"]);
+const localizedPrecisions = new Set(["exact", "approximate", "city", "region"]);
 const validPrecisions = new Set(precisionOrder);
 
 async function filesBelow(directory, suffix) {
@@ -172,15 +172,13 @@ export function renderResearchProgress({ games, levels }) {
 
 function localizationCoverage(locations) {
   const localized = locations.filter((location) => localizedPrecisions.has(location.precision)).length;
-  const regionFallback = locations.filter((location) => location.precision === "region").length;
   const countryFallback = locations.filter((location) => location.precision === "country").length;
   const offWorld = locations.filter((location) => location.precision === "off-world").length;
   return {
     localized,
-    regionFallback,
     countryFallback,
     offWorld,
-    terrestrial: localized + regionFallback + countryFallback,
+    terrestrial: localized + countryFallback,
   };
 }
 
@@ -192,11 +190,6 @@ function localizationCell({ localized, terrestrial }) {
 function fallbackCell({ countryFallback, terrestrial }) {
   if (terrestrial === 0) return "—";
   return `${countryFallback} / ${terrestrial} (${percentage(countryFallback, terrestrial)}%)`;
-}
-
-function regionFallbackCell({ regionFallback, terrestrial }) {
-  if (terrestrial === 0) return "—";
-  return `${regionFallback} / ${terrestrial} (${percentage(regionFallback, terrestrial)}%)`;
 }
 
 function locationsFromLevels(levels) {
@@ -218,10 +211,10 @@ export function renderLocalizationProgress({ games, levels }) {
   ];
   const lines = [
     localizationProgressStart,
-    "| Scope | Localized | Region fallback | Country fallback | Off-world |",
-    "| --- | ---: | ---: | ---: | ---: |",
+    "| Scope | Localized | Country fallback | Off-world |",
+    "| --- | ---: | ---: | ---: |",
     ...summaries.map(([label, result]) => (
-      `| ${label} | ${localizationCell(result)} | ${regionFallbackCell(result)} | ${fallbackCell(result)} | ${result.offWorld} |`
+      `| ${label} | ${localizationCell(result)} | ${fallbackCell(result)} | ${result.offWorld} |`
     )),
     "",
     "| Precision | Marker locations | Share of all markers |",
