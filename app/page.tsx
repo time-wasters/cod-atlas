@@ -115,7 +115,7 @@ type Game = {
   icon?: string;
 };
 type FilterOption = { value: string; label: string; disabled?: boolean; note?: string };
-type EraFilterDetail = {
+type FilterHoverDetail = {
   label: string;
   description: string;
   years: string;
@@ -210,6 +210,26 @@ const gameCategoryOptions: FilterOption[] = [
   { value: "black-ops", label: "Black Ops" },
   { value: "standalone", label: "Standalone" },
 ];
+const gameCategoryDescriptions: Record<Game["category"], string> = {
+  "world-war": "Games centered on the World Wars and related twentieth-century conflicts.",
+  "modern-warfare": "Games and spin-offs connected to the Modern Warfare series and its reimagined continuity.",
+  "black-ops": "Games in the Black Ops series, including its Cold War stories and related spin-offs.",
+  standalone: "Games outside the World War, Modern Warfare, and Black Ops branches, with their own settings and continuities.",
+};
+const gameCategoryDetails = new Map<string, FilterHoverDetail>(gameCategoryOptions.map((option) => {
+  const category = option.value as Game["category"];
+  const games = data.games
+    .filter((game) => game.category === category)
+    .sort((left, right) => left.released.localeCompare(right.released));
+  const firstYear = games[0]?.released.slice(0, 4) ?? "Unknown";
+  const lastYear = games.at(-1)?.released.slice(0, 4) ?? firstYear;
+  return [option.value, {
+    label: option.label,
+    description: gameCategoryDescriptions[category],
+    years: firstYear === lastYear ? firstYear : `${firstYear}\u2013${lastYear}`,
+    games: games.map((game) => ({ label: game.label, year: game.released.slice(0, 4) })),
+  }];
+}));
 const gameEraOptions: FilterOption[] = [
   { value: "classic", label: "Classic" },
   { value: "golden", label: "Golden" },
@@ -224,7 +244,7 @@ const gameEraDescriptions: Record<Game["era"], string> = {
   reboot: "The transition period that returned to historical combat and rebooted Modern Warfare.",
   "live-service": "The connected era shaped by seasonal releases, Warzone, and ongoing live content.",
 };
-const gameEraDetails = new Map<string, EraFilterDetail>(gameEraOptions.map((option) => {
+const gameEraDetails = new Map<string, FilterHoverDetail>(gameEraOptions.map((option) => {
   const era = option.value as Game["era"];
   const games = data.games
     .filter((game) => game.era === era)
@@ -623,7 +643,7 @@ function AdvancedFilterDropdown({
   selected: Set<string>;
   open: boolean;
   emptyLabel?: string;
-  hoverDetails?: ReadonlyMap<string, EraFilterDetail>;
+  hoverDetails?: ReadonlyMap<string, FilterHoverDetail>;
   onOpenChange: (open: boolean) => void;
   onToggle: (value: string) => void;
   onClear: () => void;
@@ -736,12 +756,12 @@ function AdvancedFilterDropdown({
       {open && hoveredDetail && typeof document !== "undefined" && createPortal(
         <aside
           id={`${menuId}-hover-detail`}
-          className={`advanced-filter-era-info is-${hoverCardPosition.side}`}
+          className={`advanced-filter-hover-info is-${hoverCardPosition.side}`}
           style={{ top: hoverCardPosition.top, left: hoverCardPosition.left }}
           role="tooltip"
         >
           <header>
-            <span>Era</span>
+            <span>{title}</span>
             <h4>{hoveredDetail.label}</h4>
           </header>
           <p>{hoveredDetail.description}</p>
@@ -1963,10 +1983,11 @@ export default function Home() {
             <div className="advanced-filters-scroll">
               <AdvancedFilterDropdown
                 id="game-category"
-                title="Game category"
+                title="Sub-series"
                 options={gameCategoryOptions}
                 selected={gameCategories}
                 open={openAdvancedFilterDropdown === "game-category"}
+                hoverDetails={gameCategoryDetails}
                 onOpenChange={(open) => setAdvancedFilterDropdownOpen("game-category", open)}
                 onToggle={(value) => {
                   urlHistoryMode.current = "push";
