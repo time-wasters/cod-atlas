@@ -19,8 +19,9 @@ export const requiredResearchHeadings = [
 
 const aiReferencePattern = /\bAI(?:-generated|[- ]assisted| assistance)\b/i;
 const aiDisclosurePattern = /^>\s+\*\*AI-generated (?:research|historical) note[.:]\*\*/im;
-const localizedPrecisions = new Set(["exact", "approximate", "city", "region"]);
-const validPrecisions = new Set([...localizedPrecisions, "country", "off-world"]);
+const precisionOrder = ["exact", "approximate", "city", "region", "country", "off-world"];
+const localizedPrecisions = new Set(["exact", "approximate", "city"]);
+const validPrecisions = new Set(precisionOrder);
 
 async function filesBelow(directory, suffix) {
   const entries = await readdir(directory, { withFileTypes: true });
@@ -171,13 +172,15 @@ export function renderResearchProgress({ games, levels }) {
 
 function localizationCoverage(locations) {
   const localized = locations.filter((location) => localizedPrecisions.has(location.precision)).length;
+  const regionFallback = locations.filter((location) => location.precision === "region").length;
   const countryFallback = locations.filter((location) => location.precision === "country").length;
   const offWorld = locations.filter((location) => location.precision === "off-world").length;
   return {
     localized,
+    regionFallback,
     countryFallback,
     offWorld,
-    terrestrial: localized + countryFallback,
+    terrestrial: localized + regionFallback + countryFallback,
   };
 }
 
@@ -189,6 +192,11 @@ function localizationCell({ localized, terrestrial }) {
 function fallbackCell({ countryFallback, terrestrial }) {
   if (terrestrial === 0) return "—";
   return `${countryFallback} / ${terrestrial} (${percentage(countryFallback, terrestrial)}%)`;
+}
+
+function regionFallbackCell({ regionFallback, terrestrial }) {
+  if (terrestrial === 0) return "—";
+  return `${regionFallback} / ${terrestrial} (${percentage(regionFallback, terrestrial)}%)`;
 }
 
 function locationsFromLevels(levels) {
@@ -210,11 +218,21 @@ export function renderLocalizationProgress({ games, levels }) {
   ];
   const lines = [
     localizationProgressStart,
-    "| Scope | Localized | Country fallback | Off-world |",
-    "| --- | ---: | ---: | ---: |",
+    "| Scope | Localized | Region fallback | Country fallback | Off-world |",
+    "| --- | ---: | ---: | ---: | ---: |",
     ...summaries.map(([label, result]) => (
-      `| ${label} | ${localizationCell(result)} | ${fallbackCell(result)} | ${result.offWorld} |`
+      `| ${label} | ${localizationCell(result)} | ${regionFallbackCell(result)} | ${fallbackCell(result)} | ${result.offWorld} |`
     )),
+    "",
+    "| Precision | Marker locations | Share of all markers |",
+    "| --- | ---: | ---: |",
+    ...precisionOrder.map((precision) => {
+      const count = locations.filter((location) => location.precision === precision).length;
+      const label = precision === "off-world"
+        ? "Off-world"
+        : `${precision[0].toUpperCase()}${precision.slice(1)}`;
+      return `| ${label} | ${count} | ${percentage(count, locations.length)}% |`;
+    }),
     "",
     "| Game | Campaign | Multiplayer | Overall |",
     "| --- | ---: | ---: | ---: |",
@@ -241,11 +259,11 @@ export function replaceGeneratedBlock(document, startMarker, endMarker, generate
   const start = document.indexOf(startMarker);
   const end = document.indexOf(endMarker);
   if (start === -1 || end === -1 || end < start) {
-    throw new Error(`progress.md must contain one ordered ${startMarker} marker pair`);
+    throw new Error(`docs/progress.md must contain one ordered ${startMarker} marker pair`);
   }
   if (document.indexOf(startMarker, start + startMarker.length) !== -1
     || document.indexOf(endMarker, end + endMarker.length) !== -1) {
-    throw new Error(`progress.md must contain exactly one ${startMarker} marker pair`);
+    throw new Error(`docs/progress.md must contain exactly one ${startMarker} marker pair`);
   }
   return `${document.slice(0, start)}${generated}${document.slice(end + endMarker.length)}`;
 }
@@ -254,7 +272,7 @@ export async function updateProgress({
   root = process.cwd(),
   checkOnly = false,
 } = {}) {
-  const progressPath = path.join(root, "progress.md");
+  const progressPath = path.join(root, "docs/progress.md");
   const data = await loadProgressData({
     levelsRoot: path.join(root, "content/levels"),
     gamesRoot: path.join(root, "content/games"),
@@ -274,7 +292,7 @@ export async function updateProgress({
   );
 
   if (checkOnly && current !== expected) {
-    throw new Error("progress.md is stale; run npm run progress:update");
+    throw new Error("docs/progress.md is stale; run npm run progress:update");
   }
   if (!checkOnly && current !== expected) await writeFile(progressPath, expected);
 

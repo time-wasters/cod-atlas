@@ -78,7 +78,7 @@ test("generated tables include raw counts, percentages and release-order game ro
   assert.match(generated, /\| Old Game \| 1 \/ 1 \(100%\) \| 0 \/ 1 \(0%\) \| 1 \/ 2 \(50%\) \|/);
 });
 
-test("localization progress excludes off-world markers from the terrestrial denominator", () => {
+test("localization progress treats region precision as a fallback and reports precision changes", () => {
   const generated = renderLocalizationProgress({
     games: new Map([["game", { id: "game", label: "Test Game", released: "2000-01-01" }]]),
     levels: [{
@@ -94,8 +94,10 @@ test("localization progress excludes off-world markers from the terrestrial deno
     }],
   });
 
-  assert.match(generated, /All marker locations \| 2 \/ 3 \(67%\) \| 1 \/ 3 \(33%\) \| 1/);
-  assert.match(generated, /\| Test Game \| 2 \/ 3 \(67%\) \| — \| 2 \/ 3 \(67%\) \|/);
+  assert.match(generated, /All marker locations \| 1 \/ 3 \(33%\) \| 1 \/ 3 \(33%\) \| 1 \/ 3 \(33%\) \| 1/);
+  assert.match(generated, /\| Exact \| 1 \| 25% \|/);
+  assert.match(generated, /\| Region \| 1 \| 25% \|/);
+  assert.match(generated, /\| Test Game \| 1 \/ 3 \(33%\) \| — \| 1 \/ 3 \(33%\) \|/);
 });
 
 test("generated block replacement changes only the delimited block", () => {

@@ -242,7 +242,7 @@ test("preserves the complete statically compiled atlas", async () => {
   assert.equal(entries.find((entry) => entry.levelId === "cod-pavlov").hasLevelNotes, true);
 
   const expectedCod1MapLinks = new Map([
-    ["cod-bocage", "bocage"],
+    ["cod-bocage", "bocage-2"],
     ["cod-brecourt", "brecourt"],
     ["cod-carentan", "carentan"],
     ["cod-chateau", "chateau"],

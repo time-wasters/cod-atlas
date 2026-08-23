@@ -55,19 +55,28 @@ research from their canonical level.
 ## Geographic localization progress
 
 Localization here means locating atlas markers in the real world, not
-translating the interface. Exact, approximate, city, and region markers count
-as localized. Country fallbacks are the remaining terrestrial localization
-work. Off-world markers are reported separately and excluded from the
-terrestrial percentage because they intentionally have no Earth location.
+translating the interface. Exact, approximate, and city markers count as
+localized. Region and country fallbacks remain localization work. Off-world
+markers are reported separately and excluded from the terrestrial percentage
+because they intentionally have no Earth location.
 
 The per-game table assigns each marker to its canonical level's owner game.
 
 <!-- localization-progress:start -->
-| Scope | Localized | Country fallback | Off-world |
-| --- | ---: | ---: | ---: |
-| All marker locations | 263 / 961 (27%) | 698 / 961 (73%) | 30 |
-| Campaign marker locations | 118 / 390 (30%) | 272 / 390 (70%) | 17 |
-| Multiplayer marker locations | 145 / 571 (25%) | 426 / 571 (75%) | 13 |
+| Scope | Localized | Region fallback | Country fallback | Off-world |
+| --- | ---: | ---: | ---: | ---: |
+| All marker locations | 258 / 961 (27%) | 5 / 961 (1%) | 698 / 961 (73%) | 30 |
+| Campaign marker locations | 117 / 390 (30%) | 1 / 390 (0%) | 272 / 390 (70%) | 17 |
+| Multiplayer marker locations | 141 / 571 (25%) | 4 / 571 (1%) | 426 / 571 (75%) | 13 |
+
+| Precision | Marker locations | Share of all markers |
+| --- | ---: | ---: |
+| Exact | 70 | 7% |
+| Approximate | 113 | 11% |
+| City | 75 | 8% |
+| Region | 5 | 1% |
+| Country | 698 | 70% |
+| Off-world | 30 | 3% |
 
 | Game | Campaign | Multiplayer | Overall |
 | --- | ---: | ---: | ---: |
@@ -82,17 +91,17 @@ The per-game table assigns each marker to its canonical level's owner game.
 | World at War | 1 / 15 (7%) | 7 / 24 (29%) | 8 / 39 (21%) |
 | World at War: Final Fronts | 7 / 14 (50%) | — | 7 / 14 (50%) |
 | Modern Warfare 2 (2009) | 0 / 17 (0%) | 20 / 22 (91%) | 20 / 39 (51%) |
-| Black Ops | 1 / 16 (6%) | 3 / 30 (10%) | 4 / 46 (9%) |
+| Black Ops | 1 / 16 (6%) | 2 / 30 (7%) | 3 / 46 (7%) |
 | Modern Warfare 3 (2011) | 0 / 21 (0%) | 31 / 38 (82%) | 31 / 59 (53%) |
 | MW3: Defiance | 0 / 14 (0%) | — | 0 / 14 (0%) |
 | Black Ops II | 0 / 17 (0%) | 0 / 36 (0%) | 0 / 53 (0%) |
 | Black Ops: Declassified | 0 / 10 (0%) | — | 0 / 10 (0%) |
-| Ghosts | 1 / 17 (6%) | 2 / 33 (6%) | 3 / 50 (6%) |
+| Ghosts | 0 / 17 (0%) | 2 / 33 (6%) | 2 / 50 (4%) |
 | Advanced Warfare | 1 / 17 (6%) | 0 / 30 (0%) | 1 / 47 (2%) |
 | Black Ops III | 0 / 12 (0%) | 0 / 28 (0%) | 0 / 40 (0%) |
 | Infinite Warfare | 0 / 2 (0%) | 0 / 16 (0%) | 0 / 18 (0%) |
 | Modern Warfare Remastered | — | 0 / 1 (0%) | 0 / 1 (0%) |
-| WWII | 0 / 15 (0%) | 11 / 43 (26%) | 11 / 58 (19%) |
+| WWII | 0 / 15 (0%) | 8 / 43 (19%) | 8 / 58 (14%) |
 | Black Ops 4 | — | 1 / 36 (3%) | 1 / 36 (3%) |
 | Modern Warfare (2019) | 0 / 14 (0%) | 0 / 46 (0%) | 0 / 60 (0%) |
 | Warzone (2020) | — | 0 / 4 (0%) | 0 / 4 (0%) |

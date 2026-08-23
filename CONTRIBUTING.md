@@ -34,7 +34,7 @@ VSCodium users can run the common commands through **Terminal → Run Task**.
 4. After changing the standard research sections or location precision, run
    `npm run progress:update` (Docker:
    `docker compose run --rm cod-atlas-tools npm run progress:update`) to
-   refresh the generated tables in `progress.md`.
+   refresh the generated tables in `docs/progress.md`.
 5. If a local Node or Docker toolchain is available, run `npm run data:check`
    or `docker compose run --rm cod-atlas-tools npm run data:check`. CI runs the
    same validation for every pull request.

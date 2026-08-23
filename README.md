@@ -52,7 +52,7 @@ data changes, validation, and the pull-request workflow.
 
 Detailed references:
 
-- [Research and geographic localization progress](progress.md)
+- [Research and geographic localization progress](docs/progress.md)
 - [Atlas data model](docs/data-model.md)
 - [Data contribution guide](docs/contributing-data.md)
 - [Running npm commands through Docker](docs/docker-commands.md)
