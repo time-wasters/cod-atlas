@@ -6,7 +6,7 @@ games:
 mode: singleplayer
 wikiArticle: codwiki-glider-crash
 mapOverlay:
-  image: /images/maps/rtv/glider-crash.png
+  image: /images/levels/rtv/glider-crash/maps/briefing-map.png
   opacity: 0.72
   corners:
     topLeft: [49.41909, -1.36634]

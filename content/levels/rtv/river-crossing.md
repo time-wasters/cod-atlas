@@ -6,7 +6,7 @@ games:
 mode: singleplayer
 wikiArticle: codwiki-river-crossing
 mapOverlay:
-  image: /images/maps/rtv/river-crossing.png
+  image: /images/levels/rtv/river-crossing/maps/briefing-map.png
   opacity: 0.72
   corners:
     topLeft: [52.10987848, 4.98518402]

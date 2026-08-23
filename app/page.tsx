@@ -23,6 +23,7 @@ type Entry = {
   } | null;
   campaignOrder?: number;
   wiki: string;
+  wikiArticle: string;
   country: string;
   region?: string | null;
   city?: string | null;
@@ -34,10 +35,25 @@ type Entry = {
   urls?: Partial<Record<"googleMaps" | "wikipedia" | "callOfDutyMaps", string>>[];
   hasLevelNotes: boolean;
   modes: ("singleplayer" | "multiplayer")[];
+  appearances: LevelAppearance[];
+};
+
+type LevelAppearance = {
+  gameId: string;
+  title: string;
+  wiki: string;
+  wikiArticle: string;
+  notesId: string;
+  hasLevelNotes: boolean;
+  bannerKey: string;
+  campaign?: Entry["campaign"];
+  campaignOrder?: number;
+  metadata?: Record<string, unknown>;
 };
 
 type WikiImage = {
   origin?: "local";
+  mediaType?: "image" | "video";
   sourceUrl: string;
   thumbnailUrl: string;
   detailPageUrl: string;
@@ -174,6 +190,7 @@ type HistoryOverlayRecord = {
 };
 type AtlasData = {
   games: Game[];
+  levelIdAliases: Record<string, string>;
   levelBanners: Record<string, WikiImage>;
   wikiMedia: Record<string, WikiMedia>;
   groups: Group[];
@@ -1124,8 +1141,11 @@ export default function Home() {
     const applyUrl = () => {
       const urlState = parseAtlasUrl(window.location.href);
       const requestedGame = gamesById.get(urlState.gameId);
+      const requestedLevelId = urlState.levelId
+        ? data.levelIdAliases[urlState.levelId] ?? urlState.levelId
+        : null;
       const requestedSelection = urlState.levelId
-        ? selections.find(({ entry }) => entry.levelId === urlState.levelId
+        ? selections.find(({ entry }) => entry.levelId === requestedLevelId
           && (!urlState.locationId || entry.locationId === urlState.locationId)) ?? null
         : null;
 
@@ -1263,6 +1283,7 @@ export default function Home() {
             entry.city?.toLowerCase().includes(needle) ||
             entry.landmark?.toLowerCase().includes(needle) ||
             entry.title.toLowerCase().includes(needle) ||
+            entry.appearances.some((appearance) => appearance.title.toLowerCase().includes(needle)) ||
             entry.game.toLowerCase().includes(needle);
           return matchesStructuredFilters(entry) && matchesText;
         }),
@@ -1372,10 +1393,18 @@ export default function Home() {
       .map((entry) => ({ group, entry }))),
     [groups, selected.entry.id, selected.entry.levelId],
   );
-  const selectedMedia = data.wikiMedia[selected.entry.wikiArticle];
-  const selectedLevelBanner = failedLevelBanners.has(selected.entry.levelId)
+  const selectedGameId = gamesByCode.get(game)?.id ?? null;
+  const selectedAppearance = selected.entry.appearances.find((appearance) => appearance.gameId === selectedGameId)
+    ?? selected.entry.appearances[0];
+  const ownerAppearance = selected.entry.appearances[0];
+  const selectedMedia = data.wikiMedia[selectedAppearance.wikiArticle];
+  const selectedAppearanceBanner = failedLevelBanners.has(selectedAppearance.bannerKey)
     ? null
-    : data.levelBanners[selected.entry.levelId] ?? null;
+    : data.levelBanners[selectedAppearance.bannerKey] ?? null;
+  const ownerLevelBanner = failedLevelBanners.has(ownerAppearance.bannerKey)
+    ? null
+    : data.levelBanners[ownerAppearance.bannerKey] ?? null;
+  const selectedLevelBanner = selectedAppearanceBanner ?? ownerLevelBanner;
   const selectedImage = selectedLevelBanner ?? selectedMedia?.main ?? selectedMedia?.map ?? null;
   const selectedImageIsLocal = selectedImage?.origin === "local";
   const selectedImageKey = selectedImage
@@ -1392,9 +1421,9 @@ export default function Home() {
   const relatedLevelsExpanded = expandedRegionEntryId === relatedLevelsExpansionKey;
   const visibleRelatedLevels = relatedLevelsExpanded ? relatedLevels : relatedLevels.slice(0, 8);
   const hiddenRelatedLevelCount = relatedLevels.length - visibleRelatedLevels.length;
-  const levelNotesExpanded = selected.entry.hasLevelNotes
-    && expandedLevelNotesId === selected.entry.levelId;
-  const selectedLevelNotes = levelNotes?.levelId === selected.entry.levelId ? levelNotes : null;
+  const levelNotesExpanded = selectedAppearance.hasLevelNotes
+    && expandedLevelNotesId === selectedAppearance.notesId;
+  const selectedLevelNotes = levelNotes?.levelId === selectedAppearance.notesId ? levelNotes : null;
   const selectedMapOverlay = mapOverlays[selected.entry.levelId] ?? null;
   const selectedMapOverlayEnabled = selectedMapOverlay !== null && !disabledMapOverlays.has(selected.entry.levelId);
   const selectedHistoryOverlays = historyOverlays[selected.entry.levelId] ?? [];
@@ -1486,28 +1515,28 @@ export default function Home() {
   }, [selected.entry.id]);
 
   const toggleLevelNotes = useCallback(() => {
-    if (!selected.entry.hasLevelNotes) return;
-    const levelId = selected.entry.levelId;
-    if (expandedLevelNotesId === levelId) {
+    if (!selectedAppearance.hasLevelNotes) return;
+    const notesId = selectedAppearance.notesId;
+    if (expandedLevelNotesId === notesId) {
       setExpandedLevelNotesId(null);
       return;
     }
-    setExpandedLevelNotesId(levelId);
-    if (levelNotes?.levelId === levelId) return;
-    setLevelNotes({ levelId, status: "loading", content: null });
-    const notesUrl = new URL(`level-notes/${levelId}.md`, document.baseURI);
+    setExpandedLevelNotesId(notesId);
+    if (levelNotes?.levelId === notesId) return;
+    setLevelNotes({ levelId: notesId, status: "loading", content: null });
+    const notesUrl = new URL(`level-notes/${notesId}.md`, document.baseURI);
     fetch(notesUrl)
       .then((response) => {
         if (!response.ok) throw new Error(`Level notes returned ${response.status}`);
         return response.text();
       })
       .then((content) => setLevelNotes({
-        levelId,
+        levelId: notesId,
         status: content.trim() ? "ready" : "missing",
         content,
       }))
-      .catch(() => setLevelNotes({ levelId, status: "missing", content: null }));
-  }, [expandedLevelNotesId, levelNotes?.levelId, selected.entry.hasLevelNotes, selected.entry.levelId]);
+      .catch(() => setLevelNotes({ levelId: notesId, status: "missing", content: null }));
+  }, [expandedLevelNotesId, levelNotes?.levelId, selectedAppearance.hasLevelNotes, selectedAppearance.notesId]);
 
   useEffect(() => {
     mediaDialog.current?.close();
@@ -1723,7 +1752,7 @@ export default function Home() {
         opacity: 0,
         interactive: false,
         className: "game-map-overlay",
-        alt: `${selected.entry.title} historical game map overlay`,
+        alt: `${selectedAppearance.title} historical game map overlay`,
       },
     ).addTo(map.current);
     mapImageOverlay.current = overlay;
@@ -1735,7 +1764,7 @@ export default function Home() {
       mapImageOverlayAnimation,
       mapImageOverlayOpacity,
     );
-  }, [mapReady, selected.entry.levelId, selected.entry.title, selectedMapOverlay, selectedMapOverlayEnabled]);
+  }, [mapReady, selected.entry.levelId, selectedAppearance.title, selectedMapOverlay, selectedMapOverlayEnabled]);
 
   useEffect(() => {
     if (!mapReady || !map.current || !leaflet.current) return;
@@ -2288,7 +2317,7 @@ export default function Home() {
             <header>
               <div>
                 <span>Level briefing</span>
-                <h2 id="level-briefing-title">{selected.entry.title}</h2>
+                <h2 id="level-briefing-title">{selectedAppearance.title}</h2>
               </div>
               <button type="button" aria-label="Close level briefing" onClick={toggleLevelNotes}>×</button>
             </header>
@@ -2358,10 +2387,10 @@ export default function Home() {
         <button
           className="collapsed-level-title"
           type="button"
-          aria-label={`Show details for ${selected.entry.title}`}
+          aria-label={`Show details for ${selectedAppearance.title}`}
           onClick={() => setDetailsOpen(true)}
         >
-          <span>{selected.entry.title}</span>
+          <span>{selectedAppearance.title}</span>
         </button>
         <article className="intel-card" id="selected-level-details">
           <div className="mission-heading">
@@ -2370,7 +2399,7 @@ export default function Home() {
               disabled={!selected.entry.coordinates}
               onActivate={focusSelectedMarker}
             >
-              {selected.entry.title}
+              {selectedAppearance.title}
             </FittedLevelTitle>
             <div className="mission-games">
               {selected.entry.gameIds.map((gameId) => {
@@ -2406,21 +2435,38 @@ export default function Home() {
                   {selectedImageFailed ? "Image unavailable" : "Loading image…"}
                 </span>
               )}
-              {/* Local reviewed banners take precedence; Wiki thumbnails remain the fallback. */}
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                className={selectedImageLoaded ? "is-loaded" : ""}
-                src={selectedImage.thumbnailUrl}
-                alt={`${selected.entry.title} level banner`}
-                referrerPolicy={selectedImageIsLocal ? undefined : "no-referrer"}
-                onLoad={() => setLoadedImageKey(selectedImageKey)}
-                onError={() => {
-                  setFailedImageKey(selectedImageKey);
-                  if (selectedImageIsLocal) {
-                    setFailedLevelBanners((failed) => new Set(failed).add(selected.entry.levelId));
-                  }
-                }}
-              />
+              {/* Local reviewed media take precedence; Wiki thumbnails remain the fallback. */}
+              {selectedImage.mediaType === "video" ? (
+                <video
+                  className={selectedImageLoaded ? "is-loaded" : ""}
+                  src={selectedImage.thumbnailUrl}
+                  aria-label={`${selectedAppearance.title} level banner`}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  onLoadedData={() => setLoadedImageKey(selectedImageKey)}
+                  onError={() => {
+                    setFailedImageKey(selectedImageKey);
+                    setFailedLevelBanners((failed) => new Set(failed).add(selectedAppearance.bannerKey));
+                  }}
+                />
+              ) : (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  className={selectedImageLoaded ? "is-loaded" : ""}
+                  src={selectedImage.thumbnailUrl}
+                  alt={`${selectedAppearance.title} level banner`}
+                  referrerPolicy={selectedImageIsLocal ? undefined : "no-referrer"}
+                  onLoad={() => setLoadedImageKey(selectedImageKey)}
+                  onError={() => {
+                    setFailedImageKey(selectedImageKey);
+                    if (selectedImageIsLocal) {
+                      setFailedLevelBanners((failed) => new Set(failed).add(selectedAppearance.bannerKey));
+                    }
+                  }}
+                />
+              )}
               <button
                 className="media-info-button"
                 type="button"
@@ -2560,7 +2606,7 @@ export default function Home() {
               </a>
             )}
             <a
-              href={selected.entry.wiki}
+              href={selectedAppearance.wiki}
               target="_blank"
               rel="noreferrer"
               aria-label="Open on Call of Duty Wiki"
@@ -2575,15 +2621,15 @@ export default function Home() {
               className="level-briefing-toggle"
               type="button"
               aria-expanded={levelNotesExpanded}
-              aria-controls={selected.entry.hasLevelNotes ? "selected-level-briefing" : undefined}
+              aria-controls={selectedAppearance.hasLevelNotes ? "selected-level-briefing" : undefined}
               onClick={toggleLevelNotes}
-              disabled={!selected.entry.hasLevelNotes}
-              title={selected.entry.hasLevelNotes ? undefined : "No level briefing available"}
+              disabled={!selectedAppearance.hasLevelNotes}
+              title={selectedAppearance.hasLevelNotes ? undefined : "No level briefing available"}
             >
               <b aria-hidden="true">{levelNotesExpanded ? "›" : "‹"}</b>
               <span>
                 <small>Level briefing</small>
-                <strong>{selected.entry.hasLevelNotes ? "Research & historical context" : "No briefing available"}</strong>
+                <strong>{selectedAppearance.hasLevelNotes ? "Research & historical context" : "No briefing available"}</strong>
               </span>
             </button>
           </section>

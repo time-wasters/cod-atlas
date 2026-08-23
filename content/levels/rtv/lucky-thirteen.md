@@ -6,7 +6,7 @@ games:
 mode: singleplayer
 wikiArticle: codwiki-lucky-thirteen
 mapOverlay:
-  image: /images/maps/rtv/lucky-thirteen.png
+  image: /images/levels/rtv/lucky-thirteen/maps/briefing-map.png
   opacity: 0.72
   corners:
     topLeft: [52.29680, 0.42890]

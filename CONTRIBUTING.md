@@ -88,6 +88,15 @@ Optional research notes belong here.
 Add a game YAML file only when its referenced game does not already exist. Add
 or reference a separate Wiki import JSON record for `wikiArticle`.
 
+If the same level also appears in another game without material geographic or
+playable-layout changes, add `<level-slug>.ref.md` under that game's directory
+instead of putting several IDs in `games`. A reference contains only
+`level: <canonical-level-id>` plus optional appearance-specific `title`,
+`wikiArticle`, `campaign`, `metadata`, or Markdown notes. Missing values and
+notes inherit from the canonical record. Locations, mode, overlays, and stable
+IDs cannot be overridden. A materially changed remake gets its own canonical
+level record instead.
+
 An optional interface icon can be added at
 `public/images/games/<game-id>.png`. The filename must exactly match the game
 ID; no game record change is needed.

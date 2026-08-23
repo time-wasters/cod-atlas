@@ -3,7 +3,6 @@ id: cod-harbor
 title: Harbor
 games:
   - cod
-  - cod-uo
 mode: multiplayer
 wikiArticle: codwiki-harbor
 locations:

@@ -125,10 +125,14 @@ function frontmatter(text, filename) {
 
 export function wikiArticleIdsForGames(levels, gameIds) {
   const selectedGames = new Set(gameIds);
-  return [...new Set(levels
-    .filter((level) => level.games?.some((gameId) => selectedGames.has(gameId)))
-    .map((level) => level.wikiArticle)
-    .filter(Boolean))].sort();
+  const canonicalById = new Map(levels.filter((level) => level.id).map((level) => [level.id, level]));
+  return [...new Set(levels.flatMap((level) => {
+    if (level.games?.some((gameId) => selectedGames.has(gameId))) return [level.wikiArticle];
+    if (level.level && selectedGames.has(level.appearanceGame)) {
+      return [level.wikiArticle ?? canonicalById.get(level.level)?.wikiArticle];
+    }
+    return [];
+  }).filter(Boolean))].sort();
 }
 
 export async function loadWikiArticleIdsForGames(gameIds) {
@@ -140,8 +144,12 @@ export async function loadWikiArticleIdsForGames(gameIds) {
   if (unknownGameIds.length) throw new Error(`Unknown game IDs: ${unknownGameIds.join(", ")}`);
 
   const levelFilenames = await filesBelow(path.join(contentRoot, "levels"), ".md");
-  const levels = await Promise.all(levelFilenames.map(async (filename) =>
-    frontmatter(await readFile(filename, "utf8"), filename)));
+  const levels = await Promise.all(levelFilenames.map(async (filename) => ({
+    ...frontmatter(await readFile(filename, "utf8"), filename),
+    ...(filename.endsWith(".ref.md") ? {
+      appearanceGame: path.relative(path.join(contentRoot, "levels"), filename).split(path.sep)[0],
+    } : {}),
+  })));
   return wikiArticleIdsForGames(levels, gameIds);
 }
 

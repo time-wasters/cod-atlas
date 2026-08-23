@@ -3,7 +3,6 @@ id: cod-dawnville
 title: Dawnville
 games:
   - cod
-  - cod-uo
 mode: multiplayer
 wikiArticle: codwiki-dawnville-map
 locations:

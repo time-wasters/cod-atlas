@@ -1,0 +1,20 @@
+---
+id: bo-drive-in
+legacyIds:
+  - bo-bocw-drive-in
+title: Drive-In
+games:
+  - bo
+mode: multiplayer
+wikiArticle: codwiki-drive-in
+locations:
+  - id: main
+    country: United States
+    region: Nebraska
+    latitude: 41.5
+    longitude: -99.8
+    precision: country
+    confidence: fallback
+    method: country-fallback
+    primary: true
+---

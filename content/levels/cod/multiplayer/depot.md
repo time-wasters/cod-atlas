@@ -3,7 +3,6 @@ id: cod-depot
 title: Depot
 games:
   - cod
-  - cod-uo
 mode: multiplayer
 wikiArticle: codwiki-depot
 locations:

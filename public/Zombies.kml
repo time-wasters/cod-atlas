@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Zombies</name>
+    <Style id="icon-seq2-0-0-880E4F-labelson">
+      <IconStyle>
+        <color>ff4f0e88</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-1.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-1-880E4F-labelson">
+      <IconStyle>
+        <color>ff4f0e88</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-2.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-10-880E4F-labelson">
+      <IconStyle>
+        <color>ff4f0e88</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-11.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-11-880E4F-labelson">
+      <IconStyle>
+        <color>ff4f0e88</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-12.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-12-880E4F-labelson">
+      <IconStyle>
+        <color>ff4f0e88</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-13.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-13-880E4F-labelson">
+      <IconStyle>
+        <color>ff4f0e88</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-14.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-14-880E4F-labelson">
+      <IconStyle>
+        <color>ff4f0e88</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-15.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-15-880E4F-labelson">
+      <IconStyle>
+        <color>ff4f0e88</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-16.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-16-880E4F-labelson">
+      <IconStyle>
+        <color>ff4f0e88</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-17.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-2-880E4F-labelson">
+      <IconStyle>
+        <color>ff4f0e88</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-3.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-3-880E4F-labelson">
+      <IconStyle>
+        <color>ff4f0e88</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-4.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-4-880E4F-labelson">
+      <IconStyle>
+        <color>ff4f0e88</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-5.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-5-880E4F-labelson">
+      <IconStyle>
+        <color>ff4f0e88</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-6.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-6-880E4F-labelson">
+      <IconStyle>
+        <color>ff4f0e88</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-7.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-7-880E4F-labelson">
+      <IconStyle>
+        <color>ff4f0e88</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-8.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-8-880E4F-labelson">
+      <IconStyle>
+        <color>ff4f0e88</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-9.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-9-880E4F-labelson">
+      <IconStyle>
+        <color>ff4f0e88</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-10.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Placemark>
+      <name>Nacht der Untoten</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4j0P0p9B1I6ZDveg0uHasIBMsZlXzWVFau_BDghRQIJTfE8RAguGWNXTGoRY1UkFrNJjdjZXq-oop2jKGxJ9UPKxiO6psR6wapKI8Jr3wrnv9AI0L5spoDjLbrDMx4wmkwpLuLgoyYOeqksn_a32er8tHZ8ixlzJcQN_2j0JnWHmbGXSSm1k2QHZvFzApU8ijvrHMWjx4ypP8KvYdEO950Uhq7nWYzii3xmHrAcWZzsGjyFZNQwGbLa5I?authuser=0&fife=s16383" height="200" width="auto" /><br><br>description: You drove them deep into the heart of the Reich. You thought they were dead. You were wrong.<br>Link: https://callofdutymaps.com/zombies/nacht-der-untoten]]></description>
+      <styleUrl>#icon-seq2-0-0-880E4F-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="description">
+          <value>You drove them deep into the heart of the Reich. You thought they were dead. You were wrong.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/zombies/nacht-der-untoten</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4j0P0p9B1I6ZDveg0uHasIBMsZlXzWVFau_BDghRQIJTfE8RAguGWNXTGoRY1UkFrNJjdjZXq-oop2jKGxJ9UPKxiO6psR6wapKI8Jr3wrnv9AI0L5spoDjLbrDMx4wmkwpLuLgoyYOeqksn_a32er8tHZ8ixlzJcQN_2j0JnWHmbGXSSm1k2QHZvFzApU8ijvrHMWjx4ypP8KvYdEO950Uhq7nWYzii3xmHrAcWZzsGjyFZNQwGbLa5I?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          134.2431628,7.0022906,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Der Riese</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7x7wx-mAPOCTB5gix_Y_ZlP_sWulnjntm6o_mmpsdpgS_GvbOOEeRG6nyZP52Bs3MOu83Tf6uY19eNYAnnOBYeSFlGBEYrviRcFcRMoZY63eydPEbBawLX2Z9ZZuoPBIMDk-ty3KJ_beG_iOXQf3cKM5WsvW8-WLa1_6xpu6Ljq-otpCuWEMsNZDmncqpVlB4E5_FGrqlEpthrWtRawkAGLTPQYxToDv73d6TqLpuKs6wWlniUaRvxIAM?authuser=0&fife=s16383" height="200" width="auto" /><br><br>description: The Giant is rising. Face the might of the Nazi Zombies in their heartland. This is where it all began. This is where the master plan took shape. Is this where it all ends?<br>Link: https://callofdutymaps.com/zombies/der-riese]]></description>
+      <styleUrl>#icon-seq2-0-1-880E4F-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="description">
+          <value>The Giant is rising. Face the might of the Nazi Zombies in their heartland. This is where it all began. This is where the master plan took shape. Is this where it all ends?</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/zombies/der-riese</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7x7wx-mAPOCTB5gix_Y_ZlP_sWulnjntm6o_mmpsdpgS_GvbOOEeRG6nyZP52Bs3MOu83Tf6uY19eNYAnnOBYeSFlGBEYrviRcFcRMoZY63eydPEbBawLX2Z9ZZuoPBIMDk-ty3KJ_beG_iOXQf3cKM5WsvW8-WLa1_6xpu6Ljq-otpCuWEMsNZDmncqpVlB4E5_FGrqlEpthrWtRawkAGLTPQYxToDv73d6TqLpuKs6wWlniUaRvxIAM?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          10.451526,51.165691,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Zombie Verrückt</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7WLGkNjZX6uri6lPS0wpfjLDJI0Xn1798TsjzGtkx7GZpD2hbOju5N_Mly4FA1cFBvUlHRZjJzTQGRCTuqoEfKUVWTxZNgUFvp7BIt6UXOsv49eGPL8w7YiZFZnEtBpWjX_FcFo3gpwnEsUsr63b6lI15TCA4TAPSr8FESmHCFuZWQEnByuR4yk-HLWq05ruwD92eA-pNky_B9JkBhLabtsITrOInbS9QRl_1xadJM_XiEIP1RTDfyfXk?authuser=0&fife=s16383" height="200" width="auto" /><br><br>description: Electroshock therapy. Chemically engineered beverages. Hordes of undead Nazis. Find the power to unite and send them back to their graves!<br>Link: https://callofdutymaps.com/zombies/verruckt-2]]></description>
+      <styleUrl>#icon-seq2-0-2-880E4F-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="description">
+          <value>Electroshock therapy. Chemically engineered beverages. Hordes of undead Nazis. Find the power to unite and send them back to their graves!</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/zombies/verruckt-2</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7WLGkNjZX6uri6lPS0wpfjLDJI0Xn1798TsjzGtkx7GZpD2hbOju5N_Mly4FA1cFBvUlHRZjJzTQGRCTuqoEfKUVWTxZNgUFvp7BIt6UXOsv49eGPL8w7YiZFZnEtBpWjX_FcFo3gpwnEsUsr63b6lI15TCA4TAPSr8FESmHCFuZWQEnByuR4yk-HLWq05ruwD92eA-pNky_B9JkBhLabtsITrOInbS9QRl_1xadJM_XiEIP1RTDfyfXk?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          13.404954,52.5200066,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Shi No Numa</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5xlaFPwQ4ca-a5pDAi4CQKDtliSWmZfEjFmx1a_eFfLpvoeqo3qqoC37UggnJTuBJ61NNWOKLj21NN82fzC_UWeo0e8OZxuQWPZP1cfsTx7b6Kp0UrsGJLoxnamS7yDLDyS76QAe0KsD8mkVuOhfdvuPouPmioRGA0iEQ_vqwFLvrORVjOZqrQExlbfgxZXe5zC70StYvhmMO-lPIFoY9scc9PSYcSNzLQPMKx3V71gGgMyQbIoYFHaps?authuser=0&fife=s16383" height="200" width="auto" /><br><br>description: Maggot ridden corpses. Bug infested swamp. Hundreds of undead Imperial Army. Choose your tactic and defend for your lives!<br>Link: https://callofdutymaps.com/zombies/shi-no-numa]]></description>
+      <styleUrl>#icon-seq2-0-3-880E4F-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="description">
+          <value>Maggot ridden corpses. Bug infested swamp. Hundreds of undead Imperial Army. Choose your tactic and defend for your lives!</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/zombies/shi-no-numa</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5xlaFPwQ4ca-a5pDAi4CQKDtliSWmZfEjFmx1a_eFfLpvoeqo3qqoC37UggnJTuBJ61NNWOKLj21NN82fzC_UWeo0e8OZxuQWPZP1cfsTx7b6Kp0UrsGJLoxnamS7yDLDyS76QAe0KsD8mkVuOhfdvuPouPmioRGA0iEQ_vqwFLvrORVjOZqrQExlbfgxZXe5zC70StYvhmMO-lPIFoY9scc9PSYcSNzLQPMKx3V71gGgMyQbIoYFHaps?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          138.252924,36.204824,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Kino Der Toten</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6DaLNTacX8D9PegruO0oaNJsIj6ZamJf6MznZ_Pbivd0eYdIp-Due16zieCaD1EeDMO1iOxnV1KFgJIjwu_1GntGD_cZ-danIDLHape6Bkw43NKOXsSOEca1O0wuTHH8WgnMbA8vWK015nyO2Md22btbKgzPJCJCDAb--Xwn665AYIDV9w3ywBPi0ItkHyQXpAllp7oeSwRInHwfmlcPrvo8mjDNA_YfaYrU2KWfMOvg7PBfdWsYlngGk?authuser=0&fife=s16383" height="200" width="auto" /><br><br>description: Battle the undead in this theatrical installment of “Zombies”. New twists and clues could uncover the final plan. It’s show time!<br>Link: https://callofdutymaps.com/zombies/Kino-der-Toten]]></description>
+      <styleUrl>#icon-seq2-0-4-880E4F-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="description">
+          <value>Battle the undead in this theatrical installment of “Zombies”. New twists and clues could uncover the final plan. It’s show time!</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/zombies/Kino-der-Toten</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6DaLNTacX8D9PegruO0oaNJsIj6ZamJf6MznZ_Pbivd0eYdIp-Due16zieCaD1EeDMO1iOxnV1KFgJIjwu_1GntGD_cZ-danIDLHape6Bkw43NKOXsSOEca1O0wuTHH8WgnMbA8vWK015nyO2Md22btbKgzPJCJCDAb--Xwn665AYIDV9w3ywBPi0ItkHyQXpAllp7oeSwRInHwfmlcPrvo8mjDNA_YfaYrU2KWfMOvg7PBfdWsYlngGk?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          13.404954,52.5200066,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name><![CDATA["FIVE"]]></name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4dGpMGSAT07LRkPU9L6lutzDQ0xxbMdXOrSMroZKZK_sL_aasBuIXy_xFl2i8W8063__xPeMLCR6Bf-yF73K4OD8dbiSHQ2nrjXTqTJUTJNRVAEdWcBUtP2Ilbv0u9pINuW38c9B1lPZdnOpao-H5wllQdq7JVI-LC4Sc-K21jzNF0GDVpxf0oz01l0I2HwkVhzqk-t4LF0wRB2ae7Zkg7WGd-JenJKmtEoia5K9Qf3sHyNZVSpcZ7pFU?authuser=0&fife=s16383" height="200" width="auto" /><br><br>description: The Pentagon is under attack! Washington is going to DEFCON 1 in this installment of “Zombies”.<br>Link: https://callofdutymaps.com/zombies/five]]></description>
+      <styleUrl>#icon-seq2-0-5-880E4F-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="description">
+          <value>The Pentagon is under attack! Washington is going to DEFCON 1 in this installment of “Zombies”.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/zombies/five</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4dGpMGSAT07LRkPU9L6lutzDQ0xxbMdXOrSMroZKZK_sL_aasBuIXy_xFl2i8W8063__xPeMLCR6Bf-yF73K4OD8dbiSHQ2nrjXTqTJUTJNRVAEdWcBUtP2Ilbv0u9pINuW38c9B1lPZdnOpao-H5wllQdq7JVI-LC4Sc-K21jzNF0GDVpxf0oz01l0I2HwkVhzqk-t4LF0wRB2ae7Zkg7WGd-JenJKmtEoia5K9Qf3sHyNZVSpcZ7pFU?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -77.0562669,38.8718568,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Dead Ops Arcade</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6XAPaqMAAn6F3fFedjIdFYuDJj28bce4pLDlzJE91_wEC22w4zGpBM4c2APAag3nJ3TollKTPMcdYoo4MeSL78my83qpNsh9AWKqK5Au1lUB2T0QBOZdSLI2jOT2aXFvOaRyy2V14SlNiNbxGUSPIDm-RTlOH1tr2hwUQ3WDU1TzlOm--6YljvtoovouHVHjevw3JPV-HaHUgMru8YDeSqKysKWu9bzjFqEOtX-GZLD8sHFK3403IS8o4?authuser=0&fife=s16383" height="200" width="auto" /><br><br>description: Step back through time with this retro arcade zombie adventure and do battle with the forces of the Cosmic Silverback.<br>Link: https://callofdutymaps.com/zombies/dead-ops-arcade]]></description>
+      <styleUrl>#icon-seq2-0-6-880E4F-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="description">
+          <value>Step back through time with this retro arcade zombie adventure and do battle with the forces of the Cosmic Silverback.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/zombies/dead-ops-arcade</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6XAPaqMAAn6F3fFedjIdFYuDJj28bce4pLDlzJE91_wEC22w4zGpBM4c2APAag3nJ3TollKTPMcdYoo4MeSL78my83qpNsh9AWKqK5Au1lUB2T0QBOZdSLI2jOT2aXFvOaRyy2V14SlNiNbxGUSPIDm-RTlOH1tr2hwUQ3WDU1TzlOm--6YljvtoovouHVHjevw3JPV-HaHUgMru8YDeSqKysKWu9bzjFqEOtX-GZLD8sHFK3403IS8o4?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -118.4486881,34.0215404,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Ascension</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5GfqQd118giLDbDEQkWRRJ9G_GfcYBYGvP2LpaR3Pdsvpm6qOR_soyw5IvLOcD6VXgpSHsvPCzN-Zfdnz_trQeOPfr0MNnj4ocdxTqPXBeGSDzs9mo7O6HqVD_lhgCSyPzPt4l_29Q7TrWJZecseCEZhFBrsJwAg7Cb-OInTF-oQEbav_8laS6_EhqgxWgq0QI6Fv-eU7ngv0HmapVjm5BiBFdA4pro3QrqXR68_MBeqsLP1gzlduqvpo?authuser=0&fife=s16383" height="200" width="auto" /><br><br>description: The risen dead have overtaken a Soviet cosmodrome and all Hell has broken loose. The countdown to zombie apocalypse has begun.<br>Link: https://callofdutymaps.com/zombies/ascension]]></description>
+      <styleUrl>#icon-seq2-0-7-880E4F-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="description">
+          <value>The risen dead have overtaken a Soviet cosmodrome and all Hell has broken loose. The countdown to zombie apocalypse has begun.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/zombies/ascension</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5GfqQd118giLDbDEQkWRRJ9G_GfcYBYGvP2LpaR3Pdsvpm6qOR_soyw5IvLOcD6VXgpSHsvPCzN-Zfdnz_trQeOPfr0MNnj4ocdxTqPXBeGSDzs9mo7O6HqVD_lhgCSyPzPt4l_29Q7TrWJZecseCEZhFBrsJwAg7Cb-OInTF-oQEbav_8laS6_EhqgxWgq0QI6Fv-eU7ngv0HmapVjm5BiBFdA4pro3QrqXR68_MBeqsLP1gzlduqvpo?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          103.1874636,61.4505195,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Call of the Dead</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6McKG6YE983xdy6x0IqNIO1XxqfDDGZyVuV_FDNmNUSEO2PPdG19Fam5LJEnVkHZnjf-CcCEY_W5EfgzHzazNamEsr8Fi71zzwMSp2NXfrLD3b_xAYynoZumOyEB_bN5spew-h0Wta-2VE9885UE1pq_ORSnCQBm0tOoWqhdZdH3i1vFFbMva5S-dDuy5y6lvpicH___6LenGugA33GxXYrYR1tv_hFcYrem0TTeNsE7b4NkEYnSVS5lg?authuser=0&fife=s16383" height="200" width="auto" /><br><br>description: A shipwrecked crew of fearless explorers is hopelessly stranded in an abandoned Siberian outpost. Their dream of discovering the true origins of the mysterious Element 115 unravels into a Hellish nightmare.<br>Link: https://callofdutymaps.com/zombies/call-of-the-dead]]></description>
+      <styleUrl>#icon-seq2-0-8-880E4F-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="description">
+          <value>A shipwrecked crew of fearless explorers is hopelessly stranded in an abandoned Siberian outpost. Their dream of discovering the true origins of the mysterious Element 115 unravels into a Hellish nightmare.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/zombies/call-of-the-dead</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6McKG6YE983xdy6x0IqNIO1XxqfDDGZyVuV_FDNmNUSEO2PPdG19Fam5LJEnVkHZnjf-CcCEY_W5EfgzHzazNamEsr8Fi71zzwMSp2NXfrLD3b_xAYynoZumOyEB_bN5spew-h0Wta-2VE9885UE1pq_ORSnCQBm0tOoWqhdZdH3i1vFFbMva5S-dDuy5y6lvpicH___6LenGugA33GxXYrYR1tv_hFcYrem0TTeNsE7b4NkEYnSVS5lg?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          110.4164123,61.52401,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Shangri-La</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7sGG5CeWcp-e4UH53A3Rbn3ZU04KoiQ1esUy14MhI_WvkJuQFbYaOM6wfx3PqR_z6b380sKGqBWghho2Hu-7hZZ4dkpk8bJ5uH0jGMIcGx0x_w8-kJnaz8XDQQThqBhWhUVr8A74BGmEe0PekY17RpiDYFJEWfgwZP2fzEN8iEo5nRfmeahky1Uv-dLUSEwZqSwwDvmWmOoPnrzedZKAQsTq85KaZvpsyx7TWG15f-TtW0gRxUiQtOnUA?authuser=0&fife=s16383" height="200" width="auto" /><br><br>description: A legendary shrine lost in an exotic jungle, where the undead lurk within a treacherous labyrinth of underground caverns, deadly traps and dark secrets.<br>Link: https://callofdutymaps.com/zombies/shangri-la]]></description>
+      <styleUrl>#icon-seq2-0-9-880E4F-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="description">
+          <value>A legendary shrine lost in an exotic jungle, where the undead lurk within a treacherous labyrinth of underground caverns, deadly traps and dark secrets.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/zombies/shangri-la</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7sGG5CeWcp-e4UH53A3Rbn3ZU04KoiQ1esUy14MhI_WvkJuQFbYaOM6wfx3PqR_z6b380sKGqBWghho2Hu-7hZZ4dkpk8bJ5uH0jGMIcGx0x_w8-kJnaz8XDQQThqBhWhUVr8A74BGmEe0PekY17RpiDYFJEWfgwZP2fzEN8iEo5nRfmeahky1Uv-dLUSEwZqSwwDvmWmOoPnrzedZKAQsTq85KaZvpsyx7TWG15f-TtW0gRxUiQtOnUA?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          83.9310623,28.5983159,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Moon</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5Sltxem9LQCw5c4GljeLBFndgPzVZTWtS_4DJY8CVhGhn3pywxmgI5IBVEuTtNiFknwSf5PnZC2owv-i9rlonjMMl7aRtGMCY6bZ3KYJw40rZx1UegMXBPmMWNKVNxJFot7PyzBT4UI1q5qYYpc_qDBT3F01tiJaLLs_08hyGLV6Uf2JT8J16r-OdnhB4cuacN5qa1_00poeIdcBU48EyrCsrsGfDnsyiROKvU44bClMNZhUqSVMRq_u4?authuser=0&fife=s16383" height="200" width="auto" /><br><br>description: I believe that this nation should commit itself to achieving the goal, before this decade is out, of landing a man on the moon and returning him safely to the Earth. (JFK, 1961)<br>Link: https://callofdutymaps.com/zombies/moon]]></description>
+      <styleUrl>#icon-seq2-0-10-880E4F-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="description">
+          <value>I believe that this nation should commit itself to achieving the goal, before this decade is out, of landing a man on the moon and returning him safely to the Earth. (JFK, 1961)</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/zombies/moon</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5Sltxem9LQCw5c4GljeLBFndgPzVZTWtS_4DJY8CVhGhn3pywxmgI5IBVEuTtNiFknwSf5PnZC2owv-i9rlonjMMl7aRtGMCY6bZ3KYJw40rZx1UegMXBPmMWNKVNxJFot7PyzBT4UI1q5qYYpc_qDBT3F01tiJaLLs_08hyGLV6Uf2JT8J16r-OdnhB4cuacN5qa1_00poeIdcBU48EyrCsrsGfDnsyiROKvU44bClMNZhUqSVMRq_u4?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -115.7930198,37.2430548,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>TranZit</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7uUgqRUmU1noYQ1mzGHOBNdhqTIXKw2dNF1ua4tRSQdwWzAC7pZ_Z2rCI8J-Il-8gMYS70JBgudS-Rk0K3L6GmYe6dC1bCRqmL3buVCNCfiLhBc86ITjJfeoVTlDp-QiZEtA2sQ_RYdWHWoc8NmsFHIj3tGuataonCA0FPqAxE6zK_aCIvWJ-xd2eI6zMKCSx2RO_gNwT4352X2ic9pFCLKMvfvTGz-L6_eKyWrrCJSplesRXIorDCFo0?authuser=0&fife=s16383" height="200" width="auto" /><br><br>description: Continue the fight against the undead and search for clues to the truth of what lies ahead… <br>Link: https://callofdutymaps.com/zombies/tranzit]]></description>
+      <styleUrl>#icon-seq2-0-11-880E4F-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="description">
+          <value>Continue the fight against the undead and search for clues to the truth of what lies ahead… </value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/zombies/tranzit</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7uUgqRUmU1noYQ1mzGHOBNdhqTIXKw2dNF1ua4tRSQdwWzAC7pZ_Z2rCI8J-Il-8gMYS70JBgudS-Rk0K3L6GmYe6dC1bCRqmL3buVCNCfiLhBc86ITjJfeoVTlDp-QiZEtA2sQ_RYdWHWoc8NmsFHIj3tGuataonCA0FPqAxE6zK_aCIvWJ-xd2eI6zMKCSx2RO_gNwT4352X2ic9pFCLKMvfvTGz-L6_eKyWrrCJSplesRXIorDCFo0?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -119.386667,46.583889,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Nuketown Zombies</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4Vg-8FhdocjcRaOKnIh6MD_-uBZ3OkTHRV54RU598GOxYxHJU4Ew5j2w-_JKGKQC6H_u_XGX7czUp8GvCsinEsnKfns0cF9P9AIAPVqIYN5eulUO8lA0RkzbEBWi_9kNh-vIMbM0WLEirYfSl82oRGj7YqfhxyBTgWo_8RVXOzQxKTS6NayiCzE4KFGVQAoILFdVUsFMSEqSjSob__eKKwkiPKQp2geUR8hrXdkTJNdaoZdEBpqQV62gI?authuser=0&fife=s16383" height="200" width="auto" /><br><br>description: Mass-energy equivalence, secret tests, crash landing perks. Survive in iconic Nuketown, where the past and the future come together.<br>Link: https://callofdutymaps.com/zombies/nuketown-zombies]]></description>
+      <styleUrl>#icon-seq2-0-12-880E4F-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="description">
+          <value>Mass-energy equivalence, secret tests, crash landing perks. Survive in iconic Nuketown, where the past and the future come together.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/zombies/nuketown-zombies</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4Vg-8FhdocjcRaOKnIh6MD_-uBZ3OkTHRV54RU598GOxYxHJU4Ew5j2w-_JKGKQC6H_u_XGX7czUp8GvCsinEsnKfns0cF9P9AIAPVqIYN5eulUO8lA0RkzbEBWi_9kNh-vIMbM0WLEirYfSl82oRGj7YqfhxyBTgWo_8RVXOzQxKTS6NayiCzE4KFGVQAoILFdVUsFMSEqSjSob__eKKwkiPKQp2geUR8hrXdkTJNdaoZdEBpqQV62gI?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -116.1861223,37.114261,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Die Rise</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5DfZw_foZcTQr4vZLN1Pnp-Bd8YL6S6anGG2LBdGlb6Mg1yMgllbD_S-HAXiolfNxfNqgYK_B1fDwo4N6hAix9S23T-m9zj0w5ZDf5jFBIMHxgnrwvgHXmSBCqhQXUMW4E1WLmy0hSNAqmvy__LCNU8GGSjdZYjK5Oqi2Lw_ka1Rqk1fJ29-PChPMoXHCspOpMMp0cNw7w_OdWZhNFEK5Lxm6-Ugn9EJk4ZobszwQD2XAT4chlqa7IZRM?authuser=0&fife=s16383" height="200" width="auto" /><br><br>description: Watch your step! Fight for survival atop the towers of doom, where dizzying heights and relentless undead make a deadly combination.<br>Link: https://callofdutymaps.com/zombies/die-rise]]></description>
+      <styleUrl>#icon-seq2-0-13-880E4F-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="description">
+          <value>Watch your step! Fight for survival atop the towers of doom, where dizzying heights and relentless undead make a deadly combination.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/zombies/die-rise</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5DfZw_foZcTQr4vZLN1Pnp-Bd8YL6S6anGG2LBdGlb6Mg1yMgllbD_S-HAXiolfNxfNqgYK_B1fDwo4N6hAix9S23T-m9zj0w5ZDf5jFBIMHxgnrwvgHXmSBCqhQXUMW4E1WLmy0hSNAqmvy__LCNU8GGSjdZYjK5Oqi2Lw_ka1Rqk1fJ29-PChPMoXHCspOpMMp0cNw7w_OdWZhNFEK5Lxm6-Ugn9EJk4ZobszwQD2XAT4chlqa7IZRM?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          104.195397,35.86166,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Mob of the Dead</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5umdFTbDDcERhckR9tpVBonv4pMTl4oZfOQIzaxuIJexUOk8tvfwhM_ayjwpXEHCTr2QzC4G8h399ss573nSjWYrXAqZe2kzxO8QsEajCo7VvHUdeGOoyty8PTWN_kw1Q43guAh-jrQ1EpDuc5TlFYlA1_6fvrFScgZx_UEUpmHjjFnC1M6owOk_-rE-UdcVY5Wujhfsa38Q7G-kdjk3_XDXlAOLfKgJcNEklq1d-_Pic6JTLV2PJ4Gr0?authuser=0&fife=s16383" height="200" width="auto" /><br><br>description: Battle the undead as you attempt to break free from the physical and metaphorical incarceration of Alcatraz Prison.<br>Link: https://callofdutymaps.com/zombies/mob-of-the-dead]]></description>
+      <styleUrl>#icon-seq2-0-14-880E4F-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="description">
+          <value>Battle the undead as you attempt to break free from the physical and metaphorical incarceration of Alcatraz Prison.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/zombies/mob-of-the-dead</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5umdFTbDDcERhckR9tpVBonv4pMTl4oZfOQIzaxuIJexUOk8tvfwhM_ayjwpXEHCTr2QzC4G8h399ss573nSjWYrXAqZe2kzxO8QsEajCo7VvHUdeGOoyty8PTWN_kw1Q43guAh-jrQ1EpDuc5TlFYlA1_6fvrFScgZx_UEUpmHjjFnC1M6owOk_-rE-UdcVY5Wujhfsa38Q7G-kdjk3_XDXlAOLfKgJcNEklq1d-_Pic6JTLV2PJ4Gr0?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -122.4229555,37.8269775,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Buried</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR677zNLiGZt0ATLPpd97Yy5HJVp9ydhzALxyT7_k6-heDv51yCrfbeDTP6UgVKMo1RDaNP8b69N_frQvWAReK-Um6zq_6HKoPScn-dYt8uxMk9_4fWZNSxBqvdJfxJNM-_rn70KMn9Am7Xk9vXE7nn7NmcO2cvuIdRbddwuulYMHrDCMFxZyK5eiHLFM3yQCJVvs1MpyFj5UptLjVwPc6pcJUeWgTbVEi7nIjv3sD49wRYvsfaE0K_iu9o?authuser=0&fife=s16383" height="200" width="auto" /><br><br>description: Are you afraid of dark, tight spaces? Confront your deepest fears as you battle the undead in an underground obstacle course of mental challenges. You are now… ‘Buried’.<br>Link: https://callofdutymaps.com/zombies/buried]]></description>
+      <styleUrl>#icon-seq2-0-15-880E4F-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="description">
+          <value>Are you afraid of dark, tight spaces? Confront your deepest fears as you battle the undead in an underground obstacle course of mental challenges. You are now… ‘Buried’.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/zombies/buried</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR677zNLiGZt0ATLPpd97Yy5HJVp9ydhzALxyT7_k6-heDv51yCrfbeDTP6UgVKMo1RDaNP8b69N_frQvWAReK-Um6zq_6HKoPScn-dYt8uxMk9_4fWZNSxBqvdJfxJNM-_rn70KMn9Am7Xk9vXE7nn7NmcO2cvuIdRbddwuulYMHrDCMFxZyK5eiHLFM3yQCJVvs1MpyFj5UptLjVwPc6pcJUeWgTbVEi7nIjv3sD49wRYvsfaE0K_iu9o?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          17.873887,-11.202692,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Origins</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5djl6UtQw6dnBYiLW7uz4TXaTrujfIgYR1lCt1e2uJlyeMKJEsSkEImSy5HI-iuvbQgLDkyyH8Y-4xb_TXIlwHlYk-jMpjXAIr6GV1HzCmdDRKVHHf_mlahD8p9kU1lhaE3AihPaRu4fK82I94uStbEtvLuN420xI9Avde7KbceDMdBj84k-bK-w7Euo2VD3eMWfWE8WZjVcHpKKUCWnD_3vqI3uU8gn9UlIOojBRFD0_9tsWDcMO_2VY?authuser=0&fife=s16383" height="200" width="auto" /><br><br>description: Witness the origins of Group 935, as an ancient evil is unleashed upon the battlefields of World War I.<br>Link: https://callofdutymaps.com/zombies/origins]]></description>
+      <styleUrl>#icon-seq2-0-16-880E4F-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="description">
+          <value>Witness the origins of Group 935, as an ancient evil is unleashed upon the battlefields of World War I.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/zombies/origins</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5djl6UtQw6dnBYiLW7uz4TXaTrujfIgYR1lCt1e2uJlyeMKJEsSkEImSy5HI-iuvbQgLDkyyH8Y-4xb_TXIlwHlYk-jMpjXAIr6GV1HzCmdDRKVHHf_mlahD8p9kU1lhaE3AihPaRu4fK82I94uStbEtvLuN420xI9Avde7KbceDMdBj84k-bK-w7Euo2VD3eMWfWE8WZjVcHpKKUCWnD_3vqI3uU8gn9UlIOojBRFD0_9tsWDcMO_2VY?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          2.213749,46.227638,0
+        </coordinates>
+      </Point>
+    </Placemark>
+  </Document>
+</kml>
