@@ -4,6 +4,9 @@ title: Saint-Lô
 games:
   - cod3
 mode: singleplayer
+campaign:
+  id: "1"
+  label: Prologue
 wikiArticle: codwiki-saint-lo-level
 locations:
   - id: main

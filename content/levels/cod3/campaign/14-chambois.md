@@ -1,10 +1,13 @@
 ---
-id: cod3-the-island
-title: The Island
+id: cod3-chambois
+title: Chambois
 games:
   - cod3
 mode: singleplayer
-wikiArticle: codwiki-the-island
+campaign:
+  id: "4"
+  label: Act 3
+wikiArticle: codwiki-chambois-level
 locations:
   - id: main
     country: France

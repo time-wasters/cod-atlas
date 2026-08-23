@@ -4,6 +4,9 @@ title: Laison River
 games:
   - cod3
 mode: singleplayer
+campaign:
+  id: "3"
+  label: Act 2
 wikiArticle: codwiki-laison-river
 locations:
   - id: main

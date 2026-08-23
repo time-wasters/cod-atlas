@@ -4,6 +4,9 @@ title: The Corridor of Death
 games:
   - cod3
 mode: singleplayer
+campaign:
+  id: "4"
+  label: Act 3
 wikiArticle: codwiki-the-corridor-of-death
 locations:
   - id: main

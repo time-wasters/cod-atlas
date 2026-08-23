@@ -1,10 +1,13 @@
 ---
-id: cod3-the-forest
-title: The Forest
+id: cod3-the-black-baron
+title: The Black Baron
 games:
   - cod3
 mode: singleplayer
-wikiArticle: codwiki-the-forest
+campaign:
+  id: "3"
+  label: Act 2
+wikiArticle: codwiki-the-black-baron-level
 locations:
   - id: main
     country: France

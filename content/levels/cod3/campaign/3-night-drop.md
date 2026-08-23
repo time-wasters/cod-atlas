@@ -1,10 +1,13 @@
 ---
-id: cod3-the-black-baron
-title: The Black Baron
+id: cod3-night-drop
+title: Night Drop
 games:
   - cod3
 mode: singleplayer
-wikiArticle: codwiki-the-black-baron-level
+campaign:
+  id: "2"
+  label: Act 1
+wikiArticle: codwiki-night-drop
 locations:
   - id: main
     country: France
