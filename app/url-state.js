@@ -2,7 +2,7 @@ const atlasUrlParameters = [
   "q",
   "game",
   "country",
-  "category",
+  "series",
   "continent",
   "precision",
   "confidence",
@@ -17,7 +17,7 @@ const atlasUrlParameters = [
  * @property {string} query
  * @property {string} gameId
  * @property {string} country
- * @property {string[]} categories
+ * @property {string[]} series
  * @property {string[]} continents
  * @property {string[]} precisions
  * @property {string[]} confidences
@@ -44,7 +44,7 @@ export function parseAtlasUrl(input) {
     query: url.searchParams.get("q") ?? "",
     gameId: url.searchParams.get("game") || "all",
     country: url.searchParams.get("country") || "all",
-    categories: values("category"),
+    series: values("series"),
     continents: values("continent"),
     precisions,
     confidences: values("confidence"),
@@ -70,7 +70,7 @@ export function atlasUrlWithState(input, state) {
   const setValues = (name, values) => {
     if (values.length) url.searchParams.set(name, [...values].sort().join(","));
   };
-  setValues("category", state.categories);
+  setValues("series", state.series);
   setValues("continent", state.continents);
   setValues("precision", state.precisions);
   setValues("confidence", state.confidences);

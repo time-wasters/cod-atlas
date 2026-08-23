@@ -3,7 +3,7 @@ code: COD4
 label: Modern Warfare (2007)
 labelLong: "Call of Duty 4: Modern Warfare"
 released: 2007-11-05
-category: modern-warfare
+series: modern-warfare
 images:
   steam:
     app: 7940

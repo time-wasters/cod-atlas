@@ -3,7 +3,7 @@ code: MWII
 label: Modern Warfare II (2022)
 labelLong: "Call of Duty: Modern Warfare II [2022]"
 released: 2022-10-28
-category: modern-warfare
+series: modern-warfare
 images:
   steam:
     app: 3595230

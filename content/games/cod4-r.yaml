@@ -3,7 +3,7 @@ code: COD4:R
 label: Modern Warfare Remastered
 labelLong: "Call of Duty: Modern Warfare Remastered"
 released: 2016-11-04
-category: modern-warfare
+series: modern-warfare
 images:
   steam:
     app: 393080

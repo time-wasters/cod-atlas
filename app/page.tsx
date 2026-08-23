@@ -126,7 +126,7 @@ type Game = {
   code: string;
   label: string;
   released: string;
-  category: "world-war" | "modern-warfare" | "black-ops" | "standalone";
+  series: "world-war" | "modern-warfare" | "black-ops" | "standalone";
   icon?: string;
 };
 type FilterOption = { value: string; label: string; disabled?: boolean; note?: string };
@@ -137,7 +137,7 @@ type FilterHoverDetail = {
   games: { label: string; year: string }[];
 };
 type AdvancedFilterGroupId =
-  | "game-category"
+  | "game-series"
   | "continent"
   | "precision"
   | "confidence"
@@ -218,28 +218,28 @@ const gamesById = new Map(data.games.map((game) => [game.id, game]));
 const gamesByCode = new Map(data.games.map((game) => [game.code, game]));
 const countryNames = new Set(data.groups.map((group) => group.name));
 const selections = data.groups.flatMap((group) => group.entries.map((entry) => ({ group, entry })));
-const gameCategoryOptions: FilterOption[] = [
+const gameSeriesOptions: FilterOption[] = [
   { value: "world-war", label: "World War" },
   { value: "modern-warfare", label: "Modern Warfare" },
   { value: "black-ops", label: "Black Ops" },
   { value: "standalone", label: "Standalone" },
 ];
-const gameCategoryDescriptions: Record<Game["category"], string> = {
+const gameSeriesDescriptions: Record<Game["series"], string> = {
   "world-war": "Games centered on the World Wars and related twentieth-century conflicts.",
   "modern-warfare": "Games and spin-offs connected to the Modern Warfare series and its reimagined continuity.",
   "black-ops": "Games in the Black Ops series, including its Cold War stories and related spin-offs.",
   standalone: "Games outside the World War, Modern Warfare, and Black Ops branches, with their own settings and continuities.",
 };
-const gameCategoryDetails = new Map<string, FilterHoverDetail>(gameCategoryOptions.map((option) => {
-  const category = option.value as Game["category"];
+const gameSeriesDetails = new Map<string, FilterHoverDetail>(gameSeriesOptions.map((option) => {
+  const series = option.value as Game["series"];
   const games = data.games
-    .filter((game) => game.category === category)
+    .filter((game) => game.series === series)
     .sort((left, right) => left.released.localeCompare(right.released));
   const firstYear = games[0]?.released.slice(0, 4) ?? "Unknown";
   const lastYear = games.at(-1)?.released.slice(0, 4) ?? firstYear;
   return [option.value, {
     label: option.label,
-    description: gameCategoryDescriptions[category],
+    description: gameSeriesDescriptions[series],
     years: firstYear === lastYear ? firstYear : `${firstYear}\u2013${lastYear}`,
     games: games.map((game) => ({ label: game.label, year: game.released.slice(0, 4) })),
   }];
@@ -284,7 +284,7 @@ const methodOptions: FilterOption[] = [
   { value: "country-fallback", label: "Country fallback" },
 ];
 const valuesFor = (options: FilterOption[]) => new Set(options.map((option) => option.value));
-const gameCategoryValues = valuesFor(gameCategoryOptions);
+const gameSeriesValues = valuesFor(gameSeriesOptions);
 const continentValues = valuesFor(continentOptions);
 const precisionValues = valuesFor(precisionOptions);
 const confidenceValues = valuesFor(confidenceOptions);
@@ -1011,7 +1011,7 @@ export default function Home() {
   const [query, setQuery] = useState("");
   const [game, setGame] = useState("all");
   const [country, setCountry] = useState("all");
-  const [gameCategories, setGameCategories] = useState<Set<string>>(() => new Set());
+  const [gameSeries, setGameSeries] = useState<Set<string>>(() => new Set());
   const [continents, setContinents] = useState<Set<string>>(() => new Set());
   const [precisions, setPrecisions] = useState<Set<string>>(() => new Set());
   const [confidences, setConfidences] = useState<Set<string>>(() => new Set());
@@ -1116,7 +1116,7 @@ export default function Home() {
       setQuery(urlState.query);
       setGame(requestedGame?.code ?? "all");
       setCountry(countryNames.has(urlState.country) ? urlState.country : "all");
-      setGameCategories(new Set(urlState.categories.filter((value) => gameCategoryValues.has(value))));
+      setGameSeries(new Set(urlState.series.filter((value) => gameSeriesValues.has(value))));
       setContinents(new Set(urlState.continents.filter((value) => continentValues.has(value))));
       setPrecisions(new Set(urlState.precisions.filter((value) => precisionValues.has(value))));
       setConfidences(new Set(urlState.confidences.filter((value) => confidenceValues.has(value))));
@@ -1143,7 +1143,7 @@ export default function Home() {
       query,
       gameId: gamesByCode.get(game)?.id ?? "all",
       country,
-      categories: [...gameCategories],
+      series: [...gameSeries],
       continents: [...continents],
       precisions: [...precisions],
       confidences: [...confidences],
@@ -1165,7 +1165,7 @@ export default function Home() {
     confidences,
     continents,
     game,
-    gameCategories,
+    gameSeries,
     methods,
     precisions,
     query,
@@ -1195,9 +1195,9 @@ export default function Home() {
   }, [externalIconManifest, externalIconManifestUnavailable, externalIconsEnabled]);
   const matchesStructuredFilters = useCallback((entry: Entry) => {
     const matchesGame = game === "all" || entry.game.split(" / ").includes(game);
-    const matchesCategory = gameCategories.size === 0 || entry.gameIds.some((gameId) => {
+    const matchesSeries = gameSeries.size === 0 || entry.gameIds.some((gameId) => {
       const entryGame = gamesById.get(gameId);
-      return entryGame ? gameCategories.has(entryGame.category) : false;
+      return entryGame ? gameSeries.has(entryGame.series) : false;
     });
     const matchesPrecision = precisions.size === 0 || precisions.has(entry.precision);
     const matchesConfidence = confidences.size === 0
@@ -1207,12 +1207,12 @@ export default function Home() {
       (showSingleplayer && entry.modes.includes("singleplayer"))
       || (showMultiplayer && entry.modes.includes("multiplayer"));
     return matchesGame
-      && matchesCategory
+      && matchesSeries
       && matchesPrecision
       && matchesConfidence
       && matchesMethod
       && matchesMode;
-  }, [confidences, game, gameCategories, methods, precisions, showMultiplayer, showSingleplayer]);
+  }, [confidences, game, gameSeries, methods, precisions, showMultiplayer, showSingleplayer]);
   const countries = useMemo(
     () => groups
       .map(({ name, flagCode, continent, entries }) => ({
@@ -1303,7 +1303,7 @@ export default function Home() {
     }));
   }, [filtered]);
   const resultCount = filtered.reduce((sum, group) => sum + group.entries.length, 0);
-  const advancedFilterCount = gameCategories.size
+  const advancedFilterCount = gameSeries.size
     + continents.size
     + precisions.size
     + confidences.size
@@ -1313,7 +1313,7 @@ export default function Home() {
   }, []);
   const resetAdvancedFilters = useCallback(() => {
     urlHistoryMode.current = "push";
-    setGameCategories(new Set());
+    setGameSeries(new Set());
     setContinents(new Set());
     setPrecisions(new Set());
     setConfidences(new Set());
@@ -1984,20 +1984,20 @@ export default function Home() {
 
             <div className="advanced-filters-scroll">
               <AdvancedFilterDropdown
-                id="game-category"
-                title="Sub-series"
-                options={gameCategoryOptions}
-                selected={gameCategories}
-                open={openAdvancedFilterDropdown === "game-category"}
-                hoverDetails={gameCategoryDetails}
-                onOpenChange={(open) => setAdvancedFilterDropdownOpen("game-category", open)}
+                id="game-series"
+                title="Series"
+                options={gameSeriesOptions}
+                selected={gameSeries}
+                open={openAdvancedFilterDropdown === "game-series"}
+                hoverDetails={gameSeriesDetails}
+                onOpenChange={(open) => setAdvancedFilterDropdownOpen("game-series", open)}
                 onToggle={(value) => {
                   urlHistoryMode.current = "push";
-                  setGameCategories((current) => toggledFilterValue(current, value));
+                  setGameSeries((current) => toggledFilterValue(current, value));
                 }}
                 onClear={() => {
                   urlHistoryMode.current = "push";
-                  setGameCategories(new Set());
+                  setGameSeries(new Set());
                 }}
               />
               <AdvancedFilterDropdown

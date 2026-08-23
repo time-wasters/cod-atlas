@@ -3,7 +3,7 @@ code: MW4
 label: Modern Warfare 4
 labelLong: "Call of Duty: Modern Warfare 4"
 released: 2026-10-23
-category: modern-warfare
+series: modern-warfare
 images:
   steam:
     app: 4435490

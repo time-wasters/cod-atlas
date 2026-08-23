@@ -46,8 +46,8 @@ filesystem metadata only: do not add it to the stable level `id` or title.
 
 ## Game fields
 
-Every game record requires `id`, `code`, `label`, `released`, and `category`.
-Categories are `world-war`, `modern-warfare`, `black-ops`, or `standalone`.
+Every game record requires `id`, `code`, `label`, `released`, and `series`.
+Series values are `world-war`, `modern-warfare`, `black-ops`, or `standalone`.
 Optional image-provider metadata follows the existing game records.
 
 ## Level fields

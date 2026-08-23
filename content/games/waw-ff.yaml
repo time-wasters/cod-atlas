@@ -3,7 +3,7 @@ code: WAW:FF
 label: "World at War: Final Fronts"
 labelLong: "Call of Duty: World at War – Final Fronts"
 released: 2008-11-11
-category: world-war
+series: world-war
 images:
   steamgriddb:
     game: 5252157

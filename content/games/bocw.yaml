@@ -3,7 +3,7 @@ code: BOCW
 label: Black Ops Cold War
 labelLong: "Call of Duty: Black Ops Cold War"
 released: 2020-11-13
-category: black-ops
+series: black-ops
 images:
   steam:
     app: 1985810

@@ -10,7 +10,7 @@ sites they depict, adapt, or draw inspiration from.
 ## Explore the geography of the series
 
 Browse the atlas on the map or search for a mission, multiplayer map, country,
-or place. Results can be filtered by game, country, franchise category,
+or place. Results can be filtered by game, country, series,
 continent, mode, precision, confidence, and location method. Filters and
 the selected level are stored in the URL, so a view can be shared and revisited
 with the browser's Back and Forward buttons.

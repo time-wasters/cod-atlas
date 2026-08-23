@@ -3,7 +3,7 @@ code: MW2
 label: Modern Warfare 2 (2009)
 labelLong: "Call of Duty: Modern Warfare 2"
 released: 2009-11-10
-category: modern-warfare
+series: modern-warfare
 images:
   steam:
     app: 10180

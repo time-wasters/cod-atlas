@@ -14,7 +14,7 @@ erDiagram
 ```
 
 - `content/games/*.yaml` supplies stable game IDs, readable labels, codes,
-  release dates, and franchise categories.
+  release dates, and series classifications.
 - `content/levels/**/*.md` is the curated source for level classification,
   coordinates, precision, and notes.
 - `content/wiki-import/articles/*.json` stores repeatable Wiki-import results
@@ -28,7 +28,7 @@ id: cod3
 code: COD3
 label: CoD 3
 released: 2006-11-07
-category: world-war
+series: world-war
 ```
 
 The release date controls the game-filter ordering. Labels should be concise
@@ -37,7 +37,7 @@ optional `public/images/games/<game-id>.png` is detected during the build and
 exposed as the game's `icon`; games without one continue to display their
 label.
 
-Game categories are `world-war`, `modern-warfare`, `black-ops`, and
+Game series values are `world-war`, `modern-warfare`, `black-ops`, and
 `standalone`.
 
 The generated country groups include a `continent` used by the advanced

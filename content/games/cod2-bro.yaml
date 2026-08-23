@@ -3,7 +3,7 @@ code: BR1
 label: "Call of Duty 2: Big Red One"
 labelLong: "Call of Duty 2: Big Red One"
 released: 2005-11-01
-category: world-war
+series: world-war
 images:
   steamgriddb:
     game: 5252158

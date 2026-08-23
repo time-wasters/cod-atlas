@@ -20,7 +20,7 @@ const mapTypeDirectoryByMode = new Map([
 ]);
 const validPrecisions = new Set(["exact", "approximate", "city", "region", "country", "off-world"]);
 const validConfidences = new Set(["high", "medium", "fallback"]);
-const validGameCategories = new Set(["world-war", "modern-warfare", "black-ops", "standalone"]);
+const validGameSeries = new Set(["world-war", "modern-warfare", "black-ops", "standalone"]);
 const validMethods = new Set([
   "verified-landmark",
   "real-world-inspiration",
@@ -260,7 +260,7 @@ for (const filename of gameFiles) {
   requireValue(game?.id, `${filename}: game id is required`);
   requireValue(!games.has(game.id), `${filename}: duplicate game id ${game.id}`);
   requireValue(game.code && game.label && game.released, `${filename}: code, label and released are required`);
-  requireValue(validGameCategories.has(game.category), `${filename}: unsupported game category ${game.category}`);
+  requireValue(validGameSeries.has(game.series), `${filename}: unsupported game series ${game.series}`);
   games.set(game.id, game);
 }
 

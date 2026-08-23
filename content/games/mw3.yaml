@@ -3,7 +3,7 @@ code: MW3
 label: Modern Warfare 3 (2011)
 labelLong: "Call of Duty: Modern Warfare 3"
 released: 2011-11-08
-category: modern-warfare
+series: modern-warfare
 images:
   steam:
     app: 42680
