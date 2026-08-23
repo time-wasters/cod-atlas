@@ -3,6 +3,7 @@
 import type { Map as LeafletMap, Marker as LeafletMarker, MarkerClusterGroup } from "leaflet";
 import * as Select from "@radix-ui/react-select";
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
+import { createPortal } from "react-dom";
 import ReactMarkdown from "react-markdown";
 import atlasSource from "./data/atlas.generated.json";
 import historyOverlaysSource from "./data/history-overlays.generated.json";
@@ -114,6 +115,12 @@ type Game = {
   icon?: string;
 };
 type FilterOption = { value: string; label: string; disabled?: boolean; note?: string };
+type EraFilterDetail = {
+  label: string;
+  description: string;
+  years: string;
+  games: { label: string; year: string }[];
+};
 type AdvancedFilterGroupId =
   | "game-category"
   | "era"
@@ -210,6 +217,27 @@ const gameEraOptions: FilterOption[] = [
   { value: "reboot", label: "Reboot" },
   { value: "live-service", label: "Live-Service" },
 ];
+const gameEraDescriptions: Record<Game["era"], string> = {
+  classic: "The early releases that established Call of Duty, led by the original World War II games and their spin-offs.",
+  golden: "The run that established the modern Call of Duty formula and the original Modern Warfare and Black Ops series.",
+  "sci-fi": "The experimental period focused on near-future, futuristic, and space-based settings.",
+  reboot: "The transition period that returned to historical combat and rebooted Modern Warfare.",
+  "live-service": "The connected era shaped by seasonal releases, Warzone, and ongoing live content.",
+};
+const gameEraDetails = new Map<string, EraFilterDetail>(gameEraOptions.map((option) => {
+  const era = option.value as Game["era"];
+  const games = data.games
+    .filter((game) => game.era === era)
+    .sort((left, right) => left.released.localeCompare(right.released));
+  const firstYear = games[0]?.released.slice(0, 4) ?? "Unknown";
+  const lastYear = games.at(-1)?.released.slice(0, 4) ?? firstYear;
+  return [option.value, {
+    label: option.label,
+    description: gameEraDescriptions[era],
+    years: firstYear === lastYear ? firstYear : `${firstYear}\u2013${lastYear}`,
+    games: games.map((game) => ({ label: game.label, year: game.released.slice(0, 4) })),
+  }];
+}));
 const continentOrder = [
   "Africa",
   "Antarctica",
@@ -584,6 +612,7 @@ function AdvancedFilterDropdown({
   selected,
   open,
   emptyLabel = "Any",
+  hoverDetails,
   onOpenChange,
   onToggle,
   onClear,
@@ -594,6 +623,7 @@ function AdvancedFilterDropdown({
   selected: Set<string>;
   open: boolean;
   emptyLabel?: string;
+  hoverDetails?: ReadonlyMap<string, EraFilterDetail>;
   onOpenChange: (open: boolean) => void;
   onToggle: (value: string) => void;
   onClear: () => void;
@@ -601,20 +631,52 @@ function AdvancedFilterDropdown({
   const menuId = `advanced-filter-${id}`;
   const labelId = `${menuId}-label`;
   const dropdown = useRef<HTMLElement>(null);
+  const [hoveredOption, setHoveredOption] = useState<string | null>(null);
+  const [hoverCardPosition, setHoverCardPosition] = useState({ top: 8, left: 8, side: "right" as "left" | "right" });
   const selectedOptions = options.filter((option) => selected.has(option.value));
   const summary = selectedOptions.length === 0
     ? emptyLabel
     : selectedOptions.length === 1
       ? selectedOptions[0].label
       : `${selectedOptions.length} selected`;
+  const hoveredDetail = hoveredOption ? hoverDetails?.get(hoveredOption) ?? null : null;
+
+  const showHoverDetail = (value: string) => {
+    if (!hoverDetails?.has(value) || !dropdown.current) return;
+    const rect = dropdown.current.getBoundingClientRect();
+    const width = 300;
+    const gap = 9;
+    const margin = 8;
+    const fitsRight = rect.right + gap + width <= window.innerWidth - margin;
+    const fitsLeft = rect.left - gap - width >= margin;
+    const side = fitsRight || !fitsLeft ? "right" : "left";
+    const preferredLeft = side === "right" ? rect.right + gap : rect.left - gap - width;
+    setHoverCardPosition({
+      top: Math.min(Math.max(margin, rect.top), Math.max(margin, window.innerHeight - 420)),
+      left: Math.min(Math.max(margin, preferredLeft), Math.max(margin, window.innerWidth - width - margin)),
+      side,
+    });
+    setHoveredOption(value);
+  };
+
+  const requestOpenChange = (nextOpen: boolean) => {
+    if (!nextOpen) setHoveredOption(null);
+    onOpenChange(nextOpen);
+  };
 
   useEffect(() => {
     if (!open) return;
     const closeOnOutsidePointer = (event: PointerEvent) => {
-      if (!dropdown.current?.contains(event.target as Node)) onOpenChange(false);
+      if (!dropdown.current?.contains(event.target as Node)) {
+        setHoveredOption(null);
+        onOpenChange(false);
+      }
     };
     const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") onOpenChange(false);
+      if (event.key === "Escape") {
+        setHoveredOption(null);
+        onOpenChange(false);
+      }
     };
     document.addEventListener("pointerdown", closeOnOutsidePointer);
     document.addEventListener("keydown", closeOnEscape);
@@ -632,7 +694,7 @@ function AdvancedFilterDropdown({
         type="button"
         aria-expanded={open}
         aria-controls={menuId}
-        onClick={() => onOpenChange(!open)}
+        onClick={() => requestOpenChange(!open)}
       >
         <span>{summary}</span>
         {selected.size > 0 && <small>{selected.size}</small>}
@@ -644,9 +706,20 @@ function AdvancedFilterDropdown({
             <span>Select one or more</span>
             <button type="button" disabled={selected.size === 0} onClick={onClear}>Clear</button>
           </div>
-          <div className="advanced-filter-checkboxes">
+          <div
+            className="advanced-filter-checkboxes"
+            onPointerLeave={() => setHoveredOption(null)}
+            onScroll={() => setHoveredOption(null)}
+          >
             {options.map((option) => (
-              <label className={option.disabled ? "is-disabled" : ""} key={option.value}>
+              <label
+                className={option.disabled ? "is-disabled" : ""}
+                key={option.value}
+                aria-describedby={hoveredOption === option.value ? `${menuId}-hover-detail` : undefined}
+                onPointerEnter={() => showHoverDetail(option.value)}
+                onFocus={() => showHoverDetail(option.value)}
+                onBlur={() => setHoveredOption(null)}
+              >
                 <input
                   type="checkbox"
                   checked={selected.has(option.value)}
@@ -659,6 +732,33 @@ function AdvancedFilterDropdown({
             ))}
           </div>
         </div>
+      )}
+      {open && hoveredDetail && typeof document !== "undefined" && createPortal(
+        <aside
+          id={`${menuId}-hover-detail`}
+          className={`advanced-filter-era-info is-${hoverCardPosition.side}`}
+          style={{ top: hoverCardPosition.top, left: hoverCardPosition.left }}
+          role="tooltip"
+        >
+          <header>
+            <span>Era</span>
+            <h4>{hoveredDetail.label}</h4>
+          </header>
+          <p>{hoveredDetail.description}</p>
+          <dl>
+            <div>
+              <dt>Years</dt>
+              <dd>{hoveredDetail.years}</dd>
+            </div>
+          </dl>
+          <strong>Included games</strong>
+          <ul>
+            {hoveredDetail.games.map((game) => (
+              <li key={`${game.year}-${game.label}`}><time>{game.year}</time><span>{game.label}</span></li>
+            ))}
+          </ul>
+        </aside>,
+        document.body,
       )}
     </section>
   );
@@ -1883,6 +1983,7 @@ export default function Home() {
                 options={gameEraOptions}
                 selected={gameEras}
                 open={openAdvancedFilterDropdown === "era"}
+                hoverDetails={gameEraDetails}
                 onOpenChange={(open) => setAdvancedFilterDropdownOpen("era", open)}
                 onToggle={(value) => {
                   urlHistoryMode.current = "push";
