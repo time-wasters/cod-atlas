@@ -1,0 +1,101 @@
+{
+  "id": "codwiki-frozen-tundra",
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Frozen_Tundra",
+  "mapStyle": "singleplayer",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas; verify against the Wiki during the next import.",
+  "fandomPageId": 735661,
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Frozen_Tundra",
+  "latestRevisionId": 3017432,
+  "importedAt": "2026-08-23T23:04:32.869Z",
+  "levelLocation": {
+    "raw": "{{w|Taymyrsky Dolgano-Nenetsky District}}, {{w|Siberia}}, [[Russia]]",
+    "label": "Russia",
+    "url": "https://callofduty.fandom.com/wiki/Russia"
+  },
+  "previousLevels": {
+    "raw": "[[Highrise (level)|Highrise]]",
+    "label": "Highrise",
+    "links": [
+      {
+        "wikiTitle": "Highrise (level)",
+        "label": "Highrise",
+        "url": "https://callofduty.fandom.com/wiki/Highrise_(level)"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Gora Dam]]",
+    "label": "Gora Dam",
+    "links": [
+      {
+        "wikiTitle": "Gora Dam",
+        "label": "Gora Dam",
+        "url": "https://callofduty.fandom.com/wiki/Gora_Dam"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Modern Warfare III]]''",
+    "label": "Call of Duty: Modern Warfare III",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Modern Warfare III",
+        "label": "Call of Duty: Modern Warfare III",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Modern_Warfare_III"
+      }
+    ]
+  },
+  "date": {
+    "raw": "November 14, 2023 09H30",
+    "label": "November 14, 2023 09H30"
+  },
+  "images": {
+    "main": {
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/4/49/FrozenTundra_MenuScreen_MWIII.png/revision/latest?cb=20240428194701",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/4/49/FrozenTundra_MenuScreen_MWIII.png/revision/latest/scale-to-width-down/800?cb=20240428194701",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:FrozenTundra_MenuScreen_MWIII.png",
+      "author": {
+        "name": "Kalinine",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Kalinine",
+        "role": "uploader"
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+      }
+    },
+    "map": {
+      "sourceUrl": null,
+      "thumbnailUrl": null,
+      "detailPageUrl": null,
+      "author": {
+        "name": null,
+        "userUrl": null,
+        "role": null
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "unknown",
+        "notice": null,
+        "noticeUrl": null
+      }
+    }
+  },
+  "rawPayload": {
+    "revisionTimestamp": "2026-07-31T01:18:42Z",
+    "revisionSha1": "7b566a2048f6d0014abe8ab6fe936a8f59fd72c1",
+    "resolvedTitle": "Frozen Tundra",
+    "mainImageTitle": "File:FrozenTundra_MenuScreen_MWIII.png",
+    "mapImageTitle": null
+  }
+}

@@ -59,6 +59,7 @@ const specialContinents = new Map([
   ["Gulf of Mexico", "Oceans"],
   ["Indian Ocean", "Oceans"],
   ["Mars", "Off-world"],
+  ["Mediterranean Sea", "Oceans"],
   ["Moon", "Off-world"],
   ["Pacific Ocean", "Oceans"],
   ["Philippine Sea", "Oceans"],

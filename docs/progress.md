@@ -15,9 +15,9 @@ research from their canonical level.
 <!-- research-progress:start -->
 | Scope | Researched | Remaining |
 | --- | ---: | ---: |
-| All currently catalogued levels | 134 / 973 (14%) | 839 / 973 (86%) |
-| Campaign levels | 101 / 392 (26%) | 291 / 392 (74%) |
-| Multiplayer maps | 33 / 581 (6%) | 548 / 581 (94%) |
+| All currently catalogued levels | 134 / 1037 (13%) | 903 / 1037 (87%) |
+| Campaign levels | 101 / 406 (25%) | 305 / 406 (75%) |
+| Multiplayer maps | 33 / 631 (5%) | 598 / 631 (95%) |
 
 | Game | Campaign | Multiplayer | Overall |
 | --- | ---: | ---: | ---: |
@@ -33,7 +33,7 @@ research from their canonical level.
 | World at War: Final Fronts | 0 / 13 (0%) | — | 0 / 13 (0%) |
 | Modern Warfare 2 (2009) | 0 / 18 (0%) | 0 / 22 (0%) | 0 / 40 (0%) |
 | Black Ops | 0 / 15 (0%) | 1 / 31 (3%) | 1 / 46 (2%) |
-| Modern Warfare 3 (2011) | 0 / 18 (0%) | 0 / 38 (0%) | 0 / 56 (0%) |
+| Modern Warfare 3 (2011) | 0 / 18 (0%) | 0 / 39 (0%) | 0 / 57 (0%) |
 | MW3: Defiance | 0 / 14 (0%) | — | 0 / 14 (0%) |
 | Black Ops II | 0 / 17 (0%) | 0 / 36 (0%) | 0 / 53 (0%) |
 | Black Ops: Declassified | 0 / 10 (0%) | — | 0 / 10 (0%) |
@@ -48,8 +48,9 @@ research from their canonical level.
 | Warzone (2020) | — | 0 / 4 (0%) | 0 / 4 (0%) |
 | Black Ops Cold War | 0 / 13 (0%) | 0 / 38 (0%) | 0 / 51 (0%) |
 | Vanguard | 0 / 9 (0%) | 0 / 29 (0%) | 0 / 38 (0%) |
-| Modern Warfare II (2022) | 0 / 17 (0%) | 0 / 16 (0%) | 0 / 33 (0%) |
+| Modern Warfare II (2022) | 0 / 17 (0%) | 0 / 20 (0%) | 0 / 37 (0%) |
 | Warzone 2.0 | — | 0 / 3 (0%) | 0 / 3 (0%) |
+| Modern Warfare III (2023) | 0 / 14 (0%) | 0 / 45 (0%) | 0 / 59 (0%) |
 <!-- research-progress:end -->
 
 ## Geographic localization progress
@@ -65,17 +66,17 @@ The per-game table assigns each marker to its canonical level's owner game.
 <!-- localization-progress:start -->
 | Scope | Localized | Country fallback | Off-world |
 | --- | ---: | ---: | ---: |
-| All marker locations | 263 / 963 (27%) | 700 / 963 (73%) | 30 |
-| Campaign marker locations | 118 / 390 (30%) | 272 / 390 (70%) | 17 |
-| Multiplayer marker locations | 145 / 573 (25%) | 428 / 573 (75%) | 13 |
+| All marker locations | 263 / 1023 (26%) | 760 / 1023 (74%) | 30 |
+| Campaign marker locations | 118 / 404 (29%) | 286 / 404 (71%) | 17 |
+| Multiplayer marker locations | 145 / 619 (23%) | 474 / 619 (77%) | 13 |
 
 | Precision | Marker locations | Share of all markers |
 | --- | ---: | ---: |
 | Exact | 70 | 7% |
 | Approximate | 113 | 11% |
-| City | 75 | 8% |
-| Region | 5 | 1% |
-| Country | 700 | 70% |
+| City | 75 | 7% |
+| Region | 5 | 0% |
+| Country | 760 | 72% |
 | Off-world | 30 | 3% |
 
 | Game | Campaign | Multiplayer | Overall |
@@ -107,6 +108,7 @@ The per-game table assigns each marker to its canonical level's owner game.
 | Warzone (2020) | — | 0 / 4 (0%) | 0 / 4 (0%) |
 | Black Ops Cold War | 2 / 14 (14%) | 2 / 38 (5%) | 4 / 52 (8%) |
 | Vanguard | 3 / 9 (33%) | 3 / 31 (10%) | 6 / 40 (15%) |
-| Modern Warfare II (2022) | 0 / 19 (0%) | 0 / 16 (0%) | 0 / 35 (0%) |
+| Modern Warfare II (2022) | 0 / 19 (0%) | 0 / 20 (0%) | 0 / 39 (0%) |
 | Warzone 2.0 | — | 0 / 3 (0%) | 0 / 3 (0%) |
+| Modern Warfare III (2023) | 0 / 14 (0%) | 0 / 42 (0%) | 0 / 56 (0%) |
 <!-- localization-progress:end -->
