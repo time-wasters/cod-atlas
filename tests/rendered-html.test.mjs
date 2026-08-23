@@ -108,6 +108,12 @@ test("renders development preview metadata", async () => {
   assert.match(html, />Solar System \/\/ Schematic<\/text>/);
   assert.match(html, />Mercury<\/text>/);
   assert.match(html, /class="advanced-filter-trigger"[^>]*aria-expanded="false"/);
+  const countryFilterIndex = html.indexOf('aria-label="Filter by country"');
+  const modeFilterIndex = html.indexOf('class="mode-filter"');
+  const advancedFilterIndex = html.indexOf('class="advanced-filter-trigger"');
+  assert.ok(countryFilterIndex < modeFilterIndex && modeFilterIndex < advancedFilterIndex);
+  assert.match(html, /class="mode-filter"[^>]*aria-label="Game mode visibility"/);
+  assert.match(html, /<button(?=[^>]*disabled="")(?=[^>]*title="Zombies filtering will be added later")[^>]*>/);
   assert.doesNotMatch(html, /class="precision-filter"/);
   assert.match(html, /role="tab"[^>]*aria-selected="true"[^>]*aria-controls="sidebar-locations"/);
   assert.match(html, /<button(?=[^>]*role="tab")(?=[^>]*aria-controls="sidebar-campaigns")(?=[^>]*disabled="")[^>]*>/);

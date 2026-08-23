@@ -141,7 +141,6 @@ type AdvancedFilterGroupId =
   | "game-category"
   | "era"
   | "continent"
-  | "mode"
   | "precision"
   | "confidence"
   | "method";
@@ -313,11 +312,6 @@ const methodOptions: FilterOption[] = [
   { value: "title-mention", label: "Title mention" },
   { value: "region-fallback", label: "Region fallback" },
   { value: "country-fallback", label: "Country fallback" },
-];
-const modeOptions: FilterOption[] = [
-  { value: "singleplayer", label: "Singleplayer" },
-  { value: "multiplayer", label: "Multiplayer" },
-  { value: "zombies", label: "Zombies", disabled: true, note: "Later" },
 ];
 const valuesFor = (options: FilterOption[]) => new Set(options.map((option) => option.value));
 const gameCategoryValues = valuesFor(gameCategoryOptions);
@@ -1354,12 +1348,7 @@ export default function Home() {
     + continents.size
     + precisions.size
     + confidences.size
-    + methods.size
-    + Number(!(showSingleplayer && !showMultiplayer));
-  const selectedModes = useMemo(() => new Set([
-    ...(showSingleplayer ? ["singleplayer"] : []),
-    ...(showMultiplayer ? ["multiplayer"] : []),
-  ]), [showMultiplayer, showSingleplayer]);
+    + methods.size;
   const setAdvancedFilterDropdownOpen = useCallback((id: AdvancedFilterGroupId, open: boolean) => {
     setOpenAdvancedFilterDropdown((current) => open ? id : current === id ? null : current);
   }, []);
@@ -1371,8 +1360,6 @@ export default function Home() {
     setPrecisions(new Set());
     setConfidences(new Set());
     setMethods(new Set());
-    setShowSingleplayer(true);
-    setShowMultiplayer(false);
   }, []);
   const spaceLocations = useMemo(
     () => filtered.flatMap((group) => group.entries
@@ -1979,6 +1966,34 @@ export default function Home() {
           </div>
         </div>
 
+        <div className="mode-filter" aria-label="Game mode visibility">
+          <button
+            className={showSingleplayer ? "is-active" : ""}
+            type="button"
+            aria-pressed={showSingleplayer}
+            onClick={() => {
+              urlHistoryMode.current = "push";
+              setShowSingleplayer((visible) => !visible);
+            }}
+          >
+            <span aria-hidden="true">{showSingleplayer ? "✓" : "○"}</span> Singleplayer
+          </button>
+          <button
+            className={showMultiplayer ? "is-active" : ""}
+            type="button"
+            aria-pressed={showMultiplayer}
+            onClick={() => {
+              urlHistoryMode.current = "push";
+              setShowMultiplayer((visible) => !visible);
+            }}
+          >
+            <span aria-hidden="true">{showMultiplayer ? "✓" : "○"}</span> Multiplayer
+          </button>
+          <button type="button" disabled aria-pressed="false" title="Zombies filtering will be added later">
+            <span aria-hidden="true">○</span> Zombies <small>Later</small>
+          </button>
+        </div>
+
         {advancedFiltersOpen ? (
           <section className="advanced-filters" aria-labelledby="advanced-filters-title">
             <header className="advanced-filters-header">
@@ -2058,26 +2073,6 @@ export default function Home() {
                 onClear={() => {
                   urlHistoryMode.current = "push";
                   setContinents(new Set());
-                }}
-              />
-
-              <AdvancedFilterDropdown
-                id="mode"
-                title="Mode"
-                options={modeOptions}
-                selected={selectedModes}
-                open={openAdvancedFilterDropdown === "mode"}
-                emptyLabel="None selected"
-                onOpenChange={(open) => setAdvancedFilterDropdownOpen("mode", open)}
-                onToggle={(value) => {
-                  urlHistoryMode.current = "push";
-                  if (value === "singleplayer") setShowSingleplayer((visible) => !visible);
-                  if (value === "multiplayer") setShowMultiplayer((visible) => !visible);
-                }}
-                onClear={() => {
-                  urlHistoryMode.current = "push";
-                  setShowSingleplayer(false);
-                  setShowMultiplayer(false);
                 }}
               />
 

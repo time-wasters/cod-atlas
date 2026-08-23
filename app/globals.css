@@ -201,12 +201,14 @@ input[type="checkbox"]:disabled:checked { background-color: #6e592e; filter: gra
 .advanced-filters-results strong { font-family: var(--font-geist-mono), monospace; }
 .advanced-filters-results:hover { filter: brightness(1.08); }
 
-.mode-filter { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.mode-filter { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
 .mode-filter button { min-height: 38px; border: 1px solid #48503d; border-radius: 4px; color: #777c6b; background: #11150f; font-size: 10px; font-weight: 700; letter-spacing: .04em; cursor: pointer; }
 .mode-filter button span { margin-right: 5px; color: #777c6b; }
+.mode-filter button small { display: block; margin-top: 2px; color: #555c51; font: 700 7px var(--font-geist-mono), monospace; letter-spacing: .08em; text-transform: uppercase; }
 .mode-filter button:hover { color: #e8e1cf; border-color: #6b735b; }
 .mode-filter button.is-active { color: #e8e1cf; border-color: var(--amber-dark); background: #2a2618; box-shadow: inset 3px 0 0 var(--amber); }
 .mode-filter button.is-active span { color: var(--amber); }
+.mode-filter button:disabled { border-color: #343a30; color: #50564b; background: #0e120d; cursor: not-allowed; }
 
 .result-panel { display: grid; grid-template-columns: 95px 1fr; gap: 16px; align-items: center; padding: 14px; border: 1px solid #48503d; border-radius: 5px; background: #171c15; }
 .result-panel > div:first-child { display: flex; flex-direction: column; border-right: 1px solid #555b46; }
