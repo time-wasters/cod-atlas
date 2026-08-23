@@ -154,8 +154,8 @@ test("preserves the complete statically compiled atlas", async () => {
     (entry) => entry.title === title && entry.game.split(" / ").includes(game),
   );
 
-  assert.equal(entries.length, 988);
-  assert.equal(atlas.totals.levels, 970);
+  assert.equal(entries.length, 991);
+  assert.equal(atlas.totals.levels, 971);
   assert.equal(findGroup("France").flagCode, "FR");
   assert.equal(findGroup("Turkey").flagCode, "TR");
   assert.equal(findGroup("United States").flagCode, "US");
@@ -193,6 +193,7 @@ test("preserves the complete statically compiled atlas", async () => {
   assert.equal(atlas.games.find((game) => game.id === "cod4").era, "golden");
   assert.equal(atlas.games.find((game) => game.id === "ghosts").era, "sci-fi");
   assert.equal(atlas.games.find((game) => game.id === "mw19").era, "reboot");
+  assert.equal(atlas.games.find((game) => game.id === "wz").code, "WZ");
   assert.equal(atlas.games.find((game) => game.id === "bo6").era, "live-service");
   assert.ok(atlas.games.every((game) => [
     "world-war",
@@ -230,7 +231,7 @@ test("preserves the complete statically compiled atlas", async () => {
   assert.ok(entries.every((entry) =>
     entry.modes.length === 1 && ["singleplayer", "multiplayer"].includes(entry.modes[0])));
   assert.ok(entries.every((entry) => typeof entry.hasLevelNotes === "boolean"));
-  assert.equal(entries.find((entry) => entry.levelId === "mw19-wz-fortune-s-keep").hasLevelNotes, false);
+  assert.equal(entries.find((entry) => entry.levelId === "wz-fortune-s-keep").hasLevelNotes, false);
   assert.equal(entries.find((entry) => entry.levelId === "cod-pavlov").hasLevelNotes, true);
 
   const expectedCod1MapLinks = new Map([
@@ -252,7 +253,8 @@ test("preserves the complete statically compiled atlas", async () => {
     ["cod-tigertown", "tigertown"],
   ]);
   const cod1MapEntries = entries.filter((entry) =>
-    entry.urls?.some((url) => url.callOfDutyMaps?.startsWith("https://callofdutymaps.com/call-of-duty-1/")));
+    entry.gameIds.includes("cod")
+    && entry.urls?.some((url) => url.callOfDutyMaps?.startsWith("https://callofdutymaps.com/call-of-duty-1/")));
   assert.deepEqual(
     cod1MapEntries.map((entry) => entry.levelId).sort(),
     [...expectedCod1MapLinks.keys()].sort(),
@@ -467,9 +469,9 @@ test("preserves the complete statically compiled atlas", async () => {
 
   const cod2Entries = entries.filter((entry) => entry.game.split(" / ").includes("COD2"));
   assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "singleplayer").length, 27);
-  assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "multiplayer").length, 21);
+  assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "multiplayer").length, 20);
   assert.equal(entries.filter((entry) => entry.modes[0] === "singleplayer").length, 407);
-  assert.equal(entries.filter((entry) => entry.modes[0] === "multiplayer").length, 581);
+  assert.equal(entries.filter((entry) => entry.modes[0] === "multiplayer").length, 584);
 });
 
 test("keeps calibrated game-map overlays in a separate generated store", async () => {

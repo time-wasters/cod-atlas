@@ -1,8 +1,8 @@
 ---
-id: mw19-wz-fortune-s-keep
+id: wz-fortune-s-keep
 title: Fortune's Keep
 games:
-  - mw19-wz
+  - wz
 mode: multiplayer
 wikiArticle: codwiki-fortune-s-keep
 locations:
