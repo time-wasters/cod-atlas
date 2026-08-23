@@ -194,6 +194,7 @@ test("preserves the complete statically compiled atlas", async () => {
   assert.equal(atlas.games.find((game) => game.id === "ghosts").era, "sci-fi");
   assert.equal(atlas.games.find((game) => game.id === "mw19").era, "reboot");
   assert.equal(atlas.games.find((game) => game.id === "wz").code, "WZ");
+  assert.equal(atlas.games.find((game) => game.id === "wz2").code, "WZ2");
   assert.equal(atlas.games.find((game) => game.id === "bo6").era, "live-service");
   assert.ok(atlas.games.every((game) => [
     "world-war",

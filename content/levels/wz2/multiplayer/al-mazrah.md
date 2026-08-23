@@ -1,8 +1,8 @@
 ---
-id: mwii-wz-al-mazrah
+id: wz2-al-mazrah
 title: Al Mazrah
 games:
-  - mwii-wz
+  - wz2
 mode: multiplayer
 wikiArticle: codwiki-al-mazrah
 locations:

@@ -60,9 +60,9 @@ content/levels/<appearance-game>/<level-slug>.ref.md
 content/levels/<appearance-game>/<map-type>/<level-slug>.ref.md
 ```
 
-A game must use one layout consistently. `cod`, `cod-uo`, `cod-fh`, and `cod2`
-use `campaign/` for records whose `mode` is `singleplayer` and `multiplayer/`
-for records whose `mode` is `multiplayer`. Games that have not been
+A game must use one layout consistently. `cod`, `cod-uo`, `cod-fh`, `cod2`,
+`wz`, and `wz2` use `campaign/` for records whose `mode` is `singleplayer` and
+`multiplayer/` for records whose `mode` is `multiplayer`. Games that have not been
 reorganized remain flat. Map types are broad content categories; they are
 distinct from multiplayer rule sets such as deathmatch or capture the flag.
 
