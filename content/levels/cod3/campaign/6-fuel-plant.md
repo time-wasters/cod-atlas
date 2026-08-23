@@ -1,10 +1,13 @@
 ---
-id: cod3-night-drop
-title: Night Drop
+id: cod3-fuel-plant
+title: Fuel Plant
 games:
   - cod3
 mode: singleplayer
-wikiArticle: codwiki-night-drop
+campaign:
+  id: "3"
+  label: Act 2
+wikiArticle: codwiki-fuel-plant-level
 locations:
   - id: main
     country: France

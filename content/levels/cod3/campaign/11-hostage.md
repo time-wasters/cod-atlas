@@ -1,10 +1,13 @@
 ---
-id: cod3-chambois
-title: Chambois
+id: cod3-hostage
+title: Hostage!
 games:
   - cod3
 mode: singleplayer
-wikiArticle: codwiki-chambois-level
+campaign:
+  id: "4"
+  label: Act 3
+wikiArticle: codwiki-hostage
 locations:
   - id: main
     country: France

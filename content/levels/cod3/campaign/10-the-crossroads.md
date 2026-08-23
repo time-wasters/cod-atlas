@@ -1,10 +1,13 @@
 ---
-id: cod3-hostage
-title: Hostage!
+id: cod3-the-crossroads
+title: The Crossroads
 games:
   - cod3
 mode: singleplayer
-wikiArticle: codwiki-hostage
+campaign:
+  id: "3"
+  label: Act 2
+wikiArticle: codwiki-the-crossroads-call-of-duty-3
 locations:
   - id: main
     country: France

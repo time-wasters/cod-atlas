@@ -4,6 +4,9 @@ title: The Mace
 games:
   - cod3
 mode: singleplayer
+campaign:
+  id: "4"
+  label: Act 3
 wikiArticle: codwiki-the-mace
 locations:
   - id: main

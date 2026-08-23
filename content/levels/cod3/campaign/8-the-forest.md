@@ -1,10 +1,13 @@
 ---
-id: cod3-fuel-plant
-title: Fuel Plant
+id: cod3-the-forest
+title: The Forest
 games:
   - cod3
 mode: singleplayer
-wikiArticle: codwiki-fuel-plant-level
+campaign:
+  id: "3"
+  label: Act 2
+wikiArticle: codwiki-the-forest
 locations:
   - id: main
     country: France

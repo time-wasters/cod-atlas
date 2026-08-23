@@ -4,6 +4,9 @@ title: Mayenne Bridge
 games:
   - cod3
 mode: singleplayer
+campaign:
+  id: "2"
+  label: Act 1
 wikiArticle: codwiki-mayenne-bridge
 locations:
   - id: main
