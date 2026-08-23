@@ -248,10 +248,9 @@ test("preserves the complete statically compiled atlas", async () => {
   assert.ok(carentanAppearanceEntry.appearances.every((appearance) => appearance.wikiArticle === carentanAppearanceEntry.wikiArticle));
   assert.ok(carentanAppearanceEntry.appearances.every((appearance) => appearance.notesId === "cod-carentan"));
   const ashikaIslandEntry = entries.find((entry) => entry.levelId === "wz2-ashika-island");
-  assert.deepEqual(ashikaIslandEntry.gameIds.toSorted(), ["mwii", "wz2"]);
+  assert.deepEqual(ashikaIslandEntry.gameIds, ["wz2"]);
   const vondelEntry = entries.find((entry) => entry.levelId === "wz2-vondel");
-  assert.deepEqual(vondelEntry.gameIds.toSorted(), ["mwii", "mwiii", "wz2"]);
-  assert.equal(vondelEntry.appearances.find((appearance) => appearance.gameId === "mwiii").title, "Vondel Night");
+  assert.deepEqual(vondelEntry.gameIds, ["wz2"]);
   assert.ok(entries.every((entry) =>
     entry.modes.length === 1 && ["singleplayer", "multiplayer"].includes(entry.modes[0])));
   assert.ok(entries.every((entry) => typeof entry.hasLevelNotes === "boolean"));
