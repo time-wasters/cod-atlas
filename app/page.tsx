@@ -113,17 +113,15 @@ type Game = {
   era: "classic" | "golden" | "sci-fi" | "reboot" | "live-service";
   icon?: string;
 };
-type FilterOption = { value: string; label: string };
-const advancedFilterGroupIds = [
-  "game-category",
-  "era",
-  "continent",
-  "mode",
-  "precision",
-  "confidence",
-  "method",
-] as const;
-type AdvancedFilterGroupId = (typeof advancedFilterGroupIds)[number];
+type FilterOption = { value: string; label: string; disabled?: boolean; note?: string };
+type AdvancedFilterGroupId =
+  | "game-category"
+  | "era"
+  | "continent"
+  | "mode"
+  | "precision"
+  | "confidence"
+  | "method";
 type ExternalIconManifest = Record<string, {
   icon?: { provider: "steam" | "steamgriddb"; path: string };
   clienticon?: { provider: "steam"; path: string };
@@ -250,6 +248,11 @@ const methodOptions: FilterOption[] = [
   { value: "title-mention", label: "Title mention" },
   { value: "region-fallback", label: "Region fallback" },
   { value: "country-fallback", label: "Country fallback" },
+];
+const modeOptions: FilterOption[] = [
+  { value: "singleplayer", label: "Singleplayer" },
+  { value: "multiplayer", label: "Multiplayer" },
+  { value: "zombies", label: "Zombies", disabled: true, note: "Later" },
 ];
 const valuesFor = (options: FilterOption[]) => new Set(options.map((option) => option.value));
 const gameCategoryValues = valuesFor(gameCategoryOptions);
@@ -574,13 +577,14 @@ function GameSelect({
   );
 }
 
-function AdvancedFilterGroup({
+function AdvancedFilterDropdown({
   id,
   title,
   options,
   selected,
-  expanded,
-  onExpandedChange,
+  open,
+  emptyLabel = "Any",
+  onOpenChange,
   onToggle,
   onClear,
 }: {
@@ -588,51 +592,72 @@ function AdvancedFilterGroup({
   title: string;
   options: FilterOption[];
   selected: Set<string>;
-  expanded: boolean;
-  onExpandedChange: (expanded: boolean) => void;
+  open: boolean;
+  emptyLabel?: string;
+  onOpenChange: (open: boolean) => void;
   onToggle: (value: string) => void;
   onClear: () => void;
 }) {
-  const panelId = `advanced-filter-${id}`;
+  const menuId = `advanced-filter-${id}`;
+  const labelId = `${menuId}-label`;
+  const dropdown = useRef<HTMLElement>(null);
+  const selectedOptions = options.filter((option) => selected.has(option.value));
+  const summary = selectedOptions.length === 0
+    ? emptyLabel
+    : selectedOptions.length === 1
+      ? selectedOptions[0].label
+      : `${selectedOptions.length} selected`;
+
+  useEffect(() => {
+    if (!open) return;
+    const closeOnOutsidePointer = (event: PointerEvent) => {
+      if (!dropdown.current?.contains(event.target as Node)) onOpenChange(false);
+    };
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onOpenChange(false);
+    };
+    document.addEventListener("pointerdown", closeOnOutsidePointer);
+    document.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.removeEventListener("pointerdown", closeOnOutsidePointer);
+      document.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [onOpenChange, open]);
 
   return (
-    <section className={`advanced-filter-group${expanded ? " is-expanded" : ""}`}>
-      <header>
-        <button
-          className="advanced-filter-group-toggle"
-          type="button"
-          aria-expanded={expanded}
-          aria-controls={panelId}
-          onClick={() => onExpandedChange(!expanded)}
-        >
-          <span>
-            <h3>{title}</h3>
-            <small>{selected.size === 0 ? "Any" : `${selected.size} selected`}</small>
-          </span>
-          <svg viewBox="0 0 12 8" aria-hidden="true"><path d="m1 1 5 5 5-5" /></svg>
-        </button>
-      </header>
-      {expanded && (
-        <div id={panelId} className="advanced-filter-options">
-          <button
-            className={selected.size === 0 ? "is-active" : ""}
-            type="button"
-            aria-pressed={selected.size === 0}
-            onClick={onClear}
-          >
-            Any
-          </button>
-          {options.map((option) => (
-            <button
-              className={selected.has(option.value) ? "is-active" : ""}
-              type="button"
-              key={option.value}
-              aria-pressed={selected.has(option.value)}
-              onClick={() => onToggle(option.value)}
-            >
-              {option.label}
-            </button>
-          ))}
+    <section className={`advanced-filter-dropdown${open ? " is-open" : ""}`} ref={dropdown}>
+      <h3 id={labelId}>{title}</h3>
+      <button
+        className="advanced-filter-dropdown-trigger"
+        type="button"
+        aria-expanded={open}
+        aria-controls={menuId}
+        onClick={() => onOpenChange(!open)}
+      >
+        <span>{summary}</span>
+        {selected.size > 0 && <small>{selected.size}</small>}
+        <svg viewBox="0 0 12 8" aria-hidden="true"><path d="m1 1 5 5 5-5" /></svg>
+      </button>
+      {open && (
+        <div id={menuId} className="advanced-filter-dropdown-menu" role="group" aria-labelledby={labelId}>
+          <div className="advanced-filter-dropdown-menu-header">
+            <span>Select one or more</span>
+            <button type="button" disabled={selected.size === 0} onClick={onClear}>Clear</button>
+          </div>
+          <div className="advanced-filter-checkboxes">
+            {options.map((option) => (
+              <label className={option.disabled ? "is-disabled" : ""} key={option.value}>
+                <input
+                  type="checkbox"
+                  checked={selected.has(option.value)}
+                  disabled={option.disabled}
+                  onChange={() => onToggle(option.value)}
+                />
+                <span>{option.label}</span>
+                {option.note && <small>{option.note}</small>}
+              </label>
+            ))}
+          </div>
         </div>
       )}
     </section>
@@ -895,9 +920,7 @@ export default function Home() {
   const [showSingleplayer, setShowSingleplayer] = useState(true);
   const [showMultiplayer, setShowMultiplayer] = useState(false);
   const [advancedFiltersOpen, setAdvancedFiltersOpen] = useState(false);
-  const [expandedAdvancedFilterGroups, setExpandedAdvancedFilterGroups] = useState<Set<AdvancedFilterGroupId>>(
-    () => new Set(),
-  );
+  const [openAdvancedFilterDropdown, setOpenAdvancedFilterDropdown] = useState<AdvancedFilterGroupId | null>(null);
   const [mapReady, setMapReady] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [detailsOpen, setDetailsOpen] = useState(true);
@@ -1192,21 +1215,12 @@ export default function Home() {
     + confidences.size
     + methods.size
     + Number(!(showSingleplayer && !showMultiplayer));
-  const allAdvancedFilterGroupsExpanded = advancedFilterGroupIds.every((id) =>
-    expandedAdvancedFilterGroups.has(id));
-  const setAdvancedFilterGroupExpanded = useCallback((id: AdvancedFilterGroupId, expanded: boolean) => {
-    setExpandedAdvancedFilterGroups((current) => {
-      const next = new Set(current);
-      if (expanded) next.add(id);
-      else next.delete(id);
-      return next;
-    });
-  }, []);
-  const toggleAllAdvancedFilterGroups = useCallback(() => {
-    setExpandedAdvancedFilterGroups((current) => {
-      const allExpanded = advancedFilterGroupIds.every((id) => current.has(id));
-      return allExpanded ? new Set() : new Set(advancedFilterGroupIds);
-    });
+  const selectedModes = useMemo(() => new Set([
+    ...(showSingleplayer ? ["singleplayer"] : []),
+    ...(showMultiplayer ? ["multiplayer"] : []),
+  ]), [showMultiplayer, showSingleplayer]);
+  const setAdvancedFilterDropdownOpen = useCallback((id: AdvancedFilterGroupId, open: boolean) => {
+    setOpenAdvancedFilterDropdown((current) => open ? id : current === id ? null : current);
   }, []);
   const resetAdvancedFilters = useCallback(() => {
     urlHistoryMode.current = "push";
@@ -1823,7 +1837,10 @@ export default function Home() {
                 className="advanced-filters-back"
                 type="button"
                 aria-label="Close advanced filters"
-                onClick={() => setAdvancedFiltersOpen(false)}
+                onClick={() => {
+                  setAdvancedFiltersOpen(false);
+                  setOpenAdvancedFilterDropdown(null);
+                }}
               >
                 <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m10 3-5 5 5 5" /></svg>
               </button>
@@ -1832,13 +1849,6 @@ export default function Home() {
                 <h2 id="advanced-filters-title">Advanced filters</h2>
               </div>
               <div className="advanced-filters-actions">
-                <button
-                  className="advanced-filters-expand"
-                  type="button"
-                  onClick={toggleAllAdvancedFilterGroups}
-                >
-                  {allAdvancedFilterGroupsExpanded ? "Collapse all" : "Expand all"}
-                </button>
                 <button
                   className="advanced-filters-reset"
                   type="button"
@@ -1851,13 +1861,13 @@ export default function Home() {
             </header>
 
             <div className="advanced-filters-scroll">
-              <AdvancedFilterGroup
+              <AdvancedFilterDropdown
                 id="game-category"
                 title="Game category"
                 options={gameCategoryOptions}
                 selected={gameCategories}
-                expanded={expandedAdvancedFilterGroups.has("game-category")}
-                onExpandedChange={(expanded) => setAdvancedFilterGroupExpanded("game-category", expanded)}
+                open={openAdvancedFilterDropdown === "game-category"}
+                onOpenChange={(open) => setAdvancedFilterDropdownOpen("game-category", open)}
                 onToggle={(value) => {
                   urlHistoryMode.current = "push";
                   setGameCategories((current) => toggledFilterValue(current, value));
@@ -1867,13 +1877,13 @@ export default function Home() {
                   setGameCategories(new Set());
                 }}
               />
-              <AdvancedFilterGroup
+              <AdvancedFilterDropdown
                 id="era"
                 title="Era"
                 options={gameEraOptions}
                 selected={gameEras}
-                expanded={expandedAdvancedFilterGroups.has("era")}
-                onExpandedChange={(expanded) => setAdvancedFilterGroupExpanded("era", expanded)}
+                open={openAdvancedFilterDropdown === "era"}
+                onOpenChange={(open) => setAdvancedFilterDropdownOpen("era", open)}
                 onToggle={(value) => {
                   urlHistoryMode.current = "push";
                   setGameEras((current) => toggledFilterValue(current, value));
@@ -1883,13 +1893,13 @@ export default function Home() {
                   setGameEras(new Set());
                 }}
               />
-              <AdvancedFilterGroup
+              <AdvancedFilterDropdown
                 id="continent"
                 title="Continent"
                 options={continentOptions}
                 selected={continents}
-                expanded={expandedAdvancedFilterGroups.has("continent")}
-                onExpandedChange={(expanded) => setAdvancedFilterGroupExpanded("continent", expanded)}
+                open={openAdvancedFilterDropdown === "continent"}
+                onOpenChange={(open) => setAdvancedFilterDropdownOpen("continent", open)}
                 onToggle={(value) => {
                   urlHistoryMode.current = "push";
                   setContinents((current) => toggledFilterValue(current, value));
@@ -1900,60 +1910,33 @@ export default function Home() {
                 }}
               />
 
-              <section className={`advanced-filter-group${expandedAdvancedFilterGroups.has("mode") ? " is-expanded" : ""}`}>
-                <header>
-                  <button
-                    className="advanced-filter-group-toggle"
-                    type="button"
-                    aria-expanded={expandedAdvancedFilterGroups.has("mode")}
-                    aria-controls="advanced-filter-mode"
-                    onClick={() => setAdvancedFilterGroupExpanded("mode", !expandedAdvancedFilterGroups.has("mode"))}
-                  >
-                    <span>
-                      <h3>Mode</h3>
-                      <small>{Number(showSingleplayer) + Number(showMultiplayer)} selected</small>
-                    </span>
-                    <svg viewBox="0 0 12 8" aria-hidden="true"><path d="m1 1 5 5 5-5" /></svg>
-                  </button>
-                </header>
-                {expandedAdvancedFilterGroups.has("mode") && (
-                  <div id="advanced-filter-mode" className="mode-filter advanced-mode-filter" aria-label="Game mode visibility">
-                    <button
-                      className={showSingleplayer ? "is-active" : ""}
-                      type="button"
-                      aria-pressed={showSingleplayer}
-                      onClick={() => {
-                        urlHistoryMode.current = "push";
-                        setShowSingleplayer((visible) => !visible);
-                      }}
-                    >
-                      <span aria-hidden="true">{showSingleplayer ? "✓" : "○"}</span> Singleplayer
-                    </button>
-                    <button
-                      className={showMultiplayer ? "is-active" : ""}
-                      type="button"
-                      aria-pressed={showMultiplayer}
-                      onClick={() => {
-                        urlHistoryMode.current = "push";
-                        setShowMultiplayer((visible) => !visible);
-                      }}
-                    >
-                      <span aria-hidden="true">{showMultiplayer ? "✓" : "○"}</span> Multiplayer
-                    </button>
-                    <button type="button" disabled aria-pressed="false" title="Zombies filtering will be added later">
-                      <span aria-hidden="true">○</span> Zombies <small>Later</small>
-                    </button>
-                  </div>
-                )}
-              </section>
+              <AdvancedFilterDropdown
+                id="mode"
+                title="Mode"
+                options={modeOptions}
+                selected={selectedModes}
+                open={openAdvancedFilterDropdown === "mode"}
+                emptyLabel="None selected"
+                onOpenChange={(open) => setAdvancedFilterDropdownOpen("mode", open)}
+                onToggle={(value) => {
+                  urlHistoryMode.current = "push";
+                  if (value === "singleplayer") setShowSingleplayer((visible) => !visible);
+                  if (value === "multiplayer") setShowMultiplayer((visible) => !visible);
+                }}
+                onClear={() => {
+                  urlHistoryMode.current = "push";
+                  setShowSingleplayer(false);
+                  setShowMultiplayer(false);
+                }}
+              />
 
-              <AdvancedFilterGroup
+              <AdvancedFilterDropdown
                 id="precision"
                 title="Precision"
                 options={precisionOptions}
                 selected={precisions}
-                expanded={expandedAdvancedFilterGroups.has("precision")}
-                onExpandedChange={(expanded) => setAdvancedFilterGroupExpanded("precision", expanded)}
+                open={openAdvancedFilterDropdown === "precision"}
+                onOpenChange={(open) => setAdvancedFilterDropdownOpen("precision", open)}
                 onToggle={(value) => {
                   urlHistoryMode.current = "push";
                   setPrecisions((current) => toggledFilterValue(current, value));
@@ -1963,13 +1946,13 @@ export default function Home() {
                   setPrecisions(new Set());
                 }}
               />
-              <AdvancedFilterGroup
+              <AdvancedFilterDropdown
                 id="confidence"
                 title="Confidence"
                 options={confidenceOptions}
                 selected={confidences}
-                expanded={expandedAdvancedFilterGroups.has("confidence")}
-                onExpandedChange={(expanded) => setAdvancedFilterGroupExpanded("confidence", expanded)}
+                open={openAdvancedFilterDropdown === "confidence"}
+                onOpenChange={(open) => setAdvancedFilterDropdownOpen("confidence", open)}
                 onToggle={(value) => {
                   urlHistoryMode.current = "push";
                   setConfidences((current) => toggledFilterValue(current, value));
@@ -1979,13 +1962,13 @@ export default function Home() {
                   setConfidences(new Set());
                 }}
               />
-              <AdvancedFilterGroup
+              <AdvancedFilterDropdown
                 id="method"
                 title="Method"
                 options={methodOptions}
                 selected={methods}
-                expanded={expandedAdvancedFilterGroups.has("method")}
-                onExpandedChange={(expanded) => setAdvancedFilterGroupExpanded("method", expanded)}
+                open={openAdvancedFilterDropdown === "method"}
+                onOpenChange={(open) => setAdvancedFilterDropdownOpen("method", open)}
                 onToggle={(value) => {
                   urlHistoryMode.current = "push";
                   setMethods((current) => toggledFilterValue(current, value));
@@ -1997,7 +1980,14 @@ export default function Home() {
               />
             </div>
 
-            <button className="advanced-filters-results" type="button" onClick={() => setAdvancedFiltersOpen(false)}>
+            <button
+              className="advanced-filters-results"
+              type="button"
+              onClick={() => {
+                setAdvancedFiltersOpen(false);
+                setOpenAdvancedFilterDropdown(null);
+              }}
+            >
               Show <strong>{resultCount}</strong> results
             </button>
           </section>
