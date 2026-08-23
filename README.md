@@ -45,58 +45,6 @@ Whenever AI is used to produce content, that content is explicitly marked at
 the point where it appears. The disclosure is kept beside the affected text so
 readers do not have to find a separate policy to understand how it was made.
 
-## Research progress
-
-Research coverage is calculated from canonical level records currently present
-under `content/levels/`. A level counts as researched when its Markdown body
-contains all five standard research sections in order; AI-assisted notes must
-also include an AI disclosure. Appearance `.ref.md` files are excluded because
-they inherit research from their canonical level.
-
-<!-- research-progress:start -->
-| Scope | Researched | Remaining |
-| --- | ---: | ---: |
-| All currently catalogued levels | 133 / 971 (14%) | 838 / 971 (86%) |
-| Campaign levels | 101 / 392 (26%) | 291 / 392 (74%) |
-| Multiplayer maps | 32 / 579 (6%) | 547 / 579 (94%) |
-
-| Game | Campaign | Multiplayer | Overall |
-| --- | ---: | ---: | ---: |
-| Call of Duty | 26 / 26 (100%) | 15 / 16 (94%) | 41 / 42 (98%) |
-| Call of Duty: United Offensive | 13 / 13 (100%) | 14 / 14 (100%) | 27 / 27 (100%) |
-| Call of Duty: Finest Hour | 19 / 19 (100%) | — | 19 / 19 (100%) |
-| Call of Duty 2 | 27 / 27 (100%) | 0 / 19 (0%) | 27 / 46 (59%) |
-| Call of Duty 2: Big Red One | 0 / 14 (0%) | 0 / 8 (0%) | 0 / 22 (0%) |
-| Call of Duty 3 | 0 / 14 (0%) | 0 / 18 (0%) | 0 / 32 (0%) |
-| Call of Duty: Roads to Victory | 14 / 14 (100%) | 0 / 2 (0%) | 14 / 16 (88%) |
-| Modern Warfare (2007) | 0 / 20 (0%) | 0 / 21 (0%) | 0 / 41 (0%) |
-| World at War | 0 / 15 (0%) | 0 / 24 (0%) | 0 / 39 (0%) |
-| World at War: Final Fronts | 0 / 13 (0%) | — | 0 / 13 (0%) |
-| Modern Warfare 2 (2009) | 0 / 18 (0%) | 0 / 22 (0%) | 0 / 40 (0%) |
-| Black Ops | 0 / 15 (0%) | 1 / 31 (3%) | 1 / 46 (2%) |
-| Modern Warfare 3 (2011) | 0 / 18 (0%) | 0 / 38 (0%) | 0 / 56 (0%) |
-| MW3: Defiance | 0 / 14 (0%) | — | 0 / 14 (0%) |
-| Black Ops II | 0 / 17 (0%) | 0 / 36 (0%) | 0 / 53 (0%) |
-| Black Ops: Declassified | 0 / 10 (0%) | — | 0 / 10 (0%) |
-| Ghosts | 1 / 18 (6%) | 0 / 33 (0%) | 1 / 51 (2%) |
-| Advanced Warfare | 1 / 15 (7%) | 0 / 30 (0%) | 1 / 45 (2%) |
-| Black Ops III | 0 / 11 (0%) | 0 / 28 (0%) | 0 / 39 (0%) |
-| Infinite Warfare | 0 / 16 (0%) | 0 / 28 (0%) | 0 / 44 (0%) |
-| Modern Warfare Remastered | — | 0 / 1 (0%) | 0 / 1 (0%) |
-| WWII | 0 / 12 (0%) | 2 / 41 (5%) | 2 / 53 (4%) |
-| Black Ops 4 | — | 0 / 36 (0%) | 0 / 36 (0%) |
-| Modern Warfare (2019) | 0 / 14 (0%) | 0 / 45 (0%) | 0 / 59 (0%) |
-| Warzone (2020) | — | 0 / 4 (0%) | 0 / 4 (0%) |
-| Black Ops Cold War | 0 / 13 (0%) | 0 / 38 (0%) | 0 / 51 (0%) |
-| Vanguard | 0 / 9 (0%) | 0 / 29 (0%) | 0 / 38 (0%) |
-| Modern Warfare II (2022) | 0 / 17 (0%) | 0 / 16 (0%) | 0 / 33 (0%) |
-| Warzone 2.0 | — | 0 / 1 (0%) | 0 / 1 (0%) |
-<!-- research-progress:end -->
-
-The totals update automatically as levels are added or researched. Run
-`npm run research:progress` after changing research notes; `npm run data:check`
-verifies that this generated section is current.
-
 ## Documentation
 
 Start with [CONTRIBUTING.md](CONTRIBUTING.md) for project setup, development,
@@ -104,6 +52,7 @@ data changes, validation, and the pull-request workflow.
 
 Detailed references:
 
+- [Research and geographic localization progress](progress.md)
 - [Atlas data model](docs/data-model.md)
 - [Data contribution guide](docs/contributing-data.md)
 - [Running npm commands through Docker](docs/docker-commands.md)

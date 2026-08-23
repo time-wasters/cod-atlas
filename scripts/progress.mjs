@@ -6,6 +6,8 @@ import YAML from "yaml";
 
 export const researchProgressStart = "<!-- research-progress:start -->";
 export const researchProgressEnd = "<!-- research-progress:end -->";
+export const localizationProgressStart = "<!-- localization-progress:start -->";
+export const localizationProgressEnd = "<!-- localization-progress:end -->";
 
 export const requiredResearchHeadings = [
   "## The Mission in the Game",
@@ -17,6 +19,8 @@ export const requiredResearchHeadings = [
 
 const aiReferencePattern = /\bAI(?:-generated|[- ]assisted| assistance)\b/i;
 const aiDisclosurePattern = /^>\s+\*\*AI-generated (?:research|historical) note[.:]\*\*/im;
+const localizedPrecisions = new Set(["exact", "approximate", "city", "region"]);
+const validPrecisions = new Set([...localizedPrecisions, "country", "off-world"]);
 
 async function filesBelow(directory, suffix) {
   const entries = await readdir(directory, { withFileTypes: true });
@@ -51,7 +55,7 @@ export function isResearchComplete(body) {
   return !aiReferencePattern.test(preamble) || aiDisclosurePattern.test(preamble);
 }
 
-export async function loadResearchData({ levelsRoot, gamesRoot }) {
+export async function loadProgressData({ levelsRoot, gamesRoot }) {
   const [allLevelFiles, gameFiles] = await Promise.all([
     filesBelow(levelsRoot, ".md"),
     filesBelow(gamesRoot, ".yaml"),
@@ -81,10 +85,19 @@ export async function loadResearchData({ levelsRoot, gamesRoot }) {
     if (data.mode !== "singleplayer" && data.mode !== "multiplayer") {
       throw new Error(`${filename}: mode must be singleplayer or multiplayer`);
     }
+    if (!Array.isArray(data.locations)) {
+      throw new Error(`${filename}: locations must be an array`);
+    }
+    for (const location of data.locations) {
+      if (!validPrecisions.has(location?.precision)) {
+        throw new Error(`${filename}: location precision is invalid`);
+      }
+    }
     levels.push({
       gameId,
       mode: data.mode,
       researched: isResearchComplete(body),
+      locations: data.locations.map((location) => ({ precision: location.precision })),
     });
   }
 
@@ -156,44 +169,125 @@ export function renderResearchProgress({ games, levels }) {
   return lines.join("\n");
 }
 
-export function replaceResearchProgress(readme, generated) {
-  const start = readme.indexOf(researchProgressStart);
-  const end = readme.indexOf(researchProgressEnd);
-  if (start === -1 || end === -1 || end < start) {
-    throw new Error("README.md must contain one ordered research-progress marker pair");
-  }
-  if (readme.indexOf(researchProgressStart, start + researchProgressStart.length) !== -1
-    || readme.indexOf(researchProgressEnd, end + researchProgressEnd.length) !== -1) {
-    throw new Error("README.md must contain exactly one research-progress marker pair");
-  }
-  return `${readme.slice(0, start)}${generated}${readme.slice(end + researchProgressEnd.length)}`;
+function localizationCoverage(locations) {
+  const localized = locations.filter((location) => localizedPrecisions.has(location.precision)).length;
+  const countryFallback = locations.filter((location) => location.precision === "country").length;
+  const offWorld = locations.filter((location) => location.precision === "off-world").length;
+  return {
+    localized,
+    countryFallback,
+    offWorld,
+    terrestrial: localized + countryFallback,
+  };
 }
 
-export async function updateResearchProgress({
+function localizationCell({ localized, terrestrial }) {
+  if (terrestrial === 0) return "—";
+  return `${localized} / ${terrestrial} (${percentage(localized, terrestrial)}%)`;
+}
+
+function fallbackCell({ countryFallback, terrestrial }) {
+  if (terrestrial === 0) return "—";
+  return `${countryFallback} / ${terrestrial} (${percentage(countryFallback, terrestrial)}%)`;
+}
+
+function locationsFromLevels(levels) {
+  return levels.flatMap((level) => level.locations.map((location) => ({
+    ...location,
+    gameId: level.gameId,
+    mode: level.mode,
+  })));
+}
+
+export function renderLocalizationProgress({ games, levels }) {
+  const locations = locationsFromLevels(levels);
+  const singleplayer = locations.filter((location) => location.mode === "singleplayer");
+  const multiplayer = locations.filter((location) => location.mode === "multiplayer");
+  const summaries = [
+    ["All marker locations", localizationCoverage(locations)],
+    ["Campaign marker locations", localizationCoverage(singleplayer)],
+    ["Multiplayer marker locations", localizationCoverage(multiplayer)],
+  ];
+  const lines = [
+    localizationProgressStart,
+    "| Scope | Localized | Country fallback | Off-world |",
+    "| --- | ---: | ---: | ---: |",
+    ...summaries.map(([label, result]) => (
+      `| ${label} | ${localizationCell(result)} | ${fallbackCell(result)} | ${result.offWorld} |`
+    )),
+    "",
+    "| Game | Campaign | Multiplayer | Overall |",
+    "| --- | ---: | ---: | ---: |",
+  ];
+
+  const gameRows = [...games.values()]
+    .filter((game) => locations.some((location) => location.gameId === game.id))
+    .sort((a, b) => a.released.localeCompare(b.released) || a.label.localeCompare(b.label));
+  for (const game of gameRows) {
+    const gameLocations = locations.filter((location) => location.gameId === game.id);
+    lines.push([
+      `| ${escapeTableCell(game.label)}`,
+      localizationCell(localizationCoverage(gameLocations.filter((location) => location.mode === "singleplayer"))),
+      localizationCell(localizationCoverage(gameLocations.filter((location) => location.mode === "multiplayer"))),
+      `${localizationCell(localizationCoverage(gameLocations))} |`,
+    ].join(" | "));
+  }
+
+  lines.push(localizationProgressEnd);
+  return lines.join("\n");
+}
+
+export function replaceGeneratedBlock(document, startMarker, endMarker, generated) {
+  const start = document.indexOf(startMarker);
+  const end = document.indexOf(endMarker);
+  if (start === -1 || end === -1 || end < start) {
+    throw new Error(`progress.md must contain one ordered ${startMarker} marker pair`);
+  }
+  if (document.indexOf(startMarker, start + startMarker.length) !== -1
+    || document.indexOf(endMarker, end + endMarker.length) !== -1) {
+    throw new Error(`progress.md must contain exactly one ${startMarker} marker pair`);
+  }
+  return `${document.slice(0, start)}${generated}${document.slice(end + endMarker.length)}`;
+}
+
+export async function updateProgress({
   root = process.cwd(),
   checkOnly = false,
 } = {}) {
-  const readmePath = path.join(root, "README.md");
-  const data = await loadResearchData({
+  const progressPath = path.join(root, "progress.md");
+  const data = await loadProgressData({
     levelsRoot: path.join(root, "content/levels"),
     gamesRoot: path.join(root, "content/games"),
   });
-  const current = await readFile(readmePath, "utf8");
-  const expected = replaceResearchProgress(current, renderResearchProgress(data));
+  const current = await readFile(progressPath, "utf8");
+  let expected = replaceGeneratedBlock(
+    current,
+    researchProgressStart,
+    researchProgressEnd,
+    renderResearchProgress(data),
+  );
+  expected = replaceGeneratedBlock(
+    expected,
+    localizationProgressStart,
+    localizationProgressEnd,
+    renderLocalizationProgress(data),
+  );
 
   if (checkOnly && current !== expected) {
-    throw new Error("README.md research progress is stale; run npm run research:progress");
+    throw new Error("progress.md is stale; run npm run progress:update");
   }
-  if (!checkOnly && current !== expected) await writeFile(readmePath, expected);
+  if (!checkOnly && current !== expected) await writeFile(progressPath, expected);
 
-  const result = coverage(data.levels);
-  console.log(`Research coverage: ${result.researched}/${result.total} canonical levels (${percentage(result.researched, result.total)}%).`);
-  return result;
+  const research = coverage(data.levels);
+  const localization = localizationCoverage(locationsFromLevels(data.levels));
+  console.log(`Research coverage: ${research.researched}/${research.total} canonical levels (${percentage(research.researched, research.total)}%).`);
+  console.log(`Geographic localization: ${localization.localized}/${localization.terrestrial} terrestrial marker locations (${percentage(localization.localized, localization.terrestrial)}%).`);
+  return { research, localization };
 }
 
 const isMain = process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
 if (isMain) {
   const unknownArguments = process.argv.slice(2).filter((argument) => argument !== "--check");
   if (unknownArguments.length > 0) throw new Error(`Unknown argument: ${unknownArguments[0]}`);
-  await updateResearchProgress({ checkOnly: process.argv.includes("--check") });
+  await updateProgress({ checkOnly: process.argv.includes("--check") });
 }

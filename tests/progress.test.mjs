@@ -5,13 +5,16 @@ import path from "node:path";
 import test from "node:test";
 import {
   isResearchComplete,
-  loadResearchData,
+  loadProgressData,
+  localizationProgressEnd,
+  localizationProgressStart,
+  renderLocalizationProgress,
   renderResearchProgress,
-  replaceResearchProgress,
+  replaceGeneratedBlock,
   requiredResearchHeadings,
   researchProgressEnd,
   researchProgressStart,
-} from "../scripts/research-progress.mjs";
+} from "../scripts/progress.mjs";
 
 const completedBody = requiredResearchHeadings
   .map((heading) => `${heading}\n\nSection text.`)
@@ -40,16 +43,17 @@ test("canonical level loading excludes appearance references", async () => {
   await mkdir(gamesRoot);
   await mkdir(path.join(levelsRoot, "game"), { recursive: true });
   await writeFile(path.join(gamesRoot, "game.yaml"), "id: game\nlabel: Test Game\nreleased: 2003-01-01\n");
-  await writeFile(path.join(levelsRoot, "game/level.md"), `---\nid: game-level\ngames:\n  - game\nmode: singleplayer\n---\n\n${completedBody}\n`);
+  await writeFile(path.join(levelsRoot, "game/level.md"), `---\nid: game-level\ngames:\n  - game\nmode: singleplayer\nlocations: []\n---\n\n${completedBody}\n`);
   await writeFile(path.join(levelsRoot, "game/level.ref.md"), "---\nlevel: game-level\n---\n");
 
   try {
-    const data = await loadResearchData({ gamesRoot, levelsRoot });
+    const data = await loadProgressData({ gamesRoot, levelsRoot });
     assert.equal(data.levels.length, 1);
     assert.deepEqual(data.levels[0], {
       gameId: "game",
       mode: "singleplayer",
       researched: true,
+      locations: [],
     });
   } finally {
     await rm(root, { recursive: true, force: true });
@@ -63,9 +67,9 @@ test("generated tables include raw counts, percentages and release-order game ro
       ["old", { id: "old", label: "Old Game", released: "2000-01-01" }],
     ]),
     levels: [
-      { gameId: "old", mode: "singleplayer", researched: true },
-      { gameId: "old", mode: "multiplayer", researched: false },
-      { gameId: "new", mode: "multiplayer", researched: true },
+      { gameId: "old", mode: "singleplayer", researched: true, locations: [] },
+      { gameId: "old", mode: "multiplayer", researched: false, locations: [] },
+      { gameId: "new", mode: "multiplayer", researched: true, locations: [] },
     ],
   });
 
@@ -74,9 +78,35 @@ test("generated tables include raw counts, percentages and release-order game ro
   assert.match(generated, /\| Old Game \| 1 \/ 1 \(100%\) \| 0 \/ 1 \(0%\) \| 1 \/ 2 \(50%\) \|/);
 });
 
-test("README replacement changes only the delimited block", () => {
+test("localization progress excludes off-world markers from the terrestrial denominator", () => {
+  const generated = renderLocalizationProgress({
+    games: new Map([["game", { id: "game", label: "Test Game", released: "2000-01-01" }]]),
+    levels: [{
+      gameId: "game",
+      mode: "singleplayer",
+      researched: false,
+      locations: [
+        { precision: "exact" },
+        { precision: "region" },
+        { precision: "country" },
+        { precision: "off-world" },
+      ],
+    }],
+  });
+
+  assert.match(generated, /All marker locations \| 2 \/ 3 \(67%\) \| 1 \/ 3 \(33%\) \| 1/);
+  assert.match(generated, /\| Test Game \| 2 \/ 3 \(67%\) \| — \| 2 \/ 3 \(67%\) \|/);
+});
+
+test("generated block replacement changes only the delimited block", () => {
   const readme = `Before\n${researchProgressStart}\nold\n${researchProgressEnd}\nAfter\n`;
   const generated = `${researchProgressStart}\nnew\n${researchProgressEnd}`;
-  assert.equal(replaceResearchProgress(readme, generated), `Before\n${generated}\nAfter\n`);
-  assert.throws(() => replaceResearchProgress("No markers", generated), /marker pair/);
+  assert.equal(
+    replaceGeneratedBlock(readme, researchProgressStart, researchProgressEnd, generated),
+    `Before\n${generated}\nAfter\n`,
+  );
+  assert.throws(
+    () => replaceGeneratedBlock("No markers", localizationProgressStart, localizationProgressEnd, generated),
+    /marker pair/,
+  );
 });
