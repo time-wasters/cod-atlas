@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Airfield_Escape",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Airfield_Escape",
   "latestRevisionId": 2992545,
-  "importedAt": "2026-08-15T09:23:50.476Z",
+  "importedAt": "2026-08-24T20:18:53.615Z",
   "levelLocation": {
     "raw": "Airfield, Kurhesse, Germany",
     "label": "Airfield, Kurhesse, Germany",
@@ -59,6 +59,8 @@
     "label": "Eder Dam Getaway",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-eder-dam-getaway",
         "wikiTitle": "Eder Dam Getaway",
         "label": "Eder Dam Getaway",
         "url": "https://callofduty.fandom.com/wiki/Eder_Dam_Getaway"
@@ -70,11 +72,15 @@
     "label": "Battleship Tirpitz, Dulag IIIA (Chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-battleship-tirpitz-level",
         "wikiTitle": "Battleship Tirpitz (level)",
         "label": "Battleship Tirpitz",
         "url": "https://callofduty.fandom.com/wiki/Battleship_Tirpitz_(level)"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-dulag-iiia",
         "wikiTitle": "Dulag IIIA",
         "label": "Dulag IIIA",
         "url": "https://callofduty.fandom.com/wiki/Dulag_IIIA"

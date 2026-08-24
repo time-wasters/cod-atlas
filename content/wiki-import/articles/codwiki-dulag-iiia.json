@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Dulag_IIIA",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Dulag_IIIA",
   "latestRevisionId": 2992532,
-  "importedAt": "2026-08-10T19:23:50.584Z",
+  "importedAt": "2026-08-24T20:19:04.343Z",
   "levelLocation": {
     "raw": "Dulag IIIA, near Strasshof, Austria",
     "label": "Dulag IIIA, near Strasshof, Austria",
@@ -59,11 +59,15 @@
     "label": "Alps Chateau Airfield Escape (Chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-alps-chateau",
         "wikiTitle": "Alps Chateau",
         "label": "Alps Chateau",
         "url": "https://callofduty.fandom.com/wiki/Alps_Chateau"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-airfield-escape",
         "wikiTitle": "Airfield Escape",
         "label": "Airfield Escape",
         "url": "https://callofduty.fandom.com/wiki/Airfield_Escape"
@@ -75,11 +79,15 @@
     "label": "Pegasus Bridge Battleship Tirpitz (Chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-pegasus-bridge",
         "wikiTitle": "Pegasus Bridge",
         "label": "Pegasus Bridge",
         "url": "https://callofduty.fandom.com/wiki/Pegasus_Bridge"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-battleship-tirpitz-level",
         "wikiTitle": "Battleship Tirpitz (level)",
         "label": "Battleship Tirpitz",
         "url": "https://callofduty.fandom.com/wiki/Battleship_Tirpitz_(level)"

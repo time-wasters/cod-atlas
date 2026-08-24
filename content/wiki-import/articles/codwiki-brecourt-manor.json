@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Brecourt_Manor",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Brecourt_Manor",
   "latestRevisionId": 2992525,
-  "importedAt": "2026-08-15T09:20:38.479Z",
+  "importedAt": "2026-08-24T20:18:53.599Z",
   "levelLocation": {
     "raw": "Brécourt Manor, Le Grand Chemin, Normandy, France",
     "label": "Brécourt Manor, Le Grand Chemin, Normandy, France",
@@ -59,6 +59,8 @@
     "label": "Normandy Route N13",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-normandy-route-n13",
         "wikiTitle": "Normandy Route N13",
         "label": "Normandy Route N13",
         "url": "https://callofduty.fandom.com/wiki/Normandy_Route_N13"
@@ -70,11 +72,15 @@
     "label": "Alps Chateau, Pegasus Bridge-Day (Chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-alps-chateau",
         "wikiTitle": "Alps Chateau",
         "label": "Alps Chateau",
         "url": "https://callofduty.fandom.com/wiki/Alps_Chateau"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-pegasus-bridge-day",
         "wikiTitle": "Pegasus Bridge-Day",
         "label": "Pegasus Bridge-Day",
         "url": "https://callofduty.fandom.com/wiki/Pegasus_Bridge-Day"

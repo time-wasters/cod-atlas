@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Pegasus_Bridge",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Pegasus_Bridge",
   "latestRevisionId": 2992534,
-  "importedAt": "2026-08-10T19:24:01.440Z",
+  "importedAt": "2026-08-24T20:19:15.209Z",
   "levelLocation": {
     "raw": "Bénouville, Normandy, France",
     "label": "Bénouville, Normandy, France",
@@ -59,11 +59,15 @@
     "label": "Dulag IIIA, Pathfinder (Chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-dulag-iiia",
         "wikiTitle": "Dulag IIIA",
         "label": "Dulag IIIA",
         "url": "https://callofduty.fandom.com/wiki/Dulag_IIIA"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-pathfinder",
         "wikiTitle": "Pathfinder",
         "label": "Pathfinder",
         "url": "https://callofduty.fandom.com/wiki/Pathfinder"
@@ -75,11 +79,15 @@
     "label": "Pegasus Bridge-Day, Ste. Mere-Eglise (Chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-pegasus-bridge-day",
         "wikiTitle": "Pegasus Bridge-Day",
         "label": "Pegasus Bridge-Day",
         "url": "https://callofduty.fandom.com/wiki/Pegasus_Bridge-Day"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-ste-mere-eglise",
         "wikiTitle": "Ste. Mere-Eglise",
         "label": "Ste. Mere-Eglise",
         "url": "https://callofduty.fandom.com/wiki/Ste._Mere-Eglise"

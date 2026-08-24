@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Warsaw_Railyard",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Warsaw_Railyard",
   "latestRevisionId": 2992569,
-  "importedAt": "2026-08-10T19:24:22.935Z",
+  "importedAt": "2026-08-24T20:19:38.289Z",
   "levelLocation": {
     "raw": "Warsaw, Poland",
     "label": "Warsaw, Poland",
@@ -59,6 +59,8 @@
     "label": "Warsaw Factory",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-warsaw-factory",
         "wikiTitle": "Warsaw Factory",
         "label": "Warsaw Factory",
         "url": "https://callofduty.fandom.com/wiki/Warsaw_Factory"
@@ -70,6 +72,8 @@
     "label": "Oder River Country",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-oder-river-country",
         "wikiTitle": "Oder River Country",
         "label": "Oder River Country",
         "url": "https://callofduty.fandom.com/wiki/Oder_River_Country"

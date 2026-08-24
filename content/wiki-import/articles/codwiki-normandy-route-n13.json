@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Normandy_Route_N13",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Normandy_Route_N13",
   "latestRevisionId": 2992520,
-  "importedAt": "2026-08-10T19:23:50.577Z",
+  "importedAt": "2026-08-24T20:19:04.335Z",
   "levelLocation": {
     "raw": "Route N13, Normandy, France",
     "label": "Route N13, Normandy, France",
@@ -59,6 +59,8 @@
     "label": "Ste. Mere-Eglise-Day",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-ste-mere-eglise-day",
         "wikiTitle": "Ste. Mere-Eglise-Day",
         "label": "Ste. Mere-Eglise-Day",
         "url": "https://callofduty.fandom.com/wiki/Ste._Mere-Eglise-Day"
@@ -70,6 +72,8 @@
     "label": "Brecourt Manor",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-brecourt-manor",
         "wikiTitle": "Brecourt Manor",
         "label": "Brecourt Manor",
         "url": "https://callofduty.fandom.com/wiki/Brecourt_Manor"

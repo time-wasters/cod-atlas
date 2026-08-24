@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Alps_Chateau",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Alps_Chateau",
   "latestRevisionId": 2992529,
-  "importedAt": "2026-08-15T09:24:01.231Z",
+  "importedAt": "2026-08-24T20:18:53.608Z",
   "levelLocation": {
     "raw": "Bavarian Alps, Bavaria, Germany",
     "label": "Bavarian Alps, Bavaria, Germany",
@@ -59,11 +59,15 @@
     "label": "Brecourt Manor Pegasus Bridge-Day (Chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-brecourt-manor",
         "wikiTitle": "Brecourt Manor",
         "label": "Brecourt Manor",
         "url": "https://callofduty.fandom.com/wiki/Brecourt_Manor"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-pegasus-bridge-day",
         "wikiTitle": "Pegasus Bridge-Day",
         "label": "Pegasus Bridge-Day",
         "url": "https://callofduty.fandom.com/wiki/Pegasus_Bridge-Day"
@@ -75,11 +79,15 @@
     "label": "Dulag IIIA The Eder Dam (Chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-dulag-iiia",
         "wikiTitle": "Dulag IIIA",
         "label": "Dulag IIIA",
         "url": "https://callofduty.fandom.com/wiki/Dulag_IIIA"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-the-eder-dam",
         "wikiTitle": "The Eder Dam",
         "label": "The Eder Dam",
         "url": "https://callofduty.fandom.com/wiki/The_Eder_Dam"

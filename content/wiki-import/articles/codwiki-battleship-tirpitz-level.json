@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Battleship_Tirpitz_(level)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Battleship_Tirpitz_(level)",
   "latestRevisionId": 2992548,
-  "importedAt": "2026-08-15T09:19:44.741Z",
+  "importedAt": "2026-08-24T20:18:53.622Z",
   "levelLocation": {
     "raw": "German battleship ''Tirpitz'', off the coast of Håkøya, Norway",
     "label": "German battleship Tirpitz, off the coast of Håkøya, Norway",
@@ -59,11 +59,15 @@
     "label": "Airfield Escape Dulag IIIA (Chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-airfield-escape",
         "wikiTitle": "Airfield Escape",
         "label": "Airfield Escape",
         "url": "https://callofduty.fandom.com/wiki/Airfield_Escape"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-dulag-iiia",
         "wikiTitle": "Dulag IIIA",
         "label": "Dulag IIIA",
         "url": "https://callofduty.fandom.com/wiki/Dulag_IIIA"
@@ -75,11 +79,15 @@
     "label": "Stalingrad Festung Recogne (Chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-stalingrad-level",
         "wikiTitle": "Stalingrad (level)",
         "label": "Stalingrad",
         "url": "https://callofduty.fandom.com/wiki/Stalingrad_(level)"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-festung-recogne",
         "wikiTitle": "Festung Recogne",
         "label": "Festung Recogne",
         "url": "https://callofduty.fandom.com/wiki/Festung_Recogne"

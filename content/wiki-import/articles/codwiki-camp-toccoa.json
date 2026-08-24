@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Camp_Toccoa",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Camp_Toccoa",
   "latestRevisionId": 2992307,
-  "importedAt": "2026-08-15T09:20:49.364Z",
+  "importedAt": "2026-08-24T20:18:53.590Z",
   "levelLocation": {
     "raw": "Camp Toccoa, Georgia, United States",
     "label": "Camp Toccoa, Georgia, United States",
@@ -64,11 +64,15 @@
     "label": "Pathfinder, Stalingrad (Chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-pathfinder",
         "wikiTitle": "Pathfinder",
         "label": "Pathfinder",
         "url": "https://callofduty.fandom.com/wiki/Pathfinder"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-stalingrad-level",
         "wikiTitle": "Stalingrad (level)",
         "label": "Stalingrad",
         "url": "https://callofduty.fandom.com/wiki/Stalingrad_(level)"

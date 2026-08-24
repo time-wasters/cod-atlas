@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Ste._Mere-Eglise",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Ste._Mere-Eglise",
   "latestRevisionId": 2992309,
-  "importedAt": "2026-08-10T19:24:12.206Z",
+  "importedAt": "2026-08-24T20:19:26.017Z",
   "levelLocation": {
     "raw": "Sainte-Mère-Église, Normandy, France",
     "label": "Sainte-Mère-Église, Normandy, France",
@@ -59,11 +59,15 @@
     "label": "Pathfinder, Pegasus Bridge (Chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-pathfinder",
         "wikiTitle": "Pathfinder",
         "label": "Pathfinder",
         "url": "https://callofduty.fandom.com/wiki/Pathfinder"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-pegasus-bridge",
         "wikiTitle": "Pegasus Bridge",
         "label": "Pegasus Bridge",
         "url": "https://callofduty.fandom.com/wiki/Pegasus_Bridge"
@@ -75,6 +79,8 @@
     "label": "Ste. Mere-Eglise-Day",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-ste-mere-eglise-day",
         "wikiTitle": "Ste. Mere-Eglise-Day",
         "label": "Ste. Mere-Eglise-Day",
         "url": "https://callofduty.fandom.com/wiki/Ste._Mere-Eglise-Day"

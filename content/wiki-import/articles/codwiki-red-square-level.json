@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Red_Square_(level)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Red_Square_(level)",
   "latestRevisionId": 2992554,
-  "importedAt": "2026-08-10T19:24:01.454Z",
+  "importedAt": "2026-08-24T20:19:15.226Z",
   "levelLocation": {
     "raw": "Red Square, [[Stalingrad]], Russian SFSR, Soviet Union",
     "label": "Stalingrad",
@@ -59,6 +59,8 @@
     "label": "Stalingrad",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-stalingrad-level",
         "wikiTitle": "Stalingrad (level)",
         "label": "Stalingrad",
         "url": "https://callofduty.fandom.com/wiki/Stalingrad_(level)"
@@ -70,6 +72,8 @@
     "label": "Train Station",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-train-station",
         "wikiTitle": "Train Station",
         "label": "Train Station",
         "url": "https://callofduty.fandom.com/wiki/Train_Station"

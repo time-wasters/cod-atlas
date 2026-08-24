@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Pavlov%27s_House_(level)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Pavlov%27s_House_(level)",
   "latestRevisionId": 2992563,
-  "importedAt": "2026-08-10T19:24:01.461Z",
+  "importedAt": "2026-08-24T20:19:15.235Z",
   "levelLocation": {
     "raw": "[[Pavlov's House]], [[Stalingrad]], Russian SFSR, Soviet Union",
     "label": "Pavlov's House",
@@ -59,6 +59,8 @@
     "label": "Stalingrad Sewers",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-stalingrad-sewers",
         "wikiTitle": "Stalingrad Sewers",
         "label": "Stalingrad Sewers",
         "url": "https://callofduty.fandom.com/wiki/Stalingrad_Sewers"
@@ -70,11 +72,15 @@
     "label": "Warsaw Factory, Pathfinder (Chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-warsaw-factory",
         "wikiTitle": "Warsaw Factory",
         "label": "Warsaw Factory",
         "url": "https://callofduty.fandom.com/wiki/Warsaw_Factory"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-pathfinder",
         "wikiTitle": "Pathfinder",
         "label": "Pathfinder",
         "url": "https://callofduty.fandom.com/wiki/Pathfinder"

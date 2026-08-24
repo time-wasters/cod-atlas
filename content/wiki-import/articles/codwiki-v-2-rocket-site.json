@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/V-2_Rocket_Site",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/V-2_Rocket_Site",
   "latestRevisionId": 2992581,
-  "importedAt": "2026-08-10T19:24:12.198Z",
+  "importedAt": "2026-08-24T20:19:26.009Z",
   "levelLocation": {
     "raw": "Batterie #445, Burgsteinfurt, Germany",
     "label": "Batterie #445, Burgsteinfurt, Germany",
@@ -59,11 +59,15 @@
     "label": "Festung Recogne, Oder River Town (Chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-festung-recogne",
         "wikiTitle": "Festung Recogne",
         "label": "Festung Recogne",
         "url": "https://callofduty.fandom.com/wiki/Festung_Recogne"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-oder-river-town",
         "wikiTitle": "Oder River Town",
         "label": "Oder River Town",
         "url": "https://callofduty.fandom.com/wiki/Oder_River_Town"
@@ -75,6 +79,8 @@
     "label": "The Reichstag",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-the-reichstag",
         "wikiTitle": "The Reichstag",
         "label": "The Reichstag",
         "url": "https://callofduty.fandom.com/wiki/The_Reichstag"

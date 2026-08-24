@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/The_Eder_Dam",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/The_Eder_Dam",
   "latestRevisionId": 2992541,
-  "importedAt": "2026-08-10T19:24:12.213Z",
+  "importedAt": "2026-08-24T20:19:26.024Z",
   "levelLocation": {
     "raw": "Edersee Dam, Waldeck, Kurhessen, Germany",
     "label": "Edersee Dam, Waldeck, Kurhessen, Germany",
@@ -59,11 +59,15 @@
     "label": "Pegasus Bridge-Day, Alps Chateau (Chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-pegasus-bridge-day",
         "wikiTitle": "Pegasus Bridge-Day",
         "label": "Pegasus Bridge-Day",
         "url": "https://callofduty.fandom.com/wiki/Pegasus_Bridge-Day"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-alps-chateau",
         "wikiTitle": "Alps Chateau",
         "label": "Alps Chateau",
         "url": "https://callofduty.fandom.com/wiki/Alps_Chateau"
@@ -75,6 +79,8 @@
     "label": "Eder Dam Getaway",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-eder-dam-getaway",
         "wikiTitle": "Eder Dam Getaway",
         "label": "Eder Dam Getaway",
         "url": "https://callofduty.fandom.com/wiki/Eder_Dam_Getaway"

@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Train_Station",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Train_Station",
   "latestRevisionId": 2992557,
-  "importedAt": "2026-08-10T19:24:12.227Z",
+  "importedAt": "2026-08-24T20:19:26.038Z",
   "levelLocation": {
     "raw": "Train Station, [[Stalingrad]], Russian SFSR, Soviet Union",
     "label": "Stalingrad",
@@ -59,6 +59,8 @@
     "label": "Red Square",
     "links": [
       {
+        "sequence": "game",
+        "article": null,
         "wikiTitle": "Red Square (map)",
         "label": "Red Square",
         "url": "https://callofduty.fandom.com/wiki/Red_Square_(map)"
@@ -70,6 +72,8 @@
     "label": "Stalingrad Sewers",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-stalingrad-sewers",
         "wikiTitle": "Stalingrad Sewers",
         "label": "Stalingrad Sewers",
         "url": "https://callofduty.fandom.com/wiki/Stalingrad_Sewers"

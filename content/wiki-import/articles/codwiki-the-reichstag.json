@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/The_Reichstag",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/The_Reichstag",
   "latestRevisionId": 2992584,
-  "importedAt": "2026-08-10T19:23:39.788Z",
+  "importedAt": "2026-08-24T20:19:26.051Z",
   "levelLocation": {
     "raw": "Berlin, Germany",
     "label": "Berlin, Germany",
@@ -59,6 +59,8 @@
     "label": "V-2 Rocket Site",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-v-2-rocket-site",
         "wikiTitle": "V-2 Rocket Site",
         "label": "V-2 Rocket Site",
         "url": "https://callofduty.fandom.com/wiki/V-2_Rocket_Site"

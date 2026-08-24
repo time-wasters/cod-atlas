@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Oder_River_Town",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Oder_River_Town",
   "latestRevisionId": 2992574,
-  "importedAt": "2026-08-10T19:24:01.469Z",
+  "importedAt": "2026-08-24T20:19:04.365Z",
   "levelLocation": {
     "raw": "A town in the proximity of the Oder River, Germany",
     "label": "A town in the proximity of the Oder River, Germany",
@@ -59,6 +59,8 @@
     "label": "Oder River Country",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-oder-river-country",
         "wikiTitle": "Oder River Country",
         "label": "Oder River Country",
         "url": "https://callofduty.fandom.com/wiki/Oder_River_Country"
@@ -70,11 +72,15 @@
     "label": "Festung Recogne V-2 Rocket Site (Chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-festung-recogne",
         "wikiTitle": "Festung Recogne",
         "label": "Festung Recogne",
         "url": "https://callofduty.fandom.com/wiki/Festung_Recogne"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-v-2-rocket-site",
         "wikiTitle": "V-2 Rocket Site",
         "label": "V-2 Rocket Site",
         "url": "https://callofduty.fandom.com/wiki/V-2_Rocket_Site"

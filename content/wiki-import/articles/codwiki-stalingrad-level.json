@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Stalingrad_(level)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Stalingrad_(level)",
   "latestRevisionId": 2992551,
-  "importedAt": "2026-08-10T19:24:12.220Z",
+  "importedAt": "2026-08-24T20:19:26.031Z",
   "levelLocation": {
     "raw": "Volga River, [[Stalingrad]], Russian SFSR, Soviet Union",
     "label": "Stalingrad",
@@ -59,11 +59,15 @@
     "label": "Battleship Tirpitz, Camp Toccoa (Chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-battleship-tirpitz-level",
         "wikiTitle": "Battleship Tirpitz (level)",
         "label": "Battleship Tirpitz",
         "url": "https://callofduty.fandom.com/wiki/Battleship_Tirpitz_(level)"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-camp-toccoa",
         "wikiTitle": "Camp Toccoa",
         "label": "Camp Toccoa",
         "url": "https://callofduty.fandom.com/wiki/Camp_Toccoa"
@@ -75,6 +79,8 @@
     "label": "Red Square",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-red-square-level",
         "wikiTitle": "Red Square (level)",
         "label": "Red Square",
         "url": "https://callofduty.fandom.com/wiki/Red_Square_(level)"
