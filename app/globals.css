@@ -357,9 +357,10 @@ input[type="checkbox"]:disabled:checked { background-color: #6e592e; filter: gra
 .atlas-marker.is-active::after { inset: 7px; }
 .atlas-marker.is-campaign-dimmed { opacity: .62; filter: grayscale(.7) brightness(.82); }
 .atlas-marker.is-campaign-dimmed:hover { opacity: .85; filter: grayscale(.4) brightness(1.05); }
-.campaign-route-shadow, .campaign-route-yarn, .campaign-route-fiber { animation: campaign-route-appear .22s ease-out both; }
-.campaign-route-shadow { filter: drop-shadow(0 3px 2px #000c); }
-.campaign-route-yarn { filter: drop-shadow(0 0 1px #bd3c4859); }
+.campaign-route-shadow, .campaign-route-fuzz, .campaign-route-yarn, .campaign-route-ply, .campaign-route-groove { animation: campaign-route-appear .22s ease-out both; }
+.campaign-route-shadow { filter: drop-shadow(0 2px 1.5px #0009); }
+.campaign-route-fuzz { filter: blur(.35px); }
+.campaign-route-ply { filter: drop-shadow(.5px .5px .4px #160609a6); }
 .campaign-route-stop-wrap { overflow: visible; border: 0; background: transparent; }
 .campaign-route-stop { min-width: 22px; height: 18px; display: inline-grid; place-items: center; border: 1px solid #e0a126; border-radius: 9px; padding: 0 5px; color: #fff0c8; background: #171c15f2; box-shadow: 0 2px 8px #000b, inset 0 1px 0 #ffffff16; font: 700 9px/1 var(--font-geist-mono), monospace; white-space: nowrap; animation: campaign-route-stop-appear .18s ease-out both; }
 .campaign-route-stop-wrap:hover .campaign-route-stop, .campaign-route-stop-wrap:focus .campaign-route-stop { color: #17140c; background: var(--amber); }
@@ -572,5 +573,5 @@ input[type="checkbox"]:disabled:checked { background-color: #6e592e; filter: gra
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
-  .campaign-route-shadow, .campaign-route-yarn, .campaign-route-fiber, .campaign-route-stop { animation: none; }
+  .campaign-route-shadow, .campaign-route-fuzz, .campaign-route-yarn, .campaign-route-ply, .campaign-route-groove, .campaign-route-stop { animation: none; }
 }
