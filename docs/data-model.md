@@ -194,6 +194,9 @@ The stable `id` is the foreign-key target. Import-oriented fields include:
 - Wiki-provided level-location text and link.
 - Wiki-provided previous/next-level and game text, with every linked Wiki
   target retained for later reviewed mapping to curated IDs.
+- Per-link `sequence` metadata on previous/next levels (`game` or
+  `chronological`) and an `article` foreign key to the matching local Wiki
+  import when one can be resolved. Unresolved targets retain `article: null`.
 - Wiki-provided date text.
 - Map-style classification and supporting evidence.
 - Main and map images, including web-resolution display URLs.

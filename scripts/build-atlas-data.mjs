@@ -34,6 +34,7 @@ const validMethods = new Set([
   "region-fallback",
   "country-fallback",
 ]);
+const validWikiSequences = new Set(["game", "chronological"]);
 const countryAliases = new Map([
   ["Czech Republic (Czechia)", "Czechia"],
   ["Myanmar (Burma)", "Myanmar"],
@@ -156,6 +157,30 @@ function validateWikiImage(image, field, filename) {
   validateHttpsUrl(image.sourceUrl, `${field}.sourceUrl`, filename);
   validateHttpsUrl(image.thumbnailUrl, `${field}.thumbnailUrl`, filename);
   validateHttpsUrl(image.detailPageUrl, `${field}.detailPageUrl`, filename);
+}
+
+function validateWikiLevelReferences(article, filename, wikiArticles) {
+  for (const field of ["previousLevels", "nextLevels"]) {
+    const references = article[field];
+    if (references == null) continue;
+    requireValue(Array.isArray(references.links), `${filename}: ${field}.links must be an array`);
+    for (const [index, link] of references.links.entries()) {
+      const linkField = `${field}.links[${index}]`;
+      requireValue(link && typeof link === "object" && !Array.isArray(link), `${filename}: ${linkField} must be an object`);
+      const hasSequence = Object.hasOwn(link, "sequence");
+      const hasArticle = Object.hasOwn(link, "article");
+      requireValue(
+        hasSequence === hasArticle,
+        `${filename}: ${linkField}.sequence and ${linkField}.article must be added together`,
+      );
+      if (!hasSequence) continue;
+      requireValue(validWikiSequences.has(link.sequence), `${filename}: ${linkField}.sequence is invalid`);
+      requireValue(
+        link.article === null || wikiArticles.has(link.article),
+        `${filename}: ${linkField}.article references unknown Wiki article ${link.article}`,
+      );
+    }
+  }
 }
 
 async function validateMapOverlay(overlay, levelId, filename) {
@@ -310,6 +335,7 @@ for (const filename of gameIconFiles) {
 }
 
 const wikiArticles = new Map();
+const wikiArticleFilenames = new Map();
 for (const filename of wikiFiles) {
   const article = JSON.parse(await readFile(filename, "utf8"));
   requireValue(article?.id, `${filename}: wiki article id is required`);
@@ -318,6 +344,10 @@ for (const filename of wikiFiles) {
   validateWikiImage(article.images?.main, "images.main", filename);
   validateWikiImage(article.images?.map, "images.map", filename);
   wikiArticles.set(article.id, article);
+  wikiArticleFilenames.set(article.id, filename);
+}
+for (const [id, article] of wikiArticles) {
+  validateWikiLevelReferences(article, wikiArticleFilenames.get(id), wikiArticles);
 }
 
 const levels = [];
