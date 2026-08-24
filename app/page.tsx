@@ -9,6 +9,7 @@ import atlasSource from "./data/atlas.generated.json";
 import historyOverlaysSource from "./data/history-overlays.generated.json";
 import mapOverlaysSource from "./data/map-overlays.generated.json";
 import { buildCampaignRoute } from "./campaign-route.js";
+import { applyEnglishMapLabels } from "./map-language.js";
 import { atlasUrlWithState, parseAtlasUrl } from "./url-state";
 
 type Entry = {
@@ -1665,6 +1666,7 @@ export default function Home() {
     if (!mapNode.current || map.current) return;
     const markerStore = markers.current;
     let cancelled = false;
+    let basemapFallbackTimer: number | null = null;
     import("leaflet").then(async (leafletModule) => {
       await import("leaflet.markercluster");
       await import("leaflet-imageoverlay-rotated");
@@ -1680,14 +1682,62 @@ export default function Home() {
         zoomControl: false,
         worldCopyJump: true,
       });
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-        maxZoom: MAP_MAX_ZOOM,
-      }).addTo(instance);
+      map.current = instance;
+
+      const addRasterFallback = () => {
+        if (cancelled || !map.current || map.current !== instance) return;
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+          maxZoom: MAP_MAX_ZOOM,
+        }).addTo(instance);
+      };
+
+      try {
+        const [{ maplibreGL }, { setWorkerUrl }, { default: workerUrl }] = await Promise.all([
+          import("@maplibre/maplibre-gl-leaflet"),
+          import("maplibre-gl"),
+          import("maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url"),
+        ]);
+        if (cancelled || !map.current || map.current !== instance) return;
+
+        // MapLibre 6 cannot locate its worker after Vite bundles the app. The
+        // worker pipeline emits a self-contained, same-origin worker instead.
+        setWorkerUrl(workerUrl);
+        const basemap = maplibreGL({
+          style: "https://tiles.openfreemap.org/styles/bright",
+          attributionControl: false,
+        }).addTo(instance);
+        const vectorMap = basemap.getMaplibreMap();
+        let vectorMapLoaded = false;
+        const useRasterFallback = () => {
+          if (vectorMapLoaded || cancelled || !map.current || map.current !== instance) return;
+          if (basemapFallbackTimer !== null) window.clearTimeout(basemapFallbackTimer);
+          basemapFallbackTimer = null;
+          basemap.remove();
+          addRasterFallback();
+        };
+        vectorMap.once("load", () => {
+          vectorMapLoaded = true;
+          if (basemapFallbackTimer !== null) window.clearTimeout(basemapFallbackTimer);
+          basemapFallbackTimer = null;
+        });
+        vectorMap.once("error", useRasterFallback);
+        basemapFallbackTimer = window.setTimeout(useRasterFallback, 10_000);
+
+        const setEnglishLabels = () => applyEnglishMapLabels(vectorMap);
+        if (vectorMap.isStyleLoaded()) setEnglishLabels();
+        else vectorMap.once("style.load", setEnglishLabels);
+        instance.attributionControl.addAttribution(
+          '&copy; <a href="https://openfreemap.org/">OpenFreeMap</a> &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> Data from <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        );
+      } catch (error) {
+        console.error("Could not initialize the English vector basemap; using OpenStreetMap raster tiles.", error);
+        addRasterFallback();
+      }
+
       L.control.zoom({ position: "bottomright" }).addTo(instance);
       const campaignPane = instance.createPane("campaignRoute");
       campaignPane.style.zIndex = "425";
-      map.current = instance;
       markerLayer.current = L.markerClusterGroup({
         showCoverageOnHover: false,
         zoomToBoundsOnClick: true,
@@ -1721,6 +1771,7 @@ export default function Home() {
     });
     return () => {
       cancelled = true;
+      if (basemapFallbackTimer !== null) window.clearTimeout(basemapFallbackTimer);
       map.current?.remove();
       map.current = null;
       markerLayer.current = null;
