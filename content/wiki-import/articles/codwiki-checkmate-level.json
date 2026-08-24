@@ -4,5 +4,98 @@
   "mapStyle": "singleplayer",
   "mapStyleDetail": null,
   "mapStyleConfidence": "curated",
-  "mapStyleEvidence": "Classified by the atlas; verify against the Wiki during the next import."
+  "mapStyleEvidence": "Classified by the atlas; verify against the Wiki during the next import.",
+  "fandomPageId": 757574,
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Checkmate_(level)",
+  "latestRevisionId": 2997053,
+  "importedAt": "2026-08-24T19:25:13.548Z",
+  "levelLocation": {
+    "raw": "{{w|Burgas Province}}, {{w|Bulgaria}}",
+    "label": ",",
+    "url": null
+  },
+  "previousLevels": {
+    "raw": "[[Separation Anxiety]] (concurrently)",
+    "label": "Separation Anxiety (concurrently)",
+    "links": [
+      {
+        "wikiTitle": "Separation Anxiety",
+        "label": "Separation Anxiety",
+        "url": "https://callofduty.fandom.com/wiki/Separation_Anxiety"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Celerium (mission)|Celerium]] <small>(chronologically)</small>",
+    "label": "Celerium (chronologically)",
+    "links": [
+      {
+        "wikiTitle": "Celerium (mission)",
+        "label": "Celerium",
+        "url": "https://callofduty.fandom.com/wiki/Celerium_(mission)"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Black Ops 6]]''",
+    "label": "Call of Duty: Black Ops 6",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Black Ops 6",
+        "label": "Call of Duty: Black Ops 6",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops_6"
+      }
+    ]
+  },
+  "date": {
+    "raw": "February 16th, 1991 - 10:20 EET <small>(Intro)</small><br>February 16th, 1991 - 10:35 EET <small>(Detonation)</small><br>February 16th, 1991 - 10:57 EET <small>(Black Sea)</small><br>March 2nd, 1991 <small>(Epilogue)</small>",
+    "label": "February 16th, 1991 - 10:20 EET (Intro) , February 16th, 1991 - 10:35 EET (Detonation) , February 16th, 1991 - 10:57 EET (Black Sea) , March 2nd, 1991 (Epilogue)"
+  },
+  "images": {
+    "main": {
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/b/b0/Checkmate_MenuScreen_BO6.png/revision/latest?cb=20241029110736",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/b/b0/Checkmate_MenuScreen_BO6.png/revision/latest/scale-to-width-down/800?cb=20241029110736",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Checkmate_MenuScreen_BO6.png",
+      "author": {
+        "name": "Kalinine",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Kalinine",
+        "role": "uploader"
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+      }
+    },
+    "map": {
+      "sourceUrl": null,
+      "thumbnailUrl": null,
+      "detailPageUrl": null,
+      "author": {
+        "name": null,
+        "userUrl": null,
+        "role": null
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "unknown",
+        "notice": null,
+        "noticeUrl": null
+      }
+    }
+  },
+  "rawPayload": {
+    "revisionTimestamp": "2026-04-24T16:44:19Z",
+    "revisionSha1": "ebf78cf217f27734ce12fdfa8728154c9815c5a5",
+    "resolvedTitle": "Checkmate (level)",
+    "mainImageTitle": "File:Checkmate_MenuScreen_BO6.png",
+    "mapImageTitle": null
+  }
 }

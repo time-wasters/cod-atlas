@@ -4,5 +4,98 @@
   "mapStyle": "singleplayer",
   "mapStyleDetail": null,
   "mapStyleConfidence": "curated",
-  "mapStyleEvidence": "Classified by the atlas; verify against the Wiki during the next import."
+  "mapStyleEvidence": "Classified by the atlas; verify against the Wiki during the next import.",
+  "fandomPageId": 757570,
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/The_Cradle",
+  "latestRevisionId": 2997059,
+  "importedAt": "2026-08-24T19:26:09.986Z",
+  "levelLocation": {
+    "raw": "{{w|Al-Faw Palace|Saddam's Palace}}, [[Iraq]]",
+    "label": "Iraq",
+    "url": "https://callofduty.fandom.com/wiki/Iraq"
+  },
+  "previousLevels": {
+    "raw": "[[Hunting Season]]",
+    "label": "Hunting Season",
+    "links": [
+      {
+        "wikiTitle": "Hunting Season",
+        "label": "Hunting Season",
+        "url": "https://callofduty.fandom.com/wiki/Hunting_Season"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[The Rook: Reconciliation]]",
+    "label": "The Rook: Reconciliation",
+    "links": [
+      {
+        "wikiTitle": "The Rook: Reconciliation",
+        "label": "The Rook: Reconciliation",
+        "url": "https://callofduty.fandom.com/wiki/The_Rook%3A_Reconciliation"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Black Ops 6]]''",
+    "label": "Call of Duty: Black Ops 6",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Black Ops 6",
+        "label": "Call of Duty: Black Ops 6",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops_6"
+      }
+    ]
+  },
+  "date": {
+    "raw": "February 5th, 1991 - 07:48 AST",
+    "label": "February 5th, 1991 - 07:48 AST"
+  },
+  "images": {
+    "main": {
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/d/d0/TheCradle_MenuScreen_BO6.png/revision/latest?cb=20241029110830",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/d/d0/TheCradle_MenuScreen_BO6.png/revision/latest/scale-to-width-down/800?cb=20241029110830",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:TheCradle_MenuScreen_BO6.png",
+      "author": {
+        "name": "Kalinine",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Kalinine",
+        "role": "uploader"
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+      }
+    },
+    "map": {
+      "sourceUrl": null,
+      "thumbnailUrl": null,
+      "detailPageUrl": null,
+      "author": {
+        "name": null,
+        "userUrl": null,
+        "role": null
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "unknown",
+        "notice": null,
+        "noticeUrl": null
+      }
+    }
+  },
+  "rawPayload": {
+    "revisionTimestamp": "2026-04-24T16:45:36Z",
+    "revisionSha1": "8b95a553dcad2b1bfa14339da990525386d19617",
+    "resolvedTitle": "The Cradle",
+    "mainImageTitle": "File:TheCradle_MenuScreen_BO6.png",
+    "mapImageTitle": null
+  }
 }
