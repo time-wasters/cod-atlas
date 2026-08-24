@@ -465,6 +465,10 @@ for (const filename of levelFiles) {
     requireValue(location.id && !locationIds.has(location.id), `${filename}: duplicate or missing location id`);
     locationIds.add(location.id);
     requireValue(location.country, `${filename}: location country is required`);
+    requireValue(
+      location.primary == null || typeof location.primary === "boolean",
+      `${filename}: location primary must be a boolean`,
+    );
     requireValue(location.label == null, `${filename}: location label was replaced by landmark`);
     for (const field of ["region", "city", "landmark"]) {
       requireValue(
@@ -645,6 +649,7 @@ for (const level of levels) {
       id: `${level.id}:${location.id}`,
       levelId: level.id,
       locationId: location.id,
+      primary: location.primary === true,
       title: level.title,
       game: gameCodes,
       gameIds: appearanceGameIds,

@@ -209,6 +209,7 @@ test("preserves the complete statically compiled atlas", async () => {
     with: { type: "json" },
   });
   const entries = atlas.groups.flatMap((group) => group.entries);
+  assert.ok(entries.every((entry) => typeof entry.primary === "boolean"));
   const findGroup = (name) => atlas.groups.find((group) => group.name === name);
   const findEntry = (game, title) => entries.find(
     (entry) => entry.title === title && entry.game.split(" / ").includes(game),

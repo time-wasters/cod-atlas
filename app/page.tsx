@@ -8,12 +8,14 @@ import ReactMarkdown from "react-markdown";
 import atlasSource from "./data/atlas.generated.json";
 import historyOverlaysSource from "./data/history-overlays.generated.json";
 import mapOverlaysSource from "./data/map-overlays.generated.json";
+import { buildCampaignRoute } from "./campaign-route.js";
 import { atlasUrlWithState, parseAtlasUrl } from "./url-state";
 
 type Entry = {
   id: string;
   levelId: string;
   locationId: string;
+  primary: boolean;
   title: string;
   game: string;
   gameIds: string[];
@@ -213,6 +215,13 @@ type CampaignOption = {
   id: string;
   label: string;
   levels: Selection[];
+  routeLevels: {
+    entryId: string | null;
+    levelId: string;
+    title: string;
+    order: number | null;
+    coordinates: [number, number] | null;
+  }[];
 };
 
 const data = atlasSource as AtlasData;
@@ -222,6 +231,7 @@ const gamesById = new Map(data.games.map((game) => [game.id, game]));
 const gamesByCode = new Map(data.games.map((game) => [game.code, game]));
 const countryNames = new Set(data.groups.map((group) => group.name));
 const selections = data.groups.flatMap((group) => group.entries.map((entry) => ({ group, entry })));
+const selectionsByEntryId = new Map(selections.map((selection) => [selection.entry.id, selection]));
 const gameSeriesOptions: FilterOption[] = [
   { value: "world-war-ii", label: "World War II" },
   { value: "modern-warfare", label: "Modern Warfare" },
@@ -1185,6 +1195,8 @@ export default function Home() {
   const markers = useRef<Map<string, { marker: LeafletMarker; entry: Entry }>>(new Map());
   const markerEntries = useRef<WeakMap<LeafletMarker, Entry>>(new WeakMap());
   const campaignFocusLevelIds = useRef<Set<string> | null>(null);
+  const campaignRouteLayer = useRef<import("leaflet").LayerGroup | null>(null);
+  const campaignRouteFitKey = useRef<string | null>(null);
   const mapImageOverlay = useRef<import("leaflet").ImageOverlay.Rotated | null>(null);
   const mapImageOverlayLevelId = useRef<string | null>(null);
   const mapImageOverlayOpacity = useRef(0);
@@ -1382,7 +1394,13 @@ export default function Home() {
   }, [continents, country, groups, matchesStructuredFilters, query]);
   const campaigns = useMemo<CampaignOption[]>(() => {
     if (game === "all") return [];
-    const campaignsByKey = new Map<string, CampaignOption & { levelIds: Set<string> }>();
+    const campaignsByKey = new Map<string, {
+      key: string;
+      gameId: string;
+      id: string;
+      label: string;
+      locationsByLevelId: Map<string, Selection[]>;
+    }>();
     for (const group of groups) {
       for (const entry of group.entries) {
         if (!entry.campaign) continue;
@@ -1396,27 +1414,47 @@ export default function Home() {
             gameId: campaignGame.id,
             id: entry.campaign.id,
             label: entry.campaign.label,
-            levels: [],
-            levelIds: new Set(),
+            locationsByLevelId: new Map(),
           };
           campaignsByKey.set(key, campaign);
         }
-        if (!campaign.levelIds.has(entry.levelId)) {
-          campaign.levelIds.add(entry.levelId);
-          campaign.levels.push({ group, entry });
-        }
+        const levelLocations = campaign.locationsByLevelId.get(entry.levelId) ?? [];
+        levelLocations.push({ group, entry });
+        campaign.locationsByLevelId.set(entry.levelId, levelLocations);
       }
     }
     return [...campaignsByKey.values()]
-      .map(({ key, gameId, id, label, levels }) => ({
-        key,
-        gameId,
-        id,
-        label,
-        levels: levels.sort((a, b) =>
-          (a.entry.campaignOrder ?? Number.MAX_SAFE_INTEGER) - (b.entry.campaignOrder ?? Number.MAX_SAFE_INTEGER)
-          || a.entry.title.localeCompare(b.entry.title)),
-      }))
+      .map(({ key, gameId, id, label, locationsByLevelId }) => {
+        const orderedLevels = [...locationsByLevelId.values()].map((locations) => {
+          const primaryLocation = locations.find(({ entry }) => entry.primary) ?? null;
+          const mappedLocations = locations.filter(({ entry }) => entry.coordinates !== null);
+          const displayLocation = primaryLocation ?? mappedLocations[0] ?? locations[0];
+          const mappedPrimaryLocation = primaryLocation?.entry.coordinates ? primaryLocation : null;
+          const routeLocation = mappedPrimaryLocation
+            ?? (mappedLocations.length === 1 ? mappedLocations[0] : null);
+          return {
+            displayLocation,
+            routeLevel: {
+              entryId: routeLocation?.entry.id ?? null,
+              levelId: displayLocation.entry.levelId,
+              title: displayLocation.entry.title,
+              order: displayLocation.entry.campaignOrder ?? null,
+              coordinates: routeLocation?.entry.coordinates ?? null,
+            },
+          };
+        }).sort((left, right) =>
+          (left.displayLocation.entry.campaignOrder ?? Number.MAX_SAFE_INTEGER)
+            - (right.displayLocation.entry.campaignOrder ?? Number.MAX_SAFE_INTEGER)
+          || left.displayLocation.entry.title.localeCompare(right.displayLocation.entry.title));
+        return {
+          key,
+          gameId,
+          id,
+          label,
+          levels: orderedLevels.map(({ displayLocation }) => displayLocation),
+          routeLevels: orderedLevels.map(({ routeLevel }) => routeLevel),
+        };
+      })
       .sort((a, b) => {
         const gameComparison = compareGames(gamesById.get(a.gameId)!, gamesById.get(b.gameId)!);
         if (gameComparison) return gameComparison;
@@ -1647,6 +1685,8 @@ export default function Home() {
         maxZoom: MAP_MAX_ZOOM,
       }).addTo(instance);
       L.control.zoom({ position: "bottomright" }).addTo(instance);
+      const campaignPane = instance.createPane("campaignRoute");
+      campaignPane.style.zIndex = "425";
       map.current = instance;
       markerLayer.current = L.markerClusterGroup({
         showCoverageOnHover: false,
@@ -1685,6 +1725,8 @@ export default function Home() {
       map.current = null;
       markerLayer.current = null;
       markerStore.clear();
+      campaignRouteLayer.current = null;
+      campaignRouteFitKey.current = null;
       mapImageOverlay.current = null;
       mapImageOverlayLevelId.current = null;
       if (mapImageOverlayAnimation.current !== null) cancelAnimationFrame(mapImageOverlayAnimation.current);
@@ -1799,6 +1841,103 @@ export default function Home() {
       );
     }
   }, [filtered, mapReady, selected, selectedCampaign]);
+
+  useEffect(() => {
+    if (!mapReady || !map.current || !leaflet.current) return;
+    campaignRouteLayer.current?.remove();
+    campaignRouteLayer.current = null;
+    if (!selectedCampaign) {
+      campaignRouteFitKey.current = null;
+      return;
+    }
+
+    const currentMap = map.current;
+    const L = leaflet.current;
+    const route = buildCampaignRoute(selectedCampaign.routeLevels);
+    const routeLayer = L.layerGroup().addTo(currentMap);
+    campaignRouteLayer.current = routeLayer;
+
+    route.segments.forEach((segment) => {
+      L.polyline(segment, {
+        pane: "campaignRoute",
+        className: "campaign-route-casing",
+        color: "#090c08",
+        weight: 6,
+        opacity: .78,
+        lineCap: "round",
+        lineJoin: "round",
+        interactive: false,
+      }).addTo(routeLayer);
+      L.polyline(segment, {
+        pane: "campaignRoute",
+        className: "campaign-route-line",
+        color: "#dda126",
+        weight: 2.5,
+        opacity: .92,
+        dashArray: "10 8",
+        lineCap: "round",
+        lineJoin: "round",
+        interactive: false,
+      }).addTo(routeLayer);
+    });
+
+    route.waypoints.forEach((waypoint) => {
+      const stopTitles = waypoint.stops.map((stop) => `${String(stop.order).padStart(2, "0")} \u00b7 ${stop.title}`);
+      const routeMarker = L.marker(waypoint.coordinates, {
+        pane: "campaignRoute",
+        icon: L.divIcon({
+          className: "campaign-route-stop-wrap",
+          html: `<span class="campaign-route-stop">${waypoint.label}</span>`,
+          iconSize: [22, 18],
+          iconAnchor: [-5, 23],
+        }),
+        alt: `Campaign ${waypoint.stops.length === 1 ? "stop" : "stops"} ${stopTitles.join(", ")}`,
+        keyboard: true,
+        riseOnHover: true,
+      }).addTo(routeLayer);
+
+      const tooltipContent = document.createElement("div");
+      tooltipContent.className = "campaign-route-tooltip-content";
+      const tooltipHeading = document.createElement("strong");
+      tooltipHeading.textContent = waypoint.stops.length === 1 ? "Campaign stop" : "Campaign stops";
+      tooltipContent.append(tooltipHeading);
+      for (const title of stopTitles) {
+        const tooltipRow = document.createElement("span");
+        tooltipRow.textContent = title;
+        tooltipContent.append(tooltipRow);
+      }
+      routeMarker.bindTooltip(tooltipContent, {
+        className: "campaign-route-tooltip",
+        direction: "top",
+        offset: [8, -22],
+        opacity: 1,
+      });
+
+      const waypointSelection = selectionsByEntryId.get(waypoint.stops[0].entryId);
+      if (waypointSelection) {
+        routeMarker.on("click", () => selectMapMarker(waypointSelection.group, waypointSelection.entry));
+      }
+    });
+
+    if (route.waypoints.length > 0 && campaignRouteFitKey.current !== selectedCampaign.key && mapNode.current) {
+      campaignRouteFitKey.current = selectedCampaign.key;
+      const routeBounds = route.waypoints.map((waypoint) => waypoint.coordinates);
+      const movement = {
+        ...mapViewportPadding(mapNode.current, intelCard.current),
+        maxZoom: 8,
+        animate: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+        duration: .65,
+      };
+      currentMap.stop();
+      if (movement.animate) currentMap.flyToBounds(routeBounds, movement);
+      else currentMap.fitBounds(routeBounds, movement);
+    }
+
+    return () => {
+      routeLayer.remove();
+      if (campaignRouteLayer.current === routeLayer) campaignRouteLayer.current = null;
+    };
+  }, [mapReady, selectMapMarker, selectedCampaign]);
 
   useEffect(() => {
     if (!mapReady || !map.current || !leaflet.current) return;

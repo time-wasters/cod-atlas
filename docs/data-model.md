@@ -140,6 +140,8 @@ adapted in-game location. It distinguishes the real reference point from a
 canonical claim that the in-game location is the landmark itself.
 
 `primary: true` identifies the main location when a level contains several.
+The generated browser data preserves this flag so campaign routes and other
+level-level visualizations can select an intentional representative location.
 
 ## Level appearance reference
 

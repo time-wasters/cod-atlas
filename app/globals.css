@@ -357,6 +357,17 @@ input[type="checkbox"]:disabled:checked { background-color: #6e592e; filter: gra
 .atlas-marker.is-active::after { inset: 7px; }
 .atlas-marker.is-campaign-dimmed { opacity: .62; filter: grayscale(.7) brightness(.82); }
 .atlas-marker.is-campaign-dimmed:hover { opacity: .85; filter: grayscale(.4) brightness(1.05); }
+.campaign-route-casing, .campaign-route-line { animation: campaign-route-appear .22s ease-out both; }
+.campaign-route-stop-wrap { overflow: visible; border: 0; background: transparent; }
+.campaign-route-stop { min-width: 22px; height: 18px; display: inline-grid; place-items: center; border: 1px solid #e0a126; border-radius: 9px; padding: 0 5px; color: #fff0c8; background: #171c15f2; box-shadow: 0 2px 8px #000b, inset 0 1px 0 #ffffff16; font: 700 9px/1 var(--font-geist-mono), monospace; white-space: nowrap; animation: campaign-route-stop-appear .18s ease-out both; }
+.campaign-route-stop-wrap:hover .campaign-route-stop, .campaign-route-stop-wrap:focus .campaign-route-stop { color: #17140c; background: var(--amber); }
+.leaflet-tooltip.campaign-route-tooltip { border: 1px solid #756234; border-radius: 4px; padding: 8px 10px; color: #d9d1bd; background: linear-gradient(145deg, #20251bf8, #10140ffa); box-shadow: 0 8px 22px #000c, inset 0 1px 0 #ffffff0a; }
+.leaflet-tooltip-top.campaign-route-tooltip::before { border-top-color: #756234; }
+.campaign-route-tooltip-content { display: grid; gap: 3px; }
+.campaign-route-tooltip-content strong { margin-bottom: 2px; color: #d99a21; font: 700 9px var(--font-geist-mono), monospace; letter-spacing: .08em; text-transform: uppercase; }
+.campaign-route-tooltip-content span { color: #ded6c2; font-size: 10px; line-height: 1.35; }
+@keyframes campaign-route-appear { from { stroke-opacity: 0; } }
+@keyframes campaign-route-stop-appear { from { opacity: 0; transform: scale(.72); } }
 
 .intel-column { position: absolute; z-index: 500; top: 24px; right: 24px; width: min(330px, calc(100% - 48px)); max-height: calc(100% - 48px); display: flex; flex-direction: column; gap: 10px; transition: right .3s cubic-bezier(.22, .8, .32, 1), width .3s cubic-bezier(.22, .8, .32, 1); }
 .intel-column.is-collapsed { right: 0; width: 20px; gap: 0; }
@@ -559,4 +570,5 @@ input[type="checkbox"]:disabled:checked { background-color: #6e592e; filter: gra
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+  .campaign-route-casing, .campaign-route-line, .campaign-route-stop { animation: none; }
 }
