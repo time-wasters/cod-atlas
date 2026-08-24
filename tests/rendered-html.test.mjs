@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { access } from "node:fs/promises";
+import { access, readFile, readdir } from "node:fs/promises";
 import test from "node:test";
 import { atlasUrlWithState, parseAtlasUrl } from "../app/url-state.js";
 
@@ -20,6 +20,7 @@ test("round-trips shareable atlas filters and the selected location", () => {
     methods: ["verified-landmark"],
     showSingleplayer: true,
     showMultiplayer: true,
+    showZombies: true,
     levelId: "cod4-safehouse",
     locationId: "main",
   };
@@ -43,6 +44,7 @@ test("uses concise defaults and preserves every mode-filter state", () => {
     methods: [],
     showSingleplayer: true,
     showMultiplayer: false,
+    showZombies: false,
     levelId: null,
     locationId: null,
   };
@@ -56,15 +58,67 @@ test("uses concise defaults and preserves every mode-filter state", () => {
     "legacy precision links remain compatible",
   );
 
-  for (const [mode, showSingleplayer, showMultiplayer] of [
-    ["both", true, true],
-    ["multiplayer", false, true],
-    ["none", false, false],
+  for (const [mode, showSingleplayer, showMultiplayer, showZombies] of [
+    ["all", true, true, true],
+    ["both", true, true, false],
+    ["multiplayer", false, true, false],
+    ["zombies", false, false, true],
+    ["singleplayer,zombies", true, false, true],
+    ["none", false, false, false],
   ]) {
-    const url = atlasUrlWithState(defaultUrl, { ...defaults, showSingleplayer, showMultiplayer });
+    const url = atlasUrlWithState(defaultUrl, { ...defaults, showSingleplayer, showMultiplayer, showZombies });
     assert.equal(url.searchParams.get("mode"), mode);
     assert.equal(parseAtlasUrl(url).showSingleplayer, showSingleplayer);
     assert.equal(parseAtlasUrl(url).showMultiplayer, showMultiplayer);
+    assert.equal(parseAtlasUrl(url).showZombies, showZombies);
+  }
+});
+
+test("catalogues the complete Black Ops 6 campaign, multiplayer, and Zombies roster", async () => {
+  const bo6Root = new URL("../content/levels/bo6/", import.meta.url);
+  assert.deepEqual((await readdir(new URL("campaign/", bo6Root))).sort(), [
+    "1-bishop-takes-rook.md",
+    "10-emergence.md",
+    "11-the-rook-recovery.md",
+    "12-high-rollers.md",
+    "13-the-rook-contact.md",
+    "14-ground-control.md",
+    "15-under-the-radar.md",
+    "16-the-rook-interrogation.md",
+    "17-separation-anxiety.md",
+    "18-checkmate.md",
+    "2-the-rook-arrival.md",
+    "3-blood-feud.md",
+    "4-the-rook-assemble.md",
+    "5-most-wanted.md",
+    "6-the-rook-reunion.md",
+    "7-hunting-season.md",
+    "8-the-cradle.md",
+    "9-the-rook-reconciliation.md",
+  ]);
+  assert.deepEqual((await readdir(new URL("multiplayer/", bo6Root))).sort(), [
+    "babylon.md", "barrage.md", "blazetown.md", "blitz.md", "boo-town.md", "bounty.md",
+    "bullet.md", "dealership.md", "derelict.md", "eclipse.md", "exchange.md", "extraction.md",
+    "firing-range.md", "fringe.md", "fugitive.md", "gala.md", "gravity.md", "grind-ooze.md",
+    "grind.ref.md", "hacienda.md", "haven.md", "heirloom.md", "hideout.md", "jackpot.md",
+    "lifeline.md", "lowtown.md", "mothball.md", "nomad.md", "nuketown-holiday.md",
+    "nuketown.ref.md", "payback.md", "pit.md", "protocol.md", "racket.md", "red-card.md",
+    "rewind.md", "rig.md", "runway.md", "scud.md", "shutdown.md", "signal.md", "skyline.md",
+    "stakeout.md", "subsonic.md", "vault.md", "vorkuta.md", "warhead.md",
+    "world-motor-dynasty.md",
+  ]);
+  assert.deepEqual((await readdir(new URL("zombies/", bo6Root))).sort(), [
+    "citadelle-des-morts.md",
+    "liberty-falls.md",
+    "reckoning.md",
+    "shattered-veil.md",
+    "terminus.md",
+    "the-tomb.md",
+  ]);
+  assert.match(await readFile(new URL("multiplayer/nuketown.ref.md", bo6Root), "utf8"), /level: bo-nuketown/);
+  assert.match(await readFile(new URL("multiplayer/grind.ref.md", bo6Root), "utf8"), /level: bo2-grind/);
+  for (const filename of await readdir(new URL("zombies/", bo6Root))) {
+    assert.match(await readFile(new URL(`zombies/${filename}`, bo6Root), "utf8"), /mode: zombies/);
   }
 });
 
@@ -112,15 +166,15 @@ test("renders development preview metadata", async () => {
   const modeFilterIndex = html.indexOf('class="mode-filter"');
   const advancedFilterIndex = html.indexOf('class="advanced-filter-trigger"');
   assert.ok(countryFilterIndex < modeFilterIndex && modeFilterIndex < advancedFilterIndex);
-  assert.match(html, /class="mode-filter"[^>]*aria-label="Game mode visibility"/);
-  assert.match(html, /<button(?=[^>]*disabled="")(?=[^>]*title="Zombies filtering will be added later")[^>]*>/);
+  assert.match(html, /class="mode-filter"[^>]*aria-label="Map type visibility"/);
+  assert.match(html, /<button(?=[^>]*aria-pressed="false")[^>]*>\s*<span[^>]*>[^<]*<\/span> Zombies/);
   assert.doesNotMatch(html, /class="precision-filter"/);
   assert.match(html, /role="tab"[^>]*aria-selected="true"[^>]*aria-controls="sidebar-locations"/);
   assert.match(html, /<button(?=[^>]*role="tab")(?=[^>]*aria-controls="sidebar-campaigns")(?=[^>]*disabled="")[^>]*>/);
   assert.match(html, />Adriatic Sea<\/span>/);
   assert.doesNotMatch(html, /Selected location/);
   assert.doesNotMatch(html, />Level<\/span>/);
-  assert.match(html, /aria-label="(Singleplayer|Multiplayer)"/);
+  assert.match(html, /aria-label="(Campaign|Multiplayer|Zombies)"/);
   assert.match(html, /class="mission-title-button"/);
   assert.match(html, /<button(?=[^>]*class="level-briefing-toggle")(?=[^>]*disabled="")[^>]*>/);
   assert.match(html, />No briefing available<\/strong>/);
@@ -161,7 +215,7 @@ test("preserves the complete statically compiled atlas", async () => {
   );
 
   assert.equal(entries.length, 1053);
-  assert.equal(atlas.totals.levels, 1037);
+  assert.equal(atlas.totals.levels, 1107);
   assert.equal(findGroup("France").flagCode, "FR");
   assert.equal(findGroup("Turkey").flagCode, "TR");
   assert.equal(findGroup("United States").flagCode, "US");
@@ -258,7 +312,7 @@ test("preserves the complete statically compiled atlas", async () => {
   assert.deepEqual(urzikstanEntry.gameIds, ["mwiii", "wz2"]);
   assert.equal(urzikstanEntry.appearances.find((appearance) => appearance.gameId === "wz2").title, "Urzikstan");
   assert.ok(entries.every((entry) =>
-    entry.modes.length === 1 && ["singleplayer", "multiplayer"].includes(entry.modes[0])));
+    entry.modes.length === 1 && ["singleplayer", "multiplayer", "zombies"].includes(entry.modes[0])));
   assert.ok(entries.every((entry) => typeof entry.hasLevelNotes === "boolean"));
   assert.equal(entries.find((entry) => entry.levelId === "wz-fortune-s-keep").hasLevelNotes, false);
   assert.equal(entries.find((entry) => entry.levelId === "cod-pavlov").hasLevelNotes, true);

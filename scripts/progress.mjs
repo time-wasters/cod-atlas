@@ -83,8 +83,8 @@ export async function loadProgressData({ levelsRoot, gamesRoot }) {
     if (!gameId || !games.has(gameId)) {
       throw new Error(`${filename}: exactly one known owner game is required`);
     }
-    if (data.mode !== "singleplayer" && data.mode !== "multiplayer") {
-      throw new Error(`${filename}: mode must be singleplayer or multiplayer`);
+    if (!new Set(["singleplayer", "multiplayer", "zombies"]).has(data.mode)) {
+      throw new Error(`${filename}: mode must be singleplayer, multiplayer or zombies`);
     }
     if (!Array.isArray(data.locations)) {
       throw new Error(`${filename}: locations must be an array`);
@@ -132,10 +132,12 @@ function escapeTableCell(value) {
 export function renderResearchProgress({ games, levels }) {
   const singleplayer = levels.filter((level) => level.mode === "singleplayer");
   const multiplayer = levels.filter((level) => level.mode === "multiplayer");
+  const zombies = levels.filter((level) => level.mode === "zombies");
   const summaries = [
     ["All currently catalogued levels", coverage(levels)],
     ["Campaign levels", coverage(singleplayer)],
     ["Multiplayer maps", coverage(multiplayer)],
+    ["Zombies maps", coverage(zombies)],
   ];
 
   const lines = [
@@ -146,8 +148,8 @@ export function renderResearchProgress({ games, levels }) {
       `| ${label} | ${coverageCell(result)} | ${remainingCell(result)} |`
     )),
     "",
-    "| Game | Campaign | Multiplayer | Overall |",
-    "| --- | ---: | ---: | ---: |",
+    "| Game | Campaign | Multiplayer | Zombies | Overall |",
+    "| --- | ---: | ---: | ---: | ---: |",
   ];
 
   const gameRows = [...games.values()]
@@ -158,10 +160,12 @@ export function renderResearchProgress({ games, levels }) {
     const gameLevels = levels.filter((level) => level.gameId === game.id);
     const campaignCoverage = coverage(gameLevels.filter((level) => level.mode === "singleplayer"));
     const multiplayerCoverage = coverage(gameLevels.filter((level) => level.mode === "multiplayer"));
+    const zombiesCoverage = coverage(gameLevels.filter((level) => level.mode === "zombies"));
     lines.push([
       `| ${escapeTableCell(game.label)}`,
       coverageCell(campaignCoverage),
       coverageCell(multiplayerCoverage),
+      coverageCell(zombiesCoverage),
       `${coverageCell(coverage(gameLevels))} |`,
     ].join(" | "));
   }
@@ -204,10 +208,12 @@ export function renderLocalizationProgress({ games, levels }) {
   const locations = locationsFromLevels(levels);
   const singleplayer = locations.filter((location) => location.mode === "singleplayer");
   const multiplayer = locations.filter((location) => location.mode === "multiplayer");
+  const zombies = locations.filter((location) => location.mode === "zombies");
   const summaries = [
     ["All marker locations", localizationCoverage(locations)],
     ["Campaign marker locations", localizationCoverage(singleplayer)],
     ["Multiplayer marker locations", localizationCoverage(multiplayer)],
+    ["Zombies marker locations", localizationCoverage(zombies)],
   ];
   const lines = [
     localizationProgressStart,
@@ -227,8 +233,8 @@ export function renderLocalizationProgress({ games, levels }) {
       return `| ${label} | ${count} | ${percentage(count, locations.length)}% |`;
     }),
     "",
-    "| Game | Campaign | Multiplayer | Overall |",
-    "| --- | ---: | ---: | ---: |",
+    "| Game | Campaign | Multiplayer | Zombies | Overall |",
+    "| --- | ---: | ---: | ---: | ---: |",
   ];
 
   const gameRows = [...games.values()]
@@ -240,6 +246,7 @@ export function renderLocalizationProgress({ games, levels }) {
       `| ${escapeTableCell(game.label)}`,
       localizationCell(localizationCoverage(gameLocations.filter((location) => location.mode === "singleplayer"))),
       localizationCell(localizationCoverage(gameLocations.filter((location) => location.mode === "multiplayer"))),
+      localizationCell(localizationCoverage(gameLocations.filter((location) => location.mode === "zombies"))),
       `${localizationCell(localizationCoverage(gameLocations))} |`,
     ].join(" | "));
   }

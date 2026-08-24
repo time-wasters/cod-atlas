@@ -67,13 +67,15 @@ out incrementally:
 content/levels/<primary-game>/<level-slug>.md
 content/levels/<primary-game>/campaign/<order>-<level-slug>.md
 content/levels/<primary-game>/multiplayer/<level-slug>.md
+content/levels/<primary-game>/zombies/<level-slug>.md
 content/levels/<appearance-game>/<level-slug>.ref.md
 content/levels/<appearance-game>/<map-type>/<level-slug>.ref.md
 ```
 
 A game must use one layout consistently. `cod`, `cod-uo`, `cod-fh`, `cod2`,
 `wz`, `wz2`, and `mwiii` use `campaign/` for records whose `mode` is `singleplayer` and
-`multiplayer/` for records whose `mode` is `multiplayer`. Games that have not been
+`multiplayer/` for records whose `mode` is `multiplayer`. `bo6` also uses
+`zombies/` for records whose `mode` is `zombies`. Games that have not been
 reorganized remain flat. Map types are broad content categories; they are
 distinct from multiplayer rule sets such as deathmatch or capture the flag.
 
@@ -96,7 +98,7 @@ Required fields:
 - `id`: stable, repository-wide level ID.
 - `title`: human-readable level or map name.
 - `games`: exactly one game ID: the canonical owner game.
-- `mode`: `singleplayer` or `multiplayer`.
+- `mode`: `singleplayer`, `multiplayer`, or `zombies`.
 - `wikiArticle`: foreign key to a Wiki import record.
 - `locations`: embedded location records. Use an empty list only when the
   level is known but its real-world location has not yet been curated.

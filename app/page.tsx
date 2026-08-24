@@ -34,7 +34,7 @@ type Entry = {
   method?: string;
   urls?: Partial<Record<"googleMaps" | "wikipedia" | "callOfDutyMaps", string>>[];
   hasLevelNotes: boolean;
-  modes: ("singleplayer" | "multiplayer")[];
+  modes: ("singleplayer" | "multiplayer" | "zombies")[];
   appearances: LevelAppearance[];
 };
 
@@ -393,14 +393,20 @@ function ExternalLinkIcon({ name }: { name: keyof typeof EXTERNAL_LINK_ICONS }) 
   );
 }
 
-function LevelModeIcon({ multiplayer }: { multiplayer: boolean }) {
-  return multiplayer ? (
+function LevelModeIcon({ mode }: { mode: Entry["modes"][number] }) {
+  if (mode === "zombies") return (
+    <svg className="mission-mode-icon" viewBox="0 0 24 24" role="img" aria-label="Zombies">
+      <path d="M5 10a7 7 0 1 1 14 0v5l-2 2h-2v3h-2v-3h-2v3H9v-3H7l-2-2Z" />
+      <circle cx="9" cy="10" r="1" /><circle cx="15" cy="10" r="1" /><path d="m10 14 2-2 2 2" />
+    </svg>
+  );
+  return mode === "multiplayer" ? (
     <svg className="mission-mode-icon" viewBox="0 0 24 24" role="img" aria-label="Multiplayer">
       <circle cx="8" cy="8" r="3" /><circle cx="16" cy="9" r="2.5" />
       <path d="M2.5 19c.4-4 2.2-6 5.5-6s5.1 2 5.5 6M13 14c.8-.7 1.8-1 3-1 3 0 4.7 2 5 5.5" />
     </svg>
   ) : (
-    <svg className="mission-mode-icon" viewBox="0 0 24 24" role="img" aria-label="Singleplayer">
+    <svg className="mission-mode-icon" viewBox="0 0 24 24" role="img" aria-label="Campaign">
       <circle cx="12" cy="7.5" r="3.5" /><path d="M5 20c.5-5 2.8-7.5 7-7.5s6.5 2.5 7 7.5" />
     </svg>
   );
@@ -1051,6 +1057,7 @@ export default function Home() {
   const [methods, setMethods] = useState<Set<string>>(() => new Set());
   const [showSingleplayer, setShowSingleplayer] = useState(true);
   const [showMultiplayer, setShowMultiplayer] = useState(false);
+  const [showZombies, setShowZombies] = useState(false);
   const [advancedFiltersOpen, setAdvancedFiltersOpen] = useState(false);
   const [openAdvancedFilterDropdown, setOpenAdvancedFilterDropdown] = useState<AdvancedFilterGroupId | null>(null);
   const [mapReady, setMapReady] = useState(false);
@@ -1157,6 +1164,7 @@ export default function Home() {
       setMethods(new Set(urlState.methods.filter((value) => methodValues.has(value))));
       setShowSingleplayer(urlState.showSingleplayer);
       setShowMultiplayer(urlState.showMultiplayer);
+      setShowZombies(urlState.showZombies);
       setSelected(requestedSelection ?? { group: initialGroup, entry: initialEntry });
       setSelectionInUrl(requestedSelection !== null);
       setSelectedCampaignKey(null);
@@ -1185,6 +1193,7 @@ export default function Home() {
       methods: [...methods],
       showSingleplayer,
       showMultiplayer,
+      showZombies,
       levelId: selectionInUrl ? selected.entry.levelId : null,
       locationId: selectionInUrl ? selected.entry.locationId : null,
     });
@@ -1210,6 +1219,7 @@ export default function Home() {
     selectionInUrl,
     showMultiplayer,
     showSingleplayer,
+    showZombies,
     urlSyncReady,
   ]);
 
@@ -1245,7 +1255,8 @@ export default function Home() {
     const matchesMethod = methods.size === 0 || (entry.method ? methods.has(entry.method) : false);
     const matchesMode =
       (showSingleplayer && entry.modes.includes("singleplayer"))
-      || (showMultiplayer && entry.modes.includes("multiplayer"));
+      || (showMultiplayer && entry.modes.includes("multiplayer"))
+      || (showZombies && entry.modes.includes("zombies"));
     return matchesGame
       && matchesSeries
       && matchesSubseries
@@ -1253,7 +1264,7 @@ export default function Home() {
       && matchesConfidence
       && matchesMethod
       && matchesMode;
-  }, [confidences, game, gameSeries, gameSubseries, methods, precisions, showMultiplayer, showSingleplayer]);
+  }, [confidences, game, gameSeries, gameSubseries, methods, precisions, showMultiplayer, showSingleplayer, showZombies]);
   const countries = useMemo(
     () => groups
       .map(({ name, flagCode, continent, entries }) => ({
@@ -1967,7 +1978,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mode-filter" aria-label="Game mode visibility">
+        <div className="mode-filter" aria-label="Map type visibility">
           <button
             className={showSingleplayer ? "is-active" : ""}
             type="button"
@@ -1977,7 +1988,7 @@ export default function Home() {
               setShowSingleplayer((visible) => !visible);
             }}
           >
-            <span aria-hidden="true">{showSingleplayer ? "✓" : "○"}</span> Singleplayer
+            <span aria-hidden="true">{showSingleplayer ? "✓" : "○"}</span> Campaign
           </button>
           <button
             className={showMultiplayer ? "is-active" : ""}
@@ -1990,8 +2001,16 @@ export default function Home() {
           >
             <span aria-hidden="true">{showMultiplayer ? "✓" : "○"}</span> Multiplayer
           </button>
-          <button type="button" disabled aria-pressed="false" title="Zombies filtering will be added later">
-            <span aria-hidden="true">○</span> Zombies <small>Later</small>
+          <button
+            className={showZombies ? "is-active" : ""}
+            type="button"
+            aria-pressed={showZombies}
+            onClick={() => {
+              urlHistoryMode.current = "push";
+              setShowZombies((visible) => !visible);
+            }}
+          >
+            <span aria-hidden="true">{showZombies ? "✓" : "○"}</span> Zombies
           </button>
         </div>
 
@@ -2390,7 +2409,7 @@ export default function Home() {
         </button>
         <article className="intel-card" id="selected-level-details">
           <div className="mission-heading">
-            <LevelModeIcon multiplayer={selected.entry.modes.includes("multiplayer")} />
+            <LevelModeIcon mode={selected.entry.modes[0]} />
             <FittedLevelTitle
               disabled={!selected.entry.coordinates}
               onActivate={focusSelectedMarker}

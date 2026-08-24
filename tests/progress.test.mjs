@@ -75,7 +75,7 @@ test("generated tables include raw counts, percentages and release-order game ro
 
   assert.match(generated, /All currently catalogued levels \| 2 \/ 3 \(67%\) \| 1 \/ 3 \(33%\)/);
   assert.ok(generated.indexOf("| Old Game |") < generated.indexOf("| New Game |"));
-  assert.match(generated, /\| Old Game \| 1 \/ 1 \(100%\) \| 0 \/ 1 \(0%\) \| 1 \/ 2 \(50%\) \|/);
+  assert.match(generated, /\| Old Game \| 1 \/ 1 \(100%\) \| 0 \/ 1 \(0%\) \| — \| 1 \/ 2 \(50%\) \|/);
 });
 
 test("localization progress includes region precision and reports precision changes", () => {
@@ -97,7 +97,7 @@ test("localization progress includes region precision and reports precision chan
   assert.match(generated, /All marker locations \| 2 \/ 3 \(67%\) \| 1 \/ 3 \(33%\) \| 1/);
   assert.match(generated, /\| Exact \| 1 \| 25% \|/);
   assert.match(generated, /\| Region \| 1 \| 25% \|/);
-  assert.match(generated, /\| Test Game \| 2 \/ 3 \(67%\) \| — \| 2 \/ 3 \(67%\) \|/);
+  assert.match(generated, /\| Test Game \| 2 \/ 3 \(67%\) \| — \| — \| 2 \/ 3 \(67%\) \|/);
 });
 
 test("generated block replacement changes only the delimited block", () => {

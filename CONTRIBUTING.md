@@ -51,14 +51,14 @@ all allowed `mode`, `precision`, `confidence`, and `method` values, selection
 guidance, and copy-ready templates for every source record type.
 
 Create a Markdown file under the primary game's directory. If that game is
-already organized by map type, place it in `campaign/` or `multiplayer/` to
-match its `mode` field. Currently `cod`, `cod-uo`, `cod-fh`, `cod2`, `wz`,
-`wz2`, and `mwiii` use this layout; games that have not been reorganized retain their
-existing flat layout.
+already organized by map type, place it in `campaign/`, `multiplayer/`, or
+`zombies/` to match its `mode` field. Currently `cod`, `cod-uo`, `cod-fh`,
+`cod2`, `wz`, `wz2`, and `mwiii` use the first two folders; `bo6` uses all
+three. Games that have not been reorganized retain their existing flat layout.
 
 Campaign files in a map-type layout are named
 `<order>-<level-slug>.md`, starting at `1` without leading zeros or gaps.
-Multiplayer and flat-layout files use `<level-slug>.md`. Never repeat the
+Multiplayer, Zombies, and flat-layout files use `<level-slug>.md`. Never repeat the
 primary game ID or include the campaign order in the stable ID. For example,
 an `id` of `cod3-example-level` belongs at
 `content/levels/cod3/example-level.md` while `cod-example-level` could belong
@@ -149,7 +149,7 @@ regression count in the tests and explain the count change in the pull request.
 - The change is limited to one coherent correction or feature.
 - Game and Wiki foreign keys resolve.
 - Location precision reflects the quality of the evidence.
-- Singleplayer/multiplayer classification has been checked.
+- Campaign/multiplayer/Zombies classification has been checked.
 - Generated data is current.
 - Third-party attribution and licensing are preserved.
 

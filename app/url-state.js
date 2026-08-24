@@ -26,6 +26,7 @@ const atlasUrlParameters = [
  * @property {string[]} methods
  * @property {boolean} showSingleplayer
  * @property {boolean} showMultiplayer
+ * @property {boolean} showZombies
  * @property {string | null} levelId
  * @property {string | null} locationId
  */
@@ -34,6 +35,7 @@ const atlasUrlParameters = [
 export function parseAtlasUrl(input) {
   const url = input instanceof URL ? input : new URL(input);
   const mode = url.searchParams.get("mode");
+  const selectedModes = new Set(mode?.split(",") ?? []);
   const values = (name) => (url.searchParams.get(name) ?? "").split(",").filter(Boolean);
   const precision = url.searchParams.get("precision");
   const precisions = precision === "localized"
@@ -52,8 +54,9 @@ export function parseAtlasUrl(input) {
     precisions,
     confidences: values("confidence"),
     methods: values("method"),
-    showSingleplayer: mode !== "multiplayer" && mode !== "none",
-    showMultiplayer: mode === "multiplayer" || mode === "both",
+    showSingleplayer: mode == null || mode === "both" || mode === "all" || selectedModes.has("singleplayer"),
+    showMultiplayer: mode === "multiplayer" || mode === "both" || mode === "all" || selectedModes.has("multiplayer"),
+    showZombies: mode === "zombies" || mode === "all" || selectedModes.has("zombies"),
     levelId: url.searchParams.get("level") || null,
     locationId: url.searchParams.get("location") || null,
   };
@@ -80,9 +83,18 @@ export function atlasUrlWithState(input, state) {
   setValues("confidence", state.confidences);
   setValues("method", state.methods);
 
-  if (state.showSingleplayer && state.showMultiplayer) url.searchParams.set("mode", "both");
-  else if (!state.showSingleplayer && state.showMultiplayer) url.searchParams.set("mode", "multiplayer");
-  else if (!state.showSingleplayer && !state.showMultiplayer) url.searchParams.set("mode", "none");
+  const selectedModes = [
+    state.showSingleplayer ? "singleplayer" : null,
+    state.showMultiplayer ? "multiplayer" : null,
+    state.showZombies ? "zombies" : null,
+  ].filter(Boolean);
+  if (selectedModes.length === 3) url.searchParams.set("mode", "all");
+  else if (selectedModes.length === 0) url.searchParams.set("mode", "none");
+  else if (selectedModes.length === 1 && selectedModes[0] !== "singleplayer") url.searchParams.set("mode", selectedModes[0]);
+  else if (selectedModes.length === 2 && !state.showZombies) url.searchParams.set("mode", "both");
+  else if (!(selectedModes.length === 1 && selectedModes[0] === "singleplayer")) {
+    url.searchParams.set("mode", selectedModes.join(","));
+  }
 
   if (state.levelId) {
     url.searchParams.set("level", state.levelId);

@@ -13,10 +13,11 @@ const mapOverlaysOutputPath = path.join(outputDirectory, "map-overlays.generated
 const historyOverlaysOutputPath = path.join(outputDirectory, "history-overlays.generated.json");
 const levelBannersRoot = path.join(root, "public/images/levels");
 const checkOnly = process.argv.includes("--check");
-const validModes = new Set(["singleplayer", "multiplayer"]);
+const validModes = new Set(["singleplayer", "multiplayer", "zombies"]);
 const mapTypeDirectoryByMode = new Map([
   ["singleplayer", "campaign"],
   ["multiplayer", "multiplayer"],
+  ["zombies", "zombies"],
 ]);
 const validPrecisions = new Set(["exact", "approximate", "city", "region", "country", "off-world"]);
 const validConfidences = new Set(["high", "medium", "fallback"]);
