@@ -27,13 +27,15 @@ erDiagram
 id: cod3
 code: COD3
 label: CoD 3
+labelLong: "Call of Duty 3"
 released: 2006-11-07
 series: world-war-ii
 subseries: main
 ```
 
-The release date controls the game-filter ordering. Labels should be concise
-but understandable without prior knowledge of internal abbreviations. An
+The release date controls the game-filter ordering. `label` should be concise
+but understandable without prior knowledge of internal abbreviations, while
+`labelLong` contains the full game name used by icon tooltips. An
 optional `public/images/games/<game-id>.png` is detected during the build and
 exposed as the game's `icon`; games without one continue to display their
 label.

@@ -125,6 +125,7 @@ type Game = {
   id: string;
   code: string;
   label: string;
+  labelLong: string;
   released: string;
   series: "world-war-ii" | "modern-warfare" | "black-ops" | "standalone";
   subseries: "main" | "reboot" | "remaster" | "add-on" | "spin-off" | null;
@@ -409,6 +410,87 @@ function LevelModeIcon({ mode }: { mode: Entry["modes"][number] }) {
     <svg className="mission-mode-icon" viewBox="0 0 24 24" role="img" aria-label="Campaign">
       <circle cx="12" cy="7.5" r="3.5" /><path d="M5 20c.5-5 2.8-7.5 7-7.5s6.5 2.5 7 7.5" />
     </svg>
+  );
+}
+
+function GameIcon({
+  game,
+  src,
+  external,
+  onError,
+}: {
+  game: Game;
+  src: string;
+  external: boolean;
+  onError: () => void;
+}) {
+  const anchor = useRef<HTMLSpanElement>(null);
+  const showTimer = useRef<number | null>(null);
+  const [tooltipPosition, setTooltipPosition] = useState<{
+    top: number;
+    left: number;
+    side: "left" | "right";
+  } | null>(null);
+  const tooltipId = `game-icon-tooltip-${game.id}`;
+
+  const hideTooltip = () => {
+    if (showTimer.current !== null) window.clearTimeout(showTimer.current);
+    showTimer.current = null;
+    setTooltipPosition(null);
+  };
+
+  const scheduleTooltip = () => {
+    if (showTimer.current !== null) window.clearTimeout(showTimer.current);
+    showTimer.current = window.setTimeout(() => {
+      showTimer.current = null;
+      const rect = anchor.current?.getBoundingClientRect();
+      if (!rect) return;
+      const gap = 9;
+      const side = rect.left >= 280 ? "left" : "right";
+      setTooltipPosition({
+        top: Math.min(Math.max(28, rect.top + rect.height / 2), window.innerHeight - 28),
+        left: side === "left" ? rect.left - gap : rect.right + gap,
+        side,
+      });
+    }, 300);
+  };
+
+  useEffect(() => () => {
+    if (showTimer.current !== null) window.clearTimeout(showTimer.current);
+  }, []);
+
+  return (
+    <span
+      className="game-icon-tooltip-anchor"
+      ref={anchor}
+      tabIndex={0}
+      aria-label={game.labelLong}
+      aria-describedby={tooltipPosition ? tooltipId : undefined}
+      onMouseEnter={scheduleTooltip}
+      onMouseLeave={hideTooltip}
+      onFocus={scheduleTooltip}
+      onBlur={hideTooltip}
+    >
+      {/* Game icons are reviewed local public assets and do not need image optimization. */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        className={`mission-game-icon${external ? " is-external" : ""}`}
+        src={src}
+        alt=""
+        onError={onError}
+      />
+      {tooltipPosition && typeof document !== "undefined" && createPortal(
+        <span
+          id={tooltipId}
+          className={`game-icon-tooltip is-${tooltipPosition.side}`}
+          style={{ top: tooltipPosition.top, left: tooltipPosition.left }}
+          role="tooltip"
+        >
+          {game.labelLong}
+        </span>,
+        document.body,
+      )}
+    </span>
   );
 }
 
@@ -2423,14 +2505,11 @@ export default function Home() {
                 const selectedGameIcon = gameIcon(selectedGame);
                 const usesExternalGameIcon = Boolean(selectedGameIcon && selectedGameIcon !== selectedGame.icon);
                 return selectedGameIcon ? (
-                  // Game icons are reviewed local public assets and do not need image optimization.
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    className={`mission-game-icon${usesExternalGameIcon ? " is-external" : ""}`}
+                  <GameIcon
                     key={gameId}
+                    game={selectedGame}
                     src={selectedGameIcon}
-                    alt={selectedGame.label}
-                    title={selectedGame.label}
+                    external={usesExternalGameIcon}
                     onError={() => {
                       if (usesExternalGameIcon) {
                         setFailedExternalGameIcons((failed) => new Set(failed).add(gameId));

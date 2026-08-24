@@ -287,7 +287,7 @@ for (const filename of gameFiles) {
   const game = YAML.parse(await readFile(filename, "utf8"));
   requireValue(game?.id, `${filename}: game id is required`);
   requireValue(!games.has(game.id), `${filename}: duplicate game id ${game.id}`);
-  requireValue(game.code && game.label && game.released, `${filename}: code, label and released are required`);
+  requireValue(game.code && game.label && game.labelLong && game.released, `${filename}: code, label, labelLong and released are required`);
   requireValue(validGameSeries.has(game.series), `${filename}: unsupported game series ${game.series}`);
   requireValue(
     game.subseries == null || validGameSubseries.has(game.subseries),

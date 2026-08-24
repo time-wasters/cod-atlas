@@ -396,8 +396,13 @@ input[type="checkbox"]:disabled:checked { background-color: #6e592e; filter: gra
 .mission-title-button:focus-visible { border-radius: 2px; outline: 1px solid var(--amber); outline-offset: 3px; }
 .mission-title-button:disabled { color: inherit; cursor: default; }
 .mission-games { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.game-icon-tooltip-anchor { width: 28px; height: 28px; display: block; border-radius: 5px; }
+.game-icon-tooltip-anchor:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
 .mission-game-icon { width: 28px; height: 28px; display: block; border: 1px solid #575e4a; border-radius: 5px; padding: 0; object-fit: contain; background: linear-gradient(145deg, #282d23dd, #151a14e8); box-shadow: inset 0 1px 0 #ffffff0d, 0 2px 6px #0007; }
 .mission-game-icon.is-external { padding: 0; }
+.game-icon-tooltip { position: fixed; z-index: 1950; width: max-content; max-width: min(260px, calc(100vw - 16px)); border: 1px solid #756234; border-radius: 4px; padding: 7px 9px; color: #eee3c8; background: linear-gradient(145deg, #20251bf5, #10140ff8); box-shadow: 0 8px 22px #000c, inset 0 1px 0 #ffffff0a; font-size: 11px; font-weight: 650; line-height: 1.35; pointer-events: none; }
+.game-icon-tooltip.is-left { transform: translate(-100%, -50%); }
+.game-icon-tooltip.is-right { transform: translateY(-50%); }
 .mission-game-name { max-width: 42px; font-size: 8px; text-align: center; }
 .intel-media { position: relative; max-height: 160px; aspect-ratio: 800 / 344; margin: 0 0 13px; overflow: hidden; border: 1px solid #4c513f; border-radius: 4px; background: #0b0e0a; }
 .intel-media::after { content: ""; position: absolute; z-index: 1; inset: 0; border: 1px solid #d5a039; border-radius: inherit; opacity: 0; pointer-events: none; transition: opacity .15s ease-out; }
