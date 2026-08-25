@@ -4,7 +4,7 @@ title: Stalingrad
 games:
   - cod2
 mode: multiplayer
-wikiArticle: codwiki-stalingrad-call-of-duty-2
+wikiArticle: codwiki-railyard-map
 locations:
   - id: main
     country: Russia
