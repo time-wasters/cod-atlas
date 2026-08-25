@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Surrender_at_Aachen",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Surrender_at_Aachen",
   "latestRevisionId": 2899444,
-  "importedAt": "2026-08-09T21:34:51.037Z",
+  "importedAt": "2026-08-25T23:04:01.678Z",
   "levelLocation": {
     "raw": "[[Aachen]], Germany",
     "label": "Aachen",
@@ -53,5 +53,46 @@
     "resolvedTitle": "Surrender at Aachen",
     "mainImageTitle": "File:CoDFH_Surrender_at_Aachen_loading_screen.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Underground Passage]]",
+    "label": "Underground Passage",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-underground-passage",
+        "wikiTitle": "Underground Passage",
+        "label": "Underground Passage",
+        "url": "https://callofduty.fandom.com/wiki/Underground_Passage"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Come Out Fighting]]",
+    "label": "Come Out Fighting",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-come-out-fighting",
+        "wikiTitle": "Come Out Fighting",
+        "label": "Come Out Fighting",
+        "url": "https://callofduty.fandom.com/wiki/Come_Out_Fighting"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Finest Hour]]''",
+    "label": "Call of Duty: Finest Hour",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Finest Hour",
+        "label": "Call of Duty: Finest Hour",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Finest_Hour"
+      }
+    ]
+  },
+  "date": {
+    "raw": "October 21, 1944",
+    "label": "October 21, 1944"
   }
 }

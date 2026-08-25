@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/The_Flag_Must_Fall",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/The_Flag_Must_Fall",
   "latestRevisionId": 2704080,
-  "importedAt": "2026-08-09T21:34:51.065Z",
+  "importedAt": "2026-08-25T23:04:01.707Z",
   "levelLocation": {
     "raw": "Mamayev Kurgan, [[Stalingrad]], Soviet Union",
     "label": "Stalingrad",
@@ -53,5 +53,46 @@
     "resolvedTitle": "The Flag Must Fall",
     "mainImageTitle": "File:CoDFH_-_The_Flag_Must_Fall.jpg",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Not One Step Back]]",
+    "label": "Not One Step Back",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-not-one-step-back",
+        "wikiTitle": "Not One Step Back",
+        "label": "Not One Step Back",
+        "url": "https://callofduty.fandom.com/wiki/Not_One_Step_Back"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Dead In Her Sights]]",
+    "label": "Dead In Her Sights",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-dead-in-her-sights",
+        "wikiTitle": "Dead In Her Sights",
+        "label": "Dead In Her Sights",
+        "url": "https://callofduty.fandom.com/wiki/Dead_In_Her_Sights"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Finest Hour]]''",
+    "label": "Call of Duty: Finest Hour",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Finest Hour",
+        "label": "Call of Duty: Finest Hour",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Finest_Hour"
+      }
+    ]
+  },
+  "date": {
+    "raw": "September 20, 1942",
+    "label": "September 20, 1942"
   }
 }

@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Road_to_Remagen",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Road_to_Remagen",
   "latestRevisionId": 2955669,
-  "importedAt": "2026-08-09T21:34:51.044Z",
+  "importedAt": "2026-08-25T23:04:01.686Z",
   "levelLocation": {
     "raw": "Remagen, Germany",
     "label": "Remagen, Germany",
@@ -53,5 +53,46 @@
     "resolvedTitle": "Road to Remagen",
     "mainImageTitle": "File:CoDFH_Road_to_Remagen_loading_screen.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Come Out Fighting]]",
+    "label": "Come Out Fighting",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-come-out-fighting",
+        "wikiTitle": "Come Out Fighting",
+        "label": "Come Out Fighting",
+        "url": "https://callofduty.fandom.com/wiki/Come_Out_Fighting"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Last Bridge Standing]]",
+    "label": "Last Bridge Standing",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-last-bridge-standing",
+        "wikiTitle": "Last Bridge Standing",
+        "label": "Last Bridge Standing",
+        "url": "https://callofduty.fandom.com/wiki/Last_Bridge_Standing"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Finest Hour]]''",
+    "label": "Call of Duty: Finest Hour",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Finest Hour",
+        "label": "Call of Duty: Finest Hour",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Finest_Hour"
+      }
+    ]
+  },
+  "date": {
+    "raw": "April 7, 1945",
+    "label": "April 7, 1945"
   }
 }

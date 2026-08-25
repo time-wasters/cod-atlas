@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Mission:_Matmata",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Mission:_Matmata",
   "latestRevisionId": 2955657,
-  "importedAt": "2026-08-09T21:34:51.023Z",
+  "importedAt": "2026-08-25T23:04:01.664Z",
   "levelLocation": {
     "raw": "Matmata, Tunisia",
     "label": "Matmata, Tunisia",
@@ -53,5 +53,46 @@
     "resolvedTitle": "Mission: Matmata",
     "mainImageTitle": "File:CoDFH_Mission_Matmata_loading_screen.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Airfield Ambush]]",
+    "label": "Airfield Ambush",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-airfield-ambush",
+        "wikiTitle": "Airfield Ambush",
+        "label": "Airfield Ambush",
+        "url": "https://callofduty.fandom.com/wiki/Airfield_Ambush"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Depot Saboteurs]]",
+    "label": "Depot Saboteurs",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-depot-saboteurs",
+        "wikiTitle": "Depot Saboteurs",
+        "label": "Depot Saboteurs",
+        "url": "https://callofduty.fandom.com/wiki/Depot_Saboteurs"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Finest Hour]]''",
+    "label": "Call of Duty: Finest Hour",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Finest Hour",
+        "label": "Call of Duty: Finest Hour",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Finest_Hour"
+      }
+    ]
+  },
+  "date": {
+    "raw": "January 22, 1943",
+    "label": "January 22, 1943"
   }
 }

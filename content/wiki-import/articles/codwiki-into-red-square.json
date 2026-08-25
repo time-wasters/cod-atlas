@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Into_Red_Square",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Into_Red_Square",
   "latestRevisionId": 2955656,
-  "importedAt": "2026-08-09T21:34:40.180Z",
+  "importedAt": "2026-08-25T23:03:50.683Z",
   "levelLocation": {
     "raw": "Red Square, [[Stalingrad]], [[Soviet Union]]",
     "label": "Stalingrad",
@@ -53,5 +53,46 @@
     "resolvedTitle": "Into Red Square",
     "mainImageTitle": "File:CoDFH_Into_Red_Square_loading_screen.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Breakdown]]",
+    "label": "Breakdown",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-breakdown",
+        "wikiTitle": "Breakdown",
+        "label": "Breakdown",
+        "url": "https://callofduty.fandom.com/wiki/Breakdown"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Operation Little Saturn (level)|Operation Little Saturn]]",
+    "label": "Operation Little Saturn",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-operation-little-saturn-level",
+        "wikiTitle": "Operation Little Saturn (level)",
+        "label": "Operation Little Saturn",
+        "url": "https://callofduty.fandom.com/wiki/Operation_Little_Saturn_(level)"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Finest Hour]]''",
+    "label": "Call of Duty: Finest Hour",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Finest Hour",
+        "label": "Call of Duty: Finest Hour",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Finest_Hour"
+      }
+    ]
+  },
+  "date": {
+    "raw": "October 3rd, 1942",
+    "label": "October 3rd, 1942"
   }
 }
