@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Baptism_By_Fire",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Baptism_By_Fire",
   "latestRevisionId": 2978493,
-  "importedAt": "2026-08-15T09:19:44.733Z",
+  "importedAt": "2026-08-25T23:10:03.646Z",
   "levelLocation": {
     "raw": "Oran, Algeria",
     "label": "Oran, Algeria",
@@ -59,6 +59,8 @@
     "label": "We've Been Through Worse (In game)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-we-ve-been-through-worse",
         "wikiTitle": "We've Been Through Worse",
         "label": "We've Been Through Worse",
         "url": "https://callofduty.fandom.com/wiki/We've_Been_Through_Worse"
@@ -70,11 +72,15 @@
     "label": "Tankers (In game), Liberators (Chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-tankers",
         "wikiTitle": "Tankers",
         "label": "Tankers",
         "url": "https://callofduty.fandom.com/wiki/Tankers"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-liberators",
         "wikiTitle": "Liberators",
         "label": "Liberators",
         "url": "https://callofduty.fandom.com/wiki/Liberators"

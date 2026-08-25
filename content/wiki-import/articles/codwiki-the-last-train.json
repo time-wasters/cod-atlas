@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/The_Last_Train",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/The_Last_Train",
   "latestRevisionId": 2978512,
-  "importedAt": "2026-08-11T18:55:36.992Z",
+  "importedAt": "2026-08-25T23:10:25.714Z",
   "levelLocation": {
     "raw": "Near Buchholz, Germany",
     "label": "Near Buchholz, Germany",
@@ -59,6 +59,8 @@
     "label": "Crucifix Hill",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-crucifix-hill",
         "wikiTitle": "Crucifix Hill",
         "label": "Crucifix Hill",
         "url": "https://callofduty.fandom.com/wiki/Crucifix_Hill"
@@ -70,6 +72,8 @@
     "label": "The Dragon's Teeth",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-the-dragon-s-teeth",
         "wikiTitle": "The Dragon's Teeth",
         "label": "The Dragon's Teeth",
         "url": "https://callofduty.fandom.com/wiki/The_Dragon's_Teeth"

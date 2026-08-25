@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/An_Easy_Detail",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/An_Easy_Detail",
   "latestRevisionId": 2978506,
-  "importedAt": "2026-08-15T09:24:12.005Z",
+  "importedAt": "2026-08-25T23:10:03.662Z",
   "levelLocation": {
     "raw": "Mons, Belgium",
     "label": "Mons, Belgium",
@@ -59,6 +59,8 @@
     "label": "The Great Crusade",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-the-great-crusade",
         "wikiTitle": "The Great Crusade",
         "label": "The Great Crusade",
         "url": "https://callofduty.fandom.com/wiki/The_Great_Crusade"
@@ -70,11 +72,15 @@
     "label": "Crucifix Hill (in-game), We've Been Through Worse (chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-crucifix-hill",
         "wikiTitle": "Crucifix Hill",
         "label": "Crucifix Hill",
         "url": "https://callofduty.fandom.com/wiki/Crucifix_Hill"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-we-ve-been-through-worse",
         "wikiTitle": "We've Been Through Worse",
         "label": "We've Been Through Worse",
         "url": "https://callofduty.fandom.com/wiki/We've_Been_Through_Worse"
