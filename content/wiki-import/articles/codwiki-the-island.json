@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/The_Island",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/The_Island",
   "latestRevisionId": 3016513,
-  "importedAt": "2026-08-11T18:51:30.633Z",
+  "importedAt": "2026-08-25T23:11:22.741Z",
   "levelLocation": {
     "raw": "Saint-Germain-sur-Sèves, France",
     "label": "Saint-Germain-sur-Sèves, France",
@@ -59,11 +59,15 @@
     "label": "Saint Lo (in-game), Night Drop (chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": null,
         "wikiTitle": "Saint Lo (Chapter)",
         "label": "Saint Lo",
         "url": "https://callofduty.fandom.com/wiki/Saint_Lo_(Chapter)"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-night-drop",
         "wikiTitle": "Night Drop",
         "label": "Night Drop",
         "url": "https://callofduty.fandom.com/wiki/Night_Drop"
@@ -75,6 +79,8 @@
     "label": "Night Drop",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-night-drop",
         "wikiTitle": "Night Drop",
         "label": "Night Drop",
         "url": "https://callofduty.fandom.com/wiki/Night_Drop"

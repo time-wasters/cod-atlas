@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/The_Crossroads_(Call_of_Duty_3)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/The_Crossroads_(Call_of_Duty_3)",
   "latestRevisionId": 3016515,
-  "importedAt": "2026-08-11T18:51:30.654Z",
+  "importedAt": "2026-08-25T23:11:22.762Z",
   "levelLocation": {
     "raw": "Le Bourg St. Leonard, France",
     "label": "Le Bourg St. Leonard, France",
@@ -59,6 +59,8 @@
     "label": "Laison River",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-laison-river",
         "wikiTitle": "Laison River",
         "label": "Laison River",
         "url": "https://callofduty.fandom.com/wiki/Laison_River"
@@ -70,11 +72,15 @@
     "label": "Hostage! (in-game), The Mace (chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-hostage",
         "wikiTitle": "Hostage!",
         "label": "Hostage!",
         "url": "https://callofduty.fandom.com/wiki/Hostage!"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-the-mace",
         "wikiTitle": "The Mace",
         "label": "The Mace",
         "url": "https://callofduty.fandom.com/wiki/The_Mace"

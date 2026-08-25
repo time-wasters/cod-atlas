@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Falaise_Road",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Falaise_Road",
   "latestRevisionId": 2960696,
-  "importedAt": "2026-08-11T18:51:08.822Z",
+  "importedAt": "2026-08-25T23:11:01.186Z",
   "levelLocation": {
     "raw": "Tilly-la-Campagne, France",
     "label": "Tilly-la-Campagne, France",
@@ -59,6 +59,8 @@
     "label": "Mayenne Bridge",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-mayenne-bridge",
         "wikiTitle": "Mayenne Bridge",
         "label": "Mayenne Bridge",
         "url": "https://callofduty.fandom.com/wiki/Mayenne_Bridge"
@@ -70,6 +72,8 @@
     "label": "Fuel Plant",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-fuel-plant-level",
         "wikiTitle": "Fuel Plant (Level)",
         "label": "Fuel Plant",
         "url": "https://callofduty.fandom.com/wiki/Fuel_Plant_(Level)"

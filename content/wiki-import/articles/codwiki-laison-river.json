@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Laison_River",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Laison_River",
   "latestRevisionId": 2797558,
-  "importedAt": "2026-08-11T18:51:19.656Z",
+  "importedAt": "2026-08-25T23:11:11.883Z",
   "levelLocation": {
     "raw": "Near Falaise, France",
     "label": "Near Falaise, France",
@@ -59,6 +59,8 @@
     "label": "The Forest",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-the-forest",
         "wikiTitle": "The Forest",
         "label": "The Forest",
         "url": "https://callofduty.fandom.com/wiki/The_Forest"
@@ -70,6 +72,8 @@
     "label": "The Crossroads",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-the-crossroads-call-of-duty-3",
         "wikiTitle": "The Crossroads (Call of Duty 3)",
         "label": "The Crossroads",
         "url": "https://callofduty.fandom.com/wiki/The_Crossroads_(Call_of_Duty_3)"

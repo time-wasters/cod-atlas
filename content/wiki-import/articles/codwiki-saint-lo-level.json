@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Saint-L%C3%B4_(level)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Saint-L%C3%B4_(level)",
   "latestRevisionId": 3016512,
-  "importedAt": "2026-08-11T18:51:30.625Z",
+  "importedAt": "2026-08-25T23:11:22.734Z",
   "levelLocation": {
     "raw": "[[Saint-Lô]], France",
     "label": "Saint-Lô",
@@ -64,11 +64,15 @@
     "label": "The Island (in-game), Night Drop (chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-the-island",
         "wikiTitle": "The Island",
         "label": "The Island",
         "url": "https://callofduty.fandom.com/wiki/The_Island"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-night-drop",
         "wikiTitle": "Night Drop",
         "label": "Night Drop",
         "url": "https://callofduty.fandom.com/wiki/Night_Drop"
