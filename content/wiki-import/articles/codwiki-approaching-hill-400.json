@@ -4,7 +4,7 @@
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Bergstein",
   "fandomPageId": 6399,
   "latestRevisionId": 2784971,
-  "importedAt": "2026-08-18T20:40:41.314Z",
+  "importedAt": "2026-08-25T21:15:27.423Z",
   "levelLocation": {
     "raw": "Bergstein, Germany",
     "label": "Bergstein, Germany",
@@ -15,6 +15,8 @@
     "label": "The Brigade Box",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-the-brigade-box",
         "wikiTitle": "The Brigade Box",
         "label": "The Brigade Box",
         "url": "https://callofduty.fandom.com/wiki/The_Brigade_Box"
@@ -26,6 +28,8 @@
     "label": "Rangers Lead the Way",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-rangers-lead-the-way",
         "wikiTitle": "Rangers Lead the Way",
         "label": "Rangers Lead the Way",
         "url": "https://callofduty.fandom.com/wiki/Rangers_Lead_the_Way"

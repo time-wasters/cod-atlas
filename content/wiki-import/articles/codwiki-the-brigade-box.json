@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/The_Brigade_Box",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/The_Brigade_Box",
   "latestRevisionId": 2951073,
-  "importedAt": "2026-08-18T20:41:13.825Z",
+  "importedAt": "2026-08-25T21:16:00.041Z",
   "levelLocation": {
     "raw": "Amayé-sur-Seulles, France",
     "label": "Amayé-sur-Seulles, France",
@@ -59,6 +59,8 @@
     "label": "The Tiger",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-the-tiger",
         "wikiTitle": "The Tiger",
         "label": "The Tiger",
         "url": "https://callofduty.fandom.com/wiki/The_Tiger"
@@ -70,11 +72,15 @@
     "label": "Bergstein, The Silo (Chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-approaching-hill-400",
         "wikiTitle": "Bergstein",
         "label": "Bergstein",
         "url": "https://callofduty.fandom.com/wiki/Bergstein"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-the-silo",
         "wikiTitle": "The Silo",
         "label": "The Silo",
         "url": "https://callofduty.fandom.com/wiki/The_Silo"

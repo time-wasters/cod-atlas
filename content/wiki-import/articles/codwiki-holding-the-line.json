@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Holding_the_Line",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Holding_the_Line",
   "latestRevisionId": 2936612,
-  "importedAt": "2026-08-18T20:41:02.892Z",
+  "importedAt": "2026-08-25T21:15:48.984Z",
   "levelLocation": {
     "raw": "Northern Egypt, Africa",
     "label": "Northern Egypt, Africa",
@@ -59,6 +59,8 @@
     "label": "The Diversionary Raid",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-the-diversionary-raid",
         "wikiTitle": "The Diversionary Raid",
         "label": "The Diversionary Raid",
         "url": "https://callofduty.fandom.com/wiki/The_Diversionary_Raid"
@@ -70,6 +72,8 @@
     "label": "Operation Supercharge",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-operation-supercharge",
         "wikiTitle": "Operation Supercharge",
         "label": "Operation Supercharge",
         "url": "https://callofduty.fandom.com/wiki/Operation_Supercharge"

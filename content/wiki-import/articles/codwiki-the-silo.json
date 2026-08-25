@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/The_Silo",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/The_Silo",
   "latestRevisionId": 2951071,
-  "importedAt": "2026-08-18T20:41:24.554Z",
+  "importedAt": "2026-08-25T21:16:10.864Z",
   "levelLocation": {
     "raw": "Beaumont-Hague, France",
     "label": "Beaumont-Hague, France",
@@ -59,11 +59,15 @@
     "label": "Defending the Pointe The Brigade Box (Chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-defending-the-pointe",
         "wikiTitle": "Defending the Pointe",
         "label": "Defending the Pointe",
         "url": "https://callofduty.fandom.com/wiki/Defending_the_Pointe"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-the-brigade-box",
         "wikiTitle": "The Brigade Box",
         "label": "The Brigade Box",
         "url": "https://callofduty.fandom.com/wiki/The_Brigade_Box"
@@ -75,11 +79,15 @@
     "label": "Prisoners of War, Bergstein (Chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-prisoners-of-war",
         "wikiTitle": "Prisoners of War",
         "label": "Prisoners of War",
         "url": "https://callofduty.fandom.com/wiki/Prisoners_of_War"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-approaching-hill-400",
         "wikiTitle": "Bergstein",
         "label": "Bergstein",
         "url": "https://callofduty.fandom.com/wiki/Bergstein"

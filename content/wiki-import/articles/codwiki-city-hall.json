@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/City_Hall",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/City_Hall",
   "latestRevisionId": 2901245,
-  "importedAt": "2026-08-18T20:40:41.306Z",
+  "importedAt": "2026-08-25T21:15:27.400Z",
   "levelLocation": {
     "raw": "[[Stalingrad]], U.S.S.R.",
     "label": "Stalingrad",
@@ -59,6 +59,8 @@
     "label": "Downtown Assault",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-downtown-assault",
         "wikiTitle": "Downtown Assault",
         "label": "Downtown Assault",
         "url": "https://callofduty.fandom.com/wiki/Downtown_Assault"
@@ -70,6 +72,8 @@
     "label": "Comrade Sniper",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-comrade-sniper",
         "wikiTitle": "Comrade Sniper",
         "label": "Comrade Sniper",
         "url": "https://callofduty.fandom.com/wiki/Comrade_Sniper"

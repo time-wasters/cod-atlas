@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Rangers_Lead_the_Way",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Rangers_Lead_the_Way",
   "latestRevisionId": 2901237,
-  "importedAt": "2026-08-18T20:41:02.921Z",
+  "importedAt": "2026-08-25T21:16:00.048Z",
   "levelLocation": {
     "raw": "Bergstein, Germany (At the base of [[Hill 400]])",
     "label": "Hill 400",
@@ -59,6 +59,8 @@
     "label": "Bergstein",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-approaching-hill-400",
         "wikiTitle": "Bergstein",
         "label": "Bergstein",
         "url": "https://callofduty.fandom.com/wiki/Bergstein"
@@ -70,6 +72,8 @@
     "label": "The Battle for Hill 400",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-the-battle-for-hill-400",
         "wikiTitle": "The Battle for Hill 400",
         "label": "The Battle for Hill 400",
         "url": "https://callofduty.fandom.com/wiki/The_Battle_for_Hill_400"

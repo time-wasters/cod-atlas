@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Retaking_Toujane",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Retaking_Toujane",
   "latestRevisionId": 3003845,
-  "importedAt": "2026-08-18T20:41:13.804Z",
+  "importedAt": "2026-08-25T21:16:00.018Z",
   "levelLocation": {
     "raw": null,
     "label": null,
@@ -59,6 +59,8 @@
     "label": "Armored Car Escape",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-outnumbered-and-outgunned",
         "wikiTitle": "Armored Car Escape",
         "label": "Armored Car Escape",
         "url": "https://callofduty.fandom.com/wiki/Armored_Car_Escape"
@@ -70,6 +72,8 @@
     "label": "Assault on Matmata",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-assault-on-matmata",
         "wikiTitle": "Assault on Matmata",
         "label": "Assault on Matmata",
         "url": "https://callofduty.fandom.com/wiki/Assault_on_Matmata"

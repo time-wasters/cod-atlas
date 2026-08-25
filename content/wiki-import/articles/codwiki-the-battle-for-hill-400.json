@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/The_Battle_for_Hill_400",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/The_Battle_for_Hill_400",
   "latestRevisionId": 2901236,
-  "importedAt": "2026-08-18T20:41:13.833Z",
+  "importedAt": "2026-08-25T21:16:00.055Z",
   "levelLocation": {
     "raw": "Hill 400 near Bergstein, Germany",
     "label": "Hill 400 near Bergstein, Germany",
@@ -59,6 +59,8 @@
     "label": "Rangers Lead the Way",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-rangers-lead-the-way",
         "wikiTitle": "Rangers Lead the Way",
         "label": "Rangers Lead the Way",
         "url": "https://callofduty.fandom.com/wiki/Rangers_Lead_the_Way"
@@ -70,6 +72,8 @@
     "label": "The Crossing Point",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-crossing-the-rhine",
         "wikiTitle": "The Crossing Point",
         "label": "The Crossing Point",
         "url": "https://callofduty.fandom.com/wiki/The_Crossing_Point"
