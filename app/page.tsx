@@ -205,7 +205,6 @@ type AtlasData = {
     cityMatched: number;
     countryFallback: number;
   };
-  updatedAt: string;
 };
 
 type Selection = { group: Group; entry: Entry };

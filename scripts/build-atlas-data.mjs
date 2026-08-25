@@ -251,7 +251,6 @@ async function validateHistoryOverlay(overlay, levelId, body, filename) {
   };
 }
 
-const atlas = YAML.parse(await readFile(path.join(contentRoot, "atlas.yaml"), "utf8"));
 const gameFiles = (await filesBelow(path.join(contentRoot, "games"), ".yaml")).sort();
 const allLevelFiles = (await filesBelow(levelsRoot, ".md")).sort();
 const levelFiles = allLevelFiles.filter((filename) => !filename.endsWith(".ref.md"));
@@ -686,7 +685,6 @@ const wikiMedia = Object.fromEntries([...wikiArticles].flatMap(([id, article]) =
   return main || map ? [[id, { main, map }]] : [];
 }));
 const compiled = {
-  updatedAt: atlas.updatedAt,
   games: [...games.values()].sort((a, b) => String(a.released).localeCompare(String(b.released))),
   levelIdAliases,
   levelBanners,
