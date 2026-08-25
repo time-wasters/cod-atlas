@@ -1612,11 +1612,15 @@ export default function Home() {
   }, [selectEntry]);
 
   const selectCampaign = useCallback((campaign: CampaignOption) => {
-    setSelectedCampaignKey((currentKey) => currentKey === campaign.key ? null : campaign.key);
+    const campaignIsActive = selectedCampaignKey === campaign.key;
+    setSelectedCampaignKey(campaignIsActive ? null : campaign.key);
+    if (!campaignIsActive && campaign.levels[0]) {
+      selectEntry(campaign.levels[0].group, campaign.levels[0].entry);
+    }
     setExpandedRegionEntryId(null);
     setRelatedLevelsOpen(true);
     setDetailsOpen(true);
-  }, []);
+  }, [selectEntry, selectedCampaignKey]);
 
   const focusSelectedMarker = useCallback(() => {
     const currentMap = map.current;
