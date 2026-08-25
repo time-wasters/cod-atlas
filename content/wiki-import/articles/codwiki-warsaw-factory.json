@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Warsaw_Factory",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Warsaw_Factory",
   "latestRevisionId": 2992566,
-  "importedAt": "2026-08-10T19:24:22.943Z",
+  "importedAt": "2026-08-24T20:19:38.297Z",
   "levelLocation": {
     "raw": "Warsaw, Poland",
     "label": "Warsaw, Poland",
@@ -59,11 +59,15 @@
     "label": "Pavlov's House, Festung Recogne (Chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-pavlov-s-house-level",
         "wikiTitle": "Pavlov's House (level)",
         "label": "Pavlov's House",
         "url": "https://callofduty.fandom.com/wiki/Pavlov's_House_(level)"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-festung-recogne",
         "wikiTitle": "Festung Recogne",
         "label": "Festung Recogne",
         "url": "https://callofduty.fandom.com/wiki/Festung_Recogne"
@@ -75,6 +79,8 @@
     "label": "Warsaw Railyard",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-warsaw-railyard",
         "wikiTitle": "Warsaw Railyard",
         "label": "Warsaw Railyard",
         "url": "https://callofduty.fandom.com/wiki/Warsaw_Railyard"

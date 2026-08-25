@@ -3,10 +3,12 @@
 import type { Map as LeafletMap, Marker as LeafletMarker, MarkerClusterGroup } from "leaflet";
 import * as Select from "@radix-ui/react-select";
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
+import { createPortal } from "react-dom";
 import ReactMarkdown from "react-markdown";
 import atlasSource from "./data/atlas.generated.json";
 import historyOverlaysSource from "./data/history-overlays.generated.json";
 import mapOverlaysSource from "./data/map-overlays.generated.json";
+import { atlasUrlWithState, parseAtlasUrl } from "./url-state";
 
 type Entry = {
   id: string;
@@ -21,6 +23,7 @@ type Entry = {
   } | null;
   campaignOrder?: number;
   wiki: string;
+  wikiArticle: string;
   country: string;
   region?: string | null;
   city?: string | null;
@@ -31,11 +34,26 @@ type Entry = {
   method?: string;
   urls?: Partial<Record<"googleMaps" | "wikipedia" | "callOfDutyMaps", string>>[];
   hasLevelNotes: boolean;
-  modes: ("singleplayer" | "multiplayer")[];
+  modes: ("singleplayer" | "multiplayer" | "zombies")[];
+  appearances: LevelAppearance[];
+};
+
+type LevelAppearance = {
+  gameId: string;
+  title: string;
+  wiki: string;
+  wikiArticle: string;
+  notesId: string;
+  hasLevelNotes: boolean;
+  bannerKey: string;
+  campaign?: Entry["campaign"];
+  campaignOrder?: number;
+  metadata?: Record<string, unknown>;
 };
 
 type WikiImage = {
   origin?: "local";
+  mediaType?: "image" | "video";
   sourceUrl: string;
   thumbnailUrl: string;
   detailPageUrl: string;
@@ -97,6 +115,7 @@ function atlasMarkerIcon(L: typeof import("leaflet"), entry: Entry, active: bool
 
 type Group = {
   name: string;
+  continent: string;
   coordinates: [number, number] | null;
   kind: "terrestrial" | "off-world";
   flagCode: string | null;
@@ -106,9 +125,27 @@ type Game = {
   id: string;
   code: string;
   label: string;
+  labelLong: string;
   released: string;
+  series: "world-war-ii" | "modern-warfare" | "black-ops" | "standalone";
+  subseries: "main" | "reboot" | "remaster" | "add-on" | "spin-off" | null;
+  remasterOf: string | null;
   icon?: string;
 };
+type FilterOption = { value: string; label: string; disabled?: boolean; note?: string };
+type FilterHoverDetail = {
+  label: string;
+  description: string;
+  years: string;
+  games: { label: string; year: string }[];
+};
+type AdvancedFilterGroupId =
+  | "game-series"
+  | "game-subseries"
+  | "continent"
+  | "precision"
+  | "confidence"
+  | "method";
 type ExternalIconManifest = Record<string, {
   icon?: { provider: "steam" | "steamgriddb"; path: string };
   clienticon?: { provider: "steam"; path: string };
@@ -154,6 +191,7 @@ type HistoryOverlayRecord = {
 };
 type AtlasData = {
   games: Game[];
+  levelIdAliases: Record<string, string>;
   levelBanners: Record<string, WikiImage>;
   wikiMedia: Record<string, WikiMedia>;
   groups: Group[];
@@ -181,6 +219,109 @@ const data = atlasSource as AtlasData;
 const historyOverlays = historyOverlaysSource as Record<string, HistoryOverlayRecord[]>;
 const mapOverlays = mapOverlaysSource as Record<string, MapOverlayRecord>;
 const gamesById = new Map(data.games.map((game) => [game.id, game]));
+const gamesByCode = new Map(data.games.map((game) => [game.code, game]));
+const countryNames = new Set(data.groups.map((group) => group.name));
+const selections = data.groups.flatMap((group) => group.entries.map((entry) => ({ group, entry })));
+const gameSeriesOptions: FilterOption[] = [
+  { value: "world-war-ii", label: "World War II" },
+  { value: "modern-warfare", label: "Modern Warfare" },
+  { value: "black-ops", label: "Black Ops" },
+  { value: "standalone", label: "Standalone" },
+];
+const gameSeriesDescriptions: Record<Game["series"], string> = {
+  "world-war-ii": "Games centered on World War II and related releases.",
+  "modern-warfare": "Games and spin-offs connected to the Modern Warfare series and its reimagined continuity.",
+  "black-ops": "Games in the Black Ops series, including its Cold War stories and related spin-offs.",
+  standalone: "Games outside the World War, Modern Warfare, and Black Ops branches, with their own settings and continuities.",
+};
+const gameSeriesDetails = new Map<string, FilterHoverDetail>(gameSeriesOptions.map((option) => {
+  const series = option.value as Game["series"];
+  const games = data.games
+    .filter((game) => game.series === series)
+    .sort((left, right) => left.released.localeCompare(right.released));
+  const firstYear = games[0]?.released.slice(0, 4) ?? "Unknown";
+  const lastYear = games.at(-1)?.released.slice(0, 4) ?? firstYear;
+  return [option.value, {
+    label: option.label,
+    description: gameSeriesDescriptions[series],
+    years: firstYear === lastYear ? firstYear : `${firstYear}\u2013${lastYear}`,
+    games: games.map((game) => ({ label: game.label, year: game.released.slice(0, 4) })),
+  }];
+}));
+const gameSubseriesOptions: FilterOption[] = [
+  { value: "main", label: "Main" },
+  { value: "reboot", label: "Reboot" },
+  { value: "remaster", label: "Remaster" },
+  { value: "add-on", label: "Add-on" },
+  { value: "spin-off", label: "Spin-off" },
+];
+const gameSubseriesDescriptions: Record<Exclude<Game["subseries"], null>, string> = {
+  main: "Core releases within a named Call of Duty series.",
+  reboot: "Reboot-continuity releases within a named Call of Duty series.",
+  remaster: "Remastered editions linked to the original game by ID.",
+  "add-on": "Expansion releases that extend an existing main-series game.",
+  "spin-off": "Platform-specific editions and other related releases within a named series.",
+};
+const gameSubseriesDetails = new Map<string, FilterHoverDetail>(gameSubseriesOptions.map((option) => {
+  const subseries = option.value as Exclude<Game["subseries"], null>;
+  const games = data.games
+    .filter((game) => game.subseries === subseries)
+    .sort((left, right) => left.released.localeCompare(right.released));
+  const firstYear = games[0]?.released.slice(0, 4) ?? "Unknown";
+  const lastYear = games.at(-1)?.released.slice(0, 4) ?? firstYear;
+  return [option.value, {
+    label: option.label,
+    description: gameSubseriesDescriptions[subseries],
+    years: firstYear === lastYear ? firstYear : `${firstYear}\u2013${lastYear}`,
+    games: games.map((game) => ({ label: game.label, year: game.released.slice(0, 4) })),
+  }];
+}));
+const continentOrder = [
+  "Africa",
+  "Antarctica",
+  "Arctic",
+  "Asia",
+  "Europe",
+  "North America",
+  "South America",
+  "Oceania",
+  "Oceans",
+  "Off-world",
+];
+const continentOptions: FilterOption[] = [...new Set(data.groups.map((group) => group.continent))]
+  .sort((a, b) => continentOrder.indexOf(a) - continentOrder.indexOf(b) || a.localeCompare(b))
+  .map((value) => ({ value, label: value }));
+const precisionOptions: FilterOption[] = [
+  { value: "exact", label: "Exact" },
+  { value: "approximate", label: "Approximate" },
+  { value: "city", label: "City" },
+  { value: "region", label: "Region" },
+  { value: "country", label: "Country" },
+  { value: "off-world", label: "Off-world" },
+];
+const confidenceOptions: FilterOption[] = [
+  { value: "high", label: "High" },
+  { value: "medium", label: "Medium" },
+  { value: "fallback", label: "Fallback" },
+];
+const methodOptions: FilterOption[] = [
+  { value: "verified-landmark", label: "Verified landmark" },
+  { value: "real-world-inspiration", label: "Real-world inspiration" },
+  { value: "manual-approximate", label: "Manual approximate" },
+  { value: "wiki-location", label: "Wiki location" },
+  { value: "article-context", label: "Article context" },
+  { value: "title", label: "Title" },
+  { value: "title-mention", label: "Title mention" },
+  { value: "region-fallback", label: "Region fallback" },
+  { value: "country-fallback", label: "Country fallback" },
+];
+const valuesFor = (options: FilterOption[]) => new Set(options.map((option) => option.value));
+const gameSeriesValues = valuesFor(gameSeriesOptions);
+const gameSubseriesValues = valuesFor(gameSubseriesOptions);
+const continentValues = valuesFor(continentOptions);
+const precisionValues = valuesFor(precisionOptions);
+const confidenceValues = valuesFor(confidenceOptions);
+const methodValues = valuesFor(methodOptions);
 const EXTERNAL_ICONS_PREFERENCE = "cod-atlas:external-game-icons";
 const externalIconPreferenceListeners = new Set<() => void>();
 
@@ -253,16 +394,103 @@ function ExternalLinkIcon({ name }: { name: keyof typeof EXTERNAL_LINK_ICONS }) 
   );
 }
 
-function LevelModeIcon({ multiplayer }: { multiplayer: boolean }) {
-  return multiplayer ? (
+function LevelModeIcon({ mode }: { mode: Entry["modes"][number] }) {
+  if (mode === "zombies") return (
+    <svg className="mission-mode-icon" viewBox="0 0 24 24" role="img" aria-label="Zombies">
+      <path d="M5 10a7 7 0 1 1 14 0v5l-2 2h-2v3h-2v-3h-2v3H9v-3H7l-2-2Z" />
+      <circle cx="9" cy="10" r="1" /><circle cx="15" cy="10" r="1" /><path d="m10 14 2-2 2 2" />
+    </svg>
+  );
+  return mode === "multiplayer" ? (
     <svg className="mission-mode-icon" viewBox="0 0 24 24" role="img" aria-label="Multiplayer">
       <circle cx="8" cy="8" r="3" /><circle cx="16" cy="9" r="2.5" />
       <path d="M2.5 19c.4-4 2.2-6 5.5-6s5.1 2 5.5 6M13 14c.8-.7 1.8-1 3-1 3 0 4.7 2 5 5.5" />
     </svg>
   ) : (
-    <svg className="mission-mode-icon" viewBox="0 0 24 24" role="img" aria-label="Singleplayer">
+    <svg className="mission-mode-icon" viewBox="0 0 24 24" role="img" aria-label="Campaign">
       <circle cx="12" cy="7.5" r="3.5" /><path d="M5 20c.5-5 2.8-7.5 7-7.5s6.5 2.5 7 7.5" />
     </svg>
+  );
+}
+
+function GameIcon({
+  game,
+  src,
+  external,
+  onError,
+}: {
+  game: Game;
+  src: string;
+  external: boolean;
+  onError: () => void;
+}) {
+  const anchor = useRef<HTMLSpanElement>(null);
+  const showTimer = useRef<number | null>(null);
+  const [tooltipPosition, setTooltipPosition] = useState<{
+    top: number;
+    left: number;
+    side: "left" | "right";
+  } | null>(null);
+  const tooltipId = `game-icon-tooltip-${game.id}`;
+
+  const hideTooltip = () => {
+    if (showTimer.current !== null) window.clearTimeout(showTimer.current);
+    showTimer.current = null;
+    setTooltipPosition(null);
+  };
+
+  const scheduleTooltip = () => {
+    if (showTimer.current !== null) window.clearTimeout(showTimer.current);
+    showTimer.current = window.setTimeout(() => {
+      showTimer.current = null;
+      const rect = anchor.current?.getBoundingClientRect();
+      if (!rect) return;
+      const gap = 9;
+      const side = rect.left >= 280 ? "left" : "right";
+      setTooltipPosition({
+        top: Math.min(Math.max(28, rect.top + rect.height / 2), window.innerHeight - 28),
+        left: side === "left" ? rect.left - gap : rect.right + gap,
+        side,
+      });
+    }, 300);
+  };
+
+  useEffect(() => () => {
+    if (showTimer.current !== null) window.clearTimeout(showTimer.current);
+  }, []);
+
+  return (
+    <span
+      className="game-icon-tooltip-anchor"
+      ref={anchor}
+      tabIndex={0}
+      aria-label={game.labelLong}
+      aria-describedby={tooltipPosition ? tooltipId : undefined}
+      onMouseEnter={scheduleTooltip}
+      onMouseLeave={hideTooltip}
+      onFocus={scheduleTooltip}
+      onBlur={hideTooltip}
+    >
+      {/* Game icons are reviewed local public assets and do not need image optimization. */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        className={`mission-game-icon${external ? " is-external" : ""}`}
+        src={src}
+        alt=""
+        onError={onError}
+      />
+      {tooltipPosition && typeof document !== "undefined" && createPortal(
+        <span
+          id={tooltipId}
+          className={`game-icon-tooltip is-${tooltipPosition.side}`}
+          style={{ top: tooltipPosition.top, left: tooltipPosition.left }}
+          role="tooltip"
+        >
+          {game.labelLong}
+        </span>,
+        document.body,
+      )}
+    </span>
   );
 }
 
@@ -316,6 +544,13 @@ function FittedLevelTitle({
 
 function gameCodes(value: string) {
   return value.split(" / ").filter((code) => code && code !== "MP");
+}
+
+function toggledFilterValue(current: Set<string>, value: string) {
+  const next = new Set(current);
+  if (next.has(value)) next.delete(value);
+  else next.add(value);
+  return next;
 }
 
 function compareGames(a: Game, b: Game) {
@@ -487,6 +722,165 @@ function GameSelect({
         </Select.Content>
       </Select.Portal>
     </Select.Root>
+  );
+}
+
+function AdvancedFilterDropdown({
+  id,
+  title,
+  options,
+  selected,
+  open,
+  emptyLabel = "Any",
+  hoverDetails,
+  onOpenChange,
+  onToggle,
+  onClear,
+}: {
+  id: AdvancedFilterGroupId;
+  title: string;
+  options: FilterOption[];
+  selected: Set<string>;
+  open: boolean;
+  emptyLabel?: string;
+  hoverDetails?: ReadonlyMap<string, FilterHoverDetail>;
+  onOpenChange: (open: boolean) => void;
+  onToggle: (value: string) => void;
+  onClear: () => void;
+}) {
+  const menuId = `advanced-filter-${id}`;
+  const labelId = `${menuId}-label`;
+  const dropdown = useRef<HTMLElement>(null);
+  const [hoveredOption, setHoveredOption] = useState<string | null>(null);
+  const [hoverCardPosition, setHoverCardPosition] = useState({ top: 8, left: 8, side: "right" as "left" | "right" });
+  const selectedOptions = options.filter((option) => selected.has(option.value));
+  const summary = selectedOptions.length === 0
+    ? emptyLabel
+    : selectedOptions.length === 1
+      ? selectedOptions[0].label
+      : `${selectedOptions.length} selected`;
+  const hoveredDetail = hoveredOption ? hoverDetails?.get(hoveredOption) ?? null : null;
+
+  const showHoverDetail = (value: string) => {
+    if (!hoverDetails?.has(value) || !dropdown.current) return;
+    const rect = dropdown.current.getBoundingClientRect();
+    const width = 300;
+    const gap = 9;
+    const margin = 8;
+    const fitsRight = rect.right + gap + width <= window.innerWidth - margin;
+    const fitsLeft = rect.left - gap - width >= margin;
+    const side = fitsRight || !fitsLeft ? "right" : "left";
+    const preferredLeft = side === "right" ? rect.right + gap : rect.left - gap - width;
+    setHoverCardPosition({
+      top: Math.min(Math.max(margin, rect.top), Math.max(margin, window.innerHeight - 420)),
+      left: Math.min(Math.max(margin, preferredLeft), Math.max(margin, window.innerWidth - width - margin)),
+      side,
+    });
+    setHoveredOption(value);
+  };
+
+  const requestOpenChange = (nextOpen: boolean) => {
+    if (!nextOpen) setHoveredOption(null);
+    onOpenChange(nextOpen);
+  };
+
+  useEffect(() => {
+    if (!open) return;
+    const closeOnOutsidePointer = (event: PointerEvent) => {
+      if (!dropdown.current?.contains(event.target as Node)) {
+        setHoveredOption(null);
+        onOpenChange(false);
+      }
+    };
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setHoveredOption(null);
+        onOpenChange(false);
+      }
+    };
+    document.addEventListener("pointerdown", closeOnOutsidePointer);
+    document.addEventListener("keydown", closeOnEscape);
+    return () => {
+      document.removeEventListener("pointerdown", closeOnOutsidePointer);
+      document.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [onOpenChange, open]);
+
+  return (
+    <section className={`advanced-filter-dropdown${open ? " is-open" : ""}`} ref={dropdown}>
+      <h3 id={labelId}>{title}</h3>
+      <button
+        className="advanced-filter-dropdown-trigger"
+        type="button"
+        aria-expanded={open}
+        aria-controls={menuId}
+        onClick={() => requestOpenChange(!open)}
+      >
+        <span>{summary}</span>
+        {selected.size > 0 && <small>{selected.size}</small>}
+        <svg viewBox="0 0 12 8" aria-hidden="true"><path d="m1 1 5 5 5-5" /></svg>
+      </button>
+      {open && (
+        <div id={menuId} className="advanced-filter-dropdown-menu" role="group" aria-labelledby={labelId}>
+          <div className="advanced-filter-dropdown-menu-header">
+            <span>Select one or more</span>
+            <button type="button" disabled={selected.size === 0} onClick={onClear}>Clear</button>
+          </div>
+          <div
+            className="advanced-filter-checkboxes"
+            onPointerLeave={() => setHoveredOption(null)}
+            onScroll={() => setHoveredOption(null)}
+          >
+            {options.map((option) => (
+              <label
+                className={option.disabled ? "is-disabled" : ""}
+                key={option.value}
+                aria-describedby={hoveredOption === option.value ? `${menuId}-hover-detail` : undefined}
+                onPointerEnter={() => showHoverDetail(option.value)}
+                onFocus={() => showHoverDetail(option.value)}
+                onBlur={() => setHoveredOption(null)}
+              >
+                <input
+                  type="checkbox"
+                  checked={selected.has(option.value)}
+                  disabled={option.disabled}
+                  onChange={() => onToggle(option.value)}
+                />
+                <span>{option.label}</span>
+                {option.note && <small>{option.note}</small>}
+              </label>
+            ))}
+          </div>
+        </div>
+      )}
+      {open && hoveredDetail && typeof document !== "undefined" && createPortal(
+        <aside
+          id={`${menuId}-hover-detail`}
+          className={`advanced-filter-hover-info is-${hoverCardPosition.side}`}
+          style={{ top: hoverCardPosition.top, left: hoverCardPosition.left }}
+          role="tooltip"
+        >
+          <header>
+            <span>{title}</span>
+            <h4>{hoveredDetail.label}</h4>
+          </header>
+          <p>{hoveredDetail.description}</p>
+          <dl>
+            <div>
+              <dt>Years</dt>
+              <dd>{hoveredDetail.years}</dd>
+            </div>
+          </dl>
+          <strong>Included games</strong>
+          <ul>
+            {hoveredDetail.games.map((game) => (
+              <li key={`${game.year}-${game.label}`}><time>{game.year}</time><span>{game.label}</span></li>
+            ))}
+          </ul>
+        </aside>,
+        document.body,
+      )}
+    </section>
   );
 }
 
@@ -737,9 +1131,17 @@ export default function Home() {
   const [query, setQuery] = useState("");
   const [game, setGame] = useState("all");
   const [country, setCountry] = useState("all");
-  const [precision, setPrecision] = useState("all");
+  const [gameSeries, setGameSeries] = useState<Set<string>>(() => new Set());
+  const [gameSubseries, setGameSubseries] = useState<Set<string>>(() => new Set());
+  const [continents, setContinents] = useState<Set<string>>(() => new Set());
+  const [precisions, setPrecisions] = useState<Set<string>>(() => new Set());
+  const [confidences, setConfidences] = useState<Set<string>>(() => new Set());
+  const [methods, setMethods] = useState<Set<string>>(() => new Set());
   const [showSingleplayer, setShowSingleplayer] = useState(true);
   const [showMultiplayer, setShowMultiplayer] = useState(false);
+  const [showZombies, setShowZombies] = useState(false);
+  const [advancedFiltersOpen, setAdvancedFiltersOpen] = useState(false);
+  const [openAdvancedFilterDropdown, setOpenAdvancedFilterDropdown] = useState<AdvancedFilterGroupId | null>(null);
   const [mapReady, setMapReady] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [detailsOpen, setDetailsOpen] = useState(true);
@@ -775,6 +1177,8 @@ export default function Home() {
     group: initialGroup,
     entry: initialEntry,
   });
+  const [selectionInUrl, setSelectionInUrl] = useState(false);
+  const [urlSyncReady, setUrlSyncReady] = useState(false);
   const mapNode = useRef<HTMLDivElement>(null);
   const map = useRef<LeafletMap | null>(null);
   const markerLayer = useRef<MarkerClusterGroup | null>(null);
@@ -798,6 +1202,8 @@ export default function Home() {
   const mediaDialog = useRef<HTMLDialogElement>(null);
   const infoDialog = useRef<HTMLDialogElement>(null);
   const intelCard = useRef<HTMLDivElement>(null);
+  const urlHistoryMode = useRef<"push" | "replace">("replace");
+  const searchEditActive = useRef(false);
 
   const groups = data.groups;
   const games = useMemo(() => {
@@ -816,6 +1222,90 @@ export default function Home() {
   }, [externalIconManifest, externalIconsEnabled, failedExternalGameIcons]);
 
   useEffect(() => {
+    const applyUrl = () => {
+      const urlState = parseAtlasUrl(window.location.href);
+      const requestedGame = gamesById.get(urlState.gameId);
+      const requestedLevelId = urlState.levelId
+        ? data.levelIdAliases[urlState.levelId] ?? urlState.levelId
+        : null;
+      const requestedSelection = urlState.levelId
+        ? selections.find(({ entry }) => entry.levelId === requestedLevelId
+          && (!urlState.locationId || entry.locationId === urlState.locationId)) ?? null
+        : null;
+
+      urlHistoryMode.current = "replace";
+      searchEditActive.current = false;
+      setQuery(urlState.query);
+      setGame(requestedGame?.code ?? "all");
+      setCountry(countryNames.has(urlState.country) ? urlState.country : "all");
+      setGameSeries(new Set(urlState.series.filter((value) => gameSeriesValues.has(value))));
+      setGameSubseries(new Set(urlState.subseries.filter((value) => gameSubseriesValues.has(value))));
+      setContinents(new Set(urlState.continents.filter((value) => continentValues.has(value))));
+      setPrecisions(new Set(urlState.precisions.filter((value) => precisionValues.has(value))));
+      setConfidences(new Set(urlState.confidences.filter((value) => confidenceValues.has(value))));
+      setMethods(new Set(urlState.methods.filter((value) => methodValues.has(value))));
+      setShowSingleplayer(urlState.showSingleplayer);
+      setShowMultiplayer(urlState.showMultiplayer);
+      setShowZombies(urlState.showZombies);
+      setSelected(requestedSelection ?? { group: initialGroup, entry: initialEntry });
+      setSelectionInUrl(requestedSelection !== null);
+      setSelectedCampaignKey(null);
+      setExpandedRegionEntryId(null);
+      setExpandedLevelNotesId(null);
+      setActiveHistoryOverlay(null);
+      setUrlSyncReady(true);
+    };
+
+    applyUrl();
+    window.addEventListener("popstate", applyUrl);
+    return () => window.removeEventListener("popstate", applyUrl);
+  }, []);
+
+  useEffect(() => {
+    if (!urlSyncReady) return;
+    const nextUrl = atlasUrlWithState(window.location.href, {
+      query,
+      gameId: gamesByCode.get(game)?.id ?? "all",
+      country,
+      series: [...gameSeries],
+      subseries: [...gameSubseries],
+      continents: [...continents],
+      precisions: [...precisions],
+      confidences: [...confidences],
+      methods: [...methods],
+      showSingleplayer,
+      showMultiplayer,
+      showZombies,
+      levelId: selectionInUrl ? selected.entry.levelId : null,
+      locationId: selectionInUrl ? selected.entry.locationId : null,
+    });
+    const currentRelativeUrl = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+    const nextRelativeUrl = `${nextUrl.pathname}${nextUrl.search}${nextUrl.hash}`;
+    if (nextRelativeUrl !== currentRelativeUrl) {
+      const method = urlHistoryMode.current === "replace" ? "replaceState" : "pushState";
+      window.history[method](window.history.state, "", nextRelativeUrl);
+    }
+    urlHistoryMode.current = "push";
+  }, [
+    country,
+    confidences,
+    continents,
+    game,
+    gameSeries,
+    gameSubseries,
+    methods,
+    precisions,
+    query,
+    selected.entry.levelId,
+    selected.entry.locationId,
+    selectionInUrl,
+    showMultiplayer,
+    showSingleplayer,
+    showZombies,
+    urlSyncReady,
+  ]);
+
+  useEffect(() => {
     if (!externalIconsEnabled || externalIconManifest || externalIconManifestUnavailable) return;
     const controller = new AbortController();
     const manifestUrl = new URL("images/games_external/manifest.json", document.baseURI);
@@ -831,21 +1321,42 @@ export default function Home() {
       });
     return () => controller.abort();
   }, [externalIconManifest, externalIconManifestUnavailable, externalIconsEnabled]);
+  const matchesStructuredFilters = useCallback((entry: Entry) => {
+    const matchesGame = game === "all" || entry.game.split(" / ").includes(game);
+    const matchesSeries = gameSeries.size === 0 || entry.gameIds.some((gameId) => {
+      const entryGame = gamesById.get(gameId);
+      return entryGame ? gameSeries.has(entryGame.series) : false;
+    });
+    const matchesSubseries = gameSubseries.size === 0 || entry.gameIds.some((gameId) => {
+      const entryGame = gamesById.get(gameId);
+      return entryGame?.subseries ? gameSubseries.has(entryGame.subseries) : false;
+    });
+    const matchesPrecision = precisions.size === 0 || precisions.has(entry.precision);
+    const matchesConfidence = confidences.size === 0
+      || (entry.confidence ? confidences.has(entry.confidence) : false);
+    const matchesMethod = methods.size === 0 || (entry.method ? methods.has(entry.method) : false);
+    const matchesMode =
+      (showSingleplayer && entry.modes.includes("singleplayer"))
+      || (showMultiplayer && entry.modes.includes("multiplayer"))
+      || (showZombies && entry.modes.includes("zombies"));
+    return matchesGame
+      && matchesSeries
+      && matchesSubseries
+      && matchesPrecision
+      && matchesConfidence
+      && matchesMethod
+      && matchesMode;
+  }, [confidences, game, gameSeries, gameSubseries, methods, precisions, showMultiplayer, showSingleplayer, showZombies]);
   const countries = useMemo(
     () => groups
-      .map(({ name, flagCode, entries }) => ({
+      .map(({ name, flagCode, continent, entries }) => ({
         name,
         flagCode,
-        available: entries.some((entry) => {
-          const matchesGame = game === "all" || entry.game.split(" / ").includes(game);
-          const matchesMode =
-            (showSingleplayer && entry.modes.includes("singleplayer")) ||
-            (showMultiplayer && entry.modes.includes("multiplayer"));
-          return matchesGame && matchesMode;
-        }),
+        available: (continents.size === 0 || continents.has(continent))
+          && entries.some(matchesStructuredFilters),
       }))
       .sort((a, b) => a.name.localeCompare(b.name)),
-    [game, groups, showMultiplayer, showSingleplayer],
+    [continents, groups, matchesStructuredFilters],
   );
   const filtered = useMemo(() => {
     const needle = query.trim().toLowerCase();
@@ -853,13 +1364,6 @@ export default function Home() {
       .map((group) => ({
         ...group,
         entries: group.entries.filter((entry) => {
-          const matchesGame = game === "all" || entry.game.split(" / ").includes(game);
-          const matchesPrecision = precision === "all"
-            || (precision === "localized" && !["country", "off-world"].includes(entry.precision))
-            || entry.precision === precision;
-          const matchesMode =
-            (showSingleplayer && entry.modes.includes("singleplayer")) ||
-            (showMultiplayer && entry.modes.includes("multiplayer"));
           const matchesText =
             !needle ||
             group.name.toLowerCase().includes(needle) ||
@@ -867,12 +1371,15 @@ export default function Home() {
             entry.city?.toLowerCase().includes(needle) ||
             entry.landmark?.toLowerCase().includes(needle) ||
             entry.title.toLowerCase().includes(needle) ||
+            entry.appearances.some((appearance) => appearance.title.toLowerCase().includes(needle)) ||
             entry.game.toLowerCase().includes(needle);
-          return matchesGame && matchesPrecision && matchesMode && matchesText;
+          return matchesStructuredFilters(entry) && matchesText;
         }),
       }))
-      .filter((group) => group.entries.length && (country === "all" || group.name === country));
-  }, [country, groups, game, precision, query, showMultiplayer, showSingleplayer]);
+      .filter((group) => group.entries.length
+        && (country === "all" || group.name === country)
+        && (continents.size === 0 || continents.has(group.continent)));
+  }, [continents, country, groups, matchesStructuredFilters, query]);
   const campaigns = useMemo<CampaignOption[]>(() => {
     if (game === "all") return [];
     const campaignsByKey = new Map<string, CampaignOption & { levelIds: Set<string> }>();
@@ -930,6 +1437,24 @@ export default function Home() {
     }));
   }, [filtered]);
   const resultCount = filtered.reduce((sum, group) => sum + group.entries.length, 0);
+  const advancedFilterCount = gameSeries.size
+    + gameSubseries.size
+    + continents.size
+    + precisions.size
+    + confidences.size
+    + methods.size;
+  const setAdvancedFilterDropdownOpen = useCallback((id: AdvancedFilterGroupId, open: boolean) => {
+    setOpenAdvancedFilterDropdown((current) => open ? id : current === id ? null : current);
+  }, []);
+  const resetAdvancedFilters = useCallback(() => {
+    urlHistoryMode.current = "push";
+    setGameSeries(new Set());
+    setGameSubseries(new Set());
+    setContinents(new Set());
+    setPrecisions(new Set());
+    setConfidences(new Set());
+    setMethods(new Set());
+  }, []);
   const spaceLocations = useMemo(
     () => filtered.flatMap((group) => group.entries
       .filter((entry) => entry.precision === "off-world")
@@ -949,10 +1474,18 @@ export default function Home() {
       .map((entry) => ({ group, entry }))),
     [groups, selected.entry.id, selected.entry.levelId],
   );
-  const selectedMedia = data.wikiMedia[selected.entry.wikiArticle];
-  const selectedLevelBanner = failedLevelBanners.has(selected.entry.levelId)
+  const selectedGameId = gamesByCode.get(game)?.id ?? null;
+  const selectedAppearance = selected.entry.appearances.find((appearance) => appearance.gameId === selectedGameId)
+    ?? selected.entry.appearances[0];
+  const ownerAppearance = selected.entry.appearances[0];
+  const selectedMedia = data.wikiMedia[selectedAppearance.wikiArticle];
+  const selectedAppearanceBanner = failedLevelBanners.has(selectedAppearance.bannerKey)
     ? null
-    : data.levelBanners[selected.entry.levelId] ?? null;
+    : data.levelBanners[selectedAppearance.bannerKey] ?? null;
+  const ownerLevelBanner = failedLevelBanners.has(ownerAppearance.bannerKey)
+    ? null
+    : data.levelBanners[ownerAppearance.bannerKey] ?? null;
+  const selectedLevelBanner = selectedAppearanceBanner ?? ownerLevelBanner;
   const selectedImage = selectedLevelBanner ?? selectedMedia?.main ?? selectedMedia?.map ?? null;
   const selectedImageIsLocal = selectedImage?.origin === "local";
   const selectedImageKey = selectedImage
@@ -969,9 +1502,9 @@ export default function Home() {
   const relatedLevelsExpanded = expandedRegionEntryId === relatedLevelsExpansionKey;
   const visibleRelatedLevels = relatedLevelsExpanded ? relatedLevels : relatedLevels.slice(0, 8);
   const hiddenRelatedLevelCount = relatedLevels.length - visibleRelatedLevels.length;
-  const levelNotesExpanded = selected.entry.hasLevelNotes
-    && expandedLevelNotesId === selected.entry.levelId;
-  const selectedLevelNotes = levelNotes?.levelId === selected.entry.levelId ? levelNotes : null;
+  const levelNotesExpanded = selectedAppearance.hasLevelNotes
+    && expandedLevelNotesId === selectedAppearance.notesId;
+  const selectedLevelNotes = levelNotes?.levelId === selectedAppearance.notesId ? levelNotes : null;
   const selectedMapOverlay = mapOverlays[selected.entry.levelId] ?? null;
   const selectedMapOverlayEnabled = selectedMapOverlay !== null && !disabledMapOverlays.has(selected.entry.levelId);
   const selectedHistoryOverlays = historyOverlays[selected.entry.levelId] ?? [];
@@ -980,7 +1513,9 @@ export default function Home() {
     : null;
 
   const selectEntry = useCallback((group: Group, entry: Entry) => {
+    urlHistoryMode.current = "push";
     setSelected({ group, entry });
+    setSelectionInUrl(true);
     setExpandedRegionEntryId(null);
     setExpandedLevelNotesId(null);
     setActiveHistoryOverlay(null);
@@ -1061,28 +1596,28 @@ export default function Home() {
   }, [selected.entry.id]);
 
   const toggleLevelNotes = useCallback(() => {
-    if (!selected.entry.hasLevelNotes) return;
-    const levelId = selected.entry.levelId;
-    if (expandedLevelNotesId === levelId) {
+    if (!selectedAppearance.hasLevelNotes) return;
+    const notesId = selectedAppearance.notesId;
+    if (expandedLevelNotesId === notesId) {
       setExpandedLevelNotesId(null);
       return;
     }
-    setExpandedLevelNotesId(levelId);
-    if (levelNotes?.levelId === levelId) return;
-    setLevelNotes({ levelId, status: "loading", content: null });
-    const notesUrl = new URL(`level-notes/${levelId}.md`, document.baseURI);
+    setExpandedLevelNotesId(notesId);
+    if (levelNotes?.levelId === notesId) return;
+    setLevelNotes({ levelId: notesId, status: "loading", content: null });
+    const notesUrl = new URL(`level-notes/${notesId}.md`, document.baseURI);
     fetch(notesUrl)
       .then((response) => {
         if (!response.ok) throw new Error(`Level notes returned ${response.status}`);
         return response.text();
       })
       .then((content) => setLevelNotes({
-        levelId,
+        levelId: notesId,
         status: content.trim() ? "ready" : "missing",
         content,
       }))
-      .catch(() => setLevelNotes({ levelId, status: "missing", content: null }));
-  }, [expandedLevelNotesId, levelNotes?.levelId, selected.entry.hasLevelNotes, selected.entry.levelId]);
+      .catch(() => setLevelNotes({ levelId: notesId, status: "missing", content: null }));
+  }, [expandedLevelNotesId, levelNotes?.levelId, selectedAppearance.hasLevelNotes, selectedAppearance.notesId]);
 
   useEffect(() => {
     mediaDialog.current?.close();
@@ -1298,7 +1833,7 @@ export default function Home() {
         opacity: 0,
         interactive: false,
         className: "game-map-overlay",
-        alt: `${selected.entry.title} historical game map overlay`,
+        alt: `${selectedAppearance.title} historical game map overlay`,
       },
     ).addTo(map.current);
     mapImageOverlay.current = overlay;
@@ -1310,7 +1845,7 @@ export default function Home() {
       mapImageOverlayAnimation,
       mapImageOverlayOpacity,
     );
-  }, [mapReady, selected.entry.levelId, selected.entry.title, selectedMapOverlay, selectedMapOverlayEnabled]);
+  }, [mapReady, selected.entry.levelId, selectedAppearance.title, selectedMapOverlay, selectedMapOverlayEnabled]);
 
   useEffect(() => {
     if (!mapReady || !map.current || !leaflet.current) return;
@@ -1484,7 +2019,14 @@ export default function Home() {
           <span aria-hidden="true">⌕</span>
           <input
             value={query}
-            onChange={(event) => setQuery(event.target.value)}
+            onChange={(event) => {
+              urlHistoryMode.current = searchEditActive.current ? "replace" : "push";
+              searchEditActive.current = true;
+              setQuery(event.target.value);
+            }}
+            onBlur={() => {
+              searchEditActive.current = false;
+            }}
             placeholder="Search missions, maps, countries…"
             aria-label="Search locations"
           />
@@ -1497,6 +2039,7 @@ export default function Home() {
               games={games}
               value={game}
               onValueChange={(value) => {
+                urlHistoryMode.current = "push";
                 setGame(value);
                 setSelectedCampaignKey(null);
                 setExpandedRegionEntryId(null);
@@ -1506,34 +2049,213 @@ export default function Home() {
           </div>
           <div className="filter-field">
             <span>Country</span>
-            <CountrySelect countries={countries} value={country} onValueChange={setCountry} />
+            <CountrySelect
+              countries={countries}
+              value={country}
+              onValueChange={(value) => {
+                urlHistoryMode.current = "push";
+                setCountry(value);
+              }}
+            />
           </div>
         </div>
 
-        <div className="precision-filter" aria-label="Location precision">
-          <button className={precision === "all" ? "is-active" : ""} onClick={() => setPrecision("all")}>All</button>
-          <button className={precision === "localized" ? "is-active" : ""} onClick={() => setPrecision("localized")}>Localized</button>
-          <button className={precision === "country" ? "is-active" : ""} onClick={() => setPrecision("country")}>Country fallback</button>
-        </div>
-
-        <div className="mode-filter" aria-label="Game mode visibility">
+        <div className="mode-filter" aria-label="Map type visibility">
           <button
             className={showSingleplayer ? "is-active" : ""}
+            type="button"
             aria-pressed={showSingleplayer}
-            onClick={() => setShowSingleplayer((visible) => !visible)}
+            onClick={() => {
+              urlHistoryMode.current = "push";
+              setShowSingleplayer((visible) => !visible);
+            }}
           >
-            <span aria-hidden="true">{showSingleplayer ? "✓" : "○"}</span> Singleplayer
+            <span aria-hidden="true">{showSingleplayer ? "✓" : "○"}</span> Campaign
           </button>
           <button
             className={showMultiplayer ? "is-active" : ""}
+            type="button"
             aria-pressed={showMultiplayer}
-            onClick={() => setShowMultiplayer((visible) => !visible)}
+            onClick={() => {
+              urlHistoryMode.current = "push";
+              setShowMultiplayer((visible) => !visible);
+            }}
           >
             <span aria-hidden="true">{showMultiplayer ? "✓" : "○"}</span> Multiplayer
           </button>
+          <button
+            className={showZombies ? "is-active" : ""}
+            type="button"
+            aria-pressed={showZombies}
+            onClick={() => {
+              urlHistoryMode.current = "push";
+              setShowZombies((visible) => !visible);
+            }}
+          >
+            <span aria-hidden="true">{showZombies ? "✓" : "○"}</span> Zombies
+          </button>
         </div>
 
-        <section className="result-panel" aria-live="polite">
+        {advancedFiltersOpen ? (
+          <section className="advanced-filters" aria-labelledby="advanced-filters-title">
+            <header className="advanced-filters-header">
+              <button
+                className="advanced-filters-back"
+                type="button"
+                aria-label="Close advanced filters"
+                onClick={() => {
+                  setAdvancedFiltersOpen(false);
+                  setOpenAdvancedFilterDropdown(null);
+                }}
+              >
+                <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m10 3-5 5 5 5" /></svg>
+              </button>
+              <div className="advanced-filters-title">
+                <span>Filter matrix</span>
+                <h2 id="advanced-filters-title">Advanced filters</h2>
+              </div>
+              <div className="advanced-filters-actions">
+                <button
+                  className="advanced-filters-reset"
+                  type="button"
+                  disabled={advancedFilterCount === 0}
+                  onClick={resetAdvancedFilters}
+                >
+                  Reset
+                </button>
+              </div>
+            </header>
+
+            <div className="advanced-filters-scroll">
+              <AdvancedFilterDropdown
+                id="game-series"
+                title="Series"
+                options={gameSeriesOptions}
+                selected={gameSeries}
+                open={openAdvancedFilterDropdown === "game-series"}
+                hoverDetails={gameSeriesDetails}
+                onOpenChange={(open) => setAdvancedFilterDropdownOpen("game-series", open)}
+                onToggle={(value) => {
+                  urlHistoryMode.current = "push";
+                  setGameSeries((current) => toggledFilterValue(current, value));
+                }}
+                onClear={() => {
+                  urlHistoryMode.current = "push";
+                  setGameSeries(new Set());
+                }}
+              />
+              <AdvancedFilterDropdown
+                id="game-subseries"
+                title="Sub-series"
+                options={gameSubseriesOptions}
+                selected={gameSubseries}
+                open={openAdvancedFilterDropdown === "game-subseries"}
+                hoverDetails={gameSubseriesDetails}
+                onOpenChange={(open) => setAdvancedFilterDropdownOpen("game-subseries", open)}
+                onToggle={(value) => {
+                  urlHistoryMode.current = "push";
+                  setGameSubseries((current) => toggledFilterValue(current, value));
+                }}
+                onClear={() => {
+                  urlHistoryMode.current = "push";
+                  setGameSubseries(new Set());
+                }}
+              />
+              <AdvancedFilterDropdown
+                id="continent"
+                title="Continent"
+                options={continentOptions}
+                selected={continents}
+                open={openAdvancedFilterDropdown === "continent"}
+                onOpenChange={(open) => setAdvancedFilterDropdownOpen("continent", open)}
+                onToggle={(value) => {
+                  urlHistoryMode.current = "push";
+                  setContinents((current) => toggledFilterValue(current, value));
+                }}
+                onClear={() => {
+                  urlHistoryMode.current = "push";
+                  setContinents(new Set());
+                }}
+              />
+
+              <AdvancedFilterDropdown
+                id="precision"
+                title="Precision"
+                options={precisionOptions}
+                selected={precisions}
+                open={openAdvancedFilterDropdown === "precision"}
+                onOpenChange={(open) => setAdvancedFilterDropdownOpen("precision", open)}
+                onToggle={(value) => {
+                  urlHistoryMode.current = "push";
+                  setPrecisions((current) => toggledFilterValue(current, value));
+                }}
+                onClear={() => {
+                  urlHistoryMode.current = "push";
+                  setPrecisions(new Set());
+                }}
+              />
+              <AdvancedFilterDropdown
+                id="confidence"
+                title="Confidence"
+                options={confidenceOptions}
+                selected={confidences}
+                open={openAdvancedFilterDropdown === "confidence"}
+                onOpenChange={(open) => setAdvancedFilterDropdownOpen("confidence", open)}
+                onToggle={(value) => {
+                  urlHistoryMode.current = "push";
+                  setConfidences((current) => toggledFilterValue(current, value));
+                }}
+                onClear={() => {
+                  urlHistoryMode.current = "push";
+                  setConfidences(new Set());
+                }}
+              />
+              <AdvancedFilterDropdown
+                id="method"
+                title="Method"
+                options={methodOptions}
+                selected={methods}
+                open={openAdvancedFilterDropdown === "method"}
+                onOpenChange={(open) => setAdvancedFilterDropdownOpen("method", open)}
+                onToggle={(value) => {
+                  urlHistoryMode.current = "push";
+                  setMethods((current) => toggledFilterValue(current, value));
+                }}
+                onClear={() => {
+                  urlHistoryMode.current = "push";
+                  setMethods(new Set());
+                }}
+              />
+            </div>
+
+            <button
+              className="advanced-filters-results"
+              type="button"
+              onClick={() => {
+                setAdvancedFiltersOpen(false);
+                setOpenAdvancedFilterDropdown(null);
+              }}
+            >
+              Show <strong>{resultCount}</strong> results
+            </button>
+          </section>
+        ) : (
+          <>
+            <button
+              className={`advanced-filter-trigger${advancedFilterCount ? " is-active" : ""}`}
+              type="button"
+              aria-expanded="false"
+              onClick={() => setAdvancedFiltersOpen(true)}
+            >
+              <span>
+                <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3 5h12M5 9h8M7 13h4" /></svg>
+                Advanced filters
+              </span>
+              <strong>{advancedFilterCount || "All"}</strong>
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5" /></svg>
+            </button>
+
+            <section className="result-panel" aria-live="polite">
           <div><strong>{resultCount}</strong><span>results</span></div>
           <dl>
             <div><dt>Localized</dt><dd>{filtered.flatMap((item) => item.entries).filter((item) => !["country", "off-world"].includes(item.precision)).length}</dd></div>
@@ -1635,7 +2357,9 @@ export default function Home() {
               </svg>
             </button>
           </p>
-        </footer>
+            </footer>
+          </>
+        )}
         <button
           className="sidebar-toggle"
           type="button"
@@ -1690,7 +2414,7 @@ export default function Home() {
             <header>
               <div>
                 <span>Level briefing</span>
-                <h2 id="level-briefing-title">{selected.entry.title}</h2>
+                <h2 id="level-briefing-title">{selectedAppearance.title}</h2>
               </div>
               <button type="button" aria-label="Close level briefing" onClick={toggleLevelNotes}>×</button>
             </header>
@@ -1760,19 +2484,19 @@ export default function Home() {
         <button
           className="collapsed-level-title"
           type="button"
-          aria-label={`Show details for ${selected.entry.title}`}
+          aria-label={`Show details for ${selectedAppearance.title}`}
           onClick={() => setDetailsOpen(true)}
         >
-          <span>{selected.entry.title}</span>
+          <span>{selectedAppearance.title}</span>
         </button>
         <article className="intel-card" id="selected-level-details">
           <div className="mission-heading">
-            <LevelModeIcon multiplayer={selected.entry.modes.includes("multiplayer")} />
+            <LevelModeIcon mode={selected.entry.modes[0]} />
             <FittedLevelTitle
               disabled={!selected.entry.coordinates}
               onActivate={focusSelectedMarker}
             >
-              {selected.entry.title}
+              {selectedAppearance.title}
             </FittedLevelTitle>
             <div className="mission-games">
               {selected.entry.gameIds.map((gameId) => {
@@ -1781,14 +2505,11 @@ export default function Home() {
                 const selectedGameIcon = gameIcon(selectedGame);
                 const usesExternalGameIcon = Boolean(selectedGameIcon && selectedGameIcon !== selectedGame.icon);
                 return selectedGameIcon ? (
-                  // Game icons are reviewed local public assets and do not need image optimization.
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    className={`mission-game-icon${usesExternalGameIcon ? " is-external" : ""}`}
+                  <GameIcon
                     key={gameId}
+                    game={selectedGame}
                     src={selectedGameIcon}
-                    alt={selectedGame.label}
-                    title={selectedGame.label}
+                    external={usesExternalGameIcon}
                     onError={() => {
                       if (usesExternalGameIcon) {
                         setFailedExternalGameIcons((failed) => new Set(failed).add(gameId));
@@ -1808,21 +2529,38 @@ export default function Home() {
                   {selectedImageFailed ? "Image unavailable" : "Loading image…"}
                 </span>
               )}
-              {/* Local reviewed banners take precedence; Wiki thumbnails remain the fallback. */}
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                className={selectedImageLoaded ? "is-loaded" : ""}
-                src={selectedImage.thumbnailUrl}
-                alt={`${selected.entry.title} level banner`}
-                referrerPolicy={selectedImageIsLocal ? undefined : "no-referrer"}
-                onLoad={() => setLoadedImageKey(selectedImageKey)}
-                onError={() => {
-                  setFailedImageKey(selectedImageKey);
-                  if (selectedImageIsLocal) {
-                    setFailedLevelBanners((failed) => new Set(failed).add(selected.entry.levelId));
-                  }
-                }}
-              />
+              {/* Local reviewed media take precedence; Wiki thumbnails remain the fallback. */}
+              {selectedImage.mediaType === "video" ? (
+                <video
+                  className={selectedImageLoaded ? "is-loaded" : ""}
+                  src={selectedImage.thumbnailUrl}
+                  aria-label={`${selectedAppearance.title} level banner`}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  onLoadedData={() => setLoadedImageKey(selectedImageKey)}
+                  onError={() => {
+                    setFailedImageKey(selectedImageKey);
+                    setFailedLevelBanners((failed) => new Set(failed).add(selectedAppearance.bannerKey));
+                  }}
+                />
+              ) : (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  className={selectedImageLoaded ? "is-loaded" : ""}
+                  src={selectedImage.thumbnailUrl}
+                  alt={`${selectedAppearance.title} level banner`}
+                  referrerPolicy={selectedImageIsLocal ? undefined : "no-referrer"}
+                  onLoad={() => setLoadedImageKey(selectedImageKey)}
+                  onError={() => {
+                    setFailedImageKey(selectedImageKey);
+                    if (selectedImageIsLocal) {
+                      setFailedLevelBanners((failed) => new Set(failed).add(selectedAppearance.bannerKey));
+                    }
+                  }}
+                />
+              )}
               <button
                 className="media-info-button"
                 type="button"
@@ -1962,7 +2700,7 @@ export default function Home() {
               </a>
             )}
             <a
-              href={selected.entry.wiki}
+              href={selectedAppearance.wiki}
               target="_blank"
               rel="noreferrer"
               aria-label="Open on Call of Duty Wiki"
@@ -1977,15 +2715,15 @@ export default function Home() {
               className="level-briefing-toggle"
               type="button"
               aria-expanded={levelNotesExpanded}
-              aria-controls={selected.entry.hasLevelNotes ? "selected-level-briefing" : undefined}
+              aria-controls={selectedAppearance.hasLevelNotes ? "selected-level-briefing" : undefined}
               onClick={toggleLevelNotes}
-              disabled={!selected.entry.hasLevelNotes}
-              title={selected.entry.hasLevelNotes ? undefined : "No level briefing available"}
+              disabled={!selectedAppearance.hasLevelNotes}
+              title={selectedAppearance.hasLevelNotes ? undefined : "No level briefing available"}
             >
               <b aria-hidden="true">{levelNotesExpanded ? "›" : "‹"}</b>
               <span>
                 <small>Level briefing</small>
-                <strong>{selected.entry.hasLevelNotes ? "Research & historical context" : "No briefing available"}</strong>
+                <strong>{selectedAppearance.hasLevelNotes ? "Research & historical context" : "No briefing available"}</strong>
               </span>
             </button>
           </section>

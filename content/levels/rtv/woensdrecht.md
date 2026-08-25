@@ -6,7 +6,7 @@ games:
 mode: singleplayer
 wikiArticle: codwiki-woensdrecht
 mapOverlay:
-  image: /images/maps/rtv/woensdrecht.png
+  image: /images/levels/rtv/woensdrecht/maps/briefing-map.png
   opacity: 0.72
   corners:
     topLeft: [51.55571392, 3.74887403]

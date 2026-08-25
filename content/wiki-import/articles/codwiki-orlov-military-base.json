@@ -1,0 +1,89 @@
+{
+  "id": "codwiki-orlov-military-base",
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Orlov_Military_Base",
+  "mapStyle": "multiplayer",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas; verify against the Wiki during the next import.",
+  "fandomPageId": 735125,
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Orlov_Military_Base",
+  "latestRevisionId": 2990047,
+  "importedAt": "2026-08-23T23:04:54.809Z",
+  "levelLocation": {
+    "raw": "[[Urzikstan (map)/Infrastructure#Orlov Military Base|Orlov Military Base]], [[Zaravan]], [[Urzikstan]]",
+    "label": "Orlov Military Base",
+    "url": "https://callofduty.fandom.com/wiki/Urzikstan_(map)%2FInfrastructure"
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Modern Warfare III]]''",
+    "label": "Call of Duty: Modern Warfare III",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Modern Warfare III",
+        "label": "Call of Duty: Modern Warfare III",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Modern_Warfare_III"
+      }
+    ]
+  },
+  "date": {
+    "raw": "Day 436 15:44",
+    "label": "Day 436 15:44"
+  },
+  "images": {
+    "main": {
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/d/d6/OrlovMilitaryBase_LoadingScreen_MWIII.png/revision/latest?cb=20240503192248",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/d/d6/OrlovMilitaryBase_LoadingScreen_MWIII.png/revision/latest/scale-to-width-down/800?cb=20240503192248",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:OrlovMilitaryBase_LoadingScreen_MWIII.png",
+      "author": {
+        "name": "Kalinine",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Kalinine",
+        "role": "uploader"
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+      }
+    },
+    "map": {
+      "sourceUrl": null,
+      "thumbnailUrl": null,
+      "detailPageUrl": null,
+      "author": {
+        "name": null,
+        "userUrl": null,
+        "role": null
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "unknown",
+        "notice": null,
+        "noticeUrl": null
+      }
+    }
+  },
+  "rawPayload": {
+    "revisionTimestamp": "2026-04-08T19:46:56Z",
+    "revisionSha1": "b06649642a867cfa5022ec82a478aad90e4889dd",
+    "resolvedTitle": "Orlov Military Base",
+    "mainImageTitle": "File:OrlovMilitaryBase_LoadingScreen_MWIII.png",
+    "mapImageTitle": null
+  }
+}

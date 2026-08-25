@@ -8,10 +8,12 @@ wikiArticle: codwiki-arkaden
 locations:
   - id: main
     country: Germany
-    latitude: 51
-    longitude: 9
-    precision: country
-    confidence: fallback
-    method: country-fallback
+    latitude: 52.5200066
+    longitude: 13.404954
+    precision: approximate
+    confidence: medium
+    method: manual-approximate
     primary: true
+    urls:
+      - callOfDutyMaps: https://callofdutymaps.com/modern-warfare-3/arkaden
 ---

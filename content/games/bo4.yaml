@@ -1,7 +1,10 @@
 id: bo4
 code: BO4
 label: Black Ops 4
+labelLong: "Call of Duty: Black Ops 4"
 released: 2018-10-12
+series: black-ops
+subseries: main
 images:
   steamgriddb:
     game: 5246008

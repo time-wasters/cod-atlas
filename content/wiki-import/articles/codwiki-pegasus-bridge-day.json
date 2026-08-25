@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Pegasus_Bridge-Day",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Pegasus_Bridge-Day",
   "latestRevisionId": 2992537,
-  "importedAt": "2026-08-10T19:24:01.447Z",
+  "importedAt": "2026-08-24T20:19:15.219Z",
   "levelLocation": {
     "raw": "Bénouville, Normandy, France",
     "label": "Bénouville, Normandy, France",
@@ -59,11 +59,15 @@
     "label": "Pegasus Bridge, Brecourt Manor (Chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-pegasus-bridge",
         "wikiTitle": "Pegasus Bridge",
         "label": "Pegasus Bridge",
         "url": "https://callofduty.fandom.com/wiki/Pegasus_Bridge"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-brecourt-manor",
         "wikiTitle": "Brecourt Manor",
         "label": "Brecourt Manor",
         "url": "https://callofduty.fandom.com/wiki/Brecourt_Manor"
@@ -75,11 +79,15 @@
     "label": "The Eder Dam, Alps Chateau (Chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-the-eder-dam",
         "wikiTitle": "The Eder Dam",
         "label": "The Eder Dam",
         "url": "https://callofduty.fandom.com/wiki/The_Eder_Dam"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-alps-chateau",
         "wikiTitle": "Alps Chateau",
         "label": "Alps Chateau",
         "url": "https://callofduty.fandom.com/wiki/Alps_Chateau"

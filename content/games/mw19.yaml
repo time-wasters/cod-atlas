@@ -1,7 +1,10 @@
 id: mw19
 code: MW19
 label: Modern Warfare (2019)
+labelLong: "Call of Duty: Modern Warfare [2019]"
 released: 2019-10-25
+series: modern-warfare
+subseries: reboot
 images:
   steam:
     app: 2000950

@@ -1,9 +1,126 @@
 import assert from "node:assert/strict";
-import { access } from "node:fs/promises";
+import { access, readFile, readdir } from "node:fs/promises";
 import test from "node:test";
+import { atlasUrlWithState, parseAtlasUrl } from "../app/url-state.js";
 
 const developmentPreviewMeta =
   /<meta(?=[^>]*\bname=["']codex-preview["'])(?=[^>]*\bcontent=["']development["'])[^>]*>/i;
+
+test("round-trips shareable atlas filters and the selected location", () => {
+  const source = new URL("https://example.com/atlas/?utm_source=test#map");
+  const state = {
+    query: "Safehouse",
+    gameId: "cod4",
+    country: "Azerbaijan",
+    series: ["modern-warfare"],
+    subseries: ["main"],
+    continents: ["Asia"],
+    precisions: ["approximate", "exact"],
+    confidences: ["high"],
+    methods: ["verified-landmark"],
+    showSingleplayer: true,
+    showMultiplayer: true,
+    showZombies: true,
+    levelId: "cod4-safehouse",
+    locationId: "main",
+  };
+  const sharedUrl = atlasUrlWithState(source, state);
+
+  assert.equal(sharedUrl.searchParams.get("utm_source"), "test");
+  assert.equal(sharedUrl.hash, "#map");
+  assert.deepEqual(parseAtlasUrl(sharedUrl), state);
+});
+
+test("uses concise defaults and preserves every mode-filter state", () => {
+  const defaults = {
+    query: "",
+    gameId: "all",
+    country: "all",
+    series: [],
+    subseries: [],
+    continents: [],
+    precisions: [],
+    confidences: [],
+    methods: [],
+    showSingleplayer: true,
+    showMultiplayer: false,
+    showZombies: false,
+    levelId: null,
+    locationId: null,
+  };
+  const defaultUrl = atlasUrlWithState("https://example.com/?game=old&level=old", defaults);
+  assert.equal(defaultUrl.search, "");
+  assert.deepEqual(parseAtlasUrl(defaultUrl), defaults);
+
+  assert.deepEqual(
+    parseAtlasUrl("https://example.com/?precision=localized").precisions,
+    ["exact", "approximate", "city", "region"],
+    "legacy precision links remain compatible",
+  );
+
+  for (const [mode, showSingleplayer, showMultiplayer, showZombies] of [
+    ["all", true, true, true],
+    ["both", true, true, false],
+    ["multiplayer", false, true, false],
+    ["zombies", false, false, true],
+    ["singleplayer,zombies", true, false, true],
+    ["none", false, false, false],
+  ]) {
+    const url = atlasUrlWithState(defaultUrl, { ...defaults, showSingleplayer, showMultiplayer, showZombies });
+    assert.equal(url.searchParams.get("mode"), mode);
+    assert.equal(parseAtlasUrl(url).showSingleplayer, showSingleplayer);
+    assert.equal(parseAtlasUrl(url).showMultiplayer, showMultiplayer);
+    assert.equal(parseAtlasUrl(url).showZombies, showZombies);
+  }
+});
+
+test("catalogues the complete Black Ops 6 campaign, multiplayer, and Zombies roster", async () => {
+  const bo6Root = new URL("../content/levels/bo6/", import.meta.url);
+  assert.deepEqual((await readdir(new URL("campaign/", bo6Root))).sort(), [
+    "1-bishop-takes-rook.md",
+    "10-emergence.md",
+    "11-the-rook-recovery.md",
+    "12-high-rollers.md",
+    "13-the-rook-contact.md",
+    "14-ground-control.md",
+    "15-under-the-radar.md",
+    "16-the-rook-interrogation.md",
+    "17-separation-anxiety.md",
+    "18-checkmate.md",
+    "2-the-rook-arrival.md",
+    "3-blood-feud.md",
+    "4-the-rook-assemble.md",
+    "5-most-wanted.md",
+    "6-the-rook-reunion.md",
+    "7-hunting-season.md",
+    "8-the-cradle.md",
+    "9-the-rook-reconciliation.md",
+  ]);
+  assert.deepEqual((await readdir(new URL("multiplayer/", bo6Root))).sort(), [
+    "babylon.md", "barrage.md", "blazetown.md", "blitz.md", "boo-town.md", "bounty.md",
+    "bullet.md", "dealership.md", "derelict.md", "eclipse.md", "exchange.md", "extraction.md",
+    "firing-range.md", "fringe.md", "fugitive.md", "gala.md", "gravity.md", "grind-ooze.md",
+    "grind.ref.md", "hacienda.md", "haven.md", "heirloom.md", "hideout.md", "jackpot.md",
+    "lifeline.md", "lowtown.md", "mothball.md", "nomad.md", "nuketown-holiday.md",
+    "nuketown.ref.md", "payback.md", "pit.md", "protocol.md", "racket.md", "red-card.md",
+    "rewind.md", "rig.md", "runway.md", "scud.md", "shutdown.md", "signal.md", "skyline.md",
+    "stakeout.md", "subsonic.md", "vault.md", "vorkuta.md", "warhead.md",
+    "world-motor-dynasty.md",
+  ]);
+  assert.deepEqual((await readdir(new URL("zombies/", bo6Root))).sort(), [
+    "citadelle-des-morts.md",
+    "liberty-falls.md",
+    "reckoning.md",
+    "shattered-veil.md",
+    "terminus.md",
+    "the-tomb.md",
+  ]);
+  assert.match(await readFile(new URL("multiplayer/nuketown.ref.md", bo6Root), "utf8"), /level: bo-nuketown/);
+  assert.match(await readFile(new URL("multiplayer/grind.ref.md", bo6Root), "utf8"), /level: bo2-grind/);
+  for (const filename of await readdir(new URL("zombies/", bo6Root))) {
+    assert.match(await readFile(new URL(`zombies/${filename}`, bo6Root), "utf8"), /mode: zombies/);
+  }
+});
 
 test("renders development preview metadata", async () => {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
@@ -44,13 +161,20 @@ test("renders development preview metadata", async () => {
   assert.match(html, /aria-label="Collapse Solar System overlay"/);
   assert.match(html, />Solar System \/\/ Schematic<\/text>/);
   assert.match(html, />Mercury<\/text>/);
-  assert.match(html, /aria-pressed="false"[^>]*>[\s\S]{0,120}Multiplayer/);
+  assert.match(html, /class="advanced-filter-trigger"[^>]*aria-expanded="false"/);
+  const countryFilterIndex = html.indexOf('aria-label="Filter by country"');
+  const modeFilterIndex = html.indexOf('class="mode-filter"');
+  const advancedFilterIndex = html.indexOf('class="advanced-filter-trigger"');
+  assert.ok(countryFilterIndex < modeFilterIndex && modeFilterIndex < advancedFilterIndex);
+  assert.match(html, /class="mode-filter"[^>]*aria-label="Map type visibility"/);
+  assert.match(html, /<button(?=[^>]*aria-pressed="false")[^>]*>\s*<span[^>]*>[^<]*<\/span> Zombies/);
+  assert.doesNotMatch(html, /class="precision-filter"/);
   assert.match(html, /role="tab"[^>]*aria-selected="true"[^>]*aria-controls="sidebar-locations"/);
   assert.match(html, /<button(?=[^>]*role="tab")(?=[^>]*aria-controls="sidebar-campaigns")(?=[^>]*disabled="")[^>]*>/);
   assert.match(html, />Adriatic Sea<\/span>/);
   assert.doesNotMatch(html, /Selected location/);
   assert.doesNotMatch(html, />Level<\/span>/);
-  assert.match(html, /aria-label="(Singleplayer|Multiplayer)"/);
+  assert.match(html, /aria-label="(Campaign|Multiplayer|Zombies)"/);
   assert.match(html, /class="mission-title-button"/);
   assert.match(html, /<button(?=[^>]*class="level-briefing-toggle")(?=[^>]*disabled="")[^>]*>/);
   assert.match(html, />No briefing available<\/strong>/);
@@ -90,11 +214,30 @@ test("preserves the complete statically compiled atlas", async () => {
     (entry) => entry.title === title && entry.game.split(" / ").includes(game),
   );
 
-  assert.equal(entries.length, 988);
+  assert.equal(entries.length, 1053);
+  assert.equal(atlas.totals.levels, 1107);
   assert.equal(findGroup("France").flagCode, "FR");
   assert.equal(findGroup("Turkey").flagCode, "TR");
   assert.equal(findGroup("United States").flagCode, "US");
   assert.equal(findGroup("Adriatic Sea").flagCode, null);
+  assert.equal(findGroup("France").continent, "Europe");
+  assert.equal(findGroup("United States").continent, "North America");
+  assert.equal(findGroup("Brazil").continent, "South America");
+  assert.equal(findGroup("Antarctica").continent, "Antarctica");
+  assert.equal(findGroup("Adriatic Sea").continent, "Oceans");
+  assert.equal(findGroup("Mars").continent, "Off-world");
+  assert.ok(atlas.groups.every((group) => [
+    "Africa",
+    "Antarctica",
+    "Arctic",
+    "Asia",
+    "Europe",
+    "North America",
+    "South America",
+    "Oceania",
+    "Oceans",
+    "Off-world",
+  ].includes(group.continent)));
   assert.ok(atlas.groups.every((group) => group.entries.every((entry) => entry.country === group.name)));
   assert.ok(entries.every((entry) => !Object.hasOwn(entry, "label")));
   assert.ok(findGroup("United States").entries.some((entry) => entry.region === "California"));
@@ -105,6 +248,33 @@ test("preserves the complete statically compiled atlas", async () => {
   );
   const codGame = atlas.games.find((game) => game.id === "cod");
   assert.equal(codGame.icon, "/images/games/cod.png");
+  assert.equal(codGame.series, "world-war-ii");
+  assert.equal(codGame.subseries, "main");
+  assert.equal(codGame.remasterOf, null);
+  assert.equal(atlas.games.find((game) => game.id === "cod-uo").subseries, "add-on");
+  assert.equal(atlas.games.find((game) => game.id === "cod-fh").subseries, "spin-off");
+  assert.equal(atlas.games.find((game) => game.id === "mw19").subseries, "reboot");
+  assert.equal(atlas.games.find((game) => game.id === "mwii").subseries, "reboot");
+  assert.equal(atlas.games.find((game) => game.id === "mwiii").subseries, "reboot");
+  assert.equal(atlas.games.find((game) => game.id === "mw4").subseries, "reboot");
+  const cod4Remastered = atlas.games.find((game) => game.id === "cod4-r");
+  assert.equal(cod4Remastered.subseries, "remaster");
+  assert.equal(cod4Remastered.remasterOf, "cod4");
+  assert.equal(atlas.games.find((game) => game.id === "ghosts").subseries, null);
+  assert.equal(atlas.games.find((game) => game.id === "wz").code, "WZ");
+  assert.equal(atlas.games.find((game) => game.id === "wz2").code, "WZ2");
+  assert.ok(atlas.games.every((game) => [
+    "world-war-ii",
+    "modern-warfare",
+    "black-ops",
+    "standalone",
+  ].includes(game.series)));
+  assert.ok(atlas.games.every((game) => game.subseries === null
+    || ["main", "reboot", "remaster", "add-on", "spin-off"].includes(game.subseries)));
+  assert.ok(atlas.games.every((game) => game.subseries === "remaster"
+    ? atlas.games.some((original) => original.id === game.remasterOf)
+    : game.remasterOf === null));
+  assert.ok(atlas.games.every((game) => !Object.hasOwn(game, "era")));
   for (const game of atlas.games.filter((item) => item.icon)) {
     assert.equal(game.icon, `/images/games/${game.id}.png`);
     await access(new URL(`../public${game.icon}`, import.meta.url));
@@ -123,18 +293,34 @@ test("preserves the complete statically compiled atlas", async () => {
     assert.ok(banner.thumbnailUrl, `${key} has a thumbnail URL`);
     assert.ok(banner.author, `${key} has author information`);
   }
-  assert.equal(atlas.levelBanners["rtv-altavilla"].thumbnailUrl, "/images/levels/rtv/altavilla.png");
-  assert.equal(atlas.levelBanners["rtv-altavilla"].author.userUrl, "https://github.com/plp-gtr");
+  assert.equal(atlas.levelBanners["rtv-altavilla@rtv"].thumbnailUrl, "/images/levels/rtv/altavilla/main.png");
+  assert.equal(atlas.levelBanners["rtv-altavilla@rtv"].author.userUrl, "https://github.com/plp-gtr");
+  assert.equal(atlas.levelIdAliases["cod-cod2-wwii-carentan"], "cod-carentan");
+  const carentanAppearanceEntry = entries.find((entry) => entry.levelId === "cod-carentan");
+  assert.deepEqual(carentanAppearanceEntry.gameIds, ["cod", "cod2", "wwii"]);
+  assert.deepEqual(carentanAppearanceEntry.appearances.map((appearance) => appearance.gameId), ["cod", "cod2", "wwii"]);
+  assert.ok(carentanAppearanceEntry.appearances.every((appearance) => appearance.wikiArticle === carentanAppearanceEntry.wikiArticle));
+  assert.ok(carentanAppearanceEntry.appearances.every((appearance) => appearance.notesId === "cod-carentan"));
+  const ashikaIslandEntry = entries.find((entry) => entry.levelId === "wz2-ashika-island");
+  assert.deepEqual(ashikaIslandEntry.gameIds, ["wz2"]);
+  const vondelEntry = entries.find((entry) => entry.levelId === "wz2-vondel");
+  assert.deepEqual(vondelEntry.gameIds, ["wz2"]);
+  assert.ok(entries.find((entry) => entry.levelId === "mw2-afgan").gameIds.includes("mwiii"));
+  assert.ok(entries.find((entry) => entry.levelId === "mwii-shipment").gameIds.includes("mwiii"));
+  assert.deepEqual(entries.find((entry) => entry.levelId === "mwiii-meat").gameIds, ["mwiii"]);
+  const urzikstanEntry = entries.find((entry) => entry.levelId === "mwiii-urzikstan");
+  assert.deepEqual(urzikstanEntry.gameIds, ["mwiii", "wz2"]);
+  assert.equal(urzikstanEntry.appearances.find((appearance) => appearance.gameId === "wz2").title, "Urzikstan");
   assert.ok(entries.every((entry) =>
-    entry.modes.length === 1 && ["singleplayer", "multiplayer"].includes(entry.modes[0])));
+    entry.modes.length === 1 && ["singleplayer", "multiplayer", "zombies"].includes(entry.modes[0])));
   assert.ok(entries.every((entry) => typeof entry.hasLevelNotes === "boolean"));
-  assert.equal(entries.find((entry) => entry.levelId === "mw19-wz-fortune-s-keep").hasLevelNotes, false);
+  assert.equal(entries.find((entry) => entry.levelId === "wz-fortune-s-keep").hasLevelNotes, false);
   assert.equal(entries.find((entry) => entry.levelId === "cod-pavlov").hasLevelNotes, true);
 
   const expectedCod1MapLinks = new Map([
-    ["cod-bocage", "bocage"],
+    ["cod-bocage", "bocage-2"],
     ["cod-brecourt", "brecourt"],
-    ["cod-cod2-wwii-carentan", "carentan"],
+    ["cod-carentan", "Carentan-2"],
     ["cod-chateau", "chateau"],
     ["cod-dawnville", "dawnville"],
     ["cod-depot", "depot"],
@@ -150,7 +336,8 @@ test("preserves the complete statically compiled atlas", async () => {
     ["cod-tigertown", "tigertown"],
   ]);
   const cod1MapEntries = entries.filter((entry) =>
-    entry.urls?.some((url) => url.callOfDutyMaps?.startsWith("https://callofdutymaps.com/call-of-duty-1/")));
+    entry.gameIds.includes("cod")
+    && entry.urls?.some((url) => url.callOfDutyMaps?.startsWith("https://callofdutymaps.com/call-of-duty-1/")));
   assert.deepEqual(
     cod1MapEntries.map((entry) => entry.levelId).sort(),
     [...expectedCod1MapLinks.keys()].sort(),
@@ -176,10 +363,10 @@ test("preserves the complete statically compiled atlas", async () => {
     ["cod4-district", "district/"],
     ["cod4-downpour", "downpour"],
     ["cod4-killhouse", "killhouse"],
-    ["cod4-mw2-crash", "crash"],
-    ["cod4-mw2-mw19-vacant", "vacant"],
-    ["cod4-mw2-overgrown", "overgrown"],
-    ["cod4-mw2-strike", "strike"],
+    ["cod4-crash", "crash"],
+    ["cod4-vacant", "vacant"],
+    ["cod4-overgrown", "overgrown"],
+    ["cod4-strike", "strike"],
     ["cod4-pipeline", "pipeline"],
     ["cod4-shipment", "shipment"],
     ["cod4-showdown", "showdown"],
@@ -205,11 +392,11 @@ test("preserves the complete statically compiled atlas", async () => {
     ["mw2-carnival", "carnival"],
     ["mw2-derail", "derail"],
     ["mw2-estate", "estate"],
-    ["mw2-ghosts-favela", "favela"],
+    ["mw2-favela", "favela"],
     ["mw2-highrise", "highrise"],
     ["mw2-invasion", "invasion"],
     ["mw2-karachi", "karachi"],
-    ["mw2-mw3-terminal", "terminal"],
+    ["mw2-terminal", "terminal"],
     ["mw2-quarry", "quarry"],
     ["mw2-rundown", "rundown"],
     ["mw2-rust", "rust"],
@@ -365,9 +552,9 @@ test("preserves the complete statically compiled atlas", async () => {
 
   const cod2Entries = entries.filter((entry) => entry.game.split(" / ").includes("COD2"));
   assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "singleplayer").length, 27);
-  assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "multiplayer").length, 21);
-  assert.equal(entries.filter((entry) => entry.modes[0] === "singleplayer").length, 407);
-  assert.equal(entries.filter((entry) => entry.modes[0] === "multiplayer").length, 581);
+  assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "multiplayer").length, 20);
+  assert.equal(entries.filter((entry) => entry.modes[0] === "singleplayer").length, 421);
+  assert.equal(entries.filter((entry) => entry.modes[0] === "multiplayer").length, 632);
 });
 
 test("keeps calibrated game-map overlays in a separate generated store", async () => {
@@ -375,7 +562,7 @@ test("keeps calibrated game-map overlays in a separate generated store", async (
     with: { type: "json" },
   });
   const altavilla = overlays["rtv-altavilla"];
-  assert.equal(altavilla.image, "/images/maps/rtv/altavilla.png");
+  assert.equal(altavilla.image, "/images/levels/rtv/altavilla/maps/briefing-map.png");
   assert.deepEqual(altavilla.corners, {
     topLeft: [40.59997, 14.78375],
     topRight: [40.59054, 15.29434],
@@ -385,7 +572,7 @@ test("keeps calibrated game-map overlays in a separate generated store", async (
   assert.equal(altavilla.attribution.rights, "non-free");
   await access(new URL(`../public${altavilla.image}`, import.meta.url));
   const scavengerHunt = overlays["rtv-scavenger-hunt"];
-  assert.equal(scavengerHunt.image, "/images/maps/rtv/scavenger-hunt.png");
+  assert.equal(scavengerHunt.image, "/images/levels/rtv/scavenger-hunt/maps/briefing-map.png");
   assert.deepEqual(scavengerHunt.corners, {
     topLeft: [49.41909, -1.36634],
     topRight: [49.42172, -1.26404],
@@ -404,7 +591,7 @@ test("keeps clickable historical overlays in a separate generated store", async 
   assert.equal(factoryOverlay.id, "the-li-army-corps-assault-14-15-october-1942");
   assert.equal(
     factoryOverlay.image,
-    "/images/maps/cod-fh/4-defend-the-factory/the-li-army-corps-assault-14-15-october-1942.png",
+    "/images/levels/cod-fh/defend-the-factory/extra/the-li-army-corps-assault-14-15-october-1942.png",
   );
   assert.deepEqual(factoryOverlay.corners, {
     topLeft: [48.82027881, 44.57762708],

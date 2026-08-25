@@ -10,7 +10,8 @@
     "install:ci": "bash scripts/install-ci.sh",
     "dev": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vite",
     "data:build": "node scripts/build-atlas-data.mjs",
-    "data:check": "node scripts/build-atlas-data.mjs --check",
+    "data:check": "node scripts/build-atlas-data.mjs --check && node scripts/progress.mjs --check",
+    "progress:update": "node scripts/progress.mjs",
     "icons:import": "node scripts/import-game-icons.mjs",
     "wiki:import": "node scripts/import-wiki-articles.mjs",
     "predev": "npm run data:build",
@@ -18,7 +19,7 @@
     "build": "bash scripts/build-verified.sh",
     "build:static": "npm run data:build && npm run icons:import && vite build --config vite.static.config.ts",
     "start": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vinext start",
-    "test": "npm run build && node --test tests/rendered-html.test.mjs tests/wiki-import.test.mjs tests/game-icon-import.test.mjs",
+    "test": "npm run build && node --test tests/rendered-html.test.mjs tests/wiki-import.test.mjs tests/game-icon-import.test.mjs tests/progress.test.mjs",
     "validate:artifact": "bash scripts/validate-artifact.sh",
     "prelint": "npm run data:build",
     "lint": "bash scripts/sites-env.sh -- eslint . --ignore-pattern dist --ignore-pattern dist-static --ignore-pattern .next"

@@ -31,10 +31,14 @@ VSCodium users can run the common commands through **Terminal → Run Task**.
 1. Find the Markdown file under `content/levels/`.
 2. Change the curated frontmatter or add a concise note to the Markdown body.
 3. Include a reliable source link in the pull-request description.
-4. If a local Node or Docker toolchain is available, run `npm run data:check`
+4. After changing the standard research sections or location precision, run
+   `npm run progress:update` (Docker:
+   `docker compose run --rm cod-atlas-tools npm run progress:update`) to
+   refresh the generated tables in `docs/progress.md`.
+5. If a local Node or Docker toolchain is available, run `npm run data:check`
    or `docker compose run --rm cod-atlas-tools npm run data:check`. CI runs the
    same validation for every pull request.
-5. Commit the curated source change. Generated JSON is built automatically and
+6. Commit the curated source change. Generated JSON is built automatically and
    is not committed.
 
 Coordinates belong to the level location itself. Do not create a shared place
@@ -47,14 +51,14 @@ all allowed `mode`, `precision`, `confidence`, and `method` values, selection
 guidance, and copy-ready templates for every source record type.
 
 Create a Markdown file under the primary game's directory. If that game is
-already organized by map type, place it in `campaign/` or `multiplayer/` to
-match its `mode` field. Currently `cod`, `cod-uo`, `cod-fh`, and `cod2` use
-this layout; games that have not been reorganized retain their existing flat
-layout.
+already organized by map type, place it in `campaign/`, `multiplayer/`, or
+`zombies/` to match its `mode` field. Currently `cod`, `cod-uo`, `cod-fh`,
+`cod2`, `wz`, `wz2`, and `mwiii` use the first two folders; `bo6` uses all
+three. Games that have not been reorganized retain their existing flat layout.
 
 Campaign files in a map-type layout are named
 `<order>-<level-slug>.md`, starting at `1` without leading zeros or gaps.
-Multiplayer and flat-layout files use `<level-slug>.md`. Never repeat the
+Multiplayer, Zombies, and flat-layout files use `<level-slug>.md`. Never repeat the
 primary game ID or include the campaign order in the stable ID. For example,
 an `id` of `cod3-example-level` belongs at
 `content/levels/cod3/example-level.md` while `cod-example-level` could belong
@@ -87,6 +91,15 @@ Optional research notes belong here.
 
 Add a game YAML file only when its referenced game does not already exist. Add
 or reference a separate Wiki import JSON record for `wikiArticle`.
+
+If the same level also appears in another game without material geographic or
+playable-layout changes, add `<level-slug>.ref.md` under that game's directory
+instead of putting several IDs in `games`. A reference contains only
+`level: <canonical-level-id>` plus optional appearance-specific `title`,
+`wikiArticle`, `campaign`, `metadata`, or Markdown notes. Missing values and
+notes inherit from the canonical record. Locations, mode, overlays, and stable
+IDs cannot be overridden. A materially changed remake gets its own canonical
+level record instead.
 
 An optional interface icon can be added at
 `public/images/games/<game-id>.png`. The filename must exactly match the game
@@ -136,7 +149,7 @@ regression count in the tests and explain the count change in the pull request.
 - The change is limited to one coherent correction or feature.
 - Game and Wiki foreign keys resolve.
 - Location precision reflects the quality of the evidence.
-- Singleplayer/multiplayer classification has been checked.
+- Campaign/multiplayer/Zombies classification has been checked.
 - Generated data is current.
 - Third-party attribution and licensing are preserved.
 

@@ -1,0 +1,101 @@
+{
+  "id": "codwiki-hunting-season",
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Hunting_Season",
+  "mapStyle": "singleplayer",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas; verify against the Wiki during the next import.",
+  "fandomPageId": 757566,
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Hunting_Season",
+  "latestRevisionId": 2997057,
+  "importedAt": "2026-08-24T19:25:47.657Z",
+  "levelLocation": {
+    "raw": "{{w|Al Anbar Governorate|Anbar Province}}, [[Iraq]]",
+    "label": "Iraq",
+    "url": "https://callofduty.fandom.com/wiki/Iraq"
+  },
+  "previousLevels": {
+    "raw": "[[The Rook: Reunion]]",
+    "label": "The Rook: Reunion",
+    "links": [
+      {
+        "wikiTitle": "The Rook: Reunion",
+        "label": "The Rook: Reunion",
+        "url": "https://callofduty.fandom.com/wiki/The_Rook%3A_Reunion"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[The Cradle]]",
+    "label": "The Cradle",
+    "links": [
+      {
+        "wikiTitle": "The Cradle",
+        "label": "The Cradle",
+        "url": "https://callofduty.fandom.com/wiki/The_Cradle"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Black Ops 6]]''",
+    "label": "Call of Duty: Black Ops 6",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Black Ops 6",
+        "label": "Call of Duty: Black Ops 6",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops_6"
+      }
+    ]
+  },
+  "date": {
+    "raw": "February 5th, 1991 - 06:14 AST",
+    "label": "February 5th, 1991 - 06:14 AST"
+  },
+  "images": {
+    "main": {
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/3/39/HuntingSeason_MenuScreen_BO6.png/revision/latest?cb=20241029110811",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/3/39/HuntingSeason_MenuScreen_BO6.png/revision/latest/scale-to-width-down/800?cb=20241029110811",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:HuntingSeason_MenuScreen_BO6.png",
+      "author": {
+        "name": "Kalinine",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Kalinine",
+        "role": "uploader"
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+      }
+    },
+    "map": {
+      "sourceUrl": null,
+      "thumbnailUrl": null,
+      "detailPageUrl": null,
+      "author": {
+        "name": null,
+        "userUrl": null,
+        "role": null
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "unknown",
+        "notice": null,
+        "noticeUrl": null
+      }
+    }
+  },
+  "rawPayload": {
+    "revisionTimestamp": "2026-04-24T16:45:19Z",
+    "revisionSha1": "fdf3fa8cd548b5bb67edb148e25c227d389dc115",
+    "resolvedTitle": "Hunting Season",
+    "mainImageTitle": "File:HuntingSeason_MenuScreen_BO6.png",
+    "mapImageTitle": null
+  }
+}

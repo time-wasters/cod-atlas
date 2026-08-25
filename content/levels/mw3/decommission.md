@@ -8,10 +8,12 @@ wikiArticle: codwiki-decommission
 locations:
   - id: main
     country: Somalia
-    latitude: 10
-    longitude: 49
-    precision: country
-    confidence: fallback
-    method: country-fallback
+    latitude: 11.2755407
+    longitude: 49.1878994
+    precision: approximate
+    confidence: medium
+    method: manual-approximate
     primary: true
+    urls:
+      - callOfDutyMaps: https://callofdutymaps.com/modern-warfare-3/decommission
 ---

@@ -21,7 +21,7 @@ to obtain a detailed marker.
    any related level files before changing anything. Preserve unrelated curated
    data, overlays, attribution and editorial notes.
 2. Establish what the game actually depicts:
-   - whether the level is singleplayer or multiplayer;
+   - whether the level is campaign, multiplayer, or Zombies;
    - playable character and unit;
    - date and stated location;
    - briefing, objectives and route through the level;
@@ -148,6 +148,12 @@ caveat in every section. Summarize the map layout and visual evidence in one or
 two compact paragraphs. Include only enough historical context to explain the
 location choice, a documented campaign connection or an important difference.
 Do not pad a generic multiplayer setting with a broad campaign history.
+
+For a Zombies map, describe its own briefing, crew or Operators, story date,
+objectives, and playable geography. Do not classify solo or cooperative Zombies
+as ordinary multiplayer. Standard, Directed, Grief, and limited-time playlists
+are variants of the same Zombies map unless the playable geography materially
+changes.
 
 ### The Real Place & Differences
 

@@ -3,7 +3,6 @@ id: cod-brecourt
 title: Brecourt
 games:
   - cod
-  - cod-uo
 mode: multiplayer
 wikiArticle: codwiki-brecourt-map
 locations:

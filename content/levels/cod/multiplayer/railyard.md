@@ -3,7 +3,6 @@ id: cod-railyard
 title: Railyard
 games:
   - cod
-  - cod-uo
 mode: multiplayer
 wikiArticle: codwiki-railyard-map
 locations:

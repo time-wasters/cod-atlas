@@ -125,10 +125,14 @@ function frontmatter(text, filename) {
 
 export function wikiArticleIdsForGames(levels, gameIds) {
   const selectedGames = new Set(gameIds);
-  return [...new Set(levels
-    .filter((level) => level.games?.some((gameId) => selectedGames.has(gameId)))
-    .map((level) => level.wikiArticle)
-    .filter(Boolean))].sort();
+  const canonicalById = new Map(levels.filter((level) => level.id).map((level) => [level.id, level]));
+  return [...new Set(levels.flatMap((level) => {
+    if (level.games?.some((gameId) => selectedGames.has(gameId))) return [level.wikiArticle];
+    if (level.level && selectedGames.has(level.appearanceGame)) {
+      return [level.wikiArticle ?? canonicalById.get(level.level)?.wikiArticle];
+    }
+    return [];
+  }).filter(Boolean))].sort();
 }
 
 export async function loadWikiArticleIdsForGames(gameIds) {
@@ -140,8 +144,12 @@ export async function loadWikiArticleIdsForGames(gameIds) {
   if (unknownGameIds.length) throw new Error(`Unknown game IDs: ${unknownGameIds.join(", ")}`);
 
   const levelFilenames = await filesBelow(path.join(contentRoot, "levels"), ".md");
-  const levels = await Promise.all(levelFilenames.map(async (filename) =>
-    frontmatter(await readFile(filename, "utf8"), filename)));
+  const levels = await Promise.all(levelFilenames.map(async (filename) => ({
+    ...frontmatter(await readFile(filename, "utf8"), filename),
+    ...(filename.endsWith(".ref.md") ? {
+      appearanceGame: path.relative(path.join(contentRoot, "levels"), filename).split(path.sep)[0],
+    } : {}),
+  })));
   return wikiArticleIdsForGames(levels, gameIds);
 }
 
@@ -209,11 +217,41 @@ export function parseWikiLink(value, wikiOrigin) {
   };
 }
 
-export function parseWikiReferences(value, wikiOrigin) {
+const normalizeWikiTitle = (value) => value?.replace(/_/g, " ").trim().toLocaleLowerCase("en-US") ?? "";
+
+export function buildWikiArticleLookup(records, wikiOrigin) {
+  const idsByTitle = new Map();
+  const add = (title, id) => {
+    const normalized = normalizeWikiTitle(title);
+    if (!normalized) return;
+    if (!idsByTitle.has(normalized)) idsByTitle.set(normalized, new Set());
+    idsByTitle.get(normalized).add(id);
+  };
+
+  for (const record of records) {
+    const article = record.article ?? record;
+    for (const field of ["sourceUrl", "canonicalUrl"]) {
+      if (article[field]) add(titleFromSource(article[field], wikiOrigin), article.id);
+    }
+    add(article.rawPayload?.resolvedTitle, article.id);
+  }
+
+  return new Map([...idsByTitle].map(([title, ids]) => [title, ids.size === 1 ? [...ids][0] : null]));
+}
+
+export function parseWikiReferences(value, wikiOrigin, articleLookup = null) {
   if (!value) return { raw: null, label: null, links: [] };
-  const links = [...value.matchAll(/\[\[([^\]|#]+)(?:#[^\]|]*)?(?:\|([^\]]+))?\]\]/g)].map((match) => {
+  const matches = [...value.matchAll(/\[\[([^\]|#]+)(?:#[^\]|]*)?(?:\|([^\]]+))?\]\]/g)];
+  const links = matches.map((match, index) => {
     const wikiTitle = match[1].trim();
+    const contextStart = match.index + match[0].length;
+    const contextEnd = matches[index + 1]?.index ?? value.length;
+    const sequenceContext = value.slice(contextStart, contextEnd);
     return {
+      ...(articleLookup ? {
+        sequence: /chronolog/i.test(sequenceContext) ? "chronological" : "game",
+        article: articleLookup.get(normalizeWikiTitle(wikiTitle)) ?? null,
+      } : {}),
       wikiTitle,
       label: stripMarkup(match[2] ?? match[1]),
       url: `${wikiOrigin}/wiki/${encodeURIComponent(wikiTitle.replace(/ /g, "_"))}`,
@@ -226,9 +264,15 @@ export function parseWikiValue(value) {
   return value ? { raw: value.trim(), label: stripMarkup(value) } : { raw: null, label: null };
 }
 
-export function hasSequenceMetadata(article) {
-  return ["previousLevels", "nextLevels", "games", "date"]
-    .every((field) => Object.hasOwn(article, field));
+export function hasSequenceMetadata(article, articleLookup = new Map()) {
+  if (!["previousLevels", "nextLevels", "games", "date"].every((field) => Object.hasOwn(article, field))) return false;
+  return [article.previousLevels, article.nextLevels].every((references) =>
+    Array.isArray(references?.links) && references.links.every((link) => {
+      if (!Object.hasOwn(link, "sequence") || !["game", "chronological"].includes(link.sequence)) return false;
+      if (!Object.hasOwn(link, "article")) return false;
+      const resolvableArticle = articleLookup.get(normalizeWikiTitle(link.wikiTitle));
+      return !resolvableArticle || link.article === resolvableArticle;
+    }));
 }
 
 function fileTitle(value) {
@@ -331,7 +375,7 @@ async function writeJsonAtomic(filename, value) {
   await rename(temporary, filename);
 }
 
-async function importBatch(records, options, state, configuration) {
+async function importBatch(records, options, state, configuration, articleLookup) {
   const titles = records.map(({ article }) => titleFromSource(article.sourceUrl, configuration.origin));
   const payload = await request({ redirects: "1", prop: "info|revisions|pageimages", inprop: "url", rvprop: "ids|timestamp|sha1|content", rvslots: "main", piprop: "name", titles: titles.join("|") }, options, state, configuration);
   const aliases = new Map(titles.map((title) => [title.replace(/_/g, " "), title]));
@@ -347,7 +391,7 @@ async function importBatch(records, options, state, configuration) {
     if (page.missing) { console.warn(`missing ${record.article.id}: ${record.article.sourceUrl}`); continue; }
     const revision = page.revisions?.[0];
     if (!revision) { console.warn(`no revision ${record.article.id}`); continue; }
-    if (!options.force && record.article.latestRevisionId === revision.revid && hasSequenceMetadata(record.article)) {
+    if (!options.force && record.article.latestRevisionId === revision.revid && hasSequenceMetadata(record.article, articleLookup)) {
       console.log(`unchanged ${record.article.id} (revision ${revision.revid})`);
       continue;
     }
@@ -377,8 +421,8 @@ async function importBatch(records, options, state, configuration) {
       latestRevisionId: update.revision.revid,
       importedAt: new Date().toISOString(),
       levelLocation: parseWikiLink(firstValue(update.infobox, ["location", "place", "setting"]), configuration.origin),
-      previousLevels: parseWikiReferences(firstValue(update.infobox, ["previous_level", "previouslevel", "previous", "prev"]), configuration.origin),
-      nextLevels: parseWikiReferences(firstValue(update.infobox, ["next_level", "nextlevel", "next"]), configuration.origin),
+      previousLevels: parseWikiReferences(firstValue(update.infobox, ["previous_level", "previouslevel", "previous", "prev"]), configuration.origin, articleLookup),
+      nextLevels: parseWikiReferences(firstValue(update.infobox, ["next_level", "nextlevel", "next"]), configuration.origin, articleLookup),
       games: parseWikiReferences(firstValue(update.infobox, ["game", "games"]), configuration.origin),
       date: parseWikiValue(firstValue(update.infobox, ["date"])),
       images: {
@@ -406,6 +450,7 @@ async function main() {
     const filename = path.join(directory, name);
     return { filename, article: JSON.parse(await readFile(filename, "utf8")) };
   }));
+  const articleLookup = buildWikiArticleLookup(records, configuration.origin);
   const ids = new Set(options.ids);
   if (options.gameIds.length) {
     for (const id of await loadWikiArticleIdsForGames(options.gameIds)) ids.add(id);
@@ -418,7 +463,9 @@ async function main() {
   console.log(`Checking ${selected.length} record(s) in batches of ${BATCH_SIZE}; API delay ${options.delayMs}ms.`);
   const state = { count: 0 };
   let changed = 0;
-  for (let index = 0; index < selected.length; index += BATCH_SIZE) changed += await importBatch(selected.slice(index, index + BATCH_SIZE), options, state, configuration);
+  for (let index = 0; index < selected.length; index += BATCH_SIZE) {
+    changed += await importBatch(selected.slice(index, index + BATCH_SIZE), options, state, configuration, articleLookup);
+  }
   console.log(`Finished: ${changed} changed record(s), ${state.count} API request(s).`);
 }
 

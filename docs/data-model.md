@@ -7,13 +7,14 @@ Wiki imports. There is no database and no shared place entity.
 
 ```mermaid
 erDiagram
-  GAME ||--o{ LEVEL : "referenced by games"
+  GAME ||--o{ LEVEL_APPEARANCE : "contains"
+  LEVEL ||--|{ LEVEL_APPEARANCE : "is shown through"
   WIKI_ARTICLE ||--o{ LEVEL : "referenced by wikiArticle"
-  LEVEL ||--|{ LOCATION : "embeds"
+  LEVEL ||--o{ LOCATION : "embeds"
 ```
 
-- `content/games/*.yaml` supplies stable game IDs, readable labels, codes, and
-  release dates.
+- `content/games/*.yaml` supplies stable game IDs, readable labels, codes,
+  release dates, and series classifications.
 - `content/levels/**/*.md` is the curated source for level classification,
   coordinates, precision, and notes.
 - `content/wiki-import/articles/*.json` stores repeatable Wiki-import results
@@ -26,14 +27,38 @@ erDiagram
 id: cod3
 code: COD3
 label: CoD 3
+labelLong: "Call of Duty 3"
 released: 2006-11-07
+series: world-war-ii
+subseries: main
 ```
 
-The release date controls the game-filter ordering. Labels should be concise
-but understandable without prior knowledge of internal abbreviations. An
+The release date controls the game-filter ordering. `label` should be concise
+but understandable without prior knowledge of internal abbreviations, while
+`labelLong` contains the full game name used by icon tooltips. An
 optional `public/images/games/<game-id>.png` is detected during the build and
 exposed as the game's `icon`; games without one continue to display their
 label.
+
+Game series values are `world-war-ii`, `modern-warfare`, `black-ops`, and
+`standalone`. The optional sub-series values are `main`, `reboot`, `remaster`,
+`add-on`, and `spin-off`. Use `reboot` for reboot-continuity releases and
+`add-on` for expansions of an existing game, such as *Call of Duty: United
+Offensive*. A `remaster` must link to the original game through its stable ID:
+
+```yaml
+series: modern-warfare
+subseries: remaster
+remasterOf: cod4
+```
+
+Other games must omit `remasterOf`. Omit `subseries` for a standalone game such
+as *Call of Duty: Ghosts*; the compiler represents missing optional values as
+`null` in generated data.
+
+The generated country groups include a `continent` used by the advanced
+filters. Standard countries are classified through `world-countries`; named
+waters, the Arctic, and off-world settings use explicit supplemental buckets.
 
 ## Level source layout
 
@@ -44,17 +69,26 @@ out incrementally:
 content/levels/<primary-game>/<level-slug>.md
 content/levels/<primary-game>/campaign/<order>-<level-slug>.md
 content/levels/<primary-game>/multiplayer/<level-slug>.md
+content/levels/<primary-game>/zombies/<level-slug>.md
+content/levels/<appearance-game>/<level-slug>.ref.md
+content/levels/<appearance-game>/<map-type>/<level-slug>.ref.md
 ```
 
-A game must use one layout consistently. `cod`, `cod-uo`, `cod-fh`, and `cod2`
-use `campaign/` for records whose `mode` is `singleplayer` and `multiplayer/`
-for records whose `mode` is `multiplayer`. Games that have not been
+A game must use one layout consistently. `cod`, `cod-uo`, `cod-fh`, `cod2`,
+`wz`, `wz2`, and `mwiii` use `campaign/` for records whose `mode` is `singleplayer` and
+`multiplayer/` for records whose `mode` is `multiplayer`. `bo6` also uses
+`zombies/` for records whose `mode` is `zombies`. Games that have not been
 reorganized remain flat. Map types are broad content categories; they are
 distinct from multiplayer rule sets such as deathmatch or capture the flag.
 
 Campaign orders start at `1`, have no leading zeros, and must be unique and
 contiguous within their game. The prefix records play order without becoming
 part of the stable level `id` or display title.
+
+A full `.md` file is the canonical record and owns the stable ID, locations,
+mode, overlays, and canonical research. A `.ref.md` file records that the same
+level appears in another game. References live under that appearance's game,
+so every game's directory provides a complete, manageable index of its levels.
 
 ## Level record
 
@@ -65,16 +99,19 @@ Required fields:
 
 - `id`: stable, repository-wide level ID.
 - `title`: human-readable level or map name.
-- `games`: one or more game IDs.
-- `mode`: `singleplayer` or `multiplayer`.
+- `games`: exactly one game ID: the canonical owner game.
+- `mode`: `singleplayer`, `multiplayer`, or `zombies`.
 - `wikiArticle`: foreign key to a Wiki import record.
-- `locations`: one or more embedded location records.
+- `locations`: embedded location records. Use an empty list only when the
+  level is known but its real-world location has not yet been curated.
 
 Optional level fields include `campaign`, a grouping with a stable string `id`
-and a human-readable `label`.
+and a human-readable `label`; `legacyIds`, which preserves old URL IDs after a
+structural rename; and `metadata` for non-geographic descriptive values.
 
-One level can embed multiple locations. Each location has a locally unique
-`id`, a country, and normally coordinates. Optional geographic detail follows
+One level can embed multiple locations, or temporarily use `locations: []`
+until location research is complete. Each location has a locally unique `id`,
+a country, and normally coordinates. Optional geographic detail follows
 the hierarchy `country` → `region` → `city` → `landmark`. A region may be a
 state, province, constituent country, island, territory, or similar area;
 landmarks are named sites such as rivers, castles, and buildings. Coordinates
@@ -104,6 +141,33 @@ canonical claim that the in-game location is the landmark itself.
 
 `primary: true` identifies the main location when a level contains several.
 
+## Level appearance reference
+
+An unchanged port, remaster, or rerelease uses a small reference file rather
+than adding game IDs to the canonical record:
+
+```md
+---
+level: cod-carentan
+title: Carentan (Remastered)
+wikiArticle: codwiki-carentan-remastered
+metadata:
+  engine: upgraded
+---
+
+Optional notes specific to this appearance.
+```
+
+Only `level`, `title`, `wikiArticle`, `campaign`, and `metadata` are accepted.
+Omitted values inherit from the canonical record. The Markdown body, when
+present, is shown before the inherited canonical notes; an empty body shows
+only the canonical notes. Appearance references cannot set `id`, `games`, `mode`,
+`locations`, precision/confidence/method values, or geographic overlays.
+
+Create a new canonical level when a remake materially changes the playable
+level or represented geography. Do not use an appearance reference merely
+because two maps share a name.
+
 An optional `mapOverlay` belongs in the level Markdown frontmatter when a
 reviewed game map can be geographically calibrated. It records a local image,
 opacity, all four `[latitude, longitude]` corners, and complete source and
@@ -113,7 +177,8 @@ overlay data is not added to the main atlas JSON.
 
 Optional `historyOverlays` attach one or more geographically calibrated
 historical figures to images embedded in the level's research Markdown. Each
-record has a stable ID, a local PNG under `public/images/maps/`, opacity, four
+record has a stable ID, a local PNG in the level's `extra/` directory (legacy
+records under `public/images/maps/` are also accepted), opacity, four
 corners, and complete author, publication, copyright, and non-free-rights
 attribution. The Markdown body must embed the corresponding PNG filename.
 The compiler validates both the image and that body reference, then writes the
@@ -131,6 +196,9 @@ The stable `id` is the foreign-key target. Import-oriented fields include:
 - Wiki-provided level-location text and link.
 - Wiki-provided previous/next-level and game text, with every linked Wiki
   target retained for later reviewed mapping to curated IDs.
+- Per-link `sequence` metadata on previous/next levels (`game` or
+  `chronological`) and an `article` foreign key to the matching local Wiki
+  import when one can be resolved. Unresolved targets retain `article: null`.
 - Wiki-provided date text.
 - Map-style classification and supporting evidence.
 - Main and map images, including web-resolution display URLs.
@@ -143,15 +211,31 @@ required for an article image.
 The generated atlas exposes displayable media once per Wiki article through
 the top-level `wikiMedia` object, rather than duplicating it for every marker.
 
-Repository-hosted level banners mirror the level source layout under
-`public/images/levels/`, using either
-`<primary-game>/<level-filename>.jpg` or
-`<primary-game>/<map-type>/<level-filename>.jpg` (PNG is also supported). The
-campaign `level-filename` includes its numeric order prefix. The build
-validates file signatures and matching level Markdown paths, then exposes them
-through `levelBanners`. The frontend prefers these banners and
-uses imported Wiki media when no local banner exists or a local image fails to
-load. These extracted or captured images are credited to
+Repository-hosted media is owned by a game appearance and grouped by level,
+not by picture type:
+
+```text
+public/images/levels/
+`-- <game-id>/
+    `-- <level-slug>/
+        |-- main.png                 # or main.jpg / main.webm
+        |-- maps/
+        |   `-- briefing-map.png
+        `-- extra/
+            `-- <filename-used-in-md>
+```
+
+For example, RTV Altavilla uses
+`public/images/levels/rtv/altavilla/main.png` and
+`public/images/levels/rtv/altavilla/maps/briefing-map.png`. A Markdown image
+written as `![Caption](research-photo.png)` is served from that appearance's
+`extra/research-photo.png` directory. Only create a level media directory when
+media exists.
+
+The build validates main-media signatures and exposes each file by appearance
+through `levelBanners`. When a reference has no `main` file, the frontend uses
+the canonical appearance's file, then imported Wiki media. These extracted or
+captured images are credited to
 [plp-gtr](https://github.com/plp-gtr); underlying game artwork retains its
 original copyright.
 

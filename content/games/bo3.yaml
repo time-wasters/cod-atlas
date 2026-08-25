@@ -1,7 +1,10 @@
 id: bo3
 code: BO3
 label: Black Ops III
+labelLong: "Call of Duty: Black Ops III"
 released: 2015-11-06
+series: black-ops
+subseries: main
 images:
   steam:
     app: 311210

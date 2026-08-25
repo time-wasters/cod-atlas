@@ -1,0 +1,12 @@
+id: wz
+code: WZ
+label: Warzone (2020)
+labelLong: "Call of Duty: Warzone [2020]"
+released: 2020-03-10
+series: modern-warfare
+subseries: spin-off
+images:
+  steamgriddb:
+    game: 5257960
+    icon: 19164
+    file: 8f9fe000818954f238235f26ca070247.png

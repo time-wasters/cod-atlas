@@ -1,7 +1,10 @@
 id: rtv
 code: RTV
 label: "Call of Duty: Roads to Victory"
+labelLong: "Call of Duty: Roads to Victory"
 released: 2007-03-13
+series: world-war-ii
+subseries: spin-off
 images:
   steamgriddb:
     game: 5258603

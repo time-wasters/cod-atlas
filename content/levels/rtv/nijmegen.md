@@ -6,7 +6,7 @@ games:
 mode: singleplayer
 wikiArticle: codwiki-nijmegen
 mapOverlay:
-  image: /images/maps/rtv/nijmegen.png
+  image: /images/levels/rtv/nijmegen/maps/briefing-map.png
   opacity: 0.72
   corners:
     topLeft: [52.03385213, 4.90646237]

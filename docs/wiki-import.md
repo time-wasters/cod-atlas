@@ -102,6 +102,10 @@ For a changed page, the command can update:
 - every linked Wiki target found in the previous-level, next-level, and game
   fields, retained as a Wiki title, display label, and URL for later reviewed
   mapping to curated level and game IDs;
+- `game` or `chronological` sequence metadata for every previous- and
+  next-level link, using `game` when the Wiki supplies no chronological marker;
+- the stable local Wiki-import article ID for previous- and next-level targets
+  that match an existing record, or `null` when no local record can be resolved;
 - main/map image metadata when its license or recognized rights notice and
   attribution are available; and
 - import time and a small raw evidence summary.
@@ -130,6 +134,12 @@ is fetched in a second batched request only when images were discovered.
 Unchanged revision IDs avoid the image request and any file write.
 An unchanged record that predates a newly supported import field is refreshed
 once to backfill that field without requiring `--force`.
+
+Sequence classification belongs to each individual previous- or next-level
+link. The importer checks the text following that link up to the next linked
+target for a case-insensitive chronological marker; all other links use the
+`game` fallback. The original `raw` and `label` values remain intact so more
+specific Wiki wording such as chronology by date or events is not discarded.
 
 HTTP 429/503, `maxlag`, and `ratelimited` responses receive bounded exponential
 backoff. Other errors stop the run rather than attempting to bypass a block.

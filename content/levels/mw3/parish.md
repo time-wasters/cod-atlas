@@ -9,10 +9,12 @@ locations:
   - id: main
     country: United States
     region: Louisiana
-    latitude: 31
-    longitude: -92
-    precision: country
-    confidence: fallback
-    method: country-fallback
+    latitude: 29.9510658
+    longitude: -90.0715323
+    precision: approximate
+    confidence: medium
+    method: manual-approximate
     primary: true
+    urls:
+      - callOfDutyMaps: https://callofdutymaps.com/modern-warfare-3/parish
 ---

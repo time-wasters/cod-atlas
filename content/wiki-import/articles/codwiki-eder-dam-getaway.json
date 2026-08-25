@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Eder_Dam_Getaway",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Eder_Dam_Getaway",
   "latestRevisionId": 2992542,
-  "importedAt": "2026-08-10T19:23:50.591Z",
+  "importedAt": "2026-08-24T20:19:04.351Z",
   "levelLocation": {
     "raw": "Vicinity of the Edersee Dam, Waldeck, Kurhessen, Germany",
     "label": "Vicinity of the Edersee Dam, Waldeck, Kurhessen, Germany",
@@ -59,6 +59,8 @@
     "label": "The Eder Dam",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-the-eder-dam",
         "wikiTitle": "The Eder Dam",
         "label": "The Eder Dam",
         "url": "https://callofduty.fandom.com/wiki/The_Eder_Dam"
@@ -70,6 +72,8 @@
     "label": "Airfield Escape",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-airfield-escape",
         "wikiTitle": "Airfield Escape",
         "label": "Airfield Escape",
         "url": "https://callofduty.fandom.com/wiki/Airfield_Escape"

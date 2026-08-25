@@ -1,0 +1,101 @@
+{
+  "id": "codwiki-shattered-veil",
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Shattered_Veil",
+  "mapStyle": "zombies",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas; verify against the Wiki during the next import.",
+  "fandomPageId": 767207,
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Shattered_Veil",
+  "latestRevisionId": 3019141,
+  "importedAt": "2026-08-24T19:26:10.007Z",
+  "levelLocation": {
+    "raw": "[[Sam Colton Hall]], [[Liberty Falls (location)|Liberty Falls]], {{w|Appalachian Mountains}}, {{w|West Virginia}}, [[United States of America]]",
+    "label": "Sam Colton Hall",
+    "url": "https://callofduty.fandom.com/wiki/Sam_Colton_Hall"
+  },
+  "previousLevels": {
+    "raw": "[[The Tomb]]",
+    "label": "The Tomb",
+    "links": [
+      {
+        "wikiTitle": "The Tomb",
+        "label": "The Tomb",
+        "url": "https://callofduty.fandom.com/wiki/The_Tomb"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Reckoning (Zombies)|Reckoning]]",
+    "label": "Reckoning",
+    "links": [
+      {
+        "wikiTitle": "Reckoning (Zombies)",
+        "label": "Reckoning",
+        "url": "https://callofduty.fandom.com/wiki/Reckoning_(Zombies)"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Black Ops 6]]''",
+    "label": "Call of Duty: Black Ops 6",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Black Ops 6",
+        "label": "Call of Duty: Black Ops 6",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops_6"
+      }
+    ]
+  },
+  "date": {
+    "raw": "February 28th, 1991",
+    "label": "February 28th, 1991"
+  },
+  "images": {
+    "main": {
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/8/8a/ShatteredVeil_LobbyScreen_BO6.jpg/revision/latest?cb=20250403124538",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/8/8a/ShatteredVeil_LobbyScreen_BO6.jpg/revision/latest/scale-to-width-down/800?cb=20250403124538",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:ShatteredVeil_LobbyScreen_BO6.jpg",
+      "author": {
+        "name": "Kalinine",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Kalinine",
+        "role": "uploader"
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+      }
+    },
+    "map": {
+      "sourceUrl": null,
+      "thumbnailUrl": null,
+      "detailPageUrl": null,
+      "author": {
+        "name": null,
+        "userUrl": null,
+        "role": null
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "unknown",
+        "notice": null,
+        "noticeUrl": null
+      }
+    }
+  },
+  "rawPayload": {
+    "revisionTimestamp": "2026-08-10T16:34:47Z",
+    "revisionSha1": "edbbc529551a3287c04e8f35282a4098f3aed610",
+    "resolvedTitle": "Shattered Veil",
+    "mainImageTitle": "File:ShatteredVeil_LobbyScreen_BO6.jpg",
+    "mapImageTitle": null
+  }
+}

@@ -3,7 +3,6 @@ id: cod-ship
 title: Ship
 games:
   - cod
-  - cod-uo
 mode: multiplayer
 wikiArticle: codwiki-ship-map
 locations:

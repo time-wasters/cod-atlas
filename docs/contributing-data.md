@@ -12,6 +12,7 @@ ignored artifacts. Without host npm, use the documented Docker commands.
 | Game | `content/games/<game-id>.yaml` | [game.yaml](templates/game.yaml) |
 | Terrestrial level | `content/levels/<primary-game>/<level-slug>.md` or the game's map-type directory | [level-terrestrial.md](templates/level-terrestrial.md) |
 | Off-world level | `content/levels/<primary-game>/<level-slug>.md` or the game's map-type directory | [level-off-world.md](templates/level-off-world.md) |
+| Level appearance | `content/levels/<appearance-game>/<level-slug>.ref.md` or the game's map-type directory | create the minimal reference shown below |
 | Wiki import | `content/wiki-import/articles/<article-id>.json` | [wiki-article.json](templates/wiki-article.json) |
 
 Most contributions only change a level. Add a game only if it does not exist,
@@ -30,18 +31,30 @@ the level ID `cod3-laison-river` belongs at
 
 Map-type directories are being introduced one game at a time. A reorganized
 game must use them for every level: `campaign/` contains records with
-`mode: singleplayer`, while `multiplayer/` contains records with
-`mode: multiplayer`. The `cod`, `cod-uo`, `cod-fh`, and `cod2` directories use
-this structure. Other games retain their current flat layout until they are
-deliberately reorganized.
+`mode: singleplayer`, `multiplayer/` contains records with `mode: multiplayer`,
+and `zombies/` contains records with `mode: zombies`. The `cod`, `cod-uo`,
+`cod-fh`, `cod2`, `wz`, `wz2`, and `mwiii` directories use the first two
+folders; `bo6` uses all three. Other games retain their current flat layout
+until they are deliberately reorganized.
 These directory names describe broad map types, not multiplayer rule sets such
 as deathmatch or capture the flag.
 
 Within a map-type layout, campaign filenames are
 `<order>-<level-slug>.md`. Orders start at `1`, use no leading zeros, and must
 be unique and contiguous so they describe the sequence in which the levels are
-played. Multiplayer filenames remain `<level-slug>.md`. The order prefix is
+played. Multiplayer and Zombies filenames remain `<level-slug>.md`. The order prefix is
 filesystem metadata only: do not add it to the stable level `id` or title.
+
+## Game fields
+
+Every game record requires `id`, `code`, `label`, `released`, and `series`.
+Series values are `world-war-ii`, `modern-warfare`, `black-ops`, or
+`standalone`. The optional `subseries` field is `main`, `reboot`, `remaster`,
+`add-on`, or `spin-off`; omit it when the game does not belong to a sub-series.
+Use `reboot` for a reboot continuity and `add-on` for an expansion of an
+existing game, such as *Call of Duty: United Offensive*. A `remaster` requires
+`remasterOf` containing the original game's ID; other games must omit it.
+Optional image-provider metadata follows the existing game records.
 
 ## Level fields
 
@@ -49,11 +62,11 @@ filesystem metadata only: do not add it to the stable level `id` or title.
 | --- | --- | --- |
 | `id` | yes | Repository-wide level ID, normally prefixed with the primary game ID. |
 | `title` | yes | Display name of the level or map. |
-| `games` | yes | One or more IDs from `content/games/`; put the primary/earliest release first. |
-| `mode` | yes | `singleplayer` or `multiplayer`. |
+| `games` | yes | Exactly one owner ID from `content/games/`; use appearance references for other games. |
+| `mode` | yes | `singleplayer`, `multiplayer`, or `zombies`. |
 | `campaign` | no | Named campaign grouping as a stable string `id` and display `label`. |
 | `wikiArticle` | yes | ID of a separate Wiki import JSON record. |
-| `locations` | yes | One or more locations owned by this level. Never reference a shared place. |
+| `locations` | yes | Locations owned by this level. Use `[]` only while its location remains uncurated. Never reference a shared place. |
 | Markdown body | no | Concise research, ambiguity, or editorial notes. |
 
 For a level that belongs to a named campaign section, use an embedded campaign
@@ -67,6 +80,21 @@ campaign:
 ```
 
 Campaign IDs are strings and should remain stable if a label changes.
+
+When an unchanged level appears in another game, create a reference under that
+game so its levels remain easy to find:
+
+```md
+---
+level: cod-carentan
+---
+```
+
+The optional appearance fields are `title`, `wikiArticle`, `campaign`, and
+`metadata`. An optional Markdown body supplies appearance-specific notes and
+is displayed before the inherited canonical notes. Everything omitted inherits from the canonical level. Protected canonical
+fields—including locations and their precision, confidence, and method—cannot
+be supplied by a reference.
 
 Each location requires `id`, `country`, `precision`, `confidence`, and `method`.
 The location ID only needs to be unique within its level. The geographic
@@ -155,8 +183,8 @@ it automatically.
 
 A Wiki import record requires a stable `id` and `sourceUrl`. Keep import data
 separate from curated level data. Unknown import values are `null`; do not
-invent values just to fill the template. `mapStyle` is `singleplayer` or
-`multiplayer`, matching the curated classification. Existing
+invent values just to fill the template. `mapStyle` is `singleplayer`,
+`multiplayer`, or `zombies`, matching the curated classification. Existing
 `mapStyleConfidence` uses `curated` when that classification came from the
 atlas pending a future source refresh.
 

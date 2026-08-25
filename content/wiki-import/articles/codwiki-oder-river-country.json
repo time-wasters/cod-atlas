@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Oder_River_Country",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Oder_River_Country",
   "latestRevisionId": 2992572,
-  "importedAt": "2026-08-10T19:23:50.598Z",
+  "importedAt": "2026-08-24T20:19:04.358Z",
   "levelLocation": {
     "raw": "Oder River, Germany",
     "label": "Oder River, Germany",
@@ -59,6 +59,8 @@
     "label": "Warsaw Railyard",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-warsaw-railyard",
         "wikiTitle": "Warsaw Railyard",
         "label": "Warsaw Railyard",
         "url": "https://callofduty.fandom.com/wiki/Warsaw_Railyard"
@@ -70,6 +72,8 @@
     "label": "Oder River Town",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-oder-river-town",
         "wikiTitle": "Oder River Town",
         "label": "Oder River Town",
         "url": "https://callofduty.fandom.com/wiki/Oder_River_Town"

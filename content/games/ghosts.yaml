@@ -1,7 +1,9 @@
 id: ghosts
 code: G
 label: Ghosts
+labelLong: "Call of Duty: Ghosts"
 released: 2013-11-05
+series: standalone
 images:
   steam:
     app: 209160

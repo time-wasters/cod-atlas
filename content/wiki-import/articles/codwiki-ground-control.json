@@ -1,0 +1,101 @@
+{
+  "id": "codwiki-ground-control",
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Ground_Control",
+  "mapStyle": "singleplayer",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas; verify against the Wiki during the next import.",
+  "fandomPageId": 340136,
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Ground_Control",
+  "latestRevisionId": 3006464,
+  "importedAt": "2026-08-24T19:25:36.697Z",
+  "levelLocation": {
+    "raw": "Al-Nakheel International Airport, {{w|Kuwait}}, {{w|Al Jahra}}",
+    "label": "Al-Nakheel International Airport, ,",
+    "url": null
+  },
+  "previousLevels": {
+    "raw": "[[The Rook: Contact]]",
+    "label": "The Rook: Contact",
+    "links": [
+      {
+        "wikiTitle": "The Rook: Contact",
+        "label": "The Rook: Contact",
+        "url": "https://callofduty.fandom.com/wiki/The_Rook%3A_Contact"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Under the Radar]]",
+    "label": "Under the Radar",
+    "links": [
+      {
+        "wikiTitle": "Under the Radar",
+        "label": "Under the Radar",
+        "url": "https://callofduty.fandom.com/wiki/Under_the_Radar"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Black Ops 6]]''",
+    "label": "Call of Duty: Black Ops 6",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Black Ops 6",
+        "label": "Call of Duty: Black Ops 6",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops_6"
+      }
+    ]
+  },
+  "date": {
+    "raw": "February 13th, 1991 - 11:52 AST",
+    "label": "February 13th, 1991 - 11:52 AST"
+  },
+  "images": {
+    "main": {
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/8/88/GroundControl_MenuScreen_BO6.png/revision/latest?cb=20241029110802",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/8/88/GroundControl_MenuScreen_BO6.png/revision/latest/scale-to-width-down/800?cb=20241029110802",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:GroundControl_MenuScreen_BO6.png",
+      "author": {
+        "name": "Kalinine",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Kalinine",
+        "role": "uploader"
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+      }
+    },
+    "map": {
+      "sourceUrl": null,
+      "thumbnailUrl": null,
+      "detailPageUrl": null,
+      "author": {
+        "name": null,
+        "userUrl": null,
+        "role": null
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "unknown",
+        "notice": null,
+        "noticeUrl": null
+      }
+    }
+  },
+  "rawPayload": {
+    "revisionTimestamp": "2026-06-02T23:50:19Z",
+    "revisionSha1": "978a3870b270996f85db4408eceff7f3cba8d487",
+    "resolvedTitle": "Ground Control",
+    "mainImageTitle": "File:GroundControl_MenuScreen_BO6.png",
+    "mapImageTitle": null
+  }
+}

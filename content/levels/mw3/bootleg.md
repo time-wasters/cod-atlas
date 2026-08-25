@@ -8,10 +8,12 @@ wikiArticle: codwiki-bootleg
 locations:
   - id: main
     country: Thailand
-    latitude: 15
-    longitude: 100
-    precision: country
-    confidence: fallback
-    method: country-fallback
+    latitude: 13.7563309
+    longitude: 100.5017651
+    precision: approximate
+    confidence: medium
+    method: manual-approximate
     primary: true
+    urls:
+      - callOfDutyMaps: https://callofdutymaps.com/modern-warfare-3/bootleg
 ---

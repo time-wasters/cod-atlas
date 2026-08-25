@@ -8,10 +8,12 @@ wikiArticle: codwiki-lockdown
 locations:
   - id: main
     country: Czech Republic (Czechia)
-    latitude: 49.75
-    longitude: 15.5
-    precision: country
-    confidence: fallback
-    method: country-fallback
+    latitude: 50.0755381
+    longitude: 14.4378005
+    precision: approximate
+    confidence: medium
+    method: manual-approximate
     primary: true
+    urls:
+      - callOfDutyMaps: https://callofdutymaps.com/modern-warfare-3/lockdown
 ---

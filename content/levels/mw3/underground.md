@@ -8,10 +8,12 @@ wikiArticle: codwiki-underground
 locations:
   - id: main
     country: United Kingdom
-    latitude: 54
-    longitude: -2
-    precision: country
-    confidence: fallback
-    method: country-fallback
+    latitude: 51.5062824
+    longitude: -0.1256984
+    precision: approximate
+    confidence: medium
+    method: manual-approximate
     primary: true
+    urls:
+      - callOfDutyMaps: https://callofdutymaps.com/modern-warfare-3/underground
 ---

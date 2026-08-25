@@ -8,10 +8,12 @@ wikiArticle: codwiki-fallen
 locations:
   - id: main
     country: Ukraine
-    latitude: 49
-    longitude: 32
-    precision: country
-    confidence: fallback
-    method: country-fallback
+    latitude: 51.4045032
+    longitude: 30.0542331
+    precision: approximate
+    confidence: medium
+    method: manual-approximate
     primary: true
+    urls:
+      - callOfDutyMaps: https://callofdutymaps.com/modern-warfare-3/fallen
 ---

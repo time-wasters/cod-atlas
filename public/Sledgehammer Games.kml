@@ -1,0 +1,2544 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Sledgehammer Games</name>
+    <Style id="icon-seq2-0-0-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-1.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-1-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-2.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-10-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-11.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-11-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-12.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-12-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-13.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-13-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-14.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-14-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-15.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-15-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-16.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-16-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-17.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-17-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-18.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-18-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-19.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-19-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-20.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-2-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-3.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-20-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-21.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-21-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-22.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-22-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-23.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-23-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-24.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-24-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-25.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-25-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-26.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-26-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-27.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-27-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-28.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-28-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-29.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-29-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-30.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-3-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-4.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-30-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-31.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-31-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-32.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-32-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-33.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-33-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-34.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-34-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-35.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-35-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-36.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-36-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-37.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-37-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-38.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-38-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-39.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-39-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-40.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-4-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-5.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-40-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-41.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-41-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-42.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-42-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-43.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-43-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-44.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-44-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-45.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-45-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-46.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-46-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-47.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-47-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-48.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-48-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-49.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-49-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-50.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-5-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-6.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-50-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-51.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-51-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-52.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-52-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-53.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-53-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-54.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-54-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-55.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-55-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-56.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-56-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-57.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-57-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-58.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-58-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-59.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-59-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-60.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-6-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-7.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-60-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-61.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-61-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-62.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-62-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-63.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-63-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-64.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-64-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-65.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-65-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-66.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-66-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-67.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-67-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-68.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-68-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-69.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-69-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-70.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-7-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-8.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-70-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-71.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-71-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-72.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-72-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-73.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-73-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-74.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-74-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-75.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-75-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-76.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-76-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-77.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-8-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-9.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="icon-seq2-0-9-0097A7-labelson">
+      <IconStyle>
+        <color>ffa79700</color>
+        <scale>1</scale>
+        <Icon>
+          <href>images/icon-10.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Placemark>
+      <name>Ascend</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR76FnpPhcbsu0SWaC1ACkcfXqoBos9vGiZ4OkcgwLA08S-qiHp8azOTfcLMYcFPS0DQBYumw5aY_4R1Oo6bYSTY1LKBWk-YKzgob9SQx5t9VG1bE1qjj37VTWaOoMSHkvccezwmh4LROT8GFoA3iwFFkaJrWV18mysE2Z3ByUul19JkzfKuWSRUeYvKl1jBUxF4afGy5B3f7l7VjJlyqUmS4-tsL9xqWkI8kka7edCdtNqbohbndYiNMb8?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Advanced Warfare<br>Description: Space elevator platform in the Gulf of Mexico. Long top deck sightlines countered with close quarter bottom deck.<br>Link: https://callofdutymaps.com/advanced-warfare/ascend]]></description>
+      <styleUrl>#icon-seq2-0-0-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Advanced Warfare</value>
+        </Data>
+        <Data name="Description">
+          <value>Space elevator platform in the Gulf of Mexico. Long top deck sightlines countered with close quarter bottom deck.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/advanced-warfare/ascend</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR76FnpPhcbsu0SWaC1ACkcfXqoBos9vGiZ4OkcgwLA08S-qiHp8azOTfcLMYcFPS0DQBYumw5aY_4R1Oo6bYSTY1LKBWk-YKzgob9SQx5t9VG1bE1qjj37VTWaOoMSHkvccezwmh4LROT8GFoA3iwFFkaJrWV18mysE2Z3ByUul19JkzfKuWSRUeYvKl1jBUxF4afGy5B3f7l7VjJlyqUmS4-tsL9xqWkI8kka7edCdtNqbohbndYiNMb8?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -90.065918,25.304304,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Bio Lab</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6ExAo2qsUzCHDBNLDw6ZGBGh_fCpKDsfKItaCOc62VoHYH6oYCPohPX8M3mxkWJ_aRCyOMFB1LTQetVqrbG4VlSGc5tCtJ5iVakxVaCjM3zvjRQ7A_gjUvm9JUw6ldv7e3vQhQrQAbbgHn-bMRb4wuLq4ScyvudAjgigNWFN7rq9AUU2vR0IK_K0mu6sZGnnBpkROacLoYJqImfAJ4lZQ6n10Y43kHmJs086wMrd_Wad14hcG8QmWwPKQ?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Advanced Warfare<br>Description: Atlas modular bioengineering facility in the heart of Monument Valley. Its fast vertically oriented spaces enhance tactical combat.<br>Link: https://callofdutymaps.com/advanced-warfare/bio-lab]]></description>
+      <styleUrl>#icon-seq2-0-1-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Advanced Warfare</value>
+        </Data>
+        <Data name="Description">
+          <value>Atlas modular bioengineering facility in the heart of Monument Valley. Its fast vertically oriented spaces enhance tactical combat.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/advanced-warfare/bio-lab</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6ExAo2qsUzCHDBNLDw6ZGBGh_fCpKDsfKItaCOc62VoHYH6oYCPohPX8M3mxkWJ_aRCyOMFB1LTQetVqrbG4VlSGc5tCtJ5iVakxVaCjM3zvjRQ7A_gjUvm9JUw6ldv7e3vQhQrQAbbgHn-bMRb4wuLq4ScyvudAjgigNWFN7rq9AUU2vR0IK_K0mu6sZGnnBpkROacLoYJqImfAJ4lZQ6n10Y43kHmJs086wMrd_Wad14hcG8QmWwPKQ?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -110.1734785,37.0042454,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Comeback</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7PKUoSv8BoKln_B1eeDgfrkitOydTcMORPehInqpMvlMGc_soujwKYz3quPJdNfmZYmtM9ub8Z1S9VNTARc16ORisvAV1h39CSRkW8QivBwKdeqeqqbRT-PKfRO4osJOW8ZhQQ0t7l8YjElTRXowKXbE0XjYfTjxfoODWaYxuQsnQ49RBtdKz0nfv5YYCCD868OAlX5KhULEmeVTBjYCiO77dJutezeDc5zu5xYJgH9lF2MhfbbU5wFuA?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Advanced Warfare<br>Description: Downtown Lagos. Maintain the high ground to dominate this circular map.<br>Link: https://callofdutymaps.com/advanced-warfare/comeback]]></description>
+      <styleUrl>#icon-seq2-0-2-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Advanced Warfare</value>
+        </Data>
+        <Data name="Description">
+          <value>Downtown Lagos. Maintain the high ground to dominate this circular map.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/advanced-warfare/comeback</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7PKUoSv8BoKln_B1eeDgfrkitOydTcMORPehInqpMvlMGc_soujwKYz3quPJdNfmZYmtM9ub8Z1S9VNTARc16ORisvAV1h39CSRkW8QivBwKdeqeqqbRT-PKfRO4osJOW8ZhQQ0t7l8YjElTRXowKXbE0XjYfTjxfoODWaYxuQsnQ49RBtdKz0nfv5YYCCD868OAlX5KhULEmeVTBjYCiO77dJutezeDc5zu5xYJgH9lF2MhfbbU5wFuA?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          3.3792057,6.5243793,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Defender</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4sREqflIn-Ym6tBISoV920lH4f8bC4fs4JNfcF4SsaOEH60X8S8PtrxxhF8L3jgnsvhy1LjOQ6GmVDKblSDh4MjJchJoHKvoZtSAX1LlSsuxEHQK2qCZwdntNts_-DQ6nIpOgm7dq6hQ_1xiWNZCLyPPNs003KHoV7soAztTJvohqP1SbMU8EVh6n0jPN-3BmD0E061szdTW4OJQFxXELvWitl_TUHG95A0EJFEtmkjPklgLHP213Jhcc?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Advanced Warfare<br>Description: Domestic air defense base centered around a directed energy anti-air weapon. Features a close quarter cut-through center allowing for quick flanks and a fast pace.<br>Link: https://callofdutymaps.com/advanced-warfare/defender]]></description>
+      <styleUrl>#icon-seq2-0-3-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Advanced Warfare</value>
+        </Data>
+        <Data name="Description">
+          <value>Domestic air defense base centered around a directed energy anti-air weapon. Features a close quarter cut-through center allowing for quick flanks and a fast pace.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/advanced-warfare/defender</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4sREqflIn-Ym6tBISoV920lH4f8bC4fs4JNfcF4SsaOEH60X8S8PtrxxhF8L3jgnsvhy1LjOQ6GmVDKblSDh4MjJchJoHKvoZtSAX1LlSsuxEHQK2qCZwdntNts_-DQ6nIpOgm7dq6hQ_1xiWNZCLyPPNs003KHoV7soAztTJvohqP1SbMU8EVh6n0jPN-3BmD0E061szdTW4OJQFxXELvWitl_TUHG95A0EJFEtmkjPklgLHP213Jhcc?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -122.4764064,37.8058582,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Detroit</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5HgzjS-d5-dywIboUvqb3gWNWHmTF13-sB-JJa--9l2_ChMGC8qooRjaqr__gU5281mfQ9_vay1UPKbFszKt2iC5yPQFZsplD8gjV3g86MoGiHmVbiwg44NOik-kfF3MDE3F85NnSqbUuj-y27ODR7AIXE5hkC0YEkrxfd6vuLB2G6Zcmn-fe1BzfSXZhDLRgzRUzWGQMkWSAH64_Cou2vdnQuDP0dGyzs94L0RMC2I9PNTYJRJuhoup0?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Advanced Warfare<br>Description: Downtown Detroit. Progress quickly through the open main street or seek safety inside the buildings of the outer lanes.<br>Link: https://callofdutymaps.com/advanced-warfare/detroit/]]></description>
+      <styleUrl>#icon-seq2-0-4-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Advanced Warfare</value>
+        </Data>
+        <Data name="Description">
+          <value>Downtown Detroit. Progress quickly through the open main street or seek safety inside the buildings of the outer lanes.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/advanced-warfare/detroit/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5HgzjS-d5-dywIboUvqb3gWNWHmTF13-sB-JJa--9l2_ChMGC8qooRjaqr__gU5281mfQ9_vay1UPKbFszKt2iC5yPQFZsplD8gjV3g86MoGiHmVbiwg44NOik-kfF3MDE3F85NnSqbUuj-y27ODR7AIXE5hkC0YEkrxfd6vuLB2G6Zcmn-fe1BzfSXZhDLRgzRUzWGQMkWSAH64_Cou2vdnQuDP0dGyzs94L0RMC2I9PNTYJRJuhoup0?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -83.0457538,42.331427,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Greenband</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR54072YnsBz40tM5BgeuiFlUjGVM8iuHMs_kVky9jHkLPZypZ5VuvHBib4tftFnFEwp2Z9EX50zosYVQNoURQcD5xi748XispPOHT1Dd1fJrOKI8EYZ-YNLa2GhnCGAn0JLU4tWWlG6LFECCusxZ1grFpzUp9tnPHnLMSCh9d_Bcr32vqNJFJMS0CvOtFq7y5uJAuTNzyaAySeQEDRrLROkqbvLREzBjjkXDFPJ-2DSsJptzLwa7eC2EKc?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Advanced Warfare<br>Description: A highrise park in Seoul, South Korea. Clean lanes and quick flanks make for a great tactical combat.<br>Link: https://callofdutymaps.com/advanced-warfare/greenband]]></description>
+      <styleUrl>#icon-seq2-0-5-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Advanced Warfare</value>
+        </Data>
+        <Data name="Description">
+          <value>A highrise park in Seoul, South Korea. Clean lanes and quick flanks make for a great tactical combat.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/advanced-warfare/greenband</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR54072YnsBz40tM5BgeuiFlUjGVM8iuHMs_kVky9jHkLPZypZ5VuvHBib4tftFnFEwp2Z9EX50zosYVQNoURQcD5xi748XispPOHT1Dd1fJrOKI8EYZ-YNLa2GhnCGAn0JLU4tWWlG6LFECCusxZ1grFpzUp9tnPHnLMSCh9d_Bcr32vqNJFJMS0CvOtFq7y5uJAuTNzyaAySeQEDRrLROkqbvLREzBjjkXDFPJ-2DSsJptzLwa7eC2EKc?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          126.9779692,37.566535,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Horizon</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6weOBIMs5tRPVvAjFckBiodmeGjys2eBQs4L0ef9j5QZ2Bz8wF3mUfE8lf27b1P_Qjcsm1b6lGd5Y8BfLD2M5u3bG4o19J2c-yct0vxSgvaFmIUNgb0MfMeUYYH0VgSgniDjBpEzfnipn8hVGvMwpSlSU5lvDJRILozwqXw5WqgtUyngQ3KXcz-3bdKK6r22SN6Hw_8Yb8xmxbD2_H0hKZIUdY1UbD_avzWWa_wUv2Z6D5CXd8sqLZXcM?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Advanced Warfare<br>Description: Atlas drone facility in the Icelandic Highlands. The chaotic center hanger is home to intense engagements.<br>Link: https://callofdutymaps.com/advanced-warfare/horizon]]></description>
+      <styleUrl>#icon-seq2-0-6-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Advanced Warfare</value>
+        </Data>
+        <Data name="Description">
+          <value>Atlas drone facility in the Icelandic Highlands. The chaotic center hanger is home to intense engagements.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/advanced-warfare/horizon</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6weOBIMs5tRPVvAjFckBiodmeGjys2eBQs4L0ef9j5QZ2Bz8wF3mUfE8lf27b1P_Qjcsm1b6lGd5Y8BfLD2M5u3bG4o19J2c-yct0vxSgvaFmIUNgb0MfMeUYYH0VgSgniDjBpEzfnipn8hVGvMwpSlSU5lvDJRILozwqXw5WqgtUyngQ3KXcz-3bdKK6r22SN6Hw_8Yb8xmxbD2_H0hKZIUdY1UbD_avzWWa_wUv2Z6D5CXd8sqLZXcM?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -19.020835,64.963051,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Instinct</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7smnMHhfOgExHVgMpJt_S9Kgjwc6vJ4Ff8vUZsehhn8npbCkoKaxEX6Djn5sRrVsiLzHxMCPieW2ibFoi4QY6U7uh9VBDymnMAIz6Ao2hdDFyyEAmYhmBT246YisvN3ISHTgZh825R8aGGR9Gsla05PU7TD67i926_m9Vx1fXR0-rBClhVlMxV1Rz27lInQE7-BxGBMaCFZOxPPPWuYmWaPROIfZOBYG_BdoSFXahbSp2Hv_txyZfE-Hw?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Advanced Warfare<br>Description: A mining operation in South American stepped pyramid. Open terrain and a contested center allow for fast action.<br>Link: https://callofdutymaps.com/advanced-warfare/instinct]]></description>
+      <styleUrl>#icon-seq2-0-7-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Advanced Warfare</value>
+        </Data>
+        <Data name="Description">
+          <value>A mining operation in South American stepped pyramid. Open terrain and a contested center allow for fast action.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/advanced-warfare/instinct</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7smnMHhfOgExHVgMpJt_S9Kgjwc6vJ4Ff8vUZsehhn8npbCkoKaxEX6Djn5sRrVsiLzHxMCPieW2ibFoi4QY6U7uh9VBDymnMAIz6Ao2hdDFyyEAmYhmBT246YisvN3ISHTgZh825R8aGGR9Gsla05PU7TD67i926_m9Vx1fXR0-rBClhVlMxV1Rz27lInQE7-BxGBMaCFZOxPPPWuYmWaPROIfZOBYG_BdoSFXahbSp2Hv_txyZfE-Hw?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -55.491477,-8.783195,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Recovery</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6hfFzJPB7wNpSCDqofoKLRay1Ae-YuJz--HxeifoZmcjIfZgNLemMuonn4VLxQiajOq3aYQyuPbRg8wmXzdQ8a9WCvDndWsmlO-ldkEgoo4-513KP9YKIGQeWzauWoKZPoBPoUX_xUGm_bwh8lb43wCXPpWoCQLRSM_Lh1Duw666XMJ_6Yms2eEiC1Lj0X7GSyDm-OmFcO2ePxxjG12sdPZqM_JD8_f8naGSmQmceSwkdjmp5oK3W6q9o?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Advanced Warfare<br>Description: Observatory straddling a volcano rim in Hawaii. Fast gameplay with dynamic choke points.<br>Link: https://callofdutymaps.com/advanced-warfare/recovery]]></description>
+      <styleUrl>#icon-seq2-0-8-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Advanced Warfare</value>
+        </Data>
+        <Data name="Description">
+          <value>Observatory straddling a volcano rim in Hawaii. Fast gameplay with dynamic choke points.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/advanced-warfare/recovery</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6hfFzJPB7wNpSCDqofoKLRay1Ae-YuJz--HxeifoZmcjIfZgNLemMuonn4VLxQiajOq3aYQyuPbRg8wmXzdQ8a9WCvDndWsmlO-ldkEgoo4-513KP9YKIGQeWzauWoKZPoBPoUX_xUGm_bwh8lb43wCXPpWoCQLRSM_Lh1Duw666XMJ_6Yms2eEiC1Lj0X7GSyDm-OmFcO2ePxxjG12sdPZqM_JD8_f8naGSmQmceSwkdjmp5oK3W6q9o?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -158.0000565,21.4389123,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Retreat</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6oGUrYPUnMd2-TGveDxSnGpDOkhkEXnmoR3xTHBzsgntqiQvEhatk7UNa9L6Ij_C_kZo-Tm3Of3mx1-qma3YHCgR4ONrYT6MjuNH-M72RBF07cJWJa8J1FEPzFprI7obIjvp3lT_SicWlzRyacvSt6sk7OX8MSdcCfVQtp9kfdOLjmpmIjjA2k7wNJzyn89-sP5FWyahbxyeqQyUJQr_DSAuuy4N7ZjreGXBcsVtOPjmFakFRYufOAhKk?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Advanced Warfare<br>Description: Atlas retreat in the middle of the Guilin Mountains. Utilize your Exo suit to its fullest to flow throughout this map.<br>Link: https://callofdutymaps.com/advanced-warfare/retreat]]></description>
+      <styleUrl>#icon-seq2-0-9-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Advanced Warfare</value>
+        </Data>
+        <Data name="Description">
+          <value>Atlas retreat in the middle of the Guilin Mountains. Utilize your Exo suit to its fullest to flow throughout this map.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/advanced-warfare/retreat</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6oGUrYPUnMd2-TGveDxSnGpDOkhkEXnmoR3xTHBzsgntqiQvEhatk7UNa9L6Ij_C_kZo-Tm3Of3mx1-qma3YHCgR4ONrYT6MjuNH-M72RBF07cJWJa8J1FEPzFprI7obIjvp3lT_SicWlzRyacvSt6sk7OX8MSdcCfVQtp9kfdOLjmpmIjjA2k7wNJzyn89-sP5FWyahbxyeqQyUJQr_DSAuuy4N7ZjreGXBcsVtOPjmFakFRYufOAhKk?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          110.179953,25.234479,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Riot</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR63zGKUKBDx7Wi653NIakvMOHkZvsv6cz2KC4U1poQEkXpEGFq5ST6O9b7EsHX0G8PF93Ob8vG6gjTJHISshLROsSxsJm2UZo-AmOcdA2DfnN64E6N2TZU6MYsNjOzqOo8RoQb9Hwx9LBbHbzmKdq1Q79HjqWKGKP_Y5_Bv9cXFFkGvQncbYIWHu02KzQ3jB1-BLnc4AvVT-S_CxtO_kuKn9KcEhviK-qrjhE9rpwt5SF1GCAcn59g78So?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Advanced Warfare<br>Description: A rioted prison with clear lanes for head-to-head combat.<br>Link: https://callofdutymaps.com/advanced-warfare/riot]]></description>
+      <styleUrl>#icon-seq2-0-10-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Advanced Warfare</value>
+        </Data>
+        <Data name="Description">
+          <value>A rioted prison with clear lanes for head-to-head combat.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/advanced-warfare/riot</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR63zGKUKBDx7Wi653NIakvMOHkZvsv6cz2KC4U1poQEkXpEGFq5ST6O9b7EsHX0G8PF93Ob8vG6gjTJHISshLROsSxsJm2UZo-AmOcdA2DfnN64E6N2TZU6MYsNjOzqOo8RoQb9Hwx9LBbHbzmKdq1Q79HjqWKGKP_Y5_Bv9cXFFkGvQncbYIWHu02KzQ3jB1-BLnc4AvVT-S_CxtO_kuKn9KcEhviK-qrjhE9rpwt5SF1GCAcn59g78So?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          44.4889469,33.3050812,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Solar</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5K53IxHK0Di1a20BHyz5rZD6uvLi5jqjc6cvytiHKvjiILFGYsnSWcuHy-wMbSbdtE7BBjJchyTD0NtnHaS5UfyveHCxv2Lg8zASesqVjBFGd0bPkvxuxXZoriTuBwPiGzHOww0_VB96SPXlbsan_uVVznax5FzFPL-vAY-AncB7VLIZYxcgTh1Z5utZvR8SdsXTJUCS_G9fLFH258Hkt0NWg8TXODRu0535qClzIofhE8sHngvQeQU04?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Advanced Warfare<br>Description: Solar array near New Baghdad. Rooftop gameplay with mixed sightlines for diverse combat experiences.<br>Link: https://callofdutymaps.com/advanced-warfare/solar]]></description>
+      <styleUrl>#icon-seq2-0-11-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Advanced Warfare</value>
+        </Data>
+        <Data name="Description">
+          <value>Solar array near New Baghdad. Rooftop gameplay with mixed sightlines for diverse combat experiences.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/advanced-warfare/solar</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5K53IxHK0Di1a20BHyz5rZD6uvLi5jqjc6cvytiHKvjiILFGYsnSWcuHy-wMbSbdtE7BBjJchyTD0NtnHaS5UfyveHCxv2Lg8zASesqVjBFGd0bPkvxuxXZoriTuBwPiGzHOww0_VB96SPXlbsan_uVVznax5FzFPL-vAY-AncB7VLIZYxcgTh1Z5utZvR8SdsXTJUCS_G9fLFH258Hkt0NWg8TXODRu0535qClzIofhE8sHngvQeQU04?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          44.4889469,33.3050812,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Terrace</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6Vfhs2M761jyJXjSEz-x5VMcLWSqQkb7Yy1LbVXJvlDy0hV8SAUpZJT-V3YieaKJUGjRH988_sMekVFTMp1IzwpQ31pifTNgsPzBI3k-38C3faMVR1N7dljVzst0SzI9fNY6hv9d4Q0RJLiwX9_XfAadJpeR0MbpUz9oRf916nmrfV_rNdpmtSh7VPMw_7Iiov_kW_sgZoDq-NJY7Vs229x91qVry_4y0Kna1gDtWAW-eKwvUPhOuR9Uk?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Advanced Warfare<br>Description: Atop the picturesque cliff tops of Santorini, Greece. Dynamic lanes around an enclosed center allow for a great Exo experience.<br>Link: https://callofdutymaps.com/advanced-warfare/terrace]]></description>
+      <styleUrl>#icon-seq2-0-12-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Advanced Warfare</value>
+        </Data>
+        <Data name="Description">
+          <value>Atop the picturesque cliff tops of Santorini, Greece. Dynamic lanes around an enclosed center allow for a great Exo experience.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/advanced-warfare/terrace</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6Vfhs2M761jyJXjSEz-x5VMcLWSqQkb7Yy1LbVXJvlDy0hV8SAUpZJT-V3YieaKJUGjRH988_sMekVFTMp1IzwpQ31pifTNgsPzBI3k-38C3faMVR1N7dljVzst0SzI9fNY6hv9d4Q0RJLiwX9_XfAadJpeR0MbpUz9oRf916nmrfV_rNdpmtSh7VPMw_7Iiov_kW_sgZoDq-NJY7Vs229x91qVry_4y0Kna1gDtWAW-eKwvUPhOuR9Uk?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          25.4615092,36.3931562,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Atlas Gorge</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4ydLcXIOKzP2SON8GXr0Yh0TxxqsyC8RhuzWVkdukScZAzLoQ9a_6s4J6IxixOD3i7TdV0vxTTKW3eE5_1KGpaYbIsNNlWTZGc7wUdNEw16psaOm6ncybfsusoyx6O7OJVObf--MiOXa6RMCikfo8a8y4lKy9y2YAkBxmv4Dp5rbRfhQMVoI1fu6b8vFox4-D0UwuiNBO1PmHZzI-erO4kAJ2BWK4CuDEhXHmqyGHXLsgVejjAhsfZ4fo?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Advanced Warfare<br>Description: Atlas hydroelectric dam with a variety of open sightlines and close quarters combat.<br>Link: https://callofdutymaps.com/advanced-warfare/atlas-gorge]]></description>
+      <styleUrl>#icon-seq2-0-13-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Advanced Warfare</value>
+        </Data>
+        <Data name="Description">
+          <value>Atlas hydroelectric dam with a variety of open sightlines and close quarters combat.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/advanced-warfare/atlas-gorge</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4ydLcXIOKzP2SON8GXr0Yh0TxxqsyC8RhuzWVkdukScZAzLoQ9a_6s4J6IxixOD3i7TdV0vxTTKW3eE5_1KGpaYbIsNNlWTZGc7wUdNEw16psaOm6ncybfsusoyx6O7OJVObf--MiOXa6RMCikfo8a8y4lKy9y2YAkBxmv4Dp5rbRfhQMVoI1fu6b8vFox4-D0UwuiNBO1PmHZzI-erO4kAJ2BWK4CuDEhXHmqyGHXLsgVejjAhsfZ4fo?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          111.073498,30.833431,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Core</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5Wx4nJm8l8gbE522oqUiztDF1-LmGYFdOUdv7_3GnneK8D85_v8WTiJ6yzGkJIZzzYAVx8jvuAXc3IMIdJgzVPUoYEOAdOPoAd2dK7dzNu16VXQR0ZBeeE743u0jDKOKl2KjWW01oSdWU9MR5wBah65rzgEKf02beXhRjMd__dvrEpYW3xlfi3hlQPKcGOPn3l5K_Xh5QRPcXH5nfoHwiIYhRJTe3xGHUhOPAM2rqm8efNgbcAxMwM_eA?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Advanced Warfare<br>Description: Ravaged ruins of nuclear fusion plant in the Gobi Desert. Take down enemies through the wreckage in long-range combat or get up-close and personal in the tunnels surrounding the central turbine.<br>Link: https://callofdutymaps.com/advanced-warfare/core]]></description>
+      <styleUrl>#icon-seq2-0-14-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Advanced Warfare</value>
+        </Data>
+        <Data name="Description">
+          <value>Ravaged ruins of nuclear fusion plant in the Gobi Desert. Take down enemies through the wreckage in long-range combat or get up-close and personal in the tunnels surrounding the central turbine.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/advanced-warfare/core</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5Wx4nJm8l8gbE522oqUiztDF1-LmGYFdOUdv7_3GnneK8D85_v8WTiJ6yzGkJIZzzYAVx8jvuAXc3IMIdJgzVPUoYEOAdOPoAd2dK7dzNu16VXQR0ZBeeE743u0jDKOKl2KjWW01oSdWU9MR5wBah65rzgEKf02beXhRjMd__dvrEpYW3xlfi3hlQPKcGOPn3l5K_Xh5QRPcXH5nfoHwiIYhRJTe3xGHUhOPAM2rqm8efNgbcAxMwM_eA?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          105.0323635,42.7951536,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Drift</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR56y-m0SNgDq9BnLbGBb7rUEiP7hegMM1B1coTvsD9fMtr2cZAQLwKsAo2KzV7-yAkUEkJ72AAXOanHRlXyWA1eGnQRsJrbpQ1Yq5pXkOersMbxzz7i_olczBN49y0anBoD5X-QNyVpH9tdHr-DagMn9AwfoWof--bU8jiYlDIZ15sWHpRGmqw9iqzismwR6Izj8kQbO5h6pHL4wbjnqu5U4yyy2uVV7fpG9TTwl4liBHfYoU6-5M45ICY?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Advanced Warfare<br>Description: An Idyllic ski resort high in the Rocky Mountains. Highly contested overwatch positions and a carousel delivering 360 degrees of carnage.<br>Link: https://callofdutymaps.com/advanced-warfare/drift]]></description>
+      <styleUrl>#icon-seq2-0-15-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Advanced Warfare</value>
+        </Data>
+        <Data name="Description">
+          <value>An Idyllic ski resort high in the Rocky Mountains. Highly contested overwatch positions and a carousel delivering 360 degrees of carnage.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/advanced-warfare/drift</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR56y-m0SNgDq9BnLbGBb7rUEiP7hegMM1B1coTvsD9fMtr2cZAQLwKsAo2KzV7-yAkUEkJ72AAXOanHRlXyWA1eGnQRsJrbpQ1Yq5pXkOersMbxzz7i_olczBN49y0anBoD5X-QNyVpH9tdHr-DagMn9AwfoWof--bU8jiYlDIZ15sWHpRGmqw9iqzismwR6Izj8kQbO5h6pHL4wbjnqu5U4yyy2uVV7fpG9TTwl4liBHfYoU6-5M45ICY?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -105.7820674,39.5500507,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Sideshow</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5KTncUqL25IJNftOvBMxLkD_2ZD5VP9VPHXoy82lQ7yTFqiT5Syl1jc2rgwdPPWxP_r4tYbAwLQUifBOw_YzNEnXgc8IAwkEJXMNj0rIk5-RhzoCmps2MpgprWV-eJSpYQGVU7j8TYv86X9A7MenwMVLQr-l0vUtUCw3qSOK5at16lAHTzv3f944CyTkErx2IdoRoSoEmvOzjnENUx5znhV_YoEEImy0AfD79_KkI7IiFDniqMHSmKhxo?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Advanced Warfare<br>Description: An abandoned motel in the shadow of Devil’s Tower, Wyoming. Blast your way through the clown inn with close-quarters battles or use long-range site-lines from the mining facilities and natural terrain.<br>Link: https://callofdutymaps.com/advanced-warfare/sideshow]]></description>
+      <styleUrl>#icon-seq2-0-16-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Advanced Warfare</value>
+        </Data>
+        <Data name="Description">
+          <value>An abandoned motel in the shadow of Devil’s Tower, Wyoming. Blast your way through the clown inn with close-quarters battles or use long-range site-lines from the mining facilities and natural terrain.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/advanced-warfare/sideshow</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5KTncUqL25IJNftOvBMxLkD_2ZD5VP9VPHXoy82lQ7yTFqiT5Syl1jc2rgwdPPWxP_r4tYbAwLQUifBOw_YzNEnXgc8IAwkEJXMNj0rIk5-RhzoCmps2MpgprWV-eJSpYQGVU7j8TYv86X9A7MenwMVLQr-l0vUtUCw3qSOK5at16lAHTzv3f944CyTkErx2IdoRoSoEmvOzjnENUx5znhV_YoEEImy0AfD79_KkI7IiFDniqMHSmKhxo?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -104.6985456,44.5886461,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Urban</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7tkgQhV8pW4nbZLpJvh8Jpfqle1kgZBsV52vDnkI9HsKdKQWBBZl7nWgmrWJOQ0H6IIFozxzrugv33iTj6LPELLzPxftA_spbGY-mEBQzQv3mfbJKJLUoww_pVgnkSVOq--SvewQ5GQ0AH7DYRmeR4S4BsxIYT4Yr09gPDucbwVL-lpXA566F6FKr58rhbHrOenMoowqg6GB7LG4q7af3gOG2mF1YjIPsYjIQ5ZTrI68hK_I9zgs8aMNM?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Advanced Warfare<br>Description: Dallas Ward 3, a future mega structure, funneling players into a close-quarters free-for-all<br>Link: https://callofdutymaps.com/advanced-warfare/urban]]></description>
+      <styleUrl>#icon-seq2-0-17-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Advanced Warfare</value>
+        </Data>
+        <Data name="Description">
+          <value>Dallas Ward 3, a future mega structure, funneling players into a close-quarters free-for-all</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/advanced-warfare/urban</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7tkgQhV8pW4nbZLpJvh8Jpfqle1kgZBsV52vDnkI9HsKdKQWBBZl7nWgmrWJOQ0H6IIFozxzrugv33iTj6LPELLzPxftA_spbGY-mEBQzQv3mfbJKJLUoww_pVgnkSVOq--SvewQ5GQ0AH7DYRmeR4S4BsxIYT4Yr09gPDucbwVL-lpXA566F6FKr58rhbHrOenMoowqg6GB7LG4q7af3gOG2mF1YjIPsYjIQ5ZTrI68hK_I9zgs8aMNM?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -96.7969879,32.7766642,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Perplex</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6o211EX9mMxTnzsNRnvIT3yM3gyj0e_oGdO1HmnF3uhKaty7zXFKwX03N7dHO7CY4z30KQM3v_RYoQMmjcvdzvqyMYvtKHw1qUQWtj9jfqUikR4skjDN6cZvMPAhXwebFNTXtumRqSBLqkkmf23-7gHrW6yF2oAftH__DwAfK80ZfuxfkgwTaVTzuRRuv_EUZWBqjmzIoIL5FFxks_gWKWn_sBM0sanDjGUwDHbFhlAWpp2UJczl-OwXw?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Advanced Warfare<br>Description: A luxury apartment complex situated on the bay in Sydney, Australia. Rain chaos down on your enemies in this highly vertical king-of-the-hill style map.<br>Link: https://callofdutymaps.com/advanced-warfare/perplex]]></description>
+      <styleUrl>#icon-seq2-0-18-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Advanced Warfare</value>
+        </Data>
+        <Data name="Description">
+          <value>A luxury apartment complex situated on the bay in Sydney, Australia. Rain chaos down on your enemies in this highly vertical king-of-the-hill style map.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/advanced-warfare/perplex</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6o211EX9mMxTnzsNRnvIT3yM3gyj0e_oGdO1HmnF3uhKaty7zXFKwX03N7dHO7CY4z30KQM3v_RYoQMmjcvdzvqyMYvtKHw1qUQWtj9jfqUikR4skjDN6cZvMPAhXwebFNTXtumRqSBLqkkmf23-7gHrW6yF2oAftH__DwAfK80ZfuxfkgwTaVTzuRRuv_EUZWBqjmzIoIL5FFxks_gWKWn_sBM0sanDjGUwDHbFhlAWpp2UJczl-OwXw?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          151.2092955,-33.8688197,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Site 244</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR639jZ_Sfr5ZIF_-5lPPM_0w_Zh6vX_nTTmQ62E5ZZ71r4m3mIUD_VE5zJHZskSPP2W7-uK8vt6-HSn2MqeQ1hA49a_LCbtLMqSJ5dJi43wUvGCPS2i7_ksonWsDGbSqWYoeRjlVNmpFRIRbBzlOudHs8bAY7IMClIImiGIaRpsf1iK8AIG6J74qrbKyxf6A-oY4R3FoQQMN4pEGLpfMtTVjssSeF9I8BWppaxjai4FU9orzArxyg45mW0?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Advanced Warfare<br>Description: A crashed space craft at the base of Mt. Rushmore. Fight through the dangerous interiors of the space craft or use the organic environment to flank your enemies.<br>Link: https://callofdutymaps.com/advanced-warfare/site-244]]></description>
+      <styleUrl>#icon-seq2-0-19-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Advanced Warfare</value>
+        </Data>
+        <Data name="Description">
+          <value>A crashed space craft at the base of Mt. Rushmore. Fight through the dangerous interiors of the space craft or use the organic environment to flank your enemies.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/advanced-warfare/site-244</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR639jZ_Sfr5ZIF_-5lPPM_0w_Zh6vX_nTTmQ62E5ZZ71r4m3mIUD_VE5zJHZskSPP2W7-uK8vt6-HSn2MqeQ1hA49a_LCbtLMqSJ5dJi43wUvGCPS2i7_ksonWsDGbSqWYoeRjlVNmpFRIRbBzlOudHs8bAY7IMClIImiGIaRpsf1iK8AIG6J74qrbKyxf6A-oY4R3FoQQMN4pEGLpfMtTVjssSeF9I8BWppaxjai4FU9orzArxyg45mW0?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -103.4590667,43.8791025,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Compound</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6OAFjnCIZ1cDwQOpOt447TobwrvysKz8fCGkxDy_FW6mZ2gt1nYmq1WExSNCAkG3LIAT2Iojj4_Vdbnbuf_pBe22vjnthq2X-aSGtSl2PrN9b8pvuWRd2UKeFZRKvzucKGTc0AVunjaGTXurT20pF3KpZnRxpGtX-u7fLnVUy0HvK0vdDjM07r4Eu9UyydfyP7SFElqeYT_Uu0OonA797W27AqQ7itgoapuo2ccd98NrOWuXiuIRfa4XU?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Advanced Warfare<br>Description: Elite Atlas soldiers practice advanced Exo maneuvers in Denver, Colorado at the Compound. The course is filled with fast-paced action that utilizes a soldier’s Exo movement skills to the fullest.<br>Link: https://callofdutymaps.com/advanced-warfare/compound]]></description>
+      <styleUrl>#icon-seq2-0-20-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Advanced Warfare</value>
+        </Data>
+        <Data name="Description">
+          <value>Elite Atlas soldiers practice advanced Exo maneuvers in Denver, Colorado at the Compound. The course is filled with fast-paced action that utilizes a soldier’s Exo movement skills to the fullest.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/advanced-warfare/compound</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6OAFjnCIZ1cDwQOpOt447TobwrvysKz8fCGkxDy_FW6mZ2gt1nYmq1WExSNCAkG3LIAT2Iojj4_Vdbnbuf_pBe22vjnthq2X-aSGtSl2PrN9b8pvuWRd2UKeFZRKvzucKGTc0AVunjaGTXurT20pF3KpZnRxpGtX-u7fLnVUy0HvK0vdDjM07r4Eu9UyydfyP7SFElqeYT_Uu0OonA797W27AqQ7itgoapuo2ccd98NrOWuXiuIRfa4XU?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -104.990251,39.7392358,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Kremlin</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4UYnbNHxUKOFfdBHyslNcLUKMQnwkbtjLbsPRw6cTQ5__2oRue4wiKIVw7jNZRECga1GMAO2pxz_Blsq-qY715QWZ2awlqezBjJTHRXaE-VFCgsJIX7DnRNfPu4nbjEy65aG0uJjmpngZgSiPUM5JYaMCKv3jKN6pZg4yFKYBTW00Y42_VG_I3x6MwV9YcoNHRnk-Rir6FldTkT5qycRzs6jtflPLMlJMdIJAjkZgPtTxnEJ7R15OQdoc?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Advanced Warfare<br>Description: The Russian Kremlin is a government citadel in the heart of Moscow. The long central vantage allows tactical overwatch for snipers and intense battles for sentry gunners. The side lanes are divided by a minefield, which alters the flow of battle during the game.<br>Link: https://callofdutymaps.com/advanced-warfare/kremlin]]></description>
+      <styleUrl>#icon-seq2-0-21-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Advanced Warfare</value>
+        </Data>
+        <Data name="Description">
+          <value>The Russian Kremlin is a government citadel in the heart of Moscow. The long central vantage allows tactical overwatch for snipers and intense battles for sentry gunners. The side lanes are divided by a minefield, which alters the flow of battle during the game.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/advanced-warfare/kremlin</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4UYnbNHxUKOFfdBHyslNcLUKMQnwkbtjLbsPRw6cTQ5__2oRue4wiKIVw7jNZRECga1GMAO2pxz_Blsq-qY715QWZ2awlqezBjJTHRXaE-VFCgsJIX7DnRNfPu4nbjEy65aG0uJjmpngZgSiPUM5JYaMCKv3jKN6pZg4yFKYBTW00Y42_VG_I3x6MwV9YcoNHRnk-Rir6FldTkT5qycRzs6jtflPLMlJMdIJAjkZgPtTxnEJ7R15OQdoc?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          37.6173,55.755826,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Perliament</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6J-OSTt178vXO4vncGXfzDpLoZENVzHj80BQ9AEnglpT0W7pCZjwMeE7i5TrhFGC1KA9HKgarNzKYnoEelGbvRwDSI9-zZ64312c-CNoQ_xqM2Eq2zWvarysSeaxKRDfMauDyrpJPV6czYBVCDT4TKv89ocDklsFwLRPOOqfaeFHrnwMTOVzb8cKEnH-MvQYba_6WvHrENHDFdUyO2tfkzTpfmQFZ0BCpE1nVxnMTlwy7AhZESf_zZWhQ?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Advanced Warfare<br>Description: Military cargo ship docked on the River Thames, with a clear view of Westminster. Fast-paced gameplay on the ship, long range battles on the dock.<br>Link: https://callofdutymaps.com/advanced-warfare/parliament]]></description>
+      <styleUrl>#icon-seq2-0-22-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Advanced Warfare</value>
+        </Data>
+        <Data name="Description">
+          <value>Military cargo ship docked on the River Thames, with a clear view of Westminster. Fast-paced gameplay on the ship, long range battles on the dock.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/advanced-warfare/parliament</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6J-OSTt178vXO4vncGXfzDpLoZENVzHj80BQ9AEnglpT0W7pCZjwMeE7i5TrhFGC1KA9HKgarNzKYnoEelGbvRwDSI9-zZ64312c-CNoQ_xqM2Eq2zWvarysSeaxKRDfMauDyrpJPV6czYBVCDT4TKv89ocDklsFwLRPOOqfaeFHrnwMTOVzb8cKEnH-MvQYba_6WvHrENHDFdUyO2tfkzTpfmQFZ0BCpE1nVxnMTlwy7AhZESf_zZWhQ?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -0.1244967,51.5082056,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Skyrise</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4yvWT9T4U9wD7kMu-RQDLCd5L9nzsYGyePBS-4QR3u_bp5_FuATjgwjpRiw61ehFm7znVxSs55Zel-Xm-vpIDURP65G4UFuXW7k33m3ycK47hcYlkH5n_iG8q6bSPTRp6rCIwsDLVYOxkSw8IwIY76_Mwqb-_xkiQDZvzSzIaBioMP5Xj16YW6bVPMorXZobrc8l7hOGzwkqjRtfn_OjG7a2dsQkkCWQP_Y2zvZEMjCR_WcIM3lcE49-c?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Advanced Warfare<br>Description: Rooftop office building next to the Greek Acropolis. Fast-paced with an open layout.<br>Link: https://callofdutymaps.com/advanced-warfare/skyrise]]></description>
+      <styleUrl>#icon-seq2-0-23-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Advanced Warfare</value>
+        </Data>
+        <Data name="Description">
+          <value>Rooftop office building next to the Greek Acropolis. Fast-paced with an open layout.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/advanced-warfare/skyrise</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4yvWT9T4U9wD7kMu-RQDLCd5L9nzsYGyePBS-4QR3u_bp5_FuATjgwjpRiw61ehFm7znVxSs55Zel-Xm-vpIDURP65G4UFuXW7k33m3ycK47hcYlkH5n_iG8q6bSPTRp6rCIwsDLVYOxkSw8IwIY76_Mwqb-_xkiQDZvzSzIaBioMP5Xj16YW6bVPMorXZobrc8l7hOGzwkqjRtfn_OjG7a2dsQkkCWQP_Y2zvZEMjCR_WcIM3lcE49-c?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          23.7275388,37.9838096,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Fracture</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR42OvncVgMyFlulfotaME3HJTA-LHPt-jnxjktnWq6aVBRv6nDAQe_aPUcnLu4SWUqBTQtDhJ9acTc0wnk6vGcltdX6f9T6TC6WqmNymq1RMlviSFYczRlqo4Qp-yQ4vPoC-HjXa53JvYLUPLe8RYG-F3toc_zOHtxKroJU_e8TCUkDg4kMhM6Hi-OOTOL_FIcsaX_deDhEoMiwmqADGSVZlJQzhR8HmgTilmRpMKC0FyxqcJtVgM1unkM?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Advanced Warfare<br>Description: An Antarctic excavation site cradled on the shelf of a glacier. Flood lights, wind turbines, and solar panels separate large combat area to offer several options for mid to long range engagements.<br>Link: https://callofdutymaps.com/advanced-warfare/fracture]]></description>
+      <styleUrl>#icon-seq2-0-24-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Advanced Warfare</value>
+        </Data>
+        <Data name="Description">
+          <value>An Antarctic excavation site cradled on the shelf of a glacier. Flood lights, wind turbines, and solar panels separate large combat area to offer several options for mid to long range engagements.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/advanced-warfare/fracture</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR42OvncVgMyFlulfotaME3HJTA-LHPt-jnxjktnWq6aVBRv6nDAQe_aPUcnLu4SWUqBTQtDhJ9acTc0wnk6vGcltdX6f9T6TC6WqmNymq1RMlviSFYczRlqo4Qp-yQ4vPoC-HjXa53JvYLUPLe8RYG-F3toc_zOHtxKroJU_e8TCUkDg4kMhM6Hi-OOTOL_FIcsaX_deDhEoMiwmqADGSVZlJQzhR8HmgTilmRpMKC0FyxqcJtVgM1unkM?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -100.1139521,76.2505778,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Overload</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7R666i4i9rsvRJiD9gGlMjGgz6Z2NMNUcBBQj3JTCGzm74RVj2wMBiqJ-3vwRJ8WRysg57ytkJ3kAtm_gh9IdXeeNl5L-inwn8LECYPzmS3B33s_j5NY66y-3G_kzy3-7jP2vH2YSQ-dk6R4T9DwLkR7ksbUQZIN-2_MANsrshtNLX1RZUlhsJ1pYkjKdWvQqjZgcR1EZJHSrV78KJ8uKKM369MC7OcOHHYSHsICGxW4WwHPifx0h-h6k?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Advanced Warfare<br>Description: A lavish ceremony with a gran view of downtown New Baghdad. Long perimeter sightlines and decorative plasma lamps contribute to a tactical and electrifying atmosphere.<br>Link: https://callofdutymaps.com/advanced-warfare/overload]]></description>
+      <styleUrl>#icon-seq2-0-25-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Advanced Warfare</value>
+        </Data>
+        <Data name="Description">
+          <value>A lavish ceremony with a gran view of downtown New Baghdad. Long perimeter sightlines and decorative plasma lamps contribute to a tactical and electrifying atmosphere.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/advanced-warfare/overload</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7R666i4i9rsvRJiD9gGlMjGgz6Z2NMNUcBBQj3JTCGzm74RVj2wMBiqJ-3vwRJ8WRysg57ytkJ3kAtm_gh9IdXeeNl5L-inwn8LECYPzmS3B33s_j5NY66y-3G_kzy3-7jP2vH2YSQ-dk6R4T9DwLkR7ksbUQZIN-2_MANsrshtNLX1RZUlhsJ1pYkjKdWvQqjZgcR1EZJHSrV78KJ8uKKM369MC7OcOHHYSHsICGxW4WwHPifx0h-h6k?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          44.4889469,33.3050812,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Quarantine</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4O-DCoeBm0D0wwMAXTBfkE69UgANKtb0Q2Z7Cvou_6nSR4ZBrVzLyRJi3zTKLIFoj8vvzpWYRXFyAAhk0UvFU6fmZ6oKNDtmnqwZ1YJwvgxoXn597172yLQw-BpDuJ0cLZjc1k-E-d_U6vyZUbpEFQ_rPSReLLBZ3Xn1h3nt9j9_uqNbRz1h7qAU9e1hmObfHshnrP5n4Jbitw5M4nUTo0hNuFL-M4gXDd1vFMWJvFchiiJ-lt9UmKAYo?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Advanced Warfare<br>Description: Located on Liberty Island and during the middle of an urban outbreak, the premises of the primate animal testing facility offers the perfect blend of gameplay for all types of weapons and player styles.<br>Link: https://callofdutymaps.com/advanced-warfare/quarantine]]></description>
+      <styleUrl>#icon-seq2-0-26-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Advanced Warfare</value>
+        </Data>
+        <Data name="Description">
+          <value>Located on Liberty Island and during the middle of an urban outbreak, the premises of the primate animal testing facility offers the perfect blend of gameplay for all types of weapons and player styles.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/advanced-warfare/quarantine</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4O-DCoeBm0D0wwMAXTBfkE69UgANKtb0Q2Z7Cvou_6nSR4ZBrVzLyRJi3zTKLIFoj8vvzpWYRXFyAAhk0UvFU6fmZ6oKNDtmnqwZ1YJwvgxoXn597172yLQw-BpDuJ0cLZjc1k-E-d_U6vyZUbpEFQ_rPSReLLBZ3Xn1h3nt9j9_uqNbRz1h7qAU9e1hmObfHshnrP5n4Jbitw5M4nUTo0hNuFL-M4gXDd1vFMWJvFchiiJ-lt9UmKAYo?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -74.0449292,40.6895453,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Swarm</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4c14lVL9YnG1rc5uE63eQZMEygfdhh9FBxIn-fNCTRG-hoKjGAC0gQhLV36o6Jg7bRpUZCNdLTXB8SKVWyT6RqKymEJgt35OLTEC8gEAaCAfGPZw9-Rw6Cq9qSBZrKtvIBVdwAjWY-0UrV5qFVNuwNhTj4X2mjdujH4ClnuXj5EPQO-VT-I7Cgif2rNHKoHYyqKndRZssQOM6tYWRRhBfykElvurBBFuqy6LcD28BsQQ_lGetJHmvlORA?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Advanced Warfare<br>Description: Reconstruction is underway in Seoul, South Korea. Long sightlines along the streets with tight interiors cutting through the middle make for fast combat in this urban jungle.<br>Link: https://callofdutymaps.com/advanced-warfare/swarm]]></description>
+      <styleUrl>#icon-seq2-0-27-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Advanced Warfare</value>
+        </Data>
+        <Data name="Description">
+          <value>Reconstruction is underway in Seoul, South Korea. Long sightlines along the streets with tight interiors cutting through the middle make for fast combat in this urban jungle.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/advanced-warfare/swarm</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4c14lVL9YnG1rc5uE63eQZMEygfdhh9FBxIn-fNCTRG-hoKjGAC0gQhLV36o6Jg7bRpUZCNdLTXB8SKVWyT6RqKymEJgt35OLTEC8gEAaCAfGPZw9-Rw6Cq9qSBZrKtvIBVdwAjWY-0UrV5qFVNuwNhTj4X2mjdujH4ClnuXj5EPQO-VT-I7Cgif2rNHKoHYyqKndRZssQOM6tYWRRhBfykElvurBBFuqy6LcD28BsQQ_lGetJHmvlORA?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          126.9779692,37.566535,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Aachen</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7OUvbj81MOLblWrd4Jb6BuAxeSqbfw_l168L7aH3qrqqCIKV_JHG0j3_ng2VH1TOVNslCV2lWFYGBPQPLnLBmKAzcNaFym5ZzNPex-rctSprKnnt8pTYhtYgmc99nv32E6m7BCD7qgK1rEG_HP6sCsZHdstUOW4XQnDJQvOGcN_-nIB2tu6KEmSuihAgPqN6n-BS2SCHrbYrAmh5Ba62ju2f0S45qabejAeEsJnEEP4Phz5j96NE3nfdg?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: World War 2<br>Description: Urban warfare in the Battle of Aachen. Long range gameplay down the dangerous streets mixed with up-close engagements through war-torn structures.<br>Link: https://callofdutymaps.com/world-war-2/aachen/]]></description>
+      <styleUrl>#icon-seq2-0-28-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>World War 2</value>
+        </Data>
+        <Data name="Description">
+          <value>Urban warfare in the Battle of Aachen. Long range gameplay down the dangerous streets mixed with up-close engagements through war-torn structures.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/world-war-2/aachen/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7OUvbj81MOLblWrd4Jb6BuAxeSqbfw_l168L7aH3qrqqCIKV_JHG0j3_ng2VH1TOVNslCV2lWFYGBPQPLnLBmKAzcNaFym5ZzNPex-rctSprKnnt8pTYhtYgmc99nv32E6m7BCD7qgK1rEG_HP6sCsZHdstUOW4XQnDJQvOGcN_-nIB2tu6KEmSuihAgPqN6n-BS2SCHrbYrAmh5Ba62ju2f0S45qabejAeEsJnEEP4Phz5j96NE3nfdg?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          6.0838868,50.7753455,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Ardennes Forest</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7wKCDL_gokvh0DZ0XZk67IzaiKU9khYY664OGJgTT4bXP6c3UKJBlPIyvqXZLfPM68IR0ex5DN0H7IRepLU0RwVBYz9s0itnLDuFlOJmhJZ4bD_zMmknw1-4CMYzXvflxjgBvURYP41OfZ7SEerqRnYBLEkpK24IsnjORyL2WIQVPuC-DrbBxrQnDZO7eDuLxsSNA9-v9zETeGXbWn_SLHSbsDMxSnkvDjpJcl_sd91FCmPdPig3zCJWI?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: World War 2<br>Description: Battle around a German encampment and vehicle convoy in the snow-covered Ardennes Forest during Battle f the Bulge. Fast-paced short to medium range engagements.<br>Link: https://callofdutymaps.com/world-war-2/ardennes-forest/]]></description>
+      <styleUrl>#icon-seq2-0-29-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>World War 2</value>
+        </Data>
+        <Data name="Description">
+          <value>Battle around a German encampment and vehicle convoy in the snow-covered Ardennes Forest during Battle f the Bulge. Fast-paced short to medium range engagements.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/world-war-2/ardennes-forest/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7wKCDL_gokvh0DZ0XZk67IzaiKU9khYY664OGJgTT4bXP6c3UKJBlPIyvqXZLfPM68IR0ex5DN0H7IRepLU0RwVBYz9s0itnLDuFlOJmhJZ4bD_zMmknw1-4CMYzXvflxjgBvURYP41OfZ7SEerqRnYBLEkpK24IsnjORyL2WIQVPuC-DrbBxrQnDZO7eDuLxsSNA9-v9zETeGXbWn_SLHSbsDMxSnkvDjpJcl_sd91FCmPdPig3zCJWI?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          4.469936,50.503887,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Flak Tower</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6IrWwvnQ7nPoCmVBandhG4jSffGemQRwPfKQQg7OMig6T0V2QqyVpoKLRfs24eftKnpS1CXEcmVp1G3Afhr5z-VuzzW-zn--EVpZmuWJKB0O5ZTAsU0SvxtK0r6V6foDJ6PYOHiPp0VftvoXuVhWyJpQ1MzSaKyOvAwxvwojv3LkanImHD8y00W98K-zy0q36qJ9H8ko49_U35I6zX9fwEGZ8cIM5rYCisLGxkD52BcSKe3gek3Kq70yE?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: World War 2<br>Description: German Flak Tower overlooking the skies above Berlin. Frenetic, close-range battles from end to end.<br>Link: https://callofdutymaps.com/world-war-2/flak-tower/]]></description>
+      <styleUrl>#icon-seq2-0-30-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>World War 2</value>
+        </Data>
+        <Data name="Description">
+          <value>German Flak Tower overlooking the skies above Berlin. Frenetic, close-range battles from end to end.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/world-war-2/flak-tower/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6IrWwvnQ7nPoCmVBandhG4jSffGemQRwPfKQQg7OMig6T0V2QqyVpoKLRfs24eftKnpS1CXEcmVp1G3Afhr5z-VuzzW-zn--EVpZmuWJKB0O5ZTAsU0SvxtK0r6V6foDJ6PYOHiPp0VftvoXuVhWyJpQ1MzSaKyOvAwxvwojv3LkanImHD8y00W98K-zy0q36qJ9H8ko49_U35I6zX9fwEGZ8cIM5rYCisLGxkD52BcSKe3gek3Kq70yE?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          13.404954,52.5200066,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Gibraltar</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5_CciUM-ocpIWY05mzE0ISd598FK1GgmELRAizl9Gop4yney5T2hVg2v2mUErIjIFkLDoELSCrORUPRyY3l-r0R_3km7oetqYwzBed6KK7KTa0mDAmbPctCP1gjGJKqJ2jvREj-GWQA0tejb95WNPUkGJPEZ_3of_kyYBVIFZMrHIFY0sletzk2YhdL1BmC-o3wsovMGeKQrwP7eCJJOpHCc_DnGLBFoyRnpIjGhaNHM4G3_P-H1wSBFA?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: World War 2<br>Description: Cliff-side fortifications atop the Rock of Gibraltar. Intense stand-off battles in the center with vertical combat opportunities to the flanks.<br>Link: https://callofdutymaps.com/world-war-2/gibraltar/]]></description>
+      <styleUrl>#icon-seq2-0-31-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>World War 2</value>
+        </Data>
+        <Data name="Description">
+          <value>Cliff-side fortifications atop the Rock of Gibraltar. Intense stand-off battles in the center with vertical combat opportunities to the flanks.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/world-war-2/gibraltar/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5_CciUM-ocpIWY05mzE0ISd598FK1GgmELRAizl9Gop4yney5T2hVg2v2mUErIjIFkLDoELSCrORUPRyY3l-r0R_3km7oetqYwzBed6KK7KTa0mDAmbPctCP1gjGJKqJ2jvREj-GWQA0tejb95WNPUkGJPEZ_3of_kyYBVIFZMrHIFY0sletzk2YhdL1BmC-o3wsovMGeKQrwP7eCJJOpHCc_DnGLBFoyRnpIjGhaNHM4G3_P-H1wSBFA?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -5.353585,36.140751,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>London Docks</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5toKAA4zZuT4_4NIfmUejecUSGCNHiahgox6-svMAG5MGh6UyRmd4J_FPIH1GPZX-My3EAo5zOPJUxuN2T1gjD6PzjjQKpSBVDp-YN6eKled2D9nOASx7tTfs2W-z9PGKOwg8mISlViyK-tiWvguNBqFVo1o_hS_wlczcByjNRnJmELroI8GFeXOgbZTw6fU8Jy9nxld39qh7pzxuW8O7-gzk7VmeMdfPhII_ushU6nWCkqkumltOpKSQ?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: World War 2<br>Description: Dock-side combat during the Blitz bombing campaign. Fast paced fighting with mid and long-range engagements along the docks.<br>Link: https://callofdutymaps.com/world-war-2/london-docks/]]></description>
+      <styleUrl>#icon-seq2-0-32-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>World War 2</value>
+        </Data>
+        <Data name="Description">
+          <value>Dock-side combat during the Blitz bombing campaign. Fast paced fighting with mid and long-range engagements along the docks.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/world-war-2/london-docks/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5toKAA4zZuT4_4NIfmUejecUSGCNHiahgox6-svMAG5MGh6UyRmd4J_FPIH1GPZX-My3EAo5zOPJUxuN2T1gjD6PzjjQKpSBVDp-YN6eKled2D9nOASx7tTfs2W-z9PGKOwg8mISlViyK-tiWvguNBqFVo1o_hS_wlczcByjNRnJmELroI8GFeXOgbZTw6fU8Jy9nxld39qh7pzxuW8O7-gzk7VmeMdfPhII_ushU6nWCkqkumltOpKSQ?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -0.1222652,51.5062825,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Pointe du Hoc</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR72ph4O9073oxjcMJS0Cjr44NFBpYp7T3GGmj5dP6d_QyZrIS9tnLh0s7c-tmBF1eDeNOSQd18ot6DqVtzYkFIrce59nE1ExRLxfssOVH5vRb10Tp10B2n-cJj8xn_zbUeJxLTzzSUzbOsbLDIxgv_a0mF8YlW-sFaaBKpqTzYo-Rrwf8DVDLi849H4MWIRZ2XCoWid6vDSn32FBp8Tmb34i6gUpyuZ52FEuvhp41B68E-LJBRQMrPUhnA?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: World War 2<br>Description: D-Day landing site with tight gameplay spaces. Bunkers and trenches create intense close-range battles.<br>Link: https://callofdutymaps.com/world-war-2/pointe-du-hoc/]]></description>
+      <styleUrl>#icon-seq2-0-33-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>World War 2</value>
+        </Data>
+        <Data name="Description">
+          <value>D-Day landing site with tight gameplay spaces. Bunkers and trenches create intense close-range battles.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/world-war-2/pointe-du-hoc/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR72ph4O9073oxjcMJS0Cjr44NFBpYp7T3GGmj5dP6d_QyZrIS9tnLh0s7c-tmBF1eDeNOSQd18ot6DqVtzYkFIrce59nE1ExRLxfssOVH5vRb10Tp10B2n-cJj8xn_zbUeJxLTzzSUzbOsbLDIxgv_a0mF8YlW-sFaaBKpqTzYo-Rrwf8DVDLi849H4MWIRZ2XCoWid6vDSn32FBp8Tmb34i6gUpyuZ52FEuvhp41B68E-LJBRQMrPUhnA?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -0.9892703,49.3971886,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Sainte Marie du Mont</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5nIgBg8maaLeRgfo0nPlEuv-jyYc5-48d1PN4Gd3pQZ9e5gdaHMB35WAt9CYXdI3_peqbYeLBBh8OvqrNiKCX1dYcjeboTTmp9TGBo2Yq5JflggMgpshN1i0gcx4MJ5VQBZSjfCvHDLizOWicUvAMsjIiYGI47Kdo58JB7BKo-60Ml_2JXr3RG1WXJHItC_44jOXk5BgQ370qcL2TRe9x97q8FU4hFxA_iRV9E5Jvh2EvvfJqKsCtEgCE?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: World War 2<br>Description: Small French village in Normandy, France – one of the first liberated on D-Day. Classic combat through streets, and rural outskirts.<br>Link: https://callofdutymaps.com/world-war-2/sainte-marie-du-mont/]]></description>
+      <styleUrl>#icon-seq2-0-34-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>World War 2</value>
+        </Data>
+        <Data name="Description">
+          <value>Small French village in Normandy, France – one of the first liberated on D-Day. Classic combat through streets, and rural outskirts.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/world-war-2/sainte-marie-du-mont/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5nIgBg8maaLeRgfo0nPlEuv-jyYc5-48d1PN4Gd3pQZ9e5gdaHMB35WAt9CYXdI3_peqbYeLBBh8OvqrNiKCX1dYcjeboTTmp9TGBo2Yq5JflggMgpshN1i0gcx4MJ5VQBZSjfCvHDLizOWicUvAMsjIiYGI47Kdo58JB7BKo-60Ml_2JXr3RG1WXJHItC_44jOXk5BgQ370qcL2TRe9x97q8FU4hFxA_iRV9E5Jvh2EvvfJqKsCtEgCE?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          2.213749,46.227638,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>USS Texas</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4hO0OV3AMemqnCwURaqTMEKP17URBj2axils_86Iy0XscfAhOSxI7Fm0Suu_TiSMQJOlBqno-oibpkXu-53Q3DkKBnr0sugy8MZT0u1zQU-02g-TjgwdU4n7klJspJWCydlAfBjQHT4rEvXy4-gGZsxQG2wGkc4W6tjaovhPgteb8rpz_ElGrb0Si8xJ1Hbl09RJA9GgNaWxZcIrdzBDz1KhbDMwm8mRHHLjxdMg8mJyHv8BdWF41Jbow?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: World War 2<br>Description: Fight on a Battleship at sea near the White Cliffs of Dover. Long range engagements down the port and starboard with intense close-range fights through ship interiors.<br>Link: https://callofdutymaps.com/world-war-2/uss-texas/]]></description>
+      <styleUrl>#icon-seq2-0-35-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>World War 2</value>
+        </Data>
+        <Data name="Description">
+          <value>Fight on a Battleship at sea near the White Cliffs of Dover. Long range engagements down the port and starboard with intense close-range fights through ship interiors.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/world-war-2/uss-texas/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4hO0OV3AMemqnCwURaqTMEKP17URBj2axils_86Iy0XscfAhOSxI7Fm0Suu_TiSMQJOlBqno-oibpkXu-53Q3DkKBnr0sugy8MZT0u1zQU-02g-TjgwdU4n7klJspJWCydlAfBjQHT4rEvXy4-gGZsxQG2wGkc4W6tjaovhPgteb8rpz_ElGrb0Si8xJ1Hbl09RJA9GgNaWxZcIrdzBDz1KhbDMwm8mRHHLjxdMg8mJyHv8BdWF41Jbow?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          1.3603928,51.1314527,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Shipment 1944</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR59gxCGdSoNO70Bi2VBrUj2N6BQd2QUSm0ipW_xJ3JUGSC57N4ABqXiPmLpuEuVanwzbfSPqS_xV22dLFhSk_J3imEtkEiyHUaN8p-d9NIG7Er_oIaSB0oLsA9lVR_O6Yr9emjaFDiVRO2LFO7xSAXW09AaUHINdyxQZBps8waG63C1gHWwl0sKMx_AWL5pL9vuPweVoQ-noQWkyfvKIWTS--QSaKdWBhfXB31ZW5iC42U9rNl6We6dR08?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: World War 2<br>Description: The frenetic classic from Call of Duty 4: Modern Warfare, brought to life for Call of Duty WWll as a shipment area on Normandy beach.<br>Link: https://callofdutymaps.com/world-war-2/shipment-1944/]]></description>
+      <styleUrl>#icon-seq2-0-36-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>World War 2</value>
+        </Data>
+        <Data name="Description">
+          <value>The frenetic classic from Call of Duty 4: Modern Warfare, brought to life for Call of Duty WWll as a shipment area on Normandy beach.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/world-war-2/shipment-1944/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR59gxCGdSoNO70Bi2VBrUj2N6BQd2QUSm0ipW_xJ3JUGSC57N4ABqXiPmLpuEuVanwzbfSPqS_xV22dLFhSk_J3imEtkEiyHUaN8p-d9NIG7Er_oIaSB0oLsA9lVR_O6Yr9emjaFDiVRO2LFO7xSAXW09AaUHINdyxQZBps8waG63C1gHWwl0sKMx_AWL5pL9vuPweVoQ-noQWkyfvKIWTS--QSaKdWBhfXB31ZW5iC42U9rNl6We6dR08?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -0.8710842,49.3696815,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Carentan</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR76cKlhgfD02KnnAEpaGXBN6BcImSG7HSeFFtoKpSF31I7avFcJVc_RXC_er2mhXHa97wpOhRJHN0wsjfG-t13v6rgu4NvA5hqVK8avmPFbT_7HHDMqoeaDocdEoMY2S_uL7itlyTnu7dPmbdJf0LcOa4dexpSENjNCHi4LcR4csIqFk1JHSsdY_D4MmtwnanxRsETwuFumCr6UBWOg33EPTuKF02SIaDBP7QAaYEoDxustJ0-pJ8Lj3-g?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: World War 2<br>Description: A remake of the classic map from Call of Duty 2. Street fighting with plenty of elevated overwatch positions.<br>Link: https://callofdutymaps.com/world-war-2/carentan/]]></description>
+      <styleUrl>#icon-seq2-0-37-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>World War 2</value>
+        </Data>
+        <Data name="Description">
+          <value>A remake of the classic map from Call of Duty 2. Street fighting with plenty of elevated overwatch positions.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/world-war-2/carentan/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR76cKlhgfD02KnnAEpaGXBN6BcImSG7HSeFFtoKpSF31I7avFcJVc_RXC_er2mhXHa97wpOhRJHN0wsjfG-t13v6rgu4NvA5hqVK8avmPFbT_7HHDMqoeaDocdEoMY2S_uL7itlyTnu7dPmbdJf0LcOa4dexpSENjNCHi4LcR4csIqFk1JHSsdY_D4MmtwnanxRsETwuFumCr6UBWOg33EPTuKF02SIaDBP7QAaYEoDxustJ0-pJ8Lj3-g?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -1.242834,49.305666,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Sandbox</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6aM1hqRC8oNZkykE7v_Bgq3WrlafN3UJVgUUPBb9-nY8YWCfWOMKsCUWnUCsT_HLHelo0LAnOsAGkps7ymkbi5JfkovYpJ56-Tz-Cv5yZe-DUoMp23h2rYZVisj1mIKK6AfvqT7i6c1M9tAjOJyTgQeCo3KRGfqG5ywEpvATL0qSoclJPlYUsLqkhrjPr5z5OU6oLOki6AARDuNHitxno_hd_IWnAfbs8F504CK6PR__H_xPR6ZLrwLvQ?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: World War 2<br>Description: Tiny soldiers in a big war. A medium-sized arena where two sandcastles face each other from opposite sides of the Sandbox. Don’t tattle. Work it out in the Sandbox.<br>Link: https://callofdutymaps.com/world-war-2/sandbox/]]></description>
+      <styleUrl>#icon-seq2-0-38-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>World War 2</value>
+        </Data>
+        <Data name="Description">
+          <value>Tiny soldiers in a big war. A medium-sized arena where two sandcastles face each other from opposite sides of the Sandbox. Don’t tattle. Work it out in the Sandbox.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/world-war-2/sandbox/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6aM1hqRC8oNZkykE7v_Bgq3WrlafN3UJVgUUPBb9-nY8YWCfWOMKsCUWnUCsT_HLHelo0LAnOsAGkps7ymkbi5JfkovYpJ56-Tz-Cv5yZe-DUoMp23h2rYZVisj1mIKK6AfvqT7i6c1M9tAjOJyTgQeCo3KRGfqG5ywEpvATL0qSoclJPlYUsLqkhrjPr5z5OU6oLOki6AARDuNHitxno_hd_IWnAfbs8F504CK6PR__H_xPR6ZLrwLvQ?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -0.8710842,49.3696815,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Anthropoid</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6ulzyNzC0reBW44c6RCjEv6fq2GH5iODf-dr0k2yuEraANXHvtFuu7K-EGrjNW-qaPteP-jlwgqjPLr6ia5lSTSPX7SHWHFgTRlrdcewHD1yJXgduNHrc_b3DPLqfIB0SNYXDk1Fw6cVz_QMbGG91D3VlWp_6IEx_g5LGSrPH6tvlR4sHjN5ER1MJwWLHzQhKesomXSJXJBhYR0fwwMpcHzvQDiE6C0VtPLd5YSqhSPKn_14-m9KlVDLk?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: World War 2<br>Description: Battle in Prague, site of the assassination of Reinhard Heydrich by Czech Resistance fighters. Great Domination matches with ranged opportunities across the river and along the bridge.<br>Link: https://callofdutymaps.com/world-war-2/anthropoid/]]></description>
+      <styleUrl>#icon-seq2-0-39-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>World War 2</value>
+        </Data>
+        <Data name="Description">
+          <value>Battle in Prague, site of the assassination of Reinhard Heydrich by Czech Resistance fighters. Great Domination matches with ranged opportunities across the river and along the bridge.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/world-war-2/anthropoid/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6ulzyNzC0reBW44c6RCjEv6fq2GH5iODf-dr0k2yuEraANXHvtFuu7K-EGrjNW-qaPteP-jlwgqjPLr6ia5lSTSPX7SHWHFgTRlrdcewHD1yJXgduNHrc_b3DPLqfIB0SNYXDk1Fw6cVz_QMbGG91D3VlWp_6IEx_g5LGSrPH6tvlR4sHjN5ER1MJwWLHzQhKesomXSJXJBhYR0fwwMpcHzvQDiE6C0VtPLd5YSqhSPKn_14-m9KlVDLk?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          14.4378005,50.0755381,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Occupation</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6YxPTHg9uoUT6cA4a71OaJjUkjfDkxahLz7gBm96U1LYIFR9xNr8ex43lOhaB-XA1w0AmcpoVPEoYAKXojUuBJVsIuHJoXbPipmpP7RxQMqlEFMPpEHwB1oBMw2Kdir3dsxf7J-JO6Ed5gJ_zyGekxFt_BcEZAbkuJqDrJp_JbF8e2F3IAdbQDsmiHZdzh-5ZJAD_NavZZG1kLKRXMLGz3KNjoIszximbhFPmWIO5RVn1vLvValNB3ysI?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: World War 2<br>Description: French resistance battles rage in the streets of Paris in this classic remake from MW3. Mid-range engagements through city streets and shops.<br>Link: https://callofdutymaps.com/world-war-2/occupation/]]></description>
+      <styleUrl>#icon-seq2-0-40-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>World War 2</value>
+        </Data>
+        <Data name="Description">
+          <value>French resistance battles rage in the streets of Paris in this classic remake from MW3. Mid-range engagements through city streets and shops.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/world-war-2/occupation/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6YxPTHg9uoUT6cA4a71OaJjUkjfDkxahLz7gBm96U1LYIFR9xNr8ex43lOhaB-XA1w0AmcpoVPEoYAKXojUuBJVsIuHJoXbPipmpP7RxQMqlEFMPpEHwB1oBMw2Kdir3dsxf7J-JO6Ed5gJ_zyGekxFt_BcEZAbkuJqDrJp_JbF8e2F3IAdbQDsmiHZdzh-5ZJAD_NavZZG1kLKRXMLGz3KNjoIszximbhFPmWIO5RVn1vLvValNB3ysI?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          2.3522219,48.856614,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Dunkirk</name>
+      <description><![CDATA[Game: World War 2<br>Description: The Allied evacuation from Dunkirk has concluded, but the fight still continues. Long-range engagements dominate the beach while closer encounters are found more frequently along the boardwalk. <br>Link: https://callofdutymaps.com/world-war-2/dunkirk/]]></description>
+      <styleUrl>#icon-seq2-0-41-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>World War 2</value>
+        </Data>
+        <Data name="Description">
+          <value>The Allied evacuation from Dunkirk has concluded, but the fight still continues. Long-range engagements dominate the beach while closer encounters are found more frequently along the boardwalk. </value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/world-war-2/dunkirk/</value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -1.2142297,46.0458878,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Egypt</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7_pfSZJdqg0akVKa_lejDDnRQT6aRFpmgf0RF9IvFlTaCnpvPlRDQoyp1p7RRzj8Lueu_w1GTV2rcEG-JzhWBeBwgyFjB4UuudKeYUU-zKhFKjmDvGuBZoys7hJ4rjxHUeZ_ocAV4eWMpaoeA_BpCf_quyHoaT_wXWmdtN72BmiNgRu-v9H48-Y2LTpm1TnskFPdiRO9VnHazbtK5gTdzNNFPV4AyxhTA2Nu4hMDTRhwrvdIrNyu7qT3c?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: World War 2<br>Description: Join the fight in Egypt as the British battle German forces against a classic Giza backdrop. Wind your way through cat-and-mouse gunfights among the temple ruins.<br>Link: https://callofdutymaps.com/world-war-2/egypt/]]></description>
+      <styleUrl>#icon-seq2-0-42-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>World War 2</value>
+        </Data>
+        <Data name="Description">
+          <value>Join the fight in Egypt as the British battle German forces against a classic Giza backdrop. Wind your way through cat-and-mouse gunfights among the temple ruins.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/world-war-2/egypt/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7_pfSZJdqg0akVKa_lejDDnRQT6aRFpmgf0RF9IvFlTaCnpvPlRDQoyp1p7RRzj8Lueu_w1GTV2rcEG-JzhWBeBwgyFjB4UuudKeYUU-zKhFKjmDvGuBZoys7hJ4rjxHUeZ_ocAV4eWMpaoeA_BpCf_quyHoaT_wXWmdtN72BmiNgRu-v9H48-Y2LTpm1TnskFPdiRO9VnHazbtK5gTdzNNFPV4AyxhTA2Nu4hMDTRhwrvdIrNyu7qT3c?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          31.2088526,30.0130557,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>V2</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5DwvcS4I6-83EU_Kb3FbdJ13YbrB88TJCmFxXyAW5_q0-PsBZ0DEkU88p067m5Q-6pZbcYeK1D_YZttBTANL0FMV44KgQ-JYPwultByXsjw0LRNwsCN6f2IQprE76SBNBZYidDgQp5B7LGGSZrGkeErSWclXHte-nfjZjz8r3LNIe7ZLSXEk-oQRkK0OUtGgM4ZZOinO96rci7FsboHYJv-WgmDrcQ_DUoMkAS4VYB_LNFk9xw9COVLuM?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: World War 2<br>Description: Fight in Peenemunde, famous site of the German V2 Rocket facility. Come prepared for fast-paced battles to control the center rocket.<br>Link: https://callofdutymaps.com/world-war-2/v2/]]></description>
+      <styleUrl>#icon-seq2-0-43-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>World War 2</value>
+        </Data>
+        <Data name="Description">
+          <value>Fight in Peenemunde, famous site of the German V2 Rocket facility. Come prepared for fast-paced battles to control the center rocket.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/world-war-2/v2/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5DwvcS4I6-83EU_Kb3FbdJ13YbrB88TJCmFxXyAW5_q0-PsBZ0DEkU88p067m5Q-6pZbcYeK1D_YZttBTANL0FMV44KgQ-JYPwultByXsjw0LRNwsCN6f2IQprE76SBNBZYidDgQp5B7LGGSZrGkeErSWclXHte-nfjZjz8r3LNIe7ZLSXEk-oQRkK0OUtGgM4ZZOinO96rci7FsboHYJv-WgmDrcQ_DUoMkAS4VYB_LNFk9xw9COVLuM?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          19.863281,58.487952,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Market Garden</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4RoLN-xNBxsT-Z4-lbuH-epXgnztZIw-tZti1e1Y0Y5leIScOFgBMWpvVf8p7pH7gaVf-pextjkE96DXGx4tw19JQOzQq04dSd4e7VeQAAIRgh2BrZoRqjQBPrIUHX9tRTFeutOzdE4HcHCylCbRNVmcmr30nTpPp5qWyp0Ld-yvkoyriu7dh6l_bCU85kIjBUKVlzEWJa_LAzC6gkeQOidQZO0bticC26sIAATIb7l4bkeaJYiH_fz4U?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: World War 2<br>Description: Fight off German advances to maintain control of the Allied mansion base. Set in the Netherlands during Operation Market Garden, this map brings intense tight-quarters combat and gunfights around every corner.<br>Link: https://callofdutymaps.com/world-war-2/market-garden/]]></description>
+      <styleUrl>#icon-seq2-0-44-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>World War 2</value>
+        </Data>
+        <Data name="Description">
+          <value>Fight off German advances to maintain control of the Allied mansion base. Set in the Netherlands during Operation Market Garden, this map brings intense tight-quarters combat and gunfights around every corner.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/world-war-2/market-garden/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4RoLN-xNBxsT-Z4-lbuH-epXgnztZIw-tZti1e1Y0Y5leIScOFgBMWpvVf8p7pH7gaVf-pextjkE96DXGx4tw19JQOzQq04dSd4e7VeQAAIRgh2BrZoRqjQBPrIUHX9tRTFeutOzdE4HcHCylCbRNVmcmr30nTpPp5qWyp0Ld-yvkoyriu7dh6l_bCU85kIjBUKVlzEWJa_LAzC6gkeQOidQZO0bticC26sIAATIb7l4bkeaJYiH_fz4U?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          5.8987296,51.9851034,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Monte Cassino</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7Teu8nU2LrAWxx7_gzkonsgEtTDlRI7em4qFaXzbewqzukV52amvegOP6RU_bb0zzl9vx2NZu7DK-_a6xjkSl8MJIz5BngO-ykflFPupSkiTKrjPoKIk9RLhZ5zQaiTpHmf-qgnnmhke4a1S9bRi-YzQ8FyTg7OSljnjoGNzhk7Oe7-d8SGEA2OQi2HvcEtoeUnN_esHLUBh_95Zk1zSvYFOttE_TA1VOuZeuiw3qW6Qbxk1NrhDGU9Pc?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: World War 2<br>Description: Join the Italian campaign in Monte Cassino. Nestled below a mountaintop monastery, this war-torn village offers rich verticality with rooftop gameplay and sneaky flank paths along the cliffs.<br>Link: https://callofdutymaps.com/world-war-2/monte-cassino/]]></description>
+      <styleUrl>#icon-seq2-0-45-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>World War 2</value>
+        </Data>
+        <Data name="Description">
+          <value>Join the Italian campaign in Monte Cassino. Nestled below a mountaintop monastery, this war-torn village offers rich verticality with rooftop gameplay and sneaky flank paths along the cliffs.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/world-war-2/monte-cassino/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7Teu8nU2LrAWxx7_gzkonsgEtTDlRI7em4qFaXzbewqzukV52amvegOP6RU_bb0zzl9vx2NZu7DK-_a6xjkSl8MJIz5BngO-ykflFPupSkiTKrjPoKIk9RLhZ5zQaiTpHmf-qgnnmhke4a1S9bRi-YzQ8FyTg7OSljnjoGNzhk7Oe7-d8SGEA2OQi2HvcEtoeUnN_esHLUBh_95Zk1zSvYFOttE_TA1VOuZeuiw3qW6Qbxk1NrhDGU9Pc?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          13.8158578,41.4916194,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Stalingrad</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7a1Fc6NYUbEqsurIuN7irqdsqLbp5tChMfCpgYPpPYOlPQHXSEcMkqjKFI-T8w-IGjgY1orjloEVXIml2ChZ1rDPm3BYFCyOX5h__J6s2xAX72t02ElO6MseXQApQfr5iV35GeNOKpxC13iDiNaux_m2abKh11MovPAvn6HpycTWZfaHM1AtY1sO0SxrboQJuCeGay-r8f31ob0mYWtHH7BsH0eZwySoVYFsX3LvBJxPfnuyKwuUVtxrY?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: World War 2<br>Description: Survive long-range battles between opposing bases in Stalingrad’s snow-covered factory district. Use strategic overlooks to control the map’s center, or duck into the underground sewers to avoid sniper fire.<br>Link: https://callofdutymaps.com/world-war-2/stalingrad/]]></description>
+      <styleUrl>#icon-seq2-0-46-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>World War 2</value>
+        </Data>
+        <Data name="Description">
+          <value>Survive long-range battles between opposing bases in Stalingrad’s snow-covered factory district. Use strategic overlooks to control the map’s center, or duck into the underground sewers to avoid sniper fire.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/world-war-2/stalingrad/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7a1Fc6NYUbEqsurIuN7irqdsqLbp5tChMfCpgYPpPYOlPQHXSEcMkqjKFI-T8w-IGjgY1orjloEVXIml2ChZ1rDPm3BYFCyOX5h__J6s2xAX72t02ElO6MseXQApQfr5iV35GeNOKpxC13iDiNaux_m2abKh11MovPAvn6HpycTWZfaHM1AtY1sO0SxrboQJuCeGay-r8f31ob0mYWtHH7BsH0eZwySoVYFsX3LvBJxPfnuyKwuUVtxrY?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          45,49.7604522,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Airship</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR73MBXopMCxZOHlCWS3S3_1KUvrRQKBOdDFa8wb-AUqWOv7KeSmj6vCIlbJ9-dLG2LDMerdY6K0brRdHVAFKhfNHF7mcscJDzFk3OAD5TiqMqwbZMZphSFgL2o95poBeNpTR7CDWXmJBX_bAd_1EZ0nO_WzEyLIPKBpkBnUD6gR3fEHP09hxzkaTRLKNDiwhK-TDF8hhXKz9Iw3Q6AXkvLAelthBWG6zUEpkcVyPlcGMCZVmOTORZLE9YM?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: World War 2<br>Description: Battle it out atop a German Airship base high in the Alps. Gain the high ground in the docked Airship, or engage in closer and mid-ranged combat through the base and along the cliffs below.<br>Link: https://callofdutymaps.com/world-war-2/airship/]]></description>
+      <styleUrl>#icon-seq2-0-47-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>World War 2</value>
+        </Data>
+        <Data name="Description">
+          <value>Battle it out atop a German Airship base high in the Alps. Gain the high ground in the docked Airship, or engage in closer and mid-ranged combat through the base and along the cliffs below.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/world-war-2/airship/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR73MBXopMCxZOHlCWS3S3_1KUvrRQKBOdDFa8wb-AUqWOv7KeSmj6vCIlbJ9-dLG2LDMerdY6K0brRdHVAFKhfNHF7mcscJDzFk3OAD5TiqMqwbZMZphSFgL2o95poBeNpTR7CDWXmJBX_bAd_1EZ0nO_WzEyLIPKBpkBnUD6gR3fEHP09hxzkaTRLKNDiwhK-TDF8hhXKz9Iw3Q6AXkvLAelthBWG6zUEpkcVyPlcGMCZVmOTORZLE9YM?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          7.8541668,46.5425213,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Chancellery</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6IiuK3QHFfaChR62e3zrpjMHG-H5cwh5Tp8ZunbEE-PuDPjA0PC3xME9lKUgcdjkpTAs2Vg7P8ik0LyQXVFN1fjkE3eUiGXNdxDAKfE-Gx-5xyovicOsXgc7nYGJXxU7xrFfADErUWyQpUXxXJudNLwztqkB6mYzYgZ_zI899Q5wDDdH52Gb-RYduo4JVPtoVr4yOjxPyw-xR7XVfM-j2uIMelCeNuTn3sKBpj2TLaH0mO-lTGxGrkaEc?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: World War 2<br>Description: Oust German forces from their French stronghold within the Chancellery. Maintain control from courtyard vantage points while engaging in chaotic firefights in the opposing flank lanes.<br>Link: https://callofdutymaps.com/world-war-2/chancellery/]]></description>
+      <styleUrl>#icon-seq2-0-48-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>World War 2</value>
+        </Data>
+        <Data name="Description">
+          <value>Oust German forces from their French stronghold within the Chancellery. Maintain control from courtyard vantage points while engaging in chaotic firefights in the opposing flank lanes.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/world-war-2/chancellery/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6IiuK3QHFfaChR62e3zrpjMHG-H5cwh5Tp8ZunbEE-PuDPjA0PC3xME9lKUgcdjkpTAs2Vg7P8ik0LyQXVFN1fjkE3eUiGXNdxDAKfE-Gx-5xyovicOsXgc7nYGJXxU7xrFfADErUWyQpUXxXJudNLwztqkB6mYzYgZ_zI899Q5wDDdH52Gb-RYduo4JVPtoVr4yOjxPyw-xR7XVfM-j2uIMelCeNuTn3sKBpj2TLaH0mO-lTGxGrkaEc?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          2.3522219,48.856614,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Berlin</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5u2BiGAfjoXXwKC1n-rztrl-Cm_IvIMRozwWLQFnt9Tj12DXhvf9bPD9EmhWi1XCphm56U31xe5oTgYwVNIW9an685jYON8ABZ3pwyFn9lp6zrw2Rk20lE32uo329DroTiW0SAPxIEk0YFtRXpDnr8qHvqljCFvgp-jy17CByycSfo6EROYmWS6NPNv7cJsZlsm_6mMhRXeRl7zoGVz9HPxjfGdL1-6pxLIflGke7HlaEEXarJA8GsTXE?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Vanguard<br>Description: The beginning of the end for the Axis. On a stormy night, the Allies fight toward the Reichstag building. <br>Link: https://callofdutymaps.com/vanguard/berlin/]]></description>
+      <styleUrl>#icon-seq2-0-49-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Vanguard</value>
+        </Data>
+        <Data name="Description">
+          <value>The beginning of the end for the Axis. On a stormy night, the Allies fight toward the Reichstag building. </value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/vanguard/berlin/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5u2BiGAfjoXXwKC1n-rztrl-Cm_IvIMRozwWLQFnt9Tj12DXhvf9bPD9EmhWi1XCphm56U31xe5oTgYwVNIW9an685jYON8ABZ3pwyFn9lp6zrw2Rk20lE32uo329DroTiW0SAPxIEk0YFtRXpDnr8qHvqljCFvgp-jy17CByycSfo6EROYmWS6NPNv7cJsZlsm_6mMhRXeRl7zoGVz9HPxjfGdL1-6pxLIflGke7HlaEEXarJA8GsTXE?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          13.404954,52.5200066,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Bocage</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4-aMhXvX6dARjUyY1RzQdDhRjEV_HyduHW3QiepIlB61vJbh1qAdwX91d6tLhOBqUG9RcXoHJHvTP3pdhWDHKguzXPqWQgwBNGVhrp1JohC_hm2twMMKTEbGh5Olcj8u6MvCD50ujjU6UXkY3m3FUWnPlzRA7TOy48Hjw8nZ0RDf9K57dQt70zHAhoOEUv2Vj6BRxtr30GdWqk0Ibn_M3dvKADPImU0ruJPmoEryNnedJFifCga6Fnndo?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Vanguard<br>Description: A tank battle in Northern France following the Allied invasion devolves into infantry combat across a farmer’s estate. <br>Link: https://callofdutymaps.com/vanguard/Bocage/]]></description>
+      <styleUrl>#icon-seq2-0-50-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Vanguard</value>
+        </Data>
+        <Data name="Description">
+          <value>A tank battle in Northern France following the Allied invasion devolves into infantry combat across a farmer’s estate. </value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/vanguard/Bocage/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4-aMhXvX6dARjUyY1RzQdDhRjEV_HyduHW3QiepIlB61vJbh1qAdwX91d6tLhOBqUG9RcXoHJHvTP3pdhWDHKguzXPqWQgwBNGVhrp1JohC_hm2twMMKTEbGh5Olcj8u6MvCD50ujjU6UXkY3m3FUWnPlzRA7TOy48Hjw8nZ0RDf9K57dQt70zHAhoOEUv2Vj6BRxtr30GdWqk0Ibn_M3dvKADPImU0ruJPmoEryNnedJFifCga6Fnndo?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -0.655118,49.080522,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Castle</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6ViqL-F9VSPhPF_8FizGxxQUcVmHc0KZ5Xp5bpJ9UkG-OTviiLI5G75CDMn258vuT5ExZKBN3ePkJATmbYHj8YWfn5OkfVtqFvrh8ksZ3SD0-PY9NsNadoRau9Z6DrznYf5IucXkQhlXRCstG0f6M7TMsJfOH00y3Jj_NKT9gt9VnuyTd923jepZWz_qksOh0FSooDjOlJQL0S0h2WeDjQeI2PUqJmcypBXVvKVp8vt429Uy95aQ2uORg?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Vanguard<br>Description: Shelled from a distance, this old fortress on the southern-most Japanese prefecture is the backdrop to an autumn Special Forces search mission. <br>Link: https://callofdutymaps.com/vanguard/Castle-2/]]></description>
+      <styleUrl>#icon-seq2-0-51-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Vanguard</value>
+        </Data>
+        <Data name="Description">
+          <value>Shelled from a distance, this old fortress on the southern-most Japanese prefecture is the backdrop to an autumn Special Forces search mission. </value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/vanguard/Castle-2/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6ViqL-F9VSPhPF_8FizGxxQUcVmHc0KZ5Xp5bpJ9UkG-OTviiLI5G75CDMn258vuT5ExZKBN3ePkJATmbYHj8YWfn5OkfVtqFvrh8ksZ3SD0-PY9NsNadoRau9Z6DrznYf5IucXkQhlXRCstG0f6M7TMsJfOH00y3Jj_NKT9gt9VnuyTd923jepZWz_qksOh0FSooDjOlJQL0S0h2WeDjQeI2PUqJmcypBXVvKVp8vt429Uy95aQ2uORg?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          127.7194833,26.2170449,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Das Haus</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4hpESCGZzC8FcOiBLfX-vY99DpyTYJN3JY-eSyVTDd9EBYCQWpxmkw6_jSgFFm2vnC69Fmk_NFTXt3B8AHhT1nJDfO4eSRRzva3A_G2iI0w577ohY9uefMwuF0HxmqlMXfnNxSroTDBayoeOSWJC7faScy85y8itG3U3UZ7ZjBDslGx4T5bVaS7levNgCv3jlcnJbxXH-MU8SGfnwunNE_bz9901Jntpc1OHxrBmVpBJ5MX8xDZWPW8E0?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Vanguard<br>Description: In a remote wooded location in Germany, Special Forces train for an overseas invasion of the White House.<br>Link: https://callofdutymaps.com/vanguard/das-haus/]]></description>
+      <styleUrl>#icon-seq2-0-52-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Vanguard</value>
+        </Data>
+        <Data name="Description">
+          <value>In a remote wooded location in Germany, Special Forces train for an overseas invasion of the White House.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/vanguard/das-haus/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4hpESCGZzC8FcOiBLfX-vY99DpyTYJN3JY-eSyVTDd9EBYCQWpxmkw6_jSgFFm2vnC69Fmk_NFTXt3B8AHhT1nJDfO4eSRRzva3A_G2iI0w577ohY9uefMwuF0HxmqlMXfnNxSroTDBayoeOSWJC7faScy85y8itG3U3UZ7ZjBDslGx4T5bVaS7levNgCv3jlcnJbxXH-MU8SGfnwunNE_bz9901Jntpc1OHxrBmVpBJ5MX8xDZWPW8E0?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          8.15,48.3,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Decoy</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR60UFVnzAqtAtXIlcAhdWKAylm4SOIHBD7pGs6NvffE7hCIojuiKuIvqHg72782_HZ5WFFiKBNP5efvkQB0mALjRYyWmn5PHXsXJ-sBd17NghsFKJIY30M23FyqqpTLqfTbAG05XBkn1C0MOc2dM_wcS_ixM_Y-m1iG5icqUVxdMZ0E8PvRShfsh_SRx9JjQRqnBgqraFVgO56nV3oDhWmps9ZSkMhCRgJpgN1d1QD3J7nwWW1goX-i_sg?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Vanguard<br>Description: Training course for Special Forces. This medium-sized map comprises a mock town complete with “homes” and “businesses” made up of construction materials and plywood. <br>Link: https://callofdutymaps.com/vanguard/Decoy/]]></description>
+      <styleUrl>#icon-seq2-0-53-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Vanguard</value>
+        </Data>
+        <Data name="Description">
+          <value>Training course for Special Forces. This medium-sized map comprises a mock town complete with “homes” and “businesses” made up of construction materials and plywood. </value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/vanguard/Decoy/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR60UFVnzAqtAtXIlcAhdWKAylm4SOIHBD7pGs6NvffE7hCIojuiKuIvqHg72782_HZ5WFFiKBNP5efvkQB0mALjRYyWmn5PHXsXJ-sBd17NghsFKJIY30M23FyqqpTLqfTbAG05XBkn1C0MOc2dM_wcS_ixM_Y-m1iG5icqUVxdMZ0E8PvRShfsh_SRx9JjQRqnBgqraFVgO56nV3oDhWmps9ZSkMhCRgJpgN1d1QD3J7nwWW1goX-i_sg?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -3.435973,55.378051,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Demyansk</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6r4D9X3rbhGIWmfFAv1iWmu2TI7RZoKU5e8hr-M4Cl3TKnjRvxvUVyKOrf1L7omNP3qYfJuQBsIheMVvdmJuuzwdD68EY3ExkDLjdGEBP8PU8KCy2FeZCSTBgpqVbFy597gJuE9ikbf03-LxhPL-MqO3mHj-oE2qYGPKnfFWqyNvFVF6ksazfsBKtcOqDLq9xAr9EuYfWZx9iCsuhz7grwBO8QenoJ9ZL62A9HEbiiWXkIG3CLDkgZS1I?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Vanguard<br>Description: At this small church and village on the Lovat River, Allied Forces spread out to ambush the Axis before they can successfully retreat with supplies and equipment. <br>Link: https://callofdutymaps.com/vanguard/demyansk/]]></description>
+      <styleUrl>#icon-seq2-0-54-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Vanguard</value>
+        </Data>
+        <Data name="Description">
+          <value>At this small church and village on the Lovat River, Allied Forces spread out to ambush the Axis before they can successfully retreat with supplies and equipment. </value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/vanguard/demyansk/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6r4D9X3rbhGIWmfFAv1iWmu2TI7RZoKU5e8hr-M4Cl3TKnjRvxvUVyKOrf1L7omNP3qYfJuQBsIheMVvdmJuuzwdD68EY3ExkDLjdGEBP8PU8KCy2FeZCSTBgpqVbFy597gJuE9ikbf03-LxhPL-MqO3mHj-oE2qYGPKnfFWqyNvFVF6ksazfsBKtcOqDLq9xAr9EuYfWZx9iCsuhz7grwBO8QenoJ9ZL62A9HEbiiWXkIG3CLDkgZS1I?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          32.4642654,57.6430021,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Desert Siege</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4VPIvTtk00lKYhao7yEv9bz9M_B_Rdp5gtBE2Xf9AHqV5VmUgBHyCeOWmq1YqQ60zvempdm6teTHJI1xVT9SvOykjxNVq0xz2VRcxe_7Ym4YucDXIXSSVv-qcDim3Y1rQxItzSXwVN7rn7TY3RJaFN9EBqWEYRspUpcyYDkUUqKGxR5_R9UnJTJEGNoGNuF7j1EoXOes_1FmM5pVaAxBqjk-E9kKM_J306FsPwNh9ihMtGAdApdI7EJfU?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Vanguard<br>Description: The culmination of the North Africa campaign – right at the source of the Suez Canal access, railways, and oil fields – plays out across the desert.<br>Link: https://callofdutymaps.com/vanguard/desert-siege/]]></description>
+      <styleUrl>#icon-seq2-0-55-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Vanguard</value>
+        </Data>
+        <Data name="Description">
+          <value>The culmination of the North Africa campaign – right at the source of the Suez Canal access, railways, and oil fields – plays out across the desert.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/vanguard/desert-siege/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4VPIvTtk00lKYhao7yEv9bz9M_B_Rdp5gtBE2Xf9AHqV5VmUgBHyCeOWmq1YqQ60zvempdm6teTHJI1xVT9SvOykjxNVq0xz2VRcxe_7Ym4YucDXIXSSVv-qcDim3Y1rQxItzSXwVN7rn7TY3RJaFN9EBqWEYRspUpcyYDkUUqKGxR5_R9UnJTJEGNoGNuF7j1EoXOes_1FmM5pVaAxBqjk-E9kKM_J306FsPwNh9ihMtGAdApdI7EJfU?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          24.5168391,29.7417348,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Dome</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4LVGKFT8gl7x7yGb9AWMqZfrduurG1OErLrf9gTJbP6k6SmKIm0oe-1E8Z4azcWDvqeHk5jpuwCQd74TmC2VSBULYa_jKTaWvG-vDy9EmA168paHAaO7XxFs6ubLkdHtga5kf2M7dljy5tvE90KXUMzlMknw0IBSah-UGgU0Te6dCukG_guj4yZGHeIPiFtzgGqmRuMMbTam-jUxwtbIbkAkkzRPPCeilzAm6kioE2bmobmf8dvHmNQ7Y?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Vanguard<br>Description: After heavy damage to the Reichstag Building in Berlin, Allied forces storm the bombed-out structure while Axis stand their ground. <br>Link: https://callofdutymaps.com/vanguard/dome-3/]]></description>
+      <styleUrl>#icon-seq2-0-56-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Vanguard</value>
+        </Data>
+        <Data name="Description">
+          <value>After heavy damage to the Reichstag Building in Berlin, Allied forces storm the bombed-out structure while Axis stand their ground. </value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/vanguard/dome-3/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4LVGKFT8gl7x7yGb9AWMqZfrduurG1OErLrf9gTJbP6k6SmKIm0oe-1E8Z4azcWDvqeHk5jpuwCQd74TmC2VSBULYa_jKTaWvG-vDy9EmA168paHAaO7XxFs6ubLkdHtga5kf2M7dljy5tvE90KXUMzlMknw0IBSah-UGgU0Te6dCukG_guj4yZGHeIPiFtzgGqmRuMMbTam-jUxwtbIbkAkkzRPPCeilzAm6kioE2bmobmf8dvHmNQ7Y?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          13.3760815,52.5186832,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name><![CDATA[Eagle's Nest]]></name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7LaLV0oQSfju_Kt2Pmxl8oCYAV_msg1RHoyxFPlDJ-y5j2r1dSDc8ZjiqfcjXKld32QKzxSICs8bTaMrjKKnj6p9JHAoKCKwELHl_g30y96MxPgCIdUTEQbATStzzrW5QvOqrz4iuTidZytwu2cawSmcnkPmOtvVaMucXvHjCgwsJa9YV7kOoSfj8HSPbEAdsoJSSxNC7SJDG5JYZwEiv8xLLCLDWD69R3IwMISTlvnm5NNRCrRWG9Kpk?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Vanguard<br>Description: A prominent Axis meeting house built 1,834 meters above sea level, Kehlsteinhaus is a small, three-lane-like map.<br>Link: https://callofdutymaps.com/vanguard/Eagles-Nest/]]></description>
+      <styleUrl>#icon-seq2-0-57-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Vanguard</value>
+        </Data>
+        <Data name="Description">
+          <value>A prominent Axis meeting house built 1,834 meters above sea level, Kehlsteinhaus is a small, three-lane-like map.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/vanguard/Eagles-Nest/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7LaLV0oQSfju_Kt2Pmxl8oCYAV_msg1RHoyxFPlDJ-y5j2r1dSDc8ZjiqfcjXKld32QKzxSICs8bTaMrjKKnj6p9JHAoKCKwELHl_g30y96MxPgCIdUTEQbATStzzrW5QvOqrz4iuTidZytwu2cawSmcnkPmOtvVaMucXvHjCgwsJa9YV7kOoSfj8HSPbEAdsoJSSxNC7SJDG5JYZwEiv8xLLCLDWD69R3IwMISTlvnm5NNRCrRWG9Kpk?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          13.0420885,47.6114199,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Gavutu </name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5-zYfZodQwvQlk06ATpqc0qYgYIenHOoG23Ii_ZJLnQ98vppmgvQr0YyvZCx23a2_oG8K64XddQe_yW-AJ7wGDcbG-pIFoDbpnK1au03zKXY0f0DG9zP6v45rqjRzDCyQDoRKSZ5Ht5xEn9HFcwOx7OF6nwNe3HFupPRDqGjFzWad1vXBraZbmbl3Q9IcJ26N2TLiEAzvLfllgxWdJUeHGhKIUVNu6pATubFV-i2HyJz8wADoZyFbA7do?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Vanguard<br>Description: Based on a crucial land battle in the Pacific Theater, this island is used by Eastern Axis forces for ship refueling and a communications base. <br>Link: https://callofdutymaps.com/vanguard/Gavutu/]]></description>
+      <styleUrl>#icon-seq2-0-58-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Vanguard</value>
+        </Data>
+        <Data name="Description">
+          <value>Based on a crucial land battle in the Pacific Theater, this island is used by Eastern Axis forces for ship refueling and a communications base. </value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/vanguard/Gavutu/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5-zYfZodQwvQlk06ATpqc0qYgYIenHOoG23Ii_ZJLnQ98vppmgvQr0YyvZCx23a2_oG8K64XddQe_yW-AJ7wGDcbG-pIFoDbpnK1au03zKXY0f0DG9zP6v45rqjRzDCyQDoRKSZ5Ht5xEn9HFcwOx7OF6nwNe3HFupPRDqGjFzWad1vXBraZbmbl3Q9IcJ26N2TLiEAzvLfllgxWdJUeHGhKIUVNu6pATubFV-i2HyJz8wADoZyFbA7do?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          160.1879993,-9.1163757,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Hotel Royal</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR71yi8qOUqfKX2SgJqBd-4_vj6g_dnrYzvNjin5tqL3VQiBVTyeWYR0z8ad5WN7cqxn8dyaibc7R384_TXlxtP6CN38bOtslpvb4Q4UwzCX-liokm8gt1UFe4RhOh7HCaxetquxulshTryT3Qk1RXoxFtXrHhpl-IU9-cyk99HVqiHnbPE8MfyM83NFgUEX7SgTYJTbBg4XMQjgonBmRxQxEv9PhtRaTaTRQ5BNE1dL4bFuWp7ouw2fjMQ?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Vanguard<br>Description: Two months following the successful D-Day invasion, an uprising occurs in Paris by members of a local Resistance. <br>Link: https://callofdutymaps.com/vanguard/Hotel-Royal/]]></description>
+      <styleUrl>#icon-seq2-0-59-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Vanguard</value>
+        </Data>
+        <Data name="Description">
+          <value>Two months following the successful D-Day invasion, an uprising occurs in Paris by members of a local Resistance. </value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/vanguard/Hotel-Royal/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR71yi8qOUqfKX2SgJqBd-4_vj6g_dnrYzvNjin5tqL3VQiBVTyeWYR0z8ad5WN7cqxn8dyaibc7R384_TXlxtP6CN38bOtslpvb4Q4UwzCX-liokm8gt1UFe4RhOh7HCaxetquxulshTryT3Qk1RXoxFtXrHhpl-IU9-cyk99HVqiHnbPE8MfyM83NFgUEX7SgTYJTbBg4XMQjgonBmRxQxEv9PhtRaTaTRQ5BNE1dL4bFuWp7ouw2fjMQ?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          2.2974017,48.8594957,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Numa Numa</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5PnMJYuNCpl2ZbO_2F6oJrN_JL3NMGZ-MT3T7xA_iB5RheJju039nPZAmk4sacsPU9bLNvqIL6FN4cfcdx6DXA_-CJv2UR7WVA3yPScYPCuAgQIESJfZ_M66BVUSVXLs6zPr6QuW6q8SmXUaxSkO047yHln20oybyL9DRjpmDzIvJNFY27uIFmrE3FEnwifAU-7GOHAtqKeYFroLEIWwmtxwi8TpkGPJwxJbxae1s6Yc32rcmRWPR6ts4?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Vanguard<br>Description: Based on the Battle of Pica Forks, a pincer attack from Axis forces causes the Allies to brace for a battle on a beachhead.<br>Link: https://callofdutymaps.com/vanguard/Numa-Numa/]]></description>
+      <styleUrl>#icon-seq2-0-60-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Vanguard</value>
+        </Data>
+        <Data name="Description">
+          <value>Based on the Battle of Pica Forks, a pincer attack from Axis forces causes the Allies to brace for a battle on a beachhead.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/vanguard/Numa-Numa/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5PnMJYuNCpl2ZbO_2F6oJrN_JL3NMGZ-MT3T7xA_iB5RheJju039nPZAmk4sacsPU9bLNvqIL6FN4cfcdx6DXA_-CJv2UR7WVA3yPScYPCuAgQIESJfZ_M66BVUSVXLs6zPr6QuW6q8SmXUaxSkO047yHln20oybyL9DRjpmDzIvJNFY27uIFmrE3FEnwifAU-7GOHAtqKeYFroLEIWwmtxwi8TpkGPJwxJbxae1s6Yc32rcmRWPR6ts4?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          155.3807101,-6.3753919,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Oasis</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5AnMWsg8wJpLQBgiYz4eKrggEo9ALCCReHf06nBMXHMxFuVTKg5toWMlRNHrmSpaJ7uBIE3MhwDwcsMohLTqMEihiw4RruqaOKlbZK7fNeEtGDIMNl4KxmiDChIewrGOy-g-Y1fbME8cRmu66BPm4Oo9QXK9tVM9gDWLxrqHSBjdiyWpAn_WoXPAyjUCTLwB2ESQpskxIQUAzx8JNQ43jrnQQ6QCGXyQx3NHToblb0hPrZthkFvCmwoBY?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Vanguard<br>Description: As part of an Allied advance from Egypt to Libya, a Special Forces squad stages an ambush of a convoy of Axis reinforcements within a geographical choke point within a canyon oasis. <br>Link: https://callofdutymaps.com/vanguard/Oasis-2/]]></description>
+      <styleUrl>#icon-seq2-0-61-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Vanguard</value>
+        </Data>
+        <Data name="Description">
+          <value>As part of an Allied advance from Egypt to Libya, a Special Forces squad stages an ambush of a convoy of Axis reinforcements within a geographical choke point within a canyon oasis. </value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/vanguard/Oasis-2/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5AnMWsg8wJpLQBgiYz4eKrggEo9ALCCReHf06nBMXHMxFuVTKg5toWMlRNHrmSpaJ7uBIE3MhwDwcsMohLTqMEihiw4RruqaOKlbZK7fNeEtGDIMNl4KxmiDChIewrGOy-g-Y1fbME8cRmu66BPm4Oo9QXK9tVM9gDWLxrqHSBjdiyWpAn_WoXPAyjUCTLwB2ESQpskxIQUAzx8JNQ43jrnQQ6QCGXyQx3NHToblb0hPrZthkFvCmwoBY?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          32.4530056,26.3349035,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Red Star</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR40ZTOXyqOuwK4462Hdh2yWiKhh47L6jbv9LHucvuuucixAzfYXjWk5KcpiXaMDfPABRGIeqBFVUMq_pch7GZBJNavSIKJCBKzDibnBFfoEVxka8_nt5YBuj2A7u24DXFBhAQjG07AMMrKDy7Z7eeGbW8boWdAEMYTMiaS8EeSpYR6XqKonvTOgtrngUJUGtBUw1S1pB-Ih6qZsJYi8eqO5UpNOi-MFF5GpwXLfO7p_t6TjLtLfyoRSl4k?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Vanguard<br>Description: Stalingrad in winter, based on the pivotal yet long Eastern Front battle. One of the game’s largest maps, action here is focused around a central courtyard and the buildings on the perimeter.<br>Link: https://callofdutymaps.com/vanguard/Red-Star/]]></description>
+      <styleUrl>#icon-seq2-0-62-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Vanguard</value>
+        </Data>
+        <Data name="Description">
+          <value>Stalingrad in winter, based on the pivotal yet long Eastern Front battle. One of the game’s largest maps, action here is focused around a central courtyard and the buildings on the perimeter.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/vanguard/Red-Star/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR40ZTOXyqOuwK4462Hdh2yWiKhh47L6jbv9LHucvuuucixAzfYXjWk5KcpiXaMDfPABRGIeqBFVUMq_pch7GZBJNavSIKJCBKzDibnBFfoEVxka8_nt5YBuj2A7u24DXFBhAQjG07AMMrKDy7Z7eeGbW8boWdAEMYTMiaS8EeSpYR6XqKonvTOgtrngUJUGtBUw1S1pB-Ih6qZsJYi8eqO5UpNOi-MFF5GpwXLfO7p_t6TjLtLfyoRSl4k?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          44.5133034,48.708048,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Sub Pens</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6l1dgzLOnflTbhcz6fnVbLeI_YV8ike3UW8jXF9tYGXOAwhU1MYcPH54oEyPzc2kreC_nXGeugQLQKMv06WtpXkIdjIYtjIVMXuLQ1aWZx3MLH89jdICbrsxsYTkQY11nF3HCHIxQyLx6CwftlZ6z4xDKahXQmVi4a9wipgzn70fyjLNhHCLTwwWWynqkDZ_VXm2QOdk0cFFl0ST6daLjsgIVPifeUxioHjr59fBypcXAvAo3T88GVRxc?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Vanguard<br>Description: A U-boat base off the coast of France, this is where the Vanguard Special Forces make their attempt to disrupt the Axis’s Project Phoenix. This small-sized map has a massive submarine at center. <br>Link: https://callofdutymaps.com/vanguard/Sub-Pens-2/]]></description>
+      <styleUrl>#icon-seq2-0-63-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Vanguard</value>
+        </Data>
+        <Data name="Description">
+          <value>A U-boat base off the coast of France, this is where the Vanguard Special Forces make their attempt to disrupt the Axis’s Project Phoenix. This small-sized map has a massive submarine at center. </value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/vanguard/Sub-Pens-2/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6l1dgzLOnflTbhcz6fnVbLeI_YV8ike3UW8jXF9tYGXOAwhU1MYcPH54oEyPzc2kreC_nXGeugQLQKMv06WtpXkIdjIYtjIVMXuLQ1aWZx3MLH89jdICbrsxsYTkQY11nF3HCHIxQyLx6CwftlZ6z4xDKahXQmVi4a9wipgzn70fyjLNhHCLTwwWWynqkDZ_VXm2QOdk0cFFl0ST6daLjsgIVPifeUxioHjr59fBypcXAvAo3T88GVRxc?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -1.6763187,46.4398256,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Tuscan</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4G6wM9iHvwL0Xuk-QvDpFEoM7a0bm4XQO6PIyD2OoZ4rbA1HpEZ6Ao3Lp1hitFlLCcmyfsGqLky1PL16SqOQNiOVyQPDmczg9VgxNcO8SOccGrIOU2ju9DGMi9ri99OnNSrGcyKkIgL6dn9vUWgxJz-S1tRJHZdvWvdw3Dc70-knuB-TI4ppKOu8Ept6QpLeQm8_a7cuqknuqNyfS2ocMKX5FO8wqP2OE_8-S93-FhaKtb9E-6WGNKJy0?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Vanguard<br>Description: Within the hills of Tuscany, the Axis attempt to burn what they cannot defend from the Axis: a small town sitting on crucial ground for advancement. <br>Link: https://callofdutymaps.com/vanguard/tuscan/]]></description>
+      <styleUrl>#icon-seq2-0-64-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Vanguard</value>
+        </Data>
+        <Data name="Description">
+          <value>Within the hills of Tuscany, the Axis attempt to burn what they cannot defend from the Axis: a small town sitting on crucial ground for advancement. </value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/vanguard/tuscan/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4G6wM9iHvwL0Xuk-QvDpFEoM7a0bm4XQO6PIyD2OoZ4rbA1HpEZ6Ao3Lp1hitFlLCcmyfsGqLky1PL16SqOQNiOVyQPDmczg9VgxNcO8SOccGrIOU2ju9DGMi9ri99OnNSrGcyKkIgL6dn9vUWgxJz-S1tRJHZdvWvdw3Dc70-knuB-TI4ppKOu8Ept6QpLeQm8_a7cuqknuqNyfS2ocMKX5FO8wqP2OE_8-S93-FhaKtb9E-6WGNKJy0?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          11.2486208,43.7710513,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Shipment</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7uK5vF4PMc72OSQM_bjsWtI-HRntHKwLVZ5IHHZe4haZ_4c3x4uql9MOR1g1_qxdsRbde6ynxpFg01dSs9Y6uImZBu162r1J-btQIiBH4v23p0IlELGb3kx9XmqNZMwplc_nTUdekSsGv59hN2a3IrVjubg4xGXcFJOtLEwz-WqoT5cgA70ckHEJbtW95xJ3LUK0xA5u9Pl9ND9TYdcdZKf_OUTQsTgiY6qe-h3AUbbGkwUxyvZKpM0M0?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Vanguard<br>Description: Your Shipment has arrived in Honolulu, Hawaii. Packaging pure chaos in a fun-sized, square-shaped box. <br>Link: https://callofdutymaps.com/vanguard/Shipment-4/]]></description>
+      <styleUrl>#icon-seq2-0-65-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Vanguard</value>
+        </Data>
+        <Data name="Description">
+          <value>Your Shipment has arrived in Honolulu, Hawaii. Packaging pure chaos in a fun-sized, square-shaped box. </value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/vanguard/Shipment-4/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7uK5vF4PMc72OSQM_bjsWtI-HRntHKwLVZ5IHHZe4haZ_4c3x4uql9MOR1g1_qxdsRbde6ynxpFg01dSs9Y6uImZBu162r1J-btQIiBH4v23p0IlELGb3kx9XmqNZMwplc_nTUdekSsGv59hN2a3IrVjubg4xGXcFJOtLEwz-WqoT5cgA70ckHEJbtW95xJ3LUK0xA5u9Pl9ND9TYdcdZKf_OUTQsTgiY6qe-h3AUbbGkwUxyvZKpM0M0?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -157.8583333,21.3069444,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Casablanca</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7uYIKnUhKxfF2OI4OKGVrjUEuYApXGdQyWUklTOo5nkhJKtqQladg7NotRRVFZ2r6KFZAwvvwKNuTarDtCWWax563jzz2BtjKJ-ihBcG3T-NlT4tmcYf_ChYaLbIvRza0NF7bl2MXKoJZMzwwQWJWafDdoX4UxeXWHtfgcUbClB7355TnCryd6MXuP8tfTWsnC6gdQjdQYRNZ7y82YHRNNsihbcIu3D2xdMUSE-RHzTsrDgStmvKpcxYU?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Vanguard<br>Description: Casablanca challenges Operators with its winding city streets and multiple interior locations. High walls throughout create a labyrinth where combat can erupt at any moment.<br>Link: https://callofdutymaps.com/vanguard/casablanca/]]></description>
+      <styleUrl>#icon-seq2-0-66-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Vanguard</value>
+        </Data>
+        <Data name="Description">
+          <value>Casablanca challenges Operators with its winding city streets and multiple interior locations. High walls throughout create a labyrinth where combat can erupt at any moment.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/vanguard/casablanca/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7uYIKnUhKxfF2OI4OKGVrjUEuYApXGdQyWUklTOo5nkhJKtqQladg7NotRRVFZ2r6KFZAwvvwKNuTarDtCWWax563jzz2BtjKJ-ihBcG3T-NlT4tmcYf_ChYaLbIvRza0NF7bl2MXKoJZMzwwQWJWafDdoX4UxeXWHtfgcUbClB7355TnCryd6MXuP8tfTWsnC6gdQjdQYRNZ7y82YHRNNsihbcIu3D2xdMUSE-RHzTsrDgStmvKpcxYU?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -7.0376908,31.8570447,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Paradise</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7yRjtPCl0tOR2qHl0CcG5SUdooTWGci5kynDwWqgYAW5_NrZ4BzlXUo0OxtgBNFeBlVWng-WeOmFGN1zpXchVePEdR1MZSHmFs9Y-Uykp9E1kZbXbWmy3wKZweM5UKfF1i34Aq0vHtTFRpOKvtI_NpbSpQRve_JAtpgXH6bTcPBBLW6mtN1RP1hS7JDcYKVt2UJmAIRXZuLi7koY7Kkv7_TGZvvBhATuGyDJp8UBqYs0-B1d7b53Uz3jA?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Vanguard<br>Description: A weapons testing site somewhere in the Pacific Ocean hosts all task force Operators for joint exercises. Medium-sized three-lane-style map featuring an underground tunnel and pools of toxic waste.<br>Link: https://callofdutymaps.com/vanguard/paradise/]]></description>
+      <styleUrl>#icon-seq2-0-67-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Vanguard</value>
+        </Data>
+        <Data name="Description">
+          <value>A weapons testing site somewhere in the Pacific Ocean hosts all task force Operators for joint exercises. Medium-sized three-lane-style map featuring an underground tunnel and pools of toxic waste.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/vanguard/paradise/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR7yRjtPCl0tOR2qHl0CcG5SUdooTWGci5kynDwWqgYAW5_NrZ4BzlXUo0OxtgBNFeBlVWng-WeOmFGN1zpXchVePEdR1MZSHmFs9Y-Uykp9E1kZbXbWmy3wKZweM5UKfF1i34Aq0vHtTFRpOKvtI_NpbSpQRve_JAtpgXH6bTcPBBLW6mtN1RP1hS7JDcYKVt2UJmAIRXZuLi7koY7Kkv7_TGZvvBhATuGyDJp8UBqYs0-B1d7b53Uz3jA?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -124.508523,-8.783195,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Radar</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR76j4XI-gJPdxspH4YnKQHeFaLx1abTxxeHVrP1MQuDaZHSajL-SEEKPNdp86xj7vOdAJaG0LWWQMOMNk0mppJfgafIum5MIwYeSM6dTD0qxHONwmkUfkYEzuDMid9u1ekm1pFoKzigyVpnZdEU8L4lihcAYzqTAKlI5XOf5JKUj3Un-XgY87dJBc2ubrFZ_UEnFlXWcYeAaVkwnbhbtRlBn1XXTvwHPzWYbs5Y4upBVAi7XroZ9NhOlPg?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Vanguard<br>Description: This small radar station in the Pacific is built for fast-paced combat. Remember to not camp on the catwalks!<br>Link: https://callofdutymaps.com/vanguard/radar/]]></description>
+      <styleUrl>#icon-seq2-0-68-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Vanguard</value>
+        </Data>
+        <Data name="Description">
+          <value>This small radar station in the Pacific is built for fast-paced combat. Remember to not camp on the catwalks!</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/vanguard/radar/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR76j4XI-gJPdxspH4YnKQHeFaLx1abTxxeHVrP1MQuDaZHSajL-SEEKPNdp86xj7vOdAJaG0LWWQMOMNk0mppJfgafIum5MIwYeSM6dTD0qxHONwmkUfkYEzuDMid9u1ekm1pFoKzigyVpnZdEU8L4lihcAYzqTAKlI5XOf5JKUj3Un-XgY87dJBc2ubrFZ_UEnFlXWcYeAaVkwnbhbtRlBn1XXTvwHPzWYbs5Y4upBVAi7XroZ9NhOlPg?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -129.6944531,-7.5217365,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Gondola</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4Tr2SSxRjx3KvK2RAWfbWoxNE_1PE7YYjj7fF87J25aZ2sMIslhRenNC2sH6p2kxFhs-zwPesiV5UDVgOrsEaPI4ZLqnqgqpULtrkaf4nIU7_6qv96uOZsKr75J5ssd9_ZoIXtmVcxnHBqEC9xAe2BwJuEEZ9uRVZ_UzfZcIz5yeCwvYP28MRnmwY2PS-yjszIZO18zQa2F7pK7wrnd6dd4Rj9KucJt4rjcNIvv6UGEeUC1hvKVcCHilI?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Vanguard<br>Description: This medium-sized map is nearly symmetrical, with some variation between the far west and east spawns. From each spawn, you descend toward the lower middle ground or straight across through the upper Power Plant.<br>Link: https://callofdutymaps.com/vanguard/gondola/]]></description>
+      <styleUrl>#icon-seq2-0-69-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Vanguard</value>
+        </Data>
+        <Data name="Description">
+          <value>This medium-sized map is nearly symmetrical, with some variation between the far west and east spawns. From each spawn, you descend toward the lower middle ground or straight across through the upper Power Plant.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/vanguard/gondola/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4Tr2SSxRjx3KvK2RAWfbWoxNE_1PE7YYjj7fF87J25aZ2sMIslhRenNC2sH6p2kxFhs-zwPesiV5UDVgOrsEaPI4ZLqnqgqpULtrkaf4nIU7_6qv96uOZsKr75J5ssd9_ZoIXtmVcxnHBqEC9xAe2BwJuEEZ9uRVZ_UzfZcIz5yeCwvYP28MRnmwY2PS-yjszIZO18zQa2F7pK7wrnd6dd4Rj9KucJt4rjcNIvv6UGEeUC1hvKVcCHilI?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          8.5610781,46.5601061,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Champion Hill</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5btU9gKAAOlNW_HgeWTgfDCUNxNwoQORMyv3scJvmOJER8RVJXI8elj2HlnECumnRdaq2oFfHsC1jUEu3ZdDQXHEpD9qTTVNh-wRckrNILHwP_A_vmlU06O6nrv7YbIHsrQWjhk5h97KQllaYmHq_IMmznGeOfWUPxrOkOwKG6_fNkV6AZ5p9B4kqSBm1RC_K2_IbpcxIBdPa4_LEit-Du4osMmUWDDTUdh6xm7qgz8JuZf2YEpgcFzSk?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Vanguard<br>Description: Champion Hill features four small maps for Combat Rounds located around the central Buy Station Area. For each Combat Round, your squad and opponents will be placed in one of these four maps at random, its in your benefit to master all locations!<br>Link: https://callofdutymaps.com/vanguard/champion-hill/]]></description>
+      <styleUrl>#icon-seq2-0-70-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Vanguard</value>
+        </Data>
+        <Data name="Description">
+          <value>Champion Hill features four small maps for Combat Rounds located around the central Buy Station Area. For each Combat Round, your squad and opponents will be placed in one of these four maps at random, its in your benefit to master all locations!</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/vanguard/champion-hill/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5btU9gKAAOlNW_HgeWTgfDCUNxNwoQORMyv3scJvmOJER8RVJXI8elj2HlnECumnRdaq2oFfHsC1jUEu3ZdDQXHEpD9qTTVNh-wRckrNILHwP_A_vmlU06O6nrv7YbIHsrQWjhk5h97KQllaYmHq_IMmznGeOfWUPxrOkOwKG6_fNkV6AZ5p9B4kqSBm1RC_K2_IbpcxIBdPa4_LEit-Du4osMmUWDDTUdh6xm7qgz8JuZf2YEpgcFzSk?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          31.0477989,25.4664397,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Mayhem</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4hfsnpqKawvWsRAmVVvw9BB9pGv22ULuH1-ukXRNXS1noR9t7eayDzPcz62X65t9gpE52vvDzrb6qPHivq_KcI5HoCO9KLiB5C4fMzywm3hDbEIuP20l3mc74OTbfqDD3hy15RDZ5MtpbNN6AYXl2lg9VJ26OTPk_0Yf1WUyqnBUi4I0-bwptC24zZxYg6iZcfyMDFHRa1cm0xS7hUVq5YOWuygUQryQ89MKt3x1ow4da0EBVxa5CSTZs?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Vanguard<br>Description: Redefining the meaning of chaos with one of the tightest battle areas in Call of Duty history. Prepare to take on gargantuan proportions as you stomp through a small-scale replica of a bustling metropolis.<br>Link: https://callofdutymaps.com/vanguard/mayhem/]]></description>
+      <styleUrl>#icon-seq2-0-71-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Vanguard</value>
+        </Data>
+        <Data name="Description">
+          <value>Redefining the meaning of chaos with one of the tightest battle areas in Call of Duty history. Prepare to take on gargantuan proportions as you stomp through a small-scale replica of a bustling metropolis.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/vanguard/mayhem/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR4hfsnpqKawvWsRAmVVvw9BB9pGv22ULuH1-ukXRNXS1noR9t7eayDzPcz62X65t9gpE52vvDzrb6qPHivq_KcI5HoCO9KLiB5C4fMzywm3hDbEIuP20l3mc74OTbfqDD3hy15RDZ5MtpbNN6AYXl2lg9VJ26OTPk_0Yf1WUyqnBUi4I0-bwptC24zZxYg6iZcfyMDFHRa1cm0xS7hUVq5YOWuygUQryQ89MKt3x1ow4da0EBVxa5CSTZs?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          139.6523705,35.675913,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Alps</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5GdXOk1389u8wqsn_cTAQun2M9DUrOvN0RFjG4t5vOO6LFtlmF5eGmR2PRCe9ztQwIiLnnQtrEg6m66xcREHYK5ejDLkIrE4nHOdak4CwZCHhre9YAzGnQVJhNJ6VDf6C9HYgR1ADtyI4k7vo2CzI6EKnsMWl3w79QoO_O4q47BRIjse3m5FEi6mr0EwDeXZrirp0gdoKbgO5x15I_4rx1PT7xFI5T5gelSNu8nedXL-oi8SSafi2f6Ho?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Vanguard<br>Description: High on top of a large snowy mountain is a large area that’s fit for Arms Race, grab your squad and capture all locations on the largest map on Call of Duty Vanguard.<br>Link: https://callofdutymaps.com/vanguard/alps/]]></description>
+      <styleUrl>#icon-seq2-0-72-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Vanguard</value>
+        </Data>
+        <Data name="Description">
+          <value>High on top of a large snowy mountain is a large area that’s fit for Arms Race, grab your squad and capture all locations on the largest map on Call of Duty Vanguard.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/vanguard/alps/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5GdXOk1389u8wqsn_cTAQun2M9DUrOvN0RFjG4t5vOO6LFtlmF5eGmR2PRCe9ztQwIiLnnQtrEg6m66xcREHYK5ejDLkIrE4nHOdak4CwZCHhre9YAzGnQVJhNJ6VDf6C9HYgR1ADtyI4k7vo2CzI6EKnsMWl3w79QoO_O4q47BRIjse3m5FEi6mr0EwDeXZrirp0gdoKbgO5x15I_4rx1PT7xFI5T5gelSNu8nedXL-oi8SSafi2f6Ho?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          9.7064154,46.9776434,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Sphere</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6hjWNFtlhr6vgZ4FRz2WnATUiVM-214r98Y_69krVcnbIMpziLJwBc-lsMDFGAKwAWwEXnY0U2yGE-NSZlc6fACHo67FQKP0kgk6zpMSULmocMCHutV27r1cJew3g2Wox6AS4XWaYpnpElq6iPLtTi9vDtCutKrrDg5bSgMPquFa0zB6un66rBwnjvsOVNGFQPnoNVeyGFM6u4GXJx90wzSqSeof-gHwht5Oek4a7kGi2LFQ3Te6tTFwE?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Vanguard<br>Description: Deep underground lies an experimental test site where research and development is underway that could turn the tide of the war. Now’s the time to deploy and take it by force. <br>Link: https://callofdutymaps.com/vanguard/sphere/]]></description>
+      <styleUrl>#icon-seq2-0-73-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Vanguard</value>
+        </Data>
+        <Data name="Description">
+          <value>Deep underground lies an experimental test site where research and development is underway that could turn the tide of the war. Now’s the time to deploy and take it by force. </value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/vanguard/sphere/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6hjWNFtlhr6vgZ4FRz2WnATUiVM-214r98Y_69krVcnbIMpziLJwBc-lsMDFGAKwAWwEXnY0U2yGE-NSZlc6fACHo67FQKP0kgk6zpMSULmocMCHutV27r1cJew3g2Wox6AS4XWaYpnpElq6iPLtTi9vDtCutKrrDg5bSgMPquFa0zB6un66rBwnjvsOVNGFQPnoNVeyGFM6u4GXJx90wzSqSeof-gHwht5Oek4a7kGi2LFQ3Te6tTFwE?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -116.1926472,37.1227456,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>USS Texas 1945</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5hpAVzz--fAg1CTKnw6H8z3gNu1K9US_A5YbYV35-Ofa1OFasaZEUqdTo2ymJdBjzy7WuD6_dHrINXOFjqZptOa-lA74-ANrkPkqX7rkXErTXh8z3gNpwRTytLRIUSLKgGCiKazC7vG1MCqUvgoTNy4g92wiZMgzNkhGYd8JlMQ33vR6jasQQfArpWe-f1hD_Iy1_lN4OnW_gryezD1yZZVtr43TcmbTDJd83tUxustGPYl11FHQKsuE8?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Vanguard<br>Description: Anchored just offshore, a legendary battleship returns for another bout of combat. Keep your head above water and keep above the main deck to keep this battleship on lockdown. <br>Link: https://callofdutymaps.com/vanguard/uss-texas-1945/]]></description>
+      <styleUrl>#icon-seq2-0-74-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Vanguard</value>
+        </Data>
+        <Data name="Description">
+          <value>Anchored just offshore, a legendary battleship returns for another bout of combat. Keep your head above water and keep above the main deck to keep this battleship on lockdown. </value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/vanguard/uss-texas-1945/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5hpAVzz--fAg1CTKnw6H8z3gNu1K9US_A5YbYV35-Ofa1OFasaZEUqdTo2ymJdBjzy7WuD6_dHrINXOFjqZptOa-lA74-ANrkPkqX7rkXErTXh8z3gNpwRTytLRIUSLKgGCiKazC7vG1MCqUvgoTNy4g92wiZMgzNkhGYd8JlMQ33vR6jasQQfArpWe-f1hD_Iy1_lN4OnW_gryezD1yZZVtr43TcmbTDJd83tUxustGPYl11FHQKsuE8?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -138.9202141,-13.3499262,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Beheaded</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6zbwgmRWXSQwHWqcC6kiON8mYHQpSExlQXGWd4ico0enz5RWrmaKSDvA1xpVz-_v3qPf5mOUSiHiXE7b0ruIatCh798MgcRNUj_CjBqoNZkce868iwxf4_SmSGfSZoPBraQ0hNURK0AqSfEUpA_njGkh8DKFMSORGKzFie0YPF2oGb6VODPKLAMQH9joLUyLcKNA3CEHghVzXHbHZyEso7zXpeIsk8XUZOFtXQgA0On40gEyQ3k5Q73iU?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Vanguard<br>Description: The Statue of Liberty’s head and torch-bearing arm lie smashed in the streets of the Big Apple, setting ablaze the floors over the Red Saxophone Lounge. Its small-to medium-sized layout encourages constant battle, while its interior spaces and flanking routes serve up plentiful tactical opportunities.<br>Link: https://callofdutymaps.com/vanguard/beheaded/]]></description>
+      <styleUrl>#icon-seq2-0-75-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Vanguard</value>
+        </Data>
+        <Data name="Description">
+          <value>The Statue of Liberty’s head and torch-bearing arm lie smashed in the streets of the Big Apple, setting ablaze the floors over the Red Saxophone Lounge. Its small-to medium-sized layout encourages constant battle, while its interior spaces and flanking routes serve up plentiful tactical opportunities.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/vanguard/beheaded/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR6zbwgmRWXSQwHWqcC6kiON8mYHQpSExlQXGWd4ico0enz5RWrmaKSDvA1xpVz-_v3qPf5mOUSiHiXE7b0ruIatCh798MgcRNUj_CjBqoNZkce868iwxf4_SmSGfSZoPBraQ0hNURK0AqSfEUpA_njGkh8DKFMSORGKzFie0YPF2oGb6VODPKLAMQH9joLUyLcKNA3CEHghVzXHbHZyEso7zXpeIsk8XUZOFtXQgA0On40gEyQ3k5Q73iU?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          -73.9855426,40.7579747,0
+        </coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Fortress</name>
+      <description><![CDATA[<img src="https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5JkfBniaht6B8CSAelWEzmA33zH8wEI7ro_5KY9GsZdkNtFx0jQvTfPrlqmVCNAAESGE8OqPv_oAMMN1A5v_rhzQWFq6CPo68FjB2qbVgOEGutUE5lcLAkNKVCd1dPoYD5pzYSvFJ-ZcfZ8Yn7txdOqktxE7g34LPXwd2kiwMqvOd9ZGHULWerPEEQImyBaabVORz-IeGhHtrCcVsE7lsjL0ytIt2U82yB_8a4nudam-9rhBa0OtUsYIQ?authuser=0&fife=s16383" height="200" width="auto" /><br><br>Game: Vanguard<br>Description: Battle in a post-apocalyptic Mediterranean fortress cobbled together with old ship parts and crumbling walls. The maritime graveyard sits where water once flowed freely, with Operators battling for possession of the few remaining strongholds.<br>Link: https://callofdutymaps.com/vanguard/Fortress/]]></description>
+      <styleUrl>#icon-seq2-0-76-0097A7-labelson</styleUrl>
+      <ExtendedData>
+        <Data name="Game">
+          <value>Vanguard</value>
+        </Data>
+        <Data name="Description">
+          <value>Battle in a post-apocalyptic Mediterranean fortress cobbled together with old ship parts and crumbling walls. The maritime graveyard sits where water once flowed freely, with Operators battling for possession of the few remaining strongholds.</value>
+        </Data>
+        <Data name="Link">
+          <value>https://callofdutymaps.com/vanguard/Fortress/</value>
+        </Data>
+        <Data name="gx_media_links">
+          <value><![CDATA[https://mymaps.usercontent.google.com/hostedimage/m/*/3AAjQbR5JkfBniaht6B8CSAelWEzmA33zH8wEI7ro_5KY9GsZdkNtFx0jQvTfPrlqmVCNAAESGE8OqPv_oAMMN1A5v_rhzQWFq6CPo68FjB2qbVgOEGutUE5lcLAkNKVCd1dPoYD5pzYSvFJ-ZcfZ8Yn7txdOqktxE7g34LPXwd2kiwMqvOd9ZGHULWerPEEQImyBaabVORz-IeGhHtrCcVsE7lsjL0ytIt2U82yB_8a4nudam-9rhBa0OtUsYIQ?authuser=0&fife=s16383]]></value>
+        </Data>
+      </ExtendedData>
+      <Point>
+        <coordinates>
+          14.5224011,35.8881561,0
+        </coordinates>
+      </Point>
+    </Placemark>
+  </Document>
+</kml>

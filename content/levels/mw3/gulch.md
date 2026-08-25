@@ -9,10 +9,12 @@ locations:
   - id: main
     country: United States
     region: Arizona
-    latitude: 34.3
-    longitude: -111.7
-    precision: country
-    confidence: fallback
-    method: country-fallback
+    latitude: 39.4123452
+    longitude: -111.5359386
+    precision: approximate
+    confidence: medium
+    method: manual-approximate
     primary: true
+    urls:
+      - callOfDutyMaps: https://callofdutymaps.com/modern-warfare-3/gulch
 ---

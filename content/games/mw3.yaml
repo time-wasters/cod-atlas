@@ -1,7 +1,10 @@
 id: mw3
 code: MW3
 label: Modern Warfare 3 (2011)
+labelLong: "Call of Duty: Modern Warfare 3"
 released: 2011-11-08
+series: modern-warfare
+subseries: main
 images:
   steam:
     app: 42680

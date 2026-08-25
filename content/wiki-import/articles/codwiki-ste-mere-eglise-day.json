@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Ste._Mere-Eglise-Day",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Ste._Mere-Eglise-Day",
   "latestRevisionId": 2992305,
-  "importedAt": "2026-08-10T19:24:12.191Z",
+  "importedAt": "2026-08-24T20:19:26.002Z",
   "levelLocation": {
     "raw": "Sainte-Mère-Église, Normandy, France",
     "label": "Sainte-Mère-Église, Normandy, France",
@@ -59,6 +59,8 @@
     "label": "Ste. Mere-Eglise",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-ste-mere-eglise",
         "wikiTitle": "Ste. Mere-Eglise",
         "label": "Ste. Mere-Eglise",
         "url": "https://callofduty.fandom.com/wiki/Ste._Mere-Eglise"
@@ -70,6 +72,8 @@
     "label": "Normandy Route N13",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-normandy-route-n13",
         "wikiTitle": "Normandy Route N13",
         "label": "Normandy Route N13",
         "url": "https://callofduty.fandom.com/wiki/Normandy_Route_N13"

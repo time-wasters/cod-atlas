@@ -23,6 +23,7 @@ Common equivalents:
 | `npm ci` | `docker compose build cod-atlas-tools` |
 | `npm run data:build` | `docker compose run --rm cod-atlas-tools npm run data:build` |
 | `npm run data:check` | `docker compose run --rm cod-atlas-tools npm run data:check` |
+| `npm run progress:update` | `docker compose run --rm cod-atlas-tools npm run progress:update` |
 | `npm run icons:import` | `docker compose run --rm cod-atlas-tools npm run icons:import` |
 | `npm run lint` | `docker compose run --rm cod-atlas-tools npm run lint` |
 | `npm test` | `docker compose run --rm cod-atlas-tools npm test` |

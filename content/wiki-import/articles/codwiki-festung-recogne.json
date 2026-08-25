@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Festung_Recogne",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Festung_Recogne",
   "latestRevisionId": 2992578,
-  "importedAt": "2026-08-10T19:23:50.605Z",
+  "importedAt": "2026-08-24T20:19:04.372Z",
   "levelLocation": {
     "raw": "Festung Recogne, Northeast of Bastogne, Belgium",
     "label": "Festung Recogne, Northeast of Bastogne, Belgium",
@@ -59,11 +59,15 @@
     "label": "Oder River Town, Battleship Tirpitz (Chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-oder-river-town",
         "wikiTitle": "Oder River Town",
         "label": "Oder River Town",
         "url": "https://callofduty.fandom.com/wiki/Oder_River_Town"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-battleship-tirpitz-level",
         "wikiTitle": "Battleship Tirpitz (level)",
         "label": "Battleship Tirpitz",
         "url": "https://callofduty.fandom.com/wiki/Battleship_Tirpitz_(level)"
@@ -75,11 +79,15 @@
     "label": "V-2 Rocket Site, Warsaw Factory (Chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-v-2-rocket-site",
         "wikiTitle": "V-2 Rocket Site",
         "label": "V-2 Rocket Site",
         "url": "https://callofduty.fandom.com/wiki/V-2_Rocket_Site"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-warsaw-factory",
         "wikiTitle": "Warsaw Factory",
         "label": "Warsaw Factory",
         "url": "https://callofduty.fandom.com/wiki/Warsaw_Factory"

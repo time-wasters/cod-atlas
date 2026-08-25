@@ -8,10 +8,12 @@ wikiArticle: codwiki-seatown
 locations:
   - id: main
     country: Morocco
-    latitude: 32
-    longitude: -5
-    precision: country
-    confidence: fallback
-    method: country-fallback
+    latitude: 31.5084926
+    longitude: -9.7595041
+    precision: approximate
+    confidence: medium
+    method: manual-approximate
     primary: true
+    urls:
+      - callOfDutyMaps: https://callofdutymaps.com/modern-warfare-3/seatown
 ---

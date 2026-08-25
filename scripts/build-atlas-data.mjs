@@ -13,13 +13,16 @@ const mapOverlaysOutputPath = path.join(outputDirectory, "map-overlays.generated
 const historyOverlaysOutputPath = path.join(outputDirectory, "history-overlays.generated.json");
 const levelBannersRoot = path.join(root, "public/images/levels");
 const checkOnly = process.argv.includes("--check");
-const validModes = new Set(["singleplayer", "multiplayer"]);
+const validModes = new Set(["singleplayer", "multiplayer", "zombies"]);
 const mapTypeDirectoryByMode = new Map([
   ["singleplayer", "campaign"],
   ["multiplayer", "multiplayer"],
+  ["zombies", "zombies"],
 ]);
 const validPrecisions = new Set(["exact", "approximate", "city", "region", "country", "off-world"]);
 const validConfidences = new Set(["high", "medium", "fallback"]);
+const validGameSeries = new Set(["world-war-ii", "modern-warfare", "black-ops", "standalone"]);
+const validGameSubseries = new Set(["main", "reboot", "remaster", "add-on", "spin-off"]);
 const validMethods = new Set([
   "verified-landmark",
   "real-world-inspiration",
@@ -31,6 +34,7 @@ const validMethods = new Set([
   "region-fallback",
   "country-fallback",
 ]);
+const validWikiSequences = new Set(["game", "chronological"]);
 const countryAliases = new Map([
   ["Czech Republic (Czechia)", "Czechia"],
   ["Myanmar (Burma)", "Myanmar"],
@@ -40,10 +44,46 @@ const flagCodesByCountryName = new Map(countries.flatMap((country) => [
   [country.name.common, country.cca2],
   [country.name.official, country.cca2],
 ]));
+const countriesByName = new Map(countries.flatMap((country) => [
+  [country.name.common, country],
+  [country.name.official, country],
+]));
+const specialContinents = new Map([
+  ["Adriatic Sea", "Oceans"],
+  ["Arctic Circle", "Arctic"],
+  ["Atlantic Ocean", "Oceans"],
+  ["Baltic Sea", "Oceans"],
+  ["Bering Strait", "Oceans"],
+  ["Caribbean Sea", "Oceans"],
+  ["Dead Sea", "Oceans"],
+  ["English Channel", "Oceans"],
+  ["Europa (Jupiter Moon)", "Off-world"],
+  ["Gulf of Mexico", "Oceans"],
+  ["Indian Ocean", "Oceans"],
+  ["Mars", "Off-world"],
+  ["Mediterranean Sea", "Oceans"],
+  ["Moon", "Off-world"],
+  ["Pacific Ocean", "Oceans"],
+  ["Philippine Sea", "Oceans"],
+  ["Polynesia", "Oceania"],
+  ["Space", "Off-world"],
+]);
 
 function flagCodeForGroup(name) {
   const countryName = countryAliases.get(name) ?? name;
   return flagCodesByCountryName.get(countryName) ?? null;
+}
+
+function continentForGroup(name) {
+  const special = specialContinents.get(name);
+  if (special) return special;
+  const countryName = countryAliases.get(name) ?? name;
+  const country = countriesByName.get(countryName);
+  if (!country) return null;
+  if (country.region === "Americas") {
+    return country.subregion === "South America" ? "South America" : "North America";
+  }
+  return country.region === "Antarctic" ? "Antarctica" : country.region;
 }
 
 async function filesBelow(directory, extension) {
@@ -119,9 +159,36 @@ function validateWikiImage(image, field, filename) {
   validateHttpsUrl(image.detailPageUrl, `${field}.detailPageUrl`, filename);
 }
 
+function validateWikiLevelReferences(article, filename, wikiArticles) {
+  for (const field of ["previousLevels", "nextLevels"]) {
+    const references = article[field];
+    if (references == null) continue;
+    requireValue(Array.isArray(references.links), `${filename}: ${field}.links must be an array`);
+    for (const [index, link] of references.links.entries()) {
+      const linkField = `${field}.links[${index}]`;
+      requireValue(link && typeof link === "object" && !Array.isArray(link), `${filename}: ${linkField} must be an object`);
+      const hasSequence = Object.hasOwn(link, "sequence");
+      const hasArticle = Object.hasOwn(link, "article");
+      requireValue(
+        hasSequence === hasArticle,
+        `${filename}: ${linkField}.sequence and ${linkField}.article must be added together`,
+      );
+      if (!hasSequence) continue;
+      requireValue(validWikiSequences.has(link.sequence), `${filename}: ${linkField}.sequence is invalid`);
+      requireValue(
+        link.article === null || wikiArticles.has(link.article),
+        `${filename}: ${linkField}.article references unknown Wiki article ${link.article}`,
+      );
+    }
+  }
+}
+
 async function validateMapOverlay(overlay, levelId, filename) {
   requireValue(overlay && typeof overlay === "object" && !Array.isArray(overlay), `${filename}: mapOverlay must be an object`);
-  requireValue(/^\/images\/maps\/[a-z0-9/_-]+\.png$/.test(overlay.image ?? ""), `${filename}: mapOverlay.image must be a local PNG under /images/maps/`);
+  requireValue(
+    /^\/images\/(?:maps\/[a-z0-9/_-]+|levels\/[a-z0-9-]+\/[a-z0-9-]+\/maps\/briefing-map)\.png$/.test(overlay.image ?? ""),
+    `${filename}: mapOverlay.image must be a local PNG under /images/maps/ or the level's maps/briefing-map.png`,
+  );
   requireValue(Number.isFinite(overlay.opacity) && overlay.opacity > 0 && overlay.opacity <= 1, `${filename}: mapOverlay.opacity must be greater than 0 and at most 1`);
   for (const corner of ["topLeft", "topRight", "bottomLeft", "bottomRight"]) {
     const coordinates = overlay.corners?.[corner];
@@ -151,7 +218,10 @@ async function validateMapOverlay(overlay, levelId, filename) {
 async function validateHistoryOverlay(overlay, levelId, body, filename) {
   requireValue(overlay && typeof overlay === "object" && !Array.isArray(overlay), `${filename}: each historyOverlay must be an object`);
   requireValue(/^[a-z0-9-]+$/.test(overlay.id ?? ""), `${filename}: historyOverlay.id must use lowercase letters, numbers and hyphens`);
-  requireValue(/^\/images\/maps\/[a-z0-9/_-]+\.png$/.test(overlay.image ?? ""), `${filename}: historyOverlay.image must be a local PNG under /images/maps/`);
+  requireValue(
+    /^\/images\/(?:maps\/[a-z0-9/_-]+|levels\/[a-z0-9-]+\/[a-z0-9-]+\/extra\/[a-z0-9_-]+)\.png$/.test(overlay.image ?? ""),
+    `${filename}: historyOverlay.image must be a local PNG under /images/maps/ or the level's extra/ directory`,
+  );
   requireValue(Number.isFinite(overlay.opacity) && overlay.opacity > 0 && overlay.opacity <= 1, `${filename}: historyOverlay.opacity must be greater than 0 and at most 1`);
   for (const corner of ["topLeft", "topRight", "bottomLeft", "bottomRight"]) {
     const coordinates = overlay.corners?.[corner];
@@ -183,7 +253,9 @@ async function validateHistoryOverlay(overlay, levelId, body, filename) {
 
 const atlas = YAML.parse(await readFile(path.join(contentRoot, "atlas.yaml"), "utf8"));
 const gameFiles = (await filesBelow(path.join(contentRoot, "games"), ".yaml")).sort();
-const levelFiles = (await filesBelow(levelsRoot, ".md")).sort();
+const allLevelFiles = (await filesBelow(levelsRoot, ".md")).sort();
+const levelFiles = allLevelFiles.filter((filename) => !filename.endsWith(".ref.md"));
+const levelReferenceFiles = allLevelFiles.filter((filename) => filename.endsWith(".ref.md"));
 const gamesWithMapTypeDirectories = new Set(levelFiles.flatMap((filename) => {
   const parts = path.relative(levelsRoot, filename).split(path.sep);
   return parts.length === 3 ? [parts[0]] : [];
@@ -194,15 +266,19 @@ try {
   levelBannerFiles = [
     ...(await filesBelow(levelBannersRoot, ".jpg")),
     ...(await filesBelow(levelBannersRoot, ".png")),
-  ].sort();
+    ...(await filesBelow(levelBannersRoot, ".webm")),
+  ].filter((filename) => {
+    const parts = path.relative(levelBannersRoot, filename).split(path.sep);
+    return path.parse(filename).name === "main" || parts.length <= 3;
+  }).sort();
 } catch (error) {
   if (error?.code !== "ENOENT") throw error;
 }
 const levelBannerFilesByBase = new Map();
 for (const filename of levelBannerFiles) {
   const relative = path.relative(levelBannersRoot, filename).replaceAll("\\", "/");
-  const base = relative.replace(/\.(?:jpg|png)$/, "");
-  requireValue(!levelBannerFilesByBase.has(base), `public/images/levels/${base}: use either JPG or PNG, not both`);
+  const base = relative.replace(/\.(?:jpg|png|webm)$/, "");
+  requireValue(!levelBannerFilesByBase.has(base), `public/images/levels/${base}: use one main media file only`);
   levelBannerFilesByBase.set(base, filename);
 }
 
@@ -211,8 +287,28 @@ for (const filename of gameFiles) {
   const game = YAML.parse(await readFile(filename, "utf8"));
   requireValue(game?.id, `${filename}: game id is required`);
   requireValue(!games.has(game.id), `${filename}: duplicate game id ${game.id}`);
-  requireValue(game.code && game.label && game.released, `${filename}: code, label and released are required`);
-  games.set(game.id, game);
+  requireValue(game.code && game.label && game.labelLong && game.released, `${filename}: code, label, labelLong and released are required`);
+  requireValue(validGameSeries.has(game.series), `${filename}: unsupported game series ${game.series}`);
+  requireValue(
+    game.subseries == null || validGameSubseries.has(game.subseries),
+    `${filename}: unsupported game sub-series ${game.subseries}`,
+  );
+  games.set(game.id, {
+    ...game,
+    subseries: game.subseries ?? null,
+    remasterOf: game.remasterOf ?? null,
+  });
+}
+for (const [gameId, game] of games) {
+  const isRemaster = game.subseries === "remaster";
+  requireValue(
+    isRemaster === (game.remasterOf !== null),
+    `${gameId}: remaster games require remasterOf and other games must omit it`,
+  );
+  if (game.remasterOf !== null) {
+    requireValue(game.remasterOf !== gameId, `${gameId}: remasterOf cannot reference the same game`);
+    requireValue(games.has(game.remasterOf), `${gameId}: remasterOf references unknown game ID ${game.remasterOf}`);
+  }
 }
 
 const gameIconDirectory = path.join(root, "public/images/games");
@@ -239,6 +335,7 @@ for (const filename of gameIconFiles) {
 }
 
 const wikiArticles = new Map();
+const wikiArticleFilenames = new Map();
 for (const filename of wikiFiles) {
   const article = JSON.parse(await readFile(filename, "utf8"));
   requireValue(article?.id, `${filename}: wiki article id is required`);
@@ -247,6 +344,10 @@ for (const filename of wikiFiles) {
   validateWikiImage(article.images?.main, "images.main", filename);
   validateWikiImage(article.images?.map, "images.map", filename);
   wikiArticles.set(article.id, article);
+  wikiArticleFilenames.set(article.id, filename);
+}
+for (const [id, article] of wikiArticles) {
+  validateWikiLevelReferences(article, wikiArticleFilenames.get(id), wikiArticles);
 }
 
 const levels = [];
@@ -255,6 +356,7 @@ const historyOverlays = {};
 const levelBanners = {};
 const usedLevelBannerBases = new Set();
 const levelIds = new Set();
+const levelIdAliases = {};
 const campaignOrdersByGame = new Map();
 let markerCount = 0;
 for (const filename of levelFiles) {
@@ -262,7 +364,7 @@ for (const filename of levelFiles) {
   requireValue(level?.id && level.title, `${filename}: level id and title are required`);
   requireValue(!levelIds.has(level.id), `${filename}: duplicate level id ${level.id}`);
   requireValue(validModes.has(level.mode), `${filename}: invalid mode ${level.mode}`);
-  requireValue(Array.isArray(level.games) && level.games.length, `${filename}: games must be a non-empty list`);
+  requireValue(Array.isArray(level.games) && level.games.length === 1, `${filename}: canonical levels must contain exactly one owner game; use .ref.md files for other appearances`);
   for (const gameId of level.games) requireValue(games.has(gameId), `${filename}: unknown game ${gameId}`);
   if (level.campaign != null) {
     requireValue(
@@ -306,19 +408,32 @@ for (const filename of levelFiles) {
     const expectedFilename = path.join(levelsRoot, primaryGame, levelSlugFilename);
     requireValue(filename === expectedFilename, `${filename}: expected level path ${expectedFilename}`);
   }
-  const levelBannerBase = path.relative(levelsRoot, filename).replaceAll("\\", "/").replace(/\.md$/, "");
-  const levelBannerFilename = levelBannerFilesByBase.get(levelBannerBase);
+  if (level.legacyIds != null) {
+    requireValue(Array.isArray(level.legacyIds) && level.legacyIds.length, `${filename}: legacyIds must be a non-empty list`);
+    for (const legacyId of level.legacyIds) {
+      requireValue(/^[a-z0-9-]+$/.test(legacyId ?? ""), `${filename}: invalid legacy level ID ${legacyId}`);
+      requireValue(legacyId !== level.id && !levelIdAliases[legacyId], `${filename}: duplicate or current legacy level ID ${legacyId}`);
+      levelIdAliases[legacyId] = level.id;
+    }
+  }
+  const legacyLevelBannerBase = path.relative(levelsRoot, filename).replaceAll("\\", "/").replace(/\.md$/, "");
+  const levelBannerBase = `${primaryGame}/${levelSlug}/main`;
+  const levelBannerFilename = levelBannerFilesByBase.get(levelBannerBase) ?? levelBannerFilesByBase.get(legacyLevelBannerBase);
   if (levelBannerFilename) {
     const extension = path.extname(levelBannerFilename);
     const image = await readFile(levelBannerFilename);
     const validImage = extension === ".png"
       ? image.length >= 8 && image[0] === 0x89 && image.toString("ascii", 1, 4) === "PNG"
-      : image.length >= 3 && image[0] === 0xff && image[1] === 0xd8 && image[2] === 0xff;
+      : extension === ".webm"
+        ? image.length >= 4 && image[0] === 0x1a && image[1] === 0x45 && image[2] === 0xdf && image[3] === 0xa3
+        : image.length >= 3 && image[0] === 0xff && image[1] === 0xd8 && image[2] === 0xff;
     requireValue(validImage, `${levelBannerFilename}: file contents do not match its extension`);
     const relativeImage = path.relative(path.join(root, "public"), levelBannerFilename).replaceAll("\\", "/");
     const publicPath = `/${relativeImage}`;
-    levelBanners[level.id] = {
+    const bannerKey = `${level.id}@${primaryGame}`;
+    levelBanners[bannerKey] = {
       origin: "local",
+      mediaType: extension === ".webm" ? "video" : "image",
       sourceUrl: publicPath,
       thumbnailUrl: publicPath,
       detailPageUrl: `https://github.com/time-wasters/cod-atlas/blob/main/public/${relativeImage}`,
@@ -330,10 +445,10 @@ for (const filename of levelFiles) {
         noticeUrl: "https://www.activision.com/legal/terms-of-use",
       },
     };
-    usedLevelBannerBases.add(levelBannerBase);
+    usedLevelBannerBases.add(levelBannerFilesByBase.has(levelBannerBase) ? levelBannerBase : legacyLevelBannerBase);
   }
   requireValue(wikiArticles.has(level.wikiArticle), `${filename}: unknown wikiArticle ${level.wikiArticle}`);
-  requireValue(Array.isArray(level.locations) && level.locations.length, `${filename}: locations must be a non-empty list`);
+  requireValue(Array.isArray(level.locations), `${filename}: locations must be a list`);
   if (level.mapOverlay) mapOverlays[level.id] = await validateMapOverlay(level.mapOverlay, level.id, filename);
   if (level.historyOverlays != null) {
     requireValue(Array.isArray(level.historyOverlays) && level.historyOverlays.length, `${filename}: historyOverlays must be a non-empty array`);
@@ -377,6 +492,96 @@ for (const filename of levelFiles) {
     ...level,
     ...(campaignOrder !== null ? { campaignOrder } : {}),
     notes: body,
+    appearances: [],
+  });
+}
+
+const levelsById = new Map(levels.map((level) => [level.id, level]));
+for (const legacyId of Object.keys(levelIdAliases)) {
+  requireValue(!levelsById.has(legacyId), `${legacyId}: legacy level ID collides with a current canonical level`);
+}
+const appearanceFields = new Set(["level", "title", "wikiArticle", "campaign", "metadata"]);
+for (const filename of levelReferenceFiles) {
+  const { data: reference, body } = parseMarkdown(await readFile(filename, "utf8"), filename);
+  requireValue(reference && typeof reference === "object" && !Array.isArray(reference), `${filename}: appearance reference frontmatter must be an object`);
+  for (const field of Object.keys(reference)) {
+    requireValue(appearanceFields.has(field), `${filename}: appearance references cannot set ${field}`);
+  }
+  requireValue(typeof reference.level === "string" && reference.level, `${filename}: level is required`);
+  const level = levelsById.get(reference.level);
+  requireValue(level, `${filename}: unknown canonical level ${reference.level}`);
+  const parts = path.relative(levelsRoot, filename).split(path.sep);
+  requireValue(parts.length === 2 || parts.length === 3, `${filename}: appearance references must live below a game directory`);
+  const gameId = parts[0];
+  requireValue(games.has(gameId), `${filename}: unknown appearance game ${gameId}`);
+  requireValue(gameId !== level.games[0], `${filename}: the owner game uses the canonical level file, not a reference`);
+  requireValue(!level.appearances.some((appearance) => appearance.gameId === gameId), `${filename}: duplicate ${gameId} appearance for ${level.id}`);
+  const levelSlug = level.id.slice(level.games[0].length + 1);
+  const referenceFilename = parts.at(-1);
+  let campaignOrder = null;
+  if (gamesWithMapTypeDirectories.has(gameId)) {
+    requireValue(parts.length === 3, `${filename}: ${gameId} uses map-type directories`);
+    const mapTypeDirectory = mapTypeDirectoryByMode.get(level.mode);
+    requireValue(parts[1] === mapTypeDirectory, `${filename}: expected ${mapTypeDirectory} directory for ${level.mode}`);
+    if (mapTypeDirectory === "campaign") {
+      const match = referenceFilename.match(/^([1-9]\d*)-(.+)\.ref\.md$/);
+      requireValue(match && match[2] === levelSlug, `${filename}: campaign appearance filename must be <order>-${levelSlug}.ref.md`);
+      campaignOrder = Number(match[1]);
+    } else {
+      requireValue(referenceFilename === `${levelSlug}.ref.md`, `${filename}: expected filename ${levelSlug}.ref.md`);
+    }
+  } else {
+    requireValue(parts.length === 2 && referenceFilename === `${levelSlug}.ref.md`, `${filename}: expected appearance path ${gameId}/${levelSlug}.ref.md`);
+  }
+  if (reference.title != null) requireValue(typeof reference.title === "string" && reference.title.trim(), `${filename}: title must be a non-empty string`);
+  if (reference.wikiArticle != null) requireValue(wikiArticles.has(reference.wikiArticle), `${filename}: unknown wikiArticle ${reference.wikiArticle}`);
+  if (reference.campaign != null) {
+    requireValue(reference.campaign && typeof reference.campaign === "object" && !Array.isArray(reference.campaign), `${filename}: campaign must be an object`);
+    requireValue(typeof reference.campaign.id === "string" && reference.campaign.id.trim(), `${filename}: campaign id must be a non-empty string`);
+    requireValue(typeof reference.campaign.label === "string" && reference.campaign.label.trim(), `${filename}: campaign label must be a non-empty string`);
+  }
+  if (reference.metadata != null) requireValue(reference.metadata && typeof reference.metadata === "object" && !Array.isArray(reference.metadata), `${filename}: metadata must be an object`);
+  const bannerKey = `${level.id}@${gameId}`;
+  const appearanceBannerBase = `${gameId}/${levelSlug}/main`;
+  const legacyBannerBase = path.relative(levelsRoot, filename).replaceAll("\\", "/").replace(/\.ref\.md$/, "");
+  const bannerFilename = levelBannerFilesByBase.get(appearanceBannerBase) ?? levelBannerFilesByBase.get(legacyBannerBase);
+  if (bannerFilename) {
+    const extension = path.extname(bannerFilename);
+    const image = await readFile(bannerFilename);
+    const validImage = extension === ".png"
+      ? image.length >= 8 && image[0] === 0x89 && image.toString("ascii", 1, 4) === "PNG"
+      : extension === ".webm"
+        ? image.length >= 4 && image[0] === 0x1a && image[1] === 0x45 && image[2] === 0xdf && image[3] === 0xa3
+        : image.length >= 3 && image[0] === 0xff && image[1] === 0xd8 && image[2] === 0xff;
+    requireValue(validImage, `${bannerFilename}: file contents do not match its extension`);
+    const relativeImage = path.relative(path.join(root, "public"), bannerFilename).replaceAll("\\", "/");
+    const publicPath = `/${relativeImage}`;
+    levelBanners[bannerKey] = {
+      origin: "local",
+      mediaType: extension === ".webm" ? "video" : "image",
+      sourceUrl: publicPath,
+      thumbnailUrl: publicPath,
+      detailPageUrl: `https://github.com/time-wasters/cod-atlas/blob/main/public/${relativeImage}`,
+      author: { name: "plp-gtr", userUrl: "https://github.com/plp-gtr", role: "author" },
+      license: { name: null, url: null },
+      rights: {
+        status: "non-free",
+        notice: "Extracted from the relevant game files or captured as a screenshot by plp-gtr. The underlying copyrighted game artwork remains the property of its respective copyright holders and is used for identification and geographic comparison.",
+        noticeUrl: "https://www.activision.com/legal/terms-of-use",
+      },
+    };
+    usedLevelBannerBases.add(levelBannerFilesByBase.has(appearanceBannerBase) ? appearanceBannerBase : legacyBannerBase);
+  }
+  level.appearances.push({
+    gameId,
+    title: reference.title ?? level.title,
+    wikiArticle: reference.wikiArticle ?? level.wikiArticle,
+    campaign: reference.campaign ?? level.campaign ?? null,
+    ...(campaignOrder !== null ? { campaignOrder } : {}),
+    ...(reference.metadata ? { metadata: reference.metadata } : {}),
+    notes: body || level.notes,
+    notesId: body ? `${level.id}--${gameId}` : level.id,
+    bannerKey,
   });
 }
 
@@ -391,12 +596,40 @@ for (const [gameId, campaignOrders] of campaignOrdersByGame) {
 const groups = new Map();
 for (const level of levels) {
   const article = wikiArticles.get(level.wikiArticle);
-  const gameCodes = level.games.map((id) => games.get(id).code).join(" / ");
+  const ownerGameId = level.games[0];
+  const appearances = [{
+    gameId: ownerGameId,
+    title: level.title,
+    wikiArticle: level.wikiArticle,
+    wiki: article.sourceUrl,
+    notesId: level.id,
+    hasLevelNotes: Boolean(level.notes.trim()),
+    bannerKey: `${level.id}@${ownerGameId}`,
+    ...(level.campaign ? { campaign: level.campaign } : {}),
+    ...(level.campaignOrder ? { campaignOrder: level.campaignOrder } : {}),
+    ...(level.metadata ? { metadata: level.metadata } : {}),
+  }, ...level.appearances.map((appearance) => ({
+    gameId: appearance.gameId,
+    title: appearance.title,
+    wikiArticle: appearance.wikiArticle,
+    wiki: wikiArticles.get(appearance.wikiArticle).sourceUrl,
+    notesId: appearance.notesId,
+    hasLevelNotes: Boolean(appearance.notes.trim()),
+    bannerKey: appearance.bannerKey,
+    ...(appearance.campaign ? { campaign: appearance.campaign } : {}),
+    ...(appearance.campaignOrder ? { campaignOrder: appearance.campaignOrder } : {}),
+    ...(appearance.metadata ? { metadata: appearance.metadata } : {}),
+  }))];
+  const appearanceGameIds = appearances.map((appearance) => appearance.gameId);
+  const gameCodes = appearanceGameIds.map((id) => games.get(id).code).join(" / ");
   for (const location of level.locations) {
     const key = location.country;
     if (!groups.has(key)) {
+      const continent = continentForGroup(key);
+      requireValue(continent, `${key}: no continent classification is available`);
       groups.set(key, {
         name: key,
+        continent,
         coordinates: null,
         kind: location.precision === "off-world" ? "off-world" : "terrestrial",
         flagCode: flagCodeForGroup(key),
@@ -414,7 +647,8 @@ for (const level of levels) {
       locationId: location.id,
       title: level.title,
       game: gameCodes,
-      gameIds: [...level.games],
+      gameIds: appearanceGameIds,
+      appearances,
       ...(level.campaign ? { campaign: level.campaign } : {}),
       ...(level.campaignOrder ? { campaignOrder: level.campaignOrder } : {}),
       wiki: article.sourceUrl,
@@ -449,6 +683,7 @@ const wikiMedia = Object.fromEntries([...wikiArticles].flatMap(([id, article]) =
 const compiled = {
   updatedAt: atlas.updatedAt,
   games: [...games.values()].sort((a, b) => String(a.released).localeCompare(String(b.released))),
+  levelIdAliases,
   levelBanners,
   wikiMedia,
   groups: compiledGroups,

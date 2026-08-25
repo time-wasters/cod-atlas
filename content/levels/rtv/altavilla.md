@@ -6,7 +6,7 @@ games:
 mode: singleplayer
 wikiArticle: codwiki-altavilla
 mapOverlay:
-  image: /images/maps/rtv/altavilla.png
+  image: /images/levels/rtv/altavilla/maps/briefing-map.png
   opacity: 0.72
   corners:
     topLeft: [40.59997, 14.78375]

@@ -3,7 +3,6 @@ id: cod-stalingrad-mp
 title: Stalingrad MP
 games:
   - cod
-  - cod-uo
 mode: multiplayer
 wikiArticle: codwiki-stalingrad-united-offensive
 locations:
