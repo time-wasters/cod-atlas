@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Foy_(Map)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Foy_(Map)",
   "latestRevisionId": 2991558,
-  "importedAt": "2026-08-09T21:33:45.172Z",
+  "importedAt": "2026-08-25T23:02:51.761Z",
   "levelLocation": {
     "raw": null,
     "label": null,
@@ -53,5 +53,30 @@
     "resolvedTitle": "Foy (Map)",
     "mainImageTitle": "File:Foy_Map_UO.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "[[Call of Duty: United Offensive]]",
+    "label": "Call of Duty: United Offensive",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: United Offensive",
+        "label": "Call of Duty: United Offensive",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_United_Offensive"
+      }
+    ]
+  },
+  "date": {
+    "raw": null,
+    "label": null
   }
 }

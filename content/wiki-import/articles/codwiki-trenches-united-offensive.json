@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Trenches_(United_Offensive)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Trenches_(United_Offensive)",
   "latestRevisionId": 3018836,
-  "importedAt": "2026-08-09T21:34:07.012Z",
+  "importedAt": "2026-08-25T23:03:27.360Z",
   "levelLocation": {
     "raw": "Cherkasskoye, RSFSR, Soviet Union",
     "label": "Cherkasskoye, RSFSR, Soviet Union",
@@ -53,5 +53,53 @@
     "resolvedTitle": "Trenches (United Offensive)",
     "mainImageTitle": "File:Trenches_Opening_CoDUO.jpg",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Sicily Chase]]<br>[[Train Bridge]] (Chronologically)",
+    "label": "Sicily Chase, Train Bridge (Chronologically)",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-sicily-2",
+        "wikiTitle": "Sicily Chase",
+        "label": "Sicily Chase",
+        "url": "https://callofduty.fandom.com/wiki/Sicily_Chase"
+      },
+      {
+        "sequence": "chronological",
+        "article": "codwiki-train-bridge",
+        "wikiTitle": "Train Bridge",
+        "label": "Train Bridge",
+        "url": "https://callofduty.fandom.com/wiki/Train_Bridge"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Ponyri]]",
+    "label": "Ponyri",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-ponyri",
+        "wikiTitle": "Ponyri",
+        "label": "Ponyri",
+        "url": "https://callofduty.fandom.com/wiki/Ponyri"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: United Offensive]]''",
+    "label": "Call of Duty: United Offensive",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: United Offensive",
+        "label": "Call of Duty: United Offensive",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_United_Offensive"
+      }
+    ]
+  },
+  "date": {
+    "raw": "July 4, 1943, 14h45",
+    "label": "July 4, 1943, 14h45"
   }
 }

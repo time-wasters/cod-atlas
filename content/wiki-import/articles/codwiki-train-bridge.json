@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Train_Bridge",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Train_Bridge",
   "latestRevisionId": 2992597,
-  "importedAt": "2026-08-09T21:34:07.004Z",
+  "importedAt": "2026-08-25T23:03:27.352Z",
   "levelLocation": {
     "raw": "Somewhere in Holland, Bomber suggests near the coast, but the environment resembles Limburg.",
     "label": "Somewhere in Holland, Bomber suggests near the coast, but the environment resembles Limburg.",
@@ -53,5 +53,53 @@
     "resolvedTitle": "Train Bridge",
     "mainImageTitle": "File:Train_Bridge_-_A_train_001.jpg",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Bomber (United Offensive)|Bomber]]",
+    "label": "Bomber",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-bomber-united-offensive",
+        "wikiTitle": "Bomber (United Offensive)",
+        "label": "Bomber",
+        "url": "https://callofduty.fandom.com/wiki/Bomber_(United_Offensive)"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Sicily 1]]<br>[[Trenches (United Offensive)|Trenches]] (Chronologically)",
+    "label": "Sicily 1, Trenches (Chronologically)",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-sicily-1",
+        "wikiTitle": "Sicily 1",
+        "label": "Sicily 1",
+        "url": "https://callofduty.fandom.com/wiki/Sicily_1"
+      },
+      {
+        "sequence": "chronological",
+        "article": "codwiki-trenches-united-offensive",
+        "wikiTitle": "Trenches (United Offensive)",
+        "label": "Trenches",
+        "url": "https://callofduty.fandom.com/wiki/Trenches_(United_Offensive)"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: United Offensive]]''",
+    "label": "Call of Duty: United Offensive",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: United Offensive",
+        "label": "Call of Duty: United Offensive",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_United_Offensive"
+      }
+    ]
+  },
+  "date": {
+    "raw": "September 2, 1941, 2200 hours",
+    "label": "September 2, 1941, 2200 hours"
   }
 }

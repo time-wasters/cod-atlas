@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Kursk_(Map)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Kursk_(Map)",
   "latestRevisionId": 2862170,
-  "importedAt": "2026-08-09T21:33:55.932Z",
+  "importedAt": "2026-08-25T23:03:02.499Z",
   "levelLocation": {
     "raw": null,
     "label": null,
@@ -53,5 +53,30 @@
     "resolvedTitle": "Kursk (Map)",
     "mainImageTitle": "File:Kursk_CoD_UO.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty: United Offensive]]''",
+    "label": "Call of Duty: United Offensive",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: United Offensive",
+        "label": "Call of Duty: United Offensive",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_United_Offensive"
+      }
+    ]
+  },
+  "date": {
+    "raw": null,
+    "label": null
   }
 }

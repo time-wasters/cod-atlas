@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Crossroads_(United_Offensive)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Crossroads_(United_Offensive)",
   "latestRevisionId": 2992586,
-  "importedAt": "2026-08-09T21:33:45.129Z",
+  "importedAt": "2026-08-25T23:02:40.990Z",
   "levelLocation": {
     "raw": "Bastogne, Belgium",
     "label": "Bastogne, Belgium",
@@ -53,5 +53,46 @@
     "resolvedTitle": "Crossroads (United Offensive)",
     "mainImageTitle": "File:M1_Garand_menu_icon_CoD1.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Bois Jacques]]",
+    "label": "Bois Jacques",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-bois-jacques",
+        "wikiTitle": "Bois Jacques",
+        "label": "Bois Jacques",
+        "url": "https://callofduty.fandom.com/wiki/Bois_Jacques"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Foy (Campaign)|Foy]]",
+    "label": "Foy",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-foy-campaign",
+        "wikiTitle": "Foy (Campaign)",
+        "label": "Foy",
+        "url": "https://callofduty.fandom.com/wiki/Foy_(Campaign)"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: United Offensive]]''",
+    "label": "Call of Duty: United Offensive",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: United Offensive",
+        "label": "Call of Duty: United Offensive",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_United_Offensive"
+      }
+    ]
+  },
+  "date": {
+    "raw": "January 13, 1945, 0219 hrs",
+    "label": "January 13, 1945, 0219 hrs"
   }
 }
