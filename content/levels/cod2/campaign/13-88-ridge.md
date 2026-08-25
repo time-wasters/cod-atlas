@@ -16,7 +16,7 @@ locations:
     country: Libya
     region: Murqub District
     city: Tarhuna
-    landmark: Tarhuna heights (representative city marker)
+    landmark: Tarhuna heights
     latitude: 32.43389
     longitude: 13.63444
     precision: city

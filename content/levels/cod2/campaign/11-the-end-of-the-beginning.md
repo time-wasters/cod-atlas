@@ -16,7 +16,7 @@ locations:
     country: Egypt
     region: Matrouh Governorate
     city: El Dabaa
-    landmark: El Dabaa railway station (representative town marker)
+    landmark: El Dabaa railway station
     latitude: 31.02764
     longitude: 28.44425
     precision: city

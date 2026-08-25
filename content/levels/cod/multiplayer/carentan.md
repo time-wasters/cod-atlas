@@ -12,7 +12,7 @@ locations:
     country: France
     region: Normandy
     city: Carentan
-    landmark: Place de la République (representative city-center anchor)
+    landmark: Place de la République
     latitude: 49.3046
     longitude: -1.2438
     precision: city
