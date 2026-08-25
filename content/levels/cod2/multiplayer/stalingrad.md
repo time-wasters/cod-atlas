@@ -4,9 +4,24 @@ title: Stalingrad
 games:
   - cod2
 mode: multiplayer
-wikiArticle: codwiki-railyard-map
+wikiArticle: codwiki-stalingrad-call-of-duty-2
 locations:
   - id: main
+    country: Russia
+    region: Volgograd Oblast
+    city: Volgograd
+    landmark: Volgograd II freight yard (former Stalingrad II)
+    latitude: 48.6915
+    longitude: 44.4789
+    precision: approximate
+    confidence: medium
+    method: real-world-inspiration
+    primary: true
+    urls:
+      - googleMaps: https://www.google.com/maps/search/?api=1&query=%D0%A2%D0%BE%D0%B2%D0%B0%D1%80%D0%BD%D0%B0%D1%8F%20%D0%BA%D0%BE%D0%BD%D1%82%D0%BE%D1%80%D0%B0%20%D0%92%D0%BE%D0%BB%D0%B3%D0%BE%D0%B3%D1%80%D0%B0%D0%B4-II%2C%20%D0%92%D0%BE%D0%BB%D0%B3%D0%BE%D0%B3%D1%80%D0%B0%D0%B4%2C%20%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F
+      - wikipedia: https://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%BB%D0%B3%D0%BE%D0%B3%D1%80%D0%B0%D0%B4_II
+      - callOfDutyMaps: https://callofdutymaps.com/call-of-duty-2/stalingrad-3/
+  - id: warsaw-source-map
     country: Poland
     region: Masovian Voivodeship
     city: Warsaw
@@ -16,11 +31,10 @@ locations:
     precision: approximate
     confidence: medium
     method: real-world-inspiration
-    primary: true
+    primary: false
     urls:
-      - googleMaps: https://www.google.com/maps/search/?api=1&query=Warszawa+Ursus+railway+station%2C+Warsaw%2C+Poland
+      - googleMaps: https://www.google.com/maps/search/?api=1&query=Warszawa%20Ursus%20railway%20station%2C%20Warsaw%2C%20Poland
       - wikipedia: https://en.wikipedia.org/wiki/Warszawa_Ursus_railway_station
-      - callOfDutyMaps: https://callofdutymaps.com/call-of-duty-2/stalingrad-3/
 ---
 
 > **AI-generated research note:** The historical summary below was generated
@@ -29,44 +43,48 @@ locations:
 
 ## The Mission in the Game
 
-**Stalingrad** is a multiplayer map, so it has no mission narrative, playable character or unit, canonical battle date, briefing, route, or historical objective. In *Call of Duty 2* it is the renamed remake of **Railyard** from the original *Call of Duty* and *United Offensive*. The shared multiplayer codename is `mp_railyard`. The map centers on a rail yard broken up by freight wagons, with multi-storey buildings, a warehouse/tank depot and elevated firing positions around it. The *Call of Duty 2* version changes some vehicles, cover and wagon placement but retains the recognizable Railyard combat space. Call of Duty Maps explicitly describes the map as a returning *Call of Duty 1* favorite and lists its location as **Warsaw, Poland**.
+**Stalingrad** is a multiplayer map, so it has no mission narrative, playable character or unit, canonical battle date, briefing, route, or historical objective. In *Call of Duty 2* the map uses the internal name `mp_railyard` and consists of a freight yard surrounded by multi-storey industrial and residential buildings, with freight wagons, warehouses, a tank depot and elevated firing positions. The *Call of Duty 2* version is presented to players as **Stalingrad** and uses the Red Army against the German Army. The Soviet retheming is also visible in the environment: a rooftop sign in the *Call of Duty 2* version reads **УНИВЕРМАГ** (“department store”) in Cyrillic.
 
-The documented campaign relationship is therefore cross-game rather than a reuse of the *Call of Duty 2* Russian campaign. The Railyard article identifies the original *Call of Duty* mission **Warsaw Railyard** (`cod-warsaw-railyard`) as its campaign map. By contrast, *Call of Duty 2*'s **The Pipeline** (`cod2-the-pipeline`) is a separate Stalingrad rail-station mission with its own `trainyard` geometry. No evidence was found that `mp_railyard` derives from that mission merely because the *Call of Duty 2* multiplayer display name is “Stalingrad.”
+At the same time, the geometry has a documented earlier identity. The Call of Duty Wiki describes the map as a remake of **Railyard** from the original *Call of Duty* and links that map to the campaign mission **Warsaw Railyard** (`cod-warsaw-railyard`). Call of Duty Maps likewise calls the *Call of Duty 2* level a returning *Call of Duty 1* favorite, although it retains Warsaw as the location in its database. The atlas therefore needs to preserve two separate facts: *Call of Duty 2* presents this version as Stalingrad, while its map geometry and campaign ancestry come from the earlier Warsaw Railyard.
 
 ## The Real Place & Differences
 
-The strongest reading of the reused map is **Warsaw**, despite the *Call of Duty 2* display title. Both the Railyard Wiki record and Call of Duty Maps place this map in Warsaw, and the documented campaign source is *Warsaw Railyard*. The title “Stalingrad” is therefore best treated as a renamed presentation of an older Warsaw multiplayer space rather than evidence that the geometry represents a specific Stalingrad railway site.
+For the *Call of Duty 2* appearance, the match is best classified as a **composite or fictionalized setting with Stalingrad as the represented location and Warsaw as the inherited source geography**.
 
-Within Warsaw, the **historic factory siding beside the Ursus Mechanical Works at Czechowice** is the strongest real-world analogue already supported by the connected campaign research. The works stood beside the Warsaw–Vienna railway corridor. The nearby passenger stop opened in 1926, and local railway history records freight sidings running into the factory area. Under German occupation the Czechowice works became part of Waverma and produced or repaired German armored vehicles, which gives the game's combination of rail wagons, industrial halls and tanks a plausible real counterpart.
+The primary real-world analogue is **Stalingrad-II**, now **Volgograd II**, in modern Volgograd. This is a real railway station and yard in the former city of Stalingrad. A Stalingrad City Defense Committee document dated 15 April 1942 explicitly refers to a warehouse at Stalingrad-II used for **transshipment cargo**. Modern railway directories still list Volgograd II as a freight-handling station capable of receiving and issuing wagon-load and smaller consignments, including freight on sidings, while Russian Railways has a dedicated Volgograd-II goods office at the site. This makes it a defensible real freight-yard anchor for a map whose principal playable space is a goods railyard.
 
-The match is nevertheless **composite and inferential**. No evidence was found that Infinity Ward surveyed or reconstructed the Ursus siding, and the historic siding was later altered or removed. The multiplayer streets, warehouse, tank depot and wagon arrangement should not be read as a plan of the real factory complex.
+No evidence was found that `mp_railyard` reconstructs Stalingrad-II's actual track plan, warehouses, goods office or wartime buildings. The selected site is therefore an analogue within the map's represented city, not a claim of exact geometry. The **historic Ursus factory siding in Warsaw** remains in the file as a secondary location because it is the strongest researched analogue for the original Railyard/Warsaw Railyard geometry: the industrial works had rail sidings and German armored-vehicle production and repair activity.
 
 ## The Real Mission & Differences
 
-The linked *Warsaw Railyard* campaign mission is dated **17 January 1945**. It sends Alexei Voronin and soldiers presented as the Soviet 150th Rifle Division/3rd Shock Army from a tank-repair factory directly through its railyard under artillery fire before they regroup outside the complex.
+The closest supported Stalingrad historical context is the fighting around the city's railway system in September 1942. Transport-history research documents severe destruction at both Stalingrad-I and Stalingrad-II during the battle. A German XXXXVIII Panzer Corps operational report for **15 September 1942** records the 24th Panzer Division reaching the Stalingrad-II station area during the fighting in the southern part of the city. These events establish Stalingrad-II as a genuine wartime rail and combat site, but they do not demonstrate a battle matching the multiplayer map's exact tank depot, freight-wagon arrangement or objectives.
 
-The historical situation was substantially different. The Polish Institute of National Remembrance records that First Polish Army and Red Army troops entered ruined Warsaw on 17 January while encountering only weak German resistance; German forces withdrew rather than fighting a prolonged industrial-yard battle. At the Ursus works, German occupation had created a genuine armored-vehicle production and repair site, but its equipment had been evacuated in 1944 and the complex was mined as the Germans prepared to leave. No evidence was found for the game's sustained Soviet assault through an operating tank depot and railyard at this site on 17 January.
+The map's documented campaign ancestry belongs to a different place and date. **Warsaw Railyard** is set on 17 January 1945 and depicts Soviet troops fighting through a tank-repair factory and railyard. The real entry into Warsaw that day encountered much weaker German resistance than the game depicts. That campaign connection explains the inherited map layout but should not override the represented *Call of Duty 2* setting.
 
-The real Battle of Stalingrad is therefore not the closest historical mission context for this particular multiplayer geometry. *The Pipeline* genuinely represents Stalingrad Railway Station No. 1 and the 13th Guards Rifle Division, but it is a different *Call of Duty 2* level and should not be used to relocate this Railyard remake to Volgograd.
+*Call of Duty 2*'s **The Pipeline** (`cod2-the-pipeline`) is also separate. It depicts fighting for Stalingrad Railway Station No. 1 and uses different `trainyard` geometry. It is relevant historical/game context for Stalingrad rail fighting, but it is not the source map for `mp_railyard`.
 
 ## Marker Position Explanation
 
-The atlas marker is stored at `52.1964, 20.88525`, beside the modern **Warszawa Ursus railway station** and the documented historic factory-siding area.
+The **primary** atlas marker is stored at `48.6915, 44.4789`, within the **Volgograd II / former Stalingrad-II railway yard**.
 
-This deliberately matches the curated marker for both **Railyard** (`cod-railyard`) and **Warsaw Railyard** (`cod-warsaw-railyard`). That overlap is appropriate because *Call of Duty 2* Stalingrad is explicitly a remake of the same Railyard map, and the project does not move markers merely to avoid clustering. `precision: approximate` reflects that the point represents a dismantled or altered industrial siding rather than a verified surviving in-game feature. `confidence: medium` records that Ursus is the strongest functional and geographic analogue found, but no designer source proves it inspired the level. `method: real-world-inspiration` is appropriate because the selected point is an evidence-based analogue within the documented Warsaw setting rather than a canonical exact site.
+This point was selected because the atlas is intended to show where the *Call of Duty 2* map is represented in the real world. The CoD2 appearance is explicitly titled Stalingrad, uses Soviet environmental theming, and centers on freight rail operations. Stalingrad-II is a real wartime Stalingrad rail site with documented cargo handling, and the modern Volgograd II station still performs freight operations. `precision: approximate` is appropriate because the coordinate represents the freight-yard area rather than a verified surviving in-game structure. `confidence: medium` reflects that the city identification is strong but the choice of **this particular Stalingrad goods yard** is an evidence-based analogue, not a developer-confirmed location. `method: real-world-inspiration` records that distinction.
 
-The strongest rejected candidate is **Volgograd-1 Railway Station** at approximately `48.7125, 44.51361`. It is the correct real landmark for *The Pipeline* and for genuine Stalingrad station fighting, but no evidence connects that campaign geometry to `mp_railyard`; selecting it would give the renamed *Call of Duty 2* title more weight than the map's documented Warsaw origin. Large central Warsaw freight yards were also considered, but they fit the factory-to-railyard continuity less well than Ursus.
+The **secondary** marker remains at `52.1964, 20.88525` beside the historic **Ursus factory siding in Warsaw**. It preserves the map's documented Railyard/Warsaw Railyard ancestry and should be interpreted as the likely real-world analogue for the inherited geometry, not as the primary represented location of the CoD2 version.
 
-The Google Maps URL searches for the real named place **Warszawa Ursus railway station, Warsaw, Poland**. The atlas marker uses the separately curated coordinates above and must not be interpreted as the exact location of the in-game freight wagons, tank depot, a specific January 1945 firefight, or Stalingrad Railway Station No. 1.
+**Volgograd-1 Railway Station** was rejected as the primary marker because it is chiefly the central passenger-station landmark and is more directly associated with the separate campaign mission *The Pipeline*. **Sarepta** was also considered because it handled very large wartime freight volumes, but it lies far south of central Stalingrad and there is no map-specific evidence pointing to it. Stalingrad-II provides the stronger combination of urban Stalingrad setting, genuine freight handling and documented wartime combat.
+
+The primary Google Maps URL searches for the real **Volgograd-II goods office** in Volgograd, while the atlas marker uses separately curated coordinates within the railway-yard area. The secondary Google Maps URL searches for **Warszawa Ursus railway station**, adjacent to the historic factory-siding analogue. Neither coordinate should be interpreted as an exact reconstruction of the multiplayer track layout.
 
 ## Sources
 
-- [Call of Duty Wiki — Railyard](https://callofduty.fandom.com/wiki/Railyard_(map)) — Core game evidence: the map appears in *Call of Duty 2* under the Stalingrad name, uses `mp_railyard`, is located in Warsaw, and is explicitly linked to the campaign mission *Warsaw Railyard*.
-- [Call of Duty Maps — Stalingrad](https://callofdutymaps.com/call-of-duty-2/stalingrad-3/) — Independent *Call of Duty 2* map documentation identifying Warsaw, Poland and describing Stalingrad as the returning *Call of Duty 1* Railyard map.
-- [Call of Duty Wiki — Warsaw Railyard](https://callofduty.fandom.com/wiki/Warsaw_Railyard) — Campaign relationship, January 17, 1945 date, represented Soviet unit, objective, and direct continuation through the factory railyard.
-- [Call of Duty Wiki — Railroad Station No. 1 / The Pipeline](https://callofduty.fandom.com/wiki/Railroad_Station_No._1) — Establishes that *Call of Duty 2* has a separate Stalingrad railway campaign level using different `trainyard` geometry; supports rejecting Volgograd-1 as the marker for this multiplayer remake.
-- [Ursus History Centre — former Ursus Mechanical Works heritage complex](https://ursushistoryczny.pl/aktualnosci/zespol-budowlany-d-zakladow-mechanicznych-ursus-wreszcie-w-rejestrze-zabytkow/) — Local heritage evidence for the Czechowice factory, its conversion into the German Waverma armored-vehicle production/repair plant, its 1944 evacuation, and mining before the German withdrawal.
-- [iUrsus — history of Warszawa Ursus railway station](https://iursus.pl/artykul/przystanek-kolejowy-warszawa-n121491) — Documents the station's 1926 opening beside the factory and freight sidings that served the Ursus works.
-- [Polish Institute of National Remembrance — The Red Army entered Warsaw 77 years ago](https://eng.ipn.gov.pl/en/news/9205%2CThe-Red-Army-entered-Warsaw-77-years-ago.html) — Authoritative historical context for 17 January 1945: First Polish Army and Red Army entry into Warsaw, weak German resistance and German withdrawal.
-- [Warszawa Ursus railway station — Wikipedia](https://en.wikipedia.org/wiki/Warszawa_Ursus_railway_station) — English-language identification of the modern railway place beside the former works and its 1926 origin.
-- [Wikidata — Warszawa Ursus railway station](https://www.wikidata.org/wiki/Q7970968) — Coordinate reference for the rounded railway-station anchor used to reproduce the approximate marker.
+- [Call of Duty Wiki — Railyard](https://callofduty.fandom.com/wiki/Railyard_(map)) — Game evidence for `mp_railyard`, the *Call of Duty 2* Stalingrad name, Red Army versus German Army teams, freight-wagon/tank-depot layout, differences from the original map, and the explicit *Warsaw Railyard* campaign relationship.
+- [Call of Duty Maps — Stalingrad](https://callofdutymaps.com/call-of-duty-2/stalingrad-3/) — Independent documentation that the CoD2 map is the returning CoD1 Railyard combat space; its Warsaw location entry is retained as evidence of the older map identity rather than treated as decisive for the CoD2 marker.
+- [Electronic Library of Historical Documents — Stalingrad City Defense Committee resolution no. 261, 15 April 1942](https://docs.historyrussia.org/ru/nodes/224986-postanovlenie-sgko-locale-nil-261-po-pismu-nachalnika-sklada-nko-locale-nil-228-intendanta-ii-ranga-tov-grushkovskogo-s-prosboy-ob-ostavlenii-pakgauza-na-stantsii-stalingrad-ll-dlya-hraneniya-perevalochnyh-gruzov-stalingrad-15-aprelya-1942-g) — Primary archival evidence that Stalingrad-II had a warehouse used for transshipment cargo before the battle.
+- [Russian University of Transport — railway transport in the Battle of Stalingrad](https://miit.ru/content/%D0%9A%2080-%D0%BB%D0%B5%D1%82%D0%B8%D1%8E%20%D1%80%D0%B0%D0%B7%D0%B3%D1%80%D0%BE%D0%BC%D0%B0%20%D1%81%D0%BE%D0%B2%D0%B5%D1%82%D1%81%D0%BA%D0%B8%D0%BC%D0%B8%20%D0%B2%D0%BE%D0%B9%D1%81%D0%BA%D0%B0%D0%BC%D0%B8%20%D0%BD%D0%B5%D0%BC%D0%B5%D1%86%D0%BA%D0%BE-%D1%84%D0%B0%D1%88%D0%B8%D1%81%D1%82%D1%81%D0%BA%D0%B8%D1%85%20%D0%B2%D0%BE%D0%B9%D1%81%D0%BA%20%D0%B2%20%D0%A1%D1%82%D0%B0%D0%BB%D0%B8%D0%BD%D0%B3%D1%80%D0%B0%D0%B4%D1%81%D0%BA%D0%BE%D0%B9%20%D0%B1%D0%B8%D1%82%D0%B2%D0%B5.pdf?id_wm=947466) — Institutional historical study confirming the importance and wartime destruction of the Stalingrad railway node, including Stalingrad-II.
+- [Stalingrad 1942–1943 document project — XXXXVIII Panzer Corps report, 15 September 1942](https://stalingrad1942-1943.ru/node/409) — Transcribed wartime operational report placing German armor at the Stalingrad-II station area during the urban fighting.
+- [Alta-Soft freight-station directory — Volgograd II](https://www.alta.ru/railway/station/61140/) — Modern railway-location and freight-operation data for Volgograd II; supplies the rounded coordinate used for the primary approximate marker.
+- [2GIS — Volgograd-II goods office](https://2gis.ru/volgograd/firm/70000001031365854) — Confirms the dedicated Russian Railways freight/goods office at Militsionera Bukhantseva 15g, supporting the freight-yard rather than passenger-station interpretation.
+- [Russian Wikipedia — Volgograd II](https://ru.wikipedia.org/wiki/%D0%92%D0%BE%D0%BB%D0%B3%D0%BE%D0%B3%D1%80%D0%B0%D0%B4_II) — Modern station identification and its former name **Stalingrad II**; used because no equivalent English Wikipedia article was found.
+- [Call of Duty Wiki — Warsaw Railyard](https://callofduty.fandom.com/wiki/Warsaw_Railyard) — Campaign-source relationship and game chronology for the inherited Warsaw railyard geometry.
+- [Ursus History Centre — former Ursus Mechanical Works heritage complex](https://ursushistoryczny.pl/aktualnosci/zespol-budowlany-d-zakladow-mechanicznych-ursus-wreszcie-w-rejestrze-zabytkow/) — Local heritage evidence for the Warsaw secondary marker, including German wartime armored-vehicle production/repair at the works.
+- [Polish Institute of National Remembrance — Red Army entry into Warsaw, 17 January 1945](https://eng.ipn.gov.pl/en/news/9205%2CThe-Red-Army-entered-Warsaw-77-years-ago.html) — Historical comparison showing that the linked Warsaw campaign battle is substantially fictionalized.
