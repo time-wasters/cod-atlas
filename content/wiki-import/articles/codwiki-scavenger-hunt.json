@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Scavenger_Hunt",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Scavenger_Hunt",
   "latestRevisionId": 2957215,
-  "importedAt": "2026-08-11T18:50:39.075Z",
+  "importedAt": "2026-08-25T23:12:06.372Z",
   "levelLocation": {
     "raw": "Near Sainte Mere Eglise, France",
     "label": "Near Sainte Mere Eglise, France",
@@ -59,6 +59,8 @@
     "label": "Altavilla",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-altavilla",
         "wikiTitle": "Altavilla",
         "label": "Altavilla",
         "url": "https://callofduty.fandom.com/wiki/Altavilla"
@@ -70,6 +72,8 @@
     "label": "Glider Crash",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-glider-crash",
         "wikiTitle": "Glider Crash",
         "label": "Glider Crash",
         "url": "https://callofduty.fandom.com/wiki/Glider_Crash"

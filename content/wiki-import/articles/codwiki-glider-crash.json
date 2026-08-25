@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Glider_Crash",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Glider_Crash",
   "latestRevisionId": 2957217,
-  "importedAt": "2026-08-11T18:50:28.354Z",
+  "importedAt": "2026-08-25T23:11:55.683Z",
   "levelLocation": {
     "raw": "Carentan, France",
     "label": "Carentan, France",
@@ -59,6 +59,8 @@
     "label": "Scavenger Hunt",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-scavenger-hunt",
         "wikiTitle": "Scavenger Hunt",
         "label": "Scavenger Hunt",
         "url": "https://callofduty.fandom.com/wiki/Scavenger_Hunt"
@@ -70,6 +72,8 @@
     "label": "Lucky Thirteen",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-lucky-thirteen",
         "wikiTitle": "Lucky Thirteen",
         "label": "Lucky Thirteen",
         "url": "https://callofduty.fandom.com/wiki/Lucky_Thirteen"
