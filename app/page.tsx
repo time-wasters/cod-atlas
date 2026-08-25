@@ -1465,6 +1465,13 @@ export default function Home() {
       });
   }, [game, groups]);
   const selectedCampaign = campaigns.find((campaign) => campaign.key === selectedCampaignKey) ?? null;
+  const selectedCampaignGame = selectedCampaign ? gamesById.get(selectedCampaign.gameId) ?? null : null;
+  const selectedCampaignGameIcon = selectedCampaignGame ? gameIcon(selectedCampaignGame) : null;
+  const selectedCampaignUsesExternalGameIcon = Boolean(
+    selectedCampaignGameIcon
+    && selectedCampaignGame
+    && selectedCampaignGameIcon !== selectedCampaignGame.icon,
+  );
   const mapFitCoordinates = useMemo(() => {
     const seen = new Set<string>();
     return filtered.flatMap((group) => group.entries.flatMap((entry) => {
@@ -2958,12 +2965,26 @@ export default function Home() {
         {relatedLevels.length > 0 && (
           <aside className={`related-levels-panel${relatedLevelsOpen ? "" : " is-collapsed"}`} aria-label={selectedCampaign ? `${selectedCampaign.label} levels` : "Related levels"}>
             <button
-              className="related-levels-toggle"
+              className={`related-levels-toggle${selectedCampaignGameIcon ? " has-game-icon" : ""}`}
               type="button"
               aria-expanded={relatedLevelsOpen}
               aria-controls="related-level-list"
               onClick={() => setRelatedLevelsOpen((open) => !open)}
             >
+              {selectedCampaignGameIcon && selectedCampaignGame && (
+                // Game icons are reviewed public assets and do not need image optimization.
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  className={`related-levels-game-icon${selectedCampaignUsesExternalGameIcon ? " is-external" : ""}`}
+                  src={selectedCampaignGameIcon}
+                  alt=""
+                  onError={() => {
+                    if (selectedCampaignUsesExternalGameIcon) {
+                      setFailedExternalGameIcons((failed) => new Set(failed).add(selectedCampaignGame.id));
+                    }
+                  }}
+                />
+              )}
               <span>{selectedCampaign?.label ?? "Related levels"}</span>
               <small>{relatedLevels.length}</small>
               <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4 6 4 4 4-4" /></svg>
@@ -2976,7 +2997,6 @@ export default function Home() {
                 {visibleRelatedLevels.map(({ group, entry }) => (
                   <div className={`intel-entry${entry.levelId === selected.entry.levelId ? " is-selected" : ""}`} key={entry.levelId}>
                     <button onClick={() => selectEntry(group, entry)}><strong>{entry.title}</strong><span>{locationName(entry)} · {entry.game}</span></button>
-                    <a href={entry.wiki} target="_blank" rel="noreferrer" aria-label={`Open ${entry.title} on CoD Wiki`}>↗</a>
                   </div>
                 ))}
                 {hiddenRelatedLevelCount > 0 && (
