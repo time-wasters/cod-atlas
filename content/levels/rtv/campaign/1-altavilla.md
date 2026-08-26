@@ -4,6 +4,9 @@ title: Altavilla
 games:
   - rtv
 mode: singleplayer
+campaign:
+  id: "1"
+  label: American Campaign
 wikiArticle: codwiki-altavilla
 mapOverlay:
   image: /images/levels/rtv/altavilla/maps/briefing-map.png

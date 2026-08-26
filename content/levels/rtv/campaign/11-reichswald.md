@@ -4,6 +4,9 @@ title: Reichswald
 games:
   - rtv
 mode: singleplayer
+campaign:
+  id: "2"
+  label: Canadian Campaign
 wikiArticle: codwiki-reichswald
 locations:
   - id: main

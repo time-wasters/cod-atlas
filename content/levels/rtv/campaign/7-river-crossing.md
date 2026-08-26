@@ -4,6 +4,9 @@ title: River Crossing
 games:
   - rtv
 mode: singleplayer
+campaign:
+  id: "1"
+  label: American Campaign
 wikiArticle: codwiki-river-crossing
 mapOverlay:
   image: /images/levels/rtv/river-crossing/maps/briefing-map.png

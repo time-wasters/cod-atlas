@@ -4,6 +4,9 @@ title: Glider Crash
 games:
   - rtv
 mode: singleplayer
+campaign:
+  id: "1"
+  label: American Campaign
 wikiArticle: codwiki-glider-crash
 mapOverlay:
   image: /images/levels/rtv/glider-crash/maps/briefing-map.png

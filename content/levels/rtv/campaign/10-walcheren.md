@@ -4,6 +4,9 @@ title: Walcheren
 games:
   - rtv
 mode: singleplayer
+campaign:
+  id: "2"
+  label: Canadian Campaign
 wikiArticle: codwiki-walcheren
 locations:
   - id: main

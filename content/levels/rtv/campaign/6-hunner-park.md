@@ -4,6 +4,9 @@ title: Hunner Park
 games:
   - rtv
 mode: singleplayer
+campaign:
+  id: "1"
+  label: American Campaign
 wikiArticle: codwiki-hunner-park
 mapOverlay:
   image: /images/levels/rtv/hunner-park/maps/briefing-map.png

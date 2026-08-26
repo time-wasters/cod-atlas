@@ -4,6 +4,9 @@ title: Arnhem Assault
 games:
   - rtv
 mode: singleplayer
+campaign:
+  id: "3"
+  label: British Campaign
 wikiArticle: codwiki-arnhem-assault
 locations:
   - id: main

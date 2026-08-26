@@ -4,6 +4,9 @@ title: Sloedam
 games:
   - rtv
 mode: singleplayer
+campaign:
+  id: "2"
+  label: Canadian Campaign
 wikiArticle: codwiki-sloedam
 mapOverlay:
   image: /images/levels/rtv/sloedam/maps/briefing-map.png

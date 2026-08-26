@@ -4,6 +4,9 @@ title: Woensdrecht
 games:
   - rtv
 mode: singleplayer
+campaign:
+  id: "2"
+  label: Canadian Campaign
 wikiArticle: codwiki-woensdrecht
 mapOverlay:
   image: /images/levels/rtv/woensdrecht/maps/briefing-map.png

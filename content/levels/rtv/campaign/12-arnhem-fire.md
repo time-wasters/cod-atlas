@@ -4,6 +4,9 @@ title: Arnhem Fire
 games:
   - rtv
 mode: singleplayer
+campaign:
+  id: "3"
+  label: British Campaign
 wikiArticle: codwiki-arnhem-fire
 locations:
   - id: main

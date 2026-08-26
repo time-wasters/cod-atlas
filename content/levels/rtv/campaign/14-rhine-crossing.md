@@ -4,6 +4,9 @@ title: Rhine Crossing
 games:
   - rtv
 mode: singleplayer
+campaign:
+  id: "3"
+  label: British Campaign
 wikiArticle: codwiki-rhine-crossing
 locations:
   - id: main

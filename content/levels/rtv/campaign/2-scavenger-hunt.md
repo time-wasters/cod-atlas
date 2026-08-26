@@ -4,6 +4,9 @@ title: Scavenger Hunt
 games:
   - rtv
 mode: singleplayer
+campaign:
+  id: "1"
+  label: American Campaign
 wikiArticle: codwiki-scavenger-hunt
 mapOverlay:
   image: /images/levels/rtv/scavenger-hunt/maps/briefing-map.png

@@ -4,6 +4,9 @@ title: Lucky Thirteen
 games:
   - rtv
 mode: singleplayer
+campaign:
+  id: "1"
+  label: American Campaign
 wikiArticle: codwiki-lucky-thirteen
 mapOverlay:
   image: /images/levels/rtv/lucky-thirteen/maps/briefing-map.png

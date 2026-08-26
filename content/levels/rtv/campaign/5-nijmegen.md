@@ -4,6 +4,9 @@ title: Nijmegen
 games:
   - rtv
 mode: singleplayer
+campaign:
+  id: "1"
+  label: American Campaign
 wikiArticle: codwiki-nijmegen
 mapOverlay:
   image: /images/levels/rtv/nijmegen/maps/briefing-map.png
