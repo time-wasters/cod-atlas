@@ -461,6 +461,40 @@ test("preserves the complete statically compiled atlas", async () => {
     [...codCampaigns.values()].flatMap((campaign) => campaign.levels),
   );
 
+  const rtvCampaigns = new Map([
+    ["1", {
+      label: "American Campaign",
+      levels: ["Altavilla", "Scavenger Hunt", "Glider Crash", "Lucky Thirteen", "Nijmegen", "Hunner Park", "River Crossing"],
+    }],
+    ["2", {
+      label: "Canadian Campaign",
+      levels: ["Woensdrecht", "Sloedam", "Walcheren", "Reichswald"],
+    }],
+    ["3", {
+      label: "British Campaign",
+      levels: ["Arnhem Fire", "Arnhem Assault", "Rhine Crossing"],
+    }],
+  ]);
+  const uniqueRtvCampaignLevels = new Map(entries
+    .filter((entry) => entry.gameIds.includes("rtv") && entry.modes[0] === "singleplayer")
+    .map((entry) => [entry.levelId, entry]));
+  assert.equal(uniqueRtvCampaignLevels.size, 14);
+  for (const [campaignId, campaign] of rtvCampaigns) {
+    for (const title of campaign.levels) {
+      assert.deepEqual(findEntry("RTV", title).campaign, {
+        id: campaignId,
+        label: campaign.label,
+      });
+    }
+  }
+  assert.ok([...uniqueRtvCampaignLevels.values()].every((entry) => rtvCampaigns.has(entry.campaign?.id)));
+  assert.deepEqual(
+    [...uniqueRtvCampaignLevels.values()]
+      .sort((a, b) => a.campaignOrder - b.campaignOrder)
+      .map((entry) => entry.title),
+    [...rtvCampaigns.values()].flatMap((campaign) => campaign.levels),
+  );
+
   assert.deepEqual(findEntry("COD2", "The Diversionary Raid").modes, ["singleplayer"]);
   assert.deepEqual(findEntry("COD2", "Holding the Line").modes, ["singleplayer"]);
   assert.deepEqual(findEntry("COD2", "Toujane").modes, ["multiplayer"]);
