@@ -1,10 +1,13 @@
 ---
-id: cod4-the-sins-of-the-father
-title: The Sins of the Father
+id: cod4-blackout
+title: Blackout
 games:
   - cod4
 mode: singleplayer
-wikiArticle: codwiki-the-sins-of-the-father
+campaign:
+  id: "2"
+  label: Act I
+wikiArticle: codwiki-blackout-call-of-duty-4
 locations:
   - id: main
     country: Russia

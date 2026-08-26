@@ -4,6 +4,9 @@ title: Game Over
 games:
   - cod4
 mode: singleplayer
+campaign:
+  id: "4"
+  label: Act III
 wikiArticle: codwiki-game-over
 locations:
   - id: main

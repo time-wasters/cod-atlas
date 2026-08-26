@@ -1,10 +1,13 @@
 ---
-id: cod4-aftermath
-title: Aftermath
+id: cod4-shock-and-awe
+title: Shock and Awe
 games:
   - cod4
 mode: singleplayer
-wikiArticle: codwiki-aftermath-call-of-duty-4
+campaign:
+  id: "2"
+  label: Act I
+wikiArticle: codwiki-shock-and-awe
 locations:
   - id: main
     country: Iraq

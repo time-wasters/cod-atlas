@@ -1,10 +1,13 @@
 ---
-id: cod4-death-from-above
-title: Death From Above
+id: cod4-hunted
+title: Hunted
 games:
   - cod4
 mode: singleplayer
-wikiArticle: codwiki-death-from-above
+campaign:
+  id: "2"
+  label: Act I
+wikiArticle: codwiki-hunted-call-of-duty-4
 locations:
   - id: main
     country: Russia

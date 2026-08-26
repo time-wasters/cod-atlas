@@ -1,10 +1,13 @@
 ---
-id: cod4-war-pig
-title: War Pig
+id: cod4-aftermath
+title: Aftermath
 games:
   - cod4
 mode: singleplayer
-wikiArticle: codwiki-war-pig-mission
+campaign:
+  id: "2"
+  label: Act I
+wikiArticle: codwiki-aftermath-call-of-duty-4
 locations:
   - id: main
     country: Iraq

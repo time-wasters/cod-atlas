@@ -4,6 +4,9 @@ title: Crew Expendable
 games:
   - cod4
 mode: singleplayer
+campaign:
+  id: "1"
+  label: Prologue
 wikiArticle: codwiki-crew-expendable
 locations:
   - id: main

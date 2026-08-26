@@ -1,10 +1,13 @@
 ---
-id: cod4-no-fighting-in-the-war-room
-title: No Fighting In The War Room
+id: cod4-death-from-above
+title: Death From Above
 games:
   - cod4
 mode: singleplayer
-wikiArticle: codwiki-no-fighting-in-the-war-room
+campaign:
+  id: "2"
+  label: Act I
+wikiArticle: codwiki-death-from-above
 locations:
   - id: main
     country: Russia

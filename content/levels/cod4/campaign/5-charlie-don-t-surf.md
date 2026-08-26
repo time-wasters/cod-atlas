@@ -4,6 +4,9 @@ title: Charlie Don't Surf
 games:
   - cod4
 mode: singleplayer
+campaign:
+  id: "2"
+  label: Act I
 wikiArticle: codwiki-charlie-don-t-surf
 locations:
   - id: main

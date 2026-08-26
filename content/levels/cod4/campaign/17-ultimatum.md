@@ -1,10 +1,13 @@
 ---
-id: cod4-hunted
-title: Hunted
+id: cod4-ultimatum
+title: Ultimatum
 games:
   - cod4
 mode: singleplayer
-wikiArticle: codwiki-hunted-call-of-duty-4
+campaign:
+  id: "4"
+  label: Act III
+wikiArticle: codwiki-ultimatum
 locations:
   - id: main
     country: Russia

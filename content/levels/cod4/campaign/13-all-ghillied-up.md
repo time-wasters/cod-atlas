@@ -4,6 +4,9 @@ title: All Ghillied Up
 games:
   - cod4
 mode: singleplayer
+campaign:
+  id: "3"
+  label: Act II
 wikiArticle: codwiki-all-ghillied-up
 locations:
   - id: main

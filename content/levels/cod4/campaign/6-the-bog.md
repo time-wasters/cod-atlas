@@ -1,15 +1,18 @@
 ---
-id: cod4-f-n-g
-title: F.N.G.
+id: cod4-the-bog
+title: The Bog
 games:
   - cod4
 mode: singleplayer
-wikiArticle: codwiki-f-n-g
+campaign:
+  id: "2"
+  label: Act I
+wikiArticle: codwiki-the-bog
 locations:
   - id: main
-    country: United Kingdom
-    latitude: 54
-    longitude: -2
+    country: Iraq
+    latitude: 33
+    longitude: 44
     precision: country
     confidence: fallback
     method: country-fallback

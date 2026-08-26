@@ -4,6 +4,9 @@ title: The Coup
 games:
   - cod4
 mode: singleplayer
+campaign:
+  id: "1"
+  label: Prologue
 wikiArticle: codwiki-the-coup
 locations:
   - id: main

@@ -1,15 +1,18 @@
 ---
-id: cod4-the-bog
-title: The Bog
+id: cod4-all-in
+title: All In
 games:
   - cod4
 mode: singleplayer
-wikiArticle: codwiki-the-bog
+campaign:
+  id: "4"
+  label: Act III
+wikiArticle: codwiki-all-in
 locations:
   - id: main
-    country: Iraq
-    latitude: 33
-    longitude: 44
+    country: Russia
+    latitude: 60
+    longitude: 100
     precision: country
     confidence: fallback
     method: country-fallback

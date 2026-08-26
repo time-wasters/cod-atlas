@@ -1,10 +1,13 @@
 ---
-id: cod4-shock-and-awe
-title: Shock and Awe
+id: cod4-war-pig
+title: War Pig
 games:
   - cod4
 mode: singleplayer
-wikiArticle: codwiki-shock-and-awe
+campaign:
+  id: "2"
+  label: Act I
+wikiArticle: codwiki-war-pig-mission
 locations:
   - id: main
     country: Iraq

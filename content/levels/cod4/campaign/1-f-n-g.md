@@ -1,15 +1,18 @@
 ---
-id: cod4-safehouse
-title: Safehouse
+id: cod4-f-n-g
+title: F.N.G.
 games:
   - cod4
 mode: singleplayer
-wikiArticle: codwiki-safehouse
+campaign:
+  id: "1"
+  label: Prologue
+wikiArticle: codwiki-f-n-g
 locations:
   - id: main
-    country: Azerbaijan
-    latitude: 40.5
-    longitude: 47.5
+    country: United Kingdom
+    latitude: 54
+    longitude: -2
     precision: country
     confidence: fallback
     method: country-fallback

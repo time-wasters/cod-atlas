@@ -1,10 +1,13 @@
 ---
-id: cod4-ultimatum
-title: Ultimatum
+id: cod4-no-fighting-in-the-war-room
+title: No Fighting In The War Room
 games:
   - cod4
 mode: singleplayer
-wikiArticle: codwiki-ultimatum
+campaign:
+  id: "4"
+  label: Act III
+wikiArticle: codwiki-no-fighting-in-the-war-room
 locations:
   - id: main
     country: Russia

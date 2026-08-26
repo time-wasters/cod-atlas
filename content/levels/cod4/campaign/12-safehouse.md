@@ -1,10 +1,13 @@
 ---
-id: cod4-heat
-title: Heat
+id: cod4-safehouse
+title: Safehouse
 games:
   - cod4
 mode: singleplayer
-wikiArticle: codwiki-heat
+campaign:
+  id: "3"
+  label: Act II
+wikiArticle: codwiki-safehouse
 locations:
   - id: main
     country: Azerbaijan

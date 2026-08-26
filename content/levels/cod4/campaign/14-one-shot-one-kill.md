@@ -4,6 +4,9 @@ title: One Shot, One Kill
 games:
   - cod4
 mode: singleplayer
+campaign:
+  id: "3"
+  label: Act II
 wikiArticle: codwiki-one-shot-one-kill
 locations:
   - id: main
