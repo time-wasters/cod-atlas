@@ -15,8 +15,8 @@ research from their canonical level.
 <!-- research-progress:start -->
 | Scope | Researched | Remaining |
 | --- | ---: | ---: |
-| All currently catalogued levels | 155 / 1112 (14%) | 957 / 1112 (86%) |
-| Campaign levels | 101 / 424 (24%) | 323 / 424 (76%) |
+| All currently catalogued levels | 155 / 1113 (14%) | 958 / 1113 (86%) |
+| Campaign levels | 101 / 425 (24%) | 324 / 425 (76%) |
 | Multiplayer maps | 54 / 682 (8%) | 628 / 682 (92%) |
 | Zombies maps | 0 / 6 (0%) | 6 / 6 (100%) |
 
@@ -29,7 +29,7 @@ research from their canonical level.
 | Call of Duty 2: Big Red One | 0 / 14 (0%) | 0 / 9 (0%) | — | 0 / 23 (0%) |
 | Call of Duty 3 | 0 / 14 (0%) | 0 / 20 (0%) | — | 0 / 34 (0%) |
 | Call of Duty: Roads to Victory | 14 / 14 (100%) | 0 / 2 (0%) | — | 14 / 16 (88%) |
-| Modern Warfare (2007) | 0 / 20 (0%) | 0 / 21 (0%) | — | 0 / 41 (0%) |
+| Modern Warfare (2007) | 0 / 21 (0%) | 0 / 21 (0%) | — | 0 / 42 (0%) |
 | World at War | 0 / 15 (0%) | 0 / 24 (0%) | — | 0 / 39 (0%) |
 | World at War: Final Fronts | 0 / 13 (0%) | — | — | 0 / 13 (0%) |
 | Modern Warfare 2 (2009) | 0 / 18 (0%) | 0 / 22 (0%) | — | 0 / 40 (0%) |

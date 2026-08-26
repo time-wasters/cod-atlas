@@ -216,7 +216,7 @@ test("preserves the complete statically compiled atlas", async () => {
   );
 
   assert.equal(entries.length, 1059);
-  assert.equal(atlas.totals.levels, 1112);
+  assert.equal(atlas.totals.levels, 1113);
   assert.equal(findGroup("France").flagCode, "FR");
   assert.equal(findGroup("Turkey").flagCode, "TR");
   assert.equal(findGroup("United States").flagCode, "US");
