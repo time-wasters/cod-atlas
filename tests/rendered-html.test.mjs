@@ -215,8 +215,8 @@ test("preserves the complete statically compiled atlas", async () => {
     (entry) => entry.title === title && entry.game.split(" / ").includes(game),
   );
 
-  assert.equal(entries.length, 1056);
-  assert.equal(atlas.totals.levels, 1109);
+  assert.equal(entries.length, 1057);
+  assert.equal(atlas.totals.levels, 1110);
   assert.equal(findGroup("France").flagCode, "FR");
   assert.equal(findGroup("Turkey").flagCode, "TR");
   assert.equal(findGroup("United States").flagCode, "US");
@@ -591,7 +591,7 @@ test("preserves the complete statically compiled atlas", async () => {
   assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "singleplayer").length, 27);
   assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "multiplayer").length, 23);
   assert.equal(entries.filter((entry) => entry.modes[0] === "singleplayer").length, 421);
-  assert.equal(entries.filter((entry) => entry.modes[0] === "multiplayer").length, 635);
+  assert.equal(entries.filter((entry) => entry.modes[0] === "multiplayer").length, 636);
 });
 
 test("keeps calibrated game-map overlays in a separate generated store", async () => {
