@@ -298,8 +298,8 @@ test("preserves the complete statically compiled atlas", async () => {
   assert.equal(atlas.levelBanners["rtv-altavilla@rtv"].author.userUrl, "https://github.com/plp-gtr");
   assert.equal(atlas.levelIdAliases["cod-cod2-wwii-carentan"], "cod-carentan");
   const carentanAppearanceEntry = entries.find((entry) => entry.levelId === "cod-carentan");
-  assert.deepEqual(carentanAppearanceEntry.gameIds, ["cod", "cod-uo", "cod2", "wwii"]);
-  assert.deepEqual(carentanAppearanceEntry.appearances.map((appearance) => appearance.gameId), ["cod", "cod-uo", "cod2", "wwii"]);
+  assert.deepEqual(carentanAppearanceEntry.gameIds, ["cod", "cod-uo", "cod2", "rtv", "wwii"]);
+  assert.deepEqual(carentanAppearanceEntry.appearances.map((appearance) => appearance.gameId), ["cod", "cod-uo", "cod2", "rtv", "wwii"]);
   assert.ok(carentanAppearanceEntry.appearances.every((appearance) => appearance.wikiArticle === carentanAppearanceEntry.wikiArticle));
   assert.ok(carentanAppearanceEntry.appearances.every((appearance) => appearance.notesId === "cod-carentan"));
   const ashikaIslandEntry = entries.find((entry) => entry.levelId === "wz2-ashika-island");
@@ -530,8 +530,20 @@ test("preserves the complete statically compiled atlas", async () => {
       .map((entry) => entry.title),
     [...rtvCampaigns.values()].flatMap((campaign) => campaign.levels),
   );
-  assert.deepEqual(findEntry("RTV", "Brecourt").modes, ["multiplayer"]);
-  assert.deepEqual(findEntry("RTV", "El Alamein").modes, ["multiplayer"]);
+  const rtvMultiplayerMaps = entries
+    .filter((entry) => entry.gameIds.includes("rtv") && entry.modes[0] === "multiplayer")
+    .map((entry) => entry.title)
+    .sort();
+  assert.deepEqual(rtvMultiplayerMaps, [
+    "Beltot",
+    "Brecourt",
+    "Burgundy",
+    "Carentan",
+    "El Alamein",
+    "St. Mere Eglise",
+    "Utrecht",
+    "Wesel",
+  ].sort());
 
   assert.deepEqual(findEntry("COD2", "The Diversionary Raid").modes, ["singleplayer"]);
   assert.deepEqual(findEntry("COD2", "Holding the Line").modes, ["singleplayer"]);
