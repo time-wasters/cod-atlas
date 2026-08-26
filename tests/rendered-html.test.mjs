@@ -215,8 +215,8 @@ test("preserves the complete statically compiled atlas", async () => {
     (entry) => entry.title === title && entry.game.split(" / ").includes(game),
   );
 
-  assert.equal(entries.length, 1053);
-  assert.equal(atlas.totals.levels, 1107);
+  assert.equal(entries.length, 1056);
+  assert.equal(atlas.totals.levels, 1109);
   assert.equal(findGroup("France").flagCode, "FR");
   assert.equal(findGroup("Turkey").flagCode, "TR");
   assert.equal(findGroup("United States").flagCode, "US");
@@ -494,6 +494,8 @@ test("preserves the complete statically compiled atlas", async () => {
       .map((entry) => entry.title),
     [...rtvCampaigns.values()].flatMap((campaign) => campaign.levels),
   );
+  assert.deepEqual(findEntry("RTV", "Brecourt").modes, ["multiplayer"]);
+  assert.deepEqual(findEntry("RTV", "El Alamein").modes, ["multiplayer"]);
 
   assert.deepEqual(findEntry("COD2", "The Diversionary Raid").modes, ["singleplayer"]);
   assert.deepEqual(findEntry("COD2", "Holding the Line").modes, ["singleplayer"]);
@@ -587,9 +589,9 @@ test("preserves the complete statically compiled atlas", async () => {
 
   const cod2Entries = entries.filter((entry) => entry.game.split(" / ").includes("COD2"));
   assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "singleplayer").length, 27);
-  assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "multiplayer").length, 20);
+  assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "multiplayer").length, 23);
   assert.equal(entries.filter((entry) => entry.modes[0] === "singleplayer").length, 421);
-  assert.equal(entries.filter((entry) => entry.modes[0] === "multiplayer").length, 632);
+  assert.equal(entries.filter((entry) => entry.modes[0] === "multiplayer").length, 635);
 });
 
 test("keeps calibrated game-map overlays in a separate generated store", async () => {

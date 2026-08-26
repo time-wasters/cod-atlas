@@ -1850,6 +1850,12 @@ export default function Home() {
     const selectedIsVisible = filtered.some((group) =>
       group.entries.some((entry) => entry.id === selected.entry.id));
     if (selected.entry.coordinates && selectedIsVisible && mapNode.current) {
+      // Campaign selection immediately fits the complete route. Avoid starting
+      // a competing marker pan whose delayed moveend can make the route appear
+      // settled before MarkerCluster has finished rebuilding at the final view.
+      const awaitingCampaignRouteFit = selectedCampaign !== null
+        && campaignMarkerRevealEntryId.current === selected.entry.id;
+      if (awaitingCampaignRouteFit) return;
       const sidebarTarget = sidebarSelectionTarget.current;
       if (sidebarTarget) {
         sidebarSelectionTarget.current = null;
