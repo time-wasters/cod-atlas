@@ -122,6 +122,34 @@ test("catalogues the complete Black Ops 6 campaign, multiplayer, and Zombies ros
   }
 });
 
+test("catalogues the complete sorted Modern Warfare (2007) campaign roster", async () => {
+  const cod4Root = new URL("../content/levels/cod4/", import.meta.url);
+  assert.deepEqual((await readdir(cod4Root)).sort(), ["campaign", "multiplayer"]);
+  assert.deepEqual((await readdir(new URL("campaign/", cod4Root))).sort(), [
+    "1-f-n-g.md",
+    "10-shock-and-awe.md",
+    "11-aftermath.md",
+    "12-safehouse.md",
+    "13-all-ghillied-up.md",
+    "14-one-shot-one-kill.md",
+    "15-heat.md",
+    "16-the-sins-of-the-father.md",
+    "17-ultimatum.md",
+    "18-all-in.md",
+    "19-no-fighting-in-the-war-room.md",
+    "2-crew-expendable.md",
+    "20-game-over.md",
+    "21-mile-high-club.md",
+    "3-the-coup.md",
+    "4-blackout.md",
+    "5-charlie-don-t-surf.md",
+    "6-the-bog.md",
+    "7-hunted.md",
+    "8-death-from-above.md",
+    "9-war-pig.md",
+  ]);
+});
+
 test("renders development preview metadata", async () => {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);

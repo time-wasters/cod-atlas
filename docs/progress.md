@@ -12,6 +12,11 @@ standard research sections in order. AI-assisted notes must also include an AI
 disclosure. Appearance `.ref.md` files are excluded because they inherit
 research from their canonical level.
 
+These percentages measure completed historical and geographic research, not
+roster completeness or directory organization. For example, Modern Warfare
+(2007)'s complete 21-level campaign can remain below 100% here until every
+mission has the required research sections.
+
 <!-- research-progress:start -->
 | Scope | Researched | Remaining |
 | --- | ---: | ---: |
