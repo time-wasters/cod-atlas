@@ -1197,6 +1197,7 @@ export default function Home() {
   const campaignFocusLevelIds = useRef<Set<string> | null>(null);
   const campaignRouteLayer = useRef<import("leaflet").LayerGroup | null>(null);
   const campaignRouteFitKey = useRef<string | null>(null);
+  const campaignMarkerRevealEntryId = useRef<string | null>(null);
   const mapImageOverlay = useRef<import("leaflet").ImageOverlay.Rotated | null>(null);
   const mapImageOverlayLevelId = useRef<string | null>(null);
   const mapImageOverlayOpacity = useRef(0);
@@ -1621,7 +1622,10 @@ export default function Home() {
     const campaignIsActive = selectedCampaignKey === campaign.key;
     setSelectedCampaignKey(campaignIsActive ? null : campaign.key);
     if (!campaignIsActive && campaign.levels[0]) {
+      campaignMarkerRevealEntryId.current = campaign.levels[0].entry.id;
       selectEntry(campaign.levels[0].group, campaign.levels[0].entry);
+    } else {
+      campaignMarkerRevealEntryId.current = null;
     }
     setExpandedRegionEntryId(null);
     setRelatedLevelsOpen(true);
@@ -1909,6 +1913,7 @@ export default function Home() {
     campaignRouteLayer.current = null;
     if (!selectedCampaign) {
       campaignRouteFitKey.current = null;
+      campaignMarkerRevealEntryId.current = null;
       return;
     }
 
@@ -1917,6 +1922,28 @@ export default function Home() {
     const route = buildCampaignRoute(selectedCampaign.routeLevels);
     const routeLayer = L.layerGroup().addTo(currentMap);
     campaignRouteLayer.current = routeLayer;
+    let markerRevealTimer: number | null = null;
+    const revealFirstCampaignMarker = () => {
+      markerRevealTimer = null;
+      const entryId = campaignMarkerRevealEntryId.current;
+      if (!entryId || entryId !== selectedCampaign.levels[0]?.entry.id) return;
+      const clusterLayer = markerLayer.current;
+      const selectedMarker = markers.current.get(entryId)?.marker;
+      if (!clusterLayer || !selectedMarker) {
+        campaignMarkerRevealEntryId.current = null;
+        return;
+      }
+      const visibleParent = clusterLayer.getVisibleParent(selectedMarker);
+      if (visibleParent && visibleParent !== selectedMarker && "spiderfy" in visibleParent) {
+        (visibleParent as LeafletMarker & { spiderfy: () => void }).spiderfy();
+      }
+      campaignMarkerRevealEntryId.current = null;
+    };
+    const scheduleMarkerReveal = () => {
+      if (markerRevealTimer !== null) window.clearTimeout(markerRevealTimer);
+      // Let MarkerCluster finish rebuilding its visible parents after the map movement.
+      markerRevealTimer = window.setTimeout(revealFirstCampaignMarker, 180);
+    };
 
     route.segments.forEach((segment) => {
       L.polyline(segment, {
@@ -2023,11 +2050,20 @@ export default function Home() {
         duration: .65,
       };
       currentMap.stop();
+      currentMap.once("moveend", scheduleMarkerReveal);
       if (movement.animate) currentMap.flyToBounds(routeBounds, movement);
       else currentMap.fitBounds(routeBounds, movement);
+      // Leaflet does not emit moveend when the calculated view is unchanged.
+      if (markerRevealTimer === null) {
+        markerRevealTimer = window.setTimeout(revealFirstCampaignMarker, movement.animate ? 900 : 180);
+      }
+    } else {
+      scheduleMarkerReveal();
     }
 
     return () => {
+      currentMap.off("moveend", scheduleMarkerReveal);
+      if (markerRevealTimer !== null) window.clearTimeout(markerRevealTimer);
       routeLayer.remove();
       if (campaignRouteLayer.current === routeLayer) campaignRouteLayer.current = null;
     };
