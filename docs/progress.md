@@ -15,9 +15,9 @@ research from their canonical level.
 <!-- research-progress:start -->
 | Scope | Researched | Remaining |
 | --- | ---: | ---: |
-| All currently catalogued levels | 155 / 1110 (14%) | 955 / 1110 (86%) |
+| All currently catalogued levels | 155 / 1112 (14%) | 957 / 1112 (86%) |
 | Campaign levels | 101 / 424 (24%) | 323 / 424 (76%) |
-| Multiplayer maps | 54 / 680 (8%) | 626 / 680 (92%) |
+| Multiplayer maps | 54 / 682 (8%) | 628 / 682 (92%) |
 | Zombies maps | 0 / 6 (0%) | 6 / 6 (100%) |
 
 | Game | Campaign | Multiplayer | Zombies | Overall |
@@ -27,7 +27,7 @@ research from their canonical level.
 | Call of Duty: Finest Hour | 19 / 19 (100%) | — | — | 19 / 19 (100%) |
 | Call of Duty 2 | 27 / 27 (100%) | 21 / 21 (100%) | — | 48 / 48 (100%) |
 | Call of Duty 2: Big Red One | 0 / 14 (0%) | 0 / 9 (0%) | — | 0 / 23 (0%) |
-| Call of Duty 3 | 0 / 14 (0%) | 0 / 18 (0%) | — | 0 / 32 (0%) |
+| Call of Duty 3 | 0 / 14 (0%) | 0 / 20 (0%) | — | 0 / 34 (0%) |
 | Call of Duty: Roads to Victory | 14 / 14 (100%) | 0 / 2 (0%) | — | 14 / 16 (88%) |
 | Modern Warfare (2007) | 0 / 20 (0%) | 0 / 21 (0%) | — | 0 / 41 (0%) |
 | World at War | 0 / 15 (0%) | 0 / 24 (0%) | — | 0 / 39 (0%) |
@@ -68,18 +68,18 @@ The per-game table assigns each marker to its canonical level's owner game.
 <!-- localization-progress:start -->
 | Scope | Localized | Country fallback | Off-world |
 | --- | ---: | ---: | ---: |
-| All marker locations | 279 / 1027 (27%) | 748 / 1027 (73%) | 30 |
+| All marker locations | 280 / 1029 (27%) | 749 / 1029 (73%) | 30 |
 | Campaign marker locations | 118 / 404 (29%) | 286 / 404 (71%) | 17 |
-| Multiplayer marker locations | 161 / 623 (26%) | 462 / 623 (74%) | 13 |
+| Multiplayer marker locations | 162 / 625 (26%) | 463 / 625 (74%) | 13 |
 | Zombies marker locations | — | — | 0 |
 
 | Precision | Marker locations | Share of all markers |
 | --- | ---: | ---: |
 | Exact | 73 | 7% |
 | Approximate | 120 | 11% |
-| City | 80 | 8% |
+| City | 81 | 8% |
 | Region | 6 | 1% |
-| Country | 748 | 71% |
+| Country | 749 | 71% |
 | Off-world | 30 | 3% |
 
 | Game | Campaign | Multiplayer | Zombies | Overall |
@@ -89,7 +89,7 @@ The per-game table assigns each marker to its canonical level's owner game.
 | Call of Duty: Finest Hour | 19 / 19 (100%) | — | — | 19 / 19 (100%) |
 | Call of Duty 2 | 27 / 27 (100%) | 22 / 22 (100%) | — | 49 / 49 (100%) |
 | Call of Duty 2: Big Red One | 0 / 14 (0%) | 5 / 9 (56%) | — | 5 / 23 (22%) |
-| Call of Duty 3 | 4 / 14 (29%) | 5 / 18 (28%) | — | 9 / 32 (28%) |
+| Call of Duty 3 | 4 / 14 (29%) | 6 / 20 (30%) | — | 10 / 34 (29%) |
 | Call of Duty: Roads to Victory | 14 / 14 (100%) | 1 / 2 (50%) | — | 15 / 16 (94%) |
 | Modern Warfare (2007) | 0 / 20 (0%) | 20 / 21 (95%) | — | 20 / 41 (49%) |
 | World at War | 1 / 15 (7%) | 7 / 24 (29%) | — | 8 / 39 (21%) |

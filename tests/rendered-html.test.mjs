@@ -215,8 +215,8 @@ test("preserves the complete statically compiled atlas", async () => {
     (entry) => entry.title === title && entry.game.split(" / ").includes(game),
   );
 
-  assert.equal(entries.length, 1057);
-  assert.equal(atlas.totals.levels, 1110);
+  assert.equal(entries.length, 1059);
+  assert.equal(atlas.totals.levels, 1112);
   assert.equal(findGroup("France").flagCode, "FR");
   assert.equal(findGroup("Turkey").flagCode, "TR");
   assert.equal(findGroup("United States").flagCode, "US");
@@ -348,6 +348,42 @@ test("preserves the complete statically compiled atlas", async () => {
     const url = entry.urls.find((item) => item.callOfDutyMaps).callOfDutyMaps;
     assert.equal(url, `https://callofdutymaps.com/call-of-duty-1/${slug}/`);
     assert.ok(entry.gameIds.includes("cod"));
+    assert.deepEqual(entry.modes, ["multiplayer"]);
+  }
+
+  const expectedCod3MapLinks = new Map([
+    ["cod3-aller-haut", "aller-haut"],
+    ["cod3-argentan", "argentan"],
+    ["cod3-champs", "champs"],
+    ["cod3-crossing", "crossing"],
+    ["cod3-eder-dam", "eder-dam"],
+    ["cod3-fuel-plant-multiplayer", "fuel-plant"],
+    ["cod3-gare-centrale", "gare-centrale"],
+    ["cod3-ironclad", "ironclad"],
+    ["cod3-la-bourgade", "la-bourgade"],
+    ["cod3-les-ormes", "les-ormes"],
+    ["cod3-marseilles", "marseilles"],
+    ["cod3-mayenne", "mayenne"],
+    ["cod3-merville", "merville"],
+    ["cod3-poisson", "poisson"],
+    ["cod3-rimling", "rimling"],
+    ["cod3-rouen", "rouen"],
+    ["cod3-seine-river", "seine-river"],
+    ["cod3-stalag-23", "stalag-23"],
+    ["cod3-verdun", "verdun"],
+    ["cod3-wildwood", "wildwood"],
+  ]);
+  const cod3MapEntries = entries.filter((entry) =>
+    entry.gameIds.includes("cod3")
+    && entry.urls?.some((url) => url.callOfDutyMaps?.startsWith("https://callofdutymaps.com/call-of-duty-3/")));
+  assert.deepEqual(
+    cod3MapEntries.map((entry) => entry.levelId).sort(),
+    [...expectedCod3MapLinks.keys()].sort(),
+  );
+  for (const entry of cod3MapEntries) {
+    const slug = expectedCod3MapLinks.get(entry.levelId);
+    const url = entry.urls.find((item) => item.callOfDutyMaps).callOfDutyMaps;
+    assert.equal(url, `https://callofdutymaps.com/call-of-duty-3/${slug}/`);
     assert.deepEqual(entry.modes, ["multiplayer"]);
   }
 
@@ -591,7 +627,7 @@ test("preserves the complete statically compiled atlas", async () => {
   assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "singleplayer").length, 27);
   assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "multiplayer").length, 23);
   assert.equal(entries.filter((entry) => entry.modes[0] === "singleplayer").length, 421);
-  assert.equal(entries.filter((entry) => entry.modes[0] === "multiplayer").length, 636);
+  assert.equal(entries.filter((entry) => entry.modes[0] === "multiplayer").length, 638);
 });
 
 test("keeps calibrated game-map overlays in a separate generated store", async () => {
