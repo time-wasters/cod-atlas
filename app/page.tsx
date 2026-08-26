@@ -1923,6 +1923,8 @@ export default function Home() {
     const routeLayer = L.layerGroup().addTo(currentMap);
     campaignRouteLayer.current = routeLayer;
     let markerRevealTimer: number | null = null;
+    let markerRevealAttempts = 0;
+    let campaignViewSettled = false;
     const revealFirstCampaignMarker = () => {
       markerRevealTimer = null;
       const entryId = campaignMarkerRevealEntryId.current;
@@ -1936,14 +1938,34 @@ export default function Home() {
       const visibleParent = clusterLayer.getVisibleParent(selectedMarker);
       if (visibleParent && visibleParent !== selectedMarker && "spiderfy" in visibleParent) {
         (visibleParent as LeafletMarker & { spiderfy: () => void }).spiderfy();
+        campaignMarkerRevealEntryId.current = null;
+        return;
+      }
+      // During a cluster refresh the marker can briefly appear as its own
+      // visible parent before it is placed back inside the rendered cluster.
+      if (markerRevealAttempts < 3) {
+        markerRevealAttempts += 1;
+        markerRevealTimer = window.setTimeout(revealFirstCampaignMarker, 160);
+        return;
       }
       campaignMarkerRevealEntryId.current = null;
     };
     const scheduleMarkerReveal = () => {
+      if (!campaignMarkerRevealEntryId.current) return;
       if (markerRevealTimer !== null) window.clearTimeout(markerRevealTimer);
+      markerRevealAttempts = 0;
       // Let MarkerCluster finish rebuilding its visible parents after the map movement.
       markerRevealTimer = window.setTimeout(revealFirstCampaignMarker, 180);
     };
+    const handleCampaignMoveEnd = () => {
+      campaignViewSettled = true;
+      scheduleMarkerReveal();
+    };
+    const handleClusterAnimationEnd = () => {
+      if (campaignViewSettled) scheduleMarkerReveal();
+    };
+    const activeMarkerLayer = markerLayer.current;
+    activeMarkerLayer?.on("animationend", handleClusterAnimationEnd);
 
     route.segments.forEach((segment) => {
       L.polyline(segment, {
@@ -2050,7 +2072,7 @@ export default function Home() {
         duration: .65,
       };
       currentMap.stop();
-      currentMap.once("moveend", scheduleMarkerReveal);
+      currentMap.once("moveend", handleCampaignMoveEnd);
       if (movement.animate) currentMap.flyToBounds(routeBounds, movement);
       else currentMap.fitBounds(routeBounds, movement);
       // Leaflet does not emit moveend when the calculated view is unchanged.
@@ -2058,11 +2080,13 @@ export default function Home() {
         markerRevealTimer = window.setTimeout(revealFirstCampaignMarker, movement.animate ? 900 : 180);
       }
     } else {
+      campaignViewSettled = true;
       scheduleMarkerReveal();
     }
 
     return () => {
-      currentMap.off("moveend", scheduleMarkerReveal);
+      currentMap.off("moveend", handleCampaignMoveEnd);
+      activeMarkerLayer?.off("animationend", handleClusterAnimationEnd);
       if (markerRevealTimer !== null) window.clearTimeout(markerRevealTimer);
       routeLayer.remove();
       if (campaignRouteLayer.current === routeLayer) campaignRouteLayer.current = null;
