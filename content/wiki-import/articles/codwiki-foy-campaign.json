@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Foy_(Campaign)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Foy_(Campaign)",
   "latestRevisionId": 3014849,
-  "importedAt": "2026-08-09T21:33:45.136Z",
+  "importedAt": "2026-08-25T23:02:51.732Z",
   "levelLocation": {
     "raw": "[[Foy, Belgium]]",
     "label": "Foy, Belgium",
@@ -53,5 +53,46 @@
     "resolvedTitle": "Foy (Campaign)",
     "mainImageTitle": "File:Foy_MenuScreen_CoDUO.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Crossroads (United Offensive)|Crossroads]]",
+    "label": "Crossroads",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-crossroads-united-offensive",
+        "wikiTitle": "Crossroads (United Offensive)",
+        "label": "Crossroads",
+        "url": "https://callofduty.fandom.com/wiki/Crossroads_(United_Offensive)"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Noville]]",
+    "label": "Noville",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-noville",
+        "wikiTitle": "Noville",
+        "label": "Noville",
+        "url": "https://callofduty.fandom.com/wiki/Noville"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: United Offensive]]''",
+    "label": "Call of Duty: United Offensive",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: United Offensive",
+        "label": "Call of Duty: United Offensive",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_United_Offensive"
+      }
+    ]
+  },
+  "date": {
+    "raw": "January 13, 1945, 1100 hrs",
+    "label": "January 13, 1945, 1100 hrs"
   }
 }

@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/The_Crossing_Point",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/The_Crossing_Point",
   "latestRevisionId": 2901230,
-  "importedAt": "2026-08-18T20:40:52.166Z",
+  "importedAt": "2026-08-25T21:15:38.208Z",
   "levelLocation": {
     "raw": "Wallendar, [[Germany]]",
     "label": "Germany",
@@ -59,6 +59,8 @@
     "label": "The Battle for Hill 400",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-the-battle-for-hill-400",
         "wikiTitle": "The Battle for Hill 400",
         "label": "The Battle for Hill 400",
         "url": "https://callofduty.fandom.com/wiki/The_Battle_for_Hill_400"

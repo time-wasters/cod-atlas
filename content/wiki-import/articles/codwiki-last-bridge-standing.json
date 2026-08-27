@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Last_Bridge_Standing",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Last_Bridge_Standing",
   "latestRevisionId": 2955671,
-  "importedAt": "2026-08-09T21:34:51.051Z",
+  "importedAt": "2026-08-25T23:04:01.692Z",
   "levelLocation": {
     "raw": "Remagen, Germany",
     "label": "Remagen, Germany",
@@ -53,5 +53,46 @@
     "resolvedTitle": "Last Bridge Standing",
     "mainImageTitle": "File:CoDFH_Last_Bridge_Standing_loading_screen.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Road to Remagen]]",
+    "label": "Road to Remagen",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-road-to-remagen",
+        "wikiTitle": "Road to Remagen",
+        "label": "Road to Remagen",
+        "url": "https://callofduty.fandom.com/wiki/Road_to_Remagen"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Into the Heartland]]",
+    "label": "Into the Heartland",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-into-the-heartland",
+        "wikiTitle": "Into the Heartland",
+        "label": "Into the Heartland",
+        "url": "https://callofduty.fandom.com/wiki/Into_the_Heartland"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Finest Hour]]''",
+    "label": "Call of Duty: Finest Hour",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Finest Hour",
+        "label": "Call of Duty: Finest Hour",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Finest_Hour"
+      }
+    ]
+  },
+  "date": {
+    "raw": "April 7, 1945",
+    "label": "April 7, 1945"
   }
 }

@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Defend_the_Factory",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Defend_the_Factory",
   "latestRevisionId": 2954099,
-  "importedAt": "2026-08-09T21:34:40.166Z",
+  "importedAt": "2026-08-25T23:03:50.670Z",
   "levelLocation": {
     "raw": "[[Stalingrad]], Soviet Union",
     "label": "Stalingrad",
@@ -53,5 +53,46 @@
     "resolvedTitle": "Defend the Factory",
     "mainImageTitle": "File:CoDFH_Defend_the_Factory_loading_screen.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Dead In Her Sights]]",
+    "label": "Dead In Her Sights",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-dead-in-her-sights",
+        "wikiTitle": "Dead In Her Sights",
+        "label": "Dead In Her Sights",
+        "url": "https://callofduty.fandom.com/wiki/Dead_In_Her_Sights"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Breakdown]]",
+    "label": "Breakdown",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-breakdown",
+        "wikiTitle": "Breakdown",
+        "label": "Breakdown",
+        "url": "https://callofduty.fandom.com/wiki/Breakdown"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Finest Hour]]''",
+    "label": "Call of Duty: Finest Hour",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Finest Hour",
+        "label": "Call of Duty: Finest Hour",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Finest_Hour"
+      }
+    ]
+  },
+  "date": {
+    "raw": "October 3rd, 1942",
+    "label": "October 3rd, 1942"
   }
 }

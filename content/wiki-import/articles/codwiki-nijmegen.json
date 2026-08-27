@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Nijmegen",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Nijmegen",
   "latestRevisionId": 2957221,
-  "importedAt": "2026-08-11T18:50:28.369Z",
+  "importedAt": "2026-08-25T23:11:55.697Z",
   "levelLocation": {
     "raw": "Nijmegen, Netherlands",
     "label": "Nijmegen, Netherlands",
@@ -59,6 +59,8 @@
     "label": "Lucky Thirteen",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-lucky-thirteen",
         "wikiTitle": "Lucky Thirteen",
         "label": "Lucky Thirteen",
         "url": "https://callofduty.fandom.com/wiki/Lucky_Thirteen"
@@ -70,6 +72,8 @@
     "label": "Hunner Park",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-hunner-park",
         "wikiTitle": "Hunner Park",
         "label": "Hunner Park",
         "url": "https://callofduty.fandom.com/wiki/Hunner_Park"

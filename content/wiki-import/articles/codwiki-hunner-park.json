@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Hunner_Park",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Hunner_Park",
   "latestRevisionId": 2957223,
-  "importedAt": "2026-08-11T18:50:28.383Z",
+  "importedAt": "2026-08-25T23:11:55.711Z",
   "levelLocation": {
     "raw": "Nijmegen, Netherlands",
     "label": "Nijmegen, Netherlands",
@@ -59,6 +59,8 @@
     "label": "Nijmegen",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-nijmegen",
         "wikiTitle": "Nijmegen",
         "label": "Nijmegen",
         "url": "https://callofduty.fandom.com/wiki/Nijmegen"
@@ -70,6 +72,8 @@
     "label": "River Crossing",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-river-crossing",
         "wikiTitle": "River Crossing",
         "label": "River Crossing",
         "url": "https://callofduty.fandom.com/wiki/River_Crossing"

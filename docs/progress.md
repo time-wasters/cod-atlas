@@ -12,12 +12,17 @@ standard research sections in order. AI-assisted notes must also include an AI
 disclosure. Appearance `.ref.md` files are excluded because they inherit
 research from their canonical level.
 
+These percentages measure completed historical and geographic research, not
+roster completeness or directory organization. For example, Modern Warfare
+(2007)'s complete 21-level campaign can remain below 100% here until every
+mission has the required research sections.
+
 <!-- research-progress:start -->
 | Scope | Researched | Remaining |
 | --- | ---: | ---: |
-| All currently catalogued levels | 134 / 1107 (12%) | 973 / 1107 (88%) |
-| Campaign levels | 101 / 424 (24%) | 323 / 424 (76%) |
-| Multiplayer maps | 33 / 677 (5%) | 644 / 677 (95%) |
+| All currently catalogued levels | 155 / 1113 (14%) | 958 / 1113 (86%) |
+| Campaign levels | 101 / 425 (24%) | 324 / 425 (76%) |
+| Multiplayer maps | 54 / 682 (8%) | 628 / 682 (92%) |
 | Zombies maps | 0 / 6 (0%) | 6 / 6 (100%) |
 
 | Game | Campaign | Multiplayer | Zombies | Overall |
@@ -25,11 +30,11 @@ research from their canonical level.
 | Call of Duty | 26 / 26 (100%) | 16 / 16 (100%) | — | 42 / 42 (100%) |
 | Call of Duty: United Offensive | 13 / 13 (100%) | 14 / 14 (100%) | — | 27 / 27 (100%) |
 | Call of Duty: Finest Hour | 19 / 19 (100%) | — | — | 19 / 19 (100%) |
-| Call of Duty 2 | 27 / 27 (100%) | 0 / 19 (0%) | — | 27 / 46 (59%) |
-| Call of Duty 2: Big Red One | 0 / 14 (0%) | 0 / 8 (0%) | — | 0 / 22 (0%) |
-| Call of Duty 3 | 0 / 14 (0%) | 0 / 18 (0%) | — | 0 / 32 (0%) |
+| Call of Duty 2 | 27 / 27 (100%) | 21 / 21 (100%) | — | 48 / 48 (100%) |
+| Call of Duty 2: Big Red One | 0 / 14 (0%) | 0 / 9 (0%) | — | 0 / 23 (0%) |
+| Call of Duty 3 | 0 / 14 (0%) | 0 / 20 (0%) | — | 0 / 34 (0%) |
 | Call of Duty: Roads to Victory | 14 / 14 (100%) | 0 / 2 (0%) | — | 14 / 16 (88%) |
-| Modern Warfare (2007) | 0 / 20 (0%) | 0 / 21 (0%) | — | 0 / 41 (0%) |
+| Modern Warfare (2007) | 0 / 21 (0%) | 0 / 21 (0%) | — | 0 / 42 (0%) |
 | World at War | 0 / 15 (0%) | 0 / 24 (0%) | — | 0 / 39 (0%) |
 | World at War: Final Fronts | 0 / 13 (0%) | — | — | 0 / 13 (0%) |
 | Modern Warfare 2 (2009) | 0 / 18 (0%) | 0 / 22 (0%) | — | 0 / 40 (0%) |
@@ -68,18 +73,18 @@ The per-game table assigns each marker to its canonical level's owner game.
 <!-- localization-progress:start -->
 | Scope | Localized | Country fallback | Off-world |
 | --- | ---: | ---: | ---: |
-| All marker locations | 263 / 1023 (26%) | 760 / 1023 (74%) | 30 |
-| Campaign marker locations | 118 / 404 (29%) | 286 / 404 (71%) | 17 |
-| Multiplayer marker locations | 145 / 619 (23%) | 474 / 619 (77%) | 13 |
+| All marker locations | 284 / 1029 (28%) | 745 / 1029 (72%) | 30 |
+| Campaign marker locations | 121 / 404 (30%) | 283 / 404 (70%) | 17 |
+| Multiplayer marker locations | 163 / 625 (26%) | 462 / 625 (74%) | 13 |
 | Zombies marker locations | — | — | 0 |
 
 | Precision | Marker locations | Share of all markers |
 | --- | ---: | ---: |
-| Exact | 70 | 7% |
-| Approximate | 113 | 11% |
-| City | 75 | 7% |
-| Region | 5 | 0% |
-| Country | 760 | 72% |
+| Exact | 73 | 7% |
+| Approximate | 123 | 12% |
+| City | 82 | 8% |
+| Region | 6 | 1% |
+| Country | 745 | 70% |
 | Off-world | 30 | 3% |
 
 | Game | Campaign | Multiplayer | Zombies | Overall |
@@ -87,10 +92,10 @@ The per-game table assigns each marker to its canonical level's owner game.
 | Call of Duty | 26 / 26 (100%) | 16 / 16 (100%) | — | 42 / 42 (100%) |
 | Call of Duty: United Offensive | 12 / 13 (92%) | 12 / 14 (86%) | — | 24 / 27 (89%) |
 | Call of Duty: Finest Hour | 19 / 19 (100%) | — | — | 19 / 19 (100%) |
-| Call of Duty 2 | 27 / 27 (100%) | 6 / 19 (32%) | — | 33 / 46 (72%) |
-| Call of Duty 2: Big Red One | 0 / 14 (0%) | 5 / 8 (63%) | — | 5 / 22 (23%) |
-| Call of Duty 3 | 4 / 14 (29%) | 5 / 18 (28%) | — | 9 / 32 (28%) |
-| Call of Duty: Roads to Victory | 14 / 14 (100%) | 1 / 2 (50%) | — | 15 / 16 (94%) |
+| Call of Duty 2 | 27 / 27 (100%) | 22 / 22 (100%) | — | 49 / 49 (100%) |
+| Call of Duty 2: Big Red One | 3 / 14 (21%) | 5 / 9 (56%) | — | 8 / 23 (35%) |
+| Call of Duty 3 | 4 / 14 (29%) | 6 / 20 (30%) | — | 10 / 34 (29%) |
+| Call of Duty: Roads to Victory | 14 / 14 (100%) | 2 / 2 (100%) | — | 16 / 16 (100%) |
 | Modern Warfare (2007) | 0 / 20 (0%) | 20 / 21 (95%) | — | 20 / 41 (49%) |
 | World at War | 1 / 15 (7%) | 7 / 24 (29%) | — | 8 / 39 (21%) |
 | World at War: Final Fronts | 7 / 14 (50%) | — | — | 7 / 14 (50%) |

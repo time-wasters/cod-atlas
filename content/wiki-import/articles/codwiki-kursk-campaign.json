@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Kursk_(Campaign)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Kursk_(Campaign)",
   "latestRevisionId": 2992613,
-  "importedAt": "2026-08-09T21:33:55.904Z",
+  "importedAt": "2026-08-25T23:02:51.740Z",
   "levelLocation": {
     "raw": "Prokhorovka, USSR",
     "label": "Prokhorovka, USSR",
@@ -53,5 +53,46 @@
     "resolvedTitle": "Kursk (Campaign)",
     "mainImageTitle": "File:Kursk(Campaign)_UO1.jpg",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Ponyri]]",
+    "label": "Ponyri",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-ponyri",
+        "wikiTitle": "Ponyri",
+        "label": "Ponyri",
+        "url": "https://callofduty.fandom.com/wiki/Ponyri"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Kharkov Outskirts]]",
+    "label": "Kharkov Outskirts",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-kharkov-1",
+        "wikiTitle": "Kharkov Outskirts",
+        "label": "Kharkov Outskirts",
+        "url": "https://callofduty.fandom.com/wiki/Kharkov_Outskirts"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: United Offensive]]''",
+    "label": "Call of Duty: United Offensive",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: United Offensive",
+        "label": "Call of Duty: United Offensive",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_United_Offensive"
+      }
+    ]
+  },
+  "date": {
+    "raw": "July 12, 1943, 17h10",
+    "label": "July 12, 1943, 17h10"
   }
 }

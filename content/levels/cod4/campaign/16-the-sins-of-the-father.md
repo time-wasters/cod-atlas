@@ -1,0 +1,20 @@
+---
+id: cod4-the-sins-of-the-father
+title: The Sins of the Father
+games:
+  - cod4
+mode: singleplayer
+campaign:
+  id: "3"
+  label: Act II
+wikiArticle: codwiki-the-sins-of-the-father
+locations:
+  - id: main
+    country: Russia
+    latitude: 60
+    longitude: 100
+    precision: country
+    confidence: fallback
+    method: country-fallback
+    primary: true
+---

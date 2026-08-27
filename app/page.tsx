@@ -8,12 +8,15 @@ import ReactMarkdown from "react-markdown";
 import atlasSource from "./data/atlas.generated.json";
 import historyOverlaysSource from "./data/history-overlays.generated.json";
 import mapOverlaysSource from "./data/map-overlays.generated.json";
+import { buildCampaignRoute } from "./campaign-route.js";
+import { applyEnglishMapLabels } from "./map-language.js";
 import { atlasUrlWithState, parseAtlasUrl } from "./url-state";
 
 type Entry = {
   id: string;
   levelId: string;
   locationId: string;
+  primary: boolean;
   title: string;
   game: string;
   gameIds: string[];
@@ -202,7 +205,6 @@ type AtlasData = {
     cityMatched: number;
     countryFallback: number;
   };
-  updatedAt: string;
 };
 
 type Selection = { group: Group; entry: Entry };
@@ -213,6 +215,13 @@ type CampaignOption = {
   id: string;
   label: string;
   levels: Selection[];
+  routeLevels: {
+    entryId: string | null;
+    levelId: string;
+    title: string;
+    order: number | null;
+    coordinates: [number, number] | null;
+  }[];
 };
 
 const data = atlasSource as AtlasData;
@@ -222,6 +231,7 @@ const gamesById = new Map(data.games.map((game) => [game.id, game]));
 const gamesByCode = new Map(data.games.map((game) => [game.code, game]));
 const countryNames = new Set(data.groups.map((group) => group.name));
 const selections = data.groups.flatMap((group) => group.entries.map((entry) => ({ group, entry })));
+const selectionsByEntryId = new Map(selections.map((selection) => [selection.entry.id, selection]));
 const gameSeriesOptions: FilterOption[] = [
   { value: "world-war-ii", label: "World War II" },
   { value: "modern-warfare", label: "Modern Warfare" },
@@ -1167,6 +1177,7 @@ export default function Home() {
   const [relatedLevelsOpen, setRelatedLevelsOpen] = useState(true);
   const [sidebarListMode, setSidebarListMode] = useState<"locations" | "campaigns">("locations");
   const [selectedCampaignKey, setSelectedCampaignKey] = useState<string | null>(null);
+  const [urlCampaignLevelId, setUrlCampaignLevelId] = useState<string | null>(null);
   const [expandedLevelNotesId, setExpandedLevelNotesId] = useState<string | null>(null);
   const [levelNotes, setLevelNotes] = useState<{
     levelId: string;
@@ -1185,6 +1196,9 @@ export default function Home() {
   const markers = useRef<Map<string, { marker: LeafletMarker; entry: Entry }>>(new Map());
   const markerEntries = useRef<WeakMap<LeafletMarker, Entry>>(new WeakMap());
   const campaignFocusLevelIds = useRef<Set<string> | null>(null);
+  const campaignRouteLayer = useRef<import("leaflet").LayerGroup | null>(null);
+  const campaignRouteFitKey = useRef<string | null>(null);
+  const campaignMarkerRevealEntryId = useRef<string | null>(null);
   const mapImageOverlay = useRef<import("leaflet").ImageOverlay.Rotated | null>(null);
   const mapImageOverlayLevelId = useRef<string | null>(null);
   const mapImageOverlayOpacity = useRef(0);
@@ -1198,6 +1212,7 @@ export default function Home() {
     maxZoom: number;
   } | null>(null);
   const markerOverlaySelectionLevelId = useRef<string | null>(null);
+  const relatedLevelFocusEntryId = useRef<string | null>(null);
   const leaflet = useRef<typeof import("leaflet") | null>(null);
   const mediaDialog = useRef<HTMLDialogElement>(null);
   const infoDialog = useRef<HTMLDialogElement>(null);
@@ -1247,6 +1262,10 @@ export default function Home() {
       setShowSingleplayer(urlState.showSingleplayer);
       setShowMultiplayer(urlState.showMultiplayer);
       setShowZombies(urlState.showZombies);
+      setSidebarListMode(urlState.sidebarListMode === "campaigns" && requestedGame ? "campaigns" : "locations");
+      setUrlCampaignLevelId(urlState.sidebarListMode === "campaigns" && requestedGame && requestedSelection
+        ? requestedSelection.entry.levelId
+        : null);
       setSelected(requestedSelection ?? { group: initialGroup, entry: initialEntry });
       setSelectionInUrl(requestedSelection !== null);
       setSelectedCampaignKey(null);
@@ -1276,6 +1295,7 @@ export default function Home() {
       showSingleplayer,
       showMultiplayer,
       showZombies,
+      sidebarListMode,
       levelId: selectionInUrl ? selected.entry.levelId : null,
       locationId: selectionInUrl ? selected.entry.locationId : null,
     });
@@ -1302,6 +1322,7 @@ export default function Home() {
     showMultiplayer,
     showSingleplayer,
     showZombies,
+    sidebarListMode,
     urlSyncReady,
   ]);
 
@@ -1382,7 +1403,13 @@ export default function Home() {
   }, [continents, country, groups, matchesStructuredFilters, query]);
   const campaigns = useMemo<CampaignOption[]>(() => {
     if (game === "all") return [];
-    const campaignsByKey = new Map<string, CampaignOption & { levelIds: Set<string> }>();
+    const campaignsByKey = new Map<string, {
+      key: string;
+      gameId: string;
+      id: string;
+      label: string;
+      locationsByLevelId: Map<string, Selection[]>;
+    }>();
     for (const group of groups) {
       for (const entry of group.entries) {
         if (!entry.campaign) continue;
@@ -1396,27 +1423,47 @@ export default function Home() {
             gameId: campaignGame.id,
             id: entry.campaign.id,
             label: entry.campaign.label,
-            levels: [],
-            levelIds: new Set(),
+            locationsByLevelId: new Map(),
           };
           campaignsByKey.set(key, campaign);
         }
-        if (!campaign.levelIds.has(entry.levelId)) {
-          campaign.levelIds.add(entry.levelId);
-          campaign.levels.push({ group, entry });
-        }
+        const levelLocations = campaign.locationsByLevelId.get(entry.levelId) ?? [];
+        levelLocations.push({ group, entry });
+        campaign.locationsByLevelId.set(entry.levelId, levelLocations);
       }
     }
     return [...campaignsByKey.values()]
-      .map(({ key, gameId, id, label, levels }) => ({
-        key,
-        gameId,
-        id,
-        label,
-        levels: levels.sort((a, b) =>
-          (a.entry.campaignOrder ?? Number.MAX_SAFE_INTEGER) - (b.entry.campaignOrder ?? Number.MAX_SAFE_INTEGER)
-          || a.entry.title.localeCompare(b.entry.title)),
-      }))
+      .map(({ key, gameId, id, label, locationsByLevelId }) => {
+        const orderedLevels = [...locationsByLevelId.values()].map((locations) => {
+          const primaryLocation = locations.find(({ entry }) => entry.primary) ?? null;
+          const mappedLocations = locations.filter(({ entry }) => entry.coordinates !== null);
+          const displayLocation = primaryLocation ?? mappedLocations[0] ?? locations[0];
+          const mappedPrimaryLocation = primaryLocation?.entry.coordinates ? primaryLocation : null;
+          const routeLocation = mappedPrimaryLocation
+            ?? (mappedLocations.length === 1 ? mappedLocations[0] : null);
+          return {
+            displayLocation,
+            routeLevel: {
+              entryId: routeLocation?.entry.id ?? null,
+              levelId: displayLocation.entry.levelId,
+              title: displayLocation.entry.title,
+              order: displayLocation.entry.campaignOrder ?? null,
+              coordinates: routeLocation?.entry.coordinates ?? null,
+            },
+          };
+        }).sort((left, right) =>
+          (left.displayLocation.entry.campaignOrder ?? Number.MAX_SAFE_INTEGER)
+            - (right.displayLocation.entry.campaignOrder ?? Number.MAX_SAFE_INTEGER)
+          || left.displayLocation.entry.title.localeCompare(right.displayLocation.entry.title));
+        return {
+          key,
+          gameId,
+          id,
+          label,
+          levels: orderedLevels.map(({ displayLocation }) => displayLocation),
+          routeLevels: orderedLevels.map(({ routeLevel }) => routeLevel),
+        };
+      })
       .sort((a, b) => {
         const gameComparison = compareGames(gamesById.get(a.gameId)!, gamesById.get(b.gameId)!);
         if (gameComparison) return gameComparison;
@@ -1425,7 +1472,20 @@ export default function Home() {
           || a.label.localeCompare(b.label);
       });
   }, [game, groups]);
-  const selectedCampaign = campaigns.find((campaign) => campaign.key === selectedCampaignKey) ?? null;
+  const explicitlySelectedCampaign = campaigns.find((campaign) => campaign.key === selectedCampaignKey) ?? null;
+  const urlSelectedCampaign = sidebarListMode === "campaigns" && urlCampaignLevelId
+    ? campaigns.find((campaign) =>
+      campaign.levels.some(({ entry }) => entry.levelId === urlCampaignLevelId)) ?? null
+    : null;
+  const selectedCampaign = explicitlySelectedCampaign ?? urlSelectedCampaign;
+  const activeCampaignKey = selectedCampaign?.key ?? null;
+  const selectedCampaignGame = selectedCampaign ? gamesById.get(selectedCampaign.gameId) ?? null : null;
+  const selectedCampaignGameIcon = selectedCampaignGame ? gameIcon(selectedCampaignGame) : null;
+  const selectedCampaignUsesExternalGameIcon = Boolean(
+    selectedCampaignGameIcon
+    && selectedCampaignGame
+    && selectedCampaignGameIcon !== selectedCampaignGame.icon,
+  );
   const mapFitCoordinates = useMemo(() => {
     const seen = new Set<string>();
     return filtered.flatMap((group) => group.entries.flatMap((entry) => {
@@ -1572,28 +1632,79 @@ export default function Home() {
     selectEntry(group, entry);
   }, [selectEntry]);
 
-  const selectCampaign = useCallback((campaign: CampaignOption) => {
-    setSelectedCampaignKey((currentKey) => currentKey === campaign.key ? null : campaign.key);
+  function selectCampaign(campaign: CampaignOption) {
+    const campaignIsActive = activeCampaignKey === campaign.key;
+    setUrlCampaignLevelId(null);
+    setSelectedCampaignKey(campaignIsActive ? null : campaign.key);
+    if (!campaignIsActive && campaign.levels[0]) {
+      campaignMarkerRevealEntryId.current = campaign.levels[0].entry.id;
+      selectEntry(campaign.levels[0].group, campaign.levels[0].entry);
+    } else {
+      campaignMarkerRevealEntryId.current = null;
+    }
     setExpandedRegionEntryId(null);
     setRelatedLevelsOpen(true);
     setDetailsOpen(true);
+  }
+
+  const focusEntryOverlay = useCallback((entry: Entry, alwaysFit = false) => {
+    const currentMap = map.current;
+    const L = leaflet.current;
+    const entryOverlay = mapOverlays[entry.levelId];
+    if (!currentMap || !L || !mapNode.current || !entry.coordinates || !entryOverlay) return false;
+
+    const padding = mapViewportPadding(mapNode.current, intelCard.current);
+    const size = currentMap.getSize();
+    const visibleBounds = L.latLngBounds([
+      currentMap.containerPointToLatLng(padding.paddingTopLeft),
+      currentMap.containerPointToLatLng([
+        size.x - padding.paddingBottomRight[0],
+        size.y - padding.paddingBottomRight[1],
+      ]),
+    ]);
+    const overlayAndMarkerBounds = L.latLngBounds([
+      entryOverlay.corners.topLeft,
+      entryOverlay.corners.topRight,
+      entryOverlay.corners.bottomLeft,
+      entryOverlay.corners.bottomRight,
+      entry.coordinates,
+    ]);
+    if (alwaysFit || !visibleBounds.contains(overlayAndMarkerBounds)) {
+      currentMap.stop();
+      const movement = {
+        ...padding,
+        ...(alwaysFit ? {} : { maxZoom: currentMap.getZoom() }),
+        animate: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+        duration: .55,
+      };
+      if (movement.animate) currentMap.flyToBounds(overlayAndMarkerBounds, movement);
+      else currentMap.fitBounds(overlayAndMarkerBounds, movement);
+    } else {
+      currentMap.panInside(entry.coordinates, padding);
+    }
+    return true;
   }, []);
 
-  const focusSelectedMarker = useCallback(() => {
+  const focusEntryOnMap = useCallback((entry: Entry) => {
+    if (focusEntryOverlay(entry, true)) return;
     const currentMap = map.current;
     const layer = markerLayer.current;
-    const selectedMarker = markers.current.get(selected.entry.id)?.marker;
-    if (!currentMap || !layer || !selectedMarker) return;
+    const entryMarker = markers.current.get(entry.id)?.marker;
+    if (!currentMap || !layer || !entryMarker) return;
 
     currentMap.stop();
-    layer.zoomToShowLayer(selectedMarker, () => {
+    layer.zoomToShowLayer(entryMarker, () => {
       if (map.current !== currentMap || !mapNode.current) return;
       currentMap.panInside(
-        selectedMarker.getLatLng(),
+        entryMarker.getLatLng(),
         mapViewportPadding(mapNode.current, intelCard.current),
       );
     });
-  }, [selected.entry.id]);
+  }, [focusEntryOverlay]);
+
+  const focusSelectedMarker = useCallback(() => {
+    focusEntryOnMap(selected.entry);
+  }, [focusEntryOnMap, selected.entry]);
 
   const toggleLevelNotes = useCallback(() => {
     if (!selectedAppearance.hasLevelNotes) return;
@@ -1627,6 +1738,7 @@ export default function Home() {
     if (!mapNode.current || map.current) return;
     const markerStore = markers.current;
     let cancelled = false;
+    let basemapFallbackTimer: number | null = null;
     import("leaflet").then(async (leafletModule) => {
       await import("leaflet.markercluster");
       await import("leaflet-imageoverlay-rotated");
@@ -1642,12 +1754,62 @@ export default function Home() {
         zoomControl: false,
         worldCopyJump: true,
       });
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-        maxZoom: MAP_MAX_ZOOM,
-      }).addTo(instance);
-      L.control.zoom({ position: "bottomright" }).addTo(instance);
       map.current = instance;
+
+      const addRasterFallback = () => {
+        if (cancelled || !map.current || map.current !== instance) return;
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+          maxZoom: MAP_MAX_ZOOM,
+        }).addTo(instance);
+      };
+
+      try {
+        const [{ maplibreGL }, { setWorkerUrl }, { default: workerUrl }] = await Promise.all([
+          import("@maplibre/maplibre-gl-leaflet"),
+          import("maplibre-gl"),
+          import("maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url"),
+        ]);
+        if (cancelled || !map.current || map.current !== instance) return;
+
+        // MapLibre 6 cannot locate its worker after Vite bundles the app. The
+        // worker pipeline emits a self-contained, same-origin worker instead.
+        setWorkerUrl(workerUrl);
+        const basemap = maplibreGL({
+          style: "https://tiles.openfreemap.org/styles/bright",
+          attributionControl: false,
+        }).addTo(instance);
+        const vectorMap = basemap.getMaplibreMap();
+        let vectorMapLoaded = false;
+        const useRasterFallback = () => {
+          if (vectorMapLoaded || cancelled || !map.current || map.current !== instance) return;
+          if (basemapFallbackTimer !== null) window.clearTimeout(basemapFallbackTimer);
+          basemapFallbackTimer = null;
+          basemap.remove();
+          addRasterFallback();
+        };
+        vectorMap.once("load", () => {
+          vectorMapLoaded = true;
+          if (basemapFallbackTimer !== null) window.clearTimeout(basemapFallbackTimer);
+          basemapFallbackTimer = null;
+        });
+        vectorMap.once("error", useRasterFallback);
+        basemapFallbackTimer = window.setTimeout(useRasterFallback, 10_000);
+
+        const setEnglishLabels = () => applyEnglishMapLabels(vectorMap);
+        if (vectorMap.isStyleLoaded()) setEnglishLabels();
+        else vectorMap.once("style.load", setEnglishLabels);
+        instance.attributionControl.addAttribution(
+          '&copy; <a href="https://openfreemap.org/">OpenFreeMap</a> &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> Data from <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        );
+      } catch (error) {
+        console.error("Could not initialize the English vector basemap; using OpenStreetMap raster tiles.", error);
+        addRasterFallback();
+      }
+
+      L.control.zoom({ position: "bottomright" }).addTo(instance);
+      const campaignPane = instance.createPane("campaignRoute");
+      campaignPane.style.zIndex = "425";
       markerLayer.current = L.markerClusterGroup({
         showCoverageOnHover: false,
         zoomToBoundsOnClick: true,
@@ -1681,10 +1843,13 @@ export default function Home() {
     });
     return () => {
       cancelled = true;
+      if (basemapFallbackTimer !== null) window.clearTimeout(basemapFallbackTimer);
       map.current?.remove();
       map.current = null;
       markerLayer.current = null;
       markerStore.clear();
+      campaignRouteLayer.current = null;
+      campaignRouteFitKey.current = null;
       mapImageOverlay.current = null;
       mapImageOverlayLevelId.current = null;
       if (mapImageOverlayAnimation.current !== null) cancelAnimationFrame(mapImageOverlayAnimation.current);
@@ -1743,6 +1908,12 @@ export default function Home() {
     const selectedIsVisible = filtered.some((group) =>
       group.entries.some((entry) => entry.id === selected.entry.id));
     if (selected.entry.coordinates && selectedIsVisible && mapNode.current) {
+      // Campaign selection immediately fits the complete route. Avoid starting
+      // a competing marker pan whose delayed moveend can make the route appear
+      // settled before MarkerCluster has finished rebuilding at the final view.
+      const awaitingCampaignRouteFit = selectedCampaign !== null
+        && campaignMarkerRevealEntryId.current === selected.entry.id;
+      if (awaitingCampaignRouteFit) return;
       const sidebarTarget = sidebarSelectionTarget.current;
       if (sidebarTarget) {
         sidebarSelectionTarget.current = null;
@@ -1758,47 +1929,232 @@ export default function Home() {
         else currentMap.fitBounds(sidebarTarget.bounds, movement);
         return;
       }
+      const relatedFocusEntryId = relatedLevelFocusEntryId.current;
+      relatedLevelFocusEntryId.current = null;
+      if (relatedFocusEntryId === selected.entry.id) {
+        focusEntryOnMap(selected.entry);
+        return;
+      }
       const overlaySelectionLevelId = markerOverlaySelectionLevelId.current;
       markerOverlaySelectionLevelId.current = null;
-      const markerOverlay = overlaySelectionLevelId === selected.entry.levelId
-        ? mapOverlays[overlaySelectionLevelId]
-        : null;
-      if (markerOverlay) {
-        const padding = mapViewportPadding(mapNode.current, intelCard.current);
-        const size = currentMap.getSize();
-        const visibleBounds = L.latLngBounds([
-          currentMap.containerPointToLatLng(padding.paddingTopLeft),
-          currentMap.containerPointToLatLng([
-            size.x - padding.paddingBottomRight[0],
-            size.y - padding.paddingBottomRight[1],
-          ]),
-        ]);
-        const overlayAndMarkerBounds = L.latLngBounds([
-          markerOverlay.corners.topLeft,
-          markerOverlay.corners.topRight,
-          markerOverlay.corners.bottomLeft,
-          markerOverlay.corners.bottomRight,
-          selected.entry.coordinates,
-        ]);
-        if (!visibleBounds.contains(overlayAndMarkerBounds)) {
-          currentMap.stop();
-          const movement = {
-            ...padding,
-            maxZoom: currentMap.getZoom(),
-            animate: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-            duration: .55,
-          };
-          if (movement.animate) currentMap.flyToBounds(overlayAndMarkerBounds, movement);
-          else currentMap.fitBounds(overlayAndMarkerBounds, movement);
-          return;
-        }
+      if (
+        overlaySelectionLevelId === selected.entry.levelId
+        && focusEntryOverlay(selected.entry)
+      ) {
+        return;
       }
       currentMap.panInside(
         selected.entry.coordinates,
         mapViewportPadding(mapNode.current, intelCard.current),
       );
     }
-  }, [filtered, mapReady, selected, selectedCampaign]);
+  }, [filtered, focusEntryOnMap, focusEntryOverlay, mapReady, selected, selectedCampaign]);
+
+  useEffect(() => {
+    if (!mapReady || !map.current || !leaflet.current) return;
+    campaignRouteLayer.current?.remove();
+    campaignRouteLayer.current = null;
+    if (!selectedCampaign) {
+      campaignRouteFitKey.current = null;
+      campaignMarkerRevealEntryId.current = null;
+      return;
+    }
+
+    const currentMap = map.current;
+    const L = leaflet.current;
+    const route = buildCampaignRoute(selectedCampaign.routeLevels);
+    const routeLayer = L.layerGroup().addTo(currentMap);
+    campaignRouteLayer.current = routeLayer;
+    let markerRevealTimer: number | null = null;
+    let markerRevealAttempts = 0;
+    let campaignViewSettled = false;
+    const revealFirstCampaignMarker = () => {
+      markerRevealTimer = null;
+      const entryId = campaignMarkerRevealEntryId.current;
+      if (!entryId || entryId !== selectedCampaign.levels[0]?.entry.id) return;
+      const clusterLayer = markerLayer.current;
+      const selectedMarker = markers.current.get(entryId)?.marker;
+      if (!clusterLayer || !selectedMarker) {
+        campaignMarkerRevealEntryId.current = null;
+        return;
+      }
+      const retryMarkerReveal = () => {
+        if (markerRevealAttempts < 6) {
+          markerRevealAttempts += 1;
+          markerRevealTimer = window.setTimeout(revealFirstCampaignMarker, 160);
+          return;
+        }
+        campaignMarkerRevealEntryId.current = null;
+      };
+      const visibleParent = clusterLayer.getVisibleParent(selectedMarker);
+      if (visibleParent && visibleParent !== selectedMarker && "spiderfy" in visibleParent) {
+        (visibleParent as LeafletMarker & { spiderfy: () => void }).spiderfy();
+        // MarkerCluster silently ignores spiderfy() while a zoom animation is
+        // active. Only consume the request after the child marker is actually
+        // visible; otherwise keep trying until its animation has settled.
+        if (clusterLayer.getVisibleParent(selectedMarker) === selectedMarker) {
+          campaignMarkerRevealEntryId.current = null;
+          return;
+        }
+        retryMarkerReveal();
+        return;
+      }
+      // During a cluster refresh the marker can briefly appear as its own
+      // visible parent before it is placed back inside the rendered cluster.
+      retryMarkerReveal();
+    };
+    const scheduleMarkerReveal = () => {
+      if (!campaignMarkerRevealEntryId.current) return;
+      if (markerRevealTimer !== null) window.clearTimeout(markerRevealTimer);
+      markerRevealAttempts = 0;
+      // Let MarkerCluster finish rebuilding its visible parents after the map movement.
+      markerRevealTimer = window.setTimeout(revealFirstCampaignMarker, 180);
+    };
+    const handleCampaignMoveEnd = () => {
+      campaignViewSettled = true;
+      scheduleMarkerReveal();
+    };
+    const handleClusterAnimationEnd = () => {
+      if (campaignViewSettled) scheduleMarkerReveal();
+    };
+    const activeMarkerLayer = markerLayer.current;
+    activeMarkerLayer?.on("animationend", handleClusterAnimationEnd);
+    const handleMarkerSpiderfied = () => {
+      const entryId = campaignMarkerRevealEntryId.current;
+      const selectedMarker = entryId ? markers.current.get(entryId)?.marker : null;
+      if (!selectedMarker || activeMarkerLayer?.getVisibleParent(selectedMarker) !== selectedMarker) return;
+      campaignMarkerRevealEntryId.current = null;
+      if (markerRevealTimer !== null) window.clearTimeout(markerRevealTimer);
+      markerRevealTimer = null;
+    };
+    activeMarkerLayer?.on("spiderfied", handleMarkerSpiderfied);
+
+    route.segments.forEach((segment) => {
+      L.polyline(segment, {
+        pane: "campaignRoute",
+        className: "campaign-route-shadow",
+        color: "#16090b",
+        weight: 6,
+        opacity: .26,
+        lineCap: "round",
+        lineJoin: "round",
+        interactive: false,
+      }).addTo(routeLayer);
+      L.polyline(segment, {
+        pane: "campaignRoute",
+        className: "campaign-route-fuzz",
+        color: "#8b2832",
+        weight: 5,
+        opacity: .16,
+        dashArray: "1 3",
+        lineCap: "round",
+        lineJoin: "round",
+        interactive: false,
+      }).addTo(routeLayer);
+      L.polyline(segment, {
+        pane: "campaignRoute",
+        className: "campaign-route-yarn",
+        color: "#481018",
+        weight: 3.8,
+        opacity: .92,
+        lineCap: "round",
+        lineJoin: "round",
+        interactive: false,
+      }).addTo(routeLayer);
+      L.polyline(segment, {
+        pane: "campaignRoute",
+        className: "campaign-route-ply",
+        color: "#741c27",
+        weight: 2.5,
+        opacity: .78,
+        dashArray: "5 2.4",
+        lineCap: "round",
+        lineJoin: "round",
+        interactive: false,
+      }).addTo(routeLayer);
+      L.polyline(segment, {
+        pane: "campaignRoute",
+        className: "campaign-route-groove",
+        color: "#200609",
+        weight: .9,
+        opacity: .7,
+        dashArray: "1 6.4",
+        dashOffset: "5.2",
+        lineCap: "round",
+        lineJoin: "round",
+        interactive: false,
+      }).addTo(routeLayer);
+    });
+
+    route.waypoints.forEach((waypoint) => {
+      const stopTitles = waypoint.stops.map((stop) => `${String(stop.order).padStart(2, "0")} \u00b7 ${stop.title}`);
+      const routeMarker = L.marker(waypoint.coordinates, {
+        pane: "campaignRoute",
+        icon: L.divIcon({
+          className: "campaign-route-stop-wrap",
+          html: `<span class="campaign-route-stop">${waypoint.label}</span>`,
+          iconSize: [22, 18],
+          iconAnchor: [-5, 23],
+        }),
+        alt: `Campaign ${waypoint.stops.length === 1 ? "stop" : "stops"} ${stopTitles.join(", ")}`,
+        keyboard: true,
+        riseOnHover: true,
+      }).addTo(routeLayer);
+
+      const tooltipContent = document.createElement("div");
+      tooltipContent.className = "campaign-route-tooltip-content";
+      const tooltipHeading = document.createElement("strong");
+      tooltipHeading.textContent = waypoint.stops.length === 1 ? "Campaign stop" : "Campaign stops";
+      tooltipContent.append(tooltipHeading);
+      for (const title of stopTitles) {
+        const tooltipRow = document.createElement("span");
+        tooltipRow.textContent = title;
+        tooltipContent.append(tooltipRow);
+      }
+      routeMarker.bindTooltip(tooltipContent, {
+        className: "campaign-route-tooltip",
+        direction: "top",
+        offset: [8, -22],
+        opacity: 1,
+      });
+
+      const waypointSelection = selectionsByEntryId.get(waypoint.stops[0].entryId);
+      if (waypointSelection) {
+        routeMarker.on("click", () => selectMapMarker(waypointSelection.group, waypointSelection.entry));
+      }
+    });
+
+    if (route.waypoints.length > 0 && campaignRouteFitKey.current !== selectedCampaign.key && mapNode.current) {
+      campaignRouteFitKey.current = selectedCampaign.key;
+      const routeBounds = route.waypoints.map((waypoint) => waypoint.coordinates);
+      const movement = {
+        ...mapViewportPadding(mapNode.current, intelCard.current),
+        maxZoom: 8,
+        animate: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+        duration: .65,
+      };
+      currentMap.stop();
+      currentMap.once("moveend", handleCampaignMoveEnd);
+      if (movement.animate) currentMap.flyToBounds(routeBounds, movement);
+      else currentMap.fitBounds(routeBounds, movement);
+      // Leaflet does not emit moveend when the calculated view is unchanged.
+      if (markerRevealTimer === null) {
+        markerRevealTimer = window.setTimeout(revealFirstCampaignMarker, movement.animate ? 900 : 180);
+      }
+    } else {
+      campaignViewSettled = true;
+      scheduleMarkerReveal();
+    }
+
+    return () => {
+      currentMap.off("moveend", handleCampaignMoveEnd);
+      activeMarkerLayer?.off("animationend", handleClusterAnimationEnd);
+      activeMarkerLayer?.off("spiderfied", handleMarkerSpiderfied);
+      if (markerRevealTimer !== null) window.clearTimeout(markerRevealTimer);
+      routeLayer.remove();
+      if (campaignRouteLayer.current === routeLayer) campaignRouteLayer.current = null;
+    };
+  }, [mapReady, selectMapMarker, selectedCampaign]);
 
   useEffect(() => {
     if (!mapReady || !map.current || !leaflet.current) return;
@@ -2042,6 +2398,7 @@ export default function Home() {
                 urlHistoryMode.current = "push";
                 setGame(value);
                 setSelectedCampaignKey(null);
+                setUrlCampaignLevelId(null);
                 setExpandedRegionEntryId(null);
                 if (value === "all") setSidebarListMode("locations");
               }}
@@ -2275,8 +2632,10 @@ export default function Home() {
               aria-selected={sidebarListMode === "locations"}
               aria-controls="sidebar-locations"
               onClick={() => {
+                urlHistoryMode.current = "push";
                 setSidebarListMode("locations");
                 setSelectedCampaignKey(null);
+                setUrlCampaignLevelId(null);
                 setExpandedRegionEntryId(null);
               }}
             >
@@ -2290,7 +2649,10 @@ export default function Home() {
               aria-controls="sidebar-campaigns"
               disabled={game === "all"}
               title={game === "all" ? "Choose a game to browse campaigns" : undefined}
-              onClick={() => setSidebarListMode("campaigns")}
+              onClick={() => {
+                urlHistoryMode.current = "push";
+                setSidebarListMode("campaigns");
+              }}
             >
               <span>Campaigns</span><small>{campaigns.length}</small>
             </button>
@@ -2314,7 +2676,7 @@ export default function Home() {
               {campaigns.map((campaign, index) => (
                 <button
                   key={campaign.key}
-                  className={campaign.key === selectedCampaignKey ? "campaign-row is-selected" : "campaign-row"}
+                  className={campaign.key === activeCampaignKey ? "campaign-row is-selected" : "campaign-row"}
                   type="button"
                   onClick={() => selectCampaign(campaign)}
                 >
@@ -2731,12 +3093,26 @@ export default function Home() {
         {relatedLevels.length > 0 && (
           <aside className={`related-levels-panel${relatedLevelsOpen ? "" : " is-collapsed"}`} aria-label={selectedCampaign ? `${selectedCampaign.label} levels` : "Related levels"}>
             <button
-              className="related-levels-toggle"
+              className={`related-levels-toggle${selectedCampaignGameIcon ? " has-game-icon" : ""}`}
               type="button"
               aria-expanded={relatedLevelsOpen}
               aria-controls="related-level-list"
               onClick={() => setRelatedLevelsOpen((open) => !open)}
             >
+              {selectedCampaignGameIcon && selectedCampaignGame && (
+                // Game icons are reviewed public assets and do not need image optimization.
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  className={`related-levels-game-icon${selectedCampaignUsesExternalGameIcon ? " is-external" : ""}`}
+                  src={selectedCampaignGameIcon}
+                  alt=""
+                  onError={() => {
+                    if (selectedCampaignUsesExternalGameIcon) {
+                      setFailedExternalGameIcons((failed) => new Set(failed).add(selectedCampaignGame.id));
+                    }
+                  }}
+                />
+              )}
               <span>{selectedCampaign?.label ?? "Related levels"}</span>
               <small>{relatedLevels.length}</small>
               <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4 6 4 4 4-4" /></svg>
@@ -2748,8 +3124,26 @@ export default function Home() {
               >
                 {visibleRelatedLevels.map(({ group, entry }) => (
                   <div className={`intel-entry${entry.levelId === selected.entry.levelId ? " is-selected" : ""}`} key={entry.levelId}>
-                    <button onClick={() => selectEntry(group, entry)}><strong>{entry.title}</strong><span>{locationName(entry)} · {entry.game}</span></button>
-                    <a href={entry.wiki} target="_blank" rel="noreferrer" aria-label={`Open ${entry.title} on CoD Wiki`}>↗</a>
+                    <button
+                      className={selectedCampaign && entry.campaignOrder != null ? "has-campaign-order" : undefined}
+                      onClick={() => {
+                        relatedLevelFocusEntryId.current = entry.id;
+                        selectEntry(group, entry);
+                      }}
+                    >
+                      {selectedCampaign && entry.campaignOrder != null && (
+                        <span
+                          className="campaign-route-stop campaign-related-level-number"
+                          aria-label={`Campaign mission ${entry.campaignOrder}`}
+                        >
+                          {String(entry.campaignOrder).padStart(2, "0")}
+                        </span>
+                      )}
+                      <span className="intel-entry-copy">
+                        <strong>{entry.title}</strong>
+                        <span>{locationName(entry)}{selectedCampaign ? "" : ` · ${entry.game}`}</span>
+                      </span>
+                    </button>
                   </div>
                 ))}
                 {hiddenRelatedLevelCount > 0 && (

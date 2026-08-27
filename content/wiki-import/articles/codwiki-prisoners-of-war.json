@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Prisoners_of_War",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Prisoners_of_War",
   "latestRevisionId": 2901231,
-  "importedAt": "2026-08-18T20:41:02.914Z",
+  "importedAt": "2026-08-25T21:15:49.006Z",
   "levelLocation": {
     "raw": "Beltot, France",
     "label": "Beltot, France",
@@ -59,11 +59,15 @@
     "label": "The Silo Defending the Pointe (Chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-the-silo",
         "wikiTitle": "The Silo",
         "label": "The Silo",
         "url": "https://callofduty.fandom.com/wiki/The_Silo"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-defending-the-pointe",
         "wikiTitle": "Defending the Pointe",
         "label": "Defending the Pointe",
         "url": "https://callofduty.fandom.com/wiki/Defending_the_Pointe"
@@ -75,6 +79,8 @@
     "label": "The Crossroads",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-the-crossroads-call-of-duty-2",
         "wikiTitle": "The Crossroads (Call of Duty 2)",
         "label": "The Crossroads",
         "url": "https://callofduty.fandom.com/wiki/The_Crossroads_(Call_of_Duty_2)"

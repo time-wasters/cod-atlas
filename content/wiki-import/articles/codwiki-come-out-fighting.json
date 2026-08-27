@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Come_Out_Fighting",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Come_Out_Fighting",
   "latestRevisionId": 2970306,
-  "importedAt": "2026-08-09T21:34:40.145Z",
+  "importedAt": "2026-08-25T23:03:50.649Z",
   "levelLocation": {
     "raw": "Tillet, Belgium",
     "label": "Tillet, Belgium",
@@ -53,5 +53,46 @@
     "resolvedTitle": "Come Out Fighting",
     "mainImageTitle": "File:CoDFH_Come_Out_Fighting_loading_screen.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Surrender at Aachen]]",
+    "label": "Surrender at Aachen",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-surrender-at-aachen",
+        "wikiTitle": "Surrender at Aachen",
+        "label": "Surrender at Aachen",
+        "url": "https://callofduty.fandom.com/wiki/Surrender_at_Aachen"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Road to Remagen]]",
+    "label": "Road to Remagen",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-road-to-remagen",
+        "wikiTitle": "Road to Remagen",
+        "label": "Road to Remagen",
+        "url": "https://callofduty.fandom.com/wiki/Road_to_Remagen"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Finest Hour]]''",
+    "label": "Call of Duty: Finest Hour",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Finest Hour",
+        "label": "Call of Duty: Finest Hour",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Finest_Hour"
+      }
+    ]
+  },
+  "date": {
+    "raw": "January 9, 1945",
+    "label": "January 9, 1945"
   }
 }

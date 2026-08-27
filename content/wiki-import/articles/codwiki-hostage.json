@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Hostage!",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Hostage!",
   "latestRevisionId": 2831925,
-  "importedAt": "2026-08-11T18:51:08.839Z",
+  "importedAt": "2026-08-25T23:11:01.202Z",
   "levelLocation": {
     "raw": "Les Ormes, France",
     "label": "Les Ormes, France",
@@ -59,6 +59,8 @@
     "label": "The Crossroads",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-the-crossroads-call-of-duty-3",
         "wikiTitle": "The Crossroads (Call of Duty 3)",
         "label": "The Crossroads",
         "url": "https://callofduty.fandom.com/wiki/The_Crossroads_(Call_of_Duty_3)"
@@ -70,6 +72,8 @@
     "label": "The Corridor of Death",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-the-corridor-of-death",
         "wikiTitle": "The Corridor of Death",
         "label": "The Corridor of Death",
         "url": "https://callofduty.fandom.com/wiki/The_Corridor_of_Death"

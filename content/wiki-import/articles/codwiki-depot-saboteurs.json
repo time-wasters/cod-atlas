@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Depot_Saboteurs",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Depot_Saboteurs",
   "latestRevisionId": 3017023,
-  "importedAt": "2026-08-09T21:34:40.124Z",
+  "importedAt": "2026-08-25T23:03:50.627Z",
   "levelLocation": {
     "raw": "Matmata, Tunisia",
     "label": "Matmata, Tunisia",
@@ -53,5 +53,46 @@
     "resolvedTitle": "Depot Saboteurs",
     "mainImageTitle": "File:CoDFH_Depot_Saboteurs_loading_screen.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Mission: Matmata]]",
+    "label": "Mission: Matmata",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-mission-matmata",
+        "wikiTitle": "Mission: Matmata",
+        "label": "Mission: Matmata",
+        "url": "https://callofduty.fandom.com/wiki/Mission%3A_Matmata"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[A Desert Ride]]",
+    "label": "A Desert Ride",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-a-desert-ride",
+        "wikiTitle": "A Desert Ride",
+        "label": "A Desert Ride",
+        "url": "https://callofduty.fandom.com/wiki/A_Desert_Ride"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Finest Hour]]''",
+    "label": "Call of Duty: Finest Hour",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Finest Hour",
+        "label": "Call of Duty: Finest Hour",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Finest_Hour"
+      }
+    ]
+  },
+  "date": {
+    "raw": "January 22, 1943",
+    "label": "January 22, 1943"
   }
 }

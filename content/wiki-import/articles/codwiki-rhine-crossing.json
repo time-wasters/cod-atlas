@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Rhine_Crossing",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Rhine_Crossing",
   "latestRevisionId": 2957240,
-  "importedAt": "2026-08-11T18:50:28.397Z",
+  "importedAt": "2026-08-25T23:11:55.725Z",
   "levelLocation": {
     "raw": "Wesel, Germany",
     "label": "Wesel, Germany",
@@ -59,6 +59,8 @@
     "label": "Arnhem Assault",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-arnhem-assault",
         "wikiTitle": "Arnhem Assault",
         "label": "Arnhem Assault",
         "url": "https://callofduty.fandom.com/wiki/Arnhem_Assault"

@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Kharkov_Outskirts",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Kharkov_Outskirts",
   "latestRevisionId": 3018839,
-  "importedAt": "2026-08-09T21:33:45.143Z",
+  "importedAt": "2026-08-25T23:02:51.747Z",
   "levelLocation": {
     "raw": "{{w|Kharkiv|Kharkov}}, [[Soviet Union|U.S.S.R.]]",
     "label": "U.S.S.R.",
@@ -53,5 +53,46 @@
     "resolvedTitle": "Kharkov Outskirts",
     "mainImageTitle": "File:RGD-33_3rd_person_CoD1.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Kursk (Campaign)|Kursk]]",
+    "label": "Kursk",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-kursk-campaign",
+        "wikiTitle": "Kursk (Campaign)",
+        "label": "Kursk",
+        "url": "https://callofduty.fandom.com/wiki/Kursk_(Campaign)"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Kharkov Station]]",
+    "label": "Kharkov Station",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-kharkov-2",
+        "wikiTitle": "Kharkov Station",
+        "label": "Kharkov Station",
+        "url": "https://callofduty.fandom.com/wiki/Kharkov_Station"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: United Offensive]]''",
+    "label": "Call of Duty: United Offensive",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: United Offensive",
+        "label": "Call of Duty: United Offensive",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_United_Offensive"
+      }
+    ]
+  },
+  "date": {
+    "raw": "August 22, 1943, 12h35",
+    "label": "August 22, 1943, 12h35"
   }
 }

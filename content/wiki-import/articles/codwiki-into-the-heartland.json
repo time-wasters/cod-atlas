@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Into_the_Heartland",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Into_the_Heartland",
   "latestRevisionId": 2955673,
-  "importedAt": "2026-08-09T21:34:40.152Z",
+  "importedAt": "2026-08-25T23:03:50.655Z",
   "levelLocation": {
     "raw": "Rhine River, Remagen, Germany",
     "label": "Rhine River, Remagen, Germany",
@@ -53,5 +53,38 @@
     "resolvedTitle": "Into the Heartland",
     "mainImageTitle": "File:CoDFH_Into_the_Hearland_loading_screen.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Last Bridge Standing]]",
+    "label": "Last Bridge Standing",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-last-bridge-standing",
+        "wikiTitle": "Last Bridge Standing",
+        "label": "Last Bridge Standing",
+        "url": "https://callofduty.fandom.com/wiki/Last_Bridge_Standing"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Finest Hour]]''",
+    "label": "Call of Duty: Finest Hour",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Finest Hour",
+        "label": "Call of Duty: Finest Hour",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Finest_Hour"
+      }
+    ]
+  },
+  "date": {
+    "raw": "April 7, 1945",
+    "label": "April 7, 1945"
   }
 }

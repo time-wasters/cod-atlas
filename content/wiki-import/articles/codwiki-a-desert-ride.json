@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/A_Desert_Ride",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/A_Desert_Ride",
   "latestRevisionId": 2763594,
-  "importedAt": "2026-08-15T09:23:39.796Z",
+  "importedAt": "2026-08-25T23:03:50.634Z",
   "levelLocation": {
     "raw": "Ksar Tarsine, Tunisia",
     "label": "Ksar Tarsine, Tunisia",
@@ -59,6 +59,8 @@
     "label": "Depot Saboteurs",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-depot-saboteurs",
         "wikiTitle": "Depot Saboteurs",
         "label": "Depot Saboteurs",
         "url": "https://callofduty.fandom.com/wiki/Depot_Saboteurs"
@@ -70,6 +72,8 @@
     "label": "Raiding the Fortress",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-raiding-the-fortress",
         "wikiTitle": "Raiding the Fortress",
         "label": "Raiding the Fortress",
         "url": "https://callofduty.fandom.com/wiki/Raiding_the_Fortress"

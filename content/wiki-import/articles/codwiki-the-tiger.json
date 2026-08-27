@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/The_Tiger",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/The_Tiger",
   "latestRevisionId": 3003844,
-  "importedAt": "2026-08-18T20:41:24.568Z",
+  "importedAt": "2026-08-25T21:16:10.879Z",
   "levelLocation": {
     "raw": "St. Louet, Normandy, France",
     "label": "St. Louet, Normandy, France",
@@ -59,6 +59,8 @@
     "label": "The Crossroads",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-the-crossroads-call-of-duty-2",
         "wikiTitle": "The Crossroads (Call of Duty 2)",
         "label": "The Crossroads",
         "url": "https://callofduty.fandom.com/wiki/The_Crossroads_(Call_of_Duty_2)"
@@ -70,6 +72,8 @@
     "label": "The Brigade Box",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-the-brigade-box",
         "wikiTitle": "The Brigade Box",
         "label": "The Brigade Box",
         "url": "https://callofduty.fandom.com/wiki/The_Brigade_Box"

@@ -16,7 +16,7 @@ locations:
     country: Russia
     region: Volgograd Oblast
     city: Volgograd
-    landmark: Square of the Fallen Fighters (representative downtown anchor)
+    landmark: Square of the Fallen Fighters
     latitude: 48.708028
     longitude: 44.515442
     precision: approximate

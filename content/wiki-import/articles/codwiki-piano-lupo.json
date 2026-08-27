@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Piano_Lupo",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Piano_Lupo",
   "latestRevisionId": 2978491,
-  "importedAt": "2026-08-11T18:55:26.076Z",
+  "importedAt": "2026-08-25T23:10:14.863Z",
   "levelLocation": {
     "raw": "Outside Gela, Sicily",
     "label": "Outside Gela, Sicily",
@@ -59,6 +59,8 @@
     "label": "Operation Husky",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-operation-husky-level",
         "wikiTitle": "Operation Husky (level)",
         "label": "Operation Husky",
         "url": "https://callofduty.fandom.com/wiki/Operation_Husky_(level)"
@@ -70,6 +72,8 @@
     "label": "Farewell to Friends",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-farewell-to-friends",
         "wikiTitle": "Farewell to Friends",
         "label": "Farewell to Friends",
         "url": "https://callofduty.fandom.com/wiki/Farewell_to_Friends"

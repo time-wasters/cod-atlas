@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Liberators",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Liberators",
   "latestRevisionId": 2978485,
-  "importedAt": "2026-08-11T18:55:26.099Z",
+  "importedAt": "2026-08-25T23:10:14.886Z",
   "levelLocation": {
     "raw": "Off the coast of Oran, Algeria",
     "label": "Off the coast of Oran, Algeria",
@@ -59,11 +59,15 @@
     "label": "Counterattack (Ingame), Baptism By Fire (Chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-counterattack",
         "wikiTitle": "Counterattack",
         "label": "Counterattack",
         "url": "https://callofduty.fandom.com/wiki/Counterattack"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-baptism-by-fire",
         "wikiTitle": "Baptism By Fire",
         "label": "Baptism By Fire",
         "url": "https://callofduty.fandom.com/wiki/Baptism_By_Fire"
@@ -75,11 +79,15 @@
     "label": "Operation Husky (Ingame), Tankers (Chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-operation-husky-level",
         "wikiTitle": "Operation Husky (level)",
         "label": "Operation Husky",
         "url": "https://callofduty.fandom.com/wiki/Operation_Husky_(level)"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-tankers",
         "wikiTitle": "Tankers",
         "label": "Tankers",
         "url": "https://callofduty.fandom.com/wiki/Tankers"

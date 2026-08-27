@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/First_City_to_Fall",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/First_City_to_Fall",
   "latestRevisionId": 2955659,
-  "importedAt": "2026-08-09T21:34:40.138Z",
+  "importedAt": "2026-08-25T23:03:50.642Z",
   "levelLocation": {
     "raw": "{{w|Aachen}}, Germany",
     "label": ", Germany",
@@ -53,5 +53,46 @@
     "resolvedTitle": "First City to Fall",
     "mainImageTitle": "File:CoDFH_First_City_to_Fall_loading_screen.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Raiding the Fortress]]",
+    "label": "Raiding the Fortress",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-raiding-the-fortress",
+        "wikiTitle": "Raiding the Fortress",
+        "label": "Raiding the Fortress",
+        "url": "https://callofduty.fandom.com/wiki/Raiding_the_Fortress"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Underground Passage]]",
+    "label": "Underground Passage",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-underground-passage",
+        "wikiTitle": "Underground Passage",
+        "label": "Underground Passage",
+        "url": "https://callofduty.fandom.com/wiki/Underground_Passage"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Finest Hour]]''",
+    "label": "Call of Duty: Finest Hour",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Finest Hour",
+        "label": "Call of Duty: Finest Hour",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Finest_Hour"
+      }
+    ]
+  },
+  "date": {
+    "raw": "October 21, 1944",
+    "label": "October 21, 1944"
   }
 }

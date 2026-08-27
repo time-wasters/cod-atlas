@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Walcheren",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Walcheren",
   "latestRevisionId": 2957231,
-  "importedAt": "2026-08-11T18:50:39.053Z",
+  "importedAt": "2026-08-25T23:12:06.350Z",
   "levelLocation": {
     "raw": "Walcheren Island, Netherlands",
     "label": "Walcheren Island, Netherlands",
@@ -59,6 +59,8 @@
     "label": "Sloedam",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-sloedam",
         "wikiTitle": "Sloedam",
         "label": "Sloedam",
         "url": "https://callofduty.fandom.com/wiki/Sloedam"
@@ -70,6 +72,8 @@
     "label": "Reichswald",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-reichswald",
         "wikiTitle": "Reichswald",
         "label": "Reichswald",
         "url": "https://callofduty.fandom.com/wiki/Reichswald"

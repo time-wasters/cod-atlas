@@ -16,7 +16,7 @@ locations:
     country: Tunisia
     region: Gabès Governorate
     city: Toujane
-    landmark: Toujane village center (representative settlement marker)
+    landmark: Toujane village center
     latitude: 33.465179
     longitude: 10.133748
     precision: city

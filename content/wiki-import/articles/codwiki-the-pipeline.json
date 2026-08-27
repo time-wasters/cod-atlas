@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Railroad_Station_No._1",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Railroad_Station_No._1",
   "latestRevisionId": 2951065,
-  "importedAt": "2026-08-18T20:41:24.547Z",
+  "importedAt": "2026-08-25T21:16:10.848Z",
   "levelLocation": {
     "raw": "[[Stalingrad]], U.S.S.R.",
     "label": "Stalingrad",
@@ -59,6 +59,8 @@
     "label": "Repairing the Wire",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-repairing-the-wire",
         "wikiTitle": "Repairing the Wire",
         "label": "Repairing the Wire",
         "url": "https://callofduty.fandom.com/wiki/Repairing_the_Wire"
@@ -70,6 +72,8 @@
     "label": "Downtown Assault",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-downtown-assault",
         "wikiTitle": "Downtown Assault",
         "label": "Downtown Assault",
         "url": "https://callofduty.fandom.com/wiki/Downtown_Assault"

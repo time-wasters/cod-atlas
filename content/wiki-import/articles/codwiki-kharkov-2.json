@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Kharkov_Station",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Kharkov_Station",
   "latestRevisionId": 3018837,
-  "importedAt": "2026-08-09T21:33:55.911Z",
+  "importedAt": "2026-08-25T23:02:51.754Z",
   "levelLocation": {
     "raw": "Kharkiv, Soviet Union",
     "label": "Kharkiv, Soviet Union",
@@ -53,5 +53,46 @@
     "resolvedTitle": "Kharkov Station",
     "mainImageTitle": "File:Kharkov_Station_CoDUO.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Kharkov Outskirts]]",
+    "label": "Kharkov Outskirts",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-kharkov-1",
+        "wikiTitle": "Kharkov Outskirts",
+        "label": "Kharkov Outskirts",
+        "url": "https://callofduty.fandom.com/wiki/Kharkov_Outskirts"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Bois Jacques]] (Chronologically)",
+    "label": "Bois Jacques (Chronologically)",
+    "links": [
+      {
+        "sequence": "chronological",
+        "article": "codwiki-bois-jacques",
+        "wikiTitle": "Bois Jacques",
+        "label": "Bois Jacques",
+        "url": "https://callofduty.fandom.com/wiki/Bois_Jacques"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: United Offensive]]''",
+    "label": "Call of Duty: United Offensive",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: United Offensive",
+        "label": "Call of Duty: United Offensive",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_United_Offensive"
+      }
+    ]
+  },
+  "date": {
+    "raw": "August 22, 1943, 16h15",
+    "label": "August 22, 1943, 16h15"
   }
 }

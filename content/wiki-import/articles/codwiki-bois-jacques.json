@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Bois_Jacques",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Bois_Jacques",
   "latestRevisionId": 2997104,
-  "importedAt": "2026-08-15T09:20:27.793Z",
+  "importedAt": "2026-08-25T23:02:40.983Z",
   "levelLocation": {
     "raw": "Bastogne, Belgium",
     "label": "Bastogne, Belgium",
@@ -59,6 +59,8 @@
     "label": "Kharkov Station (Chronologically)",
     "links": [
       {
+        "sequence": "chronological",
+        "article": "codwiki-kharkov-2",
         "wikiTitle": "Kharkov Station",
         "label": "Kharkov Station",
         "url": "https://callofduty.fandom.com/wiki/Kharkov_Station"
@@ -70,6 +72,8 @@
     "label": "Crossroads",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-crossroads-united-offensive",
         "wikiTitle": "Crossroads (United Offensive)",
         "label": "Crossroads",
         "url": "https://callofduty.fandom.com/wiki/Crossroads_(United_Offensive)"

@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/The_Dragon%27s_Teeth",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/The_Dragon%27s_Teeth",
   "latestRevisionId": 2978492,
-  "importedAt": "2026-08-11T18:55:26.122Z",
+  "importedAt": "2026-08-25T23:10:14.900Z",
   "levelLocation": {
     "raw": "The Siegfried Line, Germany",
     "label": "The Siegfried Line, Germany",
@@ -59,6 +59,8 @@
     "label": "The Last Train",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-the-last-train",
         "wikiTitle": "The Last Train",
         "label": "The Last Train",
         "url": "https://callofduty.fandom.com/wiki/The_Last_Train"

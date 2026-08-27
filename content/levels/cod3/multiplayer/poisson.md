@@ -15,4 +15,6 @@ locations:
     confidence: high
     method: title
     primary: true
+    urls:
+      - callOfDutyMaps: https://callofdutymaps.com/call-of-duty-3/poisson/
 ---

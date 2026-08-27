@@ -1,0 +1,100 @@
+{
+  "id": "codwiki-mile-high-club",
+  "fandomPageId": null,
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Mile_High_Club",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Mile_High_Club",
+  "latestRevisionId": null,
+  "importedAt": null,
+  "levelLocation": {
+    "raw": "Hijacked Aircraft",
+    "label": "Hijacked Aircraft",
+    "url": null
+  },
+  "previousLevels": {
+    "raw": "[[Game Over]]",
+    "label": "Game Over",
+    "links": [
+      {
+        "wikiTitle": "Game Over",
+        "label": "Game Over",
+        "url": "https://callofduty.fandom.com/wiki/Game_Over"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[S.S.D.D.]] (chronologically)",
+    "label": "S.S.D.D. (chronologically)",
+    "links": [
+      {
+        "wikiTitle": "S.S.D.D.",
+        "label": "S.S.D.D.",
+        "url": "https://callofduty.fandom.com/wiki/S.S.D.D."
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty 4: Modern Warfare]]''<br>''[[Call of Duty: Modern Warfare Remastered]]''",
+    "label": "Call of Duty 4: Modern Warfare, Call of Duty: Modern Warfare Remastered",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty 4: Modern Warfare",
+        "label": "Call of Duty 4: Modern Warfare",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_4%3A_Modern_Warfare"
+      },
+      {
+        "wikiTitle": "Call of Duty: Modern Warfare Remastered",
+        "label": "Call of Duty: Modern Warfare Remastered",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Modern_Warfare_Remastered"
+      }
+    ]
+  },
+  "date": {
+    "raw": "Sometime between October 8th, 2013 and August 10th, 2016 - 09:37",
+    "label": "Sometime between October 8th, 2013 and August 10th, 2016 - 09:37"
+  },
+  "mapStyle": "singleplayer",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas; verify against the Wiki during the next import.",
+  "images": {
+    "main": {
+      "sourceUrl": null,
+      "thumbnailUrl": null,
+      "detailPageUrl": null,
+      "author": {
+        "name": null,
+        "userUrl": null,
+        "role": null
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "unknown",
+        "notice": null,
+        "noticeUrl": null
+      }
+    },
+    "map": {
+      "sourceUrl": null,
+      "thumbnailUrl": null,
+      "detailPageUrl": null,
+      "author": {
+        "name": null,
+        "userUrl": null,
+        "role": null
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "unknown",
+        "notice": null,
+        "noticeUrl": null
+      }
+    }
+  },
+  "rawPayload": null
+}

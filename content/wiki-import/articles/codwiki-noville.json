@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Noville",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Noville",
   "latestRevisionId": 2992591,
-  "importedAt": "2026-08-09T21:33:55.874Z",
+  "importedAt": "2026-08-25T23:03:02.484Z",
   "levelLocation": {
     "raw": "Noville, Belgium",
     "label": "Noville, Belgium",
@@ -53,5 +53,46 @@
     "resolvedTitle": "Noville",
     "mainImageTitle": "File:Noville_Header.jpg",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Foy (Campaign)|Foy]]",
+    "label": "Foy",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-foy-campaign",
+        "wikiTitle": "Foy (Campaign)",
+        "label": "Foy",
+        "url": "https://callofduty.fandom.com/wiki/Foy_(Campaign)"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Bomber (United Offensive)|Bomber]] (in-game)",
+    "label": "Bomber (in-game)",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-bomber-united-offensive",
+        "wikiTitle": "Bomber (United Offensive)",
+        "label": "Bomber",
+        "url": "https://callofduty.fandom.com/wiki/Bomber_(United_Offensive)"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: United Offensive]]''",
+    "label": "Call of Duty: United Offensive",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: United Offensive",
+        "label": "Call of Duty: United Offensive",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_United_Offensive"
+      }
+    ]
+  },
+  "date": {
+    "raw": "January 15, 1945, 1130 hrs",
+    "label": "January 15, 1945, 1130 hrs"
   }
 }

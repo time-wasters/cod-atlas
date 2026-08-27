@@ -15,7 +15,7 @@ locations:
   - id: main
     country: Egypt
     region: Matrouh Governorate
-    landmark: Tell el Aqqaqir (representative Operation Supercharge battlefield)
+    landmark: Tell el Aqqaqir
     latitude: 30.87
     longitude: 28.68
     precision: approximate

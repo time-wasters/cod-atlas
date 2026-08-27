@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Breakdown",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Breakdown",
   "latestRevisionId": 2951055,
-  "importedAt": "2026-08-15T09:20:38.472Z",
+  "importedAt": "2026-08-25T23:03:50.676Z",
   "levelLocation": {
     "raw": "[[Stalingrad]], Soviet Union",
     "label": "Stalingrad",
@@ -59,6 +59,8 @@
     "label": "Defend the Factory",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-defend-the-factory",
         "wikiTitle": "Defend the Factory",
         "label": "Defend the Factory",
         "url": "https://callofduty.fandom.com/wiki/Defend_the_Factory"
@@ -70,6 +72,8 @@
     "label": "Into Red Square",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-into-red-square",
         "wikiTitle": "Into Red Square",
         "label": "Into Red Square",
         "url": "https://callofduty.fandom.com/wiki/Into_Red_Square"

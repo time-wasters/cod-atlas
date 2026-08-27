@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Sicily_1",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Sicily_1",
   "latestRevisionId": 2992600,
-  "importedAt": "2026-08-09T21:33:55.882Z",
+  "importedAt": "2026-08-25T23:03:16.739Z",
   "levelLocation": {
     "raw": "Capo Murro di Porco, Sicily, Italy",
     "label": "Capo Murro di Porco, Sicily, Italy",
@@ -53,5 +53,53 @@
     "resolvedTitle": "Sicily 1",
     "mainImageTitle": "File:Sicily_1_Opening_CoDUO.jpg",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Train Bridge]]<br>[[Ponyri]] (Chronologically)",
+    "label": "Train Bridge, Ponyri (Chronologically)",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-train-bridge",
+        "wikiTitle": "Train Bridge",
+        "label": "Train Bridge",
+        "url": "https://callofduty.fandom.com/wiki/Train_Bridge"
+      },
+      {
+        "sequence": "chronological",
+        "article": "codwiki-ponyri",
+        "wikiTitle": "Ponyri",
+        "label": "Ponyri",
+        "url": "https://callofduty.fandom.com/wiki/Ponyri"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Sicily Chase]]",
+    "label": "Sicily Chase",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-sicily-2",
+        "wikiTitle": "Sicily Chase",
+        "label": "Sicily Chase",
+        "url": "https://callofduty.fandom.com/wiki/Sicily_Chase"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: United Offensive]]''",
+    "label": "Call of Duty: United Offensive",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: United Offensive",
+        "label": "Call of Duty: United Offensive",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_United_Offensive"
+      }
+    ]
+  },
+  "date": {
+    "raw": "July 12th, 1943, 09:00 hours",
+    "label": "July 12th, 1943, 09:00 hours"
   }
 }

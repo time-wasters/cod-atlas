@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Altavilla",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Altavilla",
   "latestRevisionId": 2957213,
-  "importedAt": "2026-08-15T09:24:01.238Z",
+  "importedAt": "2026-08-25T23:11:55.667Z",
   "levelLocation": {
     "raw": "Near Altavilla, Italy",
     "label": "Near Altavilla, Italy",
@@ -64,6 +64,8 @@
     "label": "Scavenger Hunt",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-scavenger-hunt",
         "wikiTitle": "Scavenger Hunt",
         "label": "Scavenger Hunt",
         "url": "https://callofduty.fandom.com/wiki/Scavenger_Hunt"
