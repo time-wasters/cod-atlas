@@ -1212,6 +1212,7 @@ export default function Home() {
     maxZoom: number;
   } | null>(null);
   const markerOverlaySelectionLevelId = useRef<string | null>(null);
+  const relatedLevelFocusEntryId = useRef<string | null>(null);
   const leaflet = useRef<typeof import("leaflet") | null>(null);
   const mediaDialog = useRef<HTMLDialogElement>(null);
   const infoDialog = useRef<HTMLDialogElement>(null);
@@ -1646,7 +1647,7 @@ export default function Home() {
     setDetailsOpen(true);
   }
 
-  const focusEntryOverlay = useCallback((entry: Entry) => {
+  const focusEntryOverlay = useCallback((entry: Entry, alwaysFit = false) => {
     const currentMap = map.current;
     const L = leaflet.current;
     const entryOverlay = mapOverlays[entry.levelId];
@@ -1668,11 +1669,11 @@ export default function Home() {
       entryOverlay.corners.bottomRight,
       entry.coordinates,
     ]);
-    if (!visibleBounds.contains(overlayAndMarkerBounds)) {
+    if (alwaysFit || !visibleBounds.contains(overlayAndMarkerBounds)) {
       currentMap.stop();
       const movement = {
         ...padding,
-        maxZoom: currentMap.getZoom(),
+        ...(alwaysFit ? {} : { maxZoom: currentMap.getZoom() }),
         animate: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
         duration: .55,
       };
@@ -1685,7 +1686,7 @@ export default function Home() {
   }, []);
 
   const focusEntryOnMap = useCallback((entry: Entry) => {
-    if (focusEntryOverlay(entry)) return;
+    if (focusEntryOverlay(entry, true)) return;
     const currentMap = map.current;
     const layer = markerLayer.current;
     const entryMarker = markers.current.get(entry.id)?.marker;
@@ -1928,6 +1929,12 @@ export default function Home() {
         else currentMap.fitBounds(sidebarTarget.bounds, movement);
         return;
       }
+      const relatedFocusEntryId = relatedLevelFocusEntryId.current;
+      relatedLevelFocusEntryId.current = null;
+      if (relatedFocusEntryId === selected.entry.id) {
+        focusEntryOnMap(selected.entry);
+        return;
+      }
       const overlaySelectionLevelId = markerOverlaySelectionLevelId.current;
       markerOverlaySelectionLevelId.current = null;
       if (
@@ -1941,7 +1948,7 @@ export default function Home() {
         mapViewportPadding(mapNode.current, intelCard.current),
       );
     }
-  }, [filtered, focusEntryOverlay, mapReady, selected, selectedCampaign]);
+  }, [filtered, focusEntryOnMap, focusEntryOverlay, mapReady, selected, selectedCampaign]);
 
   useEffect(() => {
     if (!mapReady || !map.current || !leaflet.current) return;
@@ -3119,8 +3126,10 @@ export default function Home() {
                   <div className={`intel-entry${entry.levelId === selected.entry.levelId ? " is-selected" : ""}`} key={entry.levelId}>
                     <button
                       className={selectedCampaign && entry.campaignOrder != null ? "has-campaign-order" : undefined}
-                      onClick={() => selectEntry(group, entry)}
-                      onDoubleClick={() => focusEntryOnMap(entry)}
+                      onClick={() => {
+                        relatedLevelFocusEntryId.current = entry.id;
+                        selectEntry(group, entry);
+                      }}
                     >
                       {selectedCampaign && entry.campaignOrder != null && (
                         <span
