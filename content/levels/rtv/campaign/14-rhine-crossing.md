@@ -8,6 +8,24 @@ campaign:
   id: "3"
   label: British Campaign
 wikiArticle: codwiki-rhine-crossing
+mapOverlay:
+  image: /images/levels/rtv/rhine-crossing/maps/briefing-map.png
+  opacity: 0.72
+  corners:
+    topLeft: [51.70639672, 6.4284971]
+    topRight: [51.70530211, 6.742628]
+    bottomLeft: [51.59584553, 6.42749518]
+    bottomRight: [51.59474825, 6.7416261]
+  attribution:
+    title: "Call of Duty: Roads to Victory — Rhine Crossing loading-screen map"
+    source: "Directly extracted from Call of Duty: Roads to Victory by plp-gtr."
+    sourceUrl: https://github.com/time-wasters/cod-atlas/blob/main/public/images/maps/rtv/rhine-crossing.png
+    extractedBy: plp-gtr
+    extractedByUrl: https://github.com/plp-gtr
+    copyrightHolder: Activision Publishing, Inc.
+    rights: non-free
+    rightsNotice: "The extraction is contributed to CoD Atlas; the underlying copyrighted game artwork remains the property of Activision and is used for identification and geographic comparison."
+    rightsNoticeUrl: https://www.activision.com/legal/terms-of-use
 locations:
   - id: main
     country: Germany

@@ -8,6 +8,24 @@ campaign:
   id: "3"
   label: British Campaign
 wikiArticle: codwiki-arnhem-assault
+mapOverlay:
+  image: /images/levels/rtv/arnhem-assault/maps/briefing-map.png
+  opacity: 0.72
+  corners:
+    topLeft: [52.23758792, 4.8087378]
+    topRight: [52.22486213, 6.56870816]
+    bottomLeft: [51.60678835, 4.79666334]
+    bottomRight: [51.59388252, 6.55663221]
+  attribution:
+    title: "Call of Duty: Roads to Victory — Arnhem Assault loading-screen map"
+    source: "Directly extracted from Call of Duty: Roads to Victory by plp-gtr."
+    sourceUrl: https://github.com/time-wasters/cod-atlas/blob/main/public/images/maps/rtv/arnhem-assault.png
+    extractedBy: plp-gtr
+    extractedByUrl: https://github.com/plp-gtr
+    copyrightHolder: Activision Publishing, Inc.
+    rights: non-free
+    rightsNotice: "The extraction is contributed to CoD Atlas; the underlying copyrighted game artwork remains the property of Activision and is used for identification and geographic comparison."
+    rightsNoticeUrl: https://www.activision.com/legal/terms-of-use
 locations:
   - id: main
     country: Netherlands

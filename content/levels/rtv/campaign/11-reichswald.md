@@ -8,6 +8,24 @@ campaign:
   id: "2"
   label: Canadian Campaign
 wikiArticle: codwiki-reichswald
+mapOverlay:
+  image: /images/levels/rtv/reichswald/maps/briefing-map.png
+  opacity: 0.72
+  corners:
+    topLeft: [51.74035088, 6.11149402]
+    topRight: [51.74030272, 6.38958553]
+    bottomLeft: [51.64176434, 6.11144955]
+    bottomRight: [51.64171607, 6.38954105]
+  attribution:
+    title: "Call of Duty: Roads to Victory — Reichswald loading-screen map"
+    source: "Directly extracted from Call of Duty: Roads to Victory by plp-gtr."
+    sourceUrl: https://github.com/time-wasters/cod-atlas/blob/main/public/images/maps/rtv/reichswald.png
+    extractedBy: plp-gtr
+    extractedByUrl: https://github.com/plp-gtr
+    copyrightHolder: Activision Publishing, Inc.
+    rights: non-free
+    rightsNotice: "The extraction is contributed to CoD Atlas; the underlying copyrighted game artwork remains the property of Activision and is used for identification and geographic comparison."
+    rightsNoticeUrl: https://www.activision.com/legal/terms-of-use
 locations:
   - id: main
     country: Germany

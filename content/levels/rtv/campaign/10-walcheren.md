@@ -8,6 +8,24 @@ campaign:
   id: "2"
   label: Canadian Campaign
 wikiArticle: codwiki-walcheren
+mapOverlay:
+  image: /images/levels/rtv/walcheren/maps/briefing-map.png
+  opacity: 0.72
+  corners:
+    topLeft: [51.6260353, 3.26884632]
+    topRight: [51.65260277, 4.1244676]
+    bottomLeft: [51.33164193, 3.29249619]
+    bottomRight: [51.35838147, 4.14811747]
+  attribution:
+    title: "Call of Duty: Roads to Victory — Walcheren loading-screen map"
+    source: "Directly extracted from Call of Duty: Roads to Victory by plp-gtr."
+    sourceUrl: https://github.com/time-wasters/cod-atlas/blob/main/public/images/maps/rtv/walcheren.png
+    extractedBy: plp-gtr
+    extractedByUrl: https://github.com/plp-gtr
+    copyrightHolder: Activision Publishing, Inc.
+    rights: non-free
+    rightsNotice: "The extraction is contributed to CoD Atlas; the underlying copyrighted game artwork remains the property of Activision and is used for identification and geographic comparison."
+    rightsNoticeUrl: https://www.activision.com/legal/terms-of-use
 locations:
   - id: main
     country: Netherlands
