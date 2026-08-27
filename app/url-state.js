@@ -9,6 +9,7 @@ const atlasUrlParameters = [
   "confidence",
   "method",
   "mode",
+  "browse",
   "level",
   "location",
 ];
@@ -27,6 +28,7 @@ const atlasUrlParameters = [
  * @property {boolean} showSingleplayer
  * @property {boolean} showMultiplayer
  * @property {boolean} showZombies
+ * @property {"locations" | "campaigns"} sidebarListMode
  * @property {string | null} levelId
  * @property {string | null} locationId
  */
@@ -57,6 +59,7 @@ export function parseAtlasUrl(input) {
     showSingleplayer: mode == null || mode === "both" || mode === "all" || selectedModes.has("singleplayer"),
     showMultiplayer: mode === "multiplayer" || mode === "both" || mode === "all" || selectedModes.has("multiplayer"),
     showZombies: mode === "zombies" || mode === "all" || selectedModes.has("zombies"),
+    sidebarListMode: url.searchParams.get("browse") === "campaigns" ? "campaigns" : "locations",
     levelId: url.searchParams.get("level") || null,
     locationId: url.searchParams.get("location") || null,
   };
@@ -95,6 +98,7 @@ export function atlasUrlWithState(input, state) {
   else if (!(selectedModes.length === 1 && selectedModes[0] === "singleplayer")) {
     url.searchParams.set("mode", selectedModes.join(","));
   }
+  if (state.sidebarListMode === "campaigns") url.searchParams.set("browse", "campaigns");
 
   if (state.levelId) {
     url.searchParams.set("level", state.levelId);

@@ -21,6 +21,7 @@ test("round-trips shareable atlas filters and the selected location", () => {
     showSingleplayer: true,
     showMultiplayer: true,
     showZombies: true,
+    sidebarListMode: "campaigns",
     levelId: "cod4-safehouse",
     locationId: "main",
   };
@@ -45,12 +46,14 @@ test("uses concise defaults and preserves every mode-filter state", () => {
     showSingleplayer: true,
     showMultiplayer: false,
     showZombies: false,
+    sidebarListMode: "locations",
     levelId: null,
     locationId: null,
   };
   const defaultUrl = atlasUrlWithState("https://example.com/?game=old&level=old", defaults);
   assert.equal(defaultUrl.search, "");
   assert.deepEqual(parseAtlasUrl(defaultUrl), defaults);
+  assert.equal(parseAtlasUrl("https://example.com/?browse=unknown").sidebarListMode, "locations");
 
   assert.deepEqual(
     parseAtlasUrl("https://example.com/?precision=localized").precisions,

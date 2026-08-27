@@ -1260,6 +1260,7 @@ export default function Home() {
       setShowSingleplayer(urlState.showSingleplayer);
       setShowMultiplayer(urlState.showMultiplayer);
       setShowZombies(urlState.showZombies);
+      setSidebarListMode(urlState.sidebarListMode === "campaigns" && requestedGame ? "campaigns" : "locations");
       setSelected(requestedSelection ?? { group: initialGroup, entry: initialEntry });
       setSelectionInUrl(requestedSelection !== null);
       setSelectedCampaignKey(null);
@@ -1289,6 +1290,7 @@ export default function Home() {
       showSingleplayer,
       showMultiplayer,
       showZombies,
+      sidebarListMode,
       levelId: selectionInUrl ? selected.entry.levelId : null,
       locationId: selectionInUrl ? selected.entry.locationId : null,
     });
@@ -1315,6 +1317,7 @@ export default function Home() {
     showMultiplayer,
     showSingleplayer,
     showZombies,
+    sidebarListMode,
     urlSyncReady,
   ]);
 
@@ -2594,6 +2597,7 @@ export default function Home() {
               aria-selected={sidebarListMode === "locations"}
               aria-controls="sidebar-locations"
               onClick={() => {
+                urlHistoryMode.current = "push";
                 setSidebarListMode("locations");
                 setSelectedCampaignKey(null);
                 setExpandedRegionEntryId(null);
@@ -2609,7 +2613,10 @@ export default function Home() {
               aria-controls="sidebar-campaigns"
               disabled={game === "all"}
               title={game === "all" ? "Choose a game to browse campaigns" : undefined}
-              onClick={() => setSidebarListMode("campaigns")}
+              onClick={() => {
+                urlHistoryMode.current = "push";
+                setSidebarListMode("campaigns");
+              }}
             >
               <span>Campaigns</span><small>{campaigns.length}</small>
             </button>
