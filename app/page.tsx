@@ -1941,20 +1941,30 @@ export default function Home() {
         campaignMarkerRevealEntryId.current = null;
         return;
       }
+      const retryMarkerReveal = () => {
+        if (markerRevealAttempts < 6) {
+          markerRevealAttempts += 1;
+          markerRevealTimer = window.setTimeout(revealFirstCampaignMarker, 160);
+          return;
+        }
+        campaignMarkerRevealEntryId.current = null;
+      };
       const visibleParent = clusterLayer.getVisibleParent(selectedMarker);
       if (visibleParent && visibleParent !== selectedMarker && "spiderfy" in visibleParent) {
         (visibleParent as LeafletMarker & { spiderfy: () => void }).spiderfy();
-        campaignMarkerRevealEntryId.current = null;
+        // MarkerCluster silently ignores spiderfy() while a zoom animation is
+        // active. Only consume the request after the child marker is actually
+        // visible; otherwise keep trying until its animation has settled.
+        if (clusterLayer.getVisibleParent(selectedMarker) === selectedMarker) {
+          campaignMarkerRevealEntryId.current = null;
+          return;
+        }
+        retryMarkerReveal();
         return;
       }
       // During a cluster refresh the marker can briefly appear as its own
       // visible parent before it is placed back inside the rendered cluster.
-      if (markerRevealAttempts < 3) {
-        markerRevealAttempts += 1;
-        markerRevealTimer = window.setTimeout(revealFirstCampaignMarker, 160);
-        return;
-      }
-      campaignMarkerRevealEntryId.current = null;
+      retryMarkerReveal();
     };
     const scheduleMarkerReveal = () => {
       if (!campaignMarkerRevealEntryId.current) return;
@@ -1972,6 +1982,15 @@ export default function Home() {
     };
     const activeMarkerLayer = markerLayer.current;
     activeMarkerLayer?.on("animationend", handleClusterAnimationEnd);
+    const handleMarkerSpiderfied = () => {
+      const entryId = campaignMarkerRevealEntryId.current;
+      const selectedMarker = entryId ? markers.current.get(entryId)?.marker : null;
+      if (!selectedMarker || activeMarkerLayer?.getVisibleParent(selectedMarker) !== selectedMarker) return;
+      campaignMarkerRevealEntryId.current = null;
+      if (markerRevealTimer !== null) window.clearTimeout(markerRevealTimer);
+      markerRevealTimer = null;
+    };
+    activeMarkerLayer?.on("spiderfied", handleMarkerSpiderfied);
 
     route.segments.forEach((segment) => {
       L.polyline(segment, {
@@ -2093,6 +2112,7 @@ export default function Home() {
     return () => {
       currentMap.off("moveend", handleCampaignMoveEnd);
       activeMarkerLayer?.off("animationend", handleClusterAnimationEnd);
+      activeMarkerLayer?.off("spiderfied", handleMarkerSpiderfied);
       if (markerRevealTimer !== null) window.clearTimeout(markerRevealTimer);
       routeLayer.remove();
       if (campaignRouteLayer.current === routeLayer) campaignRouteLayer.current = null;
