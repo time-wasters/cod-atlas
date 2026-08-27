@@ -475,9 +475,13 @@ input[type="checkbox"]:disabled:checked { background-color: #6e592e; filter: gra
 .intel-entry.is-selected strong { color: var(--amber); }
 .intel-entry:last-child { border-bottom: 0; }
 .intel-entry button { min-width: 0; display: flex; flex: 1; flex-direction: column; gap: 2px; border: 0; padding: 0; color: inherit; background: transparent; text-align: left; cursor: pointer; }
+.intel-entry button.has-campaign-order { flex-direction: row; align-items: center; gap: 10px; }
 .intel-entry button:hover strong { color: var(--amber); }
 .intel-entry strong { overflow: hidden; font-size: 11px; font-weight: 580; text-overflow: ellipsis; white-space: nowrap; }
 .intel-entry span { color: #7f856f; font: 9px var(--font-geist-mono), monospace; }
+.intel-entry-copy { min-width: 0; display: flex; flex: 1; flex-direction: column; gap: 2px; }
+.intel-entry-copy strong { color: #ddd6c3; }
+.intel-entry .campaign-related-level-number { flex: 0 0 auto; color: #fff0c8; font: 700 9px/1 var(--font-geist-mono), monospace; }
 .more-row { width: 100%; border: 0; border-top: 1px solid #33392d; padding: 10px 0; color: #c28e30; background: transparent; font: 700 9px var(--font-geist-mono), monospace; letter-spacing: .04em; text-align: left; cursor: pointer; }
 .more-row:hover, .more-row:focus-visible { color: #f0bd58; outline: none; }
 .more-row.is-collapse { color: #858b78; }

@@ -3101,7 +3101,23 @@ export default function Home() {
               >
                 {visibleRelatedLevels.map(({ group, entry }) => (
                   <div className={`intel-entry${entry.levelId === selected.entry.levelId ? " is-selected" : ""}`} key={entry.levelId}>
-                    <button onClick={() => selectEntry(group, entry)}><strong>{entry.title}</strong><span>{locationName(entry)} · {entry.game}</span></button>
+                    <button
+                      className={selectedCampaign && entry.campaignOrder != null ? "has-campaign-order" : undefined}
+                      onClick={() => selectEntry(group, entry)}
+                    >
+                      {selectedCampaign && entry.campaignOrder != null && (
+                        <span
+                          className="campaign-route-stop campaign-related-level-number"
+                          aria-label={`Campaign mission ${entry.campaignOrder}`}
+                        >
+                          {String(entry.campaignOrder).padStart(2, "0")}
+                        </span>
+                      )}
+                      <span className="intel-entry-copy">
+                        <strong>{entry.title}</strong>
+                        <span>{locationName(entry)}{selectedCampaign ? "" : ` · ${entry.game}`}</span>
+                      </span>
+                    </button>
                   </div>
                 ))}
                 {hiddenRelatedLevelCount > 0 && (
