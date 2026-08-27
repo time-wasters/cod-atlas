@@ -1646,21 +1646,64 @@ export default function Home() {
     setDetailsOpen(true);
   }
 
-  const focusSelectedMarker = useCallback(() => {
+  const focusEntryOverlay = useCallback((entry: Entry) => {
+    const currentMap = map.current;
+    const L = leaflet.current;
+    const entryOverlay = mapOverlays[entry.levelId];
+    if (!currentMap || !L || !mapNode.current || !entry.coordinates || !entryOverlay) return false;
+
+    const padding = mapViewportPadding(mapNode.current, intelCard.current);
+    const size = currentMap.getSize();
+    const visibleBounds = L.latLngBounds([
+      currentMap.containerPointToLatLng(padding.paddingTopLeft),
+      currentMap.containerPointToLatLng([
+        size.x - padding.paddingBottomRight[0],
+        size.y - padding.paddingBottomRight[1],
+      ]),
+    ]);
+    const overlayAndMarkerBounds = L.latLngBounds([
+      entryOverlay.corners.topLeft,
+      entryOverlay.corners.topRight,
+      entryOverlay.corners.bottomLeft,
+      entryOverlay.corners.bottomRight,
+      entry.coordinates,
+    ]);
+    if (!visibleBounds.contains(overlayAndMarkerBounds)) {
+      currentMap.stop();
+      const movement = {
+        ...padding,
+        maxZoom: currentMap.getZoom(),
+        animate: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+        duration: .55,
+      };
+      if (movement.animate) currentMap.flyToBounds(overlayAndMarkerBounds, movement);
+      else currentMap.fitBounds(overlayAndMarkerBounds, movement);
+    } else {
+      currentMap.panInside(entry.coordinates, padding);
+    }
+    return true;
+  }, []);
+
+  const focusEntryOnMap = useCallback((entry: Entry) => {
+    if (focusEntryOverlay(entry)) return;
     const currentMap = map.current;
     const layer = markerLayer.current;
-    const selectedMarker = markers.current.get(selected.entry.id)?.marker;
-    if (!currentMap || !layer || !selectedMarker) return;
+    const entryMarker = markers.current.get(entry.id)?.marker;
+    if (!currentMap || !layer || !entryMarker) return;
 
     currentMap.stop();
-    layer.zoomToShowLayer(selectedMarker, () => {
+    layer.zoomToShowLayer(entryMarker, () => {
       if (map.current !== currentMap || !mapNode.current) return;
       currentMap.panInside(
-        selectedMarker.getLatLng(),
+        entryMarker.getLatLng(),
         mapViewportPadding(mapNode.current, intelCard.current),
       );
     });
-  }, [selected.entry.id]);
+  }, [focusEntryOverlay]);
+
+  const focusSelectedMarker = useCallback(() => {
+    focusEntryOnMap(selected.entry);
+  }, [focusEntryOnMap, selected.entry]);
 
   const toggleLevelNotes = useCallback(() => {
     if (!selectedAppearance.hasLevelNotes) return;
@@ -1887,45 +1930,18 @@ export default function Home() {
       }
       const overlaySelectionLevelId = markerOverlaySelectionLevelId.current;
       markerOverlaySelectionLevelId.current = null;
-      const markerOverlay = overlaySelectionLevelId === selected.entry.levelId
-        ? mapOverlays[overlaySelectionLevelId]
-        : null;
-      if (markerOverlay) {
-        const padding = mapViewportPadding(mapNode.current, intelCard.current);
-        const size = currentMap.getSize();
-        const visibleBounds = L.latLngBounds([
-          currentMap.containerPointToLatLng(padding.paddingTopLeft),
-          currentMap.containerPointToLatLng([
-            size.x - padding.paddingBottomRight[0],
-            size.y - padding.paddingBottomRight[1],
-          ]),
-        ]);
-        const overlayAndMarkerBounds = L.latLngBounds([
-          markerOverlay.corners.topLeft,
-          markerOverlay.corners.topRight,
-          markerOverlay.corners.bottomLeft,
-          markerOverlay.corners.bottomRight,
-          selected.entry.coordinates,
-        ]);
-        if (!visibleBounds.contains(overlayAndMarkerBounds)) {
-          currentMap.stop();
-          const movement = {
-            ...padding,
-            maxZoom: currentMap.getZoom(),
-            animate: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-            duration: .55,
-          };
-          if (movement.animate) currentMap.flyToBounds(overlayAndMarkerBounds, movement);
-          else currentMap.fitBounds(overlayAndMarkerBounds, movement);
-          return;
-        }
+      if (
+        overlaySelectionLevelId === selected.entry.levelId
+        && focusEntryOverlay(selected.entry)
+      ) {
+        return;
       }
       currentMap.panInside(
         selected.entry.coordinates,
         mapViewportPadding(mapNode.current, intelCard.current),
       );
     }
-  }, [filtered, mapReady, selected, selectedCampaign]);
+  }, [filtered, focusEntryOverlay, mapReady, selected, selectedCampaign]);
 
   useEffect(() => {
     if (!mapReady || !map.current || !leaflet.current) return;
@@ -3104,6 +3120,7 @@ export default function Home() {
                     <button
                       className={selectedCampaign && entry.campaignOrder != null ? "has-campaign-order" : undefined}
                       onClick={() => selectEntry(group, entry)}
+                      onDoubleClick={() => focusEntryOnMap(entry)}
                     >
                       {selectedCampaign && entry.campaignOrder != null && (
                         <span
