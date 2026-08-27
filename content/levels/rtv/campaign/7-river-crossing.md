@@ -12,10 +12,10 @@ mapOverlay:
   image: /images/levels/rtv/river-crossing/maps/briefing-map.png
   opacity: 0.72
   corners:
-    topLeft: [52.10987848, 4.98518402]
-    topRight: [52.09332931, 6.76010737]
-    bottomLeft: [51.51977365, 4.97069259]
-    bottomRight: [51.50300626, 6.74562017]
+    topLeft: [52.12479074, 4.98325]
+    topRight: [52.12483385, 6.75473531]
+    bottomLeft: [51.48543067, 4.98329099]
+    bottomRight: [51.4854744, 6.7547763]
   attribution:
     title: "Call of Duty: Roads to Victory — River Crossing loading-screen map"
     source: "Directly extracted from Call of Duty: Roads to Victory by plp-gtr."
