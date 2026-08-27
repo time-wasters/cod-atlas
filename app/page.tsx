@@ -1177,6 +1177,7 @@ export default function Home() {
   const [relatedLevelsOpen, setRelatedLevelsOpen] = useState(true);
   const [sidebarListMode, setSidebarListMode] = useState<"locations" | "campaigns">("locations");
   const [selectedCampaignKey, setSelectedCampaignKey] = useState<string | null>(null);
+  const [urlCampaignLevelId, setUrlCampaignLevelId] = useState<string | null>(null);
   const [expandedLevelNotesId, setExpandedLevelNotesId] = useState<string | null>(null);
   const [levelNotes, setLevelNotes] = useState<{
     levelId: string;
@@ -1261,6 +1262,9 @@ export default function Home() {
       setShowMultiplayer(urlState.showMultiplayer);
       setShowZombies(urlState.showZombies);
       setSidebarListMode(urlState.sidebarListMode === "campaigns" && requestedGame ? "campaigns" : "locations");
+      setUrlCampaignLevelId(urlState.sidebarListMode === "campaigns" && requestedGame && requestedSelection
+        ? requestedSelection.entry.levelId
+        : null);
       setSelected(requestedSelection ?? { group: initialGroup, entry: initialEntry });
       setSelectionInUrl(requestedSelection !== null);
       setSelectedCampaignKey(null);
@@ -1467,7 +1471,13 @@ export default function Home() {
           || a.label.localeCompare(b.label);
       });
   }, [game, groups]);
-  const selectedCampaign = campaigns.find((campaign) => campaign.key === selectedCampaignKey) ?? null;
+  const explicitlySelectedCampaign = campaigns.find((campaign) => campaign.key === selectedCampaignKey) ?? null;
+  const urlSelectedCampaign = sidebarListMode === "campaigns" && urlCampaignLevelId
+    ? campaigns.find((campaign) =>
+      campaign.levels.some(({ entry }) => entry.levelId === urlCampaignLevelId)) ?? null
+    : null;
+  const selectedCampaign = explicitlySelectedCampaign ?? urlSelectedCampaign;
+  const activeCampaignKey = selectedCampaign?.key ?? null;
   const selectedCampaignGame = selectedCampaign ? gamesById.get(selectedCampaign.gameId) ?? null : null;
   const selectedCampaignGameIcon = selectedCampaignGame ? gameIcon(selectedCampaignGame) : null;
   const selectedCampaignUsesExternalGameIcon = Boolean(
@@ -1621,8 +1631,9 @@ export default function Home() {
     selectEntry(group, entry);
   }, [selectEntry]);
 
-  const selectCampaign = useCallback((campaign: CampaignOption) => {
-    const campaignIsActive = selectedCampaignKey === campaign.key;
+  function selectCampaign(campaign: CampaignOption) {
+    const campaignIsActive = activeCampaignKey === campaign.key;
+    setUrlCampaignLevelId(null);
     setSelectedCampaignKey(campaignIsActive ? null : campaign.key);
     if (!campaignIsActive && campaign.levels[0]) {
       campaignMarkerRevealEntryId.current = campaign.levels[0].entry.id;
@@ -1633,7 +1644,7 @@ export default function Home() {
     setExpandedRegionEntryId(null);
     setRelatedLevelsOpen(true);
     setDetailsOpen(true);
-  }, [selectEntry, selectedCampaignKey]);
+  }
 
   const focusSelectedMarker = useCallback(() => {
     const currentMap = map.current;
@@ -2364,6 +2375,7 @@ export default function Home() {
                 urlHistoryMode.current = "push";
                 setGame(value);
                 setSelectedCampaignKey(null);
+                setUrlCampaignLevelId(null);
                 setExpandedRegionEntryId(null);
                 if (value === "all") setSidebarListMode("locations");
               }}
@@ -2600,6 +2612,7 @@ export default function Home() {
                 urlHistoryMode.current = "push";
                 setSidebarListMode("locations");
                 setSelectedCampaignKey(null);
+                setUrlCampaignLevelId(null);
                 setExpandedRegionEntryId(null);
               }}
             >
@@ -2640,7 +2653,7 @@ export default function Home() {
               {campaigns.map((campaign, index) => (
                 <button
                   key={campaign.key}
-                  className={campaign.key === selectedCampaignKey ? "campaign-row is-selected" : "campaign-row"}
+                  className={campaign.key === activeCampaignKey ? "campaign-row is-selected" : "campaign-row"}
                   type="button"
                   onClick={() => selectCampaign(campaign)}
                 >
