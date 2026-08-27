@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Dead_In_Her_Sights",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Dead_In_Her_Sights",
   "latestRevisionId": 2955652,
-  "importedAt": "2026-08-09T21:34:40.159Z",
+  "importedAt": "2026-08-25T23:03:50.662Z",
   "levelLocation": {
     "raw": "Stalingrad, Soviet Union",
     "label": "Stalingrad, Soviet Union",
@@ -53,5 +53,46 @@
     "resolvedTitle": "Dead In Her Sights",
     "mainImageTitle": "File:CoDFH_Dead_In_Her_Sights_loading_screen.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[The Flag Must Fall]]",
+    "label": "The Flag Must Fall",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-the-flag-must-fall",
+        "wikiTitle": "The Flag Must Fall",
+        "label": "The Flag Must Fall",
+        "url": "https://callofduty.fandom.com/wiki/The_Flag_Must_Fall"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Defend the Factory]]",
+    "label": "Defend the Factory",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-defend-the-factory",
+        "wikiTitle": "Defend the Factory",
+        "label": "Defend the Factory",
+        "url": "https://callofduty.fandom.com/wiki/Defend_the_Factory"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Finest Hour]]''",
+    "label": "Call of Duty: Finest Hour",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Finest Hour",
+        "label": "Call of Duty: Finest Hour",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Finest_Hour"
+      }
+    ]
+  },
+  "date": {
+    "raw": "October 3rd, 1942",
+    "label": "October 3rd, 1942"
   }
 }

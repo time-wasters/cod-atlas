@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/The_Black_Baron_(level)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/The_Black_Baron_(level)",
   "latestRevisionId": 2871166,
-  "importedAt": "2026-08-11T18:51:30.640Z",
+  "importedAt": "2026-08-25T23:11:22.748Z",
   "levelLocation": {
     "raw": "St. Aignan-de-Cramesnil, France",
     "label": "St. Aignan-de-Cramesnil, France",
@@ -59,6 +59,8 @@
     "label": "Fuel Plant",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-fuel-plant-level",
         "wikiTitle": "Fuel Plant (level)",
         "label": "Fuel Plant",
         "url": "https://callofduty.fandom.com/wiki/Fuel_Plant_(level)"
@@ -70,6 +72,8 @@
     "label": "The Forest",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-the-forest",
         "wikiTitle": "The Forest",
         "label": "The Forest",
         "url": "https://callofduty.fandom.com/wiki/The_Forest"

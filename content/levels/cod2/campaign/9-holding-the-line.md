@@ -15,7 +15,7 @@ locations:
   - id: main
     country: Egypt
     region: Matrouh Governorate
-    landmark: Naqb Rala (representative southern Alamein chokepoint)
+    landmark: Naqb Rala
     latitude: 30.45
     longitude: 28.85
     precision: approximate

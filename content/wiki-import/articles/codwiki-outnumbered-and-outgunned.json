@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Armored_Car_Escape",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Armored_Car_Escape",
   "latestRevisionId": 2951068,
-  "importedAt": "2026-08-18T20:41:02.907Z",
+  "importedAt": "2026-08-25T21:15:48.998Z",
   "levelLocation": {
     "raw": "Toujane, Tunisia",
     "label": "Toujane, Tunisia",
@@ -59,6 +59,8 @@
     "label": "88 Ridge",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-88-ridge",
         "wikiTitle": "88 Ridge",
         "label": "88 Ridge",
         "url": "https://callofduty.fandom.com/wiki/88_Ridge"
@@ -70,6 +72,8 @@
     "label": "Retaking Toujane",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-retaking-lost-ground",
         "wikiTitle": "Retaking Toujane",
         "label": "Retaking Toujane",
         "url": "https://callofduty.fandom.com/wiki/Retaking_Toujane"

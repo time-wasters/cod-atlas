@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/The_Crossroads_(Call_of_Duty_2)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/The_Crossroads_(Call_of_Duty_2)",
   "latestRevisionId": 2860311,
-  "importedAt": "2026-08-18T20:41:13.818Z",
+  "importedAt": "2026-08-25T21:16:00.033Z",
   "levelLocation": {
     "raw": "Anctoville, France",
     "label": "Anctoville, France",
@@ -59,6 +59,8 @@
     "label": "Prisoners of War",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-prisoners-of-war",
         "wikiTitle": "Prisoners of War",
         "label": "Prisoners of War",
         "url": "https://callofduty.fandom.com/wiki/Prisoners_of_War"
@@ -70,6 +72,8 @@
     "label": "The Tiger",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-the-tiger",
         "wikiTitle": "The Tiger",
         "label": "The Tiger",
         "url": "https://callofduty.fandom.com/wiki/The_Tiger"

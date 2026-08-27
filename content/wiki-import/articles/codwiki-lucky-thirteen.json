@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Lucky_Thirteen",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Lucky_Thirteen",
   "latestRevisionId": 2957219,
-  "importedAt": "2026-08-11T18:50:28.361Z",
+  "importedAt": "2026-08-25T23:11:55.690Z",
   "levelLocation": {
     "raw": "Somewhere over the Netherlands",
     "label": "Somewhere over the Netherlands",
@@ -59,6 +59,8 @@
     "label": "Glider Crash",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-glider-crash",
         "wikiTitle": "Glider Crash",
         "label": "Glider Crash",
         "url": "https://callofduty.fandom.com/wiki/Glider_Crash"
@@ -70,6 +72,8 @@
     "label": "Nijmegen",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-nijmegen",
         "wikiTitle": "Nijmegen",
         "label": "Nijmegen",
         "url": "https://callofduty.fandom.com/wiki/Nijmegen"

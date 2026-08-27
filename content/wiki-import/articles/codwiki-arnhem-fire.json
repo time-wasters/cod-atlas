@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Arnhem_Fire",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Arnhem_Fire",
   "latestRevisionId": 2957236,
-  "importedAt": "2026-08-15T09:24:22.735Z",
+  "importedAt": "2026-08-25T23:11:55.704Z",
   "levelLocation": {
     "raw": "Arnhem, Netherlands",
     "label": "Arnhem, Netherlands",
@@ -59,6 +59,8 @@
     "label": "Reichswald",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-reichswald",
         "wikiTitle": "Reichswald",
         "label": "Reichswald",
         "url": "https://callofduty.fandom.com/wiki/Reichswald"
@@ -70,6 +72,8 @@
     "label": "Arnhem Assault",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-arnhem-assault",
         "wikiTitle": "Arnhem Assault",
         "label": "Arnhem Assault",
         "url": "https://callofduty.fandom.com/wiki/Arnhem_Assault"

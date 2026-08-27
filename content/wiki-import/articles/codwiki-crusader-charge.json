@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Crusader_Charge",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Crusader_Charge",
   "latestRevisionId": 2901235,
-  "importedAt": "2026-08-18T20:40:52.152Z",
+  "importedAt": "2026-08-25T21:15:38.195Z",
   "levelLocation": {
     "raw": "Northwestern Libya",
     "label": "Northwestern Libya",
@@ -59,11 +59,15 @@
     "label": "The End of the Beginning, Comrade Sniper (Chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-the-end-of-the-beginning",
         "wikiTitle": "The End of the Beginning",
         "label": "The End of the Beginning",
         "url": "https://callofduty.fandom.com/wiki/The_End_of_the_Beginning"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-comrade-sniper",
         "wikiTitle": "Comrade Sniper",
         "label": "Comrade Sniper",
         "url": "https://callofduty.fandom.com/wiki/Comrade_Sniper"
@@ -75,6 +79,8 @@
     "label": "88 Ridge",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-88-ridge",
         "wikiTitle": "88 Ridge",
         "label": "88 Ridge",
         "url": "https://callofduty.fandom.com/wiki/88_Ridge"

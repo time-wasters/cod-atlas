@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Red_Army_Training",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Red_Army_Training",
   "latestRevisionId": 2926272,
-  "importedAt": "2026-08-18T20:41:13.783Z",
+  "importedAt": "2026-08-25T21:16:00.001Z",
   "levelLocation": {
     "raw": "[[wikipedia:Moscow|Moscow]], U.S.S.R.",
     "label": "Moscow",
@@ -64,11 +64,15 @@
     "label": "Demolition, The Diversionary Raid (Chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-demolition-level",
         "wikiTitle": "Demolition (level)",
         "label": "Demolition",
         "url": "https://callofduty.fandom.com/wiki/Demolition_(level)"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-the-diversionary-raid",
         "wikiTitle": "The Diversionary Raid",
         "label": "The Diversionary Raid",
         "url": "https://callofduty.fandom.com/wiki/The_Diversionary_Raid"

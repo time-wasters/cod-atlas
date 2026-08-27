@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Operation_Little_Saturn_(level)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Operation_Little_Saturn_(level)",
   "latestRevisionId": 2899496,
-  "importedAt": "2026-08-09T21:34:51.015Z",
+  "importedAt": "2026-08-25T23:04:01.657Z",
   "levelLocation": {
     "raw": "Tatsinskaya, [[Soviet Union]]",
     "label": "Soviet Union",
@@ -53,5 +53,46 @@
     "resolvedTitle": "Operation Little Saturn (level)",
     "mainImageTitle": "File:CoDFH_Operation_Little_Saturn_loading_screen.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Into Red Square]]",
+    "label": "Into Red Square",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-into-red-square",
+        "wikiTitle": "Into Red Square",
+        "label": "Into Red Square",
+        "url": "https://callofduty.fandom.com/wiki/Into_Red_Square"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Airfield Ambush]]",
+    "label": "Airfield Ambush",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-airfield-ambush",
+        "wikiTitle": "Airfield Ambush",
+        "label": "Airfield Ambush",
+        "url": "https://callofduty.fandom.com/wiki/Airfield_Ambush"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Finest Hour]]''",
+    "label": "Call of Duty: Finest Hour",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Finest Hour",
+        "label": "Call of Duty: Finest Hour",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Finest_Hour"
+      }
+    ]
+  },
+  "date": {
+    "raw": "December 24, 1942",
+    "label": "December 24, 1942"
   }
 }

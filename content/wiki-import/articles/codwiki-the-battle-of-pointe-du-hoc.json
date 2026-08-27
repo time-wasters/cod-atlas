@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/The_Battle_of_Pointe_du_Hoc",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/The_Battle_of_Pointe_du_Hoc",
   "latestRevisionId": 3012657,
-  "importedAt": "2026-08-18T20:41:13.811Z",
+  "importedAt": "2026-08-25T21:16:00.026Z",
   "levelLocation": {
     "raw": "Pointe du Hoc, France",
     "label": "Pointe du Hoc, France",
@@ -59,6 +59,8 @@
     "label": "Assault on Matmata",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-assault-on-matmata",
         "wikiTitle": "Assault on Matmata",
         "label": "Assault on Matmata",
         "url": "https://callofduty.fandom.com/wiki/Assault_on_Matmata"
@@ -70,6 +72,8 @@
     "label": "Defending the Pointe",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-defending-the-pointe",
         "wikiTitle": "Defending the Pointe",
         "label": "Defending the Pointe",
         "url": "https://callofduty.fandom.com/wiki/Defending_the_Pointe"

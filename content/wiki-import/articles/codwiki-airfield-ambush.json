@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Airfield_Ambush",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Airfield_Ambush",
   "latestRevisionId": 2763595,
-  "importedAt": "2026-08-15T09:23:50.469Z",
+  "importedAt": "2026-08-25T23:03:50.618Z",
   "levelLocation": {
     "raw": "German Airfield 32, Tatsinskaya, [[Soviet Union]]",
     "label": "Soviet Union",
@@ -59,6 +59,8 @@
     "label": "Operation Little Saturn",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-operation-little-saturn-level",
         "wikiTitle": "Operation Little Saturn (level)",
         "label": "Operation Little Saturn",
         "url": "https://callofduty.fandom.com/wiki/Operation_Little_Saturn_(level)"
@@ -70,6 +72,8 @@
     "label": "Mission: Matmata",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-mission-matmata",
         "wikiTitle": "Mission: Matmata",
         "label": "Mission: Matmata",
         "url": "https://callofduty.fandom.com/wiki/Mission%3A_Matmata"

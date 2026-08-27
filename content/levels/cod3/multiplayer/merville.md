@@ -14,4 +14,6 @@ locations:
     confidence: fallback
     method: country-fallback
     primary: true
+    urls:
+      - callOfDutyMaps: https://callofdutymaps.com/call-of-duty-3/merville/
 ---

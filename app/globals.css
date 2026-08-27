@@ -2,6 +2,7 @@
 @import "leaflet/dist/leaflet.css";
 @import "leaflet.markercluster/dist/MarkerCluster.css";
 @import "leaflet.markercluster/dist/MarkerCluster.Default.css";
+@import "maplibre-gl/dist/maplibre-gl.css";
 @import "country-flag-icons/3x2/flags.css";
 
 :root {
@@ -357,6 +358,20 @@ input[type="checkbox"]:disabled:checked { background-color: #6e592e; filter: gra
 .atlas-marker.is-active::after { inset: 7px; }
 .atlas-marker.is-campaign-dimmed { opacity: .62; filter: grayscale(.7) brightness(.82); }
 .atlas-marker.is-campaign-dimmed:hover { opacity: .85; filter: grayscale(.4) brightness(1.05); }
+.campaign-route-shadow, .campaign-route-fuzz, .campaign-route-yarn, .campaign-route-ply, .campaign-route-groove { animation: campaign-route-appear .22s ease-out both; }
+.campaign-route-shadow { transform: translateY(6px); filter: drop-shadow(0 2px 1.5px #0009); }
+.campaign-route-fuzz { filter: blur(.35px); }
+.campaign-route-ply { filter: drop-shadow(.5px .5px .4px #160609a6); }
+.campaign-route-stop-wrap { overflow: visible; border: 0; background: transparent; }
+.campaign-route-stop { min-width: 22px; height: 18px; display: inline-grid; place-items: center; border: 1px solid #e0a126; border-radius: 9px; padding: 0 5px; color: #fff0c8; background: #171c15f2; box-shadow: 0 2px 8px #000b, inset 0 1px 0 #ffffff16; font: 700 9px/1 var(--font-geist-mono), monospace; white-space: nowrap; animation: campaign-route-stop-appear .18s ease-out both; }
+.campaign-route-stop-wrap:hover .campaign-route-stop, .campaign-route-stop-wrap:focus .campaign-route-stop { color: #17140c; background: var(--amber); }
+.leaflet-tooltip.campaign-route-tooltip { border: 1px solid #756234; border-radius: 4px; padding: 8px 10px; color: #d9d1bd; background: linear-gradient(145deg, #20251bf8, #10140ffa); box-shadow: 0 8px 22px #000c, inset 0 1px 0 #ffffff0a; }
+.leaflet-tooltip-top.campaign-route-tooltip::before { border-top-color: #756234; }
+.campaign-route-tooltip-content { display: grid; gap: 3px; }
+.campaign-route-tooltip-content strong { margin-bottom: 2px; color: #d99a21; font: 700 9px var(--font-geist-mono), monospace; letter-spacing: .08em; text-transform: uppercase; }
+.campaign-route-tooltip-content span { color: #ded6c2; font-size: 10px; line-height: 1.35; }
+@keyframes campaign-route-appear { from { stroke-opacity: 0; } }
+@keyframes campaign-route-stop-appear { from { opacity: 0; transform: scale(.72); } }
 
 .intel-column { position: absolute; z-index: 500; top: 24px; right: 24px; width: min(330px, calc(100% - 48px)); max-height: calc(100% - 48px); display: flex; flex-direction: column; gap: 10px; transition: right .3s cubic-bezier(.22, .8, .32, 1), width .3s cubic-bezier(.22, .8, .32, 1); }
 .intel-column.is-collapsed { right: 0; width: 20px; gap: 0; }
@@ -447,7 +462,9 @@ input[type="checkbox"]:disabled:checked { background-color: #6e592e; filter: gra
 .related-level-location .location-taxonomy { margin-bottom: 0; }
 .related-levels-panel { min-height: 0; max-height: min(270px, 42vh); flex: 0 1 auto; display: flex; flex-direction: column; overflow: hidden; border: 1px solid #5d624c; border-radius: 7px; color: #ddd6c3; background: linear-gradient(150deg, #181d16f5, #10140ff4); box-shadow: 0 12px 34px #0008; backdrop-filter: blur(7px); }
 .related-levels-panel.is-collapsed { flex: 0 0 auto; }
-.related-levels-toggle { width: 100%; min-height: 40px; flex: 0 0 40px; display: grid; grid-template-columns: minmax(0, 1fr) auto 16px; gap: 8px; align-items: center; border: 0; padding: 0 12px; color: #d9d2c0; background: #181d16; text-align: left; cursor: pointer; }
+.related-levels-toggle { width: 100%; min-height: 32px; flex: 0 0 32px; display: grid; grid-template-columns: minmax(0, 1fr) auto 16px; gap: 8px; align-items: center; border: 0; padding: 0 12px; color: #d9d2c0; background: #181d16; text-align: left; cursor: pointer; }
+.related-levels-toggle.has-game-icon { grid-template-columns: 32px minmax(0, 1fr) auto 16px; padding-left: 4px; }
+.related-levels-game-icon { width: 32px; height: 32px; display: block; padding: 0; object-fit: contain; }
 .related-levels-toggle span { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
 .related-levels-toggle small { color: #858b78; font: 700 9px var(--font-geist-mono), monospace; }
 .related-levels-toggle svg { width: 16px; height: 16px; fill: none; stroke: var(--amber); stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.7; transition: transform .18s ease; }
@@ -458,11 +475,13 @@ input[type="checkbox"]:disabled:checked { background-color: #6e592e; filter: gra
 .intel-entry.is-selected strong { color: var(--amber); }
 .intel-entry:last-child { border-bottom: 0; }
 .intel-entry button { min-width: 0; display: flex; flex: 1; flex-direction: column; gap: 2px; border: 0; padding: 0; color: inherit; background: transparent; text-align: left; cursor: pointer; }
+.intel-entry button.has-campaign-order { flex-direction: row; align-items: center; gap: 10px; }
 .intel-entry button:hover strong { color: var(--amber); }
 .intel-entry strong { overflow: hidden; font-size: 11px; font-weight: 580; text-overflow: ellipsis; white-space: nowrap; }
 .intel-entry span { color: #7f856f; font: 9px var(--font-geist-mono), monospace; }
-.intel-entry a { flex: 0 0 28px; height: 28px; display: grid; place-items: center; border: 1px solid #5d624c; border-radius: 3px; color: var(--amber); text-decoration: none; }
-.intel-entry a:hover { border-color: var(--amber); background: #dfa12718; }
+.intel-entry-copy { min-width: 0; display: flex; flex: 1; flex-direction: column; gap: 2px; }
+.intel-entry-copy strong { color: #ddd6c3; }
+.intel-entry .campaign-related-level-number { flex: 0 0 auto; color: #fff0c8; font: 700 9px/1 var(--font-geist-mono), monospace; }
 .more-row { width: 100%; border: 0; border-top: 1px solid #33392d; padding: 10px 0; color: #c28e30; background: transparent; font: 700 9px var(--font-geist-mono), monospace; letter-spacing: .04em; text-align: left; cursor: pointer; }
 .more-row:hover, .more-row:focus-visible { color: #f0bd58; outline: none; }
 .more-row.is-collapse { color: #858b78; }
@@ -559,4 +578,5 @@ input[type="checkbox"]:disabled:checked { background-color: #6e592e; filter: gra
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+  .campaign-route-shadow, .campaign-route-fuzz, .campaign-route-yarn, .campaign-route-ply, .campaign-route-groove, .campaign-route-stop { animation: none; }
 }

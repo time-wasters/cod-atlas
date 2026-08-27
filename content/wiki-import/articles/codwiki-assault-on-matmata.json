@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Assault_on_Matmata",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Assault_on_Matmata",
   "latestRevisionId": 2951070,
-  "importedAt": "2026-08-15T09:24:33.376Z",
+  "importedAt": "2026-08-25T21:15:27.415Z",
   "levelLocation": {
     "raw": "Matmata, Tunisia",
     "label": "Matmata, Tunisia",
@@ -59,6 +59,8 @@
     "label": "Retaking Toujane",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-retaking-lost-ground",
         "wikiTitle": "Retaking Toujane",
         "label": "Retaking Toujane",
         "url": "https://callofduty.fandom.com/wiki/Retaking_Toujane"
@@ -70,6 +72,8 @@
     "label": "The Battle of Pointe du Hoc",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-the-battle-of-pointe-du-hoc",
         "wikiTitle": "The Battle of Pointe du Hoc",
         "label": "The Battle of Pointe du Hoc",
         "url": "https://callofduty.fandom.com/wiki/The_Battle_of_Pointe_du_Hoc"

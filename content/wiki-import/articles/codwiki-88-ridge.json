@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/88_Ridge",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/88_Ridge",
   "latestRevisionId": 2784968,
-  "importedAt": "2026-08-15T09:23:39.803Z",
+  "importedAt": "2026-08-25T21:15:27.408Z",
   "levelLocation": {
     "raw": "Northwestern Libya",
     "label": "Northwestern Libya",
@@ -59,6 +59,8 @@
     "label": "Crusader Charge",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-crusader-charge",
         "wikiTitle": "Crusader Charge",
         "label": "Crusader Charge",
         "url": "https://callofduty.fandom.com/wiki/Crusader_Charge"
@@ -70,6 +72,8 @@
     "label": "Armored Car Escape",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-outnumbered-and-outgunned",
         "wikiTitle": "Armored Car Escape",
         "label": "Armored Car Escape",
         "url": "https://callofduty.fandom.com/wiki/Armored_Car_Escape"

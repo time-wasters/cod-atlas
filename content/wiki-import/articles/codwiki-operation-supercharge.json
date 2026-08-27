@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Operation_Supercharge",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Operation_Supercharge",
   "latestRevisionId": 2951066,
-  "importedAt": "2026-08-18T20:41:02.900Z",
+  "importedAt": "2026-08-25T21:15:48.991Z",
   "levelLocation": {
     "raw": "Northern Egypt, Africa",
     "label": "Northern Egypt, Africa",
@@ -59,6 +59,8 @@
     "label": "Hold The Line",
     "links": [
       {
+        "sequence": "game",
+        "article": null,
         "wikiTitle": "Hold The Line",
         "label": "Hold The Line",
         "url": "https://callofduty.fandom.com/wiki/Hold_The_Line"
@@ -70,6 +72,8 @@
     "label": "The End of the Beginning",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-the-end-of-the-beginning",
         "wikiTitle": "The End of the Beginning",
         "label": "The End of the Beginning",
         "url": "https://callofduty.fandom.com/wiki/The_End_of_the_Beginning"

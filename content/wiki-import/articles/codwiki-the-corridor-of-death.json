@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/The_Corridor_of_Death",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/The_Corridor_of_Death",
   "latestRevisionId": 2951077,
-  "importedAt": "2026-08-11T18:51:30.661Z",
+  "importedAt": "2026-08-25T23:11:22.769Z",
   "levelLocation": {
     "raw": "St. Lamber-sur-Dives, France",
     "label": "St. Lamber-sur-Dives, France",
@@ -59,6 +59,8 @@
     "label": "Hostage!",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-hostage",
         "wikiTitle": "Hostage!",
         "label": "Hostage!",
         "url": "https://callofduty.fandom.com/wiki/Hostage!"
@@ -70,6 +72,8 @@
     "label": "The Mace",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-the-mace",
         "wikiTitle": "The Mace",
         "label": "The Mace",
         "url": "https://callofduty.fandom.com/wiki/The_Mace"

@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Repairing_the_Wire",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Repairing_the_Wire",
   "latestRevisionId": 2741336,
-  "importedAt": "2026-08-18T20:41:13.790Z",
+  "importedAt": "2026-08-25T21:16:00.010Z",
   "levelLocation": {
     "raw": "[[Stalingrad]], U.S.S.R.",
     "label": "Stalingrad",
@@ -59,6 +59,8 @@
     "label": "Demolition",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-demolition-level",
         "wikiTitle": "Demolition (level)",
         "label": "Demolition",
         "url": "https://callofduty.fandom.com/wiki/Demolition_(level)"
@@ -70,6 +72,8 @@
     "label": "The Pipeline",
     "links": [
       {
+        "sequence": "game",
+        "article": null,
         "wikiTitle": "The Pipeline",
         "label": "The Pipeline",
         "url": "https://callofduty.fandom.com/wiki/The_Pipeline"

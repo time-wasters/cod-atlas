@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Farewell_to_Friends",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Farewell_to_Friends",
   "latestRevisionId": 2978497,
-  "importedAt": "2026-08-11T18:55:15.204Z",
+  "importedAt": "2026-08-25T23:10:03.654Z",
   "levelLocation": {
     "raw": "Troina, Italy",
     "label": "Troina, Italy",
@@ -59,6 +59,8 @@
     "label": "Piano Lupo",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-piano-lupo",
         "wikiTitle": "Piano Lupo",
         "label": "Piano Lupo",
         "url": "https://callofduty.fandom.com/wiki/Piano_Lupo"
@@ -70,6 +72,8 @@
     "label": "The Great Crusade",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-the-great-crusade",
         "wikiTitle": "The Great Crusade",
         "label": "The Great Crusade",
         "url": "https://callofduty.fandom.com/wiki/The_Great_Crusade"

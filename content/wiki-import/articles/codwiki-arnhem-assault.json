@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Arnhem_Assault",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Arnhem_Assault",
   "latestRevisionId": 2957238,
-  "importedAt": "2026-08-15T09:24:22.741Z",
+  "importedAt": "2026-08-25T23:11:55.718Z",
   "levelLocation": {
     "raw": "Arnhem, Netherlands",
     "label": "Arnhem, Netherlands",
@@ -59,6 +59,8 @@
     "label": "Arnhem Fire",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-arnhem-fire",
         "wikiTitle": "Arnhem Fire",
         "label": "Arnhem Fire",
         "url": "https://callofduty.fandom.com/wiki/Arnhem_Fire"
@@ -70,6 +72,8 @@
     "label": "Rhine Crossing",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-rhine-crossing",
         "wikiTitle": "Rhine Crossing",
         "label": "Rhine Crossing",
         "url": "https://callofduty.fandom.com/wiki/Rhine_Crossing"

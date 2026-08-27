@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Bomber_(United_Offensive)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Bomber_(United_Offensive)",
   "latestRevisionId": 2992594,
-  "importedAt": "2026-08-15T09:20:27.786Z",
+  "importedAt": "2026-08-25T23:02:40.974Z",
   "levelLocation": {
     "raw": "Somewhere over the English Channel",
     "label": "Somewhere over the English Channel",
@@ -59,6 +59,8 @@
     "label": "Noville (In-game)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-noville",
         "wikiTitle": "Noville",
         "label": "Noville",
         "url": "https://callofduty.fandom.com/wiki/Noville"
@@ -70,6 +72,8 @@
     "label": "Train Bridge",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-train-bridge",
         "wikiTitle": "Train Bridge",
         "label": "Train Bridge",
         "url": "https://callofduty.fandom.com/wiki/Train_Bridge"

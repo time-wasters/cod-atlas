@@ -33,9 +33,9 @@ Map-type directories are being introduced one game at a time. A reorganized
 game must use them for every level: `campaign/` contains records with
 `mode: singleplayer`, `multiplayer/` contains records with `mode: multiplayer`,
 and `zombies/` contains records with `mode: zombies`. The `cod`, `cod-uo`,
-`cod-fh`, `cod2`, `wz`, `wz2`, and `mwiii` directories use the first two
-folders; `bo6` uses all three. Other games retain their current flat layout
-until they are deliberately reorganized.
+`cod-fh`, `cod2`, `cod2-bro`, `cod3`, `rtv`, `wz`, `wz2`, and `mwiii`
+directories use the first two folders; `bo6` uses all three. Other games
+retain their current flat layout until they are deliberately reorganized.
 These directory names describe broad map types, not multiplayer rule sets such
 as deathmatch or capture the flag.
 

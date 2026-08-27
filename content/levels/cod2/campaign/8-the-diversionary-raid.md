@@ -15,7 +15,7 @@ locations:
   - id: main
     country: Egypt
     region: Matrouh Governorate
-    landmark: Qaret el Himeimat (representative southern Alamein sector)
+    landmark: Qaret el Himeimat
     latitude: 30.43837
     longitude: 28.88112
     precision: approximate

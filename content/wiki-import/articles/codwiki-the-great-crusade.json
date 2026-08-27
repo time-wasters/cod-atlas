@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/The_Great_Crusade",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/The_Great_Crusade",
   "latestRevisionId": 2978500,
-  "importedAt": "2026-08-11T18:55:26.115Z",
+  "importedAt": "2026-08-25T23:10:25.707Z",
   "levelLocation": {
     "raw": "[[Omaha Beach]], Normandy, France",
     "label": "Omaha Beach",
@@ -59,6 +59,8 @@
     "label": "Farewell to Friends",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-farewell-to-friends",
         "wikiTitle": "Farewell to Friends",
         "label": "Farewell to Friends",
         "url": "https://callofduty.fandom.com/wiki/Farewell_to_Friends"
@@ -70,6 +72,8 @@
     "label": "An Easy Detail",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-an-easy-detail",
         "wikiTitle": "An Easy Detail",
         "label": "An Easy Detail",
         "url": "https://callofduty.fandom.com/wiki/An_Easy_Detail"

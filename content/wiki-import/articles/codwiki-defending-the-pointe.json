@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Defending_the_Pointe",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Defending_the_Pointe",
   "latestRevisionId": 2901238,
-  "importedAt": "2026-08-18T20:40:52.159Z",
+  "importedAt": "2026-08-25T21:15:38.201Z",
   "levelLocation": {
     "raw": "Pointe du Hoc, France",
     "label": "Pointe du Hoc, France",
@@ -59,6 +59,8 @@
     "label": "The Battle of Pointe du Hoc",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-the-battle-of-pointe-du-hoc",
         "wikiTitle": "The Battle of Pointe du Hoc",
         "label": "The Battle of Pointe du Hoc",
         "url": "https://callofduty.fandom.com/wiki/The_Battle_of_Pointe_du_Hoc"
@@ -70,11 +72,15 @@
     "label": "The Silo Prisoners of War (Chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-the-silo",
         "wikiTitle": "The Silo",
         "label": "The Silo",
         "url": "https://callofduty.fandom.com/wiki/The_Silo"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-prisoners-of-war",
         "wikiTitle": "Prisoners of War",
         "label": "Prisoners of War",
         "url": "https://callofduty.fandom.com/wiki/Prisoners_of_War"

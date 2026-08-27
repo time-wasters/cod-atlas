@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Sloedam",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Sloedam",
   "latestRevisionId": 2957229,
-  "importedAt": "2026-08-11T18:50:39.068Z",
+  "importedAt": "2026-08-25T23:12:06.365Z",
   "levelLocation": {
     "raw": "Walcheren Island, Netherlands",
     "label": "Walcheren Island, Netherlands",
@@ -59,6 +59,8 @@
     "label": "Woensdrecht",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-woensdrecht",
         "wikiTitle": "Woensdrecht",
         "label": "Woensdrecht",
         "url": "https://callofduty.fandom.com/wiki/Woensdrecht"
@@ -70,6 +72,8 @@
     "label": "Walcheren",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-walcheren",
         "wikiTitle": "Walcheren",
         "label": "Walcheren",
         "url": "https://callofduty.fandom.com/wiki/Walcheren"

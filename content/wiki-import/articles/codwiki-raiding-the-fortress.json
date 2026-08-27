@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Raiding_the_Fortress",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Raiding_the_Fortress",
   "latestRevisionId": 2763590,
-  "importedAt": "2026-08-09T21:34:51.030Z",
+  "importedAt": "2026-08-25T23:04:01.671Z",
   "levelLocation": {
     "raw": "Unnamed Roman fortress in Tunisia.",
     "label": "Unnamed Roman fortress in Tunisia.",
@@ -53,5 +53,46 @@
     "resolvedTitle": "Raiding the Fortress",
     "mainImageTitle": "File:CoDFH_Raiding_the_Fortress_loading_screen.png",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[A Desert Ride]]",
+    "label": "A Desert Ride",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-a-desert-ride",
+        "wikiTitle": "A Desert Ride",
+        "label": "A Desert Ride",
+        "url": "https://callofduty.fandom.com/wiki/A_Desert_Ride"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[First City to Fall]]",
+    "label": "First City to Fall",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-first-city-to-fall",
+        "wikiTitle": "First City to Fall",
+        "label": "First City to Fall",
+        "url": "https://callofduty.fandom.com/wiki/First_City_to_Fall"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Finest Hour]]''",
+    "label": "Call of Duty: Finest Hour",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Finest Hour",
+        "label": "Call of Duty: Finest Hour",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Finest_Hour"
+      }
+    ]
+  },
+  "date": {
+    "raw": null,
+    "label": null
   }
 }

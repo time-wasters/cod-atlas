@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/The_Diversionary_Raid",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/The_Diversionary_Raid",
   "latestRevisionId": 2901232,
-  "importedAt": "2026-08-18T20:41:13.797Z",
+  "importedAt": "2026-08-25T21:16:10.856Z",
   "levelLocation": {
     "raw": "Northern Egypt, Africa",
     "label": "Northern Egypt, Africa",
@@ -59,11 +59,15 @@
     "label": "Comrade Sniper Red Army Training (Chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-comrade-sniper",
         "wikiTitle": "Comrade Sniper",
         "label": "Comrade Sniper",
         "url": "https://callofduty.fandom.com/wiki/Comrade_Sniper"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-red-army-training",
         "wikiTitle": "Red Army Training",
         "label": "Red Army Training",
         "url": "https://callofduty.fandom.com/wiki/Red_Army_Training"
@@ -75,6 +79,8 @@
     "label": "Holding the Line",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-holding-the-line",
         "wikiTitle": "Holding the Line",
         "label": "Holding the Line",
         "url": "https://callofduty.fandom.com/wiki/Holding_the_Line"

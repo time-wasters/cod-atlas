@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/The_End_of_the_Beginning",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/The_End_of_the_Beginning",
   "latestRevisionId": 2951067,
-  "importedAt": "2026-08-18T20:41:24.561Z",
+  "importedAt": "2026-08-25T21:16:10.872Z",
   "levelLocation": {
     "raw": "El Daba, Egypt",
     "label": "El Daba, Egypt",
@@ -59,6 +59,8 @@
     "label": "Operation Supercharge",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-operation-supercharge",
         "wikiTitle": "Operation Supercharge",
         "label": "Operation Supercharge",
         "url": "https://callofduty.fandom.com/wiki/Operation_Supercharge"
@@ -70,11 +72,15 @@
     "label": "Crusader Charge, Demolition (Chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-crusader-charge",
         "wikiTitle": "Crusader Charge",
         "label": "Crusader Charge",
         "url": "https://callofduty.fandom.com/wiki/Crusader_Charge"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-demolition-level",
         "wikiTitle": "Demolition (level)",
         "label": "Demolition",
         "url": "https://callofduty.fandom.com/wiki/Demolition_(level)"

@@ -75,11 +75,12 @@ content/levels/<appearance-game>/<map-type>/<level-slug>.ref.md
 ```
 
 A game must use one layout consistently. `cod`, `cod-uo`, `cod-fh`, `cod2`,
-`wz`, `wz2`, and `mwiii` use `campaign/` for records whose `mode` is `singleplayer` and
-`multiplayer/` for records whose `mode` is `multiplayer`. `bo6` also uses
-`zombies/` for records whose `mode` is `zombies`. Games that have not been
-reorganized remain flat. Map types are broad content categories; they are
-distinct from multiplayer rule sets such as deathmatch or capture the flag.
+`cod2-bro`, `cod3`, `rtv`, `cod4`, `wz`, `wz2`, and `mwiii` use `campaign/` for
+records whose `mode` is `singleplayer` and `multiplayer/` for records whose
+`mode` is `multiplayer`. `bo6` also uses `zombies/` for records whose `mode`
+is `zombies`. Games that have not been reorganized remain flat. Map types are
+broad content categories; they are distinct from multiplayer rule sets such
+as deathmatch or capture the flag.
 
 Campaign orders start at `1`, have no leading zeros, and must be unique and
 contiguous within their game. The prefix records play order without becoming
@@ -140,6 +141,8 @@ adapted in-game location. It distinguishes the real reference point from a
 canonical claim that the in-game location is the landmark itself.
 
 `primary: true` identifies the main location when a level contains several.
+The generated browser data preserves this flag so campaign routes and other
+level-level visualizations can select an intentional representative location.
 
 ## Level appearance reference
 

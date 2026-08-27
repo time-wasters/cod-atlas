@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Fuel_Plant_(level)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Fuel_Plant_(level)",
   "latestRevisionId": 2871164,
-  "importedAt": "2026-08-11T18:51:08.831Z",
+  "importedAt": "2026-08-25T23:11:01.194Z",
   "levelLocation": {
     "raw": "Autun, France",
     "label": "Autun, France",
@@ -59,6 +59,8 @@
     "label": "Falaise Road",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-falaise-road",
         "wikiTitle": "Falaise Road",
         "label": "Falaise Road",
         "url": "https://callofduty.fandom.com/wiki/Falaise_Road"
@@ -70,6 +72,8 @@
     "label": "The Black Baron",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-the-black-baron-level",
         "wikiTitle": "The Black Baron (level)",
         "label": "The Black Baron",
         "url": "https://callofduty.fandom.com/wiki/The_Black_Baron_(level)"

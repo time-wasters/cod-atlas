@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Stanjel",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Stanjel",
   "latestRevisionId": 2991613,
-  "importedAt": "2026-08-09T21:34:07.019Z",
+  "importedAt": "2026-08-25T23:03:16.754Z",
   "levelLocation": {
     "raw": "Stanjel, Slovenia",
     "label": "Stanjel, Slovenia",
@@ -53,5 +53,30 @@
     "resolvedTitle": "Stanjel",
     "mainImageTitle": "File:Mp_uo_stanjel.jpg",
     "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "[[Call of Duty: United Offensive]]",
+    "label": "Call of Duty: United Offensive",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: United Offensive",
+        "label": "Call of Duty: United Offensive",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_United_Offensive"
+      }
+    ]
+  },
+  "date": {
+    "raw": null,
+    "label": null
   }
 }

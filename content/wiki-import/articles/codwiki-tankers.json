@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Tankers",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Tankers",
   "latestRevisionId": 2978476,
-  "importedAt": "2026-08-11T18:55:26.084Z",
+  "importedAt": "2026-08-25T23:10:14.871Z",
   "levelLocation": {
     "raw": "Tunisia, North Africa",
     "label": "Tunisia, North Africa",
@@ -59,6 +59,8 @@
     "label": "Baptism By Fire",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-baptism-by-fire",
         "wikiTitle": "Baptism By Fire",
         "label": "Baptism By Fire",
         "url": "https://callofduty.fandom.com/wiki/Baptism_By_Fire"
@@ -70,6 +72,8 @@
     "label": "The Desert Fox",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-the-desert-fox",
         "wikiTitle": "The Desert Fox",
         "label": "The Desert Fox",
         "url": "https://callofduty.fandom.com/wiki/The_Desert_Fox"

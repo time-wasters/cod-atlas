@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Downtown_Assault",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Downtown_Assault",
   "latestRevisionId": 2901247,
-  "importedAt": "2026-08-18T20:40:52.146Z",
+  "importedAt": "2026-08-25T21:15:38.187Z",
   "levelLocation": {
     "raw": "[[Stalingrad]], U.S.S.R.",
     "label": "Stalingrad",
@@ -59,6 +59,8 @@
     "label": "The Pipeline",
     "links": [
       {
+        "sequence": "game",
+        "article": null,
         "wikiTitle": "The Pipeline",
         "label": "The Pipeline",
         "url": "https://callofduty.fandom.com/wiki/The_Pipeline"
@@ -70,6 +72,8 @@
     "label": "City Hall",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-city-hall",
         "wikiTitle": "City Hall",
         "label": "City Hall",
         "url": "https://callofduty.fandom.com/wiki/City_Hall"
