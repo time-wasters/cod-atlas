@@ -1674,6 +1674,7 @@ export default function Home() {
       zoom ?? currentMap.getZoom(),
       fitZoom,
       mapOverlayZoomOpacityEnabled,
+      MAP_MAX_ZOOM,
     );
   }, [mapOverlayZoomOpacityEnabled]);
 
