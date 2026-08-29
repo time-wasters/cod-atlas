@@ -9,7 +9,7 @@ campaign:
   label: American Campaign
 wikiArticle: codwiki-lucky-thirteen
 mapOverlay:
-  image: /images/levels/rtv/campaign/4-lucky-thirteen/maps/briefing-map.png
+  image: /images/levels/rtv/campaign/4-lucky-thirteen/maps/overlay.png
   opacity: 0.72
   corners:
     topLeft: [52.29680, 0.42890]

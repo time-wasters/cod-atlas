@@ -9,7 +9,7 @@ campaign:
   label: Sicily
 wikiArticle: codwiki-farewell-to-friends
 mapOverlay:
-  image: /images/levels/cod2-bro/campaign/9-farewell-to-friends/maps/briefing-map.png
+  image: /images/levels/cod2-bro/campaign/9-farewell-to-friends/maps/overlay.png
   opacity: 0.72
   corners:
     topLeft: [38.71218195, 11.28246913]

@@ -185,9 +185,11 @@ function validateWikiLevelReferences(article, filename, wikiArticles) {
 
 async function validateMapOverlay(overlay, levelId, filename) {
   requireValue(overlay && typeof overlay === "object" && !Array.isArray(overlay), `${filename}: mapOverlay must be an object`);
+  const levelMediaBase = path.relative(levelsRoot, filename).replaceAll("\\", "/").replace(/\.md$/, "");
+  const expectedLevelImage = `/images/levels/${levelMediaBase}/maps/overlay.png`;
   requireValue(
-    /^\/images\/(?:maps\/[a-z0-9/_-]+|levels\/[a-z0-9-]+\/[a-z0-9-]+\/maps\/briefing-map)\.png$/.test(overlay.image ?? ""),
-    `${filename}: mapOverlay.image must be a local PNG under /images/maps/ or the level's maps/briefing-map.png`,
+    overlay.image === expectedLevelImage || /^\/images\/maps\/[a-z0-9/_-]+\.png$/.test(overlay.image ?? ""),
+    `${filename}: mapOverlay.image must be ${expectedLevelImage} or a local PNG under /images/maps/`,
   );
   requireValue(Number.isFinite(overlay.opacity) && overlay.opacity > 0 && overlay.opacity <= 1, `${filename}: mapOverlay.opacity must be greater than 0 and at most 1`);
   for (const corner of ["topLeft", "topRight", "bottomLeft", "bottomRight"]) {
@@ -218,9 +220,14 @@ async function validateMapOverlay(overlay, levelId, filename) {
 async function validateHistoryOverlay(overlay, levelId, body, filename) {
   requireValue(overlay && typeof overlay === "object" && !Array.isArray(overlay), `${filename}: each historyOverlay must be an object`);
   requireValue(/^[a-z0-9-]+$/.test(overlay.id ?? ""), `${filename}: historyOverlay.id must use lowercase letters, numbers and hyphens`);
+  const levelMediaBase = path.relative(levelsRoot, filename).replaceAll("\\", "/").replace(/\.md$/, "");
+  const expectedLevelDirectory = `/images/levels/${levelMediaBase}/extra/`;
+  const levelImageName = typeof overlay.image === "string" && overlay.image.startsWith(expectedLevelDirectory)
+    ? overlay.image.slice(expectedLevelDirectory.length)
+    : null;
   requireValue(
-    /^\/images\/(?:maps\/[a-z0-9/_-]+|levels\/[a-z0-9-]+\/[a-z0-9-]+\/extra\/[a-z0-9_-]+)\.png$/.test(overlay.image ?? ""),
-    `${filename}: historyOverlay.image must be a local PNG under /images/maps/ or the level's extra/ directory`,
+    /^[a-z0-9_-]+\.png$/.test(levelImageName ?? "") || /^\/images\/maps\/[a-z0-9/_-]+\.png$/.test(overlay.image ?? ""),
+    `${filename}: historyOverlay.image must be a local PNG under ${expectedLevelDirectory} or /images/maps/`,
   );
   requireValue(Number.isFinite(overlay.opacity) && overlay.opacity > 0 && overlay.opacity <= 1, `${filename}: historyOverlay.opacity must be greater than 0 and at most 1`);
   for (const corner of ["topLeft", "topRight", "bottomLeft", "bottomRight"]) {

@@ -9,7 +9,7 @@ campaign:
   label: Canadian Campaign
 wikiArticle: codwiki-reichswald
 mapOverlay:
-  image: /images/levels/rtv/campaign/11-reichswald/maps/briefing-map.png
+  image: /images/levels/rtv/campaign/11-reichswald/maps/overlay.png
   opacity: 0.72
   corners:
     topLeft: [51.74035088, 6.11149402]

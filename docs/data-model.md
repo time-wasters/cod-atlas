@@ -224,14 +224,14 @@ public/images/levels/
         `-- <level-filename>/         # Markdown filename without final .md
             |-- main.png             # or main.jpg / main.webm
             |-- maps/
-            |   `-- briefing-map.png
+            |   `-- overlay.png
             `-- extra/
                 `-- <filename-used-in-md>
 ```
 
 For example, RTV Altavilla uses
 `public/images/levels/rtv/campaign/1-altavilla/main.png` and
-`public/images/levels/rtv/campaign/1-altavilla/maps/briefing-map.png`, mirroring
+`public/images/levels/rtv/campaign/1-altavilla/maps/overlay.png`, mirroring
 `content/levels/rtv/campaign/1-altavilla.md`. A Markdown image written as
 `![Caption](research-photo.png)` is served from that appearance's
 `extra/research-photo.png` directory. Only create a level media directory when

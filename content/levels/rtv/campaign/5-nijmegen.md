@@ -9,7 +9,7 @@ campaign:
   label: American Campaign
 wikiArticle: codwiki-nijmegen
 mapOverlay:
-  image: /images/levels/rtv/campaign/5-nijmegen/maps/briefing-map.png
+  image: /images/levels/rtv/campaign/5-nijmegen/maps/overlay.png
   opacity: 0.72
   corners:
     topLeft: [52.03385213, 4.90646237]
