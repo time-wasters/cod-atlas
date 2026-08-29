@@ -9,7 +9,7 @@ campaign:
   label: Sicily
 wikiArticle: codwiki-farewell-to-friends
 mapOverlay:
-  image: /images/levels/cod2-bro/farewell-to-friends/maps/briefing-map.png
+  image: /images/levels/cod2-bro/campaign/9-farewell-to-friends/maps/overlay.png
   opacity: 0.72
   corners:
     topLeft: [38.71218195, 11.28246913]
@@ -81,7 +81,7 @@ The former Maggiogrande/Bronte point was rejected because it conflicts with the 
 
 - [Call of Duty Wiki — “Farewell to Friends”](https://callofduty.fandom.com/wiki/Farewell_to_Friends) — Game facts for the playable character, unit, stated place, date, objective, mission order, and church/FlaK 88 finale.
 - [Call of Duty Wiki — “Farewell to Friends/Transcript”](https://callofduty.fandom.com/wiki/Farewell_to_Friends/Transcript) — Opening title card and dialogue confirming Troina, August 5, 1943 at 10:40, the tank approach, Mount Etna, and the repeated push toward the town.
-- [CoD Atlas — Farewell to Friends briefing map](https://github.com/time-wasters/cod-atlas/blob/main/public/images/levels/cod2-bro/farewell-to-friends/maps/briefing-map.png) — In-game campaign artwork showing the Gela–Piano Lupo–Troina progression; used as schematic contextual evidence rather than survey-accurate geometry.
+- [CoD Atlas — Farewell to Friends overlay](https://github.com/time-wasters/cod-atlas/blob/main/public/images/levels/cod2-bro/campaign/9-farewell-to-friends/maps/overlay.png) — In-game campaign artwork showing the Gela–Piano Lupo–Troina progression; used as schematic contextual evidence rather than survey-accurate geometry.
 - [U.S. Army in World War II — *Sicily and the Surrender of Italy*, Chapter XVII: “The Battle of Troina”](https://www.ibiblio.org/hyperwar/USA/USA-MTO-Sicily/USA-MTO-Sicily-17.html) — Accessible transcription of the U.S. Army official history describing Troina's terrain and Norman church, the August 5 fighting around the town, the German withdrawal, and the 16th Infantry's entry on August 6.
 - [U.S. Army Center of Military History — *Sicily: The U.S. Army Campaigns of World War II*](https://history.army.mil/portals/143/Images/Publications/catalog/72-16.pdf) — Authoritative campaign overview for the 1st Infantry Division's battle for Troina and the wider Sicily campaign.
 - [Comune di Troina — “Cenni storici”](https://www.comune.troina.en.it/it/page/cenni-storici) — Municipal history supporting Troina's hilltop medieval urban form and the Norman church dedicated to Maria Santissima Assunta.

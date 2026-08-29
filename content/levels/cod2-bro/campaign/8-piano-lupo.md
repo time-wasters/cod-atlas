@@ -9,7 +9,7 @@ campaign:
   label: Sicily
 wikiArticle: codwiki-piano-lupo
 mapOverlay:
-  image: /images/levels/cod2-bro/piano-lupo/maps/briefing-map.png
+  image: /images/levels/cod2-bro/campaign/8-piano-lupo/maps/overlay.png
   opacity: 0.72
   corners:
     topLeft: [38.71218195, 11.28246913]
