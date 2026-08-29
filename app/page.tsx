@@ -272,6 +272,8 @@ const gameSubseriesDescriptions: Record<Exclude<Game["subseries"], null>, string
   "add-on": "Expansion releases that extend an existing main-series game.",
   "spin-off": "Platform-specific editions and other related releases within a named series.",
 };
+const gameSeriesLabels = new Map(gameSeriesOptions.map((option) => [option.value, option.label]));
+const gameSubseriesLabels = new Map(gameSubseriesOptions.map((option) => [option.value, option.label]));
 const gameSubseriesDetails = new Map<string, FilterHoverDetail>(gameSubseriesOptions.map((option) => {
   const subseries = option.value as Exclude<Game["subseries"], null>;
   const games = data.games
@@ -565,6 +567,17 @@ function toggledFilterValue(current: Set<string>, value: string) {
 
 function compareGames(a: Game, b: Game) {
   return a.released.localeCompare(b.released) || a.label.localeCompare(b.label);
+}
+
+const gameReleaseDateFormatter = new Intl.DateTimeFormat("en-GB", {
+  day: "numeric",
+  month: "short",
+  year: "numeric",
+  timeZone: "UTC",
+});
+
+function formatGameReleaseDate(released: string) {
+  return gameReleaseDateFormatter.format(new Date(`${released}T00:00:00Z`));
 }
 
 const initialGroup = data.groups[0];
@@ -1216,6 +1229,7 @@ export default function Home() {
   const leaflet = useRef<typeof import("leaflet") | null>(null);
   const mediaDialog = useRef<HTMLDialogElement>(null);
   const infoDialog = useRef<HTMLDialogElement>(null);
+  const gameCatalogDialog = useRef<HTMLDialogElement>(null);
   const intelCard = useRef<HTMLDivElement>(null);
   const urlHistoryMode = useRef<"push" | "replace">("replace");
   const searchEditActive = useRef(false);
@@ -2390,7 +2404,17 @@ export default function Home() {
 
         <div className="filter-grid">
           <div className="filter-field game-filter">
-            <span>Game <small>Oldest to newest</small></span>
+            <span>
+              <button
+                className="game-catalog-trigger"
+                type="button"
+                aria-haspopup="dialog"
+                onClick={() => gameCatalogDialog.current?.showModal()}
+              >
+                Game
+              </button>
+              <small>Oldest to newest</small>
+            </span>
             <GameSelect
               games={games}
               value={game}
@@ -2755,6 +2779,73 @@ export default function Home() {
           <p>While playing I was scouting the locations on Google Streetview and Maps to see how accurate the game is and out of pure interest.</p>
           <p>When searching for a map of all CoD levels in real life, I stumbled across the map from <a href="https://www.reddit.com/r/CallOfDuty/comments/10c3jbd/cod_every_location_visited_in_the_cod_franchise/" target="_blank" rel="noreferrer">u/robracer97</a>. Unfortunately it is not dynamic or zoomable, so I&apos;ve started this project.</p>
           <p>Have fun!</p>
+        </div>
+      </dialog>
+
+      <dialog
+        ref={gameCatalogDialog}
+        className="project-info-dialog game-catalog-dialog"
+        aria-labelledby="game-catalog-title"
+        onClick={(event) => {
+          if (event.target === event.currentTarget) event.currentTarget.close();
+        }}
+      >
+        <div className="project-info-content game-catalog-content">
+          <header>
+            <div>
+              <span>Game catalogue</span>
+              <h2 id="game-catalog-title">Call of Duty games</h2>
+            </div>
+            <form method="dialog">
+              <button aria-label="Close game catalogue"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg></button>
+            </form>
+          </header>
+          <p className="game-catalog-intro">Games currently defined in the Atlas data, ordered by release date.</p>
+          <ol className="game-catalog-list">
+            {[...data.games].sort(compareGames).map((catalogGame) => {
+              const catalogGameIcon = gameIcon(catalogGame);
+              const usesExternalGameIcon = Boolean(catalogGameIcon && catalogGameIcon !== catalogGame.icon);
+              const remasterSource = catalogGame.remasterOf ? gamesById.get(catalogGame.remasterOf) : null;
+              return (
+                <li className="game-catalog-entry" key={catalogGame.id}>
+                  <div className="game-catalog-icon" aria-hidden="true">
+                    {catalogGameIcon ? (
+                      // Game icons are reviewed public assets and do not need image optimization.
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        className={usesExternalGameIcon ? "is-external" : undefined}
+                        src={catalogGameIcon}
+                        alt=""
+                        onError={() => {
+                          if (usesExternalGameIcon) {
+                            setFailedExternalGameIcons((failed) => new Set(failed).add(catalogGame.id));
+                          }
+                        }}
+                      />
+                    ) : (
+                      <span>{catalogGame.code.slice(0, 3)}</span>
+                    )}
+                  </div>
+                  <div className="game-catalog-details">
+                    <strong>{catalogGame.labelLong}</strong>
+                    <span>
+                      <time dateTime={catalogGame.released}>{formatGameReleaseDate(catalogGame.released)}</time>
+                      <i aria-hidden="true">·</i>
+                      {gameSeriesLabels.get(catalogGame.series)}
+                      {catalogGame.subseries && (
+                        <>
+                          <i aria-hidden="true">·</i>
+                          {gameSubseriesLabels.get(catalogGame.subseries)}
+                        </>
+                      )}
+                    </span>
+                    {remasterSource && <small>Remaster of {remasterSource.labelLong}</small>}
+                  </div>
+                  <code>{catalogGame.code}</code>
+                </li>
+              );
+            })}
+          </ol>
         </div>
       </dialog>
 

@@ -187,6 +187,9 @@ test("renders development preview metadata", async () => {
   assert.match(html, /class="details-toggle"[^>]*aria-expanded="true"[^>]*aria-label="Hide level details"/);
   assert.match(html, /class="collapsed-level-title"[^>]*aria-label="Show details for [^"]+"/);
   assert.match(html, /aria-label="Filter by game, ordered by release date"/);
+  assert.match(html, /class="game-catalog-trigger"[^>]*aria-haspopup="dialog"/);
+  assert.match(html, /id="game-catalog-title">Call of Duty games/);
+  assert.match(html, /class="game-catalog-entry"/);
   assert.match(html, /aria-label="Filter by country"/);
   assert.match(html, /class="solar-system-overlay is-expanded"/);
   assert.match(html, /aria-label="Collapse Solar System overlay"/);
