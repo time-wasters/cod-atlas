@@ -244,6 +244,11 @@ captured images are credited to
 [plp-gtr](https://github.com/plp-gtr); underlying game artwork retains its
 original copyright.
 
+Raster level media is optimized before commit, not during the static build.
+The [`images:prepare` and `images:check` workflow](image-workflow.md) documents
+the role-specific conversion rules, dimensions, size limits, and Docker
+commands.
+
 ## Build flow
 
 ```mermaid

@@ -124,10 +124,19 @@ detail page. Author, uploader, license, and rights metadata are optional; the
 importer preserves them when Fandom provides them. Never invent missing
 attribution or describe a copyright exception as a license.
 
+Repository-hosted level images are prepared before they are committed; the
+build does not convert or cache them. For explicitly selected files or
+directories, first run `npm run images:prepare -- --dry-run <path>`, then run
+`npm run images:prepare -- <path>`. Run the read-only `npm run images:check`
+command before committing. See the
+[level-image workflow](docs/image-workflow.md) for the conversion rules,
+limits, strict mode, and Docker examples.
+
 ## Required checks
 
 ```sh
 npm run data:check
+npm run images:check
 npm run lint
 npm test
 npm run build:static
@@ -137,6 +146,7 @@ Docker equivalents:
 
 ```sh
 docker compose run --rm cod-atlas-tools npm run data:check
+docker compose run --rm cod-atlas-tools npm run images:check
 docker compose run --rm cod-atlas-tools npm run lint
 docker compose run --rm cod-atlas-tools npm test
 docker compose run --rm cod-atlas-tools npm run build:static

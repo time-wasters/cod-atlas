@@ -25,11 +25,19 @@ Common equivalents:
 | `npm run data:check` | `docker compose run --rm cod-atlas-tools npm run data:check` |
 | `npm run progress:update` | `docker compose run --rm cod-atlas-tools npm run progress:update` |
 | `npm run icons:import` | `docker compose run --rm cod-atlas-tools npm run icons:import` |
+| `npm run images:prepare -- <path>` | `docker compose run --rm cod-atlas-tools npm run images:prepare -- <path>` |
+| `npm run images:check` | `docker compose run --rm cod-atlas-tools npm run images:check` |
 | `npm run lint` | `docker compose run --rm cod-atlas-tools npm run lint` |
 | `npm test` | `docker compose run --rm cod-atlas-tools npm test` |
 | `npm run build` | `docker compose run --rm cod-atlas-tools npm run build` |
 | `npm run build:static` | `docker compose run --rm cod-atlas-tools npm run build:static` |
 | `npm run wiki:import -- <options>` | `docker compose run --rm cod-atlas-tools npm run wiki:import -- <options>` |
+
+Level images are optimized before they are committed, not during a build. The
+preparation command requires an explicit path below `public/images/levels/`;
+the check command is read-only and scans all level images by default. See the
+[level-image workflow](image-workflow.md) for dry runs, conversion rules,
+limits, and strict checking.
 
 For the development server, publish the tooling service's configured port:
 

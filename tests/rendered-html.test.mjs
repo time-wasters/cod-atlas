@@ -325,7 +325,10 @@ test("preserves the complete statically compiled atlas", async () => {
     assert.ok(banner.thumbnailUrl, `${key} has a thumbnail URL`);
     assert.ok(banner.author, `${key} has author information`);
   }
-  assert.equal(atlas.levelBanners["rtv-altavilla@rtv"].thumbnailUrl, "/images/levels/rtv/campaign/1-altavilla/main.png");
+  assert.match(
+    atlas.levelBanners["rtv-altavilla@rtv"].thumbnailUrl,
+    /^\/images\/levels\/rtv\/campaign\/1-altavilla\/main\.(?:jpg|png)$/,
+  );
   assert.equal(atlas.levelBanners["rtv-altavilla@rtv"].author.userUrl, "https://github.com/plp-gtr");
   assert.equal(atlas.levelIdAliases["cod-cod2-wwii-carentan"], "cod-carentan");
   const carentanAppearanceEntry = entries.find((entry) => entry.levelId === "cod-carentan");
