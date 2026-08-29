@@ -416,6 +416,40 @@ function animateMapOverlayOpacity(
   animationRef.current = requestAnimationFrame(tick);
 }
 
+function smoothlyRetargetMapOverlayOpacity(
+  overlay: import("leaflet").ImageOverlay.Rotated,
+  target: number,
+  animationRef: { current: number | null },
+  targetRef: { current: number },
+  opacityRef: { current: number },
+) {
+  targetRef.current = target;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if (animationRef.current !== null) cancelAnimationFrame(animationRef.current);
+    overlay.setOpacity(target);
+    opacityRef.current = target;
+    animationRef.current = null;
+    return;
+  }
+  if (animationRef.current !== null) return;
+
+  let previousTime = performance.now();
+  const tick = (now: number) => {
+    const elapsed = Math.min(64, now - previousTime);
+    previousTime = now;
+    const blend = 1 - Math.exp(-elapsed / 115);
+    const nextOpacity = opacityRef.current
+      + (targetRef.current - opacityRef.current) * blend;
+    const settled = Math.abs(targetRef.current - nextOpacity) < .001;
+    const opacity = settled ? targetRef.current : nextOpacity;
+    overlay.setOpacity(opacity);
+    opacityRef.current = opacity;
+    if (settled) animationRef.current = null;
+    else animationRef.current = requestAnimationFrame(tick);
+  };
+  animationRef.current = requestAnimationFrame(tick);
+}
+
 const EXTERNAL_LINK_ICONS = {
   googleMaps: "webpage_icons/maps-google-com.ico",
   wikipedia: "webpage_icons/wikipedia-com.ico",
@@ -1246,6 +1280,8 @@ export default function Home() {
   const mapImageOverlayLevelId = useRef<string | null>(null);
   const mapImageOverlayOpacity = useRef(0);
   const mapImageOverlayAnimation = useRef<number | null>(null);
+  const mapImageOverlayZoomAnimation = useRef<number | null>(null);
+  const mapImageOverlayZoomTargetOpacity = useRef(0);
   const historyMapImageOverlay = useRef<import("leaflet").ImageOverlay.Rotated | null>(null);
   const historyMapImageOverlayKey = useRef<string | null>(null);
   const historyMapImageOverlayOpacity = useRef(0);
@@ -1616,7 +1652,7 @@ export default function Home() {
     ? selectedHistoryOverlays.find((overlay) => overlay.id === activeHistoryOverlay.id) ?? null
     : null;
 
-  const mapOverlayOpacityTarget = useCallback((overlay: MapOverlayRecord, visible: boolean) => {
+  const mapOverlayOpacityTarget = useCallback((overlay: MapOverlayRecord, visible: boolean, zoom?: number) => {
     if (!visible) return 0;
     const currentMap = map.current;
     const L = leaflet.current;
@@ -1635,7 +1671,7 @@ export default function Home() {
     const fitZoom = currentMap.getBoundsZoom(overlayBounds, false, totalPadding);
     return mapOverlayOpacityAtZoom(
       overlay.opacity,
-      currentMap.getZoom(),
+      zoom ?? currentMap.getZoom(),
       fitZoom,
       mapOverlayZoomOpacityEnabled,
     );
@@ -1922,7 +1958,9 @@ export default function Home() {
       mapImageOverlay.current = null;
       mapImageOverlayLevelId.current = null;
       if (mapImageOverlayAnimation.current !== null) cancelAnimationFrame(mapImageOverlayAnimation.current);
+      if (mapImageOverlayZoomAnimation.current !== null) cancelAnimationFrame(mapImageOverlayZoomAnimation.current);
       mapImageOverlayAnimation.current = null;
+      mapImageOverlayZoomAnimation.current = null;
       mapImageOverlayOpacity.current = 0;
       historyMapImageOverlay.current = null;
       historyMapImageOverlayKey.current = null;
@@ -2229,12 +2267,18 @@ export default function Home() {
     if (!mapReady || !map.current || !leaflet.current) return;
     if (!selectedMapOverlay) {
       if (mapImageOverlayAnimation.current !== null) cancelAnimationFrame(mapImageOverlayAnimation.current);
+      if (mapImageOverlayZoomAnimation.current !== null) cancelAnimationFrame(mapImageOverlayZoomAnimation.current);
       mapImageOverlay.current?.remove();
       mapImageOverlay.current = null;
       mapImageOverlayLevelId.current = null;
       mapImageOverlayAnimation.current = null;
+      mapImageOverlayZoomAnimation.current = null;
       mapImageOverlayOpacity.current = 0;
       return;
+    }
+    if (mapImageOverlayZoomAnimation.current !== null) {
+      cancelAnimationFrame(mapImageOverlayZoomAnimation.current);
+      mapImageOverlayZoomAnimation.current = null;
     }
     if (mapImageOverlay.current && mapImageOverlayLevelId.current === selected.entry.levelId) {
       animateMapOverlayOpacity(
@@ -2264,6 +2308,7 @@ export default function Home() {
     mapImageOverlay.current = overlay;
     mapImageOverlayLevelId.current = selected.entry.levelId;
     mapImageOverlayOpacity.current = 0;
+    mapImageOverlayZoomTargetOpacity.current = 0;
     animateMapOverlayOpacity(
       overlay,
       mapOverlayOpacityTarget(selectedMapOverlay, selectedMapOverlayEnabled),
@@ -2275,22 +2320,31 @@ export default function Home() {
   useEffect(() => {
     if (!mapReady || !map.current || !selectedMapOverlay) return;
     const currentMap = map.current;
-    const refreshOpacity = () => {
+    const refreshOpacity = (zoom?: number) => {
       const overlay = mapImageOverlay.current;
       if (!overlay || mapImageOverlayLevelId.current !== selected.entry.levelId) return;
       if (mapImageOverlayAnimation.current !== null) {
         cancelAnimationFrame(mapImageOverlayAnimation.current);
         mapImageOverlayAnimation.current = null;
       }
-      const opacity = mapOverlayOpacityTarget(selectedMapOverlay, selectedMapOverlayEnabled);
-      overlay.setOpacity(opacity);
-      mapImageOverlayOpacity.current = opacity;
+      const opacity = mapOverlayOpacityTarget(selectedMapOverlay, selectedMapOverlayEnabled, zoom);
+      smoothlyRetargetMapOverlayOpacity(
+        overlay,
+        opacity,
+        mapImageOverlayZoomAnimation,
+        mapImageOverlayZoomTargetOpacity,
+        mapImageOverlayOpacity,
+      );
     };
-    currentMap.on("zoom", refreshOpacity);
-    currentMap.on("resize", refreshOpacity);
+    const handleZoom = () => refreshOpacity();
+    const handleZoomAnimation = (event: import("leaflet").ZoomAnimEvent) => refreshOpacity(event.zoom);
+    currentMap.on("zoom", handleZoom);
+    currentMap.on("zoomanim", handleZoomAnimation);
+    currentMap.on("resize", handleZoom);
     return () => {
-      currentMap.off("zoom", refreshOpacity);
-      currentMap.off("resize", refreshOpacity);
+      currentMap.off("zoom", handleZoom);
+      currentMap.off("zoomanim", handleZoomAnimation);
+      currentMap.off("resize", handleZoom);
     };
   }, [mapOverlayOpacityTarget, mapReady, selected.entry.levelId, selectedMapOverlay, selectedMapOverlayEnabled]);
 
@@ -2458,7 +2512,7 @@ export default function Home() {
               <section className="settings-group">
                 <div className="settings-copy">
                   <h3>Zoom-based overlay fading</h3>
-                  <p>Fade large map overlays as you zoom beyond their overview scale.</p>
+                  <p>Fade overlays beyond their overview scale and hide them at street-detail zoom.</p>
                 </div>
                 <button
                   className={`settings-switch${mapOverlayZoomOpacityEnabled ? " is-enabled" : ""}`}

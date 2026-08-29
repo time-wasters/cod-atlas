@@ -12,7 +12,11 @@ test("map overlays progressively fade when zooming beyond their natural scale", 
   const closerZoom = mapOverlayOpacityAtZoom(0.72, 11, 7, true);
   assert.ok(firstZoom < 0.72);
   assert.ok(closerZoom < firstZoom);
-  assert.ok(mapOverlayOpacityAtZoom(0.72, 18, 7, true) >= 0.72 * 0.18);
+  assert.equal(mapOverlayOpacityAtZoom(0.72, 13, 7, true), 0);
+});
+
+test("map overlays disappear at street-detail zoom even when geographically small", () => {
+  assert.equal(mapOverlayOpacityAtZoom(0.72, 17, 15, true), 0);
 });
 
 test("disabling adaptive opacity preserves the configured opacity", () => {
