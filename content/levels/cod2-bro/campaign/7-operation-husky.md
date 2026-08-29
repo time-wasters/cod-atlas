@@ -9,7 +9,7 @@ campaign:
   label: Sicily
 wikiArticle: codwiki-operation-husky-level
 mapOverlay:
-  image: /images/levels/cod2-bro/operation-husky/maps/briefing-map.png
+  image: /images/levels/cod2-bro/campaign/7-operation-husky/maps/briefing-map.png
   opacity: 0.72
   corners:
     topLeft: [38.71218195, 11.28246913]

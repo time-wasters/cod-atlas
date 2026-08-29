@@ -9,7 +9,7 @@ campaign:
   label: American Campaign
 wikiArticle: codwiki-glider-crash
 mapOverlay:
-  image: /images/levels/rtv/glider-crash/maps/briefing-map.png
+  image: /images/levels/rtv/campaign/3-glider-crash/maps/briefing-map.png
   opacity: 0.72
   corners:
     topLeft: [49.41909, -1.36634]

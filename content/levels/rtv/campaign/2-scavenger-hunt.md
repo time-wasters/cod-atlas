@@ -9,7 +9,7 @@ campaign:
   label: American Campaign
 wikiArticle: codwiki-scavenger-hunt
 mapOverlay:
-  image: /images/levels/rtv/scavenger-hunt/maps/briefing-map.png
+  image: /images/levels/rtv/campaign/2-scavenger-hunt/maps/briefing-map.png
   opacity: 0.72
   corners:
     topLeft: [49.41909, -1.36634]

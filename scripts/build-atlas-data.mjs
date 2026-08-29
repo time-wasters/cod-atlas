@@ -415,9 +415,9 @@ for (const filename of levelFiles) {
       levelIdAliases[legacyId] = level.id;
     }
   }
-  const legacyLevelBannerBase = path.relative(levelsRoot, filename).replaceAll("\\", "/").replace(/\.md$/, "");
-  const levelBannerBase = `${primaryGame}/${levelSlug}/main`;
-  const levelBannerFilename = levelBannerFilesByBase.get(levelBannerBase) ?? levelBannerFilesByBase.get(legacyLevelBannerBase);
+  const levelMediaBase = path.relative(levelsRoot, filename).replaceAll("\\", "/").replace(/\.md$/, "");
+  const levelBannerBase = `${levelMediaBase}/main`;
+  const levelBannerFilename = levelBannerFilesByBase.get(levelBannerBase);
   if (levelBannerFilename) {
     const extension = path.extname(levelBannerFilename);
     const image = await readFile(levelBannerFilename);
@@ -444,7 +444,7 @@ for (const filename of levelFiles) {
         noticeUrl: "https://www.activision.com/legal/terms-of-use",
       },
     };
-    usedLevelBannerBases.add(levelBannerFilesByBase.has(levelBannerBase) ? levelBannerBase : legacyLevelBannerBase);
+    usedLevelBannerBases.add(levelBannerBase);
   }
   requireValue(wikiArticles.has(level.wikiArticle), `${filename}: unknown wikiArticle ${level.wikiArticle}`);
   requireValue(Array.isArray(level.locations), `${filename}: locations must be a list`);
@@ -545,9 +545,9 @@ for (const filename of levelReferenceFiles) {
   }
   if (reference.metadata != null) requireValue(reference.metadata && typeof reference.metadata === "object" && !Array.isArray(reference.metadata), `${filename}: metadata must be an object`);
   const bannerKey = `${level.id}@${gameId}`;
-  const appearanceBannerBase = `${gameId}/${levelSlug}/main`;
-  const legacyBannerBase = path.relative(levelsRoot, filename).replaceAll("\\", "/").replace(/\.ref\.md$/, "");
-  const bannerFilename = levelBannerFilesByBase.get(appearanceBannerBase) ?? levelBannerFilesByBase.get(legacyBannerBase);
+  const appearanceMediaBase = path.relative(levelsRoot, filename).replaceAll("\\", "/").replace(/\.md$/, "");
+  const appearanceBannerBase = `${appearanceMediaBase}/main`;
+  const bannerFilename = levelBannerFilesByBase.get(appearanceBannerBase);
   if (bannerFilename) {
     const extension = path.extname(bannerFilename);
     const image = await readFile(bannerFilename);
@@ -573,7 +573,7 @@ for (const filename of levelReferenceFiles) {
         noticeUrl: "https://www.activision.com/legal/terms-of-use",
       },
     };
-    usedLevelBannerBases.add(levelBannerFilesByBase.has(appearanceBannerBase) ? appearanceBannerBase : legacyBannerBase);
+    usedLevelBannerBases.add(appearanceBannerBase);
   }
   level.appearances.push({
     gameId,

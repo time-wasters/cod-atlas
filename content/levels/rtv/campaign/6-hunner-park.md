@@ -9,7 +9,7 @@ campaign:
   label: American Campaign
 wikiArticle: codwiki-hunner-park
 mapOverlay:
-  image: /images/levels/rtv/hunner-park/maps/briefing-map.png
+  image: /images/levels/rtv/campaign/6-hunner-park/maps/briefing-map.png
   opacity: 0.72
   corners:
     topLeft: [52.03385213, 4.90646237]

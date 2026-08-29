@@ -220,18 +220,20 @@ not by picture type:
 ```text
 public/images/levels/
 `-- <game-id>/
-    `-- <level-slug>/
-        |-- main.png                 # or main.jpg / main.webm
-        |-- maps/
-        |   `-- briefing-map.png
-        `-- extra/
-            `-- <filename-used-in-md>
+    `-- <map-type>/                   # omitted for a flat-layout game
+        `-- <level-filename>/         # Markdown filename without final .md
+            |-- main.png             # or main.jpg / main.webm
+            |-- maps/
+            |   `-- briefing-map.png
+            `-- extra/
+                `-- <filename-used-in-md>
 ```
 
 For example, RTV Altavilla uses
-`public/images/levels/rtv/altavilla/main.png` and
-`public/images/levels/rtv/altavilla/maps/briefing-map.png`. A Markdown image
-written as `![Caption](research-photo.png)` is served from that appearance's
+`public/images/levels/rtv/campaign/1-altavilla/main.png` and
+`public/images/levels/rtv/campaign/1-altavilla/maps/briefing-map.png`, mirroring
+`content/levels/rtv/campaign/1-altavilla.md`. A Markdown image written as
+`![Caption](research-photo.png)` is served from that appearance's
 `extra/research-photo.png` directory. Only create a level media directory when
 media exists.
 

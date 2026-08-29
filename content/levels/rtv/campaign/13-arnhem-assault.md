@@ -9,7 +9,7 @@ campaign:
   label: British Campaign
 wikiArticle: codwiki-arnhem-assault
 mapOverlay:
-  image: /images/levels/rtv/arnhem-assault/maps/briefing-map.png
+  image: /images/levels/rtv/campaign/13-arnhem-assault/maps/briefing-map.png
   opacity: 0.72
   corners:
     topLeft: [52.23758792, 4.8087378]

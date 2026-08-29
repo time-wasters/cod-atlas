@@ -9,7 +9,7 @@ campaign:
   label: American Campaign
 wikiArticle: codwiki-altavilla
 mapOverlay:
-  image: /images/levels/rtv/altavilla/maps/briefing-map.png
+  image: /images/levels/rtv/campaign/1-altavilla/maps/briefing-map.png
   opacity: 0.72
   corners:
     topLeft: [40.59997, 14.78375]

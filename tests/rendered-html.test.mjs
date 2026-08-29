@@ -325,7 +325,7 @@ test("preserves the complete statically compiled atlas", async () => {
     assert.ok(banner.thumbnailUrl, `${key} has a thumbnail URL`);
     assert.ok(banner.author, `${key} has author information`);
   }
-  assert.equal(atlas.levelBanners["rtv-altavilla@rtv"].thumbnailUrl, "/images/levels/rtv/altavilla/main.png");
+  assert.equal(atlas.levelBanners["rtv-altavilla@rtv"].thumbnailUrl, "/images/levels/rtv/campaign/1-altavilla/main.png");
   assert.equal(atlas.levelBanners["rtv-altavilla@rtv"].author.userUrl, "https://github.com/plp-gtr");
   assert.equal(atlas.levelIdAliases["cod-cod2-wwii-carentan"], "cod-carentan");
   const carentanAppearanceEntry = entries.find((entry) => entry.levelId === "cod-carentan");
@@ -678,7 +678,7 @@ test("keeps calibrated game-map overlays in a separate generated store", async (
     with: { type: "json" },
   });
   const altavilla = overlays["rtv-altavilla"];
-  assert.equal(altavilla.image, "/images/levels/rtv/altavilla/maps/briefing-map.png");
+  assert.equal(altavilla.image, "/images/levels/rtv/campaign/1-altavilla/maps/briefing-map.png");
   assert.deepEqual(altavilla.corners, {
     topLeft: [40.59997, 14.78375],
     topRight: [40.59054, 15.29434],
@@ -688,7 +688,7 @@ test("keeps calibrated game-map overlays in a separate generated store", async (
   assert.equal(altavilla.attribution.rights, "non-free");
   await access(new URL(`../public${altavilla.image}`, import.meta.url));
   const scavengerHunt = overlays["rtv-scavenger-hunt"];
-  assert.equal(scavengerHunt.image, "/images/levels/rtv/scavenger-hunt/maps/briefing-map.png");
+  assert.equal(scavengerHunt.image, "/images/levels/rtv/campaign/2-scavenger-hunt/maps/briefing-map.png");
   assert.deepEqual(scavengerHunt.corners, {
     topLeft: [49.41909, -1.36634],
     topRight: [49.42172, -1.26404],
@@ -707,7 +707,7 @@ test("keeps clickable historical overlays in a separate generated store", async 
   assert.equal(factoryOverlay.id, "the-li-army-corps-assault-14-15-october-1942");
   assert.equal(
     factoryOverlay.image,
-    "/images/levels/cod-fh/defend-the-factory/extra/the-li-army-corps-assault-14-15-october-1942.png",
+    "/images/levels/cod-fh/campaign/4-defend-the-factory/extra/the-li-army-corps-assault-14-15-october-1942.png",
   );
   assert.deepEqual(factoryOverlay.corners, {
     topLeft: [48.82027881, 44.57762708],

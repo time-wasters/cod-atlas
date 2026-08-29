@@ -13,6 +13,9 @@ These instructions apply to everything under `content/`.
 - Campaign filenames are `<order>-<level-slug>.md`, starting at `1`, without
   leading zeros or gaps. Multiplayer and Zombies filenames remain
   `<level-slug>.md`.
+- Level media mirrors the level file's relative path under
+  `public/images/levels/`, including its map-type directory and filename
+  without the final `.md` extension.
 - The stable `id` remains `<primary-game>-<level-slug>` in either layout; do
   not include the campaign order or map-type directory, and do not repeat the
   game prefix in the ID or filename.

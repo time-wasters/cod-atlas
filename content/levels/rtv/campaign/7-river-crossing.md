@@ -9,7 +9,7 @@ campaign:
   label: American Campaign
 wikiArticle: codwiki-river-crossing
 mapOverlay:
-  image: /images/levels/rtv/river-crossing/maps/briefing-map.png
+  image: /images/levels/rtv/campaign/7-river-crossing/maps/briefing-map.png
   opacity: 0.72
   corners:
     topLeft: [52.12479074, 4.98325]
