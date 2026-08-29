@@ -117,10 +117,6 @@ export function parseImageArguments(argv) {
     targets.push(argument);
   }
 
-  if (command === "prepare" && targets.length === 0) {
-    throw new Error("Image preparation requires at least one explicit file or directory below public/images/levels.");
-  }
-
   return { command, dryRun, strict, targets };
 }
 
@@ -362,7 +358,7 @@ function displayPath(filename) {
 
 function printUsage() {
   console.error("Usage:");
-  console.error("  npm run images:prepare -- [--dry-run] <file-or-directory> [...]");
+  console.error("  npm run images:prepare -- [--dry-run] [file-or-directory ...]");
   console.error("  npm run images:check -- [--strict] [file-or-directory ...]");
 }
 

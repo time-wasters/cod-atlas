@@ -78,8 +78,13 @@ test("image checks reject multiple raster main files for one level", async () =>
   assert.match(results.flatMap((result) => result.errors).join("\n"), /multiple raster main files/);
 });
 
-test("preparation always requires an explicit scope", () => {
-  assert.throws(() => parseImageArguments(["prepare"]), /requires at least one explicit file or directory/);
+test("preparation defaults to all level images and accepts a narrower scope", () => {
+  assert.deepEqual(parseImageArguments(["prepare"]), {
+    command: "prepare",
+    dryRun: false,
+    strict: false,
+    targets: [],
+  });
   assert.deepEqual(parseImageArguments(["prepare", "--dry-run", "public/images/levels/cod2"]), {
     command: "prepare",
     dryRun: true,

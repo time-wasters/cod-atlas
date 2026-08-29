@@ -125,10 +125,10 @@ importer preserves them when Fandom provides them. Never invent missing
 attribution or describe a copyright exception as a license.
 
 Repository-hosted level images are prepared before they are committed; the
-build does not convert or cache them. For explicitly selected files or
-directories, first run `npm run images:prepare -- --dry-run <path>`, then run
-`npm run images:prepare -- <path>`. Run the read-only `npm run images:check`
-command before committing. See the
+build does not convert or cache them. First preview the complete operation with
+`npm run images:prepare -- --dry-run`, then run `npm run images:prepare`;
+optional path arguments can narrow either operation. Run the read-only
+`npm run images:check` command before committing. See the
 [level-image workflow](docs/image-workflow.md) for the conversion rules,
 limits, strict mode, and Docker examples.
 

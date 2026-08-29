@@ -9,19 +9,21 @@ Both commands are limited to raster files below `public/images/levels/` and
 reject symbolic links. They support PNG, JPEG, and WebP files. Existing WebM
 level banners remain outside this raster-image workflow.
 
-## Prepare selected images
+## Prepare images
 
-`images:prepare` rewrites only explicitly selected files or directories. Start
-with a dry run:
+`images:prepare` scans every raster image below `public/images/levels/` by
+default. Start with a dry run:
 
 ```sh
-npm run images:prepare -- --dry-run public/images/levels/cod2-bro/campaign
-npm run images:prepare -- public/images/levels/cod2-bro/campaign
+npm run images:prepare -- --dry-run
+npm run images:prepare
 ```
 
-A single file can be selected instead:
+Optional file or directory arguments narrow the operation when only part of the
+media tree should be prepared:
 
 ```sh
+npm run images:prepare -- public/images/levels/cod2-bro/campaign
 npm run images:prepare -- public/images/levels/cod2-bro/campaign/1-we-ve-been-through-worse/main.png
 ```
 
@@ -45,8 +47,8 @@ when `main.jpg` already exists, so an existing file is never silently replaced.
 Docker equivalent:
 
 ```sh
-docker compose run --rm cod-atlas-tools npm run images:prepare -- --dry-run public/images/levels/cod2-bro/campaign
-docker compose run --rm cod-atlas-tools npm run images:prepare -- public/images/levels/cod2-bro/campaign
+docker compose run --rm cod-atlas-tools npm run images:prepare -- --dry-run
+docker compose run --rm cod-atlas-tools npm run images:prepare
 ```
 
 ## Check committed images
