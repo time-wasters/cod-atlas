@@ -72,6 +72,7 @@ input[type="checkbox"]:disabled:checked { background-color: #6e592e; filter: gra
 .settings-surface > header button:hover, .settings-surface > header button:focus-visible { border-color: var(--amber); color: var(--amber); outline: none; }
 .settings-content { padding: 20px; }
 .settings-group { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.settings-group + .settings-group { margin-top: 20px; }
 .settings-copy { min-width: 0; }
 .settings-copy h3 { margin: 0 0 6px; color: #e5dcc5; font-size: 14px; }
 .settings-copy p { max-width: 410px; margin: 0; color: #8f9583; font-size: 11px; line-height: 1.55; }

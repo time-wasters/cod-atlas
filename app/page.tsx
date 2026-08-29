@@ -10,6 +10,7 @@ import historyOverlaysSource from "./data/history-overlays.generated.json";
 import mapOverlaysSource from "./data/map-overlays.generated.json";
 import { buildCampaignRoute } from "./campaign-route.js";
 import { applyEnglishMapLabels } from "./map-language.js";
+import { mapOverlayOpacityAtZoom } from "./map-overlay-opacity.js";
 import { atlasUrlWithState, parseAtlasUrl } from "./url-state";
 
 type Entry = {
@@ -336,6 +337,8 @@ const confidenceValues = valuesFor(confidenceOptions);
 const methodValues = valuesFor(methodOptions);
 const EXTERNAL_ICONS_PREFERENCE = "cod-atlas:external-game-icons";
 const externalIconPreferenceListeners = new Set<() => void>();
+const MAP_OVERLAY_ZOOM_OPACITY_PREFERENCE = "cod-atlas:zoom-adaptive-map-overlays";
+const mapOverlayZoomOpacityPreferenceListeners = new Set<() => void>();
 
 function externalIconsEnabledSnapshot() {
   return typeof window !== "undefined" && window.localStorage.getItem(EXTERNAL_ICONS_PREFERENCE) === "true";
@@ -356,6 +359,28 @@ function subscribeToExternalIconPreference(listener: () => void) {
 function setExternalIconsEnabled(enabled: boolean) {
   window.localStorage.setItem(EXTERNAL_ICONS_PREFERENCE, String(enabled));
   externalIconPreferenceListeners.forEach((listener) => listener());
+}
+
+function mapOverlayZoomOpacityEnabledSnapshot() {
+  return typeof window === "undefined"
+    || window.localStorage.getItem(MAP_OVERLAY_ZOOM_OPACITY_PREFERENCE) !== "false";
+}
+
+function subscribeToMapOverlayZoomOpacityPreference(listener: () => void) {
+  mapOverlayZoomOpacityPreferenceListeners.add(listener);
+  const onStorage = (event: StorageEvent) => {
+    if (event.key === MAP_OVERLAY_ZOOM_OPACITY_PREFERENCE) listener();
+  };
+  window.addEventListener("storage", onStorage);
+  return () => {
+    mapOverlayZoomOpacityPreferenceListeners.delete(listener);
+    window.removeEventListener("storage", onStorage);
+  };
+}
+
+function setMapOverlayZoomOpacityEnabled(enabled: boolean) {
+  window.localStorage.setItem(MAP_OVERLAY_ZOOM_OPACITY_PREFERENCE, String(enabled));
+  mapOverlayZoomOpacityPreferenceListeners.forEach((listener) => listener());
 }
 const MAP_MAX_ZOOM = 18;
 
@@ -1180,6 +1205,11 @@ export default function Home() {
     externalIconsEnabledSnapshot,
     () => false,
   );
+  const mapOverlayZoomOpacityEnabled = useSyncExternalStore(
+    subscribeToMapOverlayZoomOpacityPreference,
+    mapOverlayZoomOpacityEnabledSnapshot,
+    () => true,
+  );
   const [solarSystemDisplay, setSolarSystemDisplay] = useState({
     hasSpaceLocations: true,
     expanded: true,
@@ -1585,6 +1615,31 @@ export default function Home() {
   const selectedHistoryOverlay = activeHistoryOverlay?.levelId === selected.entry.levelId
     ? selectedHistoryOverlays.find((overlay) => overlay.id === activeHistoryOverlay.id) ?? null
     : null;
+
+  const mapOverlayOpacityTarget = useCallback((overlay: MapOverlayRecord, visible: boolean) => {
+    if (!visible) return 0;
+    const currentMap = map.current;
+    const L = leaflet.current;
+    if (!mapOverlayZoomOpacityEnabled || !currentMap || !L || !mapNode.current) return overlay.opacity;
+    const padding = mapViewportPadding(mapNode.current, intelCard.current);
+    const overlayBounds = L.latLngBounds([
+      overlay.corners.topLeft,
+      overlay.corners.topRight,
+      overlay.corners.bottomLeft,
+      overlay.corners.bottomRight,
+    ]);
+    const totalPadding = L.point(
+      padding.paddingTopLeft[0] + padding.paddingBottomRight[0],
+      padding.paddingTopLeft[1] + padding.paddingBottomRight[1],
+    );
+    const fitZoom = currentMap.getBoundsZoom(overlayBounds, false, totalPadding);
+    return mapOverlayOpacityAtZoom(
+      overlay.opacity,
+      currentMap.getZoom(),
+      fitZoom,
+      mapOverlayZoomOpacityEnabled,
+    );
+  }, [mapOverlayZoomOpacityEnabled]);
 
   const selectEntry = useCallback((group: Group, entry: Entry) => {
     urlHistoryMode.current = "push";
@@ -2184,7 +2239,7 @@ export default function Home() {
     if (mapImageOverlay.current && mapImageOverlayLevelId.current === selected.entry.levelId) {
       animateMapOverlayOpacity(
         mapImageOverlay.current,
-        selectedMapOverlayEnabled ? selectedMapOverlay.opacity : 0,
+        mapOverlayOpacityTarget(selectedMapOverlay, selectedMapOverlayEnabled),
         mapImageOverlayAnimation,
         mapImageOverlayOpacity,
       );
@@ -2211,11 +2266,33 @@ export default function Home() {
     mapImageOverlayOpacity.current = 0;
     animateMapOverlayOpacity(
       overlay,
-      selectedMapOverlayEnabled ? selectedMapOverlay.opacity : 0,
+      mapOverlayOpacityTarget(selectedMapOverlay, selectedMapOverlayEnabled),
       mapImageOverlayAnimation,
       mapImageOverlayOpacity,
     );
-  }, [mapReady, selected.entry.levelId, selectedAppearance.title, selectedMapOverlay, selectedMapOverlayEnabled]);
+  }, [mapOverlayOpacityTarget, mapReady, selected.entry.levelId, selectedAppearance.title, selectedMapOverlay, selectedMapOverlayEnabled]);
+
+  useEffect(() => {
+    if (!mapReady || !map.current || !selectedMapOverlay) return;
+    const currentMap = map.current;
+    const refreshOpacity = () => {
+      const overlay = mapImageOverlay.current;
+      if (!overlay || mapImageOverlayLevelId.current !== selected.entry.levelId) return;
+      if (mapImageOverlayAnimation.current !== null) {
+        cancelAnimationFrame(mapImageOverlayAnimation.current);
+        mapImageOverlayAnimation.current = null;
+      }
+      const opacity = mapOverlayOpacityTarget(selectedMapOverlay, selectedMapOverlayEnabled);
+      overlay.setOpacity(opacity);
+      mapImageOverlayOpacity.current = opacity;
+    };
+    currentMap.on("zoom", refreshOpacity);
+    currentMap.on("resize", refreshOpacity);
+    return () => {
+      currentMap.off("zoom", refreshOpacity);
+      currentMap.off("resize", refreshOpacity);
+    };
+  }, [mapOverlayOpacityTarget, mapReady, selected.entry.levelId, selectedMapOverlay, selectedMapOverlayEnabled]);
 
   useEffect(() => {
     if (!mapReady || !map.current || !leaflet.current) return;
@@ -2376,6 +2453,23 @@ export default function Home() {
                 >
                   <span aria-hidden="true" />
                   <b>{externalIconsEnabled ? "On" : "Off"}</b>
+                </button>
+              </section>
+              <section className="settings-group">
+                <div className="settings-copy">
+                  <h3>Zoom-based overlay fading</h3>
+                  <p>Fade large map overlays as you zoom beyond their overview scale.</p>
+                </div>
+                <button
+                  className={`settings-switch${mapOverlayZoomOpacityEnabled ? " is-enabled" : ""}`}
+                  type="button"
+                  role="switch"
+                  aria-label="Zoom-based overlay fading"
+                  aria-checked={mapOverlayZoomOpacityEnabled}
+                  onClick={() => setMapOverlayZoomOpacityEnabled(!mapOverlayZoomOpacityEnabled)}
+                >
+                  <span aria-hidden="true" />
+                  <b>{mapOverlayZoomOpacityEnabled ? "On" : "Off"}</b>
                 </button>
               </section>
               <p className="settings-note">This preference is stored only in this browser.</p>
