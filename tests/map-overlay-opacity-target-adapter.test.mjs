@@ -89,3 +89,24 @@ test("hidden and fixed-opacity overlays bypass Leaflet fit calculations", () => 
   assert.deepEqual(fixedContext.calls, []);
 });
 
+test("successive higher Leaflet zoom levels produce lower opacity targets", () => {
+  const opacities = [7, 9, 11, 13].map((currentZoom) => {
+    const context = createLeafletContext();
+    return calculateLeafletMapOverlayOpacityTarget({
+      baseOpacity: 0.72,
+      corners,
+      currentZoom,
+      enabled: true,
+      leaflet: context.leaflet,
+      map: context.map,
+      maximumZoom: 18,
+      padding,
+      visible: true,
+    });
+  });
+
+  assert.equal(opacities[0], 0.72);
+  assert.ok(opacities[1] < opacities[0]);
+  assert.ok(opacities[2] < opacities[1]);
+  assert.equal(opacities[3], 0);
+});

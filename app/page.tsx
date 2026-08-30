@@ -8,6 +8,7 @@ import ReactMarkdown from "react-markdown";
 import { buildCampaignRoute } from "../src/application/map/use-cases/build-campaign-route.js";
 import { parseAtlasUrlState } from "../src/infrastructure/browser/url/atlas-url-state.parser.js";
 import { serializeAtlasUrlState } from "../src/infrastructure/browser/url/atlas-url-state.serializer.js";
+import { applyLeafletOverlayOpacity } from "../src/infrastructure/mapping/leaflet/leaflet-overlay-opacity.applier.js";
 import { retargetLeafletOverlayOpacity } from "../src/infrastructure/mapping/leaflet/leaflet-overlay-opacity-retargeting.animator.js";
 import { animateLeafletOverlayOpacity } from "../src/infrastructure/mapping/leaflet/leaflet-overlay-opacity-transition.animator.js";
 import { calculateLeafletMapOverlayOpacityTarget } from "../src/infrastructure/mapping/leaflet/map-overlay-opacity-target.adapter.js";
@@ -2260,7 +2261,7 @@ export default function Home() {
     const refreshOpacity = (zoom?: number) => {
       const overlay = mapImageOverlay.current;
       if (!overlay || mapImageOverlayLevelId.current !== selected.entry.levelId) return;
-      retargetLeafletOverlayOpacity({
+      applyLeafletOverlayOpacity({
         animationRef: mapImageOverlayAnimation,
         opacityRef: mapImageOverlayOpacity,
         overlay,
