@@ -114,9 +114,9 @@ can be removed one at a time as real source files are introduced.
 
 ## Migration status
 
-The Wiki importer and external game-icon importer are the first features
-organized here. Pure Wiki article identity and sequence rules live in
-`domain/`; import workflows live in `application/`; provider-specific source
-validation, filesystem, media-validation, and CLI details live in
-`infrastructure/`. The stable npm commands still enter through
-`scripts/import-wiki-articles.mjs` and `scripts/import-game-icons.mjs`.
+The Wiki importer, external game-icon importer, and level-image manager are the
+first features organized here. Pure Wiki article and level-media rules live in
+`domain/`; import, checking, and preparation workflows live in `application/`;
+provider-specific validation, filesystem safety, Sharp processing, and CLI
+details live in `infrastructure/`. The stable npm commands still enter through
+their existing files under `scripts/`.
