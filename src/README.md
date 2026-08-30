@@ -134,9 +134,9 @@ can be removed one at a time as real source files are introduced.
 ## Migration status
 
 The Wiki importer, external game-icon importer, level-image manager, progress
-reporter, atlas URL-state adapter, MapLibre label and worker-URL adapters,
-campaign-route builder, and map-overlay opacity behavior are the first features
-organized here. Pure Wiki article, level-media,
+reporter, atlas URL-state adapter, generated atlas-data DTOs, MapLibre label and
+worker-URL adapters, campaign-route builder, and map-overlay opacity behavior
+are the first features organized here. Pure Wiki article, level-media,
 research-completion, level-mode, and location-precision rules live in `domain/`;
 import, checking, preparation, report-update, and campaign-route workflows live
 in `application/`; campaign route display formatting and the

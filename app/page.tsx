@@ -6,6 +6,12 @@ import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, use
 import { createPortal } from "react-dom";
 import ReactMarkdown from "react-markdown";
 import { buildCampaignRoute } from "../src/application/map/use-cases/build-campaign-route.js";
+import type { AtlasDataDto } from "../src/infrastructure/atlas-data/dto/atlas-data.dto.js";
+import type { AtlasEntryDto } from "../src/infrastructure/atlas-data/dto/atlas-entry.dto.js";
+import type { AtlasGroupDto } from "../src/infrastructure/atlas-data/dto/atlas-group.dto.js";
+import type { GameDto } from "../src/infrastructure/atlas-data/dto/game.dto.js";
+import type { HistoryOverlayDto } from "../src/infrastructure/atlas-data/dto/history-overlay.dto.js";
+import type { MapOverlayDto } from "../src/infrastructure/atlas-data/dto/map-overlay.dto.js";
 import { parseAtlasUrlState } from "../src/infrastructure/browser/url/atlas-url-state.parser.js";
 import { serializeAtlasUrlState } from "../src/infrastructure/browser/url/atlas-url-state.serializer.js";
 import { applyLeafletOverlayOpacity } from "../src/infrastructure/mapping/leaflet/leaflet-overlay-opacity.applier.js";
@@ -21,80 +27,11 @@ import atlasSource from "./data/atlas.generated.json";
 import historyOverlaysSource from "./data/history-overlays.generated.json";
 import mapOverlaysSource from "./data/map-overlays.generated.json";
 
-type Entry = {
-  id: string;
-  levelId: string;
-  locationId: string;
-  primary: boolean;
-  title: string;
-  game: string;
-  gameIds: string[];
-  campaign?: {
-    id: string;
-    label: string;
-  } | null;
-  campaignOrder?: number;
-  wiki: string;
-  wikiArticle: string;
-  country: string;
-  region?: string | null;
-  city?: string | null;
-  landmark?: string | null;
-  coordinates?: [number, number] | null;
-  precision: "exact" | "approximate" | "city" | "region" | "country" | "off-world";
-  confidence?: "high" | "medium" | "fallback";
-  method?: string;
-  urls?: Partial<Record<"googleMaps" | "wikipedia" | "callOfDutyMaps", string>>[];
-  hasLevelNotes: boolean;
-  modes: ("singleplayer" | "multiplayer" | "zombies")[];
-  appearances: LevelAppearance[];
-};
-
-type LevelAppearance = {
-  gameId: string;
-  title: string;
-  wiki: string;
-  wikiArticle: string;
-  notesId: string;
-  hasLevelNotes: boolean;
-  bannerKey: string;
-  campaign?: Entry["campaign"];
-  campaignOrder?: number;
-  metadata?: Record<string, unknown>;
-};
-
-type WikiImage = {
-  origin?: "local";
-  mediaType?: "image" | "video";
-  sourceUrl: string;
-  thumbnailUrl: string;
-  detailPageUrl: string;
-  author: {
-    name: string | null;
-    userUrl: string | null;
-    role: "author" | "uploader" | null;
-  };
-  license: {
-    name: string | null;
-    url: string | null;
-  };
-  rights: {
-    status: "licensed" | "non-free" | "unknown";
-    notice: string | null;
-    noticeUrl: string | null;
-  };
-};
-
-type WikiMedia = {
-  main: WikiImage | null;
-  map: WikiImage | null;
-};
-
-function locationUrl(entry: Entry, provider: "googleMaps" | "wikipedia" | "callOfDutyMaps") {
+function locationUrl(entry: AtlasEntryDto, provider: "googleMaps" | "wikipedia" | "callOfDutyMaps") {
   return entry.urls?.find((item) => item[provider])?.[provider] ?? null;
 }
 
-function googleMapsUrl(entry: Entry) {
+function googleMapsUrl(entry: AtlasEntryDto) {
   if (entry.precision === "country") {
     return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(entry.country)}`;
   }
@@ -103,11 +40,11 @@ function googleMapsUrl(entry: Entry) {
   return `https://www.google.com/maps/search/?api=1&query=${latitude}%2C${longitude}`;
 }
 
-function locationName(entry: Entry) {
+function locationName(entry: AtlasEntryDto) {
   return entry.landmark ?? entry.city ?? entry.region ?? entry.country;
 }
 
-function locationPath(entry: Entry) {
+function locationPath(entry: AtlasEntryDto) {
   return [entry.country, entry.region, entry.city, entry.landmark].filter(Boolean).join(" › ");
 }
 
@@ -115,7 +52,7 @@ function imageBasename(source: string) {
   return source.split(/[?#]/, 1)[0].split("/").at(-1) ?? source;
 }
 
-function atlasMarkerIcon(L: typeof import("leaflet"), entry: Entry, active: boolean, campaignDimmed = false) {
+function atlasMarkerIcon(L: typeof import("leaflet"), entry: AtlasEntryDto, active: boolean, campaignDimmed = false) {
   const cityLevel = !["country", "off-world"].includes(entry.precision);
   return L.divIcon({
     className: "atlas-marker-wrap",
@@ -125,25 +62,6 @@ function atlasMarkerIcon(L: typeof import("leaflet"), entry: Entry, active: bool
   });
 }
 
-type Group = {
-  name: string;
-  continent: string;
-  coordinates: [number, number] | null;
-  kind: "terrestrial" | "off-world";
-  flagCode: string | null;
-  entries: Entry[];
-};
-type Game = {
-  id: string;
-  code: string;
-  label: string;
-  labelLong: string;
-  released: string;
-  series: "world-war-ii" | "modern-warfare" | "black-ops" | "standalone";
-  subseries: "main" | "reboot" | "remaster" | "add-on" | "spin-off" | null;
-  remasterOf: string | null;
-  icon?: string;
-};
 type FilterOption = { value: string; label: string; disabled?: boolean; note?: string };
 type FilterHoverDetail = {
   label: string;
@@ -162,62 +80,8 @@ type ExternalIconManifest = Record<string, {
   icon?: { provider: "steam" | "steamgriddb"; path: string };
   clienticon?: { provider: "steam"; path: string };
 }>;
-type MapOverlayRecord = {
-  levelId: string;
-  image: string;
-  opacity: number;
-  corners: {
-    topLeft: [number, number];
-    topRight: [number, number];
-    bottomLeft: [number, number];
-    bottomRight: [number, number];
-  };
-  attribution: {
-    title: string;
-    source: string;
-    sourceUrl: string;
-    extractedBy: string;
-    extractedByUrl: string;
-    copyrightHolder: string;
-    rights: "non-free";
-    rightsNotice: string;
-    rightsNoticeUrl: string;
-  };
-};
-type HistoryOverlayRecord = {
-  levelId: string;
-  id: string;
-  image: string;
-  opacity: number;
-  corners: MapOverlayRecord["corners"];
-  attribution: {
-    title: string;
-    source: string;
-    sourceUrl: string;
-    author: string;
-    copyrightHolder: string;
-    rights: "non-free";
-    rightsNotice: string;
-    rightsNoticeUrl: string;
-  };
-};
-type AtlasData = {
-  games: Game[];
-  levelIdAliases: Record<string, string>;
-  levelBanners: Record<string, WikiImage>;
-  wikiMedia: Record<string, WikiMedia>;
-  groups: Group[];
-  totals: {
-    groups: number;
-    entries: number;
-    mapped: number;
-    cityMatched: number;
-    countryFallback: number;
-  };
-};
-
-type Selection = { group: Group; entry: Entry };
-type CountryOption = Pick<Group, "name" | "flagCode"> & { available: boolean };
+type Selection = { group: AtlasGroupDto; entry: AtlasEntryDto };
+type CountryOption = Pick<AtlasGroupDto, "name" | "flagCode"> & { available: boolean };
 type CampaignOption = {
   key: string;
   gameId: string;
@@ -233,9 +97,9 @@ type CampaignOption = {
   }[];
 };
 
-const data = atlasSource as AtlasData;
-const historyOverlays = historyOverlaysSource as Record<string, HistoryOverlayRecord[]>;
-const mapOverlays = mapOverlaysSource as Record<string, MapOverlayRecord>;
+const data = atlasSource as AtlasDataDto;
+const historyOverlays = historyOverlaysSource as Record<string, HistoryOverlayDto[]>;
+const mapOverlays = mapOverlaysSource as Record<string, MapOverlayDto>;
 const gamesById = new Map(data.games.map((game) => [game.id, game]));
 const gamesByCode = new Map(data.games.map((game) => [game.code, game]));
 const countryNames = new Set(data.groups.map((group) => group.name));
@@ -247,14 +111,14 @@ const gameSeriesOptions: FilterOption[] = [
   { value: "black-ops", label: "Black Ops" },
   { value: "standalone", label: "Standalone" },
 ];
-const gameSeriesDescriptions: Record<Game["series"], string> = {
+const gameSeriesDescriptions: Record<GameDto["series"], string> = {
   "world-war-ii": "Games centered on World War II and related releases.",
   "modern-warfare": "Games and spin-offs connected to the Modern Warfare series and its reimagined continuity.",
   "black-ops": "Games in the Black Ops series, including its Cold War stories and related spin-offs.",
   standalone: "Games outside the World War, Modern Warfare, and Black Ops branches, with their own settings and continuities.",
 };
 const gameSeriesDetails = new Map<string, FilterHoverDetail>(gameSeriesOptions.map((option) => {
-  const series = option.value as Game["series"];
+  const series = option.value as GameDto["series"];
   const games = data.games
     .filter((game) => game.series === series)
     .sort((left, right) => left.released.localeCompare(right.released));
@@ -274,7 +138,7 @@ const gameSubseriesOptions: FilterOption[] = [
   { value: "add-on", label: "Add-on" },
   { value: "spin-off", label: "Spin-off" },
 ];
-const gameSubseriesDescriptions: Record<Exclude<Game["subseries"], null>, string> = {
+const gameSubseriesDescriptions: Record<Exclude<GameDto["subseries"], null>, string> = {
   main: "Core releases within a named Call of Duty series.",
   reboot: "Reboot-continuity releases within a named Call of Duty series.",
   remaster: "Remastered editions linked to the original game by ID.",
@@ -284,7 +148,7 @@ const gameSubseriesDescriptions: Record<Exclude<Game["subseries"], null>, string
 const gameSeriesLabels = new Map(gameSeriesOptions.map((option) => [option.value, option.label]));
 const gameSubseriesLabels = new Map(gameSubseriesOptions.map((option) => [option.value, option.label]));
 const gameSubseriesDetails = new Map<string, FilterHoverDetail>(gameSubseriesOptions.map((option) => {
-  const subseries = option.value as Exclude<Game["subseries"], null>;
+  const subseries = option.value as Exclude<GameDto["subseries"], null>;
   const games = data.games
     .filter((game) => game.subseries === subseries)
     .sort((left, right) => left.released.localeCompare(right.released));
@@ -407,7 +271,7 @@ function ExternalLinkIcon({ name }: { name: keyof typeof EXTERNAL_LINK_ICONS }) 
   );
 }
 
-function LevelModeIcon({ mode }: { mode: Entry["modes"][number] }) {
+function LevelModeIcon({ mode }: { mode: AtlasEntryDto["modes"][number] }) {
   if (mode === "zombies") return (
     <svg className="mission-mode-icon" viewBox="0 0 24 24" role="img" aria-label="Zombies">
       <path d="M5 10a7 7 0 1 1 14 0v5l-2 2h-2v3h-2v-3h-2v3H9v-3H7l-2-2Z" />
@@ -432,7 +296,7 @@ function GameIcon({
   external,
   onError,
 }: {
-  game: Game;
+  game: GameDto;
   src: string;
   external: boolean;
   onError: () => void;
@@ -566,7 +430,7 @@ function toggledFilterValue(current: Set<string>, value: string) {
   return next;
 }
 
-function compareGames(a: Game, b: Game) {
+function compareGames(a: GameDto, b: GameDto) {
   return a.released.localeCompare(b.released) || a.label.localeCompare(b.label);
 }
 
@@ -705,7 +569,7 @@ function GameSelect({
   value,
   onValueChange,
 }: {
-  games: Game[];
+  games: GameDto[];
   value: string;
   onValueChange: (value: string) => void;
 }) {
@@ -961,7 +825,7 @@ const solarTargetPoints: Record<SolarTargetId, { x: number; y: number; radius: n
   "deep-space": { x: 535, y: 116, radius: 8 },
 };
 
-function solarTargetForEntry(entry: Entry): SolarTargetId {
+function solarTargetForEntry(entry: AtlasEntryDto): SolarTargetId {
   const location = [entry.country, entry.region, entry.city, entry.landmark]
     .filter(Boolean)
     .join(" ")
@@ -1036,7 +900,7 @@ function SolarSystemOverlay({
   selectedEntryId: string;
   expanded: boolean;
   onExpandedChange: (expanded: boolean) => void;
-  onSelect: (group: Group, entry: Entry) => void;
+  onSelect: (group: AtlasGroupDto, entry: AtlasEntryDto) => void;
 }) {
   const locationsByTarget = new Map<SolarTargetId, Selection[]>();
   for (const location of locations) {
@@ -1212,8 +1076,8 @@ export default function Home() {
   const mapNode = useRef<HTMLDivElement>(null);
   const map = useRef<LeafletMap | null>(null);
   const markerLayer = useRef<MarkerClusterGroup | null>(null);
-  const markers = useRef<Map<string, { marker: LeafletMarker; entry: Entry }>>(new Map());
-  const markerEntries = useRef<WeakMap<LeafletMarker, Entry>>(new WeakMap());
+  const markers = useRef<Map<string, { marker: LeafletMarker; entry: AtlasEntryDto }>>(new Map());
+  const markerEntries = useRef<WeakMap<LeafletMarker, AtlasEntryDto>>(new WeakMap());
   const campaignFocusLevelIds = useRef<Set<string> | null>(null);
   const campaignRouteLayer = useRef<import("leaflet").LayerGroup | null>(null);
   const campaignRouteFitKey = useRef<string | null>(null);
@@ -1248,7 +1112,7 @@ export default function Home() {
     );
     return data.games.filter((item) => representedCodes.has(item.code)).sort(compareGames);
   }, [groups]);
-  const gameIcon = useCallback((game: Game) => {
+  const gameIcon = useCallback((game: GameDto) => {
     const externalPath = externalIconsEnabled && !failedExternalGameIcons.has(game.id)
       ? externalIconManifest?.[game.id]?.icon?.path
       : null;
@@ -1363,7 +1227,7 @@ export default function Home() {
       });
     return () => controller.abort();
   }, [externalIconManifest, externalIconManifestUnavailable, externalIconsEnabled]);
-  const matchesStructuredFilters = useCallback((entry: Entry) => {
+  const matchesStructuredFilters = useCallback((entry: AtlasEntryDto) => {
     const matchesGame = game === "all" || entry.game.split(" / ").includes(game);
     const matchesSeries = gameSeries.size === 0 || entry.gameIds.some((gameId) => {
       const entryGame = gamesById.get(gameId);
@@ -1593,7 +1457,7 @@ export default function Home() {
     ? selectedHistoryOverlays.find((overlay) => overlay.id === activeHistoryOverlay.id) ?? null
     : null;
 
-  const mapOverlayOpacityTarget = useCallback((overlay: MapOverlayRecord, visible: boolean, zoom?: number) => {
+  const mapOverlayOpacityTarget = useCallback((overlay: MapOverlayDto, visible: boolean, zoom?: number) => {
     const currentMap = map.current;
     const L = leaflet.current;
     if (!currentMap || !L || !mapNode.current) return visible ? overlay.opacity : 0;
@@ -1611,7 +1475,7 @@ export default function Home() {
     });
   }, [mapOverlayZoomOpacityEnabled]);
 
-  const selectEntry = useCallback((group: Group, entry: Entry) => {
+  const selectEntry = useCallback((group: AtlasGroupDto, entry: AtlasEntryDto) => {
     urlHistoryMode.current = "push";
     setSelected({ group, entry });
     setSelectionInUrl(true);
@@ -1620,7 +1484,7 @@ export default function Home() {
     setActiveHistoryOverlay(null);
   }, []);
 
-  const toggleHistoryOverlay = useCallback((overlay: HistoryOverlayRecord) => {
+  const toggleHistoryOverlay = useCallback((overlay: HistoryOverlayDto) => {
     const isActive = activeHistoryOverlay?.levelId === overlay.levelId
       && activeHistoryOverlay.id === overlay.id;
     if (isActive) {
@@ -1646,7 +1510,7 @@ export default function Home() {
     else map.current.fitBounds(boundsCoordinates, movement);
   }, [activeHistoryOverlay, selected.entry.coordinates]);
 
-  const selectSidebarGroup = useCallback((group: Group) => {
+  const selectSidebarGroup = useCallback((group: AtlasGroupDto) => {
     const entry = group.entries[0];
     if (!entry) return;
     if (group.kind === "off-world") {
@@ -1666,7 +1530,7 @@ export default function Home() {
     selectEntry(group, entry);
   }, [selectEntry]);
 
-  const selectMapMarker = useCallback((group: Group, entry: Entry) => {
+  const selectMapMarker = useCallback((group: AtlasGroupDto, entry: AtlasEntryDto) => {
     markerOverlaySelectionLevelId.current = mapOverlays[entry.levelId] ? entry.levelId : null;
     selectEntry(group, entry);
   }, [selectEntry]);
@@ -1686,7 +1550,7 @@ export default function Home() {
     setDetailsOpen(true);
   }
 
-  const focusEntryOverlay = useCallback((entry: Entry, alwaysFit = false) => {
+  const focusEntryOverlay = useCallback((entry: AtlasEntryDto, alwaysFit = false) => {
     const currentMap = map.current;
     const L = leaflet.current;
     const entryOverlay = mapOverlays[entry.levelId];
@@ -1724,7 +1588,7 @@ export default function Home() {
     return true;
   }, []);
 
-  const focusEntryOnMap = useCallback((entry: Entry) => {
+  const focusEntryOnMap = useCallback((entry: AtlasEntryDto) => {
     if (focusEntryOverlay(entry, true)) return;
     const currentMap = map.current;
     const layer = markerLayer.current;
