@@ -7,11 +7,11 @@ import { createPortal } from "react-dom";
 import ReactMarkdown from "react-markdown";
 import { parseAtlasUrlState } from "../src/infrastructure/browser/url/atlas-url-state.parser.js";
 import { serializeAtlasUrlState } from "../src/infrastructure/browser/url/atlas-url-state.serializer.js";
+import { applyEnglishMapLibreLabels } from "../src/infrastructure/mapping/maplibre/maplibre-english-labels.adapter.js";
 import atlasSource from "./data/atlas.generated.json";
 import historyOverlaysSource from "./data/history-overlays.generated.json";
 import mapOverlaysSource from "./data/map-overlays.generated.json";
 import { buildCampaignRoute } from "./campaign-route.js";
-import { applyEnglishMapLabels } from "./map-language.js";
 import { mapOverlayOpacityAtZoom } from "./map-overlay-opacity.js";
 
 type Entry = {
@@ -1903,7 +1903,7 @@ export default function Home() {
         vectorMap.once("error", useRasterFallback);
         basemapFallbackTimer = window.setTimeout(useRasterFallback, 10_000);
 
-        const setEnglishLabels = () => applyEnglishMapLabels(vectorMap);
+        const setEnglishLabels = () => applyEnglishMapLibreLabels(vectorMap);
         if (vectorMap.isStyleLoaded()) setEnglishLabels();
         else vectorMap.once("style.load", setEnglishLabels);
         instance.attributionControl.addAttribution(

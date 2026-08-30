@@ -177,8 +177,8 @@ test("preserves the complete statically compiled atlas", async () => {
     (entry) => entry.title === title && entry.game.split(" / ").includes(game),
   );
 
-  assert.equal(entries.length, 1061);
-  assert.equal(atlas.totals.levels, 1115);
+  assert.equal(entries.length, 1062);
+  assert.equal(atlas.totals.levels, 1116);
   assert.equal(findGroup("France").flagCode, "FR");
   assert.equal(findGroup("Turkey").flagCode, "TR");
   assert.equal(findGroup("United States").flagCode, "US");
@@ -571,6 +571,16 @@ test("preserves the complete statically compiled atlas", async () => {
   assert.equal(roundhouse.confidence, "medium");
   assert.equal(roundhouse.method, "real-world-inspiration");
 
+  const subPens = findEntry("WAW", "Sub Pens");
+  assert.deepEqual(subPens.coordinates, [34.229358, 132.549713]);
+  assert.equal(subPens.country, "Japan");
+  assert.equal(subPens.region, "Hiroshima Prefecture");
+  assert.equal(subPens.city, "Kure");
+  assert.equal(subPens.landmark, "Kure Naval Base");
+  assert.equal(subPens.precision, "approximate");
+  assert.equal(subPens.confidence, "medium");
+  assert.equal(subPens.method, "real-world-inspiration");
+
   const aDesertRide = findEntry("FH", "A Desert Ride");
   assert.deepEqual(aDesertRide.coordinates, [33.216131, 9.800375]);
   assert.equal(aDesertRide.country, "Tunisia");
@@ -623,7 +633,7 @@ test("preserves the complete statically compiled atlas", async () => {
   assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "singleplayer").length, 27);
   assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "multiplayer").length, 23);
   assert.equal(entries.filter((entry) => entry.modes[0] === "singleplayer").length, 421);
-  assert.equal(entries.filter((entry) => entry.modes[0] === "multiplayer").length, 636);
+  assert.equal(entries.filter((entry) => entry.modes[0] === "multiplayer").length, 637);
   assert.equal(entries.filter((entry) => entry.modes[0] === "zombies").length, 4);
 });
 
