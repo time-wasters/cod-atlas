@@ -21,8 +21,8 @@ mission has the required research sections.
 | Scope | Researched | Remaining |
 | --- | ---: | ---: |
 | All currently catalogued levels | 169 / 1118 (15%) | 949 / 1118 (85%) |
-| Campaign levels | 115 / 425 (27%) | 310 / 425 (73%) |
-| Multiplayer maps | 54 / 683 (8%) | 629 / 683 (92%) |
+| Campaign levels | 115 / 426 (27%) | 311 / 426 (73%) |
+| Multiplayer maps | 54 / 682 (8%) | 628 / 682 (92%) |
 | Zombies maps | 0 / 10 (0%) | 10 / 10 (100%) |
 
 | Game | Campaign | Multiplayer | Zombies | Overall |
@@ -37,7 +37,7 @@ mission has the required research sections.
 | Modern Warfare (2007) | 0 / 21 (0%) | 0 / 21 (0%) | — | 0 / 42 (0%) |
 | World at War | 0 / 15 (0%) | 0 / 23 (0%) | 0 / 4 (0%) | 0 / 42 (0%) |
 | World at War: Final Fronts | 0 / 13 (0%) | — | — | 0 / 13 (0%) |
-| Modern Warfare 2 (2009) | 0 / 18 (0%) | 0 / 24 (0%) | — | 0 / 42 (0%) |
+| Modern Warfare 2 (2009) | 0 / 19 (0%) | 0 / 23 (0%) | — | 0 / 42 (0%) |
 | Black Ops | 0 / 15 (0%) | 1 / 31 (3%) | — | 1 / 46 (2%) |
 | Modern Warfare 3 (2011) | 0 / 18 (0%) | 0 / 39 (0%) | — | 0 / 57 (0%) |
 | MW3: Defiance | 0 / 14 (0%) | — | — | 0 / 14 (0%) |
@@ -73,18 +73,18 @@ The per-game table assigns each marker to its canonical level's owner game.
 <!-- localization-progress:start -->
 | Scope | Localized | Country fallback | Off-world |
 | --- | ---: | ---: | ---: |
-| All marker locations | 300 / 1034 (29%) | 734 / 1034 (71%) | 30 |
-| Campaign marker locations | 132 / 404 (33%) | 272 / 404 (67%) | 17 |
-| Multiplayer marker locations | 168 / 626 (27%) | 458 / 626 (73%) | 13 |
+| All marker locations | 301 / 1034 (29%) | 733 / 1034 (71%) | 30 |
+| Campaign marker locations | 133 / 405 (33%) | 272 / 405 (67%) | 17 |
+| Multiplayer marker locations | 168 / 625 (27%) | 457 / 625 (73%) | 13 |
 | Zombies marker locations | 0 / 4 (0%) | 4 / 4 (100%) | 0 |
 
 | Precision | Marker locations | Share of all markers |
 | --- | ---: | ---: |
 | Exact | 82 | 8% |
 | Approximate | 128 | 12% |
-| City | 84 | 8% |
+| City | 85 | 8% |
 | Region | 6 | 1% |
-| Country | 734 | 69% |
+| Country | 733 | 69% |
 | Off-world | 30 | 3% |
 
 | Game | Campaign | Multiplayer | Zombies | Overall |
@@ -99,7 +99,7 @@ The per-game table assigns each marker to its canonical level's owner game.
 | Modern Warfare (2007) | 0 / 20 (0%) | 20 / 21 (95%) | — | 20 / 41 (49%) |
 | World at War | 1 / 15 (7%) | 10 / 23 (43%) | 0 / 4 (0%) | 11 / 42 (26%) |
 | World at War: Final Fronts | 7 / 14 (50%) | — | — | 7 / 14 (50%) |
-| Modern Warfare 2 (2009) | 0 / 17 (0%) | 22 / 24 (92%) | — | 22 / 41 (54%) |
+| Modern Warfare 2 (2009) | 1 / 18 (6%) | 22 / 23 (96%) | — | 23 / 41 (56%) |
 | Black Ops | 1 / 16 (6%) | 3 / 30 (10%) | — | 4 / 46 (9%) |
 | Modern Warfare 3 (2011) | 0 / 21 (0%) | 31 / 38 (82%) | — | 31 / 59 (53%) |
 | MW3: Defiance | 0 / 14 (0%) | — | — | 0 / 14 (0%) |

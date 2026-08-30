@@ -71,3 +71,36 @@ test("retargeting an active opacity transition reuses its single animation loop"
   assert.equal(opacityRef.current, 0.2);
   assert.equal(appliedOpacities.at(-1), 0.2);
 });
+
+test("an active opacity transition smoothly reverses when zoom direction changes", () => {
+  const animationClock = createAnimationClock();
+  const animationRef = { current: null };
+  const opacityRef = { current: 0.72 };
+  const targetRef = { current: 0.72 };
+  const appliedOpacities = [];
+  const options = {
+    animationRef,
+    clock: animationClock.clock,
+    opacityRef,
+    overlay: {
+      setOpacity(opacity) {
+        appliedOpacities.push(opacity);
+      },
+    },
+    targetRef,
+  };
+
+  retargetLeafletOverlayOpacity({ ...options, target: 0.15 });
+  for (let frame = 0; frame < 8; frame += 1) animationClock.step();
+  const lowestOpacity = opacityRef.current;
+  retargetLeafletOverlayOpacity({ ...options, target: 0.65 });
+
+  for (let frame = 0; frame < 200 && animationClock.pendingFrames(); frame += 1) {
+    animationClock.step();
+  }
+
+  assert.ok(lowestOpacity < 0.72);
+  assert.ok(appliedOpacities.some((opacity) => opacity > lowestOpacity));
+  assert.equal(opacityRef.current, 0.65);
+  assert.equal(appliedOpacities.at(-1), 0.65);
+});

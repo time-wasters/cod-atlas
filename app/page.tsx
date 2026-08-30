@@ -6,15 +6,17 @@ import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, use
 import { createPortal } from "react-dom";
 import ReactMarkdown from "react-markdown";
 import { buildCampaignRoute } from "../src/application/map/use-cases/build-campaign-route.js";
-import type { AtlasDataDto } from "../src/infrastructure/atlas-data/dto/atlas-data.dto.js";
 import type { AtlasEntryDto } from "../src/infrastructure/atlas-data/dto/atlas-entry.dto.js";
 import type { AtlasGroupDto } from "../src/infrastructure/atlas-data/dto/atlas-group.dto.js";
 import type { GameDto } from "../src/infrastructure/atlas-data/dto/game.dto.js";
 import type { HistoryOverlayDto } from "../src/infrastructure/atlas-data/dto/history-overlay.dto.js";
 import type { MapOverlayDto } from "../src/infrastructure/atlas-data/dto/map-overlay.dto.js";
+import { AtlasDataIndex } from "../src/infrastructure/atlas-data/static-json/atlas-data.index.js";
+import { loadStaticAtlasData } from "../src/infrastructure/atlas-data/static-json/static-atlas-data.loader.js";
+import { loadStaticHistoryOverlays } from "../src/infrastructure/atlas-data/static-json/static-history-overlay.loader.js";
+import { loadStaticMapOverlays } from "../src/infrastructure/atlas-data/static-json/static-map-overlay.loader.js";
 import { parseAtlasUrlState } from "../src/infrastructure/browser/url/atlas-url-state.parser.js";
 import { serializeAtlasUrlState } from "../src/infrastructure/browser/url/atlas-url-state.serializer.js";
-import { applyLeafletOverlayOpacity } from "../src/infrastructure/mapping/leaflet/leaflet-overlay-opacity.applier.js";
 import { retargetLeafletOverlayOpacity } from "../src/infrastructure/mapping/leaflet/leaflet-overlay-opacity-retargeting.animator.js";
 import { animateLeafletOverlayOpacity } from "../src/infrastructure/mapping/leaflet/leaflet-overlay-opacity-transition.animator.js";
 import { calculateLeafletMapOverlayOpacityTarget } from "../src/infrastructure/mapping/leaflet/map-overlay-opacity-target.adapter.js";
@@ -23,9 +25,6 @@ import {
   formatCampaignRouteStopLabel,
   formatCampaignRouteStopOrder,
 } from "../src/presentation/campaigns/formatters/campaign-route-stop-label.formatter.js";
-import atlasSource from "./data/atlas.generated.json";
-import historyOverlaysSource from "./data/history-overlays.generated.json";
-import mapOverlaysSource from "./data/map-overlays.generated.json";
 
 function locationUrl(entry: AtlasEntryDto, provider: "googleMaps" | "wikipedia" | "callOfDutyMaps") {
   return entry.urls?.find((item) => item[provider])?.[provider] ?? null;
@@ -97,14 +96,10 @@ type CampaignOption = {
   }[];
 };
 
-const data = atlasSource as AtlasDataDto;
-const historyOverlays = historyOverlaysSource as Record<string, HistoryOverlayDto[]>;
-const mapOverlays = mapOverlaysSource as Record<string, MapOverlayDto>;
-const gamesById = new Map(data.games.map((game) => [game.id, game]));
-const gamesByCode = new Map(data.games.map((game) => [game.code, game]));
-const countryNames = new Set(data.groups.map((group) => group.name));
-const selections = data.groups.flatMap((group) => group.entries.map((entry) => ({ group, entry })));
-const selectionsByEntryId = new Map(selections.map((selection) => [selection.entry.id, selection]));
+const data = loadStaticAtlasData();
+const historyOverlays = loadStaticHistoryOverlays();
+const mapOverlays = loadStaticMapOverlays();
+const atlasDataIndex = new AtlasDataIndex(data);
 const gameSeriesOptions: FilterOption[] = [
   { value: "world-war-ii", label: "World War II" },
   { value: "modern-warfare", label: "Modern Warfare" },
@@ -1124,20 +1119,19 @@ export default function Home() {
   useEffect(() => {
     const applyUrl = () => {
       const urlState = parseAtlasUrlState(window.location.href);
-      const requestedGame = gamesById.get(urlState.gameId);
+      const requestedGame = atlasDataIndex.findGameById(urlState.gameId);
       const requestedLevelId = urlState.levelId
-        ? data.levelIdAliases[urlState.levelId] ?? urlState.levelId
+        ? atlasDataIndex.resolveLevelId(urlState.levelId)
         : null;
-      const requestedSelection = urlState.levelId
-        ? selections.find(({ entry }) => entry.levelId === requestedLevelId
-          && (!urlState.locationId || entry.locationId === urlState.locationId)) ?? null
+      const requestedSelection = requestedLevelId
+        ? atlasDataIndex.findSelectionByLevelId(requestedLevelId, urlState.locationId) ?? null
         : null;
 
       urlHistoryMode.current = "replace";
       searchEditActive.current = false;
       setQuery(urlState.query);
       setGame(requestedGame?.code ?? "all");
-      setCountry(countryNames.has(urlState.country) ? urlState.country : "all");
+      setCountry(atlasDataIndex.hasCountry(urlState.country) ? urlState.country : "all");
       setGameSeries(new Set(urlState.series.filter((value) => gameSeriesValues.has(value))));
       setGameSubseries(new Set(urlState.subseries.filter((value) => gameSubseriesValues.has(value))));
       setContinents(new Set(urlState.continents.filter((value) => continentValues.has(value))));
@@ -1169,7 +1163,7 @@ export default function Home() {
     if (!urlSyncReady) return;
     const nextUrl = serializeAtlasUrlState(window.location.href, {
       query,
-      gameId: gamesByCode.get(game)?.id ?? "all",
+      gameId: atlasDataIndex.findGameByCode(game)?.id ?? "all",
       country,
       series: [...gameSeries],
       subseries: [...gameSubseries],
@@ -1230,11 +1224,11 @@ export default function Home() {
   const matchesStructuredFilters = useCallback((entry: AtlasEntryDto) => {
     const matchesGame = game === "all" || entry.game.split(" / ").includes(game);
     const matchesSeries = gameSeries.size === 0 || entry.gameIds.some((gameId) => {
-      const entryGame = gamesById.get(gameId);
+      const entryGame = atlasDataIndex.findGameById(gameId);
       return entryGame ? gameSeries.has(entryGame.series) : false;
     });
     const matchesSubseries = gameSubseries.size === 0 || entry.gameIds.some((gameId) => {
-      const entryGame = gamesById.get(gameId);
+      const entryGame = atlasDataIndex.findGameById(gameId);
       return entryGame?.subseries ? gameSubseries.has(entryGame.subseries) : false;
     });
     const matchesPrecision = precisions.size === 0 || precisions.has(entry.precision);
@@ -1298,7 +1292,7 @@ export default function Home() {
     for (const group of groups) {
       for (const entry of group.entries) {
         if (!entry.campaign) continue;
-        const campaignGame = gamesById.get(entry.gameIds[0]);
+        const campaignGame = atlasDataIndex.findGameById(entry.gameIds[0]);
         if (!campaignGame || campaignGame.code !== game) continue;
         const key = `${campaignGame.id}:${entry.campaign.id}`;
         let campaign = campaignsByKey.get(key);
@@ -1350,7 +1344,10 @@ export default function Home() {
         };
       })
       .sort((a, b) => {
-        const gameComparison = compareGames(gamesById.get(a.gameId)!, gamesById.get(b.gameId)!);
+        const gameComparison = compareGames(
+          atlasDataIndex.findGameById(a.gameId)!,
+          atlasDataIndex.findGameById(b.gameId)!,
+        );
         if (gameComparison) return gameComparison;
         return (a.levels[0]?.entry.campaignOrder ?? Number.MAX_SAFE_INTEGER)
           - (b.levels[0]?.entry.campaignOrder ?? Number.MAX_SAFE_INTEGER)
@@ -1364,7 +1361,9 @@ export default function Home() {
     : null;
   const selectedCampaign = explicitlySelectedCampaign ?? urlSelectedCampaign;
   const activeCampaignKey = selectedCampaign?.key ?? null;
-  const selectedCampaignGame = selectedCampaign ? gamesById.get(selectedCampaign.gameId) ?? null : null;
+  const selectedCampaignGame = selectedCampaign
+    ? atlasDataIndex.findGameById(selectedCampaign.gameId) ?? null
+    : null;
   const selectedCampaignGameIcon = selectedCampaignGame ? gameIcon(selectedCampaignGame) : null;
   const selectedCampaignUsesExternalGameIcon = Boolean(
     selectedCampaignGameIcon
@@ -1419,7 +1418,7 @@ export default function Home() {
       .map((entry) => ({ group, entry }))),
     [groups, selected.entry.id, selected.entry.levelId],
   );
-  const selectedGameId = gamesByCode.get(game)?.id ?? null;
+  const selectedGameId = atlasDataIndex.findGameByCode(game)?.id ?? null;
   const selectedAppearance = selected.entry.appearances.find((appearance) => appearance.gameId === selectedGameId)
     ?? selected.entry.appearances[0];
   const ownerAppearance = selected.entry.appearances[0];
@@ -2027,7 +2026,7 @@ export default function Home() {
         opacity: 1,
       });
 
-      const waypointSelection = selectionsByEntryId.get(waypoint.stops[0].entryId);
+      const waypointSelection = atlasDataIndex.findSelectionByEntryId(waypoint.stops[0].entryId);
       if (waypointSelection) {
         routeMarker.on("click", () => selectMapMarker(waypointSelection.group, waypointSelection.entry));
       }
@@ -2125,7 +2124,7 @@ export default function Home() {
     const refreshOpacity = (zoom?: number) => {
       const overlay = mapImageOverlay.current;
       if (!overlay || mapImageOverlayLevelId.current !== selected.entry.levelId) return;
-      applyLeafletOverlayOpacity({
+      retargetLeafletOverlayOpacity({
         animationRef: mapImageOverlayAnimation,
         opacityRef: mapImageOverlayOpacity,
         overlay,
@@ -2750,7 +2749,9 @@ export default function Home() {
             {[...data.games].sort(compareGames).map((catalogGame) => {
               const catalogGameIcon = gameIcon(catalogGame);
               const usesExternalGameIcon = Boolean(catalogGameIcon && catalogGameIcon !== catalogGame.icon);
-              const remasterSource = catalogGame.remasterOf ? gamesById.get(catalogGame.remasterOf) : null;
+              const remasterSource = catalogGame.remasterOf
+                ? atlasDataIndex.findGameById(catalogGame.remasterOf)
+                : null;
               return (
                 <li className="game-catalog-entry" key={catalogGame.id}>
                   <div className="game-catalog-icon" aria-hidden="true">
@@ -2898,7 +2899,7 @@ export default function Home() {
             </FittedLevelTitle>
             <div className="mission-games">
               {selected.entry.gameIds.map((gameId) => {
-                const selectedGame = gamesById.get(gameId);
+                const selectedGame = atlasDataIndex.findGameById(gameId);
                 if (!selectedGame) return null;
                 const selectedGameIcon = gameIcon(selectedGame);
                 const usesExternalGameIcon = Boolean(selectedGameIcon && selectedGameIcon !== selectedGame.icon);
