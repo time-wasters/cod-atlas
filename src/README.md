@@ -48,6 +48,7 @@ src/
 |   |-- browser/
 |   |   |-- animation/
 |   |   |-- downloads/
+|   |   |-- http/
 |   |   |-- local-storage/
 |   |   `-- url/
 |   |-- content/
@@ -138,7 +139,8 @@ can be removed one at a time as real source files are introduced.
 The Wiki importer, external game-icon importer, level-image manager, progress
 reporter, atlas URL-state adapter, generated atlas-data DTOs and read-only JSON
 adapters, atlas filtering, campaign option building, related-level and media
-selection, KML generation, MapLibre label and worker-URL adapters,
+selection, KML generation and downloading, browser HTTP clients, local-storage
+preference stores, MapLibre label and worker-URL adapters,
 campaign-route builder, and map-overlay opacity behavior are the first features
 organized here. Pure Wiki
 article, level-media,

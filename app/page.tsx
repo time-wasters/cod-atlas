@@ -26,6 +26,17 @@ import { AtlasDataIndex } from "../src/infrastructure/atlas-data/static-json/atl
 import { loadStaticAtlasData } from "../src/infrastructure/atlas-data/static-json/static-atlas-data.loader.js";
 import { loadStaticHistoryOverlays } from "../src/infrastructure/atlas-data/static-json/static-history-overlay.loader.js";
 import { loadStaticMapOverlays } from "../src/infrastructure/atlas-data/static-json/static-map-overlay.loader.js";
+import { downloadKmlFile } from "../src/infrastructure/browser/downloads/kml-file.downloader.js";
+import {
+  loadExternalGameIconManifest,
+  type ExternalGameIconManifest,
+} from "../src/infrastructure/browser/http/external-game-icon-manifest.client.js";
+import {
+  loadLevelBriefing,
+  type LevelBriefingResponse,
+} from "../src/infrastructure/browser/http/level-briefing.client.js";
+import { externalGameIconsPreferenceStore } from "../src/infrastructure/browser/local-storage/external-game-icons-preference.store.js";
+import { mapOverlayOpacityPreferenceStore } from "../src/infrastructure/browser/local-storage/map-overlay-opacity-preference.store.js";
 import { parseAtlasUrlState } from "../src/infrastructure/browser/url/atlas-url-state.parser.js";
 import { serializeAtlasUrlState } from "../src/infrastructure/browser/url/atlas-url-state.serializer.js";
 import { retargetLeafletOverlayOpacity } from "../src/infrastructure/mapping/leaflet/leaflet-overlay-opacity-retargeting.animator.js";
@@ -82,11 +93,12 @@ type AdvancedFilterGroupId =
   | "precision"
   | "confidence"
   | "method";
-type ExternalIconManifest = Record<string, {
-  icon?: { provider: "steam" | "steamgriddb"; path: string };
-  clienticon?: { provider: "steam"; path: string };
-}>;
 type Selection = { group: AtlasGroupDto; entry: AtlasEntryDto };
+type LevelBriefingState = LevelBriefingResponse | {
+  levelId: string;
+  status: "loading";
+  content: null;
+};
 
 const data = loadStaticAtlasData();
 const historyOverlays = loadStaticHistoryOverlays();
@@ -194,53 +206,6 @@ const continentValues = valuesFor(continentOptions);
 const precisionValues = valuesFor(precisionOptions);
 const confidenceValues = valuesFor(confidenceOptions);
 const methodValues = valuesFor(methodOptions);
-const EXTERNAL_ICONS_PREFERENCE = "cod-atlas:external-game-icons";
-const externalIconPreferenceListeners = new Set<() => void>();
-const MAP_OVERLAY_ZOOM_OPACITY_PREFERENCE = "cod-atlas:zoom-adaptive-map-overlays";
-const mapOverlayZoomOpacityPreferenceListeners = new Set<() => void>();
-
-function externalIconsEnabledSnapshot() {
-  return typeof window !== "undefined" && window.localStorage.getItem(EXTERNAL_ICONS_PREFERENCE) === "true";
-}
-
-function subscribeToExternalIconPreference(listener: () => void) {
-  externalIconPreferenceListeners.add(listener);
-  const onStorage = (event: StorageEvent) => {
-    if (event.key === EXTERNAL_ICONS_PREFERENCE) listener();
-  };
-  window.addEventListener("storage", onStorage);
-  return () => {
-    externalIconPreferenceListeners.delete(listener);
-    window.removeEventListener("storage", onStorage);
-  };
-}
-
-function setExternalIconsEnabled(enabled: boolean) {
-  window.localStorage.setItem(EXTERNAL_ICONS_PREFERENCE, String(enabled));
-  externalIconPreferenceListeners.forEach((listener) => listener());
-}
-
-function mapOverlayZoomOpacityEnabledSnapshot() {
-  return typeof window === "undefined"
-    || window.localStorage.getItem(MAP_OVERLAY_ZOOM_OPACITY_PREFERENCE) !== "false";
-}
-
-function subscribeToMapOverlayZoomOpacityPreference(listener: () => void) {
-  mapOverlayZoomOpacityPreferenceListeners.add(listener);
-  const onStorage = (event: StorageEvent) => {
-    if (event.key === MAP_OVERLAY_ZOOM_OPACITY_PREFERENCE) listener();
-  };
-  window.addEventListener("storage", onStorage);
-  return () => {
-    mapOverlayZoomOpacityPreferenceListeners.delete(listener);
-    window.removeEventListener("storage", onStorage);
-  };
-}
-
-function setMapOverlayZoomOpacityEnabled(enabled: boolean) {
-  window.localStorage.setItem(MAP_OVERLAY_ZOOM_OPACITY_PREFERENCE, String(enabled));
-  mapOverlayZoomOpacityPreferenceListeners.forEach((listener) => listener());
-}
 const MAP_MAX_ZOOM = 18;
 
 const EXTERNAL_LINK_ICONS = {
@@ -1015,21 +980,21 @@ export default function Home() {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [detailsOpen, setDetailsOpen] = useState(true);
   const [settingsOpen, setSettingsOpen] = useState(false);
-  const [externalIconManifest, setExternalIconManifest] = useState<ExternalIconManifest | null>(null);
+  const [externalIconManifest, setExternalIconManifest] = useState<ExternalGameIconManifest | null>(null);
   const [externalIconManifestUnavailable, setExternalIconManifestUnavailable] = useState(false);
   const [failedExternalGameIcons, setFailedExternalGameIcons] = useState<Set<string>>(() => new Set());
   const [failedLevelBanners, setFailedLevelBanners] = useState<Set<string>>(() => new Set());
   const [disabledMapOverlays, setDisabledMapOverlays] = useState<Set<string>>(() => new Set());
   const [activeHistoryOverlay, setActiveHistoryOverlay] = useState<{ levelId: string; id: string } | null>(null);
   const externalIconsEnabled = useSyncExternalStore(
-    subscribeToExternalIconPreference,
-    externalIconsEnabledSnapshot,
-    () => false,
+    externalGameIconsPreferenceStore.subscribe,
+    externalGameIconsPreferenceStore.getSnapshot,
+    externalGameIconsPreferenceStore.getServerSnapshot,
   );
   const mapOverlayZoomOpacityEnabled = useSyncExternalStore(
-    subscribeToMapOverlayZoomOpacityPreference,
-    mapOverlayZoomOpacityEnabledSnapshot,
-    () => true,
+    mapOverlayOpacityPreferenceStore.subscribe,
+    mapOverlayOpacityPreferenceStore.getSnapshot,
+    mapOverlayOpacityPreferenceStore.getServerSnapshot,
   );
   const [solarSystemDisplay, setSolarSystemDisplay] = useState({
     hasSpaceLocations: true,
@@ -1043,11 +1008,7 @@ export default function Home() {
   const [selectedCampaignKey, setSelectedCampaignKey] = useState<string | null>(null);
   const [urlCampaignLevelId, setUrlCampaignLevelId] = useState<string | null>(null);
   const [expandedLevelNotesId, setExpandedLevelNotesId] = useState<string | null>(null);
-  const [levelNotes, setLevelNotes] = useState<{
-    levelId: string;
-    status: "loading" | "ready" | "missing";
-    content: string | null;
-  } | null>(null);
+  const [levelNotes, setLevelNotes] = useState<LevelBriefingState | null>(null);
   const [selected, setSelected] = useState<Selection>({
     group: initialGroup,
     entry: initialEntry,
@@ -1194,15 +1155,10 @@ export default function Home() {
   useEffect(() => {
     if (!externalIconsEnabled || externalIconManifest || externalIconManifestUnavailable) return;
     const controller = new AbortController();
-    const manifestUrl = new URL("images/games_external/manifest.json", document.baseURI);
-    fetch(manifestUrl, { signal: controller.signal })
-      .then((response) => {
-        if (!response.ok) throw new Error(`External icon manifest returned ${response.status}`);
-        return response.json() as Promise<ExternalIconManifest>;
-      })
+    loadExternalGameIconManifest(controller.signal)
       .then(setExternalIconManifest)
-      .catch((error: unknown) => {
-        if (error instanceof DOMException && error.name === "AbortError") return;
+      .catch(() => {
+        if (controller.signal.aborted) return;
         setExternalIconManifestUnavailable(true);
       });
     return () => controller.abort();
@@ -1505,18 +1461,7 @@ export default function Home() {
     setExpandedLevelNotesId(notesId);
     if (levelNotes?.levelId === notesId) return;
     setLevelNotes({ levelId: notesId, status: "loading", content: null });
-    const notesUrl = new URL(`level-notes/${notesId}.md`, document.baseURI);
-    fetch(notesUrl)
-      .then((response) => {
-        if (!response.ok) throw new Error(`Level notes returned ${response.status}`);
-        return response.text();
-      })
-      .then((content) => setLevelNotes({
-        levelId: notesId,
-        status: content.trim() ? "ready" : "missing",
-        content,
-      }))
-      .catch(() => setLevelNotes({ levelId: notesId, status: "missing", content: null }));
+    loadLevelBriefing(notesId).then(setLevelNotes);
   }, [expandedLevelNotesId, levelNotes?.levelId, selectedAppearance.hasLevelNotes, selectedAppearance.notesId]);
 
   useEffect(() => {
@@ -2127,13 +2072,7 @@ export default function Home() {
   }, [mapReady, sidebarOpen]);
 
   function exportKml() {
-    const kml = buildAtlasKml(filtered);
-    const url = URL.createObjectURL(new Blob([kml], { type: "application/vnd.google-earth.kml+xml" }));
-    const anchor = document.createElement("a");
-    anchor.href = url;
-    anchor.download = "call-of-duty-atlas.kml";
-    anchor.click();
-    URL.revokeObjectURL(url);
+    downloadKmlFile(buildAtlasKml(filtered));
   }
 
   return (
@@ -2177,7 +2116,7 @@ export default function Home() {
                   type="button"
                   role="switch"
                   aria-checked={externalIconsEnabled}
-                  onClick={() => setExternalIconsEnabled(!externalIconsEnabled)}
+                  onClick={() => externalGameIconsPreferenceStore.setEnabled(!externalIconsEnabled)}
                 >
                   <span aria-hidden="true" />
                   <b>{externalIconsEnabled ? "On" : "Off"}</b>
@@ -2194,7 +2133,7 @@ export default function Home() {
                   role="switch"
                   aria-label="Zoom-based overlay fading"
                   aria-checked={mapOverlayZoomOpacityEnabled}
-                  onClick={() => setMapOverlayZoomOpacityEnabled(!mapOverlayZoomOpacityEnabled)}
+                  onClick={() => mapOverlayOpacityPreferenceStore.setEnabled(!mapOverlayZoomOpacityEnabled)}
                 >
                   <span aria-hidden="true" />
                   <b>{mapOverlayZoomOpacityEnabled ? "On" : "Off"}</b>
