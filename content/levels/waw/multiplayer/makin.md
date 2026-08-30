@@ -4,6 +4,9 @@ title: Makin
 games:
   - waw
 mode: multiplayer
+map-update:
+  id: "0"
+  label: Included
 wikiArticle: codwiki-makin
 locations:
   - id: main

@@ -6,6 +6,9 @@ title: Dome
 games:
   - waw
 mode: multiplayer
+map-update:
+  id: "0"
+  label: Included
 wikiArticle: codwiki-dome-world-at-war
 locations:
   - id: main

@@ -4,6 +4,9 @@ title: Airfield
 games:
   - waw
 mode: multiplayer
+map-update:
+  id: "0"
+  label: Included
 wikiArticle: codwiki-airfield-multiplayer
 locations:
   - id: main

@@ -1,10 +1,13 @@
 ---
-id: waw-upheaval
-title: Upheaval
+id: waw-downfall-mp
+title: Downfall MP
 games:
   - waw
 mode: multiplayer
-wikiArticle: codwiki-upheaval
+map-update:
+  id: "0"
+  label: Included
+wikiArticle: codwiki-downfall-multiplayer
 locations:
   - id: main
     country: Germany

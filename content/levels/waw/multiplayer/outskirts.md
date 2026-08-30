@@ -1,10 +1,13 @@
 ---
-id: waw-downfall-mp
-title: Downfall MP
+id: waw-outskirts
+title: Outskirts
 games:
   - waw
 mode: multiplayer
-wikiArticle: codwiki-downfall-multiplayer
+map-update:
+  id: "0"
+  label: Included
+wikiArticle: codwiki-outskirts
 locations:
   - id: main
     country: Germany

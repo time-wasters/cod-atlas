@@ -1,10 +1,13 @@
 ---
-id: waw-outskirts
-title: Outskirts
+id: waw-upheaval
+title: Upheaval
 games:
   - waw
 mode: multiplayer
-wikiArticle: codwiki-outskirts
+map-update:
+  id: "0"
+  label: Included
+wikiArticle: codwiki-upheaval
 locations:
   - id: main
     country: Germany
