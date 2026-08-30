@@ -249,8 +249,8 @@ test("preserves the complete statically compiled atlas", async () => {
     (entry) => entry.title === title && entry.game.split(" / ").includes(game),
   );
 
-  assert.equal(entries.length, 1059);
-  assert.equal(atlas.totals.levels, 1113);
+  assert.equal(entries.length, 1061);
+  assert.equal(atlas.totals.levels, 1115);
   assert.equal(findGroup("France").flagCode, "FR");
   assert.equal(findGroup("Turkey").flagCode, "TR");
   assert.equal(findGroup("United States").flagCode, "US");
@@ -624,6 +624,25 @@ test("preserves the complete statically compiled atlas", async () => {
   assert.equal(blowtorchAndCorkscrew.confidence, "high");
   assert.equal(blowtorchAndCorkscrew.method, "manual-approximate");
 
+  const hangar = findEntry("WAW", "Hangar");
+  assert.deepEqual(hangar.coordinates, [6.9983333, 134.2327778]);
+  assert.equal(hangar.country, "Palau");
+  assert.equal(hangar.region, "Peleliu");
+  assert.equal(hangar.landmark, "Peleliu Airfield");
+  assert.equal(hangar.precision, "approximate");
+  assert.equal(hangar.confidence, "medium");
+  assert.equal(hangar.method, "article-context");
+
+  const roundhouse = findEntry("WAW", "Roundhouse");
+  assert.deepEqual(roundhouse.coordinates, [52.577855, 13.430262]);
+  assert.equal(roundhouse.country, "Germany");
+  assert.equal(roundhouse.region, "Berlin");
+  assert.equal(roundhouse.city, "Berlin");
+  assert.equal(roundhouse.landmark, "Rundlokschuppen Pankow");
+  assert.equal(roundhouse.precision, "approximate");
+  assert.equal(roundhouse.confidence, "medium");
+  assert.equal(roundhouse.method, "real-world-inspiration");
+
   const aDesertRide = findEntry("FH", "A Desert Ride");
   assert.deepEqual(aDesertRide.coordinates, [33.216131, 9.800375]);
   assert.equal(aDesertRide.country, "Tunisia");
@@ -676,7 +695,7 @@ test("preserves the complete statically compiled atlas", async () => {
   assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "singleplayer").length, 27);
   assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "multiplayer").length, 23);
   assert.equal(entries.filter((entry) => entry.modes[0] === "singleplayer").length, 421);
-  assert.equal(entries.filter((entry) => entry.modes[0] === "multiplayer").length, 638);
+  assert.equal(entries.filter((entry) => entry.modes[0] === "multiplayer").length, 640);
 });
 
 test("keeps calibrated game-map overlays in a separate generated store", async () => {

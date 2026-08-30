@@ -33,6 +33,9 @@ src/
 |   |-- preferences/
 |   |   |-- ports/
 |   |   `-- use-cases/
+|   |-- progress-report/
+|   |   |-- ports/
+|   |   `-- use-cases/
 |   `-- wiki-import/
 |       |-- ports/
 |       `-- use-cases/
@@ -58,8 +61,10 @@ src/
 |   |-- mapping/
 |   |   |-- leaflet/
 |   |   `-- maplibre/
-|   `-- media/
-|       `-- sharp/
+|   |-- media/
+|   |   `-- sharp/
+|   `-- reporting/
+|       `-- markdown/
 |-- presentation/                   # React UI grouped by visible feature
 |   |-- atlas/
 |   |   |-- components/
@@ -95,11 +100,13 @@ src/
 | --- | --- |
 | Types and pure atlas rules in `app/page.tsx` | `domain/` |
 | Filtering, selection, campaign routes, export, and preferences | `application/` |
+| Progress calculations and report-update workflow | `application/progress-report/` |
 | Generated atlas, map-overlay, and history-overlay JSON shapes | `infrastructure/atlas-data/dto/` |
 | Generated JSON loading and indexing | `infrastructure/atlas-data/static-json/` |
 | Leaflet and MapLibre integration | `infrastructure/mapping/` |
 | URL, local-storage, and browser-download behavior | `infrastructure/browser/` |
 | Markdown/YAML/filesystem compilation from `scripts/` | `infrastructure/content/` |
+| Generated Markdown progress tables | `infrastructure/reporting/markdown/` |
 | Wiki, country, and image-tool integrations | `infrastructure/external/` and `infrastructure/media/` |
 | Next, Vite, static, and Cloudflare entrypoints | `infrastructure/framework/` |
 | React sections currently in `app/page.tsx` | `presentation/` feature folders |
@@ -114,9 +121,10 @@ can be removed one at a time as real source files are introduced.
 
 ## Migration status
 
-The Wiki importer, external game-icon importer, and level-image manager are the
-first features organized here. Pure Wiki article and level-media rules live in
-`domain/`; import, checking, and preparation workflows live in `application/`;
-provider-specific validation, filesystem safety, Sharp processing, and CLI
-details live in `infrastructure/`. The stable npm commands still enter through
-their existing files under `scripts/`.
+The Wiki importer, external game-icon importer, level-image manager, and progress
+reporter are the first features organized here. Pure Wiki article, level-media,
+research-completion, level-mode, and location-precision rules live in `domain/`;
+import, checking, preparation, and report-update workflows live in
+`application/`; provider-specific validation, filesystem safety, Sharp
+processing, Markdown reporting, and CLI details live in `infrastructure/`. The
+stable npm commands still enter through their existing files under `scripts/`.
