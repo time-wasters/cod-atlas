@@ -4,6 +4,9 @@ title: Vendetta
 games:
   - waw
 mode: singleplayer
+campaign:
+  id: "2"
+  label: Russia
 wikiArticle: codwiki-vendetta
 locations:
   - id: main
