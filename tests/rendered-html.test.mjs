@@ -177,8 +177,8 @@ test("preserves the complete statically compiled atlas", async () => {
     (entry) => entry.title === title && entry.game.split(" / ").includes(game),
   );
 
-  assert.equal(entries.length, 1062);
-  assert.equal(atlas.totals.levels, 1116);
+  assert.equal(entries.length, 1064);
+  assert.equal(atlas.totals.levels, 1118);
   assert.equal(findGroup("France").flagCode, "FR");
   assert.equal(findGroup("Turkey").flagCode, "TR");
   assert.equal(findGroup("United States").flagCode, "US");
@@ -581,6 +581,26 @@ test("preserves the complete statically compiled atlas", async () => {
   assert.equal(subPens.confidence, "medium");
   assert.equal(subPens.method, "real-world-inspiration");
 
+  const fuel = findEntry("MW2", "Fuel");
+  assert.deepEqual(fuel.coordinates, [29.9619, 32.5317]);
+  assert.equal(fuel.country, "Egypt");
+  assert.equal(fuel.region, "Suez Governorate");
+  assert.equal(fuel.city, "Suez");
+  assert.equal(fuel.landmark, "Suez Oil Processing Company");
+  assert.equal(fuel.precision, "approximate");
+  assert.equal(fuel.confidence, "medium");
+  assert.equal(fuel.method, "real-world-inspiration");
+
+  const storm = findEntry("MW2", "Storm");
+  assert.deepEqual(storm.coordinates, [59.88056, 30.19917]);
+  assert.equal(storm.country, "Russia");
+  assert.equal(storm.region, "Saint Petersburg");
+  assert.equal(storm.city, "Saint Petersburg");
+  assert.equal(storm.landmark, "Great Port of Saint Petersburg");
+  assert.equal(storm.precision, "approximate");
+  assert.equal(storm.confidence, "medium");
+  assert.equal(storm.method, "real-world-inspiration");
+
   const aDesertRide = findEntry("FH", "A Desert Ride");
   assert.deepEqual(aDesertRide.coordinates, [33.216131, 9.800375]);
   assert.equal(aDesertRide.country, "Tunisia");
@@ -633,7 +653,7 @@ test("preserves the complete statically compiled atlas", async () => {
   assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "singleplayer").length, 27);
   assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "multiplayer").length, 23);
   assert.equal(entries.filter((entry) => entry.modes[0] === "singleplayer").length, 421);
-  assert.equal(entries.filter((entry) => entry.modes[0] === "multiplayer").length, 637);
+  assert.equal(entries.filter((entry) => entry.modes[0] === "multiplayer").length, 639);
   assert.equal(entries.filter((entry) => entry.modes[0] === "zombies").length, 4);
 });
 
