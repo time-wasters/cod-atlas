@@ -88,6 +88,7 @@ src/
 |   |   `-- styles/
 |   |-- level-briefing/
 |   |   |-- components/
+|   |   |-- hooks/
 |   |   `-- styles/
 |   |-- map/
 |   |   |-- components/
@@ -96,6 +97,7 @@ src/
 |   |   `-- styles/
 |   |-- settings/
 |   |   |-- components/
+|   |   |-- hooks/
 |   |   `-- styles/
 |   |-- solar-system/
 |   |   |-- components/
@@ -140,7 +142,8 @@ The Wiki importer, external game-icon importer, level-image manager, progress
 reporter, atlas URL-state adapter, generated atlas-data DTOs and read-only JSON
 adapters, atlas filtering, campaign option building, related-level and media
 selection, KML generation and downloading, browser HTTP clients, local-storage
-preference stores, MapLibre label and worker-URL adapters,
+preference stores, focused atlas selection, URL synchronization, filter,
+settings, and level-briefing hooks, MapLibre label and worker-URL adapters,
 campaign-route builder, and map-overlay opacity behavior are the first features
 organized here. Pure Wiki
 article, level-media,

@@ -9,3 +9,7 @@ export async function loadExternalGameIconManifest(signal?: AbortSignal) {
   if (!response.ok) throw new Error(`External icon manifest returned ${response.status}`);
   return response.json() as Promise<ExternalGameIconManifest>;
 }
+
+export function resolveExternalGameIconUrl(path: string) {
+  return new URL(path.replace(/^\/+/, ""), document.baseURI).href;
+}

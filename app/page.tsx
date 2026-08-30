@@ -2,7 +2,7 @@
 
 import type { Map as LeafletMap, Marker as LeafletMarker, MarkerClusterGroup } from "leaflet";
 import * as Select from "@radix-ui/react-select";
-import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import ReactMarkdown from "react-markdown";
 import {
@@ -27,18 +27,6 @@ import { loadStaticAtlasData } from "../src/infrastructure/atlas-data/static-jso
 import { loadStaticHistoryOverlays } from "../src/infrastructure/atlas-data/static-json/static-history-overlay.loader.js";
 import { loadStaticMapOverlays } from "../src/infrastructure/atlas-data/static-json/static-map-overlay.loader.js";
 import { downloadKmlFile } from "../src/infrastructure/browser/downloads/kml-file.downloader.js";
-import {
-  loadExternalGameIconManifest,
-  type ExternalGameIconManifest,
-} from "../src/infrastructure/browser/http/external-game-icon-manifest.client.js";
-import {
-  loadLevelBriefing,
-  type LevelBriefingResponse,
-} from "../src/infrastructure/browser/http/level-briefing.client.js";
-import { externalGameIconsPreferenceStore } from "../src/infrastructure/browser/local-storage/external-game-icons-preference.store.js";
-import { mapOverlayOpacityPreferenceStore } from "../src/infrastructure/browser/local-storage/map-overlay-opacity-preference.store.js";
-import { parseAtlasUrlState } from "../src/infrastructure/browser/url/atlas-url-state.parser.js";
-import { serializeAtlasUrlState } from "../src/infrastructure/browser/url/atlas-url-state.serializer.js";
 import { retargetLeafletOverlayOpacity } from "../src/infrastructure/mapping/leaflet/leaflet-overlay-opacity-retargeting.animator.js";
 import { animateLeafletOverlayOpacity } from "../src/infrastructure/mapping/leaflet/leaflet-overlay-opacity-transition.animator.js";
 import { calculateLeafletMapOverlayOpacityTarget } from "../src/infrastructure/mapping/leaflet/map-overlay-opacity-target.adapter.js";
@@ -47,6 +35,18 @@ import {
   formatCampaignRouteStopLabel,
   formatCampaignRouteStopOrder,
 } from "../src/presentation/campaigns/formatters/campaign-route-stop-label.formatter.js";
+import { useAtlasSelection } from "../src/presentation/atlas/hooks/use-atlas-selection.js";
+import {
+  useAtlasUrlSync,
+  type AppliedAtlasUrlState,
+} from "../src/presentation/atlas/hooks/use-atlas-url-sync.js";
+import {
+  useAtlasFilters,
+  type AdvancedFilterGroupId,
+} from "../src/presentation/filters/state/use-atlas-filters.js";
+import { useLevelBriefing } from "../src/presentation/level-briefing/hooks/use-level-briefing.js";
+import { useExternalGameIcons } from "../src/presentation/settings/hooks/use-external-game-icons.js";
+import { useMapOverlayOpacityPreference } from "../src/presentation/settings/hooks/use-map-overlay-opacity-preference.js";
 
 function locationUrl(entry: AtlasEntryDto, provider: "googleMaps" | "wikipedia" | "callOfDutyMaps") {
   return entry.urls?.find((item) => item[provider])?.[provider] ?? null;
@@ -86,19 +86,7 @@ type FilterHoverDetail = {
   years: string;
   games: { label: string; year: string }[];
 };
-type AdvancedFilterGroupId =
-  | "game-series"
-  | "game-subseries"
-  | "continent"
-  | "precision"
-  | "confidence"
-  | "method";
 type Selection = { group: AtlasGroupDto; entry: AtlasEntryDto };
-type LevelBriefingState = LevelBriefingResponse | {
-  levelId: string;
-  status: "loading";
-  content: null;
-};
 
 const data = loadStaticAtlasData();
 const historyOverlays = loadStaticHistoryOverlays();
@@ -206,6 +194,14 @@ const continentValues = valuesFor(continentOptions);
 const precisionValues = valuesFor(precisionOptions);
 const confidenceValues = valuesFor(confidenceOptions);
 const methodValues = valuesFor(methodOptions);
+const atlasFilterValueSets = {
+  gameSeriesValues,
+  gameSubseriesValues,
+  continentValues,
+  precisionValues,
+  confidenceValues,
+  methodValues,
+};
 const MAP_MAX_ZOOM = 18;
 
 const EXTERNAL_LINK_ICONS = {
@@ -373,13 +369,6 @@ function FittedLevelTitle({
 
 function gameCodes(value: string) {
   return value.split(" / ").filter((code) => code && code !== "MP");
-}
-
-function toggledFilterValue(current: Set<string>, value: string) {
-  const next = new Set(current);
-  if (next.has(value)) next.delete(value);
-  else next.add(value);
-  return next;
 }
 
 function compareGames(a: GameDto, b: GameDto) {
@@ -962,40 +951,64 @@ function SolarSystemOverlay({
 }
 
 export default function Home() {
-  const [query, setQuery] = useState("");
-  const [game, setGame] = useState("all");
-  const [country, setCountry] = useState("all");
-  const [gameSeries, setGameSeries] = useState<Set<string>>(() => new Set());
-  const [gameSubseries, setGameSubseries] = useState<Set<string>>(() => new Set());
-  const [continents, setContinents] = useState<Set<string>>(() => new Set());
-  const [precisions, setPrecisions] = useState<Set<string>>(() => new Set());
-  const [confidences, setConfidences] = useState<Set<string>>(() => new Set());
-  const [methods, setMethods] = useState<Set<string>>(() => new Set());
-  const [showSingleplayer, setShowSingleplayer] = useState(true);
-  const [showMultiplayer, setShowMultiplayer] = useState(false);
-  const [showZombies, setShowZombies] = useState(false);
-  const [advancedFiltersOpen, setAdvancedFiltersOpen] = useState(false);
-  const [openAdvancedFilterDropdown, setOpenAdvancedFilterDropdown] = useState<AdvancedFilterGroupId | null>(null);
+  const {
+    query,
+    game,
+    country,
+    gameSeries,
+    gameSubseries,
+    continents,
+    precisions,
+    confidences,
+    methods,
+    showSingleplayer,
+    showMultiplayer,
+    showZombies,
+    advancedFiltersOpen,
+    openAdvancedFilterDropdown,
+    advancedFilterCount,
+    setQuery,
+    setGame,
+    setCountry,
+    setShowSingleplayer,
+    setShowMultiplayer,
+    setShowZombies,
+    applyUrlState: applyFilterUrlState,
+    setAdvancedFilterDropdownOpen,
+    openAdvancedFilters,
+    closeAdvancedFilters,
+    resetAdvancedFilters: resetAdvancedFilterState,
+    toggleGameSeries,
+    clearGameSeries,
+    toggleGameSubseries,
+    clearGameSubseries,
+    toggleContinent,
+    clearContinents,
+    togglePrecision,
+    clearPrecisions,
+    toggleConfidence,
+    clearConfidences,
+    toggleMethod,
+    clearMethods,
+  } = useAtlasFilters(atlasFilterValueSets);
   const [mapReady, setMapReady] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [detailsOpen, setDetailsOpen] = useState(true);
   const [settingsOpen, setSettingsOpen] = useState(false);
-  const [externalIconManifest, setExternalIconManifest] = useState<ExternalGameIconManifest | null>(null);
-  const [externalIconManifestUnavailable, setExternalIconManifestUnavailable] = useState(false);
-  const [failedExternalGameIcons, setFailedExternalGameIcons] = useState<Set<string>>(() => new Set());
+  const {
+    enabled: externalIconsEnabled,
+    unavailable: externalIconManifestUnavailable,
+    iconFor: gameIcon,
+    markUnavailable: markExternalGameIconUnavailable,
+    setEnabled: setExternalIconsEnabled,
+  } = useExternalGameIcons();
   const [failedLevelBanners, setFailedLevelBanners] = useState<Set<string>>(() => new Set());
   const [disabledMapOverlays, setDisabledMapOverlays] = useState<Set<string>>(() => new Set());
   const [activeHistoryOverlay, setActiveHistoryOverlay] = useState<{ levelId: string; id: string } | null>(null);
-  const externalIconsEnabled = useSyncExternalStore(
-    externalGameIconsPreferenceStore.subscribe,
-    externalGameIconsPreferenceStore.getSnapshot,
-    externalGameIconsPreferenceStore.getServerSnapshot,
-  );
-  const mapOverlayZoomOpacityEnabled = useSyncExternalStore(
-    mapOverlayOpacityPreferenceStore.subscribe,
-    mapOverlayOpacityPreferenceStore.getSnapshot,
-    mapOverlayOpacityPreferenceStore.getServerSnapshot,
-  );
+  const {
+    enabled: mapOverlayZoomOpacityEnabled,
+    setEnabled: setMapOverlayZoomOpacityEnabled,
+  } = useMapOverlayOpacityPreference();
   const [solarSystemDisplay, setSolarSystemDisplay] = useState({
     hasSpaceLocations: true,
     expanded: true,
@@ -1007,14 +1020,15 @@ export default function Home() {
   const [sidebarListMode, setSidebarListMode] = useState<"locations" | "campaigns">("locations");
   const [selectedCampaignKey, setSelectedCampaignKey] = useState<string | null>(null);
   const [urlCampaignLevelId, setUrlCampaignLevelId] = useState<string | null>(null);
-  const [expandedLevelNotesId, setExpandedLevelNotesId] = useState<string | null>(null);
-  const [levelNotes, setLevelNotes] = useState<LevelBriefingState | null>(null);
-  const [selected, setSelected] = useState<Selection>({
+  const {
+    selected,
+    selectionInUrl,
+    select: selectAtlasEntry,
+    applyUrlSelection,
+  } = useAtlasSelection<AtlasGroupDto, AtlasEntryDto>({
     group: initialGroup,
     entry: initialEntry,
   });
-  const [selectionInUrl, setSelectionInUrl] = useState(false);
-  const [urlSyncReady, setUrlSyncReady] = useState(false);
   const mapNode = useRef<HTMLDivElement>(null);
   const map = useRef<LeafletMap | null>(null);
   const markerLayer = useRef<MarkerClusterGroup | null>(null);
@@ -1044,8 +1058,6 @@ export default function Home() {
   const infoDialog = useRef<HTMLDialogElement>(null);
   const gameCatalogDialog = useRef<HTMLDialogElement>(null);
   const intelCard = useRef<HTMLDivElement>(null);
-  const urlHistoryMode = useRef<"push" | "replace">("replace");
-  const searchEditActive = useRef(false);
 
   const groups = data.groups;
   const games = useMemo(() => {
@@ -1054,115 +1066,6 @@ export default function Home() {
     );
     return data.games.filter((item) => representedCodes.has(item.code)).sort(compareGames);
   }, [groups]);
-  const gameIcon = useCallback((game: GameDto) => {
-    const externalPath = externalIconsEnabled && !failedExternalGameIcons.has(game.id)
-      ? externalIconManifest?.[game.id]?.icon?.path
-      : null;
-    return externalPath
-      ? new URL(externalPath.replace(/^\/+/, ""), document.baseURI).href
-      : game.icon;
-  }, [externalIconManifest, externalIconsEnabled, failedExternalGameIcons]);
-
-  useEffect(() => {
-    const applyUrl = () => {
-      const urlState = parseAtlasUrlState(window.location.href);
-      const requestedGame = atlasDataIndex.findGameById(urlState.gameId);
-      const requestedLevelId = urlState.levelId
-        ? atlasDataIndex.resolveLevelId(urlState.levelId)
-        : null;
-      const requestedSelection = requestedLevelId
-        ? atlasDataIndex.findSelectionByLevelId(requestedLevelId, urlState.locationId) ?? null
-        : null;
-
-      urlHistoryMode.current = "replace";
-      searchEditActive.current = false;
-      setQuery(urlState.query);
-      setGame(requestedGame?.code ?? "all");
-      setCountry(atlasDataIndex.hasCountry(urlState.country) ? urlState.country : "all");
-      setGameSeries(new Set(urlState.series.filter((value) => gameSeriesValues.has(value))));
-      setGameSubseries(new Set(urlState.subseries.filter((value) => gameSubseriesValues.has(value))));
-      setContinents(new Set(urlState.continents.filter((value) => continentValues.has(value))));
-      setPrecisions(new Set(urlState.precisions.filter((value) => precisionValues.has(value))));
-      setConfidences(new Set(urlState.confidences.filter((value) => confidenceValues.has(value))));
-      setMethods(new Set(urlState.methods.filter((value) => methodValues.has(value))));
-      setShowSingleplayer(urlState.showSingleplayer);
-      setShowMultiplayer(urlState.showMultiplayer);
-      setShowZombies(urlState.showZombies);
-      setSidebarListMode(urlState.sidebarListMode === "campaigns" && requestedGame ? "campaigns" : "locations");
-      setUrlCampaignLevelId(urlState.sidebarListMode === "campaigns" && requestedGame && requestedSelection
-        ? requestedSelection.entry.levelId
-        : null);
-      setSelected(requestedSelection ?? { group: initialGroup, entry: initialEntry });
-      setSelectionInUrl(requestedSelection !== null);
-      setSelectedCampaignKey(null);
-      setExpandedRegionEntryId(null);
-      setExpandedLevelNotesId(null);
-      setActiveHistoryOverlay(null);
-      setUrlSyncReady(true);
-    };
-
-    applyUrl();
-    window.addEventListener("popstate", applyUrl);
-    return () => window.removeEventListener("popstate", applyUrl);
-  }, []);
-
-  useEffect(() => {
-    if (!urlSyncReady) return;
-    const nextUrl = serializeAtlasUrlState(window.location.href, {
-      query,
-      gameId: atlasDataIndex.findGameByCode(game)?.id ?? "all",
-      country,
-      series: [...gameSeries],
-      subseries: [...gameSubseries],
-      continents: [...continents],
-      precisions: [...precisions],
-      confidences: [...confidences],
-      methods: [...methods],
-      showSingleplayer,
-      showMultiplayer,
-      showZombies,
-      sidebarListMode,
-      levelId: selectionInUrl ? selected.entry.levelId : null,
-      locationId: selectionInUrl ? selected.entry.locationId : null,
-    });
-    const currentRelativeUrl = `${window.location.pathname}${window.location.search}${window.location.hash}`;
-    const nextRelativeUrl = `${nextUrl.pathname}${nextUrl.search}${nextUrl.hash}`;
-    if (nextRelativeUrl !== currentRelativeUrl) {
-      const method = urlHistoryMode.current === "replace" ? "replaceState" : "pushState";
-      window.history[method](window.history.state, "", nextRelativeUrl);
-    }
-    urlHistoryMode.current = "push";
-  }, [
-    country,
-    confidences,
-    continents,
-    game,
-    gameSeries,
-    gameSubseries,
-    methods,
-    precisions,
-    query,
-    selected.entry.levelId,
-    selected.entry.locationId,
-    selectionInUrl,
-    showMultiplayer,
-    showSingleplayer,
-    showZombies,
-    sidebarListMode,
-    urlSyncReady,
-  ]);
-
-  useEffect(() => {
-    if (!externalIconsEnabled || externalIconManifest || externalIconManifestUnavailable) return;
-    const controller = new AbortController();
-    loadExternalGameIconManifest(controller.signal)
-      .then(setExternalIconManifest)
-      .catch(() => {
-        if (controller.signal.aborted) return;
-        setExternalIconManifestUnavailable(true);
-      });
-    return () => controller.abort();
-  }, [externalIconManifest, externalIconManifestUnavailable, externalIconsEnabled]);
   const { groups: filtered, countries } = useMemo(() => filterAtlasGroups<AtlasEntryDto, AtlasGroupDto>({
     groups,
     games: data.games,
@@ -1230,24 +1133,6 @@ export default function Home() {
     }));
   }, [filtered]);
   const resultCount = filtered.reduce((sum, group) => sum + group.entries.length, 0);
-  const advancedFilterCount = gameSeries.size
-    + gameSubseries.size
-    + continents.size
-    + precisions.size
-    + confidences.size
-    + methods.size;
-  const setAdvancedFilterDropdownOpen = useCallback((id: AdvancedFilterGroupId, open: boolean) => {
-    setOpenAdvancedFilterDropdown((current) => open ? id : current === id ? null : current);
-  }, []);
-  const resetAdvancedFilters = useCallback(() => {
-    urlHistoryMode.current = "push";
-    setGameSeries(new Set());
-    setGameSubseries(new Set());
-    setContinents(new Set());
-    setPrecisions(new Set());
-    setConfidences(new Set());
-    setMethods(new Set());
-  }, []);
   const spaceLocations = useMemo(
     () => filtered.flatMap((group) => group.entries
       .filter((entry) => entry.precision === "off-world")
@@ -1277,6 +1162,54 @@ export default function Home() {
   });
   const selectedImageLoaded = selectedImageKey !== null && loadedImageKey === selectedImageKey;
   const selectedImageFailed = selectedImageKey !== null && failedImageKey === selectedImageKey;
+  const {
+    expanded: levelNotesExpanded,
+    briefing: selectedLevelNotes,
+    toggle: toggleLevelNotes,
+    collapse: collapseLevelBriefing,
+  } = useLevelBriefing({
+    levelId: selectedAppearance.notesId,
+    available: selectedAppearance.hasLevelNotes,
+  });
+  const applyAtlasUrlState = useCallback((urlState: AppliedAtlasUrlState<Selection>) => {
+    applyFilterUrlState(urlState.filters);
+    applyUrlSelection(urlState.selection);
+    setSidebarListMode(urlState.sidebarListMode);
+    setUrlCampaignLevelId(urlState.campaignLevelId);
+    setSelectedCampaignKey(null);
+    setExpandedRegionEntryId(null);
+    collapseLevelBriefing();
+    setActiveHistoryOverlay(null);
+  }, [applyFilterUrlState, applyUrlSelection, collapseLevelBriefing]);
+  const {
+    setNextHistoryMode,
+    prepareSearchUpdate,
+    finishSearchUpdate,
+  } = useAtlasUrlSync<Selection>({
+    dataIndex: atlasDataIndex,
+    filters: {
+      query,
+      game,
+      country,
+      gameSeries,
+      gameSubseries,
+      continents,
+      precisions,
+      confidences,
+      methods,
+      showSingleplayer,
+      showMultiplayer,
+      showZombies,
+    },
+    selected,
+    selectionInUrl,
+    sidebarListMode,
+    onApplyUrlState: applyAtlasUrlState,
+  });
+  const resetAdvancedFilters = useCallback(() => {
+    setNextHistoryMode("push");
+    resetAdvancedFilterState();
+  }, [resetAdvancedFilterState, setNextHistoryMode]);
   const { otherLevelLocations, relatedLevels } = useMemo(
     () => findRelatedLevels<AtlasEntryDto, AtlasGroupDto>({
       groups,
@@ -1289,9 +1222,6 @@ export default function Home() {
   const relatedLevelsExpanded = expandedRegionEntryId === relatedLevelsExpansionKey;
   const visibleRelatedLevels = relatedLevelsExpanded ? relatedLevels : relatedLevels.slice(0, 8);
   const hiddenRelatedLevelCount = relatedLevels.length - visibleRelatedLevels.length;
-  const levelNotesExpanded = selectedAppearance.hasLevelNotes
-    && expandedLevelNotesId === selectedAppearance.notesId;
-  const selectedLevelNotes = levelNotes?.levelId === selectedAppearance.notesId ? levelNotes : null;
   const selectedMapOverlay = mapOverlays[selected.entry.levelId] ?? null;
   const selectedMapOverlayEnabled = selectedMapOverlay !== null && !disabledMapOverlays.has(selected.entry.levelId);
   const selectedHistoryOverlays = historyOverlays[selected.entry.levelId] ?? [];
@@ -1318,13 +1248,12 @@ export default function Home() {
   }, [mapOverlayZoomOpacityEnabled]);
 
   const selectEntry = useCallback((group: AtlasGroupDto, entry: AtlasEntryDto) => {
-    urlHistoryMode.current = "push";
-    setSelected({ group, entry });
-    setSelectionInUrl(true);
+    setNextHistoryMode("push");
+    selectAtlasEntry(group, entry);
     setExpandedRegionEntryId(null);
-    setExpandedLevelNotesId(null);
+    collapseLevelBriefing();
     setActiveHistoryOverlay(null);
-  }, []);
+  }, [collapseLevelBriefing, selectAtlasEntry, setNextHistoryMode]);
 
   const toggleHistoryOverlay = useCallback((overlay: HistoryOverlayDto) => {
     const isActive = activeHistoryOverlay?.levelId === overlay.levelId
@@ -1450,19 +1379,6 @@ export default function Home() {
   const focusSelectedMarker = useCallback(() => {
     focusEntryOnMap(selected.entry);
   }, [focusEntryOnMap, selected.entry]);
-
-  const toggleLevelNotes = useCallback(() => {
-    if (!selectedAppearance.hasLevelNotes) return;
-    const notesId = selectedAppearance.notesId;
-    if (expandedLevelNotesId === notesId) {
-      setExpandedLevelNotesId(null);
-      return;
-    }
-    setExpandedLevelNotesId(notesId);
-    if (levelNotes?.levelId === notesId) return;
-    setLevelNotes({ levelId: notesId, status: "loading", content: null });
-    loadLevelBriefing(notesId).then(setLevelNotes);
-  }, [expandedLevelNotesId, levelNotes?.levelId, selectedAppearance.hasLevelNotes, selectedAppearance.notesId]);
 
   useEffect(() => {
     mediaDialog.current?.close();
@@ -2116,7 +2032,7 @@ export default function Home() {
                   type="button"
                   role="switch"
                   aria-checked={externalIconsEnabled}
-                  onClick={() => externalGameIconsPreferenceStore.setEnabled(!externalIconsEnabled)}
+                  onClick={() => setExternalIconsEnabled(!externalIconsEnabled)}
                 >
                   <span aria-hidden="true" />
                   <b>{externalIconsEnabled ? "On" : "Off"}</b>
@@ -2133,7 +2049,7 @@ export default function Home() {
                   role="switch"
                   aria-label="Zoom-based overlay fading"
                   aria-checked={mapOverlayZoomOpacityEnabled}
-                  onClick={() => mapOverlayOpacityPreferenceStore.setEnabled(!mapOverlayZoomOpacityEnabled)}
+                  onClick={() => setMapOverlayZoomOpacityEnabled(!mapOverlayZoomOpacityEnabled)}
                 >
                   <span aria-hidden="true" />
                   <b>{mapOverlayZoomOpacityEnabled ? "On" : "Off"}</b>
@@ -2151,13 +2067,10 @@ export default function Home() {
           <input
             value={query}
             onChange={(event) => {
-              urlHistoryMode.current = searchEditActive.current ? "replace" : "push";
-              searchEditActive.current = true;
+              prepareSearchUpdate();
               setQuery(event.target.value);
             }}
-            onBlur={() => {
-              searchEditActive.current = false;
-            }}
+            onBlur={finishSearchUpdate}
             placeholder="Search missions, maps, countries…"
             aria-label="Search locations"
           />
@@ -2180,7 +2093,7 @@ export default function Home() {
               games={games}
               value={game}
               onValueChange={(value) => {
-                urlHistoryMode.current = "push";
+                setNextHistoryMode("push");
                 setGame(value);
                 setSelectedCampaignKey(null);
                 setUrlCampaignLevelId(null);
@@ -2195,7 +2108,7 @@ export default function Home() {
               countries={countries}
               value={country}
               onValueChange={(value) => {
-                urlHistoryMode.current = "push";
+                setNextHistoryMode("push");
                 setCountry(value);
               }}
             />
@@ -2208,7 +2121,7 @@ export default function Home() {
             type="button"
             aria-pressed={showSingleplayer}
             onClick={() => {
-              urlHistoryMode.current = "push";
+              setNextHistoryMode("push");
               setShowSingleplayer((visible) => !visible);
             }}
           >
@@ -2219,7 +2132,7 @@ export default function Home() {
             type="button"
             aria-pressed={showMultiplayer}
             onClick={() => {
-              urlHistoryMode.current = "push";
+              setNextHistoryMode("push");
               setShowMultiplayer((visible) => !visible);
             }}
           >
@@ -2230,7 +2143,7 @@ export default function Home() {
             type="button"
             aria-pressed={showZombies}
             onClick={() => {
-              urlHistoryMode.current = "push";
+              setNextHistoryMode("push");
               setShowZombies((visible) => !visible);
             }}
           >
@@ -2245,10 +2158,7 @@ export default function Home() {
                 className="advanced-filters-back"
                 type="button"
                 aria-label="Close advanced filters"
-                onClick={() => {
-                  setAdvancedFiltersOpen(false);
-                  setOpenAdvancedFilterDropdown(null);
-                }}
+                onClick={closeAdvancedFilters}
               >
                 <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m10 3-5 5 5 5" /></svg>
               </button>
@@ -2278,12 +2188,12 @@ export default function Home() {
                 hoverDetails={gameSeriesDetails}
                 onOpenChange={(open) => setAdvancedFilterDropdownOpen("game-series", open)}
                 onToggle={(value) => {
-                  urlHistoryMode.current = "push";
-                  setGameSeries((current) => toggledFilterValue(current, value));
+                  setNextHistoryMode("push");
+                  toggleGameSeries(value);
                 }}
                 onClear={() => {
-                  urlHistoryMode.current = "push";
-                  setGameSeries(new Set());
+                  setNextHistoryMode("push");
+                  clearGameSeries();
                 }}
               />
               <AdvancedFilterDropdown
@@ -2295,12 +2205,12 @@ export default function Home() {
                 hoverDetails={gameSubseriesDetails}
                 onOpenChange={(open) => setAdvancedFilterDropdownOpen("game-subseries", open)}
                 onToggle={(value) => {
-                  urlHistoryMode.current = "push";
-                  setGameSubseries((current) => toggledFilterValue(current, value));
+                  setNextHistoryMode("push");
+                  toggleGameSubseries(value);
                 }}
                 onClear={() => {
-                  urlHistoryMode.current = "push";
-                  setGameSubseries(new Set());
+                  setNextHistoryMode("push");
+                  clearGameSubseries();
                 }}
               />
               <AdvancedFilterDropdown
@@ -2311,12 +2221,12 @@ export default function Home() {
                 open={openAdvancedFilterDropdown === "continent"}
                 onOpenChange={(open) => setAdvancedFilterDropdownOpen("continent", open)}
                 onToggle={(value) => {
-                  urlHistoryMode.current = "push";
-                  setContinents((current) => toggledFilterValue(current, value));
+                  setNextHistoryMode("push");
+                  toggleContinent(value);
                 }}
                 onClear={() => {
-                  urlHistoryMode.current = "push";
-                  setContinents(new Set());
+                  setNextHistoryMode("push");
+                  clearContinents();
                 }}
               />
 
@@ -2328,12 +2238,12 @@ export default function Home() {
                 open={openAdvancedFilterDropdown === "precision"}
                 onOpenChange={(open) => setAdvancedFilterDropdownOpen("precision", open)}
                 onToggle={(value) => {
-                  urlHistoryMode.current = "push";
-                  setPrecisions((current) => toggledFilterValue(current, value));
+                  setNextHistoryMode("push");
+                  togglePrecision(value);
                 }}
                 onClear={() => {
-                  urlHistoryMode.current = "push";
-                  setPrecisions(new Set());
+                  setNextHistoryMode("push");
+                  clearPrecisions();
                 }}
               />
               <AdvancedFilterDropdown
@@ -2344,12 +2254,12 @@ export default function Home() {
                 open={openAdvancedFilterDropdown === "confidence"}
                 onOpenChange={(open) => setAdvancedFilterDropdownOpen("confidence", open)}
                 onToggle={(value) => {
-                  urlHistoryMode.current = "push";
-                  setConfidences((current) => toggledFilterValue(current, value));
+                  setNextHistoryMode("push");
+                  toggleConfidence(value);
                 }}
                 onClear={() => {
-                  urlHistoryMode.current = "push";
-                  setConfidences(new Set());
+                  setNextHistoryMode("push");
+                  clearConfidences();
                 }}
               />
               <AdvancedFilterDropdown
@@ -2360,12 +2270,12 @@ export default function Home() {
                 open={openAdvancedFilterDropdown === "method"}
                 onOpenChange={(open) => setAdvancedFilterDropdownOpen("method", open)}
                 onToggle={(value) => {
-                  urlHistoryMode.current = "push";
-                  setMethods((current) => toggledFilterValue(current, value));
+                  setNextHistoryMode("push");
+                  toggleMethod(value);
                 }}
                 onClear={() => {
-                  urlHistoryMode.current = "push";
-                  setMethods(new Set());
+                  setNextHistoryMode("push");
+                  clearMethods();
                 }}
               />
             </div>
@@ -2373,10 +2283,7 @@ export default function Home() {
             <button
               className="advanced-filters-results"
               type="button"
-              onClick={() => {
-                setAdvancedFiltersOpen(false);
-                setOpenAdvancedFilterDropdown(null);
-              }}
+              onClick={closeAdvancedFilters}
             >
               Show <strong>{resultCount}</strong> results
             </button>
@@ -2387,7 +2294,7 @@ export default function Home() {
               className={`advanced-filter-trigger${advancedFilterCount ? " is-active" : ""}`}
               type="button"
               aria-expanded="false"
-              onClick={() => setAdvancedFiltersOpen(true)}
+              onClick={openAdvancedFilters}
             >
               <span>
                 <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3 5h12M5 9h8M7 13h4" /></svg>
@@ -2417,7 +2324,7 @@ export default function Home() {
               aria-selected={sidebarListMode === "locations"}
               aria-controls="sidebar-locations"
               onClick={() => {
-                urlHistoryMode.current = "push";
+                setNextHistoryMode("push");
                 setSidebarListMode("locations");
                 setSelectedCampaignKey(null);
                 setUrlCampaignLevelId(null);
@@ -2435,7 +2342,7 @@ export default function Home() {
               disabled={game === "all"}
               title={game === "all" ? "Choose a game to browse campaigns" : undefined}
               onClick={() => {
-                urlHistoryMode.current = "push";
+                setNextHistoryMode("push");
                 setSidebarListMode("campaigns");
               }}
             >
@@ -2581,7 +2488,7 @@ export default function Home() {
                         alt=""
                         onError={() => {
                           if (usesExternalGameIcon) {
-                            setFailedExternalGameIcons((failed) => new Set(failed).add(catalogGame.id));
+                            markExternalGameIconUnavailable(catalogGame.id);
                           }
                         }}
                       />
@@ -2728,7 +2635,7 @@ export default function Home() {
                     external={usesExternalGameIcon}
                     onError={() => {
                       if (usesExternalGameIcon) {
-                        setFailedExternalGameIcons((failed) => new Set(failed).add(gameId));
+                        markExternalGameIconUnavailable(gameId);
                       }
                     }}
                   />
@@ -2962,7 +2869,7 @@ export default function Home() {
                   alt=""
                   onError={() => {
                     if (selectedCampaignUsesExternalGameIcon) {
-                      setFailedExternalGameIcons((failed) => new Set(failed).add(selectedCampaignGame.id));
+                      markExternalGameIconUnavailable(selectedCampaignGame.id);
                     }
                   }}
                 />

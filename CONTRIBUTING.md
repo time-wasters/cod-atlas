@@ -54,7 +54,7 @@ Create a Markdown file under the primary game's directory. If that game is
 already organized by map type, place it in `campaign/`, `multiplayer/`, or
 `zombies/` to match its `mode` field. Currently `cod`, `cod-uo`, `cod-fh`,
 `cod2`, `cod2-bro`, `cod3`, `rtv`, `cod4`, `wz`, `wz2`, and `mwiii` use the
-first two folders; `bo6` uses all three. Games that have not been reorganized
+first two folders; `waw`, `bo`, and `bo6` use all three. Games that have not been reorganized
 retain their existing flat layout.
 
 Campaign files in a map-type layout are named

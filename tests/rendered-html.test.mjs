@@ -177,8 +177,8 @@ test("preserves the complete statically compiled atlas", async () => {
     (entry) => entry.title === title && entry.game.split(" / ").includes(game),
   );
 
-  assert.equal(entries.length, 1064);
-  assert.equal(atlas.totals.levels, 1118);
+  assert.equal(entries.length, 1065);
+  assert.equal(atlas.totals.levels, 1119);
   assert.equal(findGroup("France").flagCode, "FR");
   assert.equal(findGroup("Turkey").flagCode, "TR");
   assert.equal(findGroup("United States").flagCode, "US");
@@ -395,6 +395,7 @@ test("preserves the complete statically compiled atlas", async () => {
     ["mw2-derail", "derail"],
     ["mw2-estate", "estate"],
     ["mw2-favela", "favela"],
+    ["mw2-fuel", "fuel/"],
     ["mw2-highrise", "highrise"],
     ["mw2-invasion", "invasion"],
     ["mw2-karachi", "karachi"],
@@ -405,6 +406,7 @@ test("preserves the complete statically compiled atlas", async () => {
     ["mw2-salvage", "salvage"],
     ["mw2-scrapyard", "scrapyard"],
     ["mw2-skidrow", "skidrow"],
+    ["mw2-storm", "storm/"],
     ["mw2-sub-base", "sub-base"],
     ["mw2-trailer-park", "trailer-park"],
     ["mw2-underpass", "underpass"],
@@ -652,9 +654,13 @@ test("preserves the complete statically compiled atlas", async () => {
   const cod2Entries = entries.filter((entry) => entry.game.split(" / ").includes("COD2"));
   assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "singleplayer").length, 27);
   assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "multiplayer").length, 23);
-  assert.equal(entries.filter((entry) => entry.modes[0] === "singleplayer").length, 421);
-  assert.equal(entries.filter((entry) => entry.modes[0] === "multiplayer").length, 639);
-  assert.equal(entries.filter((entry) => entry.modes[0] === "zombies").length, 4);
+  const five = findEntry("BO", '"Five"');
+  assert.equal(five.landmark, "The Pentagon");
+  assert.deepEqual(five.coordinates, [38.871857, -77.056267]);
+  assert.equal(five.modes[0], "zombies");
+  assert.equal(entries.filter((entry) => entry.modes[0] === "singleplayer").length, 422);
+  assert.equal(entries.filter((entry) => entry.modes[0] === "multiplayer").length, 633);
+  assert.equal(entries.filter((entry) => entry.modes[0] === "zombies").length, 10);
 });
 
 test("keeps calibrated game-map overlays in a separate generated store", async () => {
