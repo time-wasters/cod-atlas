@@ -111,3 +111,11 @@ source code and its contracts, not a replacement data store.
 
 The placeholder files exist only so Git records the planned directories. They
 can be removed one at a time as real source files are introduced.
+
+## Migration status
+
+The Wiki importer is the first feature organized here. Its pure Wiki article
+identity and sequence rules live in `domain/wiki-article/`; import selection
+and orchestration live in `application/wiki-import/`; MediaWiki, filesystem,
+and CLI details live in `infrastructure/`. The stable npm command still enters
+through `scripts/import-wiki-articles.mjs`.
