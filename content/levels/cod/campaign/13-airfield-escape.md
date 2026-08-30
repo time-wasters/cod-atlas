@@ -43,7 +43,7 @@ drives across the tarmac and escapes by air.
 Fritzlar Air Base is the strongest real-world candidate. “Kurhessen” is the
 historical name for northern Hesse, and Fritzlar lies in the Eder lowlands east
 of the Edertalsperre. The Luftwaffe constructed the field during the military
-expansion of 1935–38. Its original complex included hangars, barracks, and a
+expansion of 1935-38. Its original complex included hangars, barracks, and a
 flight-operations building with a control tower, making it a substantially
 better match than a generic regional or country marker.
 
@@ -68,7 +68,7 @@ treated as a fictional airfield composition.
 
 The represented SAS operation is likewise unsupported. British SAS formations
 did conduct sabotage, reconnaissance, resistance support, and target marking
-in north-west Europe during 1944–45, but the reviewed institutional history
+in north-west Europe during 1944-45, but the reviewed institutional history
 does not document Price, Evans, Waters, or a 2 SAS penetration from the Eder
 Dam to Fritzlar. The level continues the invented commando narrative of the two
 preceding missions while attaching it to a credible German military site.
@@ -94,17 +94,17 @@ the atlas marker uses the curated coordinates above.
   — mission dialogue and continuity with the assembled SAS team and captured
   escape aircraft.
 - [City of Fritzlar: historical timeline](https://www.fritzlar.de/leben-wohnen/stadtportrait/aus-der-geschichte/zeittafel-zur-ortsgeschichte/)
-  — official municipal account of the airfield's 1935–38 construction in the
+  — official municipal account of the airfield's 1935-38 construction in the
   Eder lowlands, early Luftwaffe occupation, and original control building.
 - [Fritzlar history association: 75 years of Fritzlar airfield](https://gdh-fritzlar.de/downloads/02A%2075Jahre_FlPlatzFZ.pdf)
   — detailed local history of the wartime airfield, Junkers works, aircraft
   production, and September 1944 night-fighter deployment.
-- [Henry L. deZeng IV: *Luftwaffe Airfields 1935–45, Germany*](https://www.ww2.dk/Airfields%20-%20Germany%20%5B1937%20Borders%5D.pdf)
+- [Henry L. deZeng IV: *Luftwaffe Airfields 1935-45, Germany*](https://www.ww2.dk/Airfields%20-%20Germany%20%5B1937%20Borders%5D.pdf)
   — compiled wartime airfield history, infrastructure, stationed units, and
   aircraft evidence for Fritzlar.
 - [National Army Museum: Special Air Service](https://www.nam.ac.uk/explore/SAS)
   — formation of 2 SAS and the documented European role of the SAS Brigade in
-  1944–45.
+  1944-45.
 - [Fritzlar Air Base](https://en.wikipedia.org/wiki/Fritzlar_Air_Base)
   — consolidated history of Junkers production and III/NJG 1's Bf 110 and Ju
   88 deployment at Fritzlar.

@@ -133,7 +133,7 @@ link covers Remagen and its bridge history.
   — Hoge's decision, capture of the town, demolition attempt, engineer work,
   bridgehead, and bridge collapse.
 - [City of Remagen: Remagen walking tour](https://www.remagen.de/Tourismus-Veranstaltungen/Touristische-Highlights/Stadtrundgang/Remagen-Stadt/)
-  — official history of the 1835–39 Rathaus and its town-square setting.
+  — official history of the 1835-39 Rathaus and its town-square setting.
 - [City of Remagen: Town Hall address](https://www.remagen.de/Rathaus-Buergerservice/Buergerservice-von-A---Z/Oeffnungszeiten/)
   — current official address at Bachstraße 2.
 - [Wikimedia Commons: Rathaus Remagen](https://commons.wikimedia.org/wiki/Category:Rathaus_(Remagen))

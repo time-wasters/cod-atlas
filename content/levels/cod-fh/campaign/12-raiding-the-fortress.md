@@ -58,7 +58,7 @@ spelling variant of Ksar Tarcine. The real ruin is the late Roman Centenarium
 Tibubuci in present-day Kebili Governorate, on the eastern edge of the Grand
 Erg Oriental.
 
-An inscription dates the post to approximately AD 303–305. Archaeological
+An inscription dates the post to approximately AD 303-305. Archaeological
 descriptions show that it was a small frontier installation: a roughly
 0.32-hectare enclosure surrounding a central building about 15 by 15 metres.
 It occupied a low rise above Wadi Hallouf and served the Limes Tripolitanus,
@@ -93,7 +93,7 @@ Ksar Tarcine.
 
 The real crisis happened at a concealed vehicle camp, not inside a Roman fort.
 While three jeeps conducted the forward reconnaissance, German aircraft found
-the PPA–LRDG camp in a wadi about 60 miles south of Matmata. Yunnie records nine
+the PPA-LRDG camp in a wadi about 60 miles south of Matmata. Yunnie records nine
 trucks and the wireless jeep being destroyed and two LRDG men being wounded.
 The surviving patrol then faced a difficult withdrawal without the level's
 fortress assault or prisoner extraction.

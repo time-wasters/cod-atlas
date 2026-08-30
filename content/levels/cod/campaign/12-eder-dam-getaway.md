@@ -42,8 +42,8 @@ reach an airfield “approx. 8 mile away” at the map reference `033875`.
 
 Fritzlar is nevertheless a plausible inspiration for the unnamed destination.
 Its Luftwaffe airfield was constructed in the Eder lowlands during the German
-military expansion of 1935–38, supported Junkers aircraft production during the
-war, and hosted night-fighter units in 1944–45. It is the strongest documented
+military expansion of 1935-38, supported Junkers aircraft production during the
+war, and hosted night-fighter units in 1944-45. It is the strongest documented
 wartime airfield near the dam and is already used—with medium confidence—for
 the following “Airfield Escape” level. However, Fritzlar Air Base lies about
 17.5 kilometres (roughly 11 miles) from the Edertalsperre even in a straight
@@ -93,7 +93,7 @@ street in Affoldern; the atlas marker uses the curated coordinates above.
   — archival evidence that the breached dam was rebuilt by the end of 1943.
 - [National Army Museum: Special Air Service](https://www.nam.ac.uk/explore/SAS)
   — formation of 2 SAS and the SAS Brigade's documented European role during
-  1944–45.
+  1944-45.
 - [City of Fritzlar: historical timeline](https://www.fritzlar.de/leben-wohnen/stadtportrait/aus-der-geschichte/zeittafel-zur-ortsgeschichte/)
   — official municipal history placing construction of the military airfield
   in the Eder lowlands between 1935 and 1938.

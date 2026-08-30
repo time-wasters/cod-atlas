@@ -68,7 +68,7 @@ same place.
 
 The real 13th Guards Rifle Division under Major General Alexander Rodimtsev was
 sent to prevent German forces from severing the 62nd Army's central Volga
-crossing. Its units crossed at night over September 14–15 and 15–16, using
+crossing. Its units crossed at night over September 14-15 and 15-16, using
 boats and barges while the river and landings were bombed and shelled. They
 then fought toward the city centre, Stalingrad-1 railway station, and Mamayev
 Kurgan while holding the narrow western-bank bridgehead. This makes the game's
@@ -115,7 +115,7 @@ to the English article for Volgograd, the modern name of the real location.
   — archival presentation of the July 28, 1942 order behind the mission title.
 - [Stalingrad Battle Museum-Reserve: Central Crossing over the Volga](https://ar.culture.ru/ru/subject/centralnaya-pereprava-cherez-volgu)
   — museum account of the 13th Guards crossing at the salt wharf over the
-  nights of September 14–16 and the crossing's operational importance.
+  nights of September 14-16 and the crossing's operational importance.
 - [Boris Yeltsin Presidential Library: 13th Guards crossing the Volga](https://www.prlib.ru/item/1826465)
   — catalogued contemporary photograph of the division's September 1942 river
   crossing on pontoon boats.

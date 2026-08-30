@@ -55,7 +55,7 @@ and control changed repeatedly during that day and the next. After the 13th
 Guards crossed the Volga, Lieutenant Anton Kuzmich Dragan's 1st Company of the
 1st Battalion, 42nd Guards Rifle Regiment was ordered into the station sector.
 A peer-reviewed reconstruction based on Soviet and German records confirms the
-company's participation in the September 14–15 fighting. The division continued
+company's participation in the September 14-15 fighting. The division continued
 to fight around Station No. 1 and the neighbouring blocks during the game's
 September 18 date, suffering exceptionally heavy losses.
 
@@ -91,7 +91,7 @@ Station by name; the atlas marker uses the curated coordinates above.
   — mission date, location, represented unit, objective, and plot.
 - [GameSpot: Call of Duty Walkthrough — The Train Station](https://www.gamespot.com/articles/call-of-duty-walkthrough/1100-6081710/)
   — contemporary description of the station, rail-yard route, and rendezvous.
-- [A. K. Elokhina and E. V. Stelnik: “Reconstruction of the First Battles for the Central Railway Station of Stalingrad on September 14–15, 1942”](https://hfrir.jvolsu.com/index.php/en/archive-en/952-science-journal-of-volsu-history-area-studies-international-relations-2022-vol-27-no-5/history-of-russian-regions/2684-elokhina-a-k-stelnik-e-v-reconstruction-of-the-first-battles-for-the-central-railway-station-of-stalingrad-on-september-14-15-1942)
+- [A. K. Elokhina and E. V. Stelnik: “Reconstruction of the First Battles for the Central Railway Station of Stalingrad on September 14-15, 1942”](https://hfrir.jvolsu.com/index.php/en/archive-en/952-science-journal-of-volsu-history-area-studies-international-relations-2022-vol-27-no-5/history-of-russian-regions/2684-elokhina-a-k-stelnik-e-v-reconstruction-of-the-first-battles-for-the-central-railway-station-of-stalingrad-on-september-14-15-1942)
   — peer-reviewed reconstruction of the station battle and Dragan's 42nd Guards
   company using Soviet and German records.
 - [U.S. Army historical series: *Moscow to Stalingrad — Decision in the East*](https://www.ibiblio.org/hyperwar/USA/USA-EF-Decision/USA-EF-Decision-19.html)
@@ -102,7 +102,7 @@ Station by name; the atlas marker uses the curated coordinates above.
   the 13th Guards.
 - [13th Guards Poltavaskaya history project](https://www.13thguardspoltavaskaya.com/history.html)
   — detailed maps and identification of the 1st Battalion, 42nd Guards positions
-  at Station No. 1 on September 17–19; used as supporting placement evidence.
+  at Station No. 1 on September 17-19; used as supporting placement evidence.
 - [Volgograd-1 railway station](https://en.wikipedia.org/wiki/Volgograd_railway_station)
   — station history, wartime destruction, and construction of the present
   building on the old site from 1951 to 1954.

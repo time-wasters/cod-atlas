@@ -77,7 +77,7 @@ mistake narrative continuity for evidence of the sewer route.
 
 The mission draws on a well-documented problem encountered by the 26th Infantry
 Regiment of the 1st Infantry Division. During the assault that began on October
-12–13, Lieutenant Colonel Derrill M. Daniel's 2nd Battalion advanced through
+12-13, Lieutenant Colonel Derrill M. Daniel's 2nd Battalion advanced through
 the centre while Lieutenant Colonel John T. Corley's 3rd Battalion attacked
 through the factory district toward Aachen's northern heights. The US Army's
 official history records German soldiers bypassed American troops through

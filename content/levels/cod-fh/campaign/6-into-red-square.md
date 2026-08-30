@@ -130,7 +130,7 @@ above, and the English Wikipedia URL identifies the same real station.
   Tatsinskaya operation.
 - [Volgograd railway station](https://en.wikipedia.org/wiki/Volgograd_railway_station)
   — English-language identification and coordinates of Volgograd-1, its
-  continuity with the wartime station site, wartime destruction, and 1951–54
+  continuity with the wartime station site, wartime destruction, and 1951-54
   replacement building.
 - [Square of the Fallen Fighters](https://en.wikipedia.org/wiki/Square_of_the_Fallen_Fighters)
   — English-language overview of the square's wartime fighting, surviving

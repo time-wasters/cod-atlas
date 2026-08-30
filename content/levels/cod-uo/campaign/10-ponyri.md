@@ -103,16 +103,16 @@ tanks alongside infantry in the game is therefore credible in general terms.
 The mission’s 67th Guards Rifle Division attribution is not historically
 credible. That division belonged to the 6th Guards Army on the **southern**
 face of the salient and was still fighting west of the Oboyan road around
-10–12 July. It could not have transferred roughly across the salient in the
+10-12 July. It could not have transferred roughly across the salient in the
 short interval described by Petrenko’s letter. The letter compounds the error
 by saying the unit was temporarily attached to the 6th Guards Army: the 67th
 Guards already served with that army, whereas the real Ponyri battle belonged
 to the 13th Army. Petrenko and his squad remain fictional devices connecting
 two historically separate sectors.
 
-The date of **11 July** falls within the accepted 5–11 July Ponyri defensive
+The date of **11 July** falls within the accepted 5-11 July Ponyri defensive
 operation, but the level more closely resembles a composite of the Soviet
-counterattacks of 8–10 July. By the night of 10–11 July, the exhausted 307th
+counterattacks of 8-10 July. By the night of 10-11 July, the exhausted 307th
 Rifle Division was being relieved by the 3rd and 4th Guards Airborne
 Divisions. German attacks continued in the area on the 11th, but by that
 evening the German 9th Army’s attempt to break through the 13th Army sector
@@ -164,13 +164,13 @@ specific station article is available only in Russian.
   route through Ponyri and factory ending.
 - [US Army Combat Studies Institute — *Soviet Defensive Tactics at Kursk, July 1943*](https://www.armyupress.army.mil/Portals/7/combat-studies-institute/csi-books/glantz2.pdf)
   — Central Front and 13th Army dispositions, the 307th Rifle Division,
-  station fighting, Soviet counterattacks, relief on 10–11 July and German
+  station fighting, Soviet counterattacks, relief on 10-11 July and German
   withdrawal.
 - [Soviet General Staff study — *The Battle for Kursk 1943*](https://znaci.org/00002/404.pdf)
   — operational context for the separate northern and southern sectors and
   the 67th Guards Rifle Division’s continued fighting on the southern face.
 - [Ponyri Historical and Memorial Museum of the Battle of Kursk](https://www.culture.ru/institutes/5101/ponyrovskii-istoriko-memorialnyi-muzei-kurskoi-bitvy)
-  — official museum description of the Ponyri defensive operation from 5–11
+  — official museum description of the Ponyri defensive operation from 5-11
   July and its diorama of the station battle on 10 July.
 - [Ponyri Museum — History of the 307th Rifle Division](https://ponyrimuseum.ucoz.ru/publ/podrazdelenija_krasnoj_armii/307_ja_sd/3-1-0-2)
   — local account of the division, reinforcing formations, counterattacks and

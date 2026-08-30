@@ -71,7 +71,7 @@ documented feature of the raid rather than inventing the entire premise.
 
 The wider battle was not a single-file advance across one base. Other elements
 of the 24th Tank Corps simultaneously attacked Tatsinskaya from the north,
-west, and east, cut the Morozovsk–Tatsinskaya railway, and fought for the
+west, and east, cut the Morozovsk-Tatsinskaya railway, and fought for the
 settlement, station, stores, and airfield. Real resistance included Romanian
 antiaircraft troops as well as German personnel; the game lists and depicts
 the defenders simply as Wehrmacht. The title's “ambush” is broadly fair because

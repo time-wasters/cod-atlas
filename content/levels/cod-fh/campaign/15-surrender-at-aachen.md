@@ -67,7 +67,7 @@ The game also has the M12 strike its target, whereas Wilck began surrender
 arrangements before the real self-propelled 155 mm gun attacked the bunker.
 
 The bunker itself no longer survives. It was demolished during redevelopment
-in 2014–15 and replaced by housing. Two bronze *Wege gegen das Vergessen*
+in 2014-15 and replaced by housing. Two bronze *Wege gegen das Vergessen*
 memorial plaques were returned to the former site in 2019. One is documented
 at Rütscher Straße 60, so visitors can still locate the historically relevant
 place even though its wartime structure has disappeared.
@@ -76,7 +76,7 @@ place even though its wartime structure has disappeared.
 
 The real surrender was the culmination of a longer operation than the level
 shows. The 26th Infantry Regiment of the 1st Infantry Division entered Aachen
-on October 12–13. Lieutenant Colonel Derrill M. Daniel's 2nd Battalion advanced
+on October 12-13. Lieutenant Colonel Derrill M. Daniel's 2nd Battalion advanced
 through the centre while Lieutenant Colonel John T. Corley's 3rd Battalion
 fought through the factory district and toward the northern heights. The city
 was encircled on October 16, but costly building-by-building combat continued.

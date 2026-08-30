@@ -51,7 +51,7 @@ not be interpreted as the site's formal modern name.
 ## The Real Mission & Differences
 
 The represented unit is historically well matched to this location. After
-crossing the Volga on September 14–15, Major General Alexander Rodimtsev's 13th
+crossing the Volga on September 14-15, Major General Alexander Rodimtsev's 13th
 Guards Rifle Division fought in central Stalingrad. Local historical records
 place its defence of the square between September 15 and 27. The 1st Battalion
 of the division's 42nd Guards Rifle Regiment used the Univermag department

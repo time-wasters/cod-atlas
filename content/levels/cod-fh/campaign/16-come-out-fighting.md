@@ -61,7 +61,7 @@ reconstruction of Tillet.
 The marker is at Saint-Ouen Church in the centre of Tillet. A polished black
 plaque on the church tower commemorates the African American soldiers of the
 761st Tank Battalion who fought in the area. Its bilingual inscription names
-the Battle of Tillet and dates it to January 5–9, 1945. The plaque was dedicated
+the Battle of Tillet and dates it to January 5-9, 1945. The plaque was dedicated
 in 2021, so it is a modern memorial rather than a surviving wartime position.
 
 ## The Real Mission & Differences
@@ -77,7 +77,7 @@ The real battle lasted five days. On January 9, Captain Charles A. Gates led ten
 Shermans of Company C against German tanks, anti-tank guns, and infantry on a
 height near Tillet. Almost all of those tanks were lost, but the 761st and 87th
 Infantry Division took the village that evening. They then established blocks
-on the Marche–Bastogne road, helping cut a supply artery used by German forces
+on the Marche-Bastogne road, helping cut a supply artery used by German forces
 operating toward Bastogne. This closely parallels Rivers' briefing, although
 the game compresses the fighting into one continuous playable assault.
 
@@ -118,12 +118,12 @@ Tillet as one of its constituent districts.
   — the 761st at Tillet, attachment to the 87th Infantry Division, Gates'
   January 9 attack, tank losses, and capture of the village.
 - [US Army Combat Studies Institute: *Combat Multipliers*](https://www.armyupress.army.mil/Portals/7/combat-studies-institute/csi-books/CombatMultipliers.pdf)
-  — official study of African American combat units, the January 5–9 battle,
+  — official study of African American combat units, the January 5-9 battle,
   capture of Tillet, and its strategic effect on the Bastogne sector.
 - [US Army Center of Military History: 761st Tank Battalion](https://history.army.mil/Research/Reference-Topics/African-Americans-in-the-US-Army/761st-Tank-Battalion/)
   — official unit chronology, campaigns, and Presidential Unit Citation.
 - [US Army *ARMOR*: Tillet letter and plaque dedication](https://www.benning.army.mil/armor/earmor/content/issues/2022/Spring/2Letters22.pdf)
-  — terrain and weather, January 9 withdrawal, Marche–Bastogne roadblocks, and
+  — terrain and weather, January 9 withdrawal, Marche-Bastogne roadblocks, and
   the 2021 plaque dedication.
 - [American War Memorials Overseas: Tillet site](https://www.uswarmemorials.org/html/site_details.php?SiteID=2041)
   — plaque address, church-tower location, and exact coordinate.

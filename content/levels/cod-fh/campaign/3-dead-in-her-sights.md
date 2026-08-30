@@ -68,7 +68,7 @@ fighting. No evidence was found for the specific October 3 route shown here.
 
 Much of the plant was destroyed in the battle, rebuilt after the war, and
 substantially altered again after industrial decline. The monumental main
-entrance visible today dates from 1953–55, not 1942, although it provides a
+entrance visible today dates from 1953-55, not 1942, although it provides a
 stable, protected landmark at the historic plant complex.
 
 ## The Real Mission & Differences
@@ -80,7 +80,7 @@ the Barrikady workers' settlement, the 193rd Rifle Division around the Red
 October settlement, and the 39th Guards Rifle Division at the Red October
 plant. The Soviet command reinforced the Tractor Factory sector with Major
 General Viktor Zholudev's 37th Guards Rifle Division and the 84th Tank Brigade;
-the 37th Guards crossed into Stalingrad during the night of October 2–3.
+the 37th Guards crossed into Stalingrad during the night of October 2-3.
 
 This makes the factory warning and the presence of tanks historically
 plausible, but the represented formation is mismatched. Rodimtsev's 13th

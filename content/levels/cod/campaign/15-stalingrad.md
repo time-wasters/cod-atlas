@@ -44,7 +44,7 @@ The unit and broad geography have a strong historical basis. On September 14,
 German forces broke into central Stalingrad and threatened the central landing
 stage, one of the 62nd Army's essential links across the Volga. Rodimtsev's
 13th Guards was rushed forward as reinforcement. Its leading regiments crossed
-on the night of September 14–15 and went directly into combat for the city
+on the night of September 14-15 and went directly into combat for the city
 centre, the main railway station, Mamayev Kurgan, and the narrow bridgehead
 along the western bank. The 42nd Guards Rifle Regiment landed in the central
 embankment sector near the brewery and NKVD complex; the ruined Gerhardt Mill
@@ -90,7 +90,7 @@ curated coordinates above.
 - [GameSpot: Call of Duty Walkthrough — Stalingrad](https://www.gamespot.com/articles/call-of-duty-walkthrough/1100-6083436/)
   — contemporary account of the mission and its resemblance to *Enemy at the
   Gates*.
-- [U.S. Army Center of Military History: *The German Campaign in Russia: Planning and Operations (1940–1942)*](https://history.army.mil/portals/143/Images/Publications/catalog/104-21.pdf)
+- [U.S. Army Center of Military History: *The German Campaign in Russia: Planning and Operations (1940-1942)*](https://history.army.mil/portals/143/Images/Publications/catalog/104-21.pdf)
   — official historical overview of the September fighting, Soviet
   reinforcement across the Volga, and the contested western-bank foothold.
 - [U.S. Army Combat Studies Institute: *Block by Block: The Challenges of Urban Operations*](https://www.armyupress.army.mil/Portals/7/combat-studies-institute/csi-books/BlockByBlock_TheChallengesOfUrbanOperations.pdf)

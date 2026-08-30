@@ -81,7 +81,7 @@ treated as a compressed, fictional layout.
 ## The Real Mission & Differences
 
 The historical SRS action did continue after the destruction of Lamba Doria,
-but not as an escape. On the night of 9–10 July 1943, the force commanded by
+but not as an escape. On the night of 9-10 July 1943, the force commanded by
 Major Robert Blair “Paddy” Mayne landed from *Ulster Monarch*, scaled the cape
 and captured the Italian battery. British sappers disabled its three 152 mm
 guns. By about 05:30 the raiders had moved clear and were heading toward
@@ -167,7 +167,7 @@ nearby Capo Murro di Porco Lighthouse and its named cape.
 - [Combat Archives — The Raid on Capo Murro di Porco](https://www.combatarchives.com/post/the-raid-on-capo-murro-di-porco)
   — detailed landing plan, Masseria Damerio's road-blocking role, the regroup,
   subsequent peninsula batteries and the return to *Ulster Monarch*.
-- [Lamba Doria Association — Augusta–Syracuse maritime fortress study](https://lambadoria.it/bunker/articoli/Piazza%20Militare%20Marittima%20di%20Augusta.pdf)
+- [Lamba Doria Association — Augusta-Syracuse maritime fortress study](https://lambadoria.it/bunker/articoli/Piazza%20Militare%20Marittima%20di%20Augusta.pdf)
   — peninsula defences, Italian garrison, Lamba Doria armament, Mayne's force,
   cliff assault and gun demolition.
 - [BLIA — georeferenced cultural properties in Syracuse](https://www.blia.it/beni-culturali/?c=327)

@@ -77,7 +77,7 @@ identifies the real Rathaus, not every part of the playable level.
 The historical framework is unusually close even though the level's squad
 action is fictionalized. The US Army's official history records that the 26th
 Infantry Regiment of the 1st Infantry Division began the assault into Aachen
-on October 12–13. Lieutenant Colonel Derrill M. Daniel's 2nd Battalion advanced
+on October 12-13. Lieutenant Colonel Derrill M. Daniel's 2nd Battalion advanced
 through the city centre while Lieutenant Colonel John T. Corley's 3rd
 Battalion cleared factories and attacked toward the northern heights. The city
 was progressively isolated, and its German garrison surrendered on October 21.

@@ -79,7 +79,7 @@ the battlefield rather than the memorial or central Bastogne.
 
 No evidence was found that the level's roads, village houses, company
 headquarters or individual foxholes reproduce a surveyed wartime layout. They
-are best understood as a condensed representation of the Bois Jacques–Foy
+are best understood as a condensed representation of the Bois Jacques-Foy
 sector.
 
 ## The Real Mission & Differences
@@ -109,7 +109,7 @@ sectors:
   strike against the Bois Jacques ridge.
 - The game's order expects a “46th Volksgrenadier Division” and 2nd Panzer
   Division. The principal documented German formation attacking the
-  Foy–Noville sector was the 26th Volksgrenadier Division, alongside elements
+  Foy-Noville sector was the 26th Volksgrenadier Division, alongside elements
   of 2nd Panzer earlier in the battle. By 26 December, the spearhead of 2nd
   Panzer was far west of Bastogne and trying to escape encirclement. The game's
   German order of battle therefore mixes a mistaken division number with an
@@ -158,7 +158,7 @@ for Foy, the appropriate local-language fallback for this Walloon site.
 - [Call of Duty Wiki — Bois Jacques](https://callofduty.fandom.com/wiki/Bois_Jacques)
   — level identity, character, unit, stated place, date and main objective.
 - [Call of Duty Wiki — Bois Jacques transcript](https://callofduty.fandom.com/wiki/Bois_Jacques/Transcript)
-  — operational order, Dog–Easy–Fox company deployment, terrain description,
+  — operational order, Dog-Easy-Fox company deployment, terrain description,
   reconnaissance route, P-47 strike, bazooka defence and Sherman arrival.
 - [GameFAQs — *Call of Duty: United Offensive* guide and mission debriefings](https://gamefaqs.gamespot.com/pc/920122-call-of-duty-united-offensive/faqs/32408)
   — the game's after-action report and its conflicting 24 December date.
@@ -168,7 +168,7 @@ for Foy, the appropriate local-language fallback for this Walloon site.
   the 4th Armored Division's relief route through Assenois.
 - [506th PIR Association — 2nd Battalion Headquarters history and research guide](https://www.airborne506.org/wp-content/uploads/Reenactor_Guide_Version_1.1.pdf)
   — 2nd Battalion's arrival, L-shaped company dispositions, supporting weapons,
-  German infiltration on 20–21 December and later operations.
+  German infiltration on 20-21 December and later operations.
 - [Battle of the Bulge Historic Trail](https://bel-memorial.org/documents/Battle_of_the_Bulge_Historic_Trail.pdf)
   — surviving Bois Jacques foxholes, battlefield directions and published
   coordinates used for the marker.
@@ -179,7 +179,7 @@ for Foy, the appropriate local-language fallback for this Walloon site.
   — relationship among Bois Jacques, Foy, the 506th PIR positions and the later
   January attack.
 - [Liberation Route Europe — The Attack on Foy](https://www.liberationroute.com/en/pois/1165/the-attack-of-13-january-in-foy)
-  — 506th PIR chronology, German formations in the Foy–Noville sector and the
+  — 506th PIR chronology, German formations in the Foy-Noville sector and the
   distinction between the December defence and January advance.
 - [Wikipedia — 46th Infantry Division (Wehrmacht)](https://en.wikipedia.org/wiki/46th_Infantry_Division_(Wehrmacht))
   — the formation's later redesignation as the 46th Volksgrenadier Division,

@@ -135,7 +135,7 @@ coordinate above.
 - [UK Parliament, House of Lords: War Situation, January 19, 1943](https://hansard.parliament.uk/Lords/1943-01-19/debates/e263ae70-f9f8-4b9d-82e9-63d532b5f172/WarSituation)
   — contemporary account of the Eighth Army still advancing through
   Tripolitania immediately before the mission's stated date.
-- [National Army Museum: The struggle for North Africa, 1940–43](https://www.nam.ac.uk/explore/struggle-north-africa-1940-43)
+- [National Army Museum: The struggle for North Africa, 1940-43](https://www.nam.ac.uk/explore/struggle-north-africa-1940-43)
   — the Eighth Army's advance from El Alamein through Libya into Tunisia and
   the central importance of desert fuel logistics.
 - [UNESCO World Heritage Centre: Troglodyte habitat and the world of the ksour of southern Tunisia](https://whc.unesco.org/fr/listesindicatives/6444/)
