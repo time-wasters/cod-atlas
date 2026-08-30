@@ -16,24 +16,14 @@
  * @property {[number, number]} coordinates
  */
 
-function sameCoordinates(left, right) {
+function haveSameCoordinates(left, right) {
   return left[0] === right[0] && left[1] === right[1];
 }
 
-function stopLabel(orders) {
-  const uniqueOrders = [...new Set(orders)].sort((left, right) => left - right);
-  const first = uniqueOrders[0];
-  const last = uniqueOrders.at(-1);
-  const consecutive = uniqueOrders.every((order, index) => index === 0 || order === uniqueOrders[index - 1] + 1);
-  const format = (order) => String(order).padStart(2, "0");
-  if (uniqueOrders.length > 1 && consecutive) return `${format(first)}\u2013${format(last)}`;
-  return uniqueOrders.map(format).join(",");
-}
-
 /**
- * Converts ordered campaign levels into polyline segments and display stops.
- * Unmapped levels deliberately break the line so unrelated locations are not
- * connected across an unknown or off-world mission.
+ * Converts ordered campaign levels into route segments and waypoint groups.
+ * Unmapped levels break the route so unrelated locations are not connected
+ * across an unknown or off-world mission.
  *
  * @param {CampaignRouteLevel[]} levels
  */
@@ -69,18 +59,11 @@ export function buildCampaignRoute(levels) {
     waypointGroups.set(coordinateKey, waypoint);
 
     const previousCoordinates = currentSegment.at(-1);
-    if (!previousCoordinates || !sameCoordinates(previousCoordinates, level.coordinates)) {
+    if (!previousCoordinates || !haveSameCoordinates(previousCoordinates, level.coordinates)) {
       currentSegment.push(level.coordinates);
     }
   });
 
   if (currentSegment.length > 1) segments.push(currentSegment);
-
-  return {
-    segments,
-    waypoints: [...waypointGroups.values()].map((waypoint) => ({
-      ...waypoint,
-      label: stopLabel(waypoint.stops.map((stop) => stop.order)),
-    })),
-  };
+  return { segments, waypoints: [...waypointGroups.values()] };
 }

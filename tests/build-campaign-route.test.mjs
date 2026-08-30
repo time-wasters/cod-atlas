@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { buildCampaignRoute } from "../app/campaign-route.js";
+import { buildCampaignRoute } from "../src/application/map/use-cases/build-campaign-route.js";
 
 function level(entryId, order, coordinates, title = `Mission ${order}`) {
   return {
@@ -25,10 +25,13 @@ test("campaign routes preserve order and break around unmapped levels", () => {
     [[10, 20], [11, 21]],
     [[30, 40], [31, 41]],
   ]);
-  assert.deepEqual(route.waypoints.map((waypoint) => waypoint.label), ["01", "02", "04", "05"]);
+  assert.deepEqual(
+    route.waypoints.flatMap((waypoint) => waypoint.stops.map((stop) => stop.order)),
+    [1, 2, 4, 5],
+  );
 });
 
-test("campaign routes combine repeated coordinates without duplicating line points", () => {
+test("campaign routes group repeated coordinates without duplicating line points", () => {
   const route = buildCampaignRoute([
     level("one", 1, [10, 20], "Arrival"),
     level("two", 2, [10, 20], "Return"),
@@ -36,16 +39,5 @@ test("campaign routes combine repeated coordinates without duplicating line poin
   ]);
 
   assert.deepEqual(route.segments, [[[10, 20], [12, 22]]]);
-  assert.equal(route.waypoints[0].label, "01\u201302");
   assert.deepEqual(route.waypoints[0].stops.map((stop) => stop.title), ["Arrival", "Return"]);
-});
-
-test("campaign route labels retain non-consecutive visits to the same point", () => {
-  const route = buildCampaignRoute([
-    level("one", 1, [10, 20]),
-    level("two", 2, [11, 21]),
-    level("three", 3, [10, 20]),
-  ]);
-
-  assert.equal(route.waypoints[0].label, "01,03");
 });

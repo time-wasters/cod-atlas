@@ -5,13 +5,17 @@ import * as Select from "@radix-ui/react-select";
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import ReactMarkdown from "react-markdown";
+import { buildCampaignRoute } from "../src/application/map/use-cases/build-campaign-route.js";
 import { parseAtlasUrlState } from "../src/infrastructure/browser/url/atlas-url-state.parser.js";
 import { serializeAtlasUrlState } from "../src/infrastructure/browser/url/atlas-url-state.serializer.js";
 import { applyEnglishMapLibreLabels } from "../src/infrastructure/mapping/maplibre/maplibre-english-labels.adapter.js";
+import {
+  formatCampaignRouteStopLabel,
+  formatCampaignRouteStopOrder,
+} from "../src/presentation/campaigns/formatters/campaign-route-stop-label.formatter.js";
 import atlasSource from "./data/atlas.generated.json";
 import historyOverlaysSource from "./data/history-overlays.generated.json";
 import mapOverlaysSource from "./data/map-overlays.generated.json";
-import { buildCampaignRoute } from "./campaign-route.js";
 import { mapOverlayOpacityAtZoom } from "./map-overlay-opacity.js";
 
 type Entry = {
@@ -2196,12 +2200,17 @@ export default function Home() {
     });
 
     route.waypoints.forEach((waypoint) => {
-      const stopTitles = waypoint.stops.map((stop) => `${String(stop.order).padStart(2, "0")} \u00b7 ${stop.title}`);
+      const waypointLabel = formatCampaignRouteStopLabel(
+        waypoint.stops.map((stop) => stop.order),
+      );
+      const stopTitles = waypoint.stops.map((stop) => (
+        `${formatCampaignRouteStopOrder(stop.order)} \u00b7 ${stop.title}`
+      ));
       const routeMarker = L.marker(waypoint.coordinates, {
         pane: "campaignRoute",
         icon: L.divIcon({
           className: "campaign-route-stop-wrap",
-          html: `<span class="campaign-route-stop">${waypoint.label}</span>`,
+          html: `<span class="campaign-route-stop">${waypointLabel}</span>`,
           iconSize: [22, 18],
           iconAnchor: [-5, 23],
         }),
