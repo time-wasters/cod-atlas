@@ -4,6 +4,9 @@ title: Betio Assault
 games:
   - waw-ff
 mode: singleplayer
+campaign:
+  id: "1"
+  label: War in the Pacific
 wikiArticle: codwiki-betio-assault
 locations:
   - id: main

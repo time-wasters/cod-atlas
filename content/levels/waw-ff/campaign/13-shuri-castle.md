@@ -4,6 +4,9 @@ title: Shuri Castle
 games:
   - waw-ff
 mode: singleplayer
+campaign:
+  id: "4"
+  label: Victory in the Pacific
 wikiArticle: codwiki-shuri-castle-level
 locations:
   - id: main

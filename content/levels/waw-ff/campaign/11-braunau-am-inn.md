@@ -4,6 +4,9 @@ title: Braunau am Inn
 games:
   - waw-ff
 mode: singleplayer
+campaign:
+  id: "3"
+  label: Victory in Europe
 wikiArticle: codwiki-braunau-am-inn
 locations:
   - id: main

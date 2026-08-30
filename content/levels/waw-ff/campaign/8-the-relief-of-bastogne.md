@@ -1,10 +1,13 @@
 ---
-id: waw-ff-the-race-to-bastogne
-title: The Race to Bastogne
+id: waw-ff-the-relief-of-bastogne
+title: The Relief of Bastogne
 games:
   - waw-ff
 mode: singleplayer
-wikiArticle: codwiki-the-race-to-bastogne
+campaign:
+  id: "2"
+  label: Winter Offensive
+wikiArticle: codwiki-the-relief-of-bastogne
 locations:
   - id: main
     country: Belgium

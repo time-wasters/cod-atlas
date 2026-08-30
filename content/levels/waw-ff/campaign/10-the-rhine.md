@@ -4,6 +4,9 @@ title: The Rhine
 games:
   - waw-ff
 mode: singleplayer
+campaign:
+  id: "3"
+  label: Victory in Europe
 wikiArticle: codwiki-the-rhine-final-fronts
 locations:
   - id: main

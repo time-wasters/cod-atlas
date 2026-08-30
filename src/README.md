@@ -122,10 +122,11 @@ can be removed one at a time as real source files are introduced.
 ## Migration status
 
 The Wiki importer, external game-icon importer, level-image manager, progress
-reporter, and atlas URL-state adapter are the first features organized here.
-Pure Wiki article, level-media, research-completion, level-mode, and
-location-precision rules live in `domain/`; import, checking, preparation, and
-report-update workflows live in `application/`; provider-specific validation,
-filesystem safety, Sharp processing, Markdown reporting, browser URL transport,
-and CLI details live in `infrastructure/`. Stable npm commands still enter
-through their existing files under `scripts/`.
+reporter, atlas URL-state adapter, and MapLibre label adapter are the first
+features organized here. Pure Wiki article, level-media, research-completion,
+level-mode, and location-precision rules live in `domain/`; import, checking,
+preparation, and report-update workflows live in `application/`;
+provider-specific validation, filesystem safety, Sharp processing, Markdown
+reporting, browser URL transport, MapLibre integration, and CLI details live in
+`infrastructure/`. Stable npm commands still enter through their existing files
+under `scripts/`.

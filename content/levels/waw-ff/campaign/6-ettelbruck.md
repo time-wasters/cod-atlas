@@ -4,6 +4,9 @@ title: Ettelbruck
 games:
   - waw-ff
 mode: singleplayer
+campaign:
+  id: "2"
+  label: Winter Offensive
 wikiArticle: codwiki-ettelbruck
 locations:
   - id: main

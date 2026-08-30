@@ -1,10 +1,13 @@
 ---
-id: waw-ff-mount-tapochau
-title: Mount Tapochau
+id: waw-ff-codename-forager
+title: "Codename: Forager"
 games:
   - waw-ff
 mode: singleplayer
-wikiArticle: codwiki-mount-tapochau
+campaign:
+  id: "1"
+  label: War in the Pacific
+wikiArticle: codwiki-codename-forager
 locations:
   - id: main
     country: United States

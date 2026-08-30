@@ -4,6 +4,9 @@ title: Betio Airfield
 games:
   - waw-ff
 mode: singleplayer
+campaign:
+  id: "1"
+  label: War in the Pacific
 wikiArticle: codwiki-betio-airfield
 locations:
   - id: main

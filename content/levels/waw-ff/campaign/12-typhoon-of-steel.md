@@ -4,6 +4,9 @@ title: Typhoon of Steel
 games:
   - waw-ff
 mode: singleplayer
+campaign:
+  id: "4"
+  label: Victory in the Pacific
 wikiArticle: codwiki-typhoon-of-steel
 locations:
   - id: main
