@@ -5,6 +5,17 @@ import * as Select from "@radix-ui/react-select";
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import ReactMarkdown from "react-markdown";
+import {
+  filterAtlasGroups,
+  type CountryAvailability,
+} from "../src/application/atlas/use-cases/filter-atlas-groups.js";
+import { findRelatedLevels } from "../src/application/atlas/use-cases/find-related-levels.js";
+import { selectLevelMedia } from "../src/application/atlas/use-cases/select-level-media.js";
+import {
+  buildCampaignOptions,
+  type CampaignOption,
+} from "../src/application/campaigns/use-cases/build-campaign-options.js";
+import { buildAtlasKml } from "../src/application/export/use-cases/build-atlas-kml.js";
 import { buildCampaignRoute } from "../src/application/map/use-cases/build-campaign-route.js";
 import type { AtlasEntryDto } from "../src/infrastructure/atlas-data/dto/atlas-entry.dto.js";
 import type { AtlasGroupDto } from "../src/infrastructure/atlas-data/dto/atlas-group.dto.js";
@@ -43,10 +54,6 @@ function locationName(entry: AtlasEntryDto) {
   return entry.landmark ?? entry.city ?? entry.region ?? entry.country;
 }
 
-function locationPath(entry: AtlasEntryDto) {
-  return [entry.country, entry.region, entry.city, entry.landmark].filter(Boolean).join(" › ");
-}
-
 function imageBasename(source: string) {
   return source.split(/[?#]/, 1)[0].split("/").at(-1) ?? source;
 }
@@ -80,21 +87,6 @@ type ExternalIconManifest = Record<string, {
   clienticon?: { provider: "steam"; path: string };
 }>;
 type Selection = { group: AtlasGroupDto; entry: AtlasEntryDto };
-type CountryOption = Pick<AtlasGroupDto, "name" | "flagCode"> & { available: boolean };
-type CampaignOption = {
-  key: string;
-  gameId: string;
-  id: string;
-  label: string;
-  levels: Selection[];
-  routeLevels: {
-    entryId: string | null;
-    levelId: string;
-    title: string;
-    order: number | null;
-    coordinates: [number, number] | null;
-  }[];
-};
 
 const data = loadStaticAtlasData();
 const historyOverlays = loadStaticHistoryOverlays();
@@ -446,12 +438,6 @@ if (!initialGroup) throw new Error("Generated atlas contains no groups");
 const initialEntry = initialGroup.entries[0];
 if (!initialEntry) throw new Error("Generated atlas contains an empty group");
 
-function escapeXml(value: string) {
-  return value.replace(/[<>&'\"]/g, (char) =>
-    ({ "<": "&lt;", ">": "&gt;", "&": "&amp;", "'": "&apos;", '\"': "&quot;" })[char]!,
-  );
-}
-
 function mapViewportPadding(mapElement: HTMLElement, detailsElement: HTMLElement | null) {
   const mapRect = mapElement.getBoundingClientRect();
   const shortestEdge = Math.min(mapRect.width, mapRect.height);
@@ -506,7 +492,7 @@ function CountrySelect({
   value,
   onValueChange,
 }: {
-  countries: CountryOption[];
+  countries: CountryAvailability[];
   value: string;
   onValueChange: (value: string) => void;
 }) {
@@ -1221,139 +1207,46 @@ export default function Home() {
       });
     return () => controller.abort();
   }, [externalIconManifest, externalIconManifestUnavailable, externalIconsEnabled]);
-  const matchesStructuredFilters = useCallback((entry: AtlasEntryDto) => {
-    const matchesGame = game === "all" || entry.game.split(" / ").includes(game);
-    const matchesSeries = gameSeries.size === 0 || entry.gameIds.some((gameId) => {
-      const entryGame = atlasDataIndex.findGameById(gameId);
-      return entryGame ? gameSeries.has(entryGame.series) : false;
-    });
-    const matchesSubseries = gameSubseries.size === 0 || entry.gameIds.some((gameId) => {
-      const entryGame = atlasDataIndex.findGameById(gameId);
-      return entryGame?.subseries ? gameSubseries.has(entryGame.subseries) : false;
-    });
-    const matchesPrecision = precisions.size === 0 || precisions.has(entry.precision);
-    const matchesConfidence = confidences.size === 0
-      || (entry.confidence ? confidences.has(entry.confidence) : false);
-    const matchesMethod = methods.size === 0 || (entry.method ? methods.has(entry.method) : false);
-    const matchesMode =
-      (showSingleplayer && entry.modes.includes("singleplayer"))
-      || (showMultiplayer && entry.modes.includes("multiplayer"))
-      || (showZombies && entry.modes.includes("zombies"));
-    return matchesGame
-      && matchesSeries
-      && matchesSubseries
-      && matchesPrecision
-      && matchesConfidence
-      && matchesMethod
-      && matchesMode;
-  }, [confidences, game, gameSeries, gameSubseries, methods, precisions, showMultiplayer, showSingleplayer, showZombies]);
-  const countries = useMemo(
-    () => groups
-      .map(({ name, flagCode, continent, entries }) => ({
-        name,
-        flagCode,
-        available: (continents.size === 0 || continents.has(continent))
-          && entries.some(matchesStructuredFilters),
-      }))
-      .sort((a, b) => a.name.localeCompare(b.name)),
-    [continents, groups, matchesStructuredFilters],
+  const { groups: filtered, countries } = useMemo(() => filterAtlasGroups<AtlasEntryDto, AtlasGroupDto>({
+    groups,
+    games: data.games,
+    criteria: {
+      query,
+      gameCode: game,
+      country,
+      gameSeries,
+      gameSubseries,
+      continents,
+      precisions,
+      confidences,
+      methods,
+      showSingleplayer,
+      showMultiplayer,
+      showZombies,
+    },
+  }), [
+    confidences,
+    continents,
+    country,
+    game,
+    gameSeries,
+    gameSubseries,
+    groups,
+    methods,
+    precisions,
+    query,
+    showMultiplayer,
+    showSingleplayer,
+    showZombies,
+  ]);
+  const campaigns = useMemo(
+    () => buildCampaignOptions<AtlasEntryDto, AtlasGroupDto>({
+      gameCode: game,
+      games: data.games,
+      groups,
+    }),
+    [game, groups],
   );
-  const filtered = useMemo(() => {
-    const needle = query.trim().toLowerCase();
-    return groups
-      .map((group) => ({
-        ...group,
-        entries: group.entries.filter((entry) => {
-          const matchesText =
-            !needle ||
-            group.name.toLowerCase().includes(needle) ||
-            entry.region?.toLowerCase().includes(needle) ||
-            entry.city?.toLowerCase().includes(needle) ||
-            entry.landmark?.toLowerCase().includes(needle) ||
-            entry.title.toLowerCase().includes(needle) ||
-            entry.appearances.some((appearance) => appearance.title.toLowerCase().includes(needle)) ||
-            entry.game.toLowerCase().includes(needle);
-          return matchesStructuredFilters(entry) && matchesText;
-        }),
-      }))
-      .filter((group) => group.entries.length
-        && (country === "all" || group.name === country)
-        && (continents.size === 0 || continents.has(group.continent)));
-  }, [continents, country, groups, matchesStructuredFilters, query]);
-  const campaigns = useMemo<CampaignOption[]>(() => {
-    if (game === "all") return [];
-    const campaignsByKey = new Map<string, {
-      key: string;
-      gameId: string;
-      id: string;
-      label: string;
-      locationsByLevelId: Map<string, Selection[]>;
-    }>();
-    for (const group of groups) {
-      for (const entry of group.entries) {
-        if (!entry.campaign) continue;
-        const campaignGame = atlasDataIndex.findGameById(entry.gameIds[0]);
-        if (!campaignGame || campaignGame.code !== game) continue;
-        const key = `${campaignGame.id}:${entry.campaign.id}`;
-        let campaign = campaignsByKey.get(key);
-        if (!campaign) {
-          campaign = {
-            key,
-            gameId: campaignGame.id,
-            id: entry.campaign.id,
-            label: entry.campaign.label,
-            locationsByLevelId: new Map(),
-          };
-          campaignsByKey.set(key, campaign);
-        }
-        const levelLocations = campaign.locationsByLevelId.get(entry.levelId) ?? [];
-        levelLocations.push({ group, entry });
-        campaign.locationsByLevelId.set(entry.levelId, levelLocations);
-      }
-    }
-    return [...campaignsByKey.values()]
-      .map(({ key, gameId, id, label, locationsByLevelId }) => {
-        const orderedLevels = [...locationsByLevelId.values()].map((locations) => {
-          const primaryLocation = locations.find(({ entry }) => entry.primary) ?? null;
-          const mappedLocations = locations.filter(({ entry }) => entry.coordinates !== null);
-          const displayLocation = primaryLocation ?? mappedLocations[0] ?? locations[0];
-          const mappedPrimaryLocation = primaryLocation?.entry.coordinates ? primaryLocation : null;
-          const routeLocation = mappedPrimaryLocation
-            ?? (mappedLocations.length === 1 ? mappedLocations[0] : null);
-          return {
-            displayLocation,
-            routeLevel: {
-              entryId: routeLocation?.entry.id ?? null,
-              levelId: displayLocation.entry.levelId,
-              title: displayLocation.entry.title,
-              order: displayLocation.entry.campaignOrder ?? null,
-              coordinates: routeLocation?.entry.coordinates ?? null,
-            },
-          };
-        }).sort((left, right) =>
-          (left.displayLocation.entry.campaignOrder ?? Number.MAX_SAFE_INTEGER)
-            - (right.displayLocation.entry.campaignOrder ?? Number.MAX_SAFE_INTEGER)
-          || left.displayLocation.entry.title.localeCompare(right.displayLocation.entry.title));
-        return {
-          key,
-          gameId,
-          id,
-          label,
-          levels: orderedLevels.map(({ displayLocation }) => displayLocation),
-          routeLevels: orderedLevels.map(({ routeLevel }) => routeLevel),
-        };
-      })
-      .sort((a, b) => {
-        const gameComparison = compareGames(
-          atlasDataIndex.findGameById(a.gameId)!,
-          atlasDataIndex.findGameById(b.gameId)!,
-        );
-        if (gameComparison) return gameComparison;
-        return (a.levels[0]?.entry.campaignOrder ?? Number.MAX_SAFE_INTEGER)
-          - (b.levels[0]?.entry.campaignOrder ?? Number.MAX_SAFE_INTEGER)
-          || a.label.localeCompare(b.label);
-      });
-  }, [game, groups]);
   const explicitlySelectedCampaign = campaigns.find((campaign) => campaign.key === selectedCampaignKey) ?? null;
   const urlSelectedCampaign = sidebarListMode === "campaigns" && urlCampaignLevelId
     ? campaigns.find((campaign) =>
@@ -1412,36 +1305,30 @@ export default function Home() {
   const selectedGoogleMapsUrl = googleMapsUrl(selected.entry);
   const selectedWikipediaUrl = locationUrl(selected.entry, "wikipedia");
   const selectedCallOfDutyMapsUrl = locationUrl(selected.entry, "callOfDutyMaps");
-  const otherLevelLocations = useMemo(
-    () => groups.flatMap((group) => group.entries
-      .filter((entry) => entry.levelId === selected.entry.levelId && entry.id !== selected.entry.id)
-      .map((entry) => ({ group, entry }))),
-    [groups, selected.entry.id, selected.entry.levelId],
-  );
   const selectedGameId = atlasDataIndex.findGameByCode(game)?.id ?? null;
-  const selectedAppearance = selected.entry.appearances.find((appearance) => appearance.gameId === selectedGameId)
-    ?? selected.entry.appearances[0];
-  const ownerAppearance = selected.entry.appearances[0];
-  const selectedMedia = data.wikiMedia[selectedAppearance.wikiArticle];
-  const selectedAppearanceBanner = failedLevelBanners.has(selectedAppearance.bannerKey)
-    ? null
-    : data.levelBanners[selectedAppearance.bannerKey] ?? null;
-  const ownerLevelBanner = failedLevelBanners.has(ownerAppearance.bannerKey)
-    ? null
-    : data.levelBanners[ownerAppearance.bannerKey] ?? null;
-  const selectedLevelBanner = selectedAppearanceBanner ?? ownerLevelBanner;
-  const selectedImage = selectedLevelBanner ?? selectedMedia?.main ?? selectedMedia?.map ?? null;
-  const selectedImageIsLocal = selectedImage?.origin === "local";
-  const selectedImageKey = selectedImage
-    ? `${selected.entry.id}:${selectedImage.thumbnailUrl}`
-    : null;
+  const {
+    selectedAppearance,
+    selectedImage,
+    selectedImageIsLocal,
+    selectedImageKey,
+  } = selectLevelMedia({
+    entryId: selected.entry.id,
+    appearances: selected.entry.appearances,
+    selectedGameId,
+    levelBanners: data.levelBanners,
+    wikiMedia: data.wikiMedia,
+    failedLevelBanners,
+  });
   const selectedImageLoaded = selectedImageKey !== null && loadedImageKey === selectedImageKey;
   const selectedImageFailed = selectedImageKey !== null && failedImageKey === selectedImageKey;
-  const regionalLevels = selected.group.entries.filter((entry, index, entries) =>
-    entry.levelId !== selected.entry.levelId
-    && entries.findIndex((candidate) => candidate.levelId === entry.levelId) === index);
-  const relatedLevels = selectedCampaign?.levels
-    ?? regionalLevels.map((entry) => ({ group: selected.group, entry }));
+  const { otherLevelLocations, relatedLevels } = useMemo(
+    () => findRelatedLevels<AtlasEntryDto, AtlasGroupDto>({
+      groups,
+      selected,
+      campaignLevels: selectedCampaign?.levels,
+    }),
+    [groups, selected, selectedCampaign?.levels],
+  );
   const relatedLevelsExpansionKey = selectedCampaign ? `campaign:${selectedCampaign.key}` : selected.entry.id;
   const relatedLevelsExpanded = expandedRegionEntryId === relatedLevelsExpansionKey;
   const visibleRelatedLevels = relatedLevelsExpanded ? relatedLevels : relatedLevels.slice(0, 8);
@@ -1534,7 +1421,7 @@ export default function Home() {
     selectEntry(group, entry);
   }, [selectEntry]);
 
-  function selectCampaign(campaign: CampaignOption) {
+  function selectCampaign(campaign: CampaignOption<AtlasGroupDto, AtlasEntryDto>) {
     const campaignIsActive = activeCampaignKey === campaign.key;
     setUrlCampaignLevelId(null);
     setSelectedCampaignKey(campaignIsActive ? null : campaign.key);
@@ -2240,16 +2127,7 @@ export default function Home() {
   }, [mapReady, sidebarOpen]);
 
   function exportKml() {
-    const placemarks = filtered.flatMap((group) => {
-      return group.entries.flatMap((entry) => {
-        if (!entry.coordinates) return [];
-        const [lat, lng] = entry.coordinates;
-        return `<Placemark><name>${escapeXml(entry.title)}</name><description>${escapeXml(
-          `${entry.game} · ${locationPath(entry)} · ${entry.method === "manual-approximate" ? "approximate historical position" : entry.precision === "city" ? "city-level" : "country fallback"} · ${entry.wiki}`,
-        )}</description><Point><coordinates>${lng},${lat},0</coordinates></Point></Placemark>`;
-      });
-    });
-    const kml = `<?xml version="1.0" encoding="UTF-8"?><kml xmlns="http://www.opengis.net/kml/2.2"><Document><name>CoD Atlas</name>${placemarks.join("")}</Document></kml>`;
+    const kml = buildAtlasKml(filtered);
     const url = URL.createObjectURL(new Blob([kml], { type: "application/vnd.google-earth.kml+xml" }));
     const anchor = document.createElement("a");
     anchor.href = url;
