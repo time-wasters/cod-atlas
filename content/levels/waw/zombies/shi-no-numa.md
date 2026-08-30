@@ -5,7 +5,10 @@ legacyIds:
 title: Shi No Numa
 games:
   - waw
-mode: multiplayer
+mode: zombies
+map-update:
+  id: "3"
+  label: Map Pack 2
 wikiArticle: codwiki-shi-no-numa
 locations:
   - id: main

@@ -1,10 +1,15 @@
 ---
-id: waw-nightfire
-title: Nightfire
+id: waw-verruckt
+legacyIds:
+  - waw-bo-bo3-verruckt
+title: Verrückt
 games:
   - waw
-mode: multiplayer
-wikiArticle: codwiki-nightfire
+mode: zombies
+map-update:
+  id: "2"
+  label: Map Pack 1
+wikiArticle: codwiki-verruckt
 locations:
   - id: main
     country: Germany

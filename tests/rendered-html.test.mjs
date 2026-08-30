@@ -623,7 +623,8 @@ test("preserves the complete statically compiled atlas", async () => {
   assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "singleplayer").length, 27);
   assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "multiplayer").length, 23);
   assert.equal(entries.filter((entry) => entry.modes[0] === "singleplayer").length, 421);
-  assert.equal(entries.filter((entry) => entry.modes[0] === "multiplayer").length, 640);
+  assert.equal(entries.filter((entry) => entry.modes[0] === "multiplayer").length, 636);
+  assert.equal(entries.filter((entry) => entry.modes[0] === "zombies").length, 4);
 });
 
 test("keeps calibrated game-map overlays in a separate generated store", async () => {

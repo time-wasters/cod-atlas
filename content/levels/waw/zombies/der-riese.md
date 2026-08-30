@@ -1,12 +1,15 @@
 ---
-id: waw-nacht-der-untoten
+id: waw-der-riese
 legacyIds:
-  - waw-bo-bo3-nacht-der-untoten
-title: Nacht der Untoten
+  - waw-bo-der-riese
+title: Der Riese
 games:
   - waw
-mode: multiplayer
-wikiArticle: codwiki-nacht-der-untoten
+mode: zombies
+map-update:
+  id: "4"
+  label: Map Pack 3
+wikiArticle: codwiki-der-riese
 locations:
   - id: main
     country: Poland
