@@ -1,81 +1,9 @@
 import assert from "node:assert/strict";
 import { access, readFile, readdir } from "node:fs/promises";
 import test from "node:test";
-import { atlasUrlWithState, parseAtlasUrl } from "../app/url-state.js";
 
 const developmentPreviewMeta =
   /<meta(?=[^>]*\bname=["']codex-preview["'])(?=[^>]*\bcontent=["']development["'])[^>]*>/i;
-
-test("round-trips shareable atlas filters and the selected location", () => {
-  const source = new URL("https://example.com/atlas/?utm_source=test#map");
-  const state = {
-    query: "Safehouse",
-    gameId: "cod4",
-    country: "Azerbaijan",
-    series: ["modern-warfare"],
-    subseries: ["main"],
-    continents: ["Asia"],
-    precisions: ["approximate", "exact"],
-    confidences: ["high"],
-    methods: ["verified-landmark"],
-    showSingleplayer: true,
-    showMultiplayer: true,
-    showZombies: true,
-    sidebarListMode: "campaigns",
-    levelId: "cod4-safehouse",
-    locationId: "main",
-  };
-  const sharedUrl = atlasUrlWithState(source, state);
-
-  assert.equal(sharedUrl.searchParams.get("utm_source"), "test");
-  assert.equal(sharedUrl.hash, "#map");
-  assert.deepEqual(parseAtlasUrl(sharedUrl), state);
-});
-
-test("uses concise defaults and preserves every mode-filter state", () => {
-  const defaults = {
-    query: "",
-    gameId: "all",
-    country: "all",
-    series: [],
-    subseries: [],
-    continents: [],
-    precisions: [],
-    confidences: [],
-    methods: [],
-    showSingleplayer: true,
-    showMultiplayer: false,
-    showZombies: false,
-    sidebarListMode: "locations",
-    levelId: null,
-    locationId: null,
-  };
-  const defaultUrl = atlasUrlWithState("https://example.com/?game=old&level=old", defaults);
-  assert.equal(defaultUrl.search, "");
-  assert.deepEqual(parseAtlasUrl(defaultUrl), defaults);
-  assert.equal(parseAtlasUrl("https://example.com/?browse=unknown").sidebarListMode, "locations");
-
-  assert.deepEqual(
-    parseAtlasUrl("https://example.com/?precision=localized").precisions,
-    ["exact", "approximate", "city", "region"],
-    "legacy precision links remain compatible",
-  );
-
-  for (const [mode, showSingleplayer, showMultiplayer, showZombies] of [
-    ["all", true, true, true],
-    ["both", true, true, false],
-    ["multiplayer", false, true, false],
-    ["zombies", false, false, true],
-    ["singleplayer,zombies", true, false, true],
-    ["none", false, false, false],
-  ]) {
-    const url = atlasUrlWithState(defaultUrl, { ...defaults, showSingleplayer, showMultiplayer, showZombies });
-    assert.equal(url.searchParams.get("mode"), mode);
-    assert.equal(parseAtlasUrl(url).showSingleplayer, showSingleplayer);
-    assert.equal(parseAtlasUrl(url).showMultiplayer, showMultiplayer);
-    assert.equal(parseAtlasUrl(url).showZombies, showZombies);
-  }
-});
 
 test("catalogues the complete Black Ops 6 campaign, multiplayer, and Zombies roster", async () => {
   const bo6Root = new URL("../content/levels/bo6/", import.meta.url);

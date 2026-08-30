@@ -5,13 +5,14 @@ import * as Select from "@radix-ui/react-select";
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import ReactMarkdown from "react-markdown";
+import { parseAtlasUrlState } from "../src/infrastructure/browser/url/atlas-url-state.parser.js";
+import { serializeAtlasUrlState } from "../src/infrastructure/browser/url/atlas-url-state.serializer.js";
 import atlasSource from "./data/atlas.generated.json";
 import historyOverlaysSource from "./data/history-overlays.generated.json";
 import mapOverlaysSource from "./data/map-overlays.generated.json";
 import { buildCampaignRoute } from "./campaign-route.js";
 import { applyEnglishMapLabels } from "./map-language.js";
 import { mapOverlayOpacityAtZoom } from "./map-overlay-opacity.js";
-import { atlasUrlWithState, parseAtlasUrl } from "./url-state";
 
 type Entry = {
   id: string;
@@ -1318,7 +1319,7 @@ export default function Home() {
 
   useEffect(() => {
     const applyUrl = () => {
-      const urlState = parseAtlasUrl(window.location.href);
+      const urlState = parseAtlasUrlState(window.location.href);
       const requestedGame = gamesById.get(urlState.gameId);
       const requestedLevelId = urlState.levelId
         ? data.levelIdAliases[urlState.levelId] ?? urlState.levelId
@@ -1362,7 +1363,7 @@ export default function Home() {
 
   useEffect(() => {
     if (!urlSyncReady) return;
-    const nextUrl = atlasUrlWithState(window.location.href, {
+    const nextUrl = serializeAtlasUrlState(window.location.href, {
       query,
       gameId: gamesByCode.get(game)?.id ?? "all",
       country,
