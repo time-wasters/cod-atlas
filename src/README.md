@@ -70,27 +70,36 @@ src/
 |   |-- atlas/
 |   |   |-- components/
 |   |   |-- hooks/
-|   |   `-- state/
+|   |   |-- state/
+|   |   `-- styles/
 |   |-- campaigns/
 |   |   |-- components/
-|   |   `-- formatters/
+|   |   |-- formatters/
+|   |   `-- styles/
 |   |-- filters/
 |   |   |-- components/
-|   |   `-- state/
+|   |   |-- state/
+|   |   `-- styles/
 |   |-- game-catalog/
-|   |   `-- components/
+|   |   |-- components/
+|   |   `-- styles/
 |   |-- level-briefing/
-|   |   `-- components/
+|   |   |-- components/
+|   |   `-- styles/
 |   |-- map/
 |   |   |-- components/
 |   |   |-- hooks/
-|   |   `-- policies/
+|   |   |-- policies/
+|   |   `-- styles/
 |   |-- settings/
-|   |   `-- components/
+|   |   |-- components/
+|   |   `-- styles/
 |   |-- solar-system/
-|   |   `-- components/
+|   |   |-- components/
+|   |   `-- styles/
 |   `-- shared/
-|       `-- components/
+|       |-- components/
+|       `-- styles/
 `-- shared/                          # Truly cross-cutting, non-domain helpers
     |-- constants/
     |-- types/
@@ -135,4 +144,6 @@ environment-independent overlay-opacity display policy live in `presentation/`;
 provider-specific validation, filesystem safety, Sharp processing, Markdown
 reporting, browser URL transport, Leaflet animation and viewport adaptation,
 MapLibre integration, and CLI details live in `infrastructure/`. Stable npm
-commands still enter through their existing files under `scripts/`.
+commands still enter through their existing files under `scripts/`. Global CSS
+is composed from concept-focused stylesheets owned by these presentation
+features; `app/globals.css` remains the framework entrypoint only.

@@ -1,0 +1,8 @@
+.map-stage { position: relative; min-width: 0; min-height: 0; overflow: hidden; background: #0c1718; }
+.map-canvas { position: absolute; inset: 0; z-index: 1; background: #101817; }
+.map-grid { pointer-events: none; position: absolute; z-index: 401; inset: 0; opacity: .18; background-image: linear-gradient(#b7ad7a33 1px, transparent 1px), linear-gradient(90deg, #b7ad7a33 1px, transparent 1px); background-size: 80px 80px; mix-blend-mode: overlay; }
+.map-label { pointer-events: none; position: absolute; z-index: 402; top: 18px; left: 20px; padding: 7px 10px; border: 1px solid #7c704755; color: #c5b98299; background: #111710c9; font: 700 9px var(--font-geist-mono), monospace; letter-spacing: .18em; }
+
+@media (max-width: 900px) {
+  .map-stage { grid-row: 2; }
+}

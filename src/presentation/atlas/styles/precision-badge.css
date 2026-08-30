@@ -1,0 +1,5 @@
+.precision-badge { margin: 0 0 13px; padding: 6px 8px; border: 1px solid #665f43; border-radius: 3px; color: #b9b297; background: #24271e; font: 700 8px var(--font-geist-mono), monospace; letter-spacing: .08em; text-transform: uppercase; }
+.intel-kicker + .precision-badge, .intel-location-row + .precision-badge { margin-top: 11px; }
+.precision-badge.is-city { border-color: #a8731d; color: #e3b451; }
+.precision-badge.is-approximate { border-style: dashed; border-color: #a8731d; color: #e3b451; }
+.precision-badge.is-country { border-style: dotted; }
