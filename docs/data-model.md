@@ -77,7 +77,7 @@ content/levels/<appearance-game>/<map-type>/<level-slug>.ref.md
 A game must use one layout consistently. `cod`, `cod-uo`, `cod-fh`, `cod2`,
 `cod2-bro`, `cod3`, `rtv`, `cod4`, `wz`, `wz2`, and `mwiii` use `campaign/` for
 records whose `mode` is `singleplayer` and `multiplayer/` for records whose
-`mode` is `multiplayer`. `waw` and `bo6` also use `zombies/` for records whose
+`mode` is `multiplayer`. `waw`, `bo`, and `bo6` also use `zombies/` for records whose
 `mode` is `zombies`. Games that have not been reorganized remain flat. Map
 types are broad content categories; they are distinct from multiplayer rule
 sets such as deathmatch or capture the flag.

@@ -5,7 +5,7 @@ legacyIds:
 title: Kino der Toten
 games:
   - bo
-mode: multiplayer
+mode: zombies
 wikiArticle: codwiki-kino-der-toten
 locations:
   - id: main

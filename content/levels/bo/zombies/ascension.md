@@ -5,7 +5,7 @@ legacyIds:
 title: Ascension
 games:
   - bo
-mode: multiplayer
+mode: zombies
 wikiArticle: codwiki-ascension
 locations:
   - id: main

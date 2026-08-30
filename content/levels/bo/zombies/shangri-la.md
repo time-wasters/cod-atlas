@@ -5,7 +5,7 @@ legacyIds:
 title: Shangri-La
 games:
   - bo
-mode: multiplayer
+mode: zombies
 wikiArticle: codwiki-shangri-la
 locations:
   - id: main

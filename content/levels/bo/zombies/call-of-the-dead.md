@@ -3,7 +3,7 @@ id: bo-call-of-the-dead
 title: Call of the Dead
 games:
   - bo
-mode: multiplayer
+mode: zombies
 wikiArticle: codwiki-call-of-the-dead
 locations:
   - id: main

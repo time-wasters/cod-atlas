@@ -5,7 +5,7 @@ legacyIds:
 title: Moon
 games:
   - bo
-mode: multiplayer
+mode: zombies
 wikiArticle: codwiki-moon
 locations:
   - id: main
