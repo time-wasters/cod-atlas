@@ -44,6 +44,7 @@ src/
 |   |   |-- dto/                    # Generated JSON transport contracts
 |   |   `-- static-json/            # Read-only generated-data adapter
 |   |-- browser/
+|   |   |-- animation/
 |   |   |-- downloads/
 |   |   |-- local-storage/
 |   |   `-- url/
@@ -82,7 +83,8 @@ src/
 |   |   `-- components/
 |   |-- map/
 |   |   |-- components/
-|   |   `-- hooks/
+|   |   |-- hooks/
+|   |   `-- policies/
 |   |-- settings/
 |   |   `-- components/
 |   |-- solar-system/
@@ -123,12 +125,14 @@ can be removed one at a time as real source files are introduced.
 ## Migration status
 
 The Wiki importer, external game-icon importer, level-image manager, progress
-reporter, atlas URL-state adapter, MapLibre label adapter, and campaign-route
-builder are the first features organized here. Pure Wiki article, level-media,
+reporter, atlas URL-state adapter, MapLibre label adapter, campaign-route
+builder, and map-overlay opacity behavior are the first features organized
+here. Pure Wiki article, level-media,
 research-completion, level-mode, and location-precision rules live in `domain/`;
 import, checking, preparation, report-update, and campaign-route workflows live
-in `application/`; campaign route display formatting lives in `presentation/`;
+in `application/`; campaign route display formatting and the
+environment-independent overlay-opacity display policy live in `presentation/`;
 provider-specific validation, filesystem safety, Sharp processing, Markdown
-reporting, browser URL transport, MapLibre integration, and CLI details live in
-`infrastructure/`. Stable npm commands still enter through their existing files
-under `scripts/`.
+reporting, browser URL transport, Leaflet animation and viewport adaptation,
+MapLibre integration, and CLI details live in `infrastructure/`. Stable npm
+commands still enter through their existing files under `scripts/`.

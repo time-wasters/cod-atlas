@@ -8,6 +8,9 @@ import ReactMarkdown from "react-markdown";
 import { buildCampaignRoute } from "../src/application/map/use-cases/build-campaign-route.js";
 import { parseAtlasUrlState } from "../src/infrastructure/browser/url/atlas-url-state.parser.js";
 import { serializeAtlasUrlState } from "../src/infrastructure/browser/url/atlas-url-state.serializer.js";
+import { retargetLeafletOverlayOpacity } from "../src/infrastructure/mapping/leaflet/leaflet-overlay-opacity-retargeting.animator.js";
+import { animateLeafletOverlayOpacity } from "../src/infrastructure/mapping/leaflet/leaflet-overlay-opacity-transition.animator.js";
+import { calculateLeafletMapOverlayOpacityTarget } from "../src/infrastructure/mapping/leaflet/map-overlay-opacity-target.adapter.js";
 import { applyEnglishMapLibreLabels } from "../src/infrastructure/mapping/maplibre/maplibre-english-labels.adapter.js";
 import {
   formatCampaignRouteStopLabel,
@@ -16,7 +19,6 @@ import {
 import atlasSource from "./data/atlas.generated.json";
 import historyOverlaysSource from "./data/history-overlays.generated.json";
 import mapOverlaysSource from "./data/map-overlays.generated.json";
-import { mapOverlayOpacityAtZoom } from "./map-overlay-opacity.js";
 
 type Entry = {
   id: string;
@@ -388,72 +390,6 @@ function setMapOverlayZoomOpacityEnabled(enabled: boolean) {
   mapOverlayZoomOpacityPreferenceListeners.forEach((listener) => listener());
 }
 const MAP_MAX_ZOOM = 18;
-
-function animateMapOverlayOpacity(
-  overlay: import("leaflet").ImageOverlay.Rotated,
-  target: number,
-  animationRef: { current: number | null },
-  opacityRef: { current: number },
-  onComplete?: () => void,
-) {
-  if (animationRef.current !== null) cancelAnimationFrame(animationRef.current);
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    overlay.setOpacity(target);
-    opacityRef.current = target;
-    animationRef.current = null;
-    onComplete?.();
-    return;
-  }
-  const start = opacityRef.current;
-  const startedAt = performance.now();
-  const tick = (now: number) => {
-    const progress = Math.min(1, (now - startedAt) / 320);
-    const eased = 1 - (1 - progress) ** 3;
-    const opacity = start + (target - start) * eased;
-    overlay.setOpacity(opacity);
-    opacityRef.current = opacity;
-    if (progress < 1) animationRef.current = requestAnimationFrame(tick);
-    else {
-      animationRef.current = null;
-      onComplete?.();
-    }
-  };
-  animationRef.current = requestAnimationFrame(tick);
-}
-
-function smoothlyRetargetMapOverlayOpacity(
-  overlay: import("leaflet").ImageOverlay.Rotated,
-  target: number,
-  animationRef: { current: number | null },
-  targetRef: { current: number },
-  opacityRef: { current: number },
-) {
-  targetRef.current = target;
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    if (animationRef.current !== null) cancelAnimationFrame(animationRef.current);
-    overlay.setOpacity(target);
-    opacityRef.current = target;
-    animationRef.current = null;
-    return;
-  }
-  if (animationRef.current !== null) return;
-
-  let previousTime = performance.now();
-  const tick = (now: number) => {
-    const elapsed = Math.min(64, now - previousTime);
-    previousTime = now;
-    const blend = 1 - Math.exp(-elapsed / 115);
-    const nextOpacity = opacityRef.current
-      + (targetRef.current - opacityRef.current) * blend;
-    const settled = Math.abs(targetRef.current - nextOpacity) < .001;
-    const opacity = settled ? targetRef.current : nextOpacity;
-    overlay.setOpacity(opacity);
-    opacityRef.current = opacity;
-    if (settled) animationRef.current = null;
-    else animationRef.current = requestAnimationFrame(tick);
-  };
-  animationRef.current = requestAnimationFrame(tick);
-}
 
 const EXTERNAL_LINK_ICONS = {
   googleMaps: "webpage_icons/maps-google-com.ico",
@@ -1285,8 +1221,7 @@ export default function Home() {
   const mapImageOverlayLevelId = useRef<string | null>(null);
   const mapImageOverlayOpacity = useRef(0);
   const mapImageOverlayAnimation = useRef<number | null>(null);
-  const mapImageOverlayZoomAnimation = useRef<number | null>(null);
-  const mapImageOverlayZoomTargetOpacity = useRef(0);
+  const mapImageOverlayTargetOpacity = useRef(0);
   const historyMapImageOverlay = useRef<import("leaflet").ImageOverlay.Rotated | null>(null);
   const historyMapImageOverlayKey = useRef<string | null>(null);
   const historyMapImageOverlayOpacity = useRef(0);
@@ -1658,29 +1593,21 @@ export default function Home() {
     : null;
 
   const mapOverlayOpacityTarget = useCallback((overlay: MapOverlayRecord, visible: boolean, zoom?: number) => {
-    if (!visible) return 0;
     const currentMap = map.current;
     const L = leaflet.current;
-    if (!mapOverlayZoomOpacityEnabled || !currentMap || !L || !mapNode.current) return overlay.opacity;
+    if (!currentMap || !L || !mapNode.current) return visible ? overlay.opacity : 0;
     const padding = mapViewportPadding(mapNode.current, intelCard.current);
-    const overlayBounds = L.latLngBounds([
-      overlay.corners.topLeft,
-      overlay.corners.topRight,
-      overlay.corners.bottomLeft,
-      overlay.corners.bottomRight,
-    ]);
-    const totalPadding = L.point(
-      padding.paddingTopLeft[0] + padding.paddingBottomRight[0],
-      padding.paddingTopLeft[1] + padding.paddingBottomRight[1],
-    );
-    const fitZoom = currentMap.getBoundsZoom(overlayBounds, false, totalPadding);
-    return mapOverlayOpacityAtZoom(
-      overlay.opacity,
-      zoom ?? currentMap.getZoom(),
-      fitZoom,
-      mapOverlayZoomOpacityEnabled,
-      MAP_MAX_ZOOM,
-    );
+    return calculateLeafletMapOverlayOpacityTarget({
+      baseOpacity: overlay.opacity,
+      corners: overlay.corners,
+      currentZoom: zoom,
+      enabled: mapOverlayZoomOpacityEnabled,
+      leaflet: L,
+      map: currentMap,
+      maximumZoom: MAP_MAX_ZOOM,
+      padding,
+      visible,
+    });
   }, [mapOverlayZoomOpacityEnabled]);
 
   const selectEntry = useCallback((group: Group, entry: Entry) => {
@@ -1964,10 +1891,9 @@ export default function Home() {
       mapImageOverlay.current = null;
       mapImageOverlayLevelId.current = null;
       if (mapImageOverlayAnimation.current !== null) cancelAnimationFrame(mapImageOverlayAnimation.current);
-      if (mapImageOverlayZoomAnimation.current !== null) cancelAnimationFrame(mapImageOverlayZoomAnimation.current);
       mapImageOverlayAnimation.current = null;
-      mapImageOverlayZoomAnimation.current = null;
       mapImageOverlayOpacity.current = 0;
+      mapImageOverlayTargetOpacity.current = 0;
       historyMapImageOverlay.current = null;
       historyMapImageOverlayKey.current = null;
       if (historyMapImageOverlayAnimation.current !== null) cancelAnimationFrame(historyMapImageOverlayAnimation.current);
@@ -2278,29 +2204,28 @@ export default function Home() {
     if (!mapReady || !map.current || !leaflet.current) return;
     if (!selectedMapOverlay) {
       if (mapImageOverlayAnimation.current !== null) cancelAnimationFrame(mapImageOverlayAnimation.current);
-      if (mapImageOverlayZoomAnimation.current !== null) cancelAnimationFrame(mapImageOverlayZoomAnimation.current);
       mapImageOverlay.current?.remove();
       mapImageOverlay.current = null;
       mapImageOverlayLevelId.current = null;
       mapImageOverlayAnimation.current = null;
-      mapImageOverlayZoomAnimation.current = null;
       mapImageOverlayOpacity.current = 0;
+      mapImageOverlayTargetOpacity.current = 0;
       return;
-    }
-    if (mapImageOverlayZoomAnimation.current !== null) {
-      cancelAnimationFrame(mapImageOverlayZoomAnimation.current);
-      mapImageOverlayZoomAnimation.current = null;
     }
     if (mapImageOverlay.current && mapImageOverlayLevelId.current === selected.entry.levelId) {
-      animateMapOverlayOpacity(
-        mapImageOverlay.current,
-        mapOverlayOpacityTarget(selectedMapOverlay, selectedMapOverlayEnabled),
-        mapImageOverlayAnimation,
-        mapImageOverlayOpacity,
-      );
+      retargetLeafletOverlayOpacity({
+        animationRef: mapImageOverlayAnimation,
+        opacityRef: mapImageOverlayOpacity,
+        overlay: mapImageOverlay.current,
+        target: mapOverlayOpacityTarget(selectedMapOverlay, selectedMapOverlayEnabled),
+        targetRef: mapImageOverlayTargetOpacity,
+      });
       return;
     }
-    if (mapImageOverlayAnimation.current !== null) cancelAnimationFrame(mapImageOverlayAnimation.current);
+    if (mapImageOverlayAnimation.current !== null) {
+      cancelAnimationFrame(mapImageOverlayAnimation.current);
+      mapImageOverlayAnimation.current = null;
+    }
     mapImageOverlay.current?.remove();
     const L = leaflet.current;
     const imageUrl = new URL(selectedMapOverlay.image.replace(/^\/+/, ""), document.baseURI).href;
@@ -2319,13 +2244,14 @@ export default function Home() {
     mapImageOverlay.current = overlay;
     mapImageOverlayLevelId.current = selected.entry.levelId;
     mapImageOverlayOpacity.current = 0;
-    mapImageOverlayZoomTargetOpacity.current = 0;
-    animateMapOverlayOpacity(
+    mapImageOverlayTargetOpacity.current = 0;
+    retargetLeafletOverlayOpacity({
+      animationRef: mapImageOverlayAnimation,
+      opacityRef: mapImageOverlayOpacity,
       overlay,
-      mapOverlayOpacityTarget(selectedMapOverlay, selectedMapOverlayEnabled),
-      mapImageOverlayAnimation,
-      mapImageOverlayOpacity,
-    );
+      target: mapOverlayOpacityTarget(selectedMapOverlay, selectedMapOverlayEnabled),
+      targetRef: mapImageOverlayTargetOpacity,
+    });
   }, [mapOverlayOpacityTarget, mapReady, selected.entry.levelId, selectedAppearance.title, selectedMapOverlay, selectedMapOverlayEnabled]);
 
   useEffect(() => {
@@ -2334,18 +2260,13 @@ export default function Home() {
     const refreshOpacity = (zoom?: number) => {
       const overlay = mapImageOverlay.current;
       if (!overlay || mapImageOverlayLevelId.current !== selected.entry.levelId) return;
-      if (mapImageOverlayAnimation.current !== null) {
-        cancelAnimationFrame(mapImageOverlayAnimation.current);
-        mapImageOverlayAnimation.current = null;
-      }
-      const opacity = mapOverlayOpacityTarget(selectedMapOverlay, selectedMapOverlayEnabled, zoom);
-      smoothlyRetargetMapOverlayOpacity(
+      retargetLeafletOverlayOpacity({
+        animationRef: mapImageOverlayAnimation,
+        opacityRef: mapImageOverlayOpacity,
         overlay,
-        opacity,
-        mapImageOverlayZoomAnimation,
-        mapImageOverlayZoomTargetOpacity,
-        mapImageOverlayOpacity,
-      );
+        target: mapOverlayOpacityTarget(selectedMapOverlay, selectedMapOverlayEnabled, zoom),
+        targetRef: mapImageOverlayTargetOpacity,
+      });
     };
     const handleZoom = () => refreshOpacity();
     const handleZoomAnimation = (event: import("leaflet").ZoomAnimEvent) => refreshOpacity(event.zoom);
@@ -2364,30 +2285,30 @@ export default function Home() {
     if (!selectedHistoryOverlay) {
       const existing = historyMapImageOverlay.current;
       if (!existing) return;
-      animateMapOverlayOpacity(
-        existing,
-        0,
-        historyMapImageOverlayAnimation,
-        historyMapImageOverlayOpacity,
-        () => {
+      animateLeafletOverlayOpacity({
+        animationRef: historyMapImageOverlayAnimation,
+        onComplete: () => {
           if (historyMapImageOverlay.current !== existing) return;
           existing.remove();
           historyMapImageOverlay.current = null;
           historyMapImageOverlayKey.current = null;
           historyMapImageOverlayOpacity.current = 0;
         },
-      );
+        opacityRef: historyMapImageOverlayOpacity,
+        overlay: existing,
+        target: 0,
+      });
       return;
     }
 
     const overlayKey = `${selectedHistoryOverlay.levelId}:${selectedHistoryOverlay.id}`;
     if (historyMapImageOverlay.current && historyMapImageOverlayKey.current === overlayKey) {
-      animateMapOverlayOpacity(
-        historyMapImageOverlay.current,
-        selectedHistoryOverlay.opacity,
-        historyMapImageOverlayAnimation,
-        historyMapImageOverlayOpacity,
-      );
+      animateLeafletOverlayOpacity({
+        animationRef: historyMapImageOverlayAnimation,
+        opacityRef: historyMapImageOverlayOpacity,
+        overlay: historyMapImageOverlay.current,
+        target: selectedHistoryOverlay.opacity,
+      });
       return;
     }
 
@@ -2411,12 +2332,12 @@ export default function Home() {
     historyMapImageOverlay.current = overlay;
     historyMapImageOverlayKey.current = overlayKey;
     historyMapImageOverlayOpacity.current = 0;
-    animateMapOverlayOpacity(
+    animateLeafletOverlayOpacity({
+      animationRef: historyMapImageOverlayAnimation,
+      opacityRef: historyMapImageOverlayOpacity,
       overlay,
-      selectedHistoryOverlay.opacity,
-      historyMapImageOverlayAnimation,
-      historyMapImageOverlayOpacity,
-    );
+      target: selectedHistoryOverlay.opacity,
+    });
   }, [mapReady, selectedHistoryOverlay]);
 
   useEffect(() => {
