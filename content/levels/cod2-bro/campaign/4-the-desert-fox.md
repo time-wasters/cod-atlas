@@ -8,6 +8,24 @@ campaign:
   id: "2"
   label: North Africa
 wikiArticle: codwiki-the-desert-fox
+mapOverlay:
+  image: /images/levels/cod2-bro/campaign/4-the-desert-fox/maps/overlay.png
+  opacity: 0.72
+  corners:
+    topLeft: [40.37602288, -10.16421945]
+    topRight: [40.41458155, 17.23105079]
+    bottomLeft: [27.99948229, -10.13376478]
+    bottomRight: [28.04475701, 17.25659463]
+  attribution:
+    title: "Call of Duty 2: Big Red One - The Desert Fox loading-screen map"
+    source: "Directly extracted from Call of Duty 2: Big Red One by plp-gtr."
+    sourceUrl: https://github.com/time-wasters/cod-atlas/blob/main/public/images/maps/cod2-bro/the-desert-fox.png
+    extractedBy: plp-gtr
+    extractedByUrl: https://github.com/plp-gtr
+    copyrightHolder: Activision Publishing, Inc.
+    rights: non-free
+    rightsNotice: "The extraction is contributed to CoD Atlas; the underlying copyrighted game artwork remains the property of Activision and is used for identification and geographic comparison."
+    rightsNoticeUrl: https://www.activision.com/legal/terms-of-use
 locations:
   - id: main
     country: Tunisia

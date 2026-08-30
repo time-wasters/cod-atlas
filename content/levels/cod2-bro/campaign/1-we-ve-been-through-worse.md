@@ -8,6 +8,24 @@ campaign:
   id: "1"
   label: Prologue
 wikiArticle: codwiki-we-ve-been-through-worse
+mapOverlay:
+  image: /images/levels/cod2-bro/campaign/1-we-ve-been-through-worse/maps/overlay.png
+  opacity: 0.72
+  corners:
+    topLeft: [51.29601087, -3.25042718]
+    topRight: [51.49830905, 8.59881191]
+    bottomLeft: [47.03803329, -3.07131693]
+    bottomRight: [47.25857388, 8.77643992]
+  attribution:
+    title: "Call of Duty 2: Big Red One - We've Been Through Worse loading-screen map"
+    source: "Directly extracted from Call of Duty 2: Big Red One by plp-gtr."
+    sourceUrl: https://github.com/time-wasters/cod-atlas/blob/main/public/images/maps/cod2-bro/we-ve-been-through-worse.png
+    extractedBy: plp-gtr
+    extractedByUrl: https://github.com/plp-gtr
+    copyrightHolder: Activision Publishing, Inc.
+    rights: non-free
+    rightsNotice: "The extraction is contributed to CoD Atlas; the underlying copyrighted game artwork remains the property of Activision and is used for identification and geographic comparison."
+    rightsNoticeUrl: https://www.activision.com/legal/terms-of-use
 locations:
   - id: main
     country: France

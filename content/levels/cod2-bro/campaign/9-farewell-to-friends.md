@@ -17,8 +17,8 @@ mapOverlay:
     bottomLeft: [36.22764568, 11.19537766]
     bottomRight: [36.09915647, 16.91786868]
   attribution:
-    title: "Call of Duty: Roads to Victory — Farewell to Friends loading-screen map"
-    source: "Directly extracted from Call of Duty: Roads to Victory by plp-gtr."
+    title: "Call of Duty 2: Big Red One - Farewell to Friends loading-screen map"
+    source: "Directly extracted from Call of Duty 2: Big Red One by plp-gtr."
     sourceUrl: https://github.com/time-wasters/cod-atlas/blob/main/public/images/maps/cod2-bro/farewell-to-friends.png
     extractedBy: plp-gtr
     extractedByUrl: https://github.com/plp-gtr
