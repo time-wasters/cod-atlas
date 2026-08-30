@@ -1,15 +1,18 @@
 ---
-id: mw2-cliffhanger
-title: Cliffhanger
+id: mw2-endgame
+title: Endgame
 games:
   - mw2
 mode: singleplayer
-wikiArticle: codwiki-cliffhanger-mission
+campaign:
+  id: "3"
+  label: Act III
+wikiArticle: codwiki-endgame
 locations:
   - id: main
-    country: Kazakhstan
-    latitude: 48
-    longitude: 68
+    country: Afghanistan
+    latitude: 33
+    longitude: 65
     precision: country
     confidence: fallback
     method: country-fallback

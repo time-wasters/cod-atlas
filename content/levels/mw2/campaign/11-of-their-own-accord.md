@@ -1,10 +1,13 @@
 ---
-id: mw2-whiskey-hotel
-title: Whiskey Hotel
+id: mw2-of-their-own-accord
+title: Of Their Own Accord
 games:
   - mw2
 mode: singleplayer
-wikiArticle: codwiki-whiskey-hotel
+campaign:
+  id: "2"
+  label: Act II
+wikiArticle: codwiki-of-their-own-accord
 locations:
   - id: main
     country: United States

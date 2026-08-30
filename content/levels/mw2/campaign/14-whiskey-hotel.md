@@ -1,16 +1,19 @@
 ---
-id: mw2-exodus
-title: Exodus
+id: mw2-whiskey-hotel
+title: Whiskey Hotel
 games:
   - mw2
 mode: singleplayer
-wikiArticle: codwiki-exodus-modern-warfare-2
+campaign:
+  id: "3"
+  label: Act III
+wikiArticle: codwiki-whiskey-hotel
 locations:
   - id: main
     country: United States
-    region: Virginia
-    latitude: 37.5
-    longitude: -78.8
+    region: Washington, D.C.
+    latitude: 38.907
+    longitude: -77.037
     precision: country
     confidence: fallback
     method: country-fallback

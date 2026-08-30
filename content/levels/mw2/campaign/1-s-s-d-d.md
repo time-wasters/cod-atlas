@@ -1,15 +1,18 @@
 ---
-id: mw2-no-russian
-title: No Russian
+id: mw2-s-s-d-d
+title: S.S.D.D.
 games:
   - mw2
 mode: singleplayer
-wikiArticle: codwiki-no-russian
+campaign:
+  id: "1"
+  label: Act I
+wikiArticle: codwiki-s-s-d-d
 locations:
   - id: main
-    country: Russia
-    latitude: 60
-    longitude: 100
+    country: Afghanistan
+    latitude: 33
+    longitude: 65
     precision: country
     confidence: fallback
     method: country-fallback

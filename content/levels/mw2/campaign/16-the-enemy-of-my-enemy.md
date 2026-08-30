@@ -1,10 +1,13 @@
 ---
-id: mw2-team-player
-title: Team Player
+id: mw2-the-enemy-of-my-enemy
+title: The Enemy of My Enemy
 games:
   - mw2
 mode: singleplayer
-wikiArticle: codwiki-team-player
+campaign:
+  id: "3"
+  label: Act III
+wikiArticle: codwiki-the-enemy-of-my-enemy
 locations:
   - id: main
     country: Afghanistan

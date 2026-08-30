@@ -4,6 +4,9 @@ title: Second Sun
 games:
   - mw2
 mode: singleplayer
+campaign:
+  id: "3"
+  label: Act III
 wikiArticle: codwiki-second-sun
 locations:
   - id: main

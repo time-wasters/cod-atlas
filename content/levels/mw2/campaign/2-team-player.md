@@ -1,10 +1,13 @@
 ---
-id: mw2-just-like-old-times
-title: Just Like Old Times
+id: mw2-team-player
+title: Team Player
 games:
   - mw2
 mode: singleplayer
-wikiArticle: codwiki-just-like-old-times
+campaign:
+  id: "1"
+  label: Act I
+wikiArticle: codwiki-team-player
 locations:
   - id: main
     country: Afghanistan

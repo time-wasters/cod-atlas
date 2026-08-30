@@ -1,10 +1,13 @@
 ---
-id: mw2-contingency
-title: Contingency
+id: mw2-loose-ends
+title: Loose Ends
 games:
   - mw2
 mode: singleplayer
-wikiArticle: codwiki-contingency-mission
+campaign:
+  id: "3"
+  label: Act III
+wikiArticle: codwiki-loose-ends
 locations:
   - id: main
     country: Russia

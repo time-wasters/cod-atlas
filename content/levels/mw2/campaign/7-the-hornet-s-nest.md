@@ -4,6 +4,9 @@ title: The Hornet's Nest
 games:
   - mw2
 mode: singleplayer
+campaign:
+  id: "2"
+  label: Act II
 wikiArticle: codwiki-the-hornet-s-nest
 locations:
   - id: main

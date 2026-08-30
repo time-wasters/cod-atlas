@@ -1,16 +1,19 @@
 ---
-id: mw2-of-their-own-accord
-title: Of Their Own Accord
+id: mw2-wolverines
+title: Wolverines!
 games:
   - mw2
 mode: singleplayer
-wikiArticle: codwiki-of-their-own-accord
+campaign:
+  id: "2"
+  label: Act II
+wikiArticle: codwiki-wolverines
 locations:
   - id: main
     country: United States
-    region: Washington, D.C.
-    latitude: 38.907
-    longitude: -77.037
+    region: Virginia
+    latitude: 37.5
+    longitude: -78.8
     precision: country
     confidence: fallback
     method: country-fallback

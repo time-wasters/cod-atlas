@@ -4,6 +4,9 @@ title: The Gulag
 games:
   - mw2
 mode: singleplayer
+campaign:
+  id: "2"
+  label: Act II
 wikiArticle: codwiki-the-gulag
 locations:
   - id: main

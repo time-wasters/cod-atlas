@@ -1,10 +1,13 @@
 ---
-id: mw2-s-s-d-d
-title: S.S.D.D.
+id: mw2-just-like-old-times
+title: Just Like Old Times
 games:
   - mw2
 mode: singleplayer
-wikiArticle: codwiki-s-s-d-d
+campaign:
+  id: "3"
+  label: Act III
+wikiArticle: codwiki-just-like-old-times
 locations:
   - id: main
     country: Afghanistan

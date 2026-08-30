@@ -4,6 +4,9 @@ title: Museum
 games:
   - mw2
 mode: multiplayer
+campaign:
+  id: "4"
+  label: Bonus
 wikiArticle: codwiki-museum
 locations:
   - id: main

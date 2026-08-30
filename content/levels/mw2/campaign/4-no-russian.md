@@ -1,10 +1,13 @@
 ---
-id: mw2-loose-ends
-title: Loose Ends
+id: mw2-no-russian
+title: No Russian
 games:
   - mw2
 mode: singleplayer
-wikiArticle: codwiki-loose-ends
+campaign:
+  id: "1"
+  label: Act I
+wikiArticle: codwiki-no-russian
 locations:
   - id: main
     country: Russia

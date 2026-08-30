@@ -4,6 +4,9 @@ title: Takedown
 games:
   - mw2
 mode: singleplayer
+campaign:
+  id: "1"
+  label: Act I
 wikiArticle: codwiki-takedown-mission
 locations:
   - id: main

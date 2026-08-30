@@ -1,10 +1,13 @@
 ---
-id: mw2-wolverines
-title: Wolverines!
+id: mw2-exodus
+title: Exodus
 games:
   - mw2
 mode: singleplayer
-wikiArticle: codwiki-wolverines
+campaign:
+  id: "2"
+  label: Act II
+wikiArticle: codwiki-exodus-modern-warfare-2
 locations:
   - id: main
     country: United States
