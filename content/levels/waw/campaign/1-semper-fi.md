@@ -4,6 +4,9 @@ title: Semper Fi
 games:
   - waw
 mode: singleplayer
+campaign:
+  id: "1"
+  label: America
 wikiArticle: codwiki-semper-fi
 locations:
   - id: main

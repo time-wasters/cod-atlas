@@ -4,6 +4,9 @@ title: Little Resistance
 games:
   - waw
 mode: singleplayer
+campaign:
+  id: "1"
+  label: America
 wikiArticle: codwiki-little-resistance
 locations:
   - id: main

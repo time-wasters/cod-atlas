@@ -4,6 +4,9 @@ title: Blowtorch & Corkscrew
 games:
   - waw
 mode: singleplayer
+campaign:
+  id: "1"
+  label: America
 wikiArticle: codwiki-blowtorch-and-corkscrew
 locations:
   - id: main

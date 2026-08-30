@@ -1,10 +1,13 @@
 ---
-id: waw-relentless
-title: Relentless
+id: waw-burn-em-out
+title: Burn 'em Out
 games:
   - waw
 mode: singleplayer
-wikiArticle: codwiki-relentless
+campaign:
+  id: "1"
+  label: America
+wikiArticle: codwiki-burn-em-out
 locations:
   - id: main
     country: Palau

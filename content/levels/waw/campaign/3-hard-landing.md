@@ -1,10 +1,13 @@
 ---
-id: waw-burn-em-out
-title: Burn 'em Out
+id: waw-hard-landing
+title: Hard Landing
 games:
   - waw
 mode: singleplayer
-wikiArticle: codwiki-burn-em-out
+campaign:
+  id: "1"
+  label: America
+wikiArticle: codwiki-hard-landing-campaign
 locations:
   - id: main
     country: Palau

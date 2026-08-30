@@ -1,10 +1,13 @@
 ---
-id: waw-blood-and-iron
-title: Blood and Iron
+id: waw-ring-of-steel
+title: Ring of Steel
 games:
   - waw
 mode: singleplayer
-wikiArticle: codwiki-blood-and-iron
+campaign:
+  id: "2"
+  label: Russia
+wikiArticle: codwiki-ring-of-steel
 locations:
   - id: main
     country: Germany

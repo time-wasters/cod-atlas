@@ -1,10 +1,13 @@
 ---
-id: waw-hard-landing
-title: Hard Landing
+id: waw-relentless
+title: Relentless
 games:
   - waw
 mode: singleplayer
-wikiArticle: codwiki-hard-landing-campaign
+campaign:
+  id: "1"
+  label: America
+wikiArticle: codwiki-relentless
 locations:
   - id: main
     country: Palau

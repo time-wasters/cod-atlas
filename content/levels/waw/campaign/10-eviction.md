@@ -1,10 +1,13 @@
 ---
-id: waw-heart-of-the-reich
-title: Heart of the Reich
+id: waw-eviction
+title: Eviction
 games:
   - waw
 mode: singleplayer
-wikiArticle: codwiki-heart-of-the-reich
+campaign:
+  id: "2"
+  label: Russia
+wikiArticle: codwiki-eviction
 locations:
   - id: main
     country: Germany

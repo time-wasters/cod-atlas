@@ -4,6 +4,9 @@ title: Black Cats
 games:
   - waw
 mode: singleplayer
+campaign:
+  id: "1"
+  label: America
 wikiArticle: codwiki-black-cats
 locations:
   - id: main
