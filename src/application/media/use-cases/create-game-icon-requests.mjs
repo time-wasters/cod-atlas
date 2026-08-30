@@ -1,4 +1,4 @@
-import { validateGameImageSource } from "../../../domain/game/game-image-source.policy.mjs";
+import { validateGameImageSource } from "../../../infrastructure/external/game-icons/game-image-source.validator.mjs";
 import { createSteamGridDbIconRequest } from "./create-steam-grid-db-icon-request.mjs";
 import { createSteamIconRequests } from "./create-steam-icon-requests.mjs";
 

@@ -1,9 +1,9 @@
 import path from "node:path";
 import process from "node:process";
-import { validateGameImageSource } from "../../../domain/game/game-image-source.policy.mjs";
 import { loadGameFileRecords } from "../../../infrastructure/content/filesystem/game-file.repository.mjs";
 import { downloadGameIcon } from "../../../infrastructure/external/game-icons/game-icon.downloader.mjs";
 import { resolveGameIconProviderConfiguration } from "../../../infrastructure/external/game-icons/game-icon-provider.configuration.mjs";
+import { validateGameImageSource } from "../../../infrastructure/external/game-icons/game-image-source.validator.mjs";
 import { writeGameIconManifest } from "../../../infrastructure/media/game-icons/game-icon-manifest.repository.mjs";
 import { createGameIconRequests } from "./create-game-icon-requests.mjs";
 

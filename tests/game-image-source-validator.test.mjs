@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { validateGameImageSource } from "../src/domain/game/game-image-source.policy.mjs";
+import { validateGameImageSource } from "../src/infrastructure/external/game-icons/game-image-source.validator.mjs";
 
 test("provider metadata rejects incomplete and ambiguous records", () => {
   assert.throws(() => validateGameImageSource({
