@@ -5,3 +5,8 @@ labelLong: "Call of Duty: Black Ops - Zombies"
 released: 2011-12-01
 series: black-ops
 subseries: spin-off
+images:
+  steamgriddb:
+    game: 5263881
+    icon: 46
+    file: d9d4f495e875a2e075a1a4a6e1b9770f.png

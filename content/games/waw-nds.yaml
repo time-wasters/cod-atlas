@@ -5,3 +5,8 @@ labelLong: "Call of Duty: World at War (Nintendo DS)"
 released: 2008-11-11
 series: world-war-ii
 subseries: spin-off
+images:
+  steamgriddb:
+    game: 406
+    icon: 81439
+    file: fc0bfa8385651aba8ca764cfbffc1575.png
