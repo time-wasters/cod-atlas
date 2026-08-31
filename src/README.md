@@ -147,7 +147,9 @@ settings, and level-briefing hooks, MapLibre label and worker-URL adapters,
 campaign-route builder, and map-overlay opacity behavior are the first features
 organized here. Shared link and flag primitives, atlas title and mode display,
 game catalogue controls, filter controls, and the solar-system overlay now live
-in focused presentation component files rather than `app/page.tsx`. Pure Wiki
+in focused presentation component files rather than `app/page.tsx`. Leaflet map
+lifecycle, marker, campaign-route, overlay, and viewport orchestration is split
+between focused presentation hooks and infrastructure renderers. Pure Wiki
 article, level-media,
 research-completion, level-mode, and location-precision rules live in `domain/`;
 import, checking, preparation, report-update, and campaign-route workflows live

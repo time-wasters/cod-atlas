@@ -1,6 +1,5 @@
 "use client";
 
-import type { Map as LeafletMap, Marker as LeafletMarker, MarkerClusterGroup } from "leaflet";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { filterAtlasGroups } from "../src/application/atlas/use-cases/filter-atlas-groups.js";
@@ -11,25 +10,15 @@ import {
   type CampaignOption,
 } from "../src/application/campaigns/use-cases/build-campaign-options.js";
 import { buildAtlasKml } from "../src/application/export/use-cases/build-atlas-kml.js";
-import { buildCampaignRoute } from "../src/application/map/use-cases/build-campaign-route.js";
 import type { AtlasEntryDto } from "../src/infrastructure/atlas-data/dto/atlas-entry.dto.js";
 import type { AtlasGroupDto } from "../src/infrastructure/atlas-data/dto/atlas-group.dto.js";
 import type { GameDto } from "../src/infrastructure/atlas-data/dto/game.dto.js";
 import type { HistoryOverlayDto } from "../src/infrastructure/atlas-data/dto/history-overlay.dto.js";
-import type { MapOverlayDto } from "../src/infrastructure/atlas-data/dto/map-overlay.dto.js";
 import { AtlasDataIndex } from "../src/infrastructure/atlas-data/static-json/atlas-data.index.js";
 import { loadStaticAtlasData } from "../src/infrastructure/atlas-data/static-json/static-atlas-data.loader.js";
 import { loadStaticHistoryOverlays } from "../src/infrastructure/atlas-data/static-json/static-history-overlay.loader.js";
 import { loadStaticMapOverlays } from "../src/infrastructure/atlas-data/static-json/static-map-overlay.loader.js";
 import { downloadKmlFile } from "../src/infrastructure/browser/downloads/kml-file.downloader.js";
-import { retargetLeafletOverlayOpacity } from "../src/infrastructure/mapping/leaflet/leaflet-overlay-opacity-retargeting.animator.js";
-import { animateLeafletOverlayOpacity } from "../src/infrastructure/mapping/leaflet/leaflet-overlay-opacity-transition.animator.js";
-import { calculateLeafletMapOverlayOpacityTarget } from "../src/infrastructure/mapping/leaflet/map-overlay-opacity-target.adapter.js";
-import { applyEnglishMapLibreLabels } from "../src/infrastructure/mapping/maplibre/maplibre-english-labels.adapter.js";
-import {
-  formatCampaignRouteStopLabel,
-  formatCampaignRouteStopOrder,
-} from "../src/presentation/campaigns/formatters/campaign-route-stop-label.formatter.js";
 import { FittedLevelTitle } from "../src/presentation/atlas/components/fitted-level-title.js";
 import { LevelModeIcon } from "../src/presentation/atlas/components/level-mode-icon.js";
 import { useAtlasSelection } from "../src/presentation/atlas/hooks/use-atlas-selection.js";
@@ -48,6 +37,12 @@ import { GameCatalogDialog } from "../src/presentation/game-catalog/components/g
 import { GameIcon } from "../src/presentation/game-catalog/components/game-icon.js";
 import { GameSelect } from "../src/presentation/game-catalog/components/game-select.js";
 import { useLevelBriefing } from "../src/presentation/level-briefing/hooks/use-level-briefing.js";
+import { useCampaignRouteLayer } from "../src/presentation/map/hooks/use-campaign-route-layer.js";
+import { useHistoryOverlayLayer } from "../src/presentation/map/hooks/use-history-overlay-layer.js";
+import { useLeafletMap } from "../src/presentation/map/hooks/use-leaflet-map.js";
+import { useLeafletMarkers } from "../src/presentation/map/hooks/use-leaflet-markers.js";
+import { useMapOverlayLayer } from "../src/presentation/map/hooks/use-map-overlay-layer.js";
+import { useMapViewport } from "../src/presentation/map/hooks/use-map-viewport.js";
 import { useExternalGameIcons } from "../src/presentation/settings/hooks/use-external-game-icons.js";
 import { useMapOverlayOpacityPreference } from "../src/presentation/settings/hooks/use-map-overlay-opacity-preference.js";
 import { SolarSystemOverlay } from "../src/presentation/solar-system/components/solar-system-overlay.js";
@@ -72,16 +67,6 @@ function locationName(entry: AtlasEntryDto) {
 
 function imageBasename(source: string) {
   return source.split(/[?#]/, 1)[0].split("/").at(-1) ?? source;
-}
-
-function atlasMarkerIcon(L: typeof import("leaflet"), entry: AtlasEntryDto, active: boolean, campaignDimmed = false) {
-  const cityLevel = !["country", "off-world"].includes(entry.precision);
-  return L.divIcon({
-    className: "atlas-marker-wrap",
-    html: `<span class="atlas-marker ${cityLevel ? "is-city" : "is-country"}${active ? " is-active" : ""}${campaignDimmed ? " is-campaign-dimmed" : ""}"><b></b></span>`,
-    iconSize: [active ? 30 : 18, active ? 30 : 18],
-    iconAnchor: [active ? 15 : 9, active ? 15 : 9],
-  });
 }
 
 type Selection = { group: AtlasGroupDto; entry: AtlasEntryDto };
@@ -198,8 +183,6 @@ const atlasFilterValueSets = {
   confidenceValues,
   methodValues,
 };
-const MAP_MAX_ZOOM = 18;
-
 function gameCodes(value: string) {
   return value.split(" / ").filter((code) => code && code !== "MP");
 }
@@ -213,44 +196,6 @@ if (!initialGroup) throw new Error("Generated atlas contains no groups");
 
 const initialEntry = initialGroup.entries[0];
 if (!initialEntry) throw new Error("Generated atlas contains an empty group");
-
-function mapViewportPadding(mapElement: HTMLElement, detailsElement: HTMLElement | null) {
-  const mapRect = mapElement.getBoundingClientRect();
-  const shortestEdge = Math.min(mapRect.width, mapRect.height);
-  const edgePadding = Math.round(Math.min(56, Math.max(32, shortestEdge * .055)));
-  let rightPadding = edgePadding;
-  let bottomPadding = edgePadding;
-
-  if (detailsElement) {
-    const detailsRect = detailsElement.getBoundingClientRect();
-    const horizontalOverlap = Math.max(
-      0,
-      Math.min(mapRect.right, detailsRect.right) - Math.max(mapRect.left, detailsRect.left),
-    );
-    const verticalOverlap = Math.max(
-      0,
-      Math.min(mapRect.bottom, detailsRect.bottom) - Math.max(mapRect.top, detailsRect.top),
-    );
-
-    if (horizontalOverlap > 0 && verticalOverlap > 0) {
-      const detailsAtBottom = detailsRect.width >= mapRect.width * .68
-        && Math.abs(mapRect.bottom - detailsRect.bottom) <= edgePadding;
-      if (detailsAtBottom) {
-        bottomPadding = mapRect.bottom - detailsRect.top + edgePadding;
-      } else {
-        rightPadding = mapRect.right - detailsRect.left + edgePadding;
-      }
-    }
-  }
-
-  return {
-    paddingTopLeft: [edgePadding, edgePadding] as [number, number],
-    paddingBottomRight: [
-      Math.min(rightPadding, Math.max(edgePadding, mapRect.width - edgePadding - 64)),
-      Math.min(bottomPadding, Math.max(edgePadding, mapRect.height - edgePadding - 64)),
-    ] as [number, number],
-  };
-}
 
 export default function Home() {
   const {
@@ -293,7 +238,6 @@ export default function Home() {
     toggleMethod,
     clearMethods,
   } = useAtlasFilters(atlasFilterValueSets);
-  const [mapReady, setMapReady] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [detailsOpen, setDetailsOpen] = useState(true);
   const [settingsOpen, setSettingsOpen] = useState(false);
@@ -331,35 +275,17 @@ export default function Home() {
     group: initialGroup,
     entry: initialEntry,
   });
-  const mapNode = useRef<HTMLDivElement>(null);
-  const map = useRef<LeafletMap | null>(null);
-  const markerLayer = useRef<MarkerClusterGroup | null>(null);
-  const markers = useRef<Map<string, { marker: LeafletMarker; entry: AtlasEntryDto }>>(new Map());
-  const markerEntries = useRef<WeakMap<LeafletMarker, AtlasEntryDto>>(new WeakMap());
-  const campaignFocusLevelIds = useRef<Set<string> | null>(null);
-  const campaignRouteLayer = useRef<import("leaflet").LayerGroup | null>(null);
-  const campaignRouteFitKey = useRef<string | null>(null);
-  const campaignMarkerRevealEntryId = useRef<string | null>(null);
-  const mapImageOverlay = useRef<import("leaflet").ImageOverlay.Rotated | null>(null);
-  const mapImageOverlayLevelId = useRef<string | null>(null);
-  const mapImageOverlayOpacity = useRef(0);
-  const mapImageOverlayAnimation = useRef<number | null>(null);
-  const mapImageOverlayTargetOpacity = useRef(0);
-  const historyMapImageOverlay = useRef<import("leaflet").ImageOverlay.Rotated | null>(null);
-  const historyMapImageOverlayKey = useRef<string | null>(null);
-  const historyMapImageOverlayOpacity = useRef(0);
-  const historyMapImageOverlayAnimation = useRef<number | null>(null);
-  const sidebarSelectionTarget = useRef<{
-    bounds: [number, number][];
-    maxZoom: number;
-  } | null>(null);
-  const markerOverlaySelectionLevelId = useRef<string | null>(null);
-  const relatedLevelFocusEntryId = useRef<string | null>(null);
-  const leaflet = useRef<typeof import("leaflet") | null>(null);
+  const {
+    ready: mapReady,
+    runtime: leafletMap,
+    mapNode,
+    prepareMarkerSelection,
+  } = useLeafletMap();
   const mediaDialog = useRef<HTMLDialogElement>(null);
   const infoDialog = useRef<HTMLDialogElement>(null);
   const gameCatalogDialog = useRef<HTMLDialogElement>(null);
   const intelCard = useRef<HTMLDivElement>(null);
+  const getMapDetailsElement = useCallback(() => intelCard.current, []);
 
   const groups = data.groups;
   const games = useMemo(() => {
@@ -531,24 +457,6 @@ export default function Home() {
     ? selectedHistoryOverlays.find((overlay) => overlay.id === activeHistoryOverlay.id) ?? null
     : null;
 
-  const mapOverlayOpacityTarget = useCallback((overlay: MapOverlayDto, visible: boolean, zoom?: number) => {
-    const currentMap = map.current;
-    const L = leaflet.current;
-    if (!currentMap || !L || !mapNode.current) return visible ? overlay.opacity : 0;
-    const padding = mapViewportPadding(mapNode.current, intelCard.current);
-    return calculateLeafletMapOverlayOpacityTarget({
-      baseOpacity: overlay.opacity,
-      corners: overlay.corners,
-      currentZoom: zoom,
-      enabled: mapOverlayZoomOpacityEnabled,
-      leaflet: L,
-      map: currentMap,
-      maximumZoom: MAP_MAX_ZOOM,
-      padding,
-      visible,
-    });
-  }, [mapOverlayZoomOpacityEnabled]);
-
   const selectEntry = useCallback((group: AtlasGroupDto, entry: AtlasEntryDto) => {
     setNextHistoryMode("push");
     selectAtlasEntry(group, entry);
@@ -556,6 +464,65 @@ export default function Home() {
     collapseLevelBriefing();
     setActiveHistoryOverlay(null);
   }, [collapseLevelBriefing, selectAtlasEntry, setNextHistoryMode]);
+
+  const selectMapMarker = useCallback((group: AtlasGroupDto, entry: AtlasEntryDto) => {
+    prepareMarkerSelection(mapOverlays[entry.levelId] ? entry.levelId : null);
+    selectEntry(group, entry);
+  }, [prepareMarkerSelection, selectEntry]);
+
+  useLeafletMarkers({
+    filteredGroups: filtered,
+    locationLabel: locationName,
+    onSelect: selectMapMarker,
+    ready: mapReady,
+    runtime: leafletMap,
+    selected,
+    selectedCampaign,
+  });
+
+  const findSelectionByEntryId = useCallback(
+    (entryId: string) => atlasDataIndex.findSelectionByEntryId(entryId),
+    [],
+  );
+  const { prepareMarkerReveal } = useCampaignRouteLayer({
+    findSelectionByEntryId,
+    getDetailsElement: getMapDetailsElement,
+    onSelect: selectMapMarker,
+    ready: mapReady,
+    runtime: leafletMap,
+    selectedCampaign,
+  });
+  const {
+    focusSelectedMarker,
+    queueRelatedLevelFocus,
+    queueSidebarSelection,
+  } = useMapViewport({
+    filteredGroups: filtered,
+    getDetailsElement: getMapDetailsElement,
+    mapFitCoordinates,
+    mapOverlays,
+    ready: mapReady,
+    runtime: leafletMap,
+    selected,
+    selectedCampaign,
+    sidebarOpen,
+  });
+  useMapOverlayLayer({
+    adaptiveOpacity: mapOverlayZoomOpacityEnabled,
+    enabled: selectedMapOverlayEnabled,
+    getDetailsElement: getMapDetailsElement,
+    levelId: selected.entry.levelId,
+    overlay: selectedMapOverlay,
+    ready: mapReady,
+    runtime: leafletMap,
+    title: selectedAppearance.title,
+  });
+  const { focusHistoryOverlay } = useHistoryOverlayLayer({
+    getDetailsElement: getMapDetailsElement,
+    overlay: selectedHistoryOverlay,
+    ready: mapReady,
+    runtime: leafletMap,
+  });
 
   const toggleHistoryOverlay = useCallback((overlay: HistoryOverlayDto) => {
     const isActive = activeHistoryOverlay?.levelId === overlay.levelId
@@ -565,23 +532,8 @@ export default function Home() {
       return;
     }
     setActiveHistoryOverlay({ levelId: overlay.levelId, id: overlay.id });
-    if (!map.current || !leaflet.current || !mapNode.current) return;
-    const boundsCoordinates = [
-      overlay.corners.topLeft,
-      overlay.corners.topRight,
-      overlay.corners.bottomLeft,
-      overlay.corners.bottomRight,
-      ...(selected.entry.coordinates ? [selected.entry.coordinates] : []),
-    ];
-    const movement = {
-      ...mapViewportPadding(mapNode.current, intelCard.current),
-      animate: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-      duration: .55,
-    };
-    map.current.stop();
-    if (movement.animate) map.current.flyToBounds(boundsCoordinates, movement);
-    else map.current.fitBounds(boundsCoordinates, movement);
-  }, [activeHistoryOverlay, selected.entry.coordinates]);
+    focusHistoryOverlay(overlay, selected.entry.coordinates);
+  }, [activeHistoryOverlay, focusHistoryOverlay, selected.entry.coordinates]);
 
   const selectSidebarGroup = useCallback((group: AtlasGroupDto) => {
     const entry = group.entries[0];
@@ -599,695 +551,28 @@ export default function Home() {
         : group.entries.some((candidate) => candidate.precision === "city")
           ? 8
           : 10;
-    sidebarSelectionTarget.current = bounds.length ? { bounds, maxZoom } : null;
+    queueSidebarSelection(bounds.length ? { bounds, maxZoom } : null);
     selectEntry(group, entry);
-  }, [selectEntry]);
-
-  const selectMapMarker = useCallback((group: AtlasGroupDto, entry: AtlasEntryDto) => {
-    markerOverlaySelectionLevelId.current = mapOverlays[entry.levelId] ? entry.levelId : null;
-    selectEntry(group, entry);
-  }, [selectEntry]);
+  }, [queueSidebarSelection, selectEntry]);
 
   function selectCampaign(campaign: CampaignOption<AtlasGroupDto, AtlasEntryDto>) {
     const campaignIsActive = activeCampaignKey === campaign.key;
     setUrlCampaignLevelId(null);
     setSelectedCampaignKey(campaignIsActive ? null : campaign.key);
     if (!campaignIsActive && campaign.levels[0]) {
-      campaignMarkerRevealEntryId.current = campaign.levels[0].entry.id;
+      prepareMarkerReveal(campaign.levels[0].entry.id);
       selectEntry(campaign.levels[0].group, campaign.levels[0].entry);
     } else {
-      campaignMarkerRevealEntryId.current = null;
+      prepareMarkerReveal(null);
     }
     setExpandedRegionEntryId(null);
     setRelatedLevelsOpen(true);
     setDetailsOpen(true);
   }
 
-  const focusEntryOverlay = useCallback((entry: AtlasEntryDto, alwaysFit = false) => {
-    const currentMap = map.current;
-    const L = leaflet.current;
-    const entryOverlay = mapOverlays[entry.levelId];
-    if (!currentMap || !L || !mapNode.current || !entry.coordinates || !entryOverlay) return false;
-
-    const padding = mapViewportPadding(mapNode.current, intelCard.current);
-    const size = currentMap.getSize();
-    const visibleBounds = L.latLngBounds([
-      currentMap.containerPointToLatLng(padding.paddingTopLeft),
-      currentMap.containerPointToLatLng([
-        size.x - padding.paddingBottomRight[0],
-        size.y - padding.paddingBottomRight[1],
-      ]),
-    ]);
-    const overlayAndMarkerBounds = L.latLngBounds([
-      entryOverlay.corners.topLeft,
-      entryOverlay.corners.topRight,
-      entryOverlay.corners.bottomLeft,
-      entryOverlay.corners.bottomRight,
-      entry.coordinates,
-    ]);
-    if (alwaysFit || !visibleBounds.contains(overlayAndMarkerBounds)) {
-      currentMap.stop();
-      const movement = {
-        ...padding,
-        ...(alwaysFit ? {} : { maxZoom: currentMap.getZoom() }),
-        animate: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-        duration: .55,
-      };
-      if (movement.animate) currentMap.flyToBounds(overlayAndMarkerBounds, movement);
-      else currentMap.fitBounds(overlayAndMarkerBounds, movement);
-    } else {
-      currentMap.panInside(entry.coordinates, padding);
-    }
-    return true;
-  }, []);
-
-  const focusEntryOnMap = useCallback((entry: AtlasEntryDto) => {
-    if (focusEntryOverlay(entry, true)) return;
-    const currentMap = map.current;
-    const layer = markerLayer.current;
-    const entryMarker = markers.current.get(entry.id)?.marker;
-    if (!currentMap || !layer || !entryMarker) return;
-
-    currentMap.stop();
-    layer.zoomToShowLayer(entryMarker, () => {
-      if (map.current !== currentMap || !mapNode.current) return;
-      currentMap.panInside(
-        entryMarker.getLatLng(),
-        mapViewportPadding(mapNode.current, intelCard.current),
-      );
-    });
-  }, [focusEntryOverlay]);
-
-  const focusSelectedMarker = useCallback(() => {
-    focusEntryOnMap(selected.entry);
-  }, [focusEntryOnMap, selected.entry]);
-
   useEffect(() => {
     mediaDialog.current?.close();
   }, [selected.entry.id]);
-
-  useEffect(() => {
-    if (!mapNode.current || map.current) return;
-    const markerStore = markers.current;
-    let cancelled = false;
-    let basemapFallbackTimer: number | null = null;
-    import("leaflet").then(async (leafletModule) => {
-      await import("leaflet.markercluster");
-      await import("leaflet-imageoverlay-rotated");
-      if (cancelled || !mapNode.current || map.current) return;
-      // Leaflet is CommonJS. Its ESM namespace is immutable, while
-      // leaflet.markercluster augments the shared default export at runtime.
-      const L = leafletModule.default as unknown as typeof import("leaflet");
-      const instance = L.map(mapNode.current, {
-        center: [27, 8],
-        zoom: 2,
-        minZoom: 2,
-        maxZoom: MAP_MAX_ZOOM,
-        zoomControl: false,
-        worldCopyJump: true,
-      });
-      map.current = instance;
-
-      const addRasterFallback = () => {
-        if (cancelled || !map.current || map.current !== instance) return;
-        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-          maxZoom: MAP_MAX_ZOOM,
-        }).addTo(instance);
-      };
-
-      try {
-        const [{ maplibreGL }, { setWorkerUrl }, { default: workerUrl }] = await Promise.all([
-          import("@maplibre/maplibre-gl-leaflet"),
-          import("maplibre-gl"),
-          import("maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url"),
-        ]);
-        if (cancelled || !map.current || map.current !== instance) return;
-
-        // MapLibre 6 cannot locate its worker after Vite bundles the app. The
-        // worker pipeline emits a self-contained, same-origin worker instead.
-        setWorkerUrl(workerUrl);
-        const basemap = maplibreGL({
-          style: "https://tiles.openfreemap.org/styles/bright",
-          attributionControl: false,
-        }).addTo(instance);
-        const vectorMap = basemap.getMaplibreMap();
-        let vectorMapLoaded = false;
-        const useRasterFallback = () => {
-          if (vectorMapLoaded || cancelled || !map.current || map.current !== instance) return;
-          if (basemapFallbackTimer !== null) window.clearTimeout(basemapFallbackTimer);
-          basemapFallbackTimer = null;
-          basemap.remove();
-          addRasterFallback();
-        };
-        vectorMap.once("load", () => {
-          vectorMapLoaded = true;
-          if (basemapFallbackTimer !== null) window.clearTimeout(basemapFallbackTimer);
-          basemapFallbackTimer = null;
-        });
-        vectorMap.once("error", useRasterFallback);
-        basemapFallbackTimer = window.setTimeout(useRasterFallback, 10_000);
-
-        const setEnglishLabels = () => applyEnglishMapLibreLabels(vectorMap);
-        if (vectorMap.isStyleLoaded()) setEnglishLabels();
-        else vectorMap.once("style.load", setEnglishLabels);
-        instance.attributionControl.addAttribution(
-          '&copy; <a href="https://openfreemap.org/">OpenFreeMap</a> &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> Data from <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-        );
-      } catch (error) {
-        console.error("Could not initialize the English vector basemap; using OpenStreetMap raster tiles.", error);
-        addRasterFallback();
-      }
-
-      L.control.zoom({ position: "bottomright" }).addTo(instance);
-      const campaignPane = instance.createPane("campaignRoute");
-      campaignPane.style.zIndex = "425";
-      markerLayer.current = L.markerClusterGroup({
-        showCoverageOnHover: false,
-        zoomToBoundsOnClick: true,
-        spiderfyOnMaxZoom: true,
-        spiderfyDistanceMultiplier: 1.35,
-        maxClusterRadius: 42,
-        animate: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-        spiderLegPolylineOptions: {
-          color: "#d8bb65",
-          weight: 1.5,
-          opacity: .8,
-        },
-        iconCreateFunction(cluster) {
-          const count = cluster.getChildCount();
-          const size = count < 10 ? 34 : count < 100 ? 40 : 46;
-          const scale = count < 10 ? "is-small" : count < 100 ? "is-medium" : "is-large";
-          const focusedLevelIds = campaignFocusLevelIds.current;
-          const containsCampaignLevel = !focusedLevelIds || cluster.getAllChildMarkers().some((marker) => {
-            const entry = markerEntries.current.get(marker);
-            return entry ? focusedLevelIds.has(entry.levelId) : false;
-          });
-          return L.divIcon({
-            className: "atlas-cluster-wrap",
-            html: `<span class="atlas-cluster ${scale}${containsCampaignLevel ? "" : " is-campaign-dimmed"}">${count}</span>`,
-            iconSize: [size, size],
-          });
-        },
-      }).addTo(instance);
-      leaflet.current = L;
-      setMapReady(true);
-    });
-    return () => {
-      cancelled = true;
-      if (basemapFallbackTimer !== null) window.clearTimeout(basemapFallbackTimer);
-      map.current?.remove();
-      map.current = null;
-      markerLayer.current = null;
-      markerStore.clear();
-      campaignRouteLayer.current = null;
-      campaignRouteFitKey.current = null;
-      mapImageOverlay.current = null;
-      mapImageOverlayLevelId.current = null;
-      if (mapImageOverlayAnimation.current !== null) cancelAnimationFrame(mapImageOverlayAnimation.current);
-      mapImageOverlayAnimation.current = null;
-      mapImageOverlayOpacity.current = 0;
-      mapImageOverlayTargetOpacity.current = 0;
-      historyMapImageOverlay.current = null;
-      historyMapImageOverlayKey.current = null;
-      if (historyMapImageOverlayAnimation.current !== null) cancelAnimationFrame(historyMapImageOverlayAnimation.current);
-      historyMapImageOverlayAnimation.current = null;
-      historyMapImageOverlayOpacity.current = 0;
-      leaflet.current = null;
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!mapReady || !map.current || !markerLayer.current || !leaflet.current) return;
-    const layer = markerLayer.current;
-    const L = leaflet.current;
-    layer.clearLayers();
-    markers.current.clear();
-    filtered.forEach((group) => {
-      group.entries.forEach((entry) => {
-        if (!entry.coordinates) return;
-        const marker = L.marker(entry.coordinates, {
-          icon: atlasMarkerIcon(L, entry, false),
-          title: `${entry.title} — ${locationName(entry)}`,
-          keyboard: true,
-        });
-        marker.on("click", () => selectMapMarker(group, entry));
-        marker.bindTooltip(`${entry.title} · ${locationName(entry)}`, {
-          direction: "top",
-          offset: [0, -8],
-        });
-        markerEntries.current.set(marker, entry);
-        marker.addTo(layer);
-        markers.current.set(entry.id, { marker, entry });
-      });
-    });
-  }, [filtered, mapReady, selectMapMarker]);
-
-  useEffect(() => {
-    if (!mapReady || !map.current || !leaflet.current) return;
-    const currentMap = map.current;
-    const L = leaflet.current;
-    const focusedLevelIds = selectedCampaign
-      ? new Set(selectedCampaign.levels.map(({ entry }) => entry.levelId))
-      : null;
-    campaignFocusLevelIds.current = focusedLevelIds;
-    markers.current.forEach(({ marker, entry }) => {
-      const active = entry.id === selected.entry.id;
-      const campaignDimmed = focusedLevelIds !== null && !focusedLevelIds.has(entry.levelId);
-      marker.setIcon(atlasMarkerIcon(L, entry, active, campaignDimmed));
-      marker.setZIndexOffset(active ? 1000 : 0);
-    });
-    markerLayer.current?.refreshClusters();
-    const selectedIsVisible = filtered.some((group) =>
-      group.entries.some((entry) => entry.id === selected.entry.id));
-    if (selected.entry.coordinates && selectedIsVisible && mapNode.current) {
-      // Campaign selection immediately fits the complete route. Avoid starting
-      // a competing marker pan whose delayed moveend can make the route appear
-      // settled before MarkerCluster has finished rebuilding at the final view.
-      const awaitingCampaignRouteFit = selectedCampaign !== null
-        && campaignMarkerRevealEntryId.current === selected.entry.id;
-      if (awaitingCampaignRouteFit) return;
-      const sidebarTarget = sidebarSelectionTarget.current;
-      if (sidebarTarget) {
-        sidebarSelectionTarget.current = null;
-        const padding = mapViewportPadding(mapNode.current, intelCard.current);
-        currentMap.stop();
-        const movement = {
-          ...padding,
-          maxZoom: sidebarTarget.maxZoom,
-          animate: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-          duration: .55,
-        };
-        if (movement.animate) currentMap.flyToBounds(sidebarTarget.bounds, movement);
-        else currentMap.fitBounds(sidebarTarget.bounds, movement);
-        return;
-      }
-      const relatedFocusEntryId = relatedLevelFocusEntryId.current;
-      relatedLevelFocusEntryId.current = null;
-      if (relatedFocusEntryId === selected.entry.id) {
-        focusEntryOnMap(selected.entry);
-        return;
-      }
-      const overlaySelectionLevelId = markerOverlaySelectionLevelId.current;
-      markerOverlaySelectionLevelId.current = null;
-      if (
-        overlaySelectionLevelId === selected.entry.levelId
-        && focusEntryOverlay(selected.entry)
-      ) {
-        return;
-      }
-      currentMap.panInside(
-        selected.entry.coordinates,
-        mapViewportPadding(mapNode.current, intelCard.current),
-      );
-    }
-  }, [filtered, focusEntryOnMap, focusEntryOverlay, mapReady, selected, selectedCampaign]);
-
-  useEffect(() => {
-    if (!mapReady || !map.current || !leaflet.current) return;
-    campaignRouteLayer.current?.remove();
-    campaignRouteLayer.current = null;
-    if (!selectedCampaign) {
-      campaignRouteFitKey.current = null;
-      campaignMarkerRevealEntryId.current = null;
-      return;
-    }
-
-    const currentMap = map.current;
-    const L = leaflet.current;
-    const route = buildCampaignRoute(selectedCampaign.routeLevels);
-    const routeLayer = L.layerGroup().addTo(currentMap);
-    campaignRouteLayer.current = routeLayer;
-    let markerRevealTimer: number | null = null;
-    let markerRevealAttempts = 0;
-    let campaignViewSettled = false;
-    const revealFirstCampaignMarker = () => {
-      markerRevealTimer = null;
-      const entryId = campaignMarkerRevealEntryId.current;
-      if (!entryId || entryId !== selectedCampaign.levels[0]?.entry.id) return;
-      const clusterLayer = markerLayer.current;
-      const selectedMarker = markers.current.get(entryId)?.marker;
-      if (!clusterLayer || !selectedMarker) {
-        campaignMarkerRevealEntryId.current = null;
-        return;
-      }
-      const retryMarkerReveal = () => {
-        if (markerRevealAttempts < 6) {
-          markerRevealAttempts += 1;
-          markerRevealTimer = window.setTimeout(revealFirstCampaignMarker, 160);
-          return;
-        }
-        campaignMarkerRevealEntryId.current = null;
-      };
-      const visibleParent = clusterLayer.getVisibleParent(selectedMarker);
-      if (visibleParent && visibleParent !== selectedMarker && "spiderfy" in visibleParent) {
-        (visibleParent as LeafletMarker & { spiderfy: () => void }).spiderfy();
-        // MarkerCluster silently ignores spiderfy() while a zoom animation is
-        // active. Only consume the request after the child marker is actually
-        // visible; otherwise keep trying until its animation has settled.
-        if (clusterLayer.getVisibleParent(selectedMarker) === selectedMarker) {
-          campaignMarkerRevealEntryId.current = null;
-          return;
-        }
-        retryMarkerReveal();
-        return;
-      }
-      // During a cluster refresh the marker can briefly appear as its own
-      // visible parent before it is placed back inside the rendered cluster.
-      retryMarkerReveal();
-    };
-    const scheduleMarkerReveal = () => {
-      if (!campaignMarkerRevealEntryId.current) return;
-      if (markerRevealTimer !== null) window.clearTimeout(markerRevealTimer);
-      markerRevealAttempts = 0;
-      // Let MarkerCluster finish rebuilding its visible parents after the map movement.
-      markerRevealTimer = window.setTimeout(revealFirstCampaignMarker, 180);
-    };
-    const handleCampaignMoveEnd = () => {
-      campaignViewSettled = true;
-      scheduleMarkerReveal();
-    };
-    const handleClusterAnimationEnd = () => {
-      if (campaignViewSettled) scheduleMarkerReveal();
-    };
-    const activeMarkerLayer = markerLayer.current;
-    activeMarkerLayer?.on("animationend", handleClusterAnimationEnd);
-    const handleMarkerSpiderfied = () => {
-      const entryId = campaignMarkerRevealEntryId.current;
-      const selectedMarker = entryId ? markers.current.get(entryId)?.marker : null;
-      if (!selectedMarker || activeMarkerLayer?.getVisibleParent(selectedMarker) !== selectedMarker) return;
-      campaignMarkerRevealEntryId.current = null;
-      if (markerRevealTimer !== null) window.clearTimeout(markerRevealTimer);
-      markerRevealTimer = null;
-    };
-    activeMarkerLayer?.on("spiderfied", handleMarkerSpiderfied);
-
-    route.segments.forEach((segment) => {
-      L.polyline(segment, {
-        pane: "campaignRoute",
-        className: "campaign-route-shadow",
-        color: "#16090b",
-        weight: 6,
-        opacity: .26,
-        lineCap: "round",
-        lineJoin: "round",
-        interactive: false,
-      }).addTo(routeLayer);
-      L.polyline(segment, {
-        pane: "campaignRoute",
-        className: "campaign-route-fuzz",
-        color: "#8b2832",
-        weight: 5,
-        opacity: .16,
-        dashArray: "1 3",
-        lineCap: "round",
-        lineJoin: "round",
-        interactive: false,
-      }).addTo(routeLayer);
-      L.polyline(segment, {
-        pane: "campaignRoute",
-        className: "campaign-route-yarn",
-        color: "#481018",
-        weight: 3.8,
-        opacity: .92,
-        lineCap: "round",
-        lineJoin: "round",
-        interactive: false,
-      }).addTo(routeLayer);
-      L.polyline(segment, {
-        pane: "campaignRoute",
-        className: "campaign-route-ply",
-        color: "#741c27",
-        weight: 2.5,
-        opacity: .78,
-        dashArray: "5 2.4",
-        lineCap: "round",
-        lineJoin: "round",
-        interactive: false,
-      }).addTo(routeLayer);
-      L.polyline(segment, {
-        pane: "campaignRoute",
-        className: "campaign-route-groove",
-        color: "#200609",
-        weight: .9,
-        opacity: .7,
-        dashArray: "1 6.4",
-        dashOffset: "5.2",
-        lineCap: "round",
-        lineJoin: "round",
-        interactive: false,
-      }).addTo(routeLayer);
-    });
-
-    route.waypoints.forEach((waypoint) => {
-      const waypointLabel = formatCampaignRouteStopLabel(
-        waypoint.stops.map((stop) => stop.order),
-      );
-      const stopTitles = waypoint.stops.map((stop) => (
-        `${formatCampaignRouteStopOrder(stop.order)} \u00b7 ${stop.title}`
-      ));
-      const routeMarker = L.marker(waypoint.coordinates, {
-        pane: "campaignRoute",
-        icon: L.divIcon({
-          className: "campaign-route-stop-wrap",
-          html: `<span class="campaign-route-stop">${waypointLabel}</span>`,
-          iconSize: [22, 18],
-          iconAnchor: [-5, 23],
-        }),
-        alt: `Campaign ${waypoint.stops.length === 1 ? "stop" : "stops"} ${stopTitles.join(", ")}`,
-        keyboard: true,
-        riseOnHover: true,
-      }).addTo(routeLayer);
-
-      const tooltipContent = document.createElement("div");
-      tooltipContent.className = "campaign-route-tooltip-content";
-      const tooltipHeading = document.createElement("strong");
-      tooltipHeading.textContent = waypoint.stops.length === 1 ? "Campaign stop" : "Campaign stops";
-      tooltipContent.append(tooltipHeading);
-      for (const title of stopTitles) {
-        const tooltipRow = document.createElement("span");
-        tooltipRow.textContent = title;
-        tooltipContent.append(tooltipRow);
-      }
-      routeMarker.bindTooltip(tooltipContent, {
-        className: "campaign-route-tooltip",
-        direction: "top",
-        offset: [8, -22],
-        opacity: 1,
-      });
-
-      const waypointSelection = atlasDataIndex.findSelectionByEntryId(waypoint.stops[0].entryId);
-      if (waypointSelection) {
-        routeMarker.on("click", () => selectMapMarker(waypointSelection.group, waypointSelection.entry));
-      }
-    });
-
-    if (route.waypoints.length > 0 && campaignRouteFitKey.current !== selectedCampaign.key && mapNode.current) {
-      campaignRouteFitKey.current = selectedCampaign.key;
-      const routeBounds = route.waypoints.map((waypoint) => waypoint.coordinates);
-      const movement = {
-        ...mapViewportPadding(mapNode.current, intelCard.current),
-        maxZoom: 8,
-        animate: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-        duration: .65,
-      };
-      currentMap.stop();
-      currentMap.once("moveend", handleCampaignMoveEnd);
-      if (movement.animate) currentMap.flyToBounds(routeBounds, movement);
-      else currentMap.fitBounds(routeBounds, movement);
-      // Leaflet does not emit moveend when the calculated view is unchanged.
-      if (markerRevealTimer === null) {
-        markerRevealTimer = window.setTimeout(revealFirstCampaignMarker, movement.animate ? 900 : 180);
-      }
-    } else {
-      campaignViewSettled = true;
-      scheduleMarkerReveal();
-    }
-
-    return () => {
-      currentMap.off("moveend", handleCampaignMoveEnd);
-      activeMarkerLayer?.off("animationend", handleClusterAnimationEnd);
-      activeMarkerLayer?.off("spiderfied", handleMarkerSpiderfied);
-      if (markerRevealTimer !== null) window.clearTimeout(markerRevealTimer);
-      routeLayer.remove();
-      if (campaignRouteLayer.current === routeLayer) campaignRouteLayer.current = null;
-    };
-  }, [mapReady, selectMapMarker, selectedCampaign]);
-
-  useEffect(() => {
-    if (!mapReady || !map.current || !leaflet.current) return;
-    if (!selectedMapOverlay) {
-      if (mapImageOverlayAnimation.current !== null) cancelAnimationFrame(mapImageOverlayAnimation.current);
-      mapImageOverlay.current?.remove();
-      mapImageOverlay.current = null;
-      mapImageOverlayLevelId.current = null;
-      mapImageOverlayAnimation.current = null;
-      mapImageOverlayOpacity.current = 0;
-      mapImageOverlayTargetOpacity.current = 0;
-      return;
-    }
-    if (mapImageOverlay.current && mapImageOverlayLevelId.current === selected.entry.levelId) {
-      retargetLeafletOverlayOpacity({
-        animationRef: mapImageOverlayAnimation,
-        opacityRef: mapImageOverlayOpacity,
-        overlay: mapImageOverlay.current,
-        target: mapOverlayOpacityTarget(selectedMapOverlay, selectedMapOverlayEnabled),
-        targetRef: mapImageOverlayTargetOpacity,
-      });
-      return;
-    }
-    if (mapImageOverlayAnimation.current !== null) {
-      cancelAnimationFrame(mapImageOverlayAnimation.current);
-      mapImageOverlayAnimation.current = null;
-    }
-    mapImageOverlay.current?.remove();
-    const L = leaflet.current;
-    const imageUrl = new URL(selectedMapOverlay.image.replace(/^\/+/, ""), document.baseURI).href;
-    const overlay = L.imageOverlay.rotated(
-      imageUrl,
-      selectedMapOverlay.corners.topLeft,
-      selectedMapOverlay.corners.topRight,
-      selectedMapOverlay.corners.bottomLeft,
-      {
-        opacity: 0,
-        interactive: false,
-        className: "game-map-overlay",
-        alt: `${selectedAppearance.title} historical game map overlay`,
-      },
-    ).addTo(map.current);
-    mapImageOverlay.current = overlay;
-    mapImageOverlayLevelId.current = selected.entry.levelId;
-    mapImageOverlayOpacity.current = 0;
-    mapImageOverlayTargetOpacity.current = 0;
-    retargetLeafletOverlayOpacity({
-      animationRef: mapImageOverlayAnimation,
-      opacityRef: mapImageOverlayOpacity,
-      overlay,
-      target: mapOverlayOpacityTarget(selectedMapOverlay, selectedMapOverlayEnabled),
-      targetRef: mapImageOverlayTargetOpacity,
-    });
-  }, [mapOverlayOpacityTarget, mapReady, selected.entry.levelId, selectedAppearance.title, selectedMapOverlay, selectedMapOverlayEnabled]);
-
-  useEffect(() => {
-    if (!mapReady || !map.current || !selectedMapOverlay) return;
-    const currentMap = map.current;
-    const refreshOpacity = (zoom?: number) => {
-      const overlay = mapImageOverlay.current;
-      if (!overlay || mapImageOverlayLevelId.current !== selected.entry.levelId) return;
-      retargetLeafletOverlayOpacity({
-        animationRef: mapImageOverlayAnimation,
-        opacityRef: mapImageOverlayOpacity,
-        overlay,
-        target: mapOverlayOpacityTarget(selectedMapOverlay, selectedMapOverlayEnabled, zoom),
-        targetRef: mapImageOverlayTargetOpacity,
-      });
-    };
-    const handleZoom = () => refreshOpacity();
-    const handleZoomAnimation = (event: import("leaflet").ZoomAnimEvent) => refreshOpacity(event.zoom);
-    currentMap.on("zoom", handleZoom);
-    currentMap.on("zoomanim", handleZoomAnimation);
-    currentMap.on("resize", handleZoom);
-    return () => {
-      currentMap.off("zoom", handleZoom);
-      currentMap.off("zoomanim", handleZoomAnimation);
-      currentMap.off("resize", handleZoom);
-    };
-  }, [mapOverlayOpacityTarget, mapReady, selected.entry.levelId, selectedMapOverlay, selectedMapOverlayEnabled]);
-
-  useEffect(() => {
-    if (!mapReady || !map.current || !leaflet.current) return;
-    if (!selectedHistoryOverlay) {
-      const existing = historyMapImageOverlay.current;
-      if (!existing) return;
-      animateLeafletOverlayOpacity({
-        animationRef: historyMapImageOverlayAnimation,
-        onComplete: () => {
-          if (historyMapImageOverlay.current !== existing) return;
-          existing.remove();
-          historyMapImageOverlay.current = null;
-          historyMapImageOverlayKey.current = null;
-          historyMapImageOverlayOpacity.current = 0;
-        },
-        opacityRef: historyMapImageOverlayOpacity,
-        overlay: existing,
-        target: 0,
-      });
-      return;
-    }
-
-    const overlayKey = `${selectedHistoryOverlay.levelId}:${selectedHistoryOverlay.id}`;
-    if (historyMapImageOverlay.current && historyMapImageOverlayKey.current === overlayKey) {
-      animateLeafletOverlayOpacity({
-        animationRef: historyMapImageOverlayAnimation,
-        opacityRef: historyMapImageOverlayOpacity,
-        overlay: historyMapImageOverlay.current,
-        target: selectedHistoryOverlay.opacity,
-      });
-      return;
-    }
-
-    if (historyMapImageOverlayAnimation.current !== null) {
-      cancelAnimationFrame(historyMapImageOverlayAnimation.current);
-    }
-    historyMapImageOverlay.current?.remove();
-    const imageUrl = new URL(selectedHistoryOverlay.image.replace(/^\/+/, ""), document.baseURI).href;
-    const overlay = leaflet.current.imageOverlay.rotated(
-      imageUrl,
-      selectedHistoryOverlay.corners.topLeft,
-      selectedHistoryOverlay.corners.topRight,
-      selectedHistoryOverlay.corners.bottomLeft,
-      {
-        opacity: 0,
-        interactive: false,
-        className: "history-map-overlay",
-        alt: selectedHistoryOverlay.attribution.title,
-      },
-    ).addTo(map.current);
-    historyMapImageOverlay.current = overlay;
-    historyMapImageOverlayKey.current = overlayKey;
-    historyMapImageOverlayOpacity.current = 0;
-    animateLeafletOverlayOpacity({
-      animationRef: historyMapImageOverlayAnimation,
-      opacityRef: historyMapImageOverlayOpacity,
-      overlay,
-      target: selectedHistoryOverlay.opacity,
-    });
-  }, [mapReady, selectedHistoryOverlay]);
-
-  useEffect(() => {
-    if (!mapReady || !map.current || !mapNode.current) return;
-    const currentMap = map.current;
-    const padding = mapViewportPadding(mapNode.current, intelCard.current);
-    const animation = {
-      ...padding,
-      animate: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-      duration: .45,
-    };
-
-    currentMap.stop();
-    if (mapFitCoordinates.length) {
-      currentMap.fitBounds(mapFitCoordinates, {
-        ...animation,
-        maxZoom: mapFitCoordinates.length === 1 ? 6 : 7,
-      });
-    } else {
-      currentMap.setView([27, 8], 2, {
-        animate: animation.animate,
-        duration: animation.duration,
-      });
-    }
-  }, [mapFitCoordinates, mapReady]);
-
-  useEffect(() => {
-    if (!mapReady || !map.current) return;
-    const refreshMapSize = () => map.current?.invalidateSize({ pan: false });
-    const animationFrame = requestAnimationFrame(refreshMapSize);
-    const transitionEnd = window.setTimeout(refreshMapSize, 340);
-    return () => {
-      cancelAnimationFrame(animationFrame);
-      window.clearTimeout(transitionEnd);
-    };
-  }, [mapReady, sidebarOpen]);
 
   function exportKml() {
     downloadKmlFile(buildAtlasKml(filtered));
@@ -2128,7 +1413,7 @@ export default function Home() {
                     <button
                       className={selectedCampaign && entry.campaignOrder != null ? "has-campaign-order" : undefined}
                       onClick={() => {
-                        relatedLevelFocusEntryId.current = entry.id;
+                        queueRelatedLevelFocus(entry.id);
                         selectEntry(group, entry);
                       }}
                     >
