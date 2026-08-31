@@ -147,7 +147,11 @@ settings, and level-briefing hooks, MapLibre label and worker-URL adapters,
 campaign-route builder, and map-overlay opacity behavior are the first features
 organized here. Shared link and flag primitives, atlas title and mode display,
 game catalogue controls, filter controls, and the solar-system overlay now live
-in focused presentation component files rather than `app/page.tsx`. Leaflet map
+in focused presentation component files rather than `app/page.tsx`. The atlas
+header, sidebar, footer, map stage, level details, level media, related-level
+panel, project information, settings, and level briefing are also isolated as
+feature-owned presentation components with focused view models and callbacks.
+Leaflet map
 lifecycle, marker, campaign-route, overlay, and viewport orchestration is split
 between focused presentation hooks and infrastructure renderers. Pure Wiki
 article, level-media,

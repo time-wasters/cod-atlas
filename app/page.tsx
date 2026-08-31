@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import ReactMarkdown from "react-markdown";
 import { filterAtlasGroups } from "../src/application/atlas/use-cases/filter-atlas-groups.js";
 import { findRelatedLevels } from "../src/application/atlas/use-cases/find-related-levels.js";
 import { selectLevelMedia } from "../src/application/atlas/use-cases/select-level-media.js";
@@ -19,23 +18,35 @@ import { loadStaticAtlasData } from "../src/infrastructure/atlas-data/static-jso
 import { loadStaticHistoryOverlays } from "../src/infrastructure/atlas-data/static-json/static-history-overlay.loader.js";
 import { loadStaticMapOverlays } from "../src/infrastructure/atlas-data/static-json/static-map-overlay.loader.js";
 import { downloadKmlFile } from "../src/infrastructure/browser/downloads/kml-file.downloader.js";
-import { FittedLevelTitle } from "../src/presentation/atlas/components/fitted-level-title.js";
-import { LevelModeIcon } from "../src/presentation/atlas/components/level-mode-icon.js";
+import { AtlasHeader } from "../src/presentation/atlas/components/atlas-header.js";
+import { AtlasMapStage } from "../src/presentation/atlas/components/atlas-map-stage.js";
+import {
+  AtlasSidebar,
+  type AtlasSidebarViewModel,
+} from "../src/presentation/atlas/components/atlas-sidebar.js";
+import { LevelDetailsPanel } from "../src/presentation/atlas/components/level-details-panel.js";
+import {
+  LevelMedia,
+  LevelMediaDialog,
+  type LevelMediaViewModel,
+} from "../src/presentation/atlas/components/level-media.js";
+import { ProjectInfoDialog } from "../src/presentation/atlas/components/project-info-dialog.js";
+import {
+  RelatedLevelsPanel,
+  type RelatedLevelsViewModel,
+} from "../src/presentation/atlas/components/related-levels-panel.js";
 import { useAtlasSelection } from "../src/presentation/atlas/hooks/use-atlas-selection.js";
 import {
   useAtlasUrlSync,
   type AppliedAtlasUrlState,
 } from "../src/presentation/atlas/hooks/use-atlas-url-sync.js";
-import {
-  AdvancedFilterDropdown,
-  type FilterHoverDetail,
-  type FilterOption,
+import type {
+  FilterHoverDetail,
+  FilterOption,
 } from "../src/presentation/filters/components/advanced-filter-dropdown.js";
-import { CountrySelect } from "../src/presentation/filters/components/country-select.js";
 import { useAtlasFilters } from "../src/presentation/filters/state/use-atlas-filters.js";
 import { GameCatalogDialog } from "../src/presentation/game-catalog/components/game-catalog-dialog.js";
-import { GameIcon } from "../src/presentation/game-catalog/components/game-icon.js";
-import { GameSelect } from "../src/presentation/game-catalog/components/game-select.js";
+import { LevelBriefingPane } from "../src/presentation/level-briefing/components/level-briefing-pane.js";
 import { useLevelBriefing } from "../src/presentation/level-briefing/hooks/use-level-briefing.js";
 import { useCampaignRouteLayer } from "../src/presentation/map/hooks/use-campaign-route-layer.js";
 import { useHistoryOverlayLayer } from "../src/presentation/map/hooks/use-history-overlay-layer.js";
@@ -43,10 +54,10 @@ import { useLeafletMap } from "../src/presentation/map/hooks/use-leaflet-map.js"
 import { useLeafletMarkers } from "../src/presentation/map/hooks/use-leaflet-markers.js";
 import { useMapOverlayLayer } from "../src/presentation/map/hooks/use-map-overlay-layer.js";
 import { useMapViewport } from "../src/presentation/map/hooks/use-map-viewport.js";
+import { SettingsDialog } from "../src/presentation/settings/components/settings-dialog.js";
 import { useExternalGameIcons } from "../src/presentation/settings/hooks/use-external-game-icons.js";
 import { useMapOverlayOpacityPreference } from "../src/presentation/settings/hooks/use-map-overlay-opacity-preference.js";
 import { SolarSystemOverlay } from "../src/presentation/solar-system/components/solar-system-overlay.js";
-import { ExternalLinkIcon } from "../src/presentation/shared/components/external-link-icon.js";
 
 function locationUrl(entry: AtlasEntryDto, provider: "googleMaps" | "wikipedia" | "callOfDutyMaps") {
   return entry.urls?.find((item) => item[provider])?.[provider] ?? null;
@@ -63,10 +74,6 @@ function googleMapsUrl(entry: AtlasEntryDto) {
 
 function locationName(entry: AtlasEntryDto) {
   return entry.landmark ?? entry.city ?? entry.region ?? entry.country;
-}
-
-function imageBasename(source: string) {
-  return source.split(/[?#]/, 1)[0].split("/").at(-1) ?? source;
 }
 
 type Selection = { group: AtlasGroupDto; entry: AtlasEntryDto };
@@ -578,465 +585,268 @@ export default function Home() {
     downloadKmlFile(buildAtlasKml(filtered));
   }
 
+  const filteredEntries = filtered.flatMap((group) => group.entries);
+  const selectedLevelGames = selected.entry.gameIds.flatMap((gameId) => {
+    const selectedGame = atlasDataIndex.findGameById(gameId);
+    if (!selectedGame) return [];
+    const icon = gameIcon(selectedGame) ?? null;
+    return [{
+      game: selectedGame,
+      icon,
+      external: Boolean(icon && icon !== selectedGame.icon),
+    }];
+  });
+  const levelMediaViewModel: LevelMediaViewModel | null = selectedImage && selectedImageKey ? {
+    appearanceTitle: selectedAppearance.title,
+    bannerKey: selectedAppearance.bannerKey,
+    failed: selectedImageFailed,
+    image: selectedImage,
+    imageKey: selectedImageKey,
+    isLocal: selectedImageIsLocal,
+    loaded: selectedImageLoaded,
+  } : null;
+  const relatedLevelsViewModel: RelatedLevelsViewModel | null = relatedLevels.length > 0 ? {
+    ariaLabel: selectedCampaign ? `${selectedCampaign.label} levels` : "Related levels",
+    campaign: selectedCampaign !== null,
+    expanded: relatedLevelsExpanded,
+    gameIcon: selectedCampaignGameIcon && selectedCampaignGame ? {
+      external: selectedCampaignUsesExternalGameIcon,
+      gameId: selectedCampaignGame.id,
+      src: selectedCampaignGameIcon,
+    } : null,
+    hiddenCount: hiddenRelatedLevelCount,
+    items: visibleRelatedLevels,
+    label: selectedCampaign?.label ?? "Related levels",
+    open: relatedLevelsOpen,
+    selectedLevelId: selected.entry.levelId,
+    totalCount: relatedLevels.length,
+  } : null;
+  const sidebarViewModel: AtlasSidebarViewModel = {
+    open: sidebarOpen,
+    search: {
+      value: query,
+      onChange: (value) => {
+        prepareSearchUpdate();
+        setQuery(value);
+      },
+      onBlur: finishSearchUpdate,
+    },
+    game: {
+      games,
+      value: game,
+      onOpenCatalog: () => gameCatalogDialog.current?.showModal(),
+      onChange: (value) => {
+        setNextHistoryMode("push");
+        setGame(value);
+        setSelectedCampaignKey(null);
+        setUrlCampaignLevelId(null);
+        setExpandedRegionEntryId(null);
+        if (value === "all") setSidebarListMode("locations");
+      },
+    },
+    country: {
+      countries,
+      value: country,
+      onChange: (value) => {
+        setNextHistoryMode("push");
+        setCountry(value);
+      },
+    },
+    modes: [
+      {
+        label: "Campaign",
+        visible: showSingleplayer,
+        onToggle: () => {
+          setNextHistoryMode("push");
+          setShowSingleplayer((visible) => !visible);
+        },
+      },
+      {
+        label: "Multiplayer",
+        visible: showMultiplayer,
+        onToggle: () => {
+          setNextHistoryMode("push");
+          setShowMultiplayer((visible) => !visible);
+        },
+      },
+      {
+        label: "Zombies",
+        visible: showZombies,
+        onToggle: () => {
+          setNextHistoryMode("push");
+          setShowZombies((visible) => !visible);
+        },
+      },
+    ],
+    advanced: {
+      count: advancedFilterCount,
+      open: advancedFiltersOpen,
+      onClose: closeAdvancedFilters,
+      onOpen: openAdvancedFilters,
+      onReset: resetAdvancedFilters,
+      filters: [
+        {
+          id: "game-series",
+          title: "Series",
+          options: gameSeriesOptions,
+          selected: gameSeries,
+          open: openAdvancedFilterDropdown === "game-series",
+          hoverDetails: gameSeriesDetails,
+          onOpenChange: (open) => setAdvancedFilterDropdownOpen("game-series", open),
+          onToggle: (value) => {
+            setNextHistoryMode("push");
+            toggleGameSeries(value);
+          },
+          onClear: () => {
+            setNextHistoryMode("push");
+            clearGameSeries();
+          },
+        },
+        {
+          id: "game-subseries",
+          title: "Sub-series",
+          options: gameSubseriesOptions,
+          selected: gameSubseries,
+          open: openAdvancedFilterDropdown === "game-subseries",
+          hoverDetails: gameSubseriesDetails,
+          onOpenChange: (open) => setAdvancedFilterDropdownOpen("game-subseries", open),
+          onToggle: (value) => {
+            setNextHistoryMode("push");
+            toggleGameSubseries(value);
+          },
+          onClear: () => {
+            setNextHistoryMode("push");
+            clearGameSubseries();
+          },
+        },
+        {
+          id: "continent",
+          title: "Continent",
+          options: continentOptions,
+          selected: continents,
+          open: openAdvancedFilterDropdown === "continent",
+          onOpenChange: (open) => setAdvancedFilterDropdownOpen("continent", open),
+          onToggle: (value) => {
+            setNextHistoryMode("push");
+            toggleContinent(value);
+          },
+          onClear: () => {
+            setNextHistoryMode("push");
+            clearContinents();
+          },
+        },
+        {
+          id: "precision",
+          title: "Precision",
+          options: precisionOptions,
+          selected: precisions,
+          open: openAdvancedFilterDropdown === "precision",
+          onOpenChange: (open) => setAdvancedFilterDropdownOpen("precision", open),
+          onToggle: (value) => {
+            setNextHistoryMode("push");
+            togglePrecision(value);
+          },
+          onClear: () => {
+            setNextHistoryMode("push");
+            clearPrecisions();
+          },
+        },
+        {
+          id: "confidence",
+          title: "Confidence",
+          options: confidenceOptions,
+          selected: confidences,
+          open: openAdvancedFilterDropdown === "confidence",
+          onOpenChange: (open) => setAdvancedFilterDropdownOpen("confidence", open),
+          onToggle: (value) => {
+            setNextHistoryMode("push");
+            toggleConfidence(value);
+          },
+          onClear: () => {
+            setNextHistoryMode("push");
+            clearConfidences();
+          },
+        },
+        {
+          id: "method",
+          title: "Method",
+          options: methodOptions,
+          selected: methods,
+          open: openAdvancedFilterDropdown === "method",
+          onOpenChange: (open) => setAdvancedFilterDropdownOpen("method", open),
+          onToggle: (value) => {
+            setNextHistoryMode("push");
+            toggleMethod(value);
+          },
+          onClear: () => {
+            setNextHistoryMode("push");
+            clearMethods();
+          },
+        },
+      ],
+    },
+    results: {
+      total: resultCount,
+      localized: filteredEntries.filter((entry) => !["country", "off-world"].includes(entry.precision)).length,
+      fallback: filteredEntries.filter((entry) => entry.precision === "country").length,
+      regions: filtered.length,
+      onExport: exportKml,
+    },
+    browse: {
+      mode: sidebarListMode,
+      groups: filtered,
+      campaigns,
+      selectedGroupName: selected.group.name,
+      activeCampaignKey,
+      onGroupSelect: selectSidebarGroup,
+      onCampaignSelect: selectCampaign,
+      onModeChange: (mode) => {
+        setNextHistoryMode("push");
+        setSidebarListMode(mode);
+        if (mode === "locations") {
+          setSelectedCampaignKey(null);
+          setUrlCampaignLevelId(null);
+          setExpandedRegionEntryId(null);
+        }
+      },
+    },
+  };
+
+  const handleMediaFailure = (failedMedia: LevelMediaViewModel) => {
+    setFailedImageKey(failedMedia.imageKey);
+    if (failedMedia.isLocal || failedMedia.image.mediaType === "video") {
+      setFailedLevelBanners((failed) => new Set(failed).add(failedMedia.bannerKey));
+    }
+  };
+
   return (
     <main className={`atlas-shell${sidebarOpen ? "" : " is-sidebar-collapsed"}`}>
-      <header className="atlas-header">
-        <div className="atlas-brand">
-          <h1>
-            {/* This reviewed local brand asset does not need runtime image optimization. */}
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="images/banner.png" width="790" height="153" alt="CoD Atlas" />
-          </h1>
-          <p>Real-world geography of the series</p>
-        </div>
-        <div className="header-stat">
-          <strong>{data.totals.entries}</strong>
-          <span>locations</span>
-        </div>
-        <button className="settings-button" type="button" aria-label="Open settings" onClick={() => setSettingsOpen(true)}>
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Zm8.1 5.1v-3.2l-2.3-.7a7 7 0 0 0-.7-1.6l1.1-2.2-2.2-2.2-2.2 1.1a7 7 0 0 0-1.6-.7L11.5 2H8.4l-.7 2.3a7 7 0 0 0-1.6.7L3.9 3.9 1.7 6.1l1.1 2.2a7 7 0 0 0-.7 1.6L0 10.5v3.1l2.3.7a7 7 0 0 0 .7 1.6l-1.1 2.2 2.2 2.2 2.2-1.1a7 7 0 0 0 1.6.7l.7 2.3h3.1l.7-2.3a7 7 0 0 0 1.6-.7l2.2 1.1 2.2-2.2-1.1-2.2a7 7 0 0 0 .7-1.6l2.2-.7Z" />
-          </svg>
-        </button>
-      </header>
+      <AtlasHeader
+        locationCount={data.totals.entries}
+        onOpenSettings={() => setSettingsOpen(true)}
+      />
 
       {settingsOpen && (
-        <section className="settings-page" aria-labelledby="settings-title">
-          <div className="settings-surface">
-            <header>
-              <h2 id="settings-title">Settings</h2>
-              <button type="button" aria-label="Close settings" onClick={() => setSettingsOpen(false)}>×</button>
-            </header>
-            <div className="settings-content">
-              <section className="settings-group">
-                <div className="settings-copy">
-                  <h3>External game icons</h3>
-                  <p>Use imported icons when available; local icons remain the fallback.</p>
-                  {externalIconsEnabled && externalIconManifestUnavailable && <small className="is-warning">External icons are unavailable in this build; local icons are still active.</small>}
-                </div>
-                <button
-                  className={`settings-switch${externalIconsEnabled ? " is-enabled" : ""}`}
-                  type="button"
-                  role="switch"
-                  aria-checked={externalIconsEnabled}
-                  onClick={() => setExternalIconsEnabled(!externalIconsEnabled)}
-                >
-                  <span aria-hidden="true" />
-                  <b>{externalIconsEnabled ? "On" : "Off"}</b>
-                </button>
-              </section>
-              <section className="settings-group">
-                <div className="settings-copy">
-                  <h3>Zoom-based overlay fading</h3>
-                  <p>Fade overlays beyond their overview scale and hide them at street-detail zoom.</p>
-                </div>
-                <button
-                  className={`settings-switch${mapOverlayZoomOpacityEnabled ? " is-enabled" : ""}`}
-                  type="button"
-                  role="switch"
-                  aria-label="Zoom-based overlay fading"
-                  aria-checked={mapOverlayZoomOpacityEnabled}
-                  onClick={() => setMapOverlayZoomOpacityEnabled(!mapOverlayZoomOpacityEnabled)}
-                >
-                  <span aria-hidden="true" />
-                  <b>{mapOverlayZoomOpacityEnabled ? "On" : "Off"}</b>
-                </button>
-              </section>
-              <p className="settings-note">This preference is stored only in this browser.</p>
-            </div>
-          </div>
-        </section>
+        <SettingsDialog
+          externalIcons={{
+            enabled: externalIconsEnabled,
+            onToggle: () => setExternalIconsEnabled(!externalIconsEnabled),
+          }}
+          externalIconsUnavailable={externalIconManifestUnavailable}
+          overlayFading={{
+            enabled: mapOverlayZoomOpacityEnabled,
+            onToggle: () => setMapOverlayZoomOpacityEnabled(!mapOverlayZoomOpacityEnabled),
+          }}
+          onClose={() => setSettingsOpen(false)}
+        />
       )}
 
-      <aside className="atlas-sidebar" aria-label="Map filters">
-        <label className="search-field">
-          <span aria-hidden="true">⌕</span>
-          <input
-            value={query}
-            onChange={(event) => {
-              prepareSearchUpdate();
-              setQuery(event.target.value);
-            }}
-            onBlur={finishSearchUpdate}
-            placeholder="Search missions, maps, countries…"
-            aria-label="Search locations"
-          />
-        </label>
-
-        <div className="filter-grid">
-          <div className="filter-field game-filter">
-            <span>
-              <button
-                className="game-catalog-trigger"
-                type="button"
-                aria-haspopup="dialog"
-                onClick={() => gameCatalogDialog.current?.showModal()}
-              >
-                Game
-              </button>
-              <small>Oldest to newest</small>
-            </span>
-            <GameSelect
-              games={games}
-              value={game}
-              onValueChange={(value) => {
-                setNextHistoryMode("push");
-                setGame(value);
-                setSelectedCampaignKey(null);
-                setUrlCampaignLevelId(null);
-                setExpandedRegionEntryId(null);
-                if (value === "all") setSidebarListMode("locations");
-              }}
-            />
-          </div>
-          <div className="filter-field">
-            <span>Country</span>
-            <CountrySelect
-              countries={countries}
-              value={country}
-              onValueChange={(value) => {
-                setNextHistoryMode("push");
-                setCountry(value);
-              }}
-            />
-          </div>
-        </div>
-
-        <div className="mode-filter" aria-label="Map type visibility">
-          <button
-            className={showSingleplayer ? "is-active" : ""}
-            type="button"
-            aria-pressed={showSingleplayer}
-            onClick={() => {
-              setNextHistoryMode("push");
-              setShowSingleplayer((visible) => !visible);
-            }}
-          >
-            <span aria-hidden="true">{showSingleplayer ? "✓" : "○"}</span> Campaign
-          </button>
-          <button
-            className={showMultiplayer ? "is-active" : ""}
-            type="button"
-            aria-pressed={showMultiplayer}
-            onClick={() => {
-              setNextHistoryMode("push");
-              setShowMultiplayer((visible) => !visible);
-            }}
-          >
-            <span aria-hidden="true">{showMultiplayer ? "✓" : "○"}</span> Multiplayer
-          </button>
-          <button
-            className={showZombies ? "is-active" : ""}
-            type="button"
-            aria-pressed={showZombies}
-            onClick={() => {
-              setNextHistoryMode("push");
-              setShowZombies((visible) => !visible);
-            }}
-          >
-            <span aria-hidden="true">{showZombies ? "✓" : "○"}</span> Zombies
-          </button>
-        </div>
-
-        {advancedFiltersOpen ? (
-          <section className="advanced-filters" aria-labelledby="advanced-filters-title">
-            <header className="advanced-filters-header">
-              <button
-                className="advanced-filters-back"
-                type="button"
-                aria-label="Close advanced filters"
-                onClick={closeAdvancedFilters}
-              >
-                <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m10 3-5 5 5 5" /></svg>
-              </button>
-              <div className="advanced-filters-title">
-                <span>Filter matrix</span>
-                <h2 id="advanced-filters-title">Advanced filters</h2>
-              </div>
-              <div className="advanced-filters-actions">
-                <button
-                  className="advanced-filters-reset"
-                  type="button"
-                  disabled={advancedFilterCount === 0}
-                  onClick={resetAdvancedFilters}
-                >
-                  Reset
-                </button>
-              </div>
-            </header>
-
-            <div className="advanced-filters-scroll">
-              <AdvancedFilterDropdown
-                id="game-series"
-                title="Series"
-                options={gameSeriesOptions}
-                selected={gameSeries}
-                open={openAdvancedFilterDropdown === "game-series"}
-                hoverDetails={gameSeriesDetails}
-                onOpenChange={(open) => setAdvancedFilterDropdownOpen("game-series", open)}
-                onToggle={(value) => {
-                  setNextHistoryMode("push");
-                  toggleGameSeries(value);
-                }}
-                onClear={() => {
-                  setNextHistoryMode("push");
-                  clearGameSeries();
-                }}
-              />
-              <AdvancedFilterDropdown
-                id="game-subseries"
-                title="Sub-series"
-                options={gameSubseriesOptions}
-                selected={gameSubseries}
-                open={openAdvancedFilterDropdown === "game-subseries"}
-                hoverDetails={gameSubseriesDetails}
-                onOpenChange={(open) => setAdvancedFilterDropdownOpen("game-subseries", open)}
-                onToggle={(value) => {
-                  setNextHistoryMode("push");
-                  toggleGameSubseries(value);
-                }}
-                onClear={() => {
-                  setNextHistoryMode("push");
-                  clearGameSubseries();
-                }}
-              />
-              <AdvancedFilterDropdown
-                id="continent"
-                title="Continent"
-                options={continentOptions}
-                selected={continents}
-                open={openAdvancedFilterDropdown === "continent"}
-                onOpenChange={(open) => setAdvancedFilterDropdownOpen("continent", open)}
-                onToggle={(value) => {
-                  setNextHistoryMode("push");
-                  toggleContinent(value);
-                }}
-                onClear={() => {
-                  setNextHistoryMode("push");
-                  clearContinents();
-                }}
-              />
-
-              <AdvancedFilterDropdown
-                id="precision"
-                title="Precision"
-                options={precisionOptions}
-                selected={precisions}
-                open={openAdvancedFilterDropdown === "precision"}
-                onOpenChange={(open) => setAdvancedFilterDropdownOpen("precision", open)}
-                onToggle={(value) => {
-                  setNextHistoryMode("push");
-                  togglePrecision(value);
-                }}
-                onClear={() => {
-                  setNextHistoryMode("push");
-                  clearPrecisions();
-                }}
-              />
-              <AdvancedFilterDropdown
-                id="confidence"
-                title="Confidence"
-                options={confidenceOptions}
-                selected={confidences}
-                open={openAdvancedFilterDropdown === "confidence"}
-                onOpenChange={(open) => setAdvancedFilterDropdownOpen("confidence", open)}
-                onToggle={(value) => {
-                  setNextHistoryMode("push");
-                  toggleConfidence(value);
-                }}
-                onClear={() => {
-                  setNextHistoryMode("push");
-                  clearConfidences();
-                }}
-              />
-              <AdvancedFilterDropdown
-                id="method"
-                title="Method"
-                options={methodOptions}
-                selected={methods}
-                open={openAdvancedFilterDropdown === "method"}
-                onOpenChange={(open) => setAdvancedFilterDropdownOpen("method", open)}
-                onToggle={(value) => {
-                  setNextHistoryMode("push");
-                  toggleMethod(value);
-                }}
-                onClear={() => {
-                  setNextHistoryMode("push");
-                  clearMethods();
-                }}
-              />
-            </div>
-
-            <button
-              className="advanced-filters-results"
-              type="button"
-              onClick={closeAdvancedFilters}
-            >
-              Show <strong>{resultCount}</strong> results
-            </button>
-          </section>
-        ) : (
-          <>
-            <button
-              className={`advanced-filter-trigger${advancedFilterCount ? " is-active" : ""}`}
-              type="button"
-              aria-expanded="false"
-              onClick={openAdvancedFilters}
-            >
-              <span>
-                <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3 5h12M5 9h8M7 13h4" /></svg>
-                Advanced filters
-              </span>
-              <strong>{advancedFilterCount || "All"}</strong>
-              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5" /></svg>
-            </button>
-
-            <section className="result-panel" aria-live="polite">
-          <div><strong>{resultCount}</strong><span>results</span></div>
-          <dl>
-            <div><dt>Localized</dt><dd>{filtered.flatMap((item) => item.entries).filter((item) => !["country", "off-world"].includes(item.precision)).length}</dd></div>
-            <div><dt>Fallback</dt><dd>{filtered.flatMap((item) => item.entries).filter((item) => item.precision === "country").length}</dd></div>
-            <div><dt>Regions</dt><dd>{filtered.length}</dd></div>
-          </dl>
-        </section>
-
-        <button className="kml-button" onClick={exportKml}>↓ Export filtered KML for Google Maps</button>
-
-        <section className="mission-list">
-          <div className="sidebar-list-switch" role="tablist" aria-label="Browse atlas data">
-            <button
-              className={sidebarListMode === "locations" ? "is-active" : ""}
-              type="button"
-              role="tab"
-              aria-selected={sidebarListMode === "locations"}
-              aria-controls="sidebar-locations"
-              onClick={() => {
-                setNextHistoryMode("push");
-                setSidebarListMode("locations");
-                setSelectedCampaignKey(null);
-                setUrlCampaignLevelId(null);
-                setExpandedRegionEntryId(null);
-              }}
-            >
-              <span>Locations</span><small>{filtered.length}</small>
-            </button>
-            <button
-              className={sidebarListMode === "campaigns" ? "is-active" : ""}
-              type="button"
-              role="tab"
-              aria-selected={sidebarListMode === "campaigns"}
-              aria-controls="sidebar-campaigns"
-              disabled={game === "all"}
-              title={game === "all" ? "Choose a game to browse campaigns" : undefined}
-              onClick={() => {
-                setNextHistoryMode("push");
-                setSidebarListMode("campaigns");
-              }}
-            >
-              <span>Campaigns</span><small>{campaigns.length}</small>
-            </button>
-          </div>
-          {sidebarListMode === "locations" ? (
-            <div className="scroll-list" id="sidebar-locations" role="tabpanel">
-              {filtered.map((group, index) => (
-                <button
-                  key={`${group.name}-${index}`}
-                  className={group.name === selected.group.name ? "location-row is-selected" : "location-row"}
-                  onClick={() => selectSidebarGroup(group)}
-                >
-                  <i className="location-marker-icon" aria-hidden="true" />
-                  <span><b>{group.name}</b><small>{group.entries.length} appearances</small></span>
-                  <em>{group.coordinates ? "MAP" : "ORBIT"}</em>
-                </button>
-              ))}
-            </div>
-          ) : (
-            <div className="scroll-list" id="sidebar-campaigns" role="tabpanel">
-              {campaigns.map((campaign, index) => (
-                <button
-                  key={campaign.key}
-                  className={campaign.key === activeCampaignKey ? "campaign-row is-selected" : "campaign-row"}
-                  type="button"
-                  onClick={() => selectCampaign(campaign)}
-                >
-                  <i aria-hidden="true">{String(index + 1).padStart(2, "0")}</i>
-                  <span>
-                    <b>{campaign.label}</b>
-                    <small>{campaign.levels.length} levels</small>
-                  </span>
-                  <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5" /></svg>
-                </button>
-              ))}
-              {campaigns.length === 0 && (
-                <p className="campaign-list-empty">No campaign data is available for this game.</p>
-              )}
-            </div>
-          )}
-        </section>
-
-        <footer>
-          <p className="creator-credit">Made with ♥️ by <a href="https://github.com/plp-gtr" target="_blank" rel="noreferrer">plp-GTR</a></p>
-          <p className="source-credit">
-            Inspired by <a className="icon-link" href="https://www.reddit.com/r/CallOfDuty/comments/10c3jbd/cod_every_location_visited_in_the_cod_franchise/" target="_blank" rel="noreferrer">
-              u/robracer97
-              <svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true">
-                <path fill="currentColor" d="M12 0C5.373 0 0 5.373 0 12c0 3.314 1.343 6.314 3.515 8.485l-2.286 2.286C.775 23.225 1.097 24 1.738 24H12c6.627 0 12-5.373 12-12S18.627 0 12 0Zm4.388 3.199c1.104 0 1.999.895 1.999 1.999 0 1.105-.895 2-1.999 2-.946 0-1.739-.657-1.947-1.539v.002c-1.147.162-2.032 1.15-2.032 2.341v.007c1.776.067 3.4.567 4.686 1.363.473-.363 1.064-.58 1.707-.58 1.547 0 2.802 1.254 2.802 2.802 0 1.117-.655 2.081-1.601 2.531-.088 3.256-3.637 5.876-7.997 5.876-4.361 0-7.905-2.617-7.998-5.87-.954-.447-1.614-1.415-1.614-2.538 0-1.548 1.255-2.802 2.803-2.802.645 0 1.239.218 1.712.585 1.275-.79 2.881-1.291 4.64-1.365v-.01c0-1.663 1.263-3.034 2.88-3.207.188-.911.993-1.595 1.959-1.595Zm-8.085 8.376c-.784 0-1.459.78-1.506 1.797-.047 1.016.64 1.429 1.426 1.429.786 0 1.371-.369 1.418-1.385.047-1.017-.553-1.841-1.338-1.841Zm7.406 0c-.786 0-1.385.824-1.338 1.841.047 1.017.634 1.385 1.418 1.385.785 0 1.473-.413 1.426-1.429-.046-1.017-.721-1.797-1.506-1.797Zm-3.703 4.013c-.974 0-1.907.048-2.77.135-.147.015-.241.168-.183.305.483 1.154 1.622 1.964 2.953 1.964 1.33 0 2.47-.81 2.953-1.964.057-.137-.037-.29-.184-.305-.863-.087-1.795-.135-2.769-.135Z" />
-              </svg>
-            </a>
-            &nbsp;·&nbsp;
-            <a className="icon-link" href="https://github.com/time-wasters/cod-atlas" target="_blank" rel="noreferrer">
-              Source code
-              <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true">
-                <path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82A7.65 7.65 0 0 1 8 3.87c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z" />
-              </svg>
-            </a>
-            &nbsp;·&nbsp;
-            <button className="icon-link footer-info-button" type="button" onClick={() => infoDialog.current?.showModal()}>
-              Info
-              <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true">
-                <circle cx="8" cy="8" r="6.5" /><path d="M8 7v4M8 4.5h.01" />
-              </svg>
-            </button>
-          </p>
-            </footer>
-          </>
-        )}
-        <button
-          className="sidebar-toggle"
-          type="button"
-          aria-expanded={sidebarOpen}
-          aria-label={sidebarOpen ? "Hide map filters" : "Show map filters"}
-          onClick={() => setSidebarOpen((open) => !open)}
-        >
-          <svg viewBox="0 0 12 18" aria-hidden="true">
-            <path d={sidebarOpen ? "m8 3-5 6 5 6" : "m4 3 5 6-5 6"} />
-          </svg>
-        </button>
-      </aside>
-
-      <dialog
-        ref={infoDialog}
-        className="project-info-dialog"
-        aria-labelledby="project-info-title"
-        onClick={(event) => {
-          if (event.target === event.currentTarget) event.currentTarget.close();
-        }}
-      >
-        <div className="project-info-content">
-          <header>
-            <h2 id="project-info-title">About CoD Atlas</h2>
-            <form method="dialog">
-              <button aria-label="Close project information"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg></button>
-            </form>
-          </header>
-          <p>This website was made by me, <a href="https://github.com/plp-gtr" target="_blank" rel="noreferrer">Philipp Gächter</a>.</p>
-          <p>It is a pure hobby project that resulted from the urge to start the Call of Duty series from the first game and play all major instances, especially the console games I missed when I was young.</p>
-          <p>While playing I was scouting the locations on Google Streetview and Maps to see how accurate the game is and out of pure interest.</p>
-          <p>When searching for a map of all CoD levels in real life, I stumbled across the map from <a href="https://www.reddit.com/r/CallOfDuty/comments/10c3jbd/cod_every_location_visited_in_the_cod_franchise/" target="_blank" rel="noreferrer">u/robracer97</a>. Unfortunately it is not dynamic or zoomable, so I&apos;ve started this project.</p>
-          <p>Have fun!</p>
-        </div>
-      </dialog>
-
+      <AtlasSidebar
+        viewModel={sidebarViewModel}
+        onOpenProjectInfo={() => infoDialog.current?.showModal()}
+        onToggle={() => setSidebarOpen((open) => !open)}
+      />
+      <ProjectInfoDialog dialogRef={infoDialog} />
       <GameCatalogDialog
         dialogRef={gameCatalogDialog}
         games={data.games}
@@ -1044,475 +854,90 @@ export default function Home() {
         onExternalIconError={markExternalGameIconUnavailable}
       />
 
-      <section className="map-stage" aria-label="Interactive world map">
-        <div ref={mapNode} className="map-canvas" />
-        <div className="map-grid" aria-hidden="true" />
-        <div className="map-label" aria-hidden="true">TACTICAL GEOGRAPHY // GLOBAL</div>
-
-        <SolarSystemOverlay
-          locations={spaceLocations}
-          selectedEntryId={selected.entry.id}
-          expanded={solarSystemExpanded}
-          onExpandedChange={(expanded) => setSolarSystemDisplay({ hasSpaceLocations, expanded })}
-          onSelect={selectEntry}
-        />
-
-        {detailsOpen && levelNotesExpanded && (
-          <aside id="selected-level-briefing" className="level-briefing-pane" aria-labelledby="level-briefing-title">
-            <header>
-              <div>
-                <span>Level briefing</span>
-                <h2 id="level-briefing-title">{selectedAppearance.title}</h2>
-              </div>
-              <button type="button" aria-label="Close level briefing" onClick={toggleLevelNotes}>×</button>
-            </header>
-            <div className="level-briefing-content">
-              {selectedLevelNotes?.status === "loading" && <p className="level-briefing-state">Loading briefing…</p>}
-              {selectedLevelNotes?.status === "missing" && <p className="level-briefing-state">No briefing has been written for this level yet.</p>}
-              {selectedLevelNotes?.status === "ready" && selectedLevelNotes.content && (
-                <ReactMarkdown
-                  components={{
-                    a: ({ children, ...props }) => <a {...props} target="_blank" rel="noreferrer">{children}</a>,
-                    img: ({ src = "", alt = "" }) => {
-                      const historyOverlay = selectedHistoryOverlays.find(
-                        (overlay) => imageBasename(overlay.image) === imageBasename(src),
-                      );
-                      if (!historyOverlay) {
-                        // Markdown images are authored content and cannot use the Next image optimizer.
-                        // eslint-disable-next-line @next/next/no-img-element
-                        return <img src={src} alt={alt} />;
-                      }
-                      const isActive = selectedHistoryOverlay?.id === historyOverlay.id;
-                      const action = isActive ? "Hide from map" : "Show on map";
-                      const imageUrl = new URL(historyOverlay.image.replace(/^\/+/, ""), document.baseURI).href;
-                      return (
-                        <button
-                          className={`history-overlay-image${isActive ? " is-active" : ""}`}
-                          type="button"
-                          aria-pressed={isActive}
-                          aria-label={`${action}: ${historyOverlay.attribution.title}`}
-                          title={`${action}: ${historyOverlay.attribution.title}`}
-                          onClick={() => toggleHistoryOverlay(historyOverlay)}
-                        >
-                          {/* Repository-hosted research figures do not use the Next image optimizer. */}
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img src={imageUrl} alt={alt || historyOverlay.attribution.title} />
-                          <span>
-                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5Zm-9 9 9 5 9-5M3 16l9 5 9-5" /></svg>
-                            {action}
-                          </span>
-                        </button>
-                      );
-                    },
-                  }}
-                >
-                  {selectedLevelNotes.content}
-                </ReactMarkdown>
-              )}
-            </div>
-          </aside>
+      <AtlasMapStage
+        mapNode={mapNode}
+        solarSystem={(
+          <SolarSystemOverlay
+            locations={spaceLocations}
+            selectedEntryId={selected.entry.id}
+            expanded={solarSystemExpanded}
+            onExpandedChange={(expanded) => setSolarSystemDisplay({ hasSpaceLocations, expanded })}
+            onSelect={selectEntry}
+          />
         )}
-
-        <div
-          className={`intel-column${detailsOpen ? "" : " is-collapsed"}${detailsOpen && levelNotesExpanded ? " has-open-briefing" : ""}`}
-          ref={intelCard}
-        >
-        <button
-          className="details-toggle"
-          type="button"
-          aria-expanded={detailsOpen}
-          aria-controls="selected-level-details"
-          aria-label={detailsOpen ? "Hide level details" : "Show level details"}
-          onClick={() => setDetailsOpen((open) => !open)}
-        >
-          <svg viewBox="0 0 12 18" aria-hidden="true">
-            <path d={detailsOpen ? "m4 3 5 6-5 6" : "m8 3-5 6 5 6"} />
-          </svg>
-        </button>
-        <button
-          className="collapsed-level-title"
-          type="button"
-          aria-label={`Show details for ${selectedAppearance.title}`}
-          onClick={() => setDetailsOpen(true)}
-        >
-          <span>{selectedAppearance.title}</span>
-        </button>
-        <article className="intel-card" id="selected-level-details">
-          <div className="mission-heading">
-            <LevelModeIcon mode={selected.entry.modes[0]} />
-            <FittedLevelTitle
-              disabled={!selected.entry.coordinates}
-              onActivate={focusSelectedMarker}
-            >
-              {selectedAppearance.title}
-            </FittedLevelTitle>
-            <div className="mission-games">
-              {selected.entry.gameIds.map((gameId) => {
-                const selectedGame = atlasDataIndex.findGameById(gameId);
-                if (!selectedGame) return null;
-                const selectedGameIcon = gameIcon(selectedGame);
-                const usesExternalGameIcon = Boolean(selectedGameIcon && selectedGameIcon !== selectedGame.icon);
-                return selectedGameIcon ? (
-                  <GameIcon
-                    key={gameId}
-                    game={selectedGame}
-                    src={selectedGameIcon}
-                    external={usesExternalGameIcon}
-                    onError={() => {
-                      if (usesExternalGameIcon) {
-                        markExternalGameIconUnavailable(gameId);
-                      }
-                    }}
-                  />
-                ) : (
-                  <span className="mission-game-name" key={gameId}>{selectedGame.label}</span>
-                );
-              })}
-            </div>
-          </div>
-          {selectedImage && (
-            <figure className="intel-media" key={selectedImageKey}>
-              {!selectedImageLoaded && (
-                <span className="media-load-state" role="status">
-                  {selectedImageFailed ? "Image unavailable" : "Loading image…"}
-                </span>
-              )}
-              {/* Local reviewed media take precedence; Wiki thumbnails remain the fallback. */}
-              {selectedImage.mediaType === "video" ? (
-                <video
-                  className={selectedImageLoaded ? "is-loaded" : ""}
-                  src={selectedImage.thumbnailUrl}
-                  aria-label={`${selectedAppearance.title} level banner`}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  onLoadedData={() => setLoadedImageKey(selectedImageKey)}
-                  onError={() => {
-                    setFailedImageKey(selectedImageKey);
-                    setFailedLevelBanners((failed) => new Set(failed).add(selectedAppearance.bannerKey));
-                  }}
-                />
-              ) : (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  className={selectedImageLoaded ? "is-loaded" : ""}
-                  src={selectedImage.thumbnailUrl}
-                  alt={`${selectedAppearance.title} level banner`}
-                  referrerPolicy={selectedImageIsLocal ? undefined : "no-referrer"}
-                  onLoad={() => setLoadedImageKey(selectedImageKey)}
-                  onError={() => {
-                    setFailedImageKey(selectedImageKey);
-                    if (selectedImageIsLocal) {
-                      setFailedLevelBanners((failed) => new Set(failed).add(selectedAppearance.bannerKey));
-                    }
-                  }}
-                />
-              )}
-              <button
-                className="media-info-button"
-                type="button"
-                aria-label="Show image copyright and attribution information"
-                title="Image information"
-                onClick={() => mediaDialog.current?.showModal()}
-              >
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M12 10.8v6M12 7.2h.01" />
-                </svg>
-              </button>
-            </figure>
-          )}
-          <div className="intel-location-row">
-            <div className="intel-kicker">
-              {selected.group.flagCode ? (
-                <span
-                  className={`flag:${selected.group.flagCode} intel-country-flag`}
-                  role="img"
-                  aria-label={`${selected.entry.country} flag`}
-                />
-              ) : (
-                <svg className="intel-country-fallback" viewBox="0 0 18 18" aria-hidden="true">
-                  <circle cx="9" cy="9" r="6.5" />
-                </svg>
-              )}
-              <span className="intel-country-name">{selected.entry.country}</span>
-            </div>
-            {selectedMapOverlay && (
-              <button
-                className={`map-overlay-toggle${selectedMapOverlayEnabled ? " is-enabled" : ""}`}
-                type="button"
-                aria-pressed={selectedMapOverlayEnabled}
-                aria-label={`${selectedMapOverlayEnabled ? "Hide" : "Show"} game map overlay`}
-                title={`${selectedMapOverlayEnabled ? "Hide" : "Show"} game map overlay`}
-                onClick={() => setDisabledMapOverlays((disabled) => {
-                  const next = new Set(disabled);
-                  if (selectedMapOverlayEnabled) next.add(selected.entry.levelId);
-                  else next.delete(selected.entry.levelId);
-                  return next;
-                })}
-              >
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5Zm-9 9 9 5 9-5M3 16l9 5 9-5" /></svg>
-              </button>
-            )}
-          </div>
-          {(selected.entry.region || selected.entry.city || selected.entry.landmark) && (
-            <div className="location-taxonomy" aria-label="Location hierarchy">
-              {selected.entry.region && (
-                <div className="taxonomy-tier is-region"><span>Region</span><strong>{selected.entry.region}</strong></div>
-              )}
-              {selected.entry.city && (
-                <div className="taxonomy-tier is-city"><span>City</span><strong>{selected.entry.city}</strong></div>
-              )}
-              {selected.entry.landmark && (
-                <div className="taxonomy-tier is-landmark"><span>Landmark</span><strong>{selected.entry.landmark}</strong></div>
-              )}
-            </div>
-          )}
-          <div className={`precision-badge ${selected.entry.precision === "approximate" ? "is-approximate" : !["country", "off-world"].includes(selected.entry.precision) ? "is-city" : "is-country"}`}>
-            {selected.entry.precision === "approximate" ? "Approximate historical position" : !["country", "off-world"].includes(selected.entry.precision) ? `Localized · ${selected.entry.confidence} confidence` : selected.entry.precision === "off-world" ? "Off-world location" : "No city evidence · country fallback"}
-          </div>
-          {otherLevelLocations.length > 0 && (
-            <div className="related-level-locations" aria-label="Other locations in this level">
-              {otherLevelLocations.map(({ group, entry }) => (
-                <div className="related-level-location" key={entry.id}>
-                  <div className="intel-kicker">
-                    {group.flagCode ? (
-                      <span
-                        className={`flag:${group.flagCode} intel-country-flag`}
-                        role="img"
-                        aria-label={`${entry.country} flag`}
-                      />
-                    ) : (
-                      <svg
-                        className="intel-country-fallback"
-                        viewBox="0 0 18 18"
-                        aria-hidden="true"
-                      >
-                        <circle cx="9" cy="9" r="6.5" />
-                      </svg>
-                    )}
-                    <span className="intel-country-name">{entry.country}</span>
-                  </div>
-                  {(entry.region || entry.city || entry.landmark) && (
-                    <div className="location-taxonomy">
-                      {entry.region && (
-                        <div className="taxonomy-tier is-region"><span>Region</span><strong>{entry.region}</strong></div>
-                      )}
-                      {entry.city && (
-                        <div className="taxonomy-tier is-city"><span>City</span><strong>{entry.city}</strong></div>
-                      )}
-                      {entry.landmark && (
-                        <div className="taxonomy-tier is-landmark"><span>Landmark</span><strong>{entry.landmark}</strong></div>
-                      )}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          )}
-          <div className="place-links" aria-label="External place links">
-            {selectedGoogleMapsUrl && (
-              <a
-                href={selectedGoogleMapsUrl}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Open in Google Maps"
-                title="Google Maps"
-              >
-                <ExternalLinkIcon name="googleMaps" />
-                <span>Google Maps</span>
-              </a>
-            )}
-            {selectedWikipediaUrl && (
-              <a
-                href={selectedWikipediaUrl}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Open on Wikipedia"
-                title="Wikipedia"
-              >
-                <ExternalLinkIcon name="wikipedia" />
-                <span>Wikipedia</span>
-              </a>
-            )}
-            {selectedCallOfDutyMapsUrl && (
-              <a
-                href={selectedCallOfDutyMapsUrl}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Open this map on Call of Duty Maps"
-                title="Call of Duty Maps"
-              >
-                <ExternalLinkIcon name="callOfDutyMaps" />
-                <span>CoD Maps</span>
-              </a>
-            )}
-            <a
-              href={selectedAppearance.wiki}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Open on Call of Duty Wiki"
-              title="Call of Duty Wiki"
-            >
-              <ExternalLinkIcon name="fandom" />
-              <span>CoD Wiki</span>
-            </a>
-          </div>
-          <section className="level-briefing">
-            <button
-              className="level-briefing-toggle"
-              type="button"
-              aria-expanded={levelNotesExpanded}
-              aria-controls={selectedAppearance.hasLevelNotes ? "selected-level-briefing" : undefined}
-              onClick={toggleLevelNotes}
-              disabled={!selectedAppearance.hasLevelNotes}
-              title={selectedAppearance.hasLevelNotes ? undefined : "No level briefing available"}
-            >
-              <b aria-hidden="true">{levelNotesExpanded ? "›" : "‹"}</b>
-              <span>
-                <small>Level briefing</small>
-                <strong>{selectedAppearance.hasLevelNotes ? "Research & historical context" : "No briefing available"}</strong>
-              </span>
-            </button>
-          </section>
-        </article>
-        {relatedLevels.length > 0 && (
-          <aside className={`related-levels-panel${relatedLevelsOpen ? "" : " is-collapsed"}`} aria-label={selectedCampaign ? `${selectedCampaign.label} levels` : "Related levels"}>
-            <button
-              className={`related-levels-toggle${selectedCampaignGameIcon ? " has-game-icon" : ""}`}
-              type="button"
-              aria-expanded={relatedLevelsOpen}
-              aria-controls="related-level-list"
-              onClick={() => setRelatedLevelsOpen((open) => !open)}
-            >
-              {selectedCampaignGameIcon && selectedCampaignGame && (
-                // Game icons are reviewed public assets and do not need image optimization.
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  className={`related-levels-game-icon${selectedCampaignUsesExternalGameIcon ? " is-external" : ""}`}
-                  src={selectedCampaignGameIcon}
-                  alt=""
-                  onError={() => {
-                    if (selectedCampaignUsesExternalGameIcon) {
-                      markExternalGameIconUnavailable(selectedCampaignGame.id);
-                    }
-                  }}
-                />
-              )}
-              <span>{selectedCampaign?.label ?? "Related levels"}</span>
-              <small>{relatedLevels.length}</small>
-              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4 6 4 4 4-4" /></svg>
-            </button>
-            {relatedLevelsOpen && (
-              <div
-                className={`intel-entries${relatedLevelsExpanded ? " is-expanded" : ""}`}
-                id="related-level-list"
-              >
-                {visibleRelatedLevels.map(({ group, entry }) => (
-                  <div className={`intel-entry${entry.levelId === selected.entry.levelId ? " is-selected" : ""}`} key={entry.levelId}>
-                    <button
-                      className={selectedCampaign && entry.campaignOrder != null ? "has-campaign-order" : undefined}
-                      onClick={() => {
-                        queueRelatedLevelFocus(entry.id);
-                        selectEntry(group, entry);
-                      }}
-                    >
-                      {selectedCampaign && entry.campaignOrder != null && (
-                        <span
-                          className="campaign-route-stop campaign-related-level-number"
-                          aria-label={`Campaign mission ${entry.campaignOrder}`}
-                        >
-                          {String(entry.campaignOrder).padStart(2, "0")}
-                        </span>
-                      )}
-                      <span className="intel-entry-copy">
-                        <strong>{entry.title}</strong>
-                        <span>{locationName(entry)}{selectedCampaign ? "" : ` · ${entry.game}`}</span>
-                      </span>
-                    </button>
-                  </div>
-                ))}
-                {hiddenRelatedLevelCount > 0 && (
-                  <button
-                    className="more-row"
-                    type="button"
-                    aria-expanded="false"
-                    aria-controls="related-level-list"
-                    onClick={() => setExpandedRegionEntryId(relatedLevelsExpansionKey)}
-                  >
-                    + {hiddenRelatedLevelCount} more {hiddenRelatedLevelCount === 1 ? "level" : "levels"} in this {selectedCampaign ? "campaign" : "region"}
-                  </button>
-                )}
-                {relatedLevelsExpanded && relatedLevels.length > 8 && (
-                  <button
-                    className="more-row is-collapse"
-                    type="button"
-                    aria-expanded="true"
-                    aria-controls="related-level-list"
-                    onClick={() => setExpandedRegionEntryId(null)}
-                  >
-                    Show fewer
-                  </button>
-                )}
-              </div>
-            )}
-          </aside>
-        )}
-        </div>
-
-        {selectedImage && (
-          <dialog
-            ref={mediaDialog}
-            className="media-info-dialog"
-            aria-labelledby="media-info-title"
-            onClick={(event) => {
-              if (event.target === event.currentTarget) event.currentTarget.close();
+        briefing={detailsOpen && levelNotesExpanded ? (
+          <LevelBriefingPane
+            activeOverlayId={selectedHistoryOverlay?.id ?? null}
+            briefing={selectedLevelNotes}
+            historyOverlays={selectedHistoryOverlays}
+            onClose={toggleLevelNotes}
+            onToggleHistoryOverlay={toggleHistoryOverlay}
+            title={selectedAppearance.title}
+          />
+        ) : null}
+        details={(
+          <LevelDetailsPanel
+            actions={{
+              onFocus: focusSelectedMarker,
+              onGameIconError: markExternalGameIconUnavailable,
+              onToggleBriefing: toggleLevelNotes,
+              onToggleDetails: () => setDetailsOpen((open) => !open),
+              onToggleMapOverlay: () => setDisabledMapOverlays((disabled) => {
+                const next = new Set(disabled);
+                if (selectedMapOverlayEnabled) next.add(selected.entry.levelId);
+                else next.delete(selected.entry.levelId);
+                return next;
+              }),
             }}
-          >
-            <div className="media-info-content">
-              <header>
-                <div>
-                  <span>{selectedImage.rights.status === "non-free" ? "Copyrighted media" : selectedImage.rights.status === "licensed" ? "Licensed media" : "Wiki media"}</span>
-                  <h2 id="media-info-title">Image information</h2>
-                </div>
-                <form method="dialog">
-                  <button aria-label="Close image information"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" /></svg></button>
-                </form>
-              </header>
-              {selectedImage.rights.notice && (
-                <div className="media-rights-notice">{selectedImage.rights.notice}</div>
-              )}
-              <dl>
-                {selectedImage.author.name && selectedImage.author.userUrl && (
-                  <div>
-                    <dt>{selectedImageIsLocal ? "Captured by" : selectedImage.author.role === "uploader" ? "Uploaded by" : "Author"}</dt>
-                    <dd><a href={selectedImage.author.userUrl} target="_blank" rel="noreferrer">{selectedImage.author.name}</a></dd>
-                  </div>
-                )}
-                {selectedImage.license.name && selectedImage.license.url && (
-                  <div>
-                    <dt>License</dt>
-                    <dd><a href={selectedImage.license.url} target="_blank" rel="noreferrer">{selectedImage.license.name}</a></dd>
-                  </div>
-                )}
-                {selectedImage.rights.noticeUrl && (
-                  <div>
-                    <dt>Rights notice</dt>
-                    <dd><a href={selectedImage.rights.noticeUrl} target="_blank" rel="noreferrer">{selectedImageIsLocal ? "Rights terms" : "Read on CoD Wiki"}</a></dd>
-                  </div>
-                )}
-                <div>
-                  <dt>Source</dt>
-                  <dd><a href={selectedImage.detailPageUrl} target="_blank" rel="noreferrer">{selectedImageIsLocal ? "Open repository image" : "Open file page"}</a></dd>
-                </div>
-              </dl>
-              <p className="media-notice-credit">{selectedImageIsLocal
-                ? "Image extracted or captured by plp-gtr; the underlying game artwork remains subject to its original copyright."
-                : "Notice reproduced from the Call of Duty Wiki; the image remains subject to its original copyright status."}</p>
-            </div>
-          </dialog>
+            columnRef={intelCard}
+            detailsOpen={detailsOpen}
+            media={levelMediaViewModel ? (
+              <LevelMedia
+                dialogRef={mediaDialog}
+                media={levelMediaViewModel}
+                onFailed={handleMediaFailure}
+                onLoaded={setLoadedImageKey}
+              />
+            ) : null}
+            relatedLevels={relatedLevelsViewModel ? (
+              <RelatedLevelsPanel
+                viewModel={relatedLevelsViewModel}
+                onToggle={() => setRelatedLevelsOpen((open) => !open)}
+                onSelect={(group, entry) => {
+                  queueRelatedLevelFocus(entry.id);
+                  selectEntry(group, entry);
+                }}
+                onExpand={() => setExpandedRegionEntryId(relatedLevelsExpansionKey)}
+                onCollapse={() => setExpandedRegionEntryId(null)}
+                onGameIconError={markExternalGameIconUnavailable}
+              />
+            ) : null}
+            viewModel={{
+              appearance: selectedAppearance,
+              briefingExpanded: levelNotesExpanded,
+              entry: selected.entry,
+              games: selectedLevelGames,
+              group: selected.group,
+              links: {
+                callOfDutyMaps: selectedCallOfDutyMapsUrl,
+                googleMaps: selectedGoogleMapsUrl,
+                wikipedia: selectedWikipediaUrl,
+              },
+              mapOverlay: {
+                available: selectedMapOverlay !== null,
+                enabled: selectedMapOverlayEnabled,
+              },
+              otherLocations: otherLevelLocations,
+            }}
+          />
         )}
-      </section>
+        mediaDialog={levelMediaViewModel ? (
+          <LevelMediaDialog
+            dialogRef={mediaDialog}
+            media={levelMediaViewModel}
+          />
+        ) : null}
+      />
     </main>
   );
 }
