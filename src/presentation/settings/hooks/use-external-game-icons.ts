@@ -5,7 +5,7 @@ import type {
   ExternalGameIconManifest,
   ExternalGameIconManifestPort,
 } from "../../../application/game-catalog/ports/external-game-icon-manifest.port.js";
-import type { ExternalGameIconsPreferencePort } from "../../../application/preferences/ports/external-game-icons-preference.port.js";
+import type { ClientSettingsPort } from "../../../application/settings/ports/client-settings.port.js";
 
 type GameWithIcon = {
   id: string;
@@ -14,16 +14,17 @@ type GameWithIcon = {
 
 export function useExternalGameIcons({
   manifestPort,
-  preferencePort,
+  clientSettingsPort,
 }: {
   manifestPort: ExternalGameIconManifestPort;
-  preferencePort: ExternalGameIconsPreferencePort;
+  clientSettingsPort: ClientSettingsPort;
 }) {
-  const enabled = useSyncExternalStore(
-    preferencePort.subscribe,
-    preferencePort.getSnapshot,
-    preferencePort.getServerSnapshot,
+  const settings = useSyncExternalStore(
+    clientSettingsPort.subscribe,
+    clientSettingsPort.getSnapshot,
+    clientSettingsPort.getServerSnapshot,
   );
+  const enabled = settings.externalGameIconsEnabled;
   const [manifest, setManifest] = useState<ExternalGameIconManifest | null>(null);
   const [unavailable, setUnavailable] = useState(false);
   const [failedGameIds, setFailedGameIds] = useState<Set<string>>(() => new Set());
@@ -51,8 +52,8 @@ export function useExternalGameIcons({
   }, []);
 
   const setEnabled = useCallback((nextEnabled: boolean) => {
-    preferencePort.setEnabled(nextEnabled);
-  }, [preferencePort]);
+    clientSettingsPort.update({ externalGameIconsEnabled: nextEnabled });
+  }, [clientSettingsPort]);
 
   return { enabled, unavailable, iconFor, markUnavailable, setEnabled };
 }

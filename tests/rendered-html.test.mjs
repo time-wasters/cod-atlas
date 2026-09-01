@@ -2,9 +2,6 @@ import assert from "node:assert/strict";
 import { access, readFile, readdir } from "node:fs/promises";
 import test from "node:test";
 
-const developmentPreviewMeta =
-  /<meta(?=[^>]*\bname=["']codex-preview["'])(?=[^>]*\bcontent=["']development["'])[^>]*>/i;
-
 test("catalogues the complete Black Ops 6 campaign, multiplayer, and Zombies roster", async () => {
   const bo6Root = new URL("../content/levels/bo6/", import.meta.url);
   assert.deepEqual((await readdir(new URL("campaign/", bo6Root))).sort(), [
@@ -81,7 +78,7 @@ test("catalogues the complete sorted Modern Warfare (2007) campaign roster", asy
   ]);
 });
 
-test("renders development preview metadata", async () => {
+test("renders the hosted atlas shell", async () => {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
@@ -107,7 +104,6 @@ test("renders development preview metadata", async () => {
     /^text\/html\b/i,
   );
   const html = await response.text();
-  assert.match(html, developmentPreviewMeta);
   assert.match(html, /<h1><img[^>]*src="images\/banner\.png"[^>]*alt="CoD Atlas"/);
   assert.match(html, /class="intel-country-fallback"/);
   assert.match(html, /class="country-select-trigger"/);

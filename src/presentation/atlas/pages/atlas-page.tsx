@@ -60,15 +60,14 @@ import { SolarSystemOverlay } from "../../solar-system/components/solar-system-o
  */
 export function AtlasPage({
   atlasUrlStatePort,
+  clientSettingsPort,
   data,
   dataIndex: atlasDataIndex,
   externalGameIconManifestPort,
-  externalGameIconsPreferencePort,
   historyOverlays,
   kmlFileDownloaderPort,
   levelBriefingPort,
   mapOverlays,
-  mapOverlayOpacityPreferencePort,
 }: AtlasPageProps) {
   const { group: initialGroup, entry: initialEntry } = initialAtlasSelection(data);
   const filterCatalog = useMemo(() => buildAtlasFilterCatalog(data), [data]);
@@ -100,13 +99,13 @@ export function AtlasPage({
     setEnabled: setExternalIconsEnabled,
   } = useExternalGameIcons({
     manifestPort: externalGameIconManifestPort,
-    preferencePort: externalGameIconsPreferencePort,
+    clientSettingsPort,
   });
   const [activeHistoryOverlay, setActiveHistoryOverlay] = useState<{ levelId: string; id: string } | null>(null);
   const {
     enabled: mapOverlayZoomOpacityEnabled,
     setEnabled: setMapOverlayZoomOpacityEnabled,
-  } = useMapOverlayOpacityPreference(mapOverlayOpacityPreferencePort);
+  } = useMapOverlayOpacityPreference(clientSettingsPort);
   const [solarSystemDisplay, setSolarSystemDisplay] = useState({
     hasSpaceLocations: true,
     expanded: true,
