@@ -80,7 +80,7 @@ of a confirmed château or route.
 
 ## The Real Mission & Differences
 
-Two separate battles for Noville need to be distinguished. On 19–20 December
+Two separate battles for Noville need to be distinguished. On 19-20 December
 1944, Team Desobry of the 10th Armored Division and 1st Battalion, 506th PIR,
 defended the village against the regular German 2nd Panzer Division before
 withdrawing toward Bastogne. That famous defence left knocked-out American
@@ -155,7 +155,7 @@ The Wikipedia URL points to the English article for Noville, Bastogne.
   — transcription of the game's after-action text and its conflicting
   13 January statement.
 - [US Army — *The Battle of the Bulge* Senior Leader Staff Ride Battlebook](https://www.govinfo.gov/content/pkg/GOVPUB-D101-PURL-gpo46222/pdf/GOVPUB-D101-PURL-gpo46222.pdf)
-  — official daily chronology for 13–15 January, including the 11th Armored
+  — official daily chronology for 13-15 January, including the 11th Armored
   entry and withdrawal on the 14th and the 506th occupation on the 15th.
 - [506th PIR Association — 2nd Battalion Headquarters history and research guide](https://www.airborne506.org/wp-content/uploads/Reenactor_Guide_Version_1.1.pdf)
   — the battalion's movement from Foy and Cobru to Noville, its capture and

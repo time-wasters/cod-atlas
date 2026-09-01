@@ -9,7 +9,7 @@ campaign:
   label: British Campaign
 wikiArticle: codwiki-rhine-crossing
 mapOverlay:
-  image: /images/levels/rtv/rhine-crossing/maps/briefing-map.png
+  image: /images/levels/rtv/campaign/14-rhine-crossing/maps/overlay.png
   opacity: 0.72
   corners:
     topLeft: [51.70639672, 6.4284971]

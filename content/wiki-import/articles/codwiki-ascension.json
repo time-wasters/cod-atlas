@@ -10,7 +10,7 @@
     "label": "Baikonur Cosmodrome",
     "url": "https://callofduty.fandom.com/wiki/Baikonur_Cosmodrome"
   },
-  "mapStyle": "multiplayer",
+  "mapStyle": "zombies",
   "mapStyleDetail": null,
   "mapStyleConfidence": "curated",
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",

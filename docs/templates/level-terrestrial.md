@@ -29,6 +29,8 @@ locations:
 
 ## The Mission in the Game
 
+<!-- For a standalone multiplayer map, use "## The Map in the Game" instead. -->
+
 For singleplayer, summarize the mission's character, unit, date, stated place
 and objectives. For multiplayer, state that there is no mission narrative,
 describe the map setting and reference any documented corresponding

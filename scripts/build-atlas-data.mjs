@@ -3,6 +3,7 @@ import path from "node:path";
 import process from "node:process";
 import countries from "world-countries";
 import YAML from "yaml";
+import { buildAtlasEntry } from "../src/application/atlas-compilation/use-cases/build-atlas-entry.mjs";
 
 const root = process.cwd();
 const contentRoot = path.join(root, "content");
@@ -185,9 +186,11 @@ function validateWikiLevelReferences(article, filename, wikiArticles) {
 
 async function validateMapOverlay(overlay, levelId, filename) {
   requireValue(overlay && typeof overlay === "object" && !Array.isArray(overlay), `${filename}: mapOverlay must be an object`);
+  const levelMediaBase = path.relative(levelsRoot, filename).replaceAll("\\", "/").replace(/\.md$/, "");
+  const expectedLevelImage = `/images/levels/${levelMediaBase}/maps/overlay.png`;
   requireValue(
-    /^\/images\/(?:maps\/[a-z0-9/_-]+|levels\/[a-z0-9-]+\/[a-z0-9-]+\/maps\/briefing-map)\.png$/.test(overlay.image ?? ""),
-    `${filename}: mapOverlay.image must be a local PNG under /images/maps/ or the level's maps/briefing-map.png`,
+    overlay.image === expectedLevelImage || /^\/images\/maps\/[a-z0-9/_-]+\.png$/.test(overlay.image ?? ""),
+    `${filename}: mapOverlay.image must be ${expectedLevelImage} or a local PNG under /images/maps/`,
   );
   requireValue(Number.isFinite(overlay.opacity) && overlay.opacity > 0 && overlay.opacity <= 1, `${filename}: mapOverlay.opacity must be greater than 0 and at most 1`);
   for (const corner of ["topLeft", "topRight", "bottomLeft", "bottomRight"]) {
@@ -218,9 +221,14 @@ async function validateMapOverlay(overlay, levelId, filename) {
 async function validateHistoryOverlay(overlay, levelId, body, filename) {
   requireValue(overlay && typeof overlay === "object" && !Array.isArray(overlay), `${filename}: each historyOverlay must be an object`);
   requireValue(/^[a-z0-9-]+$/.test(overlay.id ?? ""), `${filename}: historyOverlay.id must use lowercase letters, numbers and hyphens`);
+  const levelMediaBase = path.relative(levelsRoot, filename).replaceAll("\\", "/").replace(/\.md$/, "");
+  const expectedLevelDirectory = `/images/levels/${levelMediaBase}/extra/`;
+  const levelImageName = typeof overlay.image === "string" && overlay.image.startsWith(expectedLevelDirectory)
+    ? overlay.image.slice(expectedLevelDirectory.length)
+    : null;
   requireValue(
-    /^\/images\/(?:maps\/[a-z0-9/_-]+|levels\/[a-z0-9-]+\/[a-z0-9-]+\/extra\/[a-z0-9_-]+)\.png$/.test(overlay.image ?? ""),
-    `${filename}: historyOverlay.image must be a local PNG under /images/maps/ or the level's extra/ directory`,
+    /^[a-z0-9_-]+\.png$/.test(levelImageName ?? "") || /^\/images\/maps\/[a-z0-9/_-]+\.png$/.test(overlay.image ?? ""),
+    `${filename}: historyOverlay.image must be a local PNG under ${expectedLevelDirectory} or /images/maps/`,
   );
   requireValue(Number.isFinite(overlay.opacity) && overlay.opacity > 0 && overlay.opacity <= 1, `${filename}: historyOverlay.opacity must be greater than 0 and at most 1`);
   for (const corner of ["topLeft", "topRight", "bottomLeft", "bottomRight"]) {
@@ -415,9 +423,9 @@ for (const filename of levelFiles) {
       levelIdAliases[legacyId] = level.id;
     }
   }
-  const legacyLevelBannerBase = path.relative(levelsRoot, filename).replaceAll("\\", "/").replace(/\.md$/, "");
-  const levelBannerBase = `${primaryGame}/${levelSlug}/main`;
-  const levelBannerFilename = levelBannerFilesByBase.get(levelBannerBase) ?? levelBannerFilesByBase.get(legacyLevelBannerBase);
+  const levelMediaBase = path.relative(levelsRoot, filename).replaceAll("\\", "/").replace(/\.md$/, "");
+  const levelBannerBase = `${levelMediaBase}/main`;
+  const levelBannerFilename = levelBannerFilesByBase.get(levelBannerBase);
   if (levelBannerFilename) {
     const extension = path.extname(levelBannerFilename);
     const image = await readFile(levelBannerFilename);
@@ -444,7 +452,7 @@ for (const filename of levelFiles) {
         noticeUrl: "https://www.activision.com/legal/terms-of-use",
       },
     };
-    usedLevelBannerBases.add(levelBannerFilesByBase.has(levelBannerBase) ? levelBannerBase : legacyLevelBannerBase);
+    usedLevelBannerBases.add(levelBannerBase);
   }
   requireValue(wikiArticles.has(level.wikiArticle), `${filename}: unknown wikiArticle ${level.wikiArticle}`);
   requireValue(Array.isArray(level.locations), `${filename}: locations must be a list`);
@@ -545,9 +553,9 @@ for (const filename of levelReferenceFiles) {
   }
   if (reference.metadata != null) requireValue(reference.metadata && typeof reference.metadata === "object" && !Array.isArray(reference.metadata), `${filename}: metadata must be an object`);
   const bannerKey = `${level.id}@${gameId}`;
-  const appearanceBannerBase = `${gameId}/${levelSlug}/main`;
-  const legacyBannerBase = path.relative(levelsRoot, filename).replaceAll("\\", "/").replace(/\.ref\.md$/, "");
-  const bannerFilename = levelBannerFilesByBase.get(appearanceBannerBase) ?? levelBannerFilesByBase.get(legacyBannerBase);
+  const appearanceMediaBase = path.relative(levelsRoot, filename).replaceAll("\\", "/").replace(/\.md$/, "");
+  const appearanceBannerBase = `${appearanceMediaBase}/main`;
+  const bannerFilename = levelBannerFilesByBase.get(appearanceBannerBase);
   if (bannerFilename) {
     const extension = path.extname(bannerFilename);
     const image = await readFile(bannerFilename);
@@ -573,7 +581,7 @@ for (const filename of levelReferenceFiles) {
         noticeUrl: "https://www.activision.com/legal/terms-of-use",
       },
     };
-    usedLevelBannerBases.add(levelBannerFilesByBase.has(appearanceBannerBase) ? appearanceBannerBase : legacyBannerBase);
+    usedLevelBannerBases.add(appearanceBannerBase);
   }
   level.appearances.push({
     gameId,
@@ -644,31 +652,13 @@ for (const level of levels) {
       ? [location.latitude, location.longitude]
       : null;
     if (!group.coordinates && coordinates) group.coordinates = coordinates;
-    group.entries.push({
-      id: `${level.id}:${location.id}`,
-      levelId: level.id,
-      locationId: location.id,
-      primary: location.primary === true,
-      title: level.title,
-      game: gameCodes,
-      gameIds: appearanceGameIds,
+    group.entries.push(buildAtlasEntry({
       appearances,
-      ...(level.campaign ? { campaign: level.campaign } : {}),
-      ...(level.campaignOrder ? { campaignOrder: level.campaignOrder } : {}),
-      wiki: article.sourceUrl,
-      wikiArticle: level.wikiArticle,
-      country: location.country,
-      city: location.city ?? null,
-      region: location.region ?? null,
-      landmark: location.landmark ?? null,
-      coordinates,
-      precision: location.precision,
-      confidence: location.confidence ?? (location.precision === "country" ? "fallback" : "medium"),
-      method: location.method ?? null,
-      ...(location.urls ? { urls: location.urls } : {}),
-      hasLevelNotes: Boolean(level.notes.trim()),
-      modes: [level.mode],
-    });
+      gameCodes,
+      level,
+      location,
+      wikiUrl: article.sourceUrl,
+    }));
   }
 }
 

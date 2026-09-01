@@ -9,7 +9,7 @@ campaign:
   label: Canadian Campaign
 wikiArticle: codwiki-sloedam
 mapOverlay:
-  image: /images/levels/rtv/sloedam/maps/briefing-map.png
+  image: /images/levels/rtv/campaign/9-sloedam/maps/overlay.png
   opacity: 0.72
   corners:
     topLeft: [51.6260353, 3.26884632]

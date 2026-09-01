@@ -9,7 +9,7 @@ campaign:
   label: Canadian Campaign
 wikiArticle: codwiki-woensdrecht
 mapOverlay:
-  image: /images/levels/rtv/woensdrecht/maps/briefing-map.png
+  image: /images/levels/rtv/campaign/8-woensdrecht/maps/overlay.png
   opacity: 0.72
   corners:
     topLeft: [51.55571392, 3.74887403]

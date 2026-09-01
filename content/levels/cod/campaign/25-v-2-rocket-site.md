@@ -55,7 +55,7 @@ support vehicles is unusually close to the level's physical premise.
 
 The historical unit identification is different from the game's. Detailed
 launch records place **2nd Battery, Artillery Battalion 485** (`2./485`) in the
-Burgsteinfurt–Heek area in late January 1945. They record launches from Heek
+Burgsteinfurt-Heek area in late January 1945. They record launches from Heek
 through 31 January and further launches by 2./485 on 3 February, immediately on
 either side of the mission date. The reviewed records do not identify a
 “Batterie #445” at this location. The number may be fictional or may conflate
@@ -64,7 +64,7 @@ either explanation.
 
 There are further differences. The local history states that the Heek rockets
 were aimed at Antwerp because London was outside their range from this launch
-area. The operational record likewise associates 2./485's Burgsteinfurt–Heek
+area. The operational record likewise associates 2./485's Burgsteinfurt-Heek
 launches with impacts around Antwerp. By contrast, units firing at London on 2
 February are recorded in the Netherlands. The game therefore combines a real
 German V-2 deployment area with the British campaign's London-focused story.
@@ -94,5 +94,5 @@ link for the named historical place and does not encode the atlas coordinates.
 - [Municipality of Heek: Gedenktafel im von Oerschen Wald](https://www.heek.de/portal/meldungen/gedenktafel-im-von-oerschen-wald-900000049-24120.html) — installation of the memorial plaque at the original V-2 position and its dedication to the weapon's victims.
 - [Verwehte Spuren: Heek](https://verwehte-spuren.de.tl/_Heek.htm) — photographs and transcription of the memorial plaque, identifying the location as firing site 163 operated by 2./485 from November 1944 to March 1945.
 - [University of Münster: *X-Orte* catalogue](https://www.uni-muenster.de/imperia/md/content/expedition_muensterland/wissenschaftsorte/immer/x_orte_katalog_komplett_gro__e_version.pdf) — historical interpretation of the Heek firing position and its concrete Meillerwagen base.
-- [V2Rocket.com: timeline of V-2 attacks](https://v2rocket.com/start/deployment/timeline.html) — dated launch records for 2./485 around Burgsteinfurt and Heek and for 2–3 February 1945.
+- [V2Rocket.com: timeline of V-2 attacks](https://v2rocket.com/start/deployment/timeline.html) — dated launch records for 2./485 around Burgsteinfurt and Heek and for 2-3 February 1945.
 - [National Museum of the United States Air Force: V-2 with Meillerwagen](https://www.nationalmuseum.af.mil/Visit/Museum-Exhibits/Fact-Sheets/Display/Article/196226/AFmuseum/v-2-with-meillerwagen/) — mobile launch organization, equipment and preferred wooded firing terrain.

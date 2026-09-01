@@ -1,0 +1,27 @@
+import type { LevelAppearanceDto } from "./level-appearance.dto.js";
+
+export type AtlasEntryDto = {
+  id: string;
+  levelId: string;
+  locationId: string;
+  primary: boolean;
+  title: string;
+  game: string;
+  gameIds: string[];
+  campaign?: LevelAppearanceDto["campaign"];
+  campaignOrder?: number;
+  wiki: string;
+  wikiArticle: string;
+  country: string;
+  region?: string | null;
+  city?: string | null;
+  landmark?: string | null;
+  coordinates?: [number, number] | null;
+  precision: "exact" | "approximate" | "city" | "region" | "country" | "off-world";
+  confidence?: "high" | "medium" | "fallback";
+  method?: string;
+  urls?: Partial<Record<"googleMaps" | "wikipedia" | "callOfDutyMaps", string>>[];
+  hasLevelNotes: boolean;
+  modes: ("singleplayer" | "multiplayer" | "zombies")[];
+  appearances: LevelAppearanceDto[];
+};

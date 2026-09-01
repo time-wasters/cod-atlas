@@ -1,0 +1,15 @@
+export const atlasUrlParameters = Object.freeze([
+  "q",
+  "game",
+  "country",
+  "series",
+  "subseries",
+  "continent",
+  "precision",
+  "confidence",
+  "method",
+  "mode",
+  "browse",
+  "level",
+  "location",
+]);

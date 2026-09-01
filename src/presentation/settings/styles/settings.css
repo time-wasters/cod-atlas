@@ -1,0 +1,24 @@
+.settings-button { width: 38px; height: 38px; display: grid; place-items: center; border: 1px solid #4e5542; border-radius: 5px; padding: 0; color: #aaa27f; background: #171c15; cursor: pointer; }
+.settings-button:hover, .settings-button:focus-visible { border-color: var(--amber); color: var(--amber); outline: none; }
+.settings-button svg { width: 19px; height: 19px; fill: currentColor; }
+.settings-page { position: fixed; z-index: 2000; inset: 0; display: grid; place-items: center; padding: 24px; background: #050704d9; backdrop-filter: blur(5px); }
+.settings-surface { width: min(620px, 100%); max-height: min(720px, 100%); overflow: auto; border: 1px solid #b57a18; border-radius: 7px; color: #ddd6c3; background: linear-gradient(150deg, #181d16, #10140f); box-shadow: 0 22px 80px #000d; }
+.settings-surface > header { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 20px 20px 0; }
+.settings-surface h2 { margin: 0; color: #fff4d7; font: 28px/1.05 "Arial Narrow", Impact, sans-serif; letter-spacing: .04em; }
+.settings-surface > header button { width: 34px; height: 34px; border: 1px solid #626953; border-radius: 50%; padding: 0 0 2px; color: #ddd6c3; background: #20251c; font-size: 22px; cursor: pointer; }
+.settings-surface > header button:hover, .settings-surface > header button:focus-visible { border-color: var(--amber); color: var(--amber); outline: none; }
+.settings-content { padding: 20px; }
+.settings-group { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.settings-group + .settings-group { margin-top: 20px; }
+.settings-copy { min-width: 0; }
+.settings-copy h3 { margin: 0 0 6px; color: #e5dcc5; font-size: 14px; }
+.settings-copy p { max-width: 410px; margin: 0; color: #8f9583; font-size: 11px; line-height: 1.55; }
+.settings-copy small { display: block; margin-top: 9px; color: #9eb271; font: 9px var(--font-geist-mono), monospace; }
+.settings-copy small.is-warning { color: #d5a34b; }
+.settings-switch { min-width: 82px; display: grid; grid-template-columns: 31px auto; align-items: center; gap: 8px; border: 1px solid #5d624c; border-radius: 18px; padding: 4px 9px 4px 4px; color: #929786; background: #20251c; cursor: pointer; }
+.settings-switch > span { width: 27px; height: 27px; border-radius: 50%; background: #777d69; box-shadow: 0 2px 7px #0008; }
+.settings-switch > b { font: 700 9px var(--font-geist-mono), monospace; letter-spacing: .08em; text-transform: uppercase; }
+.settings-switch.is-enabled { border-color: #a8731d; color: #f0bd58; background: #dfa12712; }
+.settings-switch.is-enabled > span { background: var(--amber); }
+.settings-switch:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+.settings-note { margin: 14px 2px 0; color: #717766; font-size: 10px; }

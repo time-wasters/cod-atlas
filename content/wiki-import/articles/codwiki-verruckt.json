@@ -10,7 +10,7 @@
     "label": "Berlin",
     "url": "https://callofduty.fandom.com/wiki/Berlin"
   },
-  "mapStyle": "multiplayer",
+  "mapStyle": "zombies",
   "mapStyleDetail": null,
   "mapStyleConfidence": "curated",
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",

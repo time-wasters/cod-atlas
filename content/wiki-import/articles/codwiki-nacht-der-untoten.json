@@ -10,7 +10,7 @@
     "label": "Abandoned Airfield",
     "url": "https://callofduty.fandom.com/wiki/Nacht_der_Untoten_(location)"
   },
-  "mapStyle": "multiplayer",
+  "mapStyle": "zombies",
   "mapStyleDetail": null,
   "mapStyleConfidence": "curated",
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",

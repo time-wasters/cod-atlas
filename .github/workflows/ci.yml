@@ -28,6 +28,9 @@ jobs:
       # Validate source data without requiring generated build artifacts.
       - run: npm run data:check
 
+      # Decode level images and enforce committed-media limits.
+      - run: npm run images:check
+
       - run: npm test
       - run: npm run build:static
 

@@ -10,7 +10,7 @@
     "label": "Russian Federation",
     "url": "https://callofduty.fandom.com/wiki/Russian_Federation"
   },
-  "mapStyle": "multiplayer",
+  "mapStyle": "zombies",
   "mapStyleDetail": null,
   "mapStyleConfidence": "curated",
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",

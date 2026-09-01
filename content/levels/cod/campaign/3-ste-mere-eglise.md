@@ -32,7 +32,7 @@ locations:
 ## The Mission in the Game
 
 The mission follows Private Martin and Captain Foley's mixed American airborne
-force as it attacks Sainte-Mère-Église during the night of June 5–6, 1944. The
+force as it attacks Sainte-Mère-Église during the night of June 5-6, 1944. The
 player advances from fields east of the village, clears the cemetery and
 church, and destroys three Flakpanzer anti-aircraft vehicles before the town is
 declared secure. The church is therefore a directly represented mission
@@ -41,7 +41,7 @@ objective, not merely a convenient point within the named commune.
 ## The Real Place & Differences
 
 Historically, Sainte-Mère-Église stood on Route Nationale 13, a strategically
-important north–south road behind Utah Beach. Scattered paratroopers from the
+important north-south road behind Utah Beach. Scattered paratroopers from the
 101st Airborne Division did land in and around the village, including men of
 the 506th PIR, but the organized force assigned to capture it was Lieutenant
 Colonel Edward Krause's 3rd Battalion, 505th PIR, 82nd Airborne Division. The

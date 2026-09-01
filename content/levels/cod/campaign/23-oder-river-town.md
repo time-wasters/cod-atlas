@@ -98,13 +98,13 @@ atlas marker itself uses the curated coordinates above.
 - [Combat history of the 2nd Guards Tank Army](https://www.2gvta.ru/en/)
   — formation history and its Vistula-to-Oder advance.
 - [National Institute for Defense Studies: David Glantz, Soviet operations in 1945](https://www.nids.mod.go.jp/publication/senshi/pdf/201503/07.pdf)
-  — chronology of the Oder approach, January 30–31 crossing, Kienitz, and the
+  — chronology of the Oder approach, January 30-31 crossing, Kienitz, and the
   Küstrin bridgeheads.
 - [War History: Küstrin 1945, part I](https://warhistory.org/es/article/kustrin-1945-part-i?amp=1)
   — arrival of the 2nd Guards Tank Army's 1st Mechanized Corps and its 19th
   Motorized Rifle Brigade bridgehead near Genschmar.
 - [Bleyen-Genschmar municipal history](https://www.amt-golzow.de/verzeichnis/objekt.php?mandat=52507)
-  — Genschmar's destruction during the February–March fighting and its postwar
+  — Genschmar's destruction during the February-March fighting and its postwar
   reconstruction.
 - [Evangelical parish of Gorgast-Golzow: the church at Genschmar](https://www.kg-gorgast-golzow.de/ueber-uns/unsere-kirchen/die-kirche-zu-genschmar/)
   — wartime destruction of the village church, surviving foundations, bells,

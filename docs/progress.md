@@ -1,16 +1,17 @@
 # CoD Atlas progress
 
 This report is generated from the curated level records under
-`content/levels/`. Run `npm run progress:update` after changing research notes
-or location precision; `npm run data:check` verifies that the generated tables
-are current.
+`content/levels/`. You can run `npm run progress:update` after changing research
+notes or location precision. The report is informational and its current state
+is not required for validation or builds.
 
 ## Research progress
 
 A canonical level counts as researched when its Markdown body contains all five
-standard research sections in order. AI-assisted notes must also include an AI
-disclosure. Appearance `.ref.md` files are excluded because they inherit
-research from their canonical level.
+standard research sections in order. The first section may be either
+`The Mission in the Game` or `The Map in the Game`. AI-assisted notes must also
+include an AI disclosure. Appearance `.ref.md` files are excluded because they
+inherit research from their canonical level.
 
 These percentages measure completed historical and geographic research, not
 roster completeness or directory organization. For example, Modern Warfare
@@ -20,10 +21,10 @@ mission has the required research sections.
 <!-- research-progress:start -->
 | Scope | Researched | Remaining |
 | --- | ---: | ---: |
-| All currently catalogued levels | 155 / 1113 (14%) | 958 / 1113 (86%) |
-| Campaign levels | 101 / 425 (24%) | 324 / 425 (76%) |
-| Multiplayer maps | 54 / 682 (8%) | 628 / 682 (92%) |
-| Zombies maps | 0 / 6 (0%) | 6 / 6 (100%) |
+| All currently catalogued levels | 201 / 1119 (18%) | 918 / 1119 (82%) |
+| Campaign levels | 128 / 426 (30%) | 298 / 426 (70%) |
+| Multiplayer maps | 73 / 677 (11%) | 604 / 677 (89%) |
+| Zombies maps | 0 / 16 (0%) | 16 / 16 (100%) |
 
 | Game | Campaign | Multiplayer | Zombies | Overall |
 | --- | ---: | ---: | ---: | ---: |
@@ -31,14 +32,14 @@ mission has the required research sections.
 | Call of Duty: United Offensive | 13 / 13 (100%) | 14 / 14 (100%) | — | 27 / 27 (100%) |
 | Call of Duty: Finest Hour | 19 / 19 (100%) | — | — | 19 / 19 (100%) |
 | Call of Duty 2 | 27 / 27 (100%) | 21 / 21 (100%) | — | 48 / 48 (100%) |
-| Call of Duty 2: Big Red One | 0 / 14 (0%) | 0 / 9 (0%) | — | 0 / 23 (0%) |
-| Call of Duty 3 | 0 / 14 (0%) | 0 / 20 (0%) | — | 0 / 34 (0%) |
+| Call of Duty 2: Big Red One | 14 / 14 (100%) | 9 / 9 (100%) | — | 23 / 23 (100%) |
+| Call of Duty 3 | 13 / 14 (93%) | 10 / 20 (50%) | — | 23 / 34 (68%) |
 | Call of Duty: Roads to Victory | 14 / 14 (100%) | 0 / 2 (0%) | — | 14 / 16 (88%) |
 | Modern Warfare (2007) | 0 / 21 (0%) | 0 / 21 (0%) | — | 0 / 42 (0%) |
-| World at War | 0 / 15 (0%) | 0 / 24 (0%) | — | 0 / 39 (0%) |
+| World at War | 0 / 15 (0%) | 0 / 23 (0%) | 0 / 4 (0%) | 0 / 42 (0%) |
 | World at War: Final Fronts | 0 / 13 (0%) | — | — | 0 / 13 (0%) |
-| Modern Warfare 2 (2009) | 0 / 18 (0%) | 0 / 22 (0%) | — | 0 / 40 (0%) |
-| Black Ops | 0 / 15 (0%) | 1 / 31 (3%) | — | 1 / 46 (2%) |
+| Modern Warfare 2 (2009) | 0 / 19 (0%) | 0 / 23 (0%) | — | 0 / 42 (0%) |
+| Black Ops | 0 / 15 (0%) | 1 / 26 (4%) | 0 / 6 (0%) | 1 / 47 (2%) |
 | Modern Warfare 3 (2011) | 0 / 18 (0%) | 0 / 39 (0%) | — | 0 / 57 (0%) |
 | MW3: Defiance | 0 / 14 (0%) | — | — | 0 / 14 (0%) |
 | Black Ops II | 0 / 17 (0%) | 0 / 36 (0%) | — | 0 / 53 (0%) |
@@ -73,18 +74,18 @@ The per-game table assigns each marker to its canonical level's owner game.
 <!-- localization-progress:start -->
 | Scope | Localized | Country fallback | Off-world |
 | --- | ---: | ---: | ---: |
-| All marker locations | 284 / 1029 (28%) | 745 / 1029 (72%) | 30 |
-| Campaign marker locations | 121 / 404 (30%) | 283 / 404 (70%) | 17 |
-| Multiplayer marker locations | 163 / 625 (26%) | 462 / 625 (74%) | 13 |
-| Zombies marker locations | — | — | 0 |
+| All marker locations | 328 / 1035 (32%) | 707 / 1035 (68%) | 30 |
+| Campaign marker locations | 143 / 405 (35%) | 262 / 405 (65%) | 17 |
+| Multiplayer marker locations | 184 / 621 (30%) | 437 / 621 (70%) | 12 |
+| Zombies marker locations | 1 / 9 (11%) | 8 / 9 (89%) | 1 |
 
 | Precision | Marker locations | Share of all markers |
 | --- | ---: | ---: |
-| Exact | 73 | 7% |
-| Approximate | 123 | 12% |
-| City | 82 | 8% |
+| Exact | 98 | 9% |
+| Approximate | 137 | 13% |
+| City | 87 | 8% |
 | Region | 6 | 1% |
-| Country | 745 | 70% |
+| Country | 707 | 66% |
 | Off-world | 30 | 3% |
 
 | Game | Campaign | Multiplayer | Zombies | Overall |
@@ -93,14 +94,14 @@ The per-game table assigns each marker to its canonical level's owner game.
 | Call of Duty: United Offensive | 12 / 13 (92%) | 12 / 14 (86%) | — | 24 / 27 (89%) |
 | Call of Duty: Finest Hour | 19 / 19 (100%) | — | — | 19 / 19 (100%) |
 | Call of Duty 2 | 27 / 27 (100%) | 22 / 22 (100%) | — | 49 / 49 (100%) |
-| Call of Duty 2: Big Red One | 3 / 14 (21%) | 5 / 9 (56%) | — | 8 / 23 (35%) |
-| Call of Duty 3 | 4 / 14 (29%) | 6 / 20 (30%) | — | 10 / 34 (29%) |
+| Call of Duty 2: Big Red One | 14 / 14 (100%) | 8 / 9 (89%) | — | 22 / 23 (96%) |
+| Call of Duty 3 | 14 / 14 (100%) | 19 / 20 (95%) | — | 33 / 34 (97%) |
 | Call of Duty: Roads to Victory | 14 / 14 (100%) | 2 / 2 (100%) | — | 16 / 16 (100%) |
 | Modern Warfare (2007) | 0 / 20 (0%) | 20 / 21 (95%) | — | 20 / 41 (49%) |
-| World at War | 1 / 15 (7%) | 7 / 24 (29%) | — | 8 / 39 (21%) |
+| World at War | 1 / 15 (7%) | 10 / 23 (43%) | 0 / 4 (0%) | 11 / 42 (26%) |
 | World at War: Final Fronts | 7 / 14 (50%) | — | — | 7 / 14 (50%) |
-| Modern Warfare 2 (2009) | 0 / 17 (0%) | 20 / 22 (91%) | — | 20 / 39 (51%) |
-| Black Ops | 1 / 16 (6%) | 3 / 30 (10%) | — | 4 / 46 (9%) |
+| Modern Warfare 2 (2009) | 1 / 18 (6%) | 22 / 23 (96%) | — | 23 / 41 (56%) |
+| Black Ops | 1 / 16 (6%) | 3 / 26 (12%) | 1 / 5 (20%) | 5 / 47 (11%) |
 | Modern Warfare 3 (2011) | 0 / 21 (0%) | 31 / 38 (82%) | — | 31 / 59 (53%) |
 | MW3: Defiance | 0 / 14 (0%) | — | — | 0 / 14 (0%) |
 | Black Ops II | 0 / 17 (0%) | 0 / 36 (0%) | — | 0 / 53 (0%) |

@@ -1,0 +1,11 @@
+.atlas-sidebar footer { color: #777c6b; font-size: 10px; line-height: 1.45; }
+.atlas-sidebar footer p { margin: 5px 0 0; }
+.atlas-sidebar footer .creator-credit { margin-top: 0; color: #9a9f8d; }
+.atlas-sidebar footer .source-credit { margin-top: 8px; }
+.atlas-sidebar footer a { color: #b5ad8c; text-decoration-color: #777c6b; text-underline-offset: 2px; }
+.atlas-sidebar footer a:hover, .atlas-sidebar footer a:focus-visible { color: var(--amber); }
+.atlas-sidebar footer .icon-link { display: inline-flex; align-items: center; gap: 4px; }
+.atlas-sidebar footer .icon-link svg { flex: none; }
+.footer-info-button { border: 0; padding: 0; color: #b5ad8c; background: transparent; font: inherit; text-decoration: underline; text-decoration-color: #777c6b; text-underline-offset: 2px; cursor: pointer; }
+.footer-info-button svg { fill: none; stroke: currentColor; stroke-linecap: round; stroke-width: 1.4; }
+.footer-info-button:hover, .footer-info-button:focus-visible { color: var(--amber); outline: none; }

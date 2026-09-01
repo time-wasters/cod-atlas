@@ -25,7 +25,7 @@ locations:
       - wikipedia: https://en.wikipedia.org/wiki/Volgograd_Tractor_Plant
 historyOverlays:
   - id: the-li-army-corps-assault-14-15-october-1942
-    image: /images/levels/cod-fh/defend-the-factory/extra/the-li-army-corps-assault-14-15-october-1942.png
+    image: /images/levels/cod-fh/campaign/4-defend-the-factory/extra/the-li-army-corps-assault-14-15-october-1942.png
     opacity: 0.72
     corners:
       topLeft: [48.82027881, 44.57762708]
@@ -33,8 +33,8 @@ historyOverlays:
       bottomLeft: [48.78017725, 44.56203062]
       bottomRight: [48.77092579, 44.61682983]
     attribution:
-      title: "Map 1. The LI Army Corps' assault, 14–15 October 1942"
-      source: "David M. Glantz, ‘The Struggle for Stalingrad City: Opposing Orders of Battle, Combat Orders and Reports, and Operational and Tactical Maps. Part 2: The Fight for Stalingrad's Factory District—14 October–18 November 1942,’ The Journal of Slavic Military Studies 21(2), 2008, pp. 377–471."
+      title: "Map 1. The LI Army Corps' assault, 14-15 October 1942"
+      source: "David M. Glantz, ‘The Struggle for Stalingrad City: Opposing Orders of Battle, Combat Orders and Reports, and Operational and Tactical Maps. Part 2: The Fight for Stalingrad's Factory District—14 October-18 November 1942,’ The Journal of Slavic Military Studies 21(2), 2008, pp. 377-471."
       sourceUrl: https://www.tandfonline.com/doi/full/10.1080/13518040802067383
       author: David M. Glantz
       copyrightHolder: Taylor & Francis Group, LLC
@@ -79,7 +79,7 @@ plausible, but no evidence connects the level's window, doors, yard, or lone
 T-34 to any one of those locations.
 
 The wartime plant was devastated and later rebuilt. Its present monumental
-entrance dates from 1953–55, and the T-34 displayed in front is a memorial.
+entrance dates from 1953-55, and the T-34 displayed in front is a memorial.
 They mark the correct complex but should not be read as surviving scenery from
 Pavelovna's fictional defence.
 
@@ -88,7 +88,7 @@ Pavelovna's fictional defence.
 On October 3, German forces were pressing toward the Tractor Factory district,
 while the Soviet command reinforced that sector with the 37th Guards Rifle
 Division and 84th Tank Brigade. The 37th Guards had begun crossing the Volga
-during the night of October 2–3. The game's factory alarm therefore fits the
+during the night of October 2-3. The game's factory alarm therefore fits the
 broad situation, but its unit attribution does not: Rodimtsev's 13th Guards
 was fighting farther south in central Stalingrad and around Mamayev Kurgan.
 
@@ -98,7 +98,7 @@ other Soviet formations fought in and around the plant. The mission compresses
 that later factory battle into October 3 and reduces a large, destructive
 combined-arms action to one sniper covering one returning tank crew.
 
-![Map: The LI Army Corps' assault, 14–15 October 1942](the-li-army-corps-assault-14-15-october-1942.png)
+![Map: The LI Army Corps' assault, 14-15 October 1942](the-li-army-corps-assault-14-15-october-1942.png)
 
 The Panzerschreck teams are an additional anachronism. German development of
 that weapon followed the capture of American bazookas in North Africa in

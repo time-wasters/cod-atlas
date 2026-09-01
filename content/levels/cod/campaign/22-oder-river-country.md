@@ -42,7 +42,7 @@ lies less than 70 kilometres beyond it.
 
 The countryside around Genschmar, north of Küstrin (present-day Kostrzyn nad
 Odrą), is the strongest real-world match. The 2nd Guards Tank Army really did
-advance on this sector during the Vistula–Oder offensive. Its 1st Mechanized
+advance on this sector during the Vistula-Oder offensive. Its 1st Mechanized
 Corps reached the river around the end of January, and a battalion of the 19th
 Motorized Rifle Brigade subsequently established a small bridgehead near
 Genschmar. The low, rural Oderbruch landscape of fields, drainage channels,
@@ -53,7 +53,7 @@ The broader Küstrin sector fits the campaign's direction toward Berlin. The
 fortress controlled important road and railway crossings, while Soviet
 bridgeheads north and south of it became the basis for the later advance on
 the German capital. Kienitz, a short distance farther north, was captured by
-the 5th Shock Army after crossing the frozen Oder overnight on January 30–31;
+the 5th Shock Army after crossing the frozen Oder overnight on January 30-31;
 it became the first Soviet bridgehead on the river's west bank in this sector.
 That event supports the game's general setting, but Kienitz is a weaker marker
 for this particular level because the playable formation is the 2nd Guards
@@ -99,11 +99,11 @@ named real place; the atlas marker uses the curated coordinates above.
 - [Combat history of the 2nd Guards Tank Army](https://www.2gvta.ru/en/)
   — formation history and its rapid Vistula-to-Oder advance.
 - [National Institute for Defense Studies: David Glantz, Soviet operations in 1945](https://www.nids.mod.go.jp/publication/senshi/pdf/201503/07.pdf)
-  — operational chronology, the January 30–31 crossing, capture of Kienitz,
+  — operational chronology, the January 30-31 crossing, capture of Kienitz,
   and Küstrin bridgehead context.
 - [Army University Press: *Historical Case Studies of Maneuver*](https://www.armyupress.army.mil/Portals/7/Research-and-Books/Archives/2018/PDF/Sep-2018-DeppManeuver.pdf)
   — the 2nd Guards Tank Army's changing advance detachments and rapid
-  exploitation during the Vistula–Oder operation.
+  exploitation during the Vistula-Oder operation.
 - [Kostrzyn Fortress Museum: the Oder front in 1945](https://muzeum.kostrzyn.pl/de/stadt-festung/1945?contrast=night)
   — local museum account of the first west-bank bridgehead at Kienitz and the
   fighting around Fortress Küstrin.

@@ -1,0 +1,21 @@
+---
+id: waw-ff-betio-airfield
+title: Betio Airfield
+games:
+  - waw-ff
+mode: singleplayer
+campaign:
+  id: "1"
+  label: War in the Pacific
+wikiArticle: codwiki-betio-airfield
+locations:
+  - id: main
+    country: Kiribati
+    city: Betio Village
+    latitude: 1.35797
+    longitude: 172.92105
+    precision: city
+    confidence: high
+    method: title-mention
+    primary: true
+---

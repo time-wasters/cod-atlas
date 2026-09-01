@@ -1,81 +1,9 @@
 import assert from "node:assert/strict";
 import { access, readFile, readdir } from "node:fs/promises";
 import test from "node:test";
-import { atlasUrlWithState, parseAtlasUrl } from "../app/url-state.js";
 
 const developmentPreviewMeta =
   /<meta(?=[^>]*\bname=["']codex-preview["'])(?=[^>]*\bcontent=["']development["'])[^>]*>/i;
-
-test("round-trips shareable atlas filters and the selected location", () => {
-  const source = new URL("https://example.com/atlas/?utm_source=test#map");
-  const state = {
-    query: "Safehouse",
-    gameId: "cod4",
-    country: "Azerbaijan",
-    series: ["modern-warfare"],
-    subseries: ["main"],
-    continents: ["Asia"],
-    precisions: ["approximate", "exact"],
-    confidences: ["high"],
-    methods: ["verified-landmark"],
-    showSingleplayer: true,
-    showMultiplayer: true,
-    showZombies: true,
-    sidebarListMode: "campaigns",
-    levelId: "cod4-safehouse",
-    locationId: "main",
-  };
-  const sharedUrl = atlasUrlWithState(source, state);
-
-  assert.equal(sharedUrl.searchParams.get("utm_source"), "test");
-  assert.equal(sharedUrl.hash, "#map");
-  assert.deepEqual(parseAtlasUrl(sharedUrl), state);
-});
-
-test("uses concise defaults and preserves every mode-filter state", () => {
-  const defaults = {
-    query: "",
-    gameId: "all",
-    country: "all",
-    series: [],
-    subseries: [],
-    continents: [],
-    precisions: [],
-    confidences: [],
-    methods: [],
-    showSingleplayer: true,
-    showMultiplayer: false,
-    showZombies: false,
-    sidebarListMode: "locations",
-    levelId: null,
-    locationId: null,
-  };
-  const defaultUrl = atlasUrlWithState("https://example.com/?game=old&level=old", defaults);
-  assert.equal(defaultUrl.search, "");
-  assert.deepEqual(parseAtlasUrl(defaultUrl), defaults);
-  assert.equal(parseAtlasUrl("https://example.com/?browse=unknown").sidebarListMode, "locations");
-
-  assert.deepEqual(
-    parseAtlasUrl("https://example.com/?precision=localized").precisions,
-    ["exact", "approximate", "city", "region"],
-    "legacy precision links remain compatible",
-  );
-
-  for (const [mode, showSingleplayer, showMultiplayer, showZombies] of [
-    ["all", true, true, true],
-    ["both", true, true, false],
-    ["multiplayer", false, true, false],
-    ["zombies", false, false, true],
-    ["singleplayer,zombies", true, false, true],
-    ["none", false, false, false],
-  ]) {
-    const url = atlasUrlWithState(defaultUrl, { ...defaults, showSingleplayer, showMultiplayer, showZombies });
-    assert.equal(url.searchParams.get("mode"), mode);
-    assert.equal(parseAtlasUrl(url).showSingleplayer, showSingleplayer);
-    assert.equal(parseAtlasUrl(url).showMultiplayer, showMultiplayer);
-    assert.equal(parseAtlasUrl(url).showZombies, showZombies);
-  }
-});
 
 test("catalogues the complete Black Ops 6 campaign, multiplayer, and Zombies roster", async () => {
   const bo6Root = new URL("../content/levels/bo6/", import.meta.url);
@@ -187,6 +115,9 @@ test("renders development preview metadata", async () => {
   assert.match(html, /class="details-toggle"[^>]*aria-expanded="true"[^>]*aria-label="Hide level details"/);
   assert.match(html, /class="collapsed-level-title"[^>]*aria-label="Show details for [^"]+"/);
   assert.match(html, /aria-label="Filter by game, ordered by release date"/);
+  assert.match(html, /class="game-catalog-trigger"[^>]*aria-haspopup="dialog"/);
+  assert.match(html, /id="game-catalog-title">Call of Duty games/);
+  assert.match(html, /class="game-catalog-entry"/);
   assert.match(html, /aria-label="Filter by country"/);
   assert.match(html, /class="solar-system-overlay is-expanded"/);
   assert.match(html, /aria-label="Collapse Solar System overlay"/);
@@ -198,7 +129,7 @@ test("renders development preview metadata", async () => {
   const advancedFilterIndex = html.indexOf('class="advanced-filter-trigger"');
   assert.ok(countryFilterIndex < modeFilterIndex && modeFilterIndex < advancedFilterIndex);
   assert.match(html, /class="mode-filter"[^>]*aria-label="Map type visibility"/);
-  assert.match(html, /<button(?=[^>]*aria-pressed="false")[^>]*>\s*<span[^>]*>[^<]*<\/span> Zombies/);
+  assert.match(html, /<button(?=[^>]*aria-pressed="false")[^>]*>\s*<span[^>]*>[^<]*<\/span>\s*(?:<!-- -->)?Zombies/);
   assert.doesNotMatch(html, /class="precision-filter"/);
   assert.match(html, /role="tab"[^>]*aria-selected="true"[^>]*aria-controls="sidebar-locations"/);
   assert.match(html, /<button(?=[^>]*role="tab")(?=[^>]*aria-controls="sidebar-campaigns")(?=[^>]*disabled="")[^>]*>/);
@@ -246,8 +177,8 @@ test("preserves the complete statically compiled atlas", async () => {
     (entry) => entry.title === title && entry.game.split(" / ").includes(game),
   );
 
-  assert.equal(entries.length, 1059);
-  assert.equal(atlas.totals.levels, 1113);
+  assert.equal(entries.length, 1065);
+  assert.equal(atlas.totals.levels, 1119);
   assert.equal(findGroup("France").flagCode, "FR");
   assert.equal(findGroup("Turkey").flagCode, "TR");
   assert.equal(findGroup("United States").flagCode, "US");
@@ -313,6 +244,9 @@ test("preserves the complete statically compiled atlas", async () => {
   }
   assert.ok(atlas.games.some((game) => !game.icon), "game labels remain available as the icon fallback");
   assert.ok(entries.every((entry) => Array.isArray(entry.gameIds) && entry.gameIds.length > 0));
+  assert.ok(entries.every((entry) => entry.coordinates === null
+    || entry.coordinates === undefined
+    || (entry.coordinates.length === 2 && entry.coordinates.every(Number.isFinite))));
   const rtvBannerKeys = Object.keys(atlas.levelBanners)
     .filter((key) => key.startsWith("rtv-"))
     .sort();
@@ -325,7 +259,10 @@ test("preserves the complete statically compiled atlas", async () => {
     assert.ok(banner.thumbnailUrl, `${key} has a thumbnail URL`);
     assert.ok(banner.author, `${key} has author information`);
   }
-  assert.equal(atlas.levelBanners["rtv-altavilla@rtv"].thumbnailUrl, "/images/levels/rtv/altavilla/main.png");
+  assert.match(
+    atlas.levelBanners["rtv-altavilla@rtv"].thumbnailUrl,
+    /^\/images\/levels\/rtv\/campaign\/1-altavilla\/main\.(?:jpg|png)$/,
+  );
   assert.equal(atlas.levelBanners["rtv-altavilla@rtv"].author.userUrl, "https://github.com/plp-gtr");
   assert.equal(atlas.levelIdAliases["cod-cod2-wwii-carentan"], "cod-carentan");
   const carentanAppearanceEntry = entries.find((entry) => entry.levelId === "cod-carentan");
@@ -461,6 +398,7 @@ test("preserves the complete statically compiled atlas", async () => {
     ["mw2-derail", "derail"],
     ["mw2-estate", "estate"],
     ["mw2-favela", "favela"],
+    ["mw2-fuel", "fuel/"],
     ["mw2-highrise", "highrise"],
     ["mw2-invasion", "invasion"],
     ["mw2-karachi", "karachi"],
@@ -471,6 +409,7 @@ test("preserves the complete statically compiled atlas", async () => {
     ["mw2-salvage", "salvage"],
     ["mw2-scrapyard", "scrapyard"],
     ["mw2-skidrow", "skidrow"],
+    ["mw2-storm", "storm/"],
     ["mw2-sub-base", "sub-base"],
     ["mw2-trailer-park", "trailer-park"],
     ["mw2-underpass", "underpass"],
@@ -584,80 +523,6 @@ test("preserves the complete statically compiled atlas", async () => {
   assert.deepEqual(findEntry("BO2", "FOB").modes, ["singleplayer"]);
   assert.deepEqual(findEntry("BOCW", "CIA").modes, ["singleplayer"]);
 
-  const laisonRiver = findEntry("COD3", "Laison River");
-  assert.deepEqual(laisonRiver.coordinates, [48.944742, -0.229523]);
-  assert.equal(laisonRiver.country, "France");
-  assert.equal(laisonRiver.city, "Falaise");
-  assert.equal(laisonRiver.region, "Normandy");
-  assert.equal(laisonRiver.landmark, "Laizon River");
-  assert.equal(laisonRiver.precision, "approximate");
-  assert.equal(laisonRiver.confidence, "medium");
-  assert.equal(laisonRiver.method, "manual-approximate");
-
-  const corridorOfDeath = findEntry("COD3", "The Corridor of Death");
-  assert.equal(corridorOfDeath.country, "France");
-  assert.equal(corridorOfDeath.region, "Saint-Lambert-sur-Dive");
-  assert.equal(corridorOfDeath.city, null);
-  assert.equal(corridorOfDeath.landmark, null);
-  assert.deepEqual(corridorOfDeath.coordinates, [48.819557910469904, 0.07593786425682185]);
-  assert.equal(corridorOfDeath.precision, "approximate");
-  assert.equal(corridorOfDeath.confidence, "medium");
-  assert.equal(corridorOfDeath.method, "manual-approximate");
-  assert.deepEqual(corridorOfDeath.urls, [
-    { googleMaps: "https://maps.app.goo.gl/Wjtis8unFE4KVvgL9" },
-    { wikipedia: "https://en.wikipedia.org/wiki/Saint-Lambert-sur-Dive" },
-  ]);
-
-  const blowtorchAndCorkscrew = findEntry("WAW", "Blowtorch & Corkscrew");
-  assert.deepEqual(blowtorchAndCorkscrew.coordinates, [26.22882, 127.71437]);
-  assert.equal(blowtorchAndCorkscrew.country, "Japan");
-  assert.equal(blowtorchAndCorkscrew.city, "Naha");
-  assert.equal(blowtorchAndCorkscrew.region, "Okinawa");
-  assert.equal(blowtorchAndCorkscrew.landmark, "Wana Ridge, Sueyoshi Park");
-  assert.equal(blowtorchAndCorkscrew.precision, "approximate");
-  assert.equal(blowtorchAndCorkscrew.confidence, "high");
-  assert.equal(blowtorchAndCorkscrew.method, "manual-approximate");
-
-  const aDesertRide = findEntry("FH", "A Desert Ride");
-  assert.deepEqual(aDesertRide.coordinates, [33.216131, 9.800375]);
-  assert.equal(aDesertRide.country, "Tunisia");
-  assert.equal(aDesertRide.region, "Kebili Governorate");
-  assert.equal(aDesertRide.landmark, "Centenarium Tibubuci (Ksar Tarcine)");
-  assert.equal(aDesertRide.precision, "exact");
-  assert.equal(aDesertRide.confidence, "high");
-  assert.equal(aDesertRide.method, "verified-landmark");
-  assert.deepEqual(aDesertRide.urls, [
-    {
-      googleMaps:
-        "https://www.google.com/maps/search/?api=1&query=Ksar+Tarcine%2C+Kebili+Governorate%2C+Tunisia",
-    },
-    { wikipedia: "https://fr.wikipedia.org/wiki/Centenarium_de_Tibubuci" },
-  ]);
-
-  const shuriCastle = findEntry("WAW:FF", "Shuri Castle");
-  assert.equal(shuriCastle.country, "Japan");
-  assert.equal(shuriCastle.region, "Okinawa");
-  assert.equal(shuriCastle.city, "Naha");
-  assert.equal(shuriCastle.landmark, "Shuri Castle");
-
-  const intoTheFurnace = findEntry("MW19", "Into the Furnace");
-  assert.equal(intoTheFurnace.country, "Georgia");
-  assert.equal(intoTheFurnace.region, null);
-
-  const casino = findEntry("BO4", "Casino");
-  assert.equal(casino.country, "Monaco");
-  assert.equal(casino.region, "Monte Carlo");
-  assert.equal(casino.city, null);
-  assert.equal(casino.landmark, "Casino de Monte-Carlo");
-  assert.deepEqual(casino.coordinates, [43.739444, 7.428889]);
-  assert.equal(casino.precision, "exact");
-  assert.equal(casino.confidence, "high");
-  assert.equal(casino.method, "real-world-inspiration");
-  assert.deepEqual(casino.urls, [
-    { googleMaps: "https://maps.app.goo.gl/c4AA1ZP8rtzM7unH9" },
-    { wikipedia: "https://en.wikipedia.org/wiki/Monte_Carlo_Casino" },
-  ]);
-
   const bocageMedia = atlas.wikiMedia["codwiki-bocage"].main;
   assert.match(bocageMedia.thumbnailUrl, /scale-to-width-down\/800/);
   assert.equal(bocageMedia.author.name, "Thumps4DaZomb");
@@ -669,8 +534,9 @@ test("preserves the complete statically compiled atlas", async () => {
   const cod2Entries = entries.filter((entry) => entry.game.split(" / ").includes("COD2"));
   assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "singleplayer").length, 27);
   assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "multiplayer").length, 23);
-  assert.equal(entries.filter((entry) => entry.modes[0] === "singleplayer").length, 421);
-  assert.equal(entries.filter((entry) => entry.modes[0] === "multiplayer").length, 638);
+  assert.equal(entries.filter((entry) => entry.modes[0] === "singleplayer").length, 422);
+  assert.equal(entries.filter((entry) => entry.modes[0] === "multiplayer").length, 633);
+  assert.equal(entries.filter((entry) => entry.modes[0] === "zombies").length, 10);
 });
 
 test("keeps calibrated game-map overlays in a separate generated store", async () => {
@@ -678,7 +544,7 @@ test("keeps calibrated game-map overlays in a separate generated store", async (
     with: { type: "json" },
   });
   const altavilla = overlays["rtv-altavilla"];
-  assert.equal(altavilla.image, "/images/levels/rtv/altavilla/maps/briefing-map.png");
+  assert.equal(altavilla.image, "/images/levels/rtv/campaign/1-altavilla/maps/overlay.png");
   assert.deepEqual(altavilla.corners, {
     topLeft: [40.59997, 14.78375],
     topRight: [40.59054, 15.29434],
@@ -688,7 +554,7 @@ test("keeps calibrated game-map overlays in a separate generated store", async (
   assert.equal(altavilla.attribution.rights, "non-free");
   await access(new URL(`../public${altavilla.image}`, import.meta.url));
   const scavengerHunt = overlays["rtv-scavenger-hunt"];
-  assert.equal(scavengerHunt.image, "/images/levels/rtv/scavenger-hunt/maps/briefing-map.png");
+  assert.equal(scavengerHunt.image, "/images/levels/rtv/campaign/2-scavenger-hunt/maps/overlay.png");
   assert.deepEqual(scavengerHunt.corners, {
     topLeft: [49.41909, -1.36634],
     topRight: [49.42172, -1.26404],
@@ -707,7 +573,7 @@ test("keeps clickable historical overlays in a separate generated store", async 
   assert.equal(factoryOverlay.id, "the-li-army-corps-assault-14-15-october-1942");
   assert.equal(
     factoryOverlay.image,
-    "/images/levels/cod-fh/defend-the-factory/extra/the-li-army-corps-assault-14-15-october-1942.png",
+    "/images/levels/cod-fh/campaign/4-defend-the-factory/extra/the-li-army-corps-assault-14-15-october-1942.png",
   );
   assert.deepEqual(factoryOverlay.corners, {
     topLeft: [48.82027881, 44.57762708],

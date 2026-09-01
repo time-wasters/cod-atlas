@@ -43,7 +43,7 @@ station elsewhere in Warsaw.
 
 The historic factory siding beside the Ursus Mechanical Works at Czechowice
 is the strongest real-world analogue. The factory stood beside the
-Warsaw–Vienna railway. A passenger stop funded by the works opened there in
+Warsaw-Vienna railway. A passenger stop funded by the works opened there in
 1926, and a dedicated siding was constructed beside it in 1929. Contemporary
 local accounts also describe freight trains running on factory sidings to
 industrial storage areas. An engineering report from the plant's construction

@@ -84,7 +84,7 @@ reconstruction of the raid.
 
 The underlying operation is unusually close to history. After 1st SAS was
 reorganized, Major Robert Blair “Paddy” Mayne commanded it in Sicily under the
-title Special Raiding Squadron (SRS). On the night of 9–10 July 1943, roughly
+title Special Raiding Squadron (SRS). On the night of 9-10 July 1943, roughly
 250 raiders carried aboard *Ulster Monarch* approached Capo Murro di Porco,
 scaled cliffs considered difficult to assault, and attacked the Lamba Doria
 battery. The position's guns threatened shipping and landing areas associated
@@ -155,7 +155,7 @@ article for the adjacent Capo Murro di Porco Lighthouse.
 - [British Army Review — Italian Campaign special report](https://www.army.mod.uk/media/10745/bar-special-report-italian-campaign.pdf)
   — Operation Husky context and the special-forces attacks on Italian coastal
   artillery at Capo Murro di Porco.
-- [Lamba Doria Association — Augusta–Syracuse maritime fortress study](https://lambadoria.it/bunker/articoli/Piazza%20Militare%20Marittima%20di%20Augusta.pdf)
+- [Lamba Doria Association — Augusta-Syracuse maritime fortress study](https://lambadoria.it/bunker/articoli/Piazza%20Militare%20Marittima%20di%20Augusta.pdf)
   — battery construction, three 152 mm guns, Italian commander, SRS force,
   *Ulster Monarch*, cliff approach and raid chronology.
 - [Sicilian cultural heritage authority — protection decree for the former Lamba Doria Battery](https://www2.regione.sicilia.it/beniculturali/decreti_2019/aprile/DD%201867%20-%2029-04-2019%20vincolo%20ex%20art%2010%20D%20Lgs%2042-2004.pdf)

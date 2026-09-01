@@ -9,7 +9,7 @@ campaign:
   label: British Campaign
 wikiArticle: codwiki-arnhem-fire
 mapOverlay:
-  image: /images/levels/rtv/arnhem-fire/maps/briefing-map.png
+  image: /images/levels/rtv/campaign/12-arnhem-fire/maps/overlay.png
   opacity: 0.72
   corners:
     topLeft: [52.23758792, 4.8087378]

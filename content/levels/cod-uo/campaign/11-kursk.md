@@ -56,7 +56,7 @@ narrative more than the complicated historical result.
 Prokhorovka is an urban-type settlement in modern Belgorod Oblast, roughly 85
 kilometres southeast of Kursk. The main armoured clash on 12 July occurred
 outside the settlement, especially southwest of its railway station. The
-central battlefield corridor lay between the Belgorod–Kursk railway embankment
+central battlefield corridor lay between the Belgorod-Kursk railway embankment
 and the Psel River, around the Oktiabrsky State Farm, an anti-tank ditch and
 Hill 252.2.
 

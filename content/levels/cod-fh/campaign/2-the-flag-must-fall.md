@@ -113,7 +113,7 @@ to the English article for the real location.
   — dialogue identifying Mamayev Kurgan, the observation bunker, pillboxes,
   artillery threat, and lowering of the flag.
 - [Stalingrad Battle Museum-Reserve: “Mamayev Kurgan Became His Fate”](https://stalingrad-battle.ru/projects/emploee-writes/smi-pubs/2016/3989/)
-  — museum research on the 95th Rifle Division's September 19–20 assault,
+  — museum research on the 95th Rifle Division's September 19-20 assault,
   relief of the 13th Guards, and capture of Height 102.0 on the mission date.
 - [Culture.ru: At the headquarters of the 13th Guards Division](https://ar.culture.ru/ru/subject/stalingrad-v-shtabe)
   — museum collection record supporting the 13th Guards' September 16

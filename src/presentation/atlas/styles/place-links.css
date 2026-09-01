@@ -1,0 +1,7 @@
+.place-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2px 10px; margin: 0 0 10px; }
+.place-links a { min-width: 0; min-height: 34px; display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; align-items: center; gap: 7px; border-radius: 2px; padding: 4px 3px; color: #bbb9aa; font-size: 9px; font-weight: 700; text-decoration: none; }
+.place-links a::after { content: "\2197"; align-self: start; margin-top: 3px; color: #777c6b; font: 11px var(--font-geist-mono), monospace; }
+.place-links img { width: 20px; height: 20px; object-fit: contain; border-radius: 2px; }
+.place-links span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.place-links a:hover { color: var(--amber); background: #dfa1270c; text-decoration: underline; text-underline-offset: 3px; }
+.place-links a:hover::after { color: var(--amber); }

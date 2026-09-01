@@ -43,9 +43,9 @@ The former Ursus Mechanical Works at Czechowice is the strongest documented
 real-world analogue. Before the war, the site belonged to the Polish State
 Engineering Works and contained separate metallurgical and vehicle factories.
 German forces occupied it in 1939 and converted it into *Warschauer Verein
-Maschinen Fabrik – Zweigwerk Ursus* (Waverma), a production-and-repair plant
+Maschinen Fabrik - Zweigwerk Ursus* (Waverma), a production-and-repair plant
 for tanks and aircraft pumps. Its industrial halls and immediate proximity to
-the Warsaw–Vienna railway corridor fit the game's factory-and-railyard pairing
+the Warsaw-Vienna railway corridor fit the game's factory-and-railyard pairing
 far better than a generic marker in central Warsaw.
 
 The match is not exact. In 1944 the occupiers removed the plant's equipment
@@ -97,7 +97,7 @@ uses the curated coordinates above.
 - [Polish Army Museum: Warsaw, January 17, 1945](https://muzeumwp.pl/2025/01/17/17-stycznia-1945-r-w-rocznice-wyzwolenia-warszawy/)
   — the Warsaw operation, Polish First Army entry, German withdrawal, and the
   principal Polish divisions involved in the urban fighting.
-- [Soviet General Staff, *The Vistula–Oder Operation*](https://www.armyupress.army.mil/Portals/7/combat-studies-institute/csi-books/Glantz-The%20Soviet-German%20War%201943-1945.pdf)
+- [Soviet General Staff, *The Vistula-Oder Operation*](https://www.armyupress.army.mil/Portals/7/combat-studies-institute/csi-books/Glantz-The%20Soviet-German%20War%201943-1945.pdf)
   — operational context for the 1st Belorussian Front and its second-echelon
   and reserve formations during the January offensive.
 - [Wikimedia Commons: Ursus model shop](https://commons.wikimedia.org/wiki/Category:Modelarnia_(Ursus_Factory))

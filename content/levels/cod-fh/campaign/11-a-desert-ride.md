@@ -51,7 +51,7 @@ in Kebili Governorate. The ruin is the late Roman **Centenarium Tibubuci**, a
 small fortified post on the Limes Tripolitanus at the eastern edge of the Grand
 Erg Oriental. It stands on a low rise above Wadi Hallouf near Bir Soltane.
 
-An inscription dates the fort's construction to approximately AD 303–305.
+An inscription dates the fort's construction to approximately AD 303-305.
 Archaeological descriptions record a roughly 0.32-hectare enclosure with a
 central building measuring about 15 by 15 metres. Its elevated position offered
 wide views across the arid steppe, and its Roman occupants could monitor the
@@ -68,7 +68,7 @@ Tarcine.
 
 ## The Real Mission & Differences
 
-The historical premise borrows from a genuine and important LRDG–PPA
+The historical premise borrows from a genuine and important LRDG-PPA
 operation. Bob Yunnie's memoir says that a joint patrol of thirteen vehicles
 crossed largely unknown desert to reconnoitre a route by which Eighth Army
 armour could bypass the Mareth Line. A later academic study dates the discovery
@@ -82,7 +82,7 @@ Tebaga Gap. The game's statement that desert scouts found a shortcut behind
 Rommel's line is therefore historically grounded, even though it simplifies the
 route, participants, and later operation.
 
-The rescue story is not documented. Yunnie places the PPA–LRDG vehicle camp in
+The rescue story is not documented. Yunnie places the PPA-LRDG vehicle camp in
 a concealed wadi about 60 miles south of Matmata while three jeeps carried out
 the forward reconnaissance. German aircraft found and strafed the camp,
 destroying nine trucks and the wireless jeep. This real episode supplies close
@@ -108,7 +108,7 @@ reconstructed.
 
 The point represents the archaeological fort, not the refuelling stop, any
 roadblock, the ammunition convoy, the jeep's crash position, Wilder's Gap, or
-the historical PPA–LRDG camp. No separate route markers are added because the
+the historical PPA-LRDG camp. No separate route markers are added because the
 available evidence cannot locate those in-game events and the mission provides
 no usable road geometry.
 

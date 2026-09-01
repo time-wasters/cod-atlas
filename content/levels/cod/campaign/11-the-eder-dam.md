@@ -51,7 +51,7 @@ real installation.
 ## The Real Mission & Differences
 
 Its best-known wartime event occurred more than a year before the level. During
-Operation Chastise on the night of May 16–17, 1943, Lancaster bombers of No. 617
+Operation Chastise on the night of May 16-17, 1943, Lancaster bombers of No. 617
 Squadron RAF attacked the Eder with Barnes Wallis's rotating Upkeep bombs. The
 breach released a destructive flood down the Eder valley. German authorities
 then rebuilt the wall during 1943 using Organisation Todt and forced labour;
@@ -96,7 +96,7 @@ Sperrmauer in Edertal; the atlas marker uses the curated coordinates above.
   during the rapid wartime reconstruction.
 - [National Army Museum: Special Air Service](https://www.nam.ac.uk/explore/SAS)
   — formation of 2 SAS and the SAS Brigade's real behind-the-lines operations
-  in Europe during 1944–45.
+  in Europe during 1944-45.
 - [Official Edersee tourism site: barrier-wall forecourt](https://www.edersee.com/en/poi/sperrmauervorplatz)
   — present-day identification and address of the dam site in Edertal.
 - [OpenStreetMap: Edertalsperre](https://www.openstreetmap.org/?mlat=51.18333&mlon=9.05889#map=18/51.18333/9.05889)

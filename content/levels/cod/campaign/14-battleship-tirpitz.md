@@ -96,7 +96,7 @@ the curated coordinates above.
 - [Call of Duty Wiki: Battleship Tirpitz transcript](https://callofduty.fandom.com/wiki/Battleship_Tirpitz_%28level%29/Transcript)
   — disguised approach, forged documents, boarding dialogue, boiler charges,
   radar destruction, patrol logs, and escape.
-- [Royal Navy Naval Staff War Diary, 16–31 October 1944](https://cd.royalnavy.mod.uk/-/media/rnweb/locations-and-operations/navy-historical-branch/pdfs/1944/war_diary_naval_1944_10---day-16-to-day-31.pdf)
+- [Royal Navy Naval Staff War Diary, 16-31 October 1944](https://cd.royalnavy.mod.uk/-/media/rnweb/locations-and-operations/navy-historical-branch/pdfs/1944/war_diary_naval_1944_10---day-16-to-day-31.pdf)
   — contemporary intelligence reporting Tirpitz's October 16 arrival at Tromsø
   and mooring south of Håkøya.
 - [RAF Air Historical Branch: *The RAF in Maritime War*, Volume V](https://www.raf.mod.uk/what-we-do/our-history/air-historical-branch/second-world-war-campaign-narratives/raf-in-maritime-war-vol-v-the-atlantic-and-home-waters-the-victorious-phase-june-1944-may-1945/)

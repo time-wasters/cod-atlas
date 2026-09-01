@@ -5,3 +5,8 @@ labelLong: "Call of Duty 4: Modern Warfare (Nintendo DS)"
 released: 2007-11-05
 series: modern-warfare
 subseries: spin-off
+images:
+  steamgriddb:
+    game: 25316
+    icon: 81438
+    file: c0e920d48d69b4287130bcaf2bca88d6.png

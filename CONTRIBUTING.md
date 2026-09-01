@@ -31,10 +31,11 @@ VSCodium users can run the common commands through **Terminal → Run Task**.
 1. Find the Markdown file under `content/levels/`.
 2. Change the curated frontmatter or add a concise note to the Markdown body.
 3. Include a reliable source link in the pull-request description.
-4. After changing the standard research sections or location precision, run
+4. Optionally, after changing the standard research sections or location precision, run
    `npm run progress:update` (Docker:
    `docker compose run --rm cod-atlas-tools npm run progress:update`) to
-   refresh the generated tables in `docs/progress.md`.
+   refresh the informational tables in `docs/progress.md`. A stale progress
+   report does not block validation or builds.
 5. If a local Node or Docker toolchain is available, run `npm run data:check`
    or `docker compose run --rm cod-atlas-tools npm run data:check`. CI runs the
    same validation for every pull request.
@@ -54,7 +55,7 @@ Create a Markdown file under the primary game's directory. If that game is
 already organized by map type, place it in `campaign/`, `multiplayer/`, or
 `zombies/` to match its `mode` field. Currently `cod`, `cod-uo`, `cod-fh`,
 `cod2`, `cod2-bro`, `cod3`, `rtv`, `cod4`, `wz`, `wz2`, and `mwiii` use the
-first two folders; `bo6` uses all three. Games that have not been reorganized
+first two folders; `waw`, `bo`, and `bo6` use all three. Games that have not been reorganized
 retain their existing flat layout.
 
 Campaign files in a map-type layout are named
@@ -124,10 +125,19 @@ detail page. Author, uploader, license, and rights metadata are optional; the
 importer preserves them when Fandom provides them. Never invent missing
 attribution or describe a copyright exception as a license.
 
+Repository-hosted level images are prepared before they are committed; the
+build does not convert or cache them. First preview the complete operation with
+`npm run images:prepare -- --dry-run`, then run `npm run images:prepare`;
+optional path arguments can narrow either operation. Run the read-only
+`npm run images:check` command before committing. See the
+[level-image workflow](docs/image-workflow.md) for the conversion rules,
+limits, strict mode, and Docker examples.
+
 ## Required checks
 
 ```sh
 npm run data:check
+npm run images:check
 npm run lint
 npm test
 npm run build:static
@@ -137,6 +147,7 @@ Docker equivalents:
 
 ```sh
 docker compose run --rm cod-atlas-tools npm run data:check
+docker compose run --rm cod-atlas-tools npm run images:check
 docker compose run --rm cod-atlas-tools npm run lint
 docker compose run --rm cod-atlas-tools npm test
 docker compose run --rm cod-atlas-tools npm run build:static

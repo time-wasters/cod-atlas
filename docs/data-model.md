@@ -77,10 +77,10 @@ content/levels/<appearance-game>/<map-type>/<level-slug>.ref.md
 A game must use one layout consistently. `cod`, `cod-uo`, `cod-fh`, `cod2`,
 `cod2-bro`, `cod3`, `rtv`, `cod4`, `wz`, `wz2`, and `mwiii` use `campaign/` for
 records whose `mode` is `singleplayer` and `multiplayer/` for records whose
-`mode` is `multiplayer`. `bo6` also uses `zombies/` for records whose `mode`
-is `zombies`. Games that have not been reorganized remain flat. Map types are
-broad content categories; they are distinct from multiplayer rule sets such
-as deathmatch or capture the flag.
+`mode` is `multiplayer`. `waw`, `bo`, and `bo6` also use `zombies/` for records whose
+`mode` is `zombies`. Games that have not been reorganized remain flat. Map
+types are broad content categories; they are distinct from multiplayer rule
+sets such as deathmatch or capture the flag.
 
 Campaign orders start at `1`, have no leading zeros, and must be unique and
 contiguous within their game. The prefix records play order without becoming
@@ -220,18 +220,20 @@ not by picture type:
 ```text
 public/images/levels/
 `-- <game-id>/
-    `-- <level-slug>/
-        |-- main.png                 # or main.jpg / main.webm
-        |-- maps/
-        |   `-- briefing-map.png
-        `-- extra/
-            `-- <filename-used-in-md>
+    `-- <map-type>/                   # omitted for a flat-layout game
+        `-- <level-filename>/         # Markdown filename without final .md
+            |-- main.png             # or main.jpg / main.webm
+            |-- maps/
+            |   `-- overlay.png
+            `-- extra/
+                `-- <filename-used-in-md>
 ```
 
 For example, RTV Altavilla uses
-`public/images/levels/rtv/altavilla/main.png` and
-`public/images/levels/rtv/altavilla/maps/briefing-map.png`. A Markdown image
-written as `![Caption](research-photo.png)` is served from that appearance's
+`public/images/levels/rtv/campaign/1-altavilla/main.png` and
+`public/images/levels/rtv/campaign/1-altavilla/maps/overlay.png`, mirroring
+`content/levels/rtv/campaign/1-altavilla.md`. A Markdown image written as
+`![Caption](research-photo.png)` is served from that appearance's
 `extra/research-photo.png` directory. Only create a level media directory when
 media exists.
 
@@ -241,6 +243,11 @@ the canonical appearance's file, then imported Wiki media. These extracted or
 captured images are credited to
 [plp-gtr](https://github.com/plp-gtr); underlying game artwork retains its
 original copyright.
+
+Raster level media is optimized before commit, not during the static build.
+The [`images:prepare` and `images:check` workflow](image-workflow.md) documents
+the role-specific conversion rules, dimensions, size limits, and Docker
+commands.
 
 ## Build flow
 

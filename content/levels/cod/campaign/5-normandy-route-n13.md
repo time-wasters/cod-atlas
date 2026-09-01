@@ -43,7 +43,7 @@ site for those encounters.
 ## The Real Place & Differences
 
 The road reference is geographically plausible only in part. The historic N13
-was the main Carentan–Cherbourg road and passed through Blosville and
+was the main Carentan-Cherbourg road and passed through Blosville and
 Sainte-Mère-Église; controlling that axis was important because it could carry
 German reinforcements toward the invasion area. Its old surface alignment in
 this area is now the D974. Sainte-Marie-du-Mont, however, lies well east of the

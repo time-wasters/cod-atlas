@@ -9,7 +9,7 @@ campaign:
   label: Canadian Campaign
 wikiArticle: codwiki-walcheren
 mapOverlay:
-  image: /images/levels/rtv/walcheren/maps/briefing-map.png
+  image: /images/levels/rtv/campaign/10-walcheren/maps/overlay.png
   opacity: 0.72
   corners:
     topLeft: [51.6260353, 3.26884632]

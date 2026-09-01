@@ -33,7 +33,7 @@ changes are intended to be reviewable through pull requests.
 - After changing `content/`, use `npm run data:check` (Docker:
   `docker compose run --rm cod-atlas-tools npm run data:check`) for focused
   validation without generating build artifacts.
-- The current regression baseline is 988 marker locations. A count change must
+- The current regression baseline is 1065 marker locations. A count change must
   be intentional and accompanied by an appropriate test update.
 
 ## Working procedure
@@ -82,7 +82,7 @@ changes are intended to be reviewable through pull requests.
   read and follow `docs/map-research-ai-instructions.md` in full.
 - Keep game labels short, human-readable, and ordered by release date.
 - A level may contain more than one location.
-- Valid modes are `singleplayer` and `multiplayer`.
+- Valid modes are `singleplayer`, `multiplayer`, and `zombies`.
 - Valid precision values are `exact`, `approximate`, `city`, `region`,
   `country`, and `off-world`.
 - Preserve source links and attribution for imported material.

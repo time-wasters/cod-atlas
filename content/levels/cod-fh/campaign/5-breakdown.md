@@ -100,7 +100,7 @@ bazookas in North Africa in 1943.
 
 The marker at `48.801617, 44.599342` is placed at Opolchenskaya Street 8, the
 officially registered combat site of the 6th Guards Separate Tank Brigade from
-October 1–15, 1942. Its proximity to the securely identified Tractor Factory
+October 1-15, 1942. Its proximity to the securely identified Tractor Factory
 and its exact overlap with the mission date make it the strongest documented
 anchor for the level's armoured fighting. `precision` is `exact` because the
 heritage record gives a specific address; the method is `verified-landmark`.
@@ -130,7 +130,7 @@ Tractor Factory that fixes the mission's district.
   Belov's headquarters, and the replacement-radio assignment.
 - [Volgograd regional heritage register](https://base.garant.ru/20143590/53f89421bbdaf741eb2d1ecc4ddb4c33/)
   — official identification of Opolchenskaya Street 8 as a 6th Guards Separate
-  Tank Brigade combat site from October 1–15, 1942.
+  Tank Brigade combat site from October 1-15, 1942.
 - [Stalingrad Battle Museum-Reserve: Vasily Badanov](https://stalingrad-battle.ru/projects/emploee-writes/2017/3964/)
   — the real commander's leadership of the 24th Tank Corps and its documented
   December 1942 Tatsinskaya operation.
@@ -138,8 +138,8 @@ Tractor Factory that fixes the mission's district.
   — museum summary of the 24th Tank Corps' role in Operation Little Saturn and
   the Tatsinskaya raid.
 - [David Glantz: *Armageddon in Stalingrad*, factory-district chapters](https://www.jstor.org/stable/jj.1544776)
-  — operational chronology for the October 3–13 approaches and the October
-  14–22 struggle for the Tractor Factory.
+  — operational chronology for the October 3-13 approaches and the October
+  14-22 struggle for the Tractor Factory.
 - [Volgograd city administration: history](https://www.volgadmin.ru/d/about/History)
   — official confirmation that Stalingrad was renamed Volgograd in 1961.
 - [Smithsonian National Air and Space Museum: Panzerschreck](https://airandspace.si.edu/collection-objects/rocket-anti-tank-88mm-raketenpanzerbuechse-54-panzerschreck/nasm_A19890575000)
