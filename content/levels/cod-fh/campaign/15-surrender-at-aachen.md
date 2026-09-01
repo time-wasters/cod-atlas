@@ -14,8 +14,8 @@ locations:
     region: North Rhine-Westphalia
     city: Aachen
     landmark: Former Rütscher Straße air-raid bunker memorial
-    latitude: 50.784981
-    longitude: 6.075218
+    latitude: 50.77611639272085
+    longitude: 6.083773576520622
     precision: exact
     confidence: high
     method: verified-landmark
@@ -23,6 +23,11 @@ locations:
     urls:
       - googleMaps: https://www.google.com/maps/search/?api=1&query=R%C3%BCtscher+Stra%C3%9Fe+60%2C+Aachen%2C+Germany
       - wikipedia: https://en.wikipedia.org/wiki/Battle_of_Aachen
+verified:
+  location:
+    byHuman: true
+    user: github/PLP-GTR
+    reason: The end of the mission is a M12 firing at the Aachen town hall
 ---
 
 > **AI-generated research note:** The historical summary below was generated
