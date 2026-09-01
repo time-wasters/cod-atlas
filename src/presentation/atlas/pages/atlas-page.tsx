@@ -55,6 +55,9 @@ import { useExternalGameIcons } from "../../settings/hooks/use-external-game-ico
 import { useMapOverlayOpacityPreference } from "../../settings/hooks/use-map-overlay-opacity-preference.js";
 import { SolarSystemOverlay } from "../../solar-system/components/solar-system-overlay.js";
 
+/**
+ * Composes the atlas presentation with injected data and browser dependency ports.
+ */
 export function AtlasPage({
   atlasUrlStatePort,
   data,
@@ -115,7 +118,6 @@ export function AtlasPage({
     selectionInUrl,
     select: selectAtlasEntry,
     applyUrlSelection,
-
   } = useAtlasSelection<AtlasGroupDto, AtlasEntryDto>({
     group: initialGroup,
     entry: initialEntry,
@@ -180,6 +182,7 @@ export function AtlasPage({
     && selectedCampaignGameIcon !== selectedCampaignGame.icon,
   );
   const hasSpaceLocations = spaceLocations.length > 0;
+  // Re-open the schematic when changed filters make off-world results available again.
   const solarSystemExpanded = solarSystemDisplay.hasSpaceLocations === hasSpaceLocations
     ? solarSystemDisplay.expanded
     : hasSpaceLocations;
@@ -205,6 +208,10 @@ export function AtlasPage({
     available: selectedAppearance.hasLevelNotes,
     port: levelBriefingPort,
   });
+
+  /**
+   * Restores shareable URL state and clears transient UI tied to the previous selection.
+   */
   const applyAtlasUrlState = useCallback((urlState: AppliedAtlasUrlState<AtlasSelection>) => {
     applyFilterUrlState(urlState.filters);
     applyUrlSelection(urlState.selection);
@@ -224,7 +231,6 @@ export function AtlasPage({
   ]);
   const {
     setNextHistoryMode,
-
     prepareSearchUpdate,
     finishSearchUpdate,
   } = useAtlasUrlSync<AtlasSelection>({
@@ -249,6 +255,10 @@ export function AtlasPage({
     urlStatePort: atlasUrlStatePort,
     onApplyUrlState: applyAtlasUrlState,
   });
+
+  /**
+   * Records filter clearing as a navigable URL-state change.
+   */
   const resetAdvancedFilters = useCallback(() => {
     setNextHistoryMode("push");
     resetAdvancedFilterState();
@@ -270,6 +280,9 @@ export function AtlasPage({
     ? selectedHistoryOverlays.find((overlay) => overlay.id === activeHistoryOverlay.id) ?? null
     : null;
 
+  /**
+   * Applies the canonical selection transition and resets level-scoped presentation state.
+   */
   const selectEntry = useCallback((group: AtlasGroupDto, entry: AtlasEntryDto) => {
     setNextHistoryMode("push");
     selectAtlasEntry(group, entry);
@@ -278,6 +291,9 @@ export function AtlasPage({
     setActiveHistoryOverlay(null);
   }, [collapseLevelBriefing, selectAtlasEntry, setNextHistoryMode]);
 
+  /**
+   * Prepares overlay-aware viewport behavior before selecting a clicked map marker.
+   */
   const selectMapMarker = useCallback((group: AtlasGroupDto, entry: AtlasEntryDto) => {
     prepareMarkerSelection(mapOverlays[entry.levelId] ? entry.levelId : null);
     selectEntry(group, entry);
@@ -293,6 +309,7 @@ export function AtlasPage({
     selectedCampaign,
   });
 
+  // These hooks share one Leaflet runtime while owning independent map layers.
   const findSelectionByEntryId = useCallback(
     (entryId: string) => atlasDataIndex.findSelectionByEntryId(entryId),
     [atlasDataIndex],
@@ -337,6 +354,9 @@ export function AtlasPage({
     runtime: leafletMap,
   });
 
+  /**
+   * Toggles a historical overlay and frames it together with the selected marker.
+   */
   const toggleHistoryOverlay = useCallback((overlay: HistoryOverlayDto) => {
     const isActive = activeHistoryOverlay?.levelId === overlay.levelId
       && activeHistoryOverlay.id === overlay.id;
@@ -348,6 +368,9 @@ export function AtlasPage({
     focusHistoryOverlay(overlay, selected.entry.coordinates);
   }, [activeHistoryOverlay, focusHistoryOverlay, selected.entry.coordinates]);
 
+  /**
+   * Selects a representative entry while framing every mapped location in its group.
+   */
   const selectSidebarGroup = useCallback((group: AtlasGroupDto) => {
     const entry = group.entries[0];
     if (!entry) return;
@@ -357,6 +380,7 @@ export function AtlasPage({
     const coordinates = group.entries.flatMap((candidate) => candidate.coordinates ? [candidate.coordinates] : []);
     const fallbackCoordinate = group.coordinates ?? entry.coordinates ?? null;
     const bounds = coordinates.length ? coordinates : fallbackCoordinate ? [fallbackCoordinate] : [];
+    // Do not zoom past the least precise location represented by the group.
     const maxZoom = group.entries.some((candidate) => ["country", "off-world"].includes(candidate.precision))
       ? 5
       : group.entries.some((candidate) => candidate.precision === "region")
@@ -369,6 +393,9 @@ export function AtlasPage({
     selectEntry(group, entry);
   }, [queueSidebarSelection, selectEntry]);
 
+  /**
+   * Toggles campaign browsing and reveals its first marker when activated.
+   */
   function selectCampaign(campaign: CampaignOption<AtlasGroupDto, AtlasEntryDto>) {
     const campaignIsActive = activeCampaignKey === campaign.key;
     setUrlCampaignLevelId(null);
@@ -384,14 +411,19 @@ export function AtlasPage({
     setDetailsOpen(true);
   }
 
+  // Prevent an open attribution dialog from retaining media from the previous level.
   useEffect(() => {
     mediaDialog.current?.close();
   }, [selected.entry.id]);
 
+  /**
+   * Downloads a KML document containing only the currently filtered atlas entries.
+   */
   function exportKml() {
     kmlFileDownloaderPort.download(buildAtlasKml(filtered));
   }
 
+  // View models keep component props focused on display data and user actions.
   const selectedLevelGames = buildLevelGamesViewModel(
     selected.entry,
     atlasDataIndex,
@@ -452,7 +484,6 @@ export function AtlasPage({
             onToggle: () => setMapOverlayZoomOpacityEnabled(!mapOverlayZoomOpacityEnabled),
           }}
           onClose={() => setSettingsOpen(false)}
-
         />
       )}
 
