@@ -1,3 +1,5 @@
+import type { ExternalGameIconsPreferencePort } from "../../../application/preferences/ports/external-game-icons-preference.port.js";
+
 const STORAGE_KEY = "cod-atlas:external-game-icons";
 const listeners = new Set<() => void>();
 
@@ -28,7 +30,7 @@ function setEnabled(enabled: boolean) {
   listeners.forEach((listener) => listener());
 }
 
-export const externalGameIconsPreferenceStore = {
+export const externalGameIconsPreferenceStore: ExternalGameIconsPreferencePort = {
   getSnapshot,
   getServerSnapshot,
   subscribe,

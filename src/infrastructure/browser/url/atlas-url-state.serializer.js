@@ -7,7 +7,7 @@ function setCommaSeparatedValues(searchParams, name, values) {
 
 /**
  * @param {string | URL} input
- * @param {import("./atlas-url-state.dto.js").AtlasUrlState} state
+ * @param {import("../../../application/atlas/ports/atlas-url-state.port.js").AtlasUrlState} state
  */
 export function serializeAtlasUrlState(input, state) {
   const url = input instanceof URL ? new URL(input.href) : new URL(input);

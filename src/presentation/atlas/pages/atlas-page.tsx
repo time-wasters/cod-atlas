@@ -9,7 +9,6 @@ import { buildAtlasKml } from "../../../application/export/use-cases/build-atlas
 import type { AtlasEntryDto } from "../../../infrastructure/atlas-data/dto/atlas-entry.dto.js";
 import type { AtlasGroupDto } from "../../../infrastructure/atlas-data/dto/atlas-group.dto.js";
 import type { HistoryOverlayDto } from "../../../infrastructure/atlas-data/dto/history-overlay.dto.js";
-import { downloadKmlFile } from "../../../infrastructure/browser/downloads/kml-file.downloader.js";
 import { AtlasHeader } from "../components/atlas-header.js";
 import { AtlasMapStage } from "../components/atlas-map-stage.js";
 import {
@@ -57,10 +56,16 @@ import { useMapOverlayOpacityPreference } from "../../settings/hooks/use-map-ove
 import { SolarSystemOverlay } from "../../solar-system/components/solar-system-overlay.js";
 
 export function AtlasPage({
+  atlasUrlStatePort,
   data,
   dataIndex: atlasDataIndex,
+  externalGameIconManifestPort,
+  externalGameIconsPreferencePort,
   historyOverlays,
+  kmlFileDownloaderPort,
+  levelBriefingPort,
   mapOverlays,
+  mapOverlayOpacityPreferencePort,
 }: AtlasPageProps) {
   const { group: initialGroup, entry: initialEntry } = initialAtlasSelection(data);
   const filterCatalog = useMemo(() => buildAtlasFilterCatalog(data), [data]);
@@ -90,12 +95,15 @@ export function AtlasPage({
     iconFor: gameIcon,
     markUnavailable: markExternalGameIconUnavailable,
     setEnabled: setExternalIconsEnabled,
-  } = useExternalGameIcons();
+  } = useExternalGameIcons({
+    manifestPort: externalGameIconManifestPort,
+    preferencePort: externalGameIconsPreferencePort,
+  });
   const [activeHistoryOverlay, setActiveHistoryOverlay] = useState<{ levelId: string; id: string } | null>(null);
   const {
     enabled: mapOverlayZoomOpacityEnabled,
     setEnabled: setMapOverlayZoomOpacityEnabled,
-  } = useMapOverlayOpacityPreference();
+  } = useMapOverlayOpacityPreference(mapOverlayOpacityPreferencePort);
   const [solarSystemDisplay, setSolarSystemDisplay] = useState({
     hasSpaceLocations: true,
     expanded: true,
@@ -195,6 +203,7 @@ export function AtlasPage({
   } = useLevelBriefing({
     levelId: selectedAppearance.notesId,
     available: selectedAppearance.hasLevelNotes,
+    port: levelBriefingPort,
   });
   const applyAtlasUrlState = useCallback((urlState: AppliedAtlasUrlState<AtlasSelection>) => {
     applyFilterUrlState(urlState.filters);
@@ -237,6 +246,7 @@ export function AtlasPage({
     selected,
     selectionInUrl,
     sidebarListMode,
+    urlStatePort: atlasUrlStatePort,
     onApplyUrlState: applyAtlasUrlState,
   });
   const resetAdvancedFilters = useCallback(() => {
@@ -379,7 +389,7 @@ export function AtlasPage({
   }, [selected.entry.id]);
 
   function exportKml() {
-    downloadKmlFile(buildAtlasKml(filtered));
+    kmlFileDownloaderPort.download(buildAtlasKml(filtered));
   }
 
   const selectedLevelGames = buildLevelGamesViewModel(

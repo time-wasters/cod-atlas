@@ -1,9 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import type { AtlasUrlState } from "../../../infrastructure/browser/url/atlas-url-state.dto.js";
-import { parseAtlasUrlState } from "../../../infrastructure/browser/url/atlas-url-state.parser.js";
-import { serializeAtlasUrlState } from "../../../infrastructure/browser/url/atlas-url-state.serializer.js";
+import type { AtlasUrlStatePort } from "../../../application/atlas/ports/atlas-url-state.port.js";
 import type { AtlasFilterUrlState } from "../../filters/state/use-atlas-filters.js";
 
 type UrlGame = { id: string; code: string };
@@ -43,6 +41,7 @@ type UseAtlasUrlSyncInput<TSelection extends UrlSelection> = {
   selected: TSelection;
   selectionInUrl: boolean;
   sidebarListMode: "locations" | "campaigns";
+  urlStatePort: AtlasUrlStatePort;
   onApplyUrlState: (state: AppliedAtlasUrlState<TSelection>) => void;
 };
 
@@ -52,6 +51,7 @@ export function useAtlasUrlSync<TSelection extends UrlSelection>({
   selected,
   selectionInUrl,
   sidebarListMode,
+  urlStatePort,
   onApplyUrlState,
 }: UseAtlasUrlSyncInput<TSelection>) {
   const [ready, setReady] = useState(false);
@@ -71,7 +71,7 @@ export function useAtlasUrlSync<TSelection extends UrlSelection>({
 
   useEffect(() => {
     const applyUrl = () => {
-      const urlState: AtlasUrlState = parseAtlasUrlState(window.location.href);
+      const urlState = urlStatePort.read();
       const requestedGame = dataIndex.findGameById(urlState.gameId);
       const requestedLevelId = urlState.levelId ? dataIndex.resolveLevelId(urlState.levelId) : null;
       const requestedSelection = requestedLevelId
@@ -107,13 +107,12 @@ export function useAtlasUrlSync<TSelection extends UrlSelection>({
     };
 
     applyUrl();
-    window.addEventListener("popstate", applyUrl);
-    return () => window.removeEventListener("popstate", applyUrl);
-  }, [dataIndex, onApplyUrlState]);
+    return urlStatePort.subscribe(applyUrl);
+  }, [dataIndex, onApplyUrlState, urlStatePort]);
 
   useEffect(() => {
     if (!ready) return;
-    const nextUrl = serializeAtlasUrlState(window.location.href, {
+    urlStatePort.write({
       query: filters.query,
       gameId: dataIndex.findGameByCode(filters.game)?.id ?? "all",
       country: filters.country,
@@ -129,13 +128,7 @@ export function useAtlasUrlSync<TSelection extends UrlSelection>({
       sidebarListMode,
       levelId: selectionInUrl ? selected.entry.levelId : null,
       locationId: selectionInUrl ? selected.entry.locationId : null,
-    });
-    const currentRelativeUrl = `${window.location.pathname}${window.location.search}${window.location.hash}`;
-    const nextRelativeUrl = `${nextUrl.pathname}${nextUrl.search}${nextUrl.hash}`;
-    if (nextRelativeUrl !== currentRelativeUrl) {
-      const method = nextHistoryMode.current === "replace" ? "replaceState" : "pushState";
-      window.history[method](window.history.state, "", nextRelativeUrl);
-    }
+    }, nextHistoryMode.current);
     nextHistoryMode.current = "push";
   }, [
     dataIndex,
@@ -156,6 +149,7 @@ export function useAtlasUrlSync<TSelection extends UrlSelection>({
     selected.entry.locationId,
     selectionInUrl,
     sidebarListMode,
+    urlStatePort,
   ]);
 
   return { setNextHistoryMode, prepareSearchUpdate, finishSearchUpdate };

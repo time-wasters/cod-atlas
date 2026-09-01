@@ -15,7 +15,7 @@ export function parseAtlasUrlMode(mode) {
   };
 }
 
-/** @param {import("./atlas-url-state.dto.js").AtlasUrlState} state */
+/** @param {import("../../../application/atlas/ports/atlas-url-state.port.js").AtlasUrlState} state */
 export function serializeAtlasUrlMode(state) {
   const selectedModes = [
     state.showSingleplayer ? "singleplayer" : null,

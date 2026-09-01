@@ -1,3 +1,5 @@
+import type { MapOverlayOpacityPreferencePort } from "../../../application/preferences/ports/map-overlay-opacity-preference.port.js";
+
 const STORAGE_KEY = "cod-atlas:zoom-adaptive-map-overlays";
 const listeners = new Set<() => void>();
 
@@ -28,7 +30,7 @@ function setEnabled(enabled: boolean) {
   listeners.forEach((listener) => listener());
 }
 
-export const mapOverlayOpacityPreferenceStore = {
+export const mapOverlayOpacityPreferenceStore: MapOverlayOpacityPreferencePort = {
   getSnapshot,
   getServerSnapshot,
   subscribe,

@@ -26,6 +26,10 @@ src/
 |   |-- export/
 |   |   |-- ports/
 |   |   `-- use-cases/
+|   |-- game-catalog/
+|   |   `-- ports/
+|   |-- level-briefing/
+|   |   `-- ports/
 |   |-- map/
 |   |   |-- ports/
 |   |   `-- use-cases/
@@ -159,6 +163,12 @@ derivation, campaign selection, selected media state, overlay selection, entry
 link formatting, and sidebar/detail view-model assembly to concept-focused
 files. This keeps `atlas-page.tsx` as an explicit composition boundary without
 hiding the page behind a single catch-all hook.
+Browser-facing dependencies now follow explicit application ports for atlas
+URL state, static-data indexing, KML downloads, level briefings, external game
+icon manifests, and both stored display preferences. Their browser and static
+JSON implementations live in `infrastructure/` and are injected by the Next
+client composition root; presentation code no longer imports these concrete
+browser adapters.
 Leaflet map
 lifecycle, marker, campaign-route, overlay, and viewport orchestration is split
 between focused presentation hooks and infrastructure renderers. Pure Wiki

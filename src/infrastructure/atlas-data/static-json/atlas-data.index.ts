@@ -1,3 +1,4 @@
+import type { AtlasDataIndexPort } from "../../../application/atlas/ports/atlas-data-index.port.js";
 import type { AtlasDataDto } from "../dto/atlas-data.dto.js";
 import type { AtlasEntryDto } from "../dto/atlas-entry.dto.js";
 import type { AtlasGroupDto } from "../dto/atlas-group.dto.js";
@@ -8,7 +9,7 @@ export type IndexedAtlasSelection = {
   entry: AtlasEntryDto;
 };
 
-export class AtlasDataIndex {
+export class AtlasDataIndex implements AtlasDataIndexPort<GameDto, IndexedAtlasSelection> {
   private readonly gamesById: Map<string, GameDto>;
   private readonly gamesByCode: Map<string, GameDto>;
   private readonly countryNames: Set<string>;

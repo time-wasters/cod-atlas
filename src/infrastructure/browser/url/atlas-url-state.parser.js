@@ -13,7 +13,7 @@ function commaSeparatedValues(searchParams, name) {
 
 /**
  * @param {string | URL} input
- * @returns {import("./atlas-url-state.dto.js").AtlasUrlState}
+ * @returns {import("../../../application/atlas/ports/atlas-url-state.port.js").AtlasUrlState}
  */
 export function parseAtlasUrlState(input) {
   const url = input instanceof URL ? input : new URL(input);

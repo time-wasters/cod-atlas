@@ -15,3 +15,9 @@ export type AtlasUrlState = {
   levelId: string | null;
   locationId: string | null;
 };
+
+export type AtlasUrlStatePort = {
+  read: () => AtlasUrlState;
+  subscribe: (listener: () => void) => () => void;
+  write: (state: AtlasUrlState, mode: "push" | "replace") => void;
+};

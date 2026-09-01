@@ -1,10 +1,10 @@
 "use client";
 
 import { useCallback, useState } from "react";
-import {
-  loadLevelBriefing,
-  type LevelBriefingResponse,
-} from "../../../infrastructure/browser/http/level-briefing.client.js";
+import type {
+  LevelBriefingPort,
+  LevelBriefingResponse,
+} from "../../../application/level-briefing/ports/level-briefing.port.js";
 
 type LevelBriefingState = LevelBriefingResponse | {
   levelId: string;
@@ -15,9 +15,10 @@ type LevelBriefingState = LevelBriefingResponse | {
 type UseLevelBriefingInput = {
   levelId: string;
   available: boolean;
+  port: LevelBriefingPort;
 };
 
-export function useLevelBriefing({ levelId, available }: UseLevelBriefingInput) {
+export function useLevelBriefing({ levelId, available, port }: UseLevelBriefingInput) {
   const [expandedLevelId, setExpandedLevelId] = useState<string | null>(null);
   const [briefing, setBriefing] = useState<LevelBriefingState | null>(null);
 
@@ -32,8 +33,8 @@ export function useLevelBriefing({ levelId, available }: UseLevelBriefingInput) 
     setExpandedLevelId(levelId);
     if (briefing?.levelId === levelId) return;
     setBriefing({ levelId, status: "loading", content: null });
-    loadLevelBriefing(levelId).then(setBriefing);
-  }, [available, briefing?.levelId, expandedLevelId, levelId]);
+    port.load(levelId).then(setBriefing);
+  }, [available, briefing?.levelId, expandedLevelId, levelId, port]);
 
   return {
     expanded: available && expandedLevelId === levelId,

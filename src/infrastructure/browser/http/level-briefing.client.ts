@@ -1,6 +1,7 @@
-export type LevelBriefingResponse =
-  | { levelId: string; status: "ready"; content: string }
-  | { levelId: string; status: "missing"; content: string | null };
+import type {
+  LevelBriefingPort,
+  LevelBriefingResponse,
+} from "../../../application/level-briefing/ports/level-briefing.port.js";
 
 export async function loadLevelBriefing(levelId: string): Promise<LevelBriefingResponse> {
   try {
@@ -18,3 +19,7 @@ export async function loadLevelBriefing(levelId: string): Promise<LevelBriefingR
     return { levelId, status: "missing", content: null };
   }
 }
+
+export const levelBriefingClient: LevelBriefingPort = {
+  load: loadLevelBriefing,
+};

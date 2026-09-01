@@ -1,3 +1,5 @@
+import type { KmlFileDownloaderPort } from "../../../application/export/ports/kml-file-downloader.port.js";
+
 const KML_MEDIA_TYPE = "application/vnd.google-earth.kml+xml";
 
 export function downloadKmlFile(kml: string, filename = "call-of-duty-atlas.kml") {
@@ -12,3 +14,7 @@ export function downloadKmlFile(kml: string, filename = "call-of-duty-atlas.kml"
     URL.revokeObjectURL(objectUrl);
   }
 }
+
+export const kmlFileDownloader: KmlFileDownloaderPort = {
+  download: downloadKmlFile,
+};

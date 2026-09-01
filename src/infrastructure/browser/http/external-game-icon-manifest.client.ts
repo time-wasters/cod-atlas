@@ -1,7 +1,7 @@
-export type ExternalGameIconManifest = Record<string, {
-  icon?: { provider: "steam" | "steamgriddb"; path: string };
-  clienticon?: { provider: "steam"; path: string };
-}>;
+import type {
+  ExternalGameIconManifest,
+  ExternalGameIconManifestPort,
+} from "../../../application/game-catalog/ports/external-game-icon-manifest.port.js";
 
 export async function loadExternalGameIconManifest(signal?: AbortSignal) {
   const manifestUrl = new URL("images/games_external/manifest.json", document.baseURI);
@@ -13,3 +13,8 @@ export async function loadExternalGameIconManifest(signal?: AbortSignal) {
 export function resolveExternalGameIconUrl(path: string) {
   return new URL(path.replace(/^\/+/, ""), document.baseURI).href;
 }
+
+export const externalGameIconManifestClient: ExternalGameIconManifestPort = {
+  load: loadExternalGameIconManifest,
+  resolveUrl: resolveExternalGameIconUrl,
+};

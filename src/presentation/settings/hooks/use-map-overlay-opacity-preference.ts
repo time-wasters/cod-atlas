@@ -1,17 +1,17 @@
 "use client";
 
 import { useCallback, useSyncExternalStore } from "react";
-import { mapOverlayOpacityPreferenceStore } from "../../../infrastructure/browser/local-storage/map-overlay-opacity-preference.store.js";
+import type { MapOverlayOpacityPreferencePort } from "../../../application/preferences/ports/map-overlay-opacity-preference.port.js";
 
-export function useMapOverlayOpacityPreference() {
+export function useMapOverlayOpacityPreference(preferencePort: MapOverlayOpacityPreferencePort) {
   const enabled = useSyncExternalStore(
-    mapOverlayOpacityPreferenceStore.subscribe,
-    mapOverlayOpacityPreferenceStore.getSnapshot,
-    mapOverlayOpacityPreferenceStore.getServerSnapshot,
+    preferencePort.subscribe,
+    preferencePort.getSnapshot,
+    preferencePort.getServerSnapshot,
   );
   const setEnabled = useCallback((nextEnabled: boolean) => {
-    mapOverlayOpacityPreferenceStore.setEnabled(nextEnabled);
-  }, []);
+    preferencePort.setEnabled(nextEnabled);
+  }, [preferencePort]);
 
   return { enabled, setEnabled };
 }
