@@ -10,7 +10,7 @@ import { GameIcon } from "../../game-catalog/components/game-icon.js";
 import { FittedLevelTitle } from "./fitted-level-title.js";
 import { LevelModeIcon } from "./level-mode-icon.js";
 
-type LevelGameViewModel = {
+export type LevelGameViewModel = {
   external: boolean;
   game: GameDto;
   icon: string | null;

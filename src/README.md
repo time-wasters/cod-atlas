@@ -154,6 +154,11 @@ feature-owned presentation components with focused view models and callbacks.
 `app/page.tsx` is now only the Next.js route entrypoint. The Next client
 composition root under `infrastructure/framework/next/` loads and indexes the
 generated JSON before injecting it into the presentation-owned atlas page.
+The presentation page now delegates filter-catalog construction, filtered-data
+derivation, campaign selection, selected media state, overlay selection, entry
+link formatting, and sidebar/detail view-model assembly to concept-focused
+files. This keeps `atlas-page.tsx` as an explicit composition boundary without
+hiding the page behind a single catch-all hook.
 Leaflet map
 lifecycle, marker, campaign-route, overlay, and viewport orchestration is split
 between focused presentation hooks and infrastructure renderers. Pure Wiki
