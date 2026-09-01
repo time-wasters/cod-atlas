@@ -1,7 +1,17 @@
 import atlasSource from "../../../../app/data/atlas.generated.json";
 import type { AtlasDataDto } from "../dto/atlas-data.dto.js";
-
-type JsonObject = Record<string, unknown>;
+import {
+  arrayValue,
+  booleanValue,
+  coordinateTuple,
+  enumValue,
+  nullableStringValue,
+  numberValue,
+  objectValue,
+  optionalCoordinateTuple,
+  optionalStringValue,
+  stringValue,
+} from "./shared/json-value.validator.js";
 
 const GAME_SERIES = new Set(["world-war-ii", "modern-warfare", "black-ops", "standalone"]);
 const GAME_SUBSERIES = new Set(["main", "reboot", "remaster", "add-on", "spin-off"]);
@@ -9,61 +19,15 @@ const LOCATION_PRECISIONS = new Set(["exact", "approximate", "city", "region", "
 const LOCATION_CONFIDENCES = new Set(["high", "medium", "fallback"]);
 const LEVEL_MODES = new Set(["singleplayer", "multiplayer", "zombies"]);
 
-function objectValue(value: unknown, path: string): JsonObject {
-  if (typeof value !== "object" || value === null || Array.isArray(value)) {
-    throw new Error(`${path} must be an object`);
-  }
-  return value as JsonObject;
-}
-
-function arrayValue(value: unknown, path: string): unknown[] {
-  if (!Array.isArray(value)) throw new Error(`${path} must be an array`);
-  return value;
-}
-
-function stringValue(value: unknown, path: string): string {
-  if (typeof value !== "string") throw new Error(`${path} must be a string`);
-  return value;
-}
-
-function numberValue(value: unknown, path: string): number {
-  if (typeof value !== "number" || !Number.isFinite(value)) {
-    throw new Error(`${path} must be a finite number`);
-  }
-  return value;
-}
-
-function booleanValue(value: unknown, path: string): boolean {
-  if (typeof value !== "boolean") throw new Error(`${path} must be a boolean`);
-  return value;
-}
-
-function nullableStringValue(value: unknown, path: string): string | null {
-  if (value === null) return null;
-  return stringValue(value, path);
-}
-
-function optionalStringValue(value: unknown, path: string): void {
-  if (value !== undefined && value !== null) stringValue(value, path);
-}
-
-function enumValue(value: unknown, allowed: Set<string>, path: string): string {
-  const candidate = stringValue(value, path);
-  if (!allowed.has(candidate)) throw new Error(`${path} has unsupported value ${candidate}`);
-  return candidate;
-}
-
-function coordinateTuple(value: unknown, path: string): void {
-  const coordinates = arrayValue(value, path);
-  if (coordinates.length !== 2) throw new Error(`${path} must contain exactly two coordinates`);
-  numberValue(coordinates[0], `${path}[0]`);
-  numberValue(coordinates[1], `${path}[1]`);
-}
-
-function optionalCoordinateTuple(value: unknown, path: string): void {
-  if (value !== undefined && value !== null) coordinateTuple(value, path);
-}
-
+/**
+ * Validates an optional campaign object.
+ *
+ * @param value - The campaign value to validate.
+ * @param path - The data path used to identify the campaign in validation errors.
+ *
+ * @throws Error
+ * Thrown if a present campaign value does not match the expected structure.
+ */
 function assertCampaign(value: unknown, path: string): void {
   if (value === undefined || value === null) return;
   const campaign = objectValue(value, path);
@@ -71,6 +35,15 @@ function assertCampaign(value: unknown, path: string): void {
   stringValue(campaign.label, `${path}.label`);
 }
 
+/**
+ * Validates the structure of a level appearance object.
+ *
+ * @param value - The level appearance value to validate.
+ * @param path - The data path used to identify the appearance in validation errors.
+ *
+ * @throws Error
+ * Thrown if the level appearance does not match the expected structure.
+ */
 function assertLevelAppearance(value: unknown, path: string): void {
   const appearance = objectValue(value, path);
   stringValue(appearance.gameId, `${path}.gameId`);
@@ -85,6 +58,15 @@ function assertLevelAppearance(value: unknown, path: string): void {
   if (appearance.metadata !== undefined) objectValue(appearance.metadata, `${path}.metadata`);
 }
 
+/**
+ * Validates the structure of an atlas entry.
+ *
+ * @param value - The atlas entry value to validate.
+ * @param path - The data path used to identify the entry in validation errors.
+ *
+ * @throws Error
+ * Thrown if the atlas entry does not match the expected structure.
+ */
 function assertAtlasEntry(value: unknown, path: string): void {
   const entry = objectValue(value, path);
   stringValue(entry.id, `${path}.id`);
@@ -125,6 +107,15 @@ function assertAtlasEntry(value: unknown, path: string): void {
   });
 }
 
+/**
+ * Validates the structure of an atlas group and its nested entries.
+ *
+ * @param value - The atlas group value to validate.
+ * @param path - The data path used to identify the group in validation errors.
+ *
+ * @throws Error
+ * Thrown if the atlas group or one of its entries does not match the expected structure.
+ */
 function assertAtlasGroup(value: unknown, path: string): void {
   const group = objectValue(value, path);
   stringValue(group.name, `${path}.name`);
@@ -141,6 +132,15 @@ function assertAtlasGroup(value: unknown, path: string): void {
   });
 }
 
+/**
+ * Validates the structure of a game definition.
+ *
+ * @param value - The game value to validate.
+ * @param path - The data path used to identify the game in validation errors.
+ *
+ * @throws Error
+ * Thrown if the game definition does not match the expected structure.
+ */
 function assertGame(value: unknown, path: string): void {
   const game = objectValue(value, path);
   stringValue(game.id, `${path}.id`);
@@ -154,6 +154,15 @@ function assertGame(value: unknown, path: string): void {
   if (game.icon !== undefined) stringValue(game.icon, `${path}.icon`);
 }
 
+/**
+ * Validates the structure of wiki image metadata.
+ *
+ * @param value - The wiki image value to validate.
+ * @param path - The data path used to identify the image in validation errors.
+ *
+ * @throws Error
+ * Thrown if the wiki image metadata does not match the expected structure.
+ */
 function assertWikiImage(value: unknown, path: string): void {
   const image = objectValue(value, path);
   if (image.origin !== undefined) enumValue(image.origin, new Set(["local"]), `${path}.origin`);
@@ -174,12 +183,29 @@ function assertWikiImage(value: unknown, path: string): void {
   nullableStringValue(rights.noticeUrl, `${path}.rights.noticeUrl`);
 }
 
+/**
+ * Validates the structure of wiki media metadata and its optional images.
+ *
+ * @param value - The wiki media value to validate.
+ * @param path - The data path used to identify the media in validation errors.
+ *
+ * @throws Error
+ * Thrown if the wiki media metadata does not match the expected structure.
+ */
 function assertWikiMedia(value: unknown, path: string): void {
   const media = objectValue(value, path);
   if (media.main !== null) assertWikiImage(media.main, `${path}.main`);
   if (media.map !== null) assertWikiImage(media.map, `${path}.map`);
 }
 
+/**
+ * Validates the complete generated atlas data structure.
+ *
+ * @param value - The generated atlas data to validate.
+ *
+ * @throws Error
+ * Thrown if the generated atlas data does not match the expected {@link AtlasDataDto} structure.
+ */
 function assertStaticAtlasData(value: unknown): asserts value is AtlasDataDto {
   const atlas = objectValue(value, "atlas data");
   arrayValue(atlas.games, "atlas data.games").forEach((game, index) => {
@@ -205,6 +231,11 @@ function assertStaticAtlasData(value: unknown): asserts value is AtlasDataDto {
 assertStaticAtlasData(atlasSource);
 const staticAtlasData: AtlasDataDto = atlasSource;
 
+/**
+ * Returns the validated static atlas data loaded from the generated data source.
+ *
+ * @returns The validated static atlas data.
+ */
 export function loadStaticAtlasData(): AtlasDataDto {
   return staticAtlasData;
 }
