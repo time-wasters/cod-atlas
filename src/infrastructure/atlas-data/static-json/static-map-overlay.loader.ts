@@ -1,34 +1,11 @@
 import mapOverlaySource from "../../../../app/data/map-overlays.generated.json";
 import type { MapOverlayDto } from "../dto/map-overlay.dto.js";
-
-type JsonObject = Record<string, unknown>;
-
-function objectValue(value: unknown, path: string): JsonObject {
-  if (typeof value !== "object" || value === null || Array.isArray(value)) {
-    throw new Error(`${path} must be an object`);
-  }
-  return value as JsonObject;
-}
-
-function stringValue(value: unknown, path: string): string {
-  if (typeof value !== "string") throw new Error(`${path} must be a string`);
-  return value;
-}
-
-function numberValue(value: unknown, path: string): number {
-  if (typeof value !== "number" || !Number.isFinite(value)) {
-    throw new Error(`${path} must be a finite number`);
-  }
-  return value;
-}
-
-function coordinateTuple(value: unknown, path: string): void {
-  if (!Array.isArray(value) || value.length !== 2) {
-    throw new Error(`${path} must contain exactly two coordinates`);
-  }
-  numberValue(value[0], `${path}[0]`);
-  numberValue(value[1], `${path}[1]`);
-}
+import {
+  coordinateTuple,
+  numberValue,
+  objectValue,
+  stringValue,
+} from "./shared/json-value.validator.js";
 
 function assertMapOverlay(value: unknown, levelId: string): void {
   const path = `map overlays.${levelId}`;

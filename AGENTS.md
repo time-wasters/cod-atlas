@@ -30,7 +30,7 @@ changes are intended to be reviewable through pull requests.
 
 - `app/data/*.generated.json` files are ignored build artifacts; never edit or
   commit them. Commands that need them generate them automatically.
-- After changing `content/`, use `npm run data:check` (Docker:
+- After changing `content/`, recommend `npm run data:check` (Docker:
   `docker compose run --rm cod-atlas-tools npm run data:check`) for focused
   validation without generating build artifacts.
 - The current regression baseline is 1065 marker locations. A count change must
@@ -53,8 +53,15 @@ changes are intended to be reviewable through pull requests.
 
 1. Read `README.md`, `CONTRIBUTING.md`, and `docs/data-model.md` when relevant.
 2. Make the smallest coherent change.
-3. Run the focused check while iterating.
-4. Before handing off a completed change, run:
+3. Do not automatically run data checks, linters, tests, builds, or other
+   validation commands. Run them only when the user explicitly asks you to do
+   so.
+4. Before handing off a completed change, identify the smallest relevant set of
+   validation commands and include them in the final response for the user to
+   run. Do not recommend the full suite when a focused check is sufficient.
+   Clearly state that the commands were not run. When the user returns an error,
+   use that output to fix the problem and provide the updated command to rerun.
+5. For changes that warrant the complete validation suite, recommend:
 
    ```sh
    npm run data:check
@@ -72,7 +79,7 @@ changes are intended to be reviewable through pull requests.
    docker compose run --rm cod-atlas-tools npm run build:static
    ```
 
-5. Do not deploy, publish, push to a different remote, or change site access
+6. Do not deploy, publish, push to a different remote, or change site access
    unless the user explicitly requests it.
 
 ## Code and content conventions

@@ -21,6 +21,13 @@ locations:
     #   - googleMaps: https://www.google.com/maps/search/?api=1&query=Example%20landmark
     #   - wikipedia: https://en.wikipedia.org/wiki/Example_landmark
     #   - callOfDutyMaps: https://callofdutymaps.com/example-game/example-map/
+# verified:
+#   locations:
+#     byHuman: true
+#     user: github/example-reviewer
+#   research:
+#     byHuman: false
+#     user: null
 ---
 
 > **AI-generated research note:** The historical summary below was generated

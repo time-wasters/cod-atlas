@@ -1,5 +1,6 @@
 import { calculateLocalizationCoverage } from "./calculate-localization-coverage.mjs";
 import { calculateResearchCoverage } from "./calculate-research-coverage.mjs";
+import { calculateVerificationCoverage } from "./calculate-verification-coverage.mjs";
 import { collectLevelLocations } from "./collect-level-locations.mjs";
 
 export async function updateProgressReport({
@@ -17,5 +18,6 @@ export async function updateProgressReport({
   return {
     research: calculateResearchCoverage(data.levels),
     localization: calculateLocalizationCoverage(collectLevelLocations(data.levels)),
+    verification: calculateVerificationCoverage(data.levels),
   };
 }

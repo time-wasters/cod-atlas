@@ -1,34 +1,12 @@
 import historyOverlaySource from "../../../../app/data/history-overlays.generated.json";
 import type { HistoryOverlayDto } from "../dto/history-overlay.dto.js";
-
-type JsonObject = Record<string, unknown>;
-
-function objectValue(value: unknown, path: string): JsonObject {
-  if (typeof value !== "object" || value === null || Array.isArray(value)) {
-    throw new Error(`${path} must be an object`);
-  }
-  return value as JsonObject;
-}
-
-function stringValue(value: unknown, path: string): string {
-  if (typeof value !== "string") throw new Error(`${path} must be a string`);
-  return value;
-}
-
-function numberValue(value: unknown, path: string): number {
-  if (typeof value !== "number" || !Number.isFinite(value)) {
-    throw new Error(`${path} must be a finite number`);
-  }
-  return value;
-}
-
-function coordinateTuple(value: unknown, path: string): void {
-  if (!Array.isArray(value) || value.length !== 2) {
-    throw new Error(`${path} must contain exactly two coordinates`);
-  }
-  numberValue(value[0], `${path}[0]`);
-  numberValue(value[1], `${path}[1]`);
-}
+import {
+  arrayValue,
+  coordinateTuple,
+  numberValue,
+  objectValue,
+  stringValue,
+} from "./shared/json-value.validator.js";
 
 function assertHistoryOverlay(value: unknown, levelId: string, index: number): void {
   const path = `history overlays.${levelId}[${index}]`;
@@ -60,8 +38,9 @@ function assertHistoryOverlay(value: unknown, levelId: string, index: number): v
 function assertStaticHistoryOverlays(value: unknown): asserts value is Record<string, HistoryOverlayDto[]> {
   const overlays = objectValue(value, "history overlays");
   Object.entries(overlays).forEach(([levelId, candidates]) => {
-    if (!Array.isArray(candidates)) throw new Error(`history overlays.${levelId} must be an array`);
-    candidates.forEach((overlay, index) => assertHistoryOverlay(overlay, levelId, index));
+    arrayValue(candidates, `history overlays.${levelId}`).forEach((overlay, index) => {
+      assertHistoryOverlay(overlay, levelId, index);
+    });
   });
 }
 

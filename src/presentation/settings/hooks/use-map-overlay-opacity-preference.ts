@@ -1,17 +1,18 @@
 "use client";
 
 import { useCallback, useSyncExternalStore } from "react";
-import type { MapOverlayOpacityPreferencePort } from "../../../application/preferences/ports/map-overlay-opacity-preference.port.js";
+import type { ClientSettingsPort } from "../../../application/settings/ports/client-settings.port.js";
 
-export function useMapOverlayOpacityPreference(preferencePort: MapOverlayOpacityPreferencePort) {
-  const enabled = useSyncExternalStore(
-    preferencePort.subscribe,
-    preferencePort.getSnapshot,
-    preferencePort.getServerSnapshot,
+export function useMapOverlayOpacityPreference(clientSettingsPort: ClientSettingsPort) {
+  const settings = useSyncExternalStore(
+    clientSettingsPort.subscribe,
+    clientSettingsPort.getSnapshot,
+    clientSettingsPort.getServerSnapshot,
   );
+  const enabled = settings.zoomAdaptiveMapOverlaysEnabled;
   const setEnabled = useCallback((nextEnabled: boolean) => {
-    preferencePort.setEnabled(nextEnabled);
-  }, [preferencePort]);
+    clientSettingsPort.update({ zoomAdaptiveMapOverlaysEnabled: nextEnabled });
+  }, [clientSettingsPort]);
 
   return { enabled, setEnabled };
 }

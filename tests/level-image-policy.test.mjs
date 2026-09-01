@@ -48,3 +48,34 @@ test("main JPEG files use the build-supported .jpg extension", () => {
   });
   assert.match(result.errors.join("\n"), /must use the \.jpg extension/);
 });
+
+test("map overlays accept PNG and canonical .jpg JPEG files", () => {
+  const jpeg = validateLevelImage({
+    filename: "cod2/campaign/map/maps/overlay.jpg",
+    format: "jpeg",
+    width: 1200,
+    height: 675,
+    size: 100_000,
+  });
+  assert.deepEqual(jpeg.errors, []);
+
+  const nonCanonicalExtension = validateLevelImage({
+    filename: "cod2/campaign/map/maps/overlay.jpeg",
+    format: "jpeg",
+    width: 1200,
+    height: 675,
+    size: 100_000,
+  });
+  assert.match(nonCanonicalExtension.errors.join("\n"), /must use the \.jpg extension/);
+});
+
+test("Markdown body images accept JPEG files", () => {
+  const result = validateLevelImage({
+    filename: "cod2/campaign/map/extra/research.jpg",
+    format: "jpeg",
+    width: 1200,
+    height: 675,
+    size: 100_000,
+  });
+  assert.deepEqual(result.errors, []);
+});

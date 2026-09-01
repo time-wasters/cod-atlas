@@ -1,6 +1,7 @@
 import { readFile } from "node:fs/promises";
 import { isLevelLocationPrecision } from "../../../domain/level/level-location-precision.value-object.mjs";
 import { isLevelMode } from "../../../domain/level/level-mode.value-object.mjs";
+import { normalizeLevelVerification } from "../../../domain/level/level-verification.value-object.mjs";
 import { isResearchComplete } from "../../../domain/level/research-completion.policy.mjs";
 import { parseMarkdownDocument } from "../markdown/markdown-document.parser.mjs";
 import { collectContentFiles } from "./content-file.collector.mjs";
@@ -33,6 +34,7 @@ export async function loadProgressLevelData(levelsRoot, games) {
       gameId,
       mode: document.data.mode,
       researched: isResearchComplete(document.body),
+      verified: normalizeLevelVerification(document.data.verified, `${filename}: verified`),
       locations: document.data.locations.map((location) => ({ precision: location.precision })),
     });
   }

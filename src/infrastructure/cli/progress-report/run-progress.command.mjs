@@ -28,5 +28,8 @@ export async function runProgressCommand(argv, root = process.cwd()) {
   console.log(
     `Geographic localization: ${result.localization.localized}/${result.localization.terrestrial} terrestrial marker locations (${calculatePercentage(result.localization.localized, result.localization.terrestrial)}%).`,
   );
+  console.log(
+    `Human verification: ${result.verification.locations.verified}/${result.verification.locations.total} marker locations and ${result.verification.research.verified}/${result.verification.research.total} canonical level research notes.`,
+  );
   return result;
 }

@@ -8,20 +8,43 @@ campaign:
   id: "3"
   label: Western Front
 wikiArticle: codwiki-underground-passage
+mapOverlay:
+  image: /images/levels/cod-fh/campaign/14-underground-passage/maps/overlay.jpg
+  opacity: 0.72
+  corners:
+    topLeft: [50.76948298, 6.08028845]
+    topRight: [50.77662484, 6.08232147]
+    bottomLeft: [50.76862065, 6.08786255]
+    bottomRight: [50.77576264, 6.08989558]
+  attribution:
+    title: "Call of Duty: Finest Hour - Underground Passage loading-screen map"
+    source: "Screenshot from Extras of from Call of Duty: Finest Hour by plp-gtr."
+    sourceUrl: https://github.com/time-wasters/cod-atlas/blob/main/public/images/maps/rtv/underground-passage.jpg
+    extractedBy: plp-gtr
+    extractedByUrl: https://github.com/plp-gtr
+    copyrightHolder: Activision Publishing, Inc.
+    rights: non-free
+    rightsNotice: "The extraction is contributed to CoD Atlas; the underlying copyrighted game artwork remains the property of Activision and is used for identification and geographic comparison."
+    rightsNoticeUrl: https://www.activision.com/legal/terms-of-use
 locations:
   - id: main
     country: Germany
     region: North Rhine-Westphalia
     city: Aachen
-    latitude: 50.77556
-    longitude: 6.08361
+    latitude: 50.77325739510171
+    longitude: 6.083359862919742
     precision: city
     confidence: high
     method: wiki-location
     primary: true
     urls:
       - googleMaps: https://www.google.com/maps/search/?api=1&query=Aachen%2C+Germany
-      - wikipedia: https://en.wikipedia.org/wiki/Aachen
+      - wikipedia: https://en.wikipedia.org/wiki/Battle_of_Aachen
+verified:
+  location:
+    byHuman: true
+    user: github/PLP-GTR
+    reason: Extras of CoD FH show a map in which the town hall, church and theater line up
 ---
 
 > **AI-generated research note:** The historical summary below was generated

@@ -14,8 +14,8 @@ locations:
     region: Georgia
     city: Toccoa
     landmark: Camp Toccoa at Currahee historic site
-    latitude: 34.55086
-    longitude: -83.39627
+    latitude: 34.5504
+    longitude: -83.3973
     precision: exact
     confidence: high
     method: verified-landmark
@@ -23,6 +23,14 @@ locations:
     urls:
       - googleMaps: https://www.google.com/maps/search/?api=1&query=Camp+Toccoa+at+Currahee%2C+2351+Ayersville+Road%2C+Toccoa%2C+Georgia
       - wikipedia: https://en.wikipedia.org/wiki/Camp_Toccoa
+verified:
+  locations:
+    byHuman: true
+    user: github/PLP-GTR
+    reason: Camp Toccoa itself does not exist anymore but coords are exactly documented. There is a memorial site there now.
+  research:
+    byHuman: false
+    user: null
 ---
 
 > **AI-generated research note:** The historical summary below was generated

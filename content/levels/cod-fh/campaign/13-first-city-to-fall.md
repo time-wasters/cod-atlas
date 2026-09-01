@@ -14,15 +14,20 @@ locations:
     region: North Rhine-Westphalia
     city: Aachen
     landmark: Aachen Town Hall
-    latitude: 50.776103
-    longitude: 6.083769
+    latitude: 50.76821926557846
+    longitude: 6.086938493512666
     precision: exact
     confidence: high
     method: verified-landmark
     primary: true
     urls:
-      - googleMaps: https://www.google.com/maps/search/?api=1&query=Aachen+Town+Hall%2C+Aachen%2C+Germany
-      - wikipedia: https://en.wikipedia.org/wiki/Aachen_Town_Hall
+      - googleMaps: https://www.google.com/maps/search/?api=1&query=Marschiertor%2C+Aachen%2C+Germany
+      - wikipedia: https://de.wikipedia.org/wiki/Marschiertor
+verified:
+  location:
+    byHuman: true
+    user: github/PLP-GTR
+    reason: The Marschiertor is a distinctive landmark at the beginning of the mission
 ---
 
 > **AI-generated research note:** The historical summary below was generated

@@ -61,6 +61,56 @@ mission has the required research sections.
 | Black Ops 6 | 0 / 18 (0%) | 0 / 46 (0%) | 0 / 6 (0%) | 0 / 70 (0%) |
 <!-- research-progress:end -->
 
+## Human verification progress
+
+Human verification is recorded explicitly in canonical level frontmatter.
+Location verification applies to every marker location owned by that level;
+research verification applies to the level's Markdown research notes. A
+completed research structure or precise marker does not imply human review.
+
+<!-- human-verification-progress:start -->
+| Scope | Marker locations verified | Research notes verified |
+| --- | ---: | ---: |
+| All currently catalogued records | 1 / 1065 (0%) | 0 / 1119 (0%) |
+| Campaign records | 1 / 422 (0%) | 0 / 426 (0%) |
+| Multiplayer records | 0 / 633 (0%) | 0 / 677 (0%) |
+| Zombies records | 0 / 10 (0%) | 0 / 16 (0%) |
+
+| Game | Marker locations verified | Research notes verified |
+| --- | ---: | ---: |
+| Call of Duty | 1 / 42 (2%) | 0 / 42 (0%) |
+| Call of Duty: United Offensive | 0 / 27 (0%) | 0 / 27 (0%) |
+| Call of Duty: Finest Hour | 0 / 19 (0%) | 0 / 19 (0%) |
+| Call of Duty 2 | 0 / 49 (0%) | 0 / 48 (0%) |
+| Call of Duty 2: Big Red One | 0 / 23 (0%) | 0 / 23 (0%) |
+| Call of Duty 3 | 0 / 34 (0%) | 0 / 34 (0%) |
+| Call of Duty: Roads to Victory | 0 / 16 (0%) | 0 / 16 (0%) |
+| Modern Warfare (2007) | 0 / 41 (0%) | 0 / 42 (0%) |
+| World at War | 0 / 42 (0%) | 0 / 42 (0%) |
+| World at War: Final Fronts | 0 / 14 (0%) | 0 / 13 (0%) |
+| Modern Warfare 2 (2009) | 0 / 42 (0%) | 0 / 42 (0%) |
+| Black Ops | 0 / 48 (0%) | 0 / 47 (0%) |
+| Modern Warfare 3 (2011) | 0 / 59 (0%) | 0 / 57 (0%) |
+| MW3: Defiance | 0 / 14 (0%) | 0 / 14 (0%) |
+| Black Ops II | 0 / 53 (0%) | 0 / 53 (0%) |
+| Black Ops: Declassified | 0 / 10 (0%) | 0 / 10 (0%) |
+| Ghosts | 0 / 52 (0%) | 0 / 51 (0%) |
+| Advanced Warfare | 0 / 47 (0%) | 0 / 45 (0%) |
+| Black Ops III | 0 / 40 (0%) | 0 / 39 (0%) |
+| Infinite Warfare | 0 / 44 (0%) | 0 / 44 (0%) |
+| Modern Warfare Remastered | 0 / 1 (0%) | 0 / 1 (0%) |
+| WWII | 0 / 58 (0%) | 0 / 53 (0%) |
+| Black Ops 4 | 0 / 36 (0%) | 0 / 36 (0%) |
+| Modern Warfare (2019) | 0 / 60 (0%) | 0 / 59 (0%) |
+| Warzone (2020) | 0 / 4 (0%) | 0 / 4 (0%) |
+| Black Ops Cold War | 0 / 52 (0%) | 0 / 51 (0%) |
+| Vanguard | 0 / 40 (0%) | 0 / 38 (0%) |
+| Modern Warfare II (2022) | 0 / 39 (0%) | 0 / 37 (0%) |
+| Warzone 2.0 | 0 / 3 (0%) | 0 / 3 (0%) |
+| Modern Warfare III (2023) | 0 / 56 (0%) | 0 / 59 (0%) |
+| Black Ops 6 | — | 0 / 70 (0%) |
+<!-- human-verification-progress:end -->
+
 ## Geographic localization progress
 
 Localization here means locating atlas markers in the real world, not
