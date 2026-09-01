@@ -3,10 +3,15 @@ import { mkdtemp, mkdir, rm, writeFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import test from "node:test";
-import { requiredResearchHeadings } from "../src/domain/level/research-completion.policy.mjs";
 import { loadProgressData } from "../src/infrastructure/content/filesystem/progress-data.loader.mjs";
 
-const completedBody = requiredResearchHeadings
+const completedBody = [
+  "## The Map in the Game",
+  "## The Real Place & Differences",
+  "## The Real Mission & Differences",
+  "## Marker Position Explanation",
+  "## Sources",
+]
   .map((heading) => `${heading}\n\nSection text.`)
   .join("\n\n");
 
@@ -22,7 +27,7 @@ test("canonical level loading excludes appearance references", async () => {
   );
   await writeFile(
     path.join(levelsRoot, "game/level.md"),
-    `---\nid: game-level\ngames:\n  - game\nmode: singleplayer\nlocations: []\n---\n\n${completedBody}\n`,
+    `---\nid: game-level\ngames:\n  - game\nmode: multiplayer\nlocations: []\n---\n\n${completedBody}\n`,
   );
   await writeFile(
     path.join(levelsRoot, "game/level.ref.md"),
@@ -34,7 +39,7 @@ test("canonical level loading excludes appearance references", async () => {
     assert.equal(data.levels.length, 1);
     assert.deepEqual(data.levels[0], {
       gameId: "game",
-      mode: "singleplayer",
+      mode: "multiplayer",
       researched: true,
       locations: [],
     });

@@ -125,9 +125,12 @@ Then use these headings in this order:
 ## Sources
 ```
 
+For a standalone multiplayer map, use `## The Map in the Game` instead of
+`## The Mission in the Game`. Both forms satisfy the research progress rule.
+
 Fill them as follows:
 
-### The Mission in the Game
+### The Mission or Map in the Game
 
 Summarize the playable character and unit, date, stated location, objectives,
 route and notable terrain. Identify fictional characters or formations when

@@ -45,6 +45,10 @@ Whenever AI is used to produce content, that content is explicitly marked at
 the point where it appears. The disclosure is kept beside the affected text so
 readers do not have to find a separate policy to understand how it was made.
 
+Research notes use **The Mission in the Game** for mission-driven levels and
+may use **The Map in the Game** for standalone multiplayer maps. Both headings
+count toward the research progress report.
+
 ## Documentation
 
 Start with [CONTRIBUTING.md](CONTRIBUTING.md) for project setup, development,
