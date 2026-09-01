@@ -22,7 +22,6 @@ locations:
     primary: true
     urls:
       - googleMaps: https://www.google.com/maps/search/?api=1&query=49.0665%2C-0.29244
-      - source: https://www.battledetective.com/battlestudy31.html
 ---
 
 > **AI-generated research note:** The historical summary below was generated

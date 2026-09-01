@@ -21,8 +21,8 @@ locations:
     method: verified-landmark
     primary: true
     urls:
-      googleMaps: https://www.google.com/maps/search/?api=1&query=M%C3%A9morial+de+Montormel%2C+Mont-Ormel%2C+France
-      wikipedia: https://en.wikipedia.org/wiki/Hill_262
+      - googleMaps: https://www.google.com/maps/search/?api=1&query=M%C3%A9morial+de+Montormel%2C+Mont-Ormel%2C+France
+      - wikipedia: https://en.wikipedia.org/wiki/Hill_262
 ---
 
 > **AI-generated research note:** The historical summary below was generated
