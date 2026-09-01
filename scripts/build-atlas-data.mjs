@@ -188,10 +188,11 @@ function validateWikiLevelReferences(article, filename, wikiArticles) {
 async function validateMapOverlay(overlay, levelId, filename) {
   requireValue(overlay && typeof overlay === "object" && !Array.isArray(overlay), `${filename}: mapOverlay must be an object`);
   const levelMediaBase = path.relative(levelsRoot, filename).replaceAll("\\", "/").replace(/\.md$/, "");
-  const expectedLevelImage = `/images/levels/${levelMediaBase}/maps/overlay.png`;
+  const expectedLevelImageBase = `/images/levels/${levelMediaBase}/maps/overlay`;
   requireValue(
-    overlay.image === expectedLevelImage || /^\/images\/maps\/[a-z0-9/_-]+\.png$/.test(overlay.image ?? ""),
-    `${filename}: mapOverlay.image must be ${expectedLevelImage} or a local PNG under /images/maps/`,
+    [".png", ".jpg"].some((extension) => overlay.image === `${expectedLevelImageBase}${extension}`)
+      || /^\/images\/maps\/[a-z0-9/_-]+\.(?:png|jpg)$/.test(overlay.image ?? ""),
+    `${filename}: mapOverlay.image must be ${expectedLevelImageBase}.png, ${expectedLevelImageBase}.jpg, or a local PNG/JPEG under /images/maps/`,
   );
   requireValue(Number.isFinite(overlay.opacity) && overlay.opacity > 0 && overlay.opacity <= 1, `${filename}: mapOverlay.opacity must be greater than 0 and at most 1`);
   for (const corner of ["topLeft", "topRight", "bottomLeft", "bottomRight"]) {
@@ -209,7 +210,16 @@ async function validateMapOverlay(overlay, levelId, filename) {
   for (const field of ["sourceUrl", "extractedByUrl", "rightsNoticeUrl"]) validateHttpsUrl(attribution[field], `mapOverlay.attribution.${field}`, filename);
   const imageFilename = path.join(root, "public", ...overlay.image.slice(1).split("/"));
   const image = await readFile(imageFilename);
-  requireValue(image.length >= 8 && image[0] === 0x89 && image.toString("ascii", 1, 4) === "PNG", `${filename}: ${overlay.image} is not a PNG image`);
+  const isPng = overlay.image.endsWith(".png")
+    && image.length >= 8
+    && image[0] === 0x89
+    && image.toString("ascii", 1, 4) === "PNG";
+  const isJpeg = overlay.image.endsWith(".jpg")
+    && image.length >= 3
+    && image[0] === 0xff
+    && image[1] === 0xd8
+    && image[2] === 0xff;
+  requireValue(isPng || isJpeg, `${filename}: ${overlay.image} contents must match its PNG or JPEG extension`);
   return {
     levelId,
     image: overlay.image,
@@ -228,8 +238,9 @@ async function validateHistoryOverlay(overlay, levelId, body, filename) {
     ? overlay.image.slice(expectedLevelDirectory.length)
     : null;
   requireValue(
-    /^[a-z0-9_-]+\.png$/.test(levelImageName ?? "") || /^\/images\/maps\/[a-z0-9/_-]+\.png$/.test(overlay.image ?? ""),
-    `${filename}: historyOverlay.image must be a local PNG under ${expectedLevelDirectory} or /images/maps/`,
+    /^[a-z0-9_-]+\.(?:png|jpg)$/.test(levelImageName ?? "")
+      || /^\/images\/maps\/[a-z0-9/_-]+\.(?:png|jpg)$/.test(overlay.image ?? ""),
+    `${filename}: historyOverlay.image must be a local PNG/JPEG under ${expectedLevelDirectory} or /images/maps/`,
   );
   requireValue(Number.isFinite(overlay.opacity) && overlay.opacity > 0 && overlay.opacity <= 1, `${filename}: historyOverlay.opacity must be greater than 0 and at most 1`);
   for (const corner of ["topLeft", "topRight", "bottomLeft", "bottomRight"]) {
@@ -247,7 +258,16 @@ async function validateHistoryOverlay(overlay, levelId, body, filename) {
   for (const field of ["sourceUrl", "rightsNoticeUrl"]) validateHttpsUrl(attribution[field], `historyOverlay.attribution.${field}`, filename);
   const imageFilename = path.join(root, "public", ...overlay.image.slice(1).split("/"));
   const image = await readFile(imageFilename);
-  requireValue(image.length >= 8 && image[0] === 0x89 && image.toString("ascii", 1, 4) === "PNG", `${filename}: ${overlay.image} is not a PNG image`);
+  const isPng = overlay.image.endsWith(".png")
+    && image.length >= 8
+    && image[0] === 0x89
+    && image.toString("ascii", 1, 4) === "PNG";
+  const isJpeg = overlay.image.endsWith(".jpg")
+    && image.length >= 3
+    && image[0] === 0xff
+    && image[1] === 0xd8
+    && image[2] === 0xff;
+  requireValue(isPng || isJpeg, `${filename}: ${overlay.image} contents must match its PNG or JPEG extension`);
   const markdownImage = path.posix.basename(overlay.image);
   requireValue(body.includes(`](${markdownImage})`), `${filename}: historyOverlay ${overlay.id} must be referenced as ![...](${markdownImage}) in the Markdown body`);
   return {

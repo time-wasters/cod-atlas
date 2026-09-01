@@ -32,10 +32,13 @@ Preparation applies the following rules:
 - `main.png` is compressed and, when it has no alpha channel, compared with a
   quality-85 JPEG using 4:4:4 chroma. It becomes `main.jpg` only when that is at
   least 10% smaller. Main images are reduced to a longest edge of 2560 px.
-- `maps/overlay.png` remains PNG, is palette-optimized at quality 92, and is
+- `maps/overlay.png` remains PNG and is palette-optimized at quality 92;
+  `maps/overlay.jpg` remains JPEG and is recompressed at quality 85. Both are
   reduced to a longest edge of 4096 px.
 - Other PNGs, including files in `extra/`, receive lossless PNG compression.
   Existing JPEG and WebP files are recompressed at quality 85.
+- Markdown body images may use PNG, JPEG, or WebP. Images also configured as
+  clickable historical overlays may use canonical `.png` or `.jpg` filenames.
 - A same-format file is replaced only when the result is smaller, unless it
   must be resized to meet the dimension limit.
 - Embedded image metadata is removed. Preserve required source, author, and
@@ -74,7 +77,7 @@ format, and enforces these policies:
 | Image role | Accepted formats | Recommended maximum | Hard maximum | Longest edge |
 | --- | --- | ---: | ---: | ---: |
 | `main` | PNG, JPEG | 512 KiB | 1 MiB | 2560 px |
-| `maps/overlay.png` | PNG | 1 MiB | 3 MiB | 4096 px |
+| `maps/overlay.png` or `maps/overlay.jpg` | PNG, JPEG | 1 MiB | 3 MiB | 4096 px |
 | Other raster media | PNG, JPEG, WebP | 1 MiB | 2 MiB | 4096 px |
 
 Exceeding a recommended maximum emits a warning. Invalid images, mismatched

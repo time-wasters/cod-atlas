@@ -9,7 +9,7 @@ export const levelImagePolicies = Object.freeze({
     maxEdge: 2560,
   }),
   overlay: Object.freeze({
-    formats: Object.freeze(["png"]),
+    formats: Object.freeze(["jpeg", "png"]),
     maxBytes: 3 * 1024 * 1024,
     recommendedBytes: 1 * 1024 * 1024,
     maxEdge: 4096,
@@ -40,8 +40,8 @@ export function validateLevelImage({ filename, size, format, width, height }) {
   if (!policy.formats.includes(normalizedFormat)) {
     errors.push(`${kind} images must use ${policy.formats.join(" or ")}; found ${normalizedFormat || "unknown"}`);
   }
-  if (kind === "main" && filename.toLowerCase().endsWith(".jpeg")) {
-    errors.push("main JPEG images must use the .jpg extension so the atlas build can discover them");
+  if ((kind === "main" || kind === "overlay") && filename.toLowerCase().endsWith(".jpeg")) {
+    errors.push(`${kind} JPEG images must use the .jpg extension so the atlas build can discover them`);
   }
   if (declaredFormat !== normalizedFormat) {
     errors.push(`file extension declares ${declaredFormat || "an unknown format"}, but the image is ${normalizedFormat || "unknown"}`);

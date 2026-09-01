@@ -6,5 +6,8 @@ test("image paths are classified by their repository role", () => {
   assert.equal(classifyLevelImagePath("cod2/campaign/map/main.png"), "main");
   assert.equal(classifyLevelImagePath("cod2/campaign/map/main.jpg"), "main");
   assert.equal(classifyLevelImagePath("cod2/campaign/map/maps/overlay.png"), "overlay");
+  assert.equal(classifyLevelImagePath("cod2/campaign/map/maps/overlay.jpg"), "overlay");
+  assert.equal(classifyLevelImagePath("cod2/campaign/map/maps/overlay.jpeg"), "overlay");
   assert.equal(classifyLevelImagePath("cod2/campaign/map/extra/research.png"), "other");
+  assert.equal(classifyLevelImagePath("cod2/campaign/map/extra/research.jpg"), "other");
 });

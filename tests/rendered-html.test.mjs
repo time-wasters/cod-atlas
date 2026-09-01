@@ -559,6 +559,12 @@ test("keeps calibrated game-map overlays in a separate generated store", async (
   });
   assert.equal(scavengerHunt.attribution.extractedBy, "plp-gtr");
   await access(new URL(`../public${scavengerHunt.image}`, import.meta.url));
+  const undergroundPassage = overlays["cod-fh-underground-passage"];
+  assert.equal(
+    undergroundPassage.image,
+    "/images/levels/cod-fh/campaign/14-underground-passage/maps/overlay.jpg",
+  );
+  await access(new URL(`../public${undergroundPassage.image}`, import.meta.url));
 });
 
 test("keeps clickable historical overlays in a separate generated store", async () => {

@@ -195,17 +195,18 @@ because two maps share a name.
 
 An optional `mapOverlay` belongs in the level Markdown frontmatter when a
 reviewed game map can be geographically calibrated. It records a local image,
-opacity, all four `[latitude, longitude]` corners, and complete source and
+stored as `maps/overlay.png` or `maps/overlay.jpg`, opacity, all four
+`[latitude, longitude]` corners, and complete source and
 non-free rights attribution. The compiler validates these fields and writes
 them to the separate `app/data/map-overlays.generated.json` browser store;
 overlay data is not added to the main atlas JSON.
 
 Optional `historyOverlays` attach one or more geographically calibrated
 historical figures to images embedded in the level's research Markdown. Each
-record has a stable ID, a local PNG in the level's `extra/` directory (legacy
-records under `public/images/maps/` are also accepted), opacity, four
+record has a stable ID, a local PNG or JPEG in the level's `extra/` directory
+(legacy records under `public/images/maps/` are also accepted), opacity, four
 corners, and complete author, publication, copyright, and non-free-rights
-attribution. The Markdown body must embed the corresponding PNG filename.
+attribution. The Markdown body must embed the corresponding image filename.
 The compiler validates both the image and that body reference, then writes the
 records to `app/data/history-overlays.generated.json`. The frontend renders a
 matching Markdown image as a control that can place or remove that historical
@@ -246,17 +247,17 @@ public/images/levels/
         `-- <level-filename>/         # Markdown filename without final .md
             |-- main.png             # or main.jpg / main.webm
             |-- maps/
-            |   `-- overlay.png
+            |   `-- overlay.png      # or overlay.jpg
             `-- extra/
-                `-- <filename-used-in-md>
+                `-- <filename-used-in-md>  # PNG, JPEG, or WebP
 ```
 
 For example, RTV Altavilla uses
 `public/images/levels/rtv/campaign/1-altavilla/main.png` and
 `public/images/levels/rtv/campaign/1-altavilla/maps/overlay.png`, mirroring
 `content/levels/rtv/campaign/1-altavilla.md`. A Markdown image written as
-`![Caption](research-photo.png)` is served from that appearance's
-`extra/research-photo.png` directory. Only create a level media directory when
+`![Caption](research-photo.jpg)` is served from that appearance's
+`extra/research-photo.jpg` directory. Only create a level media directory when
 media exists.
 
 The build validates main-media signatures and exposes each file by appearance
