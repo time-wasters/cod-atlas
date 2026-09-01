@@ -1,9 +1,9 @@
 # CoD Atlas progress
 
 This report is generated from the curated level records under
-`content/levels/`. Run `npm run progress:update` after changing research notes
-or location precision; `npm run data:check` verifies that the generated tables
-are current.
+`content/levels/`. You can run `npm run progress:update` after changing research
+notes or location precision. The report is informational and its current state
+is not required for validation or builds.
 
 ## Research progress
 

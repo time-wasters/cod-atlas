@@ -31,10 +31,11 @@ VSCodium users can run the common commands through **Terminal → Run Task**.
 1. Find the Markdown file under `content/levels/`.
 2. Change the curated frontmatter or add a concise note to the Markdown body.
 3. Include a reliable source link in the pull-request description.
-4. After changing the standard research sections or location precision, run
+4. Optionally, after changing the standard research sections or location precision, run
    `npm run progress:update` (Docker:
    `docker compose run --rm cod-atlas-tools npm run progress:update`) to
-   refresh the generated tables in `docs/progress.md`.
+   refresh the informational tables in `docs/progress.md`. A stale progress
+   report does not block validation or builds.
 5. If a local Node or Docker toolchain is available, run `npm run data:check`
    or `docker compose run --rm cod-atlas-tools npm run data:check`. CI runs the
    same validation for every pull request.

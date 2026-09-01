@@ -8,13 +8,11 @@ import {
   writeProgressDocument,
 } from "../../content/filesystem/progress-document.repository.mjs";
 import { renderProgressDocument } from "../../reporting/markdown/progress-document.renderer.mjs";
-import { parseProgressCommandOptions } from "./progress-command-options.mjs";
 
 export async function runProgressCommand(argv, root = process.cwd()) {
-  const options = parseProgressCommandOptions(argv);
+  if (argv.length > 0) throw new Error(`Unknown argument: ${argv[0]}`);
   const progressPath = path.join(root, "docs/progress.md");
   const result = await updateProgressReport({
-    checkOnly: options.checkOnly,
     loadProgressData: () => loadProgressData({
       levelsRoot: path.join(root, "content/levels"),
       gamesRoot: path.join(root, "content/games"),

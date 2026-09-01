@@ -3,7 +3,6 @@ import { calculateResearchCoverage } from "./calculate-research-coverage.mjs";
 import { collectLevelLocations } from "./collect-level-locations.mjs";
 
 export async function updateProgressReport({
-  checkOnly = false,
   loadProgressData,
   readProgressDocument,
   renderProgressDocument,
@@ -13,10 +12,7 @@ export async function updateProgressReport({
   const current = await readProgressDocument();
   const expected = renderProgressDocument(current, data);
 
-  if (checkOnly && current !== expected) {
-    throw new Error("docs/progress.md is stale; run npm run progress:update");
-  }
-  if (!checkOnly && current !== expected) await writeProgressDocument(expected);
+  if (current !== expected) await writeProgressDocument(expected);
 
   return {
     research: calculateResearchCoverage(data.levels),
