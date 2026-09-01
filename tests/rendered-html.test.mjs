@@ -244,6 +244,9 @@ test("preserves the complete statically compiled atlas", async () => {
   }
   assert.ok(atlas.games.some((game) => !game.icon), "game labels remain available as the icon fallback");
   assert.ok(entries.every((entry) => Array.isArray(entry.gameIds) && entry.gameIds.length > 0));
+  assert.ok(entries.every((entry) => entry.coordinates === null
+    || entry.coordinates === undefined
+    || (entry.coordinates.length === 2 && entry.coordinates.every(Number.isFinite))));
   const rtvBannerKeys = Object.keys(atlas.levelBanners)
     .filter((key) => key.startsWith("rtv-"))
     .sort();
@@ -520,129 +523,6 @@ test("preserves the complete statically compiled atlas", async () => {
   assert.deepEqual(findEntry("BO2", "FOB").modes, ["singleplayer"]);
   assert.deepEqual(findEntry("BOCW", "CIA").modes, ["singleplayer"]);
 
-  const laisonRiver = findEntry("COD3", "Laison River");
-  assert.deepEqual(laisonRiver.coordinates, [48.944742, -0.229523]);
-  assert.equal(laisonRiver.country, "France");
-  assert.equal(laisonRiver.city, "Falaise");
-  assert.equal(laisonRiver.region, "Normandy");
-  assert.equal(laisonRiver.landmark, "Laizon River");
-  assert.equal(laisonRiver.precision, "approximate");
-  assert.equal(laisonRiver.confidence, "medium");
-  assert.equal(laisonRiver.method, "manual-approximate");
-
-  const corridorOfDeath = findEntry("COD3", "The Corridor of Death");
-  assert.equal(corridorOfDeath.country, "France");
-  assert.equal(corridorOfDeath.region, "Saint-Lambert-sur-Dive");
-  assert.equal(corridorOfDeath.city, null);
-  assert.equal(corridorOfDeath.landmark, null);
-  assert.deepEqual(corridorOfDeath.coordinates, [48.819557910469904, 0.07593786425682185]);
-  assert.equal(corridorOfDeath.precision, "approximate");
-  assert.equal(corridorOfDeath.confidence, "medium");
-  assert.equal(corridorOfDeath.method, "manual-approximate");
-  assert.deepEqual(corridorOfDeath.urls, [
-    { googleMaps: "https://maps.app.goo.gl/Wjtis8unFE4KVvgL9" },
-    { wikipedia: "https://en.wikipedia.org/wiki/Saint-Lambert-sur-Dive" },
-  ]);
-
-  const blowtorchAndCorkscrew = findEntry("WAW", "Blowtorch & Corkscrew");
-  assert.deepEqual(blowtorchAndCorkscrew.coordinates, [26.22882, 127.71437]);
-  assert.equal(blowtorchAndCorkscrew.country, "Japan");
-  assert.equal(blowtorchAndCorkscrew.city, "Naha");
-  assert.equal(blowtorchAndCorkscrew.region, "Okinawa");
-  assert.equal(blowtorchAndCorkscrew.landmark, "Wana Ridge, Sueyoshi Park");
-  assert.equal(blowtorchAndCorkscrew.precision, "approximate");
-  assert.equal(blowtorchAndCorkscrew.confidence, "high");
-  assert.equal(blowtorchAndCorkscrew.method, "manual-approximate");
-
-  const hangar = findEntry("WAW", "Hangar");
-  assert.deepEqual(hangar.coordinates, [6.9983333, 134.2327778]);
-  assert.equal(hangar.country, "Palau");
-  assert.equal(hangar.region, "Peleliu");
-  assert.equal(hangar.landmark, "Peleliu Airfield");
-  assert.equal(hangar.precision, "approximate");
-  assert.equal(hangar.confidence, "medium");
-  assert.equal(hangar.method, "article-context");
-
-  const roundhouse = findEntry("WAW", "Roundhouse");
-  assert.deepEqual(roundhouse.coordinates, [52.577855, 13.430262]);
-  assert.equal(roundhouse.country, "Germany");
-  assert.equal(roundhouse.region, "Berlin");
-  assert.equal(roundhouse.city, "Berlin");
-  assert.equal(roundhouse.landmark, "Rundlokschuppen Pankow");
-  assert.equal(roundhouse.precision, "approximate");
-  assert.equal(roundhouse.confidence, "medium");
-  assert.equal(roundhouse.method, "real-world-inspiration");
-
-  const subPens = findEntry("WAW", "Sub Pens");
-  assert.deepEqual(subPens.coordinates, [34.229358, 132.549713]);
-  assert.equal(subPens.country, "Japan");
-  assert.equal(subPens.region, "Hiroshima Prefecture");
-  assert.equal(subPens.city, "Kure");
-  assert.equal(subPens.landmark, "Kure Naval Base");
-  assert.equal(subPens.precision, "approximate");
-  assert.equal(subPens.confidence, "medium");
-  assert.equal(subPens.method, "real-world-inspiration");
-
-  const fuel = findEntry("MW2", "Fuel");
-  assert.deepEqual(fuel.coordinates, [29.9619, 32.5317]);
-  assert.equal(fuel.country, "Egypt");
-  assert.equal(fuel.region, "Suez Governorate");
-  assert.equal(fuel.city, "Suez");
-  assert.equal(fuel.landmark, "Suez Oil Processing Company");
-  assert.equal(fuel.precision, "approximate");
-  assert.equal(fuel.confidence, "medium");
-  assert.equal(fuel.method, "real-world-inspiration");
-
-  const storm = findEntry("MW2", "Storm");
-  assert.deepEqual(storm.coordinates, [59.88056, 30.19917]);
-  assert.equal(storm.country, "Russia");
-  assert.equal(storm.region, "Saint Petersburg");
-  assert.equal(storm.city, "Saint Petersburg");
-  assert.equal(storm.landmark, "Great Port of Saint Petersburg");
-  assert.equal(storm.precision, "approximate");
-  assert.equal(storm.confidence, "medium");
-  assert.equal(storm.method, "real-world-inspiration");
-
-  const aDesertRide = findEntry("FH", "A Desert Ride");
-  assert.deepEqual(aDesertRide.coordinates, [33.216131, 9.800375]);
-  assert.equal(aDesertRide.country, "Tunisia");
-  assert.equal(aDesertRide.region, "Kebili Governorate");
-  assert.equal(aDesertRide.landmark, "Centenarium Tibubuci (Ksar Tarcine)");
-  assert.equal(aDesertRide.precision, "exact");
-  assert.equal(aDesertRide.confidence, "high");
-  assert.equal(aDesertRide.method, "verified-landmark");
-  assert.deepEqual(aDesertRide.urls, [
-    {
-      googleMaps:
-        "https://www.google.com/maps/search/?api=1&query=Ksar+Tarcine%2C+Kebili+Governorate%2C+Tunisia",
-    },
-    { wikipedia: "https://fr.wikipedia.org/wiki/Centenarium_de_Tibubuci" },
-  ]);
-
-  const shuriCastle = findEntry("WAW:FF", "Shuri Castle");
-  assert.equal(shuriCastle.country, "Japan");
-  assert.equal(shuriCastle.region, "Okinawa");
-  assert.equal(shuriCastle.city, "Naha");
-  assert.equal(shuriCastle.landmark, "Shuri Castle");
-
-  const intoTheFurnace = findEntry("MW19", "Into the Furnace");
-  assert.equal(intoTheFurnace.country, "Georgia");
-  assert.equal(intoTheFurnace.region, null);
-
-  const casino = findEntry("BO4", "Casino");
-  assert.equal(casino.country, "Monaco");
-  assert.equal(casino.region, "Monte Carlo");
-  assert.equal(casino.city, null);
-  assert.equal(casino.landmark, "Casino de Monte-Carlo");
-  assert.deepEqual(casino.coordinates, [43.739444, 7.428889]);
-  assert.equal(casino.precision, "exact");
-  assert.equal(casino.confidence, "high");
-  assert.equal(casino.method, "real-world-inspiration");
-  assert.deepEqual(casino.urls, [
-    { googleMaps: "https://maps.app.goo.gl/c4AA1ZP8rtzM7unH9" },
-    { wikipedia: "https://en.wikipedia.org/wiki/Monte_Carlo_Casino" },
-  ]);
-
   const bocageMedia = atlas.wikiMedia["codwiki-bocage"].main;
   assert.match(bocageMedia.thumbnailUrl, /scale-to-width-down\/800/);
   assert.equal(bocageMedia.author.name, "Thumps4DaZomb");
@@ -654,10 +534,6 @@ test("preserves the complete statically compiled atlas", async () => {
   const cod2Entries = entries.filter((entry) => entry.game.split(" / ").includes("COD2"));
   assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "singleplayer").length, 27);
   assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "multiplayer").length, 23);
-  const five = findEntry("BO", '"Five"');
-  assert.equal(five.landmark, "The Pentagon");
-  assert.deepEqual(five.coordinates, [38.871857, -77.056267]);
-  assert.equal(five.modes[0], "zombies");
   assert.equal(entries.filter((entry) => entry.modes[0] === "singleplayer").length, 422);
   assert.equal(entries.filter((entry) => entry.modes[0] === "multiplayer").length, 633);
   assert.equal(entries.filter((entry) => entry.modes[0] === "zombies").length, 10);

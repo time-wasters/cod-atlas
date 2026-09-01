@@ -3,6 +3,7 @@ import path from "node:path";
 import process from "node:process";
 import countries from "world-countries";
 import YAML from "yaml";
+import { buildAtlasEntry } from "../src/application/atlas-compilation/use-cases/build-atlas-entry.mjs";
 
 const root = process.cwd();
 const contentRoot = path.join(root, "content");
@@ -651,31 +652,13 @@ for (const level of levels) {
       ? [location.latitude, location.longitude]
       : null;
     if (!group.coordinates && coordinates) group.coordinates = coordinates;
-    group.entries.push({
-      id: `${level.id}:${location.id}`,
-      levelId: level.id,
-      locationId: location.id,
-      primary: location.primary === true,
-      title: level.title,
-      game: gameCodes,
-      gameIds: appearanceGameIds,
+    group.entries.push(buildAtlasEntry({
       appearances,
-      ...(level.campaign ? { campaign: level.campaign } : {}),
-      ...(level.campaignOrder ? { campaignOrder: level.campaignOrder } : {}),
-      wiki: article.sourceUrl,
-      wikiArticle: level.wikiArticle,
-      country: location.country,
-      city: location.city ?? null,
-      region: location.region ?? null,
-      landmark: location.landmark ?? null,
-      coordinates,
-      precision: location.precision,
-      confidence: location.confidence ?? (location.precision === "country" ? "fallback" : "medium"),
-      method: location.method ?? null,
-      ...(location.urls ? { urls: location.urls } : {}),
-      hasLevelNotes: Boolean(level.notes.trim()),
-      modes: [level.mode],
-    });
+      gameCodes,
+      level,
+      location,
+      wikiUrl: article.sourceUrl,
+    }));
   }
 }
 
