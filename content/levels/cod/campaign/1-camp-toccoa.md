@@ -23,6 +23,13 @@ locations:
     urls:
       - googleMaps: https://www.google.com/maps/search/?api=1&query=Camp+Toccoa+at+Currahee%2C+2351+Ayersville+Road%2C+Toccoa%2C+Georgia
       - wikipedia: https://en.wikipedia.org/wiki/Camp_Toccoa
+verified:
+  locations:
+    byHuman: true
+    user: github/PLP-GTR
+  research:
+    byHuman: false
+    user: null
 ---
 
 > **AI-generated research note:** The historical summary below was generated

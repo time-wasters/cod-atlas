@@ -1,4 +1,5 @@
 import type { LevelAppearanceDto } from "./level-appearance.dto.js";
+import type { LevelVerificationDto } from "./level-verification.dto.js";
 
 export type AtlasEntryDto = {
   id: string;
@@ -12,6 +13,7 @@ export type AtlasEntryDto = {
   campaignOrder?: number;
   wiki: string;
   wikiArticle: string;
+  verified?: LevelVerificationDto;
   country: string;
   region?: string | null;
   city?: string | null;

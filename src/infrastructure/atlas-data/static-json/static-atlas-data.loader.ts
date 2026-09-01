@@ -36,6 +36,26 @@ function assertCampaign(value: unknown, path: string): void {
 }
 
 /**
+ * Validates the human-review metadata for one part of a level record.
+ */
+function assertHumanReview(value: unknown, path: string): void {
+  const review = objectValue(value, path);
+  const byHuman = booleanValue(review.byHuman, `${path}.byHuman`);
+  const user = nullableStringValue(review.user, `${path}.user`);
+  if (byHuman && !user?.trim()) throw new Error(`${path}.user is required when byHuman is true`);
+  if (!byHuman && user !== null) throw new Error(`${path}.user must be null when byHuman is false`);
+}
+
+/**
+ * Validates the location and research review metadata for a level.
+ */
+function assertLevelVerification(value: unknown, path: string): void {
+  const verified = objectValue(value, path);
+  assertHumanReview(verified.locations, `${path}.locations`);
+  assertHumanReview(verified.research, `${path}.research`);
+}
+
+/**
  * Validates the structure of a level appearance object.
  *
  * @param value - The level appearance value to validate.
@@ -82,6 +102,7 @@ function assertAtlasEntry(value: unknown, path: string): void {
   if (entry.campaignOrder !== undefined) numberValue(entry.campaignOrder, `${path}.campaignOrder`);
   stringValue(entry.wiki, `${path}.wiki`);
   stringValue(entry.wikiArticle, `${path}.wikiArticle`);
+  if (entry.verified !== undefined) assertLevelVerification(entry.verified, `${path}.verified`);
   stringValue(entry.country, `${path}.country`);
   optionalStringValue(entry.region, `${path}.region`);
   optionalStringValue(entry.city, `${path}.city`);

@@ -1,6 +1,9 @@
 import { replaceGeneratedMarkdownBlock } from "./generated-markdown-block.replacer.mjs";
+import { renderHumanVerificationProgress } from "./human-verification-progress.renderer.mjs";
 import { renderLocalizationProgress } from "./localization-progress.renderer.mjs";
 import {
+  humanVerificationProgressEnd,
+  humanVerificationProgressStart,
   localizationProgressEnd,
   localizationProgressStart,
   researchProgressEnd,
@@ -15,8 +18,14 @@ export function renderProgressDocument(current, data) {
     researchProgressEnd,
     renderResearchProgress(data),
   );
-  return replaceGeneratedMarkdownBlock(
+  const withVerification = replaceGeneratedMarkdownBlock(
     withResearch,
+    humanVerificationProgressStart,
+    humanVerificationProgressEnd,
+    renderHumanVerificationProgress(data),
+  );
+  return replaceGeneratedMarkdownBlock(
+    withVerification,
     localizationProgressStart,
     localizationProgressEnd,
     renderLocalizationProgress(data),

@@ -110,6 +110,28 @@ Optional level fields include `campaign`, a grouping with a stable string `id`
 and a human-readable `label`; `legacyIds`, which preserves old URL IDs after a
 structural rename; and `metadata` for non-geographic descriptive values.
 
+Human review can be recorded independently for the level's locations and its
+research notes:
+
+```yaml
+verified:
+  locations:
+    byHuman: true
+    user: github/example-reviewer
+  research:
+    byHuman: false
+    user: null
+```
+
+The optional `verified` object is preserved in generated atlas entries and is
+used by the generated progress report.
+`byHuman: true` requires a non-empty reviewer identifier; `byHuman: false`
+requires `user: null`. Omitting either verification category counts it as not
+verified. Location verification covers every embedded location in the level.
+Research completion and human verification remain separate: having all
+required Markdown sections does not itself indicate that a human reviewed
+their claims.
+
 One level can embed multiple locations, or temporarily use `locations: []`
 until location research is complete. Each location has a locally unique `id`,
 a country, and normally coordinates. Optional geographic detail follows

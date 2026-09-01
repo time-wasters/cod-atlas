@@ -4,6 +4,7 @@ import process from "node:process";
 import countries from "world-countries";
 import YAML from "yaml";
 import { buildAtlasEntry } from "../src/application/atlas-compilation/use-cases/build-atlas-entry.mjs";
+import { normalizeLevelVerification } from "../src/domain/level/level-verification.value-object.mjs";
 
 const root = process.cwd();
 const contentRoot = path.join(root, "content");
@@ -499,8 +500,10 @@ for (const filename of levelFiles) {
     markerCount += 1;
   }
   levelIds.add(level.id);
+  const verified = normalizeLevelVerification(level.verified, `${filename}: verified`);
   levels.push({
     ...level,
+    ...(level.verified !== undefined ? { verified } : {}),
     ...(campaignOrder !== null ? { campaignOrder } : {}),
     notes: body,
     appearances: [],

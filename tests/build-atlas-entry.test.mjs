@@ -23,6 +23,10 @@ test("builds an atlas entry from fixture level and location data", () => {
       campaignOrder: 2,
       mode: "singleplayer",
       notes: "Fixture notes",
+      verified: {
+        locations: { byHuman: true, user: "github/location-reviewer" },
+        research: { byHuman: false, user: null },
+      },
     },
     location: {
       id: "fixture-location",
@@ -54,6 +58,10 @@ test("builds an atlas entry from fixture level and location data", () => {
     campaignOrder: 2,
     wiki: "https://example.com/wiki/fixture",
     wikiArticle: "fixture-wiki",
+    verified: {
+      locations: { byHuman: true, user: "github/location-reviewer" },
+      research: { byHuman: false, user: null },
+    },
     country: "Fixture country",
     city: "Fixture city",
     region: "Fixture region",
@@ -94,4 +102,5 @@ test("uses fixture fallbacks for an unlocalized country entry", () => {
   assert.equal(entry.confidence, "fallback");
   assert.equal(entry.method, null);
   assert.equal(entry.hasLevelNotes, false);
+  assert.equal(entry.verified, undefined);
 });

@@ -9,6 +9,10 @@ test("localization table includes region precision and reports precision changes
       gameId: "game",
       mode: "singleplayer",
       researched: false,
+      verified: {
+        locations: { byHuman: false, user: null },
+        research: { byHuman: false, user: null },
+      },
       locations: [
         { precision: "exact" },
         { precision: "region" },

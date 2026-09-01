@@ -22,6 +22,7 @@ export function buildAtlasEntry({
     ...(level.campaignOrder ? { campaignOrder: level.campaignOrder } : {}),
     wiki: wikiUrl,
     wikiArticle: level.wikiArticle,
+    ...(level.verified ? { verified: level.verified } : {}),
     country: location.country,
     city: location.city ?? null,
     region: location.region ?? null,

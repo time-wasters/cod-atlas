@@ -27,7 +27,7 @@ test("canonical level loading excludes appearance references", async () => {
   );
   await writeFile(
     path.join(levelsRoot, "game/level.md"),
-    `---\nid: game-level\ngames:\n  - game\nmode: multiplayer\nlocations: []\n---\n\n${completedBody}\n`,
+    `---\nid: game-level\ngames:\n  - game\nmode: multiplayer\nlocations:\n  - precision: exact\nverified:\n  locations:\n    byHuman: true\n    user: github/test-reviewer\n  research:\n    byHuman: false\n    user: null\n---\n\n${completedBody}\n`,
   );
   await writeFile(
     path.join(levelsRoot, "game/level.ref.md"),
@@ -41,7 +41,11 @@ test("canonical level loading excludes appearance references", async () => {
       gameId: "game",
       mode: "multiplayer",
       researched: true,
-      locations: [],
+      verified: {
+        locations: { byHuman: true, user: "github/test-reviewer" },
+        research: { byHuman: false, user: null },
+      },
+      locations: [{ precision: "exact" }],
     });
   } finally {
     await rm(root, { recursive: true, force: true });
