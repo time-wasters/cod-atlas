@@ -27,7 +27,16 @@ misleading point on Earth.
 
 CoD Atlas is open and community-maintained. Locations are curated with
 attention to source quality, geographic precision, and the difference between
-a confirmed setting and a plausible real-world inspiration.
+a confirmed setting and a plausible real-world inspiration. Whenever a location
+is confirmed by a human, it is flagged as so in the MD file incl. credits to 
+the reviewer and a reason.
+
+The project is not production-ready yet. But you can have a first look on the
+staging environment:
+
+* Visit the page: *not yet*
+* Staging (main branch): https://staging.cod-atlas.com/
+* Test (develop nightly): *not yet*
 
 ## How AI is used
 
