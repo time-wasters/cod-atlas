@@ -151,6 +151,9 @@ in focused presentation component files rather than `app/page.tsx`. The atlas
 header, sidebar, footer, map stage, level details, level media, related-level
 panel, project information, settings, and level briefing are also isolated as
 feature-owned presentation components with focused view models and callbacks.
+`app/page.tsx` is now only the Next.js route entrypoint. The Next client
+composition root under `infrastructure/framework/next/` loads and indexes the
+generated JSON before injecting it into the presentation-owned atlas page.
 Leaflet map
 lifecycle, marker, campaign-route, overlay, and viewport orchestration is split
 between focused presentation hooks and infrastructure renderers. Pure Wiki
