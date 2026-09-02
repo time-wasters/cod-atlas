@@ -21,8 +21,8 @@ mission has the required research sections.
 <!-- research-progress:start -->
 | Scope | Researched | Remaining |
 | --- | ---: | ---: |
-| All currently catalogued levels | 214 / 1120 (19%) | 906 / 1120 (81%) |
-| Campaign levels | 131 / 426 (31%) | 295 / 426 (69%) |
+| All currently catalogued levels | 217 / 1120 (19%) | 903 / 1120 (81%) |
+| Campaign levels | 134 / 426 (31%) | 292 / 426 (69%) |
 | Multiplayer maps | 83 / 672 (12%) | 589 / 672 (88%) |
 | Special Ops missions | 0 / 6 (0%) | 6 / 6 (100%) |
 | Zombies maps | 0 / 16 (0%) | 16 / 16 (100%) |
@@ -36,7 +36,7 @@ mission has the required research sections.
 | Call of Duty 2: Big Red One | 14 / 14 (100%) | 9 / 9 (100%) | — | — | 23 / 23 (100%) |
 | Call of Duty 3 | 14 / 14 (100%) | 20 / 20 (100%) | — | — | 34 / 34 (100%) |
 | Call of Duty: Roads to Victory | 14 / 14 (100%) | 0 / 2 (0%) | — | — | 14 / 16 (88%) |
-| Modern Warfare (2007) | 2 / 21 (10%) | 0 / 21 (0%) | — | — | 2 / 42 (5%) |
+| Modern Warfare (2007) | 5 / 21 (24%) | 0 / 21 (0%) | — | — | 5 / 42 (12%) |
 | World at War | 0 / 15 (0%) | 0 / 23 (0%) | — | 0 / 4 (0%) | 0 / 42 (0%) |
 | World at War: Final Fronts | 0 / 13 (0%) | — | — | — | 0 / 13 (0%) |
 | Modern Warfare 2 (2009) | 0 / 19 (0%) | 0 / 22 (0%) | 0 / 1 (0%) | — | 0 / 42 (0%) |
@@ -126,8 +126,8 @@ The per-game table assigns each marker to its canonical level's owner game.
 <!-- localization-progress:start -->
 | Scope | Localized | Country fallback | Off-world |
 | --- | ---: | ---: | ---: |
-| All marker locations | 331 / 1036 (32%) | 705 / 1036 (68%) | 30 |
-| Campaign marker locations | 145 / 405 (36%) | 260 / 405 (64%) | 17 |
+| All marker locations | 334 / 1036 (32%) | 702 / 1036 (68%) | 30 |
+| Campaign marker locations | 148 / 405 (37%) | 257 / 405 (63%) | 17 |
 | Multiplayer marker locations | 185 / 616 (30%) | 431 / 616 (70%) | 12 |
 | Special Ops marker locations | 0 / 6 (0%) | 6 / 6 (100%) | 0 |
 | Zombies marker locations | 1 / 9 (11%) | 8 / 9 (89%) | 1 |
@@ -136,9 +136,9 @@ The per-game table assigns each marker to its canonical level's owner game.
 | --- | ---: | ---: |
 | Exact | 97 | 9% |
 | Approximate | 140 | 13% |
-| City | 87 | 8% |
+| City | 90 | 8% |
 | Region | 7 | 1% |
-| Country | 705 | 66% |
+| Country | 702 | 66% |
 | Off-world | 30 | 3% |
 
 | Game | Campaign | Multiplayer | Special Ops | Zombies | Overall |
@@ -150,7 +150,7 @@ The per-game table assigns each marker to its canonical level's owner game.
 | Call of Duty 2: Big Red One | 14 / 14 (100%) | 8 / 9 (89%) | — | — | 22 / 23 (96%) |
 | Call of Duty 3 | 14 / 14 (100%) | 19 / 20 (95%) | — | — | 33 / 34 (97%) |
 | Call of Duty: Roads to Victory | 14 / 14 (100%) | 2 / 2 (100%) | — | — | 16 / 16 (100%) |
-| Modern Warfare (2007) | 2 / 20 (10%) | 20 / 21 (95%) | — | — | 22 / 41 (54%) |
+| Modern Warfare (2007) | 5 / 20 (25%) | 20 / 21 (95%) | — | — | 25 / 41 (61%) |
 | World at War | 1 / 15 (7%) | 10 / 23 (43%) | — | 0 / 4 (0%) | 11 / 42 (26%) |
 | World at War: Final Fronts | 7 / 14 (50%) | — | — | — | 7 / 14 (50%) |
 | Modern Warfare 2 (2009) | 1 / 18 (6%) | 22 / 22 (100%) | 0 / 1 (0%) | — | 23 / 41 (56%) |
