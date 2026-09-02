@@ -1,23 +1,23 @@
 ---
-id: mw3-downturn
-title: Downturn
+id: mw3-liberation
+title: Liberation
 games:
   - mw3
 mode: multiplayer
-wikiArticle: codwiki-downturn
+wikiArticle: codwiki-liberation
 content-update:
-  id: "0"
-  label: Included
+  id: "1"
+  label: Content Pack 1
 locations:
   - id: main
     country: United States
     region: New York
-    latitude: 40.7830603
-    longitude: -73.9712488
+    latitude: 40.7812199
+    longitude: -73.9665138
     precision: approximate
     confidence: medium
     method: manual-approximate
     primary: true
     urls:
-      - callOfDutyMaps: https://callofdutymaps.com/modern-warfare-3/downturn
+      - callOfDutyMaps: https://callofdutymaps.com/modern-warfare-3/liberation
 ---

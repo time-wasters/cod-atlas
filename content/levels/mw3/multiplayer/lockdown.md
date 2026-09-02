@@ -5,6 +5,9 @@ games:
   - mw3
 mode: multiplayer
 wikiArticle: codwiki-lockdown
+content-update:
+  id: "0"
+  label: Included
 locations:
   - id: main
     country: Czech Republic (Czechia)

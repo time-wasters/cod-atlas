@@ -1,23 +1,23 @@
 ---
-id: mw3-downturn
-title: Downturn
+id: mw3-overwatch
+title: Overwatch
 games:
   - mw3
 mode: multiplayer
-wikiArticle: codwiki-downturn
+wikiArticle: codwiki-overwatch-map
 content-update:
-  id: "0"
-  label: Included
+  id: "2"
+  label: Content Pack 2
 locations:
   - id: main
     country: United States
     region: New York
-    latitude: 40.7830603
-    longitude: -73.9712488
+    latitude: 40.7208595
+    longitude: -74.0006686
     precision: approximate
     confidence: medium
     method: manual-approximate
     primary: true
     urls:
-      - callOfDutyMaps: https://callofdutymaps.com/modern-warfare-3/downturn
+      - callOfDutyMaps: https://callofdutymaps.com/modern-warfare-3/overwatch
 ---

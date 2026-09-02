@@ -1,13 +1,13 @@
 ---
-id: mw3-interchange
-title: Interchange
+id: mw3-boardwalk
+title: Boardwalk
 games:
   - mw3
 mode: multiplayer
-wikiArticle: codwiki-interchange
+wikiArticle: codwiki-boardwalk
 content-update:
-  id: "0"
-  label: Included
+  id: "8"
+  label: Content Pack 9
 locations:
   - id: main
     country: United States
@@ -19,5 +19,5 @@ locations:
     method: manual-approximate
     primary: true
     urls:
-      - callOfDutyMaps: https://callofdutymaps.com/modern-warfare-3/interchange
+      - callOfDutyMaps: https://callofdutymaps.com/modern-warfare-3/boardwalk
 ---

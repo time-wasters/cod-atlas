@@ -5,6 +5,9 @@ games:
   - mw3
 mode: multiplayer
 wikiArticle: codwiki-dome-modern-warfare-3
+content-update:
+  id: "0"
+  label: Included
 locations: []
 ---
 

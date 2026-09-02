@@ -1,13 +1,13 @@
 ---
-id: mw3-carbon
-title: Carbon
+id: mw3-decommission
+title: Decommission
 games:
   - mw3
 mode: multiplayer
-wikiArticle: codwiki-carbon
+wikiArticle: codwiki-decommission
 content-update:
-  id: "0"
-  label: Included
+  id: "7"
+  label: Content Pack 7
 locations:
   - id: main
     country: Somalia
@@ -18,5 +18,5 @@ locations:
     method: manual-approximate
     primary: true
     urls:
-      - callOfDutyMaps: https://callofdutymaps.com/modern-warfare-3/carbon
+      - callOfDutyMaps: https://callofdutymaps.com/modern-warfare-3/decommission
 ---
