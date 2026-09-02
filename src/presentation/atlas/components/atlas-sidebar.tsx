@@ -15,6 +15,7 @@ import { CountrySelect } from "../../filters/components/country-select.js";
 import type { AdvancedFilterGroupId } from "../../filters/state/use-atlas-filters.js";
 import { GameSelect } from "../../game-catalog/components/game-select.js";
 import { AtlasFooter } from "./atlas-footer.js";
+import { LevelModeIcon } from "./level-mode-icon.js";
 
 type AdvancedFilterViewModel = {
   id: AdvancedFilterGroupId;
@@ -63,6 +64,7 @@ export type AtlasSidebarViewModel = {
   };
   modes: {
     label: string;
+    mode: AtlasEntryDto["modes"][number];
     onToggle: () => void;
     visible: boolean;
   }[];
@@ -127,7 +129,8 @@ export function AtlasSidebar({
             onClick={mode.onToggle}
             key={mode.label}
           >
-            <span aria-hidden="true">{mode.visible ? "✓" : "○"}</span> {mode.label}
+            <LevelModeIcon mode={mode.mode} />
+            <span>{mode.label}</span>
           </button>
         ))}
       </div>

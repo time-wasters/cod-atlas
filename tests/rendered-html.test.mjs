@@ -125,8 +125,8 @@ test("renders the hosted atlas shell", async () => {
   const advancedFilterIndex = html.indexOf('class="advanced-filter-trigger"');
   assert.ok(countryFilterIndex < modeFilterIndex && modeFilterIndex < advancedFilterIndex);
   assert.match(html, /class="mode-filter"[^>]*aria-label="Map type visibility"/);
-  assert.match(html, /<button(?=[^>]*aria-pressed="false")[^>]*>\s*<span[^>]*>[^<]*<\/span>\s*(?:<!-- -->)?Special Ops/);
-  assert.match(html, /<button(?=[^>]*aria-pressed="false")[^>]*>\s*<span[^>]*>[^<]*<\/span>\s*(?:<!-- -->)?Zombies/);
+  assert.match(html, /<button(?=[^>]*aria-pressed="false")[^>]*>\s*<svg(?=[^>]*class="mission-mode-icon")(?=[^>]*aria-label="Special Ops")/);
+  assert.match(html, /<button(?=[^>]*aria-pressed="false")[^>]*>\s*<svg(?=[^>]*class="mission-mode-icon")(?=[^>]*aria-label="Zombies")/);
   assert.doesNotMatch(html, /class="precision-filter"/);
   assert.match(html, /role="tab"[^>]*aria-selected="true"[^>]*aria-controls="sidebar-locations"/);
   assert.match(html, /<button(?=[^>]*role="tab")(?=[^>]*aria-controls="sidebar-campaigns")(?=[^>]*disabled="")[^>]*>/);

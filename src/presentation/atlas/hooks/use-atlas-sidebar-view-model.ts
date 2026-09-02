@@ -119,6 +119,7 @@ export function useAtlasSidebarViewModel({
     },
     modes: [
       {
+        mode: "singleplayer" as const,
         label: "Campaign",
         visible: filters.showSingleplayer,
         onToggle: () => {
@@ -127,6 +128,7 @@ export function useAtlasSidebarViewModel({
         },
       },
       {
+        mode: "multiplayer" as const,
         label: "Multiplayer",
         visible: filters.showMultiplayer,
         onToggle: () => {
@@ -135,6 +137,7 @@ export function useAtlasSidebarViewModel({
         },
       },
       {
+        mode: "special-ops" as const,
         label: "Special Ops",
         visible: filters.showSpecialOps,
         onToggle: () => {
@@ -143,6 +146,7 @@ export function useAtlasSidebarViewModel({
         },
       },
       {
+        mode: "zombies" as const,
         label: "Zombies",
         visible: filters.showZombies,
         onToggle: () => {
