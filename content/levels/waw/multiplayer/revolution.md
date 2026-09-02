@@ -4,7 +4,7 @@ title: Revolution
 games:
   - waw
 mode: multiplayer
-map-update:
+content-update:
   id: "4"
   label: Map Pack 3
 wikiArticle: codwiki-revolution-map
