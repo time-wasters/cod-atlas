@@ -19,141 +19,160 @@ locations:
       - callOfDutyMaps: https://callofdutymaps.com/call-of-duty-3/aller-haut/
 ---
 
-> **AI-generated research note:** The historical and location analysis below was
-> generated with AI assistance and should be reviewed against the cited sources
-> before being treated as authoritative.
+> **AI-generated research note:** The historical summary below was generated
+> with AI assistance and should be reviewed against the cited sources before
+> being treated as authoritative.
 
-## The Map in the Game
+## The Mission in the Game
 
-*Aller Haut* is a downloadable multiplayer map for *Call of Duty 3*. It was one
-of the three newly created maps in the **Bravo Map Pack**, alongside *Seine
-River* and *Rimling*. The pack also brought back *Gare Centrale* and
-*Marseilles* from earlier *Call of Duty* releases and was released for Xbox 360
-on **31 May 2007**.
+*Aller Haut* is a standalone multiplayer map in *Call of Duty 3*, so it has no
+single-player mission narrative, playable campaign character or unit, mission
+date, briefing, route, or historical objective. The Call of Duty Wiki identifies
+the multiplayer teams as the United States and Germany, places the map only in
+**France**, describes the terrain as mostly open, and records the internal
+codename **`mpmonte`**.
 
-The surviving official Xbox Marketplace description is useful because it gives
-a little more environmental context than the present Atlas import. It describes
-the new Bravo maps as including combat around **hilltop abbeys**. A contemporary
-Activision press release, preserved in a 2007 forum post, is more specific and
-calls *Aller Haut* an **Axis-held hilltop fortress**. Another contemporary report
-describes the Axis beginning in an abbey above an Allied village, with the steep
-slope and rock faces making an uphill assault more difficult than a downhill
-defense.
+The map was released on 31 May 2007 in the Bravo Map Pack. Activision's
+contemporary release description called it an **Axis-held hilltop fortress**.
+The current Xbox Store description similarly presents the action as an infantry
+and tank assault toward a hilltop church/abbey area. A contemporary French Xbox
+report described *Aller Haut* as being near an abbey. Call of Duty Maps describes
+a steep hillside town with a large building at the summit, additional houses
+climbing the surrounding slopes, fields and tall trees beyond the playable area,
+and long views over the landscape.
 
-Call of Duty Maps describes the playable area as a **steep hillside town with a
-large building at the top of the hill**. Beyond the playable boundary are more
-houses climbing the hillsides, fields and tall trees, with long views over the
-surrounding landscape. The map supports vehicular combat including tanks, a
-Horch utility vehicle and the SAS-style assault jeep. Crucially for the Atlas,
-that source lists the map's real-world **Location as “Unknown.”**
+Those descriptions support a deliberately vertical combat space: one side
+occupies the high ground around a fortified religious or monumental complex,
+while the lower settlement and steep approaches expose attackers to fire from
+above. They do **not** identify a town, département, region, named abbey or
+wartime battle.
 
-The map is therefore best understood as a deliberately vertical fictional or
-composite battlefield: a lower settlement, a steep climb and an elevated
-fortified religious/large-building complex. The available descriptions establish
-the map's form much more clearly than they establish its geography.
+No documented single-player relationship was found. This matters because other
+*Call of Duty 3* multiplayer maps do have explicit campaign links when one is
+known: the Wiki calls *Crossing* a conversion of *The Island*, and *Seine River*
+is specifically described as resembling *Mayenne Bridge*. No equivalent
+conversion, shared combat space, asset-reuse statement or narrative connection
+is documented for *Aller Haut*. The map should therefore be treated as a
+standalone multiplayer environment rather than assigned to a campaign mission
+from visual similarity alone.
 
-## Location Research & Campaign Connections
+## The Real Place & Differences
 
-The current CoD Atlas Wiki import contains no extracted `levelLocation`, date,
-previous/next-level relationship or campaign-map relationship for *Aller Haut*.
-That absence alone would not prove that the map is fictional, but it agrees with
-Call of Duty Maps explicitly listing its location as unknown.
+The strongest defensible real-world statement is only **France**. The Call of
+Duty Wiki gives France as the location, while Call of Duty Maps explicitly lists
+the location as **Unknown**. The available primary/contemporary descriptions
+define the terrain and the hilltop fortress/abbey concept but never name a real
+settlement.
 
-Campaign reuse is important to check because several *Call of Duty 3*
-multiplayer maps do have documented single-player relationships. The Call of
-Duty Wiki identifies *Crossing* as a conversion of **The Island**, *Mayenne* as
-using **Mayenne Bridge**, and *Seine River* as resembling **Mayenne Bridge**.
-Those are useful precedents: when a campaign relationship is known, it can
-provide a much stronger geographical anchor than a map's generic scenery.
+The match is therefore best classified as a **composite or fictionalized
+setting**, with a **broad country fallback** for the atlas marker. Several real
+places make useful comparisons, but none is strong enough to replace that
+fallback.
 
-No comparable published relationship was found for *Aller Haut*.
+**Abbaye d'Ardenne**, northwest of Caen, is the closest documented Normandy
+historical analogue found in this research. The abbey really became a German
+command position in June 1944; its elevated buildings provided observation over
+the surrounding battlefield, and Canadian forces were later tasked with taking
+the abbey during Operation CHARNWOOD. It is also a surviving abbey associated
+directly with fighting in the Battle of Normandy. However, the surrounding
+Caen plain is substantially less steep than the dramatic hillside town depicted
+in *Aller Haut*, the historical attackers were Canadian rather than the
+multiplayer map's American team, and no game or developer source connects the
+map with Abbaye d'Ardenne. It is therefore an analogue, not a location claim.
 
-### Why not Mont Ormel / Hill 262?
+**Mont-Saint-Michel** is an even stronger visual analogue for a French settlement
+climbing toward a dominant hilltop abbey. It was occupied by German forces and
+used for a radar installation during the war, but it had little tactical value
+and was not the scene of the kind of Allied uphill assault depicted by the map.
+Its tidal-island geography also differs fundamentally from *Aller Haut*'s inland
+rolling countryside.
 
-The most tempting campaign comparison is **The Mace**. That mission is explicitly
-set at Mont Ormel / Hill 262 and repeatedly sends the Polish defenders back
-uphill; its later sequence also reaches a large building near the higher
-positions. At a superficial level, that sounds compatible with the vertical
-design of *Aller Haut*.
+The internal codename `mpmonte` also makes **Monte Cassino** worth testing:
+Monte Cassino is a famous hilltop abbey battlefield, and an earlier Call of Duty
+multiplayer map named *Cassino* explicitly represents it. That comparison is
+ultimately weaker for this level. Monte Cassino is in Italy, whereas the
+*Aller Haut* Wiki entry explicitly says France; *Call of Duty 3* already had no
+reason to disguise the established *Cassino* map under a French location; and
+no source links `mpmonte` to Monte Cassino. Treating the codename as proof would
+therefore overinterpret an internal name that may simply refer to the map's
+mountain/high-ground concept.
 
-The evidence is not strong enough to identify the multiplayer map with Hill 262,
-however. The official Bravo material describes *Aller Haut* as an abbey or
-hilltop fortress, while no reliable source calls it a conversion, remake or
-adaptation of *The Mace*. The Call of Duty Wiki gives *The Mace* a precise
-campaign location but gives no corresponding *Aller Haut* relationship in the
-material available to this research. Searches combining the two map names,
-Mont Ormel and Hill 262 did not produce a documented connection.
+Mont Ormel / Hill 262 from campaign level *The Mace* is likewise a tempting
+comparison because both emphasize fighting uphill. The real Mont Ormel sector,
+however, has no abbey corresponding to the map's defining hilltop complex, and
+no source identifies *Aller Haut* as a conversion or adaptation of *The Mace*.
 
-There is some development-team overlap: a résumé attributed to Pi Studios lead
-level designer David Mertz says he provided additional design support for
-*Aller Haut*, *Seine River* and *Rimling*, and separately supported campaign
-missions including *The Forest*, *Laison River* and *The Mace*. That is useful
-production context, but it is **not evidence of level reuse**. It cannot justify
-placing *Aller Haut* at Mont Ormel.
+## The Real Mission & Differences
 
-### Why not the SAS campaign / Night Drop?
+No matching real mission is documented for *Aller Haut*. As a standalone
+multiplayer map it has no canonical date or represented unit whose wartime
+movements can be matched to a specific operation.
 
-The SAS assault jeep and the hilltop building also invite comparison with the
-British/French campaign, especially *Night Drop*, which contains SAS vehicles
-and a manor-house assault. This is likewise too weak for geolocation. *Call of
-Duty 3* multiplayer uses American-versus-German teams, and the SAS-style jeep
-appears on unrelated multiplayer battlefields such as *Eder Dam* and
-*Marseilles*. It is therefore a reusable gameplay vehicle, not a reliable
-location clue. The official *Aller Haut* description also refers to an
-abbey/fortress rather than identifying the campaign manor.
+The closest supported historical context is the fighting for **Abbaye
+d'Ardenne** during the Normandy campaign, but it must remain clearly separated
+from the game. German SS-Panzergrenadier forces used the abbey as a command and
+observation position after D-Day. Canadian official history records Ardenne
+Abbey as an objective during Operation CHARNWOOD in July 1944, with the
+3rd Canadian Infantry Division advancing toward the Caen area and 7th Canadian
+Infantry Brigade tasked to capture the abbey and its defensive works.
 
-### Why not a generic Normandy marker?
+That real action shares only broad motifs with *Aller Haut*: a German-held
+religious complex, commanding observation from elevated ground, and an Allied
+effort to seize it. The differences are decisive. The historical battlefield
+was fought by Canadian and British formations around Caen rather than by the
+map's generic United States multiplayer faction; the abbey sits above open
+agricultural land rather than at the summit of the map's steep terraced town;
+and there is no evidence that *Aller Haut* reproduces the abbey's layout,
+Operation CHARNWOOD's objectives, or any particular 1944 combat episode.
 
-The single-player campaign follows the Normandy breakout and the closing of the
-Falaise Pocket, so Normandy is an obvious first area to test. The multiplayer
-catalogue is not restricted to that campaign corridor, however: named maps range
-from places such as Verdun and Metz to Marseilles/Toulon, and *Eder Dam* is in
-Germany. A generic Norman hillside or abbey would therefore be an inference from
-the campaign's overall theme rather than evidence about *Aller Haut* itself.
+Accordingly, Abbaye d'Ardenne should be recorded only as the **closest documented
+historical analogue considered**, not as the represented place or mission.
+No evidence was found for a more specific real operation behind *Aller Haut*.
 
 ## Marker Position Explanation
 
-The stored marker remains **`46, 2`**, the France country fallback.
+The stored atlas marker remains **`46, 2`**, the representative France country
+fallback.
 
-This is one of the cases where retaining a fallback is more accurate than
-inventing a visually plausible point. The research substantially improves the
-description of the map — the battlefield is an Axis-held hilltop abbey/fortress
-above a lower settlement — but none of the reliable sources identifies the
-abbey, town, département or region. Call of Duty Maps explicitly records the
-location as **Unknown**, and the Atlas Wiki import currently contains no
-location data at all.
+That position is intentionally coarse. The game source establishes France, but
+the research does not establish a region, city, abbey or battlefield. The
+existing metadata therefore remains appropriate:
 
-For that reason the existing metadata remains appropriate:
+- `precision: country`
+- `confidence: fallback`
+- `method: country-fallback`
 
-- **`precision: country`**
-- **`confidence: fallback`**
-- **`method: country-fallback`**
+This is preferable to moving the marker to Abbaye d'Ardenne, Mont-Saint-Michel,
+Mont Ormel or Monte Cassino. Each candidate explains one or more visual or
+historical clues, but none is connected to *Aller Haut* by a reliable game or
+developer source. Using one would transform a plausible comparison into false
+geographical precision.
 
-Moving the marker to **Mont Ormel / Hill 262**, **Toucy**, a random Norman abbey,
-or any other attractive hillside location would create false precision. Unlike
-*Crossing*, *Mayenne* and *Seine River*, there is no documented campaign
-conversion or resemblance that permits the Atlas to inherit a campaign
-mission's real-world coordinates.
+The country coordinate is **representative only** and must not be interpreted
+as the location of the fictional hilltop fortress, the multiplayer combat space
+or a documented Second World War engagement. Accuracy matters more here than
+placing the marker on an attractive abbey.
 
-The current coordinate is therefore not being kept because no alternatives were
-considered; it is being kept because the available evidence does **not yet
-support a more precise real-world marker**. If a future primary source, design
-document, console codename, developer statement or recovered Wiki revision
-identifies a locality or a campaign conversion, this map should be revisited.
+The Google Maps URL therefore continues to search only for the real named place
+**France**, while the atlas marker uses the separately curated representative
+coordinates `46, 2`. If future developer documentation, recovered level-design
+material or another reliable source identifies the `mpmonte` setting or a
+campaign conversion, the level should be revisited.
 
 ## Sources
 
-- [Call of Duty Wiki — Aller Haut](https://callofduty.fandom.com/wiki/Aller_Haut) — Canonical Wiki article for the multiplayer map; the current Atlas import points to this article but contains no extracted location or campaign relationship.
-- [Xbox Wire — Call of Duty 3 Bravo Map Pack](https://news.xbox.com/en-us/2007/05/31/call-of-duty-3-bravo-map-pack/) — Contemporary official Xbox Marketplace announcement; supports the 31 May 2007 release and the official “hilltop abbey” environmental description.
-- [Xbox Store — Call of Duty 3 Bravo Map Pack](https://www.xbox.com/en-us/games/store/call-of-duty-3-bravo-map-pack/C5HX520DMXDK) — Current official store listing preserving the Bravo Map Pack description and release date.
-- [XboxAchievements forum — preserved Activision Bravo Map Pack press release](https://www.xboxachievements.com/forum/topic/12234-map-pack/) — Reproduces Activision's 31 May 2007 release text identifying *Aller Haut* as an Axis-held hilltop fortress.
-- [SimHQ — Call of Duty 3 Bravo Map Pack release discussion](https://simhq.net/forum/ubbthreads.php/topics/2224540/news-call-of-duty-3-new-bravo-map-pack-released) — Contemporary description of the Axis starting in a hilltop abbey above the Allied village and of the steep uphill terrain.
-- [Call of Duty Maps — Aller Haut](https://callofdutymaps.com/call-of-duty-3/aller-haut/) — Supports the steep hillside town, large hilltop building, surrounding houses/fields/trees, vehicles and, most importantly, the explicit `Location: Unknown`.
-- [Call of Duty Wiki — Call of Duty 3](https://callofduty.fandom.com/wiki/Call_of_Duty_3) — Supports the Bravo Map Pack membership, the wider Normandy-breakout campaign context and the American-versus-German multiplayer faction structure.
-- [Call of Duty Wiki — Crossing](https://callofduty.fandom.com/wiki/Crossing) — Documents *Crossing* as a conversion of campaign mission *The Island*, used here as a comparison for what a supported campaign-map relationship looks like.
-- [Call of Duty Wiki — Mayenne (Multiplayer)](https://callofduty.fandom.com/wiki/Mayenne_(Multiplayer)) — Documents *Mayenne Bridge* as the campaign source for the multiplayer map.
-- [Call of Duty Wiki — Seine River](https://callofduty.fandom.com/wiki/Seine_River) — Documents a resemblance to *Mayenne Bridge* and shows that even a Bravo Map Pack map can have a stated campaign relationship when one is known.
-- [Call of Duty Wiki — The Mace](https://callofduty.fandom.com/wiki/The_Mace) — Supports Mont Ormel / Hill 262 as the campaign mission's explicit setting and the uphill defensive action; considered and rejected as an unsupported marker source for *Aller Haut*.
-- [David Mertz résumé mirror — Pi Studios level-design credits](https://studylib.net/doc/8483232/david-mertz) — Secondary source showing design-support overlap between *Aller Haut* and several campaign missions; useful production context, but not evidence that the multiplayer map reuses a campaign location.
-- [CoD Atlas Wiki import — Aller Haut](https://raw.githubusercontent.com/time-wasters/cod-atlas/application-architecture-rework/content/wiki-import/articles/codwiki-aller-haut.json) — Shows that the current import contains no level location, date or previous/next-level relationship.
-- [CoD Atlas — current Aller Haut level file](https://raw.githubusercontent.com/time-wasters/cod-atlas/application-architecture-rework/content/levels/cod3/multiplayer/aller-haut.md) — Baseline file containing the existing France country fallback at `46, 2`.
+- [Call of Duty Wiki — Aller Haut](https://callofduty.fandom.com/wiki/Aller_Haut) — Supports the multiplayer-only status, United States versus Germany teams, France location, mostly open terrain, Bravo Map Pack release date and internal `mpmonte` codename.
+- [Call of Duty Maps — Aller Haut](https://callofdutymaps.com/call-of-duty-3/aller-haut/) — Supports the explicit `Location: Unknown` entry and the steep hillside town, large summit building, surrounding hillside houses, fields, trees and vehicle gameplay.
+- [Xbox — Call of Duty 3 Bravo Map Pack](https://www.xbox.com/zh-HK/games/store/call-of-duty-3-bravo-map-pack/C5HX520DMXDK) — Current official Activision/Xbox store description supporting the hilltop church/abbey combat area and use of infantry and tanks.
+- [XboxAchievements — preserved Activision Bravo Map Pack release](https://www.xboxachievements.com/forum/topic/12234-map-pack/) — Contemporary reproduction of Activision's 31 May 2007 press release describing *Aller Haut* as an Axis-held hilltop fortress and distinguishing the pack's three new maps from the two remakes.
+- [Xbox-Gamer — Call of Duty 3 Bravo Map Pack report](https://www.xbox-gamer.net/news-xbox-call-of-duty-3-s-equipe-en-maps-multijoueurs_12497.html) — Contemporary French report describing *Aller Haut* as being near an abbey.
+- [Call of Duty Wiki — Seine River](https://callofduty.fandom.com/wiki/Seine_River) — Documents an explicit resemblance to campaign level *Mayenne Bridge*, used as evidence for how a known multiplayer/campaign relationship is recorded; no equivalent relationship is documented for *Aller Haut*.
+- [David Mertz résumé mirror — Pi Studios level-design credits](https://studylib.net/doc/8483232/david-mertz) — Secondary production source showing additional level-design work on *Aller Haut* and, separately, campaign work on *The Mace* and other missions; useful for testing a possible relationship but not evidence of map reuse.
+- [Normandy Tourism — Abbaye d'Ardenne](https://www.normandie-tourisme.fr/activite/visite-guidee-historique-de-labbaye-dardenne/) — Official regional tourism source identifying the surviving abbey and its connection to the fighting for the liberation of Caen.
+- [Department of National Defence Canada — AHQ Report No. 58](https://www.canada.ca/content/dam/themes/defence/caf/militaryhistory/dhh/reports/ahq-reports/ahq058.pdf) — Official Canadian military history supporting Operation CHARNWOOD's plan and the task for 7th Canadian Infantry Brigade to capture Ardenne Abbey and its defensive works.
+- [Department of National Defence Canada — *The Victory Campaign*](https://www.canada.ca/content/dam/themes/defence/caf/militaryhistory/dhh/official/book-1960-army-ww2-3-en.pdf) — Official Canadian Army history covering the Normandy campaign and Ardenne Abbey actions; supports the real historical context used for the rejected analogue.
+- [Normandy Destination — Second World War memory sites around Mont-Saint-Michel](https://www.ot-montsaintmichel.com/en/discover/our-essentials/places-of-memory-of-the-second-world-war/) — Regional authority context for the wartime area around Mont-Saint-Michel.
+- [D-Day Overlord — Liberation of Mont-Saint-Michel](https://www.dday-overlord.com/en/battle-of-normandy/cities/mont-saint-michel) — Supports German occupation, the radar installation in the abbey spire and the absence of a major tactical battle there, explaining why the strong visual analogue was rejected.
+- [Call of Duty Wiki — Cassino](https://callofduty.fandom.com/wiki/Cassino) — Confirms that the series already had a multiplayer map explicitly set at Monte Cassino, Italy, with codename `mp_cassino`; used to reject reading `mpmonte` as proof that *Aller Haut* represents Monte Cassino.
+- [CoD Atlas Wiki import — Aller Haut](https://raw.githubusercontent.com/time-wasters/cod-atlas/application-architecture-rework/content/wiki-import/articles/codwiki-aller-haut.json) — Repository import record; contains no extracted level location, date, previous/next level or campaign relationship beyond the curated multiplayer classification.
+- [CoD Atlas — current Aller Haut level file](https://raw.githubusercontent.com/time-wasters/cod-atlas/application-architecture-rework/content/levels/cod3/multiplayer/aller-haut.md) — Baseline file whose existing France fallback at `46, 2` is retained.

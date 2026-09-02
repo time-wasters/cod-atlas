@@ -10,8 +10,8 @@ locations:
     country: France
     region: Normandy
     city: Merville-Franceville-Plage
-    latitude: 49.2831
-    longitude: -0.2011
+    latitude: 49.2775
+    longitude: -0.20329
     precision: city
     confidence: medium
     method: manual-approximate
@@ -26,127 +26,54 @@ locations:
 > with AI assistance and should be reviewed against the cited sources before
 > being treated as authoritative.
 
-## The Map in the Game
+## The Mission in the Game
 
-*Merville* is a multiplayer map in *Call of Duty 3*. The Call of Duty Wiki
-identifies the setting as **Merville, France**, with American and German teams,
-and lists its console codename as `mp_merv`. It also identifies **Night Drop** as
-the map's campaign-map counterpart.
+*Merville* is a multiplayer map in *Call of Duty 3*. It has no campaign-style mission narrative, playable character, unit assignment, date, briefing, route or historical objective. The Call of Duty Wiki identifies the opposing multiplayer teams as American and German and gives the setting simply as **"Merville, France."** The local Wiki import preserves the same location string.
 
-The playable environment is a damaged French settlement built around stone
-walls and buildings, trenches, roads, gardens and underground passages. The
-Wiki describes a large ditch crossed by wooden bridges, a tank, a line of
-buildings along the map edge, a garden area and multiple below-ground routes.
-The loading-screen text includes the name **"Abbaye du Deuil"** ("Mourning
-Abbey"). CallofDutyMaps similarly describes fighting in and around old stone
-buildings and notes extensive underground tunnels and rooms, usable vehicles,
-and Angel of Sorrow/Angel of Grief statues around a large destroyed building.
+The map is a ruined French settlement built around streets, destroyed stone buildings and walls, trenches or pits, gardens, a large ditch, underground passages and vehicle routes. Call of Duty Maps likewise describes old stone buildings, underground tunnels and operational vehicles, while the Wiki notes that the loading screen carries the otherwise undocumented name **"Abbaye du Deuil"** ("Mourning Abbey"). No evidence was found that this is the name of a real abbey at Merville.
 
-These details are useful for identifying the map's visual theme, but neither
-source provides a department, region, real abbey, street address or surviving
-building that would locate the multiplayer arena more precisely than the name
-"Merville, France".
+The Wiki explicitly lists the campaign map **Night Drop** (`cod3-night-drop`) as the map's singleplayer relationship. That relationship is best understood as reuse or adaptation of combat space/assets, not inherited geography. *Night Drop* itself is explicitly set **near Toucy, France**, on 22 July 1944 and uses the British SAS/French Resistance storyline. Merville therefore should not be moved to Toucy merely because it reuses that campaign map.
 
 ## The Real Place & Differences
 
-The name **Merville** is geographically ambiguous in modern France. There are
-communes named Merville in the Nord and Haute-Garonne departments, while the
-Normandy commune now called **Merville-Franceville-Plage** is in Calvados.
-Importantly for a Second World War setting, the Archives départementales du
-Calvados record that Merville-Franceville-Plage was formerly named simply
-**Merville**; the compound name was adopted in 1931.
+The strongest real-world interpretation of the multiplayer label **"Merville, France"** is **Merville-Franceville-Plage in Calvados, Normandy**. This is not the only French place called Merville, so the identification is inferential rather than confirmed. It is nevertheless much stronger than a country fallback for two reasons.
 
-That makes the Calvados locality the strongest fit for the multiplayer map's
-short label. It is in Normandy, the principal French theatre represented across
-much of *Call of Duty 3*, and it has an unusually strong Second World War
-association: the nearby **Merville Battery** was a German coastal fortification
-attacked by the British 9th Parachute Battalion during the airborne operations
-of 6 June 1944.
+First, the Archives départementales du Calvados document that the commune was historically named **Merville** and that the suffix **Franceville-Plage** was added by decree on 11 February 1931. The modern commune therefore preserves an actual Normandy locality whose historical core name exactly matches the map title. INSEE confirms Merville-Franceville-Plage as a commune in Calvados, Normandy.
 
-That historical relevance must not be overread. No source found connects the
-multiplayer map's "Abbaye du Deuil", its angel statues, underground routes,
-trenches or destroyed stone-building layout to the Merville Battery or to a
-specific surviving location in Merville-Franceville-Plage. The battery is a
-preserved fortified position, not evidence that the game map is a surveyed
-reconstruction of that site. The multiplayer arena should therefore be treated
-as a **fictionalized/stylized Merville setting**, not as an exact model of the
-battery or a documented town block.
+Second, Merville-Franceville-Plage has an unusually strong Second World War association: the surviving **Merville Battery**, a German coastal-artillery position on the eastern flank of the Normandy landings. The battery makes this Merville a substantially more plausible wartime reference than the unrelated Merville communes in northern or southern France.
 
-## Campaign Relationship
+The multiplayer environment must still be treated as a **plausible inspiration/analogue**, not a reconstruction of either the town or the battery. The game depicts a broad ruined settlement with stone buildings, gardens, trenches, tunnels and roads. The real battery is a purpose-built coastal fortification of casemates, defensive works, minefields and wire outside the settlement. No reliable source found in this research identifies the game's large ruined building, underground routes, angel statues or fictional "Abbaye du Deuil" with a real structure in Merville-Franceville-Plage. The game map also contains no coastline or unmistakable battery feature that would justify placing the marker on the fortification itself.
 
-The strongest campaign relationship is explicit: the Wiki lists **Night Drop**
-as Merville's campaign map. *Night Drop*, however, has its own geographic
-identity. Its campaign intertitle places the action **near Toucy, France**, on
-22 July 1944, and the researched Atlas campaign entry therefore uses Toucy as
-its city-level marker.
+## The Real Mission & Differences
 
-For the multiplayer marker, the reused campaign map should **not** override the
-multiplayer map's own stated location of Merville. *Call of Duty 3* provides a
-useful internal precedent: the multiplayer map **Poisson** is listed as being in
-**Angers, France** while naming **The Island** as its campaign map, even though
-*The Island* campaign mission is set at **Saint-Germain-sur-Sèves, France**.
-This demonstrates that the "Campaign Map" field can describe reused level
-geometry/assets without asserting that the multiplayer and campaign versions
-share the same canonical real-world location.
+There is no documented real mission that matches *Merville* as a multiplayer scenario, because the map supplies no date, unit, briefing or historical objective.
 
-Accordingly, *Night Drop* helps explain Merville's inherited environment and
-layout, but **Toucy is not the correct marker for the multiplayer map**.
+The closest supported historical context is the assault on the **Merville Battery on 6 June 1944**. The Merville Battery museum identifies the position as a German Army fortification on the eastern flank of the Allied landings and states that it was neutralised by the **9th British Parachute Battalion**. Its material on the battalion describes Lieutenant-Colonel Terence Otway's planned airborne assault and the battery's prepared defenses.
+
+That history should not be retrofitted into the multiplayer match. The game's teams are **American versus German**, not British airborne versus German defenders, and the map provides no D-Day date or battery-destruction objective. The surviving Merville Battery is therefore valuable evidence for identifying which real French Merville is the strongest wartime analogue, but it is not evidence that Treyarch intended the multiplayer fighting to reproduce Otway's assault.
+
+The documented *Night Drop* relationship also points away from a literal Merville Battery reconstruction. That singleplayer mission is set near Toucy on 22 July 1944 and follows a fictionalized British SAS/Maquis action. Merville borrows its game space while assigning a different place name and multiplayer teams. Campaign reuse, multiplayer naming and historical Merville context must therefore remain separate claims.
 
 ## Marker Position Explanation
 
-The previous Atlas entry used **`46, 2`** with `precision: country`,
-`confidence: fallback` and `method: country-fallback`. That point is only a
-representative coordinate for France and contains no Merville-specific
-geographic information.
+The stored marker is **`49.2775, -0.20329`**, a representative city-level point for **Merville-Franceville-Plage, France**. It replaces the previous country-level fallback at **`46, 2`**.
 
-The updated marker is **`49.2831, -0.2011`**, a representative city/commune
-coordinate for **Merville-Franceville-Plage, Normandy**. This is a meaningful
-improvement over the country fallback because several pieces of evidence now
-converge on a specific locality:
+This is a genuine evidence-based improvement over the old marker. The imported game record and both map references identify the multiplayer setting as "Merville, France"; the Calvados archives establish that modern Merville-Franceville-Plage was historically named Merville; and its Normandy wartime context gives it a much stronger *Call of Duty 3*-era fit than an arbitrary France-wide point. The coordinate itself represents the modern commune rather than a claimed combat position.
 
-- the multiplayer sources explicitly name **Merville, France**;
-- Calvados archival evidence shows that today's Merville-Franceville-Plage is
-  historically the same commune formerly called simply **Merville**;
-- the Normandy location fits the wider French/Normandy setting of *Call of Duty
-  3* and has a strong Second World War association through the Merville Battery.
+The appropriate classification is **`precision: city`**, **`confidence: medium`**, **`method: manual-approximate`**. `city` is used because the evidence supports the locality but not a particular building or battlefield feature. `medium` reflects the unresolved ambiguity among French places named Merville and the absence of developer documentation explicitly identifying Merville-Franceville-Plage. `manual-approximate` reflects that the locality was selected through historical disambiguation rather than copied directly from an explicit game coordinate or verified landmark match.
 
-The marker remains deliberately conservative at **`precision: city`**,
-**`confidence: medium`** and **`method: manual-approximate`**. The confidence is
-not high because the game source never says "Calvados", "Normandy" or
-"Merville-Franceville-Plage", and other real French places named Merville
-exist. The evidence supports this as the **best disambiguation**, not as a
-proven developer-identified location.
+A more precise point at the **Merville Battery** was considered and rejected. The battery is a strong surviving historical landmark and the main reason the Calvados Merville is compelling, but selecting its exact coordinates would overstate the evidence: the game map does not depict a recognizable coastal battery, its teams do not match the historical British assault, and "Abbaye du Deuil" has not been identified as a real Merville landmark. Likewise, **Toucy** was rejected despite the *Night Drop* reuse because campaign-map reuse does not override Merville's own explicit multiplayer location.
 
-Two apparently more precise alternatives were rejected:
-
-1. **Merville Battery** — historically compelling, but no source ties the
-   multiplayer layout or "Abbaye du Deuil" to the battery. Using the battery's
-   coordinates as an exact marker would create false precision.
-2. **Toucy** — strongly supported for *Night Drop*, but contradicted as the
-   multiplayer location by Merville's own location field and by the game's
-   demonstrated practice of assigning different locations to campaign and
-   multiplayer versions of reused maps.
-
-The stored Google Maps URL therefore searches for the modern locality
-**Merville-Franceville-Plage, France**. The Atlas coordinates are separately
-curated as a representative city-level point and should not be interpreted as
-the exact position of a real abbey, battery emplacement or individual in-game
-building.
+The stored Google Maps URL searches for the real named place **Merville-Franceville-Plage, France**. The atlas marker uses the separately curated coordinates above rather than coordinates embedded in the Maps URL.
 
 ## Sources
 
-- [Call of Duty Wiki — Merville](https://callofduty.fandom.com/wiki/Merville) — multiplayer location, teams, console codename, campaign-map relationship to *Night Drop*, map layout and "Abbaye du Deuil" loading-screen detail.
-- [CallofDutyMaps — Merville](https://callofdutymaps.com/call-of-duty-3/merville/) — independent map description, old stone buildings, underground areas, vehicles and Angel of Sorrow/Grief statues.
-- [CoD Atlas — previous Merville entry](https://raw.githubusercontent.com/time-wasters/cod-atlas/application-architecture-rework/content/levels/cod3/multiplayer/merville.md) — previous France-level fallback marker at `46, 2`.
-- [CoD Atlas Wiki import — Merville](https://raw.githubusercontent.com/time-wasters/cod-atlas/application-architecture-rework/content/wiki-import/articles/codwiki-merville.json) — locally imported Wiki metadata including the raw location "Merville, France".
-- [Call of Duty Wiki — Night Drop](https://callofduty.fandom.com/wiki/Night_Drop) — identifies *Night Drop* as a campaign mission set near Toucy, France.
-- [Call of Duty Wiki — Night Drop transcript](https://callofduty.fandom.com/wiki/Night_Drop/Transcript) — supports the explicit "Near Toucy, France" gameplay intertitle.
-- [CoD Atlas — Night Drop research](https://raw.githubusercontent.com/time-wasters/cod-atlas/application-architecture-rework/content/levels/cod3/campaign/3-night-drop.md) — researched campaign marker and explanation for Toucy.
-- [Call of Duty Wiki — Poisson](https://callofduty.fandom.com/wiki/Poisson) — multiplayer precedent: location Angers, France while reusing *The Island* as its campaign map.
-- [Call of Duty Wiki — The Island](https://callofduty.fandom.com/wiki/The_Island) — establishes the reused campaign map's different location at Saint-Germain-sur-Sèves.
-- [Archives départementales du Calvados — Merville-Franceville-Plage](https://archives.calvados.fr/ark:/52329/xlwnqb463rpj) — records the commune's former name as Merville and the 1931 adoption of Merville-Franceville-Plage.
-- [INSEE — Merville-Franceville-Plage](https://www.insee.fr/fr/metadonnees/geographie/commune/14409-merville-franceville-plage) — confirms the modern Calvados/Normandy commune.
-- [INSEE — Merville (Nord)](https://www.insee.fr/fr/metadonnees/geographie/commune/59400-merville) — confirms another modern French commune named Merville and therefore the name ambiguity.
-- [INSEE — Merville (Haute-Garonne)](https://www.insee.fr/fr/metadonnees/geographie/commune/31341-merville) — confirms another modern French commune named Merville and therefore the name ambiguity.
-- [Merville Battery Museum — official site](https://www.batterie-merville.com/en/) — historical context for the German battery and the British 9th Parachute Battalion assault on 6 June 1944.
-- [Wikipedia — Merville-Franceville-Plage](https://en.wikipedia.org/wiki/Merville-Franceville-Plage) — representative commune coordinate used for the city-level Atlas marker.
+- [Call of Duty Wiki — Merville](https://callofduty.fandom.com/wiki/Merville) — supports the multiplayer classification, American-versus-German teams, stated "Merville, France" location, `mp_merv` codename, *Night Drop* campaign-map relationship, layout description and "Abbaye du Deuil" loading-screen text.
+- [Call of Duty Maps — Merville](https://callofdutymaps.com/call-of-duty-3/merville/) — independently supports the Merville, France setting and describes the old stone buildings, underground tunnels, vehicles and other environmental details.
+- [CoD Atlas Wiki import — Merville](https://raw.githubusercontent.com/time-wasters/cod-atlas/application-architecture-rework/content/wiki-import/articles/codwiki-merville.json) — supports the locally imported "Merville, France" location and multiplayer classification used by the repository.
+- [CoD Atlas — Night Drop](https://raw.githubusercontent.com/time-wasters/cod-atlas/application-architecture-rework/content/levels/cod3/campaign/3-night-drop.md) — supports `cod3-night-drop` as the related singleplayer level and, critically, its separate "Near Toucy" setting and SAS/Maquis context.
+- [Archives départementales du Calvados — Merville-Franceville-Plage](https://archives.calvados.fr/document/thesaurus-lieux) — authoritative local-administrative evidence that Merville-Franceville-Plage was formerly Merville and that "Franceville-Plage" was added by decree on 11 February 1931.
+- [INSEE — Commune de Merville-Franceville-Plage (14409)](https://www.insee.fr/fr/metadonnees/geographie/commune/14409-merville-franceville-plage) — confirms the modern commune in Calvados, Normandy.
+- [Merville Battery Museum — The Merville Battery](https://www.batterie-merville.com/en/merville-battery/) — identifies the surviving German battery at Merville-Franceville and its neutralisation by the 9th British Parachute Battalion on D-Day; used as historical context and locality evidence, not as proof that the multiplayer map depicts the battery.
+- [Merville Battery Museum — Training of the 9th Para Bn.](https://www.batterie-merville.com/en/the-museum/the-battery/training-of-the-9th-para-bn/) — provides the historical assault planning, defensive layout and unit context used to distinguish the real battery action from the multiplayer scenario.
+- [Wikipedia — Merville-Franceville-Plage](https://en.wikipedia.org/wiki/Merville-Franceville-Plage) — provides the representative commune coordinate `49.2775, -0.20329` used for the city-level atlas marker.
