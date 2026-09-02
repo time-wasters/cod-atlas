@@ -5,6 +5,7 @@ import { findRelatedLevels } from "../../../application/atlas/use-cases/find-rel
 import {
   type CampaignOption,
 } from "../../../application/campaigns/use-cases/build-campaign-options.js";
+import type { ContentUpdateOption } from "../../../application/content-updates/use-cases/build-content-update-options.js";
 import { buildAtlasKml } from "../../../application/export/use-cases/build-atlas-kml.js";
 import type { AtlasEntryDto } from "../../../infrastructure/atlas-data/dto/atlas-entry.dto.js";
 import type { AtlasGroupDto } from "../../../infrastructure/atlas-data/dto/atlas-group.dto.js";
@@ -160,25 +161,31 @@ export function AtlasPage({
   const groups = data.groups;
   const {
     activeCampaignKey,
+    activeContentUpdateKey,
     campaigns,
+    contentUpdates,
     selectedCampaign,
+    selectedContentUpdate,
     setSelectedCampaignKey,
+    setSelectedContentUpdateKey,
     setSidebarListMode,
     setUrlCampaignLevelId,
+    setUrlContentUpdateLevelId,
     sidebarListMode,
   } = useAtlasCampaignSelection({
     gameCode: game,
     games: data.games,
     groups,
   });
-  const selectedCampaignGame = selectedCampaign
-    ? atlasDataIndex.findGameById(selectedCampaign.gameId) ?? null
+  const selectedLevelCollection = selectedCampaign ?? selectedContentUpdate;
+  const selectedCollectionGame = selectedLevelCollection
+    ? atlasDataIndex.findGameById(selectedLevelCollection.gameId) ?? null
     : null;
-  const selectedCampaignGameIcon = selectedCampaignGame ? gameIcon(selectedCampaignGame) : null;
-  const selectedCampaignUsesExternalGameIcon = Boolean(
-    selectedCampaignGameIcon
-    && selectedCampaignGame
-    && selectedCampaignGameIcon !== selectedCampaignGame.icon,
+  const selectedCollectionGameIcon = selectedCollectionGame ? gameIcon(selectedCollectionGame) : null;
+  const selectedCollectionUsesExternalGameIcon = Boolean(
+    selectedCollectionGameIcon
+    && selectedCollectionGame
+    && selectedCollectionGameIcon !== selectedCollectionGame.icon,
   );
   const hasSpaceLocations = spaceLocations.length > 0;
   // Re-open the schematic when changed filters make off-world results available again.
@@ -216,7 +223,9 @@ export function AtlasPage({
     applyUrlSelection(urlState.selection);
     setSidebarListMode(urlState.sidebarListMode);
     setUrlCampaignLevelId(urlState.campaignLevelId);
+    setUrlContentUpdateLevelId(urlState.contentUpdateLevelId);
     setSelectedCampaignKey(null);
+    setSelectedContentUpdateKey(null);
     setExpandedRegionEntryId(null);
     collapseLevelBriefing();
     setActiveHistoryOverlay(null);
@@ -225,8 +234,10 @@ export function AtlasPage({
     applyUrlSelection,
     collapseLevelBriefing,
     setSelectedCampaignKey,
+    setSelectedContentUpdateKey,
     setSidebarListMode,
     setUrlCampaignLevelId,
+    setUrlContentUpdateLevelId,
   ]);
   const {
     setNextHistoryMode,
@@ -265,9 +276,13 @@ export function AtlasPage({
   const { otherLevelLocations, relatedLevels } = findRelatedLevels<AtlasEntryDto, AtlasGroupDto>({
     groups,
     selected,
-    campaignLevels: selectedCampaign?.levels,
+    collectionLevels: selectedLevelCollection?.levels,
   });
-  const relatedLevelsExpansionKey = selectedCampaign ? `campaign:${selectedCampaign.key}` : selected.entry.id;
+  const relatedLevelsExpansionKey = selectedCampaign
+    ? `campaign:${selectedCampaign.key}`
+    : selectedContentUpdate
+      ? `update:${selectedContentUpdate.key}`
+      : selected.entry.id;
   const relatedLevelsExpanded = expandedRegionEntryId === relatedLevelsExpansionKey;
   const {
     enabled: selectedMapOverlayEnabled,
@@ -298,14 +313,18 @@ export function AtlasPage({
     selectEntry(group, entry);
   }, [mapOverlays, prepareMarkerSelection, selectEntry]);
 
+  const focusedLevelIds = useMemo(() => selectedLevelCollection
+    ? new Set(selectedLevelCollection.levels.map(({ entry }) => entry.levelId))
+    : null, [selectedLevelCollection]);
+
   useLeafletMarkers({
+    focusedLevelIds,
     filteredGroups: filtered,
     locationLabel: formatAtlasLocationName,
     onSelect: selectMapMarker,
     ready: mapReady,
     runtime: leafletMap,
     selected,
-    selectedCampaign,
   });
 
   // These hooks share one Leaflet runtime while owning independent map layers.
@@ -397,6 +416,8 @@ export function AtlasPage({
    */
   function selectCampaign(campaign: CampaignOption<AtlasGroupDto, AtlasEntryDto>) {
     const campaignIsActive = activeCampaignKey === campaign.key;
+    setSelectedContentUpdateKey(null);
+    setUrlContentUpdateLevelId(null);
     setUrlCampaignLevelId(null);
     setSelectedCampaignKey(campaignIsActive ? null : campaign.key);
     if (!campaignIsActive && campaign.levels[0]) {
@@ -404,6 +425,25 @@ export function AtlasPage({
       selectEntry(campaign.levels[0].group, campaign.levels[0].entry);
     } else {
       prepareMarkerReveal(null);
+    }
+    setExpandedRegionEntryId(null);
+    setRelatedLevelsOpen(true);
+    setDetailsOpen(true);
+  }
+
+  /**
+   * Toggles a Multiplayer/Zombies content update and selects its first level.
+   */
+  function selectContentUpdate(contentUpdate: ContentUpdateOption<AtlasGroupDto, AtlasEntryDto>) {
+    const contentUpdateIsActive = activeContentUpdateKey === contentUpdate.key;
+    setSelectedCampaignKey(null);
+    setUrlCampaignLevelId(null);
+    setUrlContentUpdateLevelId(null);
+    setSelectedContentUpdateKey(contentUpdateIsActive ? null : contentUpdate.key);
+    prepareMarkerReveal(null);
+    if (!contentUpdateIsActive && contentUpdate.levels[0]) {
+      queueRelatedLevelFocus(contentUpdate.levels[0].entry.id);
+      selectEntry(contentUpdate.levels[0].group, contentUpdate.levels[0].entry);
     }
     setExpandedRegionEntryId(null);
     setRelatedLevelsOpen(true);
@@ -430,17 +470,20 @@ export function AtlasPage({
   );
   const relatedLevelsViewModel = buildRelatedLevelsViewModel({
     campaign: selectedCampaign,
+    contentUpdate: selectedContentUpdate,
     expanded: relatedLevelsExpanded,
-    game: selectedCampaignGame,
-    gameIcon: selectedCampaignGameIcon,
-    gameIconIsExternal: selectedCampaignUsesExternalGameIcon,
+    game: selectedCollectionGame,
+    gameIcon: selectedCollectionGameIcon,
+    gameIconIsExternal: selectedCollectionUsesExternalGameIcon,
     items: relatedLevels,
     open: relatedLevelsOpen,
     selectedLevelId: selected.entry.levelId,
   });
   const sidebarViewModel = useAtlasSidebarViewModel({
     activeCampaignKey,
+    activeContentUpdateKey,
     campaigns,
+    contentUpdates,
     catalog: filterCatalog,
     countries,
     filteredGroups: filtered,
@@ -449,6 +492,7 @@ export function AtlasPage({
     handlers: {
       finishSearchUpdate,
       onCampaignSelect: selectCampaign,
+      onContentUpdateSelect: selectContentUpdate,
       onExport: exportKml,
       onGroupSelect: selectSidebarGroup,
       onOpenGameCatalog: openGameCatalog,
@@ -457,8 +501,10 @@ export function AtlasPage({
       setExpandedRegionEntryId,
       setNextHistoryMode,
       setSelectedCampaignKey,
+      setSelectedContentUpdateKey,
       setSidebarListMode,
       setUrlCampaignLevelId,
+      setUrlContentUpdateLevelId,
     },
     mode: sidebarListMode,
     open: sidebarOpen,

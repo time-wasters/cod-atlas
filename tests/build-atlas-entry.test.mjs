@@ -84,6 +84,7 @@ test("uses fixture fallbacks for an unlocalized country entry", () => {
       id: "fixture-level",
       title: "Fixture level",
       wikiArticle: "fixture-wiki",
+      contentUpdate: { id: "1", label: "Fixture update" },
       mode: "multiplayer",
       notes: "",
     },
@@ -101,6 +102,7 @@ test("uses fixture fallbacks for an unlocalized country entry", () => {
   assert.equal(entry.landmark, null);
   assert.equal(entry.confidence, "fallback");
   assert.equal(entry.method, null);
+  assert.deepEqual(entry.contentUpdate, { id: "1", label: "Fixture update" });
   assert.equal(entry.hasLevelNotes, false);
   assert.equal(entry.verified, undefined);
 });

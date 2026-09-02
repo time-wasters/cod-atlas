@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import type { CampaignOption } from "../../../application/campaigns/use-cases/build-campaign-options.js";
 import type { AtlasEntryDto } from "../../../infrastructure/atlas-data/dto/atlas-entry.dto.js";
 import type { AtlasGroupDto } from "../../../infrastructure/atlas-data/dto/atlas-group.dto.js";
 import {
@@ -19,7 +18,7 @@ export function useLeafletMarkers({
   ready,
   runtime,
   selected,
-  selectedCampaign,
+  focusedLevelIds,
 }: {
   filteredGroups: AtlasGroupDto[];
   locationLabel: (entry: AtlasEntryDto) => string;
@@ -27,7 +26,7 @@ export function useLeafletMarkers({
   ready: boolean;
   runtime: LeafletMapRuntime;
   selected: AtlasSelection;
-  selectedCampaign: CampaignOption<AtlasGroupDto, AtlasEntryDto> | null;
+  focusedLevelIds: ReadonlySet<string> | null;
 }) {
   useEffect(() => {
     const layer = runtime.getMarkerLayer();
@@ -56,16 +55,13 @@ export function useLeafletMarkers({
   useEffect(() => {
     const leaflet = runtime.getLeaflet();
     if (!ready || !runtime.getMap() || !leaflet) return;
-    const focusedLevelIds = selectedCampaign
-      ? new Set(selectedCampaign.levels.map(({ entry }) => entry.levelId))
-      : null;
-    runtime.setCampaignFocusLevelIds(focusedLevelIds);
+    runtime.setFocusedLevelIds(focusedLevelIds ? new Set(focusedLevelIds) : null);
     runtime.forEachMarker(({ marker, entry }) => {
       const active = entry.id === selected.entry.id;
-      const campaignDimmed = focusedLevelIds !== null && !focusedLevelIds.has(entry.levelId);
-      marker.setIcon(createAtlasMarkerIcon(leaflet, entry, active, campaignDimmed));
+      const filterDimmed = focusedLevelIds !== null && !focusedLevelIds.has(entry.levelId);
+      marker.setIcon(createAtlasMarkerIcon(leaflet, entry, active, filterDimmed));
       marker.setZIndexOffset(active ? 1000 : 0);
     });
     runtime.getMarkerLayer()?.refreshClusters();
-  }, [ready, runtime, selected.entry.id, selectedCampaign]);
+  }, [focusedLevelIds, ready, runtime, selected.entry.id]);
 }

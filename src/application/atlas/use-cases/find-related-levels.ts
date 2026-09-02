@@ -18,13 +18,13 @@ type FindRelatedLevelsInput<
 > = {
   groups: readonly TGroup[];
   selected: RelatedLevelSelection<TGroup, TEntry>;
-  campaignLevels?: readonly RelatedLevelSelection<TGroup, TEntry>[] | null;
+  collectionLevels?: readonly RelatedLevelSelection<TGroup, TEntry>[] | null;
 };
 
 export function findRelatedLevels<
   TEntry extends RelatedAtlasEntry,
   TGroup extends RelatedAtlasGroup<TEntry>,
->({ groups, selected, campaignLevels }: FindRelatedLevelsInput<TEntry, TGroup>): {
+>({ groups, selected, collectionLevels }: FindRelatedLevelsInput<TEntry, TGroup>): {
   otherLevelLocations: RelatedLevelSelection<TGroup, TEntry>[];
   relatedLevels: RelatedLevelSelection<TGroup, TEntry>[];
 } {
@@ -35,8 +35,8 @@ export function findRelatedLevels<
   const regionalLevels = selected.group.entries.filter((entry, index, entries) =>
     entry.levelId !== selected.entry.levelId
     && entries.findIndex((candidate) => candidate.levelId === entry.levelId) === index);
-  const relatedLevels = campaignLevels
-    ? [...campaignLevels]
+  const relatedLevels = collectionLevels
+    ? [...collectionLevels]
     : regionalLevels.map((entry) => ({ group: selected.group, entry }));
 
   return { otherLevelLocations, relatedLevels };

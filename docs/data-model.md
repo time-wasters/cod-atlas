@@ -107,8 +107,10 @@ Required fields:
   level is known but its real-world location has not yet been curated.
 
 Optional level fields include `campaign`, a grouping with a stable string `id`
-and a human-readable `label`; `legacyIds`, which preserves old URL IDs after a
-structural rename; and `metadata` for non-geographic descriptive values.
+and a human-readable `label`; `content-update`, which groups Multiplayer and
+Zombies maps by their original release or map pack; `legacyIds`, which
+preserves old URL IDs after a structural rename; and `metadata` for
+non-geographic descriptive values.
 
 Human review can be recorded independently for the level's locations and its
 research notes:
@@ -143,6 +145,19 @@ are not deduplicated across levels.
 Campaign metadata identifies the named campaign section that contains a level;
 it is separate from the numeric play-order prefix in campaign filenames. Keep
 the ID stable even if the display label is later corrected or translated.
+
+Multiplayer and Zombies levels may use matching content-update metadata:
+
+```yaml
+content-update:
+  id: "2"
+  label: Map Pack 1
+```
+
+The stable string ID controls update ordering and the label is shown in the
+sidebar. Levels released in the base game can use an ID such as `"0"` with the
+label `Included`. A content update can group Multiplayer and Zombies levels
+together, but it is not valid on a singleplayer level.
 
 Precision values:
 

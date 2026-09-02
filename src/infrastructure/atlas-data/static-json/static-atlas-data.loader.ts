@@ -35,6 +35,13 @@ function assertCampaign(value: unknown, path: string): void {
   stringValue(campaign.label, `${path}.label`);
 }
 
+function assertContentUpdate(value: unknown, path: string): void {
+  if (value === undefined || value === null) return;
+  const contentUpdate = objectValue(value, path);
+  stringValue(contentUpdate.id, `${path}.id`);
+  stringValue(contentUpdate.label, `${path}.label`);
+}
+
 /**
  * Validates the human-review metadata for one part of a level record.
  */
@@ -75,6 +82,7 @@ function assertLevelAppearance(value: unknown, path: string): void {
   stringValue(appearance.bannerKey, `${path}.bannerKey`);
   assertCampaign(appearance.campaign, `${path}.campaign`);
   if (appearance.campaignOrder !== undefined) numberValue(appearance.campaignOrder, `${path}.campaignOrder`);
+  assertContentUpdate(appearance.contentUpdate, `${path}.contentUpdate`);
   if (appearance.metadata !== undefined) objectValue(appearance.metadata, `${path}.metadata`);
 }
 
@@ -100,6 +108,7 @@ function assertAtlasEntry(value: unknown, path: string): void {
   });
   assertCampaign(entry.campaign, `${path}.campaign`);
   if (entry.campaignOrder !== undefined) numberValue(entry.campaignOrder, `${path}.campaignOrder`);
+  assertContentUpdate(entry.contentUpdate, `${path}.contentUpdate`);
   stringValue(entry.wiki, `${path}.wiki`);
   stringValue(entry.wikiArticle, `${path}.wikiArticle`);
   if (entry.verified !== undefined) assertLevelVerification(entry.verified, `${path}.verified`);

@@ -37,6 +37,13 @@ test("atlas URL parser preserves legacy precision links", () => {
   );
 });
 
+test("atlas URL parser supports content-update browsing", () => {
+  assert.equal(
+    parseAtlasUrlState("https://example.com/?browse=updates").sidebarListMode,
+    "updates",
+  );
+});
+
 test("atlas URL parser supports every mode-filter encoding", () => {
   for (const [mode, showSingleplayer, showMultiplayer, showZombies] of [
     ["all", true, true, true],

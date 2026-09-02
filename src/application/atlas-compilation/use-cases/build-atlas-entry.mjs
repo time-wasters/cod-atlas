@@ -20,6 +20,7 @@ export function buildAtlasEntry({
     appearances,
     ...(level.campaign ? { campaign: level.campaign } : {}),
     ...(level.campaignOrder ? { campaignOrder: level.campaignOrder } : {}),
+    ...(level.contentUpdate ? { contentUpdate: level.contentUpdate } : {}),
     wiki: wikiUrl,
     wikiArticle: level.wikiArticle,
     ...(level.verified ? { verified: level.verified } : {}),

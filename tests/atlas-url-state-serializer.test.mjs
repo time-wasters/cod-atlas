@@ -71,3 +71,14 @@ test("atlas URL serializer omits defaults and encodes every mode-filter state", 
     assert.equal(url.searchParams.get("mode"), mode);
   }
 });
+
+test("atlas URL serializer preserves content-update browsing", () => {
+  const url = serializeAtlasUrlState("https://example.com/", {
+    ...defaultState,
+    gameId: "waw",
+    sidebarListMode: "updates",
+  });
+
+  assert.equal(url.searchParams.get("browse"), "updates");
+  assert.equal(parseAtlasUrlState(url).sidebarListMode, "updates");
+});

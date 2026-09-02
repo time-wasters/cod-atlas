@@ -18,7 +18,7 @@ export class LeafletMapRuntime {
   #markerLayer: MarkerClusterGroup | null = null;
   #markers = new Map<string, LeafletMarkerRecord>();
   #markerEntries = new WeakMap<LeafletMarker, AtlasEntryDto>();
-  #campaignFocusLevelIds: Set<string> | null = null;
+  #focusedLevelIds: Set<string> | null = null;
   #campaignMarkerRevealEntryId: string | null = null;
   #markerOverlaySelectionLevelId: string | null = null;
   #leaflet: typeof import("leaflet") | null = null;
@@ -38,8 +38,8 @@ export class LeafletMapRuntime {
   resetMarkerEntries() { this.#markerEntries = new WeakMap(); }
   setMarkerEntry(marker: LeafletMarker, entry: AtlasEntryDto) { this.#markerEntries.set(marker, entry); }
   getMarkerEntry(marker: LeafletMarker) { return this.#markerEntries.get(marker); }
-  getCampaignFocusLevelIds() { return this.#campaignFocusLevelIds; }
-  setCampaignFocusLevelIds(levelIds: Set<string> | null) { this.#campaignFocusLevelIds = levelIds; }
+  getFocusedLevelIds() { return this.#focusedLevelIds; }
+  setFocusedLevelIds(levelIds: Set<string> | null) { this.#focusedLevelIds = levelIds; }
   getCampaignMarkerRevealEntryId() { return this.#campaignMarkerRevealEntryId; }
   setCampaignMarkerRevealEntryId(entryId: string | null) { this.#campaignMarkerRevealEntryId = entryId; }
   setMarkerOverlaySelectionLevelId(levelId: string | null) { this.#markerOverlaySelectionLevelId = levelId; }
@@ -75,7 +75,7 @@ export function useLeafletMap() {
 
       runtime.setMarkerLayer(createAtlasMarkerClusterLayer({
         leaflet: leafletRuntime,
-        campaignLevelIds: () => runtime.getCampaignFocusLevelIds(),
+        focusedLevelIds: () => runtime.getFocusedLevelIds(),
         entryForMarker: (marker) => runtime.getMarkerEntry(marker),
       }).addTo(instance));
       runtime.setLeaflet(leafletRuntime);
@@ -93,7 +93,7 @@ export function useLeafletMap() {
       runtime.setMarkerLayer(null);
       runtime.clearMarkers();
       runtime.resetMarkerEntries();
-      runtime.setCampaignFocusLevelIds(null);
+      runtime.setFocusedLevelIds(null);
       runtime.setCampaignMarkerRevealEntryId(null);
       runtime.setMarkerOverlaySelectionLevelId(null);
       runtime.setLeaflet(null);

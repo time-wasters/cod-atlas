@@ -1,6 +1,7 @@
 "use client";
 
 import type { CampaignOption } from "../../../application/campaigns/use-cases/build-campaign-options.js";
+import type { ContentUpdateOption } from "../../../application/content-updates/use-cases/build-content-update-options.js";
 import type { CountryAvailability } from "../../../application/atlas/use-cases/filter-atlas-groups.js";
 import type { AtlasEntryDto } from "../../../infrastructure/atlas-data/dto/atlas-entry.dto.js";
 import type { AtlasGroupDto } from "../../../infrastructure/atlas-data/dto/atlas-group.dto.js";
@@ -38,12 +39,15 @@ export type AtlasSidebarViewModel = {
   };
   browse: {
     activeCampaignKey: string | null;
+    activeContentUpdateKey: string | null;
     campaigns: CampaignOption<AtlasGroupDto, AtlasEntryDto>[];
+    contentUpdates: ContentUpdateOption<AtlasGroupDto, AtlasEntryDto>[];
     groups: AtlasGroupDto[];
-    mode: "locations" | "campaigns";
+    mode: "locations" | "campaigns" | "updates";
     onCampaignSelect: (campaign: CampaignOption<AtlasGroupDto, AtlasEntryDto>) => void;
+    onContentUpdateSelect: (contentUpdate: ContentUpdateOption<AtlasGroupDto, AtlasEntryDto>) => void;
     onGroupSelect: (group: AtlasGroupDto) => void;
-    onModeChange: (mode: "locations" | "campaigns") => void;
+    onModeChange: (mode: "locations" | "campaigns" | "updates") => void;
     selectedGroupName: string;
   };
   country: {
@@ -188,6 +192,22 @@ export function AtlasSidebar({
               >
                 <span>Campaigns</span><small>{browse.campaigns.length}</small>
               </button>
+              <button
+                className={browse.mode === "updates" ? "is-active" : ""}
+                type="button"
+                role="tab"
+                aria-selected={browse.mode === "updates"}
+                aria-controls="sidebar-content-updates"
+                disabled={game.value === "all" || browse.contentUpdates.length === 0}
+                title={game.value === "all"
+                  ? "Choose a game to browse content updates"
+                  : browse.contentUpdates.length === 0
+                    ? "No Multiplayer or Zombies content-update data is available for this game"
+                    : undefined}
+                onClick={() => browse.onModeChange("updates")}
+              >
+                <span>Updates</span><small>{browse.contentUpdates.length}</small>
+              </button>
             </div>
             {browse.mode === "locations" ? (
               <div className="scroll-list" id="sidebar-locations" role="tabpanel">
@@ -203,7 +223,7 @@ export function AtlasSidebar({
                   </button>
                 ))}
               </div>
-            ) : (
+            ) : browse.mode === "campaigns" ? (
               <div className="scroll-list" id="sidebar-campaigns" role="tabpanel">
                 {browse.campaigns.map((campaign, index) => (
                   <button
@@ -218,6 +238,22 @@ export function AtlasSidebar({
                   </button>
                 ))}
                 {browse.campaigns.length === 0 && <p className="campaign-list-empty">No campaign data is available for this game.</p>}
+              </div>
+            ) : (
+              <div className="scroll-list" id="sidebar-content-updates" role="tabpanel">
+                {browse.contentUpdates.map((contentUpdate) => (
+                  <button
+                    key={contentUpdate.key}
+                    className={contentUpdate.key === browse.activeContentUpdateKey ? "campaign-row is-selected" : "campaign-row"}
+                    type="button"
+                    onClick={() => browse.onContentUpdateSelect(contentUpdate)}
+                  >
+                    <i aria-hidden="true">{contentUpdate.id.padStart(2, "0")}</i>
+                    <span><b>{contentUpdate.label}</b><small>{contentUpdate.levels.length} levels</small></span>
+                    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5" /></svg>
+                  </button>
+                ))}
+                {browse.contentUpdates.length === 0 && <p className="campaign-list-empty">No content-update data is available for this game.</p>}
               </div>
             )}
           </section>

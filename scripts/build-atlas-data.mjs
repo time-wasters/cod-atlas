@@ -386,6 +386,7 @@ const usedLevelBannerBases = new Set();
 const levelIds = new Set();
 const levelIdAliases = {};
 const campaignOrdersByGame = new Map();
+const contentUpdateLabelsByGame = new Map();
 let markerCount = 0;
 for (const filename of levelFiles) {
   const { data: level, body } = parseMarkdown(await readFile(filename, "utf8"), filename);
@@ -408,7 +409,36 @@ for (const filename of levelFiles) {
       `${filename}: campaign label must be a non-empty string`,
     );
   }
+  const contentUpdate = level["content-update"] ?? null;
+  if (contentUpdate != null) {
+    requireValue(
+      contentUpdate && typeof contentUpdate === "object" && !Array.isArray(contentUpdate),
+      `${filename}: content-update must be an object`,
+    );
+    requireValue(
+      ["multiplayer", "zombies"].includes(level.mode),
+      `${filename}: content-update is only supported for multiplayer and zombies levels`,
+    );
+    requireValue(
+      typeof contentUpdate.id === "string" && contentUpdate.id.trim(),
+      `${filename}: content-update id must be a non-empty string`,
+    );
+    requireValue(
+      typeof contentUpdate.label === "string" && contentUpdate.label.trim(),
+      `${filename}: content-update label must be a non-empty string`,
+    );
+  }
   const primaryGame = level.games[0];
+  if (contentUpdate) {
+    if (!contentUpdateLabelsByGame.has(primaryGame)) contentUpdateLabelsByGame.set(primaryGame, new Map());
+    const labels = contentUpdateLabelsByGame.get(primaryGame);
+    const existingLabel = labels.get(contentUpdate.id);
+    requireValue(
+      existingLabel == null || existingLabel === contentUpdate.label,
+      `${filename}: content-update ${contentUpdate.id} must use the same label throughout ${primaryGame}`,
+    );
+    labels.set(contentUpdate.id, contentUpdate.label);
+  }
   const idPrefix = `${primaryGame}-`;
   requireValue(level.id.startsWith(idPrefix), `${filename}: level id must start with primary game ${idPrefix}`);
   const levelSlug = level.id.slice(idPrefix.length);
@@ -523,6 +553,7 @@ for (const filename of levelFiles) {
   const verified = normalizeLevelVerification(level.verified, `${filename}: verified`);
   levels.push({
     ...level,
+    ...(contentUpdate ? { contentUpdate } : {}),
     ...(level.verified !== undefined ? { verified } : {}),
     ...(campaignOrder !== null ? { campaignOrder } : {}),
     notes: body,
@@ -641,6 +672,7 @@ for (const level of levels) {
     bannerKey: `${level.id}@${ownerGameId}`,
     ...(level.campaign ? { campaign: level.campaign } : {}),
     ...(level.campaignOrder ? { campaignOrder: level.campaignOrder } : {}),
+    ...(level.contentUpdate ? { contentUpdate: level.contentUpdate } : {}),
     ...(level.metadata ? { metadata: level.metadata } : {}),
   }, ...level.appearances.map((appearance) => ({
     gameId: appearance.gameId,

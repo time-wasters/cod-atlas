@@ -11,6 +11,7 @@ export type AtlasEntryDto = {
   gameIds: string[];
   campaign?: LevelAppearanceDto["campaign"];
   campaignOrder?: number;
+  contentUpdate?: LevelAppearanceDto["contentUpdate"];
   wiki: string;
   wikiArticle: string;
   verified?: LevelVerificationDto;
