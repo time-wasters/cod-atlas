@@ -18,8 +18,8 @@ locations:
     method: manual-approximate
     primary: true
     urls:
-      googleMaps: https://www.google.com/maps/search/?api=1&query=Rimling%2C+France
-      wikipedia: https://en.wikipedia.org/wiki/Rimling
+      - googleMaps: https://www.google.com/maps/search/?api=1&query=Rimling%2C+France
+      - wikipedia: https://en.wikipedia.org/wiki/Rimling
 urls:
   callOfDutyMaps: https://callofdutymaps.com/call-of-duty-3/rimling/
 ---
