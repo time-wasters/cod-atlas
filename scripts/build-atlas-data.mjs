@@ -15,10 +15,11 @@ const mapOverlaysOutputPath = path.join(outputDirectory, "map-overlays.generated
 const historyOverlaysOutputPath = path.join(outputDirectory, "history-overlays.generated.json");
 const levelBannersRoot = path.join(root, "public/images/levels");
 const checkOnly = process.argv.includes("--check");
-const validModes = new Set(["singleplayer", "multiplayer", "zombies"]);
+const validModes = new Set(["singleplayer", "multiplayer", "special-ops", "zombies"]);
 const mapTypeDirectoryByMode = new Map([
   ["singleplayer", "campaign"],
   ["multiplayer", "multiplayer"],
+  ["special-ops", "special-ops"],
   ["zombies", "zombies"],
 ]);
 const validPrecisions = new Set(["exact", "approximate", "city", "region", "country", "off-world"]);
@@ -416,8 +417,8 @@ for (const filename of levelFiles) {
       `${filename}: content-update must be an object`,
     );
     requireValue(
-      ["multiplayer", "zombies"].includes(level.mode),
-      `${filename}: content-update is only supported for multiplayer and zombies levels`,
+      ["multiplayer", "special-ops", "zombies"].includes(level.mode),
+      `${filename}: content-update is only supported for multiplayer, special-ops and zombies levels`,
     );
     requireValue(
       typeof contentUpdate.id === "string" && contentUpdate.id.trim(),

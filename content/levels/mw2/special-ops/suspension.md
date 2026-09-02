@@ -3,7 +3,7 @@ id: mw2-suspension
 title: Suspension
 games:
   - mw2
-mode: multiplayer
+mode: special-ops
 wikiArticle: codwiki-suspension
 locations:
   - id: main

@@ -85,6 +85,7 @@ export function AtlasPage({
     methods,
     showSingleplayer,
     showMultiplayer,
+    showSpecialOps,
     showZombies,
     applyUrlState: applyFilterUrlState,
     resetAdvancedFilters: resetAdvancedFilterState,
@@ -155,6 +156,7 @@ export function AtlasPage({
       methods,
       showSingleplayer,
       showMultiplayer,
+      showSpecialOps,
       showZombies,
     },
   });
@@ -257,6 +259,7 @@ export function AtlasPage({
       methods,
       showSingleplayer,
       showMultiplayer,
+      showSpecialOps,
       showZombies,
     },
     selected,

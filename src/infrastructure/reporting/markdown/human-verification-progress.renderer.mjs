@@ -16,6 +16,7 @@ export function renderHumanVerificationProgress({ games, levels }) {
     ["All currently catalogued records", levels],
     ["Campaign records", levels.filter((level) => level.mode === "singleplayer")],
     ["Multiplayer records", levels.filter((level) => level.mode === "multiplayer")],
+    ["Special Ops records", levels.filter((level) => level.mode === "special-ops")],
     ["Zombies records", levels.filter((level) => level.mode === "zombies")],
   ];
   const lines = [

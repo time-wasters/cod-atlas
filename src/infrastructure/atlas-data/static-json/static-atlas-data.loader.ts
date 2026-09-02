@@ -17,7 +17,7 @@ const GAME_SERIES = new Set(["world-war-ii", "modern-warfare", "black-ops", "sta
 const GAME_SUBSERIES = new Set(["main", "reboot", "remaster", "add-on", "spin-off"]);
 const LOCATION_PRECISIONS = new Set(["exact", "approximate", "city", "region", "country", "off-world"]);
 const LOCATION_CONFIDENCES = new Set(["high", "medium", "fallback"]);
-const LEVEL_MODES = new Set(["singleplayer", "multiplayer", "zombies"]);
+const LEVEL_MODES = new Set(["singleplayer", "multiplayer", "special-ops", "zombies"]);
 
 /**
  * Validates an optional campaign object.

@@ -3,7 +3,7 @@ id: mw3-hardhat
 title: Hardhat
 games:
   - mw3
-mode: special-ops
+mode: multiplayer
 wikiArticle: codwiki-hardhat
 locations:
   - id: main

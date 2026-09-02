@@ -11,7 +11,7 @@ type ContentUpdateAtlasEntry = {
   gameIds: string[];
   contentUpdate?: { id: string; label: string } | null;
   coordinates?: [number, number] | null;
-  modes: ("singleplayer" | "multiplayer" | "zombies")[];
+  modes: ("singleplayer" | "multiplayer" | "special-ops" | "zombies")[];
 };
 
 type ContentUpdateAtlasGroup<TEntry extends ContentUpdateAtlasEntry> = {
@@ -54,7 +54,9 @@ export function buildContentUpdateOptions<
   for (const group of groups) {
     for (const entry of group.entries) {
       if (entry.gameIds[0] !== selectedGame.id || !entry.contentUpdate) continue;
-      if (!entry.modes.some((mode) => mode === "multiplayer" || mode === "zombies")) continue;
+      if (!entry.modes.some((mode) => (
+        mode === "multiplayer" || mode === "special-ops" || mode === "zombies"
+      ))) continue;
 
       const key = `${selectedGame.id}:${entry.contentUpdate.id}`;
       let update = updatesByKey.get(key);

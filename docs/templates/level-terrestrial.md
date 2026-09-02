@@ -39,7 +39,9 @@ locations:
 <!-- For a standalone multiplayer map, use "## The Map in the Game" instead. -->
 
 For singleplayer, summarize the mission's character, unit, date, stated place
-and objectives. For multiplayer, state that there is no mission narrative,
+and objectives. For Special Ops, summarize that mission's briefing, objectives,
+route, and stated setting, including any documented Campaign or Multiplayer
+geography it reuses. For multiplayer, state that there is no mission narrative,
 describe the map setting and reference any documented corresponding
 singleplayer level by title and stable ID. Keep multiplayer analysis compact
 and do not repeat the same caveat or map description in later sections.

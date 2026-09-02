@@ -10,7 +10,7 @@
     "label": "I-395, Virginia-Washington D.C, United States of America",
     "url": null
   },
-  "mapStyle": "multiplayer",
+  "mapStyle": "special-ops",
   "mapStyleDetail": null,
   "mapStyleConfidence": "curated",
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",

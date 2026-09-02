@@ -125,6 +125,7 @@ test("renders the hosted atlas shell", async () => {
   const advancedFilterIndex = html.indexOf('class="advanced-filter-trigger"');
   assert.ok(countryFilterIndex < modeFilterIndex && modeFilterIndex < advancedFilterIndex);
   assert.match(html, /class="mode-filter"[^>]*aria-label="Map type visibility"/);
+  assert.match(html, /<button(?=[^>]*aria-pressed="false")[^>]*>\s*<span[^>]*>[^<]*<\/span>\s*(?:<!-- -->)?Special Ops/);
   assert.match(html, /<button(?=[^>]*aria-pressed="false")[^>]*>\s*<span[^>]*>[^<]*<\/span>\s*(?:<!-- -->)?Zombies/);
   assert.doesNotMatch(html, /class="precision-filter"/);
   assert.match(html, /role="tab"[^>]*aria-selected="true"[^>]*aria-controls="sidebar-locations"/);
@@ -133,7 +134,7 @@ test("renders the hosted atlas shell", async () => {
   assert.match(html, />Adriatic Sea<\/span>/);
   assert.doesNotMatch(html, /Selected location/);
   assert.doesNotMatch(html, />Level<\/span>/);
-  assert.match(html, /aria-label="(Campaign|Multiplayer|Zombies)"/);
+  assert.match(html, /aria-label="(Campaign|Multiplayer|Special Ops|Zombies)"/);
   assert.match(html, /class="mission-title-button"/);
   assert.match(html, /<button(?=[^>]*class="level-briefing-toggle")(?=[^>]*disabled="")[^>]*>/);
   assert.match(html, />No briefing available<\/strong>/);
@@ -278,7 +279,8 @@ test("preserves the complete statically compiled atlas", async () => {
   assert.deepEqual(urzikstanEntry.gameIds, ["mwiii", "wz2"]);
   assert.equal(urzikstanEntry.appearances.find((appearance) => appearance.gameId === "wz2").title, "Urzikstan");
   assert.ok(entries.every((entry) =>
-    entry.modes.length === 1 && ["singleplayer", "multiplayer", "zombies"].includes(entry.modes[0])));
+    entry.modes.length === 1
+    && ["singleplayer", "multiplayer", "special-ops", "zombies"].includes(entry.modes[0])));
   assert.ok(entries.every((entry) => typeof entry.hasLevelNotes === "boolean"));
   assert.equal(entries.find((entry) => entry.levelId === "wz-fortune-s-keep").hasLevelNotes, false);
   assert.equal(entries.find((entry) => entry.levelId === "cod-pavlov").hasLevelNotes, true);
@@ -516,6 +518,9 @@ test("preserves the complete statically compiled atlas", async () => {
   assert.deepEqual(findEntry("COD2", "Holding the Line").modes, ["singleplayer"]);
   assert.deepEqual(findEntry("COD2", "Toujane").modes, ["multiplayer"]);
   assert.deepEqual(findEntry("COD4", "Blackout").modes, ["singleplayer"]);
+  assert.deepEqual(findEntry("MW2", "Suspension").modes, ["special-ops"]);
+  assert.deepEqual(findEntry("MW3", "Stay Sharp").modes, ["special-ops"]);
+  assert.deepEqual(findEntry("MW3", "Hardhat").modes, ["multiplayer"]);
   assert.deepEqual(findEntry("BO4", "Blackout Map").modes, ["multiplayer"]);
   assert.deepEqual(findEntry("BO2", "FOB").modes, ["singleplayer"]);
   assert.deepEqual(findEntry("BOCW", "CIA").modes, ["singleplayer"]);
@@ -532,7 +537,8 @@ test("preserves the complete statically compiled atlas", async () => {
   assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "singleplayer").length, 27);
   assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "multiplayer").length, 23);
   assert.equal(entries.filter((entry) => entry.modes[0] === "singleplayer").length, 422);
-  assert.equal(entries.filter((entry) => entry.modes[0] === "multiplayer").length, 634);
+  assert.equal(entries.filter((entry) => entry.modes[0] === "multiplayer").length, 628);
+  assert.equal(entries.filter((entry) => entry.modes[0] === "special-ops").length, 6);
   assert.equal(entries.filter((entry) => entry.modes[0] === "zombies").length, 10);
 });
 

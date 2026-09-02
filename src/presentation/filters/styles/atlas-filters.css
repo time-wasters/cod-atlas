@@ -89,7 +89,7 @@
 .advanced-filters-results strong { font-family: var(--font-geist-mono), monospace; }
 .advanced-filters-results:hover { filter: brightness(1.08); }
 
-.mode-filter { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.mode-filter { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
 .mode-filter button { min-height: 38px; border: 1px solid #48503d; border-radius: 4px; color: #777c6b; background: #11150f; font-size: 10px; font-weight: 700; letter-spacing: .04em; cursor: pointer; }
 .mode-filter button span { margin-right: 5px; color: #777c6b; }
 .mode-filter button small { display: block; margin-top: 2px; color: #555c51; font: 700 7px var(--font-geist-mono), monospace; letter-spacing: .08em; text-transform: uppercase; }

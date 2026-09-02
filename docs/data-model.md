@@ -69,18 +69,21 @@ out incrementally:
 content/levels/<primary-game>/<level-slug>.md
 content/levels/<primary-game>/campaign/<order>-<level-slug>.md
 content/levels/<primary-game>/multiplayer/<level-slug>.md
+content/levels/<primary-game>/special-ops/<level-slug>.md
 content/levels/<primary-game>/zombies/<level-slug>.md
 content/levels/<appearance-game>/<level-slug>.ref.md
 content/levels/<appearance-game>/<map-type>/<level-slug>.ref.md
 ```
 
 A game must use one layout consistently. `cod`, `cod-uo`, `cod-fh`, `cod2`,
-`cod2-bro`, `cod3`, `rtv`, `cod4`, `wz`, `wz2`, and `mwiii` use `campaign/` for
-records whose `mode` is `singleplayer` and `multiplayer/` for records whose
-`mode` is `multiplayer`. `waw`, `bo`, and `bo6` also use `zombies/` for records whose
-`mode` is `zombies`. Games that have not been reorganized remain flat. Map
-types are broad content categories; they are distinct from multiplayer rule
-sets such as deathmatch or capture the flag.
+`cod2-bro`, `cod3`, `rtv`, `cod4`, `mw2`, `mw3`, `wz`, `wz2`, and `mwiii` use
+`campaign/` for records whose `mode` is `singleplayer` and `multiplayer/` for
+records whose `mode` is `multiplayer`. `mw2` and `mw3` also use `special-ops/`
+for dedicated Special Ops missions; shared Survival maps remain multiplayer.
+`waw`, `bo`, and `bo6` also use `zombies/` for records whose `mode` is
+`zombies`. Games that have not been reorganized remain flat. Map types are
+broad content categories; they are distinct from multiplayer rule sets such as
+deathmatch or capture the flag.
 
 Campaign orders start at `1`, have no leading zeros, and must be unique and
 contiguous within their game. The prefix records play order without becoming
@@ -101,14 +104,15 @@ Required fields:
 - `id`: stable, repository-wide level ID.
 - `title`: human-readable level or map name.
 - `games`: exactly one game ID: the canonical owner game.
-- `mode`: `singleplayer`, `multiplayer`, or `zombies`.
+- `mode`: `singleplayer`, `multiplayer`, `special-ops`, or `zombies`.
 - `wikiArticle`: foreign key to a Wiki import record.
 - `locations`: embedded location records. Use an empty list only when the
   level is known but its real-world location has not yet been curated.
 
 Optional level fields include `campaign`, a grouping with a stable string `id`
-and a human-readable `label`; `content-update`, which groups Multiplayer and
-Zombies maps by their original release or map pack; `legacyIds`, which
+and a human-readable `label`; `content-update`, which groups Multiplayer,
+Special Ops, and Zombies records by their original release or map pack;
+`legacyIds`, which
 preserves old URL IDs after a structural rename; and `metadata` for
 non-geographic descriptive values.
 
@@ -146,7 +150,8 @@ Campaign metadata identifies the named campaign section that contains a level;
 it is separate from the numeric play-order prefix in campaign filenames. Keep
 the ID stable even if the display label is later corrected or translated.
 
-Multiplayer and Zombies levels may use matching content-update metadata:
+Multiplayer, Special Ops, and Zombies levels may use matching content-update
+metadata:
 
 ```yaml
 content-update:
@@ -156,8 +161,8 @@ content-update:
 
 The stable string ID controls update ordering and the label is shown in the
 sidebar. Levels released in the base game can use an ID such as `"0"` with the
-label `Included`. A content update can group Multiplayer and Zombies levels
-together, but it is not valid on a singleplayer level.
+label `Included`. A content update can group Multiplayer, Special Ops, and
+Zombies levels together, but it is not valid on a singleplayer level.
 
 Precision values:
 

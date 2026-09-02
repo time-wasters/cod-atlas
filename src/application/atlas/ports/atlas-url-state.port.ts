@@ -10,6 +10,7 @@ export type AtlasUrlState = {
   methods: string[];
   showSingleplayer: boolean;
   showMultiplayer: boolean;
+  showSpecialOps: boolean;
   showZombies: boolean;
   sidebarListMode: "locations" | "campaigns" | "updates";
   levelId: string | null;
