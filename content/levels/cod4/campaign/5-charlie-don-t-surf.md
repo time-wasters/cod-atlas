@@ -22,6 +22,11 @@ locations:
     urls:
       - googleMaps: https://www.google.com/maps/search/?api=1&query=Al+Khafji%2C+Eastern+Province%2C+Saudi+Arabia
       - wikipedia: https://en.wikipedia.org/wiki/Khafji
+verified:
+  locations:
+    byHuman: false
+    user: github/PLP-GTR
+    reason: Unfortunately there is no more information given in the mission.
 ---
 
 > **AI-generated research note:** The historical summary below was generated

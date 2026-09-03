@@ -44,7 +44,7 @@ verified:
   location:
     byHuman: true
     user: github/PLP-GTR
-    reason: Extras of CoD FH show a map in which the town hall, church and theater line up
+    reason: Extras of CoD FH show a map in which the town hall, church and theater line up.
 ---
 
 > **AI-generated research note:** The historical summary below was generated

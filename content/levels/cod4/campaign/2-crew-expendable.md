@@ -21,6 +21,11 @@ locations:
     urls:
       - googleMaps: https://www.google.com/maps/search/?api=1&query=Bering+Strait
       - wikipedia: https://en.wikipedia.org/wiki/Bering_Strait
+verified:
+  locations:
+    byHuman: true
+    user: github/PLP-GTR
+    reason: Bering strait must be enough. There are no other clues.
 ---
 
 > **AI-generated research note:** The historical summary below was generated

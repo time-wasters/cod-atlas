@@ -23,5 +23,10 @@ locations:
     urls:
       - googleMaps: https://www.google.com/maps/search/?api=1&query=Bearcat%20Base,%20An%20Phước,%20Đồng%20Nai,%20Vietnam
       - wikipedia: https://en.wikipedia.org/wiki/Bearcat_Base
+verified:
+  locations:
+    byHuman: true
+    user: github/PLP-GTR
+    reason: Bearcat Base was indeed used and is a well enough fit since the game does not mention anything specific.
 ---
 
