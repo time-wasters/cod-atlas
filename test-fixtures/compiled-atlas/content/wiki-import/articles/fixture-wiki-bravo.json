@@ -1,0 +1,24 @@
+{
+  "id": "fixture-wiki-bravo",
+  "sourceUrl": "https://example.com/wiki/bravo",
+  "images": {
+    "main": {
+      "sourceUrl": "https://example.com/images/bravo.png",
+      "thumbnailUrl": "https://example.com/images/bravo-thumbnail.png",
+      "detailPageUrl": "https://example.com/wiki/bravo-image",
+      "author": {
+        "name": "Fixture Author",
+        "role": "author"
+      },
+      "license": {
+        "name": "Fixture License",
+        "url": "https://example.com/license"
+      },
+      "rights": {
+        "status": "fixture",
+        "notice": "Fixture media used only by tests."
+      }
+    },
+    "map": null
+  }
+}

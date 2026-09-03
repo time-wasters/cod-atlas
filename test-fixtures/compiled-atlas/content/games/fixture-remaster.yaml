@@ -1,0 +1,8 @@
+id: fixture-remaster
+code: FIX-R
+label: Fixture Remastered
+labelLong: Fixture Game Remastered
+released: 2021-02-03
+series: standalone
+subseries: remaster
+remasterOf: fixture-classic
