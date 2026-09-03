@@ -6,8 +6,8 @@ games:
 mode: singleplayer
 wikiArticle: codwiki-down-the-rabbit-hole
 campaign:
-  id: "2"
-  label: Act 2
+  id: "3"
+  label: Act 3
 locations:
   - id: main
     country: Russia

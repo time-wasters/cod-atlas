@@ -6,8 +6,8 @@ games:
 mode: singleplayer
 wikiArticle: codwiki-stronghold-mission
 campaign:
-  id: "2"
-  label: Act 2
+  id: "3"
+  label: Act 3
 locations:
   - id: main
     country: Czech Republic (Czechia)

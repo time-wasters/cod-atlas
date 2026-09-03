@@ -6,8 +6,8 @@ games:
 mode: singleplayer
 wikiArticle: codwiki-dust-to-dust
 campaign:
-  id: "2"
-  label: Act 2
+  id: "3"
+  label: Act 3
 locations:
   - id: main
     country: United Arab Emirates
