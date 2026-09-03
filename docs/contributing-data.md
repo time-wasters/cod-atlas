@@ -34,7 +34,7 @@ game must use them for every level: `campaign/` contains records with
 `mode: singleplayer`, `multiplayer/` contains records with `mode: multiplayer`,
 `special-ops/` contains records with `mode: special-ops`, and `zombies/`
 contains records with `mode: zombies`. The `cod`, `cod-uo`, `cod-fh`, `cod2`,
-`cod2-bro`, `cod3`, `rtv`, `cod4`, `mw2`, `mw3`, `wz`, `wz2`, and `mwiii`
+`cod2-bro`, `cod3`, `rtv`, `cod4`, `mw2`, `mw3`, `mw3-d`, `wz`, `wz2`, and `mwiii`
 directories use the first two folders; `mw2` and `mw3` additionally use
 `special-ops/`, while `waw`, `bo`, and `bo6` additionally use `zombies/`.
 Other games retain their current flat layout until they are deliberately

@@ -76,7 +76,7 @@ content/levels/<appearance-game>/<map-type>/<level-slug>.ref.md
 ```
 
 A game must use one layout consistently. `cod`, `cod-uo`, `cod-fh`, `cod2`,
-`cod2-bro`, `cod3`, `rtv`, `cod4`, `mw2`, `mw3`, `wz`, `wz2`, and `mwiii` use
+`cod2-bro`, `cod3`, `rtv`, `cod4`, `mw2`, `mw3`, `mw3-d`, `wz`, `wz2`, and `mwiii` use
 `campaign/` for records whose `mode` is `singleplayer` and `multiplayer/` for
 records whose `mode` is `multiplayer`. `mw2` and `mw3` also use `special-ops/`
 for dedicated Special Ops missions; shared Survival maps remain multiplayer.
