@@ -1,17 +1,18 @@
 ---
-id: mw2-suspension
-title: Suspension
+id: mw2-wreckage
+title: Wreckage
 games:
   - mw2
 mode: special-ops
 campaign:
-  id: "1"
-  label: Alpha
-wikiArticle: codwiki-suspension
+  id: "4"
+  label: Delta
+wikiArticle: codwiki-wreckage
 locations:
   - id: main
     country: United States
     region: Washington, D.C.
+    landmark: I-395 bridge
     latitude: 38.907
     longitude: -77.037
     precision: country

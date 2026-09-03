@@ -175,8 +175,8 @@ test("preserves the complete statically compiled atlas", async () => {
     (entry) => entry.title === title && entry.game.split(" / ").includes(game),
   );
 
-  assert.equal(entries.length, 1066);
-  assert.equal(atlas.totals.levels, 1120);
+  assert.equal(entries.length, 1088);
+  assert.equal(atlas.totals.levels, 1142);
   assert.equal(findGroup("France").flagCode, "FR");
   assert.equal(findGroup("Turkey").flagCode, "TR");
   assert.equal(findGroup("United States").flagCode, "US");
@@ -536,9 +536,36 @@ test("preserves the complete statically compiled atlas", async () => {
   const cod2Entries = entries.filter((entry) => entry.game.split(" / ").includes("COD2"));
   assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "singleplayer").length, 27);
   assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "multiplayer").length, 23);
+  const mw2SpecialOps = entries.filter((entry) =>
+    entry.game.split(" / ").includes("MW2") && entry.modes[0] === "special-ops");
+  assert.deepEqual(mw2SpecialOps.map((entry) => entry.title).sort(), [
+    "Acceptable Losses",
+    "Armor Piercing",
+    "Big Brother",
+    "Body Count",
+    "Bomb Squad",
+    "Breach & Clear",
+    "Estate Takedown",
+    "Evasion",
+    "Hidden",
+    "High Explosive",
+    "Homeland Security",
+    "O Cristo Redentor",
+    "Overwatch",
+    "Race",
+    "Snatch & Grab",
+    "Sniper Fi",
+    "Suspension",
+    "Terminal",
+    "The Pit",
+    "Time Trial",
+    "Wardriving",
+    "Wetwork",
+    "Wreckage",
+  ].sort());
   assert.equal(entries.filter((entry) => entry.modes[0] === "singleplayer").length, 422);
   assert.equal(entries.filter((entry) => entry.modes[0] === "multiplayer").length, 628);
-  assert.equal(entries.filter((entry) => entry.modes[0] === "special-ops").length, 6);
+  assert.equal(entries.filter((entry) => entry.modes[0] === "special-ops").length, 28);
   assert.equal(entries.filter((entry) => entry.modes[0] === "zombies").length, 10);
 });
 
