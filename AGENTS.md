@@ -33,7 +33,7 @@ changes are intended to be reviewable through pull requests.
 - After changing `content/`, recommend `npm run data:check` (Docker:
   `docker compose run --rm cod-atlas-tools npm run data:check`) for focused
   validation without generating build artifacts.
-- The current regression baseline is 1140 marker locations. A count change must
+- The current regression baseline is 1158 marker locations. A count change must
   be intentional and accompanied by an appropriate test update.
 
 ## Working procedure

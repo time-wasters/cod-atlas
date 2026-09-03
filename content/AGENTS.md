@@ -7,11 +7,11 @@ These instructions apply to everything under `content/`.
   by map type use `levels/<primary-game>/<map-type>/`; games not yet
   reorganized retain `levels/<primary-game>/<level-slug>.md`. Do not mix the
   two layouts within one game. `cod`, `cod-uo`, `cod-fh`, `cod2`, `cod2-bro`,
-  `cod3`, `rtv`, `cod4`, `mw2`, `mw3`, `mw3-nds`, `wz`, `wz2`, and `mwiii` use `campaign`
+  `cod3`, `rtv`, `cod4`, `mw2`, `mw3`, `bo-nds`, `mw3-nds`, `wz`, `wz2`, and `mwiii` use `campaign`
   for records with `mode: singleplayer` and `multiplayer` for records with
   `mode: multiplayer`. `mw2` and `mw3` additionally use `special-ops` for
   records with `mode: special-ops`.
-  `waw`, `bo`, and `bo6` additionally use `zombies` for records with
+  `waw`, `bo`, `bo-nds`, and `bo6` additionally use `zombies` for records with
   `mode: zombies`.
 - Campaign filenames are `<order>-<level-slug>.md`, starting at `1`, without
   leading zeros or gaps. Multiplayer, Special Ops, and Zombies filenames remain
