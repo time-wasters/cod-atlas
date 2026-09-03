@@ -1,5 +1,6 @@
 import type { Map as LeafletMap } from "leaflet";
 import { applyEnglishMapLibreLabels } from "../maplibre/maplibre-english-labels.adapter.js";
+import { hideMapLibreFerryLines } from "../maplibre/maplibre-ferry-layers.adapter.js";
 import { LEAFLET_MAX_ZOOM } from "./leaflet-map.factory.js";
 
 type LeafletBasemapInput = {
@@ -63,9 +64,12 @@ export async function attachLeafletBasemap({ leaflet, map, signal }: LeafletBase
     vectorMap.once("error", useRasterFallback);
     fallbackTimer = window.setTimeout(useRasterFallback, 10_000);
 
-    const setEnglishLabels = () => applyEnglishMapLibreLabels(vectorMap);
-    if (vectorMap.isStyleLoaded()) setEnglishLabels();
-    else vectorMap.once("style.load", setEnglishLabels);
+    const customizeVectorStyle = () => {
+      applyEnglishMapLibreLabels(vectorMap);
+      hideMapLibreFerryLines(vectorMap);
+    };
+    if (vectorMap.isStyleLoaded()) customizeVectorStyle();
+    else vectorMap.once("style.load", customizeVectorStyle);
     map.attributionControl.addAttribution(
       '&copy; <a href="https://openfreemap.org/">OpenFreeMap</a> &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> Data from <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     );
