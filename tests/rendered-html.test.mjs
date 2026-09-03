@@ -9,6 +9,68 @@ import { promisify } from "node:util";
 
 const execFileAsync = promisify(execFile);
 
+test("catalogues the complete Modern Warfare 3 Special Ops roster", async () => {
+  const specialOpsRoot = new URL("../content/levels/mw3/special-ops/", import.meta.url);
+  assert.deepEqual((await readdir(specialOpsRoot)).sort(), [
+    "arctic-recon.md",
+    "arkaden-survival.md",
+    "bakaara-survival.md",
+    "black-box-survival.md",
+    "black-ice.md",
+    "boardwalk-survival.md",
+    "bootleg-survival.md",
+    "carbon-survival.md",
+    "charges-set.md",
+    "decommission-survival.md",
+    "dome-survival.md",
+    "downturn-survival.md",
+    "fallen-survival.md",
+    "fatal-extraction.md",
+    "fire-mission.md",
+    "firewall.md",
+    "flood-the-market.md",
+    "foundation-survival.md",
+    "gulch-survival.md",
+    "hardhat-survival.md",
+    "hit-and-run.md",
+    "hostage-taker.md",
+    "interchange-survival.md",
+    "invisible-threat.md",
+    "iron-clad.md",
+    "kill-switch.md",
+    "liberation-survival.md",
+    "light-em-up.md",
+    "little-bros.md",
+    "lockdown-survival.md",
+    "milehigh-jack.md",
+    "mission-survival.md",
+    "negotiator.md",
+    "oasis-survival.md",
+    "off-shore-survival.md",
+    "outpost-survival.md",
+    "over-reactor.md",
+    "overwatch-survival.md",
+    "parish-survival.md",
+    "piazza-survival.md",
+    "resistance-movement.md",
+    "resistance-survival.md",
+    "sanctuary-survival.md",
+    "seatown-survival.md",
+    "server-crash.md",
+    "smack-town.md",
+    "special-delivery.md",
+    "stay-sharp.md",
+    "terminal-survival.md",
+    "toxic-paradise.md",
+    "underground-survival.md",
+    "vertigo.md",
+    "village-survival.md",
+  ]);
+  for (const filename of await readdir(specialOpsRoot)) {
+    assert.match(await readFile(new URL(filename, specialOpsRoot), "utf8"), /mode: special-ops/);
+  }
+});
+
 test("catalogues the complete Black Ops 6 campaign, multiplayer, and Zombies roster", async () => {
   const bo6Root = new URL("../content/levels/bo6/", import.meta.url);
   assert.deepEqual((await readdir(new URL("campaign/", bo6Root))).sort(), [

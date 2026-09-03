@@ -1,24 +1,25 @@
 ---
-id: mw3-special-delivery
-title: Special Delivery
+id: mw3-black-ice
+title: Black Ice
 games:
   - mw3
 mode: special-ops
 campaign:
   id: "m6"
   label: Mission Mode - DLC
-wikiArticle: codwiki-special-delivery
+wikiArticle: codwiki-black-ice
 locations:
   - id: main
-    country: China
-    latitude: 35
-    longitude: 105
+    country: Russia
+    region: Eastern Siberia
+    latitude: 60
+    longitude: 100
     precision: country
     confidence: fallback
     method: country-fallback
     primary: true
     urls:
-      - googleMaps: https://www.google.com/maps/search/?api=1&query=China
-      - wikipedia: https://en.wikipedia.org/wiki/China
+      - googleMaps: https://www.google.com/maps/search/?api=1&query=Russia
+      - wikipedia: https://en.wikipedia.org/wiki/Russia
       - callOfDutyMaps: https://callofdutymaps.com/modern-warfare-3/special-ops/
 ---

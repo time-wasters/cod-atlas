@@ -1,16 +1,17 @@
 ---
-id: mw3-arctic-recon
-title: Arctic Recon
+id: mw3-milehigh-jack
+title: Milehigh Jack
 games:
   - mw3
 mode: special-ops
 campaign:
-  id: "m6"
-  label: Mission Mode - DLC
-wikiArticle: codwiki-arctic-recon
+  id: "m1"
+  label: Mission Mode - Tier 1
+wikiArticle: codwiki-milehigh-jack
 locations:
   - id: main
     country: Russia
+    landmark: Il-96-300PU “Command Point”
     latitude: 60
     longitude: 100
     precision: country

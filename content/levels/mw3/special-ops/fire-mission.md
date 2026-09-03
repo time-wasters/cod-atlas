@@ -1,16 +1,17 @@
 ---
-id: mw3-arctic-recon
-title: Arctic Recon
+id: mw3-fire-mission
+title: Fire Mission
 games:
   - mw3
 mode: special-ops
 campaign:
-  id: "m6"
-  label: Mission Mode - DLC
-wikiArticle: codwiki-arctic-recon
+  id: "m4"
+  label: Mission Mode - Tier 4
+wikiArticle: codwiki-fire-mission
 locations:
   - id: main
     country: Russia
+    region: Eastern Siberia
     latitude: 60
     longitude: 100
     precision: country

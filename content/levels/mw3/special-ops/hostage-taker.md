@@ -1,16 +1,18 @@
 ---
-id: mw3-arctic-recon
-title: Arctic Recon
+id: mw3-hostage-taker
+title: Hostage Taker
 games:
   - mw3
 mode: special-ops
 campaign:
-  id: "m6"
-  label: Mission Mode - DLC
-wikiArticle: codwiki-arctic-recon
+  id: "m2"
+  label: Mission Mode - Tier 2
+wikiArticle: codwiki-hostage-taker
 locations:
   - id: main
     country: Russia
+    region: Eastern European airfield
+    landmark: Il-96-300PU “Command Point” debris
     latitude: 60
     longitude: 100
     precision: country

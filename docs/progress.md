@@ -21,10 +21,10 @@ mission has the required research sections.
 <!-- research-progress:start -->
 | Scope | Researched | Remaining |
 | --- | ---: | ---: |
-| All currently catalogued levels | 217 / 1120 (19%) | 903 / 1120 (81%) |
+| All currently catalogued levels | 217 / 1190 (18%) | 973 / 1190 (82%) |
 | Campaign levels | 134 / 426 (31%) | 292 / 426 (69%) |
 | Multiplayer maps | 83 / 672 (12%) | 589 / 672 (88%) |
-| Special Ops missions | 0 / 6 (0%) | 6 / 6 (100%) |
+| Special Ops missions | 0 / 76 (0%) | 76 / 76 (100%) |
 | Zombies maps | 0 / 16 (0%) | 16 / 16 (100%) |
 
 | Game | Campaign | Multiplayer | Special Ops | Zombies | Overall |
@@ -39,9 +39,9 @@ mission has the required research sections.
 | Modern Warfare (2007) | 5 / 21 (24%) | 0 / 21 (0%) | — | — | 5 / 42 (12%) |
 | World at War | 0 / 15 (0%) | 0 / 23 (0%) | — | 0 / 4 (0%) | 0 / 42 (0%) |
 | World at War: Final Fronts | 0 / 13 (0%) | — | — | — | 0 / 13 (0%) |
-| Modern Warfare 2 (2009) | 0 / 19 (0%) | 0 / 22 (0%) | 0 / 1 (0%) | — | 0 / 42 (0%) |
+| Modern Warfare 2 (2009) | 0 / 19 (0%) | 0 / 22 (0%) | 0 / 23 (0%) | — | 0 / 64 (0%) |
 | Black Ops | 0 / 15 (0%) | 1 / 26 (4%) | — | 0 / 6 (0%) | 1 / 47 (2%) |
-| Modern Warfare 3 (2011) | 0 / 18 (0%) | 0 / 35 (0%) | 0 / 5 (0%) | — | 0 / 58 (0%) |
+| Modern Warfare 3 (2011) | 0 / 18 (0%) | 0 / 35 (0%) | 0 / 53 (0%) | — | 0 / 106 (0%) |
 | MW3: Defiance | 0 / 14 (0%) | — | — | — | 0 / 14 (0%) |
 | Black Ops II | 0 / 17 (0%) | 0 / 36 (0%) | — | — | 0 / 53 (0%) |
 | Black Ops: Declassified | 0 / 10 (0%) | — | — | — | 0 / 10 (0%) |
@@ -72,10 +72,10 @@ completed research structure or precise marker does not imply human review.
 <!-- human-verification-progress:start -->
 | Scope | Marker locations verified | Research notes verified |
 | --- | ---: | ---: |
-| All currently catalogued records | 1 / 1066 (0%) | 0 / 1120 (0%) |
+| All currently catalogued records | 1 / 1135 (0%) | 0 / 1190 (0%) |
 | Campaign records | 1 / 422 (0%) | 0 / 426 (0%) |
 | Multiplayer records | 0 / 628 (0%) | 0 / 672 (0%) |
-| Special Ops records | 0 / 6 (0%) | 0 / 6 (0%) |
+| Special Ops records | 0 / 75 (0%) | 0 / 76 (0%) |
 | Zombies records | 0 / 10 (0%) | 0 / 16 (0%) |
 
 | Game | Marker locations verified | Research notes verified |
@@ -90,9 +90,9 @@ completed research structure or precise marker does not imply human review.
 | Modern Warfare (2007) | 0 / 41 (0%) | 0 / 42 (0%) |
 | World at War | 0 / 42 (0%) | 0 / 42 (0%) |
 | World at War: Final Fronts | 0 / 14 (0%) | 0 / 13 (0%) |
-| Modern Warfare 2 (2009) | 0 / 42 (0%) | 0 / 42 (0%) |
+| Modern Warfare 2 (2009) | 0 / 64 (0%) | 0 / 64 (0%) |
 | Black Ops | 0 / 48 (0%) | 0 / 47 (0%) |
-| Modern Warfare 3 (2011) | 0 / 60 (0%) | 0 / 58 (0%) |
+| Modern Warfare 3 (2011) | 0 / 107 (0%) | 0 / 106 (0%) |
 | MW3: Defiance | 0 / 14 (0%) | 0 / 14 (0%) |
 | Black Ops II | 0 / 53 (0%) | 0 / 53 (0%) |
 | Black Ops: Declassified | 0 / 10 (0%) | 0 / 10 (0%) |
@@ -126,19 +126,19 @@ The per-game table assigns each marker to its canonical level's owner game.
 <!-- localization-progress:start -->
 | Scope | Localized | Country fallback | Off-world |
 | --- | ---: | ---: | ---: |
-| All marker locations | 334 / 1036 (32%) | 702 / 1036 (68%) | 30 |
+| All marker locations | 386 / 1105 (35%) | 719 / 1105 (65%) | 30 |
 | Campaign marker locations | 148 / 405 (37%) | 257 / 405 (63%) | 17 |
 | Multiplayer marker locations | 185 / 616 (30%) | 431 / 616 (70%) | 12 |
-| Special Ops marker locations | 0 / 6 (0%) | 6 / 6 (100%) | 0 |
+| Special Ops marker locations | 52 / 75 (69%) | 23 / 75 (31%) | 0 |
 | Zombies marker locations | 1 / 9 (11%) | 8 / 9 (89%) | 1 |
 
 | Precision | Marker locations | Share of all markers |
 | --- | ---: | ---: |
 | Exact | 97 | 9% |
-| Approximate | 140 | 13% |
-| City | 90 | 8% |
-| Region | 7 | 1% |
-| Country | 702 | 66% |
+| Approximate | 179 | 16% |
+| City | 97 | 9% |
+| Region | 13 | 1% |
+| Country | 719 | 63% |
 | Off-world | 30 | 3% |
 
 | Game | Campaign | Multiplayer | Special Ops | Zombies | Overall |
@@ -153,9 +153,9 @@ The per-game table assigns each marker to its canonical level's owner game.
 | Modern Warfare (2007) | 5 / 20 (25%) | 20 / 21 (95%) | — | — | 25 / 41 (61%) |
 | World at War | 1 / 15 (7%) | 10 / 23 (43%) | — | 0 / 4 (0%) | 11 / 42 (26%) |
 | World at War: Final Fronts | 7 / 14 (50%) | — | — | — | 7 / 14 (50%) |
-| Modern Warfare 2 (2009) | 1 / 18 (6%) | 22 / 22 (100%) | 0 / 1 (0%) | — | 23 / 41 (56%) |
+| Modern Warfare 2 (2009) | 1 / 18 (6%) | 22 / 22 (100%) | 10 / 23 (43%) | — | 33 / 63 (52%) |
 | Black Ops | 1 / 16 (6%) | 3 / 26 (12%) | — | 1 / 5 (20%) | 5 / 47 (11%) |
-| Modern Warfare 3 (2011) | 0 / 21 (0%) | 32 / 34 (94%) | 0 / 5 (0%) | — | 32 / 60 (53%) |
+| Modern Warfare 3 (2011) | 0 / 21 (0%) | 32 / 34 (94%) | 42 / 52 (81%) | — | 74 / 107 (69%) |
 | MW3: Defiance | 0 / 14 (0%) | — | — | — | 0 / 14 (0%) |
 | Black Ops II | 0 / 17 (0%) | 0 / 36 (0%) | — | — | 0 / 53 (0%) |
 | Black Ops: Declassified | 0 / 10 (0%) | — | — | — | 0 / 10 (0%) |
