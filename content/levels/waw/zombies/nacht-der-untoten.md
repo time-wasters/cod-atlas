@@ -6,7 +6,7 @@ title: Nacht der Untoten
 games:
   - waw
 mode: zombies
-map-update:
+content-update:
   id: "0"
   label: Included
 wikiArticle: codwiki-nacht-der-untoten

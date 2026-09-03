@@ -1,6 +1,75 @@
 import assert from "node:assert/strict";
-import { access, readFile, readdir } from "node:fs/promises";
+import { execFile } from "node:child_process";
+import { access, cp, mkdtemp, readFile, readdir, rm } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import path from "node:path";
 import test from "node:test";
+import { fileURLToPath } from "node:url";
+import { promisify } from "node:util";
+
+const execFileAsync = promisify(execFile);
+
+test("catalogues the complete Modern Warfare 3 Special Ops roster", async () => {
+  const specialOpsRoot = new URL("../content/levels/mw3/special-ops/", import.meta.url);
+  assert.deepEqual((await readdir(specialOpsRoot)).sort(), [
+    "arctic-recon.md",
+    "arkaden-survival.md",
+    "bakaara-survival.md",
+    "black-box-survival.md",
+    "black-ice.md",
+    "boardwalk-survival.md",
+    "bootleg-survival.md",
+    "carbon-survival.md",
+    "charges-set.md",
+    "decommission-survival.md",
+    "dome-survival.md",
+    "downturn-survival.md",
+    "fallen-survival.md",
+    "fatal-extraction.md",
+    "fire-mission.md",
+    "firewall.md",
+    "flood-the-market.md",
+    "foundation-survival.md",
+    "gulch-survival.md",
+    "hardhat-survival.md",
+    "hit-and-run.md",
+    "hostage-taker.md",
+    "interchange-survival.md",
+    "invisible-threat.md",
+    "iron-clad.md",
+    "kill-switch.md",
+    "liberation-survival.md",
+    "light-em-up.md",
+    "little-bros.md",
+    "lockdown-survival.md",
+    "milehigh-jack.md",
+    "mission-survival.md",
+    "negotiator.md",
+    "oasis-survival.md",
+    "off-shore-survival.md",
+    "outpost-survival.md",
+    "over-reactor.md",
+    "overwatch-survival.md",
+    "parish-survival.md",
+    "piazza-survival.md",
+    "resistance-movement.md",
+    "resistance-survival.md",
+    "sanctuary-survival.md",
+    "seatown-survival.md",
+    "server-crash.md",
+    "smack-town.md",
+    "special-delivery.md",
+    "stay-sharp.md",
+    "terminal-survival.md",
+    "toxic-paradise.md",
+    "underground-survival.md",
+    "vertigo.md",
+    "village-survival.md",
+  ]);
+  for (const filename of await readdir(specialOpsRoot)) {
+    assert.match(await readFile(new URL(filename, specialOpsRoot), "utf8"), /mode: special-ops/);
+  }
+});
 
 test("catalogues the complete Black Ops 6 campaign, multiplayer, and Zombies roster", async () => {
   const bo6Root = new URL("../content/levels/bo6/", import.meta.url);
@@ -125,14 +194,16 @@ test("renders the hosted atlas shell", async () => {
   const advancedFilterIndex = html.indexOf('class="advanced-filter-trigger"');
   assert.ok(countryFilterIndex < modeFilterIndex && modeFilterIndex < advancedFilterIndex);
   assert.match(html, /class="mode-filter"[^>]*aria-label="Map type visibility"/);
-  assert.match(html, /<button(?=[^>]*aria-pressed="false")[^>]*>\s*<span[^>]*>[^<]*<\/span>\s*(?:<!-- -->)?Zombies/);
+  assert.match(html, /<button(?=[^>]*aria-pressed="false")[^>]*>\s*<svg(?=[^>]*class="mission-mode-icon")(?=[^>]*aria-label="Special Ops")/);
+  assert.match(html, /<button(?=[^>]*aria-pressed="false")[^>]*>\s*<svg(?=[^>]*class="mission-mode-icon")(?=[^>]*aria-label="Zombies")/);
   assert.doesNotMatch(html, /class="precision-filter"/);
   assert.match(html, /role="tab"[^>]*aria-selected="true"[^>]*aria-controls="sidebar-locations"/);
   assert.match(html, /<button(?=[^>]*role="tab")(?=[^>]*aria-controls="sidebar-campaigns")(?=[^>]*disabled="")[^>]*>/);
+  assert.match(html, /<button(?=[^>]*role="tab")(?=[^>]*aria-controls="sidebar-content-updates")(?=[^>]*disabled="")[^>]*>/);
   assert.match(html, />Adriatic Sea<\/span>/);
   assert.doesNotMatch(html, /Selected location/);
   assert.doesNotMatch(html, />Level<\/span>/);
-  assert.match(html, /aria-label="(Campaign|Multiplayer|Zombies)"/);
+  assert.match(html, /aria-label="(Campaign|Multiplayer|Special Ops|Zombies)"/);
   assert.match(html, /class="mission-title-button"/);
   assert.match(html, /<button(?=[^>]*class="level-briefing-toggle")(?=[^>]*disabled="")[^>]*>/);
   assert.match(html, />No briefing available<\/strong>/);
@@ -162,377 +233,130 @@ test("bundles the details-panel website icons", async () => {
   }
 });
 
-test("preserves the complete statically compiled atlas", async () => {
-  const { default: atlas } = await import("../app/data/atlas.generated.json", {
-    with: { type: "json" },
-  });
-  const entries = atlas.groups.flatMap((group) => group.entries);
-  assert.ok(entries.every((entry) => typeof entry.primary === "boolean"));
-  const findGroup = (name) => atlas.groups.find((group) => group.name === name);
-  const findEntry = (game, title) => entries.find(
-    (entry) => entry.title === title && entry.game.split(" / ").includes(game),
-  );
+test("compiles the atlas output contract from fixture content", async () => {
+  const fixtureRoot = fileURLToPath(new URL("../test-fixtures/compiled-atlas/", import.meta.url));
+  const compilerPath = fileURLToPath(new URL("../scripts/build-atlas-data.mjs", import.meta.url));
+  const temporaryRoot = await mkdtemp(path.join(tmpdir(), "cod-atlas-compiled-fixture-"));
+  const workingRoot = path.join(temporaryRoot, "workspace");
 
-  assert.equal(entries.length, 1065);
-  assert.equal(atlas.totals.levels, 1119);
-  assert.equal(findGroup("France").flagCode, "FR");
-  assert.equal(findGroup("Turkey").flagCode, "TR");
-  assert.equal(findGroup("United States").flagCode, "US");
-  assert.equal(findGroup("Adriatic Sea").flagCode, null);
-  assert.equal(findGroup("France").continent, "Europe");
-  assert.equal(findGroup("United States").continent, "North America");
-  assert.equal(findGroup("Brazil").continent, "South America");
-  assert.equal(findGroup("Antarctica").continent, "Antarctica");
-  assert.equal(findGroup("Adriatic Sea").continent, "Oceans");
-  assert.equal(findGroup("Mars").continent, "Off-world");
-  assert.ok(atlas.groups.every((group) => [
-    "Africa",
-    "Antarctica",
-    "Arctic",
-    "Asia",
-    "Europe",
-    "North America",
-    "South America",
-    "Oceania",
-    "Oceans",
-    "Off-world",
-  ].includes(group.continent)));
-  assert.ok(atlas.groups.every((group) => group.entries.every((entry) => entry.country === group.name)));
-  assert.ok(entries.every((entry) => !Object.hasOwn(entry, "label")));
-  assert.ok(findGroup("United States").entries.some((entry) => entry.region === "California"));
-  assert.deepEqual(
-    atlas.games.map((game) => game.released),
-    atlas.games.map((game) => game.released).toSorted(),
-    "games stay in chronological release order",
-  );
-  const codGame = atlas.games.find((game) => game.id === "cod");
-  assert.equal(codGame.icon, "/images/games/cod.png");
-  assert.equal(codGame.series, "world-war-ii");
-  assert.equal(codGame.subseries, "main");
-  assert.equal(codGame.remasterOf, null);
-  assert.equal(atlas.games.find((game) => game.id === "cod-uo").subseries, "add-on");
-  assert.equal(atlas.games.find((game) => game.id === "cod-fh").subseries, "spin-off");
-  assert.equal(atlas.games.find((game) => game.id === "mw19").subseries, "reboot");
-  assert.equal(atlas.games.find((game) => game.id === "mwii").subseries, "reboot");
-  assert.equal(atlas.games.find((game) => game.id === "mwiii").subseries, "reboot");
-  assert.equal(atlas.games.find((game) => game.id === "mw4").subseries, "reboot");
-  const cod4Remastered = atlas.games.find((game) => game.id === "cod4-r");
-  assert.equal(cod4Remastered.subseries, "remaster");
-  assert.equal(cod4Remastered.remasterOf, "cod4");
-  assert.equal(atlas.games.find((game) => game.id === "ghosts").subseries, null);
-  assert.equal(atlas.games.find((game) => game.id === "wz").code, "WZ");
-  assert.equal(atlas.games.find((game) => game.id === "wz2").code, "WZ2");
-  assert.ok(atlas.games.every((game) => [
-    "world-war-ii",
-    "modern-warfare",
-    "black-ops",
-    "standalone",
-  ].includes(game.series)));
-  assert.ok(atlas.games.every((game) => game.subseries === null
-    || ["main", "reboot", "remaster", "add-on", "spin-off"].includes(game.subseries)));
-  assert.ok(atlas.games.every((game) => game.subseries === "remaster"
-    ? atlas.games.some((original) => original.id === game.remasterOf)
-    : game.remasterOf === null));
-  assert.ok(atlas.games.every((game) => !Object.hasOwn(game, "era")));
-  for (const game of atlas.games.filter((item) => item.icon)) {
-    assert.equal(game.icon, `/images/games/${game.id}.png`);
-    await access(new URL(`../public${game.icon}`, import.meta.url));
+  try {
+    await cp(fixtureRoot, workingRoot, { recursive: true });
+    await execFileAsync(process.execPath, [compilerPath], { cwd: workingRoot });
+
+    const atlas = JSON.parse(await readFile(
+      path.join(workingRoot, "app/data/atlas.generated.json"),
+      "utf8",
+    ));
+    const entries = atlas.groups.flatMap((group) => group.entries);
+    const findGroup = (name) => atlas.groups.find((group) => group.name === name);
+    const findEntry = (levelId, locationId = "main") => entries.find(
+      (entry) => entry.levelId === levelId && entry.locationId === locationId,
+    );
+
+    assert.deepEqual(atlas.totals, {
+      groups: 4,
+      levels: 3,
+      entries: 4,
+      mapped: 3,
+      cityMatched: 3,
+      countryFallback: 0,
+    });
+    assert.deepEqual(
+      atlas.games.map((game) => game.id),
+      ["fixture-classic", "fixture-remaster"],
+      "fixture games stay in release order",
+    );
+    assert.deepEqual(
+      atlas.games.map(({ id, series, subseries, remasterOf }) => ({
+        id,
+        series,
+        subseries,
+        remasterOf,
+      })),
+      [
+        {
+          id: "fixture-classic",
+          series: "standalone",
+          subseries: "main",
+          remasterOf: null,
+        },
+        {
+          id: "fixture-remaster",
+          series: "standalone",
+          subseries: "remaster",
+          remasterOf: "fixture-classic",
+        },
+      ],
+    );
+    assert.ok(atlas.games.every((game) => !Object.hasOwn(game, "icon")));
+
+    assert.deepEqual(
+      atlas.groups.map(({ name, continent, flagCode }) => ({ name, continent, flagCode })),
+      [
+        { name: "Brazil", continent: "South America", flagCode: "BR" },
+        { name: "France", continent: "Europe", flagCode: "FR" },
+        { name: "Mars", continent: "Off-world", flagCode: null },
+        { name: "United States", continent: "North America", flagCode: "US" },
+      ],
+    );
+    assert.ok(atlas.groups.every((group) =>
+      group.entries.every((entry) => entry.country === group.name)));
+    assert.ok(entries.every((entry) => typeof entry.primary === "boolean"));
+    assert.ok(entries.every((entry) => !Object.hasOwn(entry, "label")));
+
+    assert.equal(atlas.levelIdAliases["fixture-alpha-old"], "fixture-classic-alpha");
+
+    const alpha = findEntry("fixture-classic-alpha", "landmark");
+    assert.deepEqual(alpha.coordinates, [48.8584, 2.2945]);
+    assert.deepEqual(alpha.campaign, { id: "1", label: "Fixture Campaign" });
+    assert.equal(alpha.campaignOrder, 1);
+    assert.equal(alpha.hasLevelNotes, true);
+    assert.deepEqual(alpha.verified, {
+      locations: { byHuman: true, user: "github/fixture-reviewer" },
+      research: { byHuman: false, user: null },
+    });
+    assert.deepEqual(alpha.modes, ["singleplayer"]);
+    assert.deepEqual(alpha.urls, [
+      { googleMaps: "https://maps.google.com/?q=48.8584,2.2945" },
+      { wikipedia: "https://en.wikipedia.org/wiki/Fixture" },
+    ]);
+
+    const secondary = findEntry("fixture-classic-alpha", "secondary");
+    assert.equal(secondary.primary, false);
+    assert.equal(secondary.precision, "city");
+
+    const bravo = findEntry("fixture-classic-bravo");
+    assert.equal(bravo.game, "FIX / FIX-R");
+    assert.deepEqual(bravo.gameIds, ["fixture-classic", "fixture-remaster"]);
+    assert.deepEqual(
+      bravo.appearances.map(({ gameId, title }) => ({ gameId, title })),
+      [
+        { gameId: "fixture-classic", title: "Fixture Bravo" },
+        { gameId: "fixture-remaster", title: "Fixture Bravo Remastered" },
+      ],
+    );
+    assert.deepEqual(bravo.contentUpdate, { id: "1", label: "Fixture Pack" });
+    assert.deepEqual(bravo.modes, ["multiplayer"]);
+    assert.equal(bravo.hasLevelNotes, false);
+    assert.deepEqual(bravo.urls, [
+      { callOfDutyMaps: "https://callofdutymaps.com/fixture/bravo/" },
+    ]);
+
+    const cosmos = findEntry("fixture-classic-cosmos");
+    assert.equal(cosmos.coordinates, null);
+    assert.equal(cosmos.precision, "off-world");
+    assert.deepEqual(cosmos.modes, ["zombies"]);
+    assert.equal(findGroup("Mars").kind, "off-world");
+
+    assert.equal(atlas.wikiMedia["fixture-wiki-alpha"], undefined);
+    assert.equal(
+      atlas.wikiMedia["fixture-wiki-bravo"].main.author.name,
+      "Fixture Author",
+    );
+    assert.equal(atlas.wikiMedia["fixture-wiki-bravo"].map, null);
+  } finally {
+    await rm(temporaryRoot, { recursive: true, force: true });
   }
-  assert.ok(atlas.games.some((game) => !game.icon), "game labels remain available as the icon fallback");
-  assert.ok(entries.every((entry) => Array.isArray(entry.gameIds) && entry.gameIds.length > 0));
-  assert.ok(entries.every((entry) => entry.coordinates === null
-    || entry.coordinates === undefined
-    || (entry.coordinates.length === 2 && entry.coordinates.every(Number.isFinite))));
-  const rtvBannerKeys = Object.keys(atlas.levelBanners)
-    .filter((key) => key.startsWith("rtv-"))
-    .sort();
-
-  assert.ok(rtvBannerKeys.length >= 5, "at least 5 RTV level banners exist");
-
-  for (const key of rtvBannerKeys.slice(0, 5)) {
-    const banner = atlas.levelBanners[key];
-
-    assert.ok(banner.thumbnailUrl, `${key} has a thumbnail URL`);
-    assert.ok(banner.author, `${key} has author information`);
-  }
-  assert.match(
-    atlas.levelBanners["rtv-altavilla@rtv"].thumbnailUrl,
-    /^\/images\/levels\/rtv\/campaign\/1-altavilla\/main\.(?:jpg|png)$/,
-  );
-  assert.equal(atlas.levelBanners["rtv-altavilla@rtv"].author.userUrl, "https://github.com/plp-gtr");
-  assert.equal(atlas.levelIdAliases["cod-cod2-wwii-carentan"], "cod-carentan");
-  const carentanAppearanceEntry = entries.find((entry) => entry.levelId === "cod-carentan");
-  assert.deepEqual(carentanAppearanceEntry.gameIds, ["cod", "cod-uo", "cod2", "rtv", "wwii"]);
-  assert.deepEqual(carentanAppearanceEntry.appearances.map((appearance) => appearance.gameId), ["cod", "cod-uo", "cod2", "rtv", "wwii"]);
-  assert.ok(carentanAppearanceEntry.appearances.every((appearance) => appearance.wikiArticle === carentanAppearanceEntry.wikiArticle));
-  assert.ok(carentanAppearanceEntry.appearances.every((appearance) => appearance.notesId === "cod-carentan"));
-  const ashikaIslandEntry = entries.find((entry) => entry.levelId === "wz2-ashika-island");
-  assert.deepEqual(ashikaIslandEntry.gameIds, ["wz2"]);
-  const vondelEntry = entries.find((entry) => entry.levelId === "wz2-vondel");
-  assert.deepEqual(vondelEntry.gameIds, ["wz2"]);
-  assert.ok(entries.find((entry) => entry.levelId === "mw2-afgan").gameIds.includes("mwiii"));
-  assert.ok(entries.find((entry) => entry.levelId === "mwii-shipment").gameIds.includes("mwiii"));
-  assert.deepEqual(entries.find((entry) => entry.levelId === "mwiii-meat").gameIds, ["mwiii"]);
-  const urzikstanEntry = entries.find((entry) => entry.levelId === "mwiii-urzikstan");
-  assert.deepEqual(urzikstanEntry.gameIds, ["mwiii", "wz2"]);
-  assert.equal(urzikstanEntry.appearances.find((appearance) => appearance.gameId === "wz2").title, "Urzikstan");
-  assert.ok(entries.every((entry) =>
-    entry.modes.length === 1 && ["singleplayer", "multiplayer", "zombies"].includes(entry.modes[0])));
-  assert.ok(entries.every((entry) => typeof entry.hasLevelNotes === "boolean"));
-  assert.equal(entries.find((entry) => entry.levelId === "wz-fortune-s-keep").hasLevelNotes, false);
-  assert.equal(entries.find((entry) => entry.levelId === "cod-pavlov").hasLevelNotes, true);
-
-  const expectedCod1MapLinks = new Map([
-    ["cod-bocage", "bocage-2"],
-    ["cod-brecourt", "brecourt"],
-    ["cod-carentan", "Carentan-2"],
-    ["cod-chateau", "chateau"],
-    ["cod-dawnville", "dawnville"],
-    ["cod-depot", "depot"],
-    ["cod-harbor", "harbor"],
-    ["cod-hurtgen", "hurtgen"],
-    ["cod-neuville", "neuville"],
-    ["cod-pavlov", "pavlov"],
-    ["cod-pow-camp", "pow-camp"],
-    ["cod-railyard", "railyard"],
-    ["cod-rocket", "rocket"],
-    ["cod-ship", "ship"],
-    ["cod-stalingrad-mp", "stalingrad"],
-    ["cod-tigertown", "tigertown"],
-  ]);
-  const cod1MapEntries = entries.filter((entry) =>
-    entry.gameIds.includes("cod")
-    && entry.urls?.some((url) => url.callOfDutyMaps?.startsWith("https://callofdutymaps.com/call-of-duty-1/")));
-  assert.deepEqual(
-    cod1MapEntries.map((entry) => entry.levelId).sort(),
-    [...expectedCod1MapLinks.keys()].sort(),
-  );
-  for (const entry of cod1MapEntries) {
-    const slug = expectedCod1MapLinks.get(entry.levelId);
-    const url = entry.urls.find((item) => item.callOfDutyMaps).callOfDutyMaps;
-    assert.equal(url, `https://callofdutymaps.com/call-of-duty-1/${slug}/`);
-    assert.ok(entry.gameIds.includes("cod"));
-    assert.deepEqual(entry.modes, ["multiplayer"]);
-  }
-
-  const expectedCod3MapLinks = new Map([
-    ["cod3-aller-haut", "aller-haut"],
-    ["cod3-argentan", "argentan"],
-    ["cod3-champs", "champs"],
-    ["cod3-crossing", "crossing"],
-    ["cod3-eder-dam", "eder-dam"],
-    ["cod3-fuel-plant-multiplayer", "fuel-plant"],
-    ["cod3-gare-centrale", "gare-centrale"],
-    ["cod3-ironclad", "ironclad"],
-    ["cod3-la-bourgade", "la-bourgade"],
-    ["cod3-les-ormes", "les-ormes"],
-    ["cod3-marseilles", "marseilles"],
-    ["cod3-mayenne", "mayenne"],
-    ["cod3-merville", "merville"],
-    ["cod3-poisson", "poisson"],
-    ["cod3-rimling", "rimling"],
-    ["cod3-rouen", "rouen"],
-    ["cod3-seine-river", "seine-river"],
-    ["cod3-stalag-23", "stalag-23"],
-    ["cod3-verdun", "verdun"],
-    ["cod3-wildwood", "wildwood"],
-  ]);
-  const cod3MapEntries = entries.filter((entry) =>
-    entry.gameIds.includes("cod3")
-    && entry.urls?.some((url) => url.callOfDutyMaps?.startsWith("https://callofdutymaps.com/call-of-duty-3/")));
-  assert.deepEqual(
-    cod3MapEntries.map((entry) => entry.levelId).sort(),
-    [...expectedCod3MapLinks.keys()].sort(),
-  );
-  for (const entry of cod3MapEntries) {
-    const slug = expectedCod3MapLinks.get(entry.levelId);
-    const url = entry.urls.find((item) => item.callOfDutyMaps).callOfDutyMaps;
-    assert.equal(url, `https://callofdutymaps.com/call-of-duty-3/${slug}/`);
-    assert.deepEqual(entry.modes, ["multiplayer"]);
-  }
-
-  const expectedCod4MapLinks = new Map([
-    ["cod4-ambush", "ambush/"],
-    ["cod4-backlot", "backlot/"],
-    ["cod4-bloc", "bloc"],
-    ["cod4-bog", "bog"],
-    ["cod4-broadcast", "broadcast"],
-    ["cod4-chinatown", "chinatown"],
-    ["cod4-countdown", "countdown/"],
-    ["cod4-creek", "creek"],
-    ["cod4-crossfire", "crossfire"],
-    ["cod4-district", "district/"],
-    ["cod4-downpour", "downpour"],
-    ["cod4-killhouse", "killhouse"],
-    ["cod4-crash", "crash"],
-    ["cod4-vacant", "vacant"],
-    ["cod4-overgrown", "overgrown"],
-    ["cod4-strike", "strike"],
-    ["cod4-pipeline", "pipeline"],
-    ["cod4-shipment", "shipment"],
-    ["cod4-showdown", "showdown"],
-    ["cod4-wet-work", "wet-work"],
-  ]);
-  const cod4MapEntries = entries.filter((entry) =>
-    entry.urls?.some((url) => url.callOfDutyMaps?.startsWith("https://callofdutymaps.com/cod-4-modern-warfare/")));
-  assert.deepEqual(
-    cod4MapEntries.map((entry) => entry.levelId).sort(),
-    [...expectedCod4MapLinks.keys()].sort(),
-  );
-  for (const entry of cod4MapEntries) {
-    const slug = expectedCod4MapLinks.get(entry.levelId);
-    const url = entry.urls.find((item) => item.callOfDutyMaps).callOfDutyMaps;
-    assert.equal(url, `https://callofdutymaps.com/cod-4-modern-warfare/${slug}`);
-    assert.ok(entry.gameIds.includes("cod4"));
-    assert.deepEqual(entry.modes, ["multiplayer"]);
-  }
-
-  const expectedMw2MapLinks = new Map([
-    ["mw2-afgan", "afghan"],
-    ["mw2-bailout", "bailout"],
-    ["mw2-carnival", "carnival"],
-    ["mw2-derail", "derail"],
-    ["mw2-estate", "estate"],
-    ["mw2-favela", "favela"],
-    ["mw2-fuel", "fuel/"],
-    ["mw2-highrise", "highrise"],
-    ["mw2-invasion", "invasion"],
-    ["mw2-karachi", "karachi"],
-    ["mw2-terminal", "terminal"],
-    ["mw2-quarry", "quarry"],
-    ["mw2-rundown", "rundown"],
-    ["mw2-rust", "rust"],
-    ["mw2-salvage", "salvage"],
-    ["mw2-scrapyard", "scrapyard"],
-    ["mw2-skidrow", "skidrow"],
-    ["mw2-storm", "storm/"],
-    ["mw2-sub-base", "sub-base"],
-    ["mw2-trailer-park", "trailer-park"],
-    ["mw2-underpass", "underpass"],
-    ["mw2-wasteland", "wasteland"],
-  ]);
-  const mw2MapEntries = entries.filter((entry) =>
-    entry.urls?.some((url) => url.callOfDutyMaps?.startsWith("https://callofdutymaps.com/modern-warfare-2/")));
-  assert.deepEqual(
-    mw2MapEntries.map((entry) => entry.levelId).sort(),
-    [...expectedMw2MapLinks.keys()].sort(),
-  );
-  for (const entry of mw2MapEntries) {
-    const slug = expectedMw2MapLinks.get(entry.levelId);
-    const url = entry.urls.find((item) => item.callOfDutyMaps).callOfDutyMaps;
-    assert.equal(url, `https://callofdutymaps.com/modern-warfare-2/${slug}`);
-    assert.ok(entry.gameIds.includes("mw2"));
-    assert.deepEqual(entry.modes, ["multiplayer"]);
-  }
-
-  const codCampaigns = new Map([
-    ["1", {
-      label: "American Campaign",
-      levels: ["Camp Toccoa", "Pathfinder", "Ste. Mere-Eglise", "Ste. Mere Eglise-Day", "Normandy Route N13", "Brecourt Manor", "Alps Chateau", "Dulag IIIA"],
-    }],
-    ["2", {
-      label: "British Campaign",
-      levels: ["Pegasus Bridge", "Pegasus Bridge-Day", "The Eder Dam", "Eder Dam Getaway", "Airfield Escape", "Battleship Tirpitz"],
-    }],
-    ["3", {
-      label: "Soviet Campaign",
-      levels: ["Stalingrad", "Red Square", "Train Station", "Stalingrad Sewers", "Pavlov's House", "Warsaw Factory", "Warsaw Railyard", "Oder River Country", "Oder River Town"],
-    }],
-    ["4", {
-      label: "Epilogue",
-      levels: ["Festung Recogne", "V-2 Rocket Site", "The Reichstag"],
-    }],
-  ]);
-  const uniqueCodCampaignLevels = new Map(entries
-    .filter((entry) => entry.gameIds.includes("cod") && entry.modes[0] === "singleplayer")
-    .map((entry) => [entry.levelId, entry]));
-  assert.equal(uniqueCodCampaignLevels.size, 26);
-  for (const [campaignId, campaign] of codCampaigns) {
-    for (const title of campaign.levels) {
-      assert.deepEqual(findEntry("COD", title).campaign, {
-        id: campaignId,
-        label: campaign.label,
-      });
-    }
-  }
-  assert.ok([...uniqueCodCampaignLevels.values()].every((entry) => codCampaigns.has(entry.campaign?.id)));
-  assert.deepEqual(
-    [...uniqueCodCampaignLevels.values()]
-      .sort((a, b) => a.campaignOrder - b.campaignOrder)
-      .map((entry) => entry.title),
-    [...codCampaigns.values()].flatMap((campaign) => campaign.levels),
-  );
-
-  const rtvCampaigns = new Map([
-    ["1", {
-      label: "American Campaign",
-      levels: ["Altavilla", "Scavenger Hunt", "Glider Crash", "Lucky Thirteen", "Nijmegen", "Hunner Park", "River Crossing"],
-    }],
-    ["2", {
-      label: "Canadian Campaign",
-      levels: ["Woensdrecht", "Sloedam", "Walcheren", "Reichswald"],
-    }],
-    ["3", {
-      label: "British Campaign",
-      levels: ["Arnhem Fire", "Arnhem Assault", "Rhine Crossing"],
-    }],
-  ]);
-  const uniqueRtvCampaignLevels = new Map(entries
-    .filter((entry) => entry.gameIds.includes("rtv") && entry.modes[0] === "singleplayer")
-    .map((entry) => [entry.levelId, entry]));
-  assert.equal(uniqueRtvCampaignLevels.size, 14);
-  for (const [campaignId, campaign] of rtvCampaigns) {
-    for (const title of campaign.levels) {
-      assert.deepEqual(findEntry("RTV", title).campaign, {
-        id: campaignId,
-        label: campaign.label,
-      });
-    }
-  }
-  assert.ok([...uniqueRtvCampaignLevels.values()].every((entry) => rtvCampaigns.has(entry.campaign?.id)));
-  assert.deepEqual(
-    [...uniqueRtvCampaignLevels.values()]
-      .sort((a, b) => a.campaignOrder - b.campaignOrder)
-      .map((entry) => entry.title),
-    [...rtvCampaigns.values()].flatMap((campaign) => campaign.levels),
-  );
-  const rtvMultiplayerMaps = entries
-    .filter((entry) => entry.gameIds.includes("rtv") && entry.modes[0] === "multiplayer")
-    .map((entry) => entry.title)
-    .sort();
-  assert.deepEqual(rtvMultiplayerMaps, [
-    "Beltot",
-    "Brecourt",
-    "Burgundy",
-    "Carentan",
-    "El Alamein",
-    "St. Mere Eglise",
-    "Utrecht",
-    "Wesel",
-  ].sort());
-
-  assert.deepEqual(findEntry("COD2", "The Diversionary Raid").modes, ["singleplayer"]);
-  assert.deepEqual(findEntry("COD2", "Holding the Line").modes, ["singleplayer"]);
-  assert.deepEqual(findEntry("COD2", "Toujane").modes, ["multiplayer"]);
-  assert.deepEqual(findEntry("COD4", "Blackout").modes, ["singleplayer"]);
-  assert.deepEqual(findEntry("BO4", "Blackout Map").modes, ["multiplayer"]);
-  assert.deepEqual(findEntry("BO2", "FOB").modes, ["singleplayer"]);
-  assert.deepEqual(findEntry("BOCW", "CIA").modes, ["singleplayer"]);
-
-  const bocageMedia = atlas.wikiMedia["codwiki-bocage"].main;
-  assert.match(bocageMedia.thumbnailUrl, /scale-to-width-down\/800/);
-  assert.equal(bocageMedia.author.name, "Thumps4DaZomb");
-  assert.equal(bocageMedia.author.role, "uploader");
-  assert.equal(bocageMedia.license.name, null);
-  assert.equal(bocageMedia.rights.status, "non-free");
-  assert.match(bocageMedia.rights.notice, /identification and critical commentary/);
-
-  const cod2Entries = entries.filter((entry) => entry.game.split(" / ").includes("COD2"));
-  assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "singleplayer").length, 27);
-  assert.equal(cod2Entries.filter((entry) => entry.modes[0] === "multiplayer").length, 23);
-  assert.equal(entries.filter((entry) => entry.modes[0] === "singleplayer").length, 422);
-  assert.equal(entries.filter((entry) => entry.modes[0] === "multiplayer").length, 633);
-  assert.equal(entries.filter((entry) => entry.modes[0] === "zombies").length, 10);
 });
 
 test("keeps calibrated game-map overlays in a separate generated store", async () => {

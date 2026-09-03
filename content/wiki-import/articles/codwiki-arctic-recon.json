@@ -10,7 +10,7 @@
     "label": null,
     "url": null
   },
-  "mapStyle": "multiplayer",
+  "mapStyle": "special-ops",
   "mapStyleDetail": null,
   "mapStyleConfidence": "curated",
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",

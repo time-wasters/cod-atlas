@@ -8,6 +8,7 @@ type RelatedLevel = { group: AtlasGroupDto; entry: AtlasEntryDto };
 export type RelatedLevelsViewModel = {
   ariaLabel: string;
   campaign: boolean;
+  collectionKind: "campaign" | "update" | "region";
   expanded: boolean;
   gameIcon: { external: boolean; gameId: string; src: string } | null;
   hiddenCount: number;
@@ -73,14 +74,14 @@ export function RelatedLevelsPanel({
                 )}
                 <span className="intel-entry-copy">
                   <strong>{entry.title}</strong>
-                  <span>{locationName(entry)}{viewModel.campaign ? "" : ` · ${entry.game}`}</span>
+                  <span>{locationName(entry)}{viewModel.collectionKind === "region" ? ` · ${entry.game}` : ""}</span>
                 </span>
               </button>
             </div>
           ))}
           {viewModel.hiddenCount > 0 && (
             <button className="more-row" type="button" aria-expanded="false" aria-controls="related-level-list" onClick={onExpand}>
-              + {viewModel.hiddenCount} more {viewModel.hiddenCount === 1 ? "level" : "levels"} in this {viewModel.campaign ? "campaign" : "region"}
+              + {viewModel.hiddenCount} more {viewModel.hiddenCount === 1 ? "level" : "levels"} in this {viewModel.collectionKind}
             </button>
           )}
           {viewModel.expanded && viewModel.totalCount > 8 && (

@@ -9,16 +9,16 @@ locations:
   - id: main
     country: France
     region: Normandy
-    city: L'Orée-d'Écouves
-    landmark: Char Sherman Valois (Carrefour de la Croix de Médavy)
-    latitude: 48.55018
-    longitude: 0.04873
+    city: Tanville
+    landmark: Carrefour de la Croix de Médavy
+    latitude: 48.5504
+    longitude: 0.0484
     precision: approximate
     confidence: medium
     method: manual-approximate
     primary: true
     urls:
-      - googleMaps: https://www.google.com/maps/search/?api=1&query=Char+Sherman+Valois%2C+Carrefour+de+la+Croix+de+M%C3%A9davy%2C+France
+      - googleMaps: https://www.google.com/maps/search/?api=1&query=Carrefour+de+la+Croix+de+M%C3%A9davy%2C+Tanville%2C+France
       - wikipedia: https://en.wikipedia.org/wiki/For%C3%AAt_d%27%C3%89couves
       - callOfDutyMaps: https://callofdutymaps.com/call-of-duty-3/argentan/
 ---
@@ -27,110 +27,134 @@ locations:
 > with AI assistance and should be reviewed against the cited sources before
 > being treated as authoritative.
 
-## The Map in the Game
+## The Mission in the Game
 
-*Argentan* is a multiplayer map in *Call of Duty 3*. The Call of Duty Wiki's
-location data is more specific than the title alone: the Atlas Wiki import gives
-**"Forêt d'Écouves, Argentan, France"** as the map location. Call of Duty Maps
-similarly describes the setting as a battle in the "deep woods" of Argentan,
-with a trench and a raised route useful to snipers.
+*Argentan* is a multiplayer map in *Call of Duty 3*. As a multiplayer map it
+has **no campaign mission narrative, playable protagonist, unit assignment,
+mission date, briefing, route, or historical objective of its own**. The CoD
+Atlas Wiki import gives its location as **“Forêt d'Écouves, Argentan, France”**,
+while Call of Duty Maps describes a battle in the deep woods of Argentan with
+trenches, a raised route suitable for sniping, thick surrounding forest, small
+hills, bushes and lookout towers. The map also supports drivable motorcycles.
 
-The playable space is therefore clearly presented as a **forest battlefield**,
-not as the built-up center of Argentan. Contemporary multiplayer guides describe
-heavy foliage and soft cover, bunkers, a long trench, small outposts and elevated
-sniping positions. Motorcycles are also available on the map. These details are
-useful for identifying the intended landscape, but they do not establish a
-one-to-one reconstruction of a particular surviving road, bunker or trench in
-Forêt d'Écouves.
+The important campaign relationship is explicit rather than inferred from
+visual similarity. The singleplayer mission *The Forest* (`cod3-the-forest`) is
+set in **Forêt d'Écouves** and the Call of Duty Wiki identifies **Argentan** as
+its multiplayer map. *The Forest* depicts Private Nichols and the U.S. 90th
+Infantry Division clearing the forest so the Second Battalion can move through.
+That documented relationship makes the forest itself a stronger geographic
+anchor for *Argentan* than the modern center of the town of Argentan.
 
-## Relation to *The Forest* Campaign Mission
+## The Real Place & Differences
 
-The strongest campaign connection is explicit rather than inferred. The Call of
-Duty Wiki identifies **Argentan** as the multiplayer map associated with the
-campaign mission *The Forest*. That mission is set in **Forêt d'Écouves, France**
-on 11 August 1944 and follows Private Nichols and the 90th Infantry Division as
-they clear the wooded area so the Second Battalion can move through.
+The **Forêt d'Écouves** is a real forest massif in the Orne department of
+Normandy, south of Argentan and north of Alençon. It was an important obstacle
+during the Allied advance in August 1944. French Ministry of the Armed Forces
+history describes German forces holding the forest after the liberation of
+Alençon and the French 2nd Armoured Division maneuvering around and through the
+massif on the way toward Carrouges, Sées, Écouché and Argentan. Orne archival
+and departmental sources likewise place fighting in and around the forest during
+12–14 August.
 
-This relationship is important for the marker. The multiplayer map's title by
-itself points toward the town of Argentan, but the multiplayer Wiki location and
-the linked campaign mission both point instead to the **Forêt d'Écouves massif**.
-The current campaign Markdown on the branch still contains a France-level
-fallback coordinate, but its imported Wiki record already names Forêt d'Écouves.
-That fallback should therefore not be treated as evidence that the forest cannot
-be localized more precisely.
+The multiplayer map is therefore best classified as a **plausible
+inspiration/analogue tied to a confirmed real forest**, not as a confirmed
+one-to-one reconstruction of a particular trench system or road. Its dense
+woods, hills and military positions suit the real Forêt d'Écouves setting, but
+no reliable source found in this research identifies the map's trenches,
+lookout towers, “high road,” motorcycle routes or exact combat space with a
+surviving real layout.
 
-The game should not be read as a literal historical order of battle. The
-campaign's Nichols/90th Infantry Division action is a fictionalized playable
-mission. The best-documented fighting in Forêt d'Écouves immediately afterward
-involved General Leclerc's French 2e Division Blindée and elements of the German
-9. Panzer-Division on 12-14 August 1944. The campaign relationship supports the
-**place**, not an assertion that the multiplayer map reproduces one specific
-historical engagement.
+The title **Argentan** should not be read as evidence that the playable space is
+inside Argentan's urban center. The locally imported Wiki location explicitly
+adds Forêt d'Écouves, and the documented link to *The Forest* reinforces that
+interpretation. The forest lies south of Argentan; using the town center would
+therefore preserve the title but lose the stronger game-geography evidence.
 
-## The Real Place & Historical Context
+## The Real Mission & Differences
 
-Forêt d'Écouves is a real forest massif in the Orne department of Normandy,
-south of Argentan. Departmental history describes hard fighting in this sector
-from 12 to 14 August 1944 as the 2e Division Blindée fought German armor in and
-around the forest while securing the route toward Argentan. The Département de
-l'Orne specifically identifies the Croix de Médavy sector, the nearby Les Gateys
-cemetery and the displayed Sherman **Valois** as surviving memory sites for those
-fights.
+There is no real historical “Argentan multiplayer mission.” The closest
+supported context is the fighting for **Forêt d'Écouves on 12–14 August 1944**
+and the subsequent Allied movement toward Argentan.
 
-An older Département de l'Orne historical feature gives an especially useful
-caution for the marker: it records a violent fight at **Croix-de-Médavy** on the
-evening of 12 August, but says the Sherman *Valois* displayed at the crossroads
-was **destroyed elsewhere** and later installed there. A Commune d'Écouves
-historical document likewise treats the tank at the top of the forest as a
-witness or memorial to the violent armored fighting in the region.
+This history also shows why the campaign mission *The Forest* must not be
+treated literally. Its game date is **11 August 1944 at 1600**, with Nichols of
+the 90th Infantry Division clearing Forêt d'Écouves. The 90th Infantry
+Division's August after-action report instead records that on **12 August** XV
+Corps initially ordered the division toward the forest, but then ordered the
+division **not to commit into the forest**, allowing reconnaissance elements
+only. The report says one battalion of the 359th Infantry moved north through
+the forest late on **13 August**, and that on **14 August** two battalions of the
+359th Infantry and one battalion of the 357th were ordered to mop up the forest,
+which the report says was completed without incident.
 
-Accordingly, the present-day tank is useful as a named, geocodable battlefield
-**anchor**, but it is not evidence that the multiplayer map depicts the exact
-spot where that vehicle was knocked out. Nor is there evidence that the game's
-bunker/trench complex is a surveyed reconstruction of Croix de Médavy.
+Meanwhile, French official history records the **2nd French Armoured Division**
+fighting the German armoured forces around Écouves during 12–13 August. Orne's
+departmental history specifically records a violent engagement at
+**Croix-de-Médavy on the evening of 12 August** and describes the broader taking
+of the Forêt d'Écouves as a notable part of Leclerc's maneuver toward the
+Argentan plain.
+
+The singleplayer mission therefore compresses and rearranges real geography,
+units and chronology. The forest setting is historically strong, but the game's
+11 August U.S. clearing action and its specific objectives are not a documented
+literal counterpart. The multiplayer map inherits the forest association from
+that fictionalized campaign space; it does not inherit a historical mission
+narrative.
 
 ## Marker Position Explanation
 
-The previous marker, **`48.74441, -0.02023`**, is the Argentan city marker derived
-from the map title. It is **not a country fallback**: the existing file already
-uses `precision: city`, `confidence: high` and `method: title`. However, it is too
-broad for the evidence now available because the project's own imported Wiki
-record explicitly refines the setting to **Forêt d'Écouves**, and *The Forest*
-campaign mission independently supplies the same forest setting while naming
-Argentan as its multiplayer counterpart.
+The stored marker is **`48.5504, 0.0484`**, at the **Carrefour de la Croix de
+Médavy** in the Forêt d'Écouves near Tanville.
 
-The revised marker is **`48.55018, 0.04873`**, at the current **Char Sherman
-Valois / Carrefour de la Croix de Médavy** memorial site inside Forêt d'Écouves.
-OpenStreetMap-derived location data places the displayed tank at those
-coordinates, while a battlefield-site directory gives the locality as
-L'Orée-d'Écouves and the address as Carrefour de la Croix de Médavy. The point is
-about **22 km south of the previous Argentan city marker**, moving the Atlas from
-a title-based town-center location into the forest explicitly named by the map's
-source data.
+This point was chosen because it is a named, documented battlefield anchor
+inside the forest represented by the game. An Orne departmental historical
+publication states that a violent fight took place at **Croix-de-Médavy on
+12 August 1944**. A more recent Conseil départemental de l'Orne page also
+identifies the Forêt d'Écouves sector as the scene of hard fighting by the 2nd
+French Armoured Division against German forces between 12 and 14 August and
+names the **Char Valois at the Médavy crossroads** among the surviving memory
+sites.
 
-This is a more precise **geographical fit**, but the metadata intentionally uses
-**`precision: approximate`**, **`confidence: medium`** and
-**`method: manual-approximate`**. The coordinate is exact for the modern memorial
-anchor, not for the fictional multiplayer battlefield. No reliable source found
-identifies the game's trench, bunker complex, outposts or high road with this
-specific crossroads. Promoting the level itself to `exact` or `high` confidence
-would overstate the evidence.
+The point is intentionally stored as **`precision: approximate`**,
+**`confidence: medium`** and **`method: manual-approximate`**. The evidence
+strongly supports Forêt d'Écouves and supports Croix-de-Médavy as a real
+battlefield anchor, but it does **not** show that the multiplayer map is a
+surveyed reconstruction of this crossroads. The Orne historical source further
+warns that the Sherman *Valois* displayed there was **destroyed elsewhere**;
+the tank is a memorial at the crossroads, not proof that every depicted event
+occurred at that exact vehicle position.
 
-The stored Google Maps URL searches for the named memorial at Croix de Médavy;
-the Atlas marker uses the separately curated coordinates above rather than
-coordinates encoded in that URL.
+The previous marker, **`48.74441, -0.02023`**, was a `city`/`high`/`title`
+marker in Argentan itself. It was not a country or region fallback, but the new
+point is still a meaningful evidence-based refinement: the Wiki import gives
+Forêt d'Écouves as the multiplayer location, *The Forest* explicitly links
+Argentan as its multiplayer map, and independent historical sources document
+the forest as the relevant August 1944 combat area. Moving the marker south into
+the forest is therefore better supported than keeping a title-derived Argentan
+town-center coordinate.
+
+A second strong candidate is the **Nécropole nationale Les Gateys**, a national
+cemetery in the forest containing soldiers of the 2nd Armoured Division who
+died during the liberation fighting. It is an excellent memorial to the wider
+forest battle, but Croix-de-Médavy is preferred here because the departmental
+historical source explicitly identifies a violent combat at that named
+crossroads. The marker must still not be read as the exact position of the
+multiplayer trenches, towers, roads, motorcycles, spawns or objectives.
+
+The stored Google Maps URL searches for the real named place **Carrefour de la
+Croix de Médavy, Tanville, France**. The Atlas marker uses the separately
+curated coordinates above rather than coordinates encoded in the Maps URL.
 
 ## Sources
 
-- [Call of Duty Wiki - Argentan](https://callofduty.fandom.com/wiki/Argentan) - Identifies the map and supports the Forêt d'Écouves / Argentan location used by the Atlas Wiki import.
-- [Call of Duty Maps - Argentan](https://callofdutymaps.com/call-of-duty-3/argentan/) - Supports the deep-woods setting, trench/high-road description and motorcycles.
-- [CoD Atlas Wiki import - Argentan](https://raw.githubusercontent.com/time-wasters/cod-atlas/application-architecture-rework/content/wiki-import/articles/codwiki-argentan.json) - Preserves the imported Wiki location as "Forêt d'Écouves, Argentan, France" and confirms the multiplayer classification.
-- [Call of Duty Wiki - The Forest](https://callofduty.fandom.com/wiki/The_Forest) - Supports the campaign mission's Forêt d'Écouves setting, date/unit information and its explicit multiplayer-map relationship to Argentan.
-- [CoD Atlas Wiki import - The Forest](https://raw.githubusercontent.com/time-wasters/cod-atlas/application-architecture-rework/content/wiki-import/articles/codwiki-the-forest.json) - Preserves Forêt d'Écouves as the campaign location and the mission's sequence relationships.
-- [CoD Atlas - current The Forest level file](https://raw.githubusercontent.com/time-wasters/cod-atlas/application-architecture-rework/content/levels/cod3/campaign/8-the-forest.md) - Shows that the current campaign Markdown still uses a France-level fallback despite the more specific imported source location.
-- [GameFAQs - Call of Duty 3 Multiplayer Guide](https://gamefaqs.gamespot.com/ps2/932965-call-of-duty-3/faqs/45778) - Contemporary gameplay description of Argentan as a foliage-heavy forest map with bunkers, trench systems and outposts.
-- [Conseil départemental de l'Orne - Route through Forêt d'Écouves](https://www.orne.fr/actualite/apres-la-refection-du-pont-du-vignage-la-route-de-la-foret-decouves-va-rouvrir) - Official local-authority account of the 12-14 August 1944 fighting in the forest sector and the advance toward Argentan; also identifies Les Gateys and Char Valois as nearby memory sites.
-- [Conseil départemental de l'Orne - *Orne Magazine* No. 89, "Des chars dans le paysage"](https://www.orne.fr/sites/default/files/2020-01/om89_0.pdf) - Records the violent fighting at Croix-de-Médavy and, importantly, states that the displayed Valois was destroyed elsewhere, supporting its use as a memorial anchor rather than an exact event site.
-- [Commune d'Écouves - *La libération de Radon les 12 et 13 août 1944*](https://www.commune-ecouves.fr/wp-content/uploads/2025/03/Liberation-de-Radon-13-aout-1944-11-03-2025-1.pdf) - Local historical account describing the forest as a German defensive refuge and the Valois memorial as a witness to violent armored fighting in the region.
-- [D-Day Overlord - Char Sherman "Valois" de la Croix de Médavy](https://www.dday-overlord.com/map_point/char-sherman-valois-croix-de-medavy) - Supports the modern locality/address and the memorial's relationship to fighting between Forêt d'Écouves and Argentan.
-- [Mapcarta / OpenStreetMap - Char Sherman 'Valois'](https://mapcarta.com/N767187843) - Supports the present-day memorial coordinates `48.55018, 0.04873` and OSM historic-site identification.
+- [Call of Duty Wiki — Argentan](https://callofduty.fandom.com/wiki/Argentan) — game-source page for the multiplayer map; used together with the locally imported Wiki record for the Forêt d'Écouves / Argentan location.
+- [CoD Atlas Wiki import — Argentan](https://raw.githubusercontent.com/time-wasters/cod-atlas/application-architecture-rework/content/wiki-import/articles/codwiki-argentan.json) — preserves the imported multiplayer location as “Forêt d'Écouves, Argentan, France” and confirms the map is classified as multiplayer.
+- [Call of Duty Maps — Argentan](https://callofdutymaps.com/call-of-duty-3/argentan/) — supports the deep-woods setting, trench/high-road gameplay description, surrounding forest, hills, lookout towers and motorcycles.
+- [Call of Duty Wiki — The Forest](https://callofduty.fandom.com/wiki/The_Forest) — supports the singleplayer relationship: Forêt d'Ecouves location, 11 August 1944 date, Private Nichols / 90th Infantry Division context, forest-clearing objective, and “Argentan” as the multiplayer map.
+- [CoD Atlas Wiki import — The Forest](https://raw.githubusercontent.com/time-wasters/cod-atlas/application-architecture-rework/content/wiki-import/articles/codwiki-the-forest.json) — supports the repository's imported Forêt d'Ecouves location and 11 August 1944 date for the related campaign mission.
+- [Ministère des Armées — Août 1944, la 2ème DB en Normandie](https://www.defense.gouv.fr/chemins-memoire/histoire-memoires/ressources-historiques/seconde-guerre-mondiale/resister/france-libre/aout-1944) — official French history describing German forces in Forêt d'Écouves and the 2nd Armoured Division's maneuver through and around the forest toward Carrouges, Sées, Écouché and Argentan.
+- [90th Infantry Division — August 1944 After Action Report](https://www.90thidpg.us/Research/90thDivision/History/AAR/august44.html) — primary-derived division report establishing the 12–14 August chronology: initial restriction on committing the division into the forest, a 359th Infantry battalion moving through on 13 August, and the 14 August mop-up by elements of the 359th and 357th Infantry.
+- [Archives départementales de l'Orne — Du 6 juin au 12 août 1944, l'Orne dans l'impatience](https://archives.orne.fr/index.php/document/du-6-juin-au-12-aout-1944-lorne-dans-limpatience) — local archival account confirming the 2nd Armoured Division's movement through or around the Forêt d'Écouves after Alençon and toward Écouché and the Argentan area.
+- [Conseil départemental de l'Orne — Des chars dans le paysage](https://www.orne.fr/sites/default/files/2020-01/om89_0.pdf) — documents the violent fight at Croix-de-Médavy on 12 August 1944, explains the wider fighting in Forêt d'Écouves, and explicitly notes that the displayed Sherman *Valois* was destroyed elsewhere.
+- [Conseil départemental de l'Orne — Après la réfection du Pont du Vignage, la route de la forêt d'Écouves va rouvrir](https://www.orne.fr/actualite/apres-la-refection-du-pont-du-vignage-la-route-de-la-foret-decouves-va-rouvrir) — independently identifies the forest sector as a 12–14 August battlefield between the 2nd Armoured Division and German forces and names the Char Valois at the Médavy crossroads as a local memory site.
+- [Chemins de mémoire — La nécropole nationale Les Gateys](https://www.cheminsdememoire.gouv.fr/fr/les-gateys-cimetiere-de-la-2eme-db) — authoritative memorial source confirming that soldiers killed in Forêt d'Écouves were buried at Les Gateys and supporting it as a strong but rejected alternative battlefield-memory anchor.

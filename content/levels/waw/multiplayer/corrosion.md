@@ -4,7 +4,7 @@ title: Corrosion
 games:
   - waw
 mode: multiplayer
-map-update:
+content-update:
   id: "3"
   label: Map Pack 2
 wikiArticle: codwiki-corrosion

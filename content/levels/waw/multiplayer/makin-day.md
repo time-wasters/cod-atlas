@@ -4,7 +4,7 @@ title: Makin Day
 games:
   - waw
 mode: multiplayer
-map-update:
+content-update:
   id: "1"
   label: February Update
 wikiArticle: codwiki-makin-day

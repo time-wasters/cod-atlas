@@ -15,6 +15,7 @@ test("atlas URL parser applies concise defaults", () => {
     methods: [],
     showSingleplayer: true,
     showMultiplayer: false,
+    showSpecialOps: false,
     showZombies: false,
     sidebarListMode: "locations",
     levelId: null,
@@ -37,18 +38,29 @@ test("atlas URL parser preserves legacy precision links", () => {
   );
 });
 
+test("atlas URL parser supports content-update browsing", () => {
+  assert.equal(
+    parseAtlasUrlState("https://example.com/?browse=updates").sidebarListMode,
+    "updates",
+  );
+});
+
 test("atlas URL parser supports every mode-filter encoding", () => {
-  for (const [mode, showSingleplayer, showMultiplayer, showZombies] of [
-    ["all", true, true, true],
-    ["both", true, true, false],
-    ["multiplayer", false, true, false],
-    ["zombies", false, false, true],
-    ["singleplayer,zombies", true, false, true],
-    ["none", false, false, false],
+  for (const [mode, showSingleplayer, showMultiplayer, showSpecialOps, showZombies] of [
+    ["all", true, true, true, true],
+    ["both", true, true, false, false],
+    ["multiplayer", false, true, false, false],
+    ["special-ops", false, false, true, false],
+    ["multiplayer,special-ops", false, true, true, false],
+    ["zombies", false, false, false, true],
+    ["singleplayer,special-ops", true, false, true, false],
+    ["singleplayer,zombies", true, false, false, true],
+    ["none", false, false, false, false],
   ]) {
     const state = parseAtlasUrlState(`https://example.com/?mode=${mode}`);
     assert.equal(state.showSingleplayer, showSingleplayer);
     assert.equal(state.showMultiplayer, showMultiplayer);
+    assert.equal(state.showSpecialOps, showSpecialOps);
     assert.equal(state.showZombies, showZombies);
   }
 });

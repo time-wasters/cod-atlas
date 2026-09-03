@@ -38,6 +38,7 @@ export type AtlasFilterCriteria = {
   methods: ReadonlySet<string>;
   showSingleplayer: boolean;
   showMultiplayer: boolean;
+  showSpecialOps: boolean;
   showZombies: boolean;
 };
 
@@ -89,6 +90,7 @@ export function filterAtlasGroups<
     const matchesMode =
       (criteria.showSingleplayer && entry.modes.includes("singleplayer"))
       || (criteria.showMultiplayer && entry.modes.includes("multiplayer"))
+      || (criteria.showSpecialOps && entry.modes.includes("special-ops"))
       || (criteria.showZombies && entry.modes.includes("zombies"));
 
     return matchesGame

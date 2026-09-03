@@ -6,7 +6,7 @@ title: Shi No Numa
 games:
   - waw
 mode: zombies
-map-update:
+content-update:
   id: "3"
   label: Map Pack 2
 wikiArticle: codwiki-shi-no-numa

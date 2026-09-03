@@ -11,5 +11,9 @@ export type LevelAppearanceDto = {
     label: string;
   } | null;
   campaignOrder?: number;
+  contentUpdate?: {
+    id: string;
+    label: string;
+  } | null;
   metadata?: Record<string, unknown>;
 };

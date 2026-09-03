@@ -52,16 +52,18 @@ all allowed `mode`, `precision`, `confidence`, and `method` values, selection
 guidance, and copy-ready templates for every source record type.
 
 Create a Markdown file under the primary game's directory. If that game is
-already organized by map type, place it in `campaign/`, `multiplayer/`, or
-`zombies/` to match its `mode` field. Currently `cod`, `cod-uo`, `cod-fh`,
-`cod2`, `cod2-bro`, `cod3`, `rtv`, `cod4`, `wz`, `wz2`, and `mwiii` use the
-first two folders; `waw`, `bo`, and `bo6` use all three. Games that have not been reorganized
-retain their existing flat layout.
+already organized by map type, place it in `campaign/`, `multiplayer/`,
+`special-ops/`, or `zombies/` to match its `mode` field. Currently `cod`,
+`cod-uo`, `cod-fh`, `cod2`, `cod2-bro`, `cod3`, `rtv`, `cod4`, `mw2`, `mw3`,
+`bo-nds`, `mw3-nds`, `wz`, `wz2`, and `mwiii` use the first two folders; `mw2` and `mw3`
+also use `special-ops/`, while `waw`, `bo`, `bo-nds`, and `bo6` also use `zombies/`. Games that
+have not been reorganized retain their existing flat layout.
 
 Campaign files in a map-type layout are named
 `<order>-<level-slug>.md`, starting at `1` without leading zeros or gaps.
-Multiplayer, Zombies, and flat-layout files use `<level-slug>.md`. Never repeat the
-primary game ID or include the campaign order in the stable ID. For example,
+Multiplayer, Special Ops, Zombies, and flat-layout files use
+`<level-slug>.md`. Never repeat the primary game ID or include the campaign
+order in the stable ID. For example,
 an `id` of `cod3-example-level` belongs at
 `content/levels/cod3/example-level.md` while `cod-example-level` could belong
 at `content/levels/cod/campaign/27-example-level.md`.
@@ -161,7 +163,7 @@ regression count in the tests and explain the count change in the pull request.
 - The change is limited to one coherent correction or feature.
 - Game and Wiki foreign keys resolve.
 - Location precision reflects the quality of the evidence.
-- Campaign/multiplayer/Zombies classification has been checked.
+- Campaign/Multiplayer/Special Ops/Zombies classification has been checked.
 - Generated data is current.
 - Third-party attribution and licensing are preserved.
 

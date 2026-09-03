@@ -17,7 +17,7 @@ const GAME_SERIES = new Set(["world-war-ii", "modern-warfare", "black-ops", "sta
 const GAME_SUBSERIES = new Set(["main", "reboot", "remaster", "add-on", "spin-off"]);
 const LOCATION_PRECISIONS = new Set(["exact", "approximate", "city", "region", "country", "off-world"]);
 const LOCATION_CONFIDENCES = new Set(["high", "medium", "fallback"]);
-const LEVEL_MODES = new Set(["singleplayer", "multiplayer", "zombies"]);
+const LEVEL_MODES = new Set(["singleplayer", "multiplayer", "special-ops", "zombies"]);
 
 /**
  * Validates an optional campaign object.
@@ -33,6 +33,13 @@ function assertCampaign(value: unknown, path: string): void {
   const campaign = objectValue(value, path);
   stringValue(campaign.id, `${path}.id`);
   stringValue(campaign.label, `${path}.label`);
+}
+
+function assertContentUpdate(value: unknown, path: string): void {
+  if (value === undefined || value === null) return;
+  const contentUpdate = objectValue(value, path);
+  stringValue(contentUpdate.id, `${path}.id`);
+  stringValue(contentUpdate.label, `${path}.label`);
 }
 
 /**
@@ -75,6 +82,7 @@ function assertLevelAppearance(value: unknown, path: string): void {
   stringValue(appearance.bannerKey, `${path}.bannerKey`);
   assertCampaign(appearance.campaign, `${path}.campaign`);
   if (appearance.campaignOrder !== undefined) numberValue(appearance.campaignOrder, `${path}.campaignOrder`);
+  assertContentUpdate(appearance.contentUpdate, `${path}.contentUpdate`);
   if (appearance.metadata !== undefined) objectValue(appearance.metadata, `${path}.metadata`);
 }
 
@@ -100,6 +108,7 @@ function assertAtlasEntry(value: unknown, path: string): void {
   });
   assertCampaign(entry.campaign, `${path}.campaign`);
   if (entry.campaignOrder !== undefined) numberValue(entry.campaignOrder, `${path}.campaignOrder`);
+  assertContentUpdate(entry.contentUpdate, `${path}.contentUpdate`);
   stringValue(entry.wiki, `${path}.wiki`);
   stringValue(entry.wikiArticle, `${path}.wikiArticle`);
   if (entry.verified !== undefined) assertLevelVerification(entry.verified, `${path}.verified`);

@@ -11,6 +11,7 @@ export type AtlasEntryDto = {
   gameIds: string[];
   campaign?: LevelAppearanceDto["campaign"];
   campaignOrder?: number;
+  contentUpdate?: LevelAppearanceDto["contentUpdate"];
   wiki: string;
   wikiArticle: string;
   verified?: LevelVerificationDto;
@@ -24,6 +25,6 @@ export type AtlasEntryDto = {
   method?: string;
   urls?: Partial<Record<"googleMaps" | "wikipedia" | "callOfDutyMaps", string>>[];
   hasLevelNotes: boolean;
-  modes: ("singleplayer" | "multiplayer" | "zombies")[];
+  modes: ("singleplayer" | "multiplayer" | "special-ops" | "zombies")[];
   appearances: LevelAppearanceDto[];
 };

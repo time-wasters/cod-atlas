@@ -20,7 +20,7 @@ export async function loadProgressLevelData(levelsRoot, games) {
       throw new Error(`${filename}: exactly one known owner game is required`);
     }
     if (!isLevelMode(document.data.mode)) {
-      throw new Error(`${filename}: mode must be singleplayer, multiplayer or zombies`);
+      throw new Error(`${filename}: mode must be singleplayer, multiplayer, special-ops or zombies`);
     }
     if (!Array.isArray(document.data.locations)) {
       throw new Error(`${filename}: locations must be an array`);

@@ -1,16 +1,18 @@
 # CoD Atlas
 
 CoD Atlas is an interactive map tracing the real-world geography portrayed
-throughout the Call of Duty series. It connects campaign missions, multiplayer
-maps, and Zombies maps with the countries, regions, cities, landmarks, and historical
-sites they depict, adapt, or draw inspiration from.
+throughout the Call of Duty series. It connects campaign and Special Ops
+missions, multiplayer maps, and Zombies maps with the countries, regions,
+cities, landmarks, and historical sites they depict, adapt, or draw
+inspiration from.
 
 ![CoD Atlas showing its interactive map, filters, and level details](docs/readme_screenshot.png)
 
 ## Explore the geography of the series
 
-Browse the atlas on the map or search for a mission, multiplayer or Zombies map, country,
-or place. Results can be filtered by game, country, series, sub-series,
+Browse the atlas on the map or search for a campaign or Special Ops mission,
+multiplayer or Zombies map, country, or place. Results can be filtered by game,
+country, series, sub-series,
 continent, mode, precision, confidence, and location method. Filters and
 the selected level are stored in the URL, so a view can be shared and revisited
 with the browser's Back and Forward buttons.

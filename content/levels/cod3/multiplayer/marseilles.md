@@ -11,15 +11,15 @@ locations:
     region: Provence-Alpes-Côte d'Azur
     city: Marseille
     latitude: 43.2964
-    longitude: 5.3700
+    longitude: 5.37
     precision: city
     confidence: high
     method: wiki-location
     primary: true
     urls:
+      - callOfDutyMaps: https://callofdutymaps.com/call-of-duty-3/marseilles/
       - googleMaps: https://www.google.com/maps/search/?api=1&query=Marseille%2C+France
       - wikipedia: https://en.wikipedia.org/wiki/Marseille
-      - callOfDutyMaps: https://callofdutymaps.com/call-of-duty-3/marseilles/
 ---
 
 > **AI-generated research note:** The historical summary below was generated
@@ -28,98 +28,124 @@ locations:
 
 ## The Mission in the Game
 
-“Marseilles” is a multiplayer map in *Call of Duty 3*, so it has no mission
-narrative, campaign character, assigned unit, briefing or historical objective.
-The Call of Duty Wiki places it in Marseilles, France and describes city streets
-and urban train tracks, with American and German teams. Call of Duty Maps
-likewise describes a large, open, war-damaged French city designed for tank
-fights and long-range engagements, with drivable tanks and light vehicles.
+“Marseilles” is a multiplayer map in *Call of Duty 3*, so it has no campaign
+character, unit, briefing, mission date, route, or historical objective. The
+Call of Duty Wiki identifies the setting as **Marseilles, France**, with American
+and German teams fighting through city streets and urban train tracks; it
+describes the combat as medium-to-long range. Call of Duty Maps likewise presents
+it as a large, open, war-damaged French urban map suited to tank fighting and
+long-range engagements.
 
-The map is explicitly documented as a remake of **Kharkov** from *Call of Duty:
-United Offensive*. That earlier multiplayer map is itself associated by the
-Call of Duty Wiki with the singleplayer levels “Kharkov Outskirts”
-(`cod-uo-kharkov-1`) and “Kharkov Station” (`cod-uo-kharkov-2`); its curated
-atlas record is `cod-uo-karkov`. This establishes a documented layout/content
-ancestry, but not a shared canonical location. “Marseilles” deliberately
-reimagines the Kharkov arena as southern France, and no source found documents a
-direct relationship to a *Call of Duty 3* campaign mission.
+The map has a documented relationship to an earlier title rather than to a
+*Call of Duty 3* campaign mission: both the Call of Duty Wiki and Call of Duty
+Maps state that “Marseilles” is a remake/reimagining of **Kharkov**, the
+multiplayer map from *Call of Duty: United Offensive*. The Kharkov map's Wiki
+record in turn identifies **“Kharkov Outskirts”** and **“Kharkov Station”** as
+its campaign-map sources. That establishes inherited combat-space/layout
+ancestry, not a shared canonical location: the *Call of Duty 3* version is
+explicitly re-themed from Kharkov to Marseille.
+
+No evidence was found for a direct relationship between “Marseilles” and a
+*Call of Duty 3* singleplayer level.
 
 ## The Real Place & Differences
 
-The stated real place is **Marseille**, the modern French spelling of the city
-named “Marseilles” by the map. Both supplied game sources identify Marseille at
-city level, so the old France-wide fallback is unnecessarily broad. The map
-does not name a district, station, street, rail yard or surviving landmark
-inside Marseille.
+The stated place is **Marseille**, in the modern Provence-Alpes-Côte d'Azur
+region of southern France. This is substantially more specific than the
+existing France-wide fallback: the map title itself and both supplied game
+sources directly identify Marseille.
 
-That limit matters because the playable environment is inherited from a map
-originally presented as Kharkov/Kharkiv. The French setting is therefore best
-treated as a **fictionalized adaptation located in Marseille**, not as a
-street-for-street reconstruction of the city. Urban railway tracks are
-consistent with a major port and transport city, but they are not enough to
-identify Marseille-Saint-Charles, a freight yard or another specific rail
-facility. Selecting one of those would create unsupported precision.
+The match should nevertheless be classified as a **composite or fictionalized
+setting** rather than a confirmed reconstruction of a particular Marseille
+district. The strongest reason is the map's documented origin as the Kharkov
+multiplayer layout. Call of Duty Maps explicitly describes Kharkov as being
+reimagined as Marseilles, while the Call of Duty Wiki calls Marseilles a
+remake. The resulting urban streets, rail tracks, destruction, sight lines and
+vehicle spaces therefore cannot safely be treated as a street-for-street model
+of Marseille.
+
+Rail infrastructure is an environmental clue, but no game source names
+Marseille-Saint-Charles, a freight yard, a port railway, a street, a fort or any
+other surviving landmark. Choosing such a feature would imply precision that
+the evidence does not support.
 
 ## The Real Mission & Differences
 
 The closest supported historical context is the **Liberation of Marseille in
-August 1944**, after Operation Dragoon. French Ministry of the Armed Forces
-histories record the Marseille uprising beginning before the arrival of regular
-troops and the 3rd Algerian Infantry Division entering the city on 23 August,
-with French armoured forces and Moroccan tabors also involved. German
-resistance continued until the surrender at the end of the month.
+August 1944**, following Operation Dragoon. French Ministry of the Armed Forces
+histories state that Marseille's Resistance rose before regular Allied troops
+entered the city, and that elements of General Joseph de Goislard de
+Monsabert's 3rd Algerian Infantry Division entered Marseille on 23 August.
+French and North African formations, including the 3rd Algerian Infantry
+Division, armoured elements and Moroccan tabors, fought the German garrison
+until its surrender on 28 August.
 
-That history is context rather than an identification of the multiplayer
-battle. “Marseilles” gives no historical date, operation or objective, and its
-American-versus-German team setup does not mirror the principal ground forces
-that liberated the city, which were predominantly French and North African
-formations alongside the Resistance. No evidence found ties the map's railway
-streets, vehicle fights or individual combat spaces to a documented Marseille
-engagement.
+Official accounts identify fighting at places including Notre-Dame-de-la-Garde,
+Fort Saint-Nicolas, the Prado, Roucas-Blanc, Endoume, Parc Borély, Saint-Charles
+and the port area. These are historically documented Marseille battle sites,
+but **no evidence was found that the multiplayer map represents any one of
+them**.
+
+The game setup also differs from that history. “Marseilles” simply uses
+American versus German multiplayer teams and provides no historical date or
+objective. The principal ground force credited by the French official histories
+with taking Marseille was French, with large numbers of North African troops
+and support from the local Resistance. The multiplayer battle is therefore not
+a documented recreation of the Liberation of Marseille; that campaign is
+historical context for the city only.
 
 ## Marker Position Explanation
 
-The marker is stored at `43.2964, 5.3700`, the published city coordinate for
-**Marseille, France**. It uses `city` precision because the game sources
-explicitly identify Marseille but provide no evidence for a particular
-neighbourhood or landmark. Confidence is `high`, and `wiki-location` is the
-appropriate method because the Call of Duty Wiki's structured location field
-directly names “Marseilles, France”; Call of Duty Maps independently agrees on
-the city.
+The stored marker is `43.2964, 5.37`, the published city coordinate for
+**Marseille, France**. It is intentionally a **city-level** marker. The game
+sources directly establish Marseille as the canonical location, but they do not
+establish a district, station, railway yard, fort, road or other specific point
+inside the city.
 
-This is a clear improvement over the previous `46, 2` France fallback. A
-country centroid was only justified while no more specific evidence had been
-curated, whereas the map title and both supplied references identify Marseille
-directly. **Kharkiv was rejected** despite the remake relationship: it explains
-the inherited map design, but the *Call of Duty 3* version is explicitly
-re-themed and relocated to Marseille. Specific Marseille railway stations,
-Notre-Dame de la Garde and other wartime battle sites were also rejected because
-no game source identifies them as the playable location.
+`precision: city` and `confidence: high` therefore reflect two separate facts:
+the city identification is strong, while intra-city placement is unsupported.
+`method: wiki-location` is used because the Call of Duty Wiki explicitly names
+“Marseilles, France” in its location field, independently reinforced by Call of
+Duty Maps.
 
-The stored Google Maps URL searches for **Marseille, France** by name and does
-not encode the atlas coordinates. The atlas marker uses the separately curated
-city coordinate above. The Wikipedia URL points to the English article for
-Marseille.
+This is a defensible improvement over the previous `46, 2` France fallback.
+That old coordinate represented only the country because no finer research had
+been curated. Here, two game sources directly support Marseille, so retaining a
+country marker would discard available evidence.
+
+**Kharkiv was rejected as a marker candidate** even though the map inherits the
+Kharkov multiplayer layout. That relationship explains geometry and design
+ancestry, not the canonical geography of this *Call of Duty 3* version.
+Likewise, Marseille-Saint-Charles, Notre-Dame-de-la-Garde, Fort Saint-Nicolas
+and other real wartime locations were rejected because no source ties the
+playable map to them specifically.
+
+The Google Maps URL searches the real named place **Marseille, France**. The
+atlas marker uses the separately curated city coordinate above; the Maps URL
+does not encode or determine that coordinate.
 
 ## Sources
 
 - [Call of Duty Wiki — Marseilles](https://callofduty.fandom.com/wiki/Marseilles)
-  — multiplayer status, American-versus-German teams, structured location
-  “Marseilles, France,” urban railway terrain and the explicit remake
+  — supports multiplayer status, American-versus-German teams, the explicit
+  “Marseilles, France” location, urban streets and train tracks, and the remake
   relationship to *United Offensive*'s Kharkov map.
 - [Call of Duty Maps — Marseilles](https://callofdutymaps.com/call-of-duty-3/marseilles/)
-  — independently identifies the Marseille setting and describes Kharkov as
-  reimagined in France, along with the open urban layout, vehicles and
-  long-range/tank-focused combat.
-- [Call of Duty Wiki — Kharkov (Map)](https://callofduty.fandom.com/wiki/Kharkov_(Map))
-  — identifies the original *United Offensive* multiplayer map and its explicit
-  association with the “Kharkov Outskirts” and “Kharkov Station” campaign maps.
-- [French Ministry of the Armed Forces — Liberation of Marseille, 28 August 1944](https://www.defense.gouv.fr/terre/mieux-nous-connaitre/histoire-larmee-terre/lengagement-larmee-terre-seconde-guerre-mondiale/liberation-1)
-  — authoritative chronology for the uprising, entry of the 3rd Algerian
-  Infantry Division and the French-led fighting for Marseille.
-- [Chemins de mémoire — 28 August 1944: the Liberation of Marseille](https://www.defense.gouv.fr/chemins-memoire/histoire-memoires/ressources-historiques/seconde-guerre-mondiale/operations-militaires/1944-15)
-  — additional official context for the German garrison, French and North
-  African forces, and the final surrender.
+  — independently identifies Marseille and describes Kharkov as reimagined
+  there, with a large open urban battlefield, tanks and long-range fighting.
+- [Call of Duty Wiki — Kharkov (Map)](https://callofduty.fandom.com/wiki/Kharkov_%28Map%29)
+  — supports the original *United Offensive* multiplayer map and its documented
+  campaign-map relationship to “Kharkov Outskirts” and “Kharkov Station.”
+- [Ministère des Armées — Libération de Marseille le 28 août 1944](https://www.defense.gouv.fr/terre/mieux-nous-connaitre/histoire-larmee-terre/lengagement-larmee-terre-seconde-guerre-mondiale/liberation-1)
+  — authoritative overview of the Resistance uprising, the 3rd Algerian
+  Infantry Division's entry into Marseille and the five-day battle.
+- [Ministère des Armées / Chemins de mémoire — 28 août 1944: La libération de Marseille](https://www.defense.gouv.fr/chemins-memoire/histoire-memoires/ressources-historiques/seconde-guerre-mondiale/operations-militaires/1944-15)
+  — supports the German garrison, French and North African forces, chronology
+  and surrender.
+- [Chemins de mémoire — Libérer la France](https://www.cheminsdememoire.gouv.fr/fr/revue/liberer-la-france)
+  — provides additional official detail on fighting in the Saint-Charles,
+  Notre-Dame-de-la-Garde and port sectors, used only as historical context and
+  not as proof of the multiplayer map's exact location.
 - [Wikipedia — Marseille](https://en.wikipedia.org/wiki/Marseille)
-  — English-language place article, modern spelling and administrative context,
-  and the published city coordinate `43.2964, 5.3700` used for the marker.
+  — supports the modern place name, region and published city coordinate
+  `43.2964, 5.37` used for the city-level marker.

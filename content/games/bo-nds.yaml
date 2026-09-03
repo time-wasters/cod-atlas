@@ -1,0 +1,12 @@
+id: bo-nds
+code: BO:NDS
+label: Black Ops (Nintendo DS)
+labelLong: "Call of Duty: Black Ops (Nintendo DS)"
+released: 2010-11-09
+series: black-ops
+subseries: spin-off
+images:
+  steamgriddb:
+    game: 10034
+    icon: 7719
+    file: 48d4167a0f3bc10686a1ad20a8008c73.png

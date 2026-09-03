@@ -4,7 +4,7 @@ title: Courtyard
 games:
   - waw
 mode: multiplayer
-map-update:
+content-update:
   id: "0"
   label: Included
 wikiArticle: codwiki-courtyard-world-at-war

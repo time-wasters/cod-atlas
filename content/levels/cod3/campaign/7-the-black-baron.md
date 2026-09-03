@@ -50,7 +50,7 @@ That is an unusually close match to the game's **12:30** start time and central 
 
 The playable environment should not, however, be treated as a literal reconstruction. The game's graveyard, village streets, walls and final barn/farm encounter are arranged for gameplay. The precise path followed by Bohater's Firefly cannot be mapped onto the real battlefield from the available evidence.
 
-## The Real Battle & Differences
+## The Real Mission & Differences
 
 The historical figure behind the mission is Michael Wittmann, commander of Tiger 007 of schwere SS-Panzer-Abteilung 101. His tank was destroyed during the German counterattack of 8 August 1944 in the fields between the Allied positions around Cramesnil/Saint-Aignan-de-Cramesnil and Gaumesnil.
 

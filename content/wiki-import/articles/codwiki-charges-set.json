@@ -10,7 +10,7 @@
     "label": "Shooting Range/Obstacle Course, somewhere in Alberta, Canada",
     "url": null
   },
-  "mapStyle": "multiplayer",
+  "mapStyle": "special-ops",
   "mapStyleDetail": null,
   "mapStyleConfidence": "curated",
   "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",

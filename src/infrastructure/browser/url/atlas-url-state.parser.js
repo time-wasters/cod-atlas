@@ -25,6 +25,7 @@ export function parseAtlasUrlState(input) {
       ? ["country"]
       : commaSeparatedValues(url.searchParams, "precision");
 
+  const browse = url.searchParams.get("browse");
   return {
     query: url.searchParams.get("q") ?? "",
     gameId: url.searchParams.get("game") || "all",
@@ -36,7 +37,7 @@ export function parseAtlasUrlState(input) {
     confidences: commaSeparatedValues(url.searchParams, "confidence"),
     methods: commaSeparatedValues(url.searchParams, "method"),
     ...mode,
-    sidebarListMode: url.searchParams.get("browse") === "campaigns" ? "campaigns" : "locations",
+    sidebarListMode: browse === "campaigns" || browse === "updates" ? browse : "locations",
     levelId: url.searchParams.get("level") || null,
     locationId: url.searchParams.get("location") || null,
   };

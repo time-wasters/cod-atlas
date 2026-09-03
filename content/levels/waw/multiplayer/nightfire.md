@@ -4,7 +4,7 @@ title: Nightfire
 games:
   - waw
 mode: multiplayer
-map-update:
+content-update:
   id: "2"
   label: Map Pack 1
 wikiArticle: codwiki-nightfire

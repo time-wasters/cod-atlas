@@ -4,7 +4,7 @@ title: Upheaval
 games:
   - waw
 mode: multiplayer
-map-update:
+content-update:
   id: "0"
   label: Included
 wikiArticle: codwiki-upheaval

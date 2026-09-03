@@ -30,6 +30,7 @@ export function useFilteredAtlasData({
     query,
     showMultiplayer,
     showSingleplayer,
+    showSpecialOps,
     showZombies,
   } = criteria;
   const games = useMemo(
@@ -52,6 +53,7 @@ export function useFilteredAtlasData({
         query,
         showMultiplayer,
         showSingleplayer,
+        showSpecialOps,
         showZombies,
       },
     }),
@@ -69,6 +71,7 @@ export function useFilteredAtlasData({
       query,
       showMultiplayer,
       showSingleplayer,
+      showSpecialOps,
       showZombies,
     ],
   );

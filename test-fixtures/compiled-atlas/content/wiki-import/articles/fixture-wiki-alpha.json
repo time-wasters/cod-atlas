@@ -1,0 +1,8 @@
+{
+  "id": "fixture-wiki-alpha",
+  "sourceUrl": "https://example.com/wiki/alpha",
+  "images": {
+    "main": null,
+    "map": null
+  }
+}

@@ -7,6 +7,12 @@ export function LevelModeIcon({ mode }: { mode: AtlasEntryDto["modes"][number] }
       <circle cx="9" cy="10" r="1" /><circle cx="15" cy="10" r="1" /><path d="m10 14 2-2 2 2" />
     </svg>
   );
+  if (mode === "special-ops") return (
+    <svg className="mission-mode-icon" viewBox="0 0 24 24" role="img" aria-label="Special Ops">
+      <circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" />
+      <path d="M12 2v4M12 18v4M2 12h4M18 12h4" />
+    </svg>
+  );
   return mode === "multiplayer" ? (
     <svg className="mission-mode-icon" viewBox="0 0 24 24" role="img" aria-label="Multiplayer">
       <circle cx="8" cy="8" r="3" /><circle cx="16" cy="9" r="2.5" />
