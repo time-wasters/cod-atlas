@@ -107,6 +107,9 @@ export default defineConfig({
   publicDir: path.resolve("public"),
   plugins: [react(), levelMarkdownRoutes()],
   build: {
+    // The interactive client intentionally embeds the generated atlas data.
+    // Keep a project-specific raw-size guard; the emitted chunk compresses well.
+    chunkSizeWarningLimit: 3_000,
     outDir: path.resolve("dist-static"),
     emptyOutDir: true,
   },

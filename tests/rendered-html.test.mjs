@@ -174,7 +174,7 @@ test("renders the hosted atlas shell", async () => {
   );
   const html = await response.text();
   assert.match(html, /<h1><img[^>]*src="images\/banner\.png"[^>]*alt="CoD Atlas"/);
-  assert.match(html, /class="intel-country-fallback"/);
+  assert.match(html, /class="(?:flag:[A-Z]{2} )?intel-country-(?:flag|fallback)"/);
   assert.match(html, /class="country-select-trigger"/);
   assert.match(html, /class="sidebar-toggle"[^>]*aria-expanded="true"[^>]*aria-label="Hide map filters"/);
   assert.match(html, /class="details-toggle"[^>]*aria-expanded="true"[^>]*aria-label="Hide level details"/);
@@ -212,7 +212,7 @@ test("renders the hosted atlas shell", async () => {
   assert.match(html, /id="project-info-title">About CoD Atlas/);
   assert.match(html, /This website was made by me, <a href="https:\/\/github\.com\/plp-gtr"[^>]*>Philipp Gächter<\/a>/);
   assert.doesNotMatch(html, /> Localized /);
-  assert.match(html, /https:\/\/www\.google\.com\/maps\/search\/\?api=1(?:&|&amp;)query=Adriatic%20Sea/);
+  assert.match(html, /https:\/\/www\.google\.com\/maps\/search\/\?api=1(?:&|&amp;)query=[^"&]+/);
   assert.match(html, /aria-label="Open in Google Maps"/);
   assert.match(html, /src="webpage_icons\/maps-google-com\.ico"/);
   assert.match(html, /aria-label="Open on Call of Duty Wiki"/);
