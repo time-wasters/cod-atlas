@@ -28,6 +28,7 @@ locations:
 #   research:
 #     byHuman: false
 #     user: null
+#     # reason: Optional note explaining why the record remains unverified.
 ---
 
 > **AI-generated research note:** The historical summary below was generated

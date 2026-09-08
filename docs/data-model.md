@@ -126,14 +126,18 @@ verified:
     user: github/example-reviewer
   research:
     byHuman: false
-    user: null
+    user: github/example-reviewer
+    reason: The available evidence was reviewed but remains inconclusive.
 ```
 
 The optional `verified` object is preserved in generated atlas entries and is
 used by the generated progress report.
-`byHuman: true` requires a non-empty reviewer identifier; `byHuman: false`
-requires `user: null`. Omitting either verification category counts it as not
-verified. Location verification covers every embedded location in the level.
+`byHuman: true` requires a non-empty reviewer identifier. An unverified record
+may keep a reviewer identifier and an optional `reason` when a human inspected
+the evidence but could not verify the location or research. Use `user: null`
+when no human review took place. Omitting either verification category counts
+it as not verified. Location verification covers every embedded location in
+the level.
 Research completion and human verification remain separate: having all
 required Markdown sections does not itself indicate that a human reviewed
 their claims.
