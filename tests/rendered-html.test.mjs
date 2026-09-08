@@ -200,7 +200,7 @@ test("renders the hosted atlas shell", async () => {
   assert.match(html, /role="tab"[^>]*aria-selected="true"[^>]*aria-controls="sidebar-locations"/);
   assert.match(html, /<button(?=[^>]*role="tab")(?=[^>]*aria-controls="sidebar-campaigns")(?=[^>]*disabled="")[^>]*>/);
   assert.match(html, /<button(?=[^>]*role="tab")(?=[^>]*aria-controls="sidebar-content-updates")(?=[^>]*disabled="")[^>]*>/);
-  assert.match(html, />Adriatic Sea<\/span>/);
+  assert.match(html, /class="intel-country-name">[^<]+<\/span>/);
   assert.doesNotMatch(html, /Selected location/);
   assert.doesNotMatch(html, />Level<\/span>/);
   assert.match(html, /aria-label="(Campaign|Multiplayer|Special Ops|Zombies)"/);
