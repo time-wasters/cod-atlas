@@ -14,10 +14,14 @@ function normalizeHumanReview(value, path) {
   if (value.byHuman && value.user === null) {
     throw new Error(`${path}.user is required when byHuman is true`);
   }
-  if (!value.byHuman && value.user !== null) {
-    throw new Error(`${path}.user must be null when byHuman is false`);
+  if (value.reason !== undefined && (typeof value.reason !== "string" || !value.reason.trim())) {
+    throw new Error(`${path}.reason must be a non-empty string when supplied`);
   }
-  return { byHuman: value.byHuman, user: value.user };
+  return {
+    byHuman: value.byHuman,
+    user: value.user,
+    ...(value.reason !== undefined ? { reason: value.reason } : {}),
+  };
 }
 
 export function normalizeLevelVerification(value, path) {

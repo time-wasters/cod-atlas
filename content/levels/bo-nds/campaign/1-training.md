@@ -26,6 +26,6 @@ verified:
   locations:
     byHuman: true
     user: github/PLP-GTR
-    reason: Khâm Đức Special Forces Camp, South Vietnam, an approximate historical fit
+    reason: Khâm Đức Special Forces Camp, South Vietnam, an approximate historical fit since the game does not mention anything.
 ---
 

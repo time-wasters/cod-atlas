@@ -9,17 +9,22 @@ test("missing level verification defaults both review tracks to unverified", () 
   });
 });
 
-test("human verification requires a reviewer and unverified records reject one", () => {
+test("human verification requires a reviewer and unverified records may retain review notes", () => {
   assert.throws(
     () => normalizeLevelVerification({
       locations: { byHuman: true, user: null },
     }, "fixture.verified"),
     /user is required/,
   );
-  assert.throws(
-    () => normalizeLevelVerification({
-      research: { byHuman: false, user: "github/reviewer" },
-    }, "fixture.verified"),
-    /user must be null/,
-  );
+  assert.deepEqual(normalizeLevelVerification({
+    research: {
+      byHuman: false,
+      user: "github/reviewer",
+      reason: "Reviewed, but the available evidence was inconclusive.",
+    },
+  }, "fixture.verified").research, {
+    byHuman: false,
+    user: "github/reviewer",
+    reason: "Reviewed, but the available evidence was inconclusive.",
+  });
 });

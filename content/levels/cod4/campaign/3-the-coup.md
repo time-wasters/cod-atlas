@@ -22,6 +22,11 @@ locations:
     urls:
       - googleMaps: https://www.google.com/maps/search/?api=1&query=Al+Qunfudhah%2C+Saudi+Arabia
       - wikipedia: https://en.wikipedia.org/wiki/Al_Qunfudhah
+verified:
+  locations:
+    byHuman: false
+    user: github/PLP-GTR
+    reason: Maybe someone can find a better fitting city but there no real landmarks shown tbh, only "generic" harbor city.
 ---
 
 > **AI-generated research note:** The historical summary below was generated

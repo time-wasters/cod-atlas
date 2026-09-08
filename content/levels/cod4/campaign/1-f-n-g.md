@@ -14,8 +14,8 @@ locations:
     region: Herefordshire
     city: Credenhill
     landmark: Stirling Lines
-    latitude: 52.08086
-    longitude: -2.79900
+    latitude: 52.08135447355434
+    longitude: -2.7998690373584787
     precision: approximate
     confidence: high
     method: verified-landmark
@@ -23,6 +23,11 @@ locations:
     urls:
       - googleMaps: https://www.google.com/maps/search/?api=1&query=Stirling+Lines%2C+Credenhill%2C+Hereford%2C+United+Kingdom
       - wikipedia: https://en.wikipedia.org/wiki/Stirling_Lines
+verified:
+  locations:
+    byHuman: true
+    user: github/PLP-GTR
+    reason: They literally name it in the mission.
 ---
 > **AI-generated research note:** The historical summary below was generated
 > with AI assistance and should be reviewed against the cited sources before

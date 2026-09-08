@@ -21,6 +21,11 @@ export default defineConfig(async () => {
   const { cloudflare } = await import("@cloudflare/vite-plugin");
 
   return {
+    // The interactive client intentionally embeds the generated atlas data.
+    // Keep a project-specific raw-size guard; the emitted chunk compresses well.
+    build: {
+      chunkSizeWarningLimit: 3_000,
+    },
     server: {
       host: "0.0.0.0",
       allowedHosts: ["terminal.local"],

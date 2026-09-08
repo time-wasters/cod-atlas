@@ -22,6 +22,11 @@ locations:
     urls:
       - googleMaps: https://www.google.com/maps/search/?api=1&query=Shatoy%2C+Chechnya%2C+Russia
       - wikipedia: https://en.wikipedia.org/wiki/Shatoy
+verified:
+  locations:
+    byHuman: false
+    user: github/PLP-GTR
+    reason: I tried to find a village with a similar church but none fit.
 ---
 
 > **AI-generated research note:** The historical summary below was generated

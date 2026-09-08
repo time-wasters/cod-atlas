@@ -27,7 +27,7 @@ verified:
   location:
     byHuman: true
     user: github/PLP-GTR
-    reason: The end of the mission is a M12 firing at the Aachen town hall
+    reason: The end of the mission is a M12 firing at the Aachen town hall.
 ---
 
 > **AI-generated research note:** The historical summary below was generated

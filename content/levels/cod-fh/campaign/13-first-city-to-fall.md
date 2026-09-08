@@ -27,7 +27,7 @@ verified:
   location:
     byHuman: true
     user: github/PLP-GTR
-    reason: The Marschiertor is a distinctive landmark at the beginning of the mission
+    reason: The Marschiertor is a distinctive landmark at the beginning of the mission.
 ---
 
 > **AI-generated research note:** The historical summary below was generated

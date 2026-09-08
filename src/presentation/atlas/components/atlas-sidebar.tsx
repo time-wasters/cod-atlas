@@ -58,7 +58,9 @@ export type AtlasSidebarViewModel = {
   };
   game: {
     games: GameDto[];
+    iconFor: (game: GameDto) => string | null | undefined;
     onChange: (value: string) => void;
+    onExternalIconError: (gameId: string) => void;
     onOpenCatalog: () => void;
     value: string;
   };
@@ -112,7 +114,13 @@ export function AtlasSidebar({
             <button className="game-catalog-trigger" type="button" aria-haspopup="dialog" onClick={game.onOpenCatalog}>Game</button>
             <small>Oldest to newest</small>
           </span>
-          <GameSelect games={game.games} value={game.value} onValueChange={game.onChange} />
+          <GameSelect
+            games={game.games}
+            iconFor={game.iconFor}
+            onExternalIconError={game.onExternalIconError}
+            value={game.value}
+            onValueChange={game.onChange}
+          />
         </div>
         <div className="filter-field">
           <span>Country</span>
