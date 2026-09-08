@@ -21,9 +21,9 @@ mission has the required research sections.
 <!-- research-progress:start -->
 | Scope | Researched | Remaining |
 | --- | ---: | ---: |
-| All currently catalogued levels | 217 / 1283 (17%) | 1066 / 1283 (83%) |
+| All currently catalogued levels | 217 / 1294 (17%) | 1077 / 1294 (83%) |
 | Campaign levels | 134 / 482 (28%) | 348 / 482 (72%) |
-| Multiplayer maps | 83 / 705 (12%) | 622 / 705 (88%) |
+| Multiplayer maps | 83 / 716 (12%) | 633 / 716 (88%) |
 | Special Ops missions | 0 / 76 (0%) | 76 / 76 (100%) |
 | Zombies maps | 0 / 20 (0%) | 20 / 20 (100%) |
 
@@ -39,7 +39,7 @@ mission has the required research sections.
 | Modern Warfare (2007) | 5 / 21 (24%) | 0 / 21 (0%) | — | — | 5 / 42 (12%) |
 | Modern Warfare (Nintendo DS) | 0 / 12 (0%) | 0 / 7 (0%) | — | — | 0 / 19 (0%) |
 | World at War | 0 / 15 (0%) | 0 / 23 (0%) | — | 0 / 4 (0%) | 0 / 42 (0%) |
-| World at War (Nintendo DS) | 0 / 26 (0%) | — | — | — | 0 / 26 (0%) |
+| World at War (Nintendo DS) | 0 / 26 (0%) | 0 / 11 (0%) | — | — | 0 / 37 (0%) |
 | World at War: Final Fronts | 0 / 13 (0%) | — | — | — | 0 / 13 (0%) |
 | Modern Warfare 2 (2009) | 0 / 19 (0%) | 0 / 22 (0%) | 0 / 23 (0%) | — | 0 / 64 (0%) |
 | Black Ops | 0 / 15 (0%) | 1 / 26 (4%) | — | 0 / 6 (0%) | 1 / 47 (2%) |
@@ -75,9 +75,9 @@ completed research structure or precise marker does not imply human review.
 <!-- human-verification-progress:start -->
 | Scope | Marker locations verified | Research notes verified |
 | --- | ---: | ---: |
-| All currently catalogued records | 1 / 1194 (0%) | 0 / 1283 (0%) |
+| All currently catalogued records | 1 / 1203 (0%) | 0 / 1294 (0%) |
 | Campaign records | 1 / 471 (0%) | 0 / 482 (0%) |
-| Multiplayer records | 0 / 637 (0%) | 0 / 705 (0%) |
+| Multiplayer records | 0 / 646 (0%) | 0 / 716 (0%) |
 | Special Ops records | 0 / 75 (0%) | 0 / 76 (0%) |
 | Zombies records | 0 / 11 (0%) | 0 / 20 (0%) |
 
@@ -93,7 +93,7 @@ completed research structure or precise marker does not imply human review.
 | Modern Warfare (2007) | 0 / 41 (0%) | 0 / 42 (0%) |
 | Modern Warfare (Nintendo DS) | 0 / 10 (0%) | 0 / 19 (0%) |
 | World at War | 0 / 42 (0%) | 0 / 42 (0%) |
-| World at War (Nintendo DS) | 0 / 26 (0%) | 0 / 26 (0%) |
+| World at War (Nintendo DS) | 0 / 35 (0%) | 0 / 37 (0%) |
 | World at War: Final Fronts | 0 / 14 (0%) | 0 / 13 (0%) |
 | Modern Warfare 2 (2009) | 0 / 64 (0%) | 0 / 64 (0%) |
 | Black Ops | 0 / 48 (0%) | 0 / 47 (0%) |
@@ -132,9 +132,9 @@ The per-game table assigns each marker to its canonical level's owner game.
 <!-- localization-progress:start -->
 | Scope | Localized | Country fallback | Off-world |
 | --- | ---: | ---: | ---: |
-| All marker locations | 408 / 1164 (35%) | 756 / 1164 (65%) | 30 |
+| All marker locations | 414 / 1173 (35%) | 759 / 1173 (65%) | 30 |
 | Campaign marker locations | 167 / 454 (37%) | 287 / 454 (63%) | 17 |
-| Multiplayer marker locations | 188 / 625 (30%) | 437 / 625 (70%) | 12 |
+| Multiplayer marker locations | 194 / 634 (31%) | 440 / 634 (69%) | 12 |
 | Special Ops marker locations | 52 / 75 (69%) | 23 / 75 (31%) | 0 |
 | Zombies marker locations | 1 / 10 (10%) | 9 / 10 (90%) | 1 |
 
@@ -142,10 +142,10 @@ The per-game table assigns each marker to its canonical level's owner game.
 | --- | ---: | ---: |
 | Exact | 98 | 8% |
 | Approximate | 180 | 15% |
-| City | 109 | 9% |
-| Region | 21 | 2% |
-| Country | 756 | 63% |
-| Off-world | 30 | 3% |
+| City | 112 | 9% |
+| Region | 24 | 2% |
+| Country | 759 | 63% |
+| Off-world | 30 | 2% |
 
 | Game | Campaign | Multiplayer | Special Ops | Zombies | Overall |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -159,7 +159,7 @@ The per-game table assigns each marker to its canonical level's owner game.
 | Modern Warfare (2007) | 5 / 20 (25%) | 20 / 21 (95%) | — | — | 25 / 41 (61%) |
 | Modern Warfare (Nintendo DS) | 1 / 7 (14%) | 2 / 3 (67%) | — | — | 3 / 10 (30%) |
 | World at War | 1 / 15 (7%) | 10 / 23 (43%) | — | 0 / 4 (0%) | 11 / 42 (26%) |
-| World at War (Nintendo DS) | 18 / 26 (69%) | — | — | — | 18 / 26 (69%) |
+| World at War (Nintendo DS) | 18 / 26 (69%) | 6 / 9 (67%) | — | — | 24 / 35 (69%) |
 | World at War: Final Fronts | 7 / 14 (50%) | — | — | — | 7 / 14 (50%) |
 | Modern Warfare 2 (2009) | 1 / 18 (6%) | 22 / 22 (100%) | 10 / 23 (43%) | — | 33 / 63 (52%) |
 | Black Ops | 1 / 16 (6%) | 3 / 26 (12%) | — | 1 / 5 (20%) | 5 / 47 (11%) |
