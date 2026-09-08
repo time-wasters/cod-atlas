@@ -494,6 +494,8 @@ export function AtlasPage({
     games,
     handlers: {
       finishSearchUpdate,
+      gameIconFor: gameIcon,
+      markExternalGameIconUnavailable,
       onCampaignSelect: selectCampaign,
       onContentUpdateSelect: selectContentUpdate,
       onExport: exportKml,

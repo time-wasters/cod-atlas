@@ -18,6 +18,8 @@
 .country-select-item { min-height: 34px; display: flex; align-items: center; gap: 10px; border-radius: 3px; padding: 0 9px; outline: 0; font-size: 12px; cursor: pointer; user-select: none; }
 .country-select-item > span:first-child { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .country-select-item .country-select-flag { margin-left: auto; }
+.game-select-icon { width: 24px; height: 24px; display: block; flex: 0 0 24px; object-fit: contain; }
+.country-select-item .game-select-icon { margin-left: auto; }
 .country-select-item[data-highlighted] { color: #fff4d0; background: #303323; }
 .country-select-item[data-state="checked"] { color: #e8bc5b; background: #29291c; }
 .country-select-item[data-highlighted][data-state="checked"] { background: #3a3521; }

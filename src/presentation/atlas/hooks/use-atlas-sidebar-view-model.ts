@@ -37,6 +37,8 @@ export function useAtlasSidebarViewModel({
   games: GameDto[];
   handlers: {
     finishSearchUpdate: () => void;
+    gameIconFor: (game: GameDto) => string | null | undefined;
+    markExternalGameIconUnavailable: (gameId: string) => void;
     onCampaignSelect: (campaign: CampaignOption<AtlasGroupDto, AtlasEntryDto>) => void;
     onContentUpdateSelect: (contentUpdate: ContentUpdateOption<AtlasGroupDto, AtlasEntryDto>) => void;
     onExport: () => void;
@@ -96,6 +98,8 @@ export function useAtlasSidebarViewModel({
     },
     game: {
       games,
+      iconFor: handlers.gameIconFor,
+      onExternalIconError: handlers.markExternalGameIconUnavailable,
       value: filters.game,
       onOpenCatalog: handlers.onOpenGameCatalog,
       onChange: (value) => {
