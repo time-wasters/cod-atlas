@@ -4,6 +4,9 @@ title: Escort Service
 games:
   - bo-d
 mode: singleplayer
+campaign:
+  id: "2"
+  label: Alex Mason
 wikiArticle: codwiki-escort-service
 locations:
   - id: main

@@ -4,6 +4,9 @@ title: Air Traffic Control
 games:
   - bo-d
 mode: singleplayer
+campaign:
+  id: "1"
+  label: Frank Woods
 wikiArticle: codwiki-air-traffic-control
 locations:
   - id: main

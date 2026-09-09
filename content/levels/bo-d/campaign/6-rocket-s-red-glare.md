@@ -1,10 +1,13 @@
 ---
-id: bo-d-self-destructive
-title: Self Destructive
+id: bo-d-rocket-s-red-glare
+title: Rocket's Red Glare
 games:
   - bo-d
 mode: singleplayer
-wikiArticle: codwiki-self-destructive
+campaign:
+  id: "1"
+  label: Frank Woods
+wikiArticle: codwiki-rocket-s-red-glare
 locations:
   - id: main
     country: Russia

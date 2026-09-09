@@ -4,6 +4,9 @@ title: Checking Out
 games:
   - bo-d
 mode: singleplayer
+campaign:
+  id: "1"
+  label: Frank Woods
 wikiArticle: codwiki-checking-out
 locations:
   - id: main

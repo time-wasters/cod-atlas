@@ -4,6 +4,9 @@ title: Heavy Metal
 games:
   - mw3-nds
 mode: singleplayer
+campaign:
+  id: "3"
+  label: Baltimore
 wikiArticle: codwiki-heavy-metal-level
 locations:
   - id: main

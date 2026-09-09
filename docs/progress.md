@@ -21,9 +21,9 @@ mission has the required research sections.
 <!-- research-progress:start -->
 | Scope | Researched | Remaining |
 | --- | ---: | ---: |
-| All currently catalogued levels | 217 / 1295 (17%) | 1078 / 1295 (83%) |
+| All currently catalogued levels | 217 / 1301 (17%) | 1084 / 1301 (83%) |
 | Campaign levels | 134 / 482 (28%) | 348 / 482 (72%) |
-| Multiplayer maps | 83 / 717 (12%) | 634 / 717 (88%) |
+| Multiplayer maps | 83 / 723 (11%) | 640 / 723 (89%) |
 | Special Ops missions | 0 / 76 (0%) | 76 / 76 (100%) |
 | Zombies maps | 0 / 20 (0%) | 20 / 20 (100%) |
 
@@ -47,7 +47,7 @@ mission has the required research sections.
 | Modern Warfare 3 (2011) | 0 / 18 (0%) | 0 / 35 (0%) | 0 / 53 (0%) | — | 0 / 106 (0%) |
 | MW3: Defiance | 0 / 14 (0%) | 0 / 14 (0%) | — | — | 0 / 28 (0%) |
 | Black Ops II | 0 / 17 (0%) | 0 / 37 (0%) | — | — | 0 / 54 (0%) |
-| Black Ops: Declassified | 0 / 10 (0%) | — | — | — | 0 / 10 (0%) |
+| Black Ops: Declassified | 0 / 10 (0%) | 0 / 6 (0%) | — | — | 0 / 16 (0%) |
 | Ghosts | 1 / 18 (6%) | 0 / 33 (0%) | — | — | 1 / 51 (2%) |
 | Advanced Warfare | 1 / 15 (7%) | 0 / 30 (0%) | — | — | 1 / 45 (2%) |
 | Black Ops III | 0 / 11 (0%) | 0 / 28 (0%) | — | — | 0 / 39 (0%) |
@@ -75,9 +75,9 @@ completed research structure or precise marker does not imply human review.
 <!-- human-verification-progress:start -->
 | Scope | Marker locations verified | Research notes verified |
 | --- | ---: | ---: |
-| All currently catalogued records | 1 / 1204 (0%) | 0 / 1295 (0%) |
+| All currently catalogued records | 1 / 1210 (0%) | 0 / 1301 (0%) |
 | Campaign records | 1 / 471 (0%) | 0 / 482 (0%) |
-| Multiplayer records | 0 / 647 (0%) | 0 / 717 (0%) |
+| Multiplayer records | 0 / 653 (0%) | 0 / 723 (0%) |
 | Special Ops records | 0 / 75 (0%) | 0 / 76 (0%) |
 | Zombies records | 0 / 11 (0%) | 0 / 20 (0%) |
 
@@ -101,7 +101,7 @@ completed research structure or precise marker does not imply human review.
 | Modern Warfare 3 (2011) | 0 / 107 (0%) | 0 / 106 (0%) |
 | MW3: Defiance | 0 / 19 (0%) | 0 / 28 (0%) |
 | Black Ops II | 0 / 54 (0%) | 0 / 54 (0%) |
-| Black Ops: Declassified | 0 / 10 (0%) | 0 / 10 (0%) |
+| Black Ops: Declassified | 0 / 16 (0%) | 0 / 16 (0%) |
 | Ghosts | 0 / 52 (0%) | 0 / 51 (0%) |
 | Advanced Warfare | 0 / 47 (0%) | 0 / 45 (0%) |
 | Black Ops III | 0 / 40 (0%) | 0 / 39 (0%) |
@@ -132,9 +132,9 @@ The per-game table assigns each marker to its canonical level's owner game.
 <!-- localization-progress:start -->
 | Scope | Localized | Country fallback | Off-world |
 | --- | ---: | ---: | ---: |
-| All marker locations | 415 / 1174 (35%) | 759 / 1174 (65%) | 30 |
+| All marker locations | 418 / 1180 (35%) | 762 / 1180 (65%) | 30 |
 | Campaign marker locations | 167 / 454 (37%) | 287 / 454 (63%) | 17 |
-| Multiplayer marker locations | 195 / 635 (31%) | 440 / 635 (69%) | 12 |
+| Multiplayer marker locations | 198 / 641 (31%) | 443 / 641 (69%) | 12 |
 | Special Ops marker locations | 52 / 75 (69%) | 23 / 75 (31%) | 0 |
 | Zombies marker locations | 1 / 10 (10%) | 9 / 10 (90%) | 1 |
 
@@ -142,9 +142,9 @@ The per-game table assigns each marker to its canonical level's owner game.
 | --- | ---: | ---: |
 | Exact | 98 | 8% |
 | Approximate | 180 | 15% |
-| City | 112 | 9% |
-| Region | 25 | 2% |
-| Country | 759 | 63% |
+| City | 113 | 9% |
+| Region | 27 | 2% |
+| Country | 762 | 63% |
 | Off-world | 30 | 2% |
 
 | Game | Campaign | Multiplayer | Special Ops | Zombies | Overall |
@@ -167,7 +167,7 @@ The per-game table assigns each marker to its canonical level's owner game.
 | Modern Warfare 3 (2011) | 0 / 21 (0%) | 32 / 34 (94%) | 42 / 52 (81%) | — | 74 / 107 (69%) |
 | MW3: Defiance | 0 / 14 (0%) | 1 / 5 (20%) | — | — | 1 / 19 (5%) |
 | Black Ops II | 0 / 17 (0%) | 1 / 37 (3%) | — | — | 1 / 54 (2%) |
-| Black Ops: Declassified | 0 / 10 (0%) | — | — | — | 0 / 10 (0%) |
+| Black Ops: Declassified | 0 / 10 (0%) | 3 / 6 (50%) | — | — | 3 / 16 (19%) |
 | Ghosts | 1 / 17 (6%) | 2 / 33 (6%) | — | — | 3 / 50 (6%) |
 | Advanced Warfare | 1 / 17 (6%) | 0 / 30 (0%) | — | — | 1 / 47 (2%) |
 | Black Ops III | 0 / 12 (0%) | 0 / 28 (0%) | — | — | 0 / 40 (0%) |

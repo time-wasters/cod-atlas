@@ -4,6 +4,9 @@ title: Hostile Takeover
 games:
   - bo-d
 mode: singleplayer
+campaign:
+  id: "3"
+  label: CIA Operative
 wikiArticle: codwiki-hostile-takeover
 locations:
   - id: main

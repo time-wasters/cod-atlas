@@ -4,6 +4,9 @@ title: Fire From the Sky
 games:
   - mw3-nds
 mode: singleplayer
+campaign:
+  id: "3"
+  label: Baltimore
 wikiArticle: codwiki-fire-from-the-sky
 locations:
   - id: main

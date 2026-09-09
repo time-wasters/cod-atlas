@@ -4,6 +4,9 @@ title: Running For Cover
 games:
   - mw3-nds
 mode: singleplayer
+campaign:
+  id: "2"
+  label: Nevada
 wikiArticle: codwiki-running-for-cover
 locations:
   - id: main

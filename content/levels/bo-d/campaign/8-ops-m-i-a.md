@@ -4,6 +4,9 @@ title: Ops M.I.A.
 games:
   - bo-d
 mode: singleplayer
+campaign:
+  id: "2"
+  label: Alex Mason
 wikiArticle: codwiki-ops-m-i-a
 locations:
   - id: main

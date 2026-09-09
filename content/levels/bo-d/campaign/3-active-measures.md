@@ -1,10 +1,13 @@
 ---
-id: bo-d-got-your-back
-title: Got Your Back
+id: bo-d-active-measures
+title: Active Measures
 games:
   - bo-d
 mode: singleplayer
-wikiArticle: codwiki-got-your-back
+campaign:
+  id: "2"
+  label: Alex Mason
+wikiArticle: codwiki-active-measures
 locations:
   - id: main
     country: Germany

@@ -4,6 +4,9 @@ title: Clearing Out
 games:
   - mw3-nds
 mode: singleplayer
+campaign:
+  id: "2"
+  label: Nevada
 wikiArticle: codwiki-clearing-out
 locations:
   - id: main

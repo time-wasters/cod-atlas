@@ -4,6 +4,9 @@ title: Dangerous Cargo
 games:
   - mw3-nds
 mode: singleplayer
+campaign:
+  id: "3"
+  label: Baltimore
 wikiArticle: codwiki-dangerous-cargo
 locations:
   - id: main

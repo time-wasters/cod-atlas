@@ -4,6 +4,9 @@ title: Three Point Landing
 games:
   - bo-d
 mode: singleplayer
+campaign:
+  id: "1"
+  label: Frank Woods
 wikiArticle: codwiki-three-point-landing
 locations:
   - id: main

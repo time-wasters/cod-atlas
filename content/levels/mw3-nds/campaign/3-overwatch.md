@@ -4,6 +4,9 @@ title: Overwatch
 games:
   - mw3-nds
 mode: singleplayer
+campaign:
+  id: "1"
+  label: Alaska
 wikiArticle: codwiki-overwatch-modern-warfare-3-defiance
 locations:
   - id: main
