@@ -8,6 +8,7 @@
       "detailPageUrl": "https://example.com/wiki/bravo-image",
       "author": {
         "name": "Fixture Author",
+        "userUrl": null,
         "role": "author"
       },
       "license": {
@@ -15,8 +16,9 @@
         "url": "https://example.com/license"
       },
       "rights": {
-        "status": "fixture",
-        "notice": "Fixture media used only by tests."
+        "status": "licensed",
+        "notice": "Fixture media used only by tests.",
+        "noticeUrl": null
       }
     },
     "map": null
