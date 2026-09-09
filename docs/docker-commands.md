@@ -52,14 +52,16 @@ command to choose a different host port; the container still listens on 3000.
 
 ## External game icon cache
 
-`npm run icons:import` reads optional Steam and SteamGridDB metadata from
-`content/games/*.yaml`. It does nothing unless `STEAM_ICON_URL` or
-`STEAMGRIDDB_ICON_URL` is configured. Enabled providers are downloaded into
-the ignored `public/images/games_external/` build cache, together with a
-`manifest.json`. Steam `icon` images are imported as JPEG and optional
-`clienticon` images as ICO, using `%extension%` in the Steam URL template.
-Existing files with a valid matching image signature are reused without a
-network request; missing or invalid files are downloaded.
+`npm run icons:import` reads optional Steam, SteamGridDB, and MobyGames metadata
+from `content/games/*.yaml`. It does nothing unless `STEAM_ICON_URL`,
+`STEAMGRIDDB_ICON_URL`, or `MOBYGAMES_ICON_URL` is configured. Enabled
+providers are downloaded into the ignored `public/images/games_external/`
+build cache, together with a `manifest.json`. Steam `icon` images are imported
+as JPEG and optional `clienticon` images as ICO, using `%extension%` in the
+Steam URL template. SteamGridDB and MobyGames use the source filename extension
+and a `%file%` URL placeholder. Existing files with a valid matching image
+signature are reused without a network request; missing or invalid files are
+downloaded.
 
 Both regular and static builds run this command automatically. An unavailable
 external image is reported and omitted from the manifest so the existing local

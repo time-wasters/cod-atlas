@@ -5,14 +5,14 @@ import path from "node:path";
 import test from "node:test";
 import { importGameIcons } from "../src/application/media/use-cases/import-game-icons.mjs";
 
-async function gameIconFixture() {
+async function gameIconFixture(gameYaml = `id: cod\nimages:\n  steam:\n    app: 2620\n    icon: ${"a".repeat(40)}\n    clienticon: null\n`) {
   const temporaryRoot = await mkdtemp(path.join(os.tmpdir(), "cod-atlas-icons-"));
   const contentRoot = path.join(temporaryRoot, "games");
   const outputRoot = path.join(temporaryRoot, "public/images/games_external");
   await mkdir(contentRoot, { recursive: true });
   await writeFile(
     path.join(contentRoot, "cod.yaml"),
-    `id: cod\nimages:\n  steam:\n    app: 2620\n    icon: ${"a".repeat(40)}\n    clienticon: null\n`,
+    gameYaml,
   );
   return { temporaryRoot, contentRoot, outputRoot };
 }
@@ -27,6 +27,32 @@ test("disabled import performs no filesystem or network work", async () => {
   });
   assert.equal(result.enabled, false);
   assert.equal(fetched, false);
+});
+
+test("MobyGames cover images are imported into the external icon manifest", async () => {
+  const fixture = await gameIconFixture(
+    "id: heroes\nimages:\n  mobygames:\n    game: 70439\n    icon: cover-299151\n    file: 7182140-call-of-duty-heroes-android-front-cover.png\n",
+  );
+  const png = Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]);
+  try {
+    const result = await importGameIcons({
+      contentRoot: fixture.contentRoot,
+      outputRoot: fixture.outputRoot,
+      environment: { MOBYGAMES_ICON_URL: "https://cdn.mobygames.example.test/covers/%file%" },
+      fetchImplementation: async () => new Response(png, { status: 200 }),
+    });
+    assert.equal(result.imported, 1);
+    assert.deepEqual(JSON.parse(await readFile(path.join(fixture.outputRoot, "manifest.json"), "utf8")), {
+      heroes: {
+        icon: {
+          provider: "mobygames",
+          path: "/images/games_external/mobygames/heroes/icon.png",
+        },
+      },
+    });
+  } finally {
+    await rm(fixture.temporaryRoot, { recursive: true, force: true });
+  }
 });
 
 test("enabled import rejects images that do not match their output extension", async () => {

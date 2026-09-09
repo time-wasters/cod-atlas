@@ -109,6 +109,7 @@ The Docker build currently supports these optional build arguments:
 ```text
 STEAM_ICON_URL
 STEAMGRIDDB_ICON_URL
+MOBYGAMES_ICON_URL
 ```
 
 They can be configured through GitHub Actions variables.

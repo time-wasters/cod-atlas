@@ -86,3 +86,4 @@ jobs:
           build-args: |
             STEAM_ICON_URL=${{ vars.STEAM_ICON_URL }}
             STEAMGRIDDB_ICON_URL=${{ vars.STEAMGRIDDB_ICON_URL }}
+            MOBYGAMES_ICON_URL=${{ vars.MOBYGAMES_ICON_URL }}

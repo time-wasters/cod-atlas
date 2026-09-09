@@ -56,6 +56,15 @@ geographic comparison and are not relicensed under the project data license.
 
 ## Interface icons
 
+Optional game imagery imported during a build from
+[Steam](https://store.steampowered.com/),
+[SteamGridDB](https://www.steamgriddb.com/), or
+[MobyGames](https://www.mobygames.com/) is cached only as an external game icon.
+Provider metadata is recorded with the corresponding game under
+`content/games/`. The downloaded imagery and associated game artwork retain
+the rights and terms of their respective providers and copyright holders and
+are not relicensed by this project.
+
 The GitHub mark in the site footer is from
 [Primer Octicons](https://github.com/primer/octicons), copyright GitHub, Inc.
 Octicons code is distributed under the MIT License; the GitHub logo remains

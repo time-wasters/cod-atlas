@@ -15,7 +15,9 @@ export async function importGameIcons({
   strict = false,
 } = {}) {
   const configuration = resolveGameIconProviderConfiguration(environment);
-  if (!configuration.steamTemplate && !configuration.steamGridDbTemplate) {
+  if (!configuration.steamTemplate
+    && !configuration.steamGridDbTemplate
+    && !configuration.mobyGamesTemplate) {
     return { enabled: false, imported: 0, manifest: {} };
   }
 
