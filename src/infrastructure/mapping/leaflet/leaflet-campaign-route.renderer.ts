@@ -13,6 +13,7 @@ type CampaignRoute = {
 export type RenderedCampaignRoute = {
   boundsCoordinates: Coordinates[];
   layer: LayerGroup;
+  remove: () => void;
 };
 
 function campaignRouteProjectionZoom(
@@ -60,7 +61,7 @@ function buildArcCoordinates({
     (startPoint.x + endPoint.x) / 2 + normalX * height,
     (startPoint.y + endPoint.y) / 2 + normalY * height,
   );
-  const sampleCount = Math.min(48, Math.max(18, Math.ceil(distance / 18)));
+  const sampleCount = Math.min(12, Math.max(8, Math.ceil(distance / 60)));
 
   return Array.from({ length: sampleCount + 1 }, (_, index) => {
     if (index === 0) return start;
@@ -121,24 +122,10 @@ export function renderLeafletCampaignRoute({
       };
       leaflet.polyline(arc, {
         ...common,
-        className: "campaign-route-arc-shadow",
-        color: "#16090b",
-        weight: 5.5,
-        opacity: .34,
-      }).addTo(routeLayer);
-      leaflet.polyline(arc, {
-        ...common,
-        className: "campaign-route-arc-base",
-        color: "#481018",
-        weight: 4,
-        opacity: .82,
-      }).addTo(routeLayer);
-      leaflet.polyline(arc, {
-        ...common,
         className: "campaign-route-travel",
         color: "#741c27",
-        weight: 2.4,
-        opacity: .98,
+        weight: 3,
+        opacity: .92,
       }).addTo(routeLayer);
     }
   });
@@ -178,5 +165,20 @@ export function renderLeafletCampaignRoute({
     routeMarker.on("click", () => onWaypointSelect(waypoint.stops[0].entryId));
   });
 
-  return { boundsCoordinates, layer: routeLayer };
+  const mapElement = map.getContainer();
+  const pauseRouteAnimation = () => mapElement.classList.add("campaign-route-map-moving");
+  const resumeRouteAnimation = () => mapElement.classList.remove("campaign-route-map-moving");
+  map.on("movestart", pauseRouteAnimation);
+  map.on("moveend", resumeRouteAnimation);
+
+  return {
+    boundsCoordinates,
+    layer: routeLayer,
+    remove: () => {
+      map.off("movestart", pauseRouteAnimation);
+      map.off("moveend", resumeRouteAnimation);
+      mapElement.classList.remove("campaign-route-map-moving");
+      routeLayer.remove();
+    },
+  };
 }

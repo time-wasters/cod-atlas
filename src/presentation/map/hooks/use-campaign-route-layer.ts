@@ -146,7 +146,7 @@ export function useCampaignRouteLayer({
       activeMarkerLayer?.off("animationend", handleClusterAnimationEnd);
       activeMarkerLayer?.off("spiderfied", handleMarkerSpiderfied);
       if (markerRevealTimer !== null) window.clearTimeout(markerRevealTimer);
-      renderedLayer.layer.remove();
+      renderedLayer.remove();
       if (routeLayer.current === renderedLayer.layer) routeLayer.current = null;
     };
   }, [findSelectionByEntryId, getDetailsElement, onSelect, ready, runtime, selectedCampaign]);
