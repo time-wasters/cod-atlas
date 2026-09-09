@@ -4,3 +4,8 @@ label: Mobile
 labelLong: "Call of Duty: Mobile"
 released: 2019-09-29
 series: standalone
+images:
+  mobygames:
+    game: 135528
+    icon: cover-596474
+    file: 8250087-call-of-duty-mobile-iphone-front-cover.jpg
