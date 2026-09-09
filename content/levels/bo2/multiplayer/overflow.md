@@ -1,0 +1,20 @@
+---
+id: bo2-overflow
+title: Overflow
+games:
+  - bo2
+mode: multiplayer
+content-update:
+  id: "0"
+  label: Included
+wikiArticle: codwiki-overflow
+locations:
+  - id: main
+    country: Pakistan
+    latitude: 30
+    longitude: 70
+    precision: country
+    confidence: fallback
+    method: country-fallback
+    primary: true
+---
