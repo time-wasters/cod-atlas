@@ -8,8 +8,8 @@ wikiArticle: codwiki-icebreaker
 locations:
   - id: main
     country: Arctic Circle
-    latitude: 66.5
-    longitude: 24
+    latitude: 83.82324500636808
+    longitude: 80.4238999401402
     precision: country
     confidence: fallback
     method: region-fallback
