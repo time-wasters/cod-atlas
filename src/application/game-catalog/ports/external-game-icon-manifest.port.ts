@@ -1,5 +1,5 @@
 export type ExternalGameIconManifest = Record<string, {
-  icon?: { provider: "steam" | "steamgriddb"; path: string };
+  icon?: { provider: "steam" | "steamgriddb" | "mobygames"; path: string };
   clienticon?: { provider: "steam"; path: string };
 }>;
 

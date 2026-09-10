@@ -6,6 +6,7 @@ test("external icon configuration is opt-in and validates templates", () => {
   assert.deepEqual(resolveGameIconProviderConfiguration({}), {
     steamTemplate: null,
     steamGridDbTemplate: null,
+    mobyGamesTemplate: null,
   });
   assert.throws(() => resolveGameIconProviderConfiguration({
     STEAM_ICON_URL: "http://example.test/%app%/%icon%.jpg",
@@ -15,5 +16,8 @@ test("external icon configuration is opt-in and validates templates", () => {
   }), /%extension%/);
   assert.throws(() => resolveGameIconProviderConfiguration({
     STEAMGRIDDB_ICON_URL: "https://example.test/icon.png",
+  }), /%file%/);
+  assert.throws(() => resolveGameIconProviderConfiguration({
+    MOBYGAMES_ICON_URL: "https://example.test/covers/icon.png",
   }), /%file%/);
 });

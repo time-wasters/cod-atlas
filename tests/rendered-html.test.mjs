@@ -147,7 +147,7 @@ test("catalogues the complete sorted Modern Warfare (2007) campaign roster", asy
   ]);
 });
 
-test("renders the hosted atlas shell", async () => {
+test("renders the hosted atlas shell from fixture data", async () => {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
@@ -174,18 +174,20 @@ test("renders the hosted atlas shell", async () => {
   );
   const html = await response.text();
   assert.match(html, /<h1><img[^>]*src="images\/banner\.png"[^>]*alt="CoD Atlas"/);
-  assert.match(html, /class="(?:flag:[A-Z]{2} )?intel-country-(?:flag|fallback)"/);
+  assert.match(html, /class="header-stat"><strong>4<\/strong><span>locations<\/span>/);
+  assert.match(html, /class="flag:BR intel-country-flag"/);
   assert.match(html, /class="country-select-trigger"/);
   assert.match(html, /class="sidebar-toggle"[^>]*aria-expanded="true"[^>]*aria-label="Hide map filters"/);
   assert.match(html, /class="details-toggle"[^>]*aria-expanded="true"[^>]*aria-label="Hide level details"/);
-  assert.match(html, /class="collapsed-level-title"[^>]*aria-label="Show details for [^"]+"/);
+  assert.match(html, /class="collapsed-level-title"[^>]*aria-label="Show details for Fixture Alpha"/);
   assert.match(html, /aria-label="Filter by game, ordered by release date"/);
   assert.match(html, /class="game-catalog-trigger"[^>]*aria-haspopup="dialog"/);
   assert.match(html, /id="game-catalog-title">Call of Duty games/);
   assert.match(html, /class="game-catalog-entry"/);
+  assert.match(html, /<strong>Fixture Game<\/strong>/);
   assert.match(html, /aria-label="Filter by country"/);
-  assert.match(html, /class="solar-system-overlay is-expanded"/);
-  assert.match(html, /aria-label="Collapse Solar System overlay"/);
+  assert.match(html, /class="solar-system-overlay is-collapsed"/);
+  assert.match(html, /aria-label="Expand Solar System overlay"/);
   assert.match(html, />Solar System \/\/ Schematic<\/text>/);
   assert.match(html, />Mercury<\/text>/);
   assert.match(html, /class="advanced-filter-trigger"[^>]*aria-expanded="false"/);
@@ -200,19 +202,20 @@ test("renders the hosted atlas shell", async () => {
   assert.match(html, /role="tab"[^>]*aria-selected="true"[^>]*aria-controls="sidebar-locations"/);
   assert.match(html, /<button(?=[^>]*role="tab")(?=[^>]*aria-controls="sidebar-campaigns")(?=[^>]*disabled="")[^>]*>/);
   assert.match(html, /<button(?=[^>]*role="tab")(?=[^>]*aria-controls="sidebar-content-updates")(?=[^>]*disabled="")[^>]*>/);
-  assert.match(html, /class="intel-country-name">[^<]+<\/span>/);
+  assert.match(html, /class="intel-country-name">Brazil<\/span>/);
+  assert.match(html, /class="taxonomy-tier is-city"><span>City<\/span><strong>Rio de Janeiro<\/strong>/);
   assert.doesNotMatch(html, /Selected location/);
   assert.doesNotMatch(html, />Level<\/span>/);
   assert.match(html, /aria-label="(Campaign|Multiplayer|Special Ops|Zombies)"/);
-  assert.match(html, /class="mission-title-button"/);
-  assert.match(html, /<button(?=[^>]*class="level-briefing-toggle")(?=[^>]*disabled="")[^>]*>/);
-  assert.match(html, />No briefing available<\/strong>/);
+  assert.match(html, /class="mission-title-button"[^>]*>Fixture Alpha<\/button>/);
+  assert.match(html, /<button(?=[^>]*class="level-briefing-toggle")(?=[^>]*aria-controls="selected-level-briefing")[^>]*>/);
+  assert.match(html, />Research &amp; historical context<\/strong>/);
   assert.match(html, /Made with ♥️ by <a href="https:\/\/github\.com\/plp-gtr"[^>]*>plp-GTR<\/a>/);
   assert.match(html, /class="icon-link footer-info-button"/);
   assert.match(html, /id="project-info-title">About CoD Atlas/);
   assert.match(html, /This website was made by me, <a href="https:\/\/github\.com\/plp-gtr"[^>]*>Philipp Gächter<\/a>/);
-  assert.doesNotMatch(html, /> Localized /);
-  assert.match(html, /https:\/\/www\.google\.com\/maps\/search\/\?api=1(?:&|&amp;)query=[^"&]+/);
+  assert.match(html, />Localized \u00b7 medium confidence<\/div>/);
+  assert.match(html, /https:\/\/www\.google\.com\/maps\/search\/\?api=1(?:&|&amp;)query=-22\.9068%2C-43\.1729/);
   assert.match(html, /aria-label="Open in Google Maps"/);
   assert.match(html, /src="webpage_icons\/maps-google-com\.ico"/);
   assert.match(html, /aria-label="Open on Call of Duty Wiki"/);

@@ -4,6 +4,9 @@ title: Lights Out
 games:
   - mw3-nds
 mode: singleplayer
+campaign:
+  id: "2"
+  label: Nevada
 wikiArticle: codwiki-lights-out-modern-warfare-3-defiance
 locations:
   - id: main

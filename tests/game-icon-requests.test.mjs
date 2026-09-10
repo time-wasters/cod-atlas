@@ -5,6 +5,7 @@ import { createGameIconRequests } from "../src/application/media/use-cases/creat
 const configuration = {
   steamTemplate: "https://steam.example.test/%app%/%icon%.%extension%",
   steamGridDbTemplate: "https://steamgriddb.example.test/%game%/%icon%/%file%",
+  mobyGamesTemplate: "https://cdn.mobygames.example.test/covers/%file%",
 };
 
 test("Steam icon is preferred and client icon is imported when present", () => {
@@ -25,4 +26,23 @@ test("SteamGridDB identifiers produce a local icon request", () => {
   }, configuration);
   assert.equal(request.url, `https://steamgriddb.example.test/12/34/${"a".repeat(32)}.png`);
   assert.equal(request.relativePath, "steamgriddb/cod3/icon.png");
+});
+
+test("MobyGames cover metadata produces a local icon request", () => {
+  const [request] = createGameIconRequests({
+    id: "heroes",
+    images: {
+      mobygames: {
+        game: 70439,
+        icon: "cover-299151",
+        file: "7182140-call-of-duty-heroes-android-front-cover.png",
+      },
+    },
+  }, configuration);
+  assert.equal(
+    request.url,
+    "https://cdn.mobygames.example.test/covers/7182140-call-of-duty-heroes-android-front-cover.png",
+  );
+  assert.equal(request.relativePath, "mobygames/heroes/icon.png");
+  assert.equal(request.provider, "mobygames");
 });

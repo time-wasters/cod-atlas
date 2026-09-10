@@ -4,6 +4,9 @@ title: Dam Approach
 games:
   - mw3-nds
 mode: singleplayer
+campaign:
+  id: "2"
+  label: Nevada
 wikiArticle: codwiki-dam-approach
 locations:
   - id: main

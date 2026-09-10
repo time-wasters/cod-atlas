@@ -62,7 +62,7 @@ export function useCampaignRouteLayer({
         if (selection) onSelect(selection.group, selection.entry);
       },
     });
-    routeLayer.current = renderedLayer;
+    routeLayer.current = renderedLayer.layer;
     let markerRevealTimer: number | null = null;
     let markerRevealAttempts = 0;
     let campaignViewSettled = false;
@@ -121,7 +121,7 @@ export function useCampaignRouteLayer({
     activeMarkerLayer?.on("spiderfied", handleMarkerSpiderfied);
 
     const mapElement = runtime.getContainer();
-    if (route.waypoints.length > 0 && routeFitKey.current !== selectedCampaign.key && mapElement) {
+    if (renderedLayer.boundsCoordinates.length > 0 && routeFitKey.current !== selectedCampaign.key && mapElement) {
       routeFitKey.current = selectedCampaign.key;
       const movement = {
         ...leafletViewportPadding(mapElement, getDetailsElement()),
@@ -131,8 +131,8 @@ export function useCampaignRouteLayer({
       };
       currentMap.stop();
       currentMap.once("moveend", handleCampaignMoveEnd);
-      if (movement.animate) currentMap.flyToBounds(route.waypoints.map((waypoint) => waypoint.coordinates), movement);
-      else currentMap.fitBounds(route.waypoints.map((waypoint) => waypoint.coordinates), movement);
+      if (movement.animate) currentMap.flyToBounds(renderedLayer.boundsCoordinates, movement);
+      else currentMap.fitBounds(renderedLayer.boundsCoordinates, movement);
       if (markerRevealTimer === null) {
         markerRevealTimer = window.setTimeout(revealFirstCampaignMarker, movement.animate ? 900 : 180);
       }
@@ -147,7 +147,7 @@ export function useCampaignRouteLayer({
       activeMarkerLayer?.off("spiderfied", handleMarkerSpiderfied);
       if (markerRevealTimer !== null) window.clearTimeout(markerRevealTimer);
       renderedLayer.remove();
-      if (routeLayer.current === renderedLayer) routeLayer.current = null;
+      if (routeLayer.current === renderedLayer.layer) routeLayer.current = null;
     };
   }, [findSelectionByEntryId, getDetailsElement, onSelect, ready, runtime, selectedCampaign]);
 

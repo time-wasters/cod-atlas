@@ -1,0 +1,20 @@
+---
+id: bo2-time-and-fate
+title: Time and Fate
+games:
+  - bo2
+mode: singleplayer
+campaign:
+  id: "1"
+  label: Missions
+wikiArticle: codwiki-time-and-fate
+locations:
+  - id: main
+    country: Nicaragua
+    latitude: 13
+    longitude: -85
+    precision: country
+    confidence: fallback
+    method: country-fallback
+    primary: true
+---

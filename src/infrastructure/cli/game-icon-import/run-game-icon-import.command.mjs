@@ -3,7 +3,7 @@ import { importGameIcons } from "../../../application/media/use-cases/import-gam
 export async function runGameIconImportCommand() {
   const result = await importGameIcons();
   if (!result.enabled) {
-    console.log("External game icon import skipped; STEAM_ICON_URL and STEAMGRIDDB_ICON_URL are not configured.");
+    console.log("External game icon import skipped; STEAM_ICON_URL, STEAMGRIDDB_ICON_URL, and MOBYGAMES_ICON_URL are not configured.");
     return;
   }
   for (const failure of result.failures) {

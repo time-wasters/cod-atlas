@@ -4,6 +4,9 @@ title: Through the Mountains
 games:
   - mw3-nds
 mode: singleplayer
+campaign:
+  id: "2"
+  label: Nevada
 wikiArticle: codwiki-through-the-mountains
 locations:
   - id: main

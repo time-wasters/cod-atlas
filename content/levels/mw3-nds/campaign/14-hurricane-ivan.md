@@ -4,6 +4,9 @@ title: Hurricane Ivan
 games:
   - mw3-nds
 mode: singleplayer
+campaign:
+  id: "3"
+  label: Baltimore
 wikiArticle: codwiki-hurricane-ivan
 locations:
   - id: main

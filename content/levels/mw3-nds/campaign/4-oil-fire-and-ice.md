@@ -4,6 +4,9 @@ title: Oil, Fire, and Ice
 games:
   - mw3-nds
 mode: singleplayer
+campaign:
+  id: "1"
+  label: Alaska
 wikiArticle: codwiki-oil-fire-and-ice
 locations:
   - id: main

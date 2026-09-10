@@ -36,5 +36,10 @@ export function resolveGameIconProviderConfiguration(environment = process.env) 
       "STEAMGRIDDB_ICON_URL",
       ["%file%"],
     ),
+    mobyGamesTemplate: configuredTemplate(
+      environment.MOBYGAMES_ICON_URL,
+      "MOBYGAMES_ICON_URL",
+      ["%file%"],
+    ),
   };
 }

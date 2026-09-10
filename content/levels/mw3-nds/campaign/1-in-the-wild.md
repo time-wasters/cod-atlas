@@ -4,6 +4,9 @@ title: In The Wild
 games:
   - mw3-nds
 mode: singleplayer
+campaign:
+  id: "1"
+  label: Alaska
 wikiArticle: codwiki-in-the-wild
 locations:
   - id: main

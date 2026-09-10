@@ -11,4 +11,21 @@ test("provider metadata rejects incomplete and ambiguous records", () => {
     id: "bad",
     images: { steam: {}, steamgriddb: {} },
   }), /exactly one provider/);
+  assert.throws(() => validateGameImageSource({
+    id: "bad",
+    images: { mobygames: { game: 70439, icon: "299151", file: "cover.png" } },
+  }), /cover-<id>/);
+});
+
+test("MobyGames cover metadata is accepted", () => {
+  assert.doesNotThrow(() => validateGameImageSource({
+    id: "heroes",
+    images: {
+      mobygames: {
+        game: 70439,
+        icon: "cover-299151",
+        file: "7182140-call-of-duty-heroes-android-front-cover.png",
+      },
+    },
+  }));
 });
