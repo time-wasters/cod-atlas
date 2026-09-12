@@ -21,9 +21,9 @@ mission has the required research sections.
 <!-- research-progress:start -->
 | Scope | Researched | Remaining |
 | --- | ---: | ---: |
-| All currently catalogued levels | 217 / 1301 (17%) | 1084 / 1301 (83%) |
+| All currently catalogued levels | 217 / 1309 (17%) | 1092 / 1309 (83%) |
 | Campaign levels | 134 / 482 (28%) | 348 / 482 (72%) |
-| Multiplayer maps | 83 / 723 (11%) | 640 / 723 (89%) |
+| Multiplayer maps | 83 / 731 (11%) | 648 / 731 (89%) |
 | Special Ops missions | 0 / 76 (0%) | 76 / 76 (100%) |
 | Zombies maps | 0 / 20 (0%) | 20 / 20 (100%) |
 
@@ -31,7 +31,7 @@ mission has the required research sections.
 | --- | ---: | ---: | ---: | ---: | ---: |
 | Call of Duty | 26 / 26 (100%) | 16 / 16 (100%) | — | — | 42 / 42 (100%) |
 | Call of Duty: United Offensive | 13 / 13 (100%) | 14 / 14 (100%) | — | — | 27 / 27 (100%) |
-| Call of Duty: Finest Hour | 19 / 19 (100%) | — | — | — | 19 / 19 (100%) |
+| Call of Duty: Finest Hour | 19 / 19 (100%) | 0 / 8 (0%) | — | — | 19 / 27 (70%) |
 | Call of Duty 2 | 27 / 27 (100%) | 21 / 21 (100%) | — | — | 48 / 48 (100%) |
 | Call of Duty 2: Big Red One | 14 / 14 (100%) | 9 / 9 (100%) | — | — | 23 / 23 (100%) |
 | Call of Duty 3 | 14 / 14 (100%) | 20 / 20 (100%) | — | — | 34 / 34 (100%) |
@@ -75,9 +75,9 @@ completed research structure or precise marker does not imply human review.
 <!-- human-verification-progress:start -->
 | Scope | Marker locations verified | Research notes verified |
 | --- | ---: | ---: |
-| All currently catalogued records | 1 / 1210 (0%) | 0 / 1301 (0%) |
+| All currently catalogued records | 1 / 1213 (0%) | 0 / 1309 (0%) |
 | Campaign records | 1 / 471 (0%) | 0 / 482 (0%) |
-| Multiplayer records | 0 / 653 (0%) | 0 / 723 (0%) |
+| Multiplayer records | 0 / 656 (0%) | 0 / 731 (0%) |
 | Special Ops records | 0 / 75 (0%) | 0 / 76 (0%) |
 | Zombies records | 0 / 11 (0%) | 0 / 20 (0%) |
 
@@ -85,7 +85,7 @@ completed research structure or precise marker does not imply human review.
 | --- | ---: | ---: |
 | Call of Duty | 1 / 42 (2%) | 0 / 42 (0%) |
 | Call of Duty: United Offensive | 0 / 27 (0%) | 0 / 27 (0%) |
-| Call of Duty: Finest Hour | 0 / 19 (0%) | 0 / 19 (0%) |
+| Call of Duty: Finest Hour | 0 / 22 (0%) | 0 / 27 (0%) |
 | Call of Duty 2 | 0 / 49 (0%) | 0 / 48 (0%) |
 | Call of Duty 2: Big Red One | 0 / 23 (0%) | 0 / 23 (0%) |
 | Call of Duty 3 | 0 / 34 (0%) | 0 / 34 (0%) |
@@ -132,26 +132,26 @@ The per-game table assigns each marker to its canonical level's owner game.
 <!-- localization-progress:start -->
 | Scope | Localized | Country fallback | Off-world |
 | --- | ---: | ---: | ---: |
-| All marker locations | 418 / 1180 (35%) | 762 / 1180 (65%) | 30 |
+| All marker locations | 419 / 1183 (35%) | 764 / 1183 (65%) | 30 |
 | Campaign marker locations | 167 / 454 (37%) | 287 / 454 (63%) | 17 |
-| Multiplayer marker locations | 198 / 641 (31%) | 443 / 641 (69%) | 12 |
+| Multiplayer marker locations | 199 / 644 (31%) | 445 / 644 (69%) | 12 |
 | Special Ops marker locations | 52 / 75 (69%) | 23 / 75 (31%) | 0 |
 | Zombies marker locations | 1 / 10 (10%) | 9 / 10 (90%) | 1 |
 
 | Precision | Marker locations | Share of all markers |
 | --- | ---: | ---: |
-| Exact | 98 | 8% |
+| Exact | 99 | 8% |
 | Approximate | 180 | 15% |
 | City | 113 | 9% |
 | Region | 27 | 2% |
-| Country | 762 | 63% |
+| Country | 764 | 63% |
 | Off-world | 30 | 2% |
 
 | Game | Campaign | Multiplayer | Special Ops | Zombies | Overall |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | Call of Duty | 26 / 26 (100%) | 16 / 16 (100%) | — | — | 42 / 42 (100%) |
 | Call of Duty: United Offensive | 12 / 13 (92%) | 12 / 14 (86%) | — | — | 24 / 27 (89%) |
-| Call of Duty: Finest Hour | 19 / 19 (100%) | — | — | — | 19 / 19 (100%) |
+| Call of Duty: Finest Hour | 19 / 19 (100%) | 1 / 3 (33%) | — | — | 20 / 22 (91%) |
 | Call of Duty 2 | 27 / 27 (100%) | 22 / 22 (100%) | — | — | 49 / 49 (100%) |
 | Call of Duty 2: Big Red One | 14 / 14 (100%) | 8 / 9 (89%) | — | — | 22 / 23 (96%) |
 | Call of Duty 3 | 14 / 14 (100%) | 19 / 20 (95%) | — | — | 33 / 34 (97%) |
