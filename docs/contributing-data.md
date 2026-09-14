@@ -33,10 +33,12 @@ Map-type directories are being introduced one game at a time. A reorganized
 game must use them for every level: `campaign/` contains records with
 `mode: singleplayer`, `multiplayer/` contains records with `mode: multiplayer`,
 `special-ops/` contains records with `mode: special-ops`, and `zombies/`
-contains records with `mode: zombies`. The `cod`, `cod-uo`, `cod-fh`, `cod2`,
+contains records with `mode: zombies`; `other/` contains separately selectable
+entries with `mode: other`. The `cod`, `cod-uo`, `cod-fh`, `cod2`,
 `cod2-bro`, `cod3`, `rtv`, `cod4`, `cod4-nds`, `waw-nds`, `mw2`, `mw3`, `bo-nds`, `mw3-nds`, `bo-d`, `wz`, `wz2`, and `mwiii`
 directories use the first two folders; `mw2` and `mw3` additionally use
 `special-ops/`, while `waw`, `bo`, `bo-nds`, and `bo6` additionally use `zombies/`.
+`waw-nds` additionally uses `other/` for its Challenge missions.
 Other games retain their current flat layout until they are deliberately
 reorganized. These directory names describe broad map types, not multiplayer
 rule sets such as deathmatch or capture the flag.
@@ -44,7 +46,7 @@ rule sets such as deathmatch or capture the flag.
 Within a map-type layout, campaign filenames are
 `<order>-<level-slug>.md`. Orders start at `1`, use no leading zeros, and must
 be unique and contiguous so they describe the sequence in which the levels are
-played. Multiplayer, Special Ops, and Zombies filenames remain
+played. Multiplayer, Special Ops, Zombies, and Other filenames remain
 `<level-slug>.md`. The order prefix is filesystem metadata only: do not add it
 to the stable level `id` or title.
 
@@ -66,7 +68,7 @@ Optional image-provider metadata follows the existing game records.
 | `id` | yes | Repository-wide level ID, normally prefixed with the primary game ID. |
 | `title` | yes | Display name of the level or map. |
 | `games` | yes | Exactly one owner ID from `content/games/`; use appearance references for other games. |
-| `mode` | yes | `singleplayer`, `multiplayer`, `special-ops`, or `zombies`. |
+| `mode` | yes | `singleplayer`, `multiplayer`, `special-ops`, `zombies`, or `other`. |
 | `campaign` | no | Named campaign grouping as a stable string `id` and display `label`. |
 | `wikiArticle` | yes | ID of a separate Wiki import JSON record. |
 | `locations` | yes | Locations owned by this level. Use `[]` only while its location remains uncurated. Never reference a shared place. |
@@ -83,6 +85,13 @@ campaign:
 ```
 
 Campaign IDs are strings and should remain stable if a label changes.
+
+Use `mode: other` only for separately selectable level-like entries that do
+not fit Campaign, Multiplayer, Special Ops, or Zombies. Each Challenge remains
+a distinct canonical record even when several Challenges reuse the same source
+mission. Record the reused campaign level with `metadata.variantOf`, store the
+Challenge number and objectives in `metadata`, and copy the source level's
+location into the Challenge so the record continues to own its coordinates.
 
 When an unchanged level appears in another game, create a reference under that
 game so its levels remain easy to find:
@@ -187,9 +196,14 @@ it automatically.
 A Wiki import record requires a stable `id` and `sourceUrl`. Keep import data
 separate from curated level data. Unknown import values are `null`; do not
 invent values just to fill the template. `mapStyle` is `singleplayer`,
-`multiplayer`, `special-ops`, or `zombies`, matching the curated
+`multiplayer`, `special-ops`, `zombies`, or `other`, matching the curated
 classification. Existing `mapStyleConfidence` uses `curated` when that
 classification came from the atlas pending a future source refresh.
+
+When a Challenge has no dedicated Wiki article, its `wikiArticle` may point to
+the reused campaign level's import record. In that case the import record keeps
+`mapStyle: singleplayer`; the canonical Challenge record's `mode: other`
+remains authoritative for the atlas classification.
 
 Do not add media without its source URL, web-resolution URL, detail page URL,
 and an author or uploader name and user URL. Freely reusable media also needs

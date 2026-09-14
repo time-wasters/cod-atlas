@@ -41,8 +41,43 @@ test("mode filtering treats Special Ops as a distinct content category", () => {
       showMultiplayer: false,
       showSpecialOps: true,
       showZombies: false,
+      showOther: false,
     },
   });
 
   assert.deepEqual(result.groups[0].entries.map((entry) => entry.id), ["special-ops"]);
+});
+
+test("mode filtering exposes Other entries independently", () => {
+  const otherEntry = {
+    id: "challenge",
+    game: "WAW-DS",
+    gameIds: ["waw-nds"],
+    title: "Challenge #1 — Two Roads",
+    precision: "city",
+    modes: ["other"],
+    appearances: [{ title: "Challenge #1 — Two Roads" }],
+  };
+  const result = filterAtlasGroups({
+    games: [{ id: "waw-nds", code: "WAW-DS", series: "world-war-ii", subseries: "spin-off" }],
+    groups: [{ name: "Germany", continent: "Europe", flagCode: "DE", entries: [otherEntry] }],
+    criteria: {
+      query: "",
+      gameCode: "all",
+      country: "all",
+      gameSeries: new Set(),
+      gameSubseries: new Set(),
+      continents: new Set(),
+      precisions: new Set(),
+      confidences: new Set(),
+      methods: new Set(),
+      showSingleplayer: false,
+      showMultiplayer: false,
+      showSpecialOps: false,
+      showZombies: false,
+      showOther: true,
+    },
+  });
+
+  assert.deepEqual(result.groups[0].entries.map((entry) => entry.id), ["challenge"]);
 });

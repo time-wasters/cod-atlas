@@ -31,5 +31,6 @@ test("human verification counts marker locations separately from level research"
   assert.match(generated, /Campaign records \| 2 \/ 2 \(100%\) \| 0 \/ 1 \(0%\)/);
   assert.match(generated, /Multiplayer records \| 0 \/ 1 \(0%\) \| 1 \/ 1 \(100%\)/);
   assert.match(generated, /Special Ops records \| — \| —/);
+  assert.match(generated, /Other records \| — \| —/);
   assert.match(generated, /\| Test Game \| 2 \/ 3 \(67%\) \| 1 \/ 2 \(50%\) \|/);
 });

@@ -9,7 +9,8 @@ is not required for validation or builds.
 
 A canonical level counts as researched when its Markdown body contains all five
 standard research sections in order. The first section may be either
-`The Mission in the Game` or `The Map in the Game`. AI-assisted notes must also
+`The Mission in the Game`, `The Map in the Game`, or `The Challenge in the Game`.
+AI-assisted notes must also
 include an AI disclosure. Appearance `.ref.md` files are excluded because they
 inherit research from their canonical level.
 
@@ -21,48 +22,49 @@ mission has the required research sections.
 <!-- research-progress:start -->
 | Scope | Researched | Remaining |
 | --- | ---: | ---: |
-| All currently catalogued levels | 217 / 1309 (17%) | 1092 / 1309 (83%) |
-| Campaign levels | 134 / 482 (28%) | 348 / 482 (72%) |
-| Multiplayer maps | 83 / 731 (11%) | 648 / 731 (89%) |
+| All currently catalogued levels | 236 / 1339 (18%) | 1103 / 1339 (82%) |
+| Campaign levels | 151 / 482 (31%) | 331 / 482 (69%) |
+| Multiplayer maps | 85 / 725 (12%) | 640 / 725 (88%) |
 | Special Ops missions | 0 / 76 (0%) | 76 / 76 (100%) |
-| Zombies maps | 0 / 20 (0%) | 20 / 20 (100%) |
+| Zombies maps | 0 / 26 (0%) | 26 / 26 (100%) |
+| Other levels | 0 / 30 (0%) | 30 / 30 (100%) |
 
-| Game | Campaign | Multiplayer | Special Ops | Zombies | Overall |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| Call of Duty | 26 / 26 (100%) | 16 / 16 (100%) | — | — | 42 / 42 (100%) |
-| Call of Duty: United Offensive | 13 / 13 (100%) | 14 / 14 (100%) | — | — | 27 / 27 (100%) |
-| Call of Duty: Finest Hour | 19 / 19 (100%) | 0 / 8 (0%) | — | — | 19 / 27 (70%) |
-| Call of Duty 2 | 27 / 27 (100%) | 21 / 21 (100%) | — | — | 48 / 48 (100%) |
-| Call of Duty 2: Big Red One | 14 / 14 (100%) | 9 / 9 (100%) | — | — | 23 / 23 (100%) |
-| Call of Duty 3 | 14 / 14 (100%) | 20 / 20 (100%) | — | — | 34 / 34 (100%) |
-| Call of Duty: Roads to Victory | 14 / 14 (100%) | 0 / 2 (0%) | — | — | 14 / 16 (88%) |
-| Modern Warfare (2007) | 5 / 21 (24%) | 0 / 21 (0%) | — | — | 5 / 42 (12%) |
-| Modern Warfare (Nintendo DS) | 0 / 12 (0%) | 0 / 7 (0%) | — | — | 0 / 19 (0%) |
-| World at War | 0 / 15 (0%) | 0 / 23 (0%) | — | 0 / 4 (0%) | 0 / 42 (0%) |
-| World at War (Nintendo DS) | 0 / 26 (0%) | 0 / 11 (0%) | — | — | 0 / 37 (0%) |
-| World at War: Final Fronts | 0 / 13 (0%) | — | — | — | 0 / 13 (0%) |
-| Modern Warfare 2 (2009) | 0 / 19 (0%) | 0 / 22 (0%) | 0 / 23 (0%) | — | 0 / 64 (0%) |
-| Black Ops | 0 / 15 (0%) | 1 / 26 (4%) | — | 0 / 6 (0%) | 1 / 47 (2%) |
-| Black Ops (Nintendo DS) | 0 / 18 (0%) | 0 / 12 (0%) | — | 0 / 4 (0%) | 0 / 34 (0%) |
-| Modern Warfare 3 (2011) | 0 / 18 (0%) | 0 / 35 (0%) | 0 / 53 (0%) | — | 0 / 106 (0%) |
-| MW3: Defiance | 0 / 14 (0%) | 0 / 14 (0%) | — | — | 0 / 28 (0%) |
-| Black Ops II | 0 / 17 (0%) | 0 / 37 (0%) | — | — | 0 / 54 (0%) |
-| Black Ops: Declassified | 0 / 10 (0%) | 0 / 6 (0%) | — | — | 0 / 16 (0%) |
-| Ghosts | 1 / 18 (6%) | 0 / 33 (0%) | — | — | 1 / 51 (2%) |
-| Advanced Warfare | 1 / 15 (7%) | 0 / 30 (0%) | — | — | 1 / 45 (2%) |
-| Black Ops III | 0 / 11 (0%) | 0 / 28 (0%) | — | — | 0 / 39 (0%) |
-| Infinite Warfare | 0 / 16 (0%) | 0 / 28 (0%) | — | — | 0 / 44 (0%) |
-| Modern Warfare Remastered | — | 0 / 1 (0%) | — | — | 0 / 1 (0%) |
-| WWII | 0 / 12 (0%) | 2 / 41 (5%) | — | — | 2 / 53 (4%) |
-| Black Ops 4 | — | 0 / 36 (0%) | — | — | 0 / 36 (0%) |
-| Modern Warfare (2019) | 0 / 14 (0%) | 0 / 45 (0%) | — | — | 0 / 59 (0%) |
-| Warzone (2020) | — | 0 / 4 (0%) | — | — | 0 / 4 (0%) |
-| Black Ops Cold War | 0 / 13 (0%) | 0 / 38 (0%) | — | — | 0 / 51 (0%) |
-| Vanguard | 0 / 9 (0%) | 0 / 29 (0%) | — | — | 0 / 38 (0%) |
-| Modern Warfare II (2022) | 0 / 17 (0%) | 0 / 20 (0%) | — | — | 0 / 37 (0%) |
-| Warzone 2.0 | — | 0 / 3 (0%) | — | — | 0 / 3 (0%) |
-| Modern Warfare III (2023) | 0 / 14 (0%) | 0 / 45 (0%) | — | — | 0 / 59 (0%) |
-| Black Ops 6 | 0 / 18 (0%) | 0 / 46 (0%) | — | 0 / 6 (0%) | 0 / 70 (0%) |
+| Game | Campaign | Multiplayer | Special Ops | Zombies | Other | Overall |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Call of Duty | 26 / 26 (100%) | 16 / 16 (100%) | — | — | — | 42 / 42 (100%) |
+| Call of Duty: United Offensive | 13 / 13 (100%) | 14 / 14 (100%) | — | — | — | 27 / 27 (100%) |
+| Call of Duty: Finest Hour | 19 / 19 (100%) | 0 / 8 (0%) | — | — | — | 19 / 27 (70%) |
+| Call of Duty 2 | 27 / 27 (100%) | 21 / 21 (100%) | — | — | — | 48 / 48 (100%) |
+| Call of Duty 2: Big Red One | 14 / 14 (100%) | 9 / 9 (100%) | — | — | — | 23 / 23 (100%) |
+| Call of Duty 3 | 14 / 14 (100%) | 20 / 20 (100%) | — | — | — | 34 / 34 (100%) |
+| Call of Duty: Roads to Victory | 14 / 14 (100%) | 0 / 2 (0%) | — | — | — | 14 / 16 (88%) |
+| Modern Warfare (2007) | 21 / 21 (100%) | 0 / 21 (0%) | — | — | — | 21 / 42 (50%) |
+| Modern Warfare (Nintendo DS) | 0 / 12 (0%) | 0 / 7 (0%) | — | — | — | 0 / 19 (0%) |
+| World at War | 0 / 15 (0%) | 0 / 23 (0%) | — | 0 / 4 (0%) | — | 0 / 42 (0%) |
+| World at War (Nintendo DS) | 0 / 26 (0%) | 0 / 11 (0%) | — | — | 0 / 30 (0%) | 0 / 67 (0%) |
+| World at War: Final Fronts | 0 / 13 (0%) | — | — | — | — | 0 / 13 (0%) |
+| Modern Warfare 2 (2009) | 0 / 19 (0%) | 0 / 22 (0%) | 0 / 23 (0%) | — | — | 0 / 64 (0%) |
+| Black Ops | 0 / 15 (0%) | 1 / 26 (4%) | — | 0 / 6 (0%) | — | 1 / 47 (2%) |
+| Black Ops (Nintendo DS) | 1 / 18 (6%) | 0 / 12 (0%) | — | 0 / 4 (0%) | — | 1 / 34 (3%) |
+| Modern Warfare 3 (2011) | 0 / 18 (0%) | 0 / 35 (0%) | 0 / 53 (0%) | — | — | 0 / 106 (0%) |
+| MW3: Defiance | 0 / 14 (0%) | 0 / 14 (0%) | — | — | — | 0 / 28 (0%) |
+| Black Ops II | 0 / 17 (0%) | 0 / 31 (0%) | — | 0 / 6 (0%) | — | 0 / 54 (0%) |
+| Black Ops: Declassified | 0 / 10 (0%) | 0 / 6 (0%) | — | — | — | 0 / 16 (0%) |
+| Ghosts | 1 / 18 (6%) | 0 / 33 (0%) | — | — | — | 1 / 51 (2%) |
+| Advanced Warfare | 1 / 15 (7%) | 1 / 30 (3%) | — | — | — | 2 / 45 (4%) |
+| Black Ops III | 0 / 11 (0%) | 0 / 28 (0%) | — | — | — | 0 / 39 (0%) |
+| Infinite Warfare | 0 / 16 (0%) | 0 / 28 (0%) | — | — | — | 0 / 44 (0%) |
+| Modern Warfare Remastered | — | 0 / 1 (0%) | — | — | — | 0 / 1 (0%) |
+| WWII | 0 / 12 (0%) | 2 / 41 (5%) | — | — | — | 2 / 53 (4%) |
+| Black Ops 4 | — | 0 / 36 (0%) | — | — | — | 0 / 36 (0%) |
+| Modern Warfare (2019) | 0 / 14 (0%) | 0 / 45 (0%) | — | — | — | 0 / 59 (0%) |
+| Warzone (2020) | — | 1 / 4 (25%) | — | — | — | 1 / 4 (25%) |
+| Black Ops Cold War | 0 / 13 (0%) | 0 / 38 (0%) | — | — | — | 0 / 51 (0%) |
+| Vanguard | 0 / 9 (0%) | 0 / 29 (0%) | — | — | — | 0 / 38 (0%) |
+| Modern Warfare II (2022) | 0 / 17 (0%) | 0 / 20 (0%) | — | — | — | 0 / 37 (0%) |
+| Warzone 2.0 | — | 0 / 3 (0%) | — | — | — | 0 / 3 (0%) |
+| Modern Warfare III (2023) | 0 / 14 (0%) | 0 / 45 (0%) | — | — | — | 0 / 59 (0%) |
+| Black Ops 6 | 0 / 18 (0%) | 0 / 46 (0%) | — | 0 / 6 (0%) | — | 0 / 70 (0%) |
 <!-- research-progress:end -->
 
 ## Human verification progress
@@ -75,11 +77,12 @@ completed research structure or precise marker does not imply human review.
 <!-- human-verification-progress:start -->
 | Scope | Marker locations verified | Research notes verified |
 | --- | ---: | ---: |
-| All currently catalogued records | 1 / 1213 (0%) | 0 / 1309 (0%) |
-| Campaign records | 1 / 471 (0%) | 0 / 482 (0%) |
-| Multiplayer records | 0 / 656 (0%) | 0 / 731 (0%) |
+| All currently catalogued records | 5 / 1246 (0%) | 0 / 1339 (0%) |
+| Campaign records | 5 / 474 (1%) | 0 / 482 (0%) |
+| Multiplayer records | 0 / 650 (0%) | 0 / 725 (0%) |
 | Special Ops records | 0 / 75 (0%) | 0 / 76 (0%) |
-| Zombies records | 0 / 11 (0%) | 0 / 20 (0%) |
+| Zombies records | 0 / 17 (0%) | 0 / 26 (0%) |
+| Other records | 0 / 30 (0%) | 0 / 30 (0%) |
 
 | Game | Marker locations verified | Research notes verified |
 | --- | ---: | ---: |
@@ -90,14 +93,14 @@ completed research structure or precise marker does not imply human review.
 | Call of Duty 2: Big Red One | 0 / 23 (0%) | 0 / 23 (0%) |
 | Call of Duty 3 | 0 / 34 (0%) | 0 / 34 (0%) |
 | Call of Duty: Roads to Victory | 0 / 16 (0%) | 0 / 16 (0%) |
-| Modern Warfare (2007) | 0 / 41 (0%) | 0 / 42 (0%) |
+| Modern Warfare (2007) | 2 / 42 (5%) | 0 / 42 (0%) |
 | Modern Warfare (Nintendo DS) | 0 / 10 (0%) | 0 / 19 (0%) |
 | World at War | 0 / 42 (0%) | 0 / 42 (0%) |
-| World at War (Nintendo DS) | 0 / 35 (0%) | 0 / 37 (0%) |
+| World at War (Nintendo DS) | 0 / 65 (0%) | 0 / 67 (0%) |
 | World at War: Final Fronts | 0 / 14 (0%) | 0 / 13 (0%) |
 | Modern Warfare 2 (2009) | 0 / 64 (0%) | 0 / 64 (0%) |
 | Black Ops | 0 / 48 (0%) | 0 / 47 (0%) |
-| Black Ops (Nintendo DS) | 0 / 18 (0%) | 0 / 34 (0%) |
+| Black Ops (Nintendo DS) | 2 / 20 (10%) | 0 / 34 (0%) |
 | Modern Warfare 3 (2011) | 0 / 107 (0%) | 0 / 106 (0%) |
 | MW3: Defiance | 0 / 19 (0%) | 0 / 28 (0%) |
 | Black Ops II | 0 / 54 (0%) | 0 / 54 (0%) |
@@ -132,54 +135,55 @@ The per-game table assigns each marker to its canonical level's owner game.
 <!-- localization-progress:start -->
 | Scope | Localized | Country fallback | Off-world |
 | --- | ---: | ---: | ---: |
-| All marker locations | 419 / 1183 (35%) | 764 / 1183 (65%) | 30 |
-| Campaign marker locations | 167 / 454 (37%) | 287 / 454 (63%) | 17 |
-| Multiplayer marker locations | 199 / 644 (31%) | 445 / 644 (69%) | 12 |
+| All marker locations | 462 / 1216 (38%) | 754 / 1216 (62%) | 30 |
+| Campaign marker locations | 186 / 457 (41%) | 271 / 457 (59%) | 17 |
+| Multiplayer marker locations | 201 / 638 (32%) | 437 / 638 (68%) | 12 |
 | Special Ops marker locations | 52 / 75 (69%) | 23 / 75 (31%) | 0 |
-| Zombies marker locations | 1 / 10 (10%) | 9 / 10 (90%) | 1 |
+| Zombies marker locations | 1 / 16 (6%) | 15 / 16 (94%) | 1 |
+| Other marker locations | 22 / 30 (73%) | 8 / 30 (27%) | 0 |
 
 | Precision | Marker locations | Share of all markers |
 | --- | ---: | ---: |
-| Exact | 99 | 8% |
-| Approximate | 180 | 15% |
-| City | 113 | 9% |
-| Region | 27 | 2% |
-| Country | 764 | 63% |
+| Exact | 105 | 8% |
+| Approximate | 186 | 15% |
+| City | 132 | 11% |
+| Region | 39 | 3% |
+| Country | 754 | 61% |
 | Off-world | 30 | 2% |
 
-| Game | Campaign | Multiplayer | Special Ops | Zombies | Overall |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| Call of Duty | 26 / 26 (100%) | 16 / 16 (100%) | — | — | 42 / 42 (100%) |
-| Call of Duty: United Offensive | 12 / 13 (92%) | 12 / 14 (86%) | — | — | 24 / 27 (89%) |
-| Call of Duty: Finest Hour | 19 / 19 (100%) | 1 / 3 (33%) | — | — | 20 / 22 (91%) |
-| Call of Duty 2 | 27 / 27 (100%) | 22 / 22 (100%) | — | — | 49 / 49 (100%) |
-| Call of Duty 2: Big Red One | 14 / 14 (100%) | 8 / 9 (89%) | — | — | 22 / 23 (96%) |
-| Call of Duty 3 | 14 / 14 (100%) | 19 / 20 (95%) | — | — | 33 / 34 (97%) |
-| Call of Duty: Roads to Victory | 14 / 14 (100%) | 2 / 2 (100%) | — | — | 16 / 16 (100%) |
-| Modern Warfare (2007) | 5 / 20 (25%) | 20 / 21 (95%) | — | — | 25 / 41 (61%) |
-| Modern Warfare (Nintendo DS) | 1 / 7 (14%) | 2 / 3 (67%) | — | — | 3 / 10 (30%) |
-| World at War | 1 / 15 (7%) | 10 / 23 (43%) | — | 0 / 4 (0%) | 11 / 42 (26%) |
-| World at War (Nintendo DS) | 18 / 26 (69%) | 6 / 9 (67%) | — | — | 24 / 35 (69%) |
-| World at War: Final Fronts | 7 / 14 (50%) | — | — | — | 7 / 14 (50%) |
-| Modern Warfare 2 (2009) | 1 / 18 (6%) | 22 / 22 (100%) | 10 / 23 (43%) | — | 33 / 63 (52%) |
-| Black Ops | 1 / 16 (6%) | 3 / 26 (12%) | — | 1 / 5 (20%) | 5 / 47 (11%) |
-| Black Ops (Nintendo DS) | 0 / 16 (0%) | 0 / 1 (0%) | — | 0 / 1 (0%) | 0 / 18 (0%) |
-| Modern Warfare 3 (2011) | 0 / 21 (0%) | 32 / 34 (94%) | 42 / 52 (81%) | — | 74 / 107 (69%) |
-| MW3: Defiance | 0 / 14 (0%) | 1 / 5 (20%) | — | — | 1 / 19 (5%) |
-| Black Ops II | 0 / 17 (0%) | 1 / 37 (3%) | — | — | 1 / 54 (2%) |
-| Black Ops: Declassified | 0 / 10 (0%) | 3 / 6 (50%) | — | — | 3 / 16 (19%) |
-| Ghosts | 1 / 17 (6%) | 2 / 33 (6%) | — | — | 3 / 50 (6%) |
-| Advanced Warfare | 1 / 17 (6%) | 0 / 30 (0%) | — | — | 1 / 47 (2%) |
-| Black Ops III | 0 / 12 (0%) | 0 / 28 (0%) | — | — | 0 / 40 (0%) |
-| Infinite Warfare | 0 / 2 (0%) | 0 / 16 (0%) | — | — | 0 / 18 (0%) |
-| Modern Warfare Remastered | — | 0 / 1 (0%) | — | — | 0 / 1 (0%) |
-| WWII | 0 / 15 (0%) | 11 / 43 (26%) | — | — | 11 / 58 (19%) |
-| Black Ops 4 | — | 1 / 36 (3%) | — | — | 1 / 36 (3%) |
-| Modern Warfare (2019) | 0 / 14 (0%) | 0 / 46 (0%) | — | — | 0 / 60 (0%) |
-| Warzone (2020) | — | 0 / 4 (0%) | — | — | 0 / 4 (0%) |
-| Black Ops Cold War | 2 / 14 (14%) | 2 / 38 (5%) | — | — | 4 / 52 (8%) |
-| Vanguard | 3 / 9 (33%) | 3 / 31 (10%) | — | — | 6 / 40 (15%) |
-| Modern Warfare II (2022) | 0 / 19 (0%) | 0 / 20 (0%) | — | — | 0 / 39 (0%) |
-| Warzone 2.0 | — | 0 / 3 (0%) | — | — | 0 / 3 (0%) |
-| Modern Warfare III (2023) | 0 / 14 (0%) | 0 / 42 (0%) | — | — | 0 / 56 (0%) |
+| Game | Campaign | Multiplayer | Special Ops | Zombies | Other | Overall |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Call of Duty | 26 / 26 (100%) | 16 / 16 (100%) | — | — | — | 42 / 42 (100%) |
+| Call of Duty: United Offensive | 12 / 13 (92%) | 12 / 14 (86%) | — | — | — | 24 / 27 (89%) |
+| Call of Duty: Finest Hour | 19 / 19 (100%) | 1 / 3 (33%) | — | — | — | 20 / 22 (91%) |
+| Call of Duty 2 | 27 / 27 (100%) | 22 / 22 (100%) | — | — | — | 49 / 49 (100%) |
+| Call of Duty 2: Big Red One | 14 / 14 (100%) | 8 / 9 (89%) | — | — | — | 22 / 23 (96%) |
+| Call of Duty 3 | 14 / 14 (100%) | 19 / 20 (95%) | — | — | — | 33 / 34 (97%) |
+| Call of Duty: Roads to Victory | 14 / 14 (100%) | 2 / 2 (100%) | — | — | — | 16 / 16 (100%) |
+| Modern Warfare (2007) | 21 / 21 (100%) | 20 / 21 (95%) | — | — | — | 41 / 42 (98%) |
+| Modern Warfare (Nintendo DS) | 1 / 7 (14%) | 2 / 3 (67%) | — | — | — | 3 / 10 (30%) |
+| World at War | 1 / 15 (7%) | 10 / 23 (43%) | — | 0 / 4 (0%) | — | 11 / 42 (26%) |
+| World at War (Nintendo DS) | 18 / 26 (69%) | 6 / 9 (67%) | — | — | 22 / 30 (73%) | 46 / 65 (71%) |
+| World at War: Final Fronts | 7 / 14 (50%) | — | — | — | — | 7 / 14 (50%) |
+| Modern Warfare 2 (2009) | 1 / 18 (6%) | 22 / 22 (100%) | 10 / 23 (43%) | — | — | 33 / 63 (52%) |
+| Black Ops | 1 / 16 (6%) | 3 / 26 (12%) | — | 1 / 5 (20%) | — | 5 / 47 (11%) |
+| Black Ops (Nintendo DS) | 3 / 18 (17%) | 0 / 1 (0%) | — | 0 / 1 (0%) | — | 3 / 20 (15%) |
+| Modern Warfare 3 (2011) | 0 / 21 (0%) | 32 / 34 (94%) | 42 / 52 (81%) | — | — | 74 / 107 (69%) |
+| MW3: Defiance | 0 / 14 (0%) | 1 / 5 (20%) | — | — | — | 1 / 19 (5%) |
+| Black Ops II | 0 / 17 (0%) | 1 / 31 (3%) | — | 0 / 6 (0%) | — | 1 / 54 (2%) |
+| Black Ops: Declassified | 0 / 10 (0%) | 3 / 6 (50%) | — | — | — | 3 / 16 (19%) |
+| Ghosts | 1 / 17 (6%) | 2 / 33 (6%) | — | — | — | 3 / 50 (6%) |
+| Advanced Warfare | 1 / 17 (6%) | 1 / 30 (3%) | — | — | — | 2 / 47 (4%) |
+| Black Ops III | 0 / 12 (0%) | 0 / 28 (0%) | — | — | — | 0 / 40 (0%) |
+| Infinite Warfare | 0 / 2 (0%) | 0 / 16 (0%) | — | — | — | 0 / 18 (0%) |
+| Modern Warfare Remastered | — | 0 / 1 (0%) | — | — | — | 0 / 1 (0%) |
+| WWII | 0 / 15 (0%) | 11 / 43 (26%) | — | — | — | 11 / 58 (19%) |
+| Black Ops 4 | — | 1 / 36 (3%) | — | — | — | 1 / 36 (3%) |
+| Modern Warfare (2019) | 0 / 14 (0%) | 0 / 46 (0%) | — | — | — | 0 / 60 (0%) |
+| Warzone (2020) | — | 1 / 4 (25%) | — | — | — | 1 / 4 (25%) |
+| Black Ops Cold War | 2 / 14 (14%) | 2 / 38 (5%) | — | — | — | 4 / 52 (8%) |
+| Vanguard | 3 / 9 (33%) | 3 / 31 (10%) | — | — | — | 6 / 40 (15%) |
+| Modern Warfare II (2022) | 0 / 19 (0%) | 0 / 20 (0%) | — | — | — | 0 / 39 (0%) |
+| Warzone 2.0 | — | 0 / 3 (0%) | — | — | — | 0 / 3 (0%) |
+| Modern Warfare III (2023) | 0 / 14 (0%) | 0 / 42 (0%) | — | — | — | 0 / 56 (0%) |
 <!-- localization-progress:end -->

@@ -147,6 +147,27 @@ test("catalogues the complete sorted Modern Warfare (2007) campaign roster", asy
   ]);
 });
 
+test("catalogues all 30 World at War DS Challenge entries", async () => {
+  const challengeRoot = new URL("../content/levels/waw-nds/other/", import.meta.url);
+  const filenames = await readdir(challengeRoot);
+  const records = await Promise.all(filenames.map(async (filename) => ({
+    filename,
+    contents: await readFile(new URL(filename, challengeRoot), "utf8"),
+  })));
+
+  assert.equal(records.length, 30);
+  assert.deepEqual(
+    records
+      .map(({ contents }) => Number(contents.match(/^\s+challengeNumber: (\d+)$/m)?.[1]))
+      .sort((left, right) => left - right),
+    Array.from({ length: 30 }, (_, index) => index + 1),
+  );
+  assert.ok(records.every(({ contents }) => /^mode: other$/m.test(contents)));
+  assert.equal(new Set(records.map(({ contents }) => (
+    contents.match(/^\s+variantOf: (.+)$/m)?.[1]
+  ))).size, 23);
+});
+
 test("renders the hosted atlas shell from fixture data", async () => {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
@@ -198,6 +219,7 @@ test("renders the hosted atlas shell from fixture data", async () => {
   assert.match(html, /class="mode-filter"[^>]*aria-label="Map type visibility"/);
   assert.match(html, /<button(?=[^>]*aria-pressed="false")[^>]*>\s*<svg(?=[^>]*class="mission-mode-icon")(?=[^>]*aria-label="Special Ops")/);
   assert.match(html, /<button(?=[^>]*aria-pressed="false")[^>]*>\s*<svg(?=[^>]*class="mission-mode-icon")(?=[^>]*aria-label="Zombies")/);
+  assert.match(html, /<button(?=[^>]*aria-pressed="false")[^>]*>\s*<svg(?=[^>]*class="mission-mode-icon")(?=[^>]*aria-label="Other")/);
   assert.doesNotMatch(html, /class="precision-filter"/);
   assert.match(html, /role="tab"[^>]*aria-selected="true"[^>]*aria-controls="sidebar-locations"/);
   assert.match(html, /<button(?=[^>]*role="tab")(?=[^>]*aria-controls="sidebar-campaigns")(?=[^>]*disabled="")[^>]*>/);

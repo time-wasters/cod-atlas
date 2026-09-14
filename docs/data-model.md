@@ -71,6 +71,7 @@ content/levels/<primary-game>/campaign/<order>-<level-slug>.md
 content/levels/<primary-game>/multiplayer/<level-slug>.md
 content/levels/<primary-game>/special-ops/<level-slug>.md
 content/levels/<primary-game>/zombies/<level-slug>.md
+content/levels/<primary-game>/other/<level-slug>.md
 content/levels/<appearance-game>/<level-slug>.ref.md
 content/levels/<appearance-game>/<map-type>/<level-slug>.ref.md
 ```
@@ -81,7 +82,8 @@ A game must use one layout consistently. `cod`, `cod-uo`, `cod-fh`, `cod2`,
 records whose `mode` is `multiplayer`. `mw2` and `mw3` also use `special-ops/`
 for dedicated Special Ops missions; shared Survival maps remain multiplayer.
 `waw`, `bo`, `bo-nds`, and `bo6` also use `zombies/` for records whose `mode` is
-`zombies`. Games that have not been reorganized remain flat. Map types are
+`zombies`. `waw-nds` also uses `other/` for separately selectable Challenge
+missions whose mode is `other`. Games that have not been reorganized remain flat. Map types are
 broad content categories; they are distinct from multiplayer rule sets such as
 deathmatch or capture the flag.
 
@@ -104,7 +106,7 @@ Required fields:
 - `id`: stable, repository-wide level ID.
 - `title`: human-readable level or map name.
 - `games`: exactly one game ID: the canonical owner game.
-- `mode`: `singleplayer`, `multiplayer`, `special-ops`, or `zombies`.
+- `mode`: `singleplayer`, `multiplayer`, `special-ops`, `zombies`, or `other`.
 - `wikiArticle`: foreign key to a Wiki import record.
 - `locations`: embedded location records. Use an empty list only when the
   level is known but its real-world location has not yet been curated.
@@ -167,6 +169,12 @@ The stable string ID controls update ordering and the label is shown in the
 sidebar. Levels released in the base game can use an ID such as `"0"` with the
 label `Included`. A content update can group Multiplayer, Special Ops, and
 Zombies levels together, but it is not valid on a singleplayer level.
+
+Use `other` for separately selectable level-like entries that do not belong to
+the four established categories, such as the Nintendo DS Challenge missions.
+Keep each selectable Challenge as its own canonical record. When it reuses a
+campaign section, record that relationship with `metadata.variantOf` while the
+Challenge continues to own its copied location data and distinct stable ID.
 
 Precision values:
 

@@ -1,5 +1,5 @@
 export const requiredResearchHeadings = Object.freeze([
-  /^## The (?:Mission|Map) in the Game$/,
+  /^## The (?:Mission|Map|Challenge) in the Game$/,
   /^## The Real Place & Differences$/,
   /^## The Real Mission & Differences$/,
   /^## Marker Position Explanation$/,

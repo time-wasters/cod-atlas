@@ -87,6 +87,7 @@ export function AtlasPage({
     showMultiplayer,
     showSpecialOps,
     showZombies,
+    showOther,
     applyUrlState: applyFilterUrlState,
     resetAdvancedFilters: resetAdvancedFilterState,
   } = filters;
@@ -158,6 +159,7 @@ export function AtlasPage({
       showMultiplayer,
       showSpecialOps,
       showZombies,
+      showOther,
     },
   });
   const groups = data.groups;
@@ -261,6 +263,7 @@ export function AtlasPage({
       showMultiplayer,
       showSpecialOps,
       showZombies,
+      showOther,
     },
     selected,
     selectionInUrl,

@@ -17,6 +17,7 @@ test("atlas URL parser applies concise defaults", () => {
     showMultiplayer: false,
     showSpecialOps: false,
     showZombies: false,
+    showOther: false,
     sidebarListMode: "locations",
     levelId: null,
     locationId: null,
@@ -46,21 +47,24 @@ test("atlas URL parser supports content-update browsing", () => {
 });
 
 test("atlas URL parser supports every mode-filter encoding", () => {
-  for (const [mode, showSingleplayer, showMultiplayer, showSpecialOps, showZombies] of [
-    ["all", true, true, true, true],
-    ["both", true, true, false, false],
-    ["multiplayer", false, true, false, false],
-    ["special-ops", false, false, true, false],
-    ["multiplayer,special-ops", false, true, true, false],
-    ["zombies", false, false, false, true],
-    ["singleplayer,special-ops", true, false, true, false],
-    ["singleplayer,zombies", true, false, false, true],
-    ["none", false, false, false, false],
+  for (const [mode, showSingleplayer, showMultiplayer, showSpecialOps, showZombies, showOther] of [
+    ["all", true, true, true, true, true],
+    ["both", true, true, false, false, false],
+    ["multiplayer", false, true, false, false, false],
+    ["special-ops", false, false, true, false, false],
+    ["multiplayer,special-ops", false, true, true, false, false],
+    ["zombies", false, false, false, true, false],
+    ["other", false, false, false, false, true],
+    ["singleplayer,special-ops", true, false, true, false, false],
+    ["singleplayer,zombies", true, false, false, true, false],
+    ["singleplayer,other", true, false, false, false, true],
+    ["none", false, false, false, false, false],
   ]) {
     const state = parseAtlasUrlState(`https://example.com/?mode=${mode}`);
     assert.equal(state.showSingleplayer, showSingleplayer);
     assert.equal(state.showMultiplayer, showMultiplayer);
     assert.equal(state.showSpecialOps, showSpecialOps);
     assert.equal(state.showZombies, showZombies);
+    assert.equal(state.showOther, showOther);
   }
 });

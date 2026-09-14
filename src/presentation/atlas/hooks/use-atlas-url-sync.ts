@@ -39,6 +39,7 @@ type UseAtlasUrlSyncInput<TSelection extends UrlSelection> = {
     showMultiplayer: boolean;
     showSpecialOps: boolean;
     showZombies: boolean;
+    showOther: boolean;
   };
   selected: TSelection;
   selectionInUrl: boolean;
@@ -97,6 +98,7 @@ export function useAtlasUrlSync<TSelection extends UrlSelection>({
           showMultiplayer: urlState.showMultiplayer,
           showSpecialOps: urlState.showSpecialOps,
           showZombies: urlState.showZombies,
+          showOther: urlState.showOther,
         },
         selection: requestedSelection,
         sidebarListMode: requestedGame ? urlState.sidebarListMode : "locations",
@@ -130,6 +132,7 @@ export function useAtlasUrlSync<TSelection extends UrlSelection>({
       showMultiplayer: filters.showMultiplayer,
       showSpecialOps: filters.showSpecialOps,
       showZombies: filters.showZombies,
+      showOther: filters.showOther,
       sidebarListMode,
       levelId: selectionInUrl ? selected.entry.levelId : null,
       locationId: selectionInUrl ? selected.entry.locationId : null,
@@ -150,6 +153,7 @@ export function useAtlasUrlSync<TSelection extends UrlSelection>({
     filters.showSingleplayer,
     filters.showSpecialOps,
     filters.showZombies,
+    filters.showOther,
     ready,
     selected.entry.levelId,
     selected.entry.locationId,

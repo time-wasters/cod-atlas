@@ -40,6 +40,7 @@ export type AtlasFilterCriteria = {
   showMultiplayer: boolean;
   showSpecialOps: boolean;
   showZombies: boolean;
+  showOther: boolean;
 };
 
 export type CountryAvailability = {
@@ -91,7 +92,8 @@ export function filterAtlasGroups<
       (criteria.showSingleplayer && entry.modes.includes("singleplayer"))
       || (criteria.showMultiplayer && entry.modes.includes("multiplayer"))
       || (criteria.showSpecialOps && entry.modes.includes("special-ops"))
-      || (criteria.showZombies && entry.modes.includes("zombies"));
+      || (criteria.showZombies && entry.modes.includes("zombies"))
+      || (criteria.showOther && entry.modes.includes("other"));
 
     return matchesGame
       && matchesSeries

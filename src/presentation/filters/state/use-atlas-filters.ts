@@ -24,6 +24,7 @@ export type AtlasFilterUrlState = {
   showMultiplayer: boolean;
   showSpecialOps: boolean;
   showZombies: boolean;
+  showOther: boolean;
 };
 
 type UseAtlasFiltersOptions = {
@@ -56,6 +57,7 @@ export function useAtlasFilters(options: UseAtlasFiltersOptions) {
   const [showMultiplayer, setShowMultiplayer] = useState(false);
   const [showSpecialOps, setShowSpecialOps] = useState(false);
   const [showZombies, setShowZombies] = useState(false);
+  const [showOther, setShowOther] = useState(false);
   const [advancedFiltersOpen, setAdvancedFiltersOpen] = useState(false);
   const [openAdvancedFilterDropdown, setOpenAdvancedFilterDropdown] = useState<AdvancedFilterGroupId | null>(null);
 
@@ -73,6 +75,7 @@ export function useAtlasFilters(options: UseAtlasFiltersOptions) {
     setShowMultiplayer(state.showMultiplayer);
     setShowSpecialOps(state.showSpecialOps);
     setShowZombies(state.showZombies);
+    setShowOther(state.showOther);
   }, [options]);
 
   const setAdvancedFilterDropdownOpen = useCallback((id: AdvancedFilterGroupId, open: boolean) => {
@@ -106,6 +109,7 @@ export function useAtlasFilters(options: UseAtlasFiltersOptions) {
     showMultiplayer,
     showSpecialOps,
     showZombies,
+    showOther,
     advancedFiltersOpen,
     openAdvancedFilterDropdown,
     advancedFilterCount: gameSeries.size
@@ -121,6 +125,7 @@ export function useAtlasFilters(options: UseAtlasFiltersOptions) {
     setShowMultiplayer,
     setShowSpecialOps,
     setShowZombies,
+    setShowOther,
     applyUrlState,
     setAdvancedFilterDropdownOpen,
     openAdvancedFilters,

@@ -158,6 +158,15 @@ export function useAtlasSidebarViewModel({
           filters.setShowZombies((visible) => !visible);
         },
       },
+      {
+        mode: "other" as const,
+        label: "Other",
+        visible: filters.showOther,
+        onToggle: () => {
+          pushHistory();
+          filters.setShowOther((visible) => !visible);
+        },
+      },
     ],
     advanced: {
       count: filters.advancedFilterCount,

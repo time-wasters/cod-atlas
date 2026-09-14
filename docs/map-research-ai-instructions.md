@@ -21,7 +21,7 @@ to obtain a detailed marker.
    any related level files before changing anything. Preserve unrelated curated
    data, overlays, attribution and editorial notes.
 2. Establish what the game actually depicts:
-   - whether the level is Campaign, Multiplayer, Special Ops, or Zombies;
+   - whether the level is Campaign, Multiplayer, Special Ops, Zombies, or Other;
    - playable character and unit;
    - date and stated location;
    - briefing, objectives and route through the level;
@@ -34,6 +34,12 @@ to obtain a detailed marker.
    A Special Ops mission may be playable solo or cooperatively, but remains a
    Special Ops record rather than Campaign or Multiplayer. Research its own
    briefing, objectives, route, and stated setting.
+   An Other entry such as a separately selectable Challenge remains distinct
+   from the campaign section it reuses. Preserve its own number and objectives,
+   identify the source campaign level, and do not treat the Challenge as a new
+   historical operation or a reference-file appearance. If it has no dedicated
+   Wiki article, it may reuse the source campaign level's Wiki import record;
+   keep the Challenge's curated mode as `other`.
 3. Research the real place and the real operation separately. Look for the
    historical location of the represented unit on the mission date, the
    terrain and objectives involved, and any surviving landmark, battlefield,
@@ -130,10 +136,11 @@ Then use these headings in this order:
 
 For a standalone multiplayer map, use `## The Map in the Game` instead of
 `## The Mission in the Game`. Both forms satisfy the research progress rule.
+For a Challenge or comparable Other entry, use `## The Challenge in the Game`.
 
 Fill them as follows:
 
-### The Mission or Map in the Game
+### The Mission, Map, or Challenge in the Game
 
 Summarize the playable character and unit, date, stated location, objectives,
 route and notable terrain. Identify fictional characters or formations when
@@ -165,6 +172,11 @@ For a Special Ops mission, describe its own playable scenario and distinguish
 it from any Campaign mission or Multiplayer map whose geography or assets it
 reuses. A Multiplayer map's availability in Survival does not by itself turn
 that map into a dedicated Special Ops mission.
+
+For a Challenge, state its selectable Challenge number, exact objectives, and
+the campaign level whose playable section it reuses. Keep the analysis focused
+on how the Challenge rules alter that section rather than repeating the source
+mission's full briefing and historical account.
 
 ### The Real Place & Differences
 

@@ -13,9 +13,11 @@ These instructions apply to everything under `content/`.
   records with `mode: special-ops`.
   `waw`, `bo`, `bo-nds`, and `bo6` additionally use `zombies` for records with
   `mode: zombies`.
+  `waw-nds` additionally uses `other` for its separately selectable Challenge
+  records with `mode: other`.
 - Campaign filenames are `<order>-<level-slug>.md`, starting at `1`, without
-  leading zeros or gaps. Multiplayer, Special Ops, and Zombies filenames remain
-  `<level-slug>.md`.
+  leading zeros or gaps. Multiplayer, Special Ops, Zombies, and Other filenames
+  remain `<level-slug>.md`.
 - Level media mirrors the level file's relative path under
   `public/images/levels/`, including its map-type directory and filename
   without the final `.md` extension.

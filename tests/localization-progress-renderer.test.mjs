@@ -26,5 +26,6 @@ test("localization table includes region precision and reports precision changes
   assert.match(generated, /\| Exact \| 1 \| 25% \|/);
   assert.match(generated, /\| Region \| 1 \| 25% \|/);
   assert.match(generated, /Special Ops marker locations \| — \| — \| 0/);
-  assert.match(generated, /\| Test Game \| 2 \/ 3 \(67%\) \| — \| — \| — \| 2 \/ 3 \(67%\) \|/);
+  assert.match(generated, /Other marker locations \| — \| — \| 0/);
+  assert.match(generated, /\| Test Game \| 2 \/ 3 \(67%\) \| — \| — \| — \| — \| 2 \/ 3 \(67%\) \|/);
 });

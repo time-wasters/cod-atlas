@@ -17,6 +17,7 @@ const defaultState = {
   showMultiplayer: false,
   showSpecialOps: false,
   showZombies: false,
+  showOther: false,
   sidebarListMode: "locations",
   levelId: null,
   locationId: null,
@@ -38,6 +39,7 @@ test("atlas URL serializer round-trips shareable filters and selection", () => {
     showMultiplayer: true,
     showSpecialOps: true,
     showZombies: true,
+    showOther: true,
     sidebarListMode: "campaigns",
     levelId: "cod4-safehouse",
     locationId: "main",
@@ -56,16 +58,18 @@ test("atlas URL serializer omits defaults and encodes every mode-filter state", 
   );
   assert.equal(defaultUrl.search, "");
 
-  for (const [mode, showSingleplayer, showMultiplayer, showSpecialOps, showZombies] of [
-    ["all", true, true, true, true],
-    ["both", true, true, false, false],
-    ["multiplayer", false, true, false, false],
-    ["special-ops", false, false, true, false],
-    ["multiplayer,special-ops", false, true, true, false],
-    ["zombies", false, false, false, true],
-    ["singleplayer,special-ops", true, false, true, false],
-    ["singleplayer,zombies", true, false, false, true],
-    ["none", false, false, false, false],
+  for (const [mode, showSingleplayer, showMultiplayer, showSpecialOps, showZombies, showOther] of [
+    ["all", true, true, true, true, true],
+    ["both", true, true, false, false, false],
+    ["multiplayer", false, true, false, false, false],
+    ["special-ops", false, false, true, false, false],
+    ["multiplayer,special-ops", false, true, true, false, false],
+    ["zombies", false, false, false, true, false],
+    ["other", false, false, false, false, true],
+    ["singleplayer,special-ops", true, false, true, false, false],
+    ["singleplayer,zombies", true, false, false, true, false],
+    ["singleplayer,other", true, false, false, false, true],
+    ["none", false, false, false, false, false],
   ]) {
     const url = serializeAtlasUrlState(defaultUrl, {
       ...defaultState,
@@ -73,6 +77,7 @@ test("atlas URL serializer omits defaults and encodes every mode-filter state", 
       showMultiplayer,
       showSpecialOps,
       showZombies,
+      showOther,
     });
     assert.equal(url.searchParams.get("mode"), mode);
   }

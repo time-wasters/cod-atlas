@@ -24,12 +24,14 @@ export function renderLocalizationProgress({ games, levels }) {
   const multiplayer = locations.filter((location) => location.mode === "multiplayer");
   const specialOps = locations.filter((location) => location.mode === "special-ops");
   const zombies = locations.filter((location) => location.mode === "zombies");
+  const other = locations.filter((location) => location.mode === "other");
   const summaries = [
     ["All marker locations", calculateLocalizationCoverage(locations)],
     ["Campaign marker locations", calculateLocalizationCoverage(singleplayer)],
     ["Multiplayer marker locations", calculateLocalizationCoverage(multiplayer)],
     ["Special Ops marker locations", calculateLocalizationCoverage(specialOps)],
     ["Zombies marker locations", calculateLocalizationCoverage(zombies)],
+    ["Other marker locations", calculateLocalizationCoverage(other)],
   ];
   const lines = [
     localizationProgressStart,
@@ -49,8 +51,8 @@ export function renderLocalizationProgress({ games, levels }) {
       return `| ${label} | ${count} | ${calculatePercentage(count, locations.length)}% |`;
     }),
     "",
-    "| Game | Campaign | Multiplayer | Special Ops | Zombies | Overall |",
-    "| --- | ---: | ---: | ---: | ---: | ---: |",
+    "| Game | Campaign | Multiplayer | Special Ops | Zombies | Other | Overall |",
+    "| --- | ---: | ---: | ---: | ---: | ---: | ---: |",
   ];
 
   const gameRows = [...games.values()]
@@ -71,6 +73,9 @@ export function renderLocalizationProgress({ games, levels }) {
       )),
       localizationCell(calculateLocalizationCoverage(
         gameLocations.filter((location) => location.mode === "zombies"),
+      )),
+      localizationCell(calculateLocalizationCoverage(
+        gameLocations.filter((location) => location.mode === "other"),
       )),
       `${localizationCell(calculateLocalizationCoverage(gameLocations))} |`,
     ].join(" | "));

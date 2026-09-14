@@ -11,7 +11,7 @@ type ContentUpdateAtlasEntry = {
   gameIds: string[];
   contentUpdate?: { id: string; label: string } | null;
   coordinates?: [number, number] | null;
-  modes: ("singleplayer" | "multiplayer" | "special-ops" | "zombies")[];
+  modes: ("singleplayer" | "multiplayer" | "special-ops" | "zombies" | "other")[];
 };
 
 type ContentUpdateAtlasGroup<TEntry extends ContentUpdateAtlasEntry> = {

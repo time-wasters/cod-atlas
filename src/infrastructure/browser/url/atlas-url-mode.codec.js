@@ -15,6 +15,9 @@ export function parseAtlasUrlMode(mode) {
     showZombies: mode === "zombies"
       || mode === "all"
       || selectedModes.has("zombies"),
+    showOther: mode === "other"
+      || mode === "all"
+      || selectedModes.has("other"),
   };
 }
 
@@ -25,9 +28,10 @@ export function serializeAtlasUrlMode(state) {
     state.showMultiplayer ? "multiplayer" : null,
     state.showSpecialOps ? "special-ops" : null,
     state.showZombies ? "zombies" : null,
+    state.showOther ? "other" : null,
   ].filter(Boolean);
 
-  if (selectedModes.length === 4) return "all";
+  if (selectedModes.length === 5) return "all";
   if (selectedModes.length === 0) return "none";
   if (selectedModes.length === 1 && selectedModes[0] === "singleplayer") return null;
   if (selectedModes.length === 1) return selectedModes[0];

@@ -38,6 +38,7 @@ locations:
 ## The Mission in the Game
 
 <!-- For a standalone multiplayer map, use "## The Map in the Game" instead. -->
+<!-- For an Other/Challenge entry, use "## The Challenge in the Game" instead. -->
 
 For singleplayer, summarize the mission's character, unit, date, stated place
 and objectives. For Special Ops, summarize that mission's briefing, objectives,

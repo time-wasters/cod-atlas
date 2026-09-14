@@ -1,6 +1,11 @@
 import type { AtlasEntryDto } from "../../../infrastructure/atlas-data/dto/atlas-entry.dto.js";
 
 export function LevelModeIcon({ mode }: { mode: AtlasEntryDto["modes"][number] }) {
+  if (mode === "other") return (
+    <svg className="mission-mode-icon" viewBox="0 0 24 24" role="img" aria-label="Other">
+      <path d="M6 4h12v16H6zM9 8h6M9 12h6M9 16h4" />
+    </svg>
+  );
   if (mode === "zombies") return (
     <svg className="mission-mode-icon" viewBox="0 0 24 24" role="img" aria-label="Zombies">
       <path d="M5 10a7 7 0 1 1 14 0v5l-2 2h-2v3h-2v-3h-2v3H9v-3H7l-2-2Z" />

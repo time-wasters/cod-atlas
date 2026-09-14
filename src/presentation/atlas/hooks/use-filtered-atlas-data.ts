@@ -32,6 +32,7 @@ export function useFilteredAtlasData({
     showSingleplayer,
     showSpecialOps,
     showZombies,
+    showOther,
   } = criteria;
   const games = useMemo(
     () => listRepresentedGames(data.games, data.groups),
@@ -55,6 +56,7 @@ export function useFilteredAtlasData({
         showSingleplayer,
         showSpecialOps,
         showZombies,
+        showOther,
       },
     }),
     [
@@ -73,6 +75,7 @@ export function useFilteredAtlasData({
       showSingleplayer,
       showSpecialOps,
       showZombies,
+      showOther,
     ],
   );
   const mapFitCoordinates = useMemo(() => collectMapFitCoordinates(groups), [groups]);

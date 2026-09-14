@@ -21,12 +21,14 @@ export function renderResearchProgress({ games, levels }) {
   const multiplayer = levels.filter((level) => level.mode === "multiplayer");
   const specialOps = levels.filter((level) => level.mode === "special-ops");
   const zombies = levels.filter((level) => level.mode === "zombies");
+  const other = levels.filter((level) => level.mode === "other");
   const summaries = [
     ["All currently catalogued levels", calculateResearchCoverage(levels)],
     ["Campaign levels", calculateResearchCoverage(singleplayer)],
     ["Multiplayer maps", calculateResearchCoverage(multiplayer)],
     ["Special Ops missions", calculateResearchCoverage(specialOps)],
     ["Zombies maps", calculateResearchCoverage(zombies)],
+    ["Other levels", calculateResearchCoverage(other)],
   ];
 
   const lines = [
@@ -37,8 +39,8 @@ export function renderResearchProgress({ games, levels }) {
       `| ${label} | ${coverageCell(result)} | ${remainingCell(result)} |`
     )),
     "",
-    "| Game | Campaign | Multiplayer | Special Ops | Zombies | Overall |",
-    "| --- | ---: | ---: | ---: | ---: | ---: |",
+    "| Game | Campaign | Multiplayer | Special Ops | Zombies | Other | Overall |",
+    "| --- | ---: | ---: | ---: | ---: | ---: | ---: |",
   ];
 
   const gameRows = [...games.values()]
@@ -59,12 +61,16 @@ export function renderResearchProgress({ games, levels }) {
     const zombiesCoverage = calculateResearchCoverage(
       gameLevels.filter((level) => level.mode === "zombies"),
     );
+    const otherCoverage = calculateResearchCoverage(
+      gameLevels.filter((level) => level.mode === "other"),
+    );
     lines.push([
       `| ${escapeMarkdownTableCell(game.label)}`,
       coverageCell(campaignCoverage),
       coverageCell(multiplayerCoverage),
       coverageCell(specialOpsCoverage),
       coverageCell(zombiesCoverage),
+      coverageCell(otherCoverage),
       `${coverageCell(calculateResearchCoverage(gameLevels))} |`,
     ].join(" | "));
   }

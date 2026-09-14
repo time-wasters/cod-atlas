@@ -53,15 +53,16 @@ guidance, and copy-ready templates for every source record type.
 
 Create a Markdown file under the primary game's directory. If that game is
 already organized by map type, place it in `campaign/`, `multiplayer/`,
-`special-ops/`, or `zombies/` to match its `mode` field. Currently `cod`,
+`special-ops/`, `zombies/`, or `other/` to match its `mode` field. Currently `cod`,
 `cod-uo`, `cod-fh`, `cod2`, `cod2-bro`, `cod3`, `rtv`, `cod4`, `cod4-nds`, `waw-nds`, `mw2`, `mw3`,
 `bo-nds`, `mw3-nds`, `bo-d`, `wz`, `wz2`, and `mwiii` use the first two folders; `mw2` and `mw3`
-also use `special-ops/`, while `waw`, `bo`, `bo-nds`, and `bo6` also use `zombies/`. Games that
+also use `special-ops/`, while `waw`, `bo`, `bo-nds`, and `bo6` also use `zombies/`.
+`waw-nds` also uses `other/` for Challenge missions. Games that
 have not been reorganized retain their existing flat layout.
 
 Campaign files in a map-type layout are named
 `<order>-<level-slug>.md`, starting at `1` without leading zeros or gaps.
-Multiplayer, Special Ops, Zombies, and flat-layout files use
+Multiplayer, Special Ops, Zombies, Other, and flat-layout files use
 `<level-slug>.md`. Never repeat the primary game ID or include the campaign
 order in the stable ID. For example,
 an `id` of `cod3-example-level` belongs at
@@ -163,7 +164,7 @@ regression count in the tests and explain the count change in the pull request.
 - The change is limited to one coherent correction or feature.
 - Game and Wiki foreign keys resolve.
 - Location precision reflects the quality of the evidence.
-- Campaign/Multiplayer/Special Ops/Zombies classification has been checked.
+- Campaign/Multiplayer/Special Ops/Zombies/Other classification has been checked.
 - Generated data is current.
 - Third-party attribution and licensing are preserved.
 
