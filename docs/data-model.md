@@ -163,6 +163,9 @@ are not globally deduplicated across levels; only an explicit
 Campaign metadata identifies the named campaign section that contains a level;
 it is separate from the numeric play-order prefix in campaign filenames. Keep
 the ID stable even if the display label is later corrected or translated.
+Campaign identity also includes the level mode (and the subtype for `other`),
+so matching campaign IDs in Campaign, Multiplayer, Zombies, Special Ops, or
+Challenge data remain separate groups in the interface.
 
 Multiplayer, Other/Special Ops, and Zombies levels may use matching content-update
 metadata:

@@ -1,3 +1,24 @@
+.campaign-list-section + .campaign-list-section {
+  margin-top: 8px;
+}
+.campaign-list-section-label {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 9px 10px 6px;
+  color: #b78b35;
+  background: #11150fbd;
+}
+.campaign-list-section-label strong {
+  font: 700 9px var(--font-geist-mono), monospace;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+.campaign-list-section-label span {
+  color: #747a69;
+  font-size: 9px;
+  line-height: 1.35;
+}
 .campaign-row {
   width: 100%;
   display: grid;
