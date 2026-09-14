@@ -77,12 +77,14 @@ content/levels/<appearance-game>/<map-type>/<level-slug>.ref.md
 ```
 
 A game must use one layout consistently. `cod`, `cod-uo`, `cod-fh`, `cod2`,
-`cod2-bro`, `cod3`, `rtv`, `cod4`, `cod4-nds`, `waw-nds`, `mw2`, `mw3`, `bo-nds`, `mw3-nds`, `bo-d`, `wz`, `wz2`, and `mwiii` use
+`cod2-bro`, `cod3`, `rtv`, `cod4`, `cod4-nds`, `waw-nds`, `mw2`, `mw3`, `bo-nds`, `mw3-nds`, `bo-d`, `wz`, `wz2`, `mwiii`, and `bo7` use
 `campaign/` for records whose `mode` is `singleplayer` and `multiplayer/` for
-records whose `mode` is `multiplayer`. `mw2` and `mw3` also use `special-ops/`
+records whose `mode` is `multiplayer`. `mw2`, `mw3`, and `bo7` also use `special-ops/`
 for records whose `mode` is `other` and `modeSub` is `special-ops`; shared
 Survival maps remain in this Special Ops subtype.
-`waw`, `bo`, `bo-nds`, and `bo6` also use `zombies/` for records whose `mode` is
+BO7 Endgame uses this broad subtype and is distinguished with
+`metadata.activityType: endgame`.
+`waw`, `bo`, `bo-nds`, `bo6`, and `bo7` also use `zombies/` for records whose `mode` is
 `zombies`. `waw-nds` also uses `challenge/` for separately selectable Challenge
 missions whose `mode` is `other` and `modeSub` is `challenge`. Games that have
 not been reorganized remain flat. Map types are broad content categories; they

@@ -56,9 +56,11 @@ already organized by map type, place it in `campaign/`, `multiplayer/`,
 `special-ops/`, `zombies/`, or `challenge/` according to its mode and subtype.
 Currently `cod`,
 `cod-uo`, `cod-fh`, `cod2`, `cod2-bro`, `cod3`, `rtv`, `cod4`, `cod4-nds`, `waw-nds`, `mw2`, `mw3`,
-`bo-nds`, `mw3-nds`, `bo-d`, `wz`, `wz2`, and `mwiii` use the first two folders; `mw2` and `mw3`
+`bo-nds`, `mw3-nds`, `bo-d`, `wz`, `wz2`, `mwiii`, and `bo7` use the first two folders; `mw2`, `mw3`, and `bo7`
 use `special-ops/` for `mode: other`, `modeSub: special-ops` records, while
-`waw`, `bo`, `bo-nds`, and `bo6` also use `zombies/`.
+`waw`, `bo`, `bo-nds`, `bo6`, and `bo7` also use `zombies/`.
+BO7 Endgame is an Other/Special Ops record distinguished by
+`metadata.activityType: endgame`.
 `waw-nds` also uses `challenge/` for Challenge missions. Games that
 have not been reorganized retain their existing flat layout.
 

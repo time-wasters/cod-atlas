@@ -30,11 +30,11 @@ Other combines records with the `special-ops` and `challenge` subtypes.
 <!-- research-progress:start -->
 | Scope | Researched | Remaining |
 | --- | ---: | ---: |
-| All currently catalogued levels | 236 / 1339 (18%) | 1103 / 1339 (82%) |
-| Campaign levels | 151 / 482 (31%) | 331 / 482 (69%) |
-| Multiplayer maps | 85 / 725 (12%) | 640 / 725 (88%) |
-| Zombies maps | 0 / 26 (0%) | 26 / 26 (100%) |
-| Other levels | 0 / 106 (0%) | 106 / 106 (100%) |
+| All currently catalogued levels | 236 / 1430 (17%) | 1194 / 1430 (83%) |
+| Campaign levels | 151 / 493 (31%) | 342 / 493 (69%) |
+| Multiplayer maps | 85 / 789 (11%) | 704 / 789 (89%) |
+| Zombies maps | 0 / 41 (0%) | 41 / 41 (100%) |
+| Other levels | 0 / 107 (0%) | 107 / 107 (100%) |
 
 | Game | Campaign | Multiplayer | Zombies | Other | Overall |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -72,6 +72,7 @@ Other combines records with the `special-ops` and `challenge` subtypes.
 | Warzone 2.0 | — | 0 / 3 (0%) | — | — | 0 / 3 (0%) |
 | Modern Warfare III (2023) | 0 / 14 (0%) | 0 / 45 (0%) | — | — | 0 / 59 (0%) |
 | Black Ops 6 | 0 / 18 (0%) | 0 / 46 (0%) | 0 / 6 (0%) | — | 0 / 70 (0%) |
+| Black Ops 7 | 0 / 11 (0%) | 0 / 64 (0%) | 0 / 15 (0%) | 0 / 1 (0%) | 0 / 91 (0%) |
 <!-- research-progress:end -->
 
 ## Human verification progress
@@ -84,11 +85,11 @@ completed research structure or precise marker does not imply human review.
 <!-- human-verification-progress:start -->
 | Scope | Marker locations verified | Research notes verified |
 | --- | ---: | ---: |
-| All currently catalogued records | 5 / 1246 (0%) | 0 / 1339 (0%) |
-| Campaign records | 5 / 474 (1%) | 0 / 482 (0%) |
-| Multiplayer records | 0 / 650 (0%) | 0 / 725 (0%) |
-| Zombies records | 0 / 17 (0%) | 0 / 26 (0%) |
-| Other records | 0 / 105 (0%) | 0 / 106 (0%) |
+| All currently catalogued records | 5 / 1246 (0%) | 0 / 1430 (0%) |
+| Campaign records | 5 / 474 (1%) | 0 / 493 (0%) |
+| Multiplayer records | 0 / 650 (0%) | 0 / 789 (0%) |
+| Zombies records | 0 / 17 (0%) | 0 / 41 (0%) |
+| Other records | 0 / 105 (0%) | 0 / 107 (0%) |
 
 | Game | Marker locations verified | Research notes verified |
 | --- | ---: | ---: |
@@ -126,6 +127,7 @@ completed research structure or precise marker does not imply human review.
 | Warzone 2.0 | 0 / 3 (0%) | 0 / 3 (0%) |
 | Modern Warfare III (2023) | 0 / 56 (0%) | 0 / 59 (0%) |
 | Black Ops 6 | — | 0 / 70 (0%) |
+| Black Ops 7 | — | 0 / 91 (0%) |
 <!-- human-verification-progress:end -->
 
 ## Geographic localization progress

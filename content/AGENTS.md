@@ -9,11 +9,12 @@ These instructions apply to everything under `content/`.
   by map type use `levels/<primary-game>/<map-type>/`; games not yet
   reorganized retain `levels/<primary-game>/<level-slug>.md`. Do not mix the
   two layouts within one game. `cod`, `cod-uo`, `cod-fh`, `cod2`, `cod2-bro`,
-  `cod3`, `rtv`, `cod4`, `cod4-nds`, `waw-nds`, `mw2`, `mw3`, `bo-nds`, `mw3-nds`, `bo-d`, `wz`, `wz2`, and `mwiii` use `campaign`
+  `cod3`, `rtv`, `cod4`, `cod4-nds`, `waw-nds`, `mw2`, `mw3`, `bo-nds`, `mw3-nds`, `bo-d`, `wz`, `wz2`, `mwiii`, and `bo7` use `campaign`
   for records with `mode: singleplayer` and `multiplayer` for records with
-  `mode: multiplayer`. `mw2` and `mw3` additionally use `special-ops` for
+  `mode: multiplayer`. `mw2`, `mw3`, and `bo7` additionally use `special-ops` for
   records with `mode: other` and `modeSub: special-ops`.
-  `waw`, `bo`, `bo-nds`, and `bo6` additionally use `zombies` for records with
+  BO7 Endgame uses that broad subtype and adds `metadata.activityType: endgame`.
+  `waw`, `bo`, `bo-nds`, `bo6`, and `bo7` additionally use `zombies` for records with
   `mode: zombies`.
   `waw-nds` additionally uses `challenge` for its separately selectable
   Challenge records with `mode: other` and `modeSub: challenge`.

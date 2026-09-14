@@ -1,0 +1,43 @@
+{
+    "id":  "codwiki-containment-mission",
+    "sourceUrl":  "https://callofduty.fandom.com/wiki/Containment_(mission)",
+    "mapStyle":  "singleplayer",
+    "mapStyleDetail":  null,
+    "mapStyleConfidence":  "curated",
+    "mapStyleEvidence":  "Classified by the atlas; verify against the Wiki during the next import.",
+    "fandomPageId":  789258,
+    "canonicalUrl":  "https://callofduty.fandom.com/wiki/Containment_(mission)",
+    "latestRevisionId":  null,
+    "importedAt":  null,
+    "levelLocation":  {
+                          "raw":  null,
+                          "label":  null,
+                          "url":  null
+                      },
+    "previousLevels":  {
+                           "raw":  null,
+                           "label":  null,
+                           "links":  [
+
+                                     ]
+                       },
+    "nextLevels":  {
+                       "raw":  null,
+                       "label":  null,
+                       "links":  [
+
+                                 ]
+                   },
+    "games":  {
+                  "raw":  null,
+                  "label":  null,
+                  "links":  [
+
+                            ]
+              },
+    "date":  {
+                 "raw":  null,
+                 "label":  null
+             },
+    "rawPayload":  null
+}

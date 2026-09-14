@@ -9,6 +9,55 @@ import { promisify } from "node:util";
 
 const execFileAsync = promisify(execFile);
 
+test("catalogues the complete Black Ops 7 roster through Season Six", async () => {
+  const bo7Root = new URL("../content/levels/bo7/", import.meta.url);
+  const campaignFiles = (await readdir(new URL("campaign/", bo7Root))).sort((left, right) => (
+    Number(left.split("-")[0]) - Number(right.split("-")[0])
+  ));
+  assert.deepEqual(campaignFiles, [
+    "1-exposure.md",
+    "2-inside.md",
+    "3-distortion.md",
+    "4-escalation.md",
+    "5-disruption.md",
+    "6-collapse.md",
+    "7-fracture.md",
+    "8-quarantine.md",
+    "9-suppression.md",
+    "10-breakpoint.md",
+    "11-containment.md",
+  ]);
+
+  const multiplayerFiles = await readdir(new URL("multiplayer/", bo7Root));
+  const multiplayerRecords = await Promise.all(multiplayerFiles.map((filename) => (
+    readFile(new URL(`multiplayer/${filename}`, bo7Root), "utf8")
+  )));
+  assert.equal(multiplayerRecords.length, 64);
+  assert.deepEqual(
+    Object.fromEntries(["core", "skirmish", "freerun", "tedd-trials", "additional-feature"].map((type) => [
+      type,
+      multiplayerRecords.filter((contents) => contents.includes(`mapType: "${type}"`)).length,
+    ])),
+    { core: 53, skirmish: 4, freerun: 2, "tedd-trials": 3, "additional-feature": 2 },
+  );
+
+  const zombiesFiles = await readdir(new URL("zombies/", bo7Root));
+  const zombiesRecords = await Promise.all(zombiesFiles.map((filename) => (
+    readFile(new URL(`zombies/${filename}`, bo7Root), "utf8")
+  )));
+  assert.equal(zombiesRecords.length, 15);
+  assert.equal(zombiesRecords.filter((contents) => contents.includes('zombiesMode: "round-based"')).length, 6);
+  assert.equal(zombiesRecords.filter((contents) => contents.includes('zombiesMode: "survival"')).length, 8);
+  assert.equal(zombiesRecords.filter((contents) => contents.includes('zombiesMode: "dead-ops-arcade"')).length, 1);
+
+  const otherFiles = await readdir(new URL("special-ops/", bo7Root));
+  assert.deepEqual(otherFiles, ["endgame.md"]);
+  const endgame = await readFile(new URL("special-ops/endgame.md", bo7Root), "utf8");
+  assert.match(endgame, /^mode: other$/m);
+  assert.match(endgame, /^modeSub: special-ops$/m);
+  assert.match(endgame, /^  activityType: "endgame"$/m);
+});
+
 test("catalogues the complete Modern Warfare 3 Special Ops roster", async () => {
   const specialOpsRoot = new URL("../content/levels/mw3/special-ops/", import.meta.url);
   assert.deepEqual((await readdir(specialOpsRoot)).sort(), [
