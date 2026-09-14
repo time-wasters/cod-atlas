@@ -95,40 +95,48 @@ export function AtlasSidebar({
   viewModel: AtlasSidebarViewModel;
 }) {
   const { advanced, browse, country, game, modes, results, search } = viewModel;
-  const singleplayerCampaigns = browse.campaigns.filter((campaign) => campaign.mode === "singleplayer");
-  const otherModeCampaigns = browse.campaigns.filter((campaign) => campaign.mode !== "singleplayer");
   const campaignModeLabel = (campaign: CampaignOption<AtlasGroupDto, AtlasEntryDto>) => {
     if (campaign.mode === "other" && campaign.modeSub === "special-ops") return "Special Ops";
     if (campaign.mode === "other" && campaign.modeSub === "challenge") return "Challenge";
-    if (campaign.mode === "other") return "Other";
     if (campaign.mode === "zombies") return "Zombies";
     if (campaign.mode === "multiplayer") return "Multiplayer";
     return "Singleplayer";
   };
+  const campaignSections = [
+    browse.campaigns.filter((campaign) => campaign.mode === "singleplayer"),
+    browse.campaigns.filter((campaign) => campaign.mode === "multiplayer"),
+    browse.campaigns.filter((campaign) => campaign.mode === "zombies"),
+    browse.campaigns.filter((campaign) => campaign.mode === "other" && campaign.modeSub === "special-ops"),
+    browse.campaigns.filter((campaign) => campaign.mode === "other" && campaign.modeSub === "challenge"),
+  ];
   const renderCampaignSection = (
     campaigns: CampaignOption<AtlasGroupDto, AtlasEntryDto>[],
-    heading: string,
-    explanation: string,
-  ) => campaigns.length > 0 && (
-    <section className="campaign-list-section" aria-label={heading}>
-      <header className="campaign-list-section-label">
-        <strong>{heading}</strong>
-        <span>{explanation}</span>
-      </header>
-      {campaigns.map((campaign, index) => (
-        <button
-          key={campaign.key}
-          className={campaign.key === browse.activeCampaignKey ? "campaign-row is-selected" : "campaign-row"}
-          type="button"
-          onClick={() => browse.onCampaignSelect(campaign)}
-        >
-          <i aria-hidden="true">{String(index + 1).padStart(2, "0")}</i>
-          <span><b>{campaign.label}</b><small>{campaignModeLabel(campaign)} · {campaign.levels.length} levels</small></span>
-          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5" /></svg>
-        </button>
-      ))}
-    </section>
-  );
+  ) => {
+    const representative = campaigns[0];
+    if (!representative) return null;
+    const modeLabel = campaignModeLabel(representative);
+    const heading = `${modeLabel} campaigns`;
+    return (
+      <section className="campaign-list-section" aria-label={heading} key={`${representative.mode}:${representative.modeSub ?? ""}`}>
+        <header className="campaign-list-section-label">
+          <LevelModeIcon mode={representative.mode} modeSub={representative.modeSub} />
+          <strong>{heading}</strong>
+        </header>
+        {campaigns.map((campaign, index) => (
+          <button
+            key={campaign.key}
+            className={campaign.key === browse.activeCampaignKey ? "campaign-row is-selected" : "campaign-row"}
+            type="button"
+            onClick={() => browse.onCampaignSelect(campaign)}
+          >
+            <i aria-hidden="true">{String(index + 1).padStart(2, "0")}</i>
+            <span><b>{campaign.label}</b><small>{campaign.levels.length} levels</small></span>
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5" /></svg>
+          </button>
+        ))}
+      </section>
+    );
+  };
   return (
     <aside className="atlas-sidebar" aria-label="Map filters">
       <label className="search-field">
@@ -270,16 +278,7 @@ export function AtlasSidebar({
               </div>
             ) : browse.mode === "campaigns" ? (
               <div className="scroll-list" id="sidebar-campaigns" role="tabpanel">
-                {renderCampaignSection(
-                  singleplayerCampaigns,
-                  "Singleplayer campaigns",
-                  "Story missions",
-                )}
-                {renderCampaignSection(
-                  otherModeCampaigns,
-                  "Other game modes",
-                  "Multiplayer, Zombies, Special Ops and Challenges",
-                )}
+                {campaignSections.map(renderCampaignSection)}
                 {browse.campaigns.length === 0 && <p className="campaign-list-empty">No campaign data is available for this game.</p>}
               </div>
             ) : (
