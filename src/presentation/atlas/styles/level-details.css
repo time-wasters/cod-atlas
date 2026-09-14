@@ -29,6 +29,8 @@
 .taxonomy-tier strong { min-width: 0; overflow: hidden; color: #d8d0ba; font-size: 11px; font-weight: 600; line-height: 1.2; text-overflow: ellipsis; white-space: nowrap; }
 .taxonomy-tier.is-landmark strong { color: #edbd58; }
 .mission-heading { min-height: 34px; display: grid; grid-template-columns: 25px minmax(0, 1fr) auto; gap: 9px; align-items: start; margin: -2px 0 15px; padding: 1px 0 0; }
+.mission-mode-tooltip-anchor { width: 23px; height: 29px; display: block; border-radius: 4px; }
+.mission-mode-tooltip-anchor:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
 .mission-mode-icon { width: 23px; height: 23px; margin-top: 3px; fill: none; stroke: var(--amber); stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.7; }
 .intel-card .mission-heading h2 { min-width: 0; max-height: 2.1em; overflow: hidden; margin: 0; color: #fff4d7; font-family: "Arial Narrow", Impact, sans-serif; font-size: 30px; line-height: 1.05; letter-spacing: .03em; overflow-wrap: anywhere; }
 .mission-title-button { width: 100%; display: block; border: 0; padding: 0; color: inherit; background: transparent; line-height: inherit; letter-spacing: inherit; text-align: left; cursor: pointer; }
