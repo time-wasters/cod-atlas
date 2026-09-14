@@ -30,8 +30,8 @@ Other combines records with the `special-ops` and `challenge` subtypes.
 <!-- research-progress:start -->
 | Scope | Researched | Remaining |
 | --- | ---: | ---: |
-| All currently catalogued levels | 236 / 1430 (17%) | 1194 / 1430 (83%) |
-| Campaign levels | 151 / 493 (31%) | 342 / 493 (69%) |
+| All currently catalogued levels | 247 / 1430 (17%) | 1183 / 1430 (83%) |
+| Campaign levels | 162 / 493 (33%) | 331 / 493 (67%) |
 | Multiplayer maps | 85 / 789 (11%) | 704 / 789 (89%) |
 | Zombies maps | 0 / 41 (0%) | 41 / 41 (100%) |
 | Other levels | 0 / 107 (0%) | 107 / 107 (100%) |
@@ -72,7 +72,7 @@ Other combines records with the `special-ops` and `challenge` subtypes.
 | Warzone 2.0 | — | 0 / 3 (0%) | — | — | 0 / 3 (0%) |
 | Modern Warfare III (2023) | 0 / 14 (0%) | 0 / 45 (0%) | — | — | 0 / 59 (0%) |
 | Black Ops 6 | 0 / 18 (0%) | 0 / 46 (0%) | 0 / 6 (0%) | — | 0 / 70 (0%) |
-| Black Ops 7 | 0 / 11 (0%) | 0 / 64 (0%) | 0 / 15 (0%) | 0 / 1 (0%) | 0 / 91 (0%) |
+| Black Ops 7 | 11 / 11 (100%) | 0 / 64 (0%) | 0 / 15 (0%) | 0 / 1 (0%) | 11 / 91 (12%) |
 <!-- research-progress:end -->
 
 ## Human verification progress
@@ -85,9 +85,9 @@ completed research structure or precise marker does not imply human review.
 <!-- human-verification-progress:start -->
 | Scope | Marker locations verified | Research notes verified |
 | --- | ---: | ---: |
-| All currently catalogued records | 5 / 1246 (0%) | 0 / 1430 (0%) |
-| Campaign records | 5 / 474 (1%) | 0 / 493 (0%) |
-| Multiplayer records | 0 / 650 (0%) | 0 / 789 (0%) |
+| All currently catalogued records | 5 / 1262 (0%) | 0 / 1430 (0%) |
+| Campaign records | 5 / 488 (1%) | 0 / 493 (0%) |
+| Multiplayer records | 0 / 652 (0%) | 0 / 789 (0%) |
 | Zombies records | 0 / 17 (0%) | 0 / 41 (0%) |
 | Other records | 0 / 105 (0%) | 0 / 107 (0%) |
 
@@ -127,7 +127,7 @@ completed research structure or precise marker does not imply human review.
 | Warzone 2.0 | 0 / 3 (0%) | 0 / 3 (0%) |
 | Modern Warfare III (2023) | 0 / 56 (0%) | 0 / 59 (0%) |
 | Black Ops 6 | — | 0 / 70 (0%) |
-| Black Ops 7 | — | 0 / 91 (0%) |
+| Black Ops 7 | 0 / 16 (0%) | 0 / 91 (0%) |
 <!-- human-verification-progress:end -->
 
 ## Geographic localization progress
@@ -143,9 +143,9 @@ The per-game table assigns each marker to its canonical level's owner game.
 <!-- localization-progress:start -->
 | Scope | Localized | Country fallback | Off-world |
 | --- | ---: | ---: | ---: |
-| All marker locations | 462 / 1216 (38%) | 754 / 1216 (62%) | 30 |
-| Campaign marker locations | 186 / 457 (41%) | 271 / 457 (59%) | 17 |
-| Multiplayer marker locations | 201 / 638 (32%) | 437 / 638 (68%) | 12 |
+| All marker locations | 475 / 1232 (39%) | 757 / 1232 (61%) | 30 |
+| Campaign marker locations | 198 / 471 (42%) | 273 / 471 (58%) | 17 |
+| Multiplayer marker locations | 202 / 640 (32%) | 438 / 640 (68%) | 12 |
 | Zombies marker locations | 1 / 16 (6%) | 15 / 16 (94%) | 1 |
 | Other marker locations | 74 / 105 (70%) | 31 / 105 (30%) | 0 |
 
@@ -153,9 +153,9 @@ The per-game table assigns each marker to its canonical level's owner game.
 | --- | ---: | ---: |
 | Exact | 105 | 8% |
 | Approximate | 186 | 15% |
-| City | 132 | 11% |
-| Region | 39 | 3% |
-| Country | 754 | 61% |
+| City | 135 | 11% |
+| Region | 49 | 4% |
+| Country | 757 | 60% |
 | Off-world | 30 | 2% |
 
 | Game | Campaign | Multiplayer | Zombies | Other | Overall |
@@ -193,4 +193,5 @@ The per-game table assigns each marker to its canonical level's owner game.
 | Modern Warfare II (2022) | 0 / 19 (0%) | 0 / 20 (0%) | — | — | 0 / 39 (0%) |
 | Warzone 2.0 | — | 0 / 3 (0%) | — | — | 0 / 3 (0%) |
 | Modern Warfare III (2023) | 0 / 14 (0%) | 0 / 42 (0%) | — | — | 0 / 56 (0%) |
+| Black Ops 7 | 12 / 14 (86%) | 1 / 2 (50%) | — | — | 13 / 16 (81%) |
 <!-- localization-progress:end -->
