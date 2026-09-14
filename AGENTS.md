@@ -12,7 +12,10 @@ changes are intended to be reviewable through pull requests.
 ## Non-negotiable architecture
 
 - Curated source data lives under `content/`.
-- A level owns its coordinates through its embedded `locations` array.
+- A canonical level normally owns its coordinates through its embedded
+  `locations` array. A canonical variant may instead omit `locations` and use
+  `metadata.variantOf` to inherit them from another canonical level. An
+  explicit `locations: []` never inherits.
 - Do not create a shared places table, places YAML file, or place foreign key.
   Two levels in the same city may represent different buildings or coordinates.
 - Nearby markers may be clustered dynamically by the map at render time; never
@@ -92,6 +95,9 @@ changes are intended to be reviewable through pull requests.
 - Valid modes are `singleplayer`, `multiplayer`, `zombies`, and `other`.
 - Records with `mode: other` require `modeSub: special-ops` or
   `modeSub: challenge`; other modes must omit `modeSub`.
+- Roster-completeness audits must check Campaign, Multiplayer, Zombies,
+  Challenge, Special Ops, Survival/Hostiles/Safeguard/Exo Survival,
+  Nightmares, Strike Force, War, and Extinction where applicable.
 - Valid precision values are `exact`, `approximate`, `city`, `region`,
   `country`, and `off-world`.
 - Preserve source links and attribution for imported material.

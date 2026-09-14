@@ -71,7 +71,7 @@ content/levels/<primary-game>/campaign/<order>-<level-slug>.md
 content/levels/<primary-game>/multiplayer/<level-slug>.md
 content/levels/<primary-game>/special-ops/<level-slug>.md
 content/levels/<primary-game>/zombies/<level-slug>.md
-content/levels/<primary-game>/other/<level-slug>.md
+content/levels/<primary-game>/challenge/<level-slug>.md
 content/levels/<appearance-game>/<level-slug>.ref.md
 content/levels/<appearance-game>/<map-type>/<level-slug>.ref.md
 ```
@@ -83,7 +83,7 @@ records whose `mode` is `multiplayer`. `mw2` and `mw3` also use `special-ops/`
 for records whose `mode` is `other` and `modeSub` is `special-ops`; shared
 Survival maps remain in this Special Ops subtype.
 `waw`, `bo`, `bo-nds`, and `bo6` also use `zombies/` for records whose `mode` is
-`zombies`. `waw-nds` also uses `other/` for separately selectable Challenge
+`zombies`. `waw-nds` also uses `challenge/` for separately selectable Challenge
 missions whose `mode` is `other` and `modeSub` is `challenge`. Games that have
 not been reorganized remain flat. Map types are broad content categories; they
 are distinct from multiplayer rule sets such as deathmatch or capture the flag.
@@ -92,11 +92,12 @@ Campaign orders start at `1`, have no leading zeros, and must be unique and
 contiguous within their game. The prefix records play order without becoming
 part of the stable level `id` or display title.
 
-A full `.md` file is the canonical record and owns the stable ID, locations,
-mode, mode subtype, overlays, and canonical research. A `.ref.md` file records
-that the same level appears in another game. References live under that
-appearance's game, so every game's directory provides a complete, manageable
-index of its levels.
+A full `.md` file is the canonical record and owns the stable ID, mode, mode
+subtype, overlays, and canonical research. It normally embeds its locations,
+but a canonical variant may inherit them through `metadata.variantOf`. A
+`.ref.md` file records that the same level appears in another game. References
+live under that appearance's game, so every game's directory provides a
+complete, manageable index of its levels.
 
 ## Level record
 
@@ -112,8 +113,10 @@ Required fields:
 - `modeSub`: required for `other` records and limited to `special-ops` or
   `challenge`; omit it for every other mode.
 - `wikiArticle`: foreign key to a Wiki import record.
-- `locations`: embedded location records. Use an empty list only when the
-  level is known but its real-world location has not yet been curated.
+- `locations`: embedded location records. This may be omitted only when
+  `metadata.variantOf` links to another canonical level whose locations should
+  be inherited. Use an empty list when the level intentionally has no curated
+  location; an explicit empty list never triggers inheritance.
 
 Optional level fields include `campaign`, a grouping with a stable string `id`
 and a human-readable `label`; `content-update`, which groups Multiplayer,
@@ -142,19 +145,20 @@ used by the generated progress report.
 may keep a reviewer identifier and an optional `reason` when a human inspected
 the evidence but could not verify the location or research. Use `user: null`
 when no human review took place. Omitting either verification category counts
-it as not verified. Location verification covers every embedded location in
-the level.
+it as not verified. Location verification covers every resolved location in
+the level, including locations inherited through `metadata.variantOf`.
 Research completion and human verification remain separate: having all
 required Markdown sections does not itself indicate that a human reviewed
 their claims.
 
-One level can embed multiple locations, or temporarily use `locations: []`
-until location research is complete. Each location has a locally unique `id`,
-a country, and normally coordinates. Optional geographic detail follows
-the hierarchy `country` → `region` → `city` → `landmark`. A region may be a
+A level can embed multiple locations, temporarily use `locations: []`, or omit
+the field to inherit from `metadata.variantOf`. Each location has a locally
+unique `id`, a country, and normally coordinates. Optional geographic detail
+follows the hierarchy `country` → `region` → `city` → `landmark`. A region may be a
 state, province, constituent country, island, territory, or similar area;
 landmarks are named sites such as rivers, castles, and buildings. Coordinates
-are not deduplicated across levels.
+are not globally deduplicated across levels; only an explicit
+`metadata.variantOf` relationship can inherit another level's locations.
 
 Campaign metadata identifies the named campaign section that contains a level;
 it is separate from the numeric play-order prefix in campaign filenames. Keep
@@ -178,8 +182,17 @@ Other/Challenge level.
 Use `other` for separately selectable Special Ops and Challenge entries. Set
 `modeSub` to identify which kind it is. Keep each selectable Challenge as its
 own canonical record. When it reuses a campaign section, record that
-relationship with `metadata.variantOf` while the Challenge continues to own
-its copied location data and distinct stable ID.
+relationship with `metadata.variantOf`; omit `locations` when it should use the
+source level's geography.
+
+`metadata.variantOf` links one distinct canonical level to another canonical
+level. It does not merge their identities, metadata, notes, modes, or gameplay.
+When the variant omits `locations`, atlas compilation and progress reporting
+copy the resolved target locations into the in-memory record. Targets may
+themselves inherit, but unknown targets and cycles are invalid. Supplying a
+`locations` field, including `locations: []`, always takes precedence over the
+link. Use an appearance `.ref.md` instead when the same unchanged level appears
+in another game.
 
 Precision values:
 

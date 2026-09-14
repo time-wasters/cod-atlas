@@ -42,6 +42,9 @@ to obtain a detailed marker.
    historical operation or a reference-file appearance. If it has no dedicated
    Wiki article, it may reuse the source campaign level's Wiki import record;
    keep the Challenge's curated mode as `other` and subtype as `challenge`.
+   Record the reused canonical level with `metadata.variantOf`. Omit the
+   Challenge's `locations` field when it should inherit that level's geography;
+   supply `locations` only when the Challenge needs a deliberate override.
 3. Research the real place and the real operation separately. Look for the
    historical location of the represented unit on the mission date, the
    terrain and objectives involved, and any surviving landmark, battlefield,

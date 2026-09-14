@@ -19,6 +19,12 @@ roster completeness or directory organization. For example, Modern Warfare
 (2007)'s complete 21-level campaign can remain below 100% here until every
 mission has the required research sections.
 
+Before treating a game's counts as a complete roster, audit every applicable
+category: Campaign, Multiplayer, Zombies, Challenge, Special Ops,
+Survival/Hostiles/Safeguard/Exo Survival, Nightmares, Strike Force, War, and
+Extinction. Some of these still roll up under a broader atlas mode; absence from
+the table is not evidence that the source game has no such content.
+
 Other combines records with the `special-ops` and `challenge` subtypes.
 
 <!-- research-progress:start -->

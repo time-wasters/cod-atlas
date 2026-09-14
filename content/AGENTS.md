@@ -3,7 +3,9 @@
 These instructions apply to everything under `content/`.
 
 - Treat files here as curated source data.
-- Levels own their embedded marker locations. Games that have been organized
+- Levels normally own their embedded marker locations. A canonical variant may
+  omit `locations` and inherit them through `metadata.variantOf`; an explicit
+  `locations: []` remains empty. Games that have been organized
   by map type use `levels/<primary-game>/<map-type>/`; games not yet
   reorganized retain `levels/<primary-game>/<level-slug>.md`. Do not mix the
   two layouts within one game. `cod`, `cod-uo`, `cod-fh`, `cod2`, `cod2-bro`,
@@ -13,11 +15,11 @@ These instructions apply to everything under `content/`.
   records with `mode: other` and `modeSub: special-ops`.
   `waw`, `bo`, `bo-nds`, and `bo6` additionally use `zombies` for records with
   `mode: zombies`.
-  `waw-nds` additionally uses `other` for its separately selectable Challenge
-  records with `mode: other` and `modeSub: challenge`.
+  `waw-nds` additionally uses `challenge` for its separately selectable
+  Challenge records with `mode: other` and `modeSub: challenge`.
 - Campaign filenames are `<order>-<level-slug>.md`, starting at `1`, without
-  leading zeros or gaps. Multiplayer, Special Ops, Zombies, and Other filenames
-  remain `<level-slug>.md`.
+  leading zeros or gaps. Multiplayer, Special Ops, Zombies, and Challenge
+  filenames remain `<level-slug>.md`.
 - Level media mirrors the level file's relative path under
   `public/images/levels/`, including its map-type directory and filename
   without the final `.md` extension.
@@ -29,6 +31,9 @@ These instructions apply to everything under `content/`.
   game's directory. References may override only `title`, `wikiArticle`,
   `campaign`, `metadata`, and their Markdown body; all protected geographic
   and canonical fields inherit unchanged.
+- Use `metadata.variantOf` for a distinct canonical map or activity that is a
+  variant of another canonical level. If `locations` is omitted, the build
+  inherits the target's locations; if it is present, the variant keeps its own.
 - Do not create or reference a separate place entity.
 - Every `games` ID must resolve to `games/<id>.yaml`.
 - Every `wikiArticle` ID must resolve to

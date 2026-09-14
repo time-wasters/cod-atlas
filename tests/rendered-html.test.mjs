@@ -150,7 +150,7 @@ test("catalogues the complete sorted Modern Warfare (2007) campaign roster", asy
 });
 
 test("catalogues all 30 World at War DS Challenge entries", async () => {
-  const challengeRoot = new URL("../content/levels/waw-nds/other/", import.meta.url);
+  const challengeRoot = new URL("../content/levels/waw-nds/challenge/", import.meta.url);
   const filenames = await readdir(challengeRoot);
   const records = await Promise.all(filenames.map(async (filename) => ({
     filename,
@@ -166,6 +166,7 @@ test("catalogues all 30 World at War DS Challenge entries", async () => {
     Array.from({ length: 30 }, (_, index) => index + 1),
   );
   assert.ok(records.every(({ contents }) => /^mode: other$/m.test(contents)));
+  assert.ok(records.every(({ contents }) => !/^locations:/m.test(contents)));
   assert.equal(new Set(records.map(({ contents }) => (
     contents.match(/^\s+variantOf: (.+)$/m)?.[1]
   ))).size, 23);

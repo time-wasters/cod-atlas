@@ -53,18 +53,18 @@ guidance, and copy-ready templates for every source record type.
 
 Create a Markdown file under the primary game's directory. If that game is
 already organized by map type, place it in `campaign/`, `multiplayer/`,
-`special-ops/`, `zombies/`, or `other/` according to its mode and subtype.
+`special-ops/`, `zombies/`, or `challenge/` according to its mode and subtype.
 Currently `cod`,
 `cod-uo`, `cod-fh`, `cod2`, `cod2-bro`, `cod3`, `rtv`, `cod4`, `cod4-nds`, `waw-nds`, `mw2`, `mw3`,
 `bo-nds`, `mw3-nds`, `bo-d`, `wz`, `wz2`, and `mwiii` use the first two folders; `mw2` and `mw3`
 use `special-ops/` for `mode: other`, `modeSub: special-ops` records, while
 `waw`, `bo`, `bo-nds`, and `bo6` also use `zombies/`.
-`waw-nds` also uses `other/` for Challenge missions. Games that
+`waw-nds` also uses `challenge/` for Challenge missions. Games that
 have not been reorganized retain their existing flat layout.
 
 Campaign files in a map-type layout are named
 `<order>-<level-slug>.md`, starting at `1` without leading zeros or gaps.
-Multiplayer, Special Ops, Zombies, Other, and flat-layout files use
+Multiplayer, Special Ops, Zombies, Challenge, and flat-layout files use
 `<level-slug>.md`. Never repeat the primary game ID or include the campaign
 order in the stable ID. For example,
 an `id` of `cod3-example-level` belongs at
@@ -106,7 +106,10 @@ instead of putting several IDs in `games`. A reference contains only
 `wikiArticle`, `campaign`, `metadata`, or Markdown notes. Missing values and
 notes inherit from the canonical record. Locations, mode, overlays, and stable
 IDs cannot be overridden. A materially changed remake gets its own canonical
-level record instead.
+level record instead. Such a distinct canonical variant may set
+`metadata.variantOf`. It may omit `locations` to inherit the linked canonical
+level's locations, while an explicit `locations: []` means intentionally no
+locations and does not inherit.
 
 An optional interface icon can be added at
 `public/images/games/<game-id>.png`. The filename must exactly match the game
@@ -167,6 +170,10 @@ regression count in the tests and explain the count change in the pull request.
 - Game and Wiki foreign keys resolve.
 - Location precision reflects the quality of the evidence.
 - Campaign/Multiplayer/Zombies/Other classification and any Other subtype have been checked.
+- Roster completeness was checked against every applicable category: Campaign,
+  Multiplayer, Zombies, Challenge, Special Ops,
+  Survival/Hostiles/Safeguard/Exo Survival, Nightmares, Strike Force, War, and
+  Extinction. A game is not assumed complete from Campaign and Multiplayer alone.
 - Generated data is current.
 - Third-party attribution and licensing are preserved.
 

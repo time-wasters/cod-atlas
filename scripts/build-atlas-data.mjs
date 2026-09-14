@@ -4,6 +4,7 @@ import process from "node:process";
 import countries from "world-countries";
 import YAML from "yaml";
 import { buildAtlasEntry } from "../src/application/atlas-compilation/use-cases/build-atlas-entry.mjs";
+import { resolveLevelLocationInheritance } from "../src/domain/level/resolve-level-location-inheritance.mjs";
 import { normalizeLevelVerification } from "../src/domain/level/level-verification.value-object.mjs";
 
 const root = process.cwd();
@@ -25,7 +26,7 @@ const mapTypeDirectoryByMode = new Map([
 
 function mapTypeDirectoryForLevel(level) {
   if (level.mode !== "other") return mapTypeDirectoryByMode.get(level.mode);
-  return level.modeSub === "special-ops" ? "special-ops" : "other";
+  return level.modeSub === "special-ops" ? "special-ops" : "challenge";
 }
 const validPrecisions = new Set(["exact", "approximate", "city", "region", "country", "off-world"]);
 const validConfidences = new Set(["high", "medium", "fallback"]);
@@ -390,6 +391,7 @@ const historyOverlays = {};
 const levelBanners = {};
 const usedLevelBannerBases = new Set();
 const levelIds = new Set();
+const levelFilenamesById = new Map();
 const levelIdAliases = {};
 const campaignOrdersByGame = new Map();
 const contentUpdateLabelsByGame = new Map();
@@ -403,6 +405,18 @@ for (const filename of levelFiles) {
     requireValue(validModeSubs.has(level.modeSub), `${filename}: other levels require modeSub special-ops or challenge`);
   } else {
     requireValue(level.modeSub == null, `${filename}: modeSub is only valid for other levels`);
+  }
+  if (level.metadata != null) {
+    requireValue(
+      level.metadata && typeof level.metadata === "object" && !Array.isArray(level.metadata),
+      `${filename}: metadata must be an object`,
+    );
+    if (level.metadata.variantOf != null) {
+      requireValue(
+        typeof level.metadata.variantOf === "string" && level.metadata.variantOf.trim(),
+        `${filename}: metadata.variantOf must be a non-empty canonical level ID`,
+      );
+    }
   }
   requireValue(Array.isArray(level.games) && level.games.length === 1, `${filename}: canonical levels must contain exactly one owner game; use .ref.md files for other appearances`);
   for (const gameId of level.games) requireValue(games.has(gameId), `${filename}: unknown game ${gameId}`);
@@ -518,7 +532,6 @@ for (const filename of levelFiles) {
     usedLevelBannerBases.add(levelBannerBase);
   }
   requireValue(wikiArticles.has(level.wikiArticle), `${filename}: unknown wikiArticle ${level.wikiArticle}`);
-  requireValue(Array.isArray(level.locations), `${filename}: locations must be a list`);
   if (level.mapOverlay) mapOverlays[level.id] = await validateMapOverlay(level.mapOverlay, level.id, filename);
   if (level.historyOverlays != null) {
     requireValue(Array.isArray(level.historyOverlays) && level.historyOverlays.length, `${filename}: historyOverlays must be a non-empty array`);
@@ -530,6 +543,24 @@ for (const filename of levelFiles) {
       historyOverlays[level.id].push(await validateHistoryOverlay(overlay, level.id, body, filename));
     }
   }
+  levelIds.add(level.id);
+  levelFilenamesById.set(level.id, filename);
+  const verified = normalizeLevelVerification(level.verified, `${filename}: verified`);
+  levels.push({
+    ...level,
+    ...(contentUpdate ? { contentUpdate } : {}),
+    ...(level.verified !== undefined ? { verified } : {}),
+    ...(campaignOrder !== null ? { campaignOrder } : {}),
+    notes: body,
+    appearances: [],
+  });
+}
+
+resolveLevelLocationInheritance(levels, {
+  labelFor: (level) => levelFilenamesById.get(level.id) ?? level.id,
+});
+for (const level of levels) {
+  const filename = levelFilenamesById.get(level.id);
   const locationIds = new Set();
   for (const location of level.locations) {
     requireValue(location.id && !locationIds.has(location.id), `${filename}: duplicate or missing location id`);
@@ -561,16 +592,6 @@ for (const filename of levelFiles) {
     }
     markerCount += 1;
   }
-  levelIds.add(level.id);
-  const verified = normalizeLevelVerification(level.verified, `${filename}: verified`);
-  levels.push({
-    ...level,
-    ...(contentUpdate ? { contentUpdate } : {}),
-    ...(level.verified !== undefined ? { verified } : {}),
-    ...(campaignOrder !== null ? { campaignOrder } : {}),
-    notes: body,
-    appearances: [],
-  });
 }
 
 const levelsById = new Map(levels.map((level) => [level.id, level]));
@@ -617,7 +638,10 @@ for (const filename of levelReferenceFiles) {
     requireValue(typeof reference.campaign.id === "string" && reference.campaign.id.trim(), `${filename}: campaign id must be a non-empty string`);
     requireValue(typeof reference.campaign.label === "string" && reference.campaign.label.trim(), `${filename}: campaign label must be a non-empty string`);
   }
-  if (reference.metadata != null) requireValue(reference.metadata && typeof reference.metadata === "object" && !Array.isArray(reference.metadata), `${filename}: metadata must be an object`);
+  if (reference.metadata != null) {
+    requireValue(reference.metadata && typeof reference.metadata === "object" && !Array.isArray(reference.metadata), `${filename}: metadata must be an object`);
+    requireValue(reference.metadata.variantOf == null, `${filename}: metadata.variantOf is only valid on canonical level records`);
+  }
   const bannerKey = `${level.id}@${gameId}`;
   const appearanceMediaBase = path.relative(levelsRoot, filename).replaceAll("\\", "/").replace(/\.md$/, "");
   const appearanceBannerBase = `${appearanceMediaBase}/main`;
