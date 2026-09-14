@@ -3,7 +3,8 @@ id: mw3-stay-sharp
 title: Stay Sharp
 games:
   - mw3
-mode: special-ops
+mode: other
+modeSub: special-ops
 campaign:
   id: "m1"
   label: Mission Mode - Tier 1

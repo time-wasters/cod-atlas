@@ -4,6 +4,7 @@ title: "Challenge #8 — Milk Run"
 games:
   - waw-nds
 mode: other
+modeSub: challenge
 wikiArticle: codwiki-milk-run
 metadata:
   variantOf: waw-nds-milk-run

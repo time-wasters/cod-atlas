@@ -4,6 +4,7 @@ title: "Challenge #20 — Into the Darkness"
 games:
   - waw-nds
 mode: other
+modeSub: challenge
 wikiArticle: codwiki-into-the-darkness
 metadata:
   variantOf: waw-nds-into-the-darkness

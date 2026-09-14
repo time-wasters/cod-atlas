@@ -4,6 +4,7 @@ title: "Challenge #6 — War Torn Streets"
 games:
   - waw-nds
 mode: other
+modeSub: challenge
 wikiArticle: codwiki-war-torn-streets
 metadata:
   variantOf: waw-nds-war-torn-streets

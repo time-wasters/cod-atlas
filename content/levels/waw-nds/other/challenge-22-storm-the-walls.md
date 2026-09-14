@@ -4,6 +4,7 @@ title: "Challenge #22 — Storm the Walls"
 games:
   - waw-nds
 mode: other
+modeSub: challenge
 wikiArticle: codwiki-storm-the-walls
 metadata:
   variantOf: waw-nds-storm-the-walls

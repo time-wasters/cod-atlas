@@ -4,6 +4,7 @@ title: "Challenge #12 — Sabotage"
 games:
   - waw-nds
 mode: other
+modeSub: challenge
 wikiArticle: codwiki-sabotage-level
 metadata:
   variantOf: waw-nds-sabotage

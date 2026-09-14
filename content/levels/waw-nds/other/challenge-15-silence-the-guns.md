@@ -4,6 +4,7 @@ title: "Challenge #15 — Silence the Guns"
 games:
   - waw-nds
 mode: other
+modeSub: challenge
 wikiArticle: codwiki-silence-the-guns
 metadata:
   variantOf: waw-nds-silence-the-guns

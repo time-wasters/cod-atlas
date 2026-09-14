@@ -3,7 +3,8 @@ id: mw2-sniper-fi
 title: Sniper Fi
 games:
   - mw2
-mode: special-ops
+mode: other
+modeSub: special-ops
 campaign:
   id: "1"
   label: Alpha

@@ -3,7 +3,8 @@ id: mw3-fallen-survival
 title: Fallen
 games:
   - mw3
-mode: special-ops
+mode: other
+modeSub: special-ops
 campaign:
   id: "s3"
   label: Survival Mode - Tier 3

@@ -4,6 +4,7 @@ title: "Challenge #14 — Missed Delivery"
 games:
   - waw-nds
 mode: other
+modeSub: challenge
 wikiArticle: codwiki-missed-delivery
 metadata:
   variantOf: waw-nds-missed-delivery

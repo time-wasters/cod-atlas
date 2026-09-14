@@ -3,7 +3,8 @@ id: mw3-sanctuary-survival
 title: Sanctuary
 games:
   - mw3
-mode: special-ops
+mode: other
+modeSub: special-ops
 campaign:
   id: "s6"
   label: Survival Mode - DLC

@@ -4,6 +4,7 @@ title: "Challenge #9 — Panzer Attack"
 games:
   - waw-nds
 mode: other
+modeSub: challenge
 wikiArticle: codwiki-panzer-attack
 metadata:
   variantOf: waw-nds-panzer-attack

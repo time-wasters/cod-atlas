@@ -4,6 +4,7 @@ title: "Challenge #4 — Wrecking Crew"
 games:
   - waw-nds
 mode: other
+modeSub: challenge
 wikiArticle: codwiki-wrecking-crew-world-at-war-ds
 metadata:
   variantOf: waw-nds-wrecking-crew

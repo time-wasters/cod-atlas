@@ -4,6 +4,7 @@ title: "Challenge #26 — Storming the City"
 games:
   - waw-nds
 mode: other
+modeSub: challenge
 wikiArticle: codwiki-storming-the-city
 metadata:
   variantOf: waw-nds-storming-the-city

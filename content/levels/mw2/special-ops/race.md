@@ -3,7 +3,8 @@ id: mw2-race
 title: Race
 games:
   - mw2
-mode: special-ops
+mode: other
+modeSub: special-ops
 campaign:
   id: "2"
   label: Bravo

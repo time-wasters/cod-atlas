@@ -3,7 +3,8 @@ id: mw3-interchange-survival
 title: Interchange
 games:
   - mw3
-mode: special-ops
+mode: other
+modeSub: special-ops
 campaign:
   id: "s1"
   label: Survival Mode - Tier 1

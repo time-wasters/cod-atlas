@@ -4,6 +4,7 @@ title: "Challenge #5 — The Fall"
 games:
   - waw-nds
 mode: other
+modeSub: challenge
 wikiArticle: codwiki-the-fall
 metadata:
   variantOf: waw-nds-the-fall

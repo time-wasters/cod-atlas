@@ -4,6 +4,7 @@ title: "Challenge #1 — Two Roads"
 games:
   - waw-nds
 mode: other
+modeSub: challenge
 wikiArticle: codwiki-two-roads
 metadata:
   variantOf: waw-nds-two-roads

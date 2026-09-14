@@ -3,7 +3,8 @@ id: mw3-toxic-paradise
 title: Toxic Paradise
 games:
   - mw3
-mode: special-ops
+mode: other
+modeSub: special-ops
 campaign:
   id: "m2"
   label: Mission Mode - Tier 2

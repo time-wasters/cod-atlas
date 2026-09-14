@@ -3,7 +3,8 @@ id: mw3-dome-survival
 title: Dome
 games:
   - mw3
-mode: special-ops
+mode: other
+modeSub: special-ops
 campaign:
   id: "s2"
   label: Survival Mode - Tier 2

@@ -3,7 +3,8 @@ id: mw2-high-explosive
 title: High Explosive
 games:
   - mw2
-mode: special-ops
+mode: other
+modeSub: special-ops
 campaign:
   id: "5"
   label: Echo

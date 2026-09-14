@@ -4,6 +4,7 @@ title: "Challenge #21 — Castle Approach"
 games:
   - waw-nds
 mode: other
+modeSub: challenge
 wikiArticle: codwiki-castle-approach
 metadata:
   variantOf: waw-nds-castle-approach

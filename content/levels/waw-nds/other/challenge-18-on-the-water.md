@@ -4,6 +4,7 @@ title: "Challenge #18 — On the Water"
 games:
   - waw-nds
 mode: other
+modeSub: challenge
 wikiArticle: codwiki-on-the-water
 metadata:
   variantOf: waw-nds-on-the-water

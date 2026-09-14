@@ -3,7 +3,8 @@ id: mw2-homeland-security
 title: Homeland Security
 games:
   - mw2
-mode: special-ops
+mode: other
+modeSub: special-ops
 campaign:
   id: "3"
   label: Charlie

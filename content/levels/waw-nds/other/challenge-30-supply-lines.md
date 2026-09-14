@@ -4,6 +4,7 @@ title: "Challenge #30 — Supply Lines"
 games:
   - waw-nds
 mode: other
+modeSub: challenge
 wikiArticle: codwiki-supply-lines
 metadata:
   variantOf: waw-nds-supply-lines

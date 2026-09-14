@@ -4,6 +4,7 @@ title: "Challenge #17 — Beach Landing"
 games:
   - waw-nds
 mode: other
+modeSub: challenge
 wikiArticle: codwiki-beach-landing
 metadata:
   variantOf: waw-nds-beach-landing

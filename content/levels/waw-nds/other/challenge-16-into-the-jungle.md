@@ -4,6 +4,7 @@ title: "Challenge #16 — Into the Jungle"
 games:
   - waw-nds
 mode: other
+modeSub: challenge
 wikiArticle: codwiki-into-the-jungle
 metadata:
   variantOf: waw-nds-into-the-jungle

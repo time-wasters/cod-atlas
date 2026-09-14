@@ -4,6 +4,7 @@ title: "Challenge #19 — Bloody Nose Ridge"
 games:
   - waw-nds
 mode: other
+modeSub: challenge
 wikiArticle: codwiki-bloody-nose-ridge
 metadata:
   variantOf: waw-nds-bloody-nose-ridge

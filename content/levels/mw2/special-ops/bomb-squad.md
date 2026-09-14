@@ -3,7 +3,8 @@ id: mw2-bomb-squad
 title: Bomb Squad
 games:
   - mw2
-mode: special-ops
+mode: other
+modeSub: special-ops
 campaign:
   id: "2"
   label: Bravo

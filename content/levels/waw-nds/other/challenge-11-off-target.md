@@ -4,6 +4,7 @@ title: "Challenge #11 — Off Target"
 games:
   - waw-nds
 mode: other
+modeSub: challenge
 wikiArticle: codwiki-off-target
 metadata:
   variantOf: waw-nds-off-target

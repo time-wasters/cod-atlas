@@ -4,6 +4,7 @@ title: "Challenge #7 — Nuclear Secrets"
 games:
   - waw-nds
 mode: other
+modeSub: challenge
 wikiArticle: codwiki-nuclear-secrets
 metadata:
   variantOf: waw-nds-nuclear-secrets

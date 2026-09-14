@@ -3,7 +3,8 @@ id: mw3-flood-the-market
 title: Flood the Market
 games:
   - mw3
-mode: special-ops
+mode: other
+modeSub: special-ops
 campaign:
   id: "m4"
   label: Mission Mode - Tier 4

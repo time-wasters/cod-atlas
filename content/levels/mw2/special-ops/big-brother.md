@@ -3,7 +3,8 @@ id: mw2-big-brother
 title: Big Brother
 games:
   - mw2
-mode: special-ops
+mode: other
+modeSub: special-ops
 campaign:
   id: "2"
   label: Bravo

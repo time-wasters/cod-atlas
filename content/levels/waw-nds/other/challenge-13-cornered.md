@@ -4,6 +4,7 @@ title: "Challenge #13 — Cornered"
 games:
   - waw-nds
 mode: other
+modeSub: challenge
 wikiArticle: codwiki-cornered
 metadata:
   variantOf: waw-nds-cornered
