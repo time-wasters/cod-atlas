@@ -19,14 +19,12 @@ function remainingCell({ remaining, total }) {
 export function renderResearchProgress({ games, levels }) {
   const singleplayer = levels.filter((level) => level.mode === "singleplayer");
   const multiplayer = levels.filter((level) => level.mode === "multiplayer");
-  const specialOps = levels.filter((level) => level.mode === "special-ops");
   const zombies = levels.filter((level) => level.mode === "zombies");
   const other = levels.filter((level) => level.mode === "other");
   const summaries = [
     ["All currently catalogued levels", calculateResearchCoverage(levels)],
     ["Campaign levels", calculateResearchCoverage(singleplayer)],
     ["Multiplayer maps", calculateResearchCoverage(multiplayer)],
-    ["Special Ops missions", calculateResearchCoverage(specialOps)],
     ["Zombies maps", calculateResearchCoverage(zombies)],
     ["Other levels", calculateResearchCoverage(other)],
   ];
@@ -39,8 +37,8 @@ export function renderResearchProgress({ games, levels }) {
       `| ${label} | ${coverageCell(result)} | ${remainingCell(result)} |`
     )),
     "",
-    "| Game | Campaign | Multiplayer | Special Ops | Zombies | Other | Overall |",
-    "| --- | ---: | ---: | ---: | ---: | ---: | ---: |",
+    "| Game | Campaign | Multiplayer | Zombies | Other | Overall |",
+    "| --- | ---: | ---: | ---: | ---: | ---: |",
   ];
 
   const gameRows = [...games.values()]
@@ -55,9 +53,6 @@ export function renderResearchProgress({ games, levels }) {
     const multiplayerCoverage = calculateResearchCoverage(
       gameLevels.filter((level) => level.mode === "multiplayer"),
     );
-    const specialOpsCoverage = calculateResearchCoverage(
-      gameLevels.filter((level) => level.mode === "special-ops"),
-    );
     const zombiesCoverage = calculateResearchCoverage(
       gameLevels.filter((level) => level.mode === "zombies"),
     );
@@ -68,7 +63,6 @@ export function renderResearchProgress({ games, levels }) {
       `| ${escapeMarkdownTableCell(game.label)}`,
       coverageCell(campaignCoverage),
       coverageCell(multiplayerCoverage),
-      coverageCell(specialOpsCoverage),
       coverageCell(zombiesCoverage),
       coverageCell(otherCoverage),
       `${coverageCell(calculateResearchCoverage(gameLevels))} |`,

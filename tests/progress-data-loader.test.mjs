@@ -40,6 +40,7 @@ test("canonical level loading excludes appearance references", async () => {
     assert.deepEqual(data.levels[0], {
       gameId: "game",
       mode: "multiplayer",
+      modeSub: null,
       researched: true,
       verified: {
         locations: { byHuman: true, user: "github/test-reviewer" },

@@ -2,9 +2,13 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { isLevelMode, levelModes } from "../src/domain/level/level-mode.value-object.mjs";
+import { isLevelModeSub, levelModeSubs } from "../src/domain/level/level-mode-sub.value-object.mjs";
 
-test("level modes include Special Ops and Other as distinct categories", () => {
-  assert.deepEqual(levelModes, ["singleplayer", "multiplayer", "special-ops", "zombies", "other"]);
-  assert.equal(isLevelMode("special-ops"), true);
+test("level modes combine Special Ops and Challenges under Other", () => {
+  assert.deepEqual(levelModes, ["singleplayer", "multiplayer", "zombies", "other"]);
+  assert.equal(isLevelMode("special-ops"), false);
   assert.equal(isLevelMode("other"), true);
+  assert.deepEqual(levelModeSubs, ["special-ops", "challenge"]);
+  assert.equal(isLevelModeSub("special-ops"), true);
+  assert.equal(isLevelModeSub("challenge"), true);
 });

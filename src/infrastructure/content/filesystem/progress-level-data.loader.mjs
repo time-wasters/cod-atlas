@@ -1,6 +1,7 @@
 import { readFile } from "node:fs/promises";
 import { isLevelLocationPrecision } from "../../../domain/level/level-location-precision.value-object.mjs";
 import { isLevelMode } from "../../../domain/level/level-mode.value-object.mjs";
+import { isLevelModeSub } from "../../../domain/level/level-mode-sub.value-object.mjs";
 import { normalizeLevelVerification } from "../../../domain/level/level-verification.value-object.mjs";
 import { isResearchComplete } from "../../../domain/level/research-completion.policy.mjs";
 import { parseMarkdownDocument } from "../markdown/markdown-document.parser.mjs";
@@ -20,7 +21,13 @@ export async function loadProgressLevelData(levelsRoot, games) {
       throw new Error(`${filename}: exactly one known owner game is required`);
     }
     if (!isLevelMode(document.data.mode)) {
-      throw new Error(`${filename}: mode must be singleplayer, multiplayer, special-ops, zombies or other`);
+      throw new Error(`${filename}: mode must be singleplayer, multiplayer, zombies or other`);
+    }
+    if (document.data.mode === "other" && !isLevelModeSub(document.data.modeSub)) {
+      throw new Error(`${filename}: other levels require modeSub special-ops or challenge`);
+    }
+    if (document.data.mode !== "other" && document.data.modeSub != null) {
+      throw new Error(`${filename}: modeSub is only valid for other levels`);
     }
     if (!Array.isArray(document.data.locations)) {
       throw new Error(`${filename}: locations must be an array`);
@@ -33,6 +40,7 @@ export async function loadProgressLevelData(levelsRoot, games) {
     levels.push({
       gameId,
       mode: document.data.mode,
+      modeSub: document.data.modeSub ?? null,
       researched: isResearchComplete(document.body),
       verified: normalizeLevelVerification(document.data.verified, `${filename}: verified`),
       locations: document.data.locations.map((location) => ({ precision: location.precision })),

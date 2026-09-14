@@ -3,6 +3,7 @@ export function collectLevelLocations(levels) {
     ...location,
     gameId: level.gameId,
     mode: level.mode,
+    modeSub: level.modeSub,
     verified: level.verified.locations,
   })));
 }

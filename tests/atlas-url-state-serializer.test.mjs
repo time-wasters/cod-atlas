@@ -15,7 +15,6 @@ const defaultState = {
   methods: [],
   showSingleplayer: true,
   showMultiplayer: false,
-  showSpecialOps: false,
   showZombies: false,
   showOther: false,
   sidebarListMode: "locations",
@@ -37,7 +36,6 @@ test("atlas URL serializer round-trips shareable filters and selection", () => {
     methods: ["verified-landmark"],
     showSingleplayer: true,
     showMultiplayer: true,
-    showSpecialOps: true,
     showZombies: true,
     showOther: true,
     sidebarListMode: "campaigns",
@@ -58,24 +56,21 @@ test("atlas URL serializer omits defaults and encodes every mode-filter state", 
   );
   assert.equal(defaultUrl.search, "");
 
-  for (const [mode, showSingleplayer, showMultiplayer, showSpecialOps, showZombies, showOther] of [
-    ["all", true, true, true, true, true],
-    ["both", true, true, false, false, false],
-    ["multiplayer", false, true, false, false, false],
-    ["special-ops", false, false, true, false, false],
-    ["multiplayer,special-ops", false, true, true, false, false],
-    ["zombies", false, false, false, true, false],
-    ["other", false, false, false, false, true],
-    ["singleplayer,special-ops", true, false, true, false, false],
-    ["singleplayer,zombies", true, false, false, true, false],
-    ["singleplayer,other", true, false, false, false, true],
-    ["none", false, false, false, false, false],
+  for (const [mode, showSingleplayer, showMultiplayer, showZombies, showOther] of [
+    ["all", true, true, true, true],
+    ["both", true, true, false, false],
+    ["multiplayer", false, true, false, false],
+    ["zombies", false, false, true, false],
+    ["other", false, false, false, true],
+    ["singleplayer,zombies", true, false, true, false],
+    ["singleplayer,other", true, false, false, true],
+    ["multiplayer,other", false, true, false, true],
+    ["none", false, false, false, false],
   ]) {
     const url = serializeAtlasUrlState(defaultUrl, {
       ...defaultState,
       showSingleplayer,
       showMultiplayer,
-      showSpecialOps,
       showZombies,
       showOther,
     });

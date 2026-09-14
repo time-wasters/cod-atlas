@@ -80,21 +80,23 @@ A game must use one layout consistently. `cod`, `cod-uo`, `cod-fh`, `cod2`,
 `cod2-bro`, `cod3`, `rtv`, `cod4`, `cod4-nds`, `waw-nds`, `mw2`, `mw3`, `bo-nds`, `mw3-nds`, `bo-d`, `wz`, `wz2`, and `mwiii` use
 `campaign/` for records whose `mode` is `singleplayer` and `multiplayer/` for
 records whose `mode` is `multiplayer`. `mw2` and `mw3` also use `special-ops/`
-for dedicated Special Ops missions; shared Survival maps remain multiplayer.
+for records whose `mode` is `other` and `modeSub` is `special-ops`; shared
+Survival maps remain in this Special Ops subtype.
 `waw`, `bo`, `bo-nds`, and `bo6` also use `zombies/` for records whose `mode` is
 `zombies`. `waw-nds` also uses `other/` for separately selectable Challenge
-missions whose mode is `other`. Games that have not been reorganized remain flat. Map types are
-broad content categories; they are distinct from multiplayer rule sets such as
-deathmatch or capture the flag.
+missions whose `mode` is `other` and `modeSub` is `challenge`. Games that have
+not been reorganized remain flat. Map types are broad content categories; they
+are distinct from multiplayer rule sets such as deathmatch or capture the flag.
 
 Campaign orders start at `1`, have no leading zeros, and must be unique and
 contiguous within their game. The prefix records play order without becoming
 part of the stable level `id` or display title.
 
 A full `.md` file is the canonical record and owns the stable ID, locations,
-mode, overlays, and canonical research. A `.ref.md` file records that the same
-level appears in another game. References live under that appearance's game,
-so every game's directory provides a complete, manageable index of its levels.
+mode, mode subtype, overlays, and canonical research. A `.ref.md` file records
+that the same level appears in another game. References live under that
+appearance's game, so every game's directory provides a complete, manageable
+index of its levels.
 
 ## Level record
 
@@ -106,14 +108,16 @@ Required fields:
 - `id`: stable, repository-wide level ID.
 - `title`: human-readable level or map name.
 - `games`: exactly one game ID: the canonical owner game.
-- `mode`: `singleplayer`, `multiplayer`, `special-ops`, `zombies`, or `other`.
+- `mode`: `singleplayer`, `multiplayer`, `zombies`, or `other`.
+- `modeSub`: required for `other` records and limited to `special-ops` or
+  `challenge`; omit it for every other mode.
 - `wikiArticle`: foreign key to a Wiki import record.
 - `locations`: embedded location records. Use an empty list only when the
   level is known but its real-world location has not yet been curated.
 
 Optional level fields include `campaign`, a grouping with a stable string `id`
 and a human-readable `label`; `content-update`, which groups Multiplayer,
-Special Ops, and Zombies records by their original release or map pack;
+Other/Special Ops, and Zombies records by their original release or map pack;
 `legacyIds`, which
 preserves old URL IDs after a structural rename; and `metadata` for
 non-geographic descriptive values.
@@ -156,7 +160,7 @@ Campaign metadata identifies the named campaign section that contains a level;
 it is separate from the numeric play-order prefix in campaign filenames. Keep
 the ID stable even if the display label is later corrected or translated.
 
-Multiplayer, Special Ops, and Zombies levels may use matching content-update
+Multiplayer, Other/Special Ops, and Zombies levels may use matching content-update
 metadata:
 
 ```yaml
@@ -167,14 +171,15 @@ content-update:
 
 The stable string ID controls update ordering and the label is shown in the
 sidebar. Levels released in the base game can use an ID such as `"0"` with the
-label `Included`. A content update can group Multiplayer, Special Ops, and
-Zombies levels together, but it is not valid on a singleplayer level.
+label `Included`. A content update can group Multiplayer, Other/Special Ops,
+and Zombies levels together, but it is not valid on a singleplayer or
+Other/Challenge level.
 
-Use `other` for separately selectable level-like entries that do not belong to
-the four established categories, such as the Nintendo DS Challenge missions.
-Keep each selectable Challenge as its own canonical record. When it reuses a
-campaign section, record that relationship with `metadata.variantOf` while the
-Challenge continues to own its copied location data and distinct stable ID.
+Use `other` for separately selectable Special Ops and Challenge entries. Set
+`modeSub` to identify which kind it is. Keep each selectable Challenge as its
+own canonical record. When it reuses a campaign section, record that
+relationship with `metadata.variantOf` while the Challenge continues to own
+its copied location data and distinct stable ID.
 
 Precision values:
 
@@ -219,7 +224,7 @@ Only `level`, `title`, `wikiArticle`, `campaign`, and `metadata` are accepted.
 Omitted values inherit from the canonical record. The Markdown body, when
 present, is shown before the inherited canonical notes; an empty body shows
 only the canonical notes. Appearance references cannot set `id`, `games`, `mode`,
-`locations`, precision/confidence/method values, or geographic overlays.
+`modeSub`, `locations`, precision/confidence/method values, or geographic overlays.
 
 Create a new canonical level when a remake materially changes the playable
 level or represented geography. Do not use an appearance reference merely

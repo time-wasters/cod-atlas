@@ -10,11 +10,11 @@ These instructions apply to everything under `content/`.
   `cod3`, `rtv`, `cod4`, `cod4-nds`, `waw-nds`, `mw2`, `mw3`, `bo-nds`, `mw3-nds`, `bo-d`, `wz`, `wz2`, and `mwiii` use `campaign`
   for records with `mode: singleplayer` and `multiplayer` for records with
   `mode: multiplayer`. `mw2` and `mw3` additionally use `special-ops` for
-  records with `mode: special-ops`.
+  records with `mode: other` and `modeSub: special-ops`.
   `waw`, `bo`, `bo-nds`, and `bo6` additionally use `zombies` for records with
   `mode: zombies`.
   `waw-nds` additionally uses `other` for its separately selectable Challenge
-  records with `mode: other`.
+  records with `mode: other` and `modeSub: challenge`.
 - Campaign filenames are `<order>-<level-slug>.md`, starting at `1`, without
   leading zeros or gaps. Multiplayer, Special Ops, Zombies, and Other filenames
   remain `<level-slug>.md`.

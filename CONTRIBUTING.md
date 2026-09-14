@@ -53,10 +53,12 @@ guidance, and copy-ready templates for every source record type.
 
 Create a Markdown file under the primary game's directory. If that game is
 already organized by map type, place it in `campaign/`, `multiplayer/`,
-`special-ops/`, `zombies/`, or `other/` to match its `mode` field. Currently `cod`,
+`special-ops/`, `zombies/`, or `other/` according to its mode and subtype.
+Currently `cod`,
 `cod-uo`, `cod-fh`, `cod2`, `cod2-bro`, `cod3`, `rtv`, `cod4`, `cod4-nds`, `waw-nds`, `mw2`, `mw3`,
 `bo-nds`, `mw3-nds`, `bo-d`, `wz`, `wz2`, and `mwiii` use the first two folders; `mw2` and `mw3`
-also use `special-ops/`, while `waw`, `bo`, `bo-nds`, and `bo6` also use `zombies/`.
+use `special-ops/` for `mode: other`, `modeSub: special-ops` records, while
+`waw`, `bo`, `bo-nds`, and `bo6` also use `zombies/`.
 `waw-nds` also uses `other/` for Challenge missions. Games that
 have not been reorganized retain their existing flat layout.
 
@@ -164,7 +166,7 @@ regression count in the tests and explain the count change in the pull request.
 - The change is limited to one coherent correction or feature.
 - Game and Wiki foreign keys resolve.
 - Location precision reflects the quality of the evidence.
-- Campaign/Multiplayer/Special Ops/Zombies/Other classification has been checked.
+- Campaign/Multiplayer/Zombies/Other classification and any Other subtype have been checked.
 - Generated data is current.
 - Third-party attribution and licensing are preserved.
 

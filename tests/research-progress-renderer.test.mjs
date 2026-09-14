@@ -16,8 +16,7 @@ test("research table includes counts, percentages and release-order game rows", 
   });
 
   assert.match(generated, /All currently catalogued levels \| 2 \/ 3 \(67%\) \| 1 \/ 3 \(33%\)/);
-  assert.match(generated, /Special Ops missions \| — \| —/);
   assert.match(generated, /Other levels \| — \| —/);
   assert.ok(generated.indexOf("| Old Game |") < generated.indexOf("| New Game |"));
-  assert.match(generated, /\| Old Game \| 1 \/ 1 \(100%\) \| 0 \/ 1 \(0%\) \| — \| — \| — \| 1 \/ 2 \(50%\) \|/);
+  assert.match(generated, /\| Old Game \| 1 \/ 1 \(100%\) \| 0 \/ 1 \(0%\) \| — \| — \| 1 \/ 2 \(50%\) \|/);
 });

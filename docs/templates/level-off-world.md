@@ -4,6 +4,7 @@ title: Example Level
 games:
   - example-game
 mode: multiplayer
+# modeSub: challenge # Required only when mode is other; special-ops is also valid.
 wikiArticle: codwiki-example-level
 locations:
   - id: main

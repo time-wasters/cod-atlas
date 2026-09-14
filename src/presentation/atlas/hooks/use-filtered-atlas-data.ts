@@ -30,7 +30,6 @@ export function useFilteredAtlasData({
     query,
     showMultiplayer,
     showSingleplayer,
-    showSpecialOps,
     showZombies,
     showOther,
   } = criteria;
@@ -54,7 +53,6 @@ export function useFilteredAtlasData({
         query,
         showMultiplayer,
         showSingleplayer,
-        showSpecialOps,
         showZombies,
         showOther,
       },
@@ -73,7 +71,6 @@ export function useFilteredAtlasData({
       query,
       showMultiplayer,
       showSingleplayer,
-      showSpecialOps,
       showZombies,
       showOther,
     ],

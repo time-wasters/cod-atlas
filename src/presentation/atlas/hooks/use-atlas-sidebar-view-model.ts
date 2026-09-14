@@ -141,15 +141,6 @@ export function useAtlasSidebarViewModel({
         },
       },
       {
-        mode: "special-ops" as const,
-        label: "Special Ops",
-        visible: filters.showSpecialOps,
-        onToggle: () => {
-          pushHistory();
-          filters.setShowSpecialOps((visible) => !visible);
-        },
-      },
-      {
         mode: "zombies" as const,
         label: "Zombies",
         visible: filters.showZombies,

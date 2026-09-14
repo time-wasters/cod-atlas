@@ -67,7 +67,9 @@ test("catalogues the complete Modern Warfare 3 Special Ops roster", async () => 
     "village-survival.md",
   ]);
   for (const filename of await readdir(specialOpsRoot)) {
-    assert.match(await readFile(new URL(filename, specialOpsRoot), "utf8"), /mode: special-ops/);
+    const contents = await readFile(new URL(filename, specialOpsRoot), "utf8");
+    assert.match(contents, /mode: other/);
+    assert.match(contents, /modeSub: special-ops/);
   }
 });
 
@@ -156,6 +158,7 @@ test("catalogues all 30 World at War DS Challenge entries", async () => {
   })));
 
   assert.equal(records.length, 30);
+  assert.ok(records.every(({ contents }) => /^modeSub: challenge$/m.test(contents)));
   assert.deepEqual(
     records
       .map(({ contents }) => Number(contents.match(/^\s+challengeNumber: (\d+)$/m)?.[1]))
@@ -217,9 +220,9 @@ test("renders the hosted atlas shell from fixture data", async () => {
   const advancedFilterIndex = html.indexOf('class="advanced-filter-trigger"');
   assert.ok(countryFilterIndex < modeFilterIndex && modeFilterIndex < advancedFilterIndex);
   assert.match(html, /class="mode-filter"[^>]*aria-label="Map type visibility"/);
-  assert.match(html, /<button(?=[^>]*aria-pressed="false")[^>]*>\s*<svg(?=[^>]*class="mission-mode-icon")(?=[^>]*aria-label="Special Ops")/);
   assert.match(html, /<button(?=[^>]*aria-pressed="false")[^>]*>\s*<svg(?=[^>]*class="mission-mode-icon")(?=[^>]*aria-label="Zombies")/);
   assert.match(html, /<button(?=[^>]*aria-pressed="false")[^>]*>\s*<svg(?=[^>]*class="mission-mode-icon")(?=[^>]*aria-label="Other")/);
+  assert.doesNotMatch(html, /aria-label="Special Ops"/);
   assert.doesNotMatch(html, /class="precision-filter"/);
   assert.match(html, /role="tab"[^>]*aria-selected="true"[^>]*aria-controls="sidebar-locations"/);
   assert.match(html, /<button(?=[^>]*role="tab")(?=[^>]*aria-controls="sidebar-campaigns")(?=[^>]*disabled="")[^>]*>/);
@@ -228,7 +231,7 @@ test("renders the hosted atlas shell from fixture data", async () => {
   assert.match(html, /class="taxonomy-tier is-city"><span>City<\/span><strong>Rio de Janeiro<\/strong>/);
   assert.doesNotMatch(html, /Selected location/);
   assert.doesNotMatch(html, />Level<\/span>/);
-  assert.match(html, /aria-label="(Campaign|Multiplayer|Special Ops|Zombies)"/);
+  assert.match(html, /aria-label="(Campaign|Multiplayer|Zombies|Other)"/);
   assert.match(html, /class="mission-title-button"[^>]*>Fixture Alpha<\/button>/);
   assert.match(html, /<button(?=[^>]*class="level-briefing-toggle")(?=[^>]*aria-controls="selected-level-briefing")[^>]*>/);
   assert.match(html, />Research &amp; historical context<\/strong>/);

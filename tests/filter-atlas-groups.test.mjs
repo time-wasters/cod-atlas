@@ -3,7 +3,7 @@ import test from "node:test";
 
 import { filterAtlasGroups } from "../src/application/atlas/use-cases/filter-atlas-groups.ts";
 
-test("mode filtering treats Special Ops as a distinct content category", () => {
+test("mode filtering exposes Special Ops through Other", () => {
   const entries = [
     {
       id: "special-ops",
@@ -11,7 +11,8 @@ test("mode filtering treats Special Ops as a distinct content category", () => {
       gameIds: ["mw3"],
       title: "Stay Sharp",
       precision: "country",
-      modes: ["special-ops"],
+      modes: ["other"],
+      modeSub: "special-ops",
       appearances: [{ title: "Stay Sharp" }],
     },
     {
@@ -39,9 +40,8 @@ test("mode filtering treats Special Ops as a distinct content category", () => {
       methods: new Set(),
       showSingleplayer: false,
       showMultiplayer: false,
-      showSpecialOps: true,
       showZombies: false,
-      showOther: false,
+      showOther: true,
     },
   });
 
@@ -56,6 +56,7 @@ test("mode filtering exposes Other entries independently", () => {
     title: "Challenge #1 — Two Roads",
     precision: "city",
     modes: ["other"],
+    modeSub: "challenge",
     appearances: [{ title: "Challenge #1 — Two Roads" }],
   };
   const result = filterAtlasGroups({
@@ -73,7 +74,6 @@ test("mode filtering exposes Other entries independently", () => {
       methods: new Set(),
       showSingleplayer: false,
       showMultiplayer: false,
-      showSpecialOps: false,
       showZombies: false,
       showOther: true,
     },

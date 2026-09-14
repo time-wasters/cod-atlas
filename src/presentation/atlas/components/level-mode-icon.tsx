@@ -1,8 +1,20 @@
 import type { AtlasEntryDto } from "../../../infrastructure/atlas-data/dto/atlas-entry.dto.js";
 
-export function LevelModeIcon({ mode }: { mode: AtlasEntryDto["modes"][number] }) {
+export function LevelModeIcon({
+  mode,
+  modeSub,
+}: {
+  mode: AtlasEntryDto["modes"][number];
+  modeSub?: AtlasEntryDto["modeSub"];
+}) {
+  if (mode === "other" && modeSub === "special-ops") return (
+    <svg className="mission-mode-icon" viewBox="0 0 24 24" role="img" aria-label="Special Ops">
+      <circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" />
+      <path d="M12 2v4M12 18v4M2 12h4M18 12h4" />
+    </svg>
+  );
   if (mode === "other") return (
-    <svg className="mission-mode-icon" viewBox="0 0 24 24" role="img" aria-label="Other">
+    <svg className="mission-mode-icon" viewBox="0 0 24 24" role="img" aria-label={modeSub === "challenge" ? "Challenge" : "Other"}>
       <path d="M6 4h12v16H6zM9 8h6M9 12h6M9 16h4" />
     </svg>
   );
@@ -10,12 +22,6 @@ export function LevelModeIcon({ mode }: { mode: AtlasEntryDto["modes"][number] }
     <svg className="mission-mode-icon" viewBox="0 0 24 24" role="img" aria-label="Zombies">
       <path d="M5 10a7 7 0 1 1 14 0v5l-2 2h-2v3h-2v-3h-2v3H9v-3H7l-2-2Z" />
       <circle cx="9" cy="10" r="1" /><circle cx="15" cy="10" r="1" /><path d="m10 14 2-2 2 2" />
-    </svg>
-  );
-  if (mode === "special-ops") return (
-    <svg className="mission-mode-icon" viewBox="0 0 24 24" role="img" aria-label="Special Ops">
-      <circle cx="12" cy="12" r="6" /><circle cx="12" cy="12" r="2" />
-      <path d="M12 2v4M12 18v4M2 12h4M18 12h4" />
     </svg>
   );
   return mode === "multiplayer" ? (

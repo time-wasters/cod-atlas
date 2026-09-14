@@ -17,7 +17,8 @@ const GAME_SERIES = new Set(["world-war-ii", "modern-warfare", "black-ops", "sta
 const GAME_SUBSERIES = new Set(["main", "reboot", "remaster", "add-on", "spin-off"]);
 const LOCATION_PRECISIONS = new Set(["exact", "approximate", "city", "region", "country", "off-world"]);
 const LOCATION_CONFIDENCES = new Set(["high", "medium", "fallback"]);
-const LEVEL_MODES = new Set(["singleplayer", "multiplayer", "special-ops", "zombies", "other"]);
+const LEVEL_MODES = new Set(["singleplayer", "multiplayer", "zombies", "other"]);
+const LEVEL_MODE_SUBS = new Set(["special-ops", "challenge"]);
 
 /**
  * Validates an optional campaign object.
@@ -131,9 +132,15 @@ function assertAtlasEntry(value: unknown, path: string): void {
     });
   }
   booleanValue(entry.hasLevelNotes, `${path}.hasLevelNotes`);
-  arrayValue(entry.modes, `${path}.modes`).forEach((mode, index) => {
+  const modes = arrayValue(entry.modes, `${path}.modes`);
+  modes.forEach((mode, index) => {
     enumValue(mode, LEVEL_MODES, `${path}.modes[${index}]`);
   });
+  if (modes.includes("other")) {
+    enumValue(entry.modeSub, LEVEL_MODE_SUBS, `${path}.modeSub`);
+  } else if (entry.modeSub !== undefined) {
+    throw new Error(`${path}.modeSub is only valid for other entries`);
+  }
   arrayValue(entry.appearances, `${path}.appearances`).forEach((appearance, index) => {
     assertLevelAppearance(appearance, `${path}.appearances[${index}]`);
   });

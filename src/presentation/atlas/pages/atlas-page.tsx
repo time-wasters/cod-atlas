@@ -85,7 +85,6 @@ export function AtlasPage({
     methods,
     showSingleplayer,
     showMultiplayer,
-    showSpecialOps,
     showZombies,
     showOther,
     applyUrlState: applyFilterUrlState,
@@ -157,7 +156,6 @@ export function AtlasPage({
       methods,
       showSingleplayer,
       showMultiplayer,
-      showSpecialOps,
       showZombies,
       showOther,
     },
@@ -261,7 +259,6 @@ export function AtlasPage({
       methods,
       showSingleplayer,
       showMultiplayer,
-      showSpecialOps,
       showZombies,
       showOther,
     },
@@ -438,7 +435,7 @@ export function AtlasPage({
   }
 
   /**
-   * Toggles a Multiplayer/Zombies content update and selects its first level.
+   * Toggles a Multiplayer, Zombies, or Other/Special Ops content update and selects its first level.
    */
   function selectContentUpdate(contentUpdate: ContentUpdateOption<AtlasGroupDto, AtlasEntryDto>) {
     const contentUpdateIsActive = activeContentUpdateKey === contentUpdate.key;

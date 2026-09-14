@@ -15,14 +15,18 @@ const mapOverlaysOutputPath = path.join(outputDirectory, "map-overlays.generated
 const historyOverlaysOutputPath = path.join(outputDirectory, "history-overlays.generated.json");
 const levelBannersRoot = path.join(root, "public/images/levels");
 const checkOnly = process.argv.includes("--check");
-const validModes = new Set(["singleplayer", "multiplayer", "special-ops", "zombies", "other"]);
+const validModes = new Set(["singleplayer", "multiplayer", "zombies", "other"]);
+const validModeSubs = new Set(["special-ops", "challenge"]);
 const mapTypeDirectoryByMode = new Map([
   ["singleplayer", "campaign"],
   ["multiplayer", "multiplayer"],
-  ["special-ops", "special-ops"],
   ["zombies", "zombies"],
-  ["other", "other"],
 ]);
+
+function mapTypeDirectoryForLevel(level) {
+  if (level.mode !== "other") return mapTypeDirectoryByMode.get(level.mode);
+  return level.modeSub === "special-ops" ? "special-ops" : "other";
+}
 const validPrecisions = new Set(["exact", "approximate", "city", "region", "country", "off-world"]);
 const validConfidences = new Set(["high", "medium", "fallback"]);
 const validGameSeries = new Set(["world-war-ii", "modern-warfare", "black-ops", "standalone"]);
@@ -395,6 +399,11 @@ for (const filename of levelFiles) {
   requireValue(level?.id && level.title, `${filename}: level id and title are required`);
   requireValue(!levelIds.has(level.id), `${filename}: duplicate level id ${level.id}`);
   requireValue(validModes.has(level.mode), `${filename}: invalid mode ${level.mode}`);
+  if (level.mode === "other") {
+    requireValue(validModeSubs.has(level.modeSub), `${filename}: other levels require modeSub special-ops or challenge`);
+  } else {
+    requireValue(level.modeSub == null, `${filename}: modeSub is only valid for other levels`);
+  }
   requireValue(Array.isArray(level.games) && level.games.length === 1, `${filename}: canonical levels must contain exactly one owner game; use .ref.md files for other appearances`);
   for (const gameId of level.games) requireValue(games.has(gameId), `${filename}: unknown game ${gameId}`);
   if (level.campaign != null) {
@@ -418,8 +427,9 @@ for (const filename of levelFiles) {
       `${filename}: content-update must be an object`,
     );
     requireValue(
-      ["multiplayer", "special-ops", "zombies"].includes(level.mode),
-      `${filename}: content-update is only supported for multiplayer, special-ops and zombies levels`,
+      ["multiplayer", "zombies"].includes(level.mode)
+        || (level.mode === "other" && level.modeSub === "special-ops"),
+      `${filename}: content-update is only supported for multiplayer, zombies and other/special-ops levels`,
     );
     requireValue(
       typeof contentUpdate.id === "string" && contentUpdate.id.trim(),
@@ -447,7 +457,7 @@ for (const filename of levelFiles) {
   const levelSlugFilename = `${levelSlug}.md`;
   let campaignOrder = null;
   if (gamesWithMapTypeDirectories.has(primaryGame)) {
-    const mapTypeDirectory = mapTypeDirectoryByMode.get(level.mode);
+    const mapTypeDirectory = mapTypeDirectoryForLevel(level);
     const expectedDirectory = path.join(levelsRoot, primaryGame, mapTypeDirectory);
     requireValue(path.dirname(filename) === expectedDirectory, `${filename}: expected level directory ${expectedDirectory}`);
     if (mapTypeDirectory === "campaign") {
@@ -588,7 +598,7 @@ for (const filename of levelReferenceFiles) {
   let campaignOrder = null;
   if (gamesWithMapTypeDirectories.has(gameId)) {
     requireValue(parts.length === 3, `${filename}: ${gameId} uses map-type directories`);
-    const mapTypeDirectory = mapTypeDirectoryByMode.get(level.mode);
+    const mapTypeDirectory = mapTypeDirectoryForLevel(level);
     requireValue(parts[1] === mapTypeDirectory, `${filename}: expected ${mapTypeDirectory} directory for ${level.mode}`);
     if (mapTypeDirectory === "campaign") {
       const match = referenceFilename.match(/^([1-9]\d*)-(.+)\.ref\.md$/);
