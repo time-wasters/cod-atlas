@@ -10,3 +10,8 @@ images:
     app: 4384550
     icon: 76273a939a2465166f0609398686f59082aa9fc3
     clienticon: 76273a939a2465166f0609398686f59082aa9fc3
+developer:
+  - id: treyarch
+    name: Treyarch
+  - id: raven
+    name: Raven Software

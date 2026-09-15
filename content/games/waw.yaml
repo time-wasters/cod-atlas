@@ -10,3 +10,6 @@ images:
     app: 10090
     icon: 2bfb85222af4a01842baa5c3a16a080eb27ac6c3
     clienticon: 8afeb1572ffa6e380b8520e0ee797b3120a06ff7
+developer:
+  - id: treyarch
+    name: Treyarch

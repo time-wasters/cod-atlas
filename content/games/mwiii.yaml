@@ -10,3 +10,8 @@ images:
     app: 3595270
     icon: 82bd74afbe6e7e75da1a76be34360f682ba8ce63
     clienticon: aa8195de250808b6ad8767b09d832b966df9f7fd
+developer:
+  - id: sledgehammer
+    name: Sledgehammer Games
+  - id: treyarch
+    name: Treyarch

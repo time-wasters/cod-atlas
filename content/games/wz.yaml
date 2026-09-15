@@ -10,3 +10,6 @@ images:
     game: 5257960
     icon: 19164
     file: 8f9fe000818954f238235f26ca070247.png
+developer:
+  - id: raven
+    name: Raven Software

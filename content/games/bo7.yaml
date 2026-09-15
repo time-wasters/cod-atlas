@@ -10,3 +10,8 @@ images:
     game: 5491818
     icon: 82668
     file: 739043330e259775c46a1a4d0d143240.png
+developer:
+  - id: treyarch
+    name: Treyarch
+  - id: raven
+    name: Raven Software

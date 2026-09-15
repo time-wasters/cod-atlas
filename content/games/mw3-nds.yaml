@@ -10,3 +10,6 @@ images:
     game: 5331486
     icon: 96165
     file: 37d5fdebc471ffd69e5150058aec30d4.png
+developer:
+  - id: n_space
+    name: n-Space

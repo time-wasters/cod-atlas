@@ -10,3 +10,6 @@ images:
     game: 79828
     icon: cover-353018
     file: 1561808-call-of-duty-strike-team-iphone-front-cover.jpg
+developer:
+  - id: blast_furnace
+    name: The Blast Furnace

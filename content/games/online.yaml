@@ -4,3 +4,8 @@ label: Call of Duty Online
 labelLong: Call of Duty Online
 released: 2012-09-28
 series: standalone
+developer:
+  - id: activision_shanghai
+    name: Activision Shanghai
+  - id: raven
+    name: Raven Software

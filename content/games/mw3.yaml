@@ -10,3 +10,10 @@ images:
     app: 42680
     icon: c3330a875925437d8216949b6571f6e941ba0679
     clienticon: d95d20dd4381f6935fbc1a62be592d21a64c2af7
+developer:
+  - id: infinity_ward
+    name: Infinity Ward (All)
+  - id: infinity_ward_activision
+    name: Infinity Ward (Activision)
+  - id: sledgehammer
+    name: Sledgehammer Games

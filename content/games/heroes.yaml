@@ -10,3 +10,6 @@ images:
     game: 70439
     icon: cover-299151
     file: 7182140-call-of-duty-heroes-android-front-cover.png
+developer:
+  - id: faceroll
+    name: Faceroll Games

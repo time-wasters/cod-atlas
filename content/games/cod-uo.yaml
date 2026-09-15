@@ -10,3 +10,6 @@ images:
     app: 2640
     icon: e5fbc61fce98c303a9c49dc988163499b183f037
     clienticon: null
+developer:
+  - id: gray_matter
+    name: Gray Matter Interactive

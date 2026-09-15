@@ -10,4 +10,9 @@ images:
     app: 4435490
     icon: 91af283eab8b68667d9121cfd3d3b322abc4eb3b
     clienticon: null
+developer:
+  - id: infinity_ward
+    name: Infinity Ward (All)
+  - id: infinity_ward_activision
+    name: Infinity Ward (Activision)
 

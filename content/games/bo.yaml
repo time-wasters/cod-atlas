@@ -10,3 +10,6 @@ images:
     app: 42700
     icon: ea744d59efded3feaeebcafed224be9eadde90ac
     clienticon: 0d652160dff1ab3d1352aa83c9cf14a20146519e
+developer:
+  - id: treyarch
+    name: Treyarch
