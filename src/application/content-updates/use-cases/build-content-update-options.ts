@@ -12,7 +12,7 @@ type ContentUpdateAtlasEntry = {
   contentUpdate?: { id: string; label: string } | null;
   coordinates?: [number, number] | null;
   modes: ("singleplayer" | "multiplayer" | "zombies" | "other")[];
-  modeSub?: "special-ops" | "challenge";
+  modeSub?: "special-ops" | "survival" | "challenge";
 };
 
 type ContentUpdateAtlasGroup<TEntry extends ContentUpdateAtlasEntry> = {

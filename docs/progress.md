@@ -25,7 +25,7 @@ Survival/Hostiles/Safeguard/Exo Survival, Nightmares, Strike Force, War, and
 Extinction. Some of these still roll up under a broader atlas mode; absence from
 the table is not evidence that the source game has no such content.
 
-Other combines records with the `special-ops` and `challenge` subtypes.
+Other combines records with the `special-ops`, `survival`, and `challenge` subtypes.
 
 <!-- research-progress:start -->
 | Scope | Researched | Remaining |

@@ -33,12 +33,13 @@ Map-type directories are being introduced one game at a time. A reorganized
 game must use them for every level: `campaign/` contains records with
 `mode: singleplayer`, `multiplayer/` contains records with `mode: multiplayer`,
 `special-ops/` contains records with `mode: other` and `modeSub: special-ops`,
-and `zombies/` contains records with `mode: zombies`; `challenge/` contains
+`survival/` contains records with `mode: other` and `modeSub: survival`, and
+`zombies/` contains records with `mode: zombies`; `challenge/` contains
 records with `mode: other` and `modeSub: challenge`. The `cod`, `cod-uo`,
 `cod-fh`, `cod2`,
 `cod2-bro`, `cod3`, `rtv`, `cod4`, `cod4-nds`, `waw-nds`, `mw2`, `mw3`, `bo-nds`, `mw3-nds`, `bo-d`, `wz`, `wz2`, `mwiii`, `bo7`, and `mw4`
 directories use the first two folders; `mw2`, `mw3`, and `bo7` additionally use
-`special-ops/`, while `waw`, `bo`, `bo-nds`, `bo6`, and `bo7` additionally use `zombies/`.
+`special-ops/`, while `mw2-nds` uses `survival/`, and `waw`, `bo`, `bo-nds`, `bo6`, and `bo7` additionally use `zombies/`.
 BO7 Endgame is stored as Other/Special Ops and distinguished with
 `metadata.activityType: endgame`.
 `waw-nds` additionally uses `challenge/` for its Challenge missions.
@@ -49,7 +50,7 @@ rule sets such as deathmatch or capture the flag.
 Within a map-type layout, campaign filenames are
 `<order>-<level-slug>.md`. Orders start at `1`, use no leading zeros, and must
 be unique and contiguous so they describe the sequence in which the levels are
-played. Multiplayer, Special Ops, Zombies, and Challenge filenames remain
+played. Multiplayer, Special Ops, Survival, Zombies, and Challenge filenames remain
 `<level-slug>.md`. The order prefix is filesystem metadata only: do not add it
 to the stable level `id` or title.
 
@@ -75,7 +76,7 @@ Optional image-provider metadata follows the existing game records.
 | `title` | yes | Display name of the level or map. |
 | `games` | yes | Exactly one owner ID from `content/games/`; use appearance references for other games. |
 | `mode` | yes | `singleplayer`, `multiplayer`, `zombies`, or `other`. |
-| `modeSub` | for `other` | `special-ops` or `challenge`; omit it for every other mode. |
+| `modeSub` | for `other` | `special-ops`, `survival`, or `challenge`; omit it for every other mode. |
 | `campaign` | no | Named campaign grouping as a stable string `id` and display `label`. |
 | `wikiArticle` | yes | ID of a separate Wiki import JSON record. |
 | `locations` | usually | Locations owned by this level. Omit only to inherit from `metadata.variantOf`; explicit `[]` remains empty. Never reference a shared place. |
@@ -93,7 +94,7 @@ campaign:
 
 Campaign IDs are strings and should remain stable if a label changes.
 
-Use `mode: other` for separately selectable Special Ops and Challenge entries,
+Use `mode: other` for separately selectable Special Ops, Survival, and Challenge entries,
 and distinguish them with `modeSub`. Each Challenge remains a distinct canonical
 record even when several Challenges reuse the same source mission. Record the
 reused campaign level with `metadata.variantOf`, store the Challenge number and

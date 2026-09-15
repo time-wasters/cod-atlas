@@ -21,6 +21,7 @@ test("campaigns with the same ID remain separate across game modes", () => {
   const entries = [
     campaignEntry("multiplayer", "multiplayer"),
     campaignEntry("challenge", "other", "challenge"),
+    campaignEntry("survival", "other", "survival"),
     campaignEntry("singleplayer", "singleplayer"),
     campaignEntry("zombies", "zombies"),
     campaignEntry("special-ops", "other", "special-ops"),
@@ -31,10 +32,10 @@ test("campaigns with the same ID remain separate across game modes", () => {
     groups: [{ entries }],
   });
 
-  assert.equal(campaigns.length, 5);
+  assert.equal(campaigns.length, 6);
   assert.deepEqual(
     campaigns.map(({ mode, modeSub }) => mode === "other" ? modeSub : mode),
-    ["singleplayer", "multiplayer", "zombies", "special-ops", "challenge"],
+    ["singleplayer", "multiplayer", "zombies", "special-ops", "survival", "challenge"],
   );
   assert.deepEqual(
     new Set(campaigns.map(({ key }) => key)),
@@ -43,6 +44,7 @@ test("campaigns with the same ID remain separate across game modes", () => {
       "cod:multiplayer:shared",
       "cod:zombies:shared",
       "cod:other:special-ops:shared",
+      "cod:other:survival:shared",
       "cod:other:challenge:shared",
     ]),
   );

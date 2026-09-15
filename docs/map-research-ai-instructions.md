@@ -22,7 +22,7 @@ to obtain a detailed marker.
    data, overlays, attribution and editorial notes.
 2. Establish what the game actually depicts:
    - whether the level is Campaign, Multiplayer, Zombies, or Other, and whether
-     an Other entry has the `special-ops` or `challenge` subtype;
+     an Other entry has the `special-ops`, `survival`, or `challenge` subtype;
    - playable character and unit;
    - date and stated location;
    - briefing, objectives and route through the level;
@@ -34,6 +34,8 @@ to obtain a detailed marker.
    and explain the documented relationship.
    A Special Ops mission may be playable solo or cooperatively, but remains an
    Other record with `modeSub: special-ops` rather than Campaign or Multiplayer.
+   A separately selectable Survival map that is not part of Special Ops remains
+   an Other record with `modeSub: survival`.
    Research its own briefing, objectives, route, and stated setting.
    A separately selectable Challenge is an Other record with
    `modeSub: challenge` and remains distinct

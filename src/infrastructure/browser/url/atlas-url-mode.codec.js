@@ -14,9 +14,11 @@ export function parseAtlasUrlMode(mode) {
       || selectedModes.has("zombies"),
     showOther: mode === "other"
       || mode === "special-ops"
+      || mode === "survival"
       || mode === "all"
       || selectedModes.has("other")
-      || selectedModes.has("special-ops"),
+      || selectedModes.has("special-ops")
+      || selectedModes.has("survival"),
   };
 }
 

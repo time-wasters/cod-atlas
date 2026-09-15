@@ -4,7 +4,7 @@ title: Example Level
 games:
   - example-game
 mode: singleplayer
-# modeSub: special-ops # Required only when mode is other; challenge is also valid.
+# modeSub: special-ops # Required only when mode is other; survival and challenge are also valid.
 wikiArticle: codwiki-example-level
 # metadata:
 #   variantOf: example-game-source-level # Omit locations below to inherit them.

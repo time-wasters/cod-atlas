@@ -12,7 +12,7 @@ type CampaignAtlasEntry = {
   primary: boolean;
   gameIds: string[];
   modes: ("singleplayer" | "multiplayer" | "zombies" | "other")[];
-  modeSub?: "special-ops" | "challenge";
+  modeSub?: "special-ops" | "survival" | "challenge";
   campaign?: { id: string; label: string } | null;
   campaignOrder?: number;
   coordinates?: [number, number] | null;
@@ -53,8 +53,9 @@ function campaignModeRank(mode: CampaignAtlasEntry["modes"][number], modeSub?: C
   if (mode === "multiplayer") return 1;
   if (mode === "zombies") return 2;
   if (modeSub === "special-ops") return 3;
-  if (modeSub === "challenge") return 4;
-  return 5;
+  if (modeSub === "survival") return 4;
+  if (modeSub === "challenge") return 5;
+  return 6;
 }
 
 export function buildCampaignOptions<

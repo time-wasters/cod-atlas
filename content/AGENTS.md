@@ -13,13 +13,15 @@ These instructions apply to everything under `content/`.
   for records with `mode: singleplayer` and `multiplayer` for records with
   `mode: multiplayer`. `mw2`, `mw3`, and `bo7` additionally use `special-ops` for
   records with `mode: other` and `modeSub: special-ops`.
+  `mw2-nds` additionally uses `survival` for records with `mode: other` and
+  `modeSub: survival`.
   BO7 Endgame uses that broad subtype and adds `metadata.activityType: endgame`.
   `waw`, `bo`, `bo-nds`, `bo6`, and `bo7` additionally use `zombies` for records with
   `mode: zombies`.
   `waw-nds` additionally uses `challenge` for its separately selectable
   Challenge records with `mode: other` and `modeSub: challenge`.
 - Campaign filenames are `<order>-<level-slug>.md`, starting at `1`, without
-  leading zeros or gaps. Multiplayer, Special Ops, Zombies, and Challenge
+  leading zeros or gaps. Multiplayer, Special Ops, Survival, Zombies, and Challenge
   filenames remain `<level-slug>.md`.
 - Level media mirrors the level file's relative path under
   `public/images/levels/`, including its map-type directory and filename

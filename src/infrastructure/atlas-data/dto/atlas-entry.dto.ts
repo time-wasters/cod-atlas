@@ -26,6 +26,6 @@ export type AtlasEntryDto = {
   urls?: Partial<Record<"googleMaps" | "wikipedia" | "callOfDutyMaps", string>>[];
   hasLevelNotes: boolean;
   modes: ("singleplayer" | "multiplayer" | "zombies" | "other")[];
-  modeSub?: "special-ops" | "challenge";
+  modeSub?: "special-ops" | "survival" | "challenge";
   appearances: LevelAppearanceDto[];
 };

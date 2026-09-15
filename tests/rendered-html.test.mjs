@@ -9,6 +9,23 @@ import { promisify } from "node:util";
 
 const execFileAsync = promisify(execFile);
 
+test("catalogues the complete Modern Warfare: Mobilized roster", async () => {
+  const root = new URL("../content/levels/mw2-nds/", import.meta.url);
+  const campaignFiles = await readdir(new URL("campaign/", root));
+  const multiplayerFiles = await readdir(new URL("multiplayer/", root));
+  const survivalFiles = await readdir(new URL("survival/", root));
+  const survivalRecords = await Promise.all(survivalFiles.map((filename) => (
+    readFile(new URL(`survival/${filename}`, root), "utf8")
+  )));
+
+  assert.equal(campaignFiles.length, 17);
+  assert.equal(multiplayerFiles.length, 8);
+  assert.equal(survivalFiles.length, 4);
+  assert.ok(survivalRecords.every((contents) => /^mode: other$/m.test(contents)));
+  assert.ok(survivalRecords.every((contents) => /^modeSub: survival$/m.test(contents)));
+  await assert.rejects(access(new URL("challenge/", root)));
+});
+
 test("catalogues the currently announced Modern Warfare 4 roster", async () => {
   const mw4Root = new URL("../content/levels/mw4/", import.meta.url);
   const campaignFiles = (await readdir(new URL("campaign/", mw4Root))).sort((left, right) => (

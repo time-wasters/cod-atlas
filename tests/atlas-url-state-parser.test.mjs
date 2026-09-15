@@ -46,12 +46,13 @@ test("atlas URL parser supports content-update browsing", () => {
   );
 });
 
-test("atlas URL parser supports every mode-filter encoding and legacy Special Ops links", () => {
+test("atlas URL parser supports every mode-filter encoding and legacy Other-subtype links", () => {
   for (const [mode, showSingleplayer, showMultiplayer, showZombies, showOther] of [
     ["all", true, true, true, true],
     ["both", true, true, false, false],
     ["multiplayer", false, true, false, false],
     ["special-ops", false, false, false, true],
+    ["survival", false, false, false, true],
     ["multiplayer,special-ops", false, true, false, true],
     ["zombies", false, false, true, false],
     ["other", false, false, false, true],

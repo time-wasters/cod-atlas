@@ -79,6 +79,7 @@ content/levels/<primary-game>/<level-slug>.md
 content/levels/<primary-game>/campaign/<order>-<level-slug>.md
 content/levels/<primary-game>/multiplayer/<level-slug>.md
 content/levels/<primary-game>/special-ops/<level-slug>.md
+content/levels/<primary-game>/survival/<level-slug>.md
 content/levels/<primary-game>/zombies/<level-slug>.md
 content/levels/<primary-game>/challenge/<level-slug>.md
 content/levels/<appearance-game>/<level-slug>.ref.md
@@ -91,6 +92,8 @@ A game must use one layout consistently. `cod`, `cod-uo`, `cod-fh`, `cod2`,
 records whose `mode` is `multiplayer`. `mw2`, `mw3`, and `bo7` also use `special-ops/`
 for records whose `mode` is `other` and `modeSub` is `special-ops`; shared
 Survival maps remain in this Special Ops subtype.
+`mw2-nds` uses `survival/` for its standalone Survival maps whose `mode` is
+`other` and `modeSub` is `survival`.
 BO7 Endgame uses this broad subtype and is distinguished with
 `metadata.activityType: endgame`.
 `waw`, `bo`, `bo-nds`, `bo6`, and `bo7` also use `zombies/` for records whose `mode` is
@@ -121,8 +124,8 @@ Required fields:
 - `title`: human-readable level or map name.
 - `games`: exactly one game ID: the canonical owner game.
 - `mode`: `singleplayer`, `multiplayer`, `zombies`, or `other`.
-- `modeSub`: required for `other` records and limited to `special-ops` or
-  `challenge`; omit it for every other mode.
+- `modeSub`: required for `other` records and limited to `special-ops`,
+  `survival`, or `challenge`; omit it for every other mode.
 - `wikiArticle`: foreign key to a Wiki import record.
 - `locations`: embedded location records. This may be omitted only when
   `metadata.variantOf` links to another canonical level whose locations should
@@ -190,10 +193,10 @@ content-update:
 The stable string ID controls update ordering and the label is shown in the
 sidebar. Levels released in the base game can use an ID such as `"0"` with the
 label `Included`. A content update can group Multiplayer, Other/Special Ops,
-and Zombies levels together, but it is not valid on a singleplayer or
-Other/Challenge level.
+and Zombies levels together, but it is not valid on a singleplayer,
+Other/Survival, or Other/Challenge level.
 
-Use `other` for separately selectable Special Ops and Challenge entries. Set
+Use `other` for separately selectable Special Ops, Survival, and Challenge entries. Set
 `modeSub` to identify which kind it is. Keep each selectable Challenge as its
 own canonical record. When it reuses a campaign section, record that
 relationship with `metadata.variantOf`; omit `locations` when it should use the

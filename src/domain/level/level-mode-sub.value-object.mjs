@@ -1,5 +1,6 @@
 export const levelModeSubs = Object.freeze([
   "special-ops",
+  "survival",
   "challenge",
 ]);
 

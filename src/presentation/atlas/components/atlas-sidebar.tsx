@@ -186,6 +186,7 @@ export function AtlasSidebar({
   const { advanced, browse, country, game, modes, results, search } = viewModel;
   const campaignModeLabel = (campaign: CampaignOption<AtlasGroupDto, AtlasEntryDto>) => {
     if (campaign.mode === "other" && campaign.modeSub === "special-ops") return "Special Ops";
+    if (campaign.mode === "other" && campaign.modeSub === "survival") return "Survival";
     if (campaign.mode === "other" && campaign.modeSub === "challenge") return "Challenge";
     if (campaign.mode === "zombies") return "Zombies";
     if (campaign.mode === "multiplayer") return "Multiplayer";
@@ -196,6 +197,7 @@ export function AtlasSidebar({
     browse.campaigns.filter((campaign) => campaign.mode === "multiplayer"),
     browse.campaigns.filter((campaign) => campaign.mode === "zombies"),
     browse.campaigns.filter((campaign) => campaign.mode === "other" && campaign.modeSub === "special-ops"),
+    browse.campaigns.filter((campaign) => campaign.mode === "other" && campaign.modeSub === "survival"),
     browse.campaigns.filter((campaign) => campaign.mode === "other" && campaign.modeSub === "challenge"),
   ];
   const renderCampaignSection = (

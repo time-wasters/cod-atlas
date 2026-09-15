@@ -25,7 +25,7 @@ export async function loadProgressLevelData(levelsRoot, games) {
       throw new Error(`${filename}: mode must be singleplayer, multiplayer, zombies or other`);
     }
     if (document.data.mode === "other" && !isLevelModeSub(document.data.modeSub)) {
-      throw new Error(`${filename}: other levels require modeSub special-ops or challenge`);
+      throw new Error(`${filename}: other levels require modeSub special-ops, survival or challenge`);
     }
     if (document.data.mode !== "other" && document.data.modeSub != null) {
       throw new Error(`${filename}: modeSub is only valid for other levels`);

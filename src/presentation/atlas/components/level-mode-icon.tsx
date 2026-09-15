@@ -9,6 +9,7 @@ type ModeSub = AtlasEntryDto["modeSub"];
 
 function levelModeLabel(mode: Mode, modeSub?: ModeSub) {
   if (mode === "other" && modeSub === "special-ops") return "Special Ops";
+  if (mode === "other" && modeSub === "survival") return "Survival";
   if (mode === "other" && modeSub === "challenge") return "Challenge";
   if (mode === "other") return "Other";
   if (mode === "zombies") return "Zombies";

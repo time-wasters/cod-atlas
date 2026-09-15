@@ -17,7 +17,7 @@ const historyOverlaysOutputPath = path.join(outputDirectory, "history-overlays.g
 const levelBannersRoot = path.join(root, "public/images/levels");
 const checkOnly = process.argv.includes("--check");
 const validModes = new Set(["singleplayer", "multiplayer", "zombies", "other"]);
-const validModeSubs = new Set(["special-ops", "challenge"]);
+const validModeSubs = new Set(["special-ops", "survival", "challenge"]);
 const mapTypeDirectoryByMode = new Map([
   ["singleplayer", "campaign"],
   ["multiplayer", "multiplayer"],
@@ -26,7 +26,9 @@ const mapTypeDirectoryByMode = new Map([
 
 function mapTypeDirectoryForLevel(level) {
   if (level.mode !== "other") return mapTypeDirectoryByMode.get(level.mode);
-  return level.modeSub === "special-ops" ? "special-ops" : "challenge";
+  if (level.modeSub === "special-ops") return "special-ops";
+  if (level.modeSub === "survival") return "survival";
+  return "challenge";
 }
 const validPrecisions = new Set(["exact", "approximate", "city", "region", "country", "off-world"]);
 const validConfidences = new Set(["high", "medium", "fallback"]);
@@ -424,7 +426,7 @@ for (const filename of levelFiles) {
   requireValue(!levelIds.has(level.id), `${filename}: duplicate level id ${level.id}`);
   requireValue(validModes.has(level.mode), `${filename}: invalid mode ${level.mode}`);
   if (level.mode === "other") {
-    requireValue(validModeSubs.has(level.modeSub), `${filename}: other levels require modeSub special-ops or challenge`);
+    requireValue(validModeSubs.has(level.modeSub), `${filename}: other levels require modeSub special-ops, survival or challenge`);
   } else {
     requireValue(level.modeSub == null, `${filename}: modeSub is only valid for other levels`);
   }

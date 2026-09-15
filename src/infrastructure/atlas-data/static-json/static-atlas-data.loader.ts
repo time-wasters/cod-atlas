@@ -18,7 +18,7 @@ const GAME_SUBSERIES = new Set(["main", "reboot", "remaster", "add-on", "spin-of
 const LOCATION_PRECISIONS = new Set(["exact", "approximate", "city", "region", "country", "off-world"]);
 const LOCATION_CONFIDENCES = new Set(["high", "medium", "fallback"]);
 const LEVEL_MODES = new Set(["singleplayer", "multiplayer", "zombies", "other"]);
-const LEVEL_MODE_SUBS = new Set(["special-ops", "challenge"]);
+const LEVEL_MODE_SUBS = new Set(["special-ops", "survival", "challenge"]);
 
 /**
  * Validates an optional campaign object.
