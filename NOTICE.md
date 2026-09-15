@@ -37,6 +37,12 @@ copyright attribution in the map interface. OpenStreetMap data is subject to
 the Open Database License; tile usage is governed by the applicable tile
 service policy.
 
+Country outlines are derived from the
+[Natural Earth Admin 0 â€“ Countries, 1:50m dataset](https://www.naturalearthdata.com/downloads/50m-cultural-vectors/50m-admin-0-countries-2/),
+version 5.1.1. The bundled GeoJSON keeps ISO alpha-2 identifiers and simplified
+polygon geometry. Natural Earth data is in the public domain under its
+[terms of use](https://www.naturalearthdata.com/about/terms-of-use/).
+
 All repository-hosted in-game images included in CoD Atlas, including map
 overlays and level banners, were extracted from the relevant game files or
 captured as screenshots by

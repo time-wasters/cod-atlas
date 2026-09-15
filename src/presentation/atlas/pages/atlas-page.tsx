@@ -45,6 +45,7 @@ import { GameCatalogDialog } from "../../game-catalog/components/game-catalog-di
 import { LevelBriefingPane } from "../../level-briefing/components/level-briefing-pane.js";
 import { useLevelBriefing } from "../../level-briefing/hooks/use-level-briefing.js";
 import { useCampaignRouteLayer } from "../../map/hooks/use-campaign-route-layer.js";
+import { useCountryBoundaryLayer } from "../../map/hooks/use-country-boundary-layer.js";
 import { useHistoryOverlayLayer } from "../../map/hooks/use-history-overlay-layer.js";
 import { useLeafletMap } from "../../map/hooks/use-leaflet-map.js";
 import { useLeafletMarkers } from "../../map/hooks/use-leaflet-markers.js";
@@ -322,6 +323,9 @@ export function AtlasPage({
   const focusedLevelIds = useMemo(() => selectedLevelCollection
     ? new Set(selectedLevelCollection.levels.map(({ entry }) => entry.levelId))
     : null, [selectedLevelCollection]);
+  const selectedCountryCode = country === "all"
+    ? null
+    : countries.find((candidate) => candidate.name === country)?.flagCode ?? null;
 
   useLeafletMarkers({
     focusedLevelIds,
@@ -331,6 +335,11 @@ export function AtlasPage({
     ready: mapReady,
     runtime: leafletMap,
     selected,
+  });
+  useCountryBoundaryLayer({
+    countryCode: selectedCountryCode,
+    ready: mapReady,
+    runtime: leafletMap,
   });
 
   // These hooks share one Leaflet runtime while owning independent map layers.
