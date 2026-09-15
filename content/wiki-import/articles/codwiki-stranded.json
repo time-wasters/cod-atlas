@@ -1,0 +1,18 @@
+{
+  "id": "codwiki-stranded",
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Stranded",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Stranded",
+  "fandomPageId": 814009,
+  "latestRevisionId": 3025396,
+  "importedAt": null,
+  "levelLocation": { "raw": "[[North Korea]]", "label": "North Korea", "url": "https://callofduty.fandom.com/wiki/North_Korea" },
+  "previousLevels": { "raw": null, "label": null, "links": [] },
+  "nextLevels": { "raw": null, "label": null, "links": [] },
+  "games": { "raw": null, "label": null, "links": [] },
+  "date": { "raw": null, "label": null },
+  "mapStyle": "singleplayer",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas; verify against the Wiki during the next import.",
+  "rawPayload": null
+}

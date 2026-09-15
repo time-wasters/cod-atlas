@@ -1,0 +1,18 @@
+{
+  "id": "codwiki-imjin-farmland",
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Imjin_Farmland",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Imjin_Farmland",
+  "fandomPageId": 813658,
+  "latestRevisionId": 3024415,
+  "importedAt": null,
+  "levelLocation": { "raw": "[[Hajin]], Korean Peninsula - [[Russia]] border", "label": "Hajin", "url": "https://callofduty.fandom.com/wiki/Hajin" },
+  "previousLevels": { "raw": null, "label": null, "links": [] },
+  "nextLevels": { "raw": null, "label": null, "links": [] },
+  "games": { "raw": null, "label": null, "links": [] },
+  "date": { "raw": null, "label": null },
+  "mapStyle": "multiplayer",
+  "mapStyleDetail": "ground-war",
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas from the published MW4 multiplayer roster.",
+  "rawPayload": null
+}

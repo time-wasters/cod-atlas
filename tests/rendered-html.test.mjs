@@ -9,6 +9,42 @@ import { promisify } from "node:util";
 
 const execFileAsync = promisify(execFile);
 
+test("catalogues the currently announced Modern Warfare 4 roster", async () => {
+  const mw4Root = new URL("../content/levels/mw4/", import.meta.url);
+  const campaignFiles = (await readdir(new URL("campaign/", mw4Root))).sort((left, right) => (
+    Number(left.split("-")[0]) - Number(right.split("-")[0])
+  ));
+  assert.deepEqual(campaignFiles, [
+    "1-losing-ground.md",
+    "2-traffic.md",
+    "3-entrenched.md",
+    "4-stranded.md",
+    "5-unannounced-new-york-city-mission.md",
+    "6-unannounced-mumbai-mission.md",
+  ]);
+
+  const campaignRecords = await Promise.all(campaignFiles.map((filename) => (
+    readFile(new URL(`campaign/${filename}`, mw4Root), "utf8")
+  )));
+  assert.equal(campaignRecords.filter((contents) => /^  placeholder: true$/m.test(contents)).length, 2);
+  assert.equal(campaignRecords.filter((contents) => /^    latitude:/m.test(contents)).length, 6);
+
+  const multiplayerFiles = await readdir(new URL("multiplayer/", mw4Root));
+  const multiplayerRecords = await Promise.all(multiplayerFiles.map((filename) => (
+    readFile(new URL(`multiplayer/${filename}`, mw4Root), "utf8")
+  )));
+  assert.equal(multiplayerRecords.length, 17);
+  assert.equal(multiplayerRecords.filter((contents) => /^mode: multiplayer$/m.test(contents)).length, 17);
+  assert.equal(multiplayerRecords.filter((contents) => /^    latitude:/m.test(contents)).length, 9);
+  assert.deepEqual(
+    Object.fromEntries(["core", "ground-war", "gunfight", "dmz", "additional-feature"].map((type) => [
+      type,
+      multiplayerRecords.filter((contents) => contents.includes(`mapType: "${type}"`)).length,
+    ])),
+    { core: 12, "ground-war": 2, gunfight: 1, dmz: 1, "additional-feature": 1 },
+  );
+});
+
 test("catalogues the complete Black Ops 7 roster through Season Six", async () => {
   const bo7Root = new URL("../content/levels/bo7/", import.meta.url);
   const campaignFiles = (await readdir(new URL("campaign/", bo7Root))).sort((left, right) => (

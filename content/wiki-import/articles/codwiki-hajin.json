@@ -1,0 +1,18 @@
+{
+  "id": "codwiki-hajin",
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Hajin",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Hajin",
+  "fandomPageId": 809060,
+  "latestRevisionId": 3021484,
+  "importedAt": null,
+  "levelLocation": { "raw": "Korean Peninsula - [[Russia]] border", "label": "Russia", "url": "https://callofduty.fandom.com/wiki/Russia" },
+  "previousLevels": { "raw": null, "label": null, "links": [] },
+  "nextLevels": { "raw": null, "label": null, "links": [] },
+  "games": { "raw": null, "label": null, "links": [] },
+  "date": { "raw": null, "label": null },
+  "mapStyle": "multiplayer",
+  "mapStyleDetail": "dmz",
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas from the published MW4 multiplayer roster.",
+  "rawPayload": null
+}

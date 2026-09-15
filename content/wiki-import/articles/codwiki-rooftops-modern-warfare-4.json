@@ -1,0 +1,18 @@
+{
+  "id": "codwiki-rooftops-modern-warfare-4",
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Rooftops_(Modern_Warfare_4)",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Rooftops_(Modern_Warfare_4)",
+  "fandomPageId": 810967,
+  "latestRevisionId": 3024000,
+  "importedAt": null,
+  "levelLocation": { "raw": "Hotel Times West, [[New York City]], New York, [[United States of America]]", "label": "New York City", "url": "https://callofduty.fandom.com/wiki/New_York_City" },
+  "previousLevels": { "raw": null, "label": null, "links": [] },
+  "nextLevels": { "raw": null, "label": null, "links": [] },
+  "games": { "raw": null, "label": null, "links": [] },
+  "date": { "raw": null, "label": null },
+  "mapStyle": "multiplayer",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas; verify against the Wiki during the next import.",
+  "rawPayload": null
+}

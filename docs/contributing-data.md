@@ -36,7 +36,7 @@ game must use them for every level: `campaign/` contains records with
 and `zombies/` contains records with `mode: zombies`; `challenge/` contains
 records with `mode: other` and `modeSub: challenge`. The `cod`, `cod-uo`,
 `cod-fh`, `cod2`,
-`cod2-bro`, `cod3`, `rtv`, `cod4`, `cod4-nds`, `waw-nds`, `mw2`, `mw3`, `bo-nds`, `mw3-nds`, `bo-d`, `wz`, `wz2`, `mwiii`, and `bo7`
+`cod2-bro`, `cod3`, `rtv`, `cod4`, `cod4-nds`, `waw-nds`, `mw2`, `mw3`, `bo-nds`, `mw3-nds`, `bo-d`, `wz`, `wz2`, `mwiii`, `bo7`, and `mw4`
 directories use the first two folders; `mw2`, `mw3`, and `bo7` additionally use
 `special-ops/`, while `waw`, `bo`, `bo-nds`, `bo6`, and `bo7` additionally use `zombies/`.
 BO7 Endgame is stored as Other/Special Ops and distinguished with

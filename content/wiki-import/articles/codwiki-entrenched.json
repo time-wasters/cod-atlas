@@ -1,0 +1,18 @@
+{
+  "id": "codwiki-entrenched",
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Entrenched",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Entrenched",
+  "fandomPageId": 812570,
+  "latestRevisionId": 3025460,
+  "importedAt": null,
+  "levelLocation": { "raw": "[[Hajin]], [[South Korea]]", "label": "Hajin", "url": "https://callofduty.fandom.com/wiki/Hajin" },
+  "previousLevels": { "raw": null, "label": null, "links": [] },
+  "nextLevels": { "raw": null, "label": null, "links": [] },
+  "games": { "raw": null, "label": null, "links": [] },
+  "date": { "raw": "Current Day", "label": "Current Day" },
+  "mapStyle": "singleplayer",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas; verify against the Wiki during the next import.",
+  "rawPayload": null
+}

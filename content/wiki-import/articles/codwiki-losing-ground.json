@@ -1,0 +1,18 @@
+{
+  "id": "codwiki-losing-ground",
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Losing_Ground",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Losing_Ground",
+  "fandomPageId": 811833,
+  "latestRevisionId": 3021804,
+  "importedAt": null,
+  "levelLocation": { "raw": "[[South Korea]]", "label": "South Korea", "url": "https://callofduty.fandom.com/wiki/South_Korea" },
+  "previousLevels": { "raw": null, "label": null, "links": [] },
+  "nextLevels": { "raw": null, "label": null, "links": [] },
+  "games": { "raw": null, "label": null, "links": [] },
+  "date": { "raw": null, "label": null },
+  "mapStyle": "singleplayer",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas; verify against the Wiki during the next import.",
+  "rawPayload": null
+}

@@ -1,0 +1,18 @@
+{
+  "id": "codwiki-transit-213",
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Transit_213",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Transit_213",
+  "fandomPageId": 812575,
+  "latestRevisionId": 3022547,
+  "importedAt": null,
+  "levelLocation": { "raw": "[[India]]", "label": "India", "url": "https://callofduty.fandom.com/wiki/India" },
+  "previousLevels": { "raw": null, "label": null, "links": [] },
+  "nextLevels": { "raw": null, "label": null, "links": [] },
+  "games": { "raw": null, "label": null, "links": [] },
+  "date": { "raw": null, "label": null },
+  "mapStyle": "multiplayer",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas; verify against the Wiki during the next import.",
+  "rawPayload": null
+}

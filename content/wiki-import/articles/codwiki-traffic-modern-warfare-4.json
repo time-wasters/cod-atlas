@@ -1,0 +1,18 @@
+{
+  "id": "codwiki-traffic-modern-warfare-4",
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Traffic_(Modern_Warfare_4)",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Traffic_(Modern_Warfare_4)",
+  "fandomPageId": 812297,
+  "latestRevisionId": 3024581,
+  "importedAt": null,
+  "levelLocation": { "raw": "[[Paris]], [[France]]", "label": "Paris", "url": "https://callofduty.fandom.com/wiki/Paris" },
+  "previousLevels": { "raw": null, "label": null, "links": [] },
+  "nextLevels": { "raw": null, "label": null, "links": [] },
+  "games": { "raw": null, "label": null, "links": [] },
+  "date": { "raw": null, "label": null },
+  "mapStyle": "singleplayer",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas; verify against the Wiki during the next import.",
+  "rawPayload": null
+}
