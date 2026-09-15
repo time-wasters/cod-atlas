@@ -318,6 +318,7 @@ for (const filename of levelBannerFiles) {
 }
 
 const games = new Map();
+const developerNamesById = new Map();
 for (const filename of gameFiles) {
   const game = YAML.parse(await readFile(filename, "utf8"));
   requireValue(game?.id, `${filename}: game id is required`);
@@ -328,6 +329,27 @@ for (const filename of gameFiles) {
     game.subseries == null || validGameSubseries.has(game.subseries),
     `${filename}: unsupported game sub-series ${game.subseries}`,
   );
+  requireValue(Array.isArray(game.developer) && game.developer.length > 0, `${filename}: developer must be a non-empty array`);
+  const gameDeveloperIds = new Set();
+  for (const [index, developer] of game.developer.entries()) {
+    const developerPath = `${filename}: developer[${index}]`;
+    requireValue(
+      typeof developer?.id === "string" && /^[a-z0-9]+(?:_[a-z0-9]+)*$/.test(developer.id),
+      `${developerPath}.id must be a lowercase underscore-separated identifier`,
+    );
+    requireValue(
+      typeof developer?.name === "string" && developer.name.trim(),
+      `${developerPath}.name must be a non-empty string`,
+    );
+    requireValue(!gameDeveloperIds.has(developer.id), `${filename}: duplicate developer ID ${developer.id}`);
+    gameDeveloperIds.add(developer.id);
+    const knownName = developerNamesById.get(developer.id);
+    requireValue(
+      !knownName || knownName === developer.name,
+      `${filename}: developer ${developer.id} must consistently use the name ${knownName}`,
+    );
+    developerNamesById.set(developer.id, developer.name);
+  }
   games.set(game.id, {
     ...game,
     subseries: game.subseries ?? null,

@@ -5,6 +5,7 @@ import { useCallback, useState } from "react";
 export type AdvancedFilterGroupId =
   | "game-series"
   | "game-subseries"
+  | "developer"
   | "continent"
   | "precision"
   | "confidence"
@@ -16,6 +17,7 @@ export type AtlasFilterUrlState = {
   country: string;
   gameSeries: string[];
   gameSubseries: string[];
+  developers: string[];
   continents: string[];
   precisions: string[];
   confidences: string[];
@@ -29,6 +31,7 @@ export type AtlasFilterUrlState = {
 type UseAtlasFiltersOptions = {
   gameSeriesValues: ReadonlySet<string>;
   gameSubseriesValues: ReadonlySet<string>;
+  developerValues: ReadonlySet<string>;
   continentValues: ReadonlySet<string>;
   precisionValues: ReadonlySet<string>;
   confidenceValues: ReadonlySet<string>;
@@ -48,6 +51,7 @@ export function useAtlasFilters(options: UseAtlasFiltersOptions) {
   const [country, setCountry] = useState("all");
   const [gameSeries, setGameSeries] = useState<Set<string>>(() => new Set());
   const [gameSubseries, setGameSubseries] = useState<Set<string>>(() => new Set());
+  const [developers, setDevelopers] = useState<Set<string>>(() => new Set());
   const [continents, setContinents] = useState<Set<string>>(() => new Set());
   const [precisions, setPrecisions] = useState<Set<string>>(() => new Set());
   const [confidences, setConfidences] = useState<Set<string>>(() => new Set());
@@ -65,6 +69,7 @@ export function useAtlasFilters(options: UseAtlasFiltersOptions) {
     setCountry(state.country);
     setGameSeries(new Set(state.gameSeries.filter((value) => options.gameSeriesValues.has(value))));
     setGameSubseries(new Set(state.gameSubseries.filter((value) => options.gameSubseriesValues.has(value))));
+    setDevelopers(new Set(state.developers.filter((value) => options.developerValues.has(value))));
     setContinents(new Set(state.continents.filter((value) => options.continentValues.has(value))));
     setPrecisions(new Set(state.precisions.filter((value) => options.precisionValues.has(value))));
     setConfidences(new Set(state.confidences.filter((value) => options.confidenceValues.has(value))));
@@ -86,6 +91,7 @@ export function useAtlasFilters(options: UseAtlasFiltersOptions) {
   const resetAdvancedFilters = useCallback(() => {
     setGameSeries(new Set());
     setGameSubseries(new Set());
+    setDevelopers(new Set());
     setContinents(new Set());
     setPrecisions(new Set());
     setConfidences(new Set());
@@ -98,6 +104,7 @@ export function useAtlasFilters(options: UseAtlasFiltersOptions) {
     country,
     gameSeries,
     gameSubseries,
+    developers,
     continents,
     precisions,
     confidences,
@@ -110,6 +117,7 @@ export function useAtlasFilters(options: UseAtlasFiltersOptions) {
     openAdvancedFilterDropdown,
     advancedFilterCount: gameSeries.size
       + gameSubseries.size
+      + developers.size
       + continents.size
       + precisions.size
       + confidences.size
@@ -130,6 +138,8 @@ export function useAtlasFilters(options: UseAtlasFiltersOptions) {
     clearGameSeries: () => setGameSeries(new Set()),
     toggleGameSubseries: (value: string) => setGameSubseries((current) => toggledValue(current, value)),
     clearGameSubseries: () => setGameSubseries(new Set()),
+    toggleDeveloper: (value: string) => setDevelopers((current) => toggledValue(current, value)),
+    clearDevelopers: () => setDevelopers(new Set()),
     toggleContinent: (value: string) => setContinents((current) => toggledValue(current, value)),
     clearContinents: () => setContinents(new Set()),
     togglePrecision: (value: string) => setPrecisions((current) => toggledValue(current, value)),

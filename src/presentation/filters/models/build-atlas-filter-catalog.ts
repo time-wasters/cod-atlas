@@ -101,6 +101,13 @@ function gameDetails(
 }
 
 export function buildAtlasFilterCatalog(data: AtlasDataDto) {
+  const developersById = new Map<string, string>();
+  for (const game of data.games) {
+    for (const developer of game.developer) developersById.set(developer.id, developer.name);
+  }
+  const developerOptions: FilterOption[] = [...developersById]
+    .map(([value, label]) => ({ value, label }))
+    .sort((left, right) => left.label.localeCompare(right.label));
   const continentOptions: FilterOption[] = [...new Set(data.groups.map((group) => group.continent))]
     .sort((left, right) => continentOrder.indexOf(left) - continentOrder.indexOf(right) || left.localeCompare(right))
     .map((value) => ({ value, label: value }));
@@ -116,11 +123,18 @@ export function buildAtlasFilterCatalog(data: AtlasDataDto) {
     (value) => gameSubseriesDescriptions[value as Exclude<GameDto["subseries"], null>],
     (game, value) => game.subseries === value,
   );
+  const developerDetails = gameDetails(
+    developerOptions,
+    data.games,
+    (value) => `Games credited to ${developersById.get(value) ?? value} in the atlas.`,
+    (game, value) => game.developer.some((developer) => developer.id === value),
+  );
 
   return {
     atlasFilterValueSets: {
       gameSeriesValues: valuesFor(gameSeriesOptions),
       gameSubseriesValues: valuesFor(gameSubseriesOptions),
+      developerValues: valuesFor(developerOptions),
       continentValues: valuesFor(continentOptions),
       precisionValues: valuesFor(precisionOptions),
       confidenceValues: valuesFor(confidenceOptions),
@@ -128,6 +142,8 @@ export function buildAtlasFilterCatalog(data: AtlasDataDto) {
     },
     confidenceOptions,
     continentOptions,
+    developerDetails,
+    developerOptions,
     gameSeriesDetails,
     gameSeriesOptions,
     gameSubseriesDetails,

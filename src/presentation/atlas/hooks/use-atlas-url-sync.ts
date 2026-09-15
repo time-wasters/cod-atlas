@@ -31,6 +31,7 @@ type UseAtlasUrlSyncInput<TSelection extends UrlSelection> = {
     country: string;
     gameSeries: ReadonlySet<string>;
     gameSubseries: ReadonlySet<string>;
+    developers: ReadonlySet<string>;
     continents: ReadonlySet<string>;
     precisions: ReadonlySet<string>;
     confidences: ReadonlySet<string>;
@@ -89,6 +90,7 @@ export function useAtlasUrlSync<TSelection extends UrlSelection>({
           country: dataIndex.hasCountry(urlState.country) ? urlState.country : "all",
           gameSeries: urlState.series,
           gameSubseries: urlState.subseries,
+          developers: urlState.developers,
           continents: urlState.continents,
           precisions: urlState.precisions,
           confidences: urlState.confidences,
@@ -122,6 +124,7 @@ export function useAtlasUrlSync<TSelection extends UrlSelection>({
       country: filters.country,
       series: [...filters.gameSeries],
       subseries: [...filters.gameSubseries],
+      developers: [...filters.developers],
       continents: [...filters.continents],
       precisions: [...filters.precisions],
       confidences: [...filters.confidences],
@@ -143,6 +146,7 @@ export function useAtlasUrlSync<TSelection extends UrlSelection>({
     filters.game,
     filters.gameSeries,
     filters.gameSubseries,
+    filters.developers,
     filters.methods,
     filters.precisions,
     filters.query,

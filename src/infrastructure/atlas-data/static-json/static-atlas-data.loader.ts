@@ -190,6 +190,13 @@ function assertGame(value: unknown, path: string): void {
   enumValue(game.series, GAME_SERIES, `${path}.series`);
   if (game.subseries !== null) enumValue(game.subseries, GAME_SUBSERIES, `${path}.subseries`);
   nullableStringValue(game.remasterOf, `${path}.remasterOf`);
+  const developers = arrayValue(game.developer, `${path}.developer`);
+  if (developers.length === 0) throw new Error(`${path}.developer must not be empty`);
+  developers.forEach((value, index) => {
+    const developer = objectValue(value, `${path}.developer[${index}]`);
+    stringValue(developer.id, `${path}.developer[${index}].id`);
+    stringValue(developer.name, `${path}.developer[${index}].name`);
+  });
   if (game.icon !== undefined) stringValue(game.icon, `${path}.icon`);
 }
 

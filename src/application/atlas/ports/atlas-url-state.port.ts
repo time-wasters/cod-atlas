@@ -4,6 +4,7 @@ export type AtlasUrlState = {
   country: string;
   series: string[];
   subseries: string[];
+  developers: string[];
   continents: string[];
   precisions: string[];
   confidences: string[];

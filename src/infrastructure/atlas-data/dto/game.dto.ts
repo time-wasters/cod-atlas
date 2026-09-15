@@ -7,5 +7,6 @@ export type GameDto = {
   series: "world-war-ii" | "modern-warfare" | "black-ops" | "standalone";
   subseries: "main" | "reboot" | "remaster" | "add-on" | "spin-off" | null;
   remasterOf: string | null;
+  developer: { id: string; name: string }[];
   icon?: string;
 };

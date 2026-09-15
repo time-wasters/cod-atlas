@@ -3,6 +3,7 @@ type FilterableGame = {
   code: string;
   series: string;
   subseries: string | null;
+  developer: { id: string; name: string }[];
 };
 
 type FilterableAtlasEntry = {
@@ -32,6 +33,7 @@ export type AtlasFilterCriteria = {
   country: string;
   gameSeries: ReadonlySet<string>;
   gameSubseries: ReadonlySet<string>;
+  developers: ReadonlySet<string>;
   continents: ReadonlySet<string>;
   precisions: ReadonlySet<string>;
   confidences: ReadonlySet<string>;
@@ -82,6 +84,10 @@ export function filterAtlasGroups<
       const entryGame = gamesById.get(gameId);
       return entryGame?.subseries ? criteria.gameSubseries.has(entryGame.subseries) : false;
     });
+    const matchesDeveloper = criteria.developers.size === 0 || entry.gameIds.some((gameId) => {
+      const entryGame = gamesById.get(gameId);
+      return entryGame?.developer.some((developer) => criteria.developers.has(developer.id)) ?? false;
+    });
     const matchesPrecision = criteria.precisions.size === 0 || criteria.precisions.has(entry.precision);
     const matchesConfidence = criteria.confidences.size === 0
       || (entry.confidence ? criteria.confidences.has(entry.confidence) : false);
@@ -96,6 +102,7 @@ export function filterAtlasGroups<
     return matchesGame
       && matchesSeries
       && matchesSubseries
+      && matchesDeveloper
       && matchesPrecision
       && matchesConfidence
       && matchesMethod

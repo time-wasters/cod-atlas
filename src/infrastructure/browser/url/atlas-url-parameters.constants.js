@@ -4,6 +4,7 @@ export const atlasUrlParameters = Object.freeze([
   "country",
   "series",
   "subseries",
+  "developer",
   "continent",
   "precision",
   "confidence",

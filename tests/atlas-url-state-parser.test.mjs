@@ -9,6 +9,7 @@ test("atlas URL parser applies concise defaults", () => {
     country: "all",
     series: [],
     subseries: [],
+    developers: [],
     continents: [],
     precisions: [],
     confidences: [],

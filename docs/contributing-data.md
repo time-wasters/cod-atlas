@@ -55,7 +55,10 @@ to the stable level `id` or title.
 
 ## Game fields
 
-Every game record requires `id`, `code`, `label`, `released`, and `series`.
+Every game record requires `id`, `code`, `label`, `labelLong`, `released`,
+`series`, and a non-empty `developer` list. Developer entries contain a stable
+lowercase, underscore-separated `id` and a human-readable `name`; use multiple
+entries when more than one developer grouping applies to the game.
 Series values are `world-war-ii`, `modern-warfare`, `black-ops`, or
 `standalone`. The optional `subseries` field is `main`, `reboot`, `remaster`,
 `add-on`, or `spin-off`; omit it when the game does not belong to a sub-series.

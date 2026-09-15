@@ -31,6 +31,9 @@ labelLong: "Call of Duty 3"
 released: 2006-11-07
 series: world-war-ii
 subseries: main
+developer:
+  - id: treyarch
+    name: Treyarch
 ```
 
 The release date controls the game-filter ordering. `label` should be concise
@@ -55,6 +58,12 @@ remasterOf: cod4
 Other games must omit `remasterOf`. Omit `subseries` for a standalone game such
 as *Call of Duty: Ghosts*; the compiler represents missing optional values as
 `null` in generated data.
+
+Every game has a non-empty `developer` list. Each entry uses a stable lowercase,
+underscore-separated `id` for filtering and a human-readable `name`. A game may
+list multiple entries when several studios contributed or when the atlas offers
+both a broad developer grouping and a more specific historical grouping. The
+same developer ID must use the same name in every game record.
 
 The generated country groups include a `continent` used by the advanced
 filters. Standard countries are classified through `world-countries`; named

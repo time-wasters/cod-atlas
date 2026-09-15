@@ -18,6 +18,7 @@ export function serializeAtlasUrlState(input, state) {
   if (state.country !== "all") url.searchParams.set("country", state.country);
   setCommaSeparatedValues(url.searchParams, "series", state.series);
   setCommaSeparatedValues(url.searchParams, "subseries", state.subseries);
+  setCommaSeparatedValues(url.searchParams, "developer", state.developers);
   setCommaSeparatedValues(url.searchParams, "continent", state.continents);
   setCommaSeparatedValues(url.searchParams, "precision", state.precisions);
   setCommaSeparatedValues(url.searchParams, "confidence", state.confidences);
