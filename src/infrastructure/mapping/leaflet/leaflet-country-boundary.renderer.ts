@@ -3,13 +3,14 @@ import type { CountryBoundaryFeature } from "../country-boundaries/country-bound
 
 export const COUNTRY_BOUNDARY_STYLE = {
   bubblingMouseEvents: false,
-  color: "#b84b43",
+  className: "country-boundary-outline",
+  color: "#17130d",
   fill: false,
   fillOpacity: 0,
   interactive: false,
-  opacity: .82,
+  opacity: .96,
   pane: "countryBoundary",
-  weight: 2.5,
+  weight: 2.25,
 } as const;
 
 export function renderLeafletCountryBoundary({
@@ -21,7 +22,5 @@ export function renderLeafletCountryBoundary({
   leaflet: typeof import("leaflet");
   map: LeafletMap;
 }) {
-  return leaflet.geoJSON(boundary, {
-    style: COUNTRY_BOUNDARY_STYLE,
-  }).addTo(map);
+  return leaflet.geoJSON(boundary, { style: COUNTRY_BOUNDARY_STYLE }).addTo(map);
 }

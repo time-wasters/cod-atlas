@@ -1,48 +1,43 @@
-import type { Feature, FeatureCollection, MultiPolygon, Polygon } from "geojson";
+import type { Feature, MultiPolygon, Polygon } from "geojson";
 
 export type CountryBoundaryFeature = Feature<Polygon | MultiPolygon, {
   isoA2: string;
   name: string;
 }>;
 
-let boundaryIndexPromise: Promise<Map<string, CountryBoundaryFeature>> | null = null;
+const boundaryPromises = new Map<string, Promise<CountryBoundaryFeature | null>>();
 
-function boundaryDataUrl() {
-  return new URL("data/country-boundaries.geojson", document.baseURI);
+function boundaryDataUrl(isoA2: string) {
+  return new URL(`data/country-boundaries/${isoA2.toLowerCase()}.geojson`, document.baseURI);
 }
 
-async function loadBoundaryIndex() {
-  const response = await fetch(boundaryDataUrl());
+async function requestCountryBoundary(isoA2: string) {
+  const response = await fetch(boundaryDataUrl(isoA2));
+  if (response.status === 404) return null;
   if (!response.ok) {
     throw new Error(`Country boundary data request failed: HTTP ${response.status}`);
   }
-  const collection = await response.json() as FeatureCollection<Polygon | MultiPolygon, {
+  const feature = await response.json() as Feature<Polygon | MultiPolygon, {
     isoA2: string;
     name: string;
   }>;
-  if (collection.type !== "FeatureCollection" || !Array.isArray(collection.features)) {
-    throw new Error("Country boundary data is not a GeoJSON FeatureCollection.");
+  if (feature.type !== "Feature"
+    || (feature.geometry.type !== "Polygon" && feature.geometry.type !== "MultiPolygon")
+    || feature.properties?.isoA2 !== isoA2) {
+    throw new Error(`Country boundary data for ${isoA2} is not a matching polygon feature.`);
   }
-  const index = new Map<string, CountryBoundaryFeature>();
-  for (const feature of collection.features) {
-    const code = feature.properties?.isoA2;
-    if (typeof code !== "string") continue;
-    if (feature.geometry.type !== "Polygon" && feature.geometry.type !== "MultiPolygon") continue;
-    index.set(code, feature as CountryBoundaryFeature);
-  }
-  return index;
+  return feature as CountryBoundaryFeature;
 }
 
-function boundaryIndex() {
-  if (!boundaryIndexPromise) {
-    boundaryIndexPromise = loadBoundaryIndex().catch((error) => {
-      boundaryIndexPromise = null;
+export function loadCountryBoundary(isoA2: string) {
+  const code = isoA2.toUpperCase();
+  let promise = boundaryPromises.get(code);
+  if (!promise) {
+    promise = requestCountryBoundary(code).catch((error) => {
+      boundaryPromises.delete(code);
       throw error;
     });
+    boundaryPromises.set(code, promise);
   }
-  return boundaryIndexPromise;
-}
-
-export async function loadCountryBoundary(isoA2: string) {
-  return (await boundaryIndex()).get(isoA2.toUpperCase()) ?? null;
+  return promise;
 }

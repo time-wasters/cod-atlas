@@ -1,10 +1,11 @@
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, readFile, readdir, unlink, writeFile } from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
 
-const SOURCE_URL = "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_50m_admin_0_countries.geojson";
-const OUTPUT_PATH = path.resolve("public/data/country-boundaries.geojson");
-const SIMPLIFICATION_TOLERANCE = 0.025;
+const SOURCE_URL = "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_10m_admin_0_countries.geojson";
+const OUTPUT_DIRECTORY = path.resolve("public/data/country-boundaries");
+const LEGACY_OUTPUT_PATH = path.resolve("public/data/country-boundaries.geojson");
+const SIMPLIFICATION_TOLERANCE = 0.001;
 
 function argumentValue(name) {
   const index = process.argv.indexOf(name);
@@ -158,13 +159,27 @@ const features = [...featuresByCode.entries()].map(([isoA2, boundary]) => ({
     : { type: "MultiPolygon", coordinates: boundary.polygons },
 }));
 
-const output = {
-  type: "FeatureCollection",
-  source: "Natural Earth Admin 0 Countries, 1:50m, version 5.1.1",
-  sourceUrl: "https://www.naturalearthdata.com/downloads/50m-cultural-vectors/50m-admin-0-countries-2/",
-  features,
-};
-const outputPath = path.resolve(argumentValue("--output") ?? OUTPUT_PATH);
-await mkdir(path.dirname(outputPath), { recursive: true });
-await writeFile(outputPath, `${JSON.stringify(output)}\n`, "utf8");
-console.log(`Wrote ${features.length} country boundaries to ${path.relative(process.cwd(), outputPath)}.`);
+const outputDirectory = path.resolve(argumentValue("--output") ?? OUTPUT_DIRECTORY);
+await mkdir(outputDirectory, { recursive: true });
+const writtenFilenames = new Set();
+await Promise.all(features.map(async (feature) => {
+  const filename = `${feature.properties.isoA2.toLowerCase()}.geojson`;
+  writtenFilenames.add(filename);
+  await writeFile(path.join(outputDirectory, filename), `${JSON.stringify({
+    ...feature,
+    source: "Natural Earth Admin 0 Countries, 1:10m, version 5.1.1",
+    sourceUrl: "https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-admin-0-countries/",
+  })}\n`, "utf8");
+}));
+
+for (const filename of await readdir(outputDirectory)) {
+  if (filename.endsWith(".geojson") && !writtenFilenames.has(filename)) {
+    await unlink(path.join(outputDirectory, filename));
+  }
+}
+if (outputDirectory === OUTPUT_DIRECTORY) {
+  await unlink(LEGACY_OUTPUT_PATH).catch((error) => {
+    if (error?.code !== "ENOENT") throw error;
+  });
+}
+console.log(`Wrote ${features.length} country boundaries to ${path.relative(process.cwd(), outputDirectory)}.`);

@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { readFile, readdir } from "node:fs/promises";
 import test from "node:test";
 import atlas from "../app/data/atlas.generated.json" with { type: "json" };
 import {
@@ -7,20 +7,22 @@ import {
   renderLeafletCountryBoundary,
 } from "../src/infrastructure/mapping/leaflet/leaflet-country-boundary.renderer.ts";
 
-const boundaryCollection = JSON.parse(await readFile(
-  new URL("../public/data/country-boundaries.geojson", import.meta.url),
+const boundaryDirectory = new URL("../public/data/country-boundaries/", import.meta.url);
+const boundaryFilenames = (await readdir(boundaryDirectory)).filter((filename) => filename.endsWith(".geojson"));
+const boundaries = await Promise.all(boundaryFilenames.map(async (filename) => JSON.parse(await readFile(
+  new URL(filename, boundaryDirectory),
   "utf8",
-));
+))));
 
 test("bundled boundaries cover every ISO-coded atlas country", () => {
-  const boundaryCodes = new Set(boundaryCollection.features.map((feature) => feature.properties.isoA2));
+  const boundaryCodes = new Set(boundaries.map((feature) => feature.properties.isoA2));
   const missingCodes = atlas.groups
     .flatMap((group) => group.flagCode ? [group.flagCode] : [])
     .filter((code) => !boundaryCodes.has(code));
 
   assert.deepEqual(missingCodes, []);
-  assert.equal(boundaryCodes.size, boundaryCollection.features.length);
-  assert.ok(boundaryCollection.features.every((feature) => (
+  assert.equal(boundaryCodes.size, boundaries.length);
+  assert.ok(boundaries.every((feature) => (
     feature.geometry.type === "Polygon" || feature.geometry.type === "MultiPolygon"
   )));
 });
@@ -42,7 +44,7 @@ test("country boundary renderer creates a non-interactive unfilled Leaflet layer
   };
 
   const rendered = renderLeafletCountryBoundary({
-    boundary: boundaryCollection.features[0],
+    boundary: boundaries[0],
     leaflet,
     map,
   });

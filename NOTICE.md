@@ -38,8 +38,8 @@ the Open Database License; tile usage is governed by the applicable tile
 service policy.
 
 Country outlines are derived from the
-[Natural Earth Admin 0 â€“ Countries, 1:50m dataset](https://www.naturalearthdata.com/downloads/50m-cultural-vectors/50m-admin-0-countries-2/),
-version 5.1.1. The bundled GeoJSON keeps ISO alpha-2 identifiers and simplified
+[Natural Earth Admin 0 â€“ Countries, 1:10m dataset](https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-admin-0-countries/),
+version 5.1.1. The bundled per-country GeoJSON keeps ISO alpha-2 identifiers and lightly simplified
 polygon geometry. Natural Earth data is in the public domain under its
 [terms of use](https://www.naturalearthdata.com/about/terms-of-use/).
 
