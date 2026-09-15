@@ -228,8 +228,11 @@ export function AtlasSidebar({
   };
   return (
     <aside className="atlas-sidebar" aria-label="Map filters">
-      <label className="search-field">
-        <span aria-hidden="true">⌕</span>
+      <div className="search-field">
+        <svg className="search-field-icon" viewBox="0 0 20 20" aria-hidden="true">
+          <circle cx="8.5" cy="8.5" r="5.5" />
+          <path d="m12.5 12.5 4 4" />
+        </svg>
         <input
           value={search.value}
           onChange={(event) => search.onChange(event.target.value)}
@@ -237,7 +240,21 @@ export function AtlasSidebar({
           placeholder="Search missions, maps, countries…"
           aria-label="Search locations"
         />
-      </label>
+        {search.value && (
+          <button
+            className="search-field-clear"
+            type="button"
+            aria-label="Clear search"
+            onMouseDown={(event) => event.preventDefault()}
+            onClick={() => {
+              search.onChange("");
+              search.onBlur();
+            }}
+          >
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4 4 8 8M12 4 4 12" /></svg>
+          </button>
+        )}
+      </div>
 
       <div className="filter-grid">
         <div className="filter-field game-filter">

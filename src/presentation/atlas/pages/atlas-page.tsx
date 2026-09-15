@@ -53,6 +53,7 @@ import { useMapOverlayLayer } from "../../map/hooks/use-map-overlay-layer.js";
 import { useMapViewport } from "../../map/hooks/use-map-viewport.js";
 import { useSelectedMapOverlay } from "../../map/hooks/use-selected-map-overlay.js";
 import { SettingsDialog } from "../../settings/components/settings-dialog.js";
+import { useCampaignRouteAnimationPreference } from "../../settings/hooks/use-campaign-route-animation-preference.js";
 import { useExternalGameIcons } from "../../settings/hooks/use-external-game-icons.js";
 import { useMapOverlayOpacityPreference } from "../../settings/hooks/use-map-overlay-opacity-preference.js";
 import { SolarSystemOverlay } from "../../solar-system/components/solar-system-overlay.js";
@@ -110,6 +111,10 @@ export function AtlasPage({
     enabled: mapOverlayZoomOpacityEnabled,
     setEnabled: setMapOverlayZoomOpacityEnabled,
   } = useMapOverlayOpacityPreference(clientSettingsPort);
+  const {
+    enabled: campaignRouteAnimationEnabled,
+    setEnabled: setCampaignRouteAnimationEnabled,
+  } = useCampaignRouteAnimationPreference(clientSettingsPort);
   const [solarSystemDisplay, setSolarSystemDisplay] = useState({
     hasSpaceLocations: true,
     expanded: true,
@@ -348,6 +353,7 @@ export function AtlasPage({
     [atlasDataIndex],
   );
   const { prepareMarkerReveal } = useCampaignRouteLayer({
+    animationEnabled: campaignRouteAnimationEnabled,
     findSelectionByEntryId,
     getDetailsElement: getMapDetailsElement,
     onSelect: selectMapMarker,
@@ -541,6 +547,10 @@ export function AtlasPage({
             onToggle: () => setExternalIconsEnabled(!externalIconsEnabled),
           }}
           externalIconsUnavailable={externalIconManifestUnavailable}
+          myrmecophobiaMode={{
+            enabled: !campaignRouteAnimationEnabled,
+            onToggle: () => setCampaignRouteAnimationEnabled(!campaignRouteAnimationEnabled),
+          }}
           overlayFading={{
             enabled: mapOverlayZoomOpacityEnabled,
             onToggle: () => setMapOverlayZoomOpacityEnabled(!mapOverlayZoomOpacityEnabled),

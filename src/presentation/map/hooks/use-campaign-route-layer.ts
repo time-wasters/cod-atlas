@@ -17,6 +17,7 @@ import type { LeafletMapRuntime } from "./use-leaflet-map.js";
 type AtlasSelection = { group: AtlasGroupDto; entry: AtlasEntryDto };
 
 export function useCampaignRouteLayer({
+  animationEnabled,
   getDetailsElement,
   findSelectionByEntryId,
   onSelect,
@@ -24,6 +25,7 @@ export function useCampaignRouteLayer({
   runtime,
   selectedCampaign,
 }: {
+  animationEnabled: boolean;
   getDetailsElement: () => HTMLElement | null;
   findSelectionByEntryId: (entryId: string) => AtlasSelection | undefined;
   onSelect: (group: AtlasGroupDto, entry: AtlasEntryDto) => void;
@@ -52,6 +54,7 @@ export function useCampaignRouteLayer({
 
     const route = buildCampaignRoute(selectedCampaign.routeLevels);
     const renderedLayer = renderLeafletCampaignRoute({
+      animationEnabled,
       leaflet,
       map: currentMap,
       route,
@@ -149,7 +152,7 @@ export function useCampaignRouteLayer({
       renderedLayer.remove();
       if (routeLayer.current === renderedLayer.layer) routeLayer.current = null;
     };
-  }, [findSelectionByEntryId, getDetailsElement, onSelect, ready, runtime, selectedCampaign]);
+  }, [animationEnabled, findSelectionByEntryId, getDetailsElement, onSelect, ready, runtime, selectedCampaign]);
 
   return { prepareMarkerReveal };
 }

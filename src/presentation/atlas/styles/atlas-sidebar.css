@@ -21,10 +21,14 @@
 .sidebar-toggle svg { width: 9px; height: 15px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.7; }
 
 .search-field { height: 44px; display: flex; align-items: center; gap: 10px; border: 1px solid var(--line); border-radius: 5px; padding: 0 12px; background: #11150f; }
-.search-field span { color: var(--khaki); font-size: 22px; }
-.search-field input { width: 100%; border: 0; outline: 0; background: transparent; color: var(--paper); font-size: 13px; }
+.search-field-icon { width: 18px; height: 18px; flex: 0 0 18px; display: block; fill: none; stroke: var(--khaki); stroke-linecap: round; stroke-width: 1.6; }
+.search-field input { min-width: 0; flex: 1; border: 0; outline: 0; background: transparent; color: var(--paper); font-size: 13px; }
 .search-field:focus-within { border-color: var(--amber); box-shadow: 0 0 0 2px #e0a12622; }
 .search-field input::placeholder { color: #747969; }
+.search-field-clear { width: 24px; height: 24px; flex: 0 0 24px; display: grid; place-items: center; border: 0; border-radius: 3px; padding: 0; color: #8f927f; background: transparent; cursor: pointer; }
+.search-field-clear:hover { color: var(--amber); background: #272b20; }
+.search-field-clear:focus-visible { outline: 1px solid var(--amber); outline-offset: 1px; }
+.search-field-clear svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-width: 1.8; }
 
 @media (max-width: 900px) {
   .atlas-sidebar, .atlas-shell.is-sidebar-collapsed .atlas-sidebar { grid-row: 3; width: auto; min-height: 620px; border-top: 1px solid #4a513e; border-right: 0; transform: none; }
