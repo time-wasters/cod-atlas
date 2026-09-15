@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useId, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import type { CampaignOption } from "../../../application/campaigns/use-cases/build-campaign-options.js";
 import type { ContentUpdateOption } from "../../../application/content-updates/use-cases/build-content-update-options.js";
 import type { CountryAvailability } from "../../../application/atlas/use-cases/filter-atlas-groups.js";
@@ -28,6 +30,93 @@ type AdvancedFilterViewModel = {
   onToggle: (value: string) => void;
   onClear: () => void;
 };
+
+function SidebarListTab({
+  active,
+  controls,
+  count,
+  disabled = false,
+  label,
+  onSelect,
+  tooltip,
+}: {
+  active: boolean;
+  controls: string;
+  count: number;
+  disabled?: boolean;
+  label: string;
+  onSelect: () => void;
+  tooltip?: string;
+}) {
+  const anchor = useRef<HTMLButtonElement>(null);
+  const showTimer = useRef<number | null>(null);
+  const tooltipId = `sidebar-list-tooltip-${useId().replaceAll(":", "")}`;
+  const [tooltipPosition, setTooltipPosition] = useState<{
+    top: number;
+    left: number;
+    side: "left" | "right";
+  } | null>(null);
+
+  const hideTooltip = () => {
+    if (showTimer.current !== null) window.clearTimeout(showTimer.current);
+    showTimer.current = null;
+    setTooltipPosition(null);
+  };
+
+  const scheduleTooltip = () => {
+    if (!disabled || !tooltip) return;
+    if (showTimer.current !== null) window.clearTimeout(showTimer.current);
+    showTimer.current = window.setTimeout(() => {
+      showTimer.current = null;
+      const rect = anchor.current?.getBoundingClientRect();
+      if (!rect) return;
+      const gap = 9;
+      const side = rect.right + gap + 260 <= window.innerWidth - 8 ? "right" : "left";
+      setTooltipPosition({
+        top: Math.min(Math.max(28, rect.top + rect.height / 2), window.innerHeight - 28),
+        left: side === "right" ? rect.right + gap : rect.left - gap,
+        side,
+      });
+    }, 300);
+  };
+
+  useEffect(() => () => {
+    if (showTimer.current !== null) window.clearTimeout(showTimer.current);
+  }, []);
+
+  return (
+    <button
+      className={`${active ? "is-active" : ""}${disabled ? " is-disabled" : ""}`.trim()}
+      type="button"
+      role="tab"
+      aria-selected={active}
+      aria-controls={controls}
+      aria-disabled={disabled}
+      aria-describedby={tooltipPosition ? tooltipId : undefined}
+      ref={anchor}
+      onClick={() => {
+        if (!disabled) onSelect();
+      }}
+      onMouseEnter={scheduleTooltip}
+      onMouseLeave={hideTooltip}
+      onFocus={scheduleTooltip}
+      onBlur={hideTooltip}
+    >
+      <span>{label}</span><small>{count}</small>
+      {tooltipPosition && tooltip && typeof document !== "undefined" && createPortal(
+        <span
+          id={tooltipId}
+          className={`atlas-tooltip is-${tooltipPosition.side}`}
+          style={{ top: tooltipPosition.top, left: tooltipPosition.left }}
+          role="tooltip"
+        >
+          {tooltip}
+        </span>,
+        document.body,
+      )}
+    </button>
+  );
+}
 
 export type AtlasSidebarViewModel = {
   advanced: {
@@ -223,44 +312,33 @@ export function AtlasSidebar({
 
           <section className="mission-list">
             <div className="sidebar-list-switch" role="tablist" aria-label="Browse atlas data">
-              <button
-                className={browse.mode === "locations" ? "is-active" : ""}
-                type="button"
-                role="tab"
-                aria-selected={browse.mode === "locations"}
-                aria-controls="sidebar-locations"
-                onClick={() => browse.onModeChange("locations")}
-              >
-                <span>Locations</span><small>{browse.groups.length}</small>
-              </button>
-              <button
-                className={browse.mode === "campaigns" ? "is-active" : ""}
-                type="button"
-                role="tab"
-                aria-selected={browse.mode === "campaigns"}
-                aria-controls="sidebar-campaigns"
+              <SidebarListTab
+                active={browse.mode === "locations"}
+                controls="sidebar-locations"
+                count={browse.groups.length}
+                label="Locations"
+                onSelect={() => browse.onModeChange("locations")}
+              />
+              <SidebarListTab
+                active={browse.mode === "campaigns"}
+                controls="sidebar-campaigns"
+                count={browse.campaigns.length}
                 disabled={game.value === "all"}
-                title={game.value === "all" ? "Choose a game to browse campaigns" : undefined}
-                onClick={() => browse.onModeChange("campaigns")}
-              >
-                <span>Campaigns</span><small>{browse.campaigns.length}</small>
-              </button>
-              <button
-                className={browse.mode === "updates" ? "is-active" : ""}
-                type="button"
-                role="tab"
-                aria-selected={browse.mode === "updates"}
-                aria-controls="sidebar-content-updates"
+                label="Campaigns"
+                tooltip={game.value === "all" ? "Choose a game to browse campaigns" : undefined}
+                onSelect={() => browse.onModeChange("campaigns")}
+              />
+              <SidebarListTab
+                active={browse.mode === "updates"}
+                controls="sidebar-content-updates"
+                count={browse.contentUpdates.length}
                 disabled={game.value === "all" || browse.contentUpdates.length === 0}
-                title={game.value === "all"
+                label="Updates"
+                tooltip={game.value === "all"
                   ? "Choose a game to browse content updates"
-                  : browse.contentUpdates.length === 0
-                    ? "No Multiplayer or Zombies content-update data is available for this game"
-                    : undefined}
-                onClick={() => browse.onModeChange("updates")}
-              >
-                <span>Updates</span><small>{browse.contentUpdates.length}</small>
-              </button>
+                  : "No Multiplayer or Zombies content-update data is available for this game"}
+                onSelect={() => browse.onModeChange("updates")}
+              />
             </div>
             {browse.mode === "locations" ? (
               <div className="scroll-list" id="sidebar-locations" role="tabpanel">
