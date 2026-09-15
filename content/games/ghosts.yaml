@@ -4,6 +4,7 @@ label: Ghosts
 labelLong: "Call of Duty: Ghosts"
 released: 2013-11-05
 series: standalone
+subseries: main
 images:
   steam:
     app: 209160

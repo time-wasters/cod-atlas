@@ -4,6 +4,7 @@ label: Advanced Warfare
 labelLong: "Call of Duty: Advanced Warfare"
 released: 2014-11-04
 series: standalone
+subseries: main
 images:
   steam:
     app: 209650

@@ -4,6 +4,7 @@ label: Infinite Warfare
 labelLong: "Call of Duty: Infinite Warfare"
 released: 2016-11-04
 series: standalone
+subseries: main
 images:
   steam:
     app: 292730
