@@ -7,8 +7,8 @@
   "mapStyleEvidence": "Classified by the atlas; verify against the Wiki during the next import.",
   "fandomPageId": 658423,
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Firing_Range_(feature)",
-  "latestRevisionId": 3021521,
-  "importedAt": "2026-08-23T23:04:21.980Z",
+  "latestRevisionId": 3026927,
+  "importedAt": "2026-09-15T18:11:40.488Z",
   "levelLocation": {
     "raw": "Unknown [[Atlas Corporation|Atlas]] Virtual Firing Range Facility",
     "label": "Atlas",
@@ -55,7 +55,7 @@
       },
       "rights": {
         "status": "non-free",
-        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  â€¢ the computer or video game in question or\n  â€¢ the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
         "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
@@ -80,8 +80,8 @@
     }
   },
   "rawPayload": {
-    "revisionTimestamp": "2026-08-21T16:37:13Z",
-    "revisionSha1": "80a9c14016d3a643f1db5657801326dc1001a739",
+    "revisionTimestamp": "2026-09-14T10:49:37Z",
+    "revisionSha1": "8eaf3944558c46b13d7f95dc5a7cf3658069fcfb",
     "resolvedTitle": "Firing Range (feature)",
     "mainImageTitle": "File:Tac-19_Digital_Urban_AW.png",
     "mapImageTitle": null

@@ -1,43 +1,89 @@
 {
-    "id":  "codwiki-mission-trident",
-    "sourceUrl":  "https://callofduty.fandom.com/wiki/Mission%3A_Trident",
-    "mapStyle":  "multiplayer",
-    "mapStyleDetail":  "skirmish",
-    "mapStyleConfidence":  "curated",
-    "mapStyleEvidence":  "Classified by the atlas; verify against the Wiki during the next import.",
-    "fandomPageId":  801197,
-    "canonicalUrl":  "https://callofduty.fandom.com/wiki/Mission%3A_Trident",
-    "latestRevisionId":  null,
-    "importedAt":  null,
-    "levelLocation":  {
-                          "raw":  null,
-                          "label":  null,
-                          "url":  null
-                      },
-    "previousLevels":  {
-                           "raw":  null,
-                           "label":  null,
-                           "links":  [
-
-                                     ]
-                       },
-    "nextLevels":  {
-                       "raw":  null,
-                       "label":  null,
-                       "links":  [
-
-                                 ]
-                   },
-    "games":  {
-                  "raw":  null,
-                  "label":  null,
-                  "links":  [
-
-                            ]
-              },
-    "date":  {
-                 "raw":  null,
-                 "label":  null
-             },
-    "rawPayload":  null
+  "id": "codwiki-mission-trident",
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Mission:_Trident",
+  "mapStyle": "multiplayer",
+  "mapStyleDetail": "skirmish",
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas; verify against the Wiki during the next import.",
+  "fandomPageId": 801197,
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Mission:_Trident",
+  "latestRevisionId": 2987655,
+  "importedAt": "2026-09-15T18:12:13.351Z",
+  "levelLocation": {
+    "raw": "[[Avalon]], {{w|Mediterranean Sea|Mediterranean Coast}}",
+    "label": "Avalon",
+    "url": "https://callofduty.fandom.com/wiki/Avalon"
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Black Ops 7]]''",
+    "label": "Call of Duty: Black Ops 7",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Black Ops 7",
+        "label": "Call of Duty: Black Ops 7",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops_7"
+      }
+    ]
+  },
+  "date": {
+    "raw": "2035",
+    "label": "2035"
+  },
+  "rawPayload": {
+    "revisionTimestamp": "2026-04-06T22:10:23Z",
+    "revisionSha1": "f233236c5f423f537ecfa9e7e6f1ea83f356fbd8",
+    "resolvedTitle": "Mission: Trident",
+    "mainImageTitle": "File:MissionTrident_MenuScreen_BO7.jpg",
+    "mapImageTitle": null
+  },
+  "images": {
+    "main": {
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/1/14/MissionTrident_MenuScreen_BO7.jpg/revision/latest?cb=20260405165302",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/1/14/MissionTrident_MenuScreen_BO7.jpg/revision/latest/scale-to-width-down/800?cb=20260405165302",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:MissionTrident_MenuScreen_BO7.jpg",
+      "author": {
+        "name": "Kalinine",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Kalinine",
+        "role": "uploader"
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  â€¢ the computer or video game in question or\n  â€¢ the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+      }
+    },
+    "map": {
+      "sourceUrl": null,
+      "thumbnailUrl": null,
+      "detailPageUrl": null,
+      "author": {
+        "name": null,
+        "userUrl": null,
+        "role": null
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "unknown",
+        "notice": null,
+        "noticeUrl": null
+      }
+    }
+  }
 }

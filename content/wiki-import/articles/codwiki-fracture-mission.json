@@ -1,43 +1,105 @@
 {
-    "id":  "codwiki-fracture-mission",
-    "sourceUrl":  "https://callofduty.fandom.com/wiki/Fracture_(mission)",
-    "mapStyle":  "singleplayer",
-    "mapStyleDetail":  null,
-    "mapStyleConfidence":  "curated",
-    "mapStyleEvidence":  "Classified by the atlas; verify against the Wiki during the next import.",
-    "fandomPageId":  789254,
-    "canonicalUrl":  "https://callofduty.fandom.com/wiki/Fracture_(mission)",
-    "latestRevisionId":  null,
-    "importedAt":  null,
-    "levelLocation":  {
-                          "raw":  null,
-                          "label":  null,
-                          "url":  null
-                      },
-    "previousLevels":  {
-                           "raw":  null,
-                           "label":  null,
-                           "links":  [
-
-                                     ]
-                       },
-    "nextLevels":  {
-                       "raw":  null,
-                       "label":  null,
-                       "links":  [
-
-                                 ]
-                   },
-    "games":  {
-                  "raw":  null,
-                  "label":  null,
-                  "links":  [
-
-                            ]
-              },
-    "date":  {
-                 "raw":  null,
-                 "label":  null
-             },
-    "rawPayload":  null
+  "id": "codwiki-fracture-mission",
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Fracture_(mission)",
+  "mapStyle": "singleplayer",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas; verify against the Wiki during the next import.",
+  "fandomPageId": 789254,
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Fracture_(mission)",
+  "latestRevisionId": 3010649,
+  "importedAt": "2026-09-15T18:11:51.473Z",
+  "levelLocation": {
+    "raw": "[[Los Angeles]], [[United States of America]] (Hallucination)<br>{{w|Kōchi}}, [[Japan]] (Hallucination)<br>[[USS Barack Obama]] (Hallucination)",
+    "label": "Los Angeles",
+    "url": "https://callofduty.fandom.com/wiki/Los_Angeles"
+  },
+  "previousLevels": {
+    "raw": "[[Collapse (Black Ops 7)|Collapse]]",
+    "label": "Collapse",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-collapse-black-ops-7",
+        "wikiTitle": "Collapse (Black Ops 7)",
+        "label": "Collapse",
+        "url": "https://callofduty.fandom.com/wiki/Collapse_(Black_Ops_7)"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Quarantine (mission)|Quarantine]]",
+    "label": "Quarantine",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-quarantine-mission",
+        "wikiTitle": "Quarantine (mission)",
+        "label": "Quarantine",
+        "url": "https://callofduty.fandom.com/wiki/Quarantine_(mission)"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Black Ops 7]]''",
+    "label": "Call of Duty: Black Ops 7",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Black Ops 7",
+        "label": "Call of Duty: Black Ops 7",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops_7"
+      }
+    ]
+  },
+  "date": {
+    "raw": "June 19th, 2025 (Los Angeles, Hallucination)<br>2034 (Kōchi, Japan, Hallucination)<br>June 18th, 2025 (USS Barack Obama, Hallucination)",
+    "label": "June 19th, 2025 (Los Angeles, Hallucination), 2034 (Kōchi, Japan, Hallucination), June 18th, 2025 (USS Barack Obama, Hallucination)"
+  },
+  "rawPayload": {
+    "revisionTimestamp": "2026-06-25T00:12:22Z",
+    "revisionSha1": "981553230c68b925a9c275f09fa30b74543ddcd5",
+    "resolvedTitle": "Fracture (mission)",
+    "mainImageTitle": "File:Fracture_MenuScreen_BO7.png",
+    "mapImageTitle": null
+  },
+  "images": {
+    "main": {
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/8/8b/Fracture_MenuScreen_BO7.png/revision/latest?cb=20251126133550",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/8/8b/Fracture_MenuScreen_BO7.png/revision/latest/scale-to-width-down/800?cb=20251126133550",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Fracture_MenuScreen_BO7.png",
+      "author": {
+        "name": "Kalinine",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Kalinine",
+        "role": "uploader"
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  â€¢ the computer or video game in question or\n  â€¢ the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+      }
+    },
+    "map": {
+      "sourceUrl": null,
+      "thumbnailUrl": null,
+      "detailPageUrl": null,
+      "author": {
+        "name": null,
+        "userUrl": null,
+        "role": null
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "unknown",
+        "notice": null,
+        "noticeUrl": null
+      }
+    }
+  }
 }
