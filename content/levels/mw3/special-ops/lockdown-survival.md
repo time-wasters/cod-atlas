@@ -3,7 +3,8 @@ id: mw3-lockdown-survival
 title: Lockdown
 games:
   - mw3
-mode: special-ops
+mode: other
+modeSub: special-ops
 campaign:
   id: "s4"
   label: Survival Mode - Tier 4

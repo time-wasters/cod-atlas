@@ -35,5 +35,6 @@ export function buildAtlasEntry({
     ...(location.urls ? { urls: location.urls } : {}),
     hasLevelNotes: Boolean(level.notes.trim()),
     modes: [level.mode],
+    ...(level.modeSub ? { modeSub: level.modeSub } : {}),
   };
 }

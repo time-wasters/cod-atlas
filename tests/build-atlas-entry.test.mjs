@@ -106,3 +106,27 @@ test("uses fixture fallbacks for an unlocalized country entry", () => {
   assert.equal(entry.hasLevelNotes, false);
   assert.equal(entry.verified, undefined);
 });
+
+test("preserves an Other entry subtype", () => {
+  const entry = buildAtlasEntry({
+    appearances: [{ gameId: "fixture-game" }],
+    gameCodes: "FIXTURE",
+    level: {
+      id: "fixture-challenge",
+      title: "Fixture challenge",
+      wikiArticle: "fixture-wiki",
+      mode: "other",
+      modeSub: "challenge",
+      notes: "",
+    },
+    location: {
+      id: "fixture-location",
+      country: "Fixture country",
+      precision: "country",
+    },
+    wikiUrl: "https://example.com/wiki/fixture",
+  });
+
+  assert.deepEqual(entry.modes, ["other"]);
+  assert.equal(entry.modeSub, "challenge");
+});

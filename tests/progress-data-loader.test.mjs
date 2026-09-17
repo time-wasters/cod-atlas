@@ -40,6 +40,7 @@ test("canonical level loading excludes appearance references", async () => {
     assert.deepEqual(data.levels[0], {
       gameId: "game",
       mode: "multiplayer",
+      modeSub: null,
       researched: true,
       verified: {
         locations: { byHuman: true, user: "github/test-reviewer" },
@@ -47,6 +48,34 @@ test("canonical level loading excludes appearance references", async () => {
       },
       locations: [{ precision: "exact" }],
     });
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("canonical variants inherit locations for progress reporting", async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), "cod-atlas-variant-"));
+  const gamesRoot = path.join(root, "games");
+  const levelsRoot = path.join(root, "levels");
+  await mkdir(gamesRoot);
+  await mkdir(path.join(levelsRoot, "game"), { recursive: true });
+  await writeFile(
+    path.join(gamesRoot, "game.yaml"),
+    "id: game\nlabel: Test Game\nreleased: 2003-01-01\n",
+  );
+  await writeFile(
+    path.join(levelsRoot, "game/source.md"),
+    "---\nid: game-source\ngames:\n  - game\nmode: singleplayer\nlocations:\n  - precision: city\n---\n",
+  );
+  await writeFile(
+    path.join(levelsRoot, "game/variant.md"),
+    "---\nid: game-variant\ngames:\n  - game\nmode: other\nmodeSub: challenge\nmetadata:\n  variantOf: game-source\n---\n",
+  );
+
+  try {
+    const data = await loadProgressData({ gamesRoot, levelsRoot });
+    const variant = data.levels.find((level) => level.modeSub === "challenge");
+    assert.deepEqual(variant.locations, [{ precision: "city" }]);
   } finally {
     await rm(root, { recursive: true, force: true });
   }

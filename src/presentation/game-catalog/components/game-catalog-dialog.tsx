@@ -9,7 +9,7 @@ const seriesLabels: Record<GameDto["series"], string> = {
   "black-ops": "Black Ops",
   standalone: "Standalone",
 };
-const subseriesLabels: Record<Exclude<GameDto["subseries"], null>, string> = {
+const subseriesLabels: Record<GameDto["subseries"][number], string> = {
   main: "Main",
   reboot: "Reboot",
   remaster: "Remaster",
@@ -87,10 +87,10 @@ export function GameCatalogDialog({
                     <time dateTime={game.released}>{releaseDateFormatter.format(new Date(`${game.released}T00:00:00Z`))}</time>
                     <i aria-hidden="true">·</i>
                     {seriesLabels[game.series]}
-                    {game.subseries && (
+                    {game.subseries.length > 0 && (
                       <>
                         <i aria-hidden="true">·</i>
-                        {subseriesLabels[game.subseries]}
+                        {game.subseries.map((value) => subseriesLabels[value]).join(", ")}
                       </>
                     )}
                   </span>

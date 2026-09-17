@@ -3,8 +3,8 @@
   "fandomPageId": 142361,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Summit",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Summit",
-  "latestRevisionId": 3002794,
-  "importedAt": "2026-08-15T08:58:58.200Z",
+  "latestRevisionId": 3026557,
+  "importedAt": "2026-09-15T18:12:34.986Z",
   "levelLocation": {
     "raw": "[[Mount Yamantau]], {{w|Russian Soviet Federative Socialist Republic|Russian SFSR}}, [[Soviet Union]] (''BO'')<br>Mount Yamantau, [[Russia]] (''BOIII'', ''BO4'' & ''BO7'')",
     "label": "Mount Yamantau",
@@ -30,7 +30,7 @@
       },
       "rights": {
         "status": "non-free",
-        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  â€¢ the computer or video game in question or\n  â€¢ the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
         "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
@@ -48,8 +48,8 @@
     }
   },
   "rawPayload": {
-    "revisionTimestamp": "2026-05-18T12:21:23Z",
-    "revisionSha1": "247c7e3e20c8abd35c62d88589d97571c0605d24",
+    "revisionTimestamp": "2026-09-11T04:29:34Z",
+    "revisionSha1": "812e4fb1bab97b19d64aab148c43032b2180f8a6",
     "resolvedTitle": "Summit",
     "mainImageTitle": "File:Bare_Load_Screen_Summit_BO.jpg",
     "mapImageTitle": null

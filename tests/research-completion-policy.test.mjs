@@ -37,6 +37,15 @@ test("research completion accepts a map heading in place of a mission heading", 
   )), false);
 });
 
+test("research completion accepts a Challenge heading for Other entries", () => {
+  const challengeBody = completedBody.replace(
+    "## The Mission in the Game",
+    "## The Challenge in the Game",
+  );
+
+  assert.equal(isResearchComplete(challengeBody), true);
+});
+
 test("AI-assisted research also requires a disclosure", () => {
   assert.equal(isResearchComplete(`Generated with AI assistance.\n\n${completedBody}`), false);
   assert.equal(isResearchComplete(`> **AI-generated research note:** Review this against the cited sources.\n\n${completedBody}`), true);

@@ -10,3 +10,10 @@ images:
     game: 220119
     icon: cover-924520
     file: 18400061-call-of-duty-warzone-mobile-iphone-front-cover.png
+developer:
+  - id: digital_legends
+    name: Digital Legends Entertainment
+  - id: beenox
+    name: Beenox
+  - id: activision_shanghai
+    name: Activision Shanghai

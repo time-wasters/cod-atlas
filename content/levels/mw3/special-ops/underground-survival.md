@@ -3,7 +3,8 @@ id: mw3-underground-survival
 title: Underground
 games:
   - mw3
-mode: special-ops
+mode: other
+modeSub: special-ops
 campaign:
   id: "s1"
   label: Survival Mode - Tier 1

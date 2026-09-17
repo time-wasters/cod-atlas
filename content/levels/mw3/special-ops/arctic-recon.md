@@ -3,7 +3,8 @@ id: mw3-arctic-recon
 title: Arctic Recon
 games:
   - mw3
-mode: special-ops
+mode: other
+modeSub: special-ops
 campaign:
   id: "m6"
   label: Mission Mode - DLC

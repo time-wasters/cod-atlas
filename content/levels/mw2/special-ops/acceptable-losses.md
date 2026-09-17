@@ -3,7 +3,8 @@ id: mw2-acceptable-losses
 title: Acceptable Losses
 games:
   - mw2
-mode: special-ops
+mode: other
+modeSub: special-ops
 campaign:
   id: "4"
   label: Delta

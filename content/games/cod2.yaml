@@ -10,3 +10,8 @@ images:
     app: 2630
     icon: 2e455daa8702a3cb9da8733232ec330a06936df3
     clienticon: 85d64426a5cc03a6fcdc6827a0048f83996f70ea
+developer:
+  - id: infinity_ward
+    name: Infinity Ward (All)
+  - id: infinity_ward_og
+    name: Infinity Ward (OG)

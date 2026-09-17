@@ -1,0 +1,18 @@
+{
+  "id": "codwiki-kill-block",
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Kill_Block",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Kill_Block",
+  "fandomPageId": 810962,
+  "latestRevisionId": 3024327,
+  "importedAt": null,
+  "levelLocation": { "raw": "West Bridge Advanced Military Training Facility", "label": "West Bridge Advanced Military Training Facility", "url": null },
+  "previousLevels": { "raw": null, "label": null, "links": [] },
+  "nextLevels": { "raw": null, "label": null, "links": [] },
+  "games": { "raw": null, "label": null, "links": [] },
+  "date": { "raw": null, "label": null },
+  "mapStyle": "multiplayer",
+  "mapStyleDetail": "gunfight",
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas from the published MW4 multiplayer roster.",
+  "rawPayload": null
+}

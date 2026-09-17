@@ -6,3 +6,6 @@ released: 2021-02-03
 series: standalone
 subseries: remaster
 remasterOf: fixture-classic
+developer:
+  - id: fixture_studio
+    name: Fixture Studio

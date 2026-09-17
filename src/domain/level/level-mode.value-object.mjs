@@ -1,8 +1,8 @@
 export const levelModes = Object.freeze([
   "singleplayer",
   "multiplayer",
-  "special-ops",
   "zombies",
+  "other",
 ]);
 
 const validLevelModes = new Set(levelModes);

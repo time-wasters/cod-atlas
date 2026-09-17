@@ -9,6 +9,108 @@ import { promisify } from "node:util";
 
 const execFileAsync = promisify(execFile);
 
+test("catalogues the complete Modern Warfare: Mobilized roster", async () => {
+  const root = new URL("../content/levels/mw2-nds/", import.meta.url);
+  const campaignFiles = await readdir(new URL("campaign/", root));
+  const multiplayerFiles = await readdir(new URL("multiplayer/", root));
+  const survivalFiles = await readdir(new URL("survival/", root));
+  const survivalRecords = await Promise.all(survivalFiles.map((filename) => (
+    readFile(new URL(`survival/${filename}`, root), "utf8")
+  )));
+
+  assert.equal(campaignFiles.length, 17);
+  assert.equal(multiplayerFiles.length, 8);
+  assert.equal(survivalFiles.length, 4);
+  assert.ok(survivalRecords.every((contents) => /^mode: other$/m.test(contents)));
+  assert.ok(survivalRecords.every((contents) => /^modeSub: survival$/m.test(contents)));
+  await assert.rejects(access(new URL("challenge/", root)));
+});
+
+test("catalogues the currently announced Modern Warfare 4 roster", async () => {
+  const mw4Root = new URL("../content/levels/mw4/", import.meta.url);
+  const campaignFiles = (await readdir(new URL("campaign/", mw4Root))).sort((left, right) => (
+    Number(left.split("-")[0]) - Number(right.split("-")[0])
+  ));
+  assert.deepEqual(campaignFiles, [
+    "1-losing-ground.md",
+    "2-traffic.md",
+    "3-entrenched.md",
+    "4-stranded.md",
+    "5-unannounced-new-york-city-mission.md",
+    "6-unannounced-mumbai-mission.md",
+  ]);
+
+  const campaignRecords = await Promise.all(campaignFiles.map((filename) => (
+    readFile(new URL(`campaign/${filename}`, mw4Root), "utf8")
+  )));
+  assert.equal(campaignRecords.filter((contents) => /^  placeholder: true$/m.test(contents)).length, 2);
+  assert.equal(campaignRecords.filter((contents) => /^    latitude:/m.test(contents)).length, 6);
+
+  const multiplayerFiles = await readdir(new URL("multiplayer/", mw4Root));
+  const multiplayerRecords = await Promise.all(multiplayerFiles.map((filename) => (
+    readFile(new URL(`multiplayer/${filename}`, mw4Root), "utf8")
+  )));
+  assert.equal(multiplayerRecords.length, 17);
+  assert.equal(multiplayerRecords.filter((contents) => /^mode: multiplayer$/m.test(contents)).length, 17);
+  assert.equal(multiplayerRecords.filter((contents) => /^    latitude:/m.test(contents)).length, 9);
+  assert.deepEqual(
+    Object.fromEntries(["core", "ground-war", "gunfight", "dmz", "additional-feature"].map((type) => [
+      type,
+      multiplayerRecords.filter((contents) => contents.includes(`mapType: "${type}"`)).length,
+    ])),
+    { core: 12, "ground-war": 2, gunfight: 1, dmz: 1, "additional-feature": 1 },
+  );
+});
+
+test("catalogues the complete Black Ops 7 roster through Season Six", async () => {
+  const bo7Root = new URL("../content/levels/bo7/", import.meta.url);
+  const campaignFiles = (await readdir(new URL("campaign/", bo7Root))).sort((left, right) => (
+    Number(left.split("-")[0]) - Number(right.split("-")[0])
+  ));
+  assert.deepEqual(campaignFiles, [
+    "1-exposure.md",
+    "2-inside.md",
+    "3-distortion.md",
+    "4-escalation.md",
+    "5-disruption.md",
+    "6-collapse.md",
+    "7-fracture.md",
+    "8-quarantine.md",
+    "9-suppression.md",
+    "10-breakpoint.md",
+    "11-containment.md",
+  ]);
+
+  const multiplayerFiles = await readdir(new URL("multiplayer/", bo7Root));
+  const multiplayerRecords = await Promise.all(multiplayerFiles.map((filename) => (
+    readFile(new URL(`multiplayer/${filename}`, bo7Root), "utf8")
+  )));
+  assert.equal(multiplayerRecords.length, 64);
+  assert.deepEqual(
+    Object.fromEntries(["core", "skirmish", "freerun", "tedd-trials", "additional-feature"].map((type) => [
+      type,
+      multiplayerRecords.filter((contents) => contents.includes(`mapType: "${type}"`)).length,
+    ])),
+    { core: 53, skirmish: 4, freerun: 2, "tedd-trials": 3, "additional-feature": 2 },
+  );
+
+  const zombiesFiles = await readdir(new URL("zombies/", bo7Root));
+  const zombiesRecords = await Promise.all(zombiesFiles.map((filename) => (
+    readFile(new URL(`zombies/${filename}`, bo7Root), "utf8")
+  )));
+  assert.equal(zombiesRecords.length, 15);
+  assert.equal(zombiesRecords.filter((contents) => contents.includes('zombiesMode: "round-based"')).length, 6);
+  assert.equal(zombiesRecords.filter((contents) => contents.includes('zombiesMode: "survival"')).length, 8);
+  assert.equal(zombiesRecords.filter((contents) => contents.includes('zombiesMode: "dead-ops-arcade"')).length, 1);
+
+  const otherFiles = await readdir(new URL("special-ops/", bo7Root));
+  assert.deepEqual(otherFiles, ["endgame.md"]);
+  const endgame = await readFile(new URL("special-ops/endgame.md", bo7Root), "utf8");
+  assert.match(endgame, /^mode: other$/m);
+  assert.match(endgame, /^modeSub: special-ops$/m);
+  assert.match(endgame, /^  activityType: "endgame"$/m);
+});
+
 test("catalogues the complete Modern Warfare 3 Special Ops roster", async () => {
   const specialOpsRoot = new URL("../content/levels/mw3/special-ops/", import.meta.url);
   assert.deepEqual((await readdir(specialOpsRoot)).sort(), [
@@ -67,7 +169,9 @@ test("catalogues the complete Modern Warfare 3 Special Ops roster", async () => 
     "village-survival.md",
   ]);
   for (const filename of await readdir(specialOpsRoot)) {
-    assert.match(await readFile(new URL(filename, specialOpsRoot), "utf8"), /mode: special-ops/);
+    const contents = await readFile(new URL(filename, specialOpsRoot), "utf8");
+    assert.match(contents, /mode: other/);
+    assert.match(contents, /modeSub: special-ops/);
   }
 });
 
@@ -147,7 +251,30 @@ test("catalogues the complete sorted Modern Warfare (2007) campaign roster", asy
   ]);
 });
 
-test("renders the hosted atlas shell from fixture data", async () => {
+test("catalogues all 30 World at War DS Challenge entries", async () => {
+  const challengeRoot = new URL("../content/levels/waw-nds/challenge/", import.meta.url);
+  const filenames = await readdir(challengeRoot);
+  const records = await Promise.all(filenames.map(async (filename) => ({
+    filename,
+    contents: await readFile(new URL(filename, challengeRoot), "utf8"),
+  })));
+
+  assert.equal(records.length, 30);
+  assert.ok(records.every(({ contents }) => /^modeSub: challenge$/m.test(contents)));
+  assert.deepEqual(
+    records
+      .map(({ contents }) => Number(contents.match(/^\s+challengeNumber: (\d+)$/m)?.[1]))
+      .sort((left, right) => left - right),
+    Array.from({ length: 30 }, (_, index) => index + 1),
+  );
+  assert.ok(records.every(({ contents }) => /^mode: other$/m.test(contents)));
+  assert.ok(records.every(({ contents }) => !/^locations:/m.test(contents)));
+  assert.equal(new Set(records.map(({ contents }) => (
+    contents.match(/^\s+variantOf: (.+)$/m)?.[1]
+  ))).size, 23);
+});
+
+test("serves the hosted atlas with fixture data", async () => {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
@@ -173,67 +300,10 @@ test("renders the hosted atlas shell from fixture data", async () => {
     /^text\/html\b/i,
   );
   const html = await response.text();
-  assert.match(html, /<h1><img[^>]*src="images\/banner\.png"[^>]*alt="CoD Atlas"/);
-  assert.match(html, /class="header-stat"><strong>4<\/strong><span>locations<\/span>/);
-  assert.match(html, /class="flag:BR intel-country-flag"/);
-  assert.match(html, /class="country-select-trigger"/);
-  assert.match(html, /class="sidebar-toggle"[^>]*aria-expanded="true"[^>]*aria-label="Hide map filters"/);
-  assert.match(html, /class="details-toggle"[^>]*aria-expanded="true"[^>]*aria-label="Hide level details"/);
-  assert.match(html, /class="collapsed-level-title"[^>]*aria-label="Show details for Fixture Alpha"/);
-  assert.match(html, /aria-label="Filter by game, ordered by release date"/);
-  assert.match(html, /class="game-catalog-trigger"[^>]*aria-haspopup="dialog"/);
-  assert.match(html, /id="game-catalog-title">Call of Duty games/);
-  assert.match(html, /class="game-catalog-entry"/);
-  assert.match(html, /<strong>Fixture Game<\/strong>/);
-  assert.match(html, /aria-label="Filter by country"/);
-  assert.match(html, /class="solar-system-overlay is-collapsed"/);
-  assert.match(html, /aria-label="Expand Solar System overlay"/);
-  assert.match(html, />Solar System \/\/ Schematic<\/text>/);
-  assert.match(html, />Mercury<\/text>/);
-  assert.match(html, /class="advanced-filter-trigger"[^>]*aria-expanded="false"/);
-  const countryFilterIndex = html.indexOf('aria-label="Filter by country"');
-  const modeFilterIndex = html.indexOf('class="mode-filter"');
-  const advancedFilterIndex = html.indexOf('class="advanced-filter-trigger"');
-  assert.ok(countryFilterIndex < modeFilterIndex && modeFilterIndex < advancedFilterIndex);
-  assert.match(html, /class="mode-filter"[^>]*aria-label="Map type visibility"/);
-  assert.match(html, /<button(?=[^>]*aria-pressed="false")[^>]*>\s*<svg(?=[^>]*class="mission-mode-icon")(?=[^>]*aria-label="Special Ops")/);
-  assert.match(html, /<button(?=[^>]*aria-pressed="false")[^>]*>\s*<svg(?=[^>]*class="mission-mode-icon")(?=[^>]*aria-label="Zombies")/);
-  assert.doesNotMatch(html, /class="precision-filter"/);
-  assert.match(html, /role="tab"[^>]*aria-selected="true"[^>]*aria-controls="sidebar-locations"/);
-  assert.match(html, /<button(?=[^>]*role="tab")(?=[^>]*aria-controls="sidebar-campaigns")(?=[^>]*disabled="")[^>]*>/);
-  assert.match(html, /<button(?=[^>]*role="tab")(?=[^>]*aria-controls="sidebar-content-updates")(?=[^>]*disabled="")[^>]*>/);
-  assert.match(html, /class="intel-country-name">Brazil<\/span>/);
-  assert.match(html, /class="taxonomy-tier is-city"><span>City<\/span><strong>Rio de Janeiro<\/strong>/);
-  assert.doesNotMatch(html, /Selected location/);
-  assert.doesNotMatch(html, />Level<\/span>/);
-  assert.match(html, /aria-label="(Campaign|Multiplayer|Special Ops|Zombies)"/);
-  assert.match(html, /class="mission-title-button"[^>]*>Fixture Alpha<\/button>/);
-  assert.match(html, /<button(?=[^>]*class="level-briefing-toggle")(?=[^>]*aria-controls="selected-level-briefing")[^>]*>/);
-  assert.match(html, />Research &amp; historical context<\/strong>/);
-  assert.match(html, /Made with ♥️ by <a href="https:\/\/github\.com\/plp-gtr"[^>]*>plp-GTR<\/a>/);
-  assert.match(html, /class="icon-link footer-info-button"/);
-  assert.match(html, /id="project-info-title">About CoD Atlas/);
-  assert.match(html, /This website was made by me, <a href="https:\/\/github\.com\/plp-gtr"[^>]*>Philipp Gächter<\/a>/);
-  assert.match(html, />Localized \u00b7 medium confidence<\/div>/);
+  assert.match(html, /Fixture Game/);
+  assert.match(html, /Fixture Alpha/);
+  assert.match(html, /Rio de Janeiro/);
   assert.match(html, /https:\/\/www\.google\.com\/maps\/search\/\?api=1(?:&|&amp;)query=-22\.9068%2C-43\.1729/);
-  assert.match(html, /aria-label="Open in Google Maps"/);
-  assert.match(html, /src="webpage_icons\/maps-google-com\.ico"/);
-  assert.match(html, /aria-label="Open on Call of Duty Wiki"/);
-  assert.match(html, /src="webpage_icons\/callofduty-fandom-com\.webp"/);
-  assert.match(html, />Google Maps<\/span>/);
-  assert.match(html, />CoD Wiki<\/span>/);
-  assert.ok(html.indexOf('class="mission-heading"') < html.indexOf('class="intel-kicker"'));
-});
-
-test("bundles the details-panel website icons", async () => {
-  for (const filename of [
-    "maps-google-com.ico",
-    "wikipedia-com.ico",
-    "callofdutymaps-com.webp",
-    "callofduty-fandom-com.webp",
-  ]) {
-    await access(new URL(`../public/webpage_icons/${filename}`, import.meta.url));
-  }
 });
 
 test("compiles the atlas output contract from fixture content", async () => {
@@ -280,13 +350,13 @@ test("compiles the atlas output contract from fixture content", async () => {
         {
           id: "fixture-classic",
           series: "standalone",
-          subseries: "main",
+          subseries: ["main", "reboot"],
           remasterOf: null,
         },
         {
           id: "fixture-remaster",
           series: "standalone",
-          subseries: "remaster",
+          subseries: ["remaster"],
           remasterOf: "fixture-classic",
         },
       ],

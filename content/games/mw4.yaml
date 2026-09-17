@@ -4,10 +4,15 @@ label: Modern Warfare 4
 labelLong: "Call of Duty: Modern Warfare 4"
 released: 2026-10-23
 series: modern-warfare
-subseries: reboot
+subseries: [main, reboot]
 images:
   steam:
     app: 4435490
     icon: 91af283eab8b68667d9121cfd3d3b322abc4eb3b
     clienticon: null
+developer:
+  - id: infinity_ward
+    name: Infinity Ward (All)
+  - id: infinity_ward_activision
+    name: Infinity Ward (Activision)
 

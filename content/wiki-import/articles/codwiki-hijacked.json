@@ -3,8 +3,8 @@
   "fandomPageId": 499452,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Hijacked",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Hijacked",
-  "latestRevisionId": 2996469,
-  "importedAt": "2026-08-15T09:25:18.968Z",
+  "latestRevisionId": 3023920,
+  "importedAt": "2026-09-15T18:11:51.452Z",
   "levelLocation": {
     "raw": "International Waters (''BOII'' & ''BOCW'')<br>[[Tokyo]], [[Japan]] (''BO7'')",
     "label": "Tokyo",
@@ -30,7 +30,7 @@
       },
       "rights": {
         "status": "non-free",
-        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  â€¢ the computer or video game in question or\n  â€¢ the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
         "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
@@ -48,8 +48,8 @@
     }
   },
   "rawPayload": {
-    "revisionTimestamp": "2026-04-23T05:09:44Z",
-    "revisionSha1": "000f106bf6e7fde5ad632fd7bab984592fb84468",
+    "revisionTimestamp": "2026-08-28T15:43:56Z",
+    "revisionSha1": "3cc0828d8d632bdee2d02647d46e04f97f3e3f1d",
     "resolvedTitle": "Hijacked",
     "mainImageTitle": "File:Hijacked_Load_Screen_BOII.png",
     "mapImageTitle": null

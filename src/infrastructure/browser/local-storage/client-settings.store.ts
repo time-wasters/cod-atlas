@@ -8,6 +8,7 @@ const LEGACY_EXTERNAL_GAME_ICONS_KEY = "cod-atlas:external-game-icons";
 const LEGACY_ZOOM_ADAPTIVE_MAP_OVERLAYS_KEY = "cod-atlas:zoom-adaptive-map-overlays";
 
 const DEFAULT_SETTINGS: ClientSettings = Object.freeze({
+  campaignRouteAnimationEnabled: true,
   externalGameIconsEnabled: false,
   zoomAdaptiveMapOverlaysEnabled: true,
 });
@@ -21,6 +22,10 @@ function parseSettings(storageValue: string): ClientSettings {
     const stored = JSON.parse(storageValue) as Partial<ClientSettings>;
 
     return {
+      campaignRouteAnimationEnabled:
+        typeof stored?.campaignRouteAnimationEnabled === "boolean"
+          ? stored.campaignRouteAnimationEnabled
+          : DEFAULT_SETTINGS.campaignRouteAnimationEnabled,
       externalGameIconsEnabled:
         typeof stored?.externalGameIconsEnabled === "boolean"
           ? stored.externalGameIconsEnabled
@@ -44,6 +49,7 @@ function readLegacySettings(): ClientSettings | null {
   if (externalGameIcons === null && zoomAdaptiveMapOverlays === null) return null;
 
   return {
+    campaignRouteAnimationEnabled: DEFAULT_SETTINGS.campaignRouteAnimationEnabled,
     externalGameIconsEnabled:
       externalGameIcons === null
         ? DEFAULT_SETTINGS.externalGameIconsEnabled
@@ -59,6 +65,7 @@ function cacheSettings(storageValue: string | null, settings: ClientSettings) {
   cachedStorageValue = storageValue;
 
   if (
+    cachedSettings.campaignRouteAnimationEnabled !== settings.campaignRouteAnimationEnabled ||
     cachedSettings.externalGameIconsEnabled !== settings.externalGameIconsEnabled ||
     cachedSettings.zoomAdaptiveMapOverlaysEnabled !== settings.zoomAdaptiveMapOverlaysEnabled
   ) {

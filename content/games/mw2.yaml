@@ -10,3 +10,8 @@ images:
     app: 10180
     icon: ad502494f1658220f9166c7e17ac90422bf6a479
     clienticon: 5832406b04c416771fe0b20549b10d0dc7c679de
+developer:
+  - id: infinity_ward
+    name: Infinity Ward (All)
+  - id: infinity_ward_og
+    name: Infinity Ward (OG)

@@ -141,21 +141,21 @@ export function useAtlasSidebarViewModel({
         },
       },
       {
-        mode: "special-ops" as const,
-        label: "Special Ops",
-        visible: filters.showSpecialOps,
-        onToggle: () => {
-          pushHistory();
-          filters.setShowSpecialOps((visible) => !visible);
-        },
-      },
-      {
         mode: "zombies" as const,
         label: "Zombies",
         visible: filters.showZombies,
         onToggle: () => {
           pushHistory();
           filters.setShowZombies((visible) => !visible);
+        },
+      },
+      {
+        mode: "other" as const,
+        label: "Other",
+        visible: filters.showOther,
+        onToggle: () => {
+          pushHistory();
+          filters.setShowOther((visible) => !visible);
         },
       },
     ],
@@ -183,6 +183,15 @@ export function useAtlasSidebarViewModel({
           filters.toggleGameSubseries,
           filters.clearGameSubseries,
           catalog.gameSubseriesDetails,
+        ),
+        advancedFilter(
+          "developer",
+          "Developer",
+          catalog.developerOptions,
+          filters.developers,
+          filters.toggleDeveloper,
+          filters.clearDevelopers,
+          catalog.developerDetails,
         ),
         advancedFilter("continent", "Continent", catalog.continentOptions, filters.continents, filters.toggleContinent, filters.clearContinents),
         advancedFilter("precision", "Precision", catalog.precisionOptions, filters.precisions, filters.togglePrecision, filters.clearPrecisions),

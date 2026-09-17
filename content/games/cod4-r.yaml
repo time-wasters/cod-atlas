@@ -11,3 +11,6 @@ images:
     app: 393080
     icon: ed487167f0b2f5a7dfc61d8cb6b98b4be2d81e6f
     clienticon: 0a418bf7639fda58fdb3c9f336c13a52ef735854
+developer:
+  - id: raven
+    name: Raven Software

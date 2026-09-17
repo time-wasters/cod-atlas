@@ -3,7 +3,8 @@ id: mw3-hit-and-run
 title: Hit and Run
 games:
   - mw3
-mode: special-ops
+mode: other
+modeSub: special-ops
 campaign:
   id: "m1"
   label: Mission Mode - Tier 1

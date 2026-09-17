@@ -4,14 +4,15 @@ export type AtlasUrlState = {
   country: string;
   series: string[];
   subseries: string[];
+  developers: string[];
   continents: string[];
   precisions: string[];
   confidences: string[];
   methods: string[];
   showSingleplayer: boolean;
   showMultiplayer: boolean;
-  showSpecialOps: boolean;
   showZombies: boolean;
+  showOther: boolean;
   sidebarListMode: "locations" | "campaigns" | "updates";
   levelId: string | null;
   locationId: string | null;

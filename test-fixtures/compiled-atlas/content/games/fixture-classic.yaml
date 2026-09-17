@@ -4,4 +4,7 @@ label: Fixture
 labelLong: Fixture Game
 released: 2020-01-02
 series: standalone
-subseries: main
+subseries: [main, reboot]
+developer:
+  - id: fixture_studio
+    name: Fixture Studio

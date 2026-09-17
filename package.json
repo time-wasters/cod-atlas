@@ -11,6 +11,7 @@
     "dev": "WRANGLER_LOG_PATH=.wrangler/wrangler.log vite",
     "data:build": "node scripts/build-atlas-data.mjs",
     "data:check": "node scripts/build-atlas-data.mjs --check",
+    "boundaries:import": "node scripts/import-country-boundaries.mjs",
     "progress:update": "node scripts/progress.mjs",
     "icons:import": "node scripts/import-game-icons.mjs",
     "images:prepare": "node scripts/manage-images.mjs prepare",

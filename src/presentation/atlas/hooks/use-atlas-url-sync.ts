@@ -31,14 +31,15 @@ type UseAtlasUrlSyncInput<TSelection extends UrlSelection> = {
     country: string;
     gameSeries: ReadonlySet<string>;
     gameSubseries: ReadonlySet<string>;
+    developers: ReadonlySet<string>;
     continents: ReadonlySet<string>;
     precisions: ReadonlySet<string>;
     confidences: ReadonlySet<string>;
     methods: ReadonlySet<string>;
     showSingleplayer: boolean;
     showMultiplayer: boolean;
-    showSpecialOps: boolean;
     showZombies: boolean;
+    showOther: boolean;
   };
   selected: TSelection;
   selectionInUrl: boolean;
@@ -89,14 +90,15 @@ export function useAtlasUrlSync<TSelection extends UrlSelection>({
           country: dataIndex.hasCountry(urlState.country) ? urlState.country : "all",
           gameSeries: urlState.series,
           gameSubseries: urlState.subseries,
+          developers: urlState.developers,
           continents: urlState.continents,
           precisions: urlState.precisions,
           confidences: urlState.confidences,
           methods: urlState.methods,
           showSingleplayer: urlState.showSingleplayer,
           showMultiplayer: urlState.showMultiplayer,
-          showSpecialOps: urlState.showSpecialOps,
           showZombies: urlState.showZombies,
+          showOther: urlState.showOther,
         },
         selection: requestedSelection,
         sidebarListMode: requestedGame ? urlState.sidebarListMode : "locations",
@@ -122,14 +124,15 @@ export function useAtlasUrlSync<TSelection extends UrlSelection>({
       country: filters.country,
       series: [...filters.gameSeries],
       subseries: [...filters.gameSubseries],
+      developers: [...filters.developers],
       continents: [...filters.continents],
       precisions: [...filters.precisions],
       confidences: [...filters.confidences],
       methods: [...filters.methods],
       showSingleplayer: filters.showSingleplayer,
       showMultiplayer: filters.showMultiplayer,
-      showSpecialOps: filters.showSpecialOps,
       showZombies: filters.showZombies,
+      showOther: filters.showOther,
       sidebarListMode,
       levelId: selectionInUrl ? selected.entry.levelId : null,
       locationId: selectionInUrl ? selected.entry.locationId : null,
@@ -143,13 +146,14 @@ export function useAtlasUrlSync<TSelection extends UrlSelection>({
     filters.game,
     filters.gameSeries,
     filters.gameSubseries,
+    filters.developers,
     filters.methods,
     filters.precisions,
     filters.query,
     filters.showMultiplayer,
     filters.showSingleplayer,
-    filters.showSpecialOps,
     filters.showZombies,
+    filters.showOther,
     ready,
     selected.entry.levelId,
     selected.entry.locationId,

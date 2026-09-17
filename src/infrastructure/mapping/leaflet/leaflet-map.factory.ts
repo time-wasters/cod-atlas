@@ -26,6 +26,9 @@ export function createLeafletMap(
   });
 
   leaflet.control.zoom({ position: "bottomright" }).addTo(map);
+  const countryBoundaryPane = map.createPane("countryBoundary");
+  countryBoundaryPane.style.zIndex = "410";
+  countryBoundaryPane.style.pointerEvents = "none";
   const campaignPane = map.createPane("campaignRoute");
   campaignPane.style.zIndex = "425";
   return map;

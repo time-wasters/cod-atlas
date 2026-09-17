@@ -9,14 +9,15 @@ test("atlas URL parser applies concise defaults", () => {
     country: "all",
     series: [],
     subseries: [],
+    developers: [],
     continents: [],
     precisions: [],
     confidences: [],
     methods: [],
     showSingleplayer: true,
     showMultiplayer: false,
-    showSpecialOps: false,
     showZombies: false,
+    showOther: false,
     sidebarListMode: "locations",
     levelId: null,
     locationId: null,
@@ -45,22 +46,25 @@ test("atlas URL parser supports content-update browsing", () => {
   );
 });
 
-test("atlas URL parser supports every mode-filter encoding", () => {
-  for (const [mode, showSingleplayer, showMultiplayer, showSpecialOps, showZombies] of [
+test("atlas URL parser supports every mode-filter encoding and legacy Other-subtype links", () => {
+  for (const [mode, showSingleplayer, showMultiplayer, showZombies, showOther] of [
     ["all", true, true, true, true],
     ["both", true, true, false, false],
     ["multiplayer", false, true, false, false],
-    ["special-ops", false, false, true, false],
-    ["multiplayer,special-ops", false, true, true, false],
-    ["zombies", false, false, false, true],
-    ["singleplayer,special-ops", true, false, true, false],
-    ["singleplayer,zombies", true, false, false, true],
+    ["special-ops", false, false, false, true],
+    ["survival", false, false, false, true],
+    ["multiplayer,special-ops", false, true, false, true],
+    ["zombies", false, false, true, false],
+    ["other", false, false, false, true],
+    ["singleplayer,special-ops", true, false, false, true],
+    ["singleplayer,zombies", true, false, true, false],
+    ["singleplayer,other", true, false, false, true],
     ["none", false, false, false, false],
   ]) {
     const state = parseAtlasUrlState(`https://example.com/?mode=${mode}`);
     assert.equal(state.showSingleplayer, showSingleplayer);
     assert.equal(state.showMultiplayer, showMultiplayer);
-    assert.equal(state.showSpecialOps, showSpecialOps);
     assert.equal(state.showZombies, showZombies);
+    assert.equal(state.showOther, showOther);
   }
 });

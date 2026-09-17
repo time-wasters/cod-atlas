@@ -45,6 +45,7 @@ import { GameCatalogDialog } from "../../game-catalog/components/game-catalog-di
 import { LevelBriefingPane } from "../../level-briefing/components/level-briefing-pane.js";
 import { useLevelBriefing } from "../../level-briefing/hooks/use-level-briefing.js";
 import { useCampaignRouteLayer } from "../../map/hooks/use-campaign-route-layer.js";
+import { useCountryBoundaryLayer } from "../../map/hooks/use-country-boundary-layer.js";
 import { useHistoryOverlayLayer } from "../../map/hooks/use-history-overlay-layer.js";
 import { useLeafletMap } from "../../map/hooks/use-leaflet-map.js";
 import { useLeafletMarkers } from "../../map/hooks/use-leaflet-markers.js";
@@ -52,6 +53,7 @@ import { useMapOverlayLayer } from "../../map/hooks/use-map-overlay-layer.js";
 import { useMapViewport } from "../../map/hooks/use-map-viewport.js";
 import { useSelectedMapOverlay } from "../../map/hooks/use-selected-map-overlay.js";
 import { SettingsDialog } from "../../settings/components/settings-dialog.js";
+import { useCampaignRouteAnimationPreference } from "../../settings/hooks/use-campaign-route-animation-preference.js";
 import { useExternalGameIcons } from "../../settings/hooks/use-external-game-icons.js";
 import { useMapOverlayOpacityPreference } from "../../settings/hooks/use-map-overlay-opacity-preference.js";
 import { SolarSystemOverlay } from "../../solar-system/components/solar-system-overlay.js";
@@ -79,14 +81,15 @@ export function AtlasPage({
     country,
     gameSeries,
     gameSubseries,
+    developers,
     continents,
     precisions,
     confidences,
     methods,
     showSingleplayer,
     showMultiplayer,
-    showSpecialOps,
     showZombies,
+    showOther,
     applyUrlState: applyFilterUrlState,
     resetAdvancedFilters: resetAdvancedFilterState,
   } = filters;
@@ -108,6 +111,10 @@ export function AtlasPage({
     enabled: mapOverlayZoomOpacityEnabled,
     setEnabled: setMapOverlayZoomOpacityEnabled,
   } = useMapOverlayOpacityPreference(clientSettingsPort);
+  const {
+    enabled: campaignRouteAnimationEnabled,
+    setEnabled: setCampaignRouteAnimationEnabled,
+  } = useCampaignRouteAnimationPreference(clientSettingsPort);
   const [solarSystemDisplay, setSolarSystemDisplay] = useState({
     hasSpaceLocations: true,
     expanded: true,
@@ -150,14 +157,15 @@ export function AtlasPage({
       country,
       gameSeries,
       gameSubseries,
+      developers,
       continents,
       precisions,
       confidences,
       methods,
       showSingleplayer,
       showMultiplayer,
-      showSpecialOps,
       showZombies,
+      showOther,
     },
   });
   const groups = data.groups;
@@ -253,14 +261,15 @@ export function AtlasPage({
       country,
       gameSeries,
       gameSubseries,
+      developers,
       continents,
       precisions,
       confidences,
       methods,
       showSingleplayer,
       showMultiplayer,
-      showSpecialOps,
       showZombies,
+      showOther,
     },
     selected,
     selectionInUrl,
@@ -319,6 +328,9 @@ export function AtlasPage({
   const focusedLevelIds = useMemo(() => selectedLevelCollection
     ? new Set(selectedLevelCollection.levels.map(({ entry }) => entry.levelId))
     : null, [selectedLevelCollection]);
+  const selectedCountryCode = country === "all"
+    ? null
+    : countries.find((candidate) => candidate.name === country)?.flagCode ?? null;
 
   useLeafletMarkers({
     focusedLevelIds,
@@ -329,6 +341,11 @@ export function AtlasPage({
     runtime: leafletMap,
     selected,
   });
+  useCountryBoundaryLayer({
+    countryCode: selectedCountryCode,
+    ready: mapReady,
+    runtime: leafletMap,
+  });
 
   // These hooks share one Leaflet runtime while owning independent map layers.
   const findSelectionByEntryId = useCallback(
@@ -336,6 +353,7 @@ export function AtlasPage({
     [atlasDataIndex],
   );
   const { prepareMarkerReveal } = useCampaignRouteLayer({
+    animationEnabled: campaignRouteAnimationEnabled,
     findSelectionByEntryId,
     getDetailsElement: getMapDetailsElement,
     onSelect: selectMapMarker,
@@ -435,7 +453,7 @@ export function AtlasPage({
   }
 
   /**
-   * Toggles a Multiplayer/Zombies content update and selects its first level.
+   * Toggles a Multiplayer, Zombies, or Other/Special Ops content update and selects its first level.
    */
   function selectContentUpdate(contentUpdate: ContentUpdateOption<AtlasGroupDto, AtlasEntryDto>) {
     const contentUpdateIsActive = activeContentUpdateKey === contentUpdate.key;
@@ -529,6 +547,10 @@ export function AtlasPage({
             onToggle: () => setExternalIconsEnabled(!externalIconsEnabled),
           }}
           externalIconsUnavailable={externalIconManifestUnavailable}
+          myrmecophobiaMode={{
+            enabled: !campaignRouteAnimationEnabled,
+            onToggle: () => setCampaignRouteAnimationEnabled(!campaignRouteAnimationEnabled),
+          }}
           overlayFading={{
             enabled: mapOverlayZoomOpacityEnabled,
             onToggle: () => setMapOverlayZoomOpacityEnabled(!mapOverlayZoomOpacityEnabled),

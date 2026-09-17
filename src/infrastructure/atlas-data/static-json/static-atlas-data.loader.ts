@@ -17,7 +17,8 @@ const GAME_SERIES = new Set(["world-war-ii", "modern-warfare", "black-ops", "sta
 const GAME_SUBSERIES = new Set(["main", "reboot", "remaster", "add-on", "spin-off"]);
 const LOCATION_PRECISIONS = new Set(["exact", "approximate", "city", "region", "country", "off-world"]);
 const LOCATION_CONFIDENCES = new Set(["high", "medium", "fallback"]);
-const LEVEL_MODES = new Set(["singleplayer", "multiplayer", "special-ops", "zombies"]);
+const LEVEL_MODES = new Set(["singleplayer", "multiplayer", "zombies", "other"]);
+const LEVEL_MODE_SUBS = new Set(["special-ops", "survival", "challenge"]);
 
 /**
  * Validates an optional campaign object.
@@ -131,9 +132,15 @@ function assertAtlasEntry(value: unknown, path: string): void {
     });
   }
   booleanValue(entry.hasLevelNotes, `${path}.hasLevelNotes`);
-  arrayValue(entry.modes, `${path}.modes`).forEach((mode, index) => {
+  const modes = arrayValue(entry.modes, `${path}.modes`);
+  modes.forEach((mode, index) => {
     enumValue(mode, LEVEL_MODES, `${path}.modes[${index}]`);
   });
+  if (modes.includes("other")) {
+    enumValue(entry.modeSub, LEVEL_MODE_SUBS, `${path}.modeSub`);
+  } else if (entry.modeSub !== undefined) {
+    throw new Error(`${path}.modeSub is only valid for other entries`);
+  }
   arrayValue(entry.appearances, `${path}.appearances`).forEach((appearance, index) => {
     assertLevelAppearance(appearance, `${path}.appearances[${index}]`);
   });
@@ -181,8 +188,19 @@ function assertGame(value: unknown, path: string): void {
   stringValue(game.labelLong, `${path}.labelLong`);
   stringValue(game.released, `${path}.released`);
   enumValue(game.series, GAME_SERIES, `${path}.series`);
-  if (game.subseries !== null) enumValue(game.subseries, GAME_SUBSERIES, `${path}.subseries`);
+  const subseries = arrayValue(game.subseries, `${path}.subseries`);
+  subseries.forEach((value, index) => {
+    enumValue(value, GAME_SUBSERIES, `${path}.subseries[${index}]`);
+  });
+  if (new Set(subseries).size !== subseries.length) throw new Error(`${path}.subseries must not contain duplicates`);
   nullableStringValue(game.remasterOf, `${path}.remasterOf`);
+  const developers = arrayValue(game.developer, `${path}.developer`);
+  if (developers.length === 0) throw new Error(`${path}.developer must not be empty`);
+  developers.forEach((value, index) => {
+    const developer = objectValue(value, `${path}.developer[${index}]`);
+    stringValue(developer.id, `${path}.developer[${index}].id`);
+    stringValue(developer.name, `${path}.developer[${index}].name`);
+  });
   if (game.icon !== undefined) stringValue(game.icon, `${path}.icon`);
 }
 

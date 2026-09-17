@@ -133,9 +133,12 @@ src/
 | React sections currently in `app/page.tsx` | `presentation/` feature folders |
 
 There is intentionally no shared place or standalone location domain. A level
-continues to own its embedded locations, campaign metadata, and geographic
-overlays. Curated records remain under `content/`; `src/` is for executable
-source code and its contracts, not a replacement data store.
+normally owns its embedded locations, campaign metadata, and geographic
+overlays. A distinct canonical variant may inherit locations from another
+canonical level through `metadata.variantOf`; the content and compilation
+layers resolve that link without creating a place entity. Curated records
+remain under `content/`; `src/` is for executable source code and its contracts,
+not a replacement data store.
 
 The placeholder files exist only so Git records the planned directories. They
 can be removed one at a time as real source files are introduced.

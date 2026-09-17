@@ -1,0 +1,105 @@
+{
+  "id": "codwiki-containment-mission",
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Containment_(mission)",
+  "mapStyle": "singleplayer",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas; verify against the Wiki during the next import.",
+  "fandomPageId": 789258,
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Containment_(mission)",
+  "latestRevisionId": 2966553,
+  "importedAt": "2026-09-15T18:11:29.752Z",
+  "levelLocation": {
+    "raw": "[[Avalon]], Blackheart",
+    "label": "Avalon",
+    "url": "https://callofduty.fandom.com/wiki/Avalon"
+  },
+  "previousLevels": {
+    "raw": "[[Breakpoint]]",
+    "label": "Breakpoint",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-breakpoint",
+        "wikiTitle": "Breakpoint",
+        "label": "Breakpoint",
+        "url": "https://callofduty.fandom.com/wiki/Breakpoint"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Endgame (Black Ops 7)|Endgame]]",
+    "label": "Endgame",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-endgame-black-ops-7",
+        "wikiTitle": "Endgame (Black Ops 7)",
+        "label": "Endgame",
+        "url": "https://callofduty.fandom.com/wiki/Endgame_(Black_Ops_7)"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Black Ops 7]]''",
+    "label": "Call of Duty: Black Ops 7",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Black Ops 7",
+        "label": "Call of Duty: Black Ops 7",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Black_Ops_7"
+      }
+    ]
+  },
+  "date": {
+    "raw": "June 19th, 2035",
+    "label": "June 19th, 2035"
+  },
+  "rawPayload": {
+    "revisionTimestamp": "2026-02-13T04:50:55Z",
+    "revisionSha1": "a21d8e37f80ad772e4880f7b351c3033d708bee2",
+    "resolvedTitle": "Containment (mission)",
+    "mainImageTitle": "File:Containment_MenuScreen_BO7.png",
+    "mapImageTitle": null
+  },
+  "images": {
+    "main": {
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/0/08/Containment_MenuScreen_BO7.png/revision/latest?cb=20251126133540",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/0/08/Containment_MenuScreen_BO7.png/revision/latest/scale-to-width-down/800?cb=20251126133540",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Containment_MenuScreen_BO7.png",
+      "author": {
+        "name": "Kalinine",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Kalinine",
+        "role": "uploader"
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  â€¢ the computer or video game in question or\n  â€¢ the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+      }
+    },
+    "map": {
+      "sourceUrl": null,
+      "thumbnailUrl": null,
+      "detailPageUrl": null,
+      "author": {
+        "name": null,
+        "userUrl": null,
+        "role": null
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "unknown",
+        "notice": null,
+        "noticeUrl": null
+      }
+    }
+  }
+}

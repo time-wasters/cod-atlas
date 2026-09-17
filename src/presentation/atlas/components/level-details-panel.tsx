@@ -104,7 +104,7 @@ export function LevelDetailsPanel({
       </button>
       <article className="intel-card" id="selected-level-details">
         <div className="mission-heading">
-          <LevelModeIcon mode={entry.modes[0]} />
+          <LevelModeIcon mode={entry.modes[0]} modeSub={entry.modeSub} tooltip />
           <FittedLevelTitle disabled={!entry.coordinates} onActivate={actions.onFocus}>{appearance.title}</FittedLevelTitle>
           <div className="mission-games">
             {viewModel.games.map(({ external, game, icon }) => icon ? (

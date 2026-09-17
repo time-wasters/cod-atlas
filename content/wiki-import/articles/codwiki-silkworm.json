@@ -1,0 +1,18 @@
+{
+  "id": "codwiki-silkworm",
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Silkworm",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Silkworm",
+  "fandomPageId": 812574,
+  "latestRevisionId": 3024647,
+  "importedAt": null,
+  "levelLocation": { "raw": "[[South Korea]]", "label": "South Korea", "url": "https://callofduty.fandom.com/wiki/South_Korea" },
+  "previousLevels": { "raw": null, "label": null, "links": [] },
+  "nextLevels": { "raw": null, "label": null, "links": [] },
+  "games": { "raw": null, "label": null, "links": [] },
+  "date": { "raw": null, "label": null },
+  "mapStyle": "multiplayer",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas; verify against the Wiki during the next import.",
+  "rawPayload": null
+}

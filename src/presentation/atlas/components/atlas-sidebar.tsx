@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useId, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import type { CampaignOption } from "../../../application/campaigns/use-cases/build-campaign-options.js";
 import type { ContentUpdateOption } from "../../../application/content-updates/use-cases/build-content-update-options.js";
 import type { CountryAvailability } from "../../../application/atlas/use-cases/filter-atlas-groups.js";
@@ -28,6 +30,93 @@ type AdvancedFilterViewModel = {
   onToggle: (value: string) => void;
   onClear: () => void;
 };
+
+function SidebarListTab({
+  active,
+  controls,
+  count,
+  disabled = false,
+  label,
+  onSelect,
+  tooltip,
+}: {
+  active: boolean;
+  controls: string;
+  count: number;
+  disabled?: boolean;
+  label: string;
+  onSelect: () => void;
+  tooltip?: string;
+}) {
+  const anchor = useRef<HTMLButtonElement>(null);
+  const showTimer = useRef<number | null>(null);
+  const tooltipId = `sidebar-list-tooltip-${useId().replaceAll(":", "")}`;
+  const [tooltipPosition, setTooltipPosition] = useState<{
+    top: number;
+    left: number;
+    side: "left" | "right";
+  } | null>(null);
+
+  const hideTooltip = () => {
+    if (showTimer.current !== null) window.clearTimeout(showTimer.current);
+    showTimer.current = null;
+    setTooltipPosition(null);
+  };
+
+  const scheduleTooltip = () => {
+    if (!disabled || !tooltip) return;
+    if (showTimer.current !== null) window.clearTimeout(showTimer.current);
+    showTimer.current = window.setTimeout(() => {
+      showTimer.current = null;
+      const rect = anchor.current?.getBoundingClientRect();
+      if (!rect) return;
+      const gap = 9;
+      const side = rect.right + gap + 260 <= window.innerWidth - 8 ? "right" : "left";
+      setTooltipPosition({
+        top: Math.min(Math.max(28, rect.top + rect.height / 2), window.innerHeight - 28),
+        left: side === "right" ? rect.right + gap : rect.left - gap,
+        side,
+      });
+    }, 300);
+  };
+
+  useEffect(() => () => {
+    if (showTimer.current !== null) window.clearTimeout(showTimer.current);
+  }, []);
+
+  return (
+    <button
+      className={`${active ? "is-active" : ""}${disabled ? " is-disabled" : ""}`.trim()}
+      type="button"
+      role="tab"
+      aria-selected={active}
+      aria-controls={controls}
+      aria-disabled={disabled}
+      aria-describedby={tooltipPosition ? tooltipId : undefined}
+      ref={anchor}
+      onClick={() => {
+        if (!disabled) onSelect();
+      }}
+      onMouseEnter={scheduleTooltip}
+      onMouseLeave={hideTooltip}
+      onFocus={scheduleTooltip}
+      onBlur={hideTooltip}
+    >
+      <span>{label}</span><small>{count}</small>
+      {tooltipPosition && tooltip && typeof document !== "undefined" && createPortal(
+        <span
+          id={tooltipId}
+          className={`atlas-tooltip is-${tooltipPosition.side}`}
+          style={{ top: tooltipPosition.top, left: tooltipPosition.left }}
+          role="tooltip"
+        >
+          {tooltip}
+        </span>,
+        document.body,
+      )}
+    </button>
+  );
+}
 
 export type AtlasSidebarViewModel = {
   advanced: {
@@ -95,10 +184,57 @@ export function AtlasSidebar({
   viewModel: AtlasSidebarViewModel;
 }) {
   const { advanced, browse, country, game, modes, results, search } = viewModel;
+  const campaignModeLabel = (campaign: CampaignOption<AtlasGroupDto, AtlasEntryDto>) => {
+    if (campaign.mode === "other" && campaign.modeSub === "special-ops") return "Special Ops";
+    if (campaign.mode === "other" && campaign.modeSub === "survival") return "Survival";
+    if (campaign.mode === "other" && campaign.modeSub === "challenge") return "Challenge";
+    if (campaign.mode === "zombies") return "Zombies";
+    if (campaign.mode === "multiplayer") return "Multiplayer";
+    return "Singleplayer";
+  };
+  const campaignSections = [
+    browse.campaigns.filter((campaign) => campaign.mode === "singleplayer"),
+    browse.campaigns.filter((campaign) => campaign.mode === "multiplayer"),
+    browse.campaigns.filter((campaign) => campaign.mode === "zombies"),
+    browse.campaigns.filter((campaign) => campaign.mode === "other" && campaign.modeSub === "special-ops"),
+    browse.campaigns.filter((campaign) => campaign.mode === "other" && campaign.modeSub === "survival"),
+    browse.campaigns.filter((campaign) => campaign.mode === "other" && campaign.modeSub === "challenge"),
+  ];
+  const renderCampaignSection = (
+    campaigns: CampaignOption<AtlasGroupDto, AtlasEntryDto>[],
+  ) => {
+    const representative = campaigns[0];
+    if (!representative) return null;
+    const modeLabel = campaignModeLabel(representative);
+    const heading = `${modeLabel} campaigns`;
+    return (
+      <section className="campaign-list-section" aria-label={heading} key={`${representative.mode}:${representative.modeSub ?? ""}`}>
+        <header className="campaign-list-section-label">
+          <LevelModeIcon mode={representative.mode} modeSub={representative.modeSub} />
+          <strong>{heading}</strong>
+        </header>
+        {campaigns.map((campaign, index) => (
+          <button
+            key={campaign.key}
+            className={campaign.key === browse.activeCampaignKey ? "campaign-row is-selected" : "campaign-row"}
+            type="button"
+            onClick={() => browse.onCampaignSelect(campaign)}
+          >
+            <i aria-hidden="true">{String(index + 1).padStart(2, "0")}</i>
+            <span><b>{campaign.label}</b><small>{campaign.levels.length} levels</small></span>
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5" /></svg>
+          </button>
+        ))}
+      </section>
+    );
+  };
   return (
     <aside className="atlas-sidebar" aria-label="Map filters">
-      <label className="search-field">
-        <span aria-hidden="true">⌕</span>
+      <div className="search-field">
+        <svg className="search-field-icon" viewBox="0 0 20 20" aria-hidden="true">
+          <circle cx="8.5" cy="8.5" r="5.5" />
+          <path d="m12.5 12.5 4 4" />
+        </svg>
         <input
           value={search.value}
           onChange={(event) => search.onChange(event.target.value)}
@@ -106,7 +242,21 @@ export function AtlasSidebar({
           placeholder="Search missions, maps, countries…"
           aria-label="Search locations"
         />
-      </label>
+        {search.value && (
+          <button
+            className="search-field-clear"
+            type="button"
+            aria-label="Clear search"
+            onMouseDown={(event) => event.preventDefault()}
+            onClick={() => {
+              search.onChange("");
+              search.onBlur();
+            }}
+          >
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4 4 8 8M12 4 4 12" /></svg>
+          </button>
+        )}
+      </div>
 
       <div className="filter-grid">
         <div className="filter-field game-filter">
@@ -181,44 +331,33 @@ export function AtlasSidebar({
 
           <section className="mission-list">
             <div className="sidebar-list-switch" role="tablist" aria-label="Browse atlas data">
-              <button
-                className={browse.mode === "locations" ? "is-active" : ""}
-                type="button"
-                role="tab"
-                aria-selected={browse.mode === "locations"}
-                aria-controls="sidebar-locations"
-                onClick={() => browse.onModeChange("locations")}
-              >
-                <span>Locations</span><small>{browse.groups.length}</small>
-              </button>
-              <button
-                className={browse.mode === "campaigns" ? "is-active" : ""}
-                type="button"
-                role="tab"
-                aria-selected={browse.mode === "campaigns"}
-                aria-controls="sidebar-campaigns"
+              <SidebarListTab
+                active={browse.mode === "locations"}
+                controls="sidebar-locations"
+                count={browse.groups.length}
+                label="Locations"
+                onSelect={() => browse.onModeChange("locations")}
+              />
+              <SidebarListTab
+                active={browse.mode === "campaigns"}
+                controls="sidebar-campaigns"
+                count={browse.campaigns.length}
                 disabled={game.value === "all"}
-                title={game.value === "all" ? "Choose a game to browse campaigns" : undefined}
-                onClick={() => browse.onModeChange("campaigns")}
-              >
-                <span>Campaigns</span><small>{browse.campaigns.length}</small>
-              </button>
-              <button
-                className={browse.mode === "updates" ? "is-active" : ""}
-                type="button"
-                role="tab"
-                aria-selected={browse.mode === "updates"}
-                aria-controls="sidebar-content-updates"
+                label="Campaigns"
+                tooltip={game.value === "all" ? "Choose a game to browse campaigns" : undefined}
+                onSelect={() => browse.onModeChange("campaigns")}
+              />
+              <SidebarListTab
+                active={browse.mode === "updates"}
+                controls="sidebar-content-updates"
+                count={browse.contentUpdates.length}
                 disabled={game.value === "all" || browse.contentUpdates.length === 0}
-                title={game.value === "all"
+                label="Updates"
+                tooltip={game.value === "all"
                   ? "Choose a game to browse content updates"
-                  : browse.contentUpdates.length === 0
-                    ? "No Multiplayer or Zombies content-update data is available for this game"
-                    : undefined}
-                onClick={() => browse.onModeChange("updates")}
-              >
-                <span>Updates</span><small>{browse.contentUpdates.length}</small>
-              </button>
+                  : "No Multiplayer or Zombies content-update data is available for this game"}
+                onSelect={() => browse.onModeChange("updates")}
+              />
             </div>
             {browse.mode === "locations" ? (
               <div className="scroll-list" id="sidebar-locations" role="tabpanel">
@@ -236,18 +375,7 @@ export function AtlasSidebar({
               </div>
             ) : browse.mode === "campaigns" ? (
               <div className="scroll-list" id="sidebar-campaigns" role="tabpanel">
-                {browse.campaigns.map((campaign, index) => (
-                  <button
-                    key={campaign.key}
-                    className={campaign.key === browse.activeCampaignKey ? "campaign-row is-selected" : "campaign-row"}
-                    type="button"
-                    onClick={() => browse.onCampaignSelect(campaign)}
-                  >
-                    <i aria-hidden="true">{String(index + 1).padStart(2, "0")}</i>
-                    <span><b>{campaign.label}</b><small>{campaign.levels.length} levels</small></span>
-                    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5" /></svg>
-                  </button>
-                ))}
+                {campaignSections.map(renderCampaignSection)}
                 {browse.campaigns.length === 0 && <p className="campaign-list-empty">No campaign data is available for this game.</p>}
               </div>
             ) : (

@@ -10,3 +10,8 @@ images:
     game: 5263881
     icon: 46
     file: d9d4f495e875a2e075a1a4a6e1b9770f.png
+developer:
+  - id: ideaworks
+    name: Ideaworks Game Studio
+  - id: marmalade
+    name: Marmalade Game Studio

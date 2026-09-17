@@ -11,6 +11,8 @@ type CampaignAtlasEntry = {
   title: string;
   primary: boolean;
   gameIds: string[];
+  modes: ("singleplayer" | "multiplayer" | "zombies" | "other")[];
+  modeSub?: "special-ops" | "survival" | "challenge";
   campaign?: { id: string; label: string } | null;
   campaignOrder?: number;
   coordinates?: [number, number] | null;
@@ -25,6 +27,8 @@ export type CampaignOption<TGroup, TEntry> = {
   gameId: string;
   id: string;
   label: string;
+  mode: CampaignAtlasEntry["modes"][number];
+  modeSub?: CampaignAtlasEntry["modeSub"];
   levels: { group: TGroup; entry: TEntry }[];
   routeLevels: {
     entryId: string | null;
@@ -44,6 +48,16 @@ type BuildCampaignOptionsInput<
   groups: readonly TGroup[];
 };
 
+function campaignModeRank(mode: CampaignAtlasEntry["modes"][number], modeSub?: CampaignAtlasEntry["modeSub"]) {
+  if (mode === "singleplayer") return 0;
+  if (mode === "multiplayer") return 1;
+  if (mode === "zombies") return 2;
+  if (modeSub === "special-ops") return 3;
+  if (modeSub === "survival") return 4;
+  if (modeSub === "challenge") return 5;
+  return 6;
+}
+
 export function buildCampaignOptions<
   TEntry extends CampaignAtlasEntry,
   TGroup extends CampaignAtlasGroup<TEntry>,
@@ -56,6 +70,8 @@ export function buildCampaignOptions<
     gameId: string;
     id: string;
     label: string;
+    mode: CampaignAtlasEntry["modes"][number];
+    modeSub?: CampaignAtlasEntry["modeSub"];
     locationsByLevelId: Map<string, { group: TGroup; entry: TEntry }[]>;
   }>();
 
@@ -64,8 +80,11 @@ export function buildCampaignOptions<
       if (!entry.campaign) continue;
       const campaignGame = gamesById.get(entry.gameIds[0] ?? "");
       if (!campaignGame || campaignGame.code !== gameCode) continue;
+      const mode = entry.modes[0];
+      if (!mode) throw new Error(`Campaign level ${entry.levelId} has no game mode`);
+      const modeKey = mode === "other" ? `${mode}:${entry.modeSub ?? "unknown"}` : mode;
 
-      const key = `${campaignGame.id}:${entry.campaign.id}`;
+      const key = `${campaignGame.id}:${modeKey}:${entry.campaign.id}`;
       let campaign = campaignsByKey.get(key);
       if (!campaign) {
         campaign = {
@@ -73,6 +92,8 @@ export function buildCampaignOptions<
           gameId: campaignGame.id,
           id: entry.campaign.id,
           label: entry.campaign.label,
+          mode,
+          modeSub: entry.modeSub,
           locationsByLevelId: new Map(),
         };
         campaignsByKey.set(key, campaign);
@@ -85,7 +106,7 @@ export function buildCampaignOptions<
   }
 
   return [...campaignsByKey.values()]
-    .map(({ key, gameId, id, label, locationsByLevelId }) => {
+    .map(({ key, gameId, id, label, mode, modeSub, locationsByLevelId }) => {
       const orderedLevels = [...locationsByLevelId.values()]
         .map((locations) => {
           const primaryLocation = locations.find(({ entry }) => entry.primary) ?? null;
@@ -118,11 +139,17 @@ export function buildCampaignOptions<
         gameId,
         id,
         label,
+        mode,
+        modeSub,
         levels: orderedLevels.map(({ displayLocation }) => displayLocation),
         routeLevels: orderedLevels.map(({ routeLevel }) => routeLevel),
       };
     })
     .sort((left, right) => {
+      const modeComparison = campaignModeRank(left.mode, left.modeSub)
+        - campaignModeRank(right.mode, right.modeSub);
+      if (modeComparison) return modeComparison;
+
       const leftGame = gamesById.get(left.gameId);
       const rightGame = gamesById.get(right.gameId);
       const gameComparison = leftGame && rightGame

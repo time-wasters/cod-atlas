@@ -82,6 +82,7 @@ function buildArcCoordinates({
 }
 
 type RenderCampaignRouteInput = {
+  animationEnabled: boolean;
   leaflet: typeof import("leaflet");
   map: LeafletMap;
   route: CampaignRoute;
@@ -91,6 +92,7 @@ type RenderCampaignRouteInput = {
 };
 
 export function renderLeafletCampaignRoute({
+  animationEnabled,
   leaflet,
   map,
   route,
@@ -122,7 +124,7 @@ export function renderLeafletCampaignRoute({
       };
       leaflet.polyline(arc, {
         ...common,
-        className: "campaign-route-travel",
+        className: `campaign-route-travel${animationEnabled ? "" : " is-static"}`,
         color: "#741c27",
         weight: 3,
         opacity: .92,

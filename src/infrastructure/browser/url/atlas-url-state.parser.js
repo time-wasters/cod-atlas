@@ -32,6 +32,7 @@ export function parseAtlasUrlState(input) {
     country: url.searchParams.get("country") || "all",
     series: commaSeparatedValues(url.searchParams, "series"),
     subseries: commaSeparatedValues(url.searchParams, "subseries"),
+    developers: commaSeparatedValues(url.searchParams, "developer"),
     continents: commaSeparatedValues(url.searchParams, "continent"),
     precisions,
     confidences: commaSeparatedValues(url.searchParams, "confidence"),

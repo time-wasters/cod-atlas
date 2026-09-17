@@ -3,7 +3,8 @@ id: mw2-o-cristo-redentor
 title: O Cristo Redentor
 games:
   - mw2
-mode: special-ops
+mode: other
+modeSub: special-ops
 campaign:
   id: "1"
   label: Alpha

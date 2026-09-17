@@ -3,6 +3,9 @@
     campaign-route-appear 0.22s ease-out both,
     campaign-route-flow 1.15s linear infinite;
 }
+.campaign-route-travel.is-static {
+  animation: none;
+}
 .campaign-route-map-moving .campaign-route-travel {
   animation-play-state: paused;
   display: none;

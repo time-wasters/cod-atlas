@@ -27,7 +27,7 @@ const gameSubseriesOptions: FilterOption[] = [
   { value: "spin-off", label: "Spin-off" },
 ];
 
-const gameSubseriesDescriptions: Record<Exclude<GameDto["subseries"], null>, string> = {
+const gameSubseriesDescriptions: Record<GameDto["subseries"][number], string> = {
   main: "Core releases within a named Call of Duty series.",
   reboot: "Reboot-continuity releases within a named Call of Duty series.",
   remaster: "Remastered editions linked to the original game by ID.",
@@ -101,6 +101,13 @@ function gameDetails(
 }
 
 export function buildAtlasFilterCatalog(data: AtlasDataDto) {
+  const developersById = new Map<string, string>();
+  for (const game of data.games) {
+    for (const developer of game.developer) developersById.set(developer.id, developer.name);
+  }
+  const developerOptions: FilterOption[] = [...developersById]
+    .map(([value, label]) => ({ value, label }))
+    .sort((left, right) => left.label.localeCompare(right.label));
   const continentOptions: FilterOption[] = [...new Set(data.groups.map((group) => group.continent))]
     .sort((left, right) => continentOrder.indexOf(left) - continentOrder.indexOf(right) || left.localeCompare(right))
     .map((value) => ({ value, label: value }));
@@ -113,14 +120,21 @@ export function buildAtlasFilterCatalog(data: AtlasDataDto) {
   const gameSubseriesDetails = gameDetails(
     gameSubseriesOptions,
     data.games,
-    (value) => gameSubseriesDescriptions[value as Exclude<GameDto["subseries"], null>],
-    (game, value) => game.subseries === value,
+    (value) => gameSubseriesDescriptions[value as GameDto["subseries"][number]],
+    (game, value) => game.subseries.includes(value as GameDto["subseries"][number]),
+  );
+  const developerDetails = gameDetails(
+    developerOptions,
+    data.games,
+    (value) => `Games credited to ${developersById.get(value) ?? value} in the atlas.`,
+    (game, value) => game.developer.some((developer) => developer.id === value),
   );
 
   return {
     atlasFilterValueSets: {
       gameSeriesValues: valuesFor(gameSeriesOptions),
       gameSubseriesValues: valuesFor(gameSubseriesOptions),
+      developerValues: valuesFor(developerOptions),
       continentValues: valuesFor(continentOptions),
       precisionValues: valuesFor(precisionOptions),
       confidenceValues: valuesFor(confidenceOptions),
@@ -128,6 +142,8 @@ export function buildAtlasFilterCatalog(data: AtlasDataDto) {
     },
     confidenceOptions,
     continentOptions,
+    developerDetails,
+    developerOptions,
     gameSeriesDetails,
     gameSeriesOptions,
     gameSubseriesDetails,

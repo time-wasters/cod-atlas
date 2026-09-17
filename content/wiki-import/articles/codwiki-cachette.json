@@ -1,0 +1,18 @@
+{
+  "id": "codwiki-cachette",
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Cachette",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Cachette",
+  "fandomPageId": 812577,
+  "latestRevisionId": 3024400,
+  "importedAt": null,
+  "levelLocation": { "raw": "[[France]]", "label": "France", "url": "https://callofduty.fandom.com/wiki/France" },
+  "previousLevels": { "raw": null, "label": null, "links": [] },
+  "nextLevels": { "raw": null, "label": null, "links": [] },
+  "games": { "raw": null, "label": null, "links": [] },
+  "date": { "raw": null, "label": null },
+  "mapStyle": "multiplayer",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas; verify against the Wiki during the next import.",
+  "rawPayload": null
+}

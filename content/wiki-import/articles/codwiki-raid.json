@@ -3,8 +3,8 @@
   "fandomPageId": 503791,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Raid",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Raid",
-  "latestRevisionId": 2996471,
-  "importedAt": "2026-08-15T09:25:40.430Z",
+  "latestRevisionId": 3021544,
+  "importedAt": "2026-09-15T18:12:24.046Z",
   "levelLocation": {
     "raw": "{{w|Hollywood Hills}}, [[Los Angeles]], {{w|California}}, [[United States of America]] (''BOII'' & ''BOCW'')<br>[[Tokyo]], [[Japan]] (''BO7'')",
     "label": "Los Angeles",
@@ -30,7 +30,7 @@
       },
       "rights": {
         "status": "non-free",
-        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  â€¢ the computer or video game in question or\n  â€¢ the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
         "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
@@ -48,8 +48,8 @@
     }
   },
   "rawPayload": {
-    "revisionTimestamp": "2026-04-23T05:12:00Z",
-    "revisionSha1": "dd114675ae2bfb900f83ef2d8e9d8abe71abb73a",
+    "revisionTimestamp": "2026-08-21T17:36:55Z",
+    "revisionSha1": "615cb0e9f5b29e17c79b1483e85b8ff344a034ed",
     "resolvedTitle": "Raid",
     "mainImageTitle": "File:Raid_Load_Screen_BOII.png",
     "mapImageTitle": null

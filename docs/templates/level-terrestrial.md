@@ -4,7 +4,10 @@ title: Example Level
 games:
   - example-game
 mode: singleplayer
+# modeSub: special-ops # Required only when mode is other; survival and challenge are also valid.
 wikiArticle: codwiki-example-level
+# metadata:
+#   variantOf: example-game-source-level # Omit locations below to inherit them.
 locations:
   - id: main
     country: Example Country
@@ -38,6 +41,7 @@ locations:
 ## The Mission in the Game
 
 <!-- For a standalone multiplayer map, use "## The Map in the Game" instead. -->
+<!-- For an Other/Challenge entry, use "## The Challenge in the Game" instead. -->
 
 For singleplayer, summarize the mission's character, unit, date, stated place
 and objectives. For Special Ops, summarize that mission's briefing, objectives,

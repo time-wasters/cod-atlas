@@ -1,3 +1,24 @@
+.campaign-list-section + .campaign-list-section {
+  margin-top: 8px;
+}
+.campaign-list-section-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 10px 7px;
+  color: #b78b35;
+}
+.campaign-list-section-label .mission-mode-icon {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  margin: 0;
+}
+.campaign-list-section-label strong {
+  font: 700 11px var(--font-geist-mono), monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
 .campaign-row {
   width: 100%;
   display: grid;

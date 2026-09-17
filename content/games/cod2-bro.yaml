@@ -10,3 +10,6 @@ images:
     game: 5252158
     icon: 4185
     file: b207f5c56605a9d1a22e1e134fe95ba9.png
+developer:
+  - id: treyarch
+    name: Treyarch

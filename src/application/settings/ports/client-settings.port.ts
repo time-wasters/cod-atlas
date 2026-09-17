@@ -1,4 +1,5 @@
 export type ClientSettings = Readonly<{
+  campaignRouteAnimationEnabled: boolean;
   externalGameIconsEnabled: boolean;
   zoomAdaptiveMapOverlaysEnabled: boolean;
 }>;

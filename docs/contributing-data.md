@@ -32,11 +32,17 @@ the level ID `cod3-laison-river` belongs at
 Map-type directories are being introduced one game at a time. A reorganized
 game must use them for every level: `campaign/` contains records with
 `mode: singleplayer`, `multiplayer/` contains records with `mode: multiplayer`,
-`special-ops/` contains records with `mode: special-ops`, and `zombies/`
-contains records with `mode: zombies`. The `cod`, `cod-uo`, `cod-fh`, `cod2`,
-`cod2-bro`, `cod3`, `rtv`, `cod4`, `cod4-nds`, `waw-nds`, `mw2`, `mw3`, `bo-nds`, `mw3-nds`, `bo-d`, `wz`, `wz2`, and `mwiii`
-directories use the first two folders; `mw2` and `mw3` additionally use
-`special-ops/`, while `waw`, `bo`, `bo-nds`, and `bo6` additionally use `zombies/`.
+`special-ops/` contains records with `mode: other` and `modeSub: special-ops`,
+`survival/` contains records with `mode: other` and `modeSub: survival`, and
+`zombies/` contains records with `mode: zombies`; `challenge/` contains
+records with `mode: other` and `modeSub: challenge`. The `cod`, `cod-uo`,
+`cod-fh`, `cod2`,
+`cod2-bro`, `cod3`, `rtv`, `cod4`, `cod4-nds`, `waw-nds`, `mw2`, `mw3`, `bo-nds`, `mw3-nds`, `bo-d`, `wz`, `wz2`, `mwiii`, `bo7`, and `mw4`
+directories use the first two folders; `mw2`, `mw3`, and `bo7` additionally use
+`special-ops/`, while `mw2-nds` uses `survival/`, and `waw`, `bo`, `bo-nds`, `bo6`, and `bo7` additionally use `zombies/`.
+BO7 Endgame is stored as Other/Special Ops and distinguished with
+`metadata.activityType: endgame`.
+`waw-nds` additionally uses `challenge/` for its Challenge missions.
 Other games retain their current flat layout until they are deliberately
 reorganized. These directory names describe broad map types, not multiplayer
 rule sets such as deathmatch or capture the flag.
@@ -44,19 +50,24 @@ rule sets such as deathmatch or capture the flag.
 Within a map-type layout, campaign filenames are
 `<order>-<level-slug>.md`. Orders start at `1`, use no leading zeros, and must
 be unique and contiguous so they describe the sequence in which the levels are
-played. Multiplayer, Special Ops, and Zombies filenames remain
+played. Multiplayer, Special Ops, Survival, Zombies, and Challenge filenames remain
 `<level-slug>.md`. The order prefix is filesystem metadata only: do not add it
 to the stable level `id` or title.
 
 ## Game fields
 
-Every game record requires `id`, `code`, `label`, `released`, and `series`.
+Every game record requires `id`, `code`, `label`, `labelLong`, `released`,
+`series`, and a non-empty `developer` list. Developer entries contain a stable
+lowercase, underscore-separated `id` and a human-readable `name`; use multiple
+entries when more than one developer grouping applies to the game.
 Series values are `world-war-ii`, `modern-warfare`, `black-ops`, or
-`standalone`. The optional `subseries` field is `main`, `reboot`, `remaster`,
-`add-on`, or `spin-off`; omit it when the game does not belong to a sub-series.
+`standalone`. The optional `subseries` field accepts one or more of `main`,
+`reboot`, `remaster`, `add-on`, and `spin-off`; use a YAML list for multiple
+memberships and omit it when the game does not belong to a sub-series.
 Use `reboot` for a reboot continuity and `add-on` for an expansion of an
-existing game, such as *Call of Duty: United Offensive*. A `remaster` requires
-`remasterOf` containing the original game's ID; other games must omit it.
+existing game, such as *Call of Duty: United Offensive*. A `remaster`
+membership requires `remasterOf` containing the original game's ID; games
+without that membership must omit it.
 Optional image-provider metadata follows the existing game records.
 
 ## Level fields
@@ -66,10 +77,11 @@ Optional image-provider metadata follows the existing game records.
 | `id` | yes | Repository-wide level ID, normally prefixed with the primary game ID. |
 | `title` | yes | Display name of the level or map. |
 | `games` | yes | Exactly one owner ID from `content/games/`; use appearance references for other games. |
-| `mode` | yes | `singleplayer`, `multiplayer`, `special-ops`, or `zombies`. |
+| `mode` | yes | `singleplayer`, `multiplayer`, `zombies`, or `other`. |
+| `modeSub` | for `other` | `special-ops`, `survival`, or `challenge`; omit it for every other mode. |
 | `campaign` | no | Named campaign grouping as a stable string `id` and display `label`. |
 | `wikiArticle` | yes | ID of a separate Wiki import JSON record. |
-| `locations` | yes | Locations owned by this level. Use `[]` only while its location remains uncurated. Never reference a shared place. |
+| `locations` | usually | Locations owned by this level. Omit only to inherit from `metadata.variantOf`; explicit `[]` remains empty. Never reference a shared place. |
 | Markdown body | no | Concise research, ambiguity, or editorial notes. |
 
 For a level that belongs to a named campaign section, use an embedded campaign
@@ -84,6 +96,28 @@ campaign:
 
 Campaign IDs are strings and should remain stable if a label changes.
 
+Use `mode: other` for separately selectable Special Ops, Survival, and Challenge entries,
+and distinguish them with `modeSub`. Each Challenge remains a distinct canonical
+record even when several Challenges reuse the same source mission. Record the
+reused campaign level with `metadata.variantOf`, store the Challenge number and
+objectives in `metadata`, and omit `locations` when the Challenge should inherit
+the source level's geography.
+
+`metadata.variantOf` is for a distinct canonical variant, not another game's
+unchanged appearance. The target must be another canonical level ID. When the
+variant omits `locations`, the build follows the link (and any valid inheritance
+chain) and copies the resolved locations. Unknown targets and cycles are
+invalid. A supplied `locations` array always wins, including an explicit empty
+array. Use `.ref.md` for the same unchanged level appearing in another game.
+
+## Roster-completeness audit
+
+Before declaring a game's count complete, check every category the source game
+actually offers: Campaign, Multiplayer, Zombies, Challenge, Special Ops,
+Survival/Hostiles/Safeguard/Exo Survival, Nightmares, Strike Force, War, and
+Extinction. These are audit categories, not automatic `mode` or `modeSub`
+values; classify each added record using the supported atlas data model.
+
 When an unchanged level appears in another game, create a reference under that
 game so its levels remain easy to find:
 
@@ -95,9 +129,11 @@ level: cod-carentan
 
 The optional appearance fields are `title`, `wikiArticle`, `campaign`, and
 `metadata`. An optional Markdown body supplies appearance-specific notes and
-is displayed before the inherited canonical notes. Everything omitted inherits from the canonical level. Protected canonical
-fields—including locations and their precision, confidence, and method—cannot
-be supplied by a reference.
+is displayed before the inherited canonical notes. Everything omitted inherits
+from the canonical level. Protected canonical fields—including `mode`,
+`modeSub`, locations, and their precision, confidence, and method—cannot be
+supplied by a reference. Appearance metadata must not contain `variantOf`;
+create a distinct canonical level record for a variant.
 
 Each location requires `id`, `country`, `precision`, `confidence`, and `method`.
 The location ID only needs to be unique within its level. The geographic
@@ -186,10 +222,15 @@ it automatically.
 
 A Wiki import record requires a stable `id` and `sourceUrl`. Keep import data
 separate from curated level data. Unknown import values are `null`; do not
-invent values just to fill the template. `mapStyle` is `singleplayer`,
-`multiplayer`, `special-ops`, or `zombies`, matching the curated
-classification. Existing `mapStyleConfidence` uses `curated` when that
-classification came from the atlas pending a future source refresh.
+invent values just to fill the template. The imported `mapStyle` may retain
+`special-ops`; curated records represent that classification as `mode: other`
+with `modeSub: special-ops`. Existing `mapStyleConfidence` uses `curated` when
+that classification came from the atlas pending a future source refresh.
+
+When a Challenge has no dedicated Wiki article, its `wikiArticle` may point to
+the reused campaign level's import record. In that case the import record keeps
+`mapStyle: singleplayer`; the canonical Challenge record's `mode: other` and
+`modeSub: challenge` remain authoritative for the atlas classification.
 
 Do not add media without its source URL, web-resolution URL, detail page URL,
 and an author or uploader name and user URL. Freely reusable media also needs

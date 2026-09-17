@@ -10,3 +10,8 @@ images:
     app: 7940
     icon: b40c43b0b14b7e124553e0220581a1b9ef8e38bf
     clienticon: f4b2045a6cfc7bfaddae1e49540537359ae5e4a0
+developer:
+  - id: infinity_ward
+    name: Infinity Ward (All)
+  - id: infinity_ward_og
+    name: Infinity Ward (OG)

@@ -30,6 +30,13 @@
   box-shadow: 0 4px 18px #0008 !important;
   font-size: 10px;
 }
+.country-boundary-outline {
+  filter:
+    drop-shadow(0 0 1px rgb(227 180 81 / 0.48))
+    drop-shadow(0 0 3px rgb(227 180 81 / 0.2));
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
 .atlas-cluster-wrap {
   background: transparent !important;
 }

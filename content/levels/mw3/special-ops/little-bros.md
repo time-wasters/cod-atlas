@@ -3,7 +3,8 @@ id: mw3-little-bros
 title: Little Bros
 games:
   - mw3
-mode: special-ops
+mode: other
+modeSub: special-ops
 campaign:
   id: "m3"
   label: Mission Mode - Tier 3

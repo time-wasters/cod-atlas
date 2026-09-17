@@ -1,0 +1,18 @@
+{
+  "id": "codwiki-lotus",
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Lotus",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Lotus",
+  "fandomPageId": 810964,
+  "latestRevisionId": 3024666,
+  "importedAt": null,
+  "levelLocation": { "raw": "Korea", "label": "Korea", "url": null },
+  "previousLevels": { "raw": null, "label": null, "links": [] },
+  "nextLevels": { "raw": null, "label": null, "links": [] },
+  "games": { "raw": null, "label": null, "links": [] },
+  "date": { "raw": null, "label": null },
+  "mapStyle": "multiplayer",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas; verify against the Wiki during the next import.",
+  "rawPayload": null
+}
