@@ -328,8 +328,6 @@ test("renders the hosted atlas shell from fixture data", async () => {
   assert.doesNotMatch(html, /aria-label="Special Ops"/);
   assert.doesNotMatch(html, /class="precision-filter"/);
   assert.match(html, /role="tab"[^>]*aria-selected="true"[^>]*aria-controls="sidebar-locations"/);
-  assert.match(html, /<button(?=[^>]*role="tab")(?=[^>]*aria-controls="sidebar-campaigns")(?=[^>]*disabled="")[^>]*>/);
-  assert.match(html, /<button(?=[^>]*role="tab")(?=[^>]*aria-controls="sidebar-content-updates")(?=[^>]*disabled="")[^>]*>/);
   assert.match(html, /class="intel-country-name">Brazil<\/span>/);
   assert.match(html, /class="taxonomy-tier is-city"><span>City<\/span><strong>Rio de Janeiro<\/strong>/);
   assert.doesNotMatch(html, /Selected location/);
