@@ -2,7 +2,7 @@ type FilterableGame = {
   id: string;
   code: string;
   series: string;
-  subseries: string | null;
+  subseries: string[];
   developer: { id: string; name: string }[];
 };
 
@@ -82,7 +82,7 @@ export function filterAtlasGroups<
     });
     const matchesSubseries = criteria.gameSubseries.size === 0 || entry.gameIds.some((gameId) => {
       const entryGame = gamesById.get(gameId);
-      return entryGame?.subseries ? criteria.gameSubseries.has(entryGame.subseries) : false;
+      return entryGame?.subseries.some((value) => criteria.gameSubseries.has(value)) ?? false;
     });
     const matchesDeveloper = criteria.developers.size === 0 || entry.gameIds.some((gameId) => {
       const entryGame = gamesById.get(gameId);

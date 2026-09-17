@@ -13,7 +13,7 @@ test("developer filters expose included games in hover details", () => {
         labelLong: "Call of Duty: Black Ops 6",
         released: "2024-10-25",
         series: "black-ops",
-        subseries: "main",
+        subseries: ["main", "reboot"],
         remasterOf: null,
         developer: [
           { id: "treyarch", name: "Treyarch" },
@@ -27,7 +27,7 @@ test("developer filters expose included games in hover details", () => {
         labelLong: "Call of Duty: Black Ops Cold War",
         released: "2020-11-13",
         series: "black-ops",
-        subseries: "main",
+        subseries: ["main"],
         remasterOf: null,
         developer: [
           { id: "treyarch", name: "Treyarch" },
@@ -47,6 +47,9 @@ test("developer filters expose included games in hover details", () => {
   );
   assert.deepEqual(catalog.developerDetails.get("treyarch")?.games, [
     { label: "Black Ops Cold War", year: "2020" },
+    { label: "Black Ops 6", year: "2024" },
+  ]);
+  assert.deepEqual(catalog.gameSubseriesDetails.get("reboot")?.games, [
     { label: "Black Ops 6", year: "2024" },
   ]);
 });

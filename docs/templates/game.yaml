@@ -4,7 +4,7 @@ label: Example Game
 labelLong: "Call of Duty: Example Game"
 released: 2026-01-01
 series: standalone
-# Optional for games within a named series: main, reboot, remaster, add-on, or spin-off
-# subseries: main
-# Required when subseries is remaster; use the original game's ID
+# Optional memberships: main, reboot, remaster, add-on, or spin-off
+# subseries: [main, reboot]
+# Required when subseries includes remaster; use the original game's ID
 # remasterOf: original-game-id

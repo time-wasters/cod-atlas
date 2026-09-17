@@ -61,11 +61,13 @@ Every game record requires `id`, `code`, `label`, `labelLong`, `released`,
 lowercase, underscore-separated `id` and a human-readable `name`; use multiple
 entries when more than one developer grouping applies to the game.
 Series values are `world-war-ii`, `modern-warfare`, `black-ops`, or
-`standalone`. The optional `subseries` field is `main`, `reboot`, `remaster`,
-`add-on`, or `spin-off`; omit it when the game does not belong to a sub-series.
+`standalone`. The optional `subseries` field accepts one or more of `main`,
+`reboot`, `remaster`, `add-on`, and `spin-off`; use a YAML list for multiple
+memberships and omit it when the game does not belong to a sub-series.
 Use `reboot` for a reboot continuity and `add-on` for an expansion of an
-existing game, such as *Call of Duty: United Offensive*. A `remaster` requires
-`remasterOf` containing the original game's ID; other games must omit it.
+existing game, such as *Call of Duty: United Offensive*. A `remaster`
+membership requires `remasterOf` containing the original game's ID; games
+without that membership must omit it.
 Optional image-provider metadata follows the existing game records.
 
 ## Level fields

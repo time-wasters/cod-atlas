@@ -27,7 +27,7 @@ const gameSubseriesOptions: FilterOption[] = [
   { value: "spin-off", label: "Spin-off" },
 ];
 
-const gameSubseriesDescriptions: Record<Exclude<GameDto["subseries"], null>, string> = {
+const gameSubseriesDescriptions: Record<GameDto["subseries"][number], string> = {
   main: "Core releases within a named Call of Duty series.",
   reboot: "Reboot-continuity releases within a named Call of Duty series.",
   remaster: "Remastered editions linked to the original game by ID.",
@@ -120,8 +120,8 @@ export function buildAtlasFilterCatalog(data: AtlasDataDto) {
   const gameSubseriesDetails = gameDetails(
     gameSubseriesOptions,
     data.games,
-    (value) => gameSubseriesDescriptions[value as Exclude<GameDto["subseries"], null>],
-    (game, value) => game.subseries === value,
+    (value) => gameSubseriesDescriptions[value as GameDto["subseries"][number]],
+    (game, value) => game.subseries.includes(value as GameDto["subseries"][number]),
   );
   const developerDetails = gameDetails(
     developerOptions,

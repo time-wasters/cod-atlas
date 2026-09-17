@@ -188,7 +188,11 @@ function assertGame(value: unknown, path: string): void {
   stringValue(game.labelLong, `${path}.labelLong`);
   stringValue(game.released, `${path}.released`);
   enumValue(game.series, GAME_SERIES, `${path}.series`);
-  if (game.subseries !== null) enumValue(game.subseries, GAME_SUBSERIES, `${path}.subseries`);
+  const subseries = arrayValue(game.subseries, `${path}.subseries`);
+  subseries.forEach((value, index) => {
+    enumValue(value, GAME_SUBSERIES, `${path}.subseries[${index}]`);
+  });
+  if (new Set(subseries).size !== subseries.length) throw new Error(`${path}.subseries must not contain duplicates`);
   nullableStringValue(game.remasterOf, `${path}.remasterOf`);
   const developers = arrayValue(game.developer, `${path}.developer`);
   if (developers.length === 0) throw new Error(`${path}.developer must not be empty`);

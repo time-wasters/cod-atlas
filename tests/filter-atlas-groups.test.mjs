@@ -3,6 +3,48 @@ import test from "node:test";
 
 import { filterAtlasGroups } from "../src/application/atlas/use-cases/filter-atlas-groups.ts";
 
+test("subseries filtering matches every membership of a game", () => {
+  const entry = {
+    id: "reboot-main-title",
+    game: "MW19",
+    gameIds: ["mw19"],
+    title: "Modern Warfare level",
+    precision: "city",
+    modes: ["singleplayer"],
+    appearances: [{ title: "Modern Warfare level" }],
+  };
+  const input = {
+    games: [{
+      id: "mw19",
+      code: "MW19",
+      series: "modern-warfare",
+      subseries: ["main", "reboot"],
+      developer: [{ id: "infinity_ward", name: "Infinity Ward (All)" }],
+    }],
+    groups: [{ name: "Test", continent: "Test", flagCode: null, entries: [entry] }],
+    criteria: {
+      query: "",
+      gameCode: "all",
+      country: "all",
+      gameSeries: new Set(),
+      gameSubseries: new Set(["main"]),
+      developers: new Set(),
+      continents: new Set(),
+      precisions: new Set(),
+      confidences: new Set(),
+      methods: new Set(),
+      showSingleplayer: true,
+      showMultiplayer: false,
+      showZombies: false,
+      showOther: false,
+    },
+  };
+
+  assert.equal(filterAtlasGroups(input).groups.length, 1);
+  input.criteria.gameSubseries = new Set(["reboot"]);
+  assert.equal(filterAtlasGroups(input).groups.length, 1);
+});
+
 test("mode filtering exposes Special Ops through Other", () => {
   const entries = [
     {
@@ -30,7 +72,7 @@ test("mode filtering exposes Special Ops through Other", () => {
       id: "mw3",
       code: "MW3",
       series: "modern-warfare",
-      subseries: "main",
+      subseries: ["main"],
       developer: [{ id: "infinity_ward", name: "Infinity Ward (All)" }],
     }],
     groups: [{ name: "Test country", continent: "Test continent", flagCode: null, entries }],
@@ -71,7 +113,7 @@ test("mode filtering exposes Other entries independently", () => {
       id: "waw-nds",
       code: "WAW-DS",
       series: "world-war-ii",
-      subseries: "spin-off",
+      subseries: ["spin-off"],
       developer: [{ id: "n_space", name: "n-Space" }],
     }],
     groups: [{ name: "Germany", continent: "Europe", flagCode: "DE", entries: [otherEntry] }],
@@ -123,7 +165,7 @@ test("developer filtering matches any developer credited to an entry's games", (
         id: "bo6",
         code: "BO6",
         series: "black-ops",
-        subseries: "main",
+        subseries: ["main"],
         developer: [
           { id: "treyarch", name: "Treyarch" },
           { id: "raven", name: "Raven Software" },
@@ -133,7 +175,7 @@ test("developer filtering matches any developer credited to an entry's games", (
         id: "heroes",
         code: "CODH",
         series: "modern-warfare",
-        subseries: "spin-off",
+        subseries: ["spin-off"],
         developer: [{ id: "faceroll", name: "Faceroll Games" }],
       },
     ],

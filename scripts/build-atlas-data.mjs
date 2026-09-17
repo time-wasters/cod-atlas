@@ -327,10 +327,14 @@ for (const filename of gameFiles) {
   requireValue(!games.has(game.id), `${filename}: duplicate game id ${game.id}`);
   requireValue(game.code && game.label && game.labelLong && game.released, `${filename}: code, label, labelLong and released are required`);
   requireValue(validGameSeries.has(game.series), `${filename}: unsupported game series ${game.series}`);
+  const subseries = game.subseries == null
+    ? []
+    : Array.isArray(game.subseries) ? game.subseries : [game.subseries];
   requireValue(
-    game.subseries == null || validGameSubseries.has(game.subseries),
-    `${filename}: unsupported game sub-series ${game.subseries}`,
+    subseries.every((value) => validGameSubseries.has(value)),
+    `${filename}: unsupported game sub-series ${subseries.find((value) => !validGameSubseries.has(value))}`,
   );
+  requireValue(new Set(subseries).size === subseries.length, `${filename}: game sub-series values must be unique`);
   requireValue(Array.isArray(game.developer) && game.developer.length > 0, `${filename}: developer must be a non-empty array`);
   const gameDeveloperIds = new Set();
   for (const [index, developer] of game.developer.entries()) {
@@ -354,12 +358,12 @@ for (const filename of gameFiles) {
   }
   games.set(game.id, {
     ...game,
-    subseries: game.subseries ?? null,
+    subseries,
     remasterOf: game.remasterOf ?? null,
   });
 }
 for (const [gameId, game] of games) {
-  const isRemaster = game.subseries === "remaster";
+  const isRemaster = game.subseries.includes("remaster");
   requireValue(
     isRemaster === (game.remasterOf !== null),
     `${gameId}: remaster games require remasterOf and other games must omit it`,

@@ -30,7 +30,7 @@ label: CoD 3
 labelLong: "Call of Duty 3"
 released: 2006-11-07
 series: world-war-ii
-subseries: main
+subseries: [main]
 developer:
   - id: treyarch
     name: Treyarch
@@ -44,20 +44,24 @@ exposed as the game's `icon`; games without one continue to display their
 label.
 
 Game series values are `world-war-ii`, `modern-warfare`, `black-ops`, and
-`standalone`. The optional sub-series values are `main`, `reboot`, `remaster`,
-`add-on`, and `spin-off`. Use `reboot` for reboot-continuity releases and
-`add-on` for expansions of an existing game, such as *Call of Duty: United
-Offensive*. A `remaster` must link to the original game through its stable ID:
+`standalone`. The optional `subseries` field accepts one value or a list of
+memberships. Its values are `main`, `reboot`, `remaster`, `add-on`, and
+`spin-off`. Use `reboot` for reboot-continuity releases and `add-on` for
+expansions of an existing game, such as *Call of Duty: United Offensive*.
+Games may belong to multiple sub-series; for example, the reboot Modern
+Warfare releases use `subseries: [main, reboot]`. A `remaster` membership must
+link to the original game through its stable ID:
 
 ```yaml
 series: modern-warfare
-subseries: remaster
+subseries: [remaster]
 remasterOf: cod4
 ```
 
-Other games must omit `remasterOf`. Omit `subseries` for a standalone game such
-as *Call of Duty: Ghosts*; the compiler represents missing optional values as
-`null` in generated data.
+Games without the `remaster` membership must omit `remasterOf`. Omit
+`subseries` when none applies; the compiler represents it as an empty list in
+generated data. A single source value is accepted as shorthand for a one-item
+list.
 
 Every game has a non-empty `developer` list. Each entry uses a stable lowercase,
 underscore-separated `id` for filtering and a human-readable `name`. A game may

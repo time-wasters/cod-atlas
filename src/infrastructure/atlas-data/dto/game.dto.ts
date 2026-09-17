@@ -1,3 +1,5 @@
+export type GameSubseries = "main" | "reboot" | "remaster" | "add-on" | "spin-off";
+
 export type GameDto = {
   id: string;
   code: string;
@@ -5,7 +7,7 @@ export type GameDto = {
   labelLong: string;
   released: string;
   series: "world-war-ii" | "modern-warfare" | "black-ops" | "standalone";
-  subseries: "main" | "reboot" | "remaster" | "add-on" | "spin-off" | null;
+  subseries: GameSubseries[];
   remasterOf: string | null;
   developer: { id: string; name: string }[];
   icon?: string;

@@ -350,13 +350,13 @@ test("compiles the atlas output contract from fixture content", async () => {
         {
           id: "fixture-classic",
           series: "standalone",
-          subseries: "main",
+          subseries: ["main", "reboot"],
           remasterOf: null,
         },
         {
           id: "fixture-remaster",
           series: "standalone",
-          subseries: "remaster",
+          subseries: ["remaster"],
           remasterOf: "fixture-classic",
         },
       ],
