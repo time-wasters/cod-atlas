@@ -2,7 +2,7 @@
 id: bo-wmd-mp
 legacyIds:
   - bo-bo4-bocw-wmd-mp
-title: WMD MP
+title: WMD
 games:
   - bo
 mode: multiplayer
@@ -17,3 +17,4 @@ locations:
     method: country-fallback
     primary: true
 ---
+
