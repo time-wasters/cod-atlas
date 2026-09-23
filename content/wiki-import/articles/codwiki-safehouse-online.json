@@ -1,0 +1,18 @@
+{
+  "id": "codwiki-safehouse-online",
+  "fandomPageId": 612926,
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Safehouse_(Online)",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Safehouse_(Online)",
+  "latestRevisionId": 3025934,
+  "importedAt": "2026-09-23T20:53:42.462Z",
+  "levelLocation": { "raw": "Northern border of Juarito", "label": "Northern border of Juarito", "url": null },
+  "mapStyle": "singleplayer",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas from the Wiki's campaign roster; verify during the next import.",
+  "rawPayload": {
+    "revisionTimestamp": "2026-09-08T03:25:50Z",
+    "revisionSha1": "ebcc256c031812ef838d3b4ec96c0f33acf4547c",
+    "resolvedTitle": "Safehouse (Online)"
+  }
+}

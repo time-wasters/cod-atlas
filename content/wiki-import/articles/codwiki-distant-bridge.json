@@ -1,0 +1,18 @@
+{
+  "id": "codwiki-distant-bridge",
+  "fandomPageId": 631298,
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Distant_Bridge",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Distant_Bridge",
+  "latestRevisionId": 3025943,
+  "importedAt": "2026-09-23T20:53:42.462Z",
+  "levelLocation": { "raw": "Carson Bridge, Carson City, Pantar", "label": "Carson Bridge, Carson City, Pantar", "url": null },
+  "mapStyle": "singleplayer",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas from the Wiki's campaign roster; verify during the next import.",
+  "rawPayload": {
+    "revisionTimestamp": "2026-09-08T04:06:11Z",
+    "revisionSha1": "c261d1c0141ccef23d5449abb134208a40e72016",
+    "resolvedTitle": "Distant Bridge"
+  }
+}

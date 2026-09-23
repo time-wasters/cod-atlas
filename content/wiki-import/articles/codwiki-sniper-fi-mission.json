@@ -1,0 +1,18 @@
+{
+  "id": "codwiki-sniper-fi-mission",
+  "fandomPageId": 612924,
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Sniper_Fi_(mission)",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Sniper_Fi_(mission)",
+  "latestRevisionId": 3025939,
+  "importedAt": "2026-09-23T20:53:42.462Z",
+  "levelLocation": { "raw": "Bakhar DMZ", "label": "Bakhar DMZ", "url": null },
+  "mapStyle": "singleplayer",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas from the Wiki's campaign roster; verify during the next import.",
+  "rawPayload": {
+    "revisionTimestamp": "2026-09-08T03:51:41Z",
+    "revisionSha1": "be62a18c1254e721b3bb8d3c671101ead11d78f7",
+    "resolvedTitle": "Sniper Fi (mission)"
+  }
+}

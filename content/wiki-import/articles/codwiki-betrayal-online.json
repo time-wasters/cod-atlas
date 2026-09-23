@@ -1,0 +1,18 @@
+{
+  "id": "codwiki-betrayal-online",
+  "fandomPageId": 631296,
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Betrayal_(Online)",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Betrayal_(Online)",
+  "latestRevisionId": 3025942,
+  "importedAt": "2026-09-23T20:53:42.462Z",
+  "levelLocation": { "raw": "Bakhar DMZ", "label": "Bakhar DMZ", "url": null },
+  "mapStyle": "singleplayer",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas from the Wiki's campaign roster; verify during the next import.",
+  "rawPayload": {
+    "revisionTimestamp": "2026-09-08T04:05:22Z",
+    "revisionSha1": "8c8ce534eba5a0ab178961af22f20c86875e7445",
+    "resolvedTitle": "Betrayal (Online)"
+  }
+}

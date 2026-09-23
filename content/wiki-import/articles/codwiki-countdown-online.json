@@ -1,0 +1,18 @@
+{
+  "id": "codwiki-countdown-online",
+  "fandomPageId": 631295,
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Countdown_(Online)",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Countdown_(Online)",
+  "latestRevisionId": 3027117,
+  "importedAt": "2026-09-23T20:53:42.462Z",
+  "levelLocation": { "raw": "Carson City, Pantar", "label": "Carson City, Pantar", "url": null },
+  "mapStyle": "singleplayer",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas from the Wiki's campaign roster; verify during the next import.",
+  "rawPayload": {
+    "revisionTimestamp": "2026-09-15T16:52:04Z",
+    "revisionSha1": "9088792a5cb82998ccb13a8913fad3b094110671",
+    "resolvedTitle": "Countdown (Online)"
+  }
+}

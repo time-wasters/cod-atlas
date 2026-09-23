@@ -1,0 +1,18 @@
+{
+  "id": "codwiki-recruit-training-camp",
+  "fandomPageId": 632983,
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Recruit_Training_Camp",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Recruit_Training_Camp",
+  "latestRevisionId": 3025102,
+  "importedAt": "2026-09-23T20:53:42.462Z",
+  "levelLocation": { "raw": "The Pit, Classified Location", "label": "The Pit, Classified Location", "url": null },
+  "mapStyle": "singleplayer",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas from the Wiki's campaign roster; verify during the next import.",
+  "rawPayload": {
+    "revisionTimestamp": "2026-09-03T16:45:40Z",
+    "revisionSha1": "9cc2ba4f18878a488d19080126d0d0799774831c",
+    "resolvedTitle": "Recruit Training Camp"
+  }
+}

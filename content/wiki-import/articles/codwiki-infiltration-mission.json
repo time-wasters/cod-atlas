@@ -1,0 +1,18 @@
+{
+  "id": "codwiki-infiltration-mission",
+  "fandomPageId": 612923,
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Infiltration_(mission)",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Infiltration_(mission)",
+  "latestRevisionId": 3025937,
+  "importedAt": "2026-09-23T20:53:42.462Z",
+  "levelLocation": { "raw": "Bakhar DMZ", "label": "Bakhar DMZ", "url": null },
+  "mapStyle": "singleplayer",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas from the Wiki's campaign roster; verify during the next import.",
+  "rawPayload": {
+    "revisionTimestamp": "2026-09-08T03:45:01Z",
+    "revisionSha1": "c2e915ed07592a8d3ea45042113dc06e75e0f163",
+    "resolvedTitle": "Infiltration (mission)"
+  }
+}
