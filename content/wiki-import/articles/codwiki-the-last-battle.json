@@ -1,0 +1,18 @@
+{
+  "id": "codwiki-the-last-battle",
+  "fandomPageId": 814003,
+  "sourceUrl": "https://callofduty.fandom.com/wiki/The_Last_Battle",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/The_Last_Battle",
+  "latestRevisionId": 3027903,
+  "importedAt": "2026-09-23T20:53:42.462Z",
+  "levelLocation": { "raw": "Carson City, Pantar", "label": "Carson City, Pantar", "url": null },
+  "mapStyle": "singleplayer",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas from the Wiki's campaign roster; verify during the next import.",
+  "rawPayload": {
+    "revisionTimestamp": "2026-09-19T00:36:18Z",
+    "revisionSha1": "79b5ec76f8a158ec8ef494ee8eba577b9ba7aa33",
+    "resolvedTitle": "The Last Battle"
+  }
+}

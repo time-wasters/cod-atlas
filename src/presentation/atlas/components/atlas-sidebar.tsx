@@ -154,6 +154,7 @@ export type AtlasSidebarViewModel = {
     value: string;
   };
   modes: {
+    disabled: boolean;
     label: string;
     mode: AtlasEntryDto["modes"][number];
     onToggle: () => void;
@@ -284,6 +285,7 @@ export function AtlasSidebar({
             className={mode.visible ? "is-active" : ""}
             type="button"
             aria-pressed={mode.visible}
+            disabled={mode.disabled}
             onClick={mode.onToggle}
             key={mode.label}
           >

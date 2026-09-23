@@ -1,0 +1,14 @@
+{
+  "id": "codwiki-doomsday-drilling",
+  "fandomPageId": 806075,
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Doomsday_Drilling",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Doomsday_Drilling",
+  "latestRevisionId": 2996850,
+  "importedAt": "2026-09-23T21:59:04.569Z",
+  "levelLocation": { "raw": null, "label": null, "url": null },
+  "mapStyle": "multiplayer",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas from the Wiki's Call of Duty Online map roster.",
+  "rawPayload": { "revisionTimestamp": "2026-04-24T00:48:45Z", "revisionSha1": "f1752efc2fdfc018096620e7df26995083db5795", "resolvedTitle": "Doomsday Drilling" }
+}

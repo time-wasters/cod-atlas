@@ -9,6 +9,44 @@ import { promisify } from "node:util";
 
 const execFileAsync = promisify(execFile);
 
+test("catalogues the complete Black Ops Zombies mobile roster", async () => {
+  const root = new URL("../content/levels/bo-z-ios/", import.meta.url);
+  const files = (await readdir(root)).sort();
+
+  assert.deepEqual(files, [
+    "ascension.ref.md",
+    "call-of-the-dead.ref.md",
+    "dead-ops-arcade.ref.md",
+    "kino-der-toten.ref.md",
+    "tutorial.md",
+  ]);
+
+  const tutorial = await readFile(new URL("tutorial.md", root), "utf8");
+  assert.match(tutorial, /^id: bo-z-ios-tutorial$/m);
+  assert.match(tutorial, /^  variantOf: bo-kino-der-toten$/m);
+  assert.doesNotMatch(tutorial, /^locations:/m);
+
+  const references = Object.fromEntries(await Promise.all(files
+    .filter((filename) => filename.endsWith(".ref.md"))
+    .map(async (filename) => [filename, await readFile(new URL(filename, root), "utf8")])));
+  assert.deepEqual(
+    Object.fromEntries(Object.entries(references).map(([filename, contents]) => [
+      filename,
+      contents.match(/^level: (.+)$/m)?.[1],
+    ])),
+    {
+      "ascension.ref.md": "bo-ascension",
+      "call-of-the-dead.ref.md": "bo-call-of-the-dead",
+      "dead-ops-arcade.ref.md": "bo-dead-ops-arcade",
+      "kino-der-toten.ref.md": "bo-kino-der-toten",
+    },
+  );
+
+  const directorsCut = references["call-of-the-dead.ref.md"];
+  assert.match(directorsCut, /^level: bo-call-of-the-dead$/m);
+  assert.match(directorsCut, /^title: "Call of the Dead: Director's Cut"$/m);
+});
+
 test("catalogues the complete Modern Warfare: Mobilized roster", async () => {
   const root = new URL("../content/levels/mw2-nds/", import.meta.url);
   const campaignFiles = await readdir(new URL("campaign/", root));
@@ -306,7 +344,7 @@ test("serves the hosted atlas with fixture data", async () => {
   assert.match(html, /https:\/\/www\.google\.com\/maps\/search\/\?api=1(?:&|&amp;)query=-22\.9068%2C-43\.1729/);
 });
 
-test("compiles the atlas output contract from fixture content", async () => {
+test("compiles the atlas output contract with filenames independent from level IDs", async () => {
   const fixtureRoot = fileURLToPath(new URL("../test-fixtures/compiled-atlas/", import.meta.url));
   const compilerPath = fileURLToPath(new URL("../scripts/build-atlas-data.mjs", import.meta.url));
   const temporaryRoot = await mkdtemp(path.join(tmpdir(), "cod-atlas-compiled-fixture-"));

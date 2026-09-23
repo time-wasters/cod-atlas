@@ -1,0 +1,14 @@
+{
+  "id": "codwiki-zone-7",
+  "fandomPageId": 799783,
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Zone_7",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Zone_7",
+  "latestRevisionId": 2997519,
+  "importedAt": "2026-09-23T21:59:04.569Z",
+  "levelLocation": { "raw": null, "label": null, "url": null },
+  "mapStyle": "zombies",
+  "mapStyleDetail": "Undead Siege and Battle Royale",
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "The Wiki lists Zone 7 for both Undead Siege and Battle Royale; curated level records preserve both modes.",
+  "rawPayload": { "revisionTimestamp": "2026-04-26T11:58:15Z", "revisionSha1": "bfb5e6f76e4ae9884d21a3cb845a3882352050ca", "resolvedTitle": "Zone 7" }
+}

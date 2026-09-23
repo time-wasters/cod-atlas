@@ -55,10 +55,10 @@ Create a Markdown file under the primary game's directory. If that game is
 already organized by map type, place it in `campaign/`, `multiplayer/`,
 `special-ops/`, `survival/`, `zombies/`, or `challenge/` according to its mode and subtype.
 Currently `cod`,
-`cod-uo`, `cod-fh`, `cod2`, `cod2-bro`, `cod3`, `rtv`, `cod4`, `cod4-nds`, `waw-nds`, `mw2`, `mw3`,
+`cod-uo`, `cod-fh`, `cod2`, `cod2-bro`, `cod3`, `rtv`, `cod4`, `cod4-nds`, `waw-nds`, `mw2`, `mw3`, `online`,
 `bo-nds`, `mw3-nds`, `bo-d`, `wz`, `wz2`, `mwiii`, `bo7`, and `mw4` use the first two folders; `mw2`, `mw3`, and `bo7`
 use `special-ops/` for `mode: other`, `modeSub: special-ops` records, while
-`waw`, `bo`, `bo-nds`, `bo6`, and `bo7` also use `zombies/`.
+`waw`, `bo`, `bo-nds`, `online`, `bo6`, and `bo7` also use `zombies/`.
 BO7 Endgame is an Other/Special Ops record distinguished by
 `metadata.activityType: endgame`.
 `mw2-nds` uses `survival/` for Survival maps, and `waw-nds` also uses
@@ -66,13 +66,13 @@ BO7 Endgame is an Other/Special Ops record distinguished by
 have not been reorganized retain their existing flat layout.
 
 Campaign files in a map-type layout are named
-`<order>-<level-slug>.md`, starting at `1` without leading zeros or gaps.
+`<order>-<descriptive-name>.md`, starting at `1` without leading zeros or gaps.
 Multiplayer, Special Ops, Survival, Zombies, Challenge, and flat-layout files use
-`<level-slug>.md`. Never repeat the primary game ID or include the campaign
-order in the stable ID. For example,
-an `id` of `cod3-example-level` belongs at
-`content/levels/cod3/example-level.md` while `cod-example-level` could belong
-at `content/levels/cod/campaign/27-example-level.md`.
+`<descriptive-name>.md`. The filename organizes the source tree and does not
+define or need to match the stable level ID. Never include the campaign order
+in the stable ID. For example, an `id` of `cod3-example-level` may live at
+`content/levels/cod3/river-crossing.md`, while `cod-example-level` could live
+at `content/levels/cod/campaign/27-final-assault.md`.
 
 ```md
 ---
@@ -103,7 +103,7 @@ Add a game YAML file only when its referenced game does not already exist. Add
 or reference a separate Wiki import JSON record for `wikiArticle`.
 
 If the same level also appears in another game without material geographic or
-playable-layout changes, add `<level-slug>.ref.md` under that game's directory
+playable-layout changes, add `<descriptive-name>.ref.md` under that game's directory
 instead of putting several IDs in `games`. A reference contains only
 `level: <canonical-level-id>` plus optional appearance-specific `title`,
 `wikiArticle`, `campaign`, `metadata`, or Markdown notes. Missing values and

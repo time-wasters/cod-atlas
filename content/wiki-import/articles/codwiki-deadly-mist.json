@@ -1,0 +1,18 @@
+{
+  "id": "codwiki-deadly-mist",
+  "fandomPageId": 612925,
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Deadly_Mist",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Deadly_Mist",
+  "latestRevisionId": 3027926,
+  "importedAt": "2026-09-23T20:53:42.462Z",
+  "levelLocation": { "raw": null, "label": null, "url": null },
+  "mapStyle": "singleplayer",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas from the Wiki's campaign roster; verify during the next import.",
+  "rawPayload": {
+    "revisionTimestamp": "2026-09-19T01:10:31Z",
+    "revisionSha1": "1e7ef9bc7d9501b55793c704de6bfeaab68617f2",
+    "resolvedTitle": "Deadly Mist"
+  }
+}

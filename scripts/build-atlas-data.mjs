@@ -495,8 +495,6 @@ for (const filename of levelFiles) {
   }
   const idPrefix = `${primaryGame}-`;
   requireValue(level.id.startsWith(idPrefix), `${filename}: level id must start with primary game ${idPrefix}`);
-  const levelSlug = level.id.slice(idPrefix.length);
-  const levelSlugFilename = `${levelSlug}.md`;
   let campaignOrder = null;
   if (gamesWithMapTypeDirectories.has(primaryGame)) {
     const mapTypeDirectory = mapTypeDirectoryForLevel(level);
@@ -505,20 +503,16 @@ for (const filename of levelFiles) {
     if (mapTypeDirectory === "campaign") {
       const campaignFilename = path.basename(filename).match(/^([1-9]\d*)-(.+)\.md$/);
       requireValue(campaignFilename, `${filename}: campaign filename must start with a positive order number without leading zeros`);
-      requireValue(campaignFilename[2] === levelSlug, `${filename}: campaign filename must end with ${levelSlugFilename}`);
       campaignOrder = Number(campaignFilename[1]);
       requireValue(Number.isSafeInteger(campaignOrder), `${filename}: campaign order is too large`);
       if (!campaignOrdersByGame.has(primaryGame)) campaignOrdersByGame.set(primaryGame, new Map());
       const campaignOrders = campaignOrdersByGame.get(primaryGame);
       requireValue(!campaignOrders.has(campaignOrder), `${filename}: duplicate campaign order ${campaignOrder} for ${primaryGame}`);
       campaignOrders.set(campaignOrder, level.id);
-    } else {
-      const expectedFilename = path.join(expectedDirectory, levelSlugFilename);
-      requireValue(filename === expectedFilename, `${filename}: expected level path ${expectedFilename}`);
     }
   } else {
-    const expectedFilename = path.join(levelsRoot, primaryGame, levelSlugFilename);
-    requireValue(filename === expectedFilename, `${filename}: expected level path ${expectedFilename}`);
+    const expectedDirectory = path.join(levelsRoot, primaryGame);
+    requireValue(path.dirname(filename) === expectedDirectory, `${filename}: expected level directory ${expectedDirectory}`);
   }
   if (level.legacyIds != null) {
     requireValue(Array.isArray(level.legacyIds) && level.legacyIds.length, `${filename}: legacyIds must be a non-empty list`);
@@ -642,7 +636,6 @@ for (const filename of levelReferenceFiles) {
   requireValue(games.has(gameId), `${filename}: unknown appearance game ${gameId}`);
   requireValue(gameId !== level.games[0], `${filename}: the owner game uses the canonical level file, not a reference`);
   requireValue(!level.appearances.some((appearance) => appearance.gameId === gameId), `${filename}: duplicate ${gameId} appearance for ${level.id}`);
-  const levelSlug = level.id.slice(level.games[0].length + 1);
   const referenceFilename = parts.at(-1);
   let campaignOrder = null;
   if (gamesWithMapTypeDirectories.has(gameId)) {
@@ -651,13 +644,12 @@ for (const filename of levelReferenceFiles) {
     requireValue(parts[1] === mapTypeDirectory, `${filename}: expected ${mapTypeDirectory} directory for ${level.mode}`);
     if (mapTypeDirectory === "campaign") {
       const match = referenceFilename.match(/^([1-9]\d*)-(.+)\.ref\.md$/);
-      requireValue(match && match[2] === levelSlug, `${filename}: campaign appearance filename must be <order>-${levelSlug}.ref.md`);
+      requireValue(match, `${filename}: campaign appearance filename must start with a positive order number without leading zeros`);
       campaignOrder = Number(match[1]);
-    } else {
-      requireValue(referenceFilename === `${levelSlug}.ref.md`, `${filename}: expected filename ${levelSlug}.ref.md`);
+      requireValue(Number.isSafeInteger(campaignOrder), `${filename}: campaign appearance order is too large`);
     }
   } else {
-    requireValue(parts.length === 2 && referenceFilename === `${levelSlug}.ref.md`, `${filename}: expected appearance path ${gameId}/${levelSlug}.ref.md`);
+    requireValue(parts.length === 2, `${filename}: ${gameId} uses a flat level directory`);
   }
   if (reference.title != null) requireValue(typeof reference.title === "string" && reference.title.trim(), `${filename}: title must be a non-empty string`);
   if (reference.wikiArticle != null) requireValue(wikiArticles.has(reference.wikiArticle), `${filename}: unknown wikiArticle ${reference.wikiArticle}`);

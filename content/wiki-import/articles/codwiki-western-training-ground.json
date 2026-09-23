@@ -1,0 +1,14 @@
+{
+  "id": "codwiki-western-training-ground",
+  "fandomPageId": 813758,
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Western_Training_Ground",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Western_Training_Ground",
+  "latestRevisionId": 3026349,
+  "importedAt": "2026-09-23T21:59:04.569Z",
+  "levelLocation": { "raw": null, "label": null, "url": null },
+  "mapStyle": "multiplayer",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas from the Wiki's Call of Duty Online map roster.",
+  "rawPayload": { "revisionTimestamp": "2026-09-10T06:59:36Z", "revisionSha1": "f4b1ac2493ef15fe70d5e19b13c035eb1b0fb2b6", "resolvedTitle": "Western Training Ground" }
+}

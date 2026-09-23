@@ -84,6 +84,9 @@ export function LevelDetailsPanel({
       : entry.precision === "off-world"
         ? "Off-world location"
         : "No city evidence · country fallback";
+  const locationContextLabel = entry.method === "real-world-inspiration"
+    ? "Inspiration · "
+    : "";
   return (
     <div
       className={`intel-column${detailsOpen ? "" : " is-collapsed"}${detailsOpen && viewModel.briefingExpanded ? " has-open-briefing" : ""}`}
@@ -140,7 +143,7 @@ export function LevelDetailsPanel({
         </div>
         <LocationTaxonomy entry={entry} />
         <div className={`precision-badge ${entry.precision === "approximate" ? "is-approximate" : !["country", "off-world"].includes(entry.precision) ? "is-city" : "is-country"}`}>
-          {precisionLabel}
+          {locationContextLabel}{precisionLabel}
         </div>
         {viewModel.otherLocations.length > 0 && (
           <div className="related-level-locations" aria-label="Other locations in this level">

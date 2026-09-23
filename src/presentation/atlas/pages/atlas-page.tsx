@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { findRelatedLevels } from "../../../application/atlas/use-cases/find-related-levels.js";
+import { getGameModeAvailability } from "../../../application/atlas/use-cases/get-game-mode-availability.js";
 import {
   type CampaignOption,
 } from "../../../application/campaigns/use-cases/build-campaign-options.js";
@@ -142,6 +143,11 @@ export function AtlasPage({
   const intelCard = useRef<HTMLDivElement>(null);
   const getMapDetailsElement = useCallback(() => intelCard.current, []);
   const openGameCatalog = useCallback(() => gameCatalogDialog.current?.showModal(), []);
+  const gameModeAvailability = useMemo(() => getGameModeAvailability({
+    gameCode: game,
+    games: data.games,
+    groups: data.groups,
+  }), [data.games, data.groups, game]);
 
   const {
     countries,
@@ -162,10 +168,10 @@ export function AtlasPage({
       precisions,
       confidences,
       methods,
-      showSingleplayer,
-      showMultiplayer,
-      showZombies,
-      showOther,
+      showSingleplayer: showSingleplayer && gameModeAvailability.singleplayer,
+      showMultiplayer: showMultiplayer && gameModeAvailability.multiplayer,
+      showZombies: showZombies && gameModeAvailability.zombies,
+      showOther: showOther && gameModeAvailability.other,
     },
   });
   const groups = data.groups;
@@ -509,6 +515,7 @@ export function AtlasPage({
     countries,
     filteredGroups: filtered,
     filters,
+    gameModeAvailability,
     games,
     handlers: {
       finishSearchUpdate,

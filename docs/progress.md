@@ -30,11 +30,11 @@ Other combines records with the `special-ops`, `survival`, and `challenge` subty
 <!-- research-progress:start -->
 | Scope | Researched | Remaining |
 | --- | ---: | ---: |
-| All currently catalogued levels | 262 / 1453 (18%) | 1191 / 1453 (82%) |
-| Campaign levels | 168 / 499 (34%) | 331 / 499 (66%) |
-| Multiplayer maps | 94 / 806 (12%) | 712 / 806 (88%) |
-| Zombies maps | 0 / 41 (0%) | 41 / 41 (100%) |
-| Other levels | 0 / 107 (0%) | 107 / 107 (100%) |
+| All currently catalogued levels | 266 / 1531 (17%) | 1265 / 1531 (83%) |
+| Campaign levels | 168 / 529 (32%) | 361 / 529 (68%) |
+| Multiplayer maps | 94 / 835 (11%) | 741 / 835 (89%) |
+| Zombies maps | 3 / 56 (5%) | 53 / 56 (95%) |
+| Other levels | 1 / 111 (1%) | 110 / 111 (99%) |
 
 | Game | Campaign | Multiplayer | Zombies | Other | Overall |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -51,10 +51,14 @@ Other combines records with the `special-ops`, `survival`, and `challenge` subty
 | World at War (Nintendo DS) | 0 / 26 (0%) | 0 / 11 (0%) | — | 0 / 30 (0%) | 0 / 67 (0%) |
 | World at War: Final Fronts | 0 / 13 (0%) | — | — | — | 0 / 13 (0%) |
 | Modern Warfare 2 (2009) | 0 / 19 (0%) | 0 / 22 (0%) | — | 0 / 23 (0%) | 0 / 64 (0%) |
-| Black Ops | 0 / 15 (0%) | 1 / 26 (4%) | 0 / 6 (0%) | — | 1 / 47 (2%) |
+| Modern Warfare: Mobilized (Nintendo DS) | 0 / 17 (0%) | 0 / 8 (0%) | — | 0 / 4 (0%) | 0 / 29 (0%) |
+| World at War - Zombies (iOS) | — | — | 1 / 1 (100%) | — | 1 / 1 (100%) |
+| Black Ops | 0 / 15 (0%) | 1 / 26 (4%) | 1 / 7 (14%) | — | 2 / 48 (4%) |
 | Black Ops (Nintendo DS) | 1 / 18 (6%) | 0 / 12 (0%) | 0 / 4 (0%) | — | 1 / 34 (3%) |
 | Modern Warfare 3 (2011) | 0 / 18 (0%) | 0 / 35 (0%) | — | 0 / 53 (0%) | 0 / 106 (0%) |
-| MW3: Defiance | 0 / 14 (0%) | 0 / 14 (0%) | — | — | 0 / 28 (0%) |
+| Modern Warfare 3: Defiance | 0 / 14 (0%) | 0 / 14 (0%) | — | — | 0 / 28 (0%) |
+| Black Ops - Zombies (iOS) | — | — | 1 / 1 (100%) | — | 1 / 1 (100%) |
+| Call of Duty Online | 0 / 13 (0%) | 0 / 21 (0%) | 0 / 12 (0%) | — | 0 / 46 (0%) |
 | Black Ops II | 0 / 17 (0%) | 0 / 31 (0%) | 0 / 6 (0%) | — | 0 / 54 (0%) |
 | Black Ops: Declassified | 0 / 10 (0%) | 0 / 6 (0%) | — | — | 0 / 16 (0%) |
 | Ghosts | 1 / 18 (6%) | 0 / 33 (0%) | — | — | 1 / 51 (2%) |
@@ -72,7 +76,7 @@ Other combines records with the `special-ops`, `survival`, and `challenge` subty
 | Warzone 2.0 | — | 0 / 3 (0%) | — | — | 0 / 3 (0%) |
 | Modern Warfare III (2023) | 0 / 14 (0%) | 0 / 45 (0%) | — | — | 0 / 59 (0%) |
 | Black Ops 6 | 0 / 18 (0%) | 0 / 46 (0%) | 0 / 6 (0%) | — | 0 / 70 (0%) |
-| Black Ops 7 | 11 / 11 (100%) | 0 / 64 (0%) | 0 / 15 (0%) | 0 / 1 (0%) | 11 / 91 (12%) |
+| Black Ops 7 | 11 / 11 (100%) | 0 / 64 (0%) | 0 / 15 (0%) | 1 / 1 (100%) | 12 / 91 (13%) |
 | Modern Warfare 4 | 6 / 6 (100%) | 9 / 17 (53%) | — | — | 15 / 23 (65%) |
 <!-- research-progress:end -->
 
@@ -86,11 +90,11 @@ completed research structure or precise marker does not imply human review.
 <!-- human-verification-progress:start -->
 | Scope | Marker locations verified | Research notes verified |
 | --- | ---: | ---: |
-| All currently catalogued records | 5 / 1277 (0%) | 0 / 1453 (0%) |
-| Campaign records | 5 / 494 (1%) | 0 / 499 (0%) |
-| Multiplayer records | 0 / 661 (0%) | 0 / 806 (0%) |
-| Zombies records | 0 / 17 (0%) | 0 / 41 (0%) |
-| Other records | 0 / 105 (0%) | 0 / 107 (0%) |
+| All currently catalogued records | 5 / 1290 (0%) | 0 / 1531 (0%) |
+| Campaign records | 5 / 495 (1%) | 0 / 529 (0%) |
+| Multiplayer records | 0 / 666 (0%) | 0 / 835 (0%) |
+| Zombies records | 0 / 23 (0%) | 0 / 56 (0%) |
+| Other records | 0 / 106 (0%) | 0 / 111 (0%) |
 
 | Game | Marker locations verified | Research notes verified |
 | --- | ---: | ---: |
@@ -107,10 +111,14 @@ completed research structure or precise marker does not imply human review.
 | World at War (Nintendo DS) | 0 / 65 (0%) | 0 / 67 (0%) |
 | World at War: Final Fronts | 0 / 14 (0%) | 0 / 13 (0%) |
 | Modern Warfare 2 (2009) | 0 / 64 (0%) | 0 / 64 (0%) |
-| Black Ops | 0 / 48 (0%) | 0 / 47 (0%) |
+| Modern Warfare: Mobilized (Nintendo DS) | — | 0 / 29 (0%) |
+| World at War - Zombies (iOS) | 0 / 1 (0%) | 0 / 1 (0%) |
+| Black Ops | 0 / 48 (0%) | 0 / 48 (0%) |
 | Black Ops (Nintendo DS) | 2 / 20 (10%) | 0 / 34 (0%) |
 | Modern Warfare 3 (2011) | 0 / 107 (0%) | 0 / 106 (0%) |
-| MW3: Defiance | 0 / 19 (0%) | 0 / 28 (0%) |
+| Modern Warfare 3: Defiance | 0 / 19 (0%) | 0 / 28 (0%) |
+| Black Ops - Zombies (iOS) | 0 / 1 (0%) | 0 / 1 (0%) |
+| Call of Duty Online | 0 / 8 (0%) | 0 / 46 (0%) |
 | Black Ops II | 0 / 54 (0%) | 0 / 54 (0%) |
 | Black Ops: Declassified | 0 / 16 (0%) | 0 / 16 (0%) |
 | Ghosts | 0 / 52 (0%) | 0 / 51 (0%) |
@@ -128,7 +136,7 @@ completed research structure or precise marker does not imply human review.
 | Warzone 2.0 | 0 / 3 (0%) | 0 / 3 (0%) |
 | Modern Warfare III (2023) | 0 / 56 (0%) | 0 / 59 (0%) |
 | Black Ops 6 | — | 0 / 70 (0%) |
-| Black Ops 7 | 0 / 16 (0%) | 0 / 91 (0%) |
+| Black Ops 7 | 0 / 19 (0%) | 0 / 91 (0%) |
 | Modern Warfare 4 | 0 / 15 (0%) | 0 / 23 (0%) |
 <!-- human-verification-progress:end -->
 
@@ -145,19 +153,19 @@ The per-game table assigns each marker to its canonical level's owner game.
 <!-- localization-progress:start -->
 | Scope | Localized | Country fallback | Off-world |
 | --- | ---: | ---: | ---: |
-| All marker locations | 483 / 1247 (39%) | 764 / 1247 (61%) | 30 |
-| Campaign marker locations | 201 / 477 (42%) | 276 / 477 (58%) | 17 |
-| Multiplayer marker locations | 207 / 649 (32%) | 442 / 649 (68%) | 12 |
-| Zombies marker locations | 1 / 16 (6%) | 15 / 16 (94%) | 1 |
-| Other marker locations | 74 / 105 (70%) | 31 / 105 (30%) | 0 |
+| All marker locations | 493 / 1260 (39%) | 767 / 1260 (61%) | 30 |
+| Campaign marker locations | 204 / 478 (43%) | 274 / 478 (57%) | 17 |
+| Multiplayer marker locations | 213 / 654 (33%) | 441 / 654 (67%) | 12 |
+| Zombies marker locations | 1 / 22 (5%) | 21 / 22 (95%) | 1 |
+| Other marker locations | 75 / 106 (71%) | 31 / 106 (29%) | 0 |
 
 | Precision | Marker locations | Share of all markers |
 | --- | ---: | ---: |
-| Exact | 105 | 8% |
-| Approximate | 189 | 15% |
-| City | 140 | 11% |
-| Region | 49 | 4% |
-| Country | 764 | 60% |
+| Exact | 109 | 8% |
+| Approximate | 194 | 15% |
+| City | 144 | 11% |
+| Region | 46 | 4% |
+| Country | 767 | 59% |
 | Off-world | 30 | 2% |
 
 | Game | Campaign | Multiplayer | Zombies | Other | Overall |
@@ -175,10 +183,13 @@ The per-game table assigns each marker to its canonical level's owner game.
 | World at War (Nintendo DS) | 18 / 26 (69%) | 6 / 9 (67%) | — | 22 / 30 (73%) | 46 / 65 (71%) |
 | World at War: Final Fronts | 7 / 14 (50%) | — | — | — | 7 / 14 (50%) |
 | Modern Warfare 2 (2009) | 1 / 18 (6%) | 22 / 22 (100%) | — | 10 / 23 (43%) | 33 / 63 (52%) |
+| World at War - Zombies (iOS) | — | — | 0 / 1 (0%) | — | 0 / 1 (0%) |
 | Black Ops | 1 / 16 (6%) | 3 / 26 (12%) | 1 / 5 (20%) | — | 5 / 47 (11%) |
 | Black Ops (Nintendo DS) | 3 / 18 (17%) | 0 / 1 (0%) | 0 / 1 (0%) | — | 3 / 20 (15%) |
 | Modern Warfare 3 (2011) | 0 / 21 (0%) | 32 / 34 (94%) | — | 42 / 52 (81%) | 74 / 107 (69%) |
-| MW3: Defiance | 0 / 14 (0%) | 1 / 5 (20%) | — | — | 1 / 19 (5%) |
+| Modern Warfare 3: Defiance | 0 / 14 (0%) | 1 / 5 (20%) | — | — | 1 / 19 (5%) |
+| Black Ops - Zombies (iOS) | — | — | 0 / 1 (0%) | — | 0 / 1 (0%) |
+| Call of Duty Online | — | 4 / 4 (100%) | 0 / 4 (0%) | — | 4 / 8 (50%) |
 | Black Ops II | 0 / 17 (0%) | 1 / 31 (3%) | 0 / 6 (0%) | — | 1 / 54 (2%) |
 | Black Ops: Declassified | 0 / 10 (0%) | 3 / 6 (50%) | — | — | 3 / 16 (19%) |
 | Ghosts | 1 / 17 (6%) | 2 / 33 (6%) | — | — | 3 / 50 (6%) |
@@ -195,6 +206,6 @@ The per-game table assigns each marker to its canonical level's owner game.
 | Modern Warfare II (2022) | 0 / 19 (0%) | 0 / 20 (0%) | — | — | 0 / 39 (0%) |
 | Warzone 2.0 | — | 0 / 3 (0%) | — | — | 0 / 3 (0%) |
 | Modern Warfare III (2023) | 0 / 14 (0%) | 0 / 42 (0%) | — | — | 0 / 56 (0%) |
-| Black Ops 7 | 12 / 14 (86%) | 1 / 2 (50%) | — | — | 13 / 16 (81%) |
+| Black Ops 7 | 15 / 15 (100%) | 3 / 3 (100%) | — | 1 / 1 (100%) | 19 / 19 (100%) |
 | Modern Warfare 4 | 3 / 6 (50%) | 5 / 9 (56%) | — | — | 8 / 15 (53%) |
 <!-- localization-progress:end -->

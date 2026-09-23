@@ -1,4 +1,5 @@
 import type { CountryAvailability } from "../../../application/atlas/use-cases/filter-atlas-groups.js";
+import type { GameModeAvailability } from "../../../application/atlas/use-cases/get-game-mode-availability.js";
 import type { CampaignOption } from "../../../application/campaigns/use-cases/build-campaign-options.js";
 import type { ContentUpdateOption } from "../../../application/content-updates/use-cases/build-content-update-options.js";
 import type { AtlasEntryDto } from "../../../infrastructure/atlas-data/dto/atlas-entry.dto.js";
@@ -20,6 +21,7 @@ export function useAtlasSidebarViewModel({
   countries,
   filteredGroups,
   filters,
+  gameModeAvailability,
   games,
   handlers,
   mode,
@@ -34,6 +36,7 @@ export function useAtlasSidebarViewModel({
   countries: CountryAvailability[];
   filteredGroups: AtlasGroupDto[];
   filters: AtlasFilters;
+  gameModeAvailability: GameModeAvailability;
   games: GameDto[];
   handlers: {
     finishSearchUpdate: () => void;
@@ -125,7 +128,8 @@ export function useAtlasSidebarViewModel({
       {
         mode: "singleplayer" as const,
         label: "Campaign",
-        visible: filters.showSingleplayer,
+        visible: filters.showSingleplayer && gameModeAvailability.singleplayer,
+        disabled: !gameModeAvailability.singleplayer,
         onToggle: () => {
           pushHistory();
           filters.setShowSingleplayer((visible) => !visible);
@@ -134,7 +138,8 @@ export function useAtlasSidebarViewModel({
       {
         mode: "multiplayer" as const,
         label: "Multiplayer",
-        visible: filters.showMultiplayer,
+        visible: filters.showMultiplayer && gameModeAvailability.multiplayer,
+        disabled: !gameModeAvailability.multiplayer,
         onToggle: () => {
           pushHistory();
           filters.setShowMultiplayer((visible) => !visible);
@@ -143,7 +148,8 @@ export function useAtlasSidebarViewModel({
       {
         mode: "zombies" as const,
         label: "Zombies",
-        visible: filters.showZombies,
+        visible: filters.showZombies && gameModeAvailability.zombies,
+        disabled: !gameModeAvailability.zombies,
         onToggle: () => {
           pushHistory();
           filters.setShowZombies((visible) => !visible);
@@ -152,7 +158,8 @@ export function useAtlasSidebarViewModel({
       {
         mode: "other" as const,
         label: "Other",
-        visible: filters.showOther,
+        visible: filters.showOther && gameModeAvailability.other,
+        disabled: !gameModeAvailability.other,
         onToggle: () => {
           pushHistory();
           filters.setShowOther((visible) => !visible);

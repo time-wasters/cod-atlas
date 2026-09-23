@@ -1,0 +1,18 @@
+{
+  "id": "codwiki-identity-unknown",
+  "fandomPageId": 598844,
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Identity_Unknown",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Identity_Unknown",
+  "latestRevisionId": 3025932,
+  "importedAt": "2026-09-23T20:53:42.462Z",
+  "levelLocation": { "raw": "Freighter", "label": "Freighter", "url": null },
+  "mapStyle": "singleplayer",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas from the Wiki's campaign roster; verify during the next import.",
+  "rawPayload": {
+    "revisionTimestamp": "2026-09-08T03:18:11Z",
+    "revisionSha1": "71b1e81da004ab33532945a79ba6544cb9de787b",
+    "resolvedTitle": "Identity Unknown"
+  }
+}

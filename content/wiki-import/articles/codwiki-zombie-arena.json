@@ -1,0 +1,14 @@
+{
+  "id": "codwiki-zombie-arena",
+  "fandomPageId": 802677,
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Zombie_Arena",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Zombie_Arena",
+  "latestRevisionId": 3027452,
+  "importedAt": "2026-09-23T21:59:04.569Z",
+  "levelLocation": { "raw": null, "label": null, "url": null },
+  "mapStyle": "zombies",
+  "mapStyleDetail": "Ultra Zombies",
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas from the Wiki's Call of Duty Online Zombies roster.",
+  "rawPayload": { "revisionTimestamp": "2026-09-17T19:07:15Z", "revisionSha1": "eb21f37b39457a519874a878eb1ac8af0ba25a09", "resolvedTitle": "Zombie Arena" }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "codwiki-new-world-online",
+  "fandomPageId": 814813,
+  "sourceUrl": "https://callofduty.fandom.com/wiki/New_World_(Online)",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/New_World_(Online)",
+  "latestRevisionId": 3027902,
+  "importedAt": "2026-09-23T20:53:42.462Z",
+  "levelLocation": { "raw": null, "label": null, "url": null },
+  "mapStyle": "singleplayer",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas from the Wiki's campaign roster; verify during the next import.",
+  "rawPayload": {
+    "revisionTimestamp": "2026-09-19T00:35:34Z",
+    "revisionSha1": "af92cbf171a97a8bb1b42e2ca0186ca4a4466fa3",
+    "resolvedTitle": "New World (Online)"
+  }
+}
