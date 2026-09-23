@@ -10,9 +10,9 @@ ignored artifacts. Without host npm, use the documented Docker commands.
 | Record | Source path | Template |
 | --- | --- | --- |
 | Game | `content/games/<game-id>.yaml` | [game.yaml](templates/game.yaml) |
-| Terrestrial level | `content/levels/<primary-game>/<level-slug>.md` or the game's map-type directory | [level-terrestrial.md](templates/level-terrestrial.md) |
-| Off-world level | `content/levels/<primary-game>/<level-slug>.md` or the game's map-type directory | [level-off-world.md](templates/level-off-world.md) |
-| Level appearance | `content/levels/<appearance-game>/<level-slug>.ref.md` or the game's map-type directory | create the minimal reference shown below |
+| Terrestrial level | `content/levels/<primary-game>/<descriptive-name>.md` or the game's map-type directory | [level-terrestrial.md](templates/level-terrestrial.md) |
+| Off-world level | `content/levels/<primary-game>/<descriptive-name>.md` or the game's map-type directory | [level-off-world.md](templates/level-off-world.md) |
+| Level appearance | `content/levels/<appearance-game>/<descriptive-name>.ref.md` or the game's map-type directory | create the minimal reference shown below |
 | Wiki import | `content/wiki-import/articles/<article-id>.json` | [wiki-article.json](templates/wiki-article.json) |
 
 Most contributions only change a level. Add a game only if it does not exist,
@@ -25,9 +25,10 @@ AI-assisted map research must follow the
 source standards, coordinate-selection rules, Google Maps URL format, AI
 disclosure and required Markdown headings.
 
-The primary-game directory supplies the filename's game prefix. For example,
-the level ID `cod3-laison-river` belongs at
-`content/levels/cod3/laison-river.md`, not `cod3/cod3-laison-river.md`.
+The primary-game directory identifies the owning game. The descriptive
+filename is independent from the stable ID; the compiler resolves identity
+from the frontmatter. For example, the level ID `cod3-laison-river` may live at
+`content/levels/cod3/river-crossing.md`.
 
 Map-type directories are being introduced one game at a time. A reorganized
 game must use them for every level: `campaign/` contains records with
@@ -48,11 +49,11 @@ reorganized. These directory names describe broad map types, not multiplayer
 rule sets such as deathmatch or capture the flag.
 
 Within a map-type layout, campaign filenames are
-`<order>-<level-slug>.md`. Orders start at `1`, use no leading zeros, and must
+`<order>-<descriptive-name>.md`. Orders start at `1`, use no leading zeros, and must
 be unique and contiguous so they describe the sequence in which the levels are
 played. Multiplayer, Special Ops, Survival, Zombies, and Challenge filenames remain
-`<level-slug>.md`. The order prefix is filesystem metadata only: do not add it
-to the stable level `id` or title.
+`<descriptive-name>.md`. The filename is filesystem metadata and does not need
+to match the stable level `id`; do not add the campaign order to the ID or title.
 
 ## Game fields
 

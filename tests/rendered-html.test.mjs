@@ -344,7 +344,7 @@ test("serves the hosted atlas with fixture data", async () => {
   assert.match(html, /https:\/\/www\.google\.com\/maps\/search\/\?api=1(?:&|&amp;)query=-22\.9068%2C-43\.1729/);
 });
 
-test("compiles the atlas output contract from fixture content", async () => {
+test("compiles the atlas output contract with filenames independent from level IDs", async () => {
   const fixtureRoot = fileURLToPath(new URL("../test-fixtures/compiled-atlas/", import.meta.url));
   const compilerPath = fileURLToPath(new URL("../scripts/build-atlas-data.mjs", import.meta.url));
   const temporaryRoot = await mkdtemp(path.join(tmpdir(), "cod-atlas-compiled-fixture-"));

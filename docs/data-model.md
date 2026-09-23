@@ -79,15 +79,15 @@ Level files use one of two directory layouts while map-type folders are rolled
 out incrementally:
 
 ```text
-content/levels/<primary-game>/<level-slug>.md
-content/levels/<primary-game>/campaign/<order>-<level-slug>.md
-content/levels/<primary-game>/multiplayer/<level-slug>.md
-content/levels/<primary-game>/special-ops/<level-slug>.md
-content/levels/<primary-game>/survival/<level-slug>.md
-content/levels/<primary-game>/zombies/<level-slug>.md
-content/levels/<primary-game>/challenge/<level-slug>.md
-content/levels/<appearance-game>/<level-slug>.ref.md
-content/levels/<appearance-game>/<map-type>/<level-slug>.ref.md
+content/levels/<primary-game>/<descriptive-name>.md
+content/levels/<primary-game>/campaign/<order>-<descriptive-name>.md
+content/levels/<primary-game>/multiplayer/<descriptive-name>.md
+content/levels/<primary-game>/special-ops/<descriptive-name>.md
+content/levels/<primary-game>/survival/<descriptive-name>.md
+content/levels/<primary-game>/zombies/<descriptive-name>.md
+content/levels/<primary-game>/challenge/<descriptive-name>.md
+content/levels/<appearance-game>/<descriptive-name>.ref.md
+content/levels/<appearance-game>/<map-type>/<descriptive-name>.ref.md
 ```
 
 A game must use one layout consistently. `cod`, `cod-uo`, `cod-fh`, `cod2`,
@@ -108,7 +108,8 @@ are distinct from multiplayer rule sets such as deathmatch or capture the flag.
 
 Campaign orders start at `1`, have no leading zeros, and must be unique and
 contiguous within their game. The prefix records play order without becoming
-part of the stable level `id` or display title.
+part of the stable level `id` or display title. The remaining descriptive
+filename is source-tree organization only and does not need to match an ID.
 
 A full `.md` file is the canonical record and owns the stable ID, mode, mode
 subtype, overlays, and canonical research. It normally embeds its locations,
