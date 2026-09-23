@@ -6,6 +6,6 @@ games:
 mode: singleplayer
 wikiArticle: codwiki-recruit-training-camp
 locations: []
-metadata:
-  availability: Alpha-only cut content
 ---
+
+Alpha-only cut content

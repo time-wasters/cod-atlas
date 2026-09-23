@@ -1,0 +1,14 @@
+{
+  "id": "codwiki-royal-gardens",
+  "fandomPageId": 813771,
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Royal_Gardens",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Royal_Gardens",
+  "latestRevisionId": 3024494,
+  "importedAt": "2026-09-23T21:59:04.569Z",
+  "levelLocation": { "raw": "New York City, New York, United States", "label": "New York City, New York, United States", "url": null },
+  "mapStyle": "multiplayer",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas from the Wiki's Call of Duty Online map roster.",
+  "rawPayload": { "revisionTimestamp": "2026-08-30T23:07:14Z", "revisionSha1": "a2fb74f691c8f41aedbd9df4df8724318a8797af", "resolvedTitle": "Royal Gardens" }
+}

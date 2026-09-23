@@ -30,10 +30,10 @@ Other combines records with the `special-ops`, `survival`, and `challenge` subty
 <!-- research-progress:start -->
 | Scope | Researched | Remaining |
 | --- | ---: | ---: |
-| All currently catalogued levels | 266 / 1498 (18%) | 1232 / 1498 (82%) |
+| All currently catalogued levels | 266 / 1531 (17%) | 1265 / 1531 (83%) |
 | Campaign levels | 168 / 529 (32%) | 361 / 529 (68%) |
-| Multiplayer maps | 94 / 814 (12%) | 720 / 814 (88%) |
-| Zombies maps | 3 / 44 (7%) | 41 / 44 (93%) |
+| Multiplayer maps | 94 / 835 (11%) | 741 / 835 (89%) |
+| Zombies maps | 3 / 56 (5%) | 53 / 56 (95%) |
 | Other levels | 1 / 111 (1%) | 110 / 111 (99%) |
 
 | Game | Campaign | Multiplayer | Zombies | Other | Overall |
@@ -58,7 +58,7 @@ Other combines records with the `special-ops`, `survival`, and `challenge` subty
 | Modern Warfare 3 (2011) | 0 / 18 (0%) | 0 / 35 (0%) | — | 0 / 53 (0%) | 0 / 106 (0%) |
 | Modern Warfare 3: Defiance | 0 / 14 (0%) | 0 / 14 (0%) | — | — | 0 / 28 (0%) |
 | Black Ops - Zombies (iOS) | — | — | 1 / 1 (100%) | — | 1 / 1 (100%) |
-| Call of Duty Online | 0 / 13 (0%) | — | — | — | 0 / 13 (0%) |
+| Call of Duty Online | 0 / 13 (0%) | 0 / 21 (0%) | 0 / 12 (0%) | — | 0 / 46 (0%) |
 | Black Ops II | 0 / 17 (0%) | 0 / 31 (0%) | 0 / 6 (0%) | — | 0 / 54 (0%) |
 | Black Ops: Declassified | 0 / 10 (0%) | 0 / 6 (0%) | — | — | 0 / 16 (0%) |
 | Ghosts | 1 / 18 (6%) | 0 / 33 (0%) | — | — | 1 / 51 (2%) |
@@ -90,10 +90,10 @@ completed research structure or precise marker does not imply human review.
 <!-- human-verification-progress:start -->
 | Scope | Marker locations verified | Research notes verified |
 | --- | ---: | ---: |
-| All currently catalogued records | 5 / 1282 (0%) | 0 / 1498 (0%) |
+| All currently catalogued records | 5 / 1290 (0%) | 0 / 1531 (0%) |
 | Campaign records | 5 / 495 (1%) | 0 / 529 (0%) |
-| Multiplayer records | 0 / 662 (0%) | 0 / 814 (0%) |
-| Zombies records | 0 / 19 (0%) | 0 / 44 (0%) |
+| Multiplayer records | 0 / 666 (0%) | 0 / 835 (0%) |
+| Zombies records | 0 / 23 (0%) | 0 / 56 (0%) |
 | Other records | 0 / 106 (0%) | 0 / 111 (0%) |
 
 | Game | Marker locations verified | Research notes verified |
@@ -118,7 +118,7 @@ completed research structure or precise marker does not imply human review.
 | Modern Warfare 3 (2011) | 0 / 107 (0%) | 0 / 106 (0%) |
 | Modern Warfare 3: Defiance | 0 / 19 (0%) | 0 / 28 (0%) |
 | Black Ops - Zombies (iOS) | 0 / 1 (0%) | 0 / 1 (0%) |
-| Call of Duty Online | — | 0 / 13 (0%) |
+| Call of Duty Online | 0 / 8 (0%) | 0 / 46 (0%) |
 | Black Ops II | 0 / 54 (0%) | 0 / 54 (0%) |
 | Black Ops: Declassified | 0 / 16 (0%) | 0 / 16 (0%) |
 | Ghosts | 0 / 52 (0%) | 0 / 51 (0%) |
@@ -153,19 +153,19 @@ The per-game table assigns each marker to its canonical level's owner game.
 <!-- localization-progress:start -->
 | Scope | Localized | Country fallback | Off-world |
 | --- | ---: | ---: | ---: |
-| All marker locations | 489 / 1252 (39%) | 763 / 1252 (61%) | 30 |
+| All marker locations | 493 / 1260 (39%) | 767 / 1260 (61%) | 30 |
 | Campaign marker locations | 204 / 478 (43%) | 274 / 478 (57%) | 17 |
-| Multiplayer marker locations | 209 / 650 (32%) | 441 / 650 (68%) | 12 |
-| Zombies marker locations | 1 / 18 (6%) | 17 / 18 (94%) | 1 |
+| Multiplayer marker locations | 213 / 654 (33%) | 441 / 654 (67%) | 12 |
+| Zombies marker locations | 1 / 22 (5%) | 21 / 22 (95%) | 1 |
 | Other marker locations | 75 / 106 (71%) | 31 / 106 (29%) | 0 |
 
 | Precision | Marker locations | Share of all markers |
 | --- | ---: | ---: |
-| Exact | 109 | 9% |
-| Approximate | 190 | 15% |
+| Exact | 109 | 8% |
+| Approximate | 194 | 15% |
 | City | 144 | 11% |
 | Region | 46 | 4% |
-| Country | 763 | 60% |
+| Country | 767 | 59% |
 | Off-world | 30 | 2% |
 
 | Game | Campaign | Multiplayer | Zombies | Other | Overall |
@@ -189,6 +189,7 @@ The per-game table assigns each marker to its canonical level's owner game.
 | Modern Warfare 3 (2011) | 0 / 21 (0%) | 32 / 34 (94%) | — | 42 / 52 (81%) | 74 / 107 (69%) |
 | Modern Warfare 3: Defiance | 0 / 14 (0%) | 1 / 5 (20%) | — | — | 1 / 19 (5%) |
 | Black Ops - Zombies (iOS) | — | — | 0 / 1 (0%) | — | 0 / 1 (0%) |
+| Call of Duty Online | — | 4 / 4 (100%) | 0 / 4 (0%) | — | 4 / 8 (50%) |
 | Black Ops II | 0 / 17 (0%) | 1 / 31 (3%) | 0 / 6 (0%) | — | 1 / 54 (2%) |
 | Black Ops: Declassified | 0 / 10 (0%) | 3 / 6 (50%) | — | — | 3 / 16 (19%) |
 | Ghosts | 1 / 17 (6%) | 2 / 33 (6%) | — | — | 3 / 50 (6%) |

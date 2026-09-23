@@ -1,0 +1,14 @@
+{
+  "id": "codwiki-monastery",
+  "fandomPageId": 614879,
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Monastery",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Monastery",
+  "latestRevisionId": 3027730,
+  "importedAt": "2026-09-23T21:59:04.569Z",
+  "levelLocation": { "raw": "Greece", "label": "Greece", "url": null },
+  "mapStyle": "multiplayer",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas from the Wiki's Call of Duty Online map roster.",
+  "rawPayload": { "revisionTimestamp": "2026-09-18T20:38:34Z", "revisionSha1": "09164c31a76859db8c6280acaf2460d1ab7faaa7", "resolvedTitle": "Monastery" }
+}

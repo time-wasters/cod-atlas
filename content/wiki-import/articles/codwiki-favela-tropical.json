@@ -1,0 +1,14 @@
+{
+  "id": "codwiki-favela-tropical",
+  "fandomPageId": 556500,
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Favela_Tropical",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Favela_Tropical",
+  "latestRevisionId": 3027299,
+  "importedAt": "2026-09-23T21:59:04.569Z",
+  "levelLocation": { "raw": "Juarito", "label": "Juarito", "url": null },
+  "mapStyle": "multiplayer",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas from the Wiki's Call of Duty Online map roster.",
+  "rawPayload": { "revisionTimestamp": "2026-09-16T23:03:54Z", "revisionSha1": "957bda4802583e1ddc135310d92b1ffd50413282", "resolvedTitle": "Favela Tropical" }
+}

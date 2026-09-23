@@ -1,0 +1,14 @@
+{
+  "id": "codwiki-cyborg-lab",
+  "fandomPageId": 580496,
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Cyborg_Lab",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Cyborg_Lab",
+  "latestRevisionId": 3025485,
+  "importedAt": "2026-09-23T21:59:04.569Z",
+  "levelLocation": { "raw": "Research Institute - Suburban Area", "label": "Research Institute - Suburban Area", "url": null },
+  "mapStyle": "zombies",
+  "mapStyleDetail": "Cyborg Rising",
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas from the Wiki's Call of Duty Online Zombies roster.",
+  "rawPayload": { "revisionTimestamp": "2026-09-05T19:53:47Z", "revisionSha1": "0d20fd8144249e14b9734829576ffa80340cf125", "resolvedTitle": "Cyborg Lab" }
+}

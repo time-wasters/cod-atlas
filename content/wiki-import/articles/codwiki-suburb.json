@@ -1,0 +1,14 @@
+{
+  "id": "codwiki-suburb",
+  "fandomPageId": 634002,
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Suburb",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Suburb",
+  "latestRevisionId": 3023761,
+  "importedAt": "2026-09-23T21:59:04.569Z",
+  "levelLocation": { "raw": null, "label": null, "url": null },
+  "mapStyle": "zombies",
+  "mapStyleDetail": "Death March",
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas from the Wiki's Call of Duty Online Zombies roster.",
+  "rawPayload": { "revisionTimestamp": "2026-08-28T02:50:56Z", "revisionSha1": "8bf66cfbbaec9805d6468e1203e733136a18aef8", "resolvedTitle": "Suburb" }
+}

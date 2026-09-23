@@ -1,0 +1,14 @@
+{
+  "id": "codwiki-arsenal-online",
+  "fandomPageId": 613111,
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Arsenal_(Online)",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Arsenal_(Online)",
+  "latestRevisionId": 3023749,
+  "importedAt": "2026-09-23T21:59:04.569Z",
+  "levelLocation": { "raw": "Northern USA", "label": "Northern USA", "url": null },
+  "mapStyle": "zombies",
+  "mapStyleDetail": "Death March",
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas from the Wiki's Call of Duty Online Zombies roster.",
+  "rawPayload": { "revisionTimestamp": "2026-08-28T02:17:24Z", "revisionSha1": "d068ed88d44f63b02e1b7f5392caa6a5a34e1044", "resolvedTitle": "Arsenal (Online)" }
+}

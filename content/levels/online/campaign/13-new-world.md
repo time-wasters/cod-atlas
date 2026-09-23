@@ -6,6 +6,6 @@ games:
 mode: singleplayer
 wikiArticle: codwiki-new-world-online
 locations: []
-metadata:
-  availability: Cut content
 ---
+
+Cut content
