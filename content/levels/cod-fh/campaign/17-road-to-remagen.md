@@ -19,7 +19,6 @@ mapOverlay:
   attribution:
     title: "Call of Duty: Finest Hour - Road to Remagen loading-screen map"
     source: "Directly extracted from Call of Duty: Finest Hour by plp-gtr."
-    sourceUrl: https://github.com/time-wasters/cod-atlas/blob/main/public/images/maps/rtv/road-to-remagen.png
     extractedBy: plp-gtr
     extractedByUrl: https://github.com/plp-gtr
     copyrightHolder: Activision Publishing, Inc.

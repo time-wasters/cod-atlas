@@ -267,11 +267,14 @@ because two maps share a name.
 
 An optional `mapOverlay` belongs in the level Markdown frontmatter when a
 reviewed game map can be geographically calibrated. It records a local image,
-stored as `maps/overlay.png` or `maps/overlay.jpg`, opacity, all four
-`[latitude, longitude]` corners, and complete source and
-non-free rights attribution. The compiler validates these fields and writes
-them to the separate `app/data/map-overlays.generated.json` browser store;
-overlay data is not added to the main atlas JSON.
+stored as `maps/overlay.png` or `maps/overlay.jpg`; the `image` field may be
+omitted when the file uses the default `maps/overlay.png` path. It also records
+opacity, all four `[latitude, longitude]` corners, and descriptive source and
+non-free rights attribution. Map-overlay attribution omits `sourceUrl` because
+a repository URL depends on the branch and deployment. The compiler validates
+these fields and writes them to the separate
+`app/data/map-overlays.generated.json` browser store; overlay data is not added
+to the main atlas JSON.
 
 Optional `historyOverlays` attach one or more geographically calibrated
 historical figures to images embedded in the level's research Markdown. Each

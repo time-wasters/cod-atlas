@@ -19,7 +19,6 @@ mapOverlay:
   attribution:
     title: "Call of Duty: Finest Hour - Underground Passage loading-screen map"
     source: "Screenshot from Extras of from Call of Duty: Finest Hour by plp-gtr."
-    sourceUrl: https://github.com/time-wasters/cod-atlas/blob/main/public/images/maps/rtv/underground-passage.jpg
     extractedBy: plp-gtr
     extractedByUrl: https://github.com/plp-gtr
     copyrightHolder: Activision Publishing, Inc.
