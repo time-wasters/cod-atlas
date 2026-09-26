@@ -8,10 +8,10 @@ wikiArticle: codwiki-the-russian
 mapOverlay:
   opacity: 0.72
   corners:
-    topLeft: [77.97924, 21.37464]
-    topRight: [77.97924, 142.26458]
-    bottomLeft: [44.47409, 21.37464]
-    bottomRight: [44.47409, 142.26458]
+    topLeft: [78.20210, 22.08495]
+    topRight: [78.20210, 141.42978]
+    bottomLeft: [43.61876, 22.08495]
+    bottomRight: [43.61876, 141.42978]
   attribution:
     title: "Call of Duty 4 (NDS) Map display in level intro"
     source: "Screenshot from NDS game by plp-gtr."
