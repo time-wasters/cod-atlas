@@ -3,8 +3,8 @@
   "fandomPageId": 508256,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Fallen_Angel",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Fallen_Angel",
-  "latestRevisionId": 3019103,
-  "importedAt": "2026-08-15T08:53:14.240Z",
+  "latestRevisionId": 3020760,
+  "importedAt": "2026-09-28T21:56:51.966Z",
   "levelLocation": {
     "raw": "Lahore, Punjab, [[Pakistan]]",
     "label": "Pakistan",
@@ -30,7 +30,7 @@
       },
       "rights": {
         "status": "non-free",
-        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  â€¢ the computer or video game in question or\n  â€¢ the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
         "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
@@ -48,8 +48,8 @@
     }
   },
   "rawPayload": {
-    "revisionTimestamp": "2026-08-10T10:56:46Z",
-    "revisionSha1": "7f385a25c2ee6a3c2e793c236cd367aaa1eb3cdf",
+    "revisionTimestamp": "2026-08-18T16:44:25Z",
+    "revisionSha1": "605a3246f9289e611ac1d3a007294fba3662f953",
     "resolvedTitle": "Fallen Angel",
     "mainImageTitle": "File:Fallen_Angel_Menu_BOII.png",
     "mapImageTitle": null
@@ -59,11 +59,15 @@
     "label": "Time and Fate (in-game) , Celerium (chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-time-and-fate",
         "wikiTitle": "Time and Fate",
         "label": "Time and Fate",
         "url": "https://callofduty.fandom.com/wiki/Time_and_Fate"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-celerium-mission",
         "wikiTitle": "Celerium (mission)",
         "label": "Celerium",
         "url": "https://callofduty.fandom.com/wiki/Celerium_(mission)"
@@ -75,11 +79,15 @@
     "label": "Karma (In-game) Shipwreck (Chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-karma",
         "wikiTitle": "Karma",
         "label": "Karma",
         "url": "https://callofduty.fandom.com/wiki/Karma"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-shipwreck",
         "wikiTitle": "Shipwreck",
         "label": "Shipwreck",
         "url": "https://callofduty.fandom.com/wiki/Shipwreck"

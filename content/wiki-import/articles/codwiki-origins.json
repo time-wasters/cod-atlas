@@ -3,8 +3,8 @@
   "fandomPageId": 564049,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Origins",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Origins",
-  "latestRevisionId": 3017469,
-  "importedAt": "2026-08-15T08:56:25.661Z",
+  "latestRevisionId": 3023122,
+  "importedAt": "2026-09-28T21:57:02.826Z",
   "levelLocation": {
     "raw": "Excavation Site 64, Northern France",
     "label": "Excavation Site 64, Northern France",
@@ -30,7 +30,7 @@
       },
       "rights": {
         "status": "non-free",
-        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  â€¢ the computer or video game in question or\n  â€¢ the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
         "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
@@ -48,8 +48,8 @@
     }
   },
   "rawPayload": {
-    "revisionTimestamp": "2026-07-31T09:02:15Z",
-    "revisionSha1": "62fdcb219d5f4eca44d4cae04eb4868ef8bfc992",
+    "revisionTimestamp": "2026-08-25T22:01:38Z",
+    "revisionSha1": "f4da705ca1345d3e21e3d8bd919d04e5c314a77a",
     "resolvedTitle": "Origins",
     "mainImageTitle": "File:Origins_Lobby_Icon_BO2.png",
     "mapImageTitle": null
@@ -59,6 +59,8 @@
     "label": "Buried (in-game)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-buried",
         "wikiTitle": "Buried",
         "label": "Buried",
         "url": "https://callofduty.fandom.com/wiki/Buried"
@@ -70,16 +72,22 @@
     "label": "Shadows of Evil (Chronologically by events), The Giant (chronologically by events, timeline jump), Mob of the Dead (chronologically by date)",
     "links": [
       {
+        "sequence": "chronological",
+        "article": null,
         "wikiTitle": "Shadows of Evil",
         "label": "Shadows of Evil",
         "url": "https://callofduty.fandom.com/wiki/Shadows_of_Evil"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-the-giant",
         "wikiTitle": "The Giant",
         "label": "The Giant",
         "url": "https://callofduty.fandom.com/wiki/The_Giant"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-mob-of-the-dead",
         "wikiTitle": "Mob of the Dead",
         "label": "Mob of the Dead",
         "url": "https://callofduty.fandom.com/wiki/Mob_of_the_Dead"

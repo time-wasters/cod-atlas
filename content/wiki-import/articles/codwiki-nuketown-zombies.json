@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Nuketown_Zombies",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Nuketown_Zombies",
   "latestRevisionId": 3003368,
-  "importedAt": "2026-08-15T08:53:25.013Z",
+  "importedAt": "2026-09-28T21:57:02.798Z",
   "levelLocation": {
     "raw": "[[Nuketown]], {{w|Nevada National Security Site}}, {{w|Nevada}}, [[United States of America]]<br>Camp Edward <small>(retroactive)</small>",
     "label": "Nuketown",
@@ -30,7 +30,7 @@
       },
       "rights": {
         "status": "non-free",
-        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  â€¢ the computer or video game in question or\n  â€¢ the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
         "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
@@ -59,16 +59,22 @@
     "label": "TranZit (in-game) , Moon (simultaneous) , Shangri-La (chronologically by events)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-tranzit",
         "wikiTitle": "TranZit",
         "label": "TranZit",
         "url": "https://callofduty.fandom.com/wiki/TranZit"
       },
       {
+        "sequence": "game",
+        "article": "codwiki-moon",
         "wikiTitle": "Moon",
         "label": "Moon",
         "url": "https://callofduty.fandom.com/wiki/Moon"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-shangri-la",
         "wikiTitle": "Shangri-La",
         "label": "Shangri-La",
         "url": "https://callofduty.fandom.com/wiki/Shangri-La"
@@ -80,11 +86,15 @@
     "label": "TranZit (chronologically) , Die Rise (in-game)",
     "links": [
       {
+        "sequence": "chronological",
+        "article": "codwiki-tranzit",
         "wikiTitle": "TranZit",
         "label": "TranZit",
         "url": "https://callofduty.fandom.com/wiki/TranZit"
       },
       {
+        "sequence": "game",
+        "article": "codwiki-die-rise",
         "wikiTitle": "Die Rise",
         "label": "Die Rise",
         "url": "https://callofduty.fandom.com/wiki/Die_Rise"

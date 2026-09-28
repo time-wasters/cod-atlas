@@ -3,8 +3,8 @@
   "fandomPageId": 522515,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Die_Rise",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Die_Rise",
-  "latestRevisionId": 3006601,
-  "importedAt": "2026-08-15T08:53:03.576Z",
+  "latestRevisionId": 3024420,
+  "importedAt": "2026-09-28T21:56:41.233Z",
   "levelLocation": {
     "raw": "[[Shanghai]] collided with [[Wikipedia:Jilin|Province 22]], [[People's Republic of China]]",
     "label": "Shanghai",
@@ -30,7 +30,7 @@
       },
       "rights": {
         "status": "non-free",
-        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  â€¢ the computer or video game in question or\n  â€¢ the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
         "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
@@ -48,8 +48,8 @@
     }
   },
   "rawPayload": {
-    "revisionTimestamp": "2026-06-03T21:07:28Z",
-    "revisionSha1": "377949f3286969c77d8b173022946c0abc78c1c2",
+    "revisionTimestamp": "2026-08-30T13:34:09Z",
+    "revisionSha1": "70a5284e85cffa7a548e04cdbafe50af800784f9",
     "resolvedTitle": "Die Rise",
     "mainImageTitle": "File:Die_Rise_menu_selection_BO2.png",
     "mapImageTitle": null
@@ -59,11 +59,15 @@
     "label": "Nuketown Zombies (in-game) , TranZit (chronologically and by events)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-nuketown-zombies",
         "wikiTitle": "Nuketown Zombies",
         "label": "Nuketown Zombies",
         "url": "https://callofduty.fandom.com/wiki/Nuketown_Zombies"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-tranzit",
         "wikiTitle": "TranZit",
         "label": "TranZit",
         "url": "https://callofduty.fandom.com/wiki/TranZit"
@@ -75,11 +79,15 @@
     "label": "Mob of the Dead (in-game) , Buried (chronologically and by events)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-mob-of-the-dead",
         "wikiTitle": "Mob of the Dead",
         "label": "Mob of the Dead",
         "url": "https://callofduty.fandom.com/wiki/Mob_of_the_Dead"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-buried",
         "wikiTitle": "Buried",
         "label": "Buried",
         "url": "https://callofduty.fandom.com/wiki/Buried"

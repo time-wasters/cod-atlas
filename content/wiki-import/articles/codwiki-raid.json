@@ -3,8 +3,8 @@
   "fandomPageId": 503791,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Raid",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Raid",
-  "latestRevisionId": 3021544,
-  "importedAt": "2026-09-15T18:12:24.046Z",
+  "latestRevisionId": 3027338,
+  "importedAt": "2026-09-28T21:57:13.634Z",
   "levelLocation": {
     "raw": "{{w|Hollywood Hills}}, [[Los Angeles]], {{w|California}}, [[United States of America]] (''BOII'' & ''BOCW'')<br>[[Tokyo]], [[Japan]] (''BO7'')",
     "label": "Los Angeles",
@@ -48,8 +48,8 @@
     }
   },
   "rawPayload": {
-    "revisionTimestamp": "2026-08-21T17:36:55Z",
-    "revisionSha1": "615cb0e9f5b29e17c79b1483e85b8ff344a034ed",
+    "revisionTimestamp": "2026-09-17T05:30:12Z",
+    "revisionSha1": "daa55da1d4cf17afc6218e20f89b89719168b521",
     "resolvedTitle": "Raid",
     "mainImageTitle": "File:Raid_Load_Screen_BOII.png",
     "mapImageTitle": null
