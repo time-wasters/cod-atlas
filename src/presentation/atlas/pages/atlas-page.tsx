@@ -486,7 +486,10 @@ export function AtlasPage({
    * Downloads a KML document containing only the currently filtered atlas entries.
    */
   function exportKml() {
-    kmlFileDownloaderPort.download(buildAtlasKml(filtered));
+    kmlFileDownloaderPort.download(buildAtlasKml(filtered, {
+      platformUrl: window.location.origin,
+      sourceUrl: window.location.href,
+    }));
   }
 
   // View models keep component props focused on display data and user actions.

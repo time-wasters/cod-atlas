@@ -1,4 +1,4 @@
-.result-panel { display: grid; grid-template-columns: 95px 1fr; gap: 16px; align-items: center; padding: 14px; border: 1px solid #48503d; border-radius: 5px; background: #171c15; }
+.result-panel { display: grid; grid-template-columns: 95px 1fr; column-gap: 16px; row-gap: 8px; align-items: center; padding: 14px; border: 1px solid #48503d; border-radius: 5px; background: #171c15; }
 .result-panel > div:first-child { display: flex; flex-direction: column; border-right: 1px solid #555b46; }
 .result-panel > div strong { color: #d7cfad; font: 700 30px/1 var(--font-geist-mono), monospace; }
 .result-panel > div span { margin-top: 5px; color: var(--amber); font-size: 9px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
@@ -7,8 +7,8 @@
 .result-panel dt { color: #929786; }
 .result-panel dd { margin: 0; color: #d9d2c0; font-family: var(--font-geist-mono), monospace; }
 
-.kml-button { min-height: 42px; border: 1px solid var(--amber-dark); border-radius: 4px; color: #17140c; background: linear-gradient(#e0a126, #b97d16); font-size: 11px; font-weight: 750; letter-spacing: .05em; cursor: pointer; }
-.kml-button:hover { filter: brightness(1.08); }
+.kml-button { grid-column: 1 / -1; justify-self: end; border: 0; padding: 0; color: #b98227; background: transparent; font: 700 9px var(--font-geist-mono), monospace; letter-spacing: .04em; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.kml-button:hover { color: var(--amber); }
 .kml-button:focus-visible, .location-row:focus-visible, .place-links a:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
 
 .mission-list { min-height: 160px; display: flex; flex: 1 0 160px; flex-direction: column; }

@@ -329,8 +329,8 @@ export function AtlasSidebar({
               <div><dt>Fallback</dt><dd>{results.fallback}</dd></div>
               <div><dt>Regions</dt><dd>{results.regions}</dd></div>
             </dl>
+            <button className="kml-button" type="button" onClick={results.onExport}>↓ Export filtered KML</button>
           </section>
-          <button className="kml-button" onClick={results.onExport}>↓ Export filtered KML for Google Maps</button>
 
           <section className="mission-list">
             <div className="sidebar-list-switch" role="tablist" aria-label="Browse atlas data">
