@@ -231,6 +231,7 @@ export function AtlasSidebar({
   };
   return (
     <aside className="atlas-sidebar" aria-label="Map filters">
+      <div className="atlas-sidebar-scroll">
       <div className="search-field">
         <svg className="search-field-icon" viewBox="0 0 20 20" aria-hidden="true">
           <circle cx="8.5" cy="8.5" r="5.5" />
@@ -401,6 +402,7 @@ export function AtlasSidebar({
           <AtlasFooter onOpenProjectInfo={onOpenProjectInfo} />
         </>
       )}
+      </div>
 
       <button
         className="sidebar-toggle"
