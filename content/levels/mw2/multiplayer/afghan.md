@@ -1,6 +1,6 @@
 ---
-id: mw2-afgan
-title: Afgan
+id: mw2-afghan
+title: Afghan
 games:
   - mw2
 mode: multiplayer

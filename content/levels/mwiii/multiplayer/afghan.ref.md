@@ -1,5 +1,4 @@
 ---
-level: mw2-afgan
+level: mw2-afghan
 title: Afghan
 ---
-
