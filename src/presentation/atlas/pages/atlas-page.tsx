@@ -459,7 +459,7 @@ export function AtlasPage({
   }
 
   /**
-   * Toggles a Multiplayer, Zombies, or Other/Special Ops content update and selects its first level.
+   * Toggles a content update and selects its first level.
    */
   function selectContentUpdate(contentUpdate: ContentUpdateOption<AtlasGroupDto, AtlasEntryDto>) {
     const contentUpdateIsActive = activeContentUpdateKey === contentUpdate.key;

@@ -55,11 +55,6 @@ export function buildContentUpdateOptions<
   for (const group of groups) {
     for (const entry of group.entries) {
       if (entry.gameIds[0] !== selectedGame.id || !entry.contentUpdate) continue;
-      if (!entry.modes.some((mode) => (
-        mode === "multiplayer"
-          || mode === "zombies"
-          || (mode === "other" && entry.modeSub === "special-ops")
-      ))) continue;
 
       const key = `${selectedGame.id}:${entry.contentUpdate.id}`;
       let update = updatesByKey.get(key);

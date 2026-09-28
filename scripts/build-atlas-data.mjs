@@ -485,11 +485,6 @@ for (const filename of levelFiles) {
       `${filename}: content-update must be an object`,
     );
     requireValue(
-      ["multiplayer", "zombies"].includes(level.mode)
-        || (level.mode === "other" && level.modeSub === "special-ops"),
-      `${filename}: content-update is only supported for multiplayer, zombies and other/special-ops levels`,
-    );
-    requireValue(
       typeof contentUpdate.id === "string" && contentUpdate.id.trim(),
       `${filename}: content-update id must be a non-empty string`,
     );

@@ -358,7 +358,7 @@ export function AtlasSidebar({
                 label="Updates"
                 tooltip={game.value === "all"
                   ? "Choose a game to browse content updates"
-                  : "No Multiplayer or Zombies content-update data is available for this game"}
+                  : "No content-update data is available for this game"}
                 onSelect={() => browse.onModeChange("updates")}
               />
             </div>

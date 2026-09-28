@@ -420,6 +420,7 @@ test("compiles the atlas output contract with filenames independent from level I
     const alpha = findEntry("fixture-classic-alpha", "landmark");
     assert.deepEqual(alpha.coordinates, [48.8584, 2.2945]);
     assert.deepEqual(alpha.campaign, { id: "1", label: "Fixture Campaign" });
+    assert.deepEqual(alpha.contentUpdate, { id: "1", label: "Fixture Pack" });
     assert.equal(alpha.campaignOrder, 1);
     assert.equal(alpha.hasLevelNotes, true);
     assert.deepEqual(alpha.verified, {
