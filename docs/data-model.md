@@ -75,36 +75,28 @@ waters, the Arctic, and off-world settings use explicit supplemental buckets.
 
 ## Level source layout
 
-Level files use one of two directory layouts while map-type folders are rolled
-out incrementally:
+Level rosters should generally use map-type directories:
 
 ```text
-content/levels/<primary-game>/<descriptive-name>.md
 content/levels/<primary-game>/campaign/<order>-<descriptive-name>.md
 content/levels/<primary-game>/multiplayer/<descriptive-name>.md
 content/levels/<primary-game>/special-ops/<descriptive-name>.md
 content/levels/<primary-game>/survival/<descriptive-name>.md
 content/levels/<primary-game>/zombies/<descriptive-name>.md
 content/levels/<primary-game>/challenge/<descriptive-name>.md
-content/levels/<appearance-game>/<descriptive-name>.ref.md
 content/levels/<appearance-game>/<map-type>/<descriptive-name>.ref.md
 ```
 
-A game must use one layout consistently. `cod`, `cod-uo`, `cod-fh`, `cod2`,
-`cod2-bro`, `cod3`, `rtv`, `cod4`, `cod4-nds`, `waw-nds`, `mw2`, `mw3`, `online`, `bo-nds`, `mw3-nds`, `bo-d`, `wz`, `wz2`, `mwiii`, `bo7`, and `mw4` use
-`campaign/` for records whose `mode` is `singleplayer` and `multiplayer/` for
-records whose `mode` is `multiplayer`. `mw2`, `mw3`, and `bo7` also use `special-ops/`
-for records whose `mode` is `other` and `modeSub` is `special-ops`; shared
-Survival maps remain in this Special Ops subtype.
-`mw2-nds` uses `survival/` for its standalone Survival maps whose `mode` is
-`other` and `modeSub` is `survival`.
-BO7 Endgame uses this broad subtype and is distinguished with
-`metadata.activityType: endgame`.
-`waw`, `bo`, `bo-nds`, `online`, `bo6`, and `bo7` also use `zombies/` for records whose `mode` is
-`zombies`. `waw-nds` also uses `challenge/` for separately selectable Challenge
-missions whose `mode` is `other` and `modeSub` is `challenge`. Games that have
-not been reorganized remain flat. Map types are broad content categories; they
-are distinct from multiplayer rule sets such as deathmatch or capture the flag.
+Map `singleplayer` to `campaign/`, `multiplayer` to `multiplayer/`, and
+`zombies` to `zombies/`. For `mode: other`, use the directory matching
+`modeSub`: `special-ops/`, `survival/`, or `challenge/`. Map types are broad
+content categories; they are distinct from multiplayer rule sets such as
+deathmatch or capture the flag.
+
+A game must use one layout consistently. Legacy flat rosters remain supported
+until deliberately reorganized, but a game must not mix flat canonical records
+with map-type directories. Reorganizing a game includes its canonical files,
+appearance references, and repository-hosted level media.
 
 Campaign orders start at `1`, have no leading zeros, and must be unique and
 contiguous within their game. The prefix records play order without becoming
@@ -138,8 +130,8 @@ Required fields:
   location; an explicit empty list never triggers inheritance.
 
 Optional level fields include `campaign`, a grouping with a stable string `id`
-and a human-readable `label`; `content-update`, which groups Multiplayer,
-Other/Special Ops, and Zombies records by their original release or map pack;
+and a human-readable `label`; `content-update`, which groups levels by their
+original release, map pack, season, or other content release;
 `legacyIds`, which
 preserves old URL IDs after a structural rename; and `metadata` for
 non-geographic descriptive values.
@@ -186,8 +178,7 @@ Campaign identity also includes the level mode (and the subtype for `other`),
 so matching campaign IDs in Campaign, Multiplayer, Zombies, Special Ops, or
 Challenge data remain separate groups in the interface.
 
-Multiplayer, Other/Special Ops, and Zombies levels may use matching content-update
-metadata:
+Any level type may use matching content-update metadata:
 
 ```yaml
 content-update:
@@ -197,9 +188,9 @@ content-update:
 
 The stable string ID controls update ordering and the label is shown in the
 sidebar. Levels released in the base game can use an ID such as `"0"` with the
-label `Included`. A content update can group Multiplayer, Other/Special Ops,
-and Zombies levels together, but it is not valid on a singleplayer,
-Other/Survival, or Other/Challenge level.
+label `Included`. A content update may group levels across any modes and
+subtypes within the same game. Use the same label for a content-update ID
+throughout that game.
 
 Use `other` for separately selectable Special Ops, Survival, and Challenge entries. Set
 `modeSub` to identify which kind it is. Keep each selectable Challenge as its
@@ -318,7 +309,7 @@ not by picture type:
 ```text
 public/images/levels/
 `-- <game-id>/
-    `-- <map-type>/                   # omitted for a flat-layout game
+    `-- <map-type>/
         `-- <level-filename>/         # Markdown filename without final .md
             |-- main.png             # or main.jpg / main.webm
             |-- maps/
@@ -327,10 +318,9 @@ public/images/levels/
                 `-- <filename-used-in-md>  # PNG, JPEG, or WebP
 ```
 
-For example, RTV Altavilla uses
-`public/images/levels/rtv/campaign/1-altavilla/main.png` and
-`public/images/levels/rtv/campaign/1-altavilla/maps/overlay.png`, mirroring
-`content/levels/rtv/campaign/1-altavilla.md`. A Markdown image written as
+For example, a campaign level's `main.png` and `maps/overlay.png` mirror its
+Markdown source at
+`content/levels/<game-id>/campaign/<order>-<descriptive-name>.md`. A Markdown image written as
 `![Caption](research-photo.jpg)` is served from that appearance's
 `extra/research-photo.jpg` directory. Only create a level media directory when
 media exists.

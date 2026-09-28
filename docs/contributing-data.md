@@ -10,9 +10,9 @@ ignored artifacts. Without host npm, use the documented Docker commands.
 | Record | Source path | Template |
 | --- | --- | --- |
 | Game | `content/games/<game-id>.yaml` | [game.yaml](templates/game.yaml) |
-| Terrestrial level | `content/levels/<primary-game>/<descriptive-name>.md` or the game's map-type directory | [level-terrestrial.md](templates/level-terrestrial.md) |
-| Off-world level | `content/levels/<primary-game>/<descriptive-name>.md` or the game's map-type directory | [level-off-world.md](templates/level-off-world.md) |
-| Level appearance | `content/levels/<appearance-game>/<descriptive-name>.ref.md` or the game's map-type directory | create the minimal reference shown below |
+| Terrestrial level | `content/levels/<primary-game>/<map-type>/<filename>.md` | [level-terrestrial.md](templates/level-terrestrial.md) |
+| Off-world level | `content/levels/<primary-game>/<map-type>/<filename>.md` | [level-off-world.md](templates/level-off-world.md) |
+| Level appearance | `content/levels/<appearance-game>/<map-type>/<filename>.ref.md` | create the minimal reference shown below |
 | Wiki import | `content/wiki-import/articles/<article-id>.json` | [wiki-article.json](templates/wiki-article.json) |
 
 Most contributions only change a level. Add a game only if it does not exist,
@@ -27,26 +27,19 @@ disclosure and required Markdown headings.
 
 The primary-game directory identifies the owning game. The descriptive
 filename is independent from the stable ID; the compiler resolves identity
-from the frontmatter. For example, the level ID `cod3-laison-river` may live at
-`content/levels/cod3/river-crossing.md`.
+from the frontmatter. For example, a level ID ending in `example-level` may
+live at `content/levels/<game-id>/campaign/27-river-crossing.md`.
 
-Map-type directories are being introduced one game at a time. A reorganized
-game must use them for every level: `campaign/` contains records with
+Game rosters should generally use map-type directories for every level:
+`campaign/` contains records with
 `mode: singleplayer`, `multiplayer/` contains records with `mode: multiplayer`,
 `special-ops/` contains records with `mode: other` and `modeSub: special-ops`,
 `survival/` contains records with `mode: other` and `modeSub: survival`, and
 `zombies/` contains records with `mode: zombies`; `challenge/` contains
-records with `mode: other` and `modeSub: challenge`. The `cod`, `cod-uo`,
-`cod-fh`, `cod2`,
-`cod2-bro`, `cod3`, `rtv`, `cod4`, `cod4-nds`, `waw-nds`, `mw2`, `mw3`, `online`, `bo-nds`, `mw3-nds`, `bo-d`, `wz`, `wz2`, `mwiii`, `bo7`, and `mw4`
-directories use the first two folders; `mw2`, `mw3`, and `bo7` additionally use
-`special-ops/`, while `mw2-nds` uses `survival/`, and `waw`, `bo`, `bo-nds`, `online`, `bo6`, and `bo7` additionally use `zombies/`.
-BO7 Endgame is stored as Other/Special Ops and distinguished with
-`metadata.activityType: endgame`.
-`waw-nds` additionally uses `challenge/` for its Challenge missions.
-Other games retain their current flat layout until they are deliberately
-reorganized. These directory names describe broad map types, not multiplayer
-rule sets such as deathmatch or capture the flag.
+records with `mode: other` and `modeSub: challenge`. These directory names
+describe broad map types, not multiplayer rule sets such as deathmatch or
+capture the flag. Keep the layout consistent across a game. A legacy flat
+roster may remain flat until the entire game is deliberately reorganized.
 
 Within a map-type layout, campaign filenames are
 `<order>-<descriptive-name>.md`. Orders start at `1`, use no leading zeros, and must
@@ -81,6 +74,7 @@ Optional image-provider metadata follows the existing game records.
 | `mode` | yes | `singleplayer`, `multiplayer`, `zombies`, or `other`. |
 | `modeSub` | for `other` | `special-ops`, `survival`, or `challenge`; omit it for every other mode. |
 | `campaign` | no | Named campaign grouping as a stable string `id` and display `label`. |
+| `content-update` | no | Release grouping with a stable string `id` and display `label`; valid for every mode and subtype. |
 | `wikiArticle` | yes | ID of a separate Wiki import JSON record. |
 | `locations` | usually | Locations owned by this level. Omit only to inherit from `metadata.variantOf`; explicit `[]` remains empty. Never reference a shared place. |
 | Markdown body | no | Concise research, ambiguity, or editorial notes. |
@@ -96,6 +90,11 @@ campaign:
 ```
 
 Campaign IDs are strings and should remain stable if a label changes.
+
+Every level type may use `content-update` to group levels from the same game by
+their original release, map pack, season, or another content release. Its `id`
+is a stable string used for ordering, and a given ID must use the same label
+throughout the game.
 
 Use `mode: other` for separately selectable Special Ops, Survival, and Challenge entries,
 and distinguish them with `modeSub`. Each Challenge remains a distinct canonical

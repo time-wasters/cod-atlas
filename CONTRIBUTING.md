@@ -51,28 +51,21 @@ See the [data contribution guide](docs/contributing-data.md) for every field,
 all allowed `mode`, `precision`, `confidence`, and `method` values, selection
 guidance, and copy-ready templates for every source record type.
 
-Create a Markdown file under the primary game's directory. If that game is
-already organized by map type, place it in `campaign/`, `multiplayer/`,
-`special-ops/`, `survival/`, `zombies/`, or `challenge/` according to its mode and subtype.
-Currently `cod`,
-`cod-uo`, `cod-fh`, `cod2`, `cod2-bro`, `cod3`, `rtv`, `cod4`, `cod4-nds`, `waw-nds`, `mw2`, `mw3`, `online`,
-`bo-nds`, `mw3-nds`, `bo-d`, `wz`, `wz2`, `mwiii`, `bo7`, and `mw4` use the first two folders; `mw2`, `mw3`, and `bo7`
-use `special-ops/` for `mode: other`, `modeSub: special-ops` records, while
-`waw`, `bo`, `bo-nds`, `online`, `bo6`, and `bo7` also use `zombies/`.
-BO7 Endgame is an Other/Special Ops record distinguished by
-`metadata.activityType: endgame`.
-`mw2-nds` uses `survival/` for Survival maps, and `waw-nds` also uses
-`challenge/` for Challenge missions. Games that
-have not been reorganized retain their existing flat layout.
+Create a Markdown file under the primary game's map-type directory. Use
+`campaign/` for `singleplayer`, `multiplayer/` for `multiplayer`, `zombies/`
+for `zombies`, and the matching `special-ops/`, `survival/`, or `challenge/`
+directory for an `other` record's `modeSub`. This is the preferred structure
+for game rosters. A legacy flat roster may remain in place until the entire
+game is deliberately reorganized, but never mix flat canonical records and
+map-type directories within one game.
 
 Campaign files in a map-type layout are named
 `<order>-<descriptive-name>.md`, starting at `1` without leading zeros or gaps.
-Multiplayer, Special Ops, Survival, Zombies, Challenge, and flat-layout files use
+Multiplayer, Special Ops, Survival, Zombies, and Challenge files use
 `<descriptive-name>.md`. The filename organizes the source tree and does not
 define or need to match the stable level ID. Never include the campaign order
-in the stable ID. For example, an `id` of `cod3-example-level` may live at
-`content/levels/cod3/river-crossing.md`, while `cod-example-level` could live
-at `content/levels/cod/campaign/27-final-assault.md`.
+in the stable ID. For example, an ID ending in `example-level` may live at
+`content/levels/<game-id>/campaign/27-final-assault.md`.
 
 ```md
 ---

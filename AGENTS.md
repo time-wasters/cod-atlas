@@ -93,8 +93,13 @@ changes are intended to be reviewable through pull requests.
 - Keep game labels short, human-readable, and ordered by release date.
 - A level may contain more than one location.
 - Valid modes are `singleplayer`, `multiplayer`, `zombies`, and `other`.
-- Records with `mode: other` require `modeSub: special-ops` or
-  `modeSub: challenge`; other modes must omit `modeSub`.
+- Records with `mode: other` require `modeSub: special-ops`, `survival`, or
+  `challenge`; other modes must omit `modeSub`.
+- `content-update` metadata is valid for every mode and subtype when a level
+  belongs to a documented release grouping.
+- Level rosters should generally use map-type directories: `campaign/`,
+  `multiplayer/`, `special-ops/`, `survival/`, `zombies/`, and `challenge/`.
+  Campaign filenames carry their play-order prefix; other filenames do not.
 - Roster-completeness audits must check Campaign, Multiplayer, Zombies,
   Challenge, Special Ops, Survival/Hostiles/Safeguard/Exo Survival,
   Nightmares, Strike Force, War, and Extinction where applicable.

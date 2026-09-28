@@ -15,6 +15,25 @@ record the findings in the level Markdown file.
 Accuracy is more important than apparent precision. Never invent a match merely
 to obtain a detailed marker.
 
+## File placement
+
+Store levels in map-type directories and keep each game in one layout. Place
+Campaign records in
+`campaign/`, Multiplayer records in `multiplayer/`, Special Ops records in
+`special-ops/`, standalone Survival records in `survival/`, Zombies records in
+`zombies/`, and Challenge records in `challenge/`, following the classifications
+in `docs/contributing-data.md`. Campaign filenames must be
+`<order>-<descriptive-name>.md` with a contiguous order beginning at `1`; the
+other map-type filenames remain unnumbered. A legacy flat roster may remain
+flat until the entire game is deliberately reorganized; do not introduce a
+mixed layout.
+
+`content-update` metadata is independent of map type. Any Campaign,
+Multiplayer, Zombies, Special Ops, Survival, or Challenge record may use it
+when sources support an original release, map pack, season, or another content
+release grouping. Within a game, keep each content-update ID stable and use the
+same label everywhere that ID appears.
+
 ## Research process
 
 1. Read the existing level file, its game record, its Wiki import record and
