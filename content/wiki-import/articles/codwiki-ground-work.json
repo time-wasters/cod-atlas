@@ -1,0 +1,83 @@
+{
+  "id": "codwiki-ground-work",
+  "fandomPageId": 586582,
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Ground_Work",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Ground_Work",
+  "latestRevisionId": 2588949,
+  "importedAt": "2026-09-28T22:22:14.655Z",
+  "levelLocation": {
+    "raw": null,
+    "label": null,
+    "url": null
+  },
+  "mapStyle": "singleplayer",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas from the linked Call of Duty Wiki roster; verify during the next import.",
+  "rawPayload": {
+    "revisionTimestamp": "2021-06-12T00:10:26Z",
+    "revisionSha1": "7b77b7dcc49b698e0f58cdc32044a34af1a54270",
+    "resolvedTitle": "Ground Work",
+    "mainImageTitle": null,
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "date": {
+    "raw": null,
+    "label": null
+  },
+  "images": {
+    "main": {
+      "sourceUrl": null,
+      "thumbnailUrl": null,
+      "detailPageUrl": null,
+      "author": {
+        "name": null,
+        "userUrl": null,
+        "role": null
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "unknown",
+        "notice": null,
+        "noticeUrl": null
+      }
+    },
+    "map": {
+      "sourceUrl": null,
+      "thumbnailUrl": null,
+      "detailPageUrl": null,
+      "author": {
+        "name": null,
+        "userUrl": null,
+        "role": null
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "unknown",
+        "notice": null,
+        "noticeUrl": null
+      }
+    }
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "id": "codwiki-non-parlez",
+  "fandomPageId": 573640,
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Non_Parlez",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Non_Parlez",
+  "latestRevisionId": 2541911,
+  "importedAt": "2026-09-28T22:22:14.648Z",
+  "levelLocation": {
+    "raw": "Sar Hawza District, Paktika Province, Afghanistan",
+    "label": "Sar Hawza District, Paktika Province, Afghanistan",
+    "url": null
+  },
+  "mapStyle": "singleplayer",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas from the linked Call of Duty Wiki roster; verify during the next import.",
+  "rawPayload": {
+    "revisionTimestamp": "2020-12-15T09:30:34Z",
+    "revisionSha1": "33e56754e59be73801be03a351b835b80c582ecf",
+    "resolvedTitle": "Non Parlez",
+    "mainImageTitle": null,
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[The Guided Tour]]",
+    "label": "The Guided Tour",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-the-guided-tour",
+        "wikiTitle": "The Guided Tour",
+        "label": "The Guided Tour",
+        "url": "https://callofduty.fandom.com/wiki/The_Guided_Tour"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Ground Work]]",
+    "label": "Ground Work",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-ground-work",
+        "wikiTitle": "Ground Work",
+        "label": "Ground Work",
+        "url": "https://callofduty.fandom.com/wiki/Ground_Work"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Strike Team]]''",
+    "label": "Call of Duty: Strike Team",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Strike Team",
+        "label": "Call of Duty: Strike Team",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Strike_Team"
+      }
+    ]
+  },
+  "date": {
+    "raw": "October 24th, 2020",
+    "label": "October 24th, 2020"
+  },
+  "images": {
+    "main": {
+      "sourceUrl": null,
+      "thumbnailUrl": null,
+      "detailPageUrl": null,
+      "author": {
+        "name": null,
+        "userUrl": null,
+        "role": null
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "unknown",
+        "notice": null,
+        "noticeUrl": null
+      }
+    },
+    "map": {
+      "sourceUrl": null,
+      "thumbnailUrl": null,
+      "detailPageUrl": null,
+      "author": {
+        "name": null,
+        "userUrl": null,
+        "role": null
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "unknown",
+        "notice": null,
+        "noticeUrl": null
+      }
+    }
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "id": "codwiki-a-dish-best-served-cold",
+  "fandomPageId": 573325,
+  "sourceUrl": "https://callofduty.fandom.com/wiki/A_Dish_Best_Served_Cold",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/A_Dish_Best_Served_Cold",
+  "latestRevisionId": 2419564,
+  "importedAt": "2026-09-28T22:22:14.635Z",
+  "levelLocation": {
+    "raw": "S.A.P. Site Juliet Two-Nine, Arctic Circles, U.S. waters",
+    "label": "S.A.P. Site Juliet Two-Nine, Arctic Circles, U.S. waters",
+    "url": null
+  },
+  "mapStyle": "singleplayer",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas from the linked Call of Duty Wiki roster; verify during the next import.",
+  "rawPayload": {
+    "revisionTimestamp": "2017-10-31T08:52:27Z",
+    "revisionSha1": "47229213dafe1e4a31cce302b49f96ce44631799",
+    "resolvedTitle": "A Dish Best Served Cold",
+    "mainImageTitle": null,
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Zero Hour]]",
+    "label": "Zero Hour",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-zero-hour",
+        "wikiTitle": "Zero Hour",
+        "label": "Zero Hour",
+        "url": "https://callofduty.fandom.com/wiki/Zero_Hour"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[The Guided Tour]]",
+    "label": "The Guided Tour",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-the-guided-tour",
+        "wikiTitle": "The Guided Tour",
+        "label": "The Guided Tour",
+        "url": "https://callofduty.fandom.com/wiki/The_Guided_Tour"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Strike Team]]''",
+    "label": "Call of Duty: Strike Team",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Strike Team",
+        "label": "Call of Duty: Strike Team",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Strike_Team"
+      }
+    ]
+  },
+  "date": {
+    "raw": "October 22nd, 2020",
+    "label": "October 22nd, 2020"
+  },
+  "images": {
+    "main": {
+      "sourceUrl": null,
+      "thumbnailUrl": null,
+      "detailPageUrl": null,
+      "author": {
+        "name": null,
+        "userUrl": null,
+        "role": null
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "unknown",
+        "notice": null,
+        "noticeUrl": null
+      }
+    },
+    "map": {
+      "sourceUrl": null,
+      "thumbnailUrl": null,
+      "detailPageUrl": null,
+      "author": {
+        "name": null,
+        "userUrl": null,
+        "role": null
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "unknown",
+        "notice": null,
+        "noticeUrl": null
+      }
+    }
+  }
+}

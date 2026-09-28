@@ -1,0 +1,105 @@
+{
+  "id": "codwiki-over-and-under",
+  "fandomPageId": 573114,
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Over_and_Under",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Over_and_Under",
+  "latestRevisionId": 2283303,
+  "importedAt": "2026-09-28T22:22:14.628Z",
+  "levelLocation": {
+    "raw": "S.A.P. Site Juliet Two-Nine, Arctic Circles, U.S. waters",
+    "label": "S.A.P. Site Juliet Two-Nine, Arctic Circles, U.S. waters",
+    "url": null
+  },
+  "mapStyle": "singleplayer",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas from the linked Call of Duty Wiki roster; verify during the next import.",
+  "rawPayload": {
+    "revisionTimestamp": "2016-01-11T18:47:05Z",
+    "revisionSha1": "cadfe8ed6a6d134d92e9a409b550c7862d542347",
+    "resolvedTitle": "Over and Under",
+    "mainImageTitle": null,
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[Best Defense is Offense]]",
+    "label": "Best Defense is Offense",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-best-defense-is-offense",
+        "wikiTitle": "Best Defense is Offense",
+        "label": "Best Defense is Offense",
+        "url": "https://callofduty.fandom.com/wiki/Best_Defense_is_Offense"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Zero Hour]]",
+    "label": "Zero Hour",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-zero-hour",
+        "wikiTitle": "Zero Hour",
+        "label": "Zero Hour",
+        "url": "https://callofduty.fandom.com/wiki/Zero_Hour"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Strike Team]]''",
+    "label": "Call of Duty: Strike Team",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Strike Team",
+        "label": "Call of Duty: Strike Team",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Strike_Team"
+      }
+    ]
+  },
+  "date": {
+    "raw": "October 22nd, 2020",
+    "label": "October 22nd, 2020"
+  },
+  "images": {
+    "main": {
+      "sourceUrl": null,
+      "thumbnailUrl": null,
+      "detailPageUrl": null,
+      "author": {
+        "name": null,
+        "userUrl": null,
+        "role": null
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "unknown",
+        "notice": null,
+        "noticeUrl": null
+      }
+    },
+    "map": {
+      "sourceUrl": null,
+      "thumbnailUrl": null,
+      "detailPageUrl": null,
+      "author": {
+        "name": null,
+        "userUrl": null,
+        "role": null
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "unknown",
+        "notice": null,
+        "noticeUrl": null
+      }
+    }
+  }
+}
