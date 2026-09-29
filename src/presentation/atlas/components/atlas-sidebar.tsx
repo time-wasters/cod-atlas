@@ -51,20 +51,20 @@ const RESULT_METRIC_COPY: Record<ResultMetricKind, { label: string; description:
 function ResultMetricIcon({ kind }: { kind: ResultMetricKind }) {
   if (kind === "localized") return (
     <svg viewBox="0 0 24 24" aria-hidden="true">
-      <circle cx="12" cy="12" r="4" />
-      <path d="M12 2v4M12 18v4M2 12h4M18 12h4" />
-    </svg>
-  );
-  if (kind === "fallback") return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
       <path d="M12 21s6-5.2 6-11a6 6 0 1 0-12 0c0 5.8 6 11 6 11Z" />
       <circle cx="12" cy="10" r="2" />
     </svg>
   );
+  if (kind === "fallback") return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="12" cy="12" r="8.5" />
+      <path d="M3.5 12h17M12 3.5c2.2 2.3 3.3 5.1 3.3 8.5S14.2 18.2 12 20.5M12 3.5C9.8 5.8 8.7 8.6 8.7 12s1.1 6.2 3.3 8.5" />
+    </svg>
+  );
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="m3 6 5-2 8 3 5-2v13l-5 2-8-3-5 2Z" />
-      <path d="M8 4v13M16 7v13" />
+      <path d="m4 8 5-4 5 3 5-1 1 6-3 7-7 1-6-4-1-5Z" />
+      <circle cx="4" cy="8" r="1" /><circle cx="14" cy="7" r="1" /><circle cx="17" cy="19" r="1" />
     </svg>
   );
 }

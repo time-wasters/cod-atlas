@@ -10,7 +10,6 @@
 .result-metric:hover dt, .result-metric:focus-visible dt { color: #d8ae55; }
 .result-metric dt span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); clip-path: inset(50%); white-space: nowrap; }
 .result-metric svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.6; }
-.result-metric:nth-child(2) svg { stroke-dasharray: 2.5 1.5; }
 .result-metric dd { margin: 0; color: #d9d2c0; font: 700 10px/1 var(--font-geist-mono), monospace; }
 .atlas-tooltip.is-viewport { transform: translateY(-50%); }
 
