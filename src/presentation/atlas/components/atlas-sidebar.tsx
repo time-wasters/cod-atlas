@@ -31,6 +31,98 @@ type AdvancedFilterViewModel = {
   onClear: () => void;
 };
 
+type ResultMetricKind = "localized" | "fallback" | "regions";
+
+const RESULT_METRIC_COPY: Record<ResultMetricKind, { label: string; description: string }> = {
+  localized: {
+    label: "Localized",
+    description: "Results located more precisely than country level",
+  },
+  fallback: {
+    label: "Fallback",
+    description: "Results shown at a representative country location",
+  },
+  regions: {
+    label: "Regions",
+    description: "Distinct map regions in the filtered results",
+  },
+};
+
+function ResultMetricIcon({ kind }: { kind: ResultMetricKind }) {
+  if (kind === "localized") return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 2v4M12 18v4M2 12h4M18 12h4" />
+    </svg>
+  );
+  if (kind === "fallback") return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 21s6-5.2 6-11a6 6 0 1 0-12 0c0 5.8 6 11 6 11Z" />
+      <circle cx="12" cy="10" r="2" />
+    </svg>
+  );
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="m3 6 5-2 8 3 5-2v13l-5 2-8-3-5 2Z" />
+      <path d="M8 4v13M16 7v13" />
+    </svg>
+  );
+}
+
+function ResultMetric({ kind, value }: { kind: ResultMetricKind; value: number }) {
+  const anchor = useRef<HTMLDivElement>(null);
+  const tooltipId = `result-metric-tooltip-${useId().replaceAll(":", "")}`;
+  const [tooltipPosition, setTooltipPosition] = useState<{
+    top: number;
+    left: number;
+    side: "left" | "right" | "viewport";
+  } | null>(null);
+  const copy = RESULT_METRIC_COPY[kind];
+
+  const showTooltip = () => {
+    const rect = anchor.current?.getBoundingClientRect();
+    if (!rect) return;
+    const gap = 9;
+    const tooltipWidth = Math.min(260, window.innerWidth - 16);
+    const fitsRight = rect.right + gap + tooltipWidth <= window.innerWidth - 8;
+    const fitsLeft = rect.left - gap - tooltipWidth >= 8;
+    const side = fitsRight ? "right" : fitsLeft ? "left" : "viewport";
+    setTooltipPosition({
+      top: Math.min(Math.max(28, rect.top + rect.height / 2), window.innerHeight - 28),
+      left: side === "right" ? rect.right + gap : side === "left" ? rect.left - gap : 8,
+      side,
+    });
+  };
+
+  return (
+    <div
+      className="result-metric"
+      ref={anchor}
+      tabIndex={0}
+      aria-label={`${copy.label}: ${value}`}
+      aria-describedby={tooltipPosition ? tooltipId : undefined}
+      onMouseEnter={showTooltip}
+      onMouseLeave={() => setTooltipPosition(null)}
+      onFocus={showTooltip}
+      onBlur={() => setTooltipPosition(null)}
+    >
+      <dt><ResultMetricIcon kind={kind} /><span>{copy.label}</span></dt>
+      <dd>{value}</dd>
+      {tooltipPosition && typeof document !== "undefined" && createPortal(
+        <span
+          id={tooltipId}
+          className={`atlas-tooltip is-${tooltipPosition.side}`}
+          style={{ top: tooltipPosition.top, left: tooltipPosition.left }}
+          role="tooltip"
+        >
+          <strong>{copy.label}:</strong> {copy.description}
+        </span>,
+        document.body,
+      )}
+    </div>
+  );
+}
+
 function SidebarListTab({
   active,
   controls,
@@ -323,13 +415,15 @@ export function AtlasSidebar({
           </button>
 
           <section className="result-panel" aria-live="polite">
-            <div><strong>{results.total}</strong><span>results</span></div>
-            <dl>
-              <div><dt>Localized</dt><dd>{results.localized}</dd></div>
-              <div><dt>Fallback</dt><dd>{results.fallback}</dd></div>
-              <div><dt>Regions</dt><dd>{results.regions}</dd></div>
-            </dl>
-            <button className="kml-button" type="button" onClick={results.onExport}>↓ Export filtered KML</button>
+            <div className="result-panel-total"><strong>{results.total}</strong><span>results</span></div>
+            <div className="result-panel-summary">
+              <dl className="result-metrics">
+                <ResultMetric kind="localized" value={results.localized} />
+                <ResultMetric kind="fallback" value={results.fallback} />
+                <ResultMetric kind="regions" value={results.regions} />
+              </dl>
+              <button className="kml-button" type="button" onClick={results.onExport}>↓ Export filtered KML</button>
+            </div>
           </section>
 
           <section className="mission-list">
