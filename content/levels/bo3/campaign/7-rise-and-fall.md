@@ -4,6 +4,9 @@ title: Rise & Fall
 games:
   - bo3
 mode: singleplayer
+campaign:
+  id: "1"
+  label: Missions
 wikiArticle: codwiki-rise-and-fall
 locations:
   - id: main

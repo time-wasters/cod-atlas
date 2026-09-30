@@ -4,6 +4,9 @@ title: Sand Castle
 games:
   - bo3
 mode: singleplayer
+campaign:
+  id: "1"
+  label: Missions
 wikiArticle: codwiki-sand-castle
 locations:
   - id: main

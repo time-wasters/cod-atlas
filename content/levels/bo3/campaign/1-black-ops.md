@@ -4,6 +4,9 @@ title: Black Ops
 games:
   - bo3
 mode: singleplayer
+campaign:
+  id: "1"
+  label: Missions
 wikiArticle: codwiki-black-ops-level
 locations:
   - id: main

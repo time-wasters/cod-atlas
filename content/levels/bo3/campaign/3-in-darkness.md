@@ -4,6 +4,9 @@ title: In Darkness
 games:
   - bo3
 mode: singleplayer
+campaign:
+  id: "1"
+  label: Missions
 wikiArticle: codwiki-in-darkness
 locations:
   - id: main

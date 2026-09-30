@@ -4,6 +4,9 @@ title: Demon Within
 games:
   - bo3
 mode: singleplayer
+campaign:
+  id: "1"
+  label: Missions
 wikiArticle: codwiki-demon-within
 locations:
   - id: main

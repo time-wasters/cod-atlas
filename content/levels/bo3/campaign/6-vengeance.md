@@ -4,6 +4,9 @@ title: Vengeance
 games:
   - bo3
 mode: singleplayer
+campaign:
+  id: "1"
+  label: Missions
 wikiArticle: codwiki-vengeance-level
 locations:
   - id: main

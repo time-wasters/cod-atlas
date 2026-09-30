@@ -4,6 +4,9 @@ title: Hypocenter
 games:
   - bo3
 mode: singleplayer
+campaign:
+  id: "1"
+  label: Missions
 wikiArticle: codwiki-hypocenter
 locations:
   - id: main

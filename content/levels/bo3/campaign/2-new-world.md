@@ -4,6 +4,9 @@ title: New World
 games:
   - bo3
 mode: singleplayer
+campaign:
+  id: "1"
+  label: Missions
 wikiArticle: codwiki-new-world
 locations:
   - id: main

@@ -1,9 +1,14 @@
 ---
-id: iw-cryogen
+id: bo3-cryogen
+legacyIds:
+  - iw-cryogen
 title: Cryogen
 games:
-  - iw
+  - bo3
 mode: multiplayer
+content-update:
+  id: "4"
+  label: Descent
 wikiArticle: codwiki-cryogen
 locations:
   - id: main

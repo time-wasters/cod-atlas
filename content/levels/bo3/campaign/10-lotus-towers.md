@@ -4,6 +4,9 @@ title: Lotus Towers
 games:
   - bo3
 mode: singleplayer
+campaign:
+  id: "1"
+  label: Missions
 wikiArticle: codwiki-lotus-towers
 locations:
   - id: main
