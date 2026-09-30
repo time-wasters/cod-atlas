@@ -3,7 +3,7 @@ id: bo3-zetsubou-no-shima
 title: Zetsubou No Shima
 games:
   - bo3
-mode: multiplayer
+mode: zombies
 wikiArticle: codwiki-zetsubou-no-shima
 locations:
   - id: main

@@ -3,7 +3,7 @@ id: bo3-der-eisendrache
 title: Der Eisendrache
 games:
   - bo3
-mode: multiplayer
+mode: zombies
 wikiArticle: codwiki-der-eisendrache
 locations:
   - id: main
