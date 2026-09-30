@@ -4,6 +4,9 @@ title: Empire
 games:
   - bo3
 mode: multiplayer
+content-update:
+  id: "4"
+  label: Descent
 wikiArticle: codwiki-empire
 locations:
   - id: main

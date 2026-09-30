@@ -4,6 +4,9 @@ title: Gorod Krovi
 games:
   - bo3
 mode: zombies
+content-update:
+  id: "4"
+  label: Descent
 wikiArticle: codwiki-gorod-krovi
 locations:
   - id: main

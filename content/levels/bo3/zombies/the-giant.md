@@ -4,6 +4,9 @@ title: The Giant
 games:
   - bo3
 mode: zombies
+content-update:
+  id: "1"
+  label: Bonus
 wikiArticle: codwiki-the-giant
 locations:
   - id: main

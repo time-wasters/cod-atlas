@@ -99,11 +99,15 @@ level: cod-carentan
 ---
 ```
 
-Optional fields: `title`, `wikiArticle`, `campaign`, `metadata`. Omitted
+Optional fields: `title`, `wikiArticle`, `campaign`, `content-update`, `metadata`. Omitted
 values inherit; optional Markdown precedes canonical notes. References cannot
 supply protected canonical fields (including mode/subtype, locations,
 precision/confidence/method). Appearance metadata must not contain `variantOf`;
 variants need canonical records.
+
+A reference's `content-update` belongs to its appearance game and does not
+inherit from the canonical game. For example, BO3's Origins reference uses
+Zombies Chronicles while its BO2 canonical record retains Apocalypse.
 
 Location requirements:
 

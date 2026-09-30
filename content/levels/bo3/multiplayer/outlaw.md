@@ -4,6 +4,9 @@ title: Outlaw
 games:
   - bo3
 mode: multiplayer
+content-update:
+  id: "5"
+  label: Salvation
 wikiArticle: codwiki-outlaw
 locations:
   - id: main

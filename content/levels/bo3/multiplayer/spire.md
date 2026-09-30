@@ -4,6 +4,9 @@ title: Spire
 games:
   - bo3
 mode: multiplayer
+content-update:
+  id: "3"
+  label: Eclipse
 wikiArticle: codwiki-spire
 locations:
   - id: main

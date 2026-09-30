@@ -4,6 +4,9 @@ title: Redwood
 games:
   - bo3
 mode: multiplayer
+content-update:
+  id: "0"
+  label: Included
 wikiArticle: codwiki-redwood-map
 locations:
   - id: main

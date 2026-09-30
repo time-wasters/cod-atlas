@@ -4,6 +4,9 @@ title: Gauntlet
 games:
   - bo3
 mode: multiplayer
+content-update:
+  id: "2"
+  label: Awakening
 wikiArticle: codwiki-gauntlet
 locations:
   - id: main

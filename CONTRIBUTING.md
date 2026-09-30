@@ -99,9 +99,11 @@ If the same level also appears in another game without material geographic or
 playable-layout changes, add `<descriptive-name>.ref.md` under that game's directory
 instead of putting several IDs in `games`. A reference contains only
 `level: <canonical-level-id>` plus optional appearance-specific `title`,
-`wikiArticle`, `campaign`, `metadata`, or Markdown notes. Missing values and
+`wikiArticle`, `campaign`, `content-update`, `metadata`, or Markdown notes. Missing values and
 notes inherit from the canonical record. Locations, mode, overlays, and stable
-IDs cannot be overridden. A materially changed remake gets its own canonical
+IDs cannot be overridden. A reference's `content-update` describes its release
+in the appearance game and does not inherit the canonical game's group.
+A materially changed remake gets its own canonical
 level record instead. Such a distinct canonical variant may set
 `metadata.variantOf`. It may omit `locations` to inherit the linked canonical
 level's locations, while an explicit `locations: []` means intentionally no

@@ -4,6 +4,9 @@ title: Zetsubou No Shima
 games:
   - bo3
 mode: zombies
+content-update:
+  id: "3"
+  label: Eclipse
 wikiArticle: codwiki-zetsubou-no-shima
 locations:
   - id: main

@@ -32,6 +32,28 @@ test("Black Ops III retains all released rosters, references and deliberately li
     .filter(({ path }) => path.startsWith(`bo3/${directory}/`));
   const appearance = ({ data }) => data.level ? byId.get(data.level) : data;
 
+  const releases = new Map();
+  for (const { data, path } of bo3) {
+    const update = data["content-update"];
+    assert.ok(update?.id && update.label, `${path}: missing release group`);
+    const release = releases.get(update.id) ?? { label: update.label, count: 0 };
+    assert.equal(release.label, update.label);
+    release.count++;
+    releases.set(update.id, release);
+  }
+  assert.deepEqual(Object.fromEntries(releases), {
+    "0": { label: "Included", count: 41 },
+    "1": { label: "Bonus", count: 2 },
+    "2": { label: "Awakening", count: 5 },
+    "3": { label: "Eclipse", count: 5 },
+    "4": { label: "Descent", count: 5 },
+    "5": { label: "Salvation", count: 5 },
+    "6": { label: "Zombies Chronicles", count: 8 },
+    "7": { label: "Operation Snowblind", count: 1 },
+    "8": { label: "Operation Swarm", count: 1 },
+    "9": { label: "Back in Black Maps", count: 4 },
+  });
+
   assert.deepEqual(roster("multiplayer").map(({ path }) => path.split("/").at(-1)).sort(), [
     "aquarium.md", "berserk.md", "breach.md", "citadel.md", "combine.md", "cryogen.md",
     "empire.md", "evac.md", "exodus.md", "firing-range.ref.md", "fringe-nightfall.md",

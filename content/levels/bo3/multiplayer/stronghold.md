@@ -4,6 +4,9 @@ title: Stronghold
 games:
   - bo3
 mode: multiplayer
+content-update:
+  id: "0"
+  label: Included
 wikiArticle: codwiki-stronghold-black-ops-iii
 locations:
   - id: main

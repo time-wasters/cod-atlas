@@ -4,6 +4,9 @@ title: Rumble
 games:
   - bo3
 mode: multiplayer
+content-update:
+  id: "4"
+  label: Descent
 wikiArticle: codwiki-rumble
 locations:
   - id: main

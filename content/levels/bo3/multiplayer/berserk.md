@@ -4,6 +4,9 @@ title: Berserk
 games:
   - bo3
 mode: multiplayer
+content-update:
+  id: "4"
+  label: Descent
 wikiArticle: codwiki-berserk
 locations:
   - id: main

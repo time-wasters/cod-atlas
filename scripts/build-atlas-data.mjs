@@ -631,7 +631,7 @@ const levelsById = new Map(levels.map((level) => [level.id, level]));
 for (const legacyId of Object.keys(levelIdAliases)) {
   requireValue(!levelsById.has(legacyId), `${legacyId}: legacy level ID collides with a current canonical level`);
 }
-const appearanceFields = new Set(["level", "title", "wikiArticle", "campaign", "metadata"]);
+const appearanceFields = new Set(["level", "title", "wikiArticle", "campaign", "content-update", "metadata"]);
 for (const filename of levelReferenceFiles) {
   const { data: reference, body } = parseMarkdown(await readFile(filename, "utf8"), filename);
   requireValue(reference && typeof reference === "object" && !Array.isArray(reference), `${filename}: appearance reference frontmatter must be an object`);
@@ -673,6 +673,21 @@ for (const filename of levelReferenceFiles) {
     requireValue(reference.metadata && typeof reference.metadata === "object" && !Array.isArray(reference.metadata), `${filename}: metadata must be an object`);
     requireValue(reference.metadata.variantOf == null, `${filename}: metadata.variantOf is only valid on canonical level records`);
   }
+  const contentUpdate = reference["content-update"] ?? null;
+  if (contentUpdate != null) {
+    requireValue(contentUpdate && typeof contentUpdate === "object" && !Array.isArray(contentUpdate),
+      `${filename}: content-update must be an object`);
+    requireValue(typeof contentUpdate.id === "string" && contentUpdate.id.trim(),
+      `${filename}: content-update id must be a non-empty string`);
+    requireValue(typeof contentUpdate.label === "string" && contentUpdate.label.trim(),
+      `${filename}: content-update label must be a non-empty string`);
+    if (!contentUpdateLabelsByGame.has(gameId)) contentUpdateLabelsByGame.set(gameId, new Map());
+    const labels = contentUpdateLabelsByGame.get(gameId);
+    const existingLabel = labels.get(contentUpdate.id);
+    requireValue(existingLabel == null || existingLabel === contentUpdate.label,
+      `${filename}: content-update ${contentUpdate.id} must use the same label throughout ${gameId}`);
+    labels.set(contentUpdate.id, contentUpdate.label);
+  }
   const bannerKey = `${level.id}@${gameId}`;
   const appearanceMediaBase = path.relative(levelsRoot, filename).replaceAll("\\", "/").replace(/\.md$/, "");
   const appearanceBannerBase = `${appearanceMediaBase}/main`;
@@ -709,6 +724,7 @@ for (const filename of levelReferenceFiles) {
     title: reference.title ?? level.title,
     wikiArticle: reference.wikiArticle ?? level.wikiArticle,
     campaign: reference.campaign ?? level.campaign ?? null,
+    ...(contentUpdate ? { contentUpdate } : {}),
     ...(campaignOrder !== null ? { campaignOrder } : {}),
     ...(reference.metadata ? { metadata: reference.metadata } : {}),
     notes: body || level.notes,
@@ -751,6 +767,7 @@ for (const level of levels) {
     bannerKey: appearance.bannerKey,
     ...(appearance.campaign ? { campaign: appearance.campaign } : {}),
     ...(appearance.campaignOrder ? { campaignOrder: appearance.campaignOrder } : {}),
+    ...(appearance.contentUpdate ? { contentUpdate: appearance.contentUpdate } : {}),
     ...(appearance.metadata ? { metadata: appearance.metadata } : {}),
   }))];
   const appearanceGameIds = appearances.map((appearance) => appearance.gameId);

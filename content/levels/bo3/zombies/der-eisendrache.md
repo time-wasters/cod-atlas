@@ -4,6 +4,9 @@ title: Der Eisendrache
 games:
   - bo3
 mode: zombies
+content-update:
+  id: "2"
+  label: Awakening
 wikiArticle: codwiki-der-eisendrache
 locations:
   - id: main

@@ -4,6 +4,9 @@ title: New World
 games:
   - bo3
 mode: singleplayer
+content-update:
+  id: "0"
+  label: Included
 campaign:
   id: "1"
   label: Missions

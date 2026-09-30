@@ -4,6 +4,9 @@ title: Rift
 games:
   - bo3
 mode: multiplayer
+content-update:
+  id: "3"
+  label: Eclipse
 wikiArticle: codwiki-rift
 locations:
   - id: main

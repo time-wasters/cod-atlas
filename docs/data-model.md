@@ -167,12 +167,16 @@ metadata:
 Optional notes specific to this appearance.
 ```
 
-Only `level`, `title`, `wikiArticle`, `campaign`, `metadata` are accepted;
+Only `level`, `title`, `wikiArticle`, `campaign`, `content-update`, `metadata` are accepted;
 omitted values inherit. Nonempty Markdown precedes canonical notes; empty bodies
 show canonical notes only. No overriding `id`, `games`, `mode`, `modeSub`,
 locations, precision/confidence/method, or geographic overlays. Material changes
 to geography/playable layout require a new canonical record; a shared name
 alone does not justify a reference.
+
+`content-update` on a reference describes its release group in the appearance
+game. It does not inherit the canonical game's release group; omission leaves
+the appearance ungrouped. IDs and labels must be consistent within that game.
 
 Optional canonical overlays:
 
