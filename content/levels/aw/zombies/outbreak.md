@@ -27,7 +27,7 @@ locations:
 
 ## The Mission in the Game
 
-Oz, Lilith Swann, Jim Decker and Kahn survive an undead outbreak at the fictional Atlas Biogenesis Research and Development Facility on November 23, 2054. The playable route links its courtyard, administration wing, holding cells, morgue and Exo testing room. The map shares elements with Bio Lab (`aw-bio-lab-cc02039f`) but has its own playable space and objectives.
+Oz, Lilith Swann, Jim Decker and Kahn survive an undead outbreak at the fictional Atlas Biogenesis Research and Development Facility on November 23, 2054. The playable route links its courtyard, administration wing, holding cells, morgue and Exo testing room. The map shares elements with Bio Lab (`aw-bio-lab-map`) but has its own playable space and objectives.
 
 ## The Real Place & Differences
 

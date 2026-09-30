@@ -12,6 +12,7 @@ test("Advanced Warfare keeps its released map rosters in their playable modes", 
 
   assert.equal(campaign.length, 15);
   assert.equal(multiplayer.length, 30);
+  assert.ok(multiplayer.includes("bio-lab-map.md"));
   assert.ok(multiplayer.includes("chop-shop.md"));
   assert.ok(multiplayer.includes("climate.md"));
   assert.deepEqual(zombies, ["carrier.md", "descent.md", "infection.md", "outbreak.md"]);
@@ -21,6 +22,9 @@ test("Advanced Warfare keeps its released map rosters in their playable modes", 
     "recovery.md", "retreat.md", "riot.md", "sideshow.md", "solar.md",
     "terrace.md", "urban.md",
   ]);
+
+  const bioLab = await readFile(new URL("multiplayer/bio-lab-map.md", root), "utf8");
+  assert.match(bioLab, /^id: aw-bio-lab-map$/m);
 
   for (const filename of survival) {
     const source = await readFile(new URL(`survival/${filename}`, root), "utf8");

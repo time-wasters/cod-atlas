@@ -10,7 +10,7 @@ content-update:
   label: Included
 wikiArticle: codwiki-bio-lab-map
 metadata:
-  variantOf: aw-bio-lab-cc02039f
+  variantOf: aw-bio-lab-map
   survivalTier: "1"
 ---
 
@@ -24,7 +24,7 @@ Bio Lab is a separately selectable Tier 1 Exo Survival arena. A team of up to fo
 
 ## The Real Place & Differences
 
-This activity uses the multiplayer arena's setting. Its location evidence and limits are documented in Bio Lab (`aw-bio-lab-cc02039f`); the survival rules do not establish a more precise real-world site.
+This activity uses the multiplayer arena's setting. Its location evidence and limits are documented in Bio Lab (`aw-bio-lab-map`); the survival rules do not establish a more precise real-world site.
 
 ## The Real Mission & Differences
 

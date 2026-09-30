@@ -1,5 +1,5 @@
 ---
-id: aw-bio-lab-cc02039f
+id: aw-bio-lab-map
 title: Bio Lab
 games:
   - aw
