@@ -1,165 +1,118 @@
 # Wiki import command
 
-`npm run wiki:import` manually refreshes the machine-oriented records in
-`content/wiki-import/articles/` from the Call of Duty Wiki. It reads through
-the MediaWiki API and never edits the Wiki or curated level files.
+`npm run wiki:import` manually refreshes `content/wiki-import/articles/`
+through the Call of Duty Wiki's MediaWiki API. It never edits the Wiki or
+curated level files.
 
 ## Run through Docker
 
-The host may not have Node.js or npm. Build the repository's locked tooling
-service once:
+Host Node/npm is optional. Build the locked tooling service once:
 
 ```sh
 docker compose build cod-atlas-tools
+docker compose run --rm cod-atlas-tools npm run wiki:import -- --id codwiki-88-ridge --dry-run
 ```
 
-Compose mounts the repository at `/app` so non-dry runs write updated JSON back
-to the working tree. Its separate `/app/node_modules` volume keeps container
-dependencies visible beneath that mount:
+Compose mounts the repo at `/app`, writing non-dry-run JSON to the working
+tree, and preserves dependencies in a separate `/app/node_modules` volume.
+Use the [Docker prefix](docker-commands.md) for all npm examples below.
+Single-line commands work in PowerShell/POSIX; multiline POSIX commands use
+trailing `\`, replaced with backticks in PowerShell.
 
-```sh
-docker compose run --rm cod-atlas-tools \
-  npm run wiki:import -- --id codwiki-88-ridge --dry-run
-```
-
-The syntax works in PowerShell and POSIX-compatible shells. On PowerShell,
-enter it on one line or replace each trailing `\` with a backtick.
-
-Wiki access is disabled until it is explicitly configured. Copy the commented
-Wiki hints from `.env.example` into the ignored `.env`, uncomment them, and
-replace the example contact address:
+Wiki access is opt-in. Copy/uncomment the Wiki hints from `.env.example` into
+ignored `.env`, replacing the example contact:
 
 ```dotenv
 COD_ATLAS_WIKI_ORIGIN=https://your-wiki.example
 COD_ATLAS_WIKI_USER_AGENT=CoDAtlasWikiImporter/0.1 (maintainer@example.com)
 ```
 
-`COD_ATLAS_WIKI_ORIGIN` is an origin only, without `/wiki` or `/api.php`.
-The importer derives both paths from it and rejects source records belonging
-to another origin. The command refuses to make a request if either variable is
-blank. `.env.example` contains commented Call of Duty Wiki values as a hint;
-the repository does not enable that service by default. Missing or invalid
-configuration produces concise setup guidance and a non-zero exit status,
-without printing a JavaScript stack trace.
+The origin excludes `/wiki` and `/api.php`; the importer derives both and
+rejects records from other origins. Either variable blank prevents requests.
+The commented CoD Wiki hints do not enable access. Missing/invalid configuration
+exits nonzero with concise guidance, without a JavaScript stack trace.
 
 ## Select records
 
-The importer refuses to run without an explicit scope.
+Explicit scope is required.
 
 | Option | Behavior |
 | --- | --- |
-| `--id <id>` | Check one import record. Repeat the option to check several IDs. |
-| `--game <game-id>` | Check every distinct Wiki record referenced by levels whose `games` list contains this game ID. Repeat for several games. |
-| `--limit <n>` | Check the first `n` records whose `importedAt` is still null. |
-| `--all` | Check all import records and skip those already at the latest revision. |
-| `--force` | Re-import selected records even when the revision ID is unchanged. |
-| `--dry-run` | Print complete proposed JSON without writing any file. |
-| `--delay-ms <n>` | Wait this long between API calls; default `5000`, minimum `2000`. |
-| `--help` | Print the command's built-in usage reference. |
+| `--id <id>` | Select one import; repeat for multiple IDs. |
+| `--game <game-id>` | Select distinct Wiki records referenced by levels whose `games` includes this ID; repeat for multiple games. |
+| `--limit <n>` | Select first `n` records with null `importedAt`. |
+| `--all` | Select all; skip latest revisions. |
+| `--force` | Re-import selected records despite unchanged revision IDs. |
+| `--dry-run` | Print complete proposed JSON; write nothing. |
+| `--delay-ms <n>` | Delay between API calls; default `5000`, minimum `2000`. |
+| `--help` | Built-in usage. |
 
-Start with one dry run and inspect its proposed record:
+Start with one article's dry run and inspect the result. Game scope rejects
+unknown IDs, includes shared/remastered levels when the ID occurs anywhere in
+`games`, and fetches shared articles once:
 
 ```sh
 npm run wiki:import -- --id codwiki-88-ridge --dry-run
-```
-
-Docker equivalent:
-
-```sh
-docker compose run --rm cod-atlas-tools npm run wiki:import -- --id codwiki-88-ridge --dry-run
-```
-
-To check all levels associated with one game, use its repository game ID. Wiki
-articles shared by several matching levels are fetched only once:
-
-```sh
 npm run wiki:import -- --game cod3 --dry-run
 ```
 
-Docker equivalent:
-
-```sh
-docker compose run --rm cod-atlas-tools npm run wiki:import -- --game cod3 --dry-run
-```
-
-The command rejects unknown game IDs. Levels are selected when the ID appears
-anywhere in their `games` list, so shared and remastered levels are included.
-
-Remove `--dry-run` only after the result looks correct. A gradual initial
-import can use `--limit 10`; subsequent runs continue with records whose
-`importedAt` is null. Use `--all` for a deliberate refresh after the collection
-has been populated.
+Remove `--dry-run` only when correct. Use `--limit 10` for gradual initial
+imports (subsequent runs continue with null `importedAt`), then `--all` for
+deliberate collection refreshes.
 
 ## Imported and preserved fields
 
-For a changed page, the command can update:
+Changed pages can update:
 
-- Fandom page ID, resolved source URL, and canonical URL;
-- latest revision ID, timestamp, and SHA-1;
-- the raw and display forms of the infobox location;
-- the raw and display forms of the infobox previous level, next level, game,
-  and date fields;
-- every linked Wiki target found in the previous-level, next-level, and game
-  fields, retained as a Wiki title, display label, and URL for later reviewed
-  mapping to curated level and game IDs;
-- `game` or `chronological` sequence metadata for every previous- and
-  next-level link, using `game` when the Wiki supplies no chronological marker;
-- the stable local Wiki-import article ID for previous- and next-level targets
-  that match an existing record, or `null` when no local record can be resolved;
-- main/map image metadata when its license or recognized rights notice and
-  attribution are available; and
-- import time and a small raw evidence summary.
+- Fandom page ID, resolved source/canonical URLs.
+- Latest revision ID, timestamp, SHA-1.
+- Raw/display infobox location, previous level, next level, game, date.
+- Every previous/next/game Wiki target's title, label, URL for later reviewed
+  mapping to curated IDs.
+- Per previous/next link: `game` or `chronological` sequence (default `game`)
+  and matching local Wiki-import article ID, or `null` if unresolved.
+- Main/map image metadata with available license/recognized rights and attribution.
+- Import time and small raw evidence summary.
 
-It preserves `mapStyle`, `mapStyleDetail`, `mapStyleConfidence`, and
-`mapStyleEvidence`. It never opens or changes a level record, so curated
-coordinates, precision, confidence, method, mode, and editorial notes remain
-untouched.
+Preserve `mapStyle`, `mapStyleDetail`, `mapStyleConfidence`,
+`mapStyleEvidence`. Level records are never opened/changed; curated coordinates,
+precision, confidence, method, mode, and editorial notes remain untouched.
 
-Media is populated when the API provides a source URL, web-resolution
-thumbnail, and file detail page. Author, uploader, license, and rights metadata
-are optional and preserved whenever Fandom provides them. A recognized CoD
-Wiki `Copyrighted Media` notice is stored as `rights.status: non-free`, but it
-is not required to display the article's main image.
+API media needs source, web-resolution thumbnail, and detail-page URLs.
+Author, uploader, license, and rights are optional and retained when supplied.
+CoD Wiki `Copyrighted Media` becomes `rights.status: non-free`; that notice
+is not required for main-image display.
 
-Files without usable display URLs produce `skipping media without a usable
-display URL`, leave the media record unchanged, and retain the discovered file
-title in `rawPayload` for manual review. Do not fill missing metadata by
-guesswork.
+Unusable display URLs emit `skipping media without a usable display URL`,
+leave media unchanged, and retain the discovered file title in `rawPayload`
+for review. Never invent missing metadata.
 
 ## Request behavior and failures
 
-The importer groups up to ten distinct articles into an API request, sends requests
-serially, waits five seconds by default, and supplies `maxlag=1`. Image metadata
-is fetched in a second batched request only when images were discovered.
-Unchanged revision IDs avoid the image request and any file write.
-An unchanged record that predates a newly supported import field is refreshed
-once to backfill that field without requiring `--force`.
+Requests are serial, batch at most ten distinct articles, wait five seconds
+by default, and use `maxlag=1`. Fetch image metadata in a second batch only
+when images are found. Unchanged revisions skip image requests and writes,
+except one-time backfills of newly supported fields (no `--force` needed).
 
-Sequence classification belongs to each individual previous- or next-level
-link. The importer checks the text following that link up to the next linked
-target for a case-insensitive chronological marker; all other links use the
-`game` fallback. The original `raw` and `label` values remain intact so more
-specific Wiki wording such as chronology by date or events is not discarded.
+Classify each previous/next link by a case-insensitive chronological marker
+in text after it, up to the next target; otherwise use `game`. Preserve
+original `raw`/`label`, including specific chronology wording.
 
-HTTP 429/503, `maxlag`, and `ratelimited` responses receive bounded exponential
-backoff. Other errors stop the run rather than attempting to bypass a block.
-Do not run multiple importers concurrently, lower the delay to create load, or
-work around HTTP 403. A stopped run is safe to resume: completed JSON files are
-written atomically and unchanged revisions are skipped.
-
-Missing pages and missing revisions are reported and skipped. Review these
-records manually; do not point them at an approximate article just to complete
-the import.
+HTTP 429/503, `maxlag`, and `ratelimited` get bounded exponential backoff;
+other errors stop. Never run importers concurrently, lower delay to create
+load, or bypass HTTP 403. Atomic JSON writes and revision skipping allow safe
+resumption. Missing pages/revisions are reported and skipped; review manually
+instead of substituting approximate articles.
 
 ## Review and validate
 
 After a non-dry run:
 
-1. Review every changed JSON file, especially `levelLocation` and attribution.
-2. Confirm that no curated file under `content/levels/` changed.
-3. Regenerate and validate the derived atlas through Docker.
-4. Commit reviewed source JSON and generated data together.
+1. Review every changed JSON, especially `levelLocation` and attribution.
+2. Confirm no `content/levels/` file changed.
+3. Regenerate/validate the derived atlas through Docker when running checks.
+4. Commit only reviewed source JSON; never commit generated artifacts.
 
-Run the standard checks listed in [CONTRIBUTING.md](../CONTRIBUTING.md). The
-focused parser tests are part of `npm test`; the Docker equivalent is
-`docker compose run --rm cod-atlas-tools npm test`.
+See [required checks](../CONTRIBUTING.md#required-checks); focused parser tests
+are included in `npm test`. Agents follow `AGENTS.md`: recommend relevant
+checks and run only on explicit user request.

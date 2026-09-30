@@ -1,76 +1,57 @@
 # Running npm commands through Docker
 
-Node.js and npm are optional on the host. The `cod-atlas-tools` Compose service
-uses the locked builder stage from `Dockerfile`, mounts the repository at
-`/app`, and keeps container dependencies in a named volume. Generated files
-are therefore written back to the working tree, but
-`app/data/*.generated.json` remains ignored and must not be committed.
+Host Node/npm is optional. The `cod-atlas-tools` Compose service uses the locked
+`Dockerfile` builder stage, bind-mounts the repository at `/app`, and preserves
+dependencies in the `cod-atlas-node-modules` volume. Outputs reach the working
+tree; `app/data/*.generated.json` stays ignored and must not be committed.
+The production `cod-atlas` service does not attach this dependency volume.
 
-Copy `.env.example` to the ignored `.env` for local configuration. The checked
-out repository already works with the documented port defaults; Wiki access
-remains disabled until its commented example values are explicitly enabled.
+Copy `.env.example` to ignored `.env` for local configuration. Default ports
+work without changes; Wiki access requires explicitly enabling the commented values.
 
-Replace any local command of the form `npm ...` with:
-
-```sh
-docker compose run --rm cod-atlas-tools npm ...
-```
-
-Common equivalents:
-
-| Local command | Docker command |
-| --- | --- |
-| `npm ci` | `docker compose build cod-atlas-tools` |
-| `npm run data:build` | `docker compose run --rm cod-atlas-tools npm run data:build` |
-| `npm run data:check` | `docker compose run --rm cod-atlas-tools npm run data:check` |
-| `npm run progress:update` | `docker compose run --rm cod-atlas-tools npm run progress:update` |
-| `npm run icons:import` | `docker compose run --rm cod-atlas-tools npm run icons:import` |
-| `npm run images:prepare` | `docker compose run --rm cod-atlas-tools npm run images:prepare` |
-| `npm run images:check` | `docker compose run --rm cod-atlas-tools npm run images:check` |
-| `npm run lint` | `docker compose run --rm cod-atlas-tools npm run lint` |
-| `npm test` | `docker compose run --rm cod-atlas-tools npm test` |
-| `npm run build` | `docker compose run --rm cod-atlas-tools npm run build` |
-| `npm run build:static` | `docker compose run --rm cod-atlas-tools npm run build:static` |
-| `npm run wiki:import -- <options>` | `docker compose run --rm cod-atlas-tools npm run wiki:import -- <options>` |
-
-Level images are optimized before they are committed, not during a build. Both
-commands scan all level images by default and accept optional paths below
-`public/images/levels/` to narrow their scope; the check command is read-only.
-See the
-[level-image workflow](image-workflow.md) for dry runs, conversion rules,
-limits, and strict checking.
-
-For the development server, publish the tooling service's configured port:
+Build tooling instead of host `npm ci`; rebuild after changes to `package.json`,
+`package-lock.json`, or `Dockerfile`:
 
 ```sh
-docker compose run --rm --service-ports cod-atlas-tools \
-  npm run dev -- --port 3000
+docker compose build cod-atlas-tools
 ```
 
-Open <http://localhost:3000>. Set `COD_ATLAS_DEV_PORT` before running the
-command to choose a different host port; the container still listens on 3000.
+For every other `npm ...` command, preserve its arguments and prepend
+`docker compose run --rm cod-atlas-tools`:
+
+```sh
+docker compose run --rm cod-atlas-tools npm run data:check
+docker compose run --rm cod-atlas-tools npm test
+docker compose run --rm cod-atlas-tools npm run wiki:import -- <options>
+```
+
+This also covers `data:build`, `progress:update`, `icons:import`,
+`images:prepare`, `images:check`, `lint`, `build`, and `build:static`.
+Level images are optimized before commit, not during builds. Both image commands
+scan all level images by default and accept paths under `public/images/levels/`;
+`images:check` is read-only. See [image workflow](image-workflow.md) for dry runs,
+conversion rules, limits, and strict checking.
+
+Publish the tooling service's port for development:
+
+```sh
+docker compose run --rm --service-ports cod-atlas-tools npm run dev -- --port 3000
+```
+
+Open <http://localhost:3000>. Set `COD_ATLAS_DEV_PORT` beforehand to change the
+host port; the container still listens on 3000.
 
 ## External game icon cache
 
 `npm run icons:import` reads optional Steam, SteamGridDB, and MobyGames metadata
 from `content/games/*.yaml`. It does nothing unless `STEAM_ICON_URL`,
-`STEAMGRIDDB_ICON_URL`, or `MOBYGAMES_ICON_URL` is configured. Enabled
-providers are downloaded into the ignored `public/images/games_external/`
-build cache, together with a `manifest.json`. Steam `icon` images are imported
-as JPEG and optional `clienticon` images as ICO, using `%extension%` in the
-Steam URL template. SteamGridDB and MobyGames use the source filename extension
-and a `%file%` URL placeholder. Existing files with a valid matching image
-signature are reused without a network request; missing or invalid files are
-downloaded.
+`STEAMGRIDDB_ICON_URL`, or `MOBYGAMES_ICON_URL` is configured.
 
-Both regular and static builds run this command automatically. An unavailable
-external image is reported and omitted from the manifest so the existing local
-game icon can remain the eventual frontend fallback.
+Enabled providers populate ignored `public/images/games_external/` and its
+`manifest.json`. Steam imports `icon` as JPEG and optional `clienticon` as ICO
+using `%extension%` in its URL template. SteamGridDB/MobyGames use `%file%` and
+the source extension. Valid matching image signatures permit cache reuse without
+requests; missing/invalid files are downloaded.
 
-Compose creates `cod-atlas-node-modules` for tooling dependencies. It does not
-attach that volume to the production `cod-atlas` service. Rebuild the tooling
-image after `package.json`, `package-lock.json`, or `Dockerfile` changes:
-
-```sh
-docker compose build cod-atlas-tools
-```
+Regular and static builds run the importer automatically. Unavailable images
+are reported and omitted from the manifest, allowing the local game icon fallback.

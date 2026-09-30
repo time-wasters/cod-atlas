@@ -1,7 +1,7 @@
 # Atlas data model
 
-The repository separates human-curated atlas records from machine-oriented
-Wiki imports. There is no database and no shared place entity.
+Human-curated records and machine-oriented Wiki imports are separate. No
+database or shared place entity.
 
 ## Relationships
 
@@ -13,13 +13,12 @@ erDiagram
   LEVEL ||--o{ LOCATION : "embeds"
 ```
 
-- `content/games/*.yaml` supplies stable game IDs, readable labels, codes,
-  release dates, and series classifications.
-- `content/levels/**/*.md` is the curated source for level classification,
-  coordinates, precision, and notes.
-- `content/wiki-import/articles/*.json` stores repeatable Wiki-import results
-  and media attribution.
-- `app/data/atlas.generated.json` is a derived, ignored browser build artifact.
+| Path | Purpose |
+| --- | --- |
+| `content/games/*.yaml` | Stable game IDs, labels, codes, release dates, series |
+| `content/levels/**/*.md` | Curated classification, coordinates, precision, notes |
+| `content/wiki-import/articles/*.json` | Repeatable imports and media attribution |
+| `app/data/atlas.generated.json` | Derived, ignored browser artifact |
 
 ## Game record
 
@@ -36,108 +35,94 @@ developer:
     name: Treyarch
 ```
 
-The release date controls the game-filter ordering. `label` should be concise
-but understandable without prior knowledge of internal abbreviations, while
-`labelLong` contains the full game name used by icon tooltips. An
-optional `public/images/games/<game-id>.png` is detected during the build and
-exposed as the game's `icon`; games without one continue to display their
-label.
+Release date orders game filters. Keep `label` concise and understandable
+without internal abbreviations; `labelLong` is the full name for icon tooltips.
+Builds detect optional `public/images/games/<game-id>.png` as `icon`;
+without one, show the label.
 
-Game series values are `world-war-ii`, `modern-warfare`, `black-ops`, and
-`standalone`. The optional `subseries` field accepts one value or a list of
-memberships. Its values are `main`, `reboot`, `remaster`, `add-on`, and
-`spin-off`. Use `reboot` for reboot-continuity releases and `add-on` for
-expansions of an existing game, such as *Call of Duty: United Offensive*.
-Games may belong to multiple sub-series; for example, the reboot Modern
-Warfare releases use `subseries: [main, reboot]`. A `remaster` membership must
-link to the original game through its stable ID:
+Series: `world-war-ii`, `modern-warfare`, `black-ops`, `standalone`.
+Optional `subseries`: `main`, `reboot`, `remaster`, `add-on`, `spin-off`.
+A scalar is shorthand for a one-item list; omission compiles to `[]`.
+Use `reboot` for reboot continuity (e.g. modern MW: `[main, reboot]`),
+`add-on` for expansions (e.g. United Offensive).
+`remaster` requires `remasterOf: <original-game-id>` (e.g. `cod4`);
+games without that membership must omit it.
 
-```yaml
-series: modern-warfare
-subseries: [remaster]
-remasterOf: cod4
-```
+Every game requires a nonempty `developer` list. Entries have stable lowercase,
+underscore-separated `id` and readable `name`; one ID must keep the same name
+across games. Multiple studios or broad/historical groupings may coexist.
 
-Games without the `remaster` membership must omit `remasterOf`. Omit
-`subseries` when none applies; the compiler represents it as an empty list in
-generated data. A single source value is accepted as shorthand for a one-item
-list.
-
-Every game has a non-empty `developer` list. Each entry uses a stable lowercase,
-underscore-separated `id` for filtering and a human-readable `name`. A game may
-list multiple entries when several studios contributed or when the atlas offers
-both a broad developer grouping and a more specific historical grouping. The
-same developer ID must use the same name in every game record.
-
-The generated country groups include a `continent` used by the advanced
-filters. Standard countries are classified through `world-countries`; named
-waters, the Arctic, and off-world settings use explicit supplemental buckets.
+Generated country groups expose `continent` for advanced filters:
+`world-countries` classifies standard countries; explicit supplemental buckets
+cover named waters, the Arctic, and off-world settings.
 
 ## Level source layout
 
-Level rosters should generally use map-type directories:
+Prefer `content/levels/<game>/<map-type>/<filename>`:
 
-```text
-content/levels/<primary-game>/campaign/<order>-<descriptive-name>.md
-content/levels/<primary-game>/multiplayer/<descriptive-name>.md
-content/levels/<primary-game>/special-ops/<descriptive-name>.md
-content/levels/<primary-game>/survival/<descriptive-name>.md
-content/levels/<primary-game>/zombies/<descriptive-name>.md
-content/levels/<primary-game>/challenge/<descriptive-name>.md
-content/levels/<appearance-game>/<map-type>/<descriptive-name>.ref.md
-```
+| Mode | Subtype | Directory | Canonical filename |
+| --- | --- | --- | --- |
+| `singleplayer` | — | `campaign/` | `<order>-<descriptive-name>.md` |
+| `multiplayer` | — | `multiplayer/` | `<descriptive-name>.md` |
+| `zombies` | — | `zombies/` | `<descriptive-name>.md` |
+| `other` | `special-ops` | `special-ops/` | `<descriptive-name>.md` |
+| `other` | `survival` | `survival/` | `<descriptive-name>.md` |
+| `other` | `challenge` | `challenge/` | `<descriptive-name>.md` |
 
-Map `singleplayer` to `campaign/`, `multiplayer` to `multiplayer/`, and
-`zombies` to `zombies/`. For `mode: other`, use the directory matching
-`modeSub`: `special-ops/`, `survival/`, or `challenge/`. Map types are broad
-content categories; they are distinct from multiplayer rule sets such as
-deathmatch or capture the flag.
+Map types are broad categories, not multiplayer rules like deathmatch/capture
+the flag. Use one layout per game: legacy flat rosters remain supported until
+deliberate reorganization, but never mix flat canonical files and map-type
+directories. Reorganize canonical files, references, and hosted level media together.
 
-A game must use one layout consistently. Legacy flat rosters remain supported
-until deliberately reorganized, but a game must not mix flat canonical records
-with map-type directories. Reorganizing a game includes its canonical files,
-appearance references, and repository-hosted level media.
+Campaign order starts at `1`, without leading zeros, unique and contiguous
+per game. It records play order, never part of stable ID or display title.
+Descriptive filenames organize files independently of IDs.
 
-Campaign orders start at `1`, have no leading zeros, and must be unique and
-contiguous within their game. The prefix records play order without becoming
-part of the stable level `id` or display title. The remaining descriptive
-filename is source-tree organization only and does not need to match an ID.
-
-A full `.md` file is the canonical record and owns the stable ID, mode, mode
-subtype, overlays, and canonical research. It normally embeds its locations,
-but a canonical variant may inherit them through `metadata.variantOf`. A
-`.ref.md` file records that the same level appears in another game. References
-live under that appearance's game, so every game's directory provides a
-complete, manageable index of its levels.
+A canonical `.md` owns stable ID, mode/subtype, overlays, and research,
+normally embedding locations; a variant may inherit via `metadata.variantOf`.
+Unchanged appearances use `<descriptive-name>.ref.md` under the appearance
+game's map-type directory, making each game directory a complete level index.
 
 ## Level record
 
-The YAML frontmatter contains structured data; the Markdown body contains
-research or editorial notes.
+YAML frontmatter holds structured data; Markdown holds research/editorial notes.
+See the [field guide](contributing-data.md#level-fields) and [templates](templates/).
 
-Required fields:
+Required: repository-wide `id`, readable `title`, `games` containing exactly
+one canonical owner ID, `mode`, `wikiArticle`. Only `other` requires
+`modeSub` (`special-ops`, `survival`, `challenge`); other modes omit it.
 
-- `id`: stable, repository-wide level ID.
-- `title`: human-readable level or map name.
-- `games`: exactly one game ID: the canonical owner game.
-- `mode`: `singleplayer`, `multiplayer`, `zombies`, or `other`.
-- `modeSub`: required for `other` records and limited to `special-ops`,
-  `survival`, or `challenge`; omit it for every other mode.
-- `wikiArticle`: foreign key to a Wiki import record.
-- `locations`: embedded location records. This may be omitted only when
-  `metadata.variantOf` links to another canonical level whose locations should
-  be inherited. Use an empty list when the level intentionally has no curated
-  location; an explicit empty list never triggers inheritance.
+`locations` embeds zero or more locations. Omit only to inherit from another
+canonical level via `metadata.variantOf`; explicit `[]` intentionally stays
+empty (including temporary lack of curated locations). Location IDs are unique
+within the level; each has country and normally coordinates. Optional hierarchy:
+`country → region → city → landmark`. Regions include states, provinces,
+constituent countries, islands, territories; landmarks include rivers, castles,
+buildings. Never globally deduplicate coordinates; only explicit variants inherit.
 
-Optional level fields include `campaign`, a grouping with a stable string `id`
-and a human-readable `label`; `content-update`, which groups levels by their
-original release, map pack, season, or other content release;
-`legacyIds`, which
-preserves old URL IDs after a structural rename; and `metadata` for
-non-geographic descriptive values.
+Optional fields:
 
-Human review can be recorded independently for the level's locations and its
-research notes:
+- `campaign`: named section with stable string `id` and readable `label`,
+  independent of filename order. Keep IDs through label corrections/translations.
+  Identity includes mode and, for `other`, subtype, so matching campaign IDs
+  across categories remain separate interface groups.
+- `content-update`: original release/map pack/season/other release grouping,
+  valid across all modes/subtypes within a game. Stable string `id` controls
+  ordering; sidebar displays `label`. Use one label per ID per game.
+  Example: `{ id: "2", label: Map Pack 1 }`; base game: `{ id: "0", label: Included }`.
+- `legacyIds`: preserve old URL IDs after structural renames.
+- `metadata`: non-geographic descriptions, including `variantOf`.
+
+Each separately selectable Special Ops/Survival/Challenge is `other` with its
+subtype. Each Challenge is canonical; link reused campaign sections through
+`metadata.variantOf` and omit `locations` to reuse geography.
+
+Variants retain distinct identities, metadata, notes, modes, and gameplay.
+Compilation/progress reporting resolve inherited locations into memory, following
+valid chains. Unknown targets/cycles are invalid; any supplied `locations`,
+even `[]`, overrides inheritance. Unchanged cross-game levels use references.
+
+Human location/research review is independent:
 
 ```yaml
 verified:
@@ -150,89 +135,25 @@ verified:
     reason: The available evidence was reviewed but remains inconclusive.
 ```
 
-The optional `verified` object is preserved in generated atlas entries and is
-used by the generated progress report.
-`byHuman: true` requires a non-empty reviewer identifier. An unverified record
-may keep a reviewer identifier and an optional `reason` when a human inspected
-the evidence but could not verify the location or research. Use `user: null`
-when no human review took place. Omitting either verification category counts
-it as not verified. Location verification covers every resolved location in
-the level, including locations inherited through `metadata.variantOf`.
-Research completion and human verification remain separate: having all
-required Markdown sections does not itself indicate that a human reviewed
-their claims.
+Optional `verified` survives in generated entries and progress reports.
+`byHuman: true` requires a nonempty reviewer. Unverified records may keep a
+reviewer and optional `reason` for inconclusive review; use `user: null` if
+unreviewed. Missing categories count as unverified. Location review covers all
+resolved locations, including inherited ones. Completed research sections do
+not imply human verification.
 
-A level can embed multiple locations, temporarily use `locations: []`, or omit
-the field to inherit from `metadata.variantOf`. Each location has a locally
-unique `id`, a country, and normally coordinates. Optional geographic detail
-follows the hierarchy `country` → `region` → `city` → `landmark`. A region may be a
-state, province, constituent country, island, territory, or similar area;
-landmarks are named sites such as rivers, castles, and buildings. Coordinates
-are not globally deduplicated across levels; only an explicit
-`metadata.variantOf` relationship can inherit another level's locations.
-
-Campaign metadata identifies the named campaign section that contains a level;
-it is separate from the numeric play-order prefix in campaign filenames. Keep
-the ID stable even if the display label is later corrected or translated.
-Campaign identity also includes the level mode (and the subtype for `other`),
-so matching campaign IDs in Campaign, Multiplayer, Zombies, Special Ops, or
-Challenge data remain separate groups in the interface.
-
-Any level type may use matching content-update metadata:
-
-```yaml
-content-update:
-  id: "2"
-  label: Map Pack 1
-```
-
-The stable string ID controls update ordering and the label is shown in the
-sidebar. Levels released in the base game can use an ID such as `"0"` with the
-label `Included`. A content update may group levels across any modes and
-subtypes within the same game. Use the same label for a content-update ID
-throughout that game.
-
-Use `other` for separately selectable Special Ops, Survival, and Challenge entries. Set
-`modeSub` to identify which kind it is. Keep each selectable Challenge as its
-own canonical record. When it reuses a campaign section, record that
-relationship with `metadata.variantOf`; omit `locations` when it should use the
-source level's geography.
-
-`metadata.variantOf` links one distinct canonical level to another canonical
-level. It does not merge their identities, metadata, notes, modes, or gameplay.
-When the variant omits `locations`, atlas compilation and progress reporting
-copy the resolved target locations into the in-memory record. Targets may
-themselves inherit, but unknown targets and cycles are invalid. Supplying a
-`locations` field, including `locations: []`, always takes precedence over the
-link. Use an appearance `.ref.md` instead when the same unchanged level appears
-in another game.
-
-Precision values:
-
-- `exact`: verified landmark or exact point.
-- `approximate`: researched estimate rather than an exact point.
-- `city`: city-level evidence.
-- `region`: regional evidence.
-- `country`: country fallback.
-- `off-world`: no terrestrial coordinates.
-
-`confidence` and `method` are required on every location. Their allowed values
-and decision guidance are documented in the
-[data contribution guide](contributing-data.md). Copy-ready records live in
-[`docs/templates/`](templates/).
-
-Use `real-world-inspiration` when a verified real place inspired a fictional or
-adapted in-game location. It distinguishes the real reference point from a
-canonical claim that the in-game location is the landmark itself.
-
-`primary: true` identifies the main location when a level contains several.
-The generated browser data preserves this flag so campaign routes and other
-level-level visualizations can select an intentional representative location.
+Every location needs `precision`, `confidence`, `method`; follow the
+[field guide's values and decisions](contributing-data.md#allowed-values).
+Precision is `exact` (verified point), `approximate` (researched estimate),
+`city`, `region`, `country` (fallback), or `off-world` (no Earth coordinates).
+Use `real-world-inspiration` for verified real inspiration of a fictional/adapted
+setting, without claiming the game canonically depicts that landmark.
+`primary: true` marks the main location among several and survives generation
+for campaign routes/other level visualizations.
 
 ## Level appearance reference
 
-An unchanged port, remaster, or rerelease uses a small reference file rather
-than adding game IDs to the canonical record:
+Unchanged ports/remasters/rereleases use a reference, not extra `games` IDs:
 
 ```md
 ---
@@ -246,96 +167,63 @@ metadata:
 Optional notes specific to this appearance.
 ```
 
-Only `level`, `title`, `wikiArticle`, `campaign`, and `metadata` are accepted.
-Omitted values inherit from the canonical record. The Markdown body, when
-present, is shown before the inherited canonical notes; an empty body shows
-only the canonical notes. Appearance references cannot set `id`, `games`, `mode`,
-`modeSub`, `locations`, precision/confidence/method values, or geographic overlays.
+Only `level`, `title`, `wikiArticle`, `campaign`, `metadata` are accepted;
+omitted values inherit. Nonempty Markdown precedes canonical notes; empty bodies
+show canonical notes only. No overriding `id`, `games`, `mode`, `modeSub`,
+locations, precision/confidence/method, or geographic overlays. Material changes
+to geography/playable layout require a new canonical record; a shared name
+alone does not justify a reference.
 
-Create a new canonical level when a remake materially changes the playable
-level or represented geography. Do not use an appearance reference merely
-because two maps share a name.
+Optional canonical overlays:
 
-An optional `mapOverlay` belongs in the level Markdown frontmatter when a
-reviewed game map can be geographically calibrated. It records a local image,
-stored as `maps/overlay.png` or `maps/overlay.jpg`; the `image` field may be
-omitted when the file uses the default `maps/overlay.png` path. It also records
-opacity, all four `[latitude, longitude]` corners, and descriptive source and
-non-free rights attribution. Map-overlay attribution omits `sourceUrl` because
-a repository URL depends on the branch and deployment. The compiler validates
-these fields and writes them to the separate
-`app/data/map-overlays.generated.json` browser store; overlay data is not added
-to the main atlas JSON.
-
-Optional `historyOverlays` attach one or more geographically calibrated
-historical figures to images embedded in the level's research Markdown. Each
-record has a stable ID, a local PNG or JPEG in the level's `extra/` directory
-(legacy records under `public/images/maps/` are also accepted), opacity, four
-corners, and complete author, publication, copyright, and non-free-rights
-attribution. The Markdown body must embed the corresponding image filename.
-The compiler validates both the image and that body reference, then writes the
-records to `app/data/history-overlays.generated.json`. The frontend renders a
-matching Markdown image as a control that can place or remove that historical
-figure on the live map. History-overlay data remains separate from the main
-atlas JSON and from game-map overlays.
+- `mapOverlay`: reviewed, geographically calibrated game map; local
+  `maps/overlay.png` (default when `image` omitted) or `maps/overlay.jpg`,
+  opacity, four `[latitude, longitude]` corners, descriptive source and
+  non-free rights attribution. Omit attribution `sourceUrl` because repository
+  URLs depend on branch/deployment. Compiler validates and writes separate
+  `app/data/map-overlays.generated.json`, never main atlas JSON.
+- `historyOverlays`: one or more calibrated historical figures, each with
+  stable ID, local PNG/JPEG in the level's `extra/` (legacy
+  `public/images/maps/` accepted), opacity, four corners, complete author,
+  publication, copyright, and non-free-rights attribution. Markdown must embed
+  the matching filename. Compiler validates image/body reference and writes
+  `app/data/history-overlays.generated.json`, separate from atlas/game overlays.
+  Frontend turns matching Markdown images into controls to add/remove figures
+  on the live map.
 
 ## Wiki import record
 
-The stable `id` is the foreign-key target. Import-oriented fields include:
+Stable `id` is the foreign-key target. Fields include page/revision IDs,
+source/canonical URLs; Wiki location text/link; previous/next/game text and all
+linked targets for later reviewed ID mapping; date; map-style classification/
+evidence; main/map images with display URLs, detail pages, optional author,
+uploader, license/rights; optional raw payload. Previous/next links carry
+`sequence` (`game`/`chronological`) and local `article` ID or `null`.
 
-- Fandom page and revision IDs.
-- Source and canonical article URLs.
-- Wiki-provided level-location text and link.
-- Wiki-provided previous/next-level and game text, with every linked Wiki
-  target retained for later reviewed mapping to curated IDs.
-- Per-link `sequence` metadata on previous/next levels (`game` or
-  `chronological`) and an `article` foreign key to the matching local Wiki
-  import when one can be resolved. Unresolved targets retain `article: null`.
-- Wiki-provided date text.
-- Map-style classification and supporting evidence.
-- Main and map images, including web-resolution display URLs.
-- Image detail pages and optional author, uploader, license, or rights metadata.
-- Optional raw import payload.
+Null means not yet imported. Preserve supplied Fandom metadata; article images
+require usable source/display/detail URLs. Generated `wikiMedia` stores
+displayable media once per article, avoiding marker duplication.
 
-Null fields mean that the value has not been imported yet. Metadata supplied by
-Fandom is retained, but only usable source, display, and detail-page URLs are
-required for an article image.
-The generated atlas exposes displayable media once per Wiki article through
-the top-level `wikiMedia` object, rather than duplicating it for every marker.
-
-Repository-hosted media is owned by a game appearance and grouped by level,
-not by picture type:
+Hosted media belongs to game appearances and is grouped by level:
 
 ```text
-public/images/levels/
-`-- <game-id>/
-    `-- <map-type>/
-        `-- <level-filename>/         # Markdown filename without final .md
-            |-- main.png             # or main.jpg / main.webm
-            |-- maps/
-            |   `-- overlay.png      # or overlay.jpg
-            `-- extra/
-                `-- <filename-used-in-md>  # PNG, JPEG, or WebP
+public/images/levels/<game-id>/<map-type>/<level-filename>/
+  main.png          # or main.jpg / main.webm
+  maps/overlay.png  # or overlay.jpg
+  extra/<filename-used-in-md>  # PNG, JPEG, WebP
 ```
 
-For example, a campaign level's `main.png` and `maps/overlay.png` mirror its
-Markdown source at
-`content/levels/<game-id>/campaign/<order>-<descriptive-name>.md`. A Markdown image written as
-`![Caption](research-photo.jpg)` is served from that appearance's
-`extra/research-photo.jpg` directory. Only create a level media directory when
-media exists.
+`<level-filename>` is the Markdown filename minus final `.md`, including
+campaign order. Media mirrors source paths; `![Caption](research-photo.jpg)`
+loads the appearance's `extra/research-photo.jpg`. Create media directories
+only when needed.
 
-The build validates main-media signatures and exposes each file by appearance
-through `levelBanners`. When a reference has no `main` file, the frontend uses
-the canonical appearance's file, then imported Wiki media. These extracted or
-captured images are credited to
-[plp-gtr](https://github.com/plp-gtr); underlying game artwork retains its
-original copyright.
-
-Raster level media is optimized before commit, not during the static build.
-The [`images:prepare` and `images:check` workflow](image-workflow.md) documents
-the role-specific conversion rules, dimensions, size limits, and Docker
-commands.
+Builds validate main-media signatures and expose files by appearance in
+`levelBanners`. Missing reference banners fall back to canonical appearance,
+then imported Wiki media. Credit extracted/captured images to
+[plp-gtr](https://github.com/plp-gtr); original game artwork copyright remains.
+Optimize raster media before commit, never during static builds; see
+[image workflow](image-workflow.md) for conversion rules, dimensions, sizes, Docker.
 
 ## Build flow
 
@@ -347,16 +235,9 @@ flowchart LR
   D --> E["Static map build"]
 ```
 
-Run `npm run data:build` to validate IDs, foreign keys, enum values, coordinate
-pairs, and ranges before regenerating the browser dataset. Use
-`npm run data:check` to perform the same validation without writing build
-artifacts. Never manually edit or commit the generated JSON.
+`npm run data:build` validates IDs, foreign keys, enums, coordinate pairs/ranges,
+then regenerates browser data. `npm run data:check` validates without writing.
+Never edit/commit generated JSON. Use the [Docker prefix](docker-commands.md)
+without host npm; agents run checks only on explicit request per `AGENTS.md`.
 
-Docker equivalent:
-
-```sh
-docker compose run --rm cod-atlas-tools npm run data:build
-```
-
-Marker clustering is a display concern. It may group nearby markers according
-to zoom level, but it must not mutate or merge the underlying locations.
+Clustering may group nearby markers by zoom, never mutate/merge source locations.

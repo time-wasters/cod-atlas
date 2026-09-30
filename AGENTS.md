@@ -1,117 +1,73 @@
 # Codex repository instructions
 
-These instructions apply to the entire repository. A more specific
-`AGENTS.md` in a subdirectory takes precedence for files below it.
+Applies repository-wide; a deeper `AGENTS.md` overrides this for its subtree.
 
-## Project goal
+## Project and architecture
 
-CoD Atlas is a database-free, statically deployable map of real-world
-locations represented in CoD. Git is the source of truth and data
-changes are intended to be reviewable through pull requests.
+CoD Atlas maps real-world CoD locations without a database. Git is the source
+of truth; data changes must be reviewable in PRs. Preserve the plain static
+output of `npm run build:static`.
 
-## Non-negotiable architecture
+- Curated data lives in `content/`. Canonical levels own embedded `locations`.
+  A canonical variant may omit `locations` to inherit via `metadata.variantOf`;
+  explicit `locations: []` never inherits. Levels may have multiple locations.
+- Never create shared places tables/YAML/foreign keys or merge source
+  coordinates for display: levels in one city may depict different sites.
+  Cluster nearby markers only at render time.
+- Keep Wiki imports separate, linked by `wikiArticle`. Refreshes must not
+  overwrite curated coordinates, precision, mode, or notes without explicit review.
+- No database, Supabase, or runtime locations API unless the user explicitly
+  changes the architecture.
 
-- Curated source data lives under `content/`.
-- A canonical level normally owns its coordinates through its embedded
-  `locations` array. A canonical variant may instead omit `locations` and use
-  `metadata.variantOf` to inherit them from another canonical level. An
-  explicit `locations: []` never inherits.
-- Do not create a shared places table, places YAML file, or place foreign key.
-  Two levels in the same city may represent different buildings or coordinates.
-- Nearby markers may be clustered dynamically by the map at render time; never
-  merge source coordinates merely to simplify display.
-- Keep Wiki import records separate from curated level records and connect them
-  with `wikiArticle` IDs.
-- Never let a Wiki refresh overwrite curated coordinates, precision, mode, or
-  editorial notes without an explicit, reviewed change.
-- Do not introduce a database, Supabase, or a runtime locations API unless the
-  user explicitly changes the architecture.
-- Preserve the plain static build produced by `npm run build:static` (Docker:
-  `docker compose run --rm cod-atlas-tools npm run build:static`).
-
-## Generated data
-
-- `app/data/*.generated.json` files are ignored build artifacts; never edit or
-  commit them. Commands that need them generate them automatically.
-- After changing `content/`, recommend `npm run data:check` (Docker:
-  `docker compose run --rm cod-atlas-tools npm run data:check`) for focused
-  validation without generating build artifacts.
-- The current regression baseline is 1277 marker locations. A count change must
-  be intentional and accompanied by an appropriate test update.
-
-## Working procedure
-
-### Command execution environment
-
-- Do not assume Node.js or npm is installed on the host. Check availability
-  before using host-side Node/npm commands.
-- Prefer Docker for installs, data commands, linting, tests, and builds. Use the
-  `builder` stage in `Dockerfile`, which contains the locked Node/npm toolchain.
-- When a command must write generated output to the workspace, run the builder
-  with the repository bind-mounted at `/app` and preserve the image's
-  `/app/node_modules` separately so dependencies remain available.
-- Do not install Node.js or npm on the host merely to run repository commands.
-- Prefer `docker compose run --rm cod-atlas-tools npm ...` as the Docker
-  equivalent of a local npm command. See `docs/docker-commands.md`.
+## Workflow
 
 1. Read `README.md`, `CONTRIBUTING.md`, and `docs/data-model.md` when relevant.
-2. Make the smallest coherent change.
-3. Do not automatically run data checks, linters, tests, builds, or other
-   validation commands. Run them only when the user explicitly asks you to do
-   so.
-4. Before handing off a completed change, identify the smallest relevant set of
-   validation commands and include them in the final response for the user to
-   run. Do not recommend the full suite when a focused check is sufficient.
-   Clearly state that the commands were not run. When the user returns an error,
-   use that output to fix the problem and provide the updated command to rerun.
-5. For changes that warrant the complete validation suite, recommend:
+   For AI research/editing of locations or historical notes, read and follow
+   `docs/map-research-ai-instructions.md` in full.
+2. Make the smallest coherent change using existing TypeScript/React patterns.
+3. Run data checks, lint, tests, builds, or other validation **only when the
+   user explicitly requests it**, including where contributor docs list checks.
+4. At handoff, give the smallest relevant validation commands for the user to
+   run; state they were not run. Recommend focused checks when sufficient.
+   Fix returned errors using the user's output and give the updated rerun command.
+   For changes warranting the full suite: `npm run data:check`, `npm run lint`,
+   `npm test`, `npm run build:static`.
+5. Do not deploy, publish, push to a different remote, or change site access
+   without an explicit user request.
 
-   ```sh
-   npm run data:check
-   npm run lint
-   npm test
-   npm run build:static
-   ```
+### Commands and generated data
 
-   Docker equivalents:
+- Prefer Docker for installs, data, lint, tests, and builds. Use the locked
+  `Dockerfile` builder stage through `docker compose run --rm cod-atlas-tools npm ...`
+  in place of `npm ...`; for installation use `docker compose build cod-atlas-tools`.
+  See `docs/docker-commands.md`.
+- Check host Node/npm availability before using them; never install them merely
+  for repository commands.
+- To write generated output, bind-mount the repository at `/app` and preserve
+  the image's `/app/node_modules` separately (the tooling Compose service does this).
+- Never edit or commit ignored `app/data/*.generated.json`; commands generate
+  them as needed. After `content/` changes, recommend `npm run data:check`, which
+  validates without generating artifacts.
+- Regression baseline: **1277 marker locations**. Count changes must be
+  intentional and include the appropriate test update.
 
-   ```sh
-   docker compose run --rm cod-atlas-tools npm run data:check
-   docker compose run --rm cod-atlas-tools npm run lint
-   docker compose run --rm cod-atlas-tools npm test
-   docker compose run --rm cod-atlas-tools npm run build:static
-   ```
+## Content conventions
 
-6. Do not deploy, publish, push to a different remote, or change site access
-   unless the user explicitly requests it.
-
-## Code and content conventions
-
-- Use TypeScript/React patterns already present in the repository.
-- For AI-assisted research or editing of level locations and historical notes,
-  read and follow `docs/map-research-ai-instructions.md` in full.
-- Keep game labels short, human-readable, and ordered by release date.
-- A level may contain more than one location.
-- Valid modes are `singleplayer`, `multiplayer`, `zombies`, and `other`.
-- Records with `mode: other` require `modeSub: special-ops`, `survival`, or
-  `challenge`; other modes must omit `modeSub`.
-- `content-update` metadata is valid for every mode and subtype when a level
-  belongs to a documented release grouping.
-- Level rosters should generally use map-type directories: `campaign/`,
-  `multiplayer/`, `special-ops/`, `survival/`, `zombies/`, and `challenge/`.
-  Campaign filenames carry their play-order prefix; other filenames do not.
-- Roster-completeness audits must check Campaign, Multiplayer, Zombies,
-  Challenge, Special Ops, Survival/Hostiles/Safeguard/Exo Survival,
-  Nightmares, Strike Force, War, and Extinction where applicable.
-- Valid precision values are `exact`, `approximate`, `city`, `region`,
-  `country`, and `off-world`.
-- Preserve source links and attribution for imported material.
-- Do not add copyrighted screenshots or Wiki media unless their source,
-  detail page, author, user link, and license are recorded.
+- Game labels: short, readable, ordered by release date.
+- Modes: `singleplayer`, `multiplayer`, `zombies`, `other`. Only `other` requires
+  `modeSub`: `special-ops`, `survival`, or `challenge`; all other modes omit it.
+- `content-update` supports every mode/subtype with a documented release grouping.
+- Prefer map-type directories: `campaign/`, `multiplayer/`, `special-ops/`,
+  `survival/`, `zombies/`, `challenge/`. Only campaign filenames carry play-order prefixes.
+- Roster audits must cover all applicable categories: Campaign, Multiplayer,
+  Zombies, Challenge, Special Ops, Survival/Hostiles/Safeguard/Exo Survival,
+  Nightmares, Strike Force, War, Extinction.
+- Precision: `exact`, `approximate`, `city`, `region`, `country`, `off-world`.
+- Preserve imported source links and attribution. Copyrighted screenshots/Wiki
+  media require recorded source, detail page, author, user link, and license.
 
 ## Licensing
 
-- Source code is `AGPL-3.0-only`.
-- Original project data and editorial content are `CC-BY-SA-4.0`.
-- Third-party material retains its original license and must be documented in
-  `NOTICE.md`; never imply that the project relicenses it.
+Code: `AGPL-3.0-only`. Original data/editorial content: `CC-BY-SA-4.0`.
+Third-party material retains its original license; document it in `NOTICE.md`
+and never imply project relicensing.

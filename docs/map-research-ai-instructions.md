@@ -1,144 +1,107 @@
 # AI instructions for level map research
 
-These instructions apply to every curated level Markdown file below
-`content/levels/`. They supplement the repository-wide `AGENTS.md` and the
-field definitions in `docs/contributing-data.md`.
+Applies to all `content/levels/**/*.md`; supplements `AGENTS.md` and
+[contributing-data.md](contributing-data.md).
 
 ## Objective
 
-When asked to research a level, identify the most defensible real-world place
-represented by, or historically connected to, that level. Research both the
-game mission and the real historical event. Select the most accurate
-coordinates the evidence supports, explain the choice and uncertainty, and
-record the findings in the level Markdown file.
-
-Accuracy is more important than apparent precision. Never invent a match merely
-to obtain a detailed marker.
+Identify the most defensible real-world place represented by or historically
+connected to a level. Research the game mission and real event, choose
+evidence-supported coordinates, and document the reasoning and uncertainty in
+the level Markdown. Accuracy outranks apparent precision; never invent a match.
 
 ## File placement
 
-Store levels in map-type directories and keep each game in one layout. Place
-Campaign records in
-`campaign/`, Multiplayer records in `multiplayer/`, Special Ops records in
-`special-ops/`, standalone Survival records in `survival/`, Zombies records in
-`zombies/`, and Challenge records in `challenge/`, following the classifications
-in `docs/contributing-data.md`. Campaign filenames must be
-`<order>-<descriptive-name>.md` with a contiguous order beginning at `1`; the
-other map-type filenames remain unnumbered. A legacy flat roster may remain
-flat until the entire game is deliberately reorganized; do not introduce a
-mixed layout.
+Follow the [source layout](data-model.md#level-source-layout): Campaign in
+`campaign/`, Multiplayer in `multiplayer/`, Special Ops in `special-ops/`,
+standalone Survival in `survival/`, Zombies in `zombies/`, Challenges in
+`challenge/`. Campaign filenames use `<order>-<descriptive-name>.md`,
+contiguous from `1`; other types are unnumbered. Keep one layout per game;
+legacy flat rosters stay flat until deliberately reorganized in full.
 
-`content-update` metadata is independent of map type. Any Campaign,
-Multiplayer, Zombies, Special Ops, Survival, or Challenge record may use it
-when sources support an original release, map pack, season, or another content
-release grouping. Within a game, keep each content-update ID stable and use the
-same label everywhere that ID appears.
+Any mode/subtype may use source-supported `content-update` for an original
+release, map pack, season, or other release grouping. Keep IDs stable and
+labels consistent per ID within a game.
 
 ## Research process
 
-1. Read the existing level file, its game record, its Wiki import record and
-   any related level files before changing anything. Preserve unrelated curated
-   data, overlays, attribution and editorial notes.
-2. Establish what the game actually depicts:
-   - whether the level is Campaign, Multiplayer, Zombies, or Other, and whether
-     an Other entry has the `special-ops`, `survival`, or `challenge` subtype;
-   - playable character and unit;
-   - date and stated location;
-   - briefing, objectives and route through the level;
-   - named buildings, terrain, towns, rivers, roads or military sites;
-   - preceding and following missions when they clarify chronology.
-   A multiplayer map is not a mission: do not invent a playable character,
-   unit, date, briefing, route or historical objective for it. If it corresponds
-   to, reuses, or is derived from a singleplayer mission, identify that level
-   and explain the documented relationship.
-   A Special Ops mission may be playable solo or cooperatively, but remains an
-   Other record with `modeSub: special-ops` rather than Campaign or Multiplayer.
-   A separately selectable Survival map that is not part of Special Ops remains
-   an Other record with `modeSub: survival`.
-   Research its own briefing, objectives, route, and stated setting.
-   A separately selectable Challenge is an Other record with
-   `modeSub: challenge` and remains distinct
-   from the campaign section it reuses. Preserve its own number and objectives,
-   identify the source campaign level, and do not treat the Challenge as a new
-   historical operation or a reference-file appearance. If it has no dedicated
-   Wiki article, it may reuse the source campaign level's Wiki import record;
-   keep the Challenge's curated mode as `other` and subtype as `challenge`.
-   Record the reused canonical level with `metadata.variantOf`. Omit the
-   Challenge's `locations` field when it should inherit that level's geography;
-   supply `locations` only when the Challenge needs a deliberate override.
-3. Research the real place and the real operation separately. Look for the
-   historical location of the represented unit on the mission date, the
-   terrain and objectives involved, and any surviving landmark, battlefield,
-   memorial or archaeological site.
-4. Compare the evidence. Explicitly distinguish among:
-   - a confirmed real location;
-   - a plausible real-world inspiration or analogue;
-   - a composite or fictionalized setting;
-   - a broad city, region or country fallback.
-5. Prefer primary and authoritative sources: official military histories,
-   archives, government or municipal heritage pages, museums and memorial
-   authorities, academic research, and contemporary records. Use the Call of
-   Duty Wiki for claims about the game, not as the sole authority for real
-   history. Supplement weak or local evidence with independent sources where
-   possible.
-6. Search in relevant local languages when useful. Resolve conflicting dates,
-   unit designations and place names in the prose instead of silently choosing
-   one version. Do not copy substantial source text; summarize it.
-7. Verify that every cited URL opens the intended source and supports the
-   nearby claim. Do not cite search-result pages, AI summaries or unsourced
-   coordinate aggregators as historical evidence.
+1. Read the level, game, Wiki import, and related levels before editing.
+   Preserve unrelated curated data, overlays, attribution, and notes.
+2. Establish mode/subtype, playable character/unit, date, stated location,
+   briefing, objectives, route, named buildings/terrain/towns/rivers/roads/military
+   sites, and adjacent missions where chronology matters. Apply these distinctions:
+   - Multiplayer has no mission narrative: do not invent character, unit, date,
+     briefing, route, or historical objectives. Identify and explain any
+     documented singleplayer source or relationship.
+   - Solo/cooperative Special Ops remains `other`/`special-ops`.
+     Separately selectable Survival outside Special Ops is `other`/`survival`.
+     Research their own briefing, objectives, route, and setting.
+   - Each selectable Challenge is a distinct canonical `other`/`challenge`,
+     not a new historical operation or an appearance reference. Preserve its
+     number/objectives and identify the reused campaign level through
+     `metadata.variantOf`. Omit `locations` to inherit; supply it only for a
+     deliberate override. Without a dedicated article, it may reuse the source
+     campaign Wiki import while preserving the Challenge's curated classification.
+3. Research the real place and operation separately: unit location on the
+   mission date, terrain, objectives, surviving landmarks, battlefields,
+   memorials, and archaeological sites.
+4. Distinguish confirmed location, plausible inspiration/analogue,
+   composite/fictionalized setting, and broad city/region/country fallback.
+5. Prefer primary/authoritative sources: military histories, archives,
+   government/municipal heritage, museums/memorial authorities, academic
+   research, contemporary records. Use the CoD Wiki for game claims, never as
+   sole historical authority. Supplement weak/local evidence independently where possible.
+6. Search relevant local languages when useful. Explain conflicting dates,
+   units, and place names rather than silently choosing. Summarize; do not
+   copy substantial source text.
+7. Verify every cited URL opens the intended source and supports its nearby
+   claim. Search results, AI summaries, and unsourced coordinate aggregators
+   are not historical evidence.
 
 ## Selecting the marker
 
-Choose coordinates independently from the outbound Google Maps URL.
+Choose coordinates independently of the outbound Google Maps URL.
 
-- Prefer an exact surviving landmark or documented event site when it genuinely
-  represents the level.
-- A battlefield memorial may be a strong marker when it is located on the
-  relevant battlefield; explain that it marks the historical area rather than
-  every action or the exact in-game route.
-- For a route or dispersed battle, choose the most relevant documented anchor
-  point and explain what the point does and does not represent.
-- If sources establish only an area, use an `approximate`, `city`, `region` or
-  `country` marker. Do not promote inferred coordinates to `exact`.
-- If two candidates are plausible, compare them and state why the selected one
-  is stronger. Use `real-world-inspiration` when the chosen place is an analogue
-  rather than the canonical setting.
-- Never merge or alter another level's coordinates to prevent overlapping
-  markers. Clustering and spiderfying are presentation concerns.
+- Prefer an exact surviving landmark/documented event site that represents the level.
+- A memorial on the relevant battlefield may mark the area; explain that it
+  does not represent every action or the exact game route.
+- For routes/dispersed battles, choose the strongest documented anchor and
+  explain its coverage and limits.
+- Area-only evidence requires `approximate`, `city`, `region`, or `country`;
+  never promote inferred coordinates to `exact`.
+- Compare plausible candidates and justify the stronger one. Use
+  `real-world-inspiration` for an analogue rather than the canonical setting.
+- Never alter/merge other levels' coordinates to avoid overlap. Clustering and
+  spiderfying belong to presentation.
 
-Set `precision`, `confidence` and `method` according to
-`docs/contributing-data.md`. Add supported `region`, `city` and `landmark`
-values. Use decimal latitude and longitude and keep enough decimal places to
-reflect the evidence; extra digits do not make an estimate more accurate.
+Follow [field guidance](contributing-data.md) for `precision`, `confidence`,
+and `method`. Add only supported `region`, `city`, `landmark`. Use decimal
+latitude/longitude with evidence-appropriate digits; extra digits add no accuracy.
 
 ## Google Maps URLs
 
-Keep `locations[].urls[].googleMaps` as a stable Google Maps search API URL for
-the real named place:
+Store `locations[].urls[].googleMaps` as a stable search API URL for the real place:
 
 ```yaml
 urls:
   - googleMaps: https://www.google.com/maps/search/?api=1&query=Encoded+Place+Name%2C+City%2C+Country
 ```
 
-- The query must use a place, landmark or address, not latitude/longitude.
-- Remove tracking parameters and do not store `maps.app.goo.gl` short links.
-- Prefer a specific, unambiguous real listing name plus locality and country.
-- Keep the URL even though the detail panel may open the map using the curated
-  coordinates; the URL is retained for later place-directory mapping.
-- When only a country fallback is supported, search for the country name. Do
-  not imply that the representative coordinate is a meaningful site.
+- Query a place, landmark, or address, never coordinates.
+- Remove tracking; no `maps.app.goo.gl` short links.
+- Prefer an unambiguous real listing plus locality/country.
+- Retain the URL for future place-directory mapping even when the detail panel
+  opens curated coordinates.
+- Country fallback: search the country name; do not imply the representative
+  coordinate is a meaningful site.
 
-When adding `locations[].urls[].wikipedia`, link to the English Wikipedia
-article for the real location (`https://en.wikipedia.org/...`). Do not use a
-different language edition when an English article for that location exists.
-If no English Wikipedia article exists, use the language of the country and check if an article exists in the corresponding wikipedia.
+For `locations[].urls[].wikipedia`, use the real location's English article
+(`https://en.wikipedia.org/...`). Only if none exists, check the Wikipedia
+edition in the country's language.
 
 ## Required Markdown body
 
-For researched levels, place the AI disclosure immediately after the closing
-frontmatter delimiter:
+Place this disclosure immediately after closing frontmatter:
 
 ```md
 > **AI-generated research note:** The historical summary below was generated
@@ -146,122 +109,85 @@ frontmatter delimiter:
 > being treated as authoritative.
 ```
 
-Then use these headings in this order:
+Use these headings in order:
 
 ```md
 ## The Mission in the Game
-
 ## The Real Place & Differences
-
 ## The Real Mission & Differences
-
 ## Marker Position Explanation
-
 ## Sources
 ```
 
-For a standalone multiplayer map, use `## The Map in the Game` instead of
-`## The Mission in the Game`. Both forms satisfy the research progress rule.
-For a Challenge or comparable Other entry, use `## The Challenge in the Game`.
-
-Fill them as follows:
+For standalone Multiplayer, replace the first with `## The Map in the Game`;
+for Challenges/comparable Other entries use `## The Challenge in the Game`.
+All three satisfy the research progress rule.
 
 ### The Mission, Map, or Challenge in the Game
 
-Summarize the playable character and unit, date, stated location, objectives,
-route and notable terrain. Identify fictional characters or formations when
-known. Describe the game without presenting its events as historical fact.
+Describe character/unit, date, setting, objectives, route, and notable terrain;
+identify known fictional characters/formations. Do not present game events as history.
 
-For a multiplayer map, state clearly that it has no mission narrative. Describe
-the map's setting and relevant layout or environmental clues instead. If a
-corresponding singleplayer mission exists, reference its curated level record
-by title and stable level ID, and summarize the relationship—for
-example, shared geography, reused assets, an adapted combat area or narrative
-context. Add a hyperlink only when the application has a stable level-detail
-URL format. Do not infer a relationship from visual similarity alone; cite
-evidence for it.
+Mode-specific guidance:
 
-Keep multiplayer analysis substantially shorter than singleplayer mission
-research. State that there is no mission once, then avoid repeating the same
-caveat in every section. Summarize the map layout and visual evidence in one or
-two compact paragraphs. Include only enough historical context to explain the
-location choice, a documented campaign connection or an important difference.
-Do not pad a generic multiplayer setting with a broad campaign history.
-
-For a Zombies map, describe its own briefing, crew or Operators, story date,
-objectives, and playable geography. Do not classify solo or cooperative Zombies
-as ordinary multiplayer. Standard, Directed, Grief, and limited-time playlists
-are variants of the same Zombies map unless the playable geography materially
-changes.
-
-For a Special Ops mission, describe its own playable scenario and distinguish
-it from any Campaign mission or Multiplayer map whose geography or assets it
-reuses. A Multiplayer map's availability in Survival does not by itself turn
-that map into a dedicated Special Ops mission.
-
-For a Challenge, state its selectable Challenge number, exact objectives, and
-the campaign level whose playable section it reuses. Keep the analysis focused
-on how the Challenge rules alter that section rather than repeating the source
-mission's full briefing and historical account.
+- **Multiplayer:** state once that no mission narrative exists. Describe setting,
+  layout, and visual clues in one or two compact paragraphs. Cite any campaign
+  connection (shared geography/assets, adapted combat area, narrative context)
+  with curated title and stable ID; visual similarity alone is insufficient.
+  Hyperlink only if the app has a stable level-detail URL format. Keep research
+  substantially shorter than singleplayer; include history only to explain the
+  location, documented campaign connection, or important difference. Do not pad
+  generic settings with broad campaign history or repeat caveats across sections.
+- **Zombies:** describe its own briefing, crew/Operators, story date, objectives,
+  and playable geography. Solo/co-op is not ordinary multiplayer. Standard,
+  Directed, Grief, and limited-time playlists are variants of one map unless
+  geography materially changes.
+- **Special Ops:** describe its own scenario and distinguish reused Campaign/
+  Multiplayer geography/assets. Multiplayer availability in Survival alone
+  does not make a dedicated Special Ops mission.
+- **Challenge:** give selectable number, exact objectives, and source campaign
+  level. Focus on changed rules, without repeating the source's full briefing/history.
 
 ### The Real Place & Differences
 
-Describe the present-day place and the relevant wartime geography. Compare
-buildings, terrain, scale and layout with the level. State whether the match is
-confirmed, inferred, an analogue or only a fallback, and name meaningful
-differences.
+Describe today's place and relevant wartime geography; compare buildings,
+terrain, scale, and layout. Label the match as confirmed, inferred, analogue,
+or fallback and identify meaningful differences.
 
 ### The Real Mission & Differences
 
-Explain what the represented unit was historically doing in that place and
-time. Compare the real chronology, forces, objectives and outcome with the
-game. Clearly label compressed timelines, invented combat, composite events
-and unsupported characters or objectives.
+Compare the historical unit's actions at that place/time, chronology, forces,
+objectives, and outcome with the game. Label compressed timelines, invented
+combat, composites, and unsupported characters/objectives.
 
-For a standalone multiplayer map, state that there is no in-game mission to
-compare with a real operation. Historical context may still be included when
-the map identifies a real place or event. When the map corresponds to a
-singleplayer mission, base the mission comparison on that linked level and
-keep clear which claims belong to the multiplayer map, the singleplayer
-mission and the historical record.
+Standalone Multiplayer has no mission to compare. Say so briefly or
+cross-reference the earlier statement; include only relevant historical context
+and limitations. For a linked singleplayer mission, base the comparison on
+that level and distinguish map, mission, and historical claims. Avoid repeated
+map descriptions, marker rationales, or uncertainty.
 
-If the lack of a mission was already made clear under **The Mission in the
-Game**, do not restate it at length here. Use a short cross-reference or explain
-only the closest historical context and its limitations. Do not repeat the map
-description, marker rationale or uncertainty already covered elsewhere.
-
-If no matching real mission is documented, say so directly and present the
-closest supported historical context without turning it into a claim of
-identity.
+If no real mission is documented, say so; closest supported context is not
+evidence of identity.
 
 ### Marker Position Explanation
 
-State the exact stored coordinates in backticks. Explain why this point was
-selected, what evidence fixes or approximates it, why its precision and
-confidence are appropriate, and what the marker must not be interpreted to
-mean. Mention stronger rejected candidates when that comparison matters.
-
-Confirm that the stored Google Maps URL searches for the real named place and
-that the atlas marker uses the separately curated coordinates. For a country
-fallback, explicitly say that the coordinate is only representative.
+Give the exact stored coordinates in backticks. Explain choice, supporting
+evidence, precision/confidence, limits, and stronger rejected candidates when
+relevant. Confirm that Google Maps searches the real named place while the
+atlas uses independent curated coordinates. Explicitly identify country
+fallback coordinates as representative only.
 
 ### Sources
 
-Use a Markdown bullet list. Give every source a descriptive linked title and a
-short note saying what it supports. Include sources for:
-
-- the game mission's facts;
-- the real operation, unit and chronology;
-- the place identification and marker coordinates;
-- disputed or inferential claims when applicable.
-
-Keep conclusions close to what the cited evidence establishes. Use language
-such as “likely,” “plausible,” “closest documented match” and “no evidence was
-found” where certainty is limited.
+Use Markdown bullets with descriptive linked titles and short support notes.
+Cover game facts; real operation/unit/chronology; place/coordinates; and
+disputed/inferential claims where applicable. Keep conclusions within evidence;
+use “likely,” “plausible,” “closest documented match,” or “no evidence was found”
+when appropriate.
 
 ## Finishing the change
 
-After editing a level, run the repository's required data check, lint, tests
-and static build. These commands generate ignored JSON build artifacts when
-needed; do not commit them. Report the selected location, coordinates, main
-historical conclusion, uncertainty and validation results.
+Follow `AGENTS.md`: recommend relevant data/lint/test/static-build checks; run
+them only on explicit user request. Generated JSON is ignored; never commit it.
+Report location, coordinates, main historical conclusion, uncertainty, and
+validation results (or commands not run).

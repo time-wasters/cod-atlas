@@ -1,9 +1,10 @@
 # Data contribution guide
 
-This is the reference for hand-authored data under `content/`. Start from a
-file in [`docs/templates/`](templates/) and replace every example value. Do not
-edit or commit `app/data/*.generated.json`; build commands regenerate these
-ignored artifacts. Without host npm, use the documented Docker commands.
+Reference for hand-authored `content/`. Start from [templates](templates/) and
+replace every example. Never edit/commit ignored `app/data/*.generated.json`;
+commands regenerate it as needed. Without host npm, prepend
+`docker compose run --rm cod-atlas-tools` to npm commands; see
+[Docker setup](docker-commands.md).
 
 ## What to contribute
 
@@ -11,77 +12,58 @@ ignored artifacts. Without host npm, use the documented Docker commands.
 | --- | --- | --- |
 | Game | `content/games/<game-id>.yaml` | [game.yaml](templates/game.yaml) |
 | Terrestrial level | `content/levels/<primary-game>/<map-type>/<filename>.md` | [level-terrestrial.md](templates/level-terrestrial.md) |
-| Off-world level | `content/levels/<primary-game>/<map-type>/<filename>.md` | [level-off-world.md](templates/level-off-world.md) |
-| Level appearance | `content/levels/<appearance-game>/<map-type>/<filename>.ref.md` | create the minimal reference shown below |
+| Off-world level | same level path | [level-off-world.md](templates/level-off-world.md) |
+| Level appearance | `content/levels/<appearance-game>/<map-type>/<filename>.ref.md` | minimal reference below |
 | Wiki import | `content/wiki-import/articles/<article-id>.json` | [wiki-article.json](templates/wiki-article.json) |
 
-Most contributions only change a level. Add a game only if it does not exist,
-and add a Wiki record only if the level's article is not already represented.
-Search IDs before adding anything. IDs are lowercase, stable, and hyphenated;
-do not rename an ID merely to improve its wording.
+Usually only a level changes. Search IDs first; add games/articles only if
+absent. IDs are lowercase, stable, hyphenated; never rename for wording alone.
+AI research must follow [research instructions](map-research-ai-instructions.md),
+including sources, coordinates, Maps URLs, disclosure, and body headings.
 
-AI-assisted map research must follow the
-[map-research AI instructions](map-research-ai-instructions.md), including its
-source standards, coordinate-selection rules, Google Maps URL format, AI
-disclosure and required Markdown headings.
+Follow the [source layout](data-model.md#level-source-layout): directories map
+Campaign to `singleplayer`, Multiplayer to `multiplayer`, Zombies to `zombies`,
+and `special-ops/`, `survival/`, `challenge/` to matching `other` subtypes.
+These are map categories, not multiplayer rule sets. Prefer map-type directories;
+keep legacy flat games flat until reorganizing the whole game, never mixing layouts.
 
-The primary-game directory identifies the owning game. The descriptive
-filename is independent from the stable ID; the compiler resolves identity
-from the frontmatter. For example, a level ID ending in `example-level` may
-live at `content/levels/<game-id>/campaign/27-river-crossing.md`.
-
-Game rosters should generally use map-type directories for every level:
-`campaign/` contains records with
-`mode: singleplayer`, `multiplayer/` contains records with `mode: multiplayer`,
-`special-ops/` contains records with `mode: other` and `modeSub: special-ops`,
-`survival/` contains records with `mode: other` and `modeSub: survival`, and
-`zombies/` contains records with `mode: zombies`; `challenge/` contains
-records with `mode: other` and `modeSub: challenge`. These directory names
-describe broad map types, not multiplayer rule sets such as deathmatch or
-capture the flag. Keep the layout consistent across a game. A legacy flat
-roster may remain flat until the entire game is deliberately reorganized.
-
-Within a map-type layout, campaign filenames are
-`<order>-<descriptive-name>.md`. Orders start at `1`, use no leading zeros, and must
-be unique and contiguous so they describe the sequence in which the levels are
-played. Multiplayer, Special Ops, Survival, Zombies, and Challenge filenames remain
-`<descriptive-name>.md`. The filename is filesystem metadata and does not need
-to match the stable level `id`; do not add the campaign order to the ID or title.
+Primary-game directory identifies ownership; frontmatter defines identity.
+Campaign filenames use `<order>-<descriptive-name>.md`, unique/contiguous from
+`1` without leading zeros; other types use `<descriptive-name>.md`.
+Names need not match IDs (e.g. `example-level` at `campaign/27-river-crossing.md`);
+never put campaign order in the stable ID/title.
 
 ## Game fields
 
-Every game record requires `id`, `code`, `label`, `labelLong`, `released`,
-`series`, and a non-empty `developer` list. Developer entries contain a stable
-lowercase, underscore-separated `id` and a human-readable `name`; use multiple
-entries when more than one developer grouping applies to the game.
-Series values are `world-war-ii`, `modern-warfare`, `black-ops`, or
-`standalone`. The optional `subseries` field accepts one or more of `main`,
-`reboot`, `remaster`, `add-on`, and `spin-off`; use a YAML list for multiple
-memberships and omit it when the game does not belong to a sub-series.
-Use `reboot` for a reboot continuity and `add-on` for an expansion of an
-existing game, such as *Call of Duty: United Offensive*. A `remaster`
-membership requires `remasterOf` containing the original game's ID; games
-without that membership must omit it.
-Optional image-provider metadata follows the existing game records.
+Required: `id`, short `code`, readable `label`, full `labelLong`,
+ISO `released` (`YYYY-MM-DD`, orders filters), `series`, nonempty `developer`.
+Developers use stable lowercase underscore-separated `id` and readable
+`name`; multiple groupings may apply.
+
+Series: `world-war-ii`, `modern-warfare`, `black-ops`, `standalone`.
+Optional `subseries` accepts `main`, `reboot`, `remaster`, `add-on`,
+`spin-off`; use a list for multiple memberships, omit if none.
+`reboot` means reboot continuity; `add-on` means expansion (e.g. United
+Offensive). `remaster` requires `remasterOf` with the original game ID;
+otherwise omit it. Follow existing game records for optional image providers.
+Builds automatically detect optional `public/images/games/<game-id>.png` icons.
 
 ## Level fields
 
 | Field | Required | Meaning |
 | --- | --- | --- |
-| `id` | yes | Repository-wide level ID, normally prefixed with the primary game ID. |
-| `title` | yes | Display name of the level or map. |
-| `games` | yes | Exactly one owner ID from `content/games/`; use appearance references for other games. |
-| `mode` | yes | `singleplayer`, `multiplayer`, `zombies`, or `other`. |
-| `modeSub` | for `other` | `special-ops`, `survival`, or `challenge`; omit it for every other mode. |
-| `campaign` | no | Named campaign grouping as a stable string `id` and display `label`. |
-| `content-update` | no | Release grouping with a stable string `id` and display `label`; valid for every mode and subtype. |
-| `wikiArticle` | yes | ID of a separate Wiki import JSON record. |
-| `locations` | usually | Locations owned by this level. Omit only to inherit from `metadata.variantOf`; explicit `[]` remains empty. Never reference a shared place. |
-| Markdown body | no | Concise research, ambiguity, or editorial notes. |
+| `id` | yes | Repository-wide ID, normally primary-game-prefixed |
+| `title` | yes | Display name |
+| `games` | yes | Exactly one owner ID from `content/games/`; other appearances use references |
+| `mode` | yes | `singleplayer`, `multiplayer`, `zombies`, `other` |
+| `modeSub` | only `other` | Required: `special-ops`, `survival`, `challenge`; omit for other modes |
+| `campaign` | no | Named section: stable string `id`, display `label` |
+| `content-update` | no | Release grouping: stable string `id`, display `label`; any mode/subtype |
+| `wikiArticle` | yes | Separate Wiki import ID |
+| `locations` | usually | Embedded locations; omit only to inherit via `metadata.variantOf`; explicit `[]` stays empty; no shared places |
+| Markdown body | no | Concise research, ambiguity, editorial notes |
 
-For a level that belongs to a named campaign section, use an embedded campaign
-object. This grouping is independent from the level's numeric play-order
-filename prefix:
+Campaign grouping is independent of filename order; keep IDs through label changes:
 
 ```yaml
 campaign:
@@ -89,37 +71,27 @@ campaign:
   label: American Campaign
 ```
 
-Campaign IDs are strings and should remain stable if a label changes.
+`content-update` groups one game's original release, map pack, season, or
+other release. Its stable string ID orders updates; keep one label per ID per game.
 
-Every level type may use `content-update` to group levels from the same game by
-their original release, map pack, season, or another content release. Its `id`
-is a stable string used for ordering, and a given ID must use the same label
-throughout the game.
+Separately selectable Special Ops/Survival/Challenge entries use `other` plus
+subtype. Every Challenge is canonical, even when several reuse one mission.
+Store its number/objectives in `metadata`, link the reused campaign via
+`metadata.variantOf`, and omit `locations` to inherit geography.
 
-Use `mode: other` for separately selectable Special Ops, Survival, and Challenge entries,
-and distinguish them with `modeSub`. Each Challenge remains a distinct canonical
-record even when several Challenges reuse the same source mission. Record the
-reused campaign level with `metadata.variantOf`, store the Challenge number and
-objectives in `metadata`, and omit `locations` when the Challenge should inherit
-the source level's geography.
-
-`metadata.variantOf` is for a distinct canonical variant, not another game's
-unchanged appearance. The target must be another canonical level ID. When the
-variant omits `locations`, the build follows the link (and any valid inheritance
-chain) and copies the resolved locations. Unknown targets and cycles are
-invalid. A supplied `locations` array always wins, including an explicit empty
-array. Use `.ref.md` for the same unchanged level appearing in another game.
+`metadata.variantOf` links distinct canonical levels, never unchanged
+cross-game appearances. Builds follow valid inheritance chains; unknown targets
+and cycles are invalid. Any supplied `locations`, including `[]`, overrides
+inheritance. Use `.ref.md` for unchanged appearances.
 
 ## Roster-completeness audit
 
-Before declaring a game's count complete, check every category the source game
-actually offers: Campaign, Multiplayer, Zombies, Challenge, Special Ops,
-Survival/Hostiles/Safeguard/Exo Survival, Nightmares, Strike Force, War, and
-Extinction. These are audit categories, not automatic `mode` or `modeSub`
-values; classify each added record using the supported atlas data model.
+Check all categories the source game offers: Campaign, Multiplayer, Zombies,
+Challenge, Special Ops, Survival/Hostiles/Safeguard/Exo Survival, Nightmares,
+Strike Force, War, Extinction. These audit categories do not automatically
+become `mode`/`modeSub`; use supported atlas classifications.
 
-When an unchanged level appears in another game, create a reference under that
-game so its levels remain easy to find:
+For unchanged cross-game levels, put a reference under the appearance game:
 
 ```md
 ---
@@ -127,138 +99,109 @@ level: cod-carentan
 ---
 ```
 
-The optional appearance fields are `title`, `wikiArticle`, `campaign`, and
-`metadata`. An optional Markdown body supplies appearance-specific notes and
-is displayed before the inherited canonical notes. Everything omitted inherits
-from the canonical level. Protected canonical fields—including `mode`,
-`modeSub`, locations, and their precision, confidence, and method—cannot be
-supplied by a reference. Appearance metadata must not contain `variantOf`;
-create a distinct canonical level record for a variant.
+Optional fields: `title`, `wikiArticle`, `campaign`, `metadata`. Omitted
+values inherit; optional Markdown precedes canonical notes. References cannot
+supply protected canonical fields (including mode/subtype, locations,
+precision/confidence/method). Appearance metadata must not contain `variantOf`;
+variants need canonical records.
 
-Each location requires `id`, `country`, `precision`, `confidence`, and `method`.
-The location ID only needs to be unique within its level. The geographic
-taxonomy is `country` → `region` → `city` → `landmark`; the last three tiers are
-optional and must only be included when supported by the evidence. A region may
-be a state, province, constituent country, island, territory, or similar area.
-Use `landmark` for a river, castle, building, or other named site. The former
-`label` field is not supported. `latitude` and `longitude` must either both be
-present or both be absent. Latitude is -90 through 90 and longitude is -180
-through 180. Use decimal degrees. Set `primary: true` on the main location when
-a level contains multiple locations; use it at most once.
+Location requirements:
 
-Locations may also include a `urls` array of curated HTTPS links. Each item is a
-single-key object using the `googleMaps`, `wikipedia`, or `callOfDutyMaps`
-provider, and duplicate providers are not allowed. These links stay embedded
-in the level's location record rather than in a shared places record. A Google
-Maps URL is only an outbound link and does not require an API key. Prefer a
-standard Maps URL such
-as `https://www.google.com/maps/search/?api=1&query=...`; an exact Google Maps
-share link is also accepted when it identifies the intended listing. Wikipedia
-links should prefer the direct English Wikipedia article for the real location. If
-that location has no English Wikipedia article, use the language of the country
-and check if an article exists in the corresponding Wikipedia.
-Call of Duty Maps links must target the guide for the specific in-game map,
-such as `https://callofdutymaps.com/call-of-duty-1/pavlov/`.
-
-For `off-world`, omit both coordinates. For terrestrial records, provide the
-best evidence-supported coordinates. A country or region centroid is allowed
-as a fallback, but it must not be presented as a more precise point.
+- `id` (unique within level), `country`, `precision`, `confidence`, `method`.
+- Optional evidence-supported hierarchy: `country → region → city → landmark`.
+  Regions include states, provinces, constituent countries, islands, territories;
+  landmarks include rivers, castles, buildings, other named sites. Old `label`
+  is unsupported.
+- Decimal `latitude` (-90..90) and `longitude` (-180..180): both present or
+  both absent. Omit both for `off-world`; terrestrial locations need the best
+  supported coordinates. Region/country centroids are valid fallbacks, never
+  present them as more precise.
+- With multiple locations, set `primary: true` on the main one, at most once.
+- Optional `urls`: embedded HTTPS single-key objects with provider
+  `googleMaps`, `wikipedia`, or `callOfDutyMaps`; no duplicate providers or
+  shared places. Maps is an outbound link needing no API key. Prefer
+  `https://www.google.com/maps/search/?api=1&query=...`; exact share links to
+  the intended listing are also accepted. AI research follows the stricter
+  [named-place search URL rules](map-research-ai-instructions.md#google-maps-urls).
+  Wikipedia: direct English real-location article; if absent, check the
+  country's language edition. CoD Maps: the specific map guide, e.g.
+  `https://callofdutymaps.com/call-of-duty-1/pavlov/`.
 
 ## Allowed values
 
 ### `precision`
 
-Precision describes the geographic resolution of the coordinates, not how
-confident you feel about the evidence.
+Geographic resolution, independent of confidence:
 
 | Value | Use when |
 | --- | --- |
-| `exact` | The point is a verified real landmark or exact site. |
-| `approximate` | The real area is known, but the selected point is a researched estimate. |
-| `city` | Evidence identifies only a city or settlement. |
-| `region` | Evidence identifies only a state, province, island, or similar region. |
-| `country` | Only the country is supported; coordinates are a country fallback. |
-| `off-world` | The setting has no terrestrial position; omit coordinates. |
+| `exact` | Verified real landmark/exact site |
+| `approximate` | Known area; researched point estimate |
+| `city` | Only city/settlement identified |
+| `region` | Only state/province/island/similar area identified |
+| `country` | Only country supported; fallback coordinates |
+| `off-world` | No terrestrial position; omit coordinates |
 
 ### `confidence`
 
-Confidence describes the strength of the identification evidence.
+Strength of identification evidence:
 
 | Value | Use when |
 | --- | --- |
-| `high` | A reliable source explicitly identifies the place, or the landmark is verified. |
-| `medium` | Multiple contextual clues support the identification, but it is not explicit or exact. |
-| `fallback` | The marker exists only to represent broad country/region evidence, or the setting is off-world. |
+| `high` | Reliable source explicitly names place, or landmark verified |
+| `medium` | Multiple contextual clues, without explicit/exact identification |
+| `fallback` | Broad region/country evidence only, or off-world |
 
 ### `method`
 
-Method records how the place was identified. Choose the most specific method
-that actually produced the location.
+Choose the most specific method that produced the identification:
 
 | Value | Meaning |
 | --- | --- |
-| `verified-landmark` | A real landmark or exact site was independently verified. |
-| `real-world-inspiration` | The point is a verified real place that inspired a fictional or adapted in-game location, rather than its canonical in-universe position. |
-| `manual-approximate` | Research established an area and a contributor manually selected an approximate point. |
-| `wiki-location` | The Wiki's structured location field explicitly identifies the place. |
-| `article-context` | Article prose or other reliable contextual evidence identifies it. |
-| `title` | The level title itself is the place name. |
-| `title-mention` | The title mentions a place but contains other wording or ambiguity. |
-| `region-fallback` | Only regional evidence is available, so a regional representative point is used—or no terrestrial point exists. |
-| `country-fallback` | Only country evidence is available, so a country representative point is used. |
+| `verified-landmark` | Independently verified landmark/exact site |
+| `real-world-inspiration` | Verified real inspiration for fictional/adapted setting, not canonical in-universe position |
+| `manual-approximate` | Researched area, manually estimated point |
+| `wiki-location` | Wiki structured location explicitly identifies place |
+| `article-context` | Article prose/other reliable context identifies place |
+| `title` | Level title is the place name |
+| `title-mention` | Title mentions place with other wording/ambiguity |
+| `region-fallback` | Regional representative point, or no terrestrial point |
+| `country-fallback` | Country representative point |
 
-Common combinations are `exact` + `high` + `verified-landmark`, `exact` +
-`high` + `real-world-inspiration`,
-`approximate` + `medium` + `manual-approximate`, `city` + `high` +
-`wiki-location`, and `country` + `fallback` + `country-fallback`. These are
-examples, not automatic rules: record what the evidence supports.
+Examples, never automatic rules: `exact/high/verified-landmark`,
+`exact/high/real-world-inspiration`, `approximate/medium/manual-approximate`,
+`city/high/wiki-location`, `country/fallback/country-fallback`.
+Use what evidence supports.
 
 ## Game and Wiki records
 
-A game requires `id`, short `code`, human-readable `label`, and ISO
-`released` date (`YYYY-MM-DD`). Release dates control filter order. An optional
-interface icon belongs at `public/images/games/<game-id>.png`; the build detects
-it automatically.
+Game requirements are [above](#game-fields). Wiki records require stable `id`
+and `sourceUrl`, separate from curated data. Unknown values stay `null`;
+never invent template values. Imported `mapStyle: special-ops` maps to curated
+`other`/`special-ops`; `mapStyleConfidence: curated` means atlas-provided
+classification pending source refresh.
 
-A Wiki import record requires a stable `id` and `sourceUrl`. Keep import data
-separate from curated level data. Unknown import values are `null`; do not
-invent values just to fill the template. The imported `mapStyle` may retain
-`special-ops`; curated records represent that classification as `mode: other`
-with `modeSub: special-ops`. Existing `mapStyleConfidence` uses `curated` when
-that classification came from the atlas pending a future source refresh.
+Challenges without dedicated articles may reuse campaign imports; retain
+imported `mapStyle: singleplayer`. Curated `other`/`challenge` remains authoritative.
 
-When a Challenge has no dedicated Wiki article, its `wikiArticle` may point to
-the reused campaign level's import record. In that case the import record keeps
-`mapStyle: singleplayer`; the canonical Challenge record's `mode: other` and
-`modeSub: challenge` remain authoritative for the atlas classification.
-
-Do not add media without its source URL, web-resolution URL, detail page URL,
-and an author or uploader name and user URL. Freely reusable media also needs
-its license name and URL. Recognized non-free media instead needs its original
-rights notice and notice URL; do not record a copyright exception as a
-license. A refresh must never overwrite curated coordinates, precision,
-confidence, method, or notes.
+When adding media, record source, web-resolution, detail-page URLs, author or
+uploader name/user URL. Freely reusable media also needs license name/URL;
+recognized non-free media needs original rights notice/URL instead. Copyright
+exceptions are not licenses. Refreshes must never overwrite curated coordinates,
+precision, confidence, method, or notes.
 
 ## Refresh Wiki imports
 
-The Wiki importer is deliberately manual and read-only toward the Wiki. See the
-[Wiki import command reference](wiki-import.md) for Docker setup, every option,
-field behavior, pacing, attribution safeguards, and failure recovery.
-
-Preview one article before writing it:
+Imports are manual and read-only toward the Wiki. Follow the
+[import reference](wiki-import.md) for setup, options, fields, pacing,
+attribution safeguards, and recovery. Preview before writing:
 
 ```sh
 npm run wiki:import -- --id codwiki-88-ridge --dry-run
 ```
 
-Docker equivalent:
-
-```sh
-docker compose run --rm cod-atlas-tools npm run wiki:import -- --id codwiki-88-ridge --dry-run
-```
-
-Then import it, refresh a small number of incomplete records, or deliberately
-check the entire collection:
+After review, remove `--dry-run`; select an article, game, first incomplete
+records, or deliberate full refresh:
 
 ```sh
 npm run wiki:import -- --id codwiki-88-ridge
@@ -267,42 +210,18 @@ npm run wiki:import -- --limit 10
 npm run wiki:import -- --all
 ```
 
-Docker equivalents use the same options, for example:
-
-```sh
-docker compose run --rm cod-atlas-tools npm run wiki:import -- --id codwiki-88-ridge
-docker compose run --rm cod-atlas-tools npm run wiki:import -- --game cod3
-docker compose run --rm cod-atlas-tools npm run wiki:import -- --limit 10
-docker compose run --rm cod-atlas-tools npm run wiki:import -- --all
-```
-
-Enable `COD_ATLAS_WIKI_ORIGIN` and a contact-bearing
-`COD_ATLAS_WIKI_USER_AGENT` explicitly in `.env`; `.env.example` contains
-commented hints. The delay cannot be reduced below two seconds. Do not run
-multiple importers in parallel. On HTTP 403 the command stops; do not work
-around a block. Review imported location and media attribution before commit.
+Enable `COD_ATLAS_WIKI_ORIGIN` and contact-bearing
+`COD_ATLAS_WIKI_USER_AGENT` in `.env` using commented `.env.example` hints.
+Minimum delay: two seconds. No parallel importers or bypassing HTTP 403.
+Review imported location and media attribution before commit.
 
 ## Submit and validate
 
-After editing `content/`, commit only the curated source files. Generated JSON
-is created automatically by commands that need it. When a local toolchain is
-available, run:
+Commit only source files; commands generate ignored JSON as needed. With a
+toolchain available, contributor checks are `npm run data:check`,
+`npm run lint`, `npm test`, `npm run build:static` (same Docker prefix).
+Agents follow `AGENTS.md`: recommend the smallest relevant set and run only
+on explicit request.
 
-```sh
-npm run data:check
-npm run lint
-npm test
-npm run build:static
-```
-
-Docker equivalents:
-
-```sh
-docker compose run --rm cod-atlas-tools npm run data:check
-docker compose run --rm cod-atlas-tools npm run lint
-docker compose run --rm cod-atlas-tools npm test
-docker compose run --rm cod-atlas-tools npm run build:static
-```
-
-Explain the evidence and link reliable sources in the pull-request description.
-If the marker count changes, make that explicit and update the regression test.
+Explain evidence with reliable PR source links. Explicitly explain marker-count
+changes and update the regression test.
