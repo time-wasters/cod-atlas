@@ -10,10 +10,10 @@
     "label": "The Trident Retreat, Pacific Ocean",
     "url": null
   },
-  "mapStyle": "multiplayer",
+  "mapStyle": "zombies",
   "mapStyleDetail": null,
   "mapStyleConfidence": "curated",
-  "mapStyleEvidence": "Migrated from the atlas classification; verify against the Wiki during the next import.",
+  "mapStyleEvidence": "Corrected curated classification: Descent is an Exo Zombies map; verify during the next import.",
   "images": {
     "main": {
       "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/d/d9/ExoZombies_Descent_AW.jpg/revision/latest?cb=20150803181055",
