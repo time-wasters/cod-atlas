@@ -3,7 +3,11 @@ id: ghosts-mayday
 title: Mayday
 games:
   - ghosts
-mode: multiplayer
+mode: other
+modeSub: survival
+campaign:
+  id: extinction
+  label: Extinction
 wikiArticle: codwiki-mayday-extinction
 locations:
   - id: main

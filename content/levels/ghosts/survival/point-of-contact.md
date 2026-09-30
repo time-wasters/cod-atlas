@@ -3,7 +3,11 @@ id: ghosts-point-of-contact
 title: Point of Contact
 games:
   - ghosts
-mode: multiplayer
+mode: other
+modeSub: survival
+campaign:
+  id: extinction
+  label: Extinction
 wikiArticle: codwiki-point-of-contact
 locations:
   - id: main

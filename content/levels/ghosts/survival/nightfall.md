@@ -3,7 +3,11 @@ id: ghosts-nightfall
 title: Nightfall
 games:
   - ghosts
-mode: multiplayer
+mode: other
+modeSub: survival
+campaign:
+  id: extinction
+  label: Extinction
 wikiArticle: codwiki-nightfall
 locations:
   - id: main

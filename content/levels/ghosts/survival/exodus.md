@@ -3,7 +3,11 @@ id: ghosts-exodus
 title: Exodus
 games:
   - ghosts
-mode: multiplayer
+mode: other
+modeSub: survival
+campaign:
+  id: extinction
+  label: Extinction
 wikiArticle: codwiki-exodus-extinction
 locations:
   - id: main
