@@ -4,6 +4,9 @@ title: Operation Blood Storm
 games:
   - iw
 mode: singleplayer
+campaign:
+  id: missions
+  label: Missions
 wikiArticle: codwiki-operation-blood-storm
 locations:
   - id: main

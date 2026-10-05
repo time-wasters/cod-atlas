@@ -4,6 +4,9 @@ title: Operation Burn Water
 games:
   - iw
 mode: singleplayer
+campaign:
+  id: missions
+  label: Missions
 wikiArticle: codwiki-operation-burn-water
 locations:
   - id: main

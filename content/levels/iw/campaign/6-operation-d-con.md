@@ -4,6 +4,9 @@ title: Operation D-Con
 games:
   - iw
 mode: singleplayer
+campaign:
+  id: ship-assault
+  label: Ship Assault
 wikiArticle: codwiki-operation-d-con
 locations:
   - id: main

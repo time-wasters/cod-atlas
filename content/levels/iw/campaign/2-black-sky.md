@@ -4,6 +4,9 @@ title: Black Sky
 games:
   - iw
 mode: singleplayer
+campaign:
+  id: missions
+  label: Missions
 wikiArticle: codwiki-black-sky
 locations:
   - id: main

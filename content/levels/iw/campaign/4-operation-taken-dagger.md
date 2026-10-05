@@ -4,6 +4,9 @@ title: Operation Taken Dagger
 games:
   - iw
 mode: singleplayer
+campaign:
+  id: ship-assault
+  label: Ship Assault
 wikiArticle: codwiki-operation-taken-dagger
 locations:
   - id: main

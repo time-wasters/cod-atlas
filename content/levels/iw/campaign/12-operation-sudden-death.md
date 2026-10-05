@@ -4,6 +4,9 @@ title: Operation Sudden Death
 games:
   - iw
 mode: singleplayer
+campaign:
+  id: jackal-missions
+  label: Jackal Missions
 wikiArticle: codwiki-operation-sudden-death
 locations:
   - id: main

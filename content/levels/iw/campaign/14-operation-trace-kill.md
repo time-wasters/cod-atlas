@@ -4,6 +4,9 @@ title: Operation Trace Kill
 games:
   - iw
 mode: singleplayer
+campaign:
+  id: jackal-missions
+  label: Jackal Missions
 wikiArticle: codwiki-operation-trace-kill
 locations:
   - id: main

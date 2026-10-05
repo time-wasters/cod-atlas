@@ -4,6 +4,9 @@ title: Rising Threat
 games:
   - iw
 mode: singleplayer
+campaign:
+  id: missions
+  label: Missions
 wikiArticle: codwiki-rising-threat
 locations:
   - id: main

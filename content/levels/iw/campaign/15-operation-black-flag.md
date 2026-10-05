@@ -4,6 +4,9 @@ title: Operation Black Flag
 games:
   - iw
 mode: singleplayer
+campaign:
+  id: missions
+  label: Missions
 wikiArticle: codwiki-operation-black-flag
 locations:
   - id: main

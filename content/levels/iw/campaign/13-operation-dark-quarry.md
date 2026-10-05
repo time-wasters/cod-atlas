@@ -4,6 +4,9 @@ title: Operation Dark Quarry
 games:
   - iw
 mode: singleplayer
+campaign:
+  id: missions
+  label: Missions
 wikiArticle: codwiki-operation-dark-quarry
 locations:
   - id: main
