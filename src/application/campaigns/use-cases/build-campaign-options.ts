@@ -15,6 +15,12 @@ type CampaignAtlasEntry = {
   modeSub?: "special-ops" | "survival" | "challenge";
   campaign?: { id: string; label: string } | null;
   campaignOrder?: number;
+  appearances?: {
+    gameId: string;
+    title?: string;
+    campaign?: { id: string; label: string } | null;
+    campaignOrder?: number;
+  }[];
   coordinates?: [number, number] | null;
 };
 
@@ -65,6 +71,8 @@ export function buildCampaignOptions<
   if (gameCode === "all") return [];
 
   const gamesById = new Map(games.map((game) => [game.id, game]));
+  const campaignGame = games.find((game) => game.code === gameCode);
+  if (!campaignGame) return [];
   const campaignsByKey = new Map<string, {
     key: string;
     gameId: string;
@@ -77,21 +85,30 @@ export function buildCampaignOptions<
 
   for (const group of groups) {
     for (const entry of group.entries) {
-      if (!entry.campaign) continue;
-      const campaignGame = gamesById.get(entry.gameIds[0] ?? "");
-      if (!campaignGame || campaignGame.code !== gameCode) continue;
+      if (!entry.gameIds.includes(campaignGame.id)) continue;
+      const appearance = entry.appearances?.find((item) => item.gameId === campaignGame.id);
+      const campaignInfo = appearance
+        ? appearance.campaign
+        : entry.gameIds[0] === campaignGame.id ? entry.campaign : null;
+      if (!campaignInfo) continue;
+      const appearanceEntry: TEntry = {
+        ...entry,
+        title: appearance?.title ?? entry.title,
+        campaign: campaignInfo,
+        campaignOrder: appearance?.campaignOrder ?? entry.campaignOrder,
+      };
       const mode = entry.modes[0];
       if (!mode) throw new Error(`Campaign level ${entry.levelId} has no game mode`);
       const modeKey = mode === "other" ? `${mode}:${entry.modeSub ?? "unknown"}` : mode;
 
-      const key = `${campaignGame.id}:${modeKey}:${entry.campaign.id}`;
+      const key = `${campaignGame.id}:${modeKey}:${campaignInfo.id}`;
       let campaign = campaignsByKey.get(key);
       if (!campaign) {
         campaign = {
           key,
           gameId: campaignGame.id,
-          id: entry.campaign.id,
-          label: entry.campaign.label,
+          id: campaignInfo.id,
+          label: campaignInfo.label,
           mode,
           modeSub: entry.modeSub,
           locationsByLevelId: new Map(),
@@ -100,7 +117,7 @@ export function buildCampaignOptions<
       }
 
       const levelLocations = campaign.locationsByLevelId.get(entry.levelId) ?? [];
-      levelLocations.push({ group, entry });
+      levelLocations.push({ group, entry: appearanceEntry });
       campaign.locationsByLevelId.set(entry.levelId, levelLocations);
     }
   }
