@@ -8,7 +8,7 @@ campaign:
   id: vr-missions
   label: VR Missions
 content-update:
-  id: ps4-psvr-bonus
+  id: "2"
   label: PS4/PSVR Bonus
 wikiArticle: codwiki-jackal-assault-vr-experience
 metadata:

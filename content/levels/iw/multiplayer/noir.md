@@ -4,6 +4,9 @@ title: Noir
 games:
   - iw
 mode: multiplayer
+content-update:
+  id: "4"
+  label: Sabotage
 wikiArticle: codwiki-noir
 locations:
   - id: main

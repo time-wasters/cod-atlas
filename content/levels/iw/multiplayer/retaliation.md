@@ -4,6 +4,9 @@ title: Retaliation
 games:
   - iw
 mode: multiplayer
+content-update:
+  id: "0"
+  label: Included
 wikiArticle: codwiki-retaliation
 locations:
   - id: main

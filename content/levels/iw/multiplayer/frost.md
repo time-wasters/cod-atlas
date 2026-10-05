@@ -4,6 +4,9 @@ title: Frost
 games:
   - iw
 mode: multiplayer
+content-update:
+  id: "0"
+  label: Included
 wikiArticle: codwiki-frost-infinite-warfare-map
 locations:
   - id: main

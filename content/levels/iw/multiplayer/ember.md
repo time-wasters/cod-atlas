@@ -4,6 +4,9 @@ title: Ember
 games:
   - iw
 mode: multiplayer
+content-update:
+  id: "6"
+  label: Absolution
 wikiArticle: codwiki-ember
 locations:
   - id: main

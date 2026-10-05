@@ -4,6 +4,9 @@ title: Mayday
 games:
   - iw
 mode: multiplayer
+content-update:
+  id: "0"
+  label: Included
 wikiArticle: codwiki-mayday-map
 locations:
   - id: main

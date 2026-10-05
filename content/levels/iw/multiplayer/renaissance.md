@@ -4,6 +4,9 @@ title: Renaissance
 games:
   - iw
 mode: multiplayer
+content-update:
+  id: "4"
+  label: Sabotage
 wikiArticle: codwiki-renaissance
 locations:
   - id: main

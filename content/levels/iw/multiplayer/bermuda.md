@@ -4,6 +4,9 @@ title: Bermuda
 games:
   - iw
 mode: multiplayer
+content-update:
+  id: "6"
+  label: Absolution
 wikiArticle: codwiki-bermuda
 locations:
   - id: main

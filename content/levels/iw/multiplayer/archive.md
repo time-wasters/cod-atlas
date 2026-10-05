@@ -5,7 +5,7 @@ games:
   - iw
 mode: multiplayer
 content-update:
-  id: "continuum"
+  id: "5"
   label: Continuum
 wikiArticle: codwiki-archive
 locations:

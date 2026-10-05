@@ -4,6 +4,9 @@ title: Depot 22
 games:
   - iw
 mode: multiplayer
+content-update:
+  id: "7"
+  label: Retribution
 wikiArticle: codwiki-depot-22
 locations:
   - id: main

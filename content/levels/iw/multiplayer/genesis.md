@@ -4,6 +4,9 @@ title: Genesis
 games:
   - iw
 mode: multiplayer
+content-update:
+  id: "0"
+  label: Included
 wikiArticle: codwiki-genesis
 locations:
   - id: main

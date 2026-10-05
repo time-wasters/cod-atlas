@@ -4,6 +4,9 @@ title: Precinct
 games:
   - iw
 mode: multiplayer
+content-update:
+  id: "0"
+  label: Included
 wikiArticle: codwiki-precinct
 locations:
   - id: main

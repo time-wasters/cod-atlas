@@ -5,7 +5,7 @@ games:
   - iw
 mode: multiplayer
 content-update:
-  id: "absolution"
+  id: "6"
   label: Absolution
 wikiArticle: codwiki-fore
 locations: []

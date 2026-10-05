@@ -4,6 +4,9 @@ title: Heartland
 games:
   - iw
 mode: multiplayer
+content-update:
+  id: "7"
+  label: Retribution
 wikiArticle: codwiki-heartland
 locations:
   - id: main

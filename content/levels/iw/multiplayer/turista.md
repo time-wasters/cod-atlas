@@ -4,6 +4,9 @@ title: Turista
 games:
   - iw
 mode: multiplayer
+content-update:
+  id: "5"
+  label: Continuum
 wikiArticle: codwiki-turista
 locations:
   - id: main

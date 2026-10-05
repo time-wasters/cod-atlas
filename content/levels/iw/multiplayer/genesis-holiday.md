@@ -5,7 +5,7 @@ games:
   - iw
 mode: multiplayer
 content-update:
-  id: "december-update"
+  id: "3"
   label: December Update
 wikiArticle: codwiki-genesis-holiday
 metadata:

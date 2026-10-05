@@ -4,6 +4,9 @@ title: Grounded
 games:
   - iw
 mode: multiplayer
+content-update:
+  id: "0"
+  label: Included
 wikiArticle: codwiki-grounded
 locations:
   - id: main

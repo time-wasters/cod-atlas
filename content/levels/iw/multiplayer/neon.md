@@ -5,7 +5,7 @@ games:
   - iw
 mode: multiplayer
 content-update:
-  id: "sabotage"
+  id: "4"
   label: Sabotage
 wikiArticle: codwiki-neon
 locations:

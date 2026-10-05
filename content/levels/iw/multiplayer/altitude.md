@@ -5,7 +5,7 @@ games:
   - iw
 mode: multiplayer
 content-update:
-  id: "retribution"
+  id: "7"
   label: Retribution
 wikiArticle: codwiki-altitude
 locations:

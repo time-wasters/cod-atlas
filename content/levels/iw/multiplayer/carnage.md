@@ -4,6 +4,9 @@ title: Carnage
 games:
   - iw
 mode: multiplayer
+content-update:
+  id: "7"
+  label: Retribution
 wikiArticle: codwiki-carnage
 locations:
   - id: main
