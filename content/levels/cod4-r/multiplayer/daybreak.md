@@ -5,6 +5,9 @@ games:
   - cod4-r
 mode: multiplayer
 wikiArticle: codwiki-daybreak
+content-update:
+  id: "2"
+  label: Shamrock & Awe
 locations:
   - id: main
     country: Ireland
