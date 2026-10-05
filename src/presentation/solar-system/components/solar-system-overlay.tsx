@@ -16,6 +16,7 @@ type SolarTargetId =
   | "uranus"
   | "neptune"
   | "pluto"
+  | "virtual"
   | "deep-space";
 
 type SolarSelection = { group: AtlasGroupDto; entry: AtlasEntryDto };
@@ -47,6 +48,7 @@ const solarTargetPoints: Record<SolarTargetId, { x: number; y: number; radius: n
   uranus: { x: 389, y: 116, radius: 7 },
   neptune: { x: 437, y: 116, radius: 7 },
   pluto: { x: 478, y: 116, radius: 3 },
+  virtual: { x: 524, y: 15, radius: 12 },
   "deep-space": { x: 535, y: 116, radius: 8 },
 };
 
@@ -56,6 +58,7 @@ function solarTargetForEntry(entry: AtlasEntryDto): SolarTargetId {
     .join(" ")
     .toLowerCase();
 
+  if (location.includes("virtual")) return "virtual";
   if (location.includes("cygnus") || location.includes("deep space")) return "deep-space";
   if (location.includes("europa")) return "europa";
   if (location.includes("titan")) return "titan";
@@ -105,13 +108,13 @@ export function SolarSystemOverlay({
   return (
     <aside
       className={`solar-system-overlay${expanded ? " is-expanded" : " is-collapsed"}`}
-      aria-label="Solar System mission locations"
+      aria-label="Off world mission locations"
     >
       <div className="solar-system-panel" aria-hidden={!expanded}>
         <svg viewBox="0 0 600 160" role="img" aria-labelledby="solar-system-title solar-system-description">
-          <title id="solar-system-title">Solar System schematic</title>
+          <title id="solar-system-title">Off world schematic</title>
           <desc id="solar-system-description">
-            Reference planets with markers for filtered off-world Call of Duty levels.
+            Reference planets and virtual environments with markers for filtered off-world Call of Duty levels.
           </desc>
           <defs>
             <radialGradient id="solar-sun-fill" cx="75%" cy="48%" r="62%">
@@ -120,7 +123,12 @@ export function SolarSystemOverlay({
             </radialGradient>
           </defs>
 
-          <text className="solar-system-caption" x="11" y="15">Solar System // Schematic</text>
+          <text className="solar-system-caption solar-system-heading" x="11" y="12">Off world // Schematic</text>
+
+          <g className="solar-virtual" transform="translate(0 -22)" aria-hidden="true">
+            <path d="m524 24 12 7v12l-12 7-12-7V31Zm0 14 12-7m-12 7-12-7m12 7v12m0-26v14" />
+            <text className="solar-system-caption" x="552" y="30">Virtual</text>
+          </g>
 
           <g className="solar-orbits" aria-hidden="true">
             {solarBodies.filter((body) => body.id !== "deep-space").map((body) => (
@@ -155,7 +163,8 @@ export function SolarSystemOverlay({
           {([...locationsByTarget] as [SolarTargetId, SolarSelection[]][]).map(([target, targetLocations]) => {
             const point = solarTargetPoints[target];
             const isSelected = targetLocations.some(({ entry }) => entry.id === selectedEntryId);
-            const label = `${targetLocations.length} filtered ${targetLocations.length === 1 ? "level" : "levels"} at ${target.replace("-", " ")}`;
+            const targetLabel = target === "virtual" ? "in virtual environments" : `at ${target.replace("-", " ")}`;
+            const label = `${targetLocations.length} filtered ${targetLocations.length === 1 ? "level" : "levels"} ${targetLabel}`;
             return (
               <g
                 className={`solar-location-marker${isSelected ? " is-selected" : ""}`}
@@ -190,7 +199,7 @@ export function SolarSystemOverlay({
         className="solar-system-toggle"
         type="button"
         aria-expanded={expanded}
-        aria-label={expanded ? "Collapse Solar System overlay" : "Expand Solar System overlay"}
+        aria-label={expanded ? "Collapse Off world overlay" : "Expand Off world overlay"}
         onClick={() => onExpandedChange(!expanded)}
       >
         <svg viewBox="0 0 12 18" aria-hidden="true">

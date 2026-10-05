@@ -459,7 +459,7 @@ export function AtlasPage({
   }
 
   /**
-   * Toggles a content update and selects its first level.
+   * Toggles a content update and frames all its mapped locations when needed.
    */
   function selectContentUpdate(contentUpdate: ContentUpdateOption<AtlasGroupDto, AtlasEntryDto>) {
     const contentUpdateIsActive = activeContentUpdateKey === contentUpdate.key;
@@ -469,7 +469,11 @@ export function AtlasPage({
     setSelectedContentUpdateKey(contentUpdateIsActive ? null : contentUpdate.key);
     prepareMarkerReveal(null);
     if (!contentUpdateIsActive && contentUpdate.levels[0]) {
-      queueRelatedLevelFocus(contentUpdate.levels[0].entry.id);
+      const levelIds = new Set(contentUpdate.levels.map(({ entry }) => entry.levelId));
+      const bounds = groups.flatMap((group) => group.entries.flatMap((entry) =>
+        levelIds.has(entry.levelId) && entry.coordinates ? [entry.coordinates] : []));
+      queueRelatedLevelFocus(null);
+      queueSidebarSelection(bounds.length ? { bounds, fitOnlyWhenOutside: true } : null);
       selectEntry(contentUpdate.levels[0].group, contentUpdate.levels[0].entry);
     }
     setExpandedRegionEntryId(null);

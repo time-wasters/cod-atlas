@@ -32,16 +32,26 @@
 .solar-system-caption {
   fill: #484b41;
   font:
-    700 8px var(--font-geist-mono),
+    700 10px var(--font-geist-mono),
     monospace;
   letter-spacing: 0.13em;
   text-transform: uppercase;
+}
+.solar-system-heading {
+  font-size: 12px;
 }
 .solar-orbits ellipse {
   fill: none;
   stroke: #55594c61;
   stroke-width: 0.8;
   stroke-dasharray: 2.2 3.5;
+}
+.solar-virtual path {
+  fill: #7d7f7033;
+  stroke: #51554a;
+  stroke-width: 1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 .solar-sun circle {
   fill: url("#solar-sun-fill");
@@ -148,7 +158,7 @@
 .solar-marker-count {
   fill: #4c4e43;
   font:
-    700 8px var(--font-geist-mono),
+    700 10px var(--font-geist-mono),
     monospace;
   pointer-events: none;
 }

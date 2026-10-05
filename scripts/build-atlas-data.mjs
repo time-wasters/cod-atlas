@@ -61,6 +61,7 @@ const countriesByName = new Map(countries.flatMap((country) => [
 ]));
 const specialContinents = new Map([
   ["Adriatic Sea", "Oceans"],
+  ["Agartha", "Off-world"],
   ["Arctic Circle", "Arctic"],
   ["Atlantic Ocean", "Oceans"],
   ["Baltic Sea", "Oceans"],
@@ -78,6 +79,7 @@ const specialContinents = new Map([
   ["Philippine Sea", "Oceans"],
   ["Polynesia", "Oceania"],
   ["Space", "Off-world"],
+  ["Virtual", "Off-world"],
 ]);
 
 function flagCodeForGroup(name) {
