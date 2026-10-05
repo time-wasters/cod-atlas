@@ -3,7 +3,7 @@ id: iw-rave-in-the-redwoods
 title: Rave in the Redwoods
 games:
   - iw
-mode: multiplayer
+mode: zombies
 wikiArticle: codwiki-rave-in-the-redwoods
 locations:
   - id: main

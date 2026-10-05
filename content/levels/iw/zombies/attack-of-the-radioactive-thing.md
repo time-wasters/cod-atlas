@@ -3,7 +3,7 @@ id: iw-attack-of-the-radioactive-thing
 title: Attack of the Radioactive Thing
 games:
   - iw
-mode: multiplayer
+mode: zombies
 wikiArticle: codwiki-attack-of-the-radioactive-thing
 locations:
   - id: main

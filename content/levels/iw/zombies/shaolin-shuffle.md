@@ -1,10 +1,10 @@
 ---
-id: iw-the-beast-from-beyond
-title: The Beast From Beyond
+id: iw-shaolin-shuffle
+title: Shaolin Shuffle
 games:
   - iw
-mode: multiplayer
-wikiArticle: codwiki-the-beast-from-beyond
+mode: zombies
+wikiArticle: codwiki-shaolin-shuffle
 locations:
   - id: main
     country: United States
