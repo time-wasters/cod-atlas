@@ -3,8 +3,8 @@
   "fandomPageId": 246281,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Ascension",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Ascension",
-  "latestRevisionId": 2973998,
-  "importedAt": "2026-08-15T09:24:33.397Z",
+  "latestRevisionId": 3023116,
+  "importedAt": "2026-10-05T20:16:49.984Z",
   "levelLocation": {
     "raw": "[[Baikonur Cosmodrome]], {{W|Kyzylorda}}, {{W|Kazakh Soviet Socialist Republic}}, [[Soviet Union]]",
     "label": "Baikonur Cosmodrome",
@@ -30,7 +30,7 @@
       },
       "rights": {
         "status": "non-free",
-        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  â€¢ the computer or video game in question or\n  â€¢ the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
         "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
@@ -48,8 +48,8 @@
     }
   },
   "rawPayload": {
-    "revisionTimestamp": "2026-03-08T05:34:27Z",
-    "revisionSha1": "9d27cad80500bc449ba5d2e9feb474390930b142",
+    "revisionTimestamp": "2026-08-25T21:59:29Z",
+    "revisionSha1": "3d80ef424fef058f765537f481b9b5c1053637bb",
     "resolvedTitle": "Ascension",
     "mainImageTitle": "File:Ascension_Menu_Selection_BO.png",
     "mapImageTitle": null
@@ -59,11 +59,15 @@
     "label": "Kino der Toten (chronologically) , \"Five\" (simultaneous)",
     "links": [
       {
+        "sequence": "chronological",
+        "article": "codwiki-kino-der-toten",
         "wikiTitle": "Kino der Toten",
         "label": "Kino der Toten",
         "url": "https://callofduty.fandom.com/wiki/Kino_der_Toten"
       },
       {
+        "sequence": "game",
+        "article": "codwiki-five",
         "wikiTitle": "\"Five\"",
         "label": "\"Five\"",
         "url": "https://callofduty.fandom.com/wiki/%22Five%22"
@@ -75,6 +79,8 @@
     "label": "Call of the Dead",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-call-of-the-dead",
         "wikiTitle": "Call of the Dead",
         "label": "Call of the Dead",
         "url": "https://callofduty.fandom.com/wiki/Call_of_the_Dead"

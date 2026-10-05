@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Origins",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Origins",
   "latestRevisionId": 3023122,
-  "importedAt": "2026-09-28T21:57:02.826Z",
+  "importedAt": "2026-10-05T20:17:22.802Z",
   "levelLocation": {
     "raw": "Excavation Site 64, Northern France",
     "label": "Excavation Site 64, Northern France",
@@ -73,7 +73,7 @@
     "links": [
       {
         "sequence": "chronological",
-        "article": null,
+        "article": "codwiki-shadows-of-evil",
         "wikiTitle": "Shadows of Evil",
         "label": "Shadows of Evil",
         "url": "https://callofduty.fandom.com/wiki/Shadows_of_Evil"

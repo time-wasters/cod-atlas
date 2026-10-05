@@ -3,8 +3,8 @@
   "fandomPageId": 633110,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Lotus_Towers",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Lotus_Towers",
-  "latestRevisionId": 3014771,
-  "importedAt": "2026-08-15T08:56:25.677Z",
+  "latestRevisionId": 3020782,
+  "importedAt": "2026-10-05T20:17:22.823Z",
   "levelLocation": {
     "raw": "Lotus Towers, Cairo, Cairo Governorate, Egypt",
     "label": "Lotus Towers, Cairo, Cairo Governorate, Egypt",
@@ -30,7 +30,7 @@
       },
       "rights": {
         "status": "non-free",
-        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  â€¢ the computer or video game in question or\n  â€¢ the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
         "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
@@ -48,8 +48,8 @@
     }
   },
   "rawPayload": {
-    "revisionTimestamp": "2026-07-15T20:42:11Z",
-    "revisionSha1": "5f18056f96012fea1e5aa074a890598812ff5a35",
+    "revisionTimestamp": "2026-08-18T16:45:07Z",
+    "revisionSha1": "ad0d0a1316e080c7710953a8ca131a5f621aa188",
     "resolvedTitle": "Lotus Towers",
     "mainImageTitle": "File:200_Stories_of_Sheer_Adventure!_achievement_image_BO3.jpg",
     "mapImageTitle": null
@@ -59,16 +59,22 @@
     "label": "Sand Castle, Demon Within (Nightmares)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-sand-castle",
         "wikiTitle": "Sand Castle",
         "label": "Sand Castle",
         "url": "https://callofduty.fandom.com/wiki/Sand_Castle"
       },
       {
+        "sequence": "game",
+        "article": "codwiki-demon-within",
         "wikiTitle": "Demon Within",
         "label": "Demon Within",
         "url": "https://callofduty.fandom.com/wiki/Demon_Within"
       },
       {
+        "sequence": "game",
+        "article": null,
         "wikiTitle": "Nightmares",
         "label": "Nightmares",
         "url": "https://callofduty.fandom.com/wiki/Nightmares"
@@ -80,11 +86,15 @@
     "label": "Life, Black Ops (chronologically, reality)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-life",
         "wikiTitle": "Life",
         "label": "Life",
         "url": "https://callofduty.fandom.com/wiki/Life"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-black-ops-level",
         "wikiTitle": "Black Ops (level)",
         "label": "Black Ops",
         "url": "https://callofduty.fandom.com/wiki/Black_Ops_(level)"

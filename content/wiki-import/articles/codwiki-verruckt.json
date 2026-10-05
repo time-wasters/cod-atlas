@@ -3,8 +3,8 @@
   "fandomPageId": 8740,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Verr%C3%BCckt",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Verr%C3%BCckt",
-  "latestRevisionId": 3010061,
-  "importedAt": "2026-08-15T08:56:47.095Z",
+  "latestRevisionId": 3023127,
+  "importedAt": "2026-10-05T20:17:55.167Z",
   "levelLocation": {
     "raw": "Wittenau Sanatorium, [[Berlin]], [[Germany]]",
     "label": "Berlin",
@@ -30,7 +30,7 @@
       },
       "rights": {
         "status": "non-free",
-        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  â€¢ the computer or video game in question or\n  â€¢ the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
         "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
@@ -48,8 +48,8 @@
     }
   },
   "rawPayload": {
-    "revisionTimestamp": "2026-06-24T01:43:50Z",
-    "revisionSha1": "faf77fa729c93499a8498514b99cacc6b375c866",
+    "revisionTimestamp": "2026-08-25T22:03:21Z",
+    "revisionSha1": "d0e96998efcce9f741d8562ab230b4710b8efd89",
     "resolvedTitle": "Verrückt",
     "mainImageTitle": "File:Verruckt_Menu_Selection_WaW.png",
     "mapImageTitle": null
@@ -59,6 +59,8 @@
     "label": "Nacht der Untoten",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-nacht-der-untoten",
         "wikiTitle": "Nacht der Untoten",
         "label": "Nacht der Untoten",
         "url": "https://callofduty.fandom.com/wiki/Nacht_der_Untoten"
@@ -70,11 +72,15 @@
     "label": "Shi No Numa (Aether Saga)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-shi-no-numa",
         "wikiTitle": "Shi No Numa",
         "label": "Shi No Numa",
         "url": "https://callofduty.fandom.com/wiki/Shi_No_Numa"
       },
       {
+        "sequence": "game",
+        "article": null,
         "wikiTitle": "Zombies (Treyarch)/Story/Aether Saga",
         "label": "Aether Saga",
         "url": "https://callofduty.fandom.com/wiki/Zombies_(Treyarch)%2FStory%2FAether_Saga"
