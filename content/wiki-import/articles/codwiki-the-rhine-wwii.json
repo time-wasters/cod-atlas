@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/The_Rhine_(WWII)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/The_Rhine_(WWII)",
   "latestRevisionId": 2994760,
-  "importedAt": "2026-08-15T13:28:29.369Z",
+  "importedAt": "2026-10-07T21:16:54.604Z",
   "levelLocation": {
     "raw": "Ludendorff Bridge, [[Wikipedia:Remagen|Remagen]], [[Nazi Germany]]",
     "label": "Remagen",
@@ -59,6 +59,8 @@
     "label": "Ambush",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-ambush-mission",
         "wikiTitle": "Ambush (mission)",
         "label": "Ambush",
         "url": "https://callofduty.fandom.com/wiki/Ambush_(mission)"
@@ -70,6 +72,8 @@
     "label": "Epilogue",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-epilogue-mission",
         "wikiTitle": "Epilogue (mission)",
         "label": "Epilogue",
         "url": "https://callofduty.fandom.com/wiki/Epilogue_(mission)"

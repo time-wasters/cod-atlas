@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Collateral_Damage_(mission)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Collateral_Damage_(mission)",
   "latestRevisionId": 3018828,
-  "importedAt": "2026-08-15T13:27:46.038Z",
+  "importedAt": "2026-10-07T21:16:11.451Z",
   "levelLocation": {
     "raw": "[[Aachen]], [[Nazi Germany]]",
     "label": "Aachen",
@@ -59,6 +59,8 @@
     "label": "Liberation",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-liberation-mission",
         "wikiTitle": "Liberation (WWII)",
         "label": "Liberation",
         "url": "https://callofduty.fandom.com/wiki/Liberation_(WWII)"
@@ -70,6 +72,8 @@
     "label": "Death Factory",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-death-factory",
         "wikiTitle": "Death Factory",
         "label": "Death Factory",
         "url": "https://callofduty.fandom.com/wiki/Death_Factory"

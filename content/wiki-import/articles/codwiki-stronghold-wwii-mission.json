@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Stronghold_(WWII_mission)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Stronghold_(WWII_mission)",
   "latestRevisionId": 2980595,
-  "importedAt": "2026-08-15T13:28:29.361Z",
+  "importedAt": "2026-10-07T21:16:43.877Z",
   "levelLocation": {
     "raw": "Marigny, Manche, [[France]]",
     "label": "France",
@@ -59,6 +59,8 @@
     "label": "Operation Cobra",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-operation-cobra",
         "wikiTitle": "Operation Cobra",
         "label": "Operation Cobra",
         "url": "https://callofduty.fandom.com/wiki/Operation_Cobra"
@@ -70,6 +72,8 @@
     "label": "S.O.E.",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-s-o-e",
         "wikiTitle": "S.O.E.",
         "label": "S.O.E.",
         "url": "https://callofduty.fandom.com/wiki/S.O.E."

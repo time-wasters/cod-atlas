@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Epilogue_(mission)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Epilogue_(mission)",
   "latestRevisionId": 2994734,
-  "importedAt": "2026-08-15T13:27:56.957Z",
+  "importedAt": "2026-10-07T21:16:11.458Z",
   "levelLocation": {
     "raw": "Berga, [[Nazi Germany]]<br>Port of Le Havre, [[France]]<br>Longview, Texas",
     "label": "Nazi Germany",
@@ -30,7 +30,7 @@
       },
       "rights": {
         "status": "non-free",
-        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  â€¢ the computer or video game in question or\n  â€¢ the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
         "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
@@ -59,6 +59,8 @@
     "label": "The Rhine",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-the-rhine-wwii",
         "wikiTitle": "The Rhine (WWII)",
         "label": "The Rhine",
         "url": "https://callofduty.fandom.com/wiki/The_Rhine_(WWII)"

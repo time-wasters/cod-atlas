@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Death_Factory",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Death_Factory",
   "latestRevisionId": 2994731,
-  "importedAt": "2026-08-15T13:27:56.929Z",
+  "importedAt": "2026-10-07T21:16:11.444Z",
   "levelLocation": {
     "raw": "Hürtgen Forest, German-Belgian Border",
     "label": "Hürtgen Forest, German-Belgian Border",
@@ -59,6 +59,8 @@
     "label": "Collateral Damage",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-collateral-damage-mission",
         "wikiTitle": "Collateral Damage (mission)",
         "label": "Collateral Damage",
         "url": "https://callofduty.fandom.com/wiki/Collateral_Damage_(mission)"
@@ -70,6 +72,8 @@
     "label": "Hill 493",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-hill-493",
         "wikiTitle": "Hill 493",
         "label": "Hill 493",
         "url": "https://callofduty.fandom.com/wiki/Hill_493"

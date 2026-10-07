@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/The_Tortured_Path",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/The_Tortured_Path",
   "latestRevisionId": 3006504,
-  "importedAt": "2026-08-15T13:28:29.404Z",
+  "importedAt": "2026-10-07T21:16:54.619Z",
   "levelLocation": {
     "raw": "Northern Spain <small>(Into the Storm)</small><br>''{{W|USS Mount Olympus|U.S.S. Mount Olympus}}'', Atlantic Ocean <small>(Across the Depths)</small><br>{{w|Deception Island}}, {{w|New Swabia}}, Antarctica<ref>\"The Nazi territory of Neuschwabenland hides an ancient secret, a horror buried in frost for millennia.\"</ref> <small>(Beneath the Ice)</small>",
     "label": "Northern Spain (Into the Storm) , , Atlantic Ocean (Across the Depths) , , , Antarctica (Beneath the Ice)",
@@ -30,7 +30,7 @@
       },
       "rights": {
         "status": "non-free",
-        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  â€¢ the computer or video game in question or\n  â€¢ the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
         "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
@@ -59,6 +59,8 @@
     "label": "The Shadowed Throne",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-the-shadowed-throne",
         "wikiTitle": "The Shadowed Throne",
         "label": "The Shadowed Throne",
         "url": "https://callofduty.fandom.com/wiki/The_Shadowed_Throne"
@@ -70,6 +72,8 @@
     "label": "The Frozen Dawn",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-the-frozen-dawn",
         "wikiTitle": "The Frozen Dawn",
         "label": "The Frozen Dawn",
         "url": "https://callofduty.fandom.com/wiki/The_Frozen_Dawn"
