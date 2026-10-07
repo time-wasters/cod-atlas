@@ -111,7 +111,13 @@ Optional fields:
   ordering; sidebar displays `label`. Use one label per ID per game.
   Example: `{ id: "2", label: Map Pack 1 }`; base game: `{ id: "0", label: Included }`.
 - `legacyIds`: preserve old URL IDs after structural renames.
-- `metadata`: non-geographic descriptions, including `variantOf`.
+- `metadata`: the documented `variantOf` relationship for canonical variants.
+  Preserve existing custom metadata during unrelated edits, but do not introduce
+  additional keys without an explicit data-model change from the user. The
+  parser accepting arbitrary keys does not establish a supported vocabulary.
+  Research prose, citations, and marker explanations belong in the Markdown body,
+  not this object. See the [template instructions](templates/README.md) for
+  frontmatter-only requests.
 
 Each separately selectable Special Ops/Survival/Challenge is `other` with its
 subtype. Each Challenge is canonical; link reused campaign sections through
@@ -160,8 +166,6 @@ Unchanged ports/remasters/rereleases use a reference, not extra `games` IDs:
 level: cod-carentan
 title: Carentan (Remastered)
 wikiArticle: codwiki-carentan-remastered
-metadata:
-  engine: upgraded
 ---
 
 Optional notes specific to this appearance.

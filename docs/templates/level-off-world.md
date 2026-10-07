@@ -1,4 +1,8 @@
 ---
+# Read docs/templates/README.md and docs/contributing-data.md before using this template.
+# Replace example values and remove instructional comments and unused optional fields.
+# Use documented keys only; do not add custom metadata for research or sources.
+# For frontmatter-only requests, omit everything after the closing delimiter.
 id: example-game-example-level
 title: Example Level
 games:
@@ -17,4 +21,6 @@ locations:
     primary: true
 ---
 
-Explain why this setting has no terrestrial coordinates.
+<!-- For an AI research body, use the disclosure and mode-appropriate headings
+     in docs/map-research-ai-instructions.md. Explain why this setting has no
+     terrestrial coordinates. -->

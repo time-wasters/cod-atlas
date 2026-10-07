@@ -26,6 +26,7 @@ labels consistent per ID within a game.
 ## Research process
 
 1. Read the level, game, Wiki import, and related levels before editing.
+   Read the applicable level template and [template instructions](templates/README.md).
    Preserve unrelated curated data, overlays, attribution, and notes.
 2. Establish mode/subtype, playable character/unit, date, stated location,
    briefing, objectives, route, named buildings/terrain/towns/rivers/roads/military
@@ -100,6 +101,13 @@ For `locations[].urls[].wikipedia`, use the real location's English article
 edition in the country's language.
 
 ## Required Markdown body
+
+These body requirements apply when writing an AI research body. If the user
+requests metadata/frontmatter only, leave the body empty and use only documented
+fields from the applicable template and field guide. Continue to research any
+proposed marker, but give supporting sources and uncertainty in the handoff.
+Do not store the omitted body, bibliography, marker rationale, or AI disclosure
+in custom metadata keys, other YAML fields, or YAML comments.
 
 Place this disclosure immediately after closing frontmatter:
 

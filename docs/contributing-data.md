@@ -1,6 +1,6 @@
 # Data contribution guide
 
-Reference for hand-authored `content/`. Start from [templates](templates/) and
+Reference for hand-authored `content/`. Start from [templates](templates/README.md) and
 replace every example. Never edit/commit ignored `app/data/*.generated.json`;
 commands regenerate it as needed. Without host npm, prepend
 `docker compose run --rm cod-atlas-tools` to npm commands; see
@@ -50,6 +50,16 @@ Builds automatically detect optional `public/images/games/<game-id>.png` icons.
 
 ## Level fields
 
+Read the applicable level template before adding or editing a record. For new
+records, copy its structure, replace example values, and remove unused optional
+fields and instructions. The templates and documented field definitions govern
+new fields; permissive parser behavior and legacy records do not authorize
+arbitrary frontmatter or nested keys.
+
+If the user requests metadata/frontmatter only, leave the Markdown body empty.
+Do not move research notes, citations, marker explanations, or AI disclosures
+into YAML fields or comments. Report sources and limitations in the handoff.
+
 | Field | Required | Meaning |
 | --- | --- | --- |
 | `id` | yes | Repository-wide ID, normally primary-game-prefixed |
@@ -61,6 +71,10 @@ Builds automatically detect optional `public/images/games/<game-id>.png` icons.
 | `content-update` | no | Release grouping: stable string `id`, display `label`; any mode/subtype |
 | `wikiArticle` | yes | Separate Wiki import ID |
 | `locations` | usually | Embedded locations; omit only to inherit via `metadata.variantOf`; explicit `[]` stays empty; no shared places |
+| `metadata.variantOf` | no | Canonical variant's source level ID; no arbitrary new metadata keys |
+| `verified` | no | Location/research review status; `byHuman`, `user`, optional `reason`; see the data model |
+| `legacyIds` | no | Previous URL IDs; see the data model |
+| `mapOverlay`, `historyOverlays` | no | Documented, attributed geographic overlays; see the data model |
 | Markdown body | no | Concise research, ambiguity, editorial notes |
 
 Campaign grouping is independent of filename order; keep IDs through label changes:
@@ -76,7 +90,8 @@ other release. Its stable string ID orders updates; keep one label per ID per ga
 
 Separately selectable Special Ops/Survival/Challenge entries use `other` plus
 subtype. Every Challenge is canonical, even when several reuse one mission.
-Store its number/objectives in `metadata`, link the reused campaign via
+Describe its number/objectives in the Markdown body when included; do not invent
+metadata keys for them. Link the reused campaign via
 `metadata.variantOf`, and omit `locations` to inherit geography.
 
 `metadata.variantOf` links distinct canonical levels, never unchanged

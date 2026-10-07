@@ -3,6 +3,19 @@
 These instructions apply to everything under `content/`.
 
 - Treat files here as curated source data.
+- Before creating or editing a level, read `../docs/templates/README.md`, the
+  applicable level template, and `../docs/contributing-data.md` (paths relative
+  to this file). Start new records from that template; preserve unrelated fields
+  in existing records. Include optional fields only when documented and relevant.
+- Do not invent frontmatter or nested `metadata` keys. `metadata.variantOf` is
+  the documented canonical relationship; other new metadata keys require an
+  explicit data-model change from the user. Preserve existing custom metadata
+  unless changing it is part of the task. Permissive parsing does not authorize
+  new fields or make legacy records templates.
+- "Metadata only" or "frontmatter only" means the documented YAML fields and
+  nothing after the closing `---`. Omit template body text, headings, comments,
+  and disclosures; do not move them into `metadata`, other YAML fields, or YAML
+  comments. Give research sources and marker limitations in the handoff instead.
 - Levels normally own their embedded marker locations. A canonical variant may
   omit `locations` and inherit them through `metadata.variantOf`; an explicit
   `locations: []` remains empty.
@@ -42,4 +55,5 @@ These instructions apply to everything under `content/`.
 - Use `npm run data:check` for focused validation after a content change. If
   host npm is unavailable, use
   `docker compose run --rm cod-atlas-tools npm run data:check`. Generated JSON
-  is an ignored build artifact and must not be committed.
+  is an ignored build artifact and must not be committed. Agents recommend this
+  check and run it only when the user explicitly requests validation.

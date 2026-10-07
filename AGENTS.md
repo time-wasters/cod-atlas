@@ -24,6 +24,8 @@ output of `npm run build:static`.
 1. Read `README.md`, `CONTRIBUTING.md`, and `docs/data-model.md` when relevant.
    For AI research/editing of locations or historical notes, read and follow
    `docs/map-research-ai-instructions.md` in full.
+   Before creating or editing a level, read the applicable template in
+   `docs/templates/` and the field definitions in `docs/contributing-data.md`.
 2. Make the smallest coherent change using existing TypeScript/React patterns.
 3. Run data checks, lint, tests, builds, or other validation **only when the
    user explicitly requests it**, including where contributor docs list checks.
@@ -53,6 +55,14 @@ output of `npm run build:static`.
 
 ## Content conventions
 
+- Create levels from the applicable template; see `docs/templates/README.md`.
+  Use only documented frontmatter fields and nested keys. Parser acceptance
+  or an existing record is not permission to invent fields, including inside
+  `metadata`. New fields require an explicit data-model change from the user.
+- A request for "metadata only" means documented YAML frontmatter with an
+  empty Markdown body, not additional keys under `metadata`. Do not relocate
+  research prose, citations, marker explanations, or AI disclosures into YAML.
+  Report sources and uncertainty in the handoff when the body is excluded.
 - Game labels: short, readable, ordered by release date.
 - Modes: `singleplayer`, `multiplayer`, `zombies`, `other`. Only `other` requires
   `modeSub`: `special-ops`, `survival`, or `challenge`; all other modes omit it.

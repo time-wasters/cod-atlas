@@ -77,7 +77,7 @@ mode: singleplayer
 wikiArticle: codwiki-example-level
 locations:
   - id: main
-    label: Example landmark
+    landmark: Example landmark
     country: France
     region: Normandy
     city: Falaise
@@ -113,8 +113,12 @@ An optional interface icon can be added at
 `public/images/games/<game-id>.png`. The filename must exactly match the game
 ID; no game record change is needed.
 
-Copy templates from [`docs/templates/`](docs/templates/) instead of using an
-existing record whose assumptions may not fit the new contribution.
+Read the [template instructions](docs/templates/README.md) and copy the applicable
+template before creating a level. For edits, compare with that template and
+preserve unrelated curated data. Use only documented frontmatter and nested
+keys; older records and permissive parsing do not authorize new metadata fields.
+When requested to provide frontmatter only, leave the body empty and report
+research sources in the handoff instead of inventing YAML fields for them.
 
 ## Wiki imports and media
 
