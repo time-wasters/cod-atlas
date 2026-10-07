@@ -3,7 +3,7 @@ id: bo4-ancient-evil
 title: Ancient Evil
 games:
   - bo4
-mode: multiplayer
+mode: zombies
 wikiArticle: codwiki-ancient-evil
 locations:
   - id: main

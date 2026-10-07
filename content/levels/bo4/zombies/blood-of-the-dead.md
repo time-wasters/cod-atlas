@@ -3,7 +3,7 @@ id: bo4-blood-of-the-dead
 title: Blood of the Dead
 games:
   - bo4
-mode: multiplayer
+mode: zombies
 wikiArticle: codwiki-blood-of-the-dead
 locations:
   - id: main

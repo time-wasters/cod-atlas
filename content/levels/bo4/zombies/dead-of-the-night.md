@@ -3,7 +3,7 @@ id: bo4-dead-of-the-night
 title: Dead of the Night
 games:
   - bo4
-mode: multiplayer
+mode: zombies
 wikiArticle: codwiki-dead-of-the-night
 locations:
   - id: main

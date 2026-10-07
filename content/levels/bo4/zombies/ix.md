@@ -3,7 +3,7 @@ id: bo4-ix
 title: IX
 games:
   - bo4
-mode: multiplayer
+mode: zombies
 wikiArticle: codwiki-ix
 locations:
   - id: main

@@ -3,7 +3,7 @@ id: bo4-voyage-of-despair
 title: Voyage of Despair
 games:
   - bo4
-mode: multiplayer
+mode: zombies
 wikiArticle: codwiki-voyage-of-despair
 locations:
   - id: main

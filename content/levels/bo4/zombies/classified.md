@@ -3,7 +3,7 @@ id: bo4-classified
 title: Classified
 games:
   - bo4
-mode: multiplayer
+mode: zombies
 wikiArticle: codwiki-classified
 locations:
   - id: main

@@ -3,7 +3,7 @@ id: bo4-alpha-omega
 title: Alpha Omega
 games:
   - bo4
-mode: multiplayer
+mode: zombies
 wikiArticle: codwiki-alpha-omega
 locations:
   - id: main

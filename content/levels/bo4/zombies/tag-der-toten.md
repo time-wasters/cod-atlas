@@ -3,7 +3,7 @@ id: bo4-tag-der-toten
 title: Tag der Toten
 games:
   - bo4
-mode: multiplayer
+mode: zombies
 wikiArticle: codwiki-tag-der-toten
 locations:
   - id: main
