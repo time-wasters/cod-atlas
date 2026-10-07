@@ -37,6 +37,10 @@ output of `npm run build:static`.
 5. Do not deploy, publish, push to a different remote, or change site access
    without an explicit user request.
 
+- Never add tests that read real curated files under `content/` or assert the
+  live roster, coordinates, or marker totals. Use synthetic fixtures for code
+  behavior; recommend `data:check` for curated content validation.
+
 ### Commands and generated data
 
 - Prefer Docker for installs, data, lint, tests, and builds. Use the locked
@@ -51,7 +55,8 @@ output of `npm run build:static`.
   them as needed. After `content/` changes, recommend `npm run data:check`, which
   validates without generating artifacts.
 - Regression baseline: **1277 marker locations**. Count changes must be
-  intentional and include the appropriate test update.
+  intentional and explained in the handoff; do not encode live content counts
+  in tests.
 
 ## Content conventions
 
