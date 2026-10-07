@@ -3,7 +3,7 @@ id: wwii-the-shadowed-throne
 title: The Shadowed Throne
 games:
   - wwii
-mode: multiplayer
+mode: zombies
 wikiArticle: codwiki-the-shadowed-throne
 locations:
   - id: main

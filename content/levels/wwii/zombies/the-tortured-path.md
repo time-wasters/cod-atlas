@@ -3,7 +3,7 @@ id: wwii-the-tortured-path
 title: The Tortured Path
 games:
   - wwii
-mode: multiplayer
+mode: zombies
 wikiArticle: codwiki-the-tortured-path
 locations:
   - id: main

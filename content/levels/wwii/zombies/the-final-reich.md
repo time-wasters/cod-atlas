@@ -3,7 +3,7 @@ id: wwii-the-final-reich
 title: The Final Reich
 games:
   - wwii
-mode: multiplayer
+mode: zombies
 wikiArticle: codwiki-the-final-reich
 locations:
   - id: main

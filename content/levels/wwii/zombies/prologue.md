@@ -1,10 +1,10 @@
 ---
-id: wwii-groesten
-title: Gröesten
+id: wwii-prologue
+title: Prologue
 games:
   - wwii
-mode: multiplayer
-wikiArticle: codwiki-groesten-haus
+mode: zombies
+wikiArticle: codwiki-prologue-map
 locations:
   - id: main
     country: Germany

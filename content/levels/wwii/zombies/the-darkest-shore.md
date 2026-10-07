@@ -3,7 +3,7 @@ id: wwii-the-darkest-shore
 title: The Darkest Shore
 games:
   - wwii
-mode: multiplayer
+mode: zombies
 wikiArticle: codwiki-the-darkest-shore
 locations:
   - id: main

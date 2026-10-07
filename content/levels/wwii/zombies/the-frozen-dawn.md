@@ -3,7 +3,7 @@ id: wwii-the-frozen-dawn
 title: The Frozen Dawn
 games:
   - wwii
-mode: multiplayer
+mode: zombies
 wikiArticle: codwiki-the-frozen-dawn
 locations:
   - id: main
