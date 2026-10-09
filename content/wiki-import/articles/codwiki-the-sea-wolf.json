@@ -1,0 +1,89 @@
+{
+  "id": "codwiki-the-sea-wolf",
+  "fandomPageId": 596623,
+  "sourceUrl": "https://callofduty.fandom.com/wiki/The_Sea_Wolf",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/The_Sea_Wolf",
+  "latestRevisionId": 2760880,
+  "importedAt": "2026-09-28T22:22:25.375Z",
+  "levelLocation": {
+    "raw": null,
+    "label": null,
+    "url": null
+  },
+  "mapStyle": "special-ops",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas from the linked Call of Duty Wiki roster; verify during the next import.",
+  "rawPayload": {
+    "revisionTimestamp": "2024-01-17T05:00:25Z",
+    "revisionSha1": "6dfa0f4ad7cf8e4100a535a7606380d0b233bc30",
+    "resolvedTitle": "The Sea Wolf",
+    "mainImageTitle": null,
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Strike Team]]''",
+    "label": "Call of Duty: Strike Team",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Strike Team",
+        "label": "Call of Duty: Strike Team",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Strike_Team"
+      }
+    ]
+  },
+  "date": {
+    "raw": null,
+    "label": null
+  },
+  "images": {
+    "main": {
+      "sourceUrl": null,
+      "thumbnailUrl": null,
+      "detailPageUrl": null,
+      "author": {
+        "name": null,
+        "userUrl": null,
+        "role": null
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "unknown",
+        "notice": null,
+        "noticeUrl": null
+      }
+    },
+    "map": {
+      "sourceUrl": null,
+      "thumbnailUrl": null,
+      "detailPageUrl": null,
+      "author": {
+        "name": null,
+        "userUrl": null,
+        "role": null
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "unknown",
+        "notice": null,
+        "noticeUrl": null
+      }
+    }
+  }
+}

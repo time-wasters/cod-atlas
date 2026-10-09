@@ -61,6 +61,7 @@ const countriesByName = new Map(countries.flatMap((country) => [
 ]));
 const specialContinents = new Map([
   ["Adriatic Sea", "Oceans"],
+  ["Agartha", "Off-world"],
   ["Arctic Circle", "Arctic"],
   ["Atlantic Ocean", "Oceans"],
   ["Baltic Sea", "Oceans"],
@@ -78,6 +79,7 @@ const specialContinents = new Map([
   ["Philippine Sea", "Oceans"],
   ["Polynesia", "Oceania"],
   ["Space", "Off-world"],
+  ["Virtual", "Off-world"],
 ]);
 
 function flagCodeForGroup(name) {
@@ -198,10 +200,11 @@ async function validateMapOverlay(overlay, levelId, filename) {
   requireValue(overlay && typeof overlay === "object" && !Array.isArray(overlay), `${filename}: mapOverlay must be an object`);
   const levelMediaBase = path.relative(levelsRoot, filename).replaceAll("\\", "/").replace(/\.md$/, "");
   const expectedLevelImageBase = `/images/levels/${levelMediaBase}/maps/overlay`;
+  const imagePath = overlay.image ?? `${expectedLevelImageBase}.png`;
   requireValue(
-    [".png", ".jpg"].some((extension) => overlay.image === `${expectedLevelImageBase}${extension}`)
-      || /^\/images\/maps\/[a-z0-9/_-]+\.(?:png|jpg)$/.test(overlay.image ?? ""),
-    `${filename}: mapOverlay.image must be ${expectedLevelImageBase}.png, ${expectedLevelImageBase}.jpg, or a local PNG/JPEG under /images/maps/`,
+    [".png", ".jpg"].some((extension) => imagePath === `${expectedLevelImageBase}${extension}`)
+      || /^\/images\/maps\/[a-z0-9/_-]+\.(?:png|jpg)$/.test(imagePath),
+    `${filename}: mapOverlay.image must be omitted, ${expectedLevelImageBase}.png, ${expectedLevelImageBase}.jpg, or a local PNG/JPEG under /images/maps/`,
   );
   requireValue(Number.isFinite(overlay.opacity) && overlay.opacity > 0 && overlay.opacity <= 1, `${filename}: mapOverlay.opacity must be greater than 0 and at most 1`);
   for (const corner of ["topLeft", "topRight", "bottomLeft", "bottomRight"]) {
@@ -211,30 +214,45 @@ async function validateMapOverlay(overlay, levelId, filename) {
     requireValue(Number.isFinite(coordinates[1]) && coordinates[1] >= -180 && coordinates[1] <= 180, `${filename}: mapOverlay.corners.${corner} longitude is invalid`);
   }
   const attribution = overlay.attribution;
-  requireValue(attribution?.title && attribution.source && attribution.sourceUrl, `${filename}: mapOverlay attribution title, source and sourceUrl are required`);
+  requireValue(attribution?.title && attribution.source, `${filename}: mapOverlay attribution title and source are required`);
   requireValue(attribution.extractedBy && attribution.extractedByUrl, `${filename}: mapOverlay extraction credit and URL are required`);
   requireValue(attribution.copyrightHolder, `${filename}: mapOverlay copyright holder is required`);
   requireValue(attribution.rights === "non-free", `${filename}: mapOverlay attribution rights must be non-free`);
   requireValue(attribution.rightsNotice && attribution.rightsNoticeUrl, `${filename}: mapOverlay non-free rights notice and URL are required`);
-  for (const field of ["sourceUrl", "extractedByUrl", "rightsNoticeUrl"]) validateHttpsUrl(attribution[field], `mapOverlay.attribution.${field}`, filename);
-  const imageFilename = path.join(root, "public", ...overlay.image.slice(1).split("/"));
-  const image = await readFile(imageFilename);
-  const isPng = overlay.image.endsWith(".png")
+  for (const field of ["extractedByUrl", "rightsNoticeUrl"]) validateHttpsUrl(attribution[field], `mapOverlay.attribution.${field}`, filename);
+  const imageFilename = path.join(root, "public", ...imagePath.slice(1).split("/"));
+  let image;
+  try {
+    image = await readFile(imageFilename);
+  } catch (error) {
+    if (error?.code === "ENOENT") throw new Error(`${filename}: mapOverlay image not found at ${imagePath}`);
+    throw error;
+  }
+  const isPng = imagePath.endsWith(".png")
     && image.length >= 8
     && image[0] === 0x89
     && image.toString("ascii", 1, 4) === "PNG";
-  const isJpeg = overlay.image.endsWith(".jpg")
+  const isJpeg = imagePath.endsWith(".jpg")
     && image.length >= 3
     && image[0] === 0xff
     && image[1] === 0xd8
     && image[2] === 0xff;
-  requireValue(isPng || isJpeg, `${filename}: ${overlay.image} contents must match its PNG or JPEG extension`);
+  requireValue(isPng || isJpeg, `${filename}: ${imagePath} contents must match its PNG or JPEG extension`);
   return {
     levelId,
-    image: overlay.image,
+    image: imagePath,
     opacity: overlay.opacity,
     corners: overlay.corners,
-    attribution,
+    attribution: {
+      title: attribution.title,
+      source: attribution.source,
+      extractedBy: attribution.extractedBy,
+      extractedByUrl: attribution.extractedByUrl,
+      copyrightHolder: attribution.copyrightHolder,
+      rights: attribution.rights,
+      rightsNotice: attribution.rightsNotice,
+      rightsNoticeUrl: attribution.rightsNoticeUrl,
+    },
   };
 }
 
@@ -469,11 +487,6 @@ for (const filename of levelFiles) {
       `${filename}: content-update must be an object`,
     );
     requireValue(
-      ["multiplayer", "zombies"].includes(level.mode)
-        || (level.mode === "other" && level.modeSub === "special-ops"),
-      `${filename}: content-update is only supported for multiplayer, zombies and other/special-ops levels`,
-    );
-    requireValue(
       typeof contentUpdate.id === "string" && contentUpdate.id.trim(),
       `${filename}: content-update id must be a non-empty string`,
     );
@@ -620,7 +633,7 @@ const levelsById = new Map(levels.map((level) => [level.id, level]));
 for (const legacyId of Object.keys(levelIdAliases)) {
   requireValue(!levelsById.has(legacyId), `${legacyId}: legacy level ID collides with a current canonical level`);
 }
-const appearanceFields = new Set(["level", "title", "wikiArticle", "campaign", "metadata"]);
+const appearanceFields = new Set(["level", "title", "wikiArticle", "campaign", "content-update", "metadata"]);
 for (const filename of levelReferenceFiles) {
   const { data: reference, body } = parseMarkdown(await readFile(filename, "utf8"), filename);
   requireValue(reference && typeof reference === "object" && !Array.isArray(reference), `${filename}: appearance reference frontmatter must be an object`);
@@ -662,6 +675,21 @@ for (const filename of levelReferenceFiles) {
     requireValue(reference.metadata && typeof reference.metadata === "object" && !Array.isArray(reference.metadata), `${filename}: metadata must be an object`);
     requireValue(reference.metadata.variantOf == null, `${filename}: metadata.variantOf is only valid on canonical level records`);
   }
+  const contentUpdate = reference["content-update"] ?? null;
+  if (contentUpdate != null) {
+    requireValue(contentUpdate && typeof contentUpdate === "object" && !Array.isArray(contentUpdate),
+      `${filename}: content-update must be an object`);
+    requireValue(typeof contentUpdate.id === "string" && contentUpdate.id.trim(),
+      `${filename}: content-update id must be a non-empty string`);
+    requireValue(typeof contentUpdate.label === "string" && contentUpdate.label.trim(),
+      `${filename}: content-update label must be a non-empty string`);
+    if (!contentUpdateLabelsByGame.has(gameId)) contentUpdateLabelsByGame.set(gameId, new Map());
+    const labels = contentUpdateLabelsByGame.get(gameId);
+    const existingLabel = labels.get(contentUpdate.id);
+    requireValue(existingLabel == null || existingLabel === contentUpdate.label,
+      `${filename}: content-update ${contentUpdate.id} must use the same label throughout ${gameId}`);
+    labels.set(contentUpdate.id, contentUpdate.label);
+  }
   const bannerKey = `${level.id}@${gameId}`;
   const appearanceMediaBase = path.relative(levelsRoot, filename).replaceAll("\\", "/").replace(/\.md$/, "");
   const appearanceBannerBase = `${appearanceMediaBase}/main`;
@@ -698,6 +726,7 @@ for (const filename of levelReferenceFiles) {
     title: reference.title ?? level.title,
     wikiArticle: reference.wikiArticle ?? level.wikiArticle,
     campaign: reference.campaign ?? level.campaign ?? null,
+    ...(contentUpdate ? { contentUpdate } : {}),
     ...(campaignOrder !== null ? { campaignOrder } : {}),
     ...(reference.metadata ? { metadata: reference.metadata } : {}),
     notes: body || level.notes,
@@ -740,6 +769,7 @@ for (const level of levels) {
     bannerKey: appearance.bannerKey,
     ...(appearance.campaign ? { campaign: appearance.campaign } : {}),
     ...(appearance.campaignOrder ? { campaignOrder: appearance.campaignOrder } : {}),
+    ...(appearance.contentUpdate ? { contentUpdate: appearance.contentUpdate } : {}),
     ...(appearance.metadata ? { metadata: appearance.metadata } : {}),
   }))];
   const appearanceGameIds = appearances.map((appearance) => appearance.gameId);

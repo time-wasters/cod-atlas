@@ -1,0 +1,23 @@
+---
+id: bo3-sand-castle
+title: Sand Castle
+games:
+  - bo3
+mode: singleplayer
+content-update:
+  id: "0"
+  label: Included
+campaign:
+  id: "1"
+  label: Missions
+wikiArticle: codwiki-sand-castle
+locations:
+  - id: main
+    country: Egypt
+    latitude: 27
+    longitude: 30
+    precision: country
+    confidence: fallback
+    method: country-fallback
+    primary: true
+---

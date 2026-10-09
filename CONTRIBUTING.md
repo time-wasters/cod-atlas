@@ -51,28 +51,21 @@ See the [data contribution guide](docs/contributing-data.md) for every field,
 all allowed `mode`, `precision`, `confidence`, and `method` values, selection
 guidance, and copy-ready templates for every source record type.
 
-Create a Markdown file under the primary game's directory. If that game is
-already organized by map type, place it in `campaign/`, `multiplayer/`,
-`special-ops/`, `survival/`, `zombies/`, or `challenge/` according to its mode and subtype.
-Currently `cod`,
-`cod-uo`, `cod-fh`, `cod2`, `cod2-bro`, `cod3`, `rtv`, `cod4`, `cod4-nds`, `waw-nds`, `mw2`, `mw3`, `online`,
-`bo-nds`, `mw3-nds`, `bo-d`, `wz`, `wz2`, `mwiii`, `bo7`, and `mw4` use the first two folders; `mw2`, `mw3`, and `bo7`
-use `special-ops/` for `mode: other`, `modeSub: special-ops` records, while
-`waw`, `bo`, `bo-nds`, `online`, `bo6`, and `bo7` also use `zombies/`.
-BO7 Endgame is an Other/Special Ops record distinguished by
-`metadata.activityType: endgame`.
-`mw2-nds` uses `survival/` for Survival maps, and `waw-nds` also uses
-`challenge/` for Challenge missions. Games that
-have not been reorganized retain their existing flat layout.
+Create a Markdown file under the primary game's map-type directory. Use
+`campaign/` for `singleplayer`, `multiplayer/` for `multiplayer`, `zombies/`
+for `zombies`, and the matching `special-ops/`, `survival/`, or `challenge/`
+directory for an `other` record's `modeSub`. This is the preferred structure
+for game rosters. A legacy flat roster may remain in place until the entire
+game is deliberately reorganized, but never mix flat canonical records and
+map-type directories within one game.
 
 Campaign files in a map-type layout are named
 `<order>-<descriptive-name>.md`, starting at `1` without leading zeros or gaps.
-Multiplayer, Special Ops, Survival, Zombies, Challenge, and flat-layout files use
+Multiplayer, Special Ops, Survival, Zombies, and Challenge files use
 `<descriptive-name>.md`. The filename organizes the source tree and does not
 define or need to match the stable level ID. Never include the campaign order
-in the stable ID. For example, an `id` of `cod3-example-level` may live at
-`content/levels/cod3/river-crossing.md`, while `cod-example-level` could live
-at `content/levels/cod/campaign/27-final-assault.md`.
+in the stable ID. For example, an ID ending in `example-level` may live at
+`content/levels/<game-id>/campaign/27-final-assault.md`.
 
 ```md
 ---
@@ -84,7 +77,7 @@ mode: singleplayer
 wikiArticle: codwiki-example-level
 locations:
   - id: main
-    label: Example landmark
+    landmark: Example landmark
     country: France
     region: Normandy
     city: Falaise
@@ -106,9 +99,11 @@ If the same level also appears in another game without material geographic or
 playable-layout changes, add `<descriptive-name>.ref.md` under that game's directory
 instead of putting several IDs in `games`. A reference contains only
 `level: <canonical-level-id>` plus optional appearance-specific `title`,
-`wikiArticle`, `campaign`, `metadata`, or Markdown notes. Missing values and
+`wikiArticle`, `campaign`, `content-update`, `metadata`, or Markdown notes. Missing values and
 notes inherit from the canonical record. Locations, mode, overlays, and stable
-IDs cannot be overridden. A materially changed remake gets its own canonical
+IDs cannot be overridden. A reference's `content-update` describes its release
+in the appearance game and does not inherit the canonical game's group.
+A materially changed remake gets its own canonical
 level record instead. Such a distinct canonical variant may set
 `metadata.variantOf`. It may omit `locations` to inherit the linked canonical
 level's locations, while an explicit `locations: []` means intentionally no
@@ -118,8 +113,12 @@ An optional interface icon can be added at
 `public/images/games/<game-id>.png`. The filename must exactly match the game
 ID; no game record change is needed.
 
-Copy templates from [`docs/templates/`](docs/templates/) instead of using an
-existing record whose assumptions may not fit the new contribution.
+Read the [template instructions](docs/templates/README.md) and copy the applicable
+template before creating a level. For edits, compare with that template and
+preserve unrelated curated data. Use only documented frontmatter and nested
+keys; older records and permissive parsing do not authorize new metadata fields.
+When requested to provide frontmatter only, leave the body empty and report
+research sources in the handoff instead of inventing YAML fields for them.
 
 ## Wiki imports and media
 

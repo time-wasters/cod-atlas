@@ -12,14 +12,13 @@ mapOverlay:
   image: /images/levels/cod-fh/campaign/17-road-to-remagen/maps/overlay.png
   opacity: 0.72
   corners:
-    topLeft: [50.57777147, 7.24015732]
-    topRight: [50.58718835, 7.2468516]
-    bottomLeft: [50.57488282, 7.25023448]
-    bottomRight: [50.58430028, 7.25692877]
+    topLeft: [50.58113, 7.24869]
+    topRight: [50.57135, 7.24142]
+    bottomLeft: [50.58429, 7.23815]
+    bottomRight: [50.57451, 7.23088]
   attribution:
     title: "Call of Duty: Finest Hour - Road to Remagen loading-screen map"
     source: "Directly extracted from Call of Duty: Finest Hour by plp-gtr."
-    sourceUrl: https://github.com/time-wasters/cod-atlas/blob/main/public/images/maps/rtv/road-to-remagen.png
     extractedBy: plp-gtr
     extractedByUrl: https://github.com/plp-gtr
     copyrightHolder: Activision Publishing, Inc.

@@ -1,0 +1,105 @@
+{
+  "id": "codwiki-the-guided-tour",
+  "fandomPageId": 573604,
+  "sourceUrl": "https://callofduty.fandom.com/wiki/The_Guided_Tour",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/The_Guided_Tour",
+  "latestRevisionId": 2541910,
+  "importedAt": "2026-09-28T22:22:14.641Z",
+  "levelLocation": {
+    "raw": "Sar Hawza District, Paktika Province, Afghanistan",
+    "label": "Sar Hawza District, Paktika Province, Afghanistan",
+    "url": null
+  },
+  "mapStyle": "singleplayer",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas from the linked Call of Duty Wiki roster; verify during the next import.",
+  "rawPayload": {
+    "revisionTimestamp": "2020-12-15T09:28:51Z",
+    "revisionSha1": "1778ee425dda8f1cab2d76aaaf956d65c03b85c6",
+    "resolvedTitle": "The Guided Tour",
+    "mainImageTitle": null,
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[A Dish Best Served Cold]]",
+    "label": "A Dish Best Served Cold",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-a-dish-best-served-cold",
+        "wikiTitle": "A Dish Best Served Cold",
+        "label": "A Dish Best Served Cold",
+        "url": "https://callofduty.fandom.com/wiki/A_Dish_Best_Served_Cold"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Non Parlez]]",
+    "label": "Non Parlez",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-non-parlez",
+        "wikiTitle": "Non Parlez",
+        "label": "Non Parlez",
+        "url": "https://callofduty.fandom.com/wiki/Non_Parlez"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Strike Team]]''",
+    "label": "Call of Duty: Strike Team",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Strike Team",
+        "label": "Call of Duty: Strike Team",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Strike_Team"
+      }
+    ]
+  },
+  "date": {
+    "raw": "October 24th, 2020",
+    "label": "October 24th, 2020"
+  },
+  "images": {
+    "main": {
+      "sourceUrl": null,
+      "thumbnailUrl": null,
+      "detailPageUrl": null,
+      "author": {
+        "name": null,
+        "userUrl": null,
+        "role": null
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "unknown",
+        "notice": null,
+        "noticeUrl": null
+      }
+    },
+    "map": {
+      "sourceUrl": null,
+      "thumbnailUrl": null,
+      "detailPageUrl": null,
+      "author": {
+        "name": null,
+        "userUrl": null,
+        "role": null
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "unknown",
+        "notice": null,
+        "noticeUrl": null
+      }
+    }
+  }
+}

@@ -3,8 +3,8 @@
   "fandomPageId": 10391,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Shi_No_Numa",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Shi_No_Numa",
-  "latestRevisionId": 3008179,
-  "importedAt": "2026-08-15T13:26:29.054Z",
+  "latestRevisionId": 3023126,
+  "importedAt": "2026-10-05T20:17:44.432Z",
   "levelLocation": {
     "raw": "Rising Sun Facility, [[Empire of Japan]]",
     "label": "Empire of Japan",
@@ -30,7 +30,7 @@
       },
       "rights": {
         "status": "non-free",
-        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  â€¢ the computer or video game in question or\n  â€¢ the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
         "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
@@ -48,8 +48,8 @@
     }
   },
   "rawPayload": {
-    "revisionTimestamp": "2026-06-13T03:45:50Z",
-    "revisionSha1": "5ae8ef25af7c4868f3375776f59b69ed432c7aec",
+    "revisionTimestamp": "2026-08-25T22:02:58Z",
+    "revisionSha1": "ee35d0e4fea06a774ae461e2f7bceac933e15b1b",
     "resolvedTitle": "Shi No Numa",
     "mainImageTitle": "File:Shi_No_Numa_Menu_Selection_WaW.png",
     "mapImageTitle": null
@@ -59,6 +59,8 @@
     "label": "Verrückt",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-verruckt",
         "wikiTitle": "Verrückt",
         "label": "Verrückt",
         "url": "https://callofduty.fandom.com/wiki/Verr%C3%BCckt"
@@ -70,6 +72,8 @@
     "label": "Der Riese",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-der-riese",
         "wikiTitle": "Der Riese",
         "label": "Der Riese",
         "url": "https://callofduty.fandom.com/wiki/Der_Riese"

@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Operation_Dark_Quarry",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Operation_Dark_Quarry",
   "latestRevisionId": 3001830,
-  "importedAt": "2026-08-15T10:03:25.902Z",
+  "importedAt": "2026-10-05T20:20:24.162Z",
   "levelLocation": {
     "raw": "Vesta Mining Facility, [[Vesta 3]], Sun's Orbit",
     "label": "Vesta 3",
@@ -30,7 +30,7 @@
       },
       "rights": {
         "status": "non-free",
-        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  â€¢ the computer or video game in question or\n  â€¢ the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
         "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
@@ -59,6 +59,8 @@
     "label": "Operation Burn Water",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-operation-burn-water",
         "wikiTitle": "Operation Burn Water",
         "label": "Operation Burn Water",
         "url": "https://callofduty.fandom.com/wiki/Operation_Burn_Water"
@@ -70,11 +72,15 @@
     "label": "Operation Black Flag, Operation Safe Harbor (Optional)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-operation-black-flag",
         "wikiTitle": "Operation Black Flag",
         "label": "Operation Black Flag",
         "url": "https://callofduty.fandom.com/wiki/Operation_Black_Flag"
       },
       {
+        "sequence": "game",
+        "article": "codwiki-operation-safe-harbor",
         "wikiTitle": "Operation Safe Harbor",
         "label": "Operation Safe Harbor",
         "url": "https://callofduty.fandom.com/wiki/Operation_Safe_Harbor"

@@ -11,7 +11,6 @@ export type MapOverlayDto = {
   attribution: {
     title: string;
     source: string;
-    sourceUrl: string;
     extractedBy: string;
     extractedByUrl: string;
     copyrightHolder: string;

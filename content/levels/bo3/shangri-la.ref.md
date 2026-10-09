@@ -1,3 +1,0 @@
----
-level: bo-shangri-la
----

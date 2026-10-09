@@ -1,31 +1,25 @@
 # CoD Atlas progress
 
-This report is generated from the curated level records under
-`content/levels/`. You can run `npm run progress:update` after changing research
-notes or location precision. The report is informational and its current state
-is not required for validation or builds.
+Generated from `content/levels/`. Optionally run `npm run progress:update`
+after research/precision changes. Informational only; freshness never blocks
+validation or builds.
 
 ## Research progress
 
-A canonical level counts as researched when its Markdown body contains all five
-standard research sections in order. The first section may be either
-`The Mission in the Game`, `The Map in the Game`, or `The Challenge in the Game`.
-AI-assisted notes must also
-include an AI disclosure. Appearance `.ref.md` files are excluded because they
-inherit research from their canonical level.
+Researched canonical levels contain all five standard sections in order,
+starting with `The Mission in the Game`, `The Map in the Game`, or
+`The Challenge in the Game`. AI notes also need disclosure. Exclude `.ref.md`
+appearances, which inherit canonical research.
 
-These percentages measure completed historical and geographic research, not
-roster completeness or directory organization. For example, Modern Warfare
-(2007)'s complete 21-level campaign can remain below 100% here until every
-mission has the required research sections.
+Percentages measure historical/geographic research, not roster completeness or
+directory organization: even MW (2007)'s complete 21-mission campaign can be
+below 100% until all missions have the required sections.
 
-Before treating a game's counts as a complete roster, audit every applicable
-category: Campaign, Multiplayer, Zombies, Challenge, Special Ops,
-Survival/Hostiles/Safeguard/Exo Survival, Nightmares, Strike Force, War, and
-Extinction. Some of these still roll up under a broader atlas mode; absence from
-the table is not evidence that the source game has no such content.
-
-Other combines records with the `special-ops`, `survival`, and `challenge` subtypes.
+Before declaring rosters complete, audit every applicable category: Campaign,
+Multiplayer, Zombies, Challenge, Special Ops, Survival/Hostiles/Safeguard/Exo
+Survival, Nightmares, Strike Force, War, Extinction. Broader atlas modes may
+absorb categories; missing table columns do not prove missing game content.
+Other combines `special-ops`, `survival`, and `challenge`.
 
 <!-- research-progress:start -->
 | Scope | Researched | Remaining |
@@ -82,10 +76,9 @@ Other combines records with the `special-ops`, `survival`, and `challenge` subty
 
 ## Human verification progress
 
-Human verification is recorded explicitly in canonical level frontmatter.
-Location verification applies to every marker location owned by that level;
-research verification applies to the level's Markdown research notes. A
-completed research structure or precise marker does not imply human review.
+Canonical frontmatter explicitly records human verification of all the level's
+marker locations and, separately, its Markdown research. Completed sections or
+precise markers do not imply human review.
 
 <!-- human-verification-progress:start -->
 | Scope | Marker locations verified | Research notes verified |
@@ -142,13 +135,10 @@ completed research structure or precise marker does not imply human review.
 
 ## Geographic localization progress
 
-Localization here means locating atlas markers in the real world, not
-translating the interface. Exact, approximate, city, and region markers count
-as localized. Country fallbacks remain localization work. Off-world markers
-are reported separately and excluded from the terrestrial percentage because
-they intentionally have no Earth location.
-
-The per-game table assigns each marker to its canonical level's owner game.
+Localization means real-world positioning, not interface translation.
+Exact/approximate/city/region count as localized; country fallbacks need work.
+Off-world markers have no Earth location, so are separate and excluded from
+terrestrial percentages. Per-game counts use each canonical level's owner game.
 
 <!-- localization-progress:start -->
 | Scope | Localized | Country fallback | Off-world |

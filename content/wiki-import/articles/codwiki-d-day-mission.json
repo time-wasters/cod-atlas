@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/D-Day_(mission)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/D-Day_(mission)",
   "latestRevisionId": 2995721,
-  "importedAt": "2026-08-15T13:27:56.921Z",
+  "importedAt": "2026-10-07T21:16:11.436Z",
   "levelLocation": {
     "raw": "Omaha Beach, Calvados, Normandy, [[France]]",
     "label": "France",
@@ -64,6 +64,8 @@
     "label": "Operation Cobra",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-operation-cobra",
         "wikiTitle": "Operation Cobra",
         "label": "Operation Cobra",
         "url": "https://callofduty.fandom.com/wiki/Operation_Cobra"

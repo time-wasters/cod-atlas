@@ -19,7 +19,6 @@ mapOverlay:
   attribution:
     title: "Call of Duty 2: Big Red One - The Dragon's Teeth loading-screen map"
     source: "Directly extracted from Call of Duty 2: Big Red One by plp-gtr."
-    sourceUrl: https://github.com/time-wasters/cod-atlas/blob/main/public/images/maps/cod2-bro/the-dragon-s-teeth.png
     extractedBy: plp-gtr
     extractedByUrl: https://github.com/plp-gtr
     copyrightHolder: Activision Publishing, Inc.

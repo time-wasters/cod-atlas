@@ -9,6 +9,9 @@ mode: singleplayer
 campaign:
   id: "1"
   label: Fixture Campaign
+content-update:
+  id: "1"
+  label: Fixture Pack
 wikiArticle: fixture-wiki-alpha
 verified:
   locations:

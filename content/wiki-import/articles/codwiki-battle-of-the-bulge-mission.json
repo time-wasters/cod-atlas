@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Battle_of_the_Bulge_(mission)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Battle_of_the_Bulge_(mission)",
   "latestRevisionId": 2980713,
-  "importedAt": "2026-08-15T13:27:46.045Z",
+  "importedAt": "2026-10-07T21:16:00.746Z",
   "levelLocation": {
     "raw": "[[Wikipedia:Ardennes|The Ardennes]], [[Belgium]], [[Wikipedia:Luxembourg|Luxembourg]]",
     "label": "The Ardennes",
@@ -59,6 +59,8 @@
     "label": "Hill 493",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-hill-493",
         "wikiTitle": "Hill 493",
         "label": "Hill 493",
         "url": "https://callofduty.fandom.com/wiki/Hill_493"
@@ -70,6 +72,8 @@
     "label": "Ambush",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-ambush-mission",
         "wikiTitle": "Ambush (mission)",
         "label": "Ambush",
         "url": "https://callofduty.fandom.com/wiki/Ambush_(mission)"

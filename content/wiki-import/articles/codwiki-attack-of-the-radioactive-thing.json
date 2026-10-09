@@ -3,8 +3,8 @@
   "fandomPageId": 666501,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Attack_of_the_Radioactive_Thing",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Attack_of_the_Radioactive_Thing",
-  "latestRevisionId": 3009485,
-  "importedAt": "2026-08-15T10:03:04.341Z",
+  "latestRevisionId": 3025953,
+  "importedAt": "2026-10-05T20:20:02.557Z",
   "levelLocation": {
     "raw": "Sonova Beach, California, United States of America",
     "label": "Sonova Beach, California, United States of America",
@@ -30,7 +30,7 @@
       },
       "rights": {
         "status": "non-free",
-        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  â€¢ the computer or video game in question or\n  â€¢ the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
         "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
@@ -48,8 +48,8 @@
     }
   },
   "rawPayload": {
-    "revisionTimestamp": "2026-06-21T05:45:28Z",
-    "revisionSha1": "679ec996276c315d6d712a0fbe69958afc39b3f1",
+    "revisionTimestamp": "2026-09-08T06:54:10Z",
+    "revisionSha1": "15f7772e423858002345380c3e18a9466743b92a",
     "resolvedTitle": "Attack of the Radioactive Thing",
     "mainImageTitle": "File:Attack_of_the_Radioactive_Thing_Title_IW.jpg",
     "mapImageTitle": null
@@ -59,6 +59,8 @@
     "label": "Shaolin Shuffle",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-shaolin-shuffle",
         "wikiTitle": "Shaolin Shuffle",
         "label": "Shaolin Shuffle",
         "url": "https://callofduty.fandom.com/wiki/Shaolin_Shuffle"
@@ -70,6 +72,8 @@
     "label": "The Beast From Beyond",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-the-beast-from-beyond",
         "wikiTitle": "The Beast From Beyond",
         "label": "The Beast From Beyond",
         "url": "https://callofduty.fandom.com/wiki/The_Beast_From_Beyond"

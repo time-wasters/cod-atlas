@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/New_World",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/New_World",
   "latestRevisionId": 2998823,
-  "importedAt": "2026-08-15T08:56:25.668Z",
+  "importedAt": "2026-10-05T20:17:22.816Z",
   "levelLocation": {
     "raw": "[[Coalescence Corporation]] Hospital <br><br/>'''Mind Simulation:''' <br> Coalescence Commuter Train <br> Abandoned Steel Mill <br> High Rise Apartments <br> Old Subway Tunnels <br><br/><u>'''All in Zürich, Canton of Zürich, Switzerland'''</u>",
     "label": "Coalescence Corporation",
@@ -30,7 +30,7 @@
       },
       "rights": {
         "status": "non-free",
-        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  â€¢ the computer or video game in question or\n  â€¢ the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
         "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
@@ -59,16 +59,22 @@
     "label": "Black Ops, Hypocenter (Nightmares)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-black-ops-level",
         "wikiTitle": "Black Ops (level)",
         "label": "Black Ops",
         "url": "https://callofduty.fandom.com/wiki/Black_Ops_(level)"
       },
       {
+        "sequence": "game",
+        "article": "codwiki-hypocenter",
         "wikiTitle": "Hypocenter",
         "label": "Hypocenter",
         "url": "https://callofduty.fandom.com/wiki/Hypocenter"
       },
       {
+        "sequence": "game",
+        "article": null,
         "wikiTitle": "Nightmares",
         "label": "Nightmares",
         "url": "https://callofduty.fandom.com/wiki/Nightmares"
@@ -80,21 +86,29 @@
     "label": "In Darkness, Life (chronologically, reality) , Provocation (Nightmares)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-in-darkness",
         "wikiTitle": "In Darkness",
         "label": "In Darkness",
         "url": "https://callofduty.fandom.com/wiki/In_Darkness"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-life",
         "wikiTitle": "Life",
         "label": "Life",
         "url": "https://callofduty.fandom.com/wiki/Life"
       },
       {
+        "sequence": "game",
+        "article": "codwiki-provocation",
         "wikiTitle": "Provocation",
         "label": "Provocation",
         "url": "https://callofduty.fandom.com/wiki/Provocation"
       },
       {
+        "sequence": "game",
+        "article": null,
         "wikiTitle": "Nightmares",
         "label": "Nightmares",
         "url": "https://callofduty.fandom.com/wiki/Nightmares"

@@ -3,8 +3,8 @@
   "fandomPageId": 508278,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Karma",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Karma",
-  "latestRevisionId": 3019191,
-  "importedAt": "2026-08-15T08:53:25.028Z",
+  "latestRevisionId": 3020778,
+  "importedAt": "2026-09-28T21:56:51.973Z",
   "levelLocation": {
     "raw": "Colossus, Cayman Islands",
     "label": "Colossus, Cayman Islands",
@@ -30,7 +30,7 @@
       },
       "rights": {
         "status": "non-free",
-        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  â€¢ the computer or video game in question or\n  â€¢ the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
         "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
@@ -48,8 +48,8 @@
     }
   },
   "rawPayload": {
-    "revisionTimestamp": "2026-08-11T00:19:42Z",
-    "revisionSha1": "50bb5a9e24d104c6ae06c6c841f06a0c1389418d",
+    "revisionTimestamp": "2026-08-18T16:44:59Z",
+    "revisionSha1": "03bfc1e7089b2ef83625bbd468d5505bfbb7e43e",
     "resolvedTitle": "Karma",
     "mainImageTitle": "File:Karma_Menu_BOII.png",
     "mapImageTitle": null
@@ -59,6 +59,8 @@
     "label": "Fallen Angel",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-fallen-angel",
         "wikiTitle": "Fallen Angel",
         "label": "Fallen Angel",
         "url": "https://callofduty.fandom.com/wiki/Fallen_Angel"
@@ -70,21 +72,29 @@
     "label": "Second Chance (Strike Force Mission) , Dispatch (Strike Force Mission) , Suffer With Me (in-game) , Achilles' Veil (chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-second-chance-strike-force",
         "wikiTitle": "Second Chance (Strike Force)",
         "label": "Second Chance",
         "url": "https://callofduty.fandom.com/wiki/Second_Chance_(Strike_Force)"
       },
       {
+        "sequence": "game",
+        "article": "codwiki-dispatch",
         "wikiTitle": "Dispatch",
         "label": "Dispatch",
         "url": "https://callofduty.fandom.com/wiki/Dispatch"
       },
       {
+        "sequence": "game",
+        "article": "codwiki-suffer-with-me",
         "wikiTitle": "Suffer With Me",
         "label": "Suffer With Me",
         "url": "https://callofduty.fandom.com/wiki/Suffer_With_Me"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-achilles-veil",
         "wikiTitle": "Achilles' Veil",
         "label": "Achilles' Veil",
         "url": "https://callofduty.fandom.com/wiki/Achilles'_Veil"

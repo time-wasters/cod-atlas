@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Liberation_(WWII)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Liberation_(WWII)",
   "latestRevisionId": 2994742,
-  "importedAt": "2026-08-15T13:28:07.696Z",
+  "importedAt": "2026-10-07T21:16:22.250Z",
   "levelLocation": {
     "raw": "[[Paris]], Île-de-France, [[France]]",
     "label": "Paris",
@@ -59,6 +59,8 @@
     "label": "S.O.E.",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-s-o-e",
         "wikiTitle": "S.O.E.",
         "label": "S.O.E.",
         "url": "https://callofduty.fandom.com/wiki/S.O.E."
@@ -70,6 +72,8 @@
     "label": "Collateral Damage",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-collateral-damage-mission",
         "wikiTitle": "Collateral Damage (mission)",
         "label": "Collateral Damage",
         "url": "https://callofduty.fandom.com/wiki/Collateral_Damage_(mission)"

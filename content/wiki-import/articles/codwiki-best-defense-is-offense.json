@@ -1,0 +1,105 @@
+{
+  "id": "codwiki-best-defense-is-offense",
+  "fandomPageId": 573087,
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Best_Defense_is_Offense",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Best_Defense_is_Offense",
+  "latestRevisionId": 2316650,
+  "importedAt": "2026-09-28T22:22:14.621Z",
+  "levelLocation": {
+    "raw": "S.A.P. Site Juliet Two-Nine, Arctic Circles, U.S. waters",
+    "label": "S.A.P. Site Juliet Two-Nine, Arctic Circles, U.S. waters",
+    "url": null
+  },
+  "mapStyle": "singleplayer",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas from the linked Call of Duty Wiki roster; verify during the next import.",
+  "rawPayload": {
+    "revisionTimestamp": "2016-05-11T06:09:20Z",
+    "revisionSha1": "bce2b2d5a9d14f74ec5bf4246001c75fa1d839d4",
+    "resolvedTitle": "Best Defense is Offense",
+    "mainImageTitle": null,
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": "[[The Truth Will Out]]",
+    "label": "The Truth Will Out",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-the-truth-will-out",
+        "wikiTitle": "The Truth Will Out",
+        "label": "The Truth Will Out",
+        "url": "https://callofduty.fandom.com/wiki/The_Truth_Will_Out"
+      }
+    ]
+  },
+  "nextLevels": {
+    "raw": "[[Over and Under]]",
+    "label": "Over and Under",
+    "links": [
+      {
+        "sequence": "game",
+        "article": "codwiki-over-and-under",
+        "wikiTitle": "Over and Under",
+        "label": "Over and Under",
+        "url": "https://callofduty.fandom.com/wiki/Over_and_Under"
+      }
+    ]
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Strike Team]]''",
+    "label": "Call of Duty: Strike Team",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Strike Team",
+        "label": "Call of Duty: Strike Team",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Strike_Team"
+      }
+    ]
+  },
+  "date": {
+    "raw": "October 22nd, 2020",
+    "label": "October 22nd, 2020"
+  },
+  "images": {
+    "main": {
+      "sourceUrl": null,
+      "thumbnailUrl": null,
+      "detailPageUrl": null,
+      "author": {
+        "name": null,
+        "userUrl": null,
+        "role": null
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "unknown",
+        "notice": null,
+        "noticeUrl": null
+      }
+    },
+    "map": {
+      "sourceUrl": null,
+      "thumbnailUrl": null,
+      "detailPageUrl": null,
+      "author": {
+        "name": null,
+        "userUrl": null,
+        "role": null
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "unknown",
+        "notice": null,
+        "noticeUrl": null
+      }
+    }
+  }
+}

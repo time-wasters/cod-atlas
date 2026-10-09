@@ -3,8 +3,8 @@
   "fandomPageId": 508856,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Judgment_Day",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Judgment_Day",
-  "latestRevisionId": 3014929,
-  "importedAt": "2026-08-15T08:53:25.035Z",
+  "latestRevisionId": 3020775,
+  "importedAt": "2026-09-28T21:56:51.980Z",
   "levelLocation": {
     "raw": "Saint-Marc, Artibonite, Haiti",
     "label": "Saint-Marc, Artibonite, Haiti",
@@ -30,7 +30,7 @@
       },
       "rights": {
         "status": "non-free",
-        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  â€¢ the computer or video game in question or\n  â€¢ the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
         "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
@@ -48,8 +48,8 @@
     }
   },
   "rawPayload": {
-    "revisionTimestamp": "2026-07-16T20:12:58Z",
-    "revisionSha1": "990aebfb48949703f44f328affb0f2c7da484ac0",
+    "revisionTimestamp": "2026-08-18T16:44:53Z",
+    "revisionSha1": "f646c4850618ad9808f16b4e7038438010e11480",
     "resolvedTitle": "Judgment Day",
     "mainImageTitle": "File:Judgment_Day_Menu_BOII.png",
     "mapImageTitle": null
@@ -59,6 +59,8 @@
     "label": "Cordis Die",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-cordis-die-mission",
         "wikiTitle": "Cordis Die (mission)",
         "label": "Cordis Die",
         "url": "https://callofduty.fandom.com/wiki/Cordis_Die_(mission)"
@@ -70,6 +72,8 @@
     "label": "Exposure (chronologically)",
     "links": [
       {
+        "sequence": "chronological",
+        "article": "codwiki-exposure-mission",
         "wikiTitle": "Exposure (mission)",
         "label": "Exposure",
         "url": "https://callofduty.fandom.com/wiki/Exposure_(mission)"

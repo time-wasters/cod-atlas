@@ -23,7 +23,6 @@ function assertMapOverlay(value: unknown, levelId: string): void {
   const attribution = objectValue(overlay.attribution, `${path}.attribution`);
   stringValue(attribution.title, `${path}.attribution.title`);
   stringValue(attribution.source, `${path}.attribution.source`);
-  stringValue(attribution.sourceUrl, `${path}.attribution.sourceUrl`);
   stringValue(attribution.extractedBy, `${path}.attribution.extractedBy`);
   stringValue(attribution.extractedByUrl, `${path}.attribution.extractedByUrl`);
   stringValue(attribution.copyrightHolder, `${path}.attribution.copyrightHolder`);

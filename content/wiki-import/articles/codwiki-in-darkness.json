@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/In_Darkness",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/In_Darkness",
   "latestRevisionId": 2959902,
-  "importedAt": "2026-08-15T08:56:14.432Z",
+  "importedAt": "2026-10-05T20:17:11.895Z",
   "levelLocation": {
     "raw": "Downtown Core, Central District, Singapore",
     "label": "Downtown Core, Central District, Singapore",
@@ -30,7 +30,7 @@
       },
       "rights": {
         "status": "non-free",
-        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  â€¢ the computer or video game in question or\n  â€¢ the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
         "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
@@ -59,21 +59,29 @@
     "label": "New World, Vengeance (Nightmares) , Judgment Day (chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-new-world",
         "wikiTitle": "New World",
         "label": "New World",
         "url": "https://callofduty.fandom.com/wiki/New_World"
       },
       {
+        "sequence": "game",
+        "article": "codwiki-vengeance-level",
         "wikiTitle": "Vengeance (level)",
         "label": "Vengeance",
         "url": "https://callofduty.fandom.com/wiki/Vengeance_(level)"
       },
       {
+        "sequence": "game",
+        "article": null,
         "wikiTitle": "Nightmares",
         "label": "Nightmares",
         "url": "https://callofduty.fandom.com/wiki/Nightmares"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-judgment-day",
         "wikiTitle": "Judgment Day",
         "label": "Judgment Day",
         "url": "https://callofduty.fandom.com/wiki/Judgment_Day"
@@ -85,16 +93,22 @@
     "label": "Provocation, Rise and Fall (Nightmares)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-provocation",
         "wikiTitle": "Provocation",
         "label": "Provocation",
         "url": "https://callofduty.fandom.com/wiki/Provocation"
       },
       {
+        "sequence": "game",
+        "article": null,
         "wikiTitle": "Rise and Fall",
         "label": "Rise and Fall",
         "url": "https://callofduty.fandom.com/wiki/Rise_and_Fall"
       },
       {
+        "sequence": "game",
+        "article": null,
         "wikiTitle": "Nightmares",
         "label": "Nightmares",
         "url": "https://callofduty.fandom.com/wiki/Nightmares"

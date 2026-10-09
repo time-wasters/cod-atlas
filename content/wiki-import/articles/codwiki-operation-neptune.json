@@ -1,0 +1,89 @@
+{
+  "id": "codwiki-operation-neptune",
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Operation_Neptune",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Operation_Neptune",
+  "fandomPageId": 670498,
+  "latestRevisionId": 2991983,
+  "importedAt": "2026-10-07T21:16:33.108Z",
+  "mapStyle": "multiplayer",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "War Mode multiplayer map; full Wiki API import pending.",
+  "levelLocation": {
+    "raw": "{{w|Omaha Beach}}, Dog Green Assault Sector, [[Normandy]], [[France]]",
+    "label": "Normandy",
+    "url": "https://callofduty.fandom.com/wiki/Normandy"
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty: WWII]]''",
+    "label": "Call of Duty: WWII",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: WWII",
+        "label": "Call of Duty: WWII",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_WWII"
+      }
+    ]
+  },
+  "date": {
+    "raw": "June 6, 1944",
+    "label": "June 6, 1944"
+  },
+  "images": {
+    "main": {
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/6/62/Operation_Neptune_Loading_Screen_WWII.png/revision/latest?cb=20180111211041",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/6/62/Operation_Neptune_Loading_Screen_WWII.png/revision/latest/scale-to-width-down/800?cb=20180111211041",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Operation_Neptune_Loading_Screen_WWII.png",
+      "author": {
+        "name": "RoachTheIntelCollector",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:RoachTheIntelCollector",
+        "role": "uploader"
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  â€¢ the computer or video game in question or\n  â€¢ the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+      }
+    },
+    "map": {
+      "sourceUrl": null,
+      "thumbnailUrl": null,
+      "detailPageUrl": null,
+      "author": {
+        "name": null,
+        "userUrl": null,
+        "role": null
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "unknown",
+        "notice": null,
+        "noticeUrl": null
+      }
+    }
+  },
+  "rawPayload": {
+    "revisionTimestamp": "2026-04-12T15:46:24Z",
+    "revisionSha1": "b18199c0db52693912524c33969e1956970fa317",
+    "resolvedTitle": "Operation Neptune",
+    "mainImageTitle": "File:Operation_Neptune_Loading_Screen_WWII.png",
+    "mapImageTitle": null
+  }
+}

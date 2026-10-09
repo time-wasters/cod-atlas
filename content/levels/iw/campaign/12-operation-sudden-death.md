@@ -1,0 +1,19 @@
+---
+id: iw-operation-sudden-death
+title: Operation Sudden Death
+games:
+  - iw
+mode: singleplayer
+campaign:
+  id: jackal-missions
+  label: Jackal Missions
+wikiArticle: codwiki-operation-sudden-death
+locations:
+  - id: main
+    country: Space
+    region: Titan (Saturn Moon)
+    precision: off-world
+    confidence: fallback
+    method: region-fallback
+    primary: true
+---

@@ -1,0 +1,9 @@
+---
+level: cod4-hunted
+campaign:
+  id: "2"
+  label: Act I
+content-update:
+  id: "0"
+  label: Included
+---

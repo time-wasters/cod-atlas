@@ -3,8 +3,8 @@
   "fandomPageId": 650539,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Berserk",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Berserk",
-  "latestRevisionId": 2973813,
-  "importedAt": "2026-08-15T09:19:55.498Z",
+  "latestRevisionId": 3028826,
+  "importedAt": "2026-10-05T20:16:50.022Z",
   "levelLocation": {
     "raw": "Scandinavia, Europe",
     "label": "Scandinavia, Europe",
@@ -30,7 +30,7 @@
       },
       "rights": {
         "status": "non-free",
-        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  â€¢ the computer or video game in question or\n  â€¢ the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
         "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
@@ -48,8 +48,8 @@
     }
   },
   "rawPayload": {
-    "revisionTimestamp": "2026-03-07T23:01:20Z",
-    "revisionSha1": "c6be6b4155c70fdb9a130d394e3bcd590b9f750b",
+    "revisionTimestamp": "2026-09-22T18:42:25Z",
+    "revisionSha1": "1a9abb751270f4f75978e2b0a3a921b77cf24a3e",
     "resolvedTitle": "Berserk",
     "mainImageTitle": "File:Berserk_menu_icon_BO3.png",
     "mapImageTitle": null

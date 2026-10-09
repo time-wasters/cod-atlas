@@ -1,0 +1,89 @@
+{
+  "id": "codwiki-the-longest-night",
+  "fandomPageId": 596621,
+  "sourceUrl": "https://callofduty.fandom.com/wiki/The_Longest_Night",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/The_Longest_Night",
+  "latestRevisionId": 2760882,
+  "importedAt": "2026-09-28T22:22:25.362Z",
+  "levelLocation": {
+    "raw": null,
+    "label": null,
+    "url": null
+  },
+  "mapStyle": "special-ops",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas from the linked Call of Duty Wiki roster; verify during the next import.",
+  "rawPayload": {
+    "revisionTimestamp": "2024-01-17T05:01:09Z",
+    "revisionSha1": "8d8441234990870492aacaff15fb3c4d22a1d77e",
+    "resolvedTitle": "The Longest Night",
+    "mainImageTitle": "File:CALL_OF_DUTY_STRIKE_TEAM_SURVIVAL_MODE",
+    "mapImageTitle": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Strike Team]]''",
+    "label": "Call of Duty: Strike Team",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Strike Team",
+        "label": "Call of Duty: Strike Team",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Strike_Team"
+      }
+    ]
+  },
+  "date": {
+    "raw": null,
+    "label": null
+  },
+  "images": {
+    "main": {
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/2/2b/CALL_OF_DUTY_STRIKE_TEAM_SURVIVAL_MODE/revision/latest?cb=20150422221036",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/2/2b/CALL_OF_DUTY_STRIKE_TEAM_SURVIVAL_MODE/revision/latest?cb=20150422221036",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:CALL_OF_DUTY_STRIKE_TEAM_SURVIVAL_MODE",
+      "author": {
+        "name": "RisingSun2013",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:RisingSun2013",
+        "role": "uploader"
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "unknown",
+        "notice": null,
+        "noticeUrl": null
+      }
+    },
+    "map": {
+      "sourceUrl": null,
+      "thumbnailUrl": null,
+      "detailPageUrl": null,
+      "author": {
+        "name": null,
+        "userUrl": null,
+        "role": null
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "unknown",
+        "notice": null,
+        "noticeUrl": null
+      }
+    }
+  }
+}

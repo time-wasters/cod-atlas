@@ -3,8 +3,8 @@
   "fandomPageId": 330385,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Moon",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Moon",
-  "latestRevisionId": 3011815,
-  "importedAt": "2026-08-15T08:56:25.654Z",
+  "latestRevisionId": 3031352,
+  "importedAt": "2026-10-05T20:17:22.795Z",
   "levelLocation": {
     "raw": "Area 51, Nevada, [[United States of America]]<br>Griffin Station, {{W|Mare Crisium}}, [[Luna]]",
     "label": "United States of America",
@@ -30,7 +30,7 @@
       },
       "rights": {
         "status": "non-free",
-        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  â€¢ the computer or video game in question or\n  â€¢ the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
         "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
@@ -48,8 +48,8 @@
     }
   },
   "rawPayload": {
-    "revisionTimestamp": "2026-06-30T19:44:39Z",
-    "revisionSha1": "624aaa4ccf2921c204ccf5b697f13c285ed18d62",
+    "revisionTimestamp": "2026-10-03T12:37:12Z",
+    "revisionSha1": "362bffb70116b3809cfa7b4eefb4e02b313d37e9",
     "resolvedTitle": "Moon",
     "mainImageTitle": "File:Moon_Menu_Selection_BO.png",
     "mapImageTitle": null
@@ -59,11 +59,15 @@
     "label": "Shangri-La (in-game) , Classified (chronologically by events)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-shangri-la",
         "wikiTitle": "Shangri-La",
         "label": "Shangri-La",
         "url": "https://callofduty.fandom.com/wiki/Shangri-La"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-classified",
         "wikiTitle": "Classified",
         "label": "Classified",
         "url": "https://callofduty.fandom.com/wiki/Classified"
@@ -75,16 +79,22 @@
     "label": "TranZit (chronologically by release) , Nuketown Zombies (simultaneous) , Classified (ending cinematic only)",
     "links": [
       {
+        "sequence": "chronological",
+        "article": "codwiki-tranzit",
         "wikiTitle": "TranZit",
         "label": "TranZit",
         "url": "https://callofduty.fandom.com/wiki/TranZit"
       },
       {
+        "sequence": "game",
+        "article": "codwiki-nuketown-zombies",
         "wikiTitle": "Nuketown Zombies",
         "label": "Nuketown Zombies",
         "url": "https://callofduty.fandom.com/wiki/Nuketown_Zombies"
       },
       {
+        "sequence": "game",
+        "article": "codwiki-classified",
         "wikiTitle": "Classified",
         "label": "Classified",
         "url": "https://callofduty.fandom.com/wiki/Classified"

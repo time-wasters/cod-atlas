@@ -1,0 +1,20 @@
+---
+id: cod4-r-daybreak
+title: Daybreak
+games:
+  - cod4-r
+mode: multiplayer
+wikiArticle: codwiki-daybreak
+content-update:
+  id: "2"
+  label: Shamrock & Awe
+locations:
+  - id: main
+    country: Ireland
+    latitude: 53
+    longitude: -8
+    precision: country
+    confidence: fallback
+    method: country-fallback
+    primary: true
+---

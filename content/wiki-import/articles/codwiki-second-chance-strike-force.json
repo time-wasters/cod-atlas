@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Second_Chance_(Strike_Force)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Second_Chance_(Strike_Force)",
   "latestRevisionId": 2970146,
-  "importedAt": "2026-08-15T08:53:35.749Z",
+  "importedAt": "2026-09-28T21:57:13.656Z",
   "levelLocation": {
     "raw": "Socotra Island, Socotra Governorate, Yemen",
     "label": "Socotra Island, Socotra Governorate, Yemen",
@@ -30,7 +30,7 @@
       },
       "rights": {
         "status": "non-free",
-        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  â€¢ the computer or video game in question or\n  â€¢ the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
         "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
@@ -59,11 +59,15 @@
     "label": "Karma (main story) , I.E.D.",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-karma",
         "wikiTitle": "Karma",
         "label": "Karma",
         "url": "https://callofduty.fandom.com/wiki/Karma"
       },
       {
+        "sequence": "game",
+        "article": "codwiki-i-e-d-mission",
         "wikiTitle": "I.E.D. (mission)",
         "label": "I.E.D.",
         "url": "https://callofduty.fandom.com/wiki/I.E.D._(mission)"
@@ -75,11 +79,15 @@
     "label": "Suffer With Me (main story) , Dispatch",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-suffer-with-me",
         "wikiTitle": "Suffer With Me",
         "label": "Suffer With Me",
         "url": "https://callofduty.fandom.com/wiki/Suffer_With_Me"
       },
       {
+        "sequence": "game",
+        "article": "codwiki-dispatch",
         "wikiTitle": "Dispatch",
         "label": "Dispatch",
         "url": "https://callofduty.fandom.com/wiki/Dispatch"

@@ -3,8 +3,8 @@
   "fandomPageId": 538188,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Mob_of_the_Dead",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Mob_of_the_Dead",
-  "latestRevisionId": 3015518,
-  "importedAt": "2026-08-15T08:53:25.063Z",
+  "latestRevisionId": 3020793,
+  "importedAt": "2026-09-28T21:57:02.819Z",
   "levelLocation": {
     "raw": "{{W|Alcatraz Island}} and the [[Golden Gate Bridge]], {{W|San Francisco}}, {{w|California}}, [[United States of America]]",
     "label": "Golden Gate Bridge",
@@ -30,7 +30,7 @@
       },
       "rights": {
         "status": "non-free",
-        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  â€¢ the computer or video game in question or\n  â€¢ the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
         "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
@@ -48,8 +48,8 @@
     }
   },
   "rawPayload": {
-    "revisionTimestamp": "2026-07-20T20:31:33Z",
-    "revisionSha1": "a07c184550434ee1eebce4346180f31e18432cad",
+    "revisionTimestamp": "2026-08-18T16:45:33Z",
+    "revisionSha1": "eb2f4159a568f5e0d2c686c506b21911cf767311",
     "resolvedTitle": "Mob of the Dead",
     "mainImageTitle": "File:Mob_of_the_Dead_menu_selection_BO2.png",
     "mapImageTitle": null
@@ -59,11 +59,15 @@
     "label": "Die Rise (in-game), Origins (chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-die-rise",
         "wikiTitle": "Die Rise",
         "label": "Die Rise",
         "url": "https://callofduty.fandom.com/wiki/Die_Rise"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-origins",
         "wikiTitle": "Origins",
         "label": "Origins",
         "url": "https://callofduty.fandom.com/wiki/Origins"
@@ -75,11 +79,15 @@
     "label": "Buried (in-game), Shadows of Evil (chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-buried",
         "wikiTitle": "Buried",
         "label": "Buried",
         "url": "https://callofduty.fandom.com/wiki/Buried"
       },
       {
+        "sequence": "chronological",
+        "article": null,
         "wikiTitle": "Shadows of Evil",
         "label": "Shadows of Evil",
         "url": "https://callofduty.fandom.com/wiki/Shadows_of_Evil"

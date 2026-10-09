@@ -3,8 +3,8 @@
   "fandomPageId": 197844,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Kino_der_Toten",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Kino_der_Toten",
-  "latestRevisionId": 3001059,
-  "importedAt": "2026-08-15T08:56:25.647Z",
+  "latestRevisionId": 3023119,
+  "importedAt": "2026-10-05T20:17:11.888Z",
   "levelLocation": {
     "raw": "Deutsches sol Kino, West Berlin, West Germany<br>[[Agartha]], The House <small>(Samantha's Room)</small>",
     "label": "Agartha",
@@ -30,7 +30,7 @@
       },
       "rights": {
         "status": "non-free",
-        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  â€¢ the computer or video game in question or\n  â€¢ the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
         "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
@@ -48,8 +48,8 @@
     }
   },
   "rawPayload": {
-    "revisionTimestamp": "2026-05-09T08:40:53Z",
-    "revisionSha1": "e96a152a44cc93eab103a6202b9df7e6460a5b74",
+    "revisionTimestamp": "2026-08-25T22:00:20Z",
+    "revisionSha1": "a6b7ee832bbb70f87e9fb717e0f4d55fbd83fe14",
     "resolvedTitle": "Kino der Toten",
     "mainImageTitle": "File:Kino_Der_Toten_Menu_Selection_BO.png",
     "mapImageTitle": null
@@ -59,6 +59,8 @@
     "label": "Der Riese",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-der-riese",
         "wikiTitle": "Der Riese",
         "label": "Der Riese",
         "url": "https://callofduty.fandom.com/wiki/Der_Riese"
@@ -70,11 +72,15 @@
     "label": "\"Five\" (in-game/chronologically) , Ascension (chronologically)",
     "links": [
       {
+        "sequence": "chronological",
+        "article": "codwiki-five",
         "wikiTitle": "\"Five\"",
         "label": "\"Five\"",
         "url": "https://callofduty.fandom.com/wiki/%22Five%22"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-ascension",
         "wikiTitle": "Ascension",
         "label": "Ascension",
         "url": "https://callofduty.fandom.com/wiki/Ascension"

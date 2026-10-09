@@ -1,4 +1,8 @@
 ---
+# Read docs/templates/README.md and docs/contributing-data.md before using this template.
+# Replace example values and remove instructional comments and unused optional fields.
+# Use documented keys only; do not add custom metadata for research or sources.
+# For frontmatter-only requests, omit everything after the closing delimiter.
 id: example-game-example-level
 title: Example Level
 games:
@@ -6,6 +10,14 @@ games:
 mode: singleplayer
 # modeSub: special-ops # Required only when mode is other; survival and challenge are also valid.
 wikiArticle: codwiki-example-level
+# campaign:
+#   id: example-campaign
+#   label: Example Campaign
+# content-update:
+#   id: "0"
+#   label: Included
+# legacyIds:
+#   - example-game-old-level-id
 # metadata:
 #   variantOf: example-game-source-level # Omit locations below to inherit them.
 locations:

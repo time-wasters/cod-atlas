@@ -3,8 +3,8 @@
   "fandomPageId": 305450,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Shangri-La",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Shangri-La",
-  "latestRevisionId": 3015559,
-  "importedAt": "2026-08-15T08:56:36.405Z",
+  "latestRevisionId": 3023125,
+  "importedAt": "2026-10-05T20:17:44.439Z",
   "levelLocation": {
     "raw": "Somewhere in the Himalayas",
     "label": "Somewhere in the Himalayas",
@@ -30,7 +30,7 @@
       },
       "rights": {
         "status": "non-free",
-        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  â€¢ the computer or video game in question or\n  â€¢ the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
         "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
@@ -48,8 +48,8 @@
     }
   },
   "rawPayload": {
-    "revisionTimestamp": "2026-07-21T05:15:26Z",
-    "revisionSha1": "7a7e120740893f7aae34ae5c2f4ab129195c8905",
+    "revisionTimestamp": "2026-08-25T22:02:45Z",
+    "revisionSha1": "d8c74520de8362c747b9163e4cbd42036369e920",
     "resolvedTitle": "Shangri-La",
     "mainImageTitle": "File:Shangri-La_Menu_Selection_BO.png",
     "mapImageTitle": null
@@ -59,6 +59,8 @@
     "label": "Call of the Dead",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-call-of-the-dead",
         "wikiTitle": "Call of the Dead",
         "label": "Call of the Dead",
         "url": "https://callofduty.fandom.com/wiki/Call_of_the_Dead"
@@ -70,11 +72,15 @@
     "label": "Moon (in-game) , Classified (chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-moon",
         "wikiTitle": "Moon",
         "label": "Moon",
         "url": "https://callofduty.fandom.com/wiki/Moon"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-classified",
         "wikiTitle": "Classified",
         "label": "Classified",
         "url": "https://callofduty.fandom.com/wiki/Classified"

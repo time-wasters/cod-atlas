@@ -31,6 +31,98 @@ type AdvancedFilterViewModel = {
   onClear: () => void;
 };
 
+type ResultMetricKind = "localized" | "fallback" | "regions";
+
+const RESULT_METRIC_COPY: Record<ResultMetricKind, { label: string; description: string }> = {
+  localized: {
+    label: "Localized",
+    description: "Results located more precisely than country level",
+  },
+  fallback: {
+    label: "Fallback",
+    description: "Results shown at a representative country location",
+  },
+  regions: {
+    label: "Regions",
+    description: "Distinct map regions in the filtered results",
+  },
+};
+
+function ResultMetricIcon({ kind }: { kind: ResultMetricKind }) {
+  if (kind === "localized") return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 21s6-5.2 6-11a6 6 0 1 0-12 0c0 5.8 6 11 6 11Z" />
+      <circle cx="12" cy="10" r="2" />
+    </svg>
+  );
+  if (kind === "fallback") return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="12" cy="12" r="8.5" />
+      <path d="M3.5 12h17M12 3.5c2.2 2.3 3.3 5.1 3.3 8.5S14.2 18.2 12 20.5M12 3.5C9.8 5.8 8.7 8.6 8.7 12s1.1 6.2 3.3 8.5" />
+    </svg>
+  );
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="m4 8 5-4 5 3 5-1 1 6-3 7-7 1-6-4-1-5Z" />
+      <circle cx="4" cy="8" r="1" /><circle cx="14" cy="7" r="1" /><circle cx="17" cy="19" r="1" />
+    </svg>
+  );
+}
+
+function ResultMetric({ kind, value }: { kind: ResultMetricKind; value: number }) {
+  const anchor = useRef<HTMLDivElement>(null);
+  const tooltipId = `result-metric-tooltip-${useId().replaceAll(":", "")}`;
+  const [tooltipPosition, setTooltipPosition] = useState<{
+    top: number;
+    left: number;
+    side: "left" | "right" | "viewport";
+  } | null>(null);
+  const copy = RESULT_METRIC_COPY[kind];
+
+  const showTooltip = () => {
+    const rect = anchor.current?.getBoundingClientRect();
+    if (!rect) return;
+    const gap = 9;
+    const tooltipWidth = Math.min(260, window.innerWidth - 16);
+    const fitsRight = rect.right + gap + tooltipWidth <= window.innerWidth - 8;
+    const fitsLeft = rect.left - gap - tooltipWidth >= 8;
+    const side = fitsRight ? "right" : fitsLeft ? "left" : "viewport";
+    setTooltipPosition({
+      top: Math.min(Math.max(28, rect.top + rect.height / 2), window.innerHeight - 28),
+      left: side === "right" ? rect.right + gap : side === "left" ? rect.left - gap : 8,
+      side,
+    });
+  };
+
+  return (
+    <div
+      className="result-metric"
+      ref={anchor}
+      tabIndex={0}
+      aria-label={`${copy.label}: ${value}`}
+      aria-describedby={tooltipPosition ? tooltipId : undefined}
+      onMouseEnter={showTooltip}
+      onMouseLeave={() => setTooltipPosition(null)}
+      onFocus={showTooltip}
+      onBlur={() => setTooltipPosition(null)}
+    >
+      <dt><ResultMetricIcon kind={kind} /><span>{copy.label}</span></dt>
+      <dd>{value}</dd>
+      {tooltipPosition && typeof document !== "undefined" && createPortal(
+        <span
+          id={tooltipId}
+          className={`atlas-tooltip is-${tooltipPosition.side}`}
+          style={{ top: tooltipPosition.top, left: tooltipPosition.left }}
+          role="tooltip"
+        >
+          <strong>{copy.label}:</strong> {copy.description}
+        </span>,
+        document.body,
+      )}
+    </div>
+  );
+}
+
 function SidebarListTab({
   active,
   controls,
@@ -231,6 +323,7 @@ export function AtlasSidebar({
   };
   return (
     <aside className="atlas-sidebar" aria-label="Map filters">
+      <div className="atlas-sidebar-scroll">
       <div className="search-field">
         <svg className="search-field-icon" viewBox="0 0 20 20" aria-hidden="true">
           <circle cx="8.5" cy="8.5" r="5.5" />
@@ -322,14 +415,16 @@ export function AtlasSidebar({
           </button>
 
           <section className="result-panel" aria-live="polite">
-            <div><strong>{results.total}</strong><span>results</span></div>
-            <dl>
-              <div><dt>Localized</dt><dd>{results.localized}</dd></div>
-              <div><dt>Fallback</dt><dd>{results.fallback}</dd></div>
-              <div><dt>Regions</dt><dd>{results.regions}</dd></div>
-            </dl>
+            <div className="result-panel-total"><strong>{results.total}</strong><span>results</span></div>
+            <div className="result-panel-summary">
+              <dl className="result-metrics">
+                <ResultMetric kind="localized" value={results.localized} />
+                <ResultMetric kind="fallback" value={results.fallback} />
+                <ResultMetric kind="regions" value={results.regions} />
+              </dl>
+              <button className="kml-button" type="button" onClick={results.onExport}>↓ Export filtered KML</button>
+            </div>
           </section>
-          <button className="kml-button" onClick={results.onExport}>↓ Export filtered KML for Google Maps</button>
 
           <section className="mission-list">
             <div className="sidebar-list-switch" role="tablist" aria-label="Browse atlas data">
@@ -357,7 +452,7 @@ export function AtlasSidebar({
                 label="Updates"
                 tooltip={game.value === "all"
                   ? "Choose a game to browse content updates"
-                  : "No Multiplayer or Zombies content-update data is available for this game"}
+                  : "No content-update data is available for this game"}
                 onSelect={() => browse.onModeChange("updates")}
               />
             </div>
@@ -401,6 +496,7 @@ export function AtlasSidebar({
           <AtlasFooter onOpenProjectInfo={onOpenProjectInfo} />
         </>
       )}
+      </div>
 
       <button
         className="sidebar-toggle"

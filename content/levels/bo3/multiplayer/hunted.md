@@ -1,0 +1,20 @@
+---
+id: bo3-hunted
+title: Hunted
+games:
+  - bo3
+mode: multiplayer
+content-update:
+  id: "0"
+  label: Included
+wikiArticle: codwiki-hunted-black-ops-iii
+locations:
+  - id: main
+    country: Ethiopia
+    latitude: 8
+    longitude: 38
+    precision: country
+    confidence: fallback
+    method: country-fallback
+    primary: true
+---

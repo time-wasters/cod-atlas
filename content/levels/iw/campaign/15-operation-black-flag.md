@@ -1,0 +1,20 @@
+---
+id: iw-operation-black-flag
+title: Operation Black Flag
+games:
+  - iw
+mode: singleplayer
+campaign:
+  id: missions
+  label: Missions
+wikiArticle: codwiki-operation-black-flag
+locations:
+  - id: main
+    country: Switzerland
+    latitude: 47
+    longitude: 8
+    precision: country
+    confidence: fallback
+    method: country-fallback
+    primary: true
+---

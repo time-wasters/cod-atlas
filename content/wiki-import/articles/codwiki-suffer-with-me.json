@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Suffer_With_Me",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Suffer_With_Me",
   "latestRevisionId": 3014927,
-  "importedAt": "2026-08-15T08:53:46.382Z",
+  "importedAt": "2026-09-28T21:57:24.443Z",
   "levelLocation": {
     "raw": "McKnight's house<br/>Fort Clayton Army Base,<br/>Panama Canals Zone, Panama (1989)<hr/>El Chorrillo, Panama Province, Panama (invasion) (1989)<hr/>Miraflores Locks, Panama Canal, Panama (ending) (1989)<hr>The Vault (2025)",
     "label": "McKnight's house, Fort Clayton Army Base,, Panama Canals Zone, Panama (1989) El Chorrillo, Panama Province, Panama (invasion) (1989) Miraflores Locks, Panama Canal, Panama (ending) (1989) The Vault (2025)",
@@ -30,7 +30,7 @@
       },
       "rights": {
         "status": "non-free",
-        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  â€¢ the computer or video game in question or\n  â€¢ the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
         "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
@@ -59,11 +59,15 @@
     "label": "Karma (in-game) , Time and Fate (chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-karma",
         "wikiTitle": "Karma",
         "label": "Karma",
         "url": "https://callofduty.fandom.com/wiki/Karma"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-time-and-fate",
         "wikiTitle": "Time and Fate",
         "label": "Time and Fate",
         "url": "https://callofduty.fandom.com/wiki/Time_and_Fate"
@@ -75,11 +79,15 @@
     "label": "Achilles' Veil (in-game) , Bishop Takes Rook (chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-achilles-veil",
         "wikiTitle": "Achilles' Veil",
         "label": "Achilles' Veil",
         "url": "https://callofduty.fandom.com/wiki/Achilles'_Veil"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-bishop-takes-rook",
         "wikiTitle": "Bishop Takes Rook",
         "label": "Bishop Takes Rook",
         "url": "https://callofduty.fandom.com/wiki/Bishop_Takes_Rook"

@@ -3,8 +3,8 @@
   "fandomPageId": 669127,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Gustav_Cannon",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Gustav_Cannon",
-  "latestRevisionId": 2991948,
-  "importedAt": "2026-08-15T13:28:07.690Z",
+  "latestRevisionId": 3022234,
+  "importedAt": "2026-10-07T21:16:22.242Z",
   "levelLocation": {
     "raw": "{{w|Crimea}}, [[Soviet Union]]",
     "label": "Soviet Union",
@@ -30,7 +30,7 @@
       },
       "rights": {
         "status": "non-free",
-        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  â€¢ the computer or video game in question or\n  â€¢ the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
         "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
@@ -48,8 +48,8 @@
     }
   },
   "rawPayload": {
-    "revisionTimestamp": "2026-04-12T14:55:16Z",
-    "revisionSha1": "ff2bdb51e1a7e9cae0b0e26cb412bde55e2eda29",
+    "revisionTimestamp": "2026-08-23T16:05:02Z",
+    "revisionSha1": "49164bbece13a4016a6f5c3e5dab8659d2ee5739",
     "resolvedTitle": "Gustav Cannon",
     "mainImageTitle": "File:Gustav_Cannon_Loading_Screen_1_WWII.png",
     "mapImageTitle": null

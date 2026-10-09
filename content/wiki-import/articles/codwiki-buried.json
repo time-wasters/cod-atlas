@@ -3,8 +3,8 @@
   "fandomPageId": 555118,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Buried",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Buried",
-  "latestRevisionId": 3017019,
-  "importedAt": "2026-08-15T09:20:49.405Z",
+  "latestRevisionId": 3028877,
+  "importedAt": "2026-09-28T21:56:30.486Z",
   "levelLocation": {
     "raw": "Livingstone Mine and Calico, Namibe, [[Angola]]",
     "label": "Angola",
@@ -48,8 +48,8 @@
     }
   },
   "rawPayload": {
-    "revisionTimestamp": "2026-07-29T03:20:55Z",
-    "revisionSha1": "4fce2370899d2279511f4ca8c6bbcfa90ab0286f",
+    "revisionTimestamp": "2026-09-23T02:24:37Z",
+    "revisionSha1": "7825d1734a29102ac72e6bc0e367cde2b8a06ddb",
     "resolvedTitle": "Buried",
     "mainImageTitle": "File:Buried_menu_BOII.png",
     "mapImageTitle": null
@@ -59,11 +59,15 @@
     "label": "Mob of the Dead (in-game), Die Rise (chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-mob-of-the-dead",
         "wikiTitle": "Mob of the Dead",
         "label": "Mob of the Dead",
         "url": "https://callofduty.fandom.com/wiki/Mob_of_the_Dead"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-die-rise",
         "wikiTitle": "Die Rise",
         "label": "Die Rise",
         "url": "https://callofduty.fandom.com/wiki/Die_Rise"
@@ -75,6 +79,8 @@
     "label": "Origins (in-game)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-origins",
         "wikiTitle": "Origins",
         "label": "Origins",
         "url": "https://callofduty.fandom.com/wiki/Origins"

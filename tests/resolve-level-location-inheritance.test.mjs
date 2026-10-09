@@ -15,6 +15,8 @@ test("inherits locations through metadata.variantOf when locations is omitted", 
   assert.notStrictEqual(variant.locations, source.locations);
   assert.notStrictEqual(variant.locations[0], source.locations[0]);
   assert.notStrictEqual(variant.locations[0].urls, source.locations[0].urls);
+  variant.locations[0].urls[0].wikipedia = "https://example.com/changed";
+  assert.equal(source.locations[0].urls[0].wikipedia, "https://example.com");
 });
 
 test("keeps an explicit empty locations array on a variant", () => {
@@ -24,6 +26,61 @@ test("keeps an explicit empty locations array on a variant", () => {
   resolveLevelLocationInheritance([source, variant]);
 
   assert.deepEqual(variant.locations, []);
+});
+
+test("a Survival variant inherits geography while retaining its identity and classification", () => {
+  const source = {
+    id: "fixture-multiplayer-map",
+    title: "Fixture Multiplayer Map",
+    mode: "multiplayer",
+    wikiArticle: "fixture-map-article",
+    "content-update": { id: "base", label: "Base Release" },
+    locations: [{
+      id: "main",
+      country: "Fixture Country",
+      latitude: 10,
+      longitude: 20,
+      precision: "approximate",
+    }],
+  };
+  const survival = {
+    id: "fixture-survival",
+    title: "Fixture Survival",
+    mode: "other",
+    modeSub: "survival",
+    wikiArticle: "fixture-survival-article",
+    "content-update": { id: "bonus", label: "Bonus Release" },
+    metadata: { variantOf: source.id },
+  };
+  const originalSource = structuredClone(source);
+  const originalSurvival = structuredClone(survival);
+
+  resolveLevelLocationInheritance([survival, source]);
+
+  assert.deepEqual(survival, { ...originalSurvival, locations: source.locations });
+  assert.deepEqual(source, originalSource);
+});
+
+test("an alternate campaign inherits locations while retaining its own campaign and notes", () => {
+  const source = {
+    id: "fixture-mission",
+    mode: "singleplayer",
+    campaign: { id: "main", label: "Main Campaign" },
+    notes: "Source mission research.",
+    locations: [{ id: "main", country: "Fixture Country", latitude: 10, longitude: 20 }],
+  };
+  const variant = {
+    id: "fixture-alternate-mission",
+    mode: "singleplayer",
+    campaign: { id: "alternate", label: "Alternate Campaign" },
+    metadata: { variantOf: source.id, missionNumber: 1 },
+    notes: "",
+  };
+  const originalVariant = structuredClone(variant);
+
+  resolveLevelLocationInheritance([variant, source]);
+
+  assert.deepEqual(variant, { ...originalVariant, locations: source.locations });
 });
 
 test("rejects unknown metadata.variantOf targets", () => {

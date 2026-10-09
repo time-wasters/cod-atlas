@@ -1,0 +1,20 @@
+---
+id: iw-renaissance
+title: Renaissance
+games:
+  - iw
+mode: multiplayer
+content-update:
+  id: "4"
+  label: Sabotage
+wikiArticle: codwiki-renaissance
+locations:
+  - id: main
+    country: Italy
+    latitude: 42.83333333
+    longitude: 12.83333333
+    precision: country
+    confidence: fallback
+    method: country-fallback
+    primary: true
+---

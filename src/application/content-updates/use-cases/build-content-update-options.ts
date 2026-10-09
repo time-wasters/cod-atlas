@@ -10,6 +10,10 @@ type ContentUpdateAtlasEntry = {
   primary: boolean;
   gameIds: string[];
   contentUpdate?: { id: string; label: string } | null;
+  appearances?: {
+    gameId: string;
+    contentUpdate?: { id: string; label: string } | null;
+  }[];
   coordinates?: [number, number] | null;
   modes: ("singleplayer" | "multiplayer" | "zombies" | "other")[];
   modeSub?: "special-ops" | "survival" | "challenge";
@@ -54,21 +58,20 @@ export function buildContentUpdateOptions<
 
   for (const group of groups) {
     for (const entry of group.entries) {
-      if (entry.gameIds[0] !== selectedGame.id || !entry.contentUpdate) continue;
-      if (!entry.modes.some((mode) => (
-        mode === "multiplayer"
-          || mode === "zombies"
-          || (mode === "other" && entry.modeSub === "special-ops")
-      ))) continue;
+      if (!entry.gameIds.includes(selectedGame.id)) continue;
+      const appearance = entry.appearances?.find((item) => item.gameId === selectedGame.id);
+      const contentUpdate = appearance?.contentUpdate
+        ?? (entry.gameIds[0] === selectedGame.id ? entry.contentUpdate : null);
+      if (!contentUpdate) continue;
 
-      const key = `${selectedGame.id}:${entry.contentUpdate.id}`;
+      const key = `${selectedGame.id}:${contentUpdate.id}`;
       let update = updatesByKey.get(key);
       if (!update) {
         update = {
           key,
           gameId: selectedGame.id,
-          id: entry.contentUpdate.id,
-          label: entry.contentUpdate.label,
+          id: contentUpdate.id,
+          label: contentUpdate.label,
           locationsByLevelId: new Map(),
         };
         updatesByKey.set(key, update);

@@ -1,0 +1,20 @@
+---
+id: bo3-evac
+title: Evac
+games:
+  - bo3
+mode: multiplayer
+content-update:
+  id: "0"
+  label: Included
+wikiArticle: codwiki-evac
+locations:
+  - id: main
+    country: Singapore
+    latitude: 1.36666666
+    longitude: 103.8
+    precision: country
+    confidence: fallback
+    method: country-fallback
+    primary: true
+---

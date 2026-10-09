@@ -19,7 +19,6 @@ mapOverlay:
   attribution:
     title: "Call of Duty: Roads to Victory — Hunner Park loading-screen map"
     source: "Directly extracted from Call of Duty: Roads to Victory by plp-gtr."
-    sourceUrl: https://github.com/time-wasters/cod-atlas/blob/main/public/images/maps/rtv/hunner-park.png
     extractedBy: plp-gtr
     extractedByUrl: https://github.com/plp-gtr
     copyrightHolder: Activision Publishing, Inc.

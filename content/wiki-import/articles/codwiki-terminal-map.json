@@ -3,8 +3,8 @@
   "fandomPageId": 16618,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Terminal_(map)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Terminal_(map)",
-  "latestRevisionId": 3017769,
-  "importedAt": "2026-08-15T11:16:03.269Z",
+  "latestRevisionId": 3026649,
+  "importedAt": "2026-10-05T20:20:45.800Z",
   "levelLocation": {
     "raw": "[[Zakhaev International Airport]], [[Moscow (location)|Moscow]], [[Russia]] (''MW2'', ''MW3'' & ''MWIII'')<br>[[The Gateway|Gateway Interplanetary Port]], [[Luna]] (''IW'')",
     "label": "Zakhaev International Airport",
@@ -48,8 +48,8 @@
     }
   },
   "rawPayload": {
-    "revisionTimestamp": "2026-08-01T11:26:18Z",
-    "revisionSha1": "9d77b11490d07af92df21382b69c4d462a0092af",
+    "revisionTimestamp": "2026-09-12T03:05:16Z",
+    "revisionSha1": "a535621e26297639374cbb39e1bc909aa8bdb226",
     "resolvedTitle": "Terminal (map)",
     "mainImageTitle": "File:Bare_Load_Screen_Terminal_MW2.jpg",
     "mapImageTitle": null

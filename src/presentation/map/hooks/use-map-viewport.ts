@@ -8,7 +8,11 @@ import type { MapOverlayDto } from "../../../infrastructure/atlas-data/dto/map-o
 import type { LeafletMapRuntime } from "./use-leaflet-map.js";
 
 type AtlasSelection = { group: AtlasGroupDto; entry: AtlasEntryDto };
-type SidebarSelectionTarget = { bounds: [number, number][]; maxZoom: number };
+type SidebarSelectionTarget = {
+  bounds: [number, number][];
+  maxZoom?: number;
+  fitOnlyWhenOutside?: boolean;
+};
 
 export function leafletViewportPadding(mapElement: HTMLElement, detailsElement: HTMLElement | null) {
   const mapRect = mapElement.getBoundingClientRect();
@@ -138,21 +142,32 @@ export function useMapViewport({
 
   useEffect(() => {
     const currentMap = runtime.getMap();
+    const leaflet = runtime.getLeaflet();
     const mapElement = runtime.getContainer();
-    if (!ready || !currentMap || !runtime.getLeaflet() || !mapElement) return;
+    if (!ready || !currentMap || !leaflet || !mapElement) return;
     const selectedIsVisible = filteredGroups.some((group) =>
       group.entries.some((entry) => entry.id === selected.entry.id));
-    if (!selected.entry.coordinates || !selectedIsVisible) return;
-
     const awaitingCampaignRouteFit = selectedCampaign !== null
       && runtime.getCampaignMarkerRevealEntryId() === selected.entry.id;
     if (awaitingCampaignRouteFit) return;
     const sidebarTarget = sidebarSelectionTarget.current;
     if (sidebarTarget) {
       sidebarSelectionTarget.current = null;
+      const padding = leafletViewportPadding(mapElement, getDetailsElement());
+      if (sidebarTarget.fitOnlyWhenOutside) {
+        const size = currentMap.getSize();
+        const visibleBounds = leaflet.latLngBounds([
+          currentMap.containerPointToLatLng(padding.paddingTopLeft),
+          currentMap.containerPointToLatLng([
+            size.x - padding.paddingBottomRight[0],
+            size.y - padding.paddingBottomRight[1],
+          ]),
+        ]);
+        if (visibleBounds.contains(leaflet.latLngBounds(sidebarTarget.bounds))) return;
+      }
       const movement = {
-        ...leafletViewportPadding(mapElement, getDetailsElement()),
-        maxZoom: sidebarTarget.maxZoom,
+        ...padding,
+        maxZoom: sidebarTarget.fitOnlyWhenOutside ? currentMap.getZoom() : sidebarTarget.maxZoom,
         animate: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
         duration: .55,
       };
@@ -161,6 +176,7 @@ export function useMapViewport({
       else currentMap.fitBounds(sidebarTarget.bounds, movement);
       return;
     }
+    if (!selected.entry.coordinates || !selectedIsVisible) return;
     const relatedFocusEntryId = relatedLevelFocusEntryId.current;
     relatedLevelFocusEntryId.current = null;
     if (relatedFocusEntryId === selected.entry.id) {

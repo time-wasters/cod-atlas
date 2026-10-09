@@ -4,7 +4,7 @@
   "sourceUrl": "https://callofduty.fandom.com/wiki/Operation_Safe_Harbor",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Operation_Safe_Harbor",
   "latestRevisionId": 3001829,
-  "importedAt": "2026-08-15T10:03:25.946Z",
+  "importedAt": "2026-10-05T20:20:35.065Z",
   "levelLocation": {
     "raw": "Unnamed Satellite, Earth's Orbit",
     "label": "Unnamed Satellite, Earth's Orbit",
@@ -30,7 +30,7 @@
       },
       "rights": {
         "status": "non-free",
-        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  â€¢ the computer or video game in question or\n  â€¢ the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
         "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
@@ -59,6 +59,8 @@
     "label": "Operation Dark Quarry",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-operation-dark-quarry",
         "wikiTitle": "Operation Dark Quarry",
         "label": "Operation Dark Quarry",
         "url": "https://callofduty.fandom.com/wiki/Operation_Dark_Quarry"
@@ -70,6 +72,8 @@
     "label": "Operation Pure Threat",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-operation-pure-threat",
         "wikiTitle": "Operation Pure Threat",
         "label": "Operation Pure Threat",
         "url": "https://callofduty.fandom.com/wiki/Operation_Pure_Threat"

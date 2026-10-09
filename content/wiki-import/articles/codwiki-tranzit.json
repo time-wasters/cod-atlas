@@ -3,8 +3,8 @@
   "fandomPageId": 499151,
   "sourceUrl": "https://callofduty.fandom.com/wiki/TranZit",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/TranZit",
-  "latestRevisionId": 3018556,
-  "importedAt": "2026-08-15T08:53:46.340Z",
+  "latestRevisionId": 3029842,
+  "importedAt": "2026-09-28T21:57:24.422Z",
   "levelLocation": {
     "raw": "Northeast of {{W|Hanford Site}}, Washington, [[United States of America]]",
     "label": "United States of America",
@@ -48,8 +48,8 @@
     }
   },
   "rawPayload": {
-    "revisionTimestamp": "2026-08-06T02:20:22Z",
-    "revisionSha1": "345498c46f3ba7a05e86ebcc2059fcfa9a6adec4",
+    "revisionTimestamp": "2026-09-27T10:06:12Z",
+    "revisionSha1": "3113a28745d58138040bd26abd6f5c5371a36ba7",
     "resolvedTitle": "TranZit",
     "mainImageTitle": "File:TranZit_lobby_BOII.png",
     "mapImageTitle": null
@@ -59,11 +59,15 @@
     "label": "Moon (in-game/chronologically), Nuketown Zombies (chronologically)",
     "links": [
       {
+        "sequence": "chronological",
+        "article": "codwiki-moon",
         "wikiTitle": "Moon",
         "label": "Moon",
         "url": "https://callofduty.fandom.com/wiki/Moon"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-nuketown-zombies",
         "wikiTitle": "Nuketown Zombies",
         "label": "Nuketown Zombies",
         "url": "https://callofduty.fandom.com/wiki/Nuketown_Zombies"
@@ -75,11 +79,15 @@
     "label": "Nuketown Zombies (in-game), Die Rise (chronologically)",
     "links": [
       {
+        "sequence": "game",
+        "article": "codwiki-nuketown-zombies",
         "wikiTitle": "Nuketown Zombies",
         "label": "Nuketown Zombies",
         "url": "https://callofduty.fandom.com/wiki/Nuketown_Zombies"
       },
       {
+        "sequence": "chronological",
+        "article": "codwiki-die-rise",
         "wikiTitle": "Die Rise",
         "label": "Die Rise",
         "url": "https://callofduty.fandom.com/wiki/Die_Rise"

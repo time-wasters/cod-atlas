@@ -1,0 +1,19 @@
+---
+id: iw-operation-d-con
+title: Operation D-Con
+games:
+  - iw
+mode: singleplayer
+campaign:
+  id: ship-assault
+  label: Ship Assault
+wikiArticle: codwiki-operation-d-con
+locations:
+  - id: main
+    country: Space
+    region: Venus' Orbit
+    precision: off-world
+    confidence: fallback
+    method: region-fallback
+    primary: true
+---
