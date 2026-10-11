@@ -4,6 +4,7 @@ title: "Building 21"
 games:
   - mwii
 mode: multiplayer
+modeSub: dmz
 campaign:
   id: dmz
   label: DMZ

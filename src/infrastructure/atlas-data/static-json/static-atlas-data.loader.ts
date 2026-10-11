@@ -18,7 +18,16 @@ const GAME_SUBSERIES = new Set(["main", "reboot", "remaster", "add-on", "spin-of
 const LOCATION_PRECISIONS = new Set(["exact", "approximate", "city", "region", "country", "off-world"]);
 const LOCATION_CONFIDENCES = new Set(["high", "medium", "fallback"]);
 const LEVEL_MODES = new Set(["singleplayer", "multiplayer", "zombies", "other"]);
-const LEVEL_MODE_SUBS = new Set(["special-ops", "survival", "challenge"]);
+const OTHER_MODE_SUBS = new Set(["special-ops", "survival", "challenge"]);
+const MULTIPLAYER_MODE_SUBS = new Set(["battle-royale", "dmz"]);
+
+function assertMultiplayerModeSub(value: unknown, path: string): void {
+  const values = Array.isArray(value) ? value : [value];
+  if (values.length === 0 || new Set(values).size !== values.length) {
+    throw new Error(`${path} must contain at least one unique multiplayer subtype`);
+  }
+  values.forEach((modeSub) => enumValue(modeSub, MULTIPLAYER_MODE_SUBS, path));
+}
 
 /**
  * Validates an optional campaign object.
@@ -70,11 +79,12 @@ function assertLevelVerification(value: unknown, path: string): void {
  *
  * @param value - The level appearance value to validate.
  * @param path - The data path used to identify the appearance in validation errors.
+ * @param mode - The canonical parent mode shared by every appearance.
  *
  * @throws Error
  * Thrown if the level appearance does not match the expected structure.
  */
-function assertLevelAppearance(value: unknown, path: string): void {
+function assertLevelAppearance(value: unknown, path: string, mode: unknown): void {
   const appearance = objectValue(value, path);
   stringValue(appearance.gameId, `${path}.gameId`);
   stringValue(appearance.title, `${path}.title`);
@@ -83,6 +93,10 @@ function assertLevelAppearance(value: unknown, path: string): void {
   stringValue(appearance.notesId, `${path}.notesId`);
   booleanValue(appearance.hasLevelNotes, `${path}.hasLevelNotes`);
   stringValue(appearance.bannerKey, `${path}.bannerKey`);
+  if (appearance.modeSub !== undefined) {
+    if (mode !== "multiplayer") throw new Error(`${path}.modeSub is only valid for multiplayer appearances`);
+    assertMultiplayerModeSub(appearance.modeSub, `${path}.modeSub`);
+  }
   assertCampaign(appearance.campaign, `${path}.campaign`);
   if (appearance.campaignOrder !== undefined) numberValue(appearance.campaignOrder, `${path}.campaignOrder`);
   assertContentUpdate(appearance.contentUpdate, `${path}.contentUpdate`);
@@ -137,12 +151,14 @@ function assertAtlasEntry(value: unknown, path: string): void {
     enumValue(mode, LEVEL_MODES, `${path}.modes[${index}]`);
   });
   if (modes.includes("other")) {
-    enumValue(entry.modeSub, LEVEL_MODE_SUBS, `${path}.modeSub`);
+    enumValue(entry.modeSub, OTHER_MODE_SUBS, `${path}.modeSub`);
+  } else if (modes.includes("multiplayer")) {
+    if (entry.modeSub !== undefined) assertMultiplayerModeSub(entry.modeSub, `${path}.modeSub`);
   } else if (entry.modeSub !== undefined) {
-    throw new Error(`${path}.modeSub is only valid for other entries`);
+    throw new Error(`${path}.modeSub is only valid for multiplayer or other entries`);
   }
   arrayValue(entry.appearances, `${path}.appearances`).forEach((appearance, index) => {
-    assertLevelAppearance(appearance, `${path}.appearances[${index}]`);
+    assertLevelAppearance(appearance, `${path}.appearances[${index}]`, modes[0]);
   });
 }
 

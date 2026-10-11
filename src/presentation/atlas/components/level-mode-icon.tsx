@@ -7,7 +7,10 @@ import type { AtlasEntryDto } from "../../../infrastructure/atlas-data/dto/atlas
 type Mode = AtlasEntryDto["modes"][number];
 type ModeSub = AtlasEntryDto["modeSub"];
 
-function levelModeLabel(mode: Mode, modeSub?: ModeSub) {
+function levelModeLabel(mode: Mode, modeSub?: ModeSub): string {
+  if (Array.isArray(modeSub)) return modeSub.map((value) => levelModeLabel(mode, value)).join(" / ");
+  if (mode === "multiplayer" && modeSub === "battle-royale") return "Battle Royale";
+  if (mode === "multiplayer" && modeSub === "dmz") return "DMZ";
   if (mode === "other" && modeSub === "special-ops") return "Special Ops";
   if (mode === "other" && modeSub === "survival") return "Survival";
   if (mode === "other" && modeSub === "challenge") return "Challenge";

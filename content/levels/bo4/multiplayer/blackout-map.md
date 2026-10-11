@@ -4,6 +4,7 @@ title: Blackout Map
 games:
   - bo4
 mode: multiplayer
+modeSub: battle-royale
 wikiArticle: codwiki-blackout-black-ops-4
 locations:
   - id: main

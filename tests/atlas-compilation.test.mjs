@@ -90,3 +90,74 @@ test("references cannot override canonical mode or geography", async () => {
     });
   }
 });
+
+test("multiplayer references inherit their canonical subtype without adding markers", async () => {
+  for (const modeSub of ["battle-royale", "dmz"]) {
+    await withFixture(async ({ read, write, compile }) => {
+      const filename = "content/levels/fixture-classic/multiplayer/factory-floor.md";
+      await write(filename, (await read(filename)).replace("mode: multiplayer", `mode: multiplayer\nmodeSub: ${modeSub}`));
+      await write(referencePath, reference("fixture-classic-bravo", "Fixture Rerelease Pack"));
+      await compile();
+      const atlas = JSON.parse(await read("app/data/atlas.generated.json"));
+      const entries = atlas.groups.flatMap((group) => group.entries)
+        .filter((entry) => entry.levelId === "fixture-classic-bravo");
+      assert.equal(entries.length, 1);
+      assert.equal(entries[0].modeSub, modeSub);
+      assert.equal(entries[0].appearances.find(({ gameId }) => gameId === "fixture-remaster").modeSub, modeSub);
+      assert.deepEqual(entries[0].gameIds, ["fixture-classic", "fixture-remaster"]);
+    });
+  }
+});
+
+test("a multiplayer appearance can add a second subtype without changing canonical data or markers", async () => {
+  await withFixture(async ({ read, write, compile }) => {
+    const filename = "content/levels/fixture-classic/multiplayer/factory-floor.md";
+    await write(filename, (await read(filename)).replace("mode: multiplayer", "mode: multiplayer\nmodeSub: battle-royale"));
+    await write(referencePath, "---\nlevel: fixture-classic-bravo\nmodeSub: [battle-royale, dmz]\n---\n");
+    await compile();
+    const atlas = JSON.parse(await read("app/data/atlas.generated.json"));
+    const entries = atlas.groups.flatMap((group) => group.entries)
+      .filter((entry) => entry.levelId === "fixture-classic-bravo");
+    assert.equal(entries.length, 1);
+    assert.equal(entries[0].modeSub, "battle-royale");
+    assert.deepEqual(entries[0].coordinates, [34.0522, -118.2437]);
+    assert.equal(entries[0].appearances[0].modeSub, "battle-royale");
+    assert.deepEqual(entries[0].appearances[1].modeSub, ["battle-royale", "dmz"]);
+  });
+});
+
+test("a canonical multiplayer map can declare multiple subtypes", async () => {
+  await withFixture(async ({ read, write, compile }) => {
+    const filename = "content/levels/fixture-classic/multiplayer/factory-floor.md";
+    await write(filename, (await read(filename)).replace("mode: multiplayer", "mode: multiplayer\nmodeSub: [battle-royale, dmz]"));
+    await compile();
+    const atlas = JSON.parse(await read("app/data/atlas.generated.json"));
+    const entry = atlas.groups.flatMap((group) => group.entries)
+      .find((entry) => entry.levelId === "fixture-classic-bravo");
+    assert.deepEqual(entry.modeSub, ["battle-royale", "dmz"]);
+    assert.deepEqual(entry.appearances[0].modeSub, ["battle-royale", "dmz"]);
+  });
+});
+
+test("appearance subtype overrides reject non-multiplayer levels and invalid lists", async () => {
+  await withFixture(async ({ write, compile }) => {
+    await write(zombieReferencePath, "---\nlevel: fixture-classic-cosmos\nmodeSub: dmz\n---\n");
+    await assert.rejects(compile("--check"), /appearance modeSub is only valid for multiplayer/);
+  });
+  for (const value of ["challenge", "[]", "[dmz, dmz]", "[dmz, challenge]"]) {
+    await withFixture(async ({ write, compile }) => {
+      await write(referencePath, `---\nlevel: fixture-classic-bravo\nmodeSub: ${value}\n---\n`);
+      await assert.rejects(compile("--check"), /invalid modeSub/);
+    });
+  }
+});
+
+test("compiler rejects subtypes from another parent mode", async () => {
+  for (const [mode, modeSub] of [["multiplayer", "challenge"], ["other", "dmz"], ["zombies", "battle-royale"]]) {
+    await withFixture(async ({ read, write, compile }) => {
+      const filename = "content/levels/fixture-classic/multiplayer/factory-floor.md";
+      await write(filename, (await read(filename)).replace("mode: multiplayer", `mode: ${mode}\nmodeSub: ${modeSub}`));
+      await assert.rejects(compile("--check"), /invalid modeSub/);
+    });
+  }
+});

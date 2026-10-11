@@ -1,3 +1,5 @@
+import type { LevelModeSub, LevelModeSubValue, MultiplayerModeSubValue } from "../../../domain/level/level-mode-sub.types.js";
+
 type CampaignGame = {
   id: string;
   code: string;
@@ -12,11 +14,12 @@ type CampaignAtlasEntry = {
   primary: boolean;
   gameIds: string[];
   modes: ("singleplayer" | "multiplayer" | "zombies" | "other")[];
-  modeSub?: "special-ops" | "survival" | "challenge";
+  modeSub?: LevelModeSubValue;
   campaign?: { id: string; label: string } | null;
   campaignOrder?: number;
   appearances?: {
     gameId: string;
+    modeSub?: MultiplayerModeSubValue;
     title?: string;
     campaign?: { id: string; label: string } | null;
     campaignOrder?: number;
@@ -34,7 +37,7 @@ export type CampaignOption<TGroup, TEntry> = {
   id: string;
   label: string;
   mode: CampaignAtlasEntry["modes"][number];
-  modeSub?: CampaignAtlasEntry["modeSub"];
+  modeSub?: LevelModeSub;
   levels: { group: TGroup; entry: TEntry }[];
   routeLevels: {
     entryId: string | null;
@@ -54,14 +57,18 @@ type BuildCampaignOptionsInput<
   groups: readonly TGroup[];
 };
 
-function campaignModeRank(mode: CampaignAtlasEntry["modes"][number], modeSub?: CampaignAtlasEntry["modeSub"]) {
+function campaignModeRank(mode: CampaignAtlasEntry["modes"][number], modeSub?: LevelModeSub) {
   if (mode === "singleplayer") return 0;
-  if (mode === "multiplayer") return 1;
-  if (mode === "zombies") return 2;
-  if (modeSub === "special-ops") return 3;
-  if (modeSub === "survival") return 4;
-  if (modeSub === "challenge") return 5;
-  return 6;
+  if (mode === "multiplayer") {
+    if (modeSub === "battle-royale") return 2;
+    if (modeSub === "dmz") return 3;
+    return 1;
+  }
+  if (mode === "zombies") return 4;
+  if (modeSub === "special-ops") return 5;
+  if (modeSub === "survival") return 6;
+  if (modeSub === "challenge") return 7;
+  return 8;
 }
 
 export function buildCampaignOptions<
@@ -79,7 +86,7 @@ export function buildCampaignOptions<
     id: string;
     label: string;
     mode: CampaignAtlasEntry["modes"][number];
-    modeSub?: CampaignAtlasEntry["modeSub"];
+    modeSub?: LevelModeSub;
     locationsByLevelId: Map<string, { group: TGroup; entry: TEntry }[]>;
   }>();
 
@@ -96,29 +103,33 @@ export function buildCampaignOptions<
         title: appearance?.title ?? entry.title,
         campaign: campaignInfo,
         campaignOrder: appearance?.campaignOrder ?? entry.campaignOrder,
+        modeSub: appearance?.modeSub ?? entry.modeSub,
       };
       const mode = entry.modes[0];
       if (!mode) throw new Error(`Campaign level ${entry.levelId} has no game mode`);
-      const modeKey = mode === "other" ? `${mode}:${entry.modeSub ?? "unknown"}` : mode;
+      const modeSubs = Array.isArray(appearanceEntry.modeSub)
+        ? appearanceEntry.modeSub : [appearanceEntry.modeSub];
+      for (const modeSub of modeSubs) {
+        const modeKey = modeSub ? `${mode}:${modeSub}` : mode;
+        const key = `${campaignGame.id}:${modeKey}:${campaignInfo.id}`;
+        let campaign = campaignsByKey.get(key);
+        if (!campaign) {
+          campaign = {
+            key,
+            gameId: campaignGame.id,
+            id: campaignInfo.id,
+            label: campaignInfo.label,
+            mode,
+            modeSub,
+            locationsByLevelId: new Map(),
+          };
+          campaignsByKey.set(key, campaign);
+        }
 
-      const key = `${campaignGame.id}:${modeKey}:${campaignInfo.id}`;
-      let campaign = campaignsByKey.get(key);
-      if (!campaign) {
-        campaign = {
-          key,
-          gameId: campaignGame.id,
-          id: campaignInfo.id,
-          label: campaignInfo.label,
-          mode,
-          modeSub: entry.modeSub,
-          locationsByLevelId: new Map(),
-        };
-        campaignsByKey.set(key, campaign);
+        const levelLocations = campaign.locationsByLevelId.get(entry.levelId) ?? [];
+        levelLocations.push({ group, entry: appearanceEntry });
+        campaign.locationsByLevelId.set(entry.levelId, levelLocations);
       }
-
-      const levelLocations = campaign.locationsByLevelId.get(entry.levelId) ?? [];
-      levelLocations.push({ group, entry: appearanceEntry });
-      campaign.locationsByLevelId.set(entry.levelId, levelLocations);
     }
   }
 

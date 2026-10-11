@@ -4,6 +4,7 @@ title: "Serpent Island"
 games:
   - mobile
 mode: multiplayer
+modeSub: dmz
 campaign:
   id: dmz-recon
   label: "DMZ: Recon"

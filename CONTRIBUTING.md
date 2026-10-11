@@ -103,6 +103,9 @@ instead of putting several IDs in `games`. A reference contains only
 notes inherit from the canonical record. Locations, mode, overlays, and stable
 IDs cannot be overridden. A reference's `content-update` describes its release
 in the appearance game and does not inherit the canonical game's group.
+A Multiplayer reference may supply `modeSub` as a scalar or list to describe
+that appearance's Battle Royale/DMZ memberships; omission inherits the
+canonical value. Other subtypes stay protected.
 A materially changed remake gets its own canonical
 level record instead. Such a distinct canonical variant may set
 `metadata.variantOf`. It may omit `locations` to inherit the linked canonical

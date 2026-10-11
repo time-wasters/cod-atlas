@@ -1,7 +1,7 @@
 import { readFile } from "node:fs/promises";
 import { isLevelLocationPrecision } from "../../../domain/level/level-location-precision.value-object.mjs";
 import { isLevelMode } from "../../../domain/level/level-mode.value-object.mjs";
-import { isLevelModeSub } from "../../../domain/level/level-mode-sub.value-object.mjs";
+import { isValidLevelModeSub } from "../../../domain/level/level-mode-sub.value-object.mjs";
 import { resolveLevelLocationInheritance } from "../../../domain/level/resolve-level-location-inheritance.mjs";
 import { normalizeLevelVerification } from "../../../domain/level/level-verification.value-object.mjs";
 import { isResearchComplete } from "../../../domain/level/research-completion.policy.mjs";
@@ -24,11 +24,8 @@ export async function loadProgressLevelData(levelsRoot, games) {
     if (!isLevelMode(document.data.mode)) {
       throw new Error(`${filename}: mode must be singleplayer, multiplayer, zombies or other`);
     }
-    if (document.data.mode === "other" && !isLevelModeSub(document.data.modeSub)) {
-      throw new Error(`${filename}: other levels require modeSub special-ops, survival or challenge`);
-    }
-    if (document.data.mode !== "other" && document.data.modeSub != null) {
-      throw new Error(`${filename}: modeSub is only valid for other levels`);
+    if (!isValidLevelModeSub(document.data.mode, document.data.modeSub)) {
+      throw new Error(`${filename}: invalid modeSub for ${document.data.mode}; other requires special-ops, survival or challenge; multiplayer optionally accepts battle-royale or dmz as a scalar or non-empty unique list; singleplayer and zombies must omit it`);
     }
     if (typeof document.data.id !== "string" || !document.data.id.trim()) {
       throw new Error(`${filename}: level id is required`);

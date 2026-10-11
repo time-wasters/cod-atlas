@@ -95,6 +95,51 @@ test("campaign grouping, titles and mission order use the selected game appearan
   assert.deepEqual(entries, snapshot, "appearance selection must not modify canonical entries");
 });
 
+test("multiplayer campaigns with the same ID remain separate by subtype", () => {
+  const campaigns = buildCampaignOptions({
+    gameCode: "COD",
+    games: [{ id: "cod", code: "COD", label: "Call of Duty", released: "2003-10-29" }],
+    groups: [{ entries: [
+      campaignEntry("dmz", "multiplayer", "dmz"),
+      campaignEntry("standard", "multiplayer"),
+      campaignEntry("br", "multiplayer", "battle-royale"),
+    ] }],
+  });
+
+  assert.deepEqual(campaigns.map(({ key }) => key), [
+    "cod:multiplayer:shared",
+    "cod:multiplayer:battle-royale:shared",
+    "cod:multiplayer:dmz:shared",
+  ]);
+  assert.deepEqual(campaigns.map(({ levels }) => levels.map(({ entry }) => entry.levelId)),
+    [["standard"], ["br"], ["dmz"]]);
+});
+
+test("a combined appearance belongs to both subtype campaigns without changing its owner", () => {
+  const games = [
+    { id: "cod", code: "COD", label: "Owner", released: "2000-01-01" },
+    { id: "returning", code: "RETURNING", label: "Returning", released: "2001-01-01" },
+  ];
+  const entry = {
+    ...campaignEntry("shared-map", "multiplayer", "battle-royale"),
+    gameIds: ["cod", "returning"],
+    appearances: [{
+      gameId: "returning",
+      campaign: { id: "shared", label: "Shared campaign ID" },
+      modeSub: ["battle-royale", "dmz"],
+    }],
+  };
+  const snapshot = structuredClone(entry);
+  const options = (gameCode) => buildCampaignOptions({ gameCode, games, groups: [{ entries: [entry] }] });
+  const returning = options("RETURNING");
+  assert.deepEqual(returning.map(({ modeSub }) => modeSub), ["battle-royale", "dmz"]);
+  assert.deepEqual(returning.map(({ levels }) => levels.map(({ entry }) => entry.levelId)),
+    [["shared-map"], ["shared-map"]]);
+  assert.deepEqual(returning[0].levels[0].entry.modeSub, ["battle-royale", "dmz"]);
+  assert.deepEqual(options("COD").map(({ modeSub }) => modeSub), ["battle-royale"]);
+  assert.deepEqual(entry, snapshot);
+});
+
 test("a reference can supply campaign information when its canonical entry has none", () => {
   const entry = {
     ...campaignEntry("fixture-mission", "singleplayer"),

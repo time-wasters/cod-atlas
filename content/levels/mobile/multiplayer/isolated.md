@@ -4,6 +4,7 @@ title: "Isolated"
 games:
   - mobile
 mode: multiplayer
+modeSub: battle-royale
 campaign:
   id: battle-royale
   label: "Battle Royale"
