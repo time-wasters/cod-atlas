@@ -1,10 +1,10 @@
 {
   "id": "codwiki-town-square",
-  "fandomPageId": null,
+  "fandomPageId": 436816,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Town_Square",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Town_Square",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2620381,
+  "importedAt": "2026-10-11T21:17:34.397Z",
   "levelLocation": {
     "raw": null,
     "label": null,
@@ -21,9 +21,15 @@
     "links": []
   },
   "games": {
-    "raw": null,
-    "label": null,
-    "links": []
+    "raw": "[[Call of Duty 2: Big Red One]]",
+    "label": "Call of Duty 2: Big Red One",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty 2: Big Red One",
+        "label": "Call of Duty 2: Big Red One",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty_2%3A_Big_Red_One"
+      }
+    ]
   },
   "date": {
     "raw": null,
@@ -35,22 +41,22 @@
   "mapStyleEvidence": "Classified by the atlas; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "thumbnailUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/c/c9/Town_Square_Loading_Screen_BRO.png/revision/latest?cb=20211216202936",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/c/c9/Town_Square_Loading_Screen_BRO.png/revision/latest?cb=20211216202936",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Town_Square_Loading_Screen_BRO.png",
       "author": {
-        "name": null,
-        "userUrl": null,
-        "role": null
+        "name": "Adam445",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Adam445",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
       },
       "rights": {
-        "status": "unknown",
-        "notice": null,
-        "noticeUrl": null
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -73,5 +79,11 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2021-12-29T00:21:28Z",
+    "revisionSha1": "29c081f8a92d50eb12937cf1df3808d2feeac0b8",
+    "resolvedTitle": "Town Square",
+    "mainImageTitle": "File:Town_Square_Loading_Screen_BRO.png",
+    "mapImageTitle": null
+  }
 }
