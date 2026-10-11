@@ -3,8 +3,8 @@
   "fandomPageId": 687303,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Cheshire_Park",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Cheshire_Park",
-  "latestRevisionId": 2992463,
-  "importedAt": "2026-08-15T13:20:13.503Z",
+  "latestRevisionId": 3031042,
+  "importedAt": "2026-10-11T21:07:55.549Z",
   "levelLocation": {
     "raw": "[[London]], {{w|England}}, [[United Kingdom]]",
     "label": "London",
@@ -30,7 +30,7 @@
       },
       "rights": {
         "status": "non-free",
-        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  â€¢ the computer or video game in question or\n  â€¢ the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
         "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
@@ -48,8 +48,8 @@
     }
   },
   "rawPayload": {
-    "revisionTimestamp": "2026-04-14T02:26:33Z",
-    "revisionSha1": "cd415dec46a1eaa65c9a0ea5cc743f8fd1f19523",
+    "revisionTimestamp": "2026-10-02T09:21:15Z",
+    "revisionSha1": "ecb3f97812eb42c9b0c2cf828a58de4ca244ff8f",
     "resolvedTitle": "Cheshire Park",
     "mainImageTitle": "File:CheshirePark_LoadingScreen_MW.png",
     "mapImageTitle": null

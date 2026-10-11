@@ -3,8 +3,8 @@
   "fandomPageId": 690920,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Miami",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Miami",
-  "latestRevisionId": 2992444,
-  "importedAt": "2026-08-15T09:25:29.714Z",
+  "latestRevisionId": 3032987,
+  "importedAt": "2026-10-11T21:08:27.775Z",
   "levelLocation": {
     "raw": "{{w|South Beach}}, {{w|Miami metropolitan area|Miami}}, {{w|Florida}}, [[United States of America]]",
     "label": "United States of America",
@@ -30,7 +30,7 @@
       },
       "rights": {
         "status": "non-free",
-        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  â€¢ the computer or video game in question or\n  â€¢ the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
         "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
@@ -48,8 +48,8 @@
     }
   },
   "rawPayload": {
-    "revisionTimestamp": "2026-04-14T01:59:53Z",
-    "revisionSha1": "15f8c506ff38801a11c3f0d390d50e77aece7042",
+    "revisionTimestamp": "2026-10-10T04:48:53Z",
+    "revisionSha1": "18578d4dcc9318563406072db147417cc453460d",
     "resolvedTitle": "Miami",
     "mainImageTitle": "File:Miami_MenuScreen_BOCW.png",
     "mapImageTitle": null

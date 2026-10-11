@@ -3,8 +3,8 @@
   "fandomPageId": 7582,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Nacht_der_Untoten",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Nacht_der_Untoten",
-  "latestRevisionId": 3029847,
-  "importedAt": "2026-10-05T20:17:22.788Z",
+  "latestRevisionId": 3032574,
+  "importedAt": "2026-10-11T21:08:38.520Z",
   "levelLocation": {
     "raw": "[[Nacht der Untoten (location)|Abandoned Airfield]], German-Occupied Europe",
     "label": "Abandoned Airfield",
@@ -48,8 +48,8 @@
     }
   },
   "rawPayload": {
-    "revisionTimestamp": "2026-09-27T12:30:04Z",
-    "revisionSha1": "0da610d001fb6996a444d47699e142fc57bba454",
+    "revisionTimestamp": "2026-10-08T16:13:03Z",
+    "revisionSha1": "1ba15fc9e425441e381b4217d3cf9fe0f7387bb7",
     "resolvedTitle": "Nacht der Untoten",
     "mainImageTitle": "File:Nacht_Der_Untoten_Menu_Selection_WaW.png",
     "mapImageTitle": null

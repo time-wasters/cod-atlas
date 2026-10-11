@@ -3,8 +3,8 @@
   "fandomPageId": 694617,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Rebirth_Island_(Warzone)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Rebirth_Island_(Warzone)",
-  "latestRevisionId": 3012290,
-  "importedAt": "2026-08-15T13:19:45.134Z",
+  "latestRevisionId": 3032686,
+  "importedAt": "2026-10-11T21:08:49.246Z",
   "levelLocation": {
     "raw": "[[Rebirth Island]]",
     "label": "Rebirth Island",
@@ -30,7 +30,7 @@
       },
       "rights": {
         "status": "non-free",
-        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  â€¢ the computer or video game in question or\n  â€¢ the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
         "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
@@ -48,8 +48,8 @@
     }
   },
   "rawPayload": {
-    "revisionTimestamp": "2026-07-02T14:54:58Z",
-    "revisionSha1": "0560b6bd71012b05d1a7ece03362e9f8e9fb1f2e",
+    "revisionTimestamp": "2026-10-09T01:26:51Z",
+    "revisionSha1": "5455c0850f55564a590ee0aae590b68fd3fd32bf",
     "resolvedTitle": "Rebirth Island (Warzone)",
     "mainImageTitle": "File:RebirthIsland_LoadingScreen_Season4Reloaded_BO7_WZ2.jpg",
     "mapImageTitle": null

@@ -3,8 +3,8 @@
   "fandomPageId": 3106,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Crossfire",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Crossfire",
-  "latestRevisionId": 2994661,
-  "importedAt": "2026-08-14T23:36:58.459Z",
+  "latestRevisionId": 3027302,
+  "importedAt": "2026-10-11T21:07:55.528Z",
   "levelLocation": {
     "raw": "[[Middle East]]",
     "label": "Middle East",
@@ -30,7 +30,7 @@
       },
       "rights": {
         "status": "non-free",
-        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  â€¢ the computer or video game in question or\n  â€¢ the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
         "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
@@ -48,8 +48,8 @@
     }
   },
   "rawPayload": {
-    "revisionTimestamp": "2026-04-17T05:23:36Z",
-    "revisionSha1": "e9bc8723a731e8475326dc0874d67474236d51e5",
+    "revisionTimestamp": "2026-09-17T00:37:54Z",
+    "revisionSha1": "1dc7da6e2b225849cb71b650bea80816add3ec0b",
     "resolvedTitle": "Crossfire",
     "mainImageTitle": "File:Cod4_map_crossfire.jpg",
     "mapImageTitle": null

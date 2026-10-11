@@ -1,14 +1,14 @@
 {
   "id": "codwiki-nuketown-temple",
-  "fandomPageId": null,
+  "fandomPageId": 712457,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Nuketown_Temple",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Nuketown_Temple",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2960318,
+  "importedAt": "2026-10-11T21:08:38.541Z",
   "levelLocation": {
-    "raw": null,
-    "label": null,
-    "url": null
+    "raw": "[[People's Republic of China|China]]",
+    "label": "China",
+    "url": "https://callofduty.fandom.com/wiki/People's_Republic_of_China"
   },
   "previousLevels": {
     "raw": null,
@@ -21,9 +21,15 @@
     "links": []
   },
   "games": {
-    "raw": null,
-    "label": null,
-    "links": []
+    "raw": "''[[Call of Duty: Mobile]]''",
+    "label": "Call of Duty: Mobile",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Mobile",
+        "label": "Call of Duty: Mobile",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Mobile"
+      }
+    ]
   },
   "date": {
     "raw": null,
@@ -35,22 +41,22 @@
   "mapStyleEvidence": "Classified by the atlas; verify against the Wiki during the next import.",
   "images": {
     "main": {
-      "sourceUrl": null,
-      "thumbnailUrl": null,
-      "detailPageUrl": null,
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/0/01/Nuketown_Temple_CODM.jpg/revision/latest?cb=20220114185037",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/0/01/Nuketown_Temple_CODM.jpg/revision/latest/scale-to-width-down/800?cb=20220114185037",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Nuketown_Temple_CODM.jpg",
       "author": {
-        "name": null,
-        "userUrl": null,
-        "role": null
+        "name": "Marcello Julio",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:Marcello_Julio",
+        "role": "uploader"
       },
       "license": {
         "name": null,
         "url": null
       },
       "rights": {
-        "status": "unknown",
-        "notice": null,
-        "noticeUrl": null
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  â€¢ the computer or video game in question or\n  â€¢ the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
     "map": {
@@ -73,5 +79,11 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2026-01-24T14:36:55Z",
+    "revisionSha1": "2b0e324b8f7460ce46bd566cfb137a7c7d08222e",
+    "resolvedTitle": "Nuketown Temple",
+    "mainImageTitle": "File:Nuketown_Temple_CODM.jpg",
+    "mapImageTitle": null
+  }
 }

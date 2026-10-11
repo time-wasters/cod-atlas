@@ -3,8 +3,8 @@
   "fandomPageId": 3006,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Shipment",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Shipment",
-  "latestRevisionId": 2994999,
-  "importedAt": "2026-08-15T13:26:29.047Z",
+  "latestRevisionId": 3030164,
+  "importedAt": "2026-10-11T21:09:00.049Z",
   "levelLocation": {
     "raw": "[[Pripyat]], {{w|Ukraine}} (''CoD4'')<br>London Gateway, {{w|England}}, [[United Kingdom]] (''MW'')<br> {{w|Honolulu}}, {{w|Oahu}}, {{w|Territory of Hawaii}} (''Vanguard'')<br>International Waters, {{w|Atlantic Ocean}} (''MWII'' & ''MWIII'')",
     "label": "Pripyat",
@@ -30,7 +30,7 @@
       },
       "rights": {
         "status": "non-free",
-        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  â€¢ the computer or video game in question or\n  â€¢ the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
         "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
       }
     },
@@ -48,8 +48,8 @@
     }
   },
   "rawPayload": {
-    "revisionTimestamp": "2026-04-18T02:41:34Z",
-    "revisionSha1": "a313e1aa33070152ab0d32e24fd3231410e7e6e6",
+    "revisionTimestamp": "2026-09-29T19:07:34Z",
+    "revisionSha1": "74fd682dec0227f55b5631ac5d71b55f90d64f33",
     "resolvedTitle": "Shipment",
     "mainImageTitle": "File:Shipment_Load.jpg",
     "mapImageTitle": null
@@ -65,8 +65,8 @@
     "links": []
   },
   "games": {
-    "raw": "''[[Call of Duty 4: Modern Warfare]]''<br>''[[Call of Duty: Modern Warfare 2]]'' (Alpha)<br>''[[Call of Duty Online]]''<br>''[[Call of Duty: Modern Warfare Remastered]]''<br>''[[Call of Duty: Modern Warfare (2019)|Call of Duty: Modern Warfare]]''<br>''[[Call of Duty: Mobile]]''<br>''[[Call of Duty: Vanguard]]''<br>''[[Call of Duty: Modern Warfare II]]''<br>''[[Call of Duty: Modern Warfare III]]''<br>''[[Call of Duty: Warzone Mobile]]''",
-    "label": "Call of Duty 4: Modern Warfare, Call of Duty: Modern Warfare 2 (Alpha), Call of Duty Online, Call of Duty: Modern Warfare Remastered, Call of Duty: Modern Warfare, Call of Duty: Mobile, Call of Duty: Vanguard, Call of Duty: Modern Warfare II, Call of Duty: Modern Warfare III, Call of Duty: Warzone Mobile",
+    "raw": "''[[Call of Duty 4: Modern Warfare]]''<br>''[[Call of Duty: Modern Warfare 2]]'' (Alpha)<br>''[[Call of Duty Online]]''<br>''[[Call of Duty: Modern Warfare Remastered]]''<br>''[[Call of Duty: Modern Warfare (2019)|Call of Duty: Modern Warfare]]''<br>''[[Call of Duty: Mobile]]''<br>''[[Call of Duty: Vanguard]]''<br>''[[Call of Duty: Modern Warfare II]]''<br>''[[Call of Duty: Modern Warfare III]]''<br>''[[Call of Duty: Warzone Mobile]]''<br>''[[Call of Duty: Modern Warfare 4]]''",
+    "label": "Call of Duty 4: Modern Warfare, Call of Duty: Modern Warfare 2 (Alpha), Call of Duty Online, Call of Duty: Modern Warfare Remastered, Call of Duty: Modern Warfare, Call of Duty: Mobile, Call of Duty: Vanguard, Call of Duty: Modern Warfare II, Call of Duty: Modern Warfare III, Call of Duty: Warzone Mobile, Call of Duty: Modern Warfare 4",
     "links": [
       {
         "wikiTitle": "Call of Duty 4: Modern Warfare",
@@ -117,6 +117,11 @@
         "wikiTitle": "Call of Duty: Warzone Mobile",
         "label": "Call of Duty: Warzone Mobile",
         "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Warzone_Mobile"
+      },
+      {
+        "wikiTitle": "Call of Duty: Modern Warfare 4",
+        "label": "Call of Duty: Modern Warfare 4",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Modern_Warfare_4"
       }
     ]
   },
