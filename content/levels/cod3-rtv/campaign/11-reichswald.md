@@ -1,15 +1,15 @@
 ---
-id: rtv-reichswald
+id: cod3-rtv-reichswald
 title: Reichswald
 games:
-  - rtv
+  - cod3-rtv
 mode: singleplayer
 campaign:
   id: "2"
   label: Canadian Campaign
 wikiArticle: codwiki-reichswald
 mapOverlay:
-  image: /images/levels/rtv/campaign/11-reichswald/maps/overlay.png
+  image: /images/levels/cod3-rtv/campaign/11-reichswald/maps/overlay.png
   opacity: 0.72
   corners:
     topLeft: [51.74035088, 6.11149402]
@@ -55,8 +55,8 @@ supply convoy, he leaves the road to clear trenches and bunkers, destroys a
 tank with a satchel charge, eliminates Panzerschreck teams threatening the
 vehicles and helps destroy further tanks so the convoy can continue.
 
-The mission follows **Walcheren** (`rtv-walcheren`). **Arnhem Fire**
-(`rtv-arnhem-fire`) comes next in the game's overall sequence, but begins a new
+The mission follows **Walcheren** (`cod3-rtv-walcheren`). **Arnhem Fire**
+(`cod3-rtv-arnhem-fire`) comes next in the game's overall sequence, but begins a new
 British campaign segment with a different character and formation.
 
 ## The Real Place & Differences

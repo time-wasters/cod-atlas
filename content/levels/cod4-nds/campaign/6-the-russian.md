@@ -15,7 +15,7 @@ mapOverlay:
   attribution:
     title: "Call of Duty 4 (NDS) Map display in level intro"
     source: "Screenshot from NDS game by plp-gtr."
-    sourceUrl: https://github.com/time-wasters/cod-atlas/blob/main/public/images/maps/rtv/altavilla.png
+    sourceUrl: https://github.com/time-wasters/cod-atlas/blob/main/public/images/maps/cod3-rtv/altavilla.png
     extractedBy: plp-gtr
     extractedByUrl: https://github.com/plp-gtr
     copyrightHolder: Activision Publishing, Inc.

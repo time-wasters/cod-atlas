@@ -1,15 +1,15 @@
 ---
-id: rtv-altavilla
+id: cod3-rtv-altavilla
 title: Altavilla
 games:
-  - rtv
+  - cod3-rtv
 mode: singleplayer
 campaign:
   id: "1"
   label: American Campaign
 wikiArticle: codwiki-altavilla
 mapOverlay:
-  image: /images/levels/rtv/campaign/1-altavilla/maps/overlay.png
+  image: /images/levels/cod3-rtv/campaign/1-altavilla/maps/overlay.png
   opacity: 0.72
   corners:
     topLeft: [40.59997, 14.78375]

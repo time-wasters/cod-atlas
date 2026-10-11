@@ -1,8 +1,8 @@
 ---
-id: rtv-utrecht
+id: cod3-rtv-utrecht
 title: Utrecht
 games:
-  - rtv
+  - cod3-rtv
 mode: multiplayer
 wikiArticle: codwiki-utrecht
 locations:

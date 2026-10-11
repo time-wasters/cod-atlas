@@ -1,15 +1,15 @@
 ---
-id: rtv-river-crossing
+id: cod3-rtv-river-crossing
 title: River Crossing
 games:
-  - rtv
+  - cod3-rtv
 mode: singleplayer
 campaign:
   id: "1"
   label: American Campaign
 wikiArticle: codwiki-river-crossing
 mapOverlay:
-  image: /images/levels/rtv/campaign/7-river-crossing/maps/overlay.png
+  image: /images/levels/cod3-rtv/campaign/7-river-crossing/maps/overlay.png
   opacity: 0.72
   corners:
     topLeft: [52.12479074, 4.98325]
@@ -59,7 +59,7 @@ Howell leads men across the exposed beach but is killed by machine-gun fire.
 Wescott clears successive bunkers, searches an underground command post for
 documents, rejoins his squad, clears a fort and destroys German 88 mm artillery
 positions while Allied tanks provide fire. The mission follows **Hunner Park**
-(`rtv-hunner-park`) but changes playable character. It identifies Wescott's
+(`cod3-rtv-hunner-park`) but changes playable character. It identifies Wescott's
 formation only as the 82nd Airborne Division, not a regiment or company.
 
 ## The Real Place & Differences

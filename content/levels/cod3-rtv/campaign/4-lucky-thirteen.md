@@ -1,15 +1,15 @@
 ---
-id: rtv-lucky-thirteen
+id: cod3-rtv-lucky-thirteen
 title: Lucky Thirteen
 games:
-  - rtv
+  - cod3-rtv
 mode: singleplayer
 campaign:
   id: "1"
   label: American Campaign
 wikiArticle: codwiki-lucky-thirteen
 mapOverlay:
-  image: /images/levels/rtv/campaign/4-lucky-thirteen/maps/overlay.png
+  image: /images/levels/cod3-rtv/campaign/4-lucky-thirteen/maps/overlay.png
   opacity: 0.72
   corners:
     topLeft: [52.29680, 0.42890]
@@ -56,9 +56,9 @@ defences. During the flight VanAtta moves among the nose, ball and tail turrets,
 shoots barrage balloons and German fighters, protects the lead bomber, clears a
 jammed bomb bay and survives the loss of accompanying aircraft.
 
-The mission follows **Glider Crash** (`rtv-glider-crash`) but introduces a new
+The mission follows **Glider Crash** (`cod3-rtv-glider-crash`) but introduces a new
 character and jumps forward from June to September 1944. It leads into
-**Nijmegen** (`rtv-nijmegen`), whose ground action supplies the narrative reason
+**Nijmegen** (`cod3-rtv-nijmegen`), whose ground action supplies the narrative reason
 for the bombing mission. The game does not name VanAtta's bomb group, squadron,
 airfield, exact route, aiming point or the B-24 carrying the player.
 

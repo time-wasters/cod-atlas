@@ -1,8 +1,8 @@
 ---
-id: rtv-wesel
+id: cod3-rtv-wesel
 title: Wesel
 games:
-  - rtv
+  - cod3-rtv
 mode: multiplayer
 wikiArticle: codwiki-wesel
 locations:

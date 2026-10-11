@@ -1,15 +1,15 @@
 ---
-id: rtv-glider-crash
+id: cod3-rtv-glider-crash
 title: Glider Crash
 games:
-  - rtv
+  - cod3-rtv
 mode: singleplayer
 campaign:
   id: "1"
   label: American Campaign
 wikiArticle: codwiki-glider-crash
 mapOverlay:
-  image: /images/levels/rtv/campaign/3-glider-crash/maps/overlay.png
+  image: /images/levels/cod3-rtv/campaign/3-glider-crash/maps/overlay.png
   opacity: 0.72
   corners:
     topLeft: [49.41909, -1.36634]
@@ -56,9 +56,9 @@ crashed gliders, advance through an occupied settlement, destroy German
 half-tracks and defend their position from a counterattack using a jeep-mounted
 .50-calibre machine gun.
 
-The mission follows **Scavenger Hunt** (`rtv-scavenger-hunt`) but changes the
+The mission follows **Scavenger Hunt** (`cod3-rtv-scavenger-hunt`) but changes the
 playable soldier from David Ferguson to Jonathan Shepherd. **Lucky Thirteen**
-(`rtv-lucky-thirteen`) follows it and changes perspective again, to an Eighth
+(`cod3-rtv-lucky-thirteen`) follows it and changes perspective again, to an Eighth
 Air Force crewman. This menu sequence is not one soldier's continuous journey.
 
 ## The Real Place & Differences

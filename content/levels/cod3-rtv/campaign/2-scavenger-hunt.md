@@ -1,15 +1,15 @@
 ---
-id: rtv-scavenger-hunt
+id: cod3-rtv-scavenger-hunt
 title: Scavenger Hunt
 games:
-  - rtv
+  - cod3-rtv
 mode: singleplayer
 campaign:
   id: "1"
   label: American Campaign
 wikiArticle: codwiki-scavenger-hunt
 mapOverlay:
-  image: /images/levels/rtv/campaign/2-scavenger-hunt/maps/overlay.png
+  image: /images/levels/cod3-rtv/campaign/2-scavenger-hunt/maps/overlay.png
   opacity: 0.72
   corners:
     topLeft: [49.41909, -1.36634]
@@ -56,8 +56,8 @@ it can reach Sainte-Mère-Église. The objectives require the player to repel
 attacks, advance with the squad, capture one half-track, search for another
 vehicle, and finally secure a half-track beside a church.
 
-The level follows **Altavilla** (`rtv-altavilla`) in the campaign menu and is
-followed by **Glider Crash** (`rtv-glider-crash`), but those adjacent missions
+The level follows **Altavilla** (`cod3-rtv-altavilla`) in the campaign menu and is
+followed by **Glider Crash** (`cod3-rtv-glider-crash`), but those adjacent missions
 use different playable soldiers. Their order is therefore not evidence that
 Ferguson travelled directly from Italy or continued into the glider mission.
 

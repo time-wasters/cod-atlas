@@ -1,15 +1,15 @@
 ---
-id: rtv-walcheren
+id: cod3-rtv-walcheren
 title: Walcheren
 games:
-  - rtv
+  - cod3-rtv
 mode: singleplayer
 campaign:
   id: "2"
   label: Canadian Campaign
 wikiArticle: codwiki-walcheren
 mapOverlay:
-  image: /images/levels/rtv/campaign/10-walcheren/maps/overlay.png
+  image: /images/levels/cod3-rtv/campaign/10-walcheren/maps/overlay.png
   opacity: 0.72
   corners:
     topLeft: [51.6260353, 3.26884632]
@@ -51,7 +51,7 @@ locations:
 “Walcheren” is the third Canadian mission in *Call of Duty: Roads to Victory*.
 Corporal Alan Bradshaw and Captain Walcroft of the Calgary Highlanders are
 again placed on 31 October 1944. The briefing presents the mission as an
-immediate continuation of **Sloedam** (`rtv-sloedam`): the Canadians have gained
+immediate continuation of **Sloedam** (`cod3-rtv-sloedam`): the Canadians have gained
 a small foothold on Walcheren, and Bradshaw must help prevent a German
 counterattack from driving them back onto the causeway.
 
@@ -60,7 +60,7 @@ approaching half-tracks. A tank opens another exit through the building, after
 which he advances along a creek bed, takes a sniper rifle from a shack and
 clears Germans from a road. He fights through a barn and exposed field, flanks
 another half-track, reaches a bunker and finishes the mission by using a German
-88 mm gun against tanks in the distance. **Reichswald** (`rtv-reichswald`)
+88 mm gun against tanks in the distance. **Reichswald** (`cod3-rtv-reichswald`)
 follows after a jump to February 1945.
 
 ## The Real Place & Differences

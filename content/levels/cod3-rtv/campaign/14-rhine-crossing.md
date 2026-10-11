@@ -1,15 +1,15 @@
 ---
-id: rtv-rhine-crossing
+id: cod3-rtv-rhine-crossing
 title: Rhine Crossing
 games:
-  - rtv
+  - cod3-rtv
 mode: singleplayer
 campaign:
   id: "3"
   label: British Campaign
 wikiArticle: codwiki-rhine-crossing
 mapOverlay:
-  image: /images/levels/rtv/campaign/14-rhine-crossing/maps/overlay.png
+  image: /images/levels/cod3-rtv/campaign/14-rhine-crossing/maps/overlay.png
   opacity: 0.72
   corners:
     topLeft: [51.70639672, 6.4284971]

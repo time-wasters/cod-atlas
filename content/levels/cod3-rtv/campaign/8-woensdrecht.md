@@ -1,15 +1,15 @@
 ---
-id: rtv-woensdrecht
+id: cod3-rtv-woensdrecht
 title: Woensdrecht
 games:
-  - rtv
+  - cod3-rtv
 mode: singleplayer
 campaign:
   id: "2"
   label: Canadian Campaign
 wikiArticle: codwiki-woensdrecht
 mapOverlay:
-  image: /images/levels/rtv/campaign/8-woensdrecht/maps/overlay.png
+  image: /images/levels/cod3-rtv/campaign/8-woensdrecht/maps/overlay.png
   opacity: 0.72
   corners:
     topLeft: [51.55571392, 3.74887403]
@@ -58,8 +58,8 @@ Bradshaw begins pinned down by snipers while protecting a radioman trying to
 contact artillery. The squad then advances through streets and buildings,
 marks an armoured vehicle with smoke, destroys a tank with a satchel charge,
 clears a German headquarters, retrieves documents and escapes to a rendezvous.
-The mission follows **River Crossing** (`rtv-river-crossing`) in the campaign
-menu and precedes **Sloedam** (`rtv-sloedam`), although it begins a new Canadian
+The mission follows **River Crossing** (`cod3-rtv-river-crossing`) in the campaign
+menu and precedes **Sloedam** (`cod3-rtv-sloedam`), although it begins a new Canadian
 storyline with a different playable soldier and formation.
 
 ## The Real Place & Differences

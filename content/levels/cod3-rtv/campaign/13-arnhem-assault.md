@@ -1,15 +1,15 @@
 ---
-id: rtv-arnhem-assault
+id: cod3-rtv-arnhem-assault
 title: Arnhem Assault
 games:
-  - rtv
+  - cod3-rtv
 mode: singleplayer
 campaign:
   id: "3"
   label: British Campaign
 wikiArticle: codwiki-arnhem-assault
 mapOverlay:
-  image: /images/levels/rtv/campaign/13-arnhem-assault/maps/overlay.png
+  image: /images/levels/cod3-rtv/campaign/13-arnhem-assault/maps/overlay.png
   opacity: 0.72
   corners:
     topLeft: [52.23758792, 4.8087378]

@@ -1,15 +1,15 @@
 ---
-id: rtv-arnhem-fire
+id: cod3-rtv-arnhem-fire
 title: Arnhem Fire
 games:
-  - rtv
+  - cod3-rtv
 mode: singleplayer
 campaign:
   id: "3"
   label: British Campaign
 wikiArticle: codwiki-arnhem-fire
 mapOverlay:
-  image: /images/levels/rtv/campaign/12-arnhem-fire/maps/overlay.png
+  image: /images/levels/cod3-rtv/campaign/12-arnhem-fire/maps/overlay.png
   opacity: 0.72
   corners:
     topLeft: [52.23758792, 4.8087378]
@@ -59,8 +59,8 @@ ruined urban area. He destroys two FlaK cannons, clears a supply depot, passes
 a German tank, protects wounded troops at a crashed glider and advances through
 a makeshift medical station. At the bridge he clears machine-gun positions and
 destroys a tank with a sticky bomb, completing the capture objective. The
-mission follows **Reichswald** (`rtv-reichswald`) in the game's overall order
-and is followed by **Arnhem Assault** (`rtv-arnhem-assault`), which depicts the
+mission follows **Reichswald** (`cod3-rtv-reichswald`) in the game's overall order
+and is followed by **Arnhem Assault** (`cod3-rtv-arnhem-assault`), which depicts the
 bridge defence on 18 September.
 
 ## The Real Place & Differences

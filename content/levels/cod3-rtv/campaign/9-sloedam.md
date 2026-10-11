@@ -1,15 +1,15 @@
 ---
-id: rtv-sloedam
+id: cod3-rtv-sloedam
 title: Sloedam
 games:
-  - rtv
+  - cod3-rtv
 mode: singleplayer
 campaign:
   id: "2"
   label: Canadian Campaign
 wikiArticle: codwiki-sloedam
 mapOverlay:
-  image: /images/levels/rtv/campaign/9-sloedam/maps/overlay.png
+  image: /images/levels/cod3-rtv/campaign/9-sloedam/maps/overlay.png
   opacity: 0.72
   corners:
     topLeft: [51.6260353, 3.26884632]
@@ -61,8 +61,8 @@ boxcars, passes a crashed B-24, and helps a pinned Allied squad. He then shoots
 a sniper in a tower, destroys a Panzer IV with a planted charge, disables a
 half-track gunner and enters a house behind a FlaK crew. The final objective is
 to eliminate that gun position and snipe the crew of another FlaK cannon in
-the distance. **Woensdrecht** (`rtv-woensdrecht`) precedes the level, while
-**Walcheren** (`rtv-walcheren`) continues Bradshaw's campaign.
+the distance. **Woensdrecht** (`cod3-rtv-woensdrecht`) precedes the level, while
+**Walcheren** (`cod3-rtv-walcheren`) continues Bradshaw's campaign.
 
 ## The Real Place & Differences
 

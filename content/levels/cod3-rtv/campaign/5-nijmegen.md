@@ -1,15 +1,15 @@
 ---
-id: rtv-nijmegen
+id: cod3-rtv-nijmegen
 title: Nijmegen
 games:
-  - rtv
+  - cod3-rtv
 mode: singleplayer
 campaign:
   id: "1"
   label: American Campaign
 wikiArticle: codwiki-nijmegen
 mapOverlay:
-  image: /images/levels/rtv/campaign/5-nijmegen/maps/overlay.png
+  image: /images/levels/cod3-rtv/campaign/5-nijmegen/maps/overlay.png
   opacity: 0.72
   corners:
     topLeft: [52.03385213, 4.90646237]
@@ -58,9 +58,9 @@ clears a German headquarters and helps troops advance toward a roadblock. After
 German fire destroys more convoy vehicles, he crosses a crashed aircraft and
 recaptures the overrun roadblock before rejoining his squad.
 
-The preceding airborne mission, **Lucky Thirteen** (`rtv-lucky-thirteen`),
+The preceding airborne mission, **Lucky Thirteen** (`cod3-rtv-lucky-thirteen`),
 provides a fictional prelude to Market Garden. **Hunner Park**
-(`rtv-hunner-park`) follows this mission with the same playable soldier and a
+(`cod3-rtv-hunner-park`) follows this mission with the same playable soldier and a
 fight against German guns in Nijmegen. That continuation makes the eastern
 approach near Hunnerpark relevant to the marker analysis, although it does not
 prove that every street in the first level is copied from that area.

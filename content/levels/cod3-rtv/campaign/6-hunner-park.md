@@ -1,15 +1,15 @@
 ---
-id: rtv-hunner-park
+id: cod3-rtv-hunner-park
 title: Hunner Park
 games:
-  - rtv
+  - cod3-rtv
 mode: singleplayer
 campaign:
   id: "1"
   label: American Campaign
 wikiArticle: codwiki-hunner-park
 mapOverlay:
-  image: /images/levels/rtv/campaign/6-hunner-park/maps/overlay.png
+  image: /images/levels/cod3-rtv/campaign/6-hunner-park/maps/overlay.png
   opacity: 0.72
   corners:
     topLeft: [52.03385213, 4.90646237]
@@ -56,9 +56,9 @@ Miller enters the park, destroys two 88 mm guns, approaches a third through a
 red-stone building, kills its crew and turns the captured gun against German
 tanks and artillery.
 
-The mission immediately follows **Nijmegen** (`rtv-nijmegen`) with the same
+The mission immediately follows **Nijmegen** (`cod3-rtv-nijmegen`) with the same
 playable soldier and continues the game's push toward the Waal bridge.
-**River Crossing** (`rtv-river-crossing`) follows it. The game identifies
+**River Crossing** (`cod3-rtv-river-crossing`) follows it. The game identifies
 Miller only with the 82nd Airborne Division; it does not give him a historical
 regiment or company.
 
