@@ -78,6 +78,15 @@ Campaign order starts at `1`, without leading zeros, unique and contiguous
 per game. It records play order, never part of stable ID or display title.
 Descriptive filenames organize files independently of IDs.
 
+The sidebar lists all ordered singleplayer appearances as **In-Game Order**
+under **Singleplayer campaigns**, alongside any named campaign sections.
+Compilation also derives `chronologicalOrder` on game appearances when imported
+Wiki previous/next links establish a complete, unambiguous sequence with explicit
+chronological evidence. Explicit chronological neighbors replace conflicting
+in-game neighbors; unaffected in-game links complete the sequence. Missing,
+unresolved, branching, or cyclic sequences leave **Chronological** unavailable.
+`chronologicalOrder` is generated data, not a supported curated frontmatter field.
+
 A canonical `.md` owns stable ID, mode/subtype, overlays, and research,
 normally embedding locations; a variant may inherit via `metadata.variantOf`.
 Unchanged appearances use `<descriptive-name>.ref.md` under the appearance

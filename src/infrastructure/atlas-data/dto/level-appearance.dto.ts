@@ -14,6 +14,7 @@ export type LevelAppearanceDto = {
     label: string;
   } | null;
   campaignOrder?: number;
+  chronologicalOrder?: number;
   contentUpdate?: {
     id: string;
     label: string;

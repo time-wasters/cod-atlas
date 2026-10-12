@@ -19,6 +19,7 @@ const defaultState = {
   showZombies: false,
   showOther: false,
   sidebarListMode: "locations",
+  campaignKey: null,
   levelId: null,
   locationId: null,
 };
@@ -41,6 +42,7 @@ test("atlas URL serializer round-trips shareable filters and selection", () => {
     showZombies: true,
     showOther: true,
     sidebarListMode: "campaigns",
+    campaignKey: "cod4:default:singleplayer:chronological",
     levelId: "cod4-safehouse",
     locationId: "main",
   };
@@ -53,7 +55,7 @@ test("atlas URL serializer round-trips shareable filters and selection", () => {
 
 test("atlas URL serializer omits defaults and encodes every mode-filter state", () => {
   const defaultUrl = serializeAtlasUrlState(
-    "https://example.com/?game=old&level=old",
+    "https://example.com/?game=old&level=old&campaign=old",
     defaultState,
   );
   assert.equal(defaultUrl.search, "");
@@ -89,4 +91,13 @@ test("atlas URL serializer preserves content-update browsing", () => {
 
   assert.equal(url.searchParams.get("browse"), "updates");
   assert.equal(parseAtlasUrlState(url).sidebarListMode, "updates");
+});
+
+test("atlas URL serializer clears campaign identity when leaving campaign browsing", () => {
+  const url = serializeAtlasUrlState("https://example.com/?browse=campaigns&campaign=old", {
+    ...defaultState,
+    sidebarListMode: "updates",
+    campaignKey: "fixture:default:singleplayer:chronological",
+  });
+  assert.equal(url.searchParams.has("campaign"), false);
 });

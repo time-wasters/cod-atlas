@@ -240,7 +240,7 @@ export function AtlasPage({
     setSidebarListMode(urlState.sidebarListMode);
     setUrlCampaignLevelId(urlState.campaignLevelId);
     setUrlContentUpdateLevelId(urlState.contentUpdateLevelId);
-    setSelectedCampaignKey(null);
+    setSelectedCampaignKey(urlState.campaignKey);
     setSelectedContentUpdateKey(null);
     setExpandedRegionEntryId(null);
     collapseLevelBriefing();
@@ -280,6 +280,7 @@ export function AtlasPage({
     selected,
     selectionInUrl,
     sidebarListMode,
+    campaignKey: selectedCampaign?.key ?? null,
     urlStatePort: atlasUrlStatePort,
     onApplyUrlState: applyAtlasUrlState,
   });

@@ -23,6 +23,7 @@ type CampaignAtlasEntry = {
     title?: string;
     campaign?: { id: string; label: string } | null;
     campaignOrder?: number;
+    chronologicalOrder?: number;
   }[];
   coordinates?: [number, number] | null;
 };
@@ -38,6 +39,7 @@ export type CampaignOption<TGroup, TEntry> = {
   label: string;
   mode: CampaignAtlasEntry["modes"][number];
   modeSub?: LevelModeSub;
+  sequence?: "game" | "chronological";
   levels: { group: TGroup; entry: TEntry }[];
   routeLevels: {
     entryId: string | null;
@@ -87,6 +89,7 @@ export function buildCampaignOptions<
     label: string;
     mode: CampaignAtlasEntry["modes"][number];
     modeSub?: LevelModeSub;
+    sequence?: "game" | "chronological";
     locationsByLevelId: Map<string, { group: TGroup; entry: TEntry }[]>;
   }>();
 
@@ -101,50 +104,53 @@ export function buildCampaignOptions<
         ? appearance.campaignOrder
         : entry.gameIds[0] === campaignGame.id ? entry.campaignOrder : undefined;
       const mode = entry.modes[0];
-      const campaignInfo = explicitCampaign ?? (
-        mode === "singleplayer" && campaignOrder != null
-          ? { id: "singleplayer", label: "Singleplayer" }
-          : null
-      );
-      if (!campaignInfo) continue;
-      const appearanceEntry: TEntry = {
-        ...entry,
-        title: appearance?.title ?? entry.title,
-        campaign: campaignInfo,
-        campaignOrder: campaignOrder ?? entry.campaignOrder,
-        modeSub: appearance?.modeSub ?? entry.modeSub,
-      };
+      const campaignInfos: { id: string; label: string; sequence?: "game" }[] = [];
+      if (explicitCampaign) campaignInfos.push(explicitCampaign);
+      if (mode === "singleplayer" && campaignOrder != null) {
+        campaignInfos.push({ id: "singleplayer", label: "In-Game Order", sequence: "game" });
+      }
+      if (!campaignInfos.length) continue;
       if (!mode) throw new Error(`Campaign level ${entry.levelId} has no game mode`);
-      const modeSubs = Array.isArray(appearanceEntry.modeSub)
-        ? appearanceEntry.modeSub : [appearanceEntry.modeSub];
-      for (const modeSub of modeSubs) {
-        const modeKey = modeSub ? `${mode}:${modeSub}` : mode;
-        const key = explicitCampaign
-          ? `${campaignGame.id}:${modeKey}:${campaignInfo.id}`
-          : `${campaignGame.id}:default:${modeKey}`;
-        let campaign = campaignsByKey.get(key);
-        if (!campaign) {
-          campaign = {
-            key,
-            gameId: campaignGame.id,
-            id: campaignInfo.id,
-            label: campaignInfo.label,
-            mode,
-            modeSub,
-            locationsByLevelId: new Map(),
-          };
-          campaignsByKey.set(key, campaign);
-        }
+      for (const campaignInfo of campaignInfos) {
+        const appearanceEntry: TEntry = {
+          ...entry,
+          title: appearance?.title ?? entry.title,
+          campaign: { id: campaignInfo.id, label: campaignInfo.label },
+          campaignOrder: campaignOrder ?? entry.campaignOrder,
+          modeSub: appearance?.modeSub ?? entry.modeSub,
+        };
+        const modeSubs = Array.isArray(appearanceEntry.modeSub)
+          ? appearanceEntry.modeSub : [appearanceEntry.modeSub];
+        for (const modeSub of modeSubs) {
+          const modeKey = modeSub ? `${mode}:${modeSub}` : mode;
+          const key = campaignInfo.sequence
+            ? `${campaignGame.id}:default:${modeKey}`
+            : `${campaignGame.id}:${modeKey}:${campaignInfo.id}`;
+          let campaign = campaignsByKey.get(key);
+          if (!campaign) {
+            campaign = {
+              key,
+              gameId: campaignGame.id,
+              id: campaignInfo.id,
+              label: campaignInfo.label,
+              mode,
+              modeSub,
+              sequence: campaignInfo.sequence,
+              locationsByLevelId: new Map(),
+            };
+            campaignsByKey.set(key, campaign);
+          }
 
-        const levelLocations = campaign.locationsByLevelId.get(entry.levelId) ?? [];
-        levelLocations.push({ group, entry: appearanceEntry });
-        campaign.locationsByLevelId.set(entry.levelId, levelLocations);
+          const levelLocations = campaign.locationsByLevelId.get(entry.levelId) ?? [];
+          levelLocations.push({ group, entry: appearanceEntry });
+          campaign.locationsByLevelId.set(entry.levelId, levelLocations);
+        }
       }
     }
   }
 
   return [...campaignsByKey.values()]
-    .map(({ key, gameId, id, label, mode, modeSub, locationsByLevelId }) => {
+    .map(({ key, gameId, id, label, mode, modeSub, sequence, locationsByLevelId }) => {
       const orderedLevels = [...locationsByLevelId.values()]
         .map((locations) => {
           const primaryLocation = locations.find(({ entry }) => entry.primary) ?? null;
@@ -179,9 +185,38 @@ export function buildCampaignOptions<
         label,
         mode,
         modeSub,
+        sequence,
         levels: orderedLevels.map(({ displayLocation }) => displayLocation),
         routeLevels: orderedLevels.map(({ routeLevel }) => routeLevel),
       };
+    })
+    .flatMap((campaign) => {
+      if (campaign.sequence !== "game") return [campaign];
+      const chronologicalLevels = campaign.levels.map(({ group, entry }, index) => {
+        const order = entry.appearances?.find((appearance) => appearance.gameId === campaign.gameId)
+          ?.chronologicalOrder;
+        return {
+          selection: { group, entry: { ...entry, campaignOrder: order } },
+          routeLevel: { ...campaign.routeLevels[index], order: order ?? null },
+        };
+      }).sort((left, right) => (left.routeLevel.order ?? Number.MAX_SAFE_INTEGER)
+        - (right.routeLevel.order ?? Number.MAX_SAFE_INTEGER));
+      if (!chronologicalLevels.every(({ routeLevel }, index) => routeLevel.order === index + 1)) {
+        return [campaign];
+      }
+      const chronological = {
+        ...campaign,
+        key: `${campaign.key}:chronological`,
+        id: "chronological",
+        label: "Chronological",
+        sequence: "chronological" as const,
+        levels: chronologicalLevels.map(({ selection }) => ({
+          ...selection,
+          entry: { ...selection.entry, campaign: { id: "chronological", label: "Chronological" } },
+        })),
+        routeLevels: chronologicalLevels.map(({ routeLevel }) => routeLevel),
+      };
+      return [campaign, chronological];
     })
     .sort((left, right) => {
       const modeComparison = campaignModeRank(left.mode, left.modeSub)
@@ -194,6 +229,11 @@ export function buildCampaignOptions<
         ? leftGame.released.localeCompare(rightGame.released) || leftGame.label.localeCompare(rightGame.label)
         : 0;
       if (gameComparison) return gameComparison;
+
+      const sequenceRank = (sequence: CampaignOption<TGroup, TEntry>["sequence"]) =>
+        sequence === "game" ? 0 : sequence === "chronological" ? 1 : 2;
+      const sequenceComparison = sequenceRank(left.sequence) - sequenceRank(right.sequence);
+      if (sequenceComparison) return sequenceComparison;
 
       return (left.levels[0]?.entry.campaignOrder ?? Number.MAX_SAFE_INTEGER)
         - (right.levels[0]?.entry.campaignOrder ?? Number.MAX_SAFE_INTEGER)

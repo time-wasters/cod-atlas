@@ -6,6 +6,7 @@ import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 import { promisify } from "node:util";
+import { buildCampaignOptions } from "../src/application/campaigns/use-cases/build-campaign-options.ts";
 
 const execFileAsync = promisify(execFile);
 const fixtureRoot = fileURLToPath(new URL("../test-fixtures/compiled-atlas/", import.meta.url));
@@ -35,6 +36,56 @@ content-update:
   label: ${label}
 ---
 `;
+
+test("compilation derives chronological appearance order from Wiki links for campaign browsing", async () => {
+  await withFixture(async ({ read, write, compile }) => {
+    for (const [order, name, wikiArticle] of [
+      [2, "second", "fixture-wiki-bravo"],
+      [3, "third", "fixture-wiki-cosmos"],
+    ]) {
+      await write(`content/levels/fixture-classic/campaign/${order}-${name}.md`, `---
+id: fixture-${name}
+title: Fixture ${name}
+games: [fixture-classic]
+mode: singleplayer
+wikiArticle: ${wikiArticle}
+locations:
+  - id: main
+    country: France
+    latitude: 48
+    longitude: 2
+    precision: approximate
+    confidence: medium
+    method: manual-approximate
+    primary: true
+---
+`);
+    }
+    const sequence = ["fixture-wiki-bravo", "fixture-wiki-cosmos", "fixture-wiki-alpha"];
+    for (const [index, id] of sequence.entries()) {
+      const filename = `content/wiki-import/articles/${id}.json`;
+      const article = JSON.parse(await read(filename));
+      article.nextLevels = { links: index + 1 < sequence.length
+        ? [{ sequence: "chronological", article: sequence[index + 1] }] : [] };
+      await write(filename, JSON.stringify(article));
+    }
+    await compile();
+    const atlas = JSON.parse(await read("app/data/atlas.generated.json"));
+    const campaigns = buildCampaignOptions({
+      gameCode: atlas.games.find(({ id }) => id === "fixture-classic").code,
+      games: atlas.games,
+      groups: atlas.groups,
+    });
+    assert.deepEqual(campaigns.map(({ label }) => label), ["In-Game Order", "Chronological", "Fixture Campaign"]);
+    assert.deepEqual(campaigns[1].levels.map(({ entry }) => entry.levelId),
+      ["fixture-second", "fixture-third", "fixture-classic-alpha"]);
+    const entries = atlas.groups.flatMap(({ entries }) => entries);
+    assert.equal(entries.find(({ levelId }) => levelId === "fixture-classic-alpha")
+      .appearances[0].chronologicalOrder, 3);
+    assert.equal(entries.find(({ levelId }) => levelId === "fixture-classic-bravo")
+      .appearances[0].chronologicalOrder, undefined);
+  });
+});
 
 test("references share canonical markers and modes with independent appearance release groups", async () => {
   await withFixture(async ({ read, write, compile }) => {

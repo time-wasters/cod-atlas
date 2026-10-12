@@ -35,7 +35,9 @@ export function useAtlasCampaignSelection({
     (campaign) => campaign.key === selectedCampaignKey,
   ) ?? null;
   const urlSelectedCampaign = sidebarListMode === "campaigns" && urlCampaignLevelId
-    ? campaigns.find((campaign) => campaign.levels.some(
+    ? campaigns.find((campaign) => !campaign.sequence && campaign.levels.some(
+      ({ entry }) => entry.levelId === urlCampaignLevelId,
+    )) ?? campaigns.find((campaign) => campaign.levels.some(
       ({ entry }) => entry.levelId === urlCampaignLevelId,
     )) ?? null
     : null;

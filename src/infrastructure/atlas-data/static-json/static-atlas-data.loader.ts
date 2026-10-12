@@ -99,6 +99,7 @@ function assertLevelAppearance(value: unknown, path: string, mode: unknown): voi
   }
   assertCampaign(appearance.campaign, `${path}.campaign`);
   if (appearance.campaignOrder !== undefined) numberValue(appearance.campaignOrder, `${path}.campaignOrder`);
+  if (appearance.chronologicalOrder !== undefined) numberValue(appearance.chronologicalOrder, `${path}.chronologicalOrder`);
   assertContentUpdate(appearance.contentUpdate, `${path}.contentUpdate`);
   if (appearance.metadata !== undefined) objectValue(appearance.metadata, `${path}.metadata`);
 }

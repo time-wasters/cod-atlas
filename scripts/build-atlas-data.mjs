@@ -4,6 +4,7 @@ import process from "node:process";
 import countries from "world-countries";
 import YAML from "yaml";
 import { buildAtlasEntry } from "../src/application/atlas-compilation/use-cases/build-atlas-entry.mjs";
+import { buildChronologicalOrder } from "../src/application/campaigns/use-cases/build-chronological-order.mjs";
 import { resolveLevelLocationInheritance } from "../src/domain/level/resolve-level-location-inheritance.mjs";
 import { normalizeLevelVerification } from "../src/domain/level/level-verification.value-object.mjs";
 import { isValidLevelModeSub } from "../src/domain/level/level-mode-sub.value-object.mjs";
@@ -747,6 +748,25 @@ for (const [gameId, campaignOrders] of campaignOrdersByGame) {
   );
 }
 
+const singleplayerLevelsByGame = new Map();
+for (const level of levels) {
+  if (level.mode !== "singleplayer") continue;
+  const appearances = [{ ...level, gameId: level.games[0] }, ...level.appearances];
+  for (const appearance of appearances) {
+    if (appearance.campaignOrder == null) continue;
+    const gameLevels = singleplayerLevelsByGame.get(appearance.gameId) ?? [];
+    gameLevels.push({ id: level.id, wikiArticle: appearance.wikiArticle });
+    singleplayerLevelsByGame.set(appearance.gameId, gameLevels);
+  }
+}
+const chronologicalOrdersByGame = new Map([...singleplayerLevelsByGame].map(([gameId, gameLevels]) => [
+  gameId, buildChronologicalOrder({ levels: gameLevels, wikiArticles }),
+]));
+function chronologicalOrderForAppearance(levelId, gameId) {
+  const chronologicalOrder = chronologicalOrdersByGame.get(gameId)?.get(levelId);
+  return chronologicalOrder ? { chronologicalOrder } : {};
+}
+
 const groups = new Map();
 for (const level of levels) {
   const article = wikiArticles.get(level.wikiArticle);
@@ -762,6 +782,7 @@ for (const level of levels) {
     ...(level.mode === "multiplayer" && level.modeSub ? { modeSub: level.modeSub } : {}),
     ...(level.campaign ? { campaign: level.campaign } : {}),
     ...(level.campaignOrder ? { campaignOrder: level.campaignOrder } : {}),
+    ...chronologicalOrderForAppearance(level.id, ownerGameId),
     ...(level.contentUpdate ? { contentUpdate: level.contentUpdate } : {}),
     ...(level.metadata ? { metadata: level.metadata } : {}),
   }, ...level.appearances.map((appearance) => ({
@@ -775,6 +796,7 @@ for (const level of levels) {
     ...(appearance.modeSub ? { modeSub: appearance.modeSub } : {}),
     ...(appearance.campaign ? { campaign: appearance.campaign } : {}),
     ...(appearance.campaignOrder ? { campaignOrder: appearance.campaignOrder } : {}),
+    ...chronologicalOrderForAppearance(level.id, appearance.gameId),
     ...(appearance.contentUpdate ? { contentUpdate: appearance.contentUpdate } : {}),
     ...(appearance.metadata ? { metadata: appearance.metadata } : {}),
   }))];
