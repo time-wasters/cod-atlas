@@ -94,24 +94,34 @@ export function buildCampaignOptions<
     for (const entry of group.entries) {
       if (!entry.gameIds.includes(campaignGame.id)) continue;
       const appearance = entry.appearances?.find((item) => item.gameId === campaignGame.id);
-      const campaignInfo = appearance
+      const explicitCampaign = appearance
         ? appearance.campaign
         : entry.gameIds[0] === campaignGame.id ? entry.campaign : null;
+      const campaignOrder = appearance
+        ? appearance.campaignOrder
+        : entry.gameIds[0] === campaignGame.id ? entry.campaignOrder : undefined;
+      const mode = entry.modes[0];
+      const campaignInfo = explicitCampaign ?? (
+        mode === "singleplayer" && campaignOrder != null
+          ? { id: "singleplayer", label: "Singleplayer" }
+          : null
+      );
       if (!campaignInfo) continue;
       const appearanceEntry: TEntry = {
         ...entry,
         title: appearance?.title ?? entry.title,
         campaign: campaignInfo,
-        campaignOrder: appearance?.campaignOrder ?? entry.campaignOrder,
+        campaignOrder: campaignOrder ?? entry.campaignOrder,
         modeSub: appearance?.modeSub ?? entry.modeSub,
       };
-      const mode = entry.modes[0];
       if (!mode) throw new Error(`Campaign level ${entry.levelId} has no game mode`);
       const modeSubs = Array.isArray(appearanceEntry.modeSub)
         ? appearanceEntry.modeSub : [appearanceEntry.modeSub];
       for (const modeSub of modeSubs) {
         const modeKey = modeSub ? `${mode}:${modeSub}` : mode;
-        const key = `${campaignGame.id}:${modeKey}:${campaignInfo.id}`;
+        const key = explicitCampaign
+          ? `${campaignGame.id}:${modeKey}:${campaignInfo.id}`
+          : `${campaignGame.id}:default:${modeKey}`;
         let campaign = campaignsByKey.get(key);
         if (!campaign) {
           campaign = {

@@ -50,6 +50,87 @@ test("campaigns with the same ID remain separate across game modes", () => {
   );
 });
 
+test("ordered ungrouped singleplayer levels form a default campaign for each game", () => {
+  const games = [
+    { id: "cod", code: "COD", label: "Call of Duty", released: "2003-10-29" },
+    { id: "fixture-other", code: "OTHER", label: "Other", released: "2004-01-01" },
+  ];
+  const missions = [3, 1, 2].map((order) => ({
+    ...campaignEntry(`mission-${order}`, "singleplayer"),
+    campaign: order === 2 ? undefined : null,
+    campaignOrder: order,
+    coordinates: order === 2 ? null : [10, 20],
+  }));
+  const entries = [
+    { ...missions[1], id: "mission-1:secondary", primary: false, coordinates: [30, 40] },
+    ...missions,
+    {
+      ...campaignEntry("named-mission", "singleplayer"),
+      campaign: { id: "singleplayer", label: "Named Campaign" },
+    },
+    ...["singleplayer", "multiplayer", "zombies", "other"].map((mode) => ({
+      ...campaignEntry(`excluded-${mode}`, mode, mode === "other" ? "challenge" : undefined),
+      campaign: null,
+      campaignOrder: mode === "singleplayer" ? undefined : 1,
+    })),
+    {
+      ...campaignEntry("other-game-mission", "singleplayer"),
+      gameIds: ["fixture-other"],
+      campaign: null,
+    },
+  ];
+  const snapshot = structuredClone(entries);
+  const options = (gameCode) => buildCampaignOptions({ gameCode, games, groups: [{ entries }] });
+  const campaigns = options("COD");
+  const campaign = campaigns.find(({ label }) => label === "Singleplayer");
+
+  assert.equal(campaigns.length, 2);
+  assert.equal(campaign.key, "cod:default:singleplayer");
+  assert.equal(campaign.mode, "singleplayer");
+  assert.deepEqual(campaign.levels.map(({ entry }) => entry.levelId), ["mission-1", "mission-2", "mission-3"]);
+  assert.deepEqual(campaign.routeLevels.map(({ order }) => order), [1, 2, 3]);
+  assert.equal(campaign.levels[0].entry.id, "mission-1");
+  assert.deepEqual(campaign.routeLevels[0].coordinates, [10, 20]);
+  assert.equal(campaign.routeLevels[1].coordinates, null);
+  assert.deepEqual(campaigns.find(({ label }) => label === "Named Campaign").levels
+    .map(({ entry }) => entry.levelId), ["named-mission"]);
+  assert.deepEqual(options("OTHER").map(({ key, levels }) => ({
+    key, levelIds: levels.map(({ entry }) => entry.levelId),
+  })), [{ key: "fixture-other:default:singleplayer", levelIds: ["other-game-mission"] }]);
+  assert.deepEqual(options("all"), []);
+  assert.deepEqual(options("UNKNOWN"), []);
+  assert.deepEqual(entries, snapshot, "default campaigns must not modify source entries");
+});
+
+test("default campaigns use the selected appearance's title and play order", () => {
+  const games = [
+    { id: "fixture-owner", code: "OWNER", label: "Owner", released: "2000-01-01" },
+    { id: "fixture-returning", code: "RETURNING", label: "Returning", released: "2001-01-01" },
+  ];
+  const entries = [1, 2].map((order) => ({
+    ...campaignEntry(`fixture-mission-${order}`, "singleplayer"),
+    gameIds: games.map(({ id }) => id),
+    campaignOrder: order,
+    appearances: [{
+      gameId: "fixture-returning",
+      title: `Returning Mission ${3 - order}`,
+      campaignOrder: 3 - order,
+    }],
+  }));
+  const snapshot = structuredClone(entries);
+  const options = (gameCode) => buildCampaignOptions({ gameCode, games, groups: [{ entries }] });
+  const [campaign] = options("RETURNING");
+
+  assert.equal(campaign.label, "Singleplayer");
+  assert.deepEqual(campaign.levels.map(({ entry }) => entry.levelId), ["fixture-mission-2", "fixture-mission-1"]);
+  assert.deepEqual(campaign.routeLevels.map(({ title, order }) => ({ title, order })), [
+    { title: "Returning Mission 1", order: 1 },
+    { title: "Returning Mission 2", order: 2 },
+  ]);
+  assert.equal(options("OWNER")[0].label, "Shared campaign ID");
+  assert.deepEqual(entries, snapshot);
+});
+
 test("campaign grouping, titles and mission order use the selected game appearance", () => {
   const original = { id: "original", label: "Original Campaign" };
   const returning = { id: "returning", label: "Returning Campaign" };
