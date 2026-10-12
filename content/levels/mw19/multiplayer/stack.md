@@ -5,12 +5,15 @@ games:
   - mw19
 mode: multiplayer
 wikiArticle: codwiki-stack
-locations: []
+locations:
+  - id: main
+    country: Syria
+    latitude: 35
+    longitude: 38
+    precision: country
+    confidence: fallback
+    method: country-fallback
+    primary: true
+    urls:
+      - googleMaps: https://www.google.com/maps/search/?api=1&query=Syria
 ---
-
-> **AI-assisted roster note:** Geographic research is pending unless inherited
-> from a linked canonical level. This note records roster identity only.
-
-This Gunfight map first appeared in Modern Warfare (2019). Mobile reuses it as a Multiplayer map. Its geographic research is pending.
-
-Source: [Stack](https://callofduty.fandom.com/wiki/Stack).
