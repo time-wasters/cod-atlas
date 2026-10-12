@@ -297,11 +297,12 @@ export function AtlasPage({
     selected,
     collectionLevels: selectedLevelCollection?.levels,
   });
+  // Keep the expanded list open while selecting levels in the same collection.
   const relatedLevelsExpansionKey = selectedCampaign
     ? `campaign:${selectedCampaign.key}`
     : selectedContentUpdate
       ? `update:${selectedContentUpdate.key}`
-      : selected.entry.id;
+      : `region:${selected.group.name}`;
   const relatedLevelsExpanded = expandedRegionEntryId === relatedLevelsExpansionKey;
   const {
     enabled: selectedMapOverlayEnabled,
@@ -319,7 +320,6 @@ export function AtlasPage({
   const selectEntry = useCallback((group: AtlasGroupDto, entry: AtlasEntryDto) => {
     setNextHistoryMode("push");
     selectAtlasEntry(group, entry);
-    setExpandedRegionEntryId(null);
     collapseLevelBriefing();
     setActiveHistoryOverlay(null);
   }, [collapseLevelBriefing, selectAtlasEntry, setNextHistoryMode]);
