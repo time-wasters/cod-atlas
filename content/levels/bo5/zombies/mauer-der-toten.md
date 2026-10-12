@@ -3,7 +3,7 @@ id: bo5-mauer-der-toten
 title: Mauer der Toten
 games:
   - bo5
-mode: multiplayer
+mode: zombies
 wikiArticle: codwiki-mauer-der-toten
 locations:
   - id: main

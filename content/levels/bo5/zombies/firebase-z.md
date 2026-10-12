@@ -3,7 +3,7 @@ id: bo5-firebase-z
 title: Firebase Z
 games:
   - bo5
-mode: multiplayer
+mode: zombies
 wikiArticle: codwiki-firebase-z
 locations:
   - id: main

@@ -1,15 +1,15 @@
 ---
-id: bo5-forsaken
-title: Forsaken
+id: bo5-zoo-zm
+title: Zoo ZM
 games:
   - bo5
-mode: multiplayer
-wikiArticle: codwiki-forsaken
+mode: zombies
+wikiArticle: codwiki-zoo-outbreak
 locations:
   - id: main
-    country: Ukraine
-    latitude: 49
-    longitude: 32
+    country: Russia
+    latitude: 60
+    longitude: 100
     precision: country
     confidence: fallback
     method: country-fallback

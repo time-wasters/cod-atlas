@@ -3,7 +3,7 @@ id: bo5-die-machine
 title: Die Machine
 games:
   - bo5
-mode: multiplayer
+mode: zombies
 wikiArticle: codwiki-die-maschine
 locations:
   - id: main
