@@ -1,5 +1,5 @@
 ---
-level: bocw-crossroads
+level: bo5-crossroads
 campaign:
   id: multiplayer
   label: Multiplayer

@@ -1,5 +1,5 @@
 ---
-level: bocw-collateral-strike
+level: bo5-collateral-strike
 campaign:
   id: multiplayer
   label: Multiplayer

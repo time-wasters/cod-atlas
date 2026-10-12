@@ -1,5 +1,5 @@
 ---
-level: bocw-armada-strike
+level: bo5-armada-strike
 campaign:
   id: multiplayer
   label: Multiplayer

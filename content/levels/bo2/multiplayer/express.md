@@ -1,7 +1,7 @@
 ---
 id: bo2-express
 legacyIds:
-  - bo2-bocw-express
+  - bo2-bo5-express
 title: Express
 games:
   - bo2

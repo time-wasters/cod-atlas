@@ -1,5 +1,5 @@
 ---
-level: bocw-satellite
+level: bo5-satellite
 campaign:
   id: multiplayer
   label: Multiplayer

@@ -1,5 +1,5 @@
 ---
-level: bocw-collateral
+level: bo5-collateral
 campaign:
   id: multiplayer
   label: Multiplayer

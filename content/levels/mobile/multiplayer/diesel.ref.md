@@ -1,5 +1,5 @@
 ---
-level: bocw-diesel
+level: bo5-diesel
 campaign:
   id: multiplayer
   label: Multiplayer

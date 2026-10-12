@@ -1,5 +1,5 @@
 ---
-level: bocw-armada
+level: bo5-armada
 campaign:
   id: multiplayer
   label: Multiplayer

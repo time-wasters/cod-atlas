@@ -1,0 +1,17 @@
+id: bo5
+code: BO5
+label: Black Ops Cold War
+labelLong: "Call of Duty: Black Ops Cold War"
+released: 2020-11-13
+series: black-ops
+subseries: main
+images:
+  steam:
+    app: 1985810
+    icon: 2998827956613290f9af6b771a5281249af91740
+    clienticon: 4ff3c6ae703d37c6d12b94f57b98622c6553a1de
+developer:
+  - id: treyarch
+    name: Treyarch
+  - id: raven
+    name: Raven Software

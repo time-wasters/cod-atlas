@@ -12,7 +12,7 @@ content-update:
   label: "2023 Season 11"
 wikiArticle: codwiki-miami-blitz
 metadata:
-  variantOf: bocw-miami-strike
+  variantOf: bo5-miami-strike
 ---
 
 > **AI-assisted roster note:** Geographic research is pending unless inherited

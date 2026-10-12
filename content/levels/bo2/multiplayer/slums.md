@@ -1,7 +1,7 @@
 ---
 id: bo2-slums
 legacyIds:
-  - bo2-bo3-bo4-bocw-slums
+  - bo2-bo3-bo4-bo5-slums
 title: Slums
 games:
   - bo2

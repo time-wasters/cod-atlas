@@ -1,5 +1,5 @@
 ---
-level: bocw-miami-strike
+level: bo5-miami-strike
 campaign:
   id: multiplayer
   label: Multiplayer

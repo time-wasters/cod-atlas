@@ -1,7 +1,7 @@
 ---
 id: bo2-rush
 legacyIds:
-  - bo2-bocw-rush
+  - bo2-bo5-rush
 title: Rush
 games:
   - bo2

@@ -1,5 +1,5 @@
 ---
-level: bocw-apocalypse
+level: bo5-apocalypse
 campaign:
   id: multiplayer
   label: Multiplayer
