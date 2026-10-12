@@ -79,7 +79,9 @@ per game. It records play order, never part of stable ID or display title.
 Descriptive filenames organize files independently of IDs.
 
 The sidebar lists all ordered singleplayer appearances as **In-Game Order**
-under **Singleplayer campaigns**, alongside any named campaign sections.
+under **Singleplayer Campaign**, alongside **Chronological** when available.
+Named singleplayer campaign sections declared in level files appear separately
+under **Plot Campaigns**.
 Compilation also derives `chronologicalOrder` on game appearances when imported
 Wiki previous/next links establish a complete, unambiguous sequence with explicit
 chronological evidence. Explicit chronological neighbors replace conflicting

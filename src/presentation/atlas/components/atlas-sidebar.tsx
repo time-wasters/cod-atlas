@@ -288,7 +288,8 @@ export function AtlasSidebar({
     return "Singleplayer";
   };
   const campaignSections = [
-    browse.campaigns.filter((campaign) => campaign.mode === "singleplayer"),
+    browse.campaigns.filter((campaign) => campaign.mode === "singleplayer" && campaign.sequence),
+    browse.campaigns.filter((campaign) => campaign.mode === "singleplayer" && !campaign.sequence),
     browse.campaigns.filter((campaign) => campaign.mode === "multiplayer" && !campaign.modeSub),
     browse.campaigns.filter((campaign) => campaign.mode === "multiplayer" && campaign.modeSub === "battle-royale"),
     browse.campaigns.filter((campaign) => campaign.mode === "multiplayer" && campaign.modeSub === "dmz"),
@@ -302,10 +303,11 @@ export function AtlasSidebar({
   ) => {
     const representative = campaigns[0];
     if (!representative) return null;
-    const modeLabel = campaignModeLabel(representative);
-    const heading = `${modeLabel} campaigns`;
+    const heading = representative.mode === "singleplayer"
+      ? representative.sequence ? "Singleplayer Campaign" : "Plot Campaigns"
+      : `${campaignModeLabel(representative)} campaigns`;
     return (
-      <section className="campaign-list-section" aria-label={heading} key={`${representative.mode}:${representative.modeSub ?? ""}`}>
+      <section className="campaign-list-section" aria-label={heading} key={heading}>
         <header className="campaign-list-section-label">
           <LevelModeIcon mode={representative.mode} modeSub={representative.modeSub} />
           <strong>{heading}</strong>
