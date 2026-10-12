@@ -15,7 +15,7 @@ wikiArticle: codwiki-example-level
 #   variantOf: example-game-source-level # Omit locations below to inherit them.
 locations:
   - id: main
-    country: Off-world
+    country: Virtual
     precision: off-world
     confidence: fallback
     method: region-fallback

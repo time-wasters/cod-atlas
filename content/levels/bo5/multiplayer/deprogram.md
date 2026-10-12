@@ -9,7 +9,7 @@ metadata:
   variantOf: bo5-break-on-through
 locations:
   - id: main
-    country: Off-world
+    country: Virtual
     precision: off-world
     confidence: fallback
     method: region-fallback
