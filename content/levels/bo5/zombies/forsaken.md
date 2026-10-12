@@ -4,6 +4,9 @@ title: Forsaken
 games:
   - bo5
 mode: zombies
+campaign:
+  id: round-based
+  label: Round-based
 wikiArticle: codwiki-forsaken
 locations:
   - id: main

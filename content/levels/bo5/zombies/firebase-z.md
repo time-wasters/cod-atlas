@@ -4,6 +4,9 @@ title: Firebase Z
 games:
   - bo5
 mode: zombies
+campaign:
+  id: round-based
+  label: Round-based
 wikiArticle: codwiki-firebase-z
 locations:
   - id: main

@@ -4,6 +4,9 @@ title: Zoo ZM
 games:
   - bo5
 mode: zombies
+campaign:
+  id: outbreak
+  label: Outbreak
 wikiArticle: codwiki-zoo-outbreak
 locations:
   - id: main

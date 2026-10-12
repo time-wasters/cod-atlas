@@ -4,6 +4,9 @@ title: Die Machine
 games:
   - bo5
 mode: zombies
+campaign:
+  id: round-based
+  label: Round-based
 wikiArticle: codwiki-die-maschine
 locations:
   - id: main

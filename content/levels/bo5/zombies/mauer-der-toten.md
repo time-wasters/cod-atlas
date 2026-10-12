@@ -4,6 +4,9 @@ title: Mauer der Toten
 games:
   - bo5
 mode: zombies
+campaign:
+  id: round-based
+  label: Round-based
 wikiArticle: codwiki-mauer-der-toten
 locations:
   - id: main
