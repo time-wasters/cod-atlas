@@ -7,6 +7,7 @@ import type { AtlasGroupDto } from "../../../infrastructure/atlas-data/dto/atlas
 import type { MapOverlayDto } from "../../../infrastructure/atlas-data/dto/map-overlay.dto.js";
 import type { LeafletMapRuntime } from "./use-leaflet-map.js";
 import { mapTravelDuration } from "../models/map-travel-duration.js";
+import { markerFocusZoomLimit, revealLeafletMarker } from "../../../infrastructure/mapping/leaflet/leaflet-marker-reveal.adapter.js";
 
 type AtlasSelection = { group: AtlasGroupDto; entry: AtlasEntryDto };
 type SidebarSelectionTarget = {
@@ -151,12 +152,17 @@ export function useMapViewport({
     cancelMarkerFlightArrival();
     currentMap.stop();
     const animate = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const destination = entryMarker.getLatLng();
+    const precisionZoom = markerFocusZoomLimit(entry.precision);
+    const destination = precisionZoom !== null && entry.coordinates
+      ? leaflet.latLng(entry.coordinates) : entryMarker.getLatLng();
     const distance = currentMap.getCenter().distanceTo(destination);
     const reveal = () => {
       if (runtime.getMap() !== currentMap || runtime.getMarker(entry.id)?.marker !== entryMarker) return;
-      layer.zoomToShowLayer(entryMarker, () => {
+      revealLeafletMarker(layer, entryMarker, entry.precision, () => {
         if (runtime.getMap() !== currentMap || runtime.getMarker(entry.id)?.marker !== entryMarker) return;
+        // Coarse markers were already framed; panning a spiderfied marker would
+        // collapse its cluster again and move away from the real fallback point.
+        if (precisionZoom !== null) return;
         const movement = { animate, duration: mapTravelDuration(currentMap.getCenter().distanceTo(entryMarker.getLatLng())) };
         if (center) currentMap.panTo(entryMarker.getLatLng(), movement);
         else currentMap.panInside(entryMarker.getLatLng(), {
@@ -164,10 +170,8 @@ export function useMapViewport({
         });
       });
     };
-    if (animate && distance > 50_000) {
-      const precisionZoom = entry.precision === "country" ? 5
-        : entry.precision === "region" ? 6 : entry.precision === "city" ? 8 : currentMap.getMaxZoom();
-      const targetZoom = Math.min(precisionZoom, Math.max(6, currentMap.getZoom()));
+    const targetZoom = Math.min(precisionZoom ?? currentMap.getMaxZoom(), Math.max(6, currentMap.getZoom()));
+    if (animate && (distance > 50_000 || (precisionZoom !== null && currentMap.getZoom() !== targetZoom))) {
       const movement = { animate, duration: mapTravelDuration(distance), maxZoom: targetZoom };
       const arrive = () => {
         markerFlightArrival.current = null;
@@ -179,6 +183,28 @@ export function useMapViewport({
       else currentMap.flyToBounds(leaflet.latLngBounds([destination]), {
         ...leafletViewportPadding(mapElement, getDetailsElement()), ...movement,
       });
+    } else if (precisionZoom !== null) {
+      const movement = { animate, duration: mapTravelDuration(distance) };
+      const arrive = () => { markerFlightArrival.current = null; reveal(); };
+      markerFlightArrival.current = arrive;
+      currentMap.once("moveend", arrive);
+      let moved = false;
+      const markMoving = () => { moved = true; };
+      currentMap.once("movestart", markMoving);
+      if (currentMap.getZoom() !== targetZoom) {
+        currentMap.fitBounds(leaflet.latLngBounds([destination]), {
+          ...leafletViewportPadding(mapElement, getDetailsElement()), maxZoom: targetZoom, ...movement,
+        });
+      } else if (center) currentMap.panTo(destination, movement);
+      else currentMap.panInside(destination, {
+        ...leafletViewportPadding(mapElement, getDetailsElement()), ...movement,
+      });
+      currentMap.off("movestart", markMoving);
+      // panInside is a no-op when the point is already visible.
+      if (!moved && markerFlightArrival.current === arrive) {
+        cancelMarkerFlightArrival();
+        reveal();
+      }
     } else reveal();
   }, [cancelMarkerFlightArrival, focusEntryOverlay, getDetailsElement, runtime]);
 

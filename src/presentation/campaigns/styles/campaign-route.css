@@ -10,7 +10,7 @@
   animation-play-state: running, paused;
 }
 .leaflet-campaignRoute-pane > svg {
-  overflow: visible;
+  overflow: hidden;
 }
 .campaign-route-stop-wrap {
   overflow: visible;

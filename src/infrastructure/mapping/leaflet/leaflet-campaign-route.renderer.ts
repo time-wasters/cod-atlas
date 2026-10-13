@@ -131,8 +131,9 @@ export function renderLeafletCampaignRoute({
         lineCap: "round" as const,
         lineJoin: "round" as const,
         interactive: false,
-        // Preserve the full geometry while the renderer moves between views.
-        noClip: true,
+        // Clip distant connections to the viewport even while the camera moves.
+        // Unclipped global paths can overwhelm SVG rendering at street zooms.
+        noClip: false,
         dashArray: "7 10",
         dashOffset: "0",
       };
