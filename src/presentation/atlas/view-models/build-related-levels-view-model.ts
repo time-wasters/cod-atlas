@@ -14,6 +14,7 @@ export function buildRelatedLevelsViewModel({
   game,
   gameIcon,
   gameIconIsExternal,
+  group,
   items,
   open,
   selectedLevelId,
@@ -24,6 +25,7 @@ export function buildRelatedLevelsViewModel({
   game: GameDto | null;
   gameIcon: string | null | undefined;
   gameIconIsExternal: boolean;
+  group: AtlasGroupDto;
   items: RelatedLevel[];
   open: boolean;
   selectedLevelId: string;
@@ -47,6 +49,7 @@ export function buildRelatedLevelsViewModel({
     hiddenCount: items.length - visibleItems.length,
     items: visibleItems,
     label: campaign?.label ?? contentUpdate?.label ?? "Related levels",
+    locationIcon: campaign || contentUpdate ? null : { flagCode: group.flagCode },
     open,
     selectedLevelId,
     totalCount: items.length,

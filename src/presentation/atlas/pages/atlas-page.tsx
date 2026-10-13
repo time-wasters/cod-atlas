@@ -510,6 +510,7 @@ export function AtlasPage({
     game: selectedCollectionGame,
     gameIcon: selectedCollectionGameIcon,
     gameIconIsExternal: selectedCollectionUsesExternalGameIcon,
+    group: selected.group,
     items: relatedLevels,
     open: relatedLevelsOpen,
     selectedLevelId: selected.entry.levelId,

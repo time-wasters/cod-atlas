@@ -2,6 +2,7 @@
 
 import type { AtlasEntryDto } from "../../../infrastructure/atlas-data/dto/atlas-entry.dto.js";
 import type { AtlasGroupDto } from "../../../infrastructure/atlas-data/dto/atlas-group.dto.js";
+import { CountryFlag } from "../../shared/components/country-flag.js";
 
 type RelatedLevel = { group: AtlasGroupDto; entry: AtlasEntryDto };
 
@@ -14,6 +15,7 @@ export type RelatedLevelsViewModel = {
   hiddenCount: number;
   items: RelatedLevel[];
   label: string;
+  locationIcon: { flagCode: string | null } | null;
   open: boolean;
   selectedLevelId: string;
   totalCount: number;
@@ -41,13 +43,15 @@ export function RelatedLevelsPanel({
   return (
     <aside className={`related-levels-panel${viewModel.open ? "" : " is-collapsed"}`} aria-label={viewModel.ariaLabel}>
       <button
-        className={`related-levels-toggle${viewModel.gameIcon ? " has-game-icon" : ""}`}
+        className={`related-levels-toggle${viewModel.locationIcon ? " has-location-icon" : viewModel.gameIcon ? " has-game-icon" : ""}`}
         type="button"
         aria-expanded={viewModel.open}
         aria-controls="related-level-list"
         onClick={onToggle}
       >
-        {viewModel.gameIcon && (
+        {viewModel.locationIcon ? (
+          <CountryFlag code={viewModel.locationIcon.flagCode} />
+        ) : viewModel.gameIcon && (
           // eslint-disable-next-line @next/next/no-img-element
           <img
             className={`related-levels-game-icon${viewModel.gameIcon.external ? " is-external" : ""}`}
