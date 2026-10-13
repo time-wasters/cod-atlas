@@ -8,5 +8,11 @@ wikiArticle: codwiki-g3t-h1gh3r
 metadata:
   variantOf: mwiii-get-high
 locations: []
+campaign:
+  id: g3t-h1gh
+  label: G3T_H1GH
+content-update:
+  id: "4"
+  label: Season 4
 ---
 

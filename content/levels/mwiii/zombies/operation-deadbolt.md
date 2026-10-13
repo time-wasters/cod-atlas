@@ -3,7 +3,7 @@ id: mwiii-urzikstan
 title: Operation Deadbolt
 games:
   - mwiii
-mode: multiplayer
+mode: zombies
 wikiArticle: codwiki-operation-deadbolt
 metadata:
   mapTitle: Urzikstan
@@ -24,5 +24,11 @@ locations:
     confidence: fallback
     method: country-fallback
     primary: false
+campaign:
+  id: operation-deadbolt
+  label: Operation Deadbolt
+content-update:
+  id: "0"
+  label: Included
 ---
 
