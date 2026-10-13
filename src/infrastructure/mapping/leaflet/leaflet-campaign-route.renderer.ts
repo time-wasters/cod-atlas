@@ -1,4 +1,4 @@
-import type { LayerGroup, Map as LeafletMap } from "leaflet";
+import type { LayerGroup, Map as LeafletMap, Polyline } from "leaflet";
 
 type Coordinates = [number, number];
 
@@ -56,12 +56,17 @@ function buildArcCoordinates({
     normalX *= -1;
     normalY *= -1;
   }
-  const height = Math.min(110, Math.max(22, distance * .22));
+  // A fixed minimum bend makes short connections arch far beyond their stops.
+  const height = Math.min(64, distance * .12);
   const controlPoint = leaflet.point(
     (startPoint.x + endPoint.x) / 2 + normalX * height,
     (startPoint.y + endPoint.y) / 2 + normalY * height,
   );
-  const sampleCount = Math.min(12, Math.max(8, Math.ceil(distance / 60)));
+  // For a quadratic arc, the maximum chord error is height / (2 * samples²).
+  // Target half a screen pixel, with a sample cap for extreme zoom levels.
+  const screenScale = 2 ** (map.getZoom() - projectionZoom);
+  const sampleCount = Math.min(512, Math.max(8,
+    Math.ceil(Math.sqrt(height * screenScale) / 2) * 2));
 
   return Array.from({ length: sampleCount + 1 }, (_, index) => {
     if (index === 0) return start;
@@ -103,6 +108,7 @@ export function renderLeafletCampaignRoute({
   const routeLayer = leaflet.layerGroup().addTo(map);
   const boundsCoordinates: Coordinates[] = route.waypoints.map(({ coordinates }) => coordinates);
   const projectionZoom = campaignRouteProjectionZoom(leaflet, map, route);
+  const connections: { start: Coordinates; end: Coordinates; line: Polyline }[] = [];
 
   route.segments.forEach((segment) => {
     for (let index = 1; index < segment.length; index += 1) {
@@ -122,13 +128,15 @@ export function renderLeafletCampaignRoute({
         dashArray: "7 10",
         dashOffset: "0",
       };
-      leaflet.polyline(arc, {
+      const line = leaflet.polyline(arc, {
         ...common,
         className: `campaign-route-travel${animationEnabled ? "" : " is-static"}`,
         color: "#741c27",
         weight: 3,
         opacity: .92,
+        smoothFactor: .25,
       }).addTo(routeLayer);
+      connections.push({ start: segment[index - 1], end: segment[index], line });
     }
   });
 
@@ -170,8 +178,14 @@ export function renderLeafletCampaignRoute({
   const mapElement = map.getContainer();
   const pauseRouteAnimation = () => mapElement.classList.add("campaign-route-map-moving");
   const resumeRouteAnimation = () => mapElement.classList.remove("campaign-route-map-moving");
+  const updateRouteDetail = () => {
+    for (const { start, end, line } of connections) {
+      line.setLatLngs(buildArcCoordinates({ leaflet, map, projectionZoom, start, end }));
+    }
+  };
   map.on("movestart", pauseRouteAnimation);
   map.on("moveend", resumeRouteAnimation);
+  map.on("zoomend", updateRouteDetail);
 
   return {
     boundsCoordinates,
@@ -179,6 +193,7 @@ export function renderLeafletCampaignRoute({
     remove: () => {
       map.off("movestart", pauseRouteAnimation);
       map.off("moveend", resumeRouteAnimation);
+      map.off("zoomend", updateRouteDetail);
       mapElement.classList.remove("campaign-route-map-moving");
       routeLayer.remove();
     },

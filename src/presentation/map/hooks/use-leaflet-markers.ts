@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import type { AtlasEntryDto } from "../../../infrastructure/atlas-data/dto/atlas-entry.dto.js";
 import type { AtlasGroupDto } from "../../../infrastructure/atlas-data/dto/atlas-group.dto.js";
 import {
@@ -28,6 +28,8 @@ export function useLeafletMarkers({
   selected: AtlasSelection;
   focusedLevelIds: ReadonlySet<string> | null;
 }) {
+  const pulseSelection = useRef<{ entryId: string; played: boolean } | null>(null);
+
   useEffect(() => {
     const layer = runtime.getMarkerLayer();
     const leaflet = runtime.getLeaflet();
@@ -63,5 +65,71 @@ export function useLeafletMarkers({
       marker.setZIndexOffset(active ? 1000 : 0);
     });
     runtime.getMarkerLayer()?.refreshClusters();
-  }, [focusedLevelIds, ready, runtime, selected.entry.id]);
+  }, [filteredGroups, focusedLevelIds, ready, runtime, selected.entry.id]);
+
+  useEffect(() => {
+    if (pulseSelection.current?.entryId !== selected.entry.id) {
+      pulseSelection.current = { entryId: selected.entry.id, played: false };
+    }
+    const selection = pulseSelection.current;
+    const map = runtime.getMap();
+    const layer = runtime.getMarkerLayer();
+    const marker = runtime.getMarker(selected.entry.id)?.marker;
+    if (!ready || !map || !layer || !marker || !selection || selection.played
+      || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    let moving = false;
+    let pulse: HTMLSpanElement | null = null;
+    let settleTimer: number | undefined;
+    let removalTimer: number | undefined;
+
+    const removePulse = () => {
+      pulse?.remove();
+      pulse = null;
+    };
+    const playPulse = () => {
+      if (moving || selection.played) return;
+      const visibleMarker = layer.getVisibleParent(marker);
+      const element = visibleMarker?.getElement();
+      if (!visibleMarker || !element?.isConnected
+        || !map.getBounds().contains(visibleMarker.getLatLng())) return;
+
+      selection.played = true;
+      pulse = document.createElement("span");
+      pulse.className = "atlas-selection-pulse";
+      pulse.setAttribute("aria-hidden", "true");
+      pulse.addEventListener("animationend", removePulse, { once: true });
+      element.append(pulse);
+      removalTimer = window.setTimeout(removePulse, 1000);
+    };
+    const schedulePulse = () => {
+      if (selection.played) return;
+      window.clearTimeout(settleTimer);
+      settleTimer = window.setTimeout(playPulse, 100);
+    };
+    const handleMoveStart = () => {
+      moving = true;
+      window.clearTimeout(settleTimer);
+    };
+    const handleMoveEnd = () => {
+      moving = false;
+      schedulePulse();
+    };
+
+    map.on("movestart move", handleMoveStart);
+    map.on("moveend", handleMoveEnd);
+    layer.on("animationend spiderfied", schedulePulse);
+    marker.on("add", schedulePulse);
+    schedulePulse();
+
+    return () => {
+      map.off("movestart move", handleMoveStart);
+      map.off("moveend", handleMoveEnd);
+      layer.off("animationend spiderfied", schedulePulse);
+      marker.off("add", schedulePulse);
+      window.clearTimeout(settleTimer);
+      window.clearTimeout(removalTimer);
+      removePulse();
+    };
+  }, [filteredGroups, ready, runtime, selected.entry.id]);
 }

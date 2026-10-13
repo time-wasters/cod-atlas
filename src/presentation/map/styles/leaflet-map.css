@@ -78,6 +78,21 @@
   background: none !important;
   border: 0 !important;
 }
+.atlas-selection-pulse {
+  position: absolute;
+  inset: -5px;
+  border: 2px solid var(--amber);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: atlas-selection-pulse 800ms ease-out both;
+}
+@keyframes atlas-selection-pulse {
+  from { transform: scale(1); opacity: 0.9; }
+  to { transform: scale(2.6); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .atlas-selection-pulse { display: none; animation: none; }
+}
 .atlas-marker {
   width: 18px;
   height: 18px;
