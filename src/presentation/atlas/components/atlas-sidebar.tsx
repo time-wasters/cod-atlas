@@ -473,7 +473,7 @@ export function AtlasSidebar({
                   >
                     <CountryFlag code={group.flagCode} />
                     <span><b>{group.name}</b><small>{group.entries.length} appearances</small></span>
-                    <em>{group.coordinates ? "MAP" : "ORBIT"}</em>
+                    {!group.coordinates && <em>ORBIT</em>}
                   </button>
                 ))}
               </div>
