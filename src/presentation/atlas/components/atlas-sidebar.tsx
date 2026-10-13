@@ -16,6 +16,7 @@ import {
 import { CountrySelect } from "../../filters/components/country-select.js";
 import type { AdvancedFilterGroupId } from "../../filters/state/use-atlas-filters.js";
 import { GameSelect } from "../../game-catalog/components/game-select.js";
+import { CountryFlag } from "../../shared/components/country-flag.js";
 import { AtlasFooter } from "./atlas-footer.js";
 import { LevelModeIcon } from "./level-mode-icon.js";
 
@@ -470,7 +471,7 @@ export function AtlasSidebar({
                     className={group.name === browse.selectedGroupName ? "location-row is-selected" : "location-row"}
                     onClick={() => browse.onGroupSelect(group)}
                   >
-                    <i className="location-marker-icon" aria-hidden="true" />
+                    <CountryFlag code={group.flagCode} />
                     <span><b>{group.name}</b><small>{group.entries.length} appearances</small></span>
                     <em>{group.coordinates ? "MAP" : "ORBIT"}</em>
                   </button>
