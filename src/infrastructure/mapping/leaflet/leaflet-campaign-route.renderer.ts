@@ -106,6 +106,11 @@ export function renderLeafletCampaignRoute({
   onWaypointSelect,
 }: RenderCampaignRouteInput): RenderedCampaignRoute {
   const routeLayer = leaflet.layerGroup().addTo(map);
+  const routeRenderer = leaflet.svg({ pane: "campaignRoute" }).addTo(map);
+  // The default renderer only redraws at moveend. Follow the viewport during
+  // flights so connections entering the view are drawn before arrival.
+  const updateRouteViewport = routeRenderer.getEvents?.().viewreset;
+  if (updateRouteViewport) map.on("move", updateRouteViewport, routeRenderer);
   const boundsCoordinates: Coordinates[] = route.waypoints.map(({ coordinates }) => coordinates);
   const projectionZoom = campaignRouteProjectionZoom(leaflet, map, route);
   const connections: { start: Coordinates; end: Coordinates; line: Polyline }[] = [];
@@ -122,9 +127,12 @@ export function renderLeafletCampaignRoute({
       boundsCoordinates.push(...arc);
       const common = {
         pane: "campaignRoute",
+        renderer: routeRenderer,
         lineCap: "round" as const,
         lineJoin: "round" as const,
         interactive: false,
+        // Preserve the full geometry while the renderer moves between views.
+        noClip: true,
         dashArray: "7 10",
         dashOffset: "0",
       };
@@ -191,11 +199,13 @@ export function renderLeafletCampaignRoute({
     boundsCoordinates,
     layer: routeLayer,
     remove: () => {
+      if (updateRouteViewport) map.off("move", updateRouteViewport, routeRenderer);
       map.off("movestart", pauseRouteAnimation);
       map.off("moveend", resumeRouteAnimation);
       map.off("zoomend", updateRouteDetail);
       mapElement.classList.remove("campaign-route-map-moving");
       routeLayer.remove();
+      routeRenderer.remove();
     },
   };
 }

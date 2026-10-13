@@ -6,6 +6,7 @@ import type { AtlasEntryDto } from "../../../infrastructure/atlas-data/dto/atlas
 import type { AtlasGroupDto } from "../../../infrastructure/atlas-data/dto/atlas-group.dto.js";
 import type { MapOverlayDto } from "../../../infrastructure/atlas-data/dto/map-overlay.dto.js";
 import type { LeafletMapRuntime } from "./use-leaflet-map.js";
+import { mapTravelDuration } from "../models/map-travel-duration.js";
 
 type AtlasSelection = { group: AtlasGroupDto; entry: AtlasEntryDto };
 type SidebarSelectionTarget = {
@@ -73,6 +74,23 @@ export function useMapViewport({
 }) {
   const sidebarSelectionTarget = useRef<SidebarSelectionTarget | null>(null);
   const relatedLevelFocusEntryId = useRef<string | null>(null);
+  const markerFlightArrival = useRef<(() => void) | null>(null);
+  const cancelMarkerFlightArrival = useCallback(() => {
+    if (markerFlightArrival.current) runtime.getMap()?.off("moveend", markerFlightArrival.current);
+    markerFlightArrival.current = null;
+  }, [runtime]);
+  useEffect(() => {
+    const map = runtime.getMap();
+    if (!ready || !map) return;
+    const container = map.getContainer();
+    map.on("dragstart", cancelMarkerFlightArrival);
+    container.addEventListener("wheel", cancelMarkerFlightArrival, { passive: true });
+    return () => {
+      map.off("dragstart", cancelMarkerFlightArrival);
+      container.removeEventListener("wheel", cancelMarkerFlightArrival);
+      cancelMarkerFlightArrival();
+    };
+  }, [cancelMarkerFlightArrival, ready, runtime]);
 
   const queueSidebarSelection = useCallback((target: SidebarSelectionTarget | null) => {
     sidebarSelectionTarget.current = target;
@@ -105,12 +123,13 @@ export function useMapViewport({
       entry.coordinates,
     ]);
     if (alwaysFit || !visibleBounds.contains(overlayAndMarkerBounds)) {
+      cancelMarkerFlightArrival();
       currentMap.stop();
       const movement = {
         ...padding,
         ...(alwaysFit ? {} : { maxZoom: currentMap.getZoom() }),
         animate: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-        duration: .55,
+        duration: mapTravelDuration(currentMap.getCenter().distanceTo(overlayAndMarkerBounds.getCenter())),
       };
       if (movement.animate) currentMap.flyToBounds(overlayAndMarkerBounds, movement);
       else currentMap.fitBounds(overlayAndMarkerBounds, movement);
@@ -118,46 +137,58 @@ export function useMapViewport({
       currentMap.panInside(entry.coordinates, padding);
     }
     return true;
-  }, [getDetailsElement, mapOverlays, runtime]);
+  }, [cancelMarkerFlightArrival, getDetailsElement, mapOverlays, runtime]);
 
-  const focusEntryOnMap = useCallback((entry: AtlasEntryDto) => {
-    if (focusEntryOverlay(entry, true)) return;
+  const focusEntryOnMap = useCallback((entry: AtlasEntryDto, center = false) => {
+    if (!center && focusEntryOverlay(entry, true)) return;
     const currentMap = runtime.getMap();
     const layer = runtime.getMarkerLayer();
+    const leaflet = runtime.getLeaflet();
+    const mapElement = runtime.getContainer();
     const entryMarker = runtime.getMarker(entry.id)?.marker;
-    if (!currentMap || !layer || !entryMarker) return;
+    if (!currentMap || !layer || !leaflet || !mapElement || !entryMarker) return;
 
+    cancelMarkerFlightArrival();
     currentMap.stop();
-    layer.zoomToShowLayer(entryMarker, () => {
-      const mapElement = runtime.getContainer();
-      if (runtime.getMap() !== currentMap || !mapElement) return;
-      currentMap.panInside(
-        entryMarker.getLatLng(),
-        leafletViewportPadding(mapElement, getDetailsElement()),
-      );
-    });
-  }, [focusEntryOverlay, getDetailsElement, runtime]);
+    const animate = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const destination = entryMarker.getLatLng();
+    const distance = currentMap.getCenter().distanceTo(destination);
+    const reveal = () => {
+      if (runtime.getMap() !== currentMap || runtime.getMarker(entry.id)?.marker !== entryMarker) return;
+      layer.zoomToShowLayer(entryMarker, () => {
+        if (runtime.getMap() !== currentMap || runtime.getMarker(entry.id)?.marker !== entryMarker) return;
+        const movement = { animate, duration: mapTravelDuration(currentMap.getCenter().distanceTo(entryMarker.getLatLng())) };
+        if (center) currentMap.panTo(entryMarker.getLatLng(), movement);
+        else currentMap.panInside(entryMarker.getLatLng(), {
+          ...leafletViewportPadding(mapElement, getDetailsElement()), ...movement,
+        });
+      });
+    };
+    if (animate && distance > 50_000) {
+      const precisionZoom = entry.precision === "country" ? 5
+        : entry.precision === "region" ? 6 : entry.precision === "city" ? 8 : currentMap.getMaxZoom();
+      const targetZoom = Math.min(precisionZoom, Math.max(6, currentMap.getZoom()));
+      const movement = { animate, duration: mapTravelDuration(distance), maxZoom: targetZoom };
+      const arrive = () => {
+        markerFlightArrival.current = null;
+        reveal();
+      };
+      markerFlightArrival.current = arrive;
+      currentMap.once("moveend", arrive);
+      if (center) currentMap.flyTo(destination, targetZoom, movement);
+      else currentMap.flyToBounds(leaflet.latLngBounds([destination]), {
+        ...leafletViewportPadding(mapElement, getDetailsElement()), ...movement,
+      });
+    } else reveal();
+  }, [cancelMarkerFlightArrival, focusEntryOverlay, getDetailsElement, runtime]);
 
   const focusSelectedMarker = useCallback(() => {
     focusEntryOnMap(selected.entry);
   }, [focusEntryOnMap, selected.entry]);
 
   const centerSelectedMarker = useCallback(() => {
-    const currentMap = runtime.getMap();
-    const layer = runtime.getMarkerLayer();
-    const entryMarker = runtime.getMarker(selected.entry.id)?.marker;
-    if (!currentMap || !layer || !entryMarker) return;
-
-    currentMap.stop();
-    layer.zoomToShowLayer(entryMarker, () => {
-      if (runtime.getMap() !== currentMap
-        || runtime.getMarker(selected.entry.id)?.marker !== entryMarker) return;
-      currentMap.panTo(entryMarker.getLatLng(), {
-        animate: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-        duration: .45,
-      });
-    });
-  }, [runtime, selected.entry.id]);
+    focusEntryOnMap(selected.entry, true);
+  }, [focusEntryOnMap, selected.entry]);
 
   useEffect(() => {
     const currentMap = runtime.getMap();
@@ -188,14 +219,18 @@ export function useMapViewport({
         ...padding,
         maxZoom: sidebarTarget.fitOnlyWhenOutside ? currentMap.getZoom() : sidebarTarget.maxZoom,
         animate: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-        duration: .55,
+        duration: mapTravelDuration(currentMap.getCenter().distanceTo(leaflet.latLngBounds(sidebarTarget.bounds).getCenter())),
       };
+      cancelMarkerFlightArrival();
       currentMap.stop();
       if (movement.animate) currentMap.flyToBounds(sidebarTarget.bounds, movement);
       else currentMap.fitBounds(sidebarTarget.bounds, movement);
       return;
     }
-    if (!selected.entry.coordinates || !selectedIsVisible) return;
+    if (!selected.entry.coordinates || !selectedIsVisible) {
+      if (markerFlightArrival.current) { cancelMarkerFlightArrival(); currentMap.stop(); }
+      return;
+    }
     const relatedFocusEntryId = relatedLevelFocusEntryId.current;
     relatedLevelFocusEntryId.current = null;
     if (relatedFocusEntryId === selected.entry.id) {
@@ -208,7 +243,7 @@ export function useMapViewport({
       selected.entry.coordinates,
       leafletViewportPadding(mapElement, getDetailsElement()),
     );
-  }, [filteredGroups, focusEntryOnMap, focusEntryOverlay, getDetailsElement, ready, runtime, selected, selectedCampaign]);
+  }, [cancelMarkerFlightArrival, filteredGroups, focusEntryOnMap, focusEntryOverlay, getDetailsElement, ready, runtime, selected, selectedCampaign]);
 
   useEffect(() => {
     const currentMap = runtime.getMap();
@@ -219,6 +254,7 @@ export function useMapViewport({
       animate: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
       duration: .45,
     };
+    cancelMarkerFlightArrival();
     currentMap.stop();
     if (mapFitCoordinates.length) {
       currentMap.fitBounds(mapFitCoordinates, {
@@ -231,7 +267,7 @@ export function useMapViewport({
         duration: animation.duration,
       });
     }
-  }, [getDetailsElement, mapFitCoordinates, ready, runtime]);
+  }, [cancelMarkerFlightArrival, getDetailsElement, mapFitCoordinates, ready, runtime]);
 
   useEffect(() => {
     if (!ready || !runtime.getMap()) return;

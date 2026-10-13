@@ -52,6 +52,7 @@ export class LeafletMapRuntime {
 
 export function useLeafletMap() {
   const [ready, setReady] = useState(false);
+  const [moving, setMoving] = useState(false);
   const mapNode = useRef<HTMLDivElement>(null);
   const [runtime] = useState(() => new LeafletMapRuntime());
 
@@ -65,6 +66,8 @@ export function useLeafletMap() {
     void loadLeafletRuntime().then(async (leafletRuntime) => {
       if (cancelled || !mapNode.current || runtime.getMap()) return;
       const instance = createLeafletMap(leafletRuntime, mapNode.current);
+      instance.on("movestart", () => setMoving(true));
+      instance.on("moveend", () => setMoving(false));
       runtime.setMap(instance);
       cleanupBasemap = await attachLeafletBasemap({
         leaflet: leafletRuntime,
@@ -99,6 +102,7 @@ export function useLeafletMap() {
       runtime.setLeaflet(null);
       runtime.setContainer(null);
       setReady(false);
+      setMoving(false);
     };
   }, [runtime]);
 
@@ -106,5 +110,5 @@ export function useLeafletMap() {
     runtime.setMarkerOverlaySelectionLevelId(levelId);
   }, [runtime]);
 
-  return { ready, runtime, mapNode, prepareMarkerSelection };
+  return { ready, moving, runtime, mapNode, prepareMarkerSelection };
 }

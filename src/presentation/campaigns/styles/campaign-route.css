@@ -7,8 +7,10 @@
   animation: none;
 }
 .campaign-route-map-moving .campaign-route-travel {
-  animation-play-state: paused;
-  display: none;
+  animation-play-state: running, paused;
+}
+.leaflet-campaignRoute-pane > svg {
+  overflow: visible;
 }
 .campaign-route-stop-wrap {
   overflow: visible;

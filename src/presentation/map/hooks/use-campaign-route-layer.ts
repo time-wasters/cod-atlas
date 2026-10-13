@@ -13,6 +13,7 @@ import {
 } from "../../campaigns/formatters/campaign-route-stop-label.formatter.js";
 import { leafletViewportPadding } from "./use-map-viewport.js";
 import type { LeafletMapRuntime } from "./use-leaflet-map.js";
+import { mapTravelDuration } from "../models/map-travel-duration.js";
 
 type AtlasSelection = { group: AtlasGroupDto; entry: AtlasEntryDto };
 
@@ -130,14 +131,17 @@ export function useCampaignRouteLayer({
         ...leafletViewportPadding(mapElement, getDetailsElement()),
         maxZoom: 8,
         animate: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-        duration: .65,
+        duration: mapTravelDuration(currentMap.getCenter().distanceTo(
+          leaflet.latLngBounds(renderedLayer.boundsCoordinates).getCenter(),
+        ), .65),
       };
       currentMap.stop();
       currentMap.once("moveend", handleCampaignMoveEnd);
       if (movement.animate) currentMap.flyToBounds(renderedLayer.boundsCoordinates, movement);
       else currentMap.fitBounds(renderedLayer.boundsCoordinates, movement);
       if (markerRevealTimer === null) {
-        markerRevealTimer = window.setTimeout(revealFirstCampaignMarker, movement.animate ? 900 : 180);
+        markerRevealTimer = window.setTimeout(revealFirstCampaignMarker,
+          movement.animate ? movement.duration * 1000 + 250 : 180);
       }
     } else {
       campaignViewSettled = true;

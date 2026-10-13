@@ -136,6 +136,7 @@ export function AtlasPage({
   });
   const {
     ready: mapReady,
+    moving: mapMoving,
     runtime: leafletMap,
     mapNode,
     prepareMarkerSelection,
@@ -234,7 +235,7 @@ export function AtlasPage({
     campaign: selectedCampaign,
     filterScope: filtered,
     selectionVersion,
-    ready: mapReady && !settingsOpen && selectedLevelNotes?.status !== "loading",
+    ready: mapReady && !mapMoving && !settingsOpen && selectedLevelNotes?.status !== "loading",
     onVisit: visitCampaignLevel,
   });
   useEffect(() => {
