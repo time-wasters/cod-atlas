@@ -3,7 +3,7 @@ id: vanguard-terra-maledicta
 title: Terra Maledicta
 games:
   - vanguard
-mode: multiplayer
+mode: zombies
 wikiArticle: codwiki-terra-maledicta
 locations:
   - id: main

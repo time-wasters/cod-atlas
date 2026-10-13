@@ -3,7 +3,7 @@ id: vanguard-der-anfang
 title: Der Anfang
 games:
   - vanguard
-mode: multiplayer
+mode: zombies
 wikiArticle: codwiki-der-anfang
 locations:
   - id: main

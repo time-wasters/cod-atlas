@@ -3,7 +3,7 @@ id: vanguard-the-archon
 title: The Archon
 games:
   - vanguard
-mode: multiplayer
+mode: zombies
 wikiArticle: codwiki-the-archon
 locations:
   - id: main
