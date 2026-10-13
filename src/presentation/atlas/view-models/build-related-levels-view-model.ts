@@ -37,7 +37,7 @@ export function buildRelatedLevelsViewModel({
       ? `${campaign.label} levels`
       : contentUpdate
         ? `${contentUpdate.label} levels`
-        : "Related levels",
+        : `${group.name} levels`,
     campaign: campaign !== null,
     collectionKind: campaign ? "campaign" : contentUpdate ? "update" : "region",
     expanded,
@@ -48,7 +48,7 @@ export function buildRelatedLevelsViewModel({
     } : null,
     hiddenCount: items.length - visibleItems.length,
     items: visibleItems,
-    label: campaign?.label ?? contentUpdate?.label ?? "Related levels",
+    label: campaign?.label ?? contentUpdate?.label ?? group.name,
     locationIcon: campaign || contentUpdate ? null : { flagCode: group.flagCode },
     open,
     selectedLevelId,
