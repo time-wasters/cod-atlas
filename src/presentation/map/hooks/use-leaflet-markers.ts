@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { AtlasEntryDto } from "../../../infrastructure/atlas-data/dto/atlas-entry.dto.js";
 import type { AtlasGroupDto } from "../../../infrastructure/atlas-data/dto/atlas-group.dto.js";
 import {
@@ -28,7 +28,11 @@ export function useLeafletMarkers({
   selected: AtlasSelection;
   focusedLevelIds: ReadonlySet<string> | null;
 }) {
-  const pulseSelection = useRef<{ entryId: string; played: boolean } | null>(null);
+  const [pulseRequest, setPulseRequest] = useState(0);
+  const pulseSelection = useRef<{ entryId: string; request: number; played: boolean } | null>(null);
+  const replaySelectedMarkerPulse = useCallback(() => {
+    setPulseRequest((request) => request + 1);
+  }, []);
 
   useEffect(() => {
     const layer = runtime.getMarkerLayer();
@@ -68,8 +72,9 @@ export function useLeafletMarkers({
   }, [filteredGroups, focusedLevelIds, ready, runtime, selected.entry.id]);
 
   useEffect(() => {
-    if (pulseSelection.current?.entryId !== selected.entry.id) {
-      pulseSelection.current = { entryId: selected.entry.id, played: false };
+    if (pulseSelection.current?.entryId !== selected.entry.id
+      || pulseSelection.current?.request !== pulseRequest) {
+      pulseSelection.current = { entryId: selected.entry.id, request: pulseRequest, played: false };
     }
     const selection = pulseSelection.current;
     const map = runtime.getMap();
@@ -131,5 +136,7 @@ export function useLeafletMarkers({
       window.clearTimeout(removalTimer);
       removePulse();
     };
-  }, [filteredGroups, ready, runtime, selected.entry.id]);
+  }, [filteredGroups, pulseRequest, ready, runtime, selected.entry.id]);
+
+  return { replaySelectedMarkerPulse };
 }

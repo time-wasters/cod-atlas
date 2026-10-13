@@ -140,6 +140,23 @@ export function useMapViewport({
     focusEntryOnMap(selected.entry);
   }, [focusEntryOnMap, selected.entry]);
 
+  const centerSelectedMarker = useCallback(() => {
+    const currentMap = runtime.getMap();
+    const layer = runtime.getMarkerLayer();
+    const entryMarker = runtime.getMarker(selected.entry.id)?.marker;
+    if (!currentMap || !layer || !entryMarker) return;
+
+    currentMap.stop();
+    layer.zoomToShowLayer(entryMarker, () => {
+      if (runtime.getMap() !== currentMap
+        || runtime.getMarker(selected.entry.id)?.marker !== entryMarker) return;
+      currentMap.panTo(entryMarker.getLatLng(), {
+        animate: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+        duration: .45,
+      });
+    });
+  }, [runtime, selected.entry.id]);
+
   useEffect(() => {
     const currentMap = runtime.getMap();
     const leaflet = runtime.getLeaflet();
@@ -226,6 +243,7 @@ export function useMapViewport({
   }, [ready, runtime, sidebarOpen]);
 
   return {
+    centerSelectedMarker,
     focusSelectedMarker,
     queueRelatedLevelFocus,
     queueSidebarSelection,

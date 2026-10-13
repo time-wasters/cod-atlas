@@ -339,7 +339,7 @@ export function AtlasPage({
     ? null
     : countries.find((candidate) => candidate.name === country)?.flagCode ?? null;
 
-  useLeafletMarkers({
+  const { replaySelectedMarkerPulse } = useLeafletMarkers({
     focusedLevelIds,
     filteredGroups: filtered,
     locationLabel: formatAtlasLocationName,
@@ -369,6 +369,7 @@ export function AtlasPage({
     selectedCampaign,
   });
   const {
+    centerSelectedMarker,
     focusSelectedMarker,
     queueRelatedLevelFocus,
     queueSidebarSelection,
@@ -399,6 +400,19 @@ export function AtlasPage({
     ready: mapReady,
     runtime: leafletMap,
   });
+
+  const focusLevelDetails = useCallback(() => {
+    replaySelectedMarkerPulse();
+    focusSelectedMarker();
+  }, [focusSelectedMarker, replaySelectedMarkerPulse]);
+
+  const centerLevelDetails = useCallback(() => {
+    replaySelectedMarkerPulse();
+    if (selectedMapOverlayEnabled) focusSelectedMarker();
+    else if (selectedHistoryOverlay) focusHistoryOverlay(selectedHistoryOverlay, selected.entry.coordinates);
+    else centerSelectedMarker();
+  }, [centerSelectedMarker, focusHistoryOverlay, focusSelectedMarker, replaySelectedMarkerPulse,
+    selected.entry.coordinates, selectedHistoryOverlay, selectedMapOverlayEnabled]);
 
   /**
    * Toggles a historical overlay and frames it together with the selected marker.
@@ -612,7 +626,8 @@ export function AtlasPage({
         details={(
           <LevelDetailsPanel
             actions={{
-              onFocus: focusSelectedMarker,
+              onFocus: focusLevelDetails,
+              onCenter: centerLevelDetails,
               onGameIconError: markExternalGameIconUnavailable,
               onToggleBriefing: toggleLevelNotes,
               onToggleDetails: () => setDetailsOpen((open) => !open),

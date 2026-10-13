@@ -6,10 +6,12 @@ export function FittedLevelTitle({
   children,
   disabled,
   onActivate,
+  onDoubleActivate,
 }: {
   children: string;
   disabled: boolean;
   onActivate: () => void;
+  onDoubleActivate: () => void;
 }) {
   const title = useRef<HTMLHeadingElement>(null);
 
@@ -41,8 +43,17 @@ export function FittedLevelTitle({
         type="button"
         disabled={disabled}
         aria-label={`Show ${children} on map`}
-        title="Show on map"
-        onClick={onActivate}
+        title="Show on map; double-click or Shift+Enter to focus"
+        onClick={(event) => {
+          if (event.detail < 2) onActivate();
+        }}
+        onDoubleClick={onDoubleActivate}
+        onKeyDown={(event) => {
+          if (event.key === "Enter" && event.shiftKey) {
+            event.preventDefault();
+            onDoubleActivate();
+          }
+        }}
       >
         {children}
       </button>

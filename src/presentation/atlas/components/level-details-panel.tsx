@@ -65,6 +65,7 @@ export function LevelDetailsPanel({
 }: {
   actions: {
     onFocus: () => void;
+    onCenter: () => void;
     onGameIconError: (gameId: string) => void;
     onToggleBriefing: () => void;
     onToggleDetails: () => void;
@@ -109,7 +110,7 @@ export function LevelDetailsPanel({
       <article className="intel-card" id="selected-level-details">
         <div className="mission-heading" key={`heading:${selectionKey}`}>
           <LevelModeIcon mode={entry.modes[0]} modeSub={appearance.modeSub ?? entry.modeSub} tooltip />
-          <FittedLevelTitle disabled={!entry.coordinates} onActivate={actions.onFocus}>{appearance.title}</FittedLevelTitle>
+          <FittedLevelTitle disabled={!entry.coordinates} onActivate={actions.onFocus} onDoubleActivate={actions.onCenter}>{appearance.title}</FittedLevelTitle>
           <div className="mission-games">
             {viewModel.games.map(({ external, game, icon }) => icon ? (
               <GameIcon
