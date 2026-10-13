@@ -21,8 +21,10 @@ export function leafletViewportPadding(mapElement: HTMLElement, detailsElement: 
   let rightPadding = edgePadding;
   let bottomPadding = edgePadding;
 
-  if (detailsElement) {
-    const detailsRect = detailsElement.getBoundingClientRect();
+  const briefingElement = mapElement.parentElement?.querySelector<HTMLElement>("#selected-level-briefing");
+  for (const element of [detailsElement, briefingElement]) {
+    if (!element) continue;
+    const detailsRect = element.getBoundingClientRect();
     const horizontalOverlap = Math.max(
       0,
       Math.min(mapRect.right, detailsRect.right) - Math.max(mapRect.left, detailsRect.left),
@@ -34,8 +36,8 @@ export function leafletViewportPadding(mapElement: HTMLElement, detailsElement: 
     if (horizontalOverlap > 0 && verticalOverlap > 0) {
       const detailsAtBottom = detailsRect.width >= mapRect.width * .68
         && Math.abs(mapRect.bottom - detailsRect.bottom) <= edgePadding;
-      if (detailsAtBottom) bottomPadding = mapRect.bottom - detailsRect.top + edgePadding;
-      else rightPadding = mapRect.right - detailsRect.left + edgePadding;
+      if (detailsAtBottom) bottomPadding = Math.max(bottomPadding, mapRect.bottom - detailsRect.top + edgePadding);
+      else rightPadding = Math.max(rightPadding, mapRect.right - detailsRect.left + edgePadding);
     }
   }
 

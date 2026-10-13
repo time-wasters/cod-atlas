@@ -13,6 +13,7 @@
 @import "../src/presentation/solar-system/styles/solar-system.css";
 @import "../src/presentation/map/styles/leaflet-map.css";
 @import "../src/presentation/campaigns/styles/campaign-route.css";
+@import "../src/presentation/campaigns/styles/campaign-playback.css";
 @import "../src/presentation/atlas/styles/level-details.css";
 @import "../src/presentation/atlas/styles/level-media.css";
 @import "../src/presentation/atlas/styles/precision-badge.css";
