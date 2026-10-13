@@ -29,6 +29,14 @@
 .taxonomy-tier strong { min-width: 0; overflow: hidden; color: #d8d0ba; font-size: 11px; font-weight: 600; line-height: 1.2; text-overflow: ellipsis; white-space: nowrap; }
 .taxonomy-tier.is-landmark strong { color: #edbd58; }
 .mission-heading { min-height: 34px; display: grid; grid-template-columns: 25px minmax(0, 1fr) auto; gap: 9px; align-items: start; margin: -2px 0 15px; padding: 1px 0 0; }
+.mission-heading, .intel-mission-details { animation: intel-details-enter 200ms ease-out; }
+@keyframes intel-details-enter {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mission-heading, .intel-mission-details { animation: none; }
+}
 .mission-mode-tooltip-anchor { width: 23px; height: 29px; display: block; border-radius: 4px; }
 .mission-mode-tooltip-anchor:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
 .mission-mode-icon { width: 23px; height: 23px; margin-top: 3px; fill: none; stroke: var(--amber); stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.7; }

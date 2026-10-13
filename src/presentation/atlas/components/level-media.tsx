@@ -1,6 +1,6 @@
 "use client";
 
-import type { RefObject } from "react";
+import { useEffect, useState, type RefObject } from "react";
 import type { WikiImageDto } from "../../../infrastructure/atlas-data/dto/wiki-image.dto.js";
 
 export type LevelMediaViewModel = {
@@ -13,6 +13,58 @@ export type LevelMediaViewModel = {
   loaded: boolean;
 };
 
+function LevelMediaFrame({
+  media,
+  retained,
+  onFailed,
+  onLoaded,
+}: {
+  media: LevelMediaViewModel;
+  retained: boolean;
+  onFailed: (media: LevelMediaViewModel) => void;
+  onLoaded: (media: LevelMediaViewModel) => void;
+}) {
+  const [loaded, setLoaded] = useState(media.loaded);
+  const className = `${!media.failed && (loaded || media.loaded) ? "is-loaded" : ""}${retained ? " is-retained" : ""}`;
+  const handleLoaded = () => {
+    setLoaded(true);
+    if (!retained) onLoaded(media);
+  };
+  const handleFailed = () => { if (!retained) onFailed(media); };
+
+  useEffect(() => {
+    // A retained frame can become selected again without another browser load
+    // event. Report its existing readiness so the new crossfade can finish.
+    if (!retained && loaded && !media.loaded && !media.failed) onLoaded(media);
+  }, [loaded, media, onLoaded, retained]);
+
+  return media.image.mediaType === "video" ? (
+    <video
+      className={className}
+      src={media.image.thumbnailUrl}
+      aria-hidden={retained || undefined}
+      aria-label={retained ? undefined : `${media.appearanceTitle} level banner`}
+      autoPlay
+      loop
+      muted
+      playsInline
+      onLoadedData={handleLoaded}
+      onError={handleFailed}
+    />
+  ) : (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      className={className}
+      src={media.image.thumbnailUrl}
+      aria-hidden={retained || undefined}
+      alt={retained ? "" : `${media.appearanceTitle} level banner`}
+      referrerPolicy={media.isLocal ? undefined : "no-referrer"}
+      onLoad={handleLoaded}
+      onError={handleFailed}
+    />
+  );
+}
+
 export function LevelMedia({
   dialogRef,
   media,
@@ -24,42 +76,61 @@ export function LevelMedia({
   onFailed: (media: LevelMediaViewModel) => void;
   onLoaded: (imageKey: string) => void;
 }) {
-  const { image } = media;
+  const [frames, setFrames] = useState<{
+    current: LevelMediaViewModel | null;
+    previous: LevelMediaViewModel | null;
+  }>({ current: null, previous: null });
+  const retainedMedia = media.failed ? null
+    : frames.current?.imageKey === media.imageKey ? frames.previous : frames.current;
+  const loaded = !media.failed && (media.loaded || frames.current?.imageKey === media.imageKey);
+
+  const handleLoaded = (loadedMedia: LevelMediaViewModel) => {
+    setFrames((current) => current.current?.imageKey === loadedMedia.imageKey ? current : {
+      current: { ...loadedMedia, loaded: true },
+      previous: current.current,
+    });
+    onLoaded(loadedMedia.imageKey);
+  };
+
+  useEffect(() => {
+    if (!frames.previous) return;
+    // Release the old image/video after the 200 ms crossfade, including when
+    // reduced motion disables the animation.
+    const timer = window.setTimeout(() => {
+      setFrames((current) => current === frames ? { ...current, previous: null } : current);
+    }, 220);
+    return () => window.clearTimeout(timer);
+  }, [frames]);
+
   return (
-    <figure className="intel-media" key={media.imageKey}>
-        {!media.loaded && (
+    <figure className={`intel-media${retainedMedia ? " has-retained-media" : ""}`}>
+        {retainedMedia && (
+          <LevelMediaFrame
+            key={retainedMedia.imageKey}
+            media={retainedMedia}
+            retained
+            onLoaded={handleLoaded}
+            onFailed={onFailed}
+          />
+        )}
+        <LevelMediaFrame
+          key={media.imageKey}
+          media={{ ...media, loaded }}
+          retained={false}
+          onLoaded={handleLoaded}
+          onFailed={onFailed}
+        />
+        {!loaded && (
           <span className="media-load-state" role="status">
             {media.failed ? "Image unavailable" : "Loading image…"}
           </span>
-        )}
-        {image.mediaType === "video" ? (
-          <video
-            className={media.loaded ? "is-loaded" : ""}
-            src={image.thumbnailUrl}
-            aria-label={`${media.appearanceTitle} level banner`}
-            autoPlay
-            loop
-            muted
-            playsInline
-            onLoadedData={() => onLoaded(media.imageKey)}
-            onError={() => onFailed(media)}
-          />
-        ) : (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            className={media.loaded ? "is-loaded" : ""}
-            src={image.thumbnailUrl}
-            alt={`${media.appearanceTitle} level banner`}
-            referrerPolicy={media.isLocal ? undefined : "no-referrer"}
-            onLoad={() => onLoaded(media.imageKey)}
-            onError={() => onFailed(media)}
-          />
         )}
         <button
           className="media-info-button"
           type="button"
           aria-label="Show image copyright and attribution information"
           title="Image information"
+          disabled={!loaded}
           onClick={() => dialogRef.current?.showModal()}
         >
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 10.8v6M12 7.2h.01" /></svg>
