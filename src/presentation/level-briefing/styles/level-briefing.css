@@ -10,7 +10,7 @@
 .level-briefing-toggle:disabled small { color: #5f6357; }
 .level-briefing-toggle:disabled strong { color: #6f7367; }
 .level-briefing-toggle:disabled > b { border-color: #383d34; color: #5f6358; }
-.level-briefing-pane { position: absolute; z-index: 499; top: 24px; right: 365px; width: min(430px, calc(100% - 389px)); max-height: calc(100% - 48px); display: flex; flex-direction: column; overflow: hidden; border: 1px solid #77715b; border-right-color: #4d4e40; border-radius: 7px 0 0 7px; color: #ddd6c3; background: linear-gradient(145deg, #171c15f8, #0d110cf7); box-shadow: 0 16px 50px #000a; backdrop-filter: blur(7px); }
+.level-briefing-pane { min-height: 0; flex: 0 1 auto; display: flex; flex-direction: column; overflow: hidden; border: 1px solid #77715b; border-right-color: #4d4e40; border-radius: 7px 0 0 7px; color: #ddd6c3; background: linear-gradient(145deg, #171c15f8, #0d110cf7); box-shadow: 0 16px 50px #000a; backdrop-filter: blur(7px); }
 .level-briefing-pane > header { flex: 0 0 auto; display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; border-bottom: 1px solid #464c3b; padding: 16px 17px 13px; }
 .level-briefing-pane > header span { color: var(--amber); font: 700 8px var(--font-geist-mono), monospace; letter-spacing: .15em; text-transform: uppercase; }
 .level-briefing-pane > header h2 { margin: 4px 0 0; color: #fff4d7; font: 24px/1.05 "Arial Narrow", Impact, sans-serif; letter-spacing: .03em; }
@@ -40,10 +40,6 @@
 .level-briefing-content code { border: 1px solid #3d4335; border-radius: 2px; padding: 1px 3px; color: #e2d6b8; background: #0b0e0a; font: 10px var(--font-geist-mono), monospace; }
 .level-briefing-state { color: #858b78 !important; font-family: var(--font-geist-mono), monospace; }
 
-@media (max-width: 900px) {
-  .level-briefing-pane { top: 14px; right: 303px; width: min(410px, calc(100% - 317px)); max-height: calc(100% - 28px); }
-}
-
 @media (max-width: 520px) {
-  .level-briefing-pane { z-index: 501; inset: 12px; width: auto; max-height: none; border-radius: 7px; }
+  .level-briefing-pane { border-radius: 7px; }
 }

@@ -517,8 +517,15 @@ export function AtlasPage({
     setUrlCampaignLevelId(null);
     setSelectedCampaignKey(campaignIsActive ? null : campaign.key);
     if (!campaignIsActive && campaign.levels[0]) {
-      prepareMarkerReveal(campaign.levels[0].entry.id);
-      selectEntry(campaign.levels[0].group, campaign.levels[0].entry);
+      const { group, entry } = campaign.levels[0];
+      prepareMarkerReveal(entry.id);
+      selectEntry(group, entry);
+      // Keep an open briefing mounted as the campaign controls slide in above it.
+      if (levelNotesExpanded) {
+        const appearance = entry.appearances.find((item) => item.gameId === campaign.gameId)
+          ?? entry.appearances[0];
+        openLevelBriefing(appearance?.notesId ?? entry.levelId, appearance?.hasLevelNotes ?? entry.hasLevelNotes);
+      }
     } else {
       prepareMarkerReveal(null);
     }

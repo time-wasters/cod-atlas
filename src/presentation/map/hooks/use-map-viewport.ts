@@ -20,11 +20,13 @@ export function leafletViewportPadding(mapElement: HTMLElement, detailsElement: 
   const mapRect = mapElement.getBoundingClientRect();
   const shortestEdge = Math.min(mapRect.width, mapRect.height);
   const edgePadding = Math.round(Math.min(56, Math.max(32, shortestEdge * .055)));
+  let topPadding = edgePadding;
   let rightPadding = edgePadding;
   let bottomPadding = edgePadding;
 
   const briefingElement = mapElement.parentElement?.querySelector<HTMLElement>("#selected-level-briefing");
-  for (const element of [detailsElement, briefingElement]) {
+  const playbackElement = mapElement.parentElement?.querySelector<HTMLElement>(".campaign-playback");
+  for (const element of [detailsElement, briefingElement, playbackElement]) {
     if (!element) continue;
     const detailsRect = element.getBoundingClientRect();
     const horizontalOverlap = Math.max(
@@ -38,16 +40,20 @@ export function leafletViewportPadding(mapElement: HTMLElement, detailsElement: 
     if (horizontalOverlap > 0 && verticalOverlap > 0) {
       const detailsAtBottom = detailsRect.width >= mapRect.width * .68
         && Math.abs(mapRect.bottom - detailsRect.bottom) <= edgePadding;
+      const detailsAtTop = detailsRect.width >= mapRect.width * .68
+        && Math.abs(mapRect.top - detailsRect.top) <= edgePadding;
       if (detailsAtBottom) bottomPadding = Math.max(bottomPadding, mapRect.bottom - detailsRect.top + edgePadding);
+      else if (detailsAtTop) topPadding = Math.max(topPadding, detailsRect.bottom - mapRect.top + edgePadding);
       else rightPadding = Math.max(rightPadding, mapRect.right - detailsRect.left + edgePadding);
     }
   }
 
+  topPadding = Math.min(topPadding, Math.max(edgePadding, mapRect.height - edgePadding - 64));
   return {
-    paddingTopLeft: [edgePadding, edgePadding] as [number, number],
+    paddingTopLeft: [edgePadding, topPadding] as [number, number],
     paddingBottomRight: [
       Math.min(rightPadding, Math.max(edgePadding, mapRect.width - edgePadding - 64)),
-      Math.min(bottomPadding, Math.max(edgePadding, mapRect.height - edgePadding - 64)),
+      Math.min(bottomPadding, Math.max(edgePadding, mapRect.height - topPadding - 64)),
     ] as [number, number],
   };
 }

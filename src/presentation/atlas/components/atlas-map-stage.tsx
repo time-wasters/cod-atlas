@@ -23,9 +23,13 @@ export function AtlasMapStage({
       <div className="map-grid" aria-hidden="true" />
       <div className="map-label" aria-hidden="true">TACTICAL GEOGRAPHY // GLOBAL</div>
       {solarSystem}
-      {briefing}
+      <div className="mission-stack">
+        <div className="mission-stack-playback">
+          <div>{playback}</div>
+        </div>
+        {briefing}
+      </div>
       {details}
-      {playback}
       {mediaDialog}
     </section>
   );
