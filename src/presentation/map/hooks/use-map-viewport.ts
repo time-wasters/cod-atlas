@@ -76,9 +76,12 @@ export function useMapViewport({
   const sidebarSelectionTarget = useRef<SidebarSelectionTarget | null>(null);
   const relatedLevelFocusEntryId = useRef<string | null>(null);
   const markerFlightArrival = useRef<(() => void) | null>(null);
+  const markerRevealCleanup = useRef<(() => void) | null>(null);
   const cancelMarkerFlightArrival = useCallback(() => {
     if (markerFlightArrival.current) runtime.getMap()?.off("moveend", markerFlightArrival.current);
     markerFlightArrival.current = null;
+    markerRevealCleanup.current?.();
+    markerRevealCleanup.current = null;
   }, [runtime]);
   useEffect(() => {
     const map = runtime.getMap();
@@ -153,25 +156,17 @@ export function useMapViewport({
     currentMap.stop();
     const animate = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const precisionZoom = markerFocusZoomLimit(entry.precision);
-    const destination = precisionZoom !== null && entry.coordinates
-      ? leaflet.latLng(entry.coordinates) : entryMarker.getLatLng();
+    // Spiderfying temporarily changes marker coordinates; camera destinations
+    // must continue to use the curated point when stepping between missions.
+    const destination = leaflet.latLng(entry.coordinates ?? entryMarker.getLatLng());
     const distance = currentMap.getCenter().distanceTo(destination);
     const reveal = () => {
       if (runtime.getMap() !== currentMap || runtime.getMarker(entry.id)?.marker !== entryMarker) return;
-      revealLeafletMarker(layer, entryMarker, entry.precision, () => {
-        if (runtime.getMap() !== currentMap || runtime.getMarker(entry.id)?.marker !== entryMarker) return;
-        // Coarse markers were already framed; panning a spiderfied marker would
-        // collapse its cluster again and move away from the real fallback point.
-        if (precisionZoom !== null) return;
-        const movement = { animate, duration: mapTravelDuration(currentMap.getCenter().distanceTo(entryMarker.getLatLng())) };
-        if (center) currentMap.panTo(entryMarker.getLatLng(), movement);
-        else currentMap.panInside(entryMarker.getLatLng(), {
-          ...leafletViewportPadding(mapElement, getDetailsElement()), ...movement,
-        });
-      });
+      // Do not pan to a displaced spiderfied marker after arrival.
+      markerRevealCleanup.current = revealLeafletMarker(layer, entryMarker);
     };
     const targetZoom = Math.min(precisionZoom ?? currentMap.getMaxZoom(), Math.max(6, currentMap.getZoom()));
-    if (animate && (distance > 50_000 || (precisionZoom !== null && currentMap.getZoom() !== targetZoom))) {
+    if (animate && (distance > 50_000 || currentMap.getZoom() !== targetZoom)) {
       const movement = { animate, duration: mapTravelDuration(distance), maxZoom: targetZoom };
       const arrive = () => {
         markerFlightArrival.current = null;
@@ -183,7 +178,7 @@ export function useMapViewport({
       else currentMap.flyToBounds(leaflet.latLngBounds([destination]), {
         ...leafletViewportPadding(mapElement, getDetailsElement()), ...movement,
       });
-    } else if (precisionZoom !== null) {
+    } else {
       const movement = { animate, duration: mapTravelDuration(distance) };
       const arrive = () => { markerFlightArrival.current = null; reveal(); };
       markerFlightArrival.current = arrive;
@@ -205,7 +200,7 @@ export function useMapViewport({
         cancelMarkerFlightArrival();
         reveal();
       }
-    } else reveal();
+    }
   }, [cancelMarkerFlightArrival, focusEntryOverlay, getDetailsElement, runtime]);
 
   const focusSelectedMarker = useCallback(() => {

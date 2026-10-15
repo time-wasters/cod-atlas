@@ -106,7 +106,9 @@ export function renderLeafletCampaignRoute({
   onWaypointSelect,
 }: RenderCampaignRouteInput): RenderedCampaignRoute {
   const routeLayer = leaflet.layerGroup().addTo(map);
-  const routeRenderer = leaflet.svg({ pane: "campaignRoute" }).addTo(map);
+  // Keep the drawing surface bounded to the viewport. Animated dashed SVG
+  // paths can become expensive browser rasterization work during deep zooms.
+  const routeRenderer = leaflet.canvas({ pane: "campaignRoute" }).addTo(map);
   // The default renderer only redraws at moveend. Follow the viewport during
   // flights so connections entering the view are drawn before arrival.
   const updateRouteViewport = routeRenderer.getEvents?.().viewreset;
@@ -132,14 +134,13 @@ export function renderLeafletCampaignRoute({
         lineJoin: "round" as const,
         interactive: false,
         // Clip distant connections to the viewport even while the camera moves.
-        // Unclipped global paths can overwhelm SVG rendering at street zooms.
+        // Keep global connections clipped at street zooms as well.
         noClip: false,
         dashArray: "7 10",
         dashOffset: "0",
       };
       const line = leaflet.polyline(arc, {
         ...common,
-        className: `campaign-route-travel${animationEnabled ? "" : " is-static"}`,
         color: "#741c27",
         weight: 3,
         opacity: .92,
@@ -184,27 +185,60 @@ export function renderLeafletCampaignRoute({
     routeMarker.on("click", () => onWaypointSelect(waypoint.stops[0].entryId));
   });
 
-  const mapElement = map.getContainer();
-  const pauseRouteAnimation = () => mapElement.classList.add("campaign-route-map-moving");
-  const resumeRouteAnimation = () => mapElement.classList.remove("campaign-route-map-moving");
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let animationFrame: number | null = null;
+  let lastFrame: number | null = null;
+  let dashOffset = 0;
+  let moving = false;
+  const animateDashes = (time: number) => {
+    animationFrame = null;
+    if (lastFrame === null) lastFrame = time;
+    // Thirty frames per second is sufficient for the slow dash flow. Use a
+    // shared frame for all lines, and let Leaflet batch their canvas redraw.
+    const elapsed = time - lastFrame;
+    if (elapsed >= 1000 / 30) {
+      dashOffset = (dashOffset - elapsed * 34 / 1150) % 34;
+      lastFrame = time;
+      for (const { line } of connections) line.setStyle({ dashOffset: String(dashOffset) });
+    }
+    animationFrame = window.requestAnimationFrame(animateDashes);
+  };
+  const pauseRouteAnimation = () => {
+    if (animationFrame !== null) window.cancelAnimationFrame(animationFrame);
+    animationFrame = null;
+    lastFrame = null;
+  };
+  const resumeRouteAnimation = () => {
+    if (animationFrame !== null || moving || !animationEnabled || reducedMotion.matches
+      || document.hidden || connections.length === 0) return;
+    animationFrame = window.requestAnimationFrame(animateDashes);
+  };
+  const handleMoveStart = () => { moving = true; pauseRouteAnimation(); };
+  const handleMoveEnd = () => { moving = false; resumeRouteAnimation(); };
+  const handleAnimationPreference = () => { pauseRouteAnimation(); resumeRouteAnimation(); };
   const updateRouteDetail = () => {
     for (const { start, end, line } of connections) {
       line.setLatLngs(buildArcCoordinates({ leaflet, map, projectionZoom, start, end }));
     }
   };
-  map.on("movestart", pauseRouteAnimation);
-  map.on("moveend", resumeRouteAnimation);
+  map.on("movestart", handleMoveStart);
+  map.on("moveend", handleMoveEnd);
   map.on("zoomend", updateRouteDetail);
+  document.addEventListener("visibilitychange", handleAnimationPreference);
+  reducedMotion.addEventListener("change", handleAnimationPreference);
+  resumeRouteAnimation();
 
   return {
     boundsCoordinates,
     layer: routeLayer,
     remove: () => {
       if (updateRouteViewport) map.off("move", updateRouteViewport, routeRenderer);
-      map.off("movestart", pauseRouteAnimation);
-      map.off("moveend", resumeRouteAnimation);
+      pauseRouteAnimation();
+      map.off("movestart", handleMoveStart);
+      map.off("moveend", handleMoveEnd);
       map.off("zoomend", updateRouteDetail);
-      mapElement.classList.remove("campaign-route-map-moving");
+      document.removeEventListener("visibilitychange", handleAnimationPreference);
+      reducedMotion.removeEventListener("change", handleAnimationPreference);
       routeLayer.remove();
       routeRenderer.remove();
     },
