@@ -13,6 +13,7 @@ export const CAMPAIGN_FOCUS_PRESET = {
   maximumZoom: 18,
   minimumTravelSeconds: .55,
   maximumTravelSeconds: 8,
+  secondsPerZoomLevel: .25,
   zoomByPrecision: {
     country: 5,
     region: 6,

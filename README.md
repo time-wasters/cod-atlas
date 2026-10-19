@@ -22,7 +22,8 @@ in the displayed order, highlight each map stop, and open its briefing. Pause or
 resume, step backward or forward, and adjust the time per mission. Manual browsing
 or filter changes end the tour; missions without Earth coordinates show their
 briefing without moving the map. Playback also pauses when the tab is hidden.
-Long-distance flights take longer, with campaign lines visible throughout travel.
+Long-distance flights and large zoom changes take longer, with campaign lines
+visible throughout travel.
 The time per mission starts after the camera arrives and the briefing loads.
 Playback adjusts the zoom to each location's precision, with the closest views
 for human-verified, high-confidence landmarks.

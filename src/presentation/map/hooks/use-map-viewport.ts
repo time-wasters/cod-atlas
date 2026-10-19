@@ -9,6 +9,7 @@ import type { LeafletMapRuntime } from "./use-leaflet-map.js";
 import { mapTravelDuration } from "../models/map-travel-duration.js";
 import { CAMPAIGN_FOCUS_PRESET, MARKER_FOCUS_PRESET, OVERLAY_FIT_PRESET } from "../models/map-focus-presets.js";
 import { campaignFocusZoom } from "../models/campaign-focus-zoom.js";
+import { campaignTravelDuration } from "../models/campaign-travel-duration.js";
 import { markerFocusZoomLimit, revealLeafletMarker } from "../../../infrastructure/mapping/leaflet/leaflet-marker-reveal.adapter.js";
 
 type AtlasSelection = { group: AtlasGroupDto; entry: AtlasEntryDto };
@@ -192,9 +193,9 @@ export function useMapViewport({
       preset.maximumZoom,
       playbackZoom ?? Math.max(MARKER_FOCUS_PRESET.minimumZoom, currentMap.getZoom()),
     );
-    const duration = mapTravelDuration(
-      distance, preset.minimumTravelSeconds, preset.maximumTravelSeconds,
-    );
+    const duration = playback
+      ? campaignTravelDuration(distance, currentMap.getZoom(), targetZoom, CAMPAIGN_FOCUS_PRESET)
+      : mapTravelDuration(distance, preset.minimumTravelSeconds, preset.maximumTravelSeconds);
     // Every playback stop belongs at the center of the unobstructed viewport,
     // including nearby markers that are already visible at the current zoom.
     if (animate && (playback || distance > 50_000 || currentMap.getZoom() !== targetZoom)) {
