@@ -34,12 +34,12 @@
   cursor: pointer;
 }
 .campaign-row:hover {
-  background: #252b20;
+  background: linear-gradient(to right, #252b20 15%, #252b2000 100%);
 }
 .campaign-row.is-selected {
   border-left-color: var(--amber);
   color: #fff8df;
-  background: #2a2c1f;
+  background: linear-gradient(to right, #2a2c1f 15%, #2a2c1f00 100%);
 }
 .campaign-row > i {
   color: #81795e;

@@ -16,9 +16,10 @@
 .related-levels-panel:not(.is-collapsed) .related-levels-toggle svg { transform: rotate(180deg); }
 .related-levels-toggle:hover, .related-levels-toggle:focus-visible { color: #fff4d7; background: #20251c; outline: none; }
 .intel-entries { min-height: 0; overflow-y: auto; border-top: 1px solid #464c3b; padding: 0 12px; scrollbar-color: #6f674b #171b14; scrollbar-width: thin; }
-.intel-entry { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 9px 0; border-bottom: 1px solid #33392d; }
+.intel-entry { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 0 -12px; padding: 9px 12px 9px 10px; border-left: 2px solid transparent; }
+.intel-entry:hover, .intel-entry:focus-within { background: linear-gradient(to right, #252b20 15%, #252b2000 100%); }
+.intel-entry.is-selected { border-left-color: var(--amber); background: linear-gradient(to right, #2a2c1f 15%, #2a2c1f00 100%); }
 .intel-entry.is-selected strong { color: var(--amber); }
-.intel-entry:last-child { border-bottom: 0; }
 .intel-entry button { min-width: 0; display: flex; flex: 1; flex-direction: column; gap: 2px; border: 0; padding: 0; color: inherit; background: transparent; text-align: left; cursor: pointer; }
 .intel-entry button.has-campaign-order { flex-direction: row; align-items: center; gap: 10px; }
 .intel-entry button:hover strong { color: var(--amber); }
