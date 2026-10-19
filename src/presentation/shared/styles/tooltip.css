@@ -11,7 +11,8 @@
 }
 .atlas-tooltip { position: fixed; z-index: 1950; width: max-content; max-width: min(260px, calc(100vw - 16px)); max-height: calc(100vh - 16px); overflow: hidden; }
 .atlas-tooltip--details { max-width: min(300px, calc(100vw - 16px)); padding: 13px; }
-.leaflet-tooltip { max-width: min(300px, calc(100vw - 16px)); white-space: normal; }
+/* Leaflet's tooltip pane has no intrinsic width; size labels by their content. */
+.leaflet-tooltip { width: max-content; max-width: min(300px, calc(100vw - 16px)); white-space: normal; }
 .leaflet-tooltip-top::before { border-top-color: #756234; }
 .leaflet-tooltip-bottom::before { border-bottom-color: #756234; }
 .leaflet-tooltip-left::before { border-left-color: #756234; }

@@ -6,7 +6,7 @@ import { createPortal } from "react-dom";
 import { tooltipPosition } from "../models/tooltip-position.js";
 
 type TriggerProps = Pick<HTMLAttributes<HTMLElement>,
-  "aria-describedby" | "onPointerEnter" | "onPointerLeave" | "onFocus" | "onBlur">;
+  "aria-describedby" | "onPointerEnter" | "onPointerLeave" | "onPointerDown" | "onFocus" | "onBlur">;
 
 export function TooltipSurface({ anchor, children, className = "", id }: {
   anchor: HTMLElement;
@@ -39,7 +39,7 @@ export function useTooltip(content: ReactNode, { delay = 300, className = "" } =
   const id = `atlas-tooltip-${useId().replaceAll(":", "")}`;
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const hovered = useRef(false);
-  const focused = useRef(false);
+  const keyboardFocused = useRef(false);
   const [anchor, setAnchor] = useState<HTMLElement | null>(null);
   const enabled = content !== undefined && content !== null && content !== false;
   const cancelTimer = useCallback(() => {
@@ -62,14 +62,20 @@ export function useTooltip(content: ReactNode, { delay = 300, className = "" } =
   }, [delay, show]);
   const pointerLeave = useCallback(() => {
     hovered.current = false;
-    if (!focused.current) hide();
+    if (!keyboardFocused.current) hide();
+  }, [hide]);
+  const pointerDown = useCallback(() => {
+    keyboardFocused.current = false;
+    hide();
   }, [hide]);
   const focus = useCallback((element: HTMLElement) => {
-    focused.current = true;
-    show(element, 0);
+    // Pointer clicks also focus buttons. Only keyboard focus should keep a
+    // tooltip open after the pointer leaves; compound controls may focus an input.
+    keyboardFocused.current = element.matches(":focus-visible") || element.querySelector(":focus-visible") !== null;
+    if (keyboardFocused.current) show(element, 0);
   }, [show]);
   const blur = useCallback(() => {
-    focused.current = false;
+    keyboardFocused.current = false;
     if (!hovered.current) hide();
   }, [hide]);
   useEffect(() => cancelTimer, [cancelTimer]);
@@ -89,6 +95,7 @@ export function useTooltip(content: ReactNode, { delay = 300, className = "" } =
     "aria-describedby": anchor && enabled ? id : undefined,
     onPointerEnter: (event) => pointerEnter(event.currentTarget),
     onPointerLeave: pointerLeave,
+    onPointerDown: pointerDown,
     onFocus: (event) => focus(event.currentTarget),
     onBlur: (event) => {
       if (event.relatedTarget instanceof Node && event.currentTarget.contains(event.relatedTarget)) return;
@@ -98,7 +105,7 @@ export function useTooltip(content: ReactNode, { delay = 300, className = "" } =
   return {
     anchor,
     triggerProps,
-    pointerEnter, pointerLeave, focus, blur,
+    pointerEnter, pointerLeave, pointerDown, focus, blur,
     tooltip: anchor && enabled ? <TooltipSurface anchor={anchor} id={id} className={className}>{content}</TooltipSurface> : null,
   };
 }
@@ -110,7 +117,7 @@ export function ElementTooltip({ container, selector, ready, content }: {
   ready: boolean;
   content: string;
 }) {
-  const { anchor, triggerProps, tooltip, pointerEnter, pointerLeave, focus, blur } = useTooltip(content);
+  const { anchor, triggerProps, tooltip, pointerEnter, pointerLeave, pointerDown, focus, blur } = useTooltip(content);
   useEffect(() => {
     if (!ready) return;
     const root = container.current;
@@ -134,6 +141,7 @@ export function ElementTooltip({ container, selector, ready, content }: {
       if (element) { prepare(element); pointerEnter(element); }
     };
     const leave = (event: PointerEvent) => { if (target(event)) pointerLeave(); };
+    const press = (event: PointerEvent) => { if (target(event)) pointerDown(); };
     const focusElement = (event: FocusEvent) => {
       const element = target(event);
       if (element) { prepare(element); focus(element); }
@@ -142,16 +150,18 @@ export function ElementTooltip({ container, selector, ready, content }: {
     // Delegation also covers attribution links recreated when the basemap changes.
     root.addEventListener("pointerover", enter, true);
     root.addEventListener("pointerout", leave, true);
+    root.addEventListener("pointerdown", press, true);
     root.addEventListener("focusin", focusElement, true);
     root.addEventListener("focusout", blurElement, true);
     return () => {
       root.removeEventListener("pointerover", enter, true);
       root.removeEventListener("pointerout", leave, true);
+      root.removeEventListener("pointerdown", press, true);
       root.removeEventListener("focusin", focusElement, true);
       root.removeEventListener("focusout", blurElement, true);
       for (const [element, title] of titles) element.setAttribute("title", title);
     };
-  }, [container, selector, ready, pointerEnter, pointerLeave, focus, blur]);
+  }, [container, selector, ready, pointerEnter, pointerLeave, pointerDown, focus, blur]);
   const describedBy = triggerProps["aria-describedby"];
   useEffect(() => {
     if (!ready || !anchor || !describedBy) return;
@@ -179,6 +189,7 @@ export function Tooltip({ children, content, delay, className }: {
     "aria-describedby": [children.props["aria-describedby"], triggerProps["aria-describedby"]].filter(Boolean).join(" ") || undefined,
     onPointerEnter: (event) => { children.props.onPointerEnter?.(event); triggerProps.onPointerEnter?.(event); },
     onPointerLeave: (event) => { children.props.onPointerLeave?.(event); triggerProps.onPointerLeave?.(event); },
+    onPointerDown: (event) => { children.props.onPointerDown?.(event); triggerProps.onPointerDown?.(event); },
     onFocus: (event) => { children.props.onFocus?.(event); triggerProps.onFocus?.(event); },
     onBlur: (event) => { children.props.onBlur?.(event); triggerProps.onBlur?.(event); },
   });
