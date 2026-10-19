@@ -1,6 +1,10 @@
-import type { LayerGroup, Map as LeafletMap, Polyline } from "leaflet";
+import type { Canvas, LayerGroup, Map as LeafletMap, Polyline } from "leaflet";
 
 type Coordinates = [number, number];
+
+type CampaignRouteCanvas = Canvas & {
+  _fillStroke: (context: CanvasRenderingContext2D, layer: Polyline) => void;
+};
 
 type CampaignRoute = {
   segments: Coordinates[][];
@@ -108,7 +112,20 @@ export function renderLeafletCampaignRoute({
   const routeLayer = leaflet.layerGroup().addTo(map);
   // Keep the drawing surface bounded to the viewport. Animated dashed SVG
   // paths can become expensive browser rasterization work during deep zooms.
-  const routeRenderer = leaflet.canvas({ pane: "campaignRoute" }).addTo(map);
+  const routeRenderer = leaflet.canvas({ pane: "campaignRoute" }) as CampaignRouteCanvas;
+  // Leaflet's canvas renderer reads dashArray but ignores dashOffset. Apply the
+  // animated offset at its stroke boundary, only on this campaign renderer.
+  const fillStroke = routeRenderer._fillStroke;
+  routeRenderer._fillStroke = function (context, line) {
+    const previousOffset = context.lineDashOffset;
+    context.lineDashOffset = Number(line.options.dashOffset) || 0;
+    try {
+      fillStroke.call(this, context, line);
+    } finally {
+      context.lineDashOffset = previousOffset;
+    }
+  };
+  routeRenderer.addTo(map);
   // The default renderer only redraws at moveend. Follow the viewport during
   // flights so connections entering the view are drawn before arrival.
   const updateRouteViewport = routeRenderer.getEvents?.().viewreset;

@@ -7,10 +7,12 @@ import type { AtlasGroupDto } from "../../../infrastructure/atlas-data/dto/atlas
 import type { MapOverlayDto } from "../../../infrastructure/atlas-data/dto/map-overlay.dto.js";
 import type { LeafletMapRuntime } from "./use-leaflet-map.js";
 import { mapTravelDuration } from "../models/map-travel-duration.js";
-import { MARKER_FOCUS_PRESET, OVERLAY_FIT_PRESET } from "../models/map-focus-presets.js";
+import { CAMPAIGN_FOCUS_PRESET, MARKER_FOCUS_PRESET, OVERLAY_FIT_PRESET } from "../models/map-focus-presets.js";
+import { campaignFocusZoom } from "../models/campaign-focus-zoom.js";
 import { markerFocusZoomLimit, revealLeafletMarker } from "../../../infrastructure/mapping/leaflet/leaflet-marker-reveal.adapter.js";
 
 type AtlasSelection = { group: AtlasGroupDto; entry: AtlasEntryDto };
+type EntryFocusContext = "manual" | "campaign-playback";
 type SidebarSelectionTarget = {
   bounds: [number, number][];
   maxZoom?: number;
@@ -80,7 +82,7 @@ export function useMapViewport({
   sidebarOpen: boolean;
 }) {
   const sidebarSelectionTarget = useRef<SidebarSelectionTarget | null>(null);
-  const relatedLevelFocusEntryId = useRef<string | null>(null);
+  const relatedLevelFocus = useRef<{ entryId: string; context: EntryFocusContext } | null>(null);
   const markerFlightArrival = useRef<(() => void) | null>(null);
   const markerRevealCleanup = useRef<(() => void) | null>(null);
   const cancelMarkerFlightArrival = useCallback(() => {
@@ -105,8 +107,8 @@ export function useMapViewport({
   const queueSidebarSelection = useCallback((target: SidebarSelectionTarget | null) => {
     sidebarSelectionTarget.current = target;
   }, []);
-  const queueRelatedLevelFocus = useCallback((entryId: string | null) => {
-    relatedLevelFocusEntryId.current = entryId;
+  const queueRelatedLevelFocus = useCallback((entryId: string | null, context: EntryFocusContext = "manual") => {
+    relatedLevelFocus.current = entryId ? { entryId, context } : null;
   }, []);
 
   const focusEntryOverlay = useCallback((entry: AtlasEntryDto, alwaysFit = false) => {
@@ -158,14 +160,19 @@ export function useMapViewport({
     return true;
   }, [cancelMarkerFlightArrival, getDetailsElement, mapOverlays, runtime]);
 
-  const focusEntryOnMap = useCallback((entry: AtlasEntryDto, center = false) => {
-    if (!center && focusEntryOverlay(entry, true)) return;
+  const focusEntryOnMap = useCallback((entry: AtlasEntryDto, center = false, context: EntryFocusContext = "manual") => {
+    const playback = context === "campaign-playback";
+    // Playback frames the curated location at its accuracy scale.
+    if (!center && !playback && focusEntryOverlay(entry, true)) return;
     const currentMap = runtime.getMap();
     const layer = runtime.getMarkerLayer();
     const leaflet = runtime.getLeaflet();
     const mapElement = runtime.getContainer();
     const entryMarker = runtime.getMarker(entry.id)?.marker;
     if (!currentMap || !layer || !leaflet || !mapElement || !entryMarker) return;
+    const playbackZoom = playback ? campaignFocusZoom(entry, CAMPAIGN_FOCUS_PRESET, currentMap.getMaxZoom()) : undefined;
+    if (playbackZoom === null) return;
+    const preset = playback ? CAMPAIGN_FOCUS_PRESET : MARKER_FOCUS_PRESET;
 
     cancelMarkerFlightArrival();
     currentMap.stop();
@@ -182,11 +189,11 @@ export function useMapViewport({
     };
     const targetZoom = Math.min(
       precisionZoom ?? currentMap.getMaxZoom(),
-      MARKER_FOCUS_PRESET.maximumZoom,
-      Math.max(MARKER_FOCUS_PRESET.minimumZoom, currentMap.getZoom()),
+      preset.maximumZoom,
+      playbackZoom ?? Math.max(MARKER_FOCUS_PRESET.minimumZoom, currentMap.getZoom()),
     );
     const duration = mapTravelDuration(
-      distance, MARKER_FOCUS_PRESET.minimumTravelSeconds, MARKER_FOCUS_PRESET.maximumTravelSeconds,
+      distance, preset.minimumTravelSeconds, preset.maximumTravelSeconds,
     );
     if (animate && (distance > 50_000 || currentMap.getZoom() !== targetZoom)) {
       const movement = { animate, duration, maxZoom: targetZoom };
@@ -281,10 +288,10 @@ export function useMapViewport({
       if (markerFlightArrival.current) { cancelMarkerFlightArrival(); currentMap.stop(); }
       return;
     }
-    const relatedFocusEntryId = relatedLevelFocusEntryId.current;
-    relatedLevelFocusEntryId.current = null;
-    if (relatedFocusEntryId === selected.entry.id) {
-      focusEntryOnMap(selected.entry);
+    const relatedFocus = relatedLevelFocus.current;
+    relatedLevelFocus.current = null;
+    if (relatedFocus?.entryId === selected.entry.id) {
+      focusEntryOnMap(selected.entry, false, relatedFocus.context);
       return;
     }
     const overlaySelectionLevelId = runtime.consumeMarkerOverlaySelectionLevelId();

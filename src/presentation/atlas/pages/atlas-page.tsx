@@ -443,7 +443,7 @@ export function AtlasPage({
       ?? entry.appearances[0];
     setNextHistoryMode(reason === "start" ? "push" : "replace");
     queueSidebarSelection(null);
-    queueRelatedLevelFocus(entry.id);
+    queueRelatedLevelFocus(entry.id, "campaign-playback");
     prepareMarkerReveal(null);
     selectAtlasEntry(group, entry);
     setActiveHistoryOverlay(null);

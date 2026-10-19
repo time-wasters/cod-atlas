@@ -36,8 +36,11 @@ function renderRoute(t, { animationEnabled = true, reduced = false } = {}) {
   let viewportUpdates = 0;
   let canvasRemoved = false;
   let layerRemoved = false;
+  const context = { lineDashOffset: 0 };
+  const paintedOffsets = [];
   const canvas = {
     addTo: () => canvas,
+    _fillStroke(context) { paintedOffsets.push(context.lineDashOffset); },
     getEvents: () => ({ viewreset: () => { viewportUpdates += 1; } }),
     remove() { canvasRemoved = true; },
   };
@@ -57,7 +60,11 @@ function renderRoute(t, { animationEnabled = true, reduced = false } = {}) {
         coordinates, options, styles: [],
         addTo: () => line,
         setLatLngs(value) { line.coordinates = value; },
-        setStyle(value) { line.styles.push(value); },
+        setStyle(value) {
+          line.styles.push(value);
+          Object.assign(line.options, value);
+          canvas._fillStroke(context, line);
+        },
       };
       lines.push(line);
       return line;
@@ -74,7 +81,7 @@ function renderRoute(t, { animationEnabled = true, reduced = false } = {}) {
     frames.clear();
     for (const callback of callbacks) callback(time);
   };
-  return { rendered, lines, frames, preference, document, fire, frame, listeners,
+  return { rendered, lines, frames, preference, document, fire, frame, listeners, context, paintedOffsets,
     setZoom(value) { zoom = value; },
     get viewportUpdates() { return viewportUpdates; },
     get removed() { return canvasRemoved && layerRemoved; },
@@ -93,6 +100,22 @@ test("route lines remain clipped and resample within a fixed budget at deep zoom
   assert.ok(coordinates.length <= 513);
   assert.deepEqual(coordinates[0], [10, -100]);
   assert.deepEqual(coordinates.at(-1), [-20, 120]);
+  route.rendered.remove();
+});
+
+test("marching ants apply changing dash offsets to canvas strokes without leaking context state", (t) => {
+  const route = renderRoute(t);
+  route.context.lineDashOffset = 12;
+  route.frame(0);
+  route.frame(40);
+  const firstOffset = route.paintedOffsets.at(-1);
+  assert.ok(firstOffset < 0, "The canvas stroke must receive the animated dash offset");
+  route.frame(80);
+  assert.ok(route.paintedOffsets.at(-1) < firstOffset, "Successive strokes must advance the dash pattern");
+  assert.equal(route.context.lineDashOffset, 12, "Drawing must restore the canvas context's previous offset");
+  route.lines[0].setStyle({ dashOffset: undefined });
+  assert.equal(route.paintedOffsets.at(-1), 0, "A stroke without an offset must use a stationary dash pattern");
+  assert.equal(route.context.lineDashOffset, 12);
   route.rendered.remove();
 });
 

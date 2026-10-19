@@ -24,6 +24,8 @@ or filter changes end the tour; missions without Earth coordinates show their
 briefing without moving the map. Playback also pauses when the tab is hidden.
 Long-distance flights take longer, with campaign lines visible throughout travel.
 The time per mission starts after the camera arrives and the briefing loads.
+Playback adjusts the zoom to each location's precision, with the closest views
+for human-verified, high-confidence landmarks.
 
 Each entry explains what the marker represents and distinguishes a well-sourced
 location from an approximate, regional, or country-level fallback. Where

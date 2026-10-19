@@ -8,6 +8,26 @@ export const MARKER_FOCUS_PRESET = {
   maximumTravelSeconds: 8,
 };
 
+// Playback chooses a fresh scale for each stop instead of inheriting the last view.
+export const CAMPAIGN_FOCUS_PRESET = {
+  maximumZoom: 18,
+  minimumTravelSeconds: .55,
+  maximumTravelSeconds: 8,
+  zoomByPrecision: {
+    country: 5,
+    region: 6,
+    city: 8,
+    approximate: 12,
+    exact: 17,
+  },
+  // Human location review and high confidence support a closer landmark view.
+  // Approximate points retain more surrounding context than exact points.
+  verifiedLandmarkZoomByPrecision: {
+    approximate: 16,
+    exact: 18,
+  },
+};
+
 // Game and historical overlays choose their zoom from their bounds, up to maximumZoom.
 export const OVERLAY_FIT_PRESET = {
   maximumZoom: Infinity,
