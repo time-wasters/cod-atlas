@@ -1,6 +1,7 @@
 "use client";
 
 import { useLayoutEffect, useRef } from "react";
+import { Tooltip } from "../../shared/components/tooltip.js";
 
 export function FittedLevelTitle({
   children,
@@ -38,25 +39,26 @@ export function FittedLevelTitle({
 
   return (
     <h2 ref={title}>
-      <button
-        className="mission-title-button"
-        type="button"
-        disabled={disabled}
-        aria-label={`Show ${children} on map`}
-        title="Show on map; double-click or Shift+Enter to focus"
-        onClick={(event) => {
-          if (event.detail < 2) onActivate();
-        }}
-        onDoubleClick={onDoubleActivate}
-        onKeyDown={(event) => {
-          if (event.key === "Enter" && event.shiftKey) {
-            event.preventDefault();
-            onDoubleActivate();
-          }
-        }}
-      >
-        {children}
-      </button>
+      <Tooltip content="Show on map; double-click or Shift+Enter to focus">
+        <button
+          className="mission-title-button"
+          type="button"
+          disabled={disabled}
+          aria-label={`Show ${children} on map`}
+          onClick={(event) => {
+            if (event.detail < 2) onActivate();
+          }}
+          onDoubleClick={onDoubleActivate}
+          onKeyDown={(event) => {
+            if (event.key === "Enter" && event.shiftKey) {
+              event.preventDefault();
+              onDoubleActivate();
+            }
+          }}
+        >
+          {children}
+        </button>
+      </Tooltip>
     </h2>
   );
 }

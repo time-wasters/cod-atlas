@@ -30,9 +30,12 @@ export function createAtlasMarker({
   if (!entry.coordinates) throw new Error(`Cannot create an Atlas marker without coordinates: ${entry.id}`);
   const marker = leaflet.marker(entry.coordinates, {
     icon: createAtlasMarkerIcon(leaflet, entry, false),
-    title: `${entry.title} — ${label}`,
+    alt: `${entry.title} — ${label}`,
     keyboard: true,
   });
+  // Div icons do not apply the image alt option; keep their accessible name
+  // without adding a second, native browser tooltip.
+  marker.on("add", () => marker.getElement()?.setAttribute("aria-label", `${entry.title} — ${label}`));
   marker.on("click", onSelect);
   marker.bindTooltip(`${entry.title} · ${label}`, {
     direction: "top",

@@ -1,6 +1,7 @@
 "use client";
 
 import type { useCampaignPlayback } from "../hooks/use-campaign-playback.js";
+import { Tooltip } from "../../shared/components/tooltip.js";
 
 function PlaybackIcon({ kind }: { kind: "previous" | "next" | "play" | "pause" | "replay" | "stop" }) {
   return (
@@ -28,26 +29,36 @@ export function CampaignPlaybackControls({ label, count, playback }: {
   const timeAction = `Time per mission: ${playback.secondsPerMission} seconds. Change to ${nextDuration} seconds`;
   return (
     <div className="campaign-playback" role="group" aria-label={`${label} campaign tour`}>
-      <button type="button" disabled={!playback.active || playback.index === 0}
-        onClick={playback.previous} aria-label="Previous campaign mission" title="Previous mission">
-        <PlaybackIcon kind="previous" />
-      </button>
-      <button className="campaign-playback-primary" type="button" aria-label={action} title={action}
-        onClick={playing ? playback.pause : !playback.active || finished ? playback.start : playback.resume}>
-        <PlaybackIcon kind={playing ? "pause" : finished ? "replay" : "play"} />
-      </button>
-      <button type="button" disabled={!playback.active || playback.index === count - 1}
-        onClick={playback.next} aria-label="Next campaign mission" title="Next mission">
-        <PlaybackIcon kind="next" />
-      </button>
-      <button type="button" onClick={playback.stop}
-        disabled={!playback.active} aria-label="Stop following campaign" title="Stop following campaign">
-        <PlaybackIcon kind="stop" />
-      </button>
-      <button className="campaign-playback-speed" type="button" aria-label={timeAction} title={timeAction}
-        onClick={() => playback.setSecondsPerMission(nextDuration)}>
-        {playback.secondsPerMission}
-      </button>
+      <Tooltip content="Previous mission">
+        <button type="button" disabled={!playback.active || playback.index === 0}
+          onClick={playback.previous} aria-label="Previous campaign mission">
+          <PlaybackIcon kind="previous" />
+        </button>
+      </Tooltip>
+      <Tooltip content={action}>
+        <button className="campaign-playback-primary" type="button" aria-label={action}
+          onClick={playing ? playback.pause : !playback.active || finished ? playback.start : playback.resume}>
+          <PlaybackIcon kind={playing ? "pause" : finished ? "replay" : "play"} />
+        </button>
+      </Tooltip>
+      <Tooltip content="Next mission">
+        <button type="button" disabled={!playback.active || playback.index === count - 1}
+          onClick={playback.next} aria-label="Next campaign mission">
+          <PlaybackIcon kind="next" />
+        </button>
+      </Tooltip>
+      <Tooltip content="Stop following campaign">
+        <button type="button" onClick={playback.stop}
+          disabled={!playback.active} aria-label="Stop following campaign">
+          <PlaybackIcon kind="stop" />
+        </button>
+      </Tooltip>
+      <Tooltip content={timeAction}>
+        <button className="campaign-playback-speed" type="button" aria-label={timeAction}
+          onClick={() => playback.setSecondsPerMission(nextDuration)}>
+          {playback.secondsPerMission}
+        </button>
+      </Tooltip>
     </div>
   );
 }

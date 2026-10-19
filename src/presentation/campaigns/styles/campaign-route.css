@@ -27,19 +27,6 @@
   color: #17140c;
   background: var(--amber);
 }
-.leaflet-tooltip.campaign-route-tooltip {
-  border: 1px solid #756234;
-  border-radius: 4px;
-  padding: 8px 10px;
-  color: #d9d1bd;
-  background: linear-gradient(145deg, #20251bf8, #10140ffa);
-  box-shadow:
-    0 8px 22px #000c,
-    inset 0 1px 0 #ffffff0a;
-}
-.leaflet-tooltip-top.campaign-route-tooltip::before {
-  border-top-color: #756234;
-}
 .campaign-route-tooltip-content {
   display: grid;
   gap: 3px;

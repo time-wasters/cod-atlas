@@ -665,6 +665,7 @@ export function AtlasPage({
 
       <AtlasMapStage
         mapNode={mapNode}
+        mapReady={mapReady}
         playbackActive={campaignPlayback.active}
         solarSystem={(
           <SolarSystemOverlay

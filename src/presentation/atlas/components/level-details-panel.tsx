@@ -9,6 +9,7 @@ import { ExternalLinkIcon } from "../../shared/components/external-link-icon.js"
 import { GameIcon } from "../../game-catalog/components/game-icon.js";
 import { FittedLevelTitle } from "./fitted-level-title.js";
 import { LevelModeIcon } from "./level-mode-icon.js";
+import { Tooltip } from "../../shared/components/tooltip.js";
 
 export type LevelGameViewModel = {
   external: boolean;
@@ -132,16 +133,17 @@ export function LevelDetailsPanel({
           <div className="intel-location-row">
             <LocationCountry group={group} entry={entry} />
             {viewModel.mapOverlay.available && (
-              <button
-                className={`map-overlay-toggle${viewModel.mapOverlay.enabled ? " is-enabled" : ""}`}
-                type="button"
-                aria-pressed={viewModel.mapOverlay.enabled}
-                aria-label={`${viewModel.mapOverlay.enabled ? "Hide" : "Show"} game map overlay`}
-                title={`${viewModel.mapOverlay.enabled ? "Hide" : "Show"} game map overlay`}
-                onClick={actions.onToggleMapOverlay}
-              >
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5Zm-9 9 9 5 9-5M3 16l9 5 9-5" /></svg>
-              </button>
+              <Tooltip content={`${viewModel.mapOverlay.enabled ? "Hide" : "Show"} game map overlay`}>
+                <button
+                  className={`map-overlay-toggle${viewModel.mapOverlay.enabled ? " is-enabled" : ""}`}
+                  type="button"
+                  aria-pressed={viewModel.mapOverlay.enabled}
+                  aria-label={`${viewModel.mapOverlay.enabled ? "Hide" : "Show"} game map overlay`}
+                  onClick={actions.onToggleMapOverlay}
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5Zm-9 9 9 5 9-5M3 16l9 5 9-5" /></svg>
+                </button>
+              </Tooltip>
             )}
           </div>
           <LocationTaxonomy entry={entry} />
@@ -159,24 +161,25 @@ export function LevelDetailsPanel({
             </div>
           )}
           <div className="place-links" aria-label="External place links">
-            {viewModel.links.googleMaps && <a href={viewModel.links.googleMaps} target="_blank" rel="noreferrer" aria-label="Open in Google Maps" title="Google Maps"><ExternalLinkIcon name="googleMaps" /><span>Google Maps</span></a>}
-            {viewModel.links.wikipedia && <a href={viewModel.links.wikipedia} target="_blank" rel="noreferrer" aria-label="Open on Wikipedia" title="Wikipedia"><ExternalLinkIcon name="wikipedia" /><span>Wikipedia</span></a>}
-            {viewModel.links.callOfDutyMaps && <a href={viewModel.links.callOfDutyMaps} target="_blank" rel="noreferrer" aria-label="Open this map on Call of Duty Maps" title="Call of Duty Maps"><ExternalLinkIcon name="callOfDutyMaps" /><span>CoD Maps</span></a>}
-            <a href={appearance.wiki} target="_blank" rel="noreferrer" aria-label="Open on Call of Duty Wiki" title="Call of Duty Wiki"><ExternalLinkIcon name="fandom" /><span>CoD Wiki</span></a>
+            {viewModel.links.googleMaps && <Tooltip content="Google Maps"><a href={viewModel.links.googleMaps} target="_blank" rel="noreferrer" aria-label="Open in Google Maps"><ExternalLinkIcon name="googleMaps" /><span>Google Maps</span></a></Tooltip>}
+            {viewModel.links.wikipedia && <Tooltip content="Wikipedia"><a href={viewModel.links.wikipedia} target="_blank" rel="noreferrer" aria-label="Open on Wikipedia"><ExternalLinkIcon name="wikipedia" /><span>Wikipedia</span></a></Tooltip>}
+            {viewModel.links.callOfDutyMaps && <Tooltip content="Call of Duty Maps"><a href={viewModel.links.callOfDutyMaps} target="_blank" rel="noreferrer" aria-label="Open this map on Call of Duty Maps"><ExternalLinkIcon name="callOfDutyMaps" /><span>CoD Maps</span></a></Tooltip>}
+            <Tooltip content="Call of Duty Wiki"><a href={appearance.wiki} target="_blank" rel="noreferrer" aria-label="Open on Call of Duty Wiki"><ExternalLinkIcon name="fandom" /><span>CoD Wiki</span></a></Tooltip>
           </div>
           <section className="level-briefing">
-            <button
-              className="level-briefing-toggle"
-              type="button"
-              aria-expanded={viewModel.briefingExpanded}
-              aria-controls={appearance.hasLevelNotes ? "selected-level-briefing" : undefined}
-              onClick={actions.onToggleBriefing}
-              disabled={!appearance.hasLevelNotes}
-              title={appearance.hasLevelNotes ? undefined : "No level briefing available"}
-            >
-              <b aria-hidden="true">{viewModel.briefingExpanded ? "›" : "‹"}</b>
-              <span><small>Level briefing</small><strong>{appearance.hasLevelNotes ? "Research & historical context" : "No briefing available"}</strong></span>
-            </button>
+            <Tooltip content={appearance.hasLevelNotes ? undefined : "No level briefing available"}>
+              <button
+                className="level-briefing-toggle"
+                type="button"
+                aria-expanded={viewModel.briefingExpanded}
+                aria-controls={appearance.hasLevelNotes ? "selected-level-briefing" : undefined}
+                onClick={actions.onToggleBriefing}
+                disabled={!appearance.hasLevelNotes}
+              >
+                <b aria-hidden="true">{viewModel.briefingExpanded ? "›" : "‹"}</b>
+                <span><small>Level briefing</small><strong>{appearance.hasLevelNotes ? "Research & historical context" : "No briefing available"}</strong></span>
+              </button>
+            </Tooltip>
           </section>
         </div>
       </article>

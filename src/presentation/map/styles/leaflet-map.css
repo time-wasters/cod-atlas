@@ -22,14 +22,6 @@
 .leaflet-control-attribution a {
   color: #b99b53 !important;
 }
-.leaflet-tooltip {
-  border: 1px solid #8a6b2b !important;
-  border-radius: 3px !important;
-  color: #e5ddc7 !important;
-  background: #151a13ef !important;
-  box-shadow: 0 4px 18px #0008 !important;
-  font-size: 10px;
-}
 .country-boundary-outline {
   filter:
     drop-shadow(0 0 1px rgb(227 180 81 / 0.48))

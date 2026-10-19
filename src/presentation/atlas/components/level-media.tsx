@@ -2,6 +2,7 @@
 
 import { useEffect, useState, type RefObject } from "react";
 import type { WikiImageDto } from "../../../infrastructure/atlas-data/dto/wiki-image.dto.js";
+import { Tooltip } from "../../shared/components/tooltip.js";
 
 export type LevelMediaViewModel = {
   appearanceTitle: string;
@@ -125,16 +126,17 @@ export function LevelMedia({
             {media.failed ? "Image unavailable" : "Loading image…"}
           </span>
         )}
-        <button
-          className="media-info-button"
-          type="button"
-          aria-label="Show image copyright and attribution information"
-          title="Image information"
-          disabled={!loaded}
-          onClick={() => dialogRef.current?.showModal()}
-        >
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 10.8v6M12 7.2h.01" /></svg>
-        </button>
+        <Tooltip content="Image information">
+          <button
+            className="media-info-button"
+            type="button"
+            aria-label="Show image copyright and attribution information"
+            disabled={!loaded}
+            onClick={() => dialogRef.current?.showModal()}
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 10.8v6M12 7.2h.01" /></svg>
+          </button>
+        </Tooltip>
     </figure>
   );
 }
