@@ -7,6 +7,7 @@ import { animateLeafletOverlayOpacity } from "../../../infrastructure/mapping/le
 import type { LeafletMapRuntime } from "./use-leaflet-map.js";
 import { leafletViewportPadding } from "./use-map-viewport.js";
 import { mapTravelDuration } from "../models/map-travel-duration.js";
+import { OVERLAY_FIT_PRESET } from "../models/map-focus-presets.js";
 
 export function useHistoryOverlayLayer({
   getDetailsElement,
@@ -38,8 +39,13 @@ export function useHistoryOverlayLayer({
     ];
     const movement = {
       ...leafletViewportPadding(mapElement, getDetailsElement()),
+      maxZoom: OVERLAY_FIT_PRESET.maximumZoom,
       animate: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-      duration: mapTravelDuration(currentMap.getCenter().distanceTo(leaflet.latLngBounds(boundsCoordinates).getCenter())),
+      duration: mapTravelDuration(
+        currentMap.getCenter().distanceTo(leaflet.latLngBounds(boundsCoordinates).getCenter()),
+        OVERLAY_FIT_PRESET.minimumTravelSeconds,
+        OVERLAY_FIT_PRESET.maximumTravelSeconds,
+      ),
     };
     currentMap.stop();
     if (movement.animate) currentMap.flyToBounds(boundsCoordinates, movement);

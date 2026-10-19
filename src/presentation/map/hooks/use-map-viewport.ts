@@ -133,7 +133,14 @@ export function useMapViewport({
       entryOverlay.corners.bottomRight,
       entry.coordinates,
     ]);
-    if (alwaysFit || !visibleBounds.contains(overlayAndMarkerBounds)) {
+    const animate = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const duration = mapTravelDuration(
+      currentMap.getCenter().distanceTo(overlayAndMarkerBounds.getCenter()),
+      OVERLAY_FIT_PRESET.minimumTravelSeconds,
+      OVERLAY_FIT_PRESET.maximumTravelSeconds,
+    );
+    if (alwaysFit || !visibleBounds.contains(overlayAndMarkerBounds)
+      || currentMap.getZoom() > OVERLAY_FIT_PRESET.maximumZoom) {
       cancelMarkerFlightArrival();
       currentMap.stop();
       const movement = {
@@ -141,17 +148,13 @@ export function useMapViewport({
         maxZoom: alwaysFit
           ? OVERLAY_FIT_PRESET.maximumZoom
           : Math.min(currentMap.getZoom(), OVERLAY_FIT_PRESET.maximumZoom),
-        animate: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-        duration: mapTravelDuration(
-          currentMap.getCenter().distanceTo(overlayAndMarkerBounds.getCenter()),
-          OVERLAY_FIT_PRESET.minimumTravelSeconds,
-          OVERLAY_FIT_PRESET.maximumTravelSeconds,
-        ),
+        animate,
+        duration,
       };
       if (movement.animate) currentMap.flyToBounds(overlayAndMarkerBounds, movement);
       else currentMap.fitBounds(overlayAndMarkerBounds, movement);
     } else {
-      currentMap.panInside(entry.coordinates, padding);
+      currentMap.panInside(entry.coordinates, { ...padding, animate, duration });
     }
     return true;
   }, [cancelMarkerFlightArrival, getDetailsElement, mapOverlays, runtime]);
@@ -258,9 +261,16 @@ export function useMapViewport({
       }
       const movement = {
         ...padding,
-        maxZoom: sidebarTarget.fitOnlyWhenOutside ? currentMap.getZoom() : sidebarTarget.maxZoom,
+        maxZoom: Math.min(
+          sidebarTarget.fitOnlyWhenOutside ? currentMap.getZoom() : sidebarTarget.maxZoom ?? Infinity,
+          MARKER_FOCUS_PRESET.maximumZoom,
+        ),
         animate: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-        duration: mapTravelDuration(currentMap.getCenter().distanceTo(leaflet.latLngBounds(sidebarTarget.bounds).getCenter())),
+        duration: mapTravelDuration(
+          currentMap.getCenter().distanceTo(leaflet.latLngBounds(sidebarTarget.bounds).getCenter()),
+          MARKER_FOCUS_PRESET.minimumTravelSeconds,
+          MARKER_FOCUS_PRESET.maximumTravelSeconds,
+        ),
       };
       cancelMarkerFlightArrival();
       currentMap.stop();
@@ -282,7 +292,15 @@ export function useMapViewport({
     if (overlaySelectionLevelId === selected.entry.levelId && focusEntryOverlay(selected.entry)) return;
     currentMap.panInside(
       selected.entry.coordinates,
-      leafletViewportPadding(mapElement, getDetailsElement()),
+      {
+        ...leafletViewportPadding(mapElement, getDetailsElement()),
+        animate: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+        duration: mapTravelDuration(
+          currentMap.getCenter().distanceTo(selected.entry.coordinates),
+          MARKER_FOCUS_PRESET.minimumTravelSeconds,
+          MARKER_FOCUS_PRESET.maximumTravelSeconds,
+        ),
+      },
     );
   }, [cancelMarkerFlightArrival, filteredGroups, focusEntryOnMap, focusEntryOverlay, getDetailsElement, ready, runtime, selected, selectedCampaign]);
 
