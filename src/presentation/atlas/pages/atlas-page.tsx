@@ -100,6 +100,7 @@ export function AtlasPage({
   const [detailsOpen, setDetailsOpen] = useState(true);
   const [selectionVersion, setSelectionVersion] = useState(0);
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [campaignTravelPending, setCampaignTravelPending] = useState(false);
   const {
     enabled: externalIconsEnabled,
     unavailable: externalIconManifestUnavailable,
@@ -235,7 +236,7 @@ export function AtlasPage({
     campaign: selectedCampaign,
     filterScope: filtered,
     selectionVersion,
-    ready: mapReady && !mapMoving && !settingsOpen && selectedLevelNotes?.status !== "loading",
+    ready: mapReady && !mapMoving && !campaignTravelPending && !settingsOpen && selectedLevelNotes?.status !== "loading",
     onVisit: visitCampaignLevel,
   });
   useEffect(() => {
@@ -410,10 +411,12 @@ export function AtlasPage({
     queueRelatedLevelFocus,
     queueSidebarSelection,
   } = useMapViewport({
+    campaignPlaybackActive: campaignPlayback.active,
     filteredGroups: mapGroups,
     getDetailsElement: getMapDetailsElement,
     mapFitCoordinates,
     mapOverlays,
+    onCampaignTravelChange: setCampaignTravelPending,
     ready: mapReady,
     runtime: leafletMap,
     selected,

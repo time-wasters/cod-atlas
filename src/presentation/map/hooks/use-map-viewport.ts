@@ -10,6 +10,9 @@ import { mapTravelDuration } from "../models/map-travel-duration.js";
 import { CAMPAIGN_FOCUS_PRESET, MARKER_FOCUS_PRESET, OVERLAY_FIT_PRESET } from "../models/map-focus-presets.js";
 import { campaignFocusZoom } from "../models/campaign-focus-zoom.js";
 import { campaignTravelDuration } from "../models/campaign-travel-duration.js";
+import { campaignFlightStages } from "../models/campaign-flight-stages.js";
+import { createLeafletCampaignFlight } from "../../../infrastructure/mapping/leaflet/leaflet-campaign-flight.controller.js";
+import { waitForMapView } from "../../../infrastructure/mapping/leaflet/wait-for-map-view.js";
 import { markerFocusZoomLimit, revealLeafletMarker } from "../../../infrastructure/mapping/leaflet/leaflet-marker-reveal.adapter.js";
 
 type AtlasSelection = { group: AtlasGroupDto; entry: AtlasEntryDto };
@@ -63,9 +66,11 @@ export function leafletViewportPadding(mapElement: HTMLElement, detailsElement: 
 
 export function useMapViewport({
   getDetailsElement,
+  campaignPlaybackActive,
   filteredGroups,
   mapFitCoordinates,
   mapOverlays,
+  onCampaignTravelChange,
   ready,
   runtime,
   selected,
@@ -73,9 +78,11 @@ export function useMapViewport({
   sidebarOpen,
 }: {
   getDetailsElement: () => HTMLElement | null;
+  campaignPlaybackActive: boolean;
   filteredGroups: AtlasGroupDto[];
   mapFitCoordinates: [number, number][];
   mapOverlays: Record<string, MapOverlayDto>;
+  onCampaignTravelChange: (pending: boolean) => void;
   ready: boolean;
   runtime: LeafletMapRuntime;
   selected: AtlasSelection;
@@ -86,12 +93,23 @@ export function useMapViewport({
   const relatedLevelFocus = useRef<{ entryId: string; context: EntryFocusContext } | null>(null);
   const markerFlightArrival = useRef<(() => void) | null>(null);
   const markerRevealCleanup = useRef<(() => void) | null>(null);
+  const campaignFlight = useRef<ReturnType<typeof createLeafletCampaignFlight> | null>(null);
   const cancelMarkerFlightArrival = useCallback(() => {
     if (markerFlightArrival.current) runtime.getMap()?.off("moveend", markerFlightArrival.current);
     markerFlightArrival.current = null;
     markerRevealCleanup.current?.();
     markerRevealCleanup.current = null;
+    const flight = campaignFlight.current;
+    campaignFlight.current = null;
+    flight?.cancel();
   }, [runtime]);
+  useEffect(() => {
+    if (campaignPlaybackActive) return;
+    const flight = campaignFlight.current;
+    campaignFlight.current = null;
+    // A new campaign or manual selection may already have started its own camera move.
+    flight?.cancel({ stopMap: false });
+  }, [campaignPlaybackActive]);
   useEffect(() => {
     const map = runtime.getMap();
     if (!ready || !map) return;
@@ -109,8 +127,9 @@ export function useMapViewport({
     sidebarSelectionTarget.current = target;
   }, []);
   const queueRelatedLevelFocus = useCallback((entryId: string | null, context: EntryFocusContext = "manual") => {
+    cancelMarkerFlightArrival();
     relatedLevelFocus.current = entryId ? { entryId, context } : null;
-  }, []);
+  }, [cancelMarkerFlightArrival]);
 
   const focusEntryOverlay = useCallback((entry: AtlasEntryDto, alwaysFit = false) => {
     const currentMap = runtime.getMap();
@@ -193,12 +212,39 @@ export function useMapViewport({
       preset.maximumZoom,
       playbackZoom ?? Math.max(MARKER_FOCUS_PRESET.minimumZoom, currentMap.getZoom()),
     );
-    const duration = playback
-      ? campaignTravelDuration(distance, currentMap.getZoom(), targetZoom, CAMPAIGN_FOCUS_PRESET)
-      : mapTravelDuration(distance, preset.minimumTravelSeconds, preset.maximumTravelSeconds);
-    // Every playback stop belongs at the center of the unobstructed viewport,
-    // including nearby markers that are already visible at the current zoom.
-    if (animate && (playback || distance > 50_000 || currentMap.getZoom() !== targetZoom)) {
+    if (playback) {
+      // Each stage centers the curated point in the current unobstructed viewport.
+      const flight = createLeafletCampaignFlight({
+        map: currentMap,
+        bounds: leaflet.latLngBounds([destination]),
+        stages: campaignFlightStages(distance, currentMap.getZoom(), targetZoom, CAMPAIGN_FOCUS_PRESET, animate),
+        animate,
+        getPadding: () => leafletViewportPadding(mapElement, getDetailsElement()),
+        durationFor: (zoom) => campaignTravelDuration(
+          currentMap.getCenter().distanceTo(destination), currentMap.getZoom(), zoom, CAMPAIGN_FOCUS_PRESET,
+        ),
+        waitForOverview: (signal) => waitForMapView(() => runtime.isBasemapViewLoaded(), {
+          signal,
+          minimumMs: CAMPAIGN_FOCUS_PRESET.overview.minimumHoldSeconds * 1000,
+          maximumMs: CAMPAIGN_FOCUS_PRESET.overview.maximumWaitSeconds * 1000,
+        }),
+        onComplete: () => {
+          campaignFlight.current = null;
+          reveal();
+          onCampaignTravelChange(false);
+        },
+        onCancel: () => {
+          campaignFlight.current = null;
+          onCampaignTravelChange(false);
+        },
+      });
+      campaignFlight.current = flight;
+      onCampaignTravelChange(true);
+      flight.start();
+      return;
+    }
+    const duration = mapTravelDuration(distance, preset.minimumTravelSeconds, preset.maximumTravelSeconds);
+    if (animate && (distance > 50_000 || currentMap.getZoom() !== targetZoom)) {
       const movement = { animate, duration, maxZoom: targetZoom };
       const arrive = () => {
         markerFlightArrival.current = null;
@@ -218,7 +264,7 @@ export function useMapViewport({
       let moved = false;
       const markMoving = () => { moved = true; };
       currentMap.once("movestart", markMoving);
-      if (playback || currentMap.getZoom() !== targetZoom) {
+      if (currentMap.getZoom() !== targetZoom) {
         currentMap.fitBounds(leaflet.latLngBounds([destination]), {
           ...leafletViewportPadding(mapElement, getDetailsElement()), maxZoom: targetZoom, ...movement,
         });
@@ -233,7 +279,7 @@ export function useMapViewport({
         reveal();
       }
     }
-  }, [cancelMarkerFlightArrival, focusEntryOverlay, getDetailsElement, runtime]);
+  }, [cancelMarkerFlightArrival, focusEntryOverlay, getDetailsElement, onCampaignTravelChange, runtime]);
 
   const focusSelectedMarker = useCallback(() => {
     focusEntryOnMap(selected.entry);
@@ -288,7 +334,7 @@ export function useMapViewport({
       return;
     }
     if (!selected.entry.coordinates || !selectedIsVisible) {
-      if (markerFlightArrival.current) { cancelMarkerFlightArrival(); currentMap.stop(); }
+      if (markerFlightArrival.current || campaignFlight.current) { cancelMarkerFlightArrival(); currentMap.stop(); }
       return;
     }
     const relatedFocus = relatedLevelFocus.current;

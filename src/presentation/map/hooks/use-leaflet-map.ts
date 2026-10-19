@@ -22,6 +22,7 @@ export class LeafletMapRuntime {
   #campaignMarkerRevealEntryId: string | null = null;
   #markerOverlaySelectionLevelId: string | null = null;
   #leaflet: typeof import("leaflet") | null = null;
+  #basemapViewLoaded: (() => boolean) | null = null;
 
   getContainer() { return this.#container; }
   setContainer(container: HTMLDivElement | null) { this.#container = container; }
@@ -31,6 +32,8 @@ export class LeafletMapRuntime {
   setMarkerLayer(layer: MarkerClusterGroup | null) { this.#markerLayer = layer; }
   getLeaflet() { return this.#leaflet; }
   setLeaflet(leaflet: typeof import("leaflet") | null) { this.#leaflet = leaflet; }
+  isBasemapViewLoaded() { return this.#basemapViewLoaded?.() ?? false; }
+  setBasemapViewLoaded(check: (() => boolean) | null) { this.#basemapViewLoaded = check; }
   clearMarkers() { this.#markers.clear(); }
   setMarker(entryId: string, record: LeafletMarkerRecord) { this.#markers.set(entryId, record); }
   getMarker(entryId: string) { return this.#markers.get(entryId); }
@@ -69,12 +72,14 @@ export function useLeafletMap() {
       instance.on("movestart", () => setMoving(true));
       instance.on("moveend", () => setMoving(false));
       runtime.setMap(instance);
-      cleanupBasemap = await attachLeafletBasemap({
+      const basemap = await attachLeafletBasemap({
         leaflet: leafletRuntime,
         map: instance,
         signal: abortController.signal,
       });
+      cleanupBasemap = basemap.remove;
       if (cancelled || runtime.getMap() !== instance) return;
+      runtime.setBasemapViewLoaded(basemap.isViewLoaded);
 
       runtime.setMarkerLayer(createAtlasMarkerClusterLayer({
         leaflet: leafletRuntime,
@@ -100,6 +105,7 @@ export function useLeafletMap() {
       runtime.setCampaignMarkerRevealEntryId(null);
       runtime.setMarkerOverlaySelectionLevelId(null);
       runtime.setLeaflet(null);
+      runtime.setBasemapViewLoaded(null);
       runtime.setContainer(null);
       setReady(false);
       setMoving(false);

@@ -23,6 +23,14 @@ export async function attachLeafletBasemap({ leaflet, map, signal }: LeafletBase
     rasterBasemap = null;
   };
   signal.addEventListener("abort", cleanup, { once: true });
+  const basemap = {
+    remove: cleanup,
+    isViewLoaded: () => {
+      const vectorMap = vectorBasemap?.getMaplibreMap();
+      if (vectorMap) return vectorMap.loaded() && vectorMap.areTilesLoaded();
+      return rasterBasemap !== null && !rasterBasemap.isLoading();
+    },
+  };
 
   const addRasterFallback = () => {
     if (signal.aborted || rasterBasemap) return;
@@ -38,7 +46,7 @@ export async function attachLeafletBasemap({ leaflet, map, signal }: LeafletBase
       import("maplibre-gl"),
       import("maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url"),
     ]);
-    if (signal.aborted) return cleanup;
+    if (signal.aborted) return basemap;
 
     // MapLibre cannot locate its worker after Vite bundles the application.
     setWorkerUrl(workerUrl);
@@ -76,9 +84,11 @@ export async function attachLeafletBasemap({ leaflet, map, signal }: LeafletBase
   } catch (error) {
     if (!signal.aborted) {
       console.error("Could not initialize the English vector basemap; using OpenStreetMap raster tiles.", error);
+      vectorBasemap?.remove();
+      vectorBasemap = null;
       addRasterFallback();
     }
   }
 
-  return cleanup;
+  return basemap;
 }
