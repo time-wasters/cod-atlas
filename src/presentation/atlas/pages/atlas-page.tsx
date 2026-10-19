@@ -666,9 +666,6 @@ export function AtlasPage({
       <AtlasMapStage
         mapNode={mapNode}
         playbackActive={campaignPlayback.active}
-        playback={selectedCampaign?.levels.length ? (
-          <CampaignPlaybackControls label={selectedCampaign.label} count={selectedCampaign.levels.length} playback={campaignPlayback} />
-        ) : null}
         solarSystem={(
           <SolarSystemOverlay
             locations={displayedSpaceLocations}
@@ -711,6 +708,9 @@ export function AtlasPage({
             relatedLevels={relatedLevelsViewModel ? (
               <RelatedLevelsPanel
                 viewModel={relatedLevelsViewModel}
+                playback={selectedCampaign?.levels.length ? (
+                  <CampaignPlaybackControls label={selectedCampaign.label} count={selectedCampaign.levels.length} playback={campaignPlayback} />
+                ) : null}
                 onToggle={() => setRelatedLevelsOpen((open) => !open)}
                 onSelect={(group, entry) => {
                   queueRelatedLevelFocus(entry.id);

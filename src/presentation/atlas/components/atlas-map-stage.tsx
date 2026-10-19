@@ -5,7 +5,6 @@ export function AtlasMapStage({
   details,
   mapNode,
   mediaDialog,
-  playback,
   playbackActive,
   solarSystem,
 }: {
@@ -13,20 +12,16 @@ export function AtlasMapStage({
   details: ReactNode;
   mapNode: RefObject<HTMLDivElement | null>;
   mediaDialog: ReactNode;
-  playback: ReactNode;
   playbackActive: boolean;
   solarSystem: ReactNode;
 }) {
   return (
-    <section className={`map-stage${playback ? " has-campaign-player" : ""}${playbackActive ? " is-campaign-playback-active" : ""}`} aria-label="Interactive world map">
+    <section className={`map-stage${playbackActive ? " is-campaign-playback-active" : ""}`} aria-label="Interactive world map">
       <div ref={mapNode} className="map-canvas" />
       <div className="map-grid" aria-hidden="true" />
       <div className="map-label" aria-hidden="true">TACTICAL GEOGRAPHY // GLOBAL</div>
       {solarSystem}
       <div className="mission-stack">
-        <div className="mission-stack-playback">
-          <div>{playback}</div>
-        </div>
         {briefing}
       </div>
       {details}

@@ -23,51 +23,31 @@ export function CampaignPlaybackControls({ label, count, playback }: {
   const playing = playback.status === "playing";
   const finished = playback.status === "finished";
   const action = playing ? "Pause" : finished ? "Replay" : playback.active ? "Resume" : "Follow campaign";
-  const progress = playback.active ? playback.index + 1 : 0;
+  const durations = [10, 15, 30, 60];
+  const nextDuration = durations[(durations.indexOf(playback.secondsPerMission) + 1) % durations.length];
+  const timeAction = `Time per mission: ${playback.secondsPerMission} seconds. Change to ${nextDuration} seconds`;
   return (
-    <section className={`campaign-playback${playing ? " is-playing" : ""}`} aria-label="Campaign playback">
-      <div className="campaign-playback-heading">
-        <div>
-          <span className="campaign-playback-kicker">Campaign tour</span>
-          <strong title={label}>{label}</strong>
-        </div>
-        <button className="campaign-playback-stop" type="button" onClick={playback.stop}
-          disabled={!playback.active} aria-label="Stop following campaign" title="Stop following campaign">
-          <PlaybackIcon kind="stop" />
-        </button>
-      </div>
-      <div className="campaign-playback-progress" role="progressbar" aria-label="Campaign progress"
-        aria-valuemin={0} aria-valuemax={count} aria-valuenow={progress}>
-        <span style={{ width: `${count > 0 ? progress / count * 100 : 0}%` }} />
-      </div>
-      <div className="campaign-playback-meta">
-        <p role="status" aria-live="polite" aria-atomic="true">
-          <span className="campaign-playback-state">{finished ? "Complete" : playing ? "Following" : playback.active ? "Paused" : "Ready"}</span>
-          <span>{playback.active ? `${progress} / ${count}` : `${count} ${count === 1 ? "mission" : "missions"}`}</span>
-        </p>
-        <label className="campaign-playback-speed" title="Time per mission">
-          <span>Hold</span>
-          <select aria-label="Time per mission" value={playback.secondsPerMission}
-            onChange={(event) => playback.setSecondsPerMission(Number(event.target.value))}>
-            {[10, 15, 30, 60].map((seconds) => <option key={seconds} value={seconds}>{seconds}s</option>)}
-          </select>
-        </label>
-      </div>
-      <div className="campaign-playback-buttons">
-        <button type="button" disabled={!playback.active || playback.index === 0}
-          onClick={playback.previous} aria-label="Previous campaign mission" title="Previous mission">
-          <PlaybackIcon kind="previous" />
-        </button>
-        <button className="campaign-playback-primary" type="button" aria-label={action}
-          onClick={playing ? playback.pause : !playback.active || finished ? playback.start : playback.resume}>
-          <PlaybackIcon kind={playing ? "pause" : finished ? "replay" : "play"} />
-          <span>{action}</span>
-        </button>
-        <button type="button" disabled={!playback.active || playback.index === count - 1}
-          onClick={playback.next} aria-label="Next campaign mission" title="Next mission">
-          <PlaybackIcon kind="next" />
-        </button>
-      </div>
-    </section>
+    <div className="campaign-playback" role="group" aria-label={`${label} campaign tour`}>
+      <button type="button" disabled={!playback.active || playback.index === 0}
+        onClick={playback.previous} aria-label="Previous campaign mission" title="Previous mission">
+        <PlaybackIcon kind="previous" />
+      </button>
+      <button className="campaign-playback-primary" type="button" aria-label={action} title={action}
+        onClick={playing ? playback.pause : !playback.active || finished ? playback.start : playback.resume}>
+        <PlaybackIcon kind={playing ? "pause" : finished ? "replay" : "play"} />
+      </button>
+      <button type="button" disabled={!playback.active || playback.index === count - 1}
+        onClick={playback.next} aria-label="Next campaign mission" title="Next mission">
+        <PlaybackIcon kind="next" />
+      </button>
+      <button type="button" onClick={playback.stop}
+        disabled={!playback.active} aria-label="Stop following campaign" title="Stop following campaign">
+        <PlaybackIcon kind="stop" />
+      </button>
+      <button className="campaign-playback-speed" type="button" aria-label={timeAction} title={timeAction}
+        onClick={() => playback.setSecondsPerMission(nextDuration)}>
+        {playback.secondsPerMission}
+      </button>
+    </div>
   );
 }

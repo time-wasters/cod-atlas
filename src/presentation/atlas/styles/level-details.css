@@ -64,5 +64,8 @@
   .intel-column { top: auto; bottom: 12px; max-height: calc(100% - 24px); }
   .intel-column.is-collapsed { top: 12px; right: 0; bottom: auto; }
   .intel-column.has-open-briefing { visibility: hidden; }
+  .map-stage.is-campaign-playback-active .intel-column.has-open-briefing { visibility: visible; max-height: 150px; }
+  .map-stage.is-campaign-playback-active .intel-column.has-open-briefing .intel-card,
+  .map-stage.is-campaign-playback-active .intel-column.has-open-briefing .details-toggle { display: none; }
   .intel-card h2 { font-size: 22px; }
 }

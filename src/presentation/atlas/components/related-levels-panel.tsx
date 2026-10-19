@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import type { ReactNode } from "react";
 import type { AtlasEntryDto } from "../../../infrastructure/atlas-data/dto/atlas-entry.dto.js";
 import type { AtlasGroupDto } from "../../../infrastructure/atlas-data/dto/atlas-group.dto.js";
 import { CountryFlag } from "../../shared/components/country-flag.js";
@@ -32,6 +33,7 @@ export function RelatedLevelsPanel({
   onGameIconError,
   onSelect,
   onToggle,
+  playback,
   viewModel,
 }: {
   onCollapse: () => void;
@@ -39,6 +41,7 @@ export function RelatedLevelsPanel({
   onGameIconError: (gameId: string) => void;
   onSelect: (group: AtlasGroupDto, entry: AtlasEntryDto) => void;
   onToggle: () => void;
+  playback?: ReactNode;
   viewModel: RelatedLevelsViewModel;
 }) {
   const list = useRef<HTMLDivElement>(null);
@@ -78,6 +81,7 @@ export function RelatedLevelsPanel({
         <small>{viewModel.totalCount}</small>
         <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4 6 4 4 4-4" /></svg>
       </button>
+      {viewModel.open && playback}
       {viewModel.open && (
         <div className={`intel-entries${viewModel.expanded ? " is-expanded" : ""}`} id="related-level-list" ref={list}>
           {viewModel.items.map(({ group, entry }) => (

@@ -26,8 +26,7 @@ export function leafletViewportPadding(mapElement: HTMLElement, detailsElement: 
   let bottomPadding = edgePadding;
 
   const briefingElement = mapElement.parentElement?.querySelector<HTMLElement>("#selected-level-briefing");
-  const playbackElement = mapElement.parentElement?.querySelector<HTMLElement>(".campaign-playback");
-  for (const element of [detailsElement, briefingElement, playbackElement]) {
+  for (const element of [detailsElement, briefingElement]) {
     if (!element) continue;
     const detailsRect = element.getBoundingClientRect();
     const horizontalOverlap = Math.max(
