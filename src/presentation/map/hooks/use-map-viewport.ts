@@ -195,7 +195,9 @@ export function useMapViewport({
     const duration = mapTravelDuration(
       distance, preset.minimumTravelSeconds, preset.maximumTravelSeconds,
     );
-    if (animate && (distance > 50_000 || currentMap.getZoom() !== targetZoom)) {
+    // Every playback stop belongs at the center of the unobstructed viewport,
+    // including nearby markers that are already visible at the current zoom.
+    if (animate && (playback || distance > 50_000 || currentMap.getZoom() !== targetZoom)) {
       const movement = { animate, duration, maxZoom: targetZoom };
       const arrive = () => {
         markerFlightArrival.current = null;
@@ -215,7 +217,7 @@ export function useMapViewport({
       let moved = false;
       const markMoving = () => { moved = true; };
       currentMap.once("movestart", markMoving);
-      if (currentMap.getZoom() !== targetZoom) {
+      if (playback || currentMap.getZoom() !== targetZoom) {
         currentMap.fitBounds(leaflet.latLngBounds([destination]), {
           ...leafletViewportPadding(mapElement, getDetailsElement()), maxZoom: targetZoom, ...movement,
         });
