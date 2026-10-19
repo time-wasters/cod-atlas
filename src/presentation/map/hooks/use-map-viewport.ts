@@ -7,6 +7,7 @@ import type { AtlasGroupDto } from "../../../infrastructure/atlas-data/dto/atlas
 import type { MapOverlayDto } from "../../../infrastructure/atlas-data/dto/map-overlay.dto.js";
 import type { LeafletMapRuntime } from "./use-leaflet-map.js";
 import { mapTravelDuration } from "../models/map-travel-duration.js";
+import { MARKER_FOCUS_PRESET, OVERLAY_FIT_PRESET } from "../models/map-focus-presets.js";
 import { markerFocusZoomLimit, revealLeafletMarker } from "../../../infrastructure/mapping/leaflet/leaflet-marker-reveal.adapter.js";
 
 type AtlasSelection = { group: AtlasGroupDto; entry: AtlasEntryDto };
@@ -137,9 +138,15 @@ export function useMapViewport({
       currentMap.stop();
       const movement = {
         ...padding,
-        ...(alwaysFit ? {} : { maxZoom: currentMap.getZoom() }),
+        maxZoom: alwaysFit
+          ? OVERLAY_FIT_PRESET.maximumZoom
+          : Math.min(currentMap.getZoom(), OVERLAY_FIT_PRESET.maximumZoom),
         animate: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-        duration: mapTravelDuration(currentMap.getCenter().distanceTo(overlayAndMarkerBounds.getCenter())),
+        duration: mapTravelDuration(
+          currentMap.getCenter().distanceTo(overlayAndMarkerBounds.getCenter()),
+          OVERLAY_FIT_PRESET.minimumTravelSeconds,
+          OVERLAY_FIT_PRESET.maximumTravelSeconds,
+        ),
       };
       if (movement.animate) currentMap.flyToBounds(overlayAndMarkerBounds, movement);
       else currentMap.fitBounds(overlayAndMarkerBounds, movement);
@@ -171,9 +178,16 @@ export function useMapViewport({
       // Do not pan to a displaced spiderfied marker after arrival.
       markerRevealCleanup.current = revealLeafletMarker(layer, entryMarker);
     };
-    const targetZoom = Math.min(precisionZoom ?? currentMap.getMaxZoom(), Math.max(6, currentMap.getZoom()));
+    const targetZoom = Math.min(
+      precisionZoom ?? currentMap.getMaxZoom(),
+      MARKER_FOCUS_PRESET.maximumZoom,
+      Math.max(MARKER_FOCUS_PRESET.minimumZoom, currentMap.getZoom()),
+    );
+    const duration = mapTravelDuration(
+      distance, MARKER_FOCUS_PRESET.minimumTravelSeconds, MARKER_FOCUS_PRESET.maximumTravelSeconds,
+    );
     if (animate && (distance > 50_000 || currentMap.getZoom() !== targetZoom)) {
-      const movement = { animate, duration: mapTravelDuration(distance), maxZoom: targetZoom };
+      const movement = { animate, duration, maxZoom: targetZoom };
       const arrive = () => {
         markerFlightArrival.current = null;
         reveal();
@@ -185,7 +199,7 @@ export function useMapViewport({
         ...leafletViewportPadding(mapElement, getDetailsElement()), ...movement,
       });
     } else {
-      const movement = { animate, duration: mapTravelDuration(distance) };
+      const movement = { animate, duration };
       const arrive = () => { markerFlightArrival.current = null; reveal(); };
       markerFlightArrival.current = arrive;
       currentMap.once("moveend", arrive);
