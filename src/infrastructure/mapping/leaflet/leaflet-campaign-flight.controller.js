@@ -10,15 +10,33 @@
  *   waitForOverview: (signal: AbortSignal) => Promise<unknown>,
  *   onComplete: () => void,
  *   onCancel: () => void,
+ *   onFinalApproach?: () => void,
+ *   finalApproachLeadMs?: number,
+ *   schedule?: (callback: () => void, delayMs: number) => () => void,
  * }} options
  */
 export function createLeafletCampaignFlight({
   map, bounds, stages, animate, getPadding, durationFor, waitForOverview, onComplete, onCancel,
+  onFinalApproach, finalApproachLeadMs = 0,
+  schedule = (callback, delayMs) => {
+    const timer = setTimeout(callback, delayMs);
+    return () => clearTimeout(timer);
+  },
 }) {
   const abortController = new AbortController();
   let arrival = null;
   let finished = false;
   let started = false;
+  let cancelApproach = null;
+  let approachNotified = false;
+
+  const notifyApproach = () => {
+    if (finished || approachNotified) return;
+    cancelApproach?.();
+    cancelApproach = null;
+    approachNotified = true;
+    onFinalApproach?.();
+  };
 
   /** @param {{ stopMap?: boolean }} [options] */
   const cancel = ({ stopMap = true } = {}) => {
@@ -26,6 +44,8 @@ export function createLeafletCampaignFlight({
     finished = true;
     if (arrival) map.off("moveend", arrival);
     arrival = null;
+    cancelApproach?.();
+    cancelApproach = null;
     abortController.abort();
     if (stopMap) map.stop();
     onCancel();
@@ -38,6 +58,7 @@ export function createLeafletCampaignFlight({
       arrival = null;
       if (finished) return;
       if (index === stages.length - 1) {
+        notifyApproach();
         finished = true;
         onComplete();
         return;
@@ -48,6 +69,9 @@ export function createLeafletCampaignFlight({
     };
     map.once("moveend", arrival);
     const movement = { ...getPadding(), animate, maxZoom: zoom, duration: durationFor(zoom) };
+    if (index === stages.length - 1 && animate && onFinalApproach) {
+      cancelApproach = schedule(notifyApproach, Math.max(0, movement.duration * 1000 - finalApproachLeadMs));
+    }
     if (animate) map.flyToBounds(bounds, movement);
     else map.fitBounds(bounds, movement);
   };

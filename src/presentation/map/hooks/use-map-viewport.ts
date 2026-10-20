@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { CampaignOption } from "../../../application/campaigns/use-cases/build-campaign-options.js";
 import type { AtlasEntryDto } from "../../../infrastructure/atlas-data/dto/atlas-entry.dto.js";
 import type { AtlasGroupDto } from "../../../infrastructure/atlas-data/dto/atlas-group.dto.js";
@@ -15,6 +15,7 @@ import { createLeafletCampaignFlight } from "../../../infrastructure/mapping/lea
 import { waitForMapView } from "../../../infrastructure/mapping/leaflet/wait-for-map-view.js";
 import { markerFocusZoomLimit, revealLeafletMarker } from "../../../infrastructure/mapping/leaflet/leaflet-marker-reveal.adapter.js";
 import { leafletEntryFocusTarget } from "../../../infrastructure/mapping/leaflet/leaflet-entry-focus-target.adapter.js";
+import { MAP_OVERLAY_CONFIG } from "../../../shared/config/map-overlay.config.js";
 
 type AtlasSelection = { group: AtlasGroupDto; entry: AtlasEntryDto };
 type EntryFocusContext = "manual" | "campaign-playback";
@@ -95,6 +96,7 @@ export function useMapViewport({
   const markerFlightArrival = useRef<(() => void) | null>(null);
   const markerRevealCleanup = useRef<(() => void) | null>(null);
   const campaignFlight = useRef<ReturnType<typeof createLeafletCampaignFlight> | null>(null);
+  const [campaignOverlayEntryId, setCampaignOverlayEntryId] = useState<string | null>(null);
   const cancelMarkerFlightArrival = useCallback(() => {
     if (markerFlightArrival.current) runtime.getMap()?.off("moveend", markerFlightArrival.current);
     markerFlightArrival.current = null;
@@ -223,6 +225,7 @@ export function useMapViewport({
       padding: leafletViewportPadding(mapElement, getDetailsElement()),
     });
     if (playback) {
+      setCampaignOverlayEntryId(null);
       // Fit the same destination bounds at every stage so the final approach
       // cannot zoom through an overlay or leave an offset marker out of view.
       const flight = createLeafletCampaignFlight({
@@ -239,6 +242,8 @@ export function useMapViewport({
           minimumMs: CAMPAIGN_FOCUS_PRESET.overview.minimumHoldSeconds * 1000,
           maximumMs: CAMPAIGN_FOCUS_PRESET.overview.maximumWaitSeconds * 1000,
         }),
+        finalApproachLeadMs: MAP_OVERLAY_CONFIG.campaign.fadeInBeforeArrivalMs,
+        onFinalApproach: () => setCampaignOverlayEntryId(entry.id),
         onComplete: () => {
           campaignFlight.current = null;
           reveal();
@@ -246,6 +251,7 @@ export function useMapViewport({
         },
         onCancel: () => {
           campaignFlight.current = null;
+          setCampaignOverlayEntryId(entry.id);
           onCampaignTravelChange(false);
         },
       });
@@ -406,6 +412,7 @@ export function useMapViewport({
   }, [ready, runtime, sidebarOpen]);
 
   return {
+    campaignOverlayVisible: !campaignPlaybackActive || campaignOverlayEntryId === selected.entry.id,
     centerSelectedMarker,
     focusSelectedMarker,
     queueRelatedLevelFocus,

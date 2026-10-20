@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { createLeafletCampaignFlight } from "../src/infrastructure/mapping/leaflet/leaflet-campaign-flight.controller.js";
 
-function flightFixture({ stages = [11, 18], animate = true } = {}) {
+function flightFixture({ stages = [11, 18], animate = true, onFinalApproach, schedule, finalApproachLeadMs = 500 } = {}) {
   const arrivals = new Set();
   const moves = [];
   const bounds = { curatedPoint: [12, 34] };
@@ -23,6 +23,7 @@ function flightFixture({ stages = [11, 18], animate = true } = {}) {
   };
   const flight = createLeafletCampaignFlight({
     map, bounds, stages, animate,
+    onFinalApproach, schedule, finalApproachLeadMs,
     getPadding: () => padding,
     durationFor: (zoom) => zoom / 10,
     waitForOverview: (signal) => { renderSignal = signal; return viewReady; },
@@ -65,6 +66,95 @@ test("the landmark approach waits for the overview and only the final arrival co
   assert.equal(fixture.arrivals.size, 0);
   fixture.flight.cancel();
   assert.equal(fixture.cancelled, 0);
+});
+
+function createScheduleClock() {
+  let now = 0;
+  const tasks = new Set();
+  return {
+    schedule(callback, delayMs) {
+      const task = { callback, due: now + delayMs };
+      tasks.add(task);
+      return () => tasks.delete(task);
+    },
+    advance(milliseconds) {
+      now += milliseconds;
+      for (const task of [...tasks]) {
+        if (task.due > now) continue;
+        tasks.delete(task);
+        task.callback();
+      }
+    },
+    get pending() { return tasks.size; },
+  };
+}
+
+test("the overlay reveal waits until 500 ms before final arrival, including overview waits", async () => {
+  const clock = createScheduleClock();
+  let reveals = 0;
+  const fixture = flightFixture({ schedule: clock.schedule, onFinalApproach: () => { reveals += 1; } });
+  fixture.flight.start();
+  clock.advance(10_000);
+  assert.equal(reveals, 0);
+  assert.equal(clock.pending, 0);
+  fixture.arrive();
+  clock.advance(10_000);
+  assert.equal(reveals, 0);
+  fixture.renderReady();
+  await Promise.resolve();
+  clock.advance(1299);
+  assert.equal(reveals, 0);
+  clock.advance(1);
+  assert.equal(reveals, 1);
+  assert.equal(fixture.complete, 0);
+  fixture.arrive();
+  assert.equal(fixture.complete, 1);
+  assert.equal(reveals, 1);
+});
+
+test("cancelling a final approach clears its pending overlay reveal", () => {
+  const clock = createScheduleClock();
+  let reveals = 0;
+  const fixture = flightFixture({ stages: [18], schedule: clock.schedule, onFinalApproach: () => { reveals += 1; } });
+  fixture.flight.start();
+  assert.equal(clock.pending, 1);
+  fixture.flight.cancel();
+  assert.equal(clock.pending, 0);
+  clock.advance(2000);
+  assert.equal(reveals, 0);
+});
+
+test("early arrival reveals once and cancels the late reveal timer", () => {
+  const clock = createScheduleClock();
+  let reveals = 0;
+  const fixture = flightFixture({ stages: [18], schedule: clock.schedule, onFinalApproach: () => { reveals += 1; } });
+  fixture.flight.start();
+  fixture.arrive();
+  assert.equal(reveals, 1);
+  assert.equal(clock.pending, 0);
+  clock.advance(2000);
+  assert.equal(reveals, 1);
+});
+
+test("short flights start revealing with the final stage", () => {
+  const clock = createScheduleClock();
+  let reveals = 0;
+  const fixture = flightFixture({ stages: [3], schedule: clock.schedule, onFinalApproach: () => { reveals += 1; } });
+  fixture.flight.start();
+  clock.advance(0);
+  assert.equal(reveals, 1);
+  assert.equal(fixture.complete, 0);
+});
+
+test("reduced-motion flights reveal on arrival without scheduling a timer", () => {
+  const clock = createScheduleClock();
+  let reveals = 0;
+  const fixture = flightFixture({ stages: [18], animate: false, schedule: clock.schedule, onFinalApproach: () => { reveals += 1; } });
+  fixture.flight.start();
+  assert.equal(clock.pending, 0);
+  assert.equal(reveals, 0);
+  fixture.arrive();
+  assert.equal(reveals, 1);
 });
 
 test("cancelling during the overview wait prevents a stale landmark zoom", async () => {

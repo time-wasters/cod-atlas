@@ -407,6 +407,7 @@ export function AtlasPage({
     selectedCampaign,
   });
   const {
+    campaignOverlayVisible,
     centerSelectedMarker,
     focusSelectedMarker,
     queueRelatedLevelFocus,
@@ -426,6 +427,8 @@ export function AtlasPage({
   });
   useMapOverlayLayer({
     adaptiveOpacity: mapOverlayZoomOpacityEnabled,
+    campaignPlaybackActive: campaignPlayback.active,
+    campaignOverlayVisible,
     enabled: selectedMapOverlayEnabled,
     getDetailsElement: getMapDetailsElement,
     levelId: selected.entry.levelId,

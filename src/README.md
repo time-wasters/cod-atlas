@@ -180,6 +180,29 @@ Animation timing, campaign overview stops, and overlay zoom ceilings live in
 [`presentation/map/models/map-focus-presets.ts`](presentation/map/models/map-focus-presets.ts).
 Configuration changes take effect on the next development reload or site build.
 
+## Map overlay transitions
+
+Configure game overlay fades separately in
+[`shared/config/map-overlay.config.js`](shared/config/map-overlay.config.js).
+All durations are in milliseconds.
+
+| Setting | Default browsing | Campaign playback |
+| --- | --- | --- |
+| `fadeOutMs` | 100 | 500 |
+| `fadeInMs` | 100 | 500 |
+| `fadeInBeforeArrivalMs` | Immediate fade-in | 500 |
+
+When changing campaign stops, the outgoing overlay fades out while the camera
+starts moving. The destination overlay stays hidden during travel and any
+intermediate overview wait. Its fade-in begins 500 ms before the final camera
+stage finishes, blending it in as the camera arrives. For shorter flights the
+fade starts with the final stage. Disabling an overlay keeps it hidden.
+
+Early arrival starts the fade-in immediately; cancellation clears the pending
+fade-in timer and restores the selected overlay. Reduced-motion visits reveal
+the overlay on arrival without an animated fade. Replaced overlays are removed
+only after their fade-out completes. Zoom-based opacity still applies.
+
 ## Migration status
 
 The Wiki importer, external game-icon importer, level-image manager, progress
