@@ -6,6 +6,7 @@ export function retargetLeafletOverlayOpacity({
   clock = createBrowserAnimationFrameClock(),
   fadeInMs = MAP_OVERLAY_CONFIG.default.fadeInMs,
   fadeOutMs = MAP_OVERLAY_CONFIG.default.fadeOutMs,
+  onComplete,
   opacityRef,
   overlay,
   target,
@@ -17,10 +18,11 @@ export function retargetLeafletOverlayOpacity({
     overlay.setOpacity(target);
     opacityRef.current = target;
     animationRef.current = null;
+    onComplete?.();
     return;
   }
   if (animationRef.current !== null) return;
-  if (opacityRef.current === target) return;
+  if (opacityRef.current === target) { onComplete?.(); return; }
 
   let start = opacityRef.current;
   let startedAt = clock.now();
@@ -39,8 +41,10 @@ export function retargetLeafletOverlayOpacity({
     const opacity = progress === 1 ? destination : start + (destination - start) * eased;
     overlay.setOpacity(opacity);
     opacityRef.current = opacity;
-    if (progress === 1) animationRef.current = null;
-    else animationRef.current = clock.requestFrame(tick);
+    if (progress === 1) {
+      animationRef.current = null;
+      onComplete?.();
+    } else animationRef.current = clock.requestFrame(tick);
   };
   animationRef.current = clock.requestFrame(tick);
 }

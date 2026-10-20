@@ -114,6 +114,36 @@ test("campaign fades use the configured duration to blend the destination overla
   assert.equal(animationClock.pendingFrames(), 0);
 });
 
+test("stationary image changes fade out and in concurrently within 500 ms", () => {
+  const animationClock = createAnimationClock();
+  const outgoing = { current: 0.72 };
+  const incoming = { current: 0 };
+  let removed = false;
+  let completed = 0;
+  animateLeafletOverlayOpacity({
+    animationRef: { current: null }, clock: animationClock.clock,
+    opacityRef: outgoing, overlay: { setOpacity() {} },
+    target: 0, durationMs: 500, onComplete: () => { removed = true; },
+  });
+  retargetLeafletOverlayOpacity({
+    animationRef: { current: null }, clock: animationClock.clock,
+    opacityRef: incoming, overlay: { setOpacity() {} }, targetRef: { current: 0 },
+    target: 0.72, fadeInMs: 500, fadeOutMs: 500,
+    onComplete: () => { completed += 1; },
+  });
+  animationClock.step(250);
+  assert.ok(outgoing.current > 0 && outgoing.current < 0.72);
+  assert.ok(incoming.current > 0 && incoming.current < 0.72);
+  assert.equal(removed, false);
+  assert.equal(completed, 0);
+  animationClock.step(250);
+  assert.equal(outgoing.current, 0);
+  assert.equal(incoming.current, 0.72);
+  assert.equal(removed, true);
+  assert.equal(completed, 1);
+  assert.equal(animationClock.pendingFrames(), 0);
+});
+
 test("replaced overlays remain until the configured fade-out has completed", () => {
   const animationClock = createAnimationClock();
   const opacityRef = { current: 0.72 };

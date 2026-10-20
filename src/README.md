@@ -191,6 +191,7 @@ All durations are in milliseconds.
 | `fadeOutMs` | 100 | 500 |
 | `fadeInMs` | 100 | 1000 |
 | `fadeInBeforeArrivalMs` | Immediate fade-in | 1000 |
+| `sameAreaCrossfadeMs` | Not used | 500 |
 
 When changing campaign stops, the outgoing overlay fades out while the camera
 starts moving. The destination overlay stays hidden during travel and any
@@ -198,6 +199,15 @@ intermediate overview wait. Its fade-in begins `fadeInBeforeArrivalMs` before
 the final camera stage finishes, blending it in as the camera arrives. For
 shorter flights the fade starts with the final stage. Disabling an overlay
 keeps it hidden.
+
+Consecutive campaign overlays with matching or nearly matching footprints use
+a simultaneous `sameAreaCrossfadeMs` image crossfade when the destination image
+and marker already fit the unobstructed viewport at the desired zoom. The camera
+stays still, skipping travel/overview waits and keeping the route's marching
+ants moving. The outgoing image stays visible until its decoded replacement is
+ready. `sameAreaTolerancePixels` (24 by default) limits how far corresponding
+overlay corners may shift on screen. Other transitions retain the normal
+campaign fades; camera travel timing uses the fitted bounds' center.
 
 Early arrival starts the fade-in immediately; cancellation clears the pending
 fade-in timer and restores the selected overlay. Reduced-motion visits reveal

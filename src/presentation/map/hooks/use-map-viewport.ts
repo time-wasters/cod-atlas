@@ -16,6 +16,7 @@ import { waitForMapView } from "../../../infrastructure/mapping/leaflet/wait-for
 import { markerFocusZoomLimit, revealLeafletMarker } from "../../../infrastructure/mapping/leaflet/leaflet-marker-reveal.adapter.js";
 import { leafletEntryFocusTarget } from "../../../infrastructure/mapping/leaflet/leaflet-entry-focus-target.adapter.js";
 import { MAP_OVERLAY_CONFIG } from "../../../shared/config/map-overlay.config.js";
+import { canCrossfadeLeafletOverlays } from "../../../infrastructure/mapping/leaflet/leaflet-overlay-crossfade.adapter.js";
 
 type AtlasSelection = { group: AtlasGroupDto; entry: AtlasEntryDto };
 type EntryFocusContext = "manual" | "campaign-playback";
@@ -92,11 +93,17 @@ export function useMapViewport({
   sidebarOpen: boolean;
 }) {
   const sidebarSelectionTarget = useRef<SidebarSelectionTarget | null>(null);
-  const relatedLevelFocus = useRef<{ entryId: string; context: EntryFocusContext } | null>(null);
+  const relatedLevelFocus = useRef<{
+    entryId: string; context: EntryFocusContext; previousOverlay?: MapOverlayDto;
+  } | null>(null);
   const markerFlightArrival = useRef<(() => void) | null>(null);
   const markerRevealCleanup = useRef<(() => void) | null>(null);
   const campaignFlight = useRef<ReturnType<typeof createLeafletCampaignFlight> | null>(null);
   const [campaignOverlayEntryId, setCampaignOverlayEntryId] = useState<string | null>(null);
+  const campaignOverlayCrossfade = useRef<string | null>(null);
+  // The viewport effect classifies a visit before the overlay layer's effect
+  // runs, so its outgoing image can be held without waiting for a state render.
+  const shouldCrossfadeOverlay = useCallback((levelId: string) => campaignOverlayCrossfade.current === levelId, []);
   const cancelMarkerFlightArrival = useCallback(() => {
     if (markerFlightArrival.current) runtime.getMap()?.off("moveend", markerFlightArrival.current);
     markerFlightArrival.current = null;
@@ -131,8 +138,11 @@ export function useMapViewport({
   }, []);
   const queueRelatedLevelFocus = useCallback((entryId: string | null, context: EntryFocusContext = "manual") => {
     cancelMarkerFlightArrival();
-    relatedLevelFocus.current = entryId ? { entryId, context } : null;
-  }, [cancelMarkerFlightArrival]);
+    campaignOverlayCrossfade.current = null;
+    relatedLevelFocus.current = entryId ? {
+      entryId, context, previousOverlay: mapOverlays[selected.entry.levelId],
+    } : null;
+  }, [cancelMarkerFlightArrival, mapOverlays, selected.entry.levelId]);
 
   const focusEntryOverlay = useCallback((entry: AtlasEntryDto, alwaysFit = false) => {
     const currentMap = runtime.getMap();
@@ -183,7 +193,7 @@ export function useMapViewport({
     return true;
   }, [cancelMarkerFlightArrival, getDetailsElement, mapOverlays, runtime]);
 
-  const focusEntryOnMap = useCallback((entry: AtlasEntryDto, center = false, context: EntryFocusContext = "manual") => {
+  const focusEntryOnMap = useCallback((entry: AtlasEntryDto, center = false, context: EntryFocusContext = "manual", previousOverlay?: MapOverlayDto) => {
     const playback = context === "campaign-playback";
     // Playback uses the location scale, limited by any attached overlay's extent.
     if (!center && !playback && focusEntryOverlay(entry, true)) return;
@@ -225,17 +235,35 @@ export function useMapViewport({
       padding: leafletViewportPadding(mapElement, getDetailsElement()),
     });
     if (playback) {
+      if (canCrossfadeLeafletOverlays({
+        previous: previousOverlay,
+        overlay: entryOverlay,
+        bounds: focusBounds,
+        targetZoom,
+        tolerancePixels: MAP_OVERLAY_CONFIG.campaign.sameAreaTolerancePixels,
+        padding: leafletViewportPadding(mapElement, getDetailsElement()),
+        map: currentMap,
+        leaflet,
+      })) {
+        campaignOverlayCrossfade.current = entry.levelId;
+        setCampaignOverlayEntryId(entry.id);
+        reveal();
+        onCampaignTravelChange(false);
+        return;
+      }
+      campaignOverlayCrossfade.current = null;
       setCampaignOverlayEntryId(null);
       // Fit the same destination bounds at every stage so the final approach
       // cannot zoom through an overlay or leave an offset marker out of view.
       const flight = createLeafletCampaignFlight({
         map: currentMap,
         bounds: focusBounds,
-        stages: campaignFlightStages(distance, currentMap.getZoom(), targetZoom, CAMPAIGN_FOCUS_PRESET, animate),
+        stages: campaignFlightStages(currentMap.getCenter().distanceTo(focusBounds.getCenter()),
+          currentMap.getZoom(), targetZoom, CAMPAIGN_FOCUS_PRESET, animate),
         animate,
         getPadding: () => leafletViewportPadding(mapElement, getDetailsElement()),
         durationFor: (zoom) => campaignTravelDuration(
-          currentMap.getCenter().distanceTo(destination), currentMap.getZoom(), zoom, CAMPAIGN_FOCUS_PRESET,
+          currentMap.getCenter().distanceTo(focusBounds.getCenter()), currentMap.getZoom(), zoom, CAMPAIGN_FOCUS_PRESET,
         ),
         waitForOverview: (signal) => waitForMapView(() => runtime.isBasemapViewLoaded(), {
           signal,
@@ -357,7 +385,7 @@ export function useMapViewport({
     const relatedFocus = relatedLevelFocus.current;
     relatedLevelFocus.current = null;
     if (relatedFocus?.entryId === selected.entry.id) {
-      focusEntryOnMap(selected.entry, false, relatedFocus.context);
+      focusEntryOnMap(selected.entry, false, relatedFocus.context, relatedFocus.previousOverlay);
       return;
     }
     const overlaySelectionLevelId = runtime.consumeMarkerOverlaySelectionLevelId();
@@ -412,6 +440,7 @@ export function useMapViewport({
   }, [ready, runtime, sidebarOpen]);
 
   return {
+    shouldCrossfadeOverlay,
     campaignOverlayVisible: !campaignPlaybackActive || campaignOverlayEntryId === selected.entry.id,
     centerSelectedMarker,
     focusSelectedMarker,

@@ -417,6 +417,7 @@ export function AtlasPage({
   });
   const {
     campaignOverlayVisible,
+    shouldCrossfadeOverlay,
     centerSelectedMarker,
     focusSelectedMarker,
     queueRelatedLevelFocus,
@@ -436,6 +437,7 @@ export function AtlasPage({
   });
   useMapOverlayLayer({
     adaptiveOpacity: mapOverlayZoomOpacityEnabled,
+    shouldCrossfadeOverlay,
     campaignPlaybackActive: campaignPlayback.active,
     campaignOverlayVisible,
     enabled: selectedMapOverlayEnabled,

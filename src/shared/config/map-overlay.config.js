@@ -5,6 +5,9 @@ export const MAP_OVERLAY_CONFIG = {
     fadeInMs: 100,
   },
   campaign: {
+    // Similar footprints already in view crossfade without a camera flight.
+    sameAreaCrossfadeMs: 500,
+    sameAreaTolerancePixels: 24,
     fadeOutMs: 500,
     fadeInMs: 1000,
     // Keep the destination overlay hidden until this close to final arrival.
