@@ -24,8 +24,8 @@ docker compose run --rm --service-ports cod-atlas-tools npm run dev -- --port 30
 
 See [Docker npm commands](docs/docker-commands.md) for other commands.
 
-See the [source architecture and map camera configuration](src/README.md)
-for implementation details and location zoom settings.
+See the [source architecture and module configuration](src/README.md)
+for implementation details and application/tooling settings.
 
 VSCodium users can run the common commands through **Terminal → Run Task**.
 

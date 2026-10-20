@@ -1,5 +1,6 @@
 import type { Marker as LeafletMarker, MarkerClusterGroup } from "leaflet";
 import type { AtlasEntryDto } from "../../atlas-data/dto/atlas-entry.dto.js";
+import { MAP_MARKERS_CONFIG } from "../../../shared/config/map-markers.config.js";
 
 export function createAtlasMarkerIcon(
   leaflet: typeof import("leaflet"),
@@ -8,11 +9,12 @@ export function createAtlasMarkerIcon(
   filterDimmed = false,
 ) {
   const cityLevel = !["country", "off-world"].includes(entry.precision);
+  const size = active ? MAP_MARKERS_CONFIG.icon.activeSize : MAP_MARKERS_CONFIG.icon.normalSize;
   return leaflet.divIcon({
     className: "atlas-marker-wrap",
-    html: `<span class="atlas-marker ${cityLevel ? "is-city" : "is-country"}${active ? " is-active" : ""}${filterDimmed ? " is-filter-dimmed" : ""}"><b></b></span>`,
-    iconSize: [active ? 30 : 18, active ? 30 : 18],
-    iconAnchor: [active ? 15 : 9, active ? 15 : 9],
+    html: `<span class="atlas-marker ${cityLevel ? "is-city" : "is-country"}${active ? " is-active" : ""}${filterDimmed ? " is-filter-dimmed" : ""}" style="--atlas-marker-size:${size}px"><b></b></span>`,
+    iconSize: [size, size],
+    iconAnchor: [size / 2, size / 2],
   });
 }
 
@@ -39,7 +41,7 @@ export function createAtlasMarker({
   marker.on("click", onSelect);
   marker.bindTooltip(`${entry.title} · ${label}`, {
     direction: "top",
-    offset: [0, -8],
+    offset: [0, MAP_MARKERS_CONFIG.icon.tooltipOffsetY],
   });
   return marker;
 }
@@ -57,18 +59,17 @@ export function createAtlasMarkerClusterLayer({
     showCoverageOnHover: false,
     zoomToBoundsOnClick: true,
     spiderfyOnMaxZoom: true,
-    spiderfyDistanceMultiplier: 1.35,
-    maxClusterRadius: 42,
+    spiderfyDistanceMultiplier: MAP_MARKERS_CONFIG.clustering.spiderfyDistanceMultiplier,
+    maxClusterRadius: MAP_MARKERS_CONFIG.clustering.radiusPixels,
     animate: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-    spiderLegPolylineOptions: {
-      color: "#d8bb65",
-      weight: 1.5,
-      opacity: .8,
-    },
+    spiderLegPolylineOptions: MAP_MARKERS_CONFIG.clustering.spiderLeg,
     iconCreateFunction(cluster) {
       const count = cluster.getChildCount();
-      const size = count < 10 ? 34 : count < 100 ? 40 : 46;
-      const scale = count < 10 ? "is-small" : count < 100 ? "is-medium" : "is-large";
+      const config = MAP_MARKERS_CONFIG.clustering;
+      const size = count < config.smallCountLimit ? config.smallSize
+        : count < config.mediumCountLimit ? config.mediumSize : config.largeSize;
+      const scale = count < config.smallCountLimit ? "is-small"
+        : count < config.mediumCountLimit ? "is-medium" : "is-large";
       const currentFocusedLevelIds = focusedLevelIds();
       const containsFocusedLevel = !currentFocusedLevelIds || cluster.getAllChildMarkers().some((marker) => {
         const entry = entryForMarker(marker);

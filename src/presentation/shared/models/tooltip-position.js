@@ -1,3 +1,5 @@
+import { TOOLTIP_CONFIG } from "../../../shared/config/tooltip.config.js";
+
 /**
  * Place a tooltip beside its trigger when possible, keeping it inside the viewport.
  * @param {{ left: number, right: number, top: number, bottom: number }} anchor
@@ -5,8 +7,8 @@
  * @param {{ width: number, height: number }} viewport
  */
 export function tooltipPosition(anchor, size, viewport) {
-  const margin = 8;
-  const gap = 9;
+  const margin = TOOLTIP_CONFIG.viewportMarginPixels;
+  const gap = TOOLTIP_CONFIG.triggerGapPixels;
   const clamp = (value, extent, limit) => Math.max(margin, Math.min(value, limit - extent - margin));
   let left;
   let top = (anchor.top + anchor.bottom - size.height) / 2;

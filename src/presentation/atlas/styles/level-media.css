@@ -1,7 +1,7 @@
 .intel-media { position: relative; max-height: 160px; aspect-ratio: 800 / 344; margin: 0 0 13px; overflow: hidden; border: 1px solid #4c513f; border-radius: 4px; background: #0b0e0a; }
 .intel-media::after { content: ""; position: absolute; z-index: 1; inset: 0; border: 1px solid #d5a039; border-radius: inherit; opacity: 0; pointer-events: none; transition: opacity .15s ease-out; }
 .intel-media img, .intel-media video { position: absolute; inset: 0; width: 100%; height: 100%; display: block; object-fit: cover; opacity: 0; }
-.intel-media img.is-loaded, .intel-media video.is-loaded { opacity: 1; animation: intel-media-enter 200ms ease-out; }
+.intel-media img.is-loaded, .intel-media video.is-loaded { opacity: 1; animation: intel-media-enter var(--level-media-crossfade-duration) ease-out; }
 .intel-media img.is-retained, .intel-media video.is-retained { animation: none; }
 @keyframes intel-media-enter {
   from { opacity: 0; }

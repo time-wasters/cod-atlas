@@ -44,7 +44,7 @@ test("compilation derives chronological appearance order from Wiki links for cam
       [3, "third", "fixture-wiki-cosmos"],
     ]) {
       await write(`content/levels/fixture-classic/campaign/${order}-${name}.md`, `---
-id: fixture-${name}
+id: fixture-classic-${name}
 title: Fixture ${name}
 games: [fixture-classic]
 mode: singleplayer
@@ -78,7 +78,7 @@ locations:
     });
     assert.deepEqual(campaigns.map(({ label }) => label), ["In-Game Order", "Chronological", "Fixture Campaign"]);
     assert.deepEqual(campaigns[1].levels.map(({ entry }) => entry.levelId),
-      ["fixture-second", "fixture-third", "fixture-classic-alpha"]);
+      ["fixture-classic-second", "fixture-classic-third", "fixture-classic-alpha"]);
     const entries = atlas.groups.flatMap(({ entries }) => entries);
     assert.equal(entries.find(({ levelId }) => levelId === "fixture-classic-alpha")
       .appearances[0].chronologicalOrder, 3);

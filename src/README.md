@@ -143,6 +143,51 @@ not a replacement data store.
 The placeholder files exist only so Git records the planned directories. They
 can be removed one at a time as real source files are introduced.
 
+## Configuration files
+
+Browser behavior settings live under [`shared/config/`](shared/config/).
+Edit the relevant module's config and reload development or rebuild the site.
+The extracted defaults preserve the existing behavior. Durations use the units
+in their field names (`Ms`, `Seconds`); screen distances are pixels and travel
+distances are meters.
+
+| Config | Settings |
+| --- | --- |
+| [`campaign-playback.config.js`](shared/config/campaign-playback.config.js) | Default mission time (15 seconds) and available choices (10, 15, 30, 60 seconds) |
+| [`campaign-route.config.js`](shared/config/campaign-route.config.js) | Route appearance, curve height/sampling, marching-ants speed/FPS, stop markers, initial fit, reveal delays/retries |
+| [`map-camera.config.js`](shared/config/map-camera.config.js) | Initial view and zoom limits, viewport padding, filter fits, travel timing, focus presets, campaign overviews, sidebar transition/settling |
+| [`location-zoom.config.js`](shared/config/location-zoom.config.js) | Location precision zooms and verified landmark close-ups |
+| [`map-markers.config.js`](shared/config/map-markers.config.js) | Marker sizes, clustering radius/count bands, spider legs, selection pulse timing |
+| [`map-overlay.config.js`](shared/config/map-overlay.config.js) | Browsing/campaign/history fades, stationary crossfades, decoded-image cache capacity, zoom-adaptive opacity curve |
+| [`basemap.config.js`](shared/config/basemap.config.js) | Vector style URL, raster fallback URL, paired attribution, fallback timeout |
+| [`related-levels.config.js`](shared/config/related-levels.config.js) | Collapsed list limit shared by the view model and expand/collapse control |
+| [`tooltip.config.js`](shared/config/tooltip.config.js) | Hover delay, viewport margin, gap from the trigger |
+| [`level-media.config.js`](shared/config/level-media.config.js) | Image/video crossfade and retention buffer |
+| [`app-defaults.config.js`](shared/config/app-defaults.config.js) | Initial mode filters, open panels, defaults for persisted settings |
+
+CSS animation durations and marker dimensions are supplied from these configs
+through CSS custom properties. Cleanup timers use the same duration plus their
+configured buffer. Change the config value rather than adding a second CSS
+duration. Persisted settings still take precedence over defaults; mode defaults
+also determine what a URL without `mode` selects. Explicit mode URLs retain
+their meaning.
+
+Tooling configuration stays beside its implementation and is not imported by
+the browser:
+
+- [`image-optimization.config.mjs`](infrastructure/media/sharp/image-optimization.config.mjs)
+  controls JPEG/WebP quality, PNG compression/palette settings, encoder effort,
+  and the minimum savings needed to replace an opaque main PNG with JPEG.
+  Format, size, and dimension policies remain in the existing
+  [`level-image.policy.mjs`](domain/level/level-image.policy.mjs).
+- `WIKI_IMPORT_CONFIG` in
+  [`wiki-configuration.mjs`](infrastructure/external/call-of-duty-wiki/wiki-configuration.mjs)
+  controls batching, request timeout, attempt count, default/minimum pacing,
+  retry backoff, and permitted server lag. The CLI's `--delay-ms` overrides the
+  default pacing subject to its configured minimum. Wiki origin/contact details
+  and optional game-icon providers continue to use the documented environment
+  settings.
+
 ## Map camera configuration
 
 Configure location zoom defaults in
@@ -177,7 +222,7 @@ covered by details and briefing panels. Sidebar group selection also includes
 attached overlays in its bounds. These limits apply to automatic camera focus;
 users can still zoom closer manually.
 Animation timing, campaign overview stops, and overlay zoom ceilings live in
-[`presentation/map/models/map-focus-presets.ts`](presentation/map/models/map-focus-presets.ts).
+[`shared/config/map-camera.config.js`](shared/config/map-camera.config.js).
 Configuration changes take effect on the next development reload or site build.
 
 ## Map overlay transitions
@@ -223,7 +268,8 @@ Automatic playback starts its mission timer after the next overlay's preload
 attempt has completed, so the next transition has a prepared image. Download
 or decode failures do not block playback and can be retried later.
 
-The browser image cache retains up to eight upcoming decoded images, deduplicates
+The browser image cache retains up to `cache.maximumEntries` upcoming decoded
+images (eight by default), deduplicates
 requests by URL, and respects the deployment's base path. Rendering acquires
 the decoded image itself and gives it directly to Leaflet. Each acquisition
 consumes its cache entry so overlapping fades use independent image elements.

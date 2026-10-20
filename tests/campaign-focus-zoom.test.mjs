@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { campaignFocusZoom } from "../src/presentation/map/models/campaign-focus-zoom.js";
-import { CAMPAIGN_FOCUS_PRESET } from "../src/presentation/map/models/map-focus-presets.ts";
+import { CAMPAIGN_FOCUS_PRESET } from "../src/shared/config/map-camera.config.js";
 
 const locationReview = {
   locations: { byHuman: true, user: "fixture-reviewer" },

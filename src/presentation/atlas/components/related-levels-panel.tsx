@@ -5,6 +5,7 @@ import type { ReactNode } from "react";
 import type { AtlasEntryDto } from "../../../infrastructure/atlas-data/dto/atlas-entry.dto.js";
 import type { AtlasGroupDto } from "../../../infrastructure/atlas-data/dto/atlas-group.dto.js";
 import { CountryFlag } from "../../shared/components/country-flag.js";
+import { RELATED_LEVELS_CONFIG } from "../../../shared/config/related-levels.config.js";
 
 type RelatedLevel = { group: AtlasGroupDto; entry: AtlasEntryDto };
 
@@ -106,7 +107,7 @@ export function RelatedLevelsPanel({
               + {viewModel.hiddenCount} more {viewModel.hiddenCount === 1 ? "level" : "levels"} in this {viewModel.collectionKind}
             </button>
           )}
-          {viewModel.expanded && viewModel.totalCount > 8 && (
+          {viewModel.expanded && viewModel.totalCount > RELATED_LEVELS_CONFIG.collapsedLimit && (
             <button className="more-row is-collapse" type="button" aria-expanded="true" aria-controls="related-level-list" onClick={onCollapse}>
               Show fewer
             </button>

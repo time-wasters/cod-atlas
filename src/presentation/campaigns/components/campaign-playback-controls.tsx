@@ -2,6 +2,7 @@
 
 import type { useCampaignPlayback } from "../hooks/use-campaign-playback.js";
 import { Tooltip } from "../../shared/components/tooltip.js";
+import { CAMPAIGN_PLAYBACK_CONFIG } from "../../../shared/config/campaign-playback.config.js";
 
 function PlaybackIcon({ kind }: { kind: "previous" | "next" | "play" | "pause" | "replay" | "stop" }) {
   return (
@@ -24,7 +25,7 @@ export function CampaignPlaybackControls({ label, count, playback }: {
   const playing = playback.status === "playing";
   const finished = playback.status === "finished";
   const action = playing ? "Pause" : finished ? "Replay" : playback.active ? "Resume" : "Follow campaign";
-  const durations = [10, 15, 30, 60];
+  const durations = CAMPAIGN_PLAYBACK_CONFIG.secondsPerMissionOptions;
   const nextDuration = durations[(durations.indexOf(playback.secondsPerMission) + 1) % durations.length];
   const timeAction = `Time per mission: ${playback.secondsPerMission} seconds. Change to ${nextDuration} seconds`;
   return (

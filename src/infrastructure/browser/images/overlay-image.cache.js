@@ -1,3 +1,5 @@
+import { MAP_OVERLAY_CONFIG } from "../../../shared/config/map-overlay.config.js";
+
 /**
  * Retain a small set of decoded upcoming images. Acquiring consumes the cached
  * element so overlapping outgoing/incoming overlays never share one DOM node.
@@ -8,7 +10,7 @@
 export function createOverlayImageCache({
   createImage = () => new Image(),
   baseUrl = () => document.baseURI,
-  maximumEntries = 8,
+  maximumEntries = MAP_OVERLAY_CONFIG.cache.maximumEntries,
 } = {}) {
   const entries = new Map();
 

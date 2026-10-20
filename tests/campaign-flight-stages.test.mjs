@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { campaignFlightStages } from "../src/presentation/map/models/campaign-flight-stages.js";
-import { CAMPAIGN_FOCUS_PRESET } from "../src/presentation/map/models/map-focus-presets.ts";
+import { CAMPAIGN_FOCUS_PRESET } from "../src/shared/config/map-camera.config.js";
 
 test("large zoom-ins approach precise locations through a city overview", () => {
   assert.deepEqual(campaignFlightStages(0, 5, 18, CAMPAIGN_FOCUS_PRESET), [11, 18]);

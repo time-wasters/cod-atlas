@@ -3,6 +3,7 @@ import type { ContentUpdateOption } from "../../../application/content-updates/u
 import type { AtlasEntryDto } from "../../../infrastructure/atlas-data/dto/atlas-entry.dto.js";
 import type { AtlasGroupDto } from "../../../infrastructure/atlas-data/dto/atlas-group.dto.js";
 import type { GameDto } from "../../../infrastructure/atlas-data/dto/game.dto.js";
+import { RELATED_LEVELS_CONFIG } from "../../../shared/config/related-levels.config.js";
 import type { RelatedLevelsViewModel } from "../components/related-levels-panel.js";
 
 type RelatedLevel = { group: AtlasGroupDto; entry: AtlasEntryDto };
@@ -31,7 +32,7 @@ export function buildRelatedLevelsViewModel({
   selectedLevelId: string;
 }): RelatedLevelsViewModel | null {
   if (!items.length) return null;
-  const visibleItems = expanded ? items : items.slice(0, 8);
+  const visibleItems = expanded ? items : items.slice(0, RELATED_LEVELS_CONFIG.collapsedLimit);
   return {
     ariaLabel: campaign
       ? `${campaign.label} levels`

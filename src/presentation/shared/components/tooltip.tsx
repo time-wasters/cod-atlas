@@ -4,6 +4,7 @@ import { cloneElement, useCallback, useEffect, useId, useLayoutEffect, useRef, u
 import type { HTMLAttributes, ReactElement, ReactNode, RefObject } from "react";
 import { createPortal } from "react-dom";
 import { tooltipPosition } from "../models/tooltip-position.js";
+import { TOOLTIP_CONFIG } from "../../../shared/config/tooltip.config.js";
 
 type TriggerProps = Pick<HTMLAttributes<HTMLElement>,
   "aria-describedby" | "onPointerEnter" | "onPointerLeave" | "onPointerDown" | "onFocus" | "onBlur">;
@@ -35,7 +36,7 @@ export function TooltipSurface({ anchor, children, className = "", id }: {
   );
 }
 
-export function useTooltip(content: ReactNode, { delay = 300, className = "" } = {}) {
+export function useTooltip(content: ReactNode, { delay = TOOLTIP_CONFIG.hoverDelayMs, className = "" } = {}) {
   const id = `atlas-tooltip-${useId().replaceAll(":", "")}`;
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const hovered = useRef(false);

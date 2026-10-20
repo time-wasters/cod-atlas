@@ -4,8 +4,8 @@
   background: transparent;
 }
 .campaign-route-stop {
-  min-width: 22px;
-  height: 18px;
+  min-width: var(--campaign-stop-width);
+  height: var(--campaign-stop-height);
   display: inline-grid;
   place-items: center;
   border: 1px solid #e0a126;
@@ -20,7 +20,7 @@
     700 9px/1 var(--font-geist-mono),
     monospace;
   white-space: nowrap;
-  animation: campaign-route-stop-appear 0.18s ease-out both;
+  animation: campaign-route-stop-appear var(--campaign-stop-appear-duration) ease-out both;
 }
 .campaign-route-stop-wrap:hover .campaign-route-stop,
 .campaign-route-stop-wrap:focus .campaign-route-stop {

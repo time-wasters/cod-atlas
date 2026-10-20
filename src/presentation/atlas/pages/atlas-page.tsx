@@ -1,6 +1,10 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
+import { APP_DEFAULTS_CONFIG } from "../../../shared/config/app-defaults.config.js";
+import { MAP_CAMERA_CONFIG } from "../../../shared/config/map-camera.config.js";
+import { MAP_MARKERS_CONFIG } from "../../../shared/config/map-markers.config.js";
+import { CAMPAIGN_ROUTE_CONFIG } from "../../../shared/config/campaign-route.config.js";
 import { LOCATION_ZOOM_CONFIG } from "../../../shared/config/location-zoom.config.js";
 import { findRelatedLevels } from "../../../application/atlas/use-cases/find-related-levels.js";
 import { getGameModeAvailability } from "../../../application/atlas/use-cases/get-game-mode-availability.js";
@@ -99,8 +103,8 @@ export function AtlasPage({
     applyUrlState: applyFilterUrlState,
     resetAdvancedFilters: resetAdvancedFilterState,
   } = filters;
-  const [sidebarOpen, setSidebarOpen] = useState(true);
-  const [detailsOpen, setDetailsOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(APP_DEFAULTS_CONFIG.panels.sidebarOpen);
+  const [detailsOpen, setDetailsOpen] = useState(APP_DEFAULTS_CONFIG.panels.detailsOpen);
   const [selectionVersion, setSelectionVersion] = useState(0);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [campaignTravelPending, setCampaignTravelPending] = useState(false);
@@ -125,10 +129,10 @@ export function AtlasPage({
   } = useCampaignRouteAnimationPreference(clientSettingsPort);
   const [solarSystemDisplay, setSolarSystemDisplay] = useState({
     hasSpaceLocations: true,
-    expanded: true,
+    expanded: APP_DEFAULTS_CONFIG.panels.solarSystemExpanded,
   });
   const [expandedRegionEntryId, setExpandedRegionEntryId] = useState<string | null>(null);
-  const [relatedLevelsOpen, setRelatedLevelsOpen] = useState(true);
+  const [relatedLevelsOpen, setRelatedLevelsOpen] = useState(APP_DEFAULTS_CONFIG.panels.relatedLevelsOpen);
   const {
     selected,
     selectionInUrl,
@@ -274,7 +278,7 @@ export function AtlasPage({
     : spaceLocations, [campaignPlayback.active, mapGroups, spaceLocations]);
   const hasSpaceLocations = displayedSpaceLocations.length > 0;
   const solarSystemExpanded = solarSystemDisplay.hasSpaceLocations === hasSpaceLocations
-    ? solarSystemDisplay.expanded : hasSpaceLocations;
+    ? solarSystemDisplay.expanded : hasSpaceLocations && APP_DEFAULTS_CONFIG.panels.solarSystemExpanded;
 
   /**
    * Restores shareable URL state and clears transient UI tied to the previous selection.
@@ -643,7 +647,16 @@ export function AtlasPage({
     selectedGroupName: selected.group.name,
   });
   return (
-    <main className={`atlas-shell${sidebarOpen ? "" : " is-sidebar-collapsed"}`}>
+    <main className={`atlas-shell${sidebarOpen ? "" : " is-sidebar-collapsed"}`}
+      style={{
+        "--sidebar-transition-duration": `${MAP_CAMERA_CONFIG.sidebar.transitionMs}ms`,
+        "--marker-spider-leg-color": MAP_MARKERS_CONFIG.clustering.spiderLeg.color,
+        "--marker-spider-leg-weight": MAP_MARKERS_CONFIG.clustering.spiderLeg.weight,
+        "--marker-spider-leg-opacity": MAP_MARKERS_CONFIG.clustering.spiderLeg.opacity,
+        "--campaign-stop-width": `${CAMPAIGN_ROUTE_CONFIG.marker.width}px`,
+        "--campaign-stop-height": `${CAMPAIGN_ROUTE_CONFIG.marker.height}px`,
+        "--campaign-stop-appear-duration": `${CAMPAIGN_ROUTE_CONFIG.marker.appearMs}ms`,
+      } as CSSProperties}>
       <AtlasHeader
         locationCount={data.totals.entries}
         onOpenSettings={() => setSettingsOpen(true)}

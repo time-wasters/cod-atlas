@@ -1,4 +1,5 @@
 import type { Canvas, LayerGroup, Map as LeafletMap, Polyline } from "leaflet";
+import { CAMPAIGN_ROUTE_CONFIG } from "../../../shared/config/campaign-route.config.js";
 
 type Coordinates = [number, number];
 
@@ -26,10 +27,12 @@ function campaignRouteProjectionZoom(
   route: CampaignRoute,
 ) {
   if (route.waypoints.length === 0) {
-    return Math.max(2, Math.min(8, map.getZoom()));
+    return Math.max(CAMPAIGN_ROUTE_CONFIG.projectionZoom.minimum,
+      Math.min(CAMPAIGN_ROUTE_CONFIG.projectionZoom.maximum, map.getZoom()));
   }
   const bounds = leaflet.latLngBounds(route.waypoints.map(({ coordinates }) => coordinates));
-  return Math.max(2, Math.min(8, map.getBoundsZoom(bounds)));
+  return Math.max(CAMPAIGN_ROUTE_CONFIG.projectionZoom.minimum,
+    Math.min(CAMPAIGN_ROUTE_CONFIG.projectionZoom.maximum, map.getBoundsZoom(bounds)));
 }
 
 function buildArcCoordinates({
@@ -61,7 +64,7 @@ function buildArcCoordinates({
     normalY *= -1;
   }
   // A fixed minimum bend makes short connections arch far beyond their stops.
-  const height = Math.min(64, distance * .12);
+  const height = Math.min(CAMPAIGN_ROUTE_CONFIG.arc.maximumHeightPixels, distance * CAMPAIGN_ROUTE_CONFIG.arc.heightRatio);
   const controlPoint = leaflet.point(
     (startPoint.x + endPoint.x) / 2 + normalX * height,
     (startPoint.y + endPoint.y) / 2 + normalY * height,
@@ -69,7 +72,7 @@ function buildArcCoordinates({
   // For a quadratic arc, the maximum chord error is height / (2 * samples²).
   // Target half a screen pixel, with a sample cap for extreme zoom levels.
   const screenScale = 2 ** (map.getZoom() - projectionZoom);
-  const sampleCount = Math.min(512, Math.max(8,
+  const sampleCount = Math.min(CAMPAIGN_ROUTE_CONFIG.arc.maximumSamples, Math.max(CAMPAIGN_ROUTE_CONFIG.arc.minimumSamples,
     Math.ceil(Math.sqrt(height * screenScale) / 2) * 2));
 
   return Array.from({ length: sampleCount + 1 }, (_, index) => {
@@ -153,15 +156,12 @@ export function renderLeafletCampaignRoute({
         // Clip distant connections to the viewport even while the camera moves.
         // Keep global connections clipped at street zooms as well.
         noClip: false,
-        dashArray: "7 10",
+        dashArray: CAMPAIGN_ROUTE_CONFIG.animation.dashArray.join(" "),
         dashOffset: "0",
       };
       const line = leaflet.polyline(arc, {
         ...common,
-        color: "#741c27",
-        weight: 3,
-        opacity: .92,
-        smoothFactor: .25,
+        ...CAMPAIGN_ROUTE_CONFIG.line,
       }).addTo(routeLayer);
       connections.push({ start: segment[index - 1], end: segment[index], line });
     }
@@ -174,9 +174,9 @@ export function renderLeafletCampaignRoute({
       pane: "campaignRoute",
       icon: leaflet.divIcon({
         className: "campaign-route-stop-wrap",
-        html: `<span class="campaign-route-stop">${waypointLabel}</span>`,
-        iconSize: [22, 18],
-        iconAnchor: [-5, 23],
+        html: `<span class="campaign-route-stop" style="--campaign-stop-width:${CAMPAIGN_ROUTE_CONFIG.marker.width}px;--campaign-stop-height:${CAMPAIGN_ROUTE_CONFIG.marker.height}px;--campaign-stop-appear-duration:${CAMPAIGN_ROUTE_CONFIG.marker.appearMs}ms">${waypointLabel}</span>`,
+        iconSize: [CAMPAIGN_ROUTE_CONFIG.marker.width, CAMPAIGN_ROUTE_CONFIG.marker.height],
+        iconAnchor: [CAMPAIGN_ROUTE_CONFIG.marker.anchorX, CAMPAIGN_ROUTE_CONFIG.marker.anchorY],
       }),
       alt: `Campaign ${waypoint.stops.length === 1 ? "stop" : "stops"} ${stopTitles.join(", ")}`,
       keyboard: true,
@@ -196,7 +196,7 @@ export function renderLeafletCampaignRoute({
     routeMarker.bindTooltip(tooltipContent, {
       className: "campaign-route-tooltip",
       direction: "top",
-      offset: [8, -22],
+      offset: [CAMPAIGN_ROUTE_CONFIG.marker.tooltipX, CAMPAIGN_ROUTE_CONFIG.marker.tooltipY],
       opacity: 1,
     });
     routeMarker.on("click", () => onWaypointSelect(waypoint.stops[0].entryId));
@@ -210,11 +210,11 @@ export function renderLeafletCampaignRoute({
   const animateDashes = (time: number) => {
     animationFrame = null;
     if (lastFrame === null) lastFrame = time;
-    // Thirty frames per second is sufficient for the slow dash flow. Use a
-    // shared frame for all lines, and let Leaflet batch their canvas redraw.
+    // Use a shared frame for all lines and let Leaflet batch their canvas redraw.
     const elapsed = time - lastFrame;
-    if (elapsed >= 1000 / 30) {
-      dashOffset = (dashOffset - elapsed * 34 / 1150) % 34;
+    if (elapsed >= 1000 / CAMPAIGN_ROUTE_CONFIG.animation.framesPerSecond) {
+      const { cyclePixels, cycleMs } = CAMPAIGN_ROUTE_CONFIG.animation;
+      dashOffset = (dashOffset - elapsed * cyclePixels / cycleMs) % cyclePixels;
       lastFrame = time;
       for (const { line } of connections) line.setStyle({ dashOffset: String(dashOffset) });
     }

@@ -7,7 +7,7 @@ import { animateLeafletOverlayOpacity } from "../../../infrastructure/mapping/le
 import type { LeafletMapRuntime } from "./use-leaflet-map.js";
 import { leafletViewportPadding } from "./use-map-viewport.js";
 import { mapTravelDuration } from "../models/map-travel-duration.js";
-import { OVERLAY_FIT_PRESET } from "../models/map-focus-presets.js";
+import { OVERLAY_FIT_PRESET } from "../../../shared/config/map-camera.config.js";
 
 export function useHistoryOverlayLayer({
   getDetailsElement,

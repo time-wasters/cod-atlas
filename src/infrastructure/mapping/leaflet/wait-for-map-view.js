@@ -1,3 +1,5 @@
+import { MAP_CAMERA_CONFIG } from "../../../shared/config/map-camera.config.js";
+
 /**
  * Wait for a readable, loaded overview, with bounded and cancellable polling.
  * The readiness callback follows whichever basemap is currently active.
@@ -20,7 +22,7 @@ export function waitForMapView(isViewLoaded, { signal, minimumMs, maximumMs }) {
       const elapsed = Date.now() - started;
       if (elapsed >= minimumMs && isViewLoaded()) { finish(true); return; }
       if (elapsed >= maximumMs) { finish(false); return; }
-      timer = setTimeout(check, Math.min(50, maximumMs - elapsed));
+      timer = setTimeout(check, Math.min(MAP_CAMERA_CONFIG.overviewPollMs, maximumMs - elapsed));
     };
     signal.addEventListener("abort", abort, { once: true });
     check();

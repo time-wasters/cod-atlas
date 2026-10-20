@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useState } from "react";
+import { APP_DEFAULTS_CONFIG } from "../../../shared/config/app-defaults.config.js";
 
 export type AdvancedFilterGroupId =
   | "game-series"
@@ -56,11 +57,11 @@ export function useAtlasFilters(options: UseAtlasFiltersOptions) {
   const [precisions, setPrecisions] = useState<Set<string>>(() => new Set());
   const [confidences, setConfidences] = useState<Set<string>>(() => new Set());
   const [methods, setMethods] = useState<Set<string>>(() => new Set());
-  const [showSingleplayer, setShowSingleplayer] = useState(true);
-  const [showMultiplayer, setShowMultiplayer] = useState(false);
-  const [showZombies, setShowZombies] = useState(false);
-  const [showOther, setShowOther] = useState(false);
-  const [advancedFiltersOpen, setAdvancedFiltersOpen] = useState(false);
+  const [showSingleplayer, setShowSingleplayer] = useState(APP_DEFAULTS_CONFIG.filters.showSingleplayer);
+  const [showMultiplayer, setShowMultiplayer] = useState(APP_DEFAULTS_CONFIG.filters.showMultiplayer);
+  const [showZombies, setShowZombies] = useState(APP_DEFAULTS_CONFIG.filters.showZombies);
+  const [showOther, setShowOther] = useState(APP_DEFAULTS_CONFIG.filters.showOther);
+  const [advancedFiltersOpen, setAdvancedFiltersOpen] = useState(APP_DEFAULTS_CONFIG.panels.advancedFiltersOpen);
   const [openAdvancedFilterDropdown, setOpenAdvancedFilterDropdown] = useState<AdvancedFilterGroupId | null>(null);
 
   const applyUrlState = useCallback((state: AtlasFilterUrlState) => {

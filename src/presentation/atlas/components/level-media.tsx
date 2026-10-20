@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState, type RefObject } from "react";
+import { useEffect, useState, type CSSProperties, type RefObject } from "react";
+import { LEVEL_MEDIA_CONFIG } from "../../../shared/config/level-media.config.js";
 import type { WikiImageDto } from "../../../infrastructure/atlas-data/dto/wiki-image.dto.js";
 import { Tooltip } from "../../shared/components/tooltip.js";
 
@@ -95,16 +96,17 @@ export function LevelMedia({
 
   useEffect(() => {
     if (!frames.previous) return;
-    // Release the old image/video after the 200 ms crossfade, including when
+    // Release the old image/video after the configured crossfade, including when
     // reduced motion disables the animation.
     const timer = window.setTimeout(() => {
       setFrames((current) => current === frames ? { ...current, previous: null } : current);
-    }, 220);
+    }, LEVEL_MEDIA_CONFIG.crossfadeMs + LEVEL_MEDIA_CONFIG.retentionBufferMs);
     return () => window.clearTimeout(timer);
   }, [frames]);
 
   return (
-    <figure className={`intel-media${retainedMedia ? " has-retained-media" : ""}`}>
+    <figure className={`intel-media${retainedMedia ? " has-retained-media" : ""}`}
+      style={{ "--level-media-crossfade-duration": `${LEVEL_MEDIA_CONFIG.crossfadeMs}ms` } as CSSProperties}>
         {retainedMedia && (
           <LevelMediaFrame
             key={retainedMedia.imageKey}

@@ -8,6 +8,7 @@ import {
   createAtlasMarkerIcon,
 } from "../../../infrastructure/mapping/leaflet/leaflet-marker.factory.js";
 import type { LeafletMapRuntime } from "./use-leaflet-map.js";
+import { MAP_MARKERS_CONFIG } from "../../../shared/config/map-markers.config.js";
 
 type AtlasSelection = { group: AtlasGroupDto; entry: AtlasEntryDto };
 
@@ -66,7 +67,7 @@ export function useLeafletMarkers({
       const active = entry.id === selected.entry.id;
       const filterDimmed = focusedLevelIds !== null && !focusedLevelIds.has(entry.levelId);
       marker.setIcon(createAtlasMarkerIcon(leaflet, entry, active, filterDimmed));
-      marker.setZIndexOffset(active ? 1000 : 0);
+      marker.setZIndexOffset(active ? MAP_MARKERS_CONFIG.icon.activeZIndexOffset : 0);
     });
     runtime.getMarkerLayer()?.refreshClusters();
   }, [filteredGroups, focusedLevelIds, ready, runtime, selected.entry.id]);
@@ -102,15 +103,17 @@ export function useLeafletMarkers({
       selection.played = true;
       pulse = document.createElement("span");
       pulse.className = "atlas-selection-pulse";
+      pulse.style.setProperty("--selection-pulse-duration", `${MAP_MARKERS_CONFIG.pulse.durationMs}ms`);
       pulse.setAttribute("aria-hidden", "true");
       pulse.addEventListener("animationend", removePulse, { once: true });
       element.append(pulse);
-      removalTimer = window.setTimeout(removePulse, 1000);
+      removalTimer = window.setTimeout(removePulse,
+        MAP_MARKERS_CONFIG.pulse.durationMs + MAP_MARKERS_CONFIG.pulse.removalBufferMs);
     };
     const schedulePulse = () => {
       if (selection.played) return;
       window.clearTimeout(settleTimer);
-      settleTimer = window.setTimeout(playPulse, 100);
+      settleTimer = window.setTimeout(playPulse, MAP_MARKERS_CONFIG.pulse.settleMs);
     };
     const handleMoveStart = () => {
       moving = true;

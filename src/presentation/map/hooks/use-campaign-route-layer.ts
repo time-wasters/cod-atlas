@@ -14,6 +14,7 @@ import {
 import { leafletViewportPadding } from "./use-map-viewport.js";
 import type { LeafletMapRuntime } from "./use-leaflet-map.js";
 import { mapTravelDuration } from "../models/map-travel-duration.js";
+import { CAMPAIGN_ROUTE_CONFIG } from "../../../shared/config/campaign-route.config.js";
 
 type AtlasSelection = { group: AtlasGroupDto; entry: AtlasEntryDto };
 
@@ -82,9 +83,9 @@ export function useCampaignRouteLayer({
         return;
       }
       const retryMarkerReveal = () => {
-        if (markerRevealAttempts < 6) {
+        if (markerRevealAttempts < CAMPAIGN_ROUTE_CONFIG.reveal.maximumRetries) {
           markerRevealAttempts += 1;
-          markerRevealTimer = window.setTimeout(revealFirstCampaignMarker, 160);
+          markerRevealTimer = window.setTimeout(revealFirstCampaignMarker, CAMPAIGN_ROUTE_CONFIG.reveal.retryMs);
         } else {
           runtime.setCampaignMarkerRevealEntryId(null);
         }
@@ -103,7 +104,7 @@ export function useCampaignRouteLayer({
       if (!runtime.getCampaignMarkerRevealEntryId()) return;
       if (markerRevealTimer !== null) window.clearTimeout(markerRevealTimer);
       markerRevealAttempts = 0;
-      markerRevealTimer = window.setTimeout(revealFirstCampaignMarker, 180);
+      markerRevealTimer = window.setTimeout(revealFirstCampaignMarker, CAMPAIGN_ROUTE_CONFIG.reveal.settleMs);
     };
     const handleCampaignMoveEnd = () => {
       campaignViewSettled = true;
@@ -129,11 +130,11 @@ export function useCampaignRouteLayer({
       routeFitKey.current = selectedCampaign.key;
       const movement = {
         ...leafletViewportPadding(mapElement, getDetailsElement()),
-        maxZoom: 8,
+        maxZoom: CAMPAIGN_ROUTE_CONFIG.initialFit.maximumZoom,
         animate: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
         duration: mapTravelDuration(currentMap.getCenter().distanceTo(
           leaflet.latLngBounds(renderedLayer.boundsCoordinates).getCenter(),
-        ), .65),
+        ), CAMPAIGN_ROUTE_CONFIG.initialFit.minimumTravelSeconds),
       };
       currentMap.stop();
       currentMap.once("moveend", handleCampaignMoveEnd);
@@ -141,7 +142,8 @@ export function useCampaignRouteLayer({
       else currentMap.fitBounds(renderedLayer.boundsCoordinates, movement);
       if (markerRevealTimer === null) {
         markerRevealTimer = window.setTimeout(revealFirstCampaignMarker,
-          movement.animate ? movement.duration * 1000 + 250 : 180);
+          movement.animate ? movement.duration * 1000 + CAMPAIGN_ROUTE_CONFIG.reveal.arrivalBufferMs
+            : CAMPAIGN_ROUTE_CONFIG.reveal.settleMs);
       }
     } else {
       campaignViewSettled = true;

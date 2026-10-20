@@ -7,7 +7,7 @@ import type { AtlasGroupDto } from "../../../infrastructure/atlas-data/dto/atlas
 import type { MapOverlayDto } from "../../../infrastructure/atlas-data/dto/map-overlay.dto.js";
 import type { LeafletMapRuntime } from "./use-leaflet-map.js";
 import { mapTravelDuration } from "../models/map-travel-duration.js";
-import { CAMPAIGN_FOCUS_PRESET, MARKER_FOCUS_PRESET, OVERLAY_FIT_PRESET } from "../models/map-focus-presets.js";
+import { MAP_CAMERA_CONFIG, CAMPAIGN_FOCUS_PRESET, MARKER_FOCUS_PRESET, OVERLAY_FIT_PRESET } from "../../../shared/config/map-camera.config.js";
 import { campaignFocusZoom } from "../models/campaign-focus-zoom.js";
 import { campaignTravelDuration } from "../models/campaign-travel-duration.js";
 import { campaignFlightStages } from "../models/campaign-flight-stages.js";
@@ -29,7 +29,8 @@ type SidebarSelectionTarget = {
 export function leafletViewportPadding(mapElement: HTMLElement, detailsElement: HTMLElement | null) {
   const mapRect = mapElement.getBoundingClientRect();
   const shortestEdge = Math.min(mapRect.width, mapRect.height);
-  const edgePadding = Math.round(Math.min(56, Math.max(32, shortestEdge * .055)));
+  const config = MAP_CAMERA_CONFIG.padding;
+  const edgePadding = Math.round(Math.min(config.maximumPixels, Math.max(config.minimumPixels, shortestEdge * config.edgeRatio)));
   let topPadding = edgePadding;
   let rightPadding = edgePadding;
   let bottomPadding = edgePadding;
@@ -47,9 +48,9 @@ export function leafletViewportPadding(mapElement: HTMLElement, detailsElement: 
       Math.min(mapRect.bottom, detailsRect.bottom) - Math.max(mapRect.top, detailsRect.top),
     );
     if (horizontalOverlap > 0 && verticalOverlap > 0) {
-      const detailsAtBottom = detailsRect.width >= mapRect.width * .68
+      const detailsAtBottom = detailsRect.width >= mapRect.width * config.panelWidthRatio
         && Math.abs(mapRect.bottom - detailsRect.bottom) <= edgePadding;
-      const detailsAtTop = detailsRect.width >= mapRect.width * .68
+      const detailsAtTop = detailsRect.width >= mapRect.width * config.panelWidthRatio
         && Math.abs(mapRect.top - detailsRect.top) <= edgePadding;
       if (detailsAtBottom) bottomPadding = Math.max(bottomPadding, mapRect.bottom - detailsRect.top + edgePadding);
       else if (detailsAtTop) topPadding = Math.max(topPadding, detailsRect.bottom - mapRect.top + edgePadding);
@@ -57,12 +58,12 @@ export function leafletViewportPadding(mapElement: HTMLElement, detailsElement: 
     }
   }
 
-  topPadding = Math.min(topPadding, Math.max(edgePadding, mapRect.height - edgePadding - 64));
+  topPadding = Math.min(topPadding, Math.max(edgePadding, mapRect.height - edgePadding - config.minimumVisiblePixels));
   return {
     paddingTopLeft: [edgePadding, topPadding] as [number, number],
     paddingBottomRight: [
-      Math.min(rightPadding, Math.max(edgePadding, mapRect.width - edgePadding - 64)),
-      Math.min(bottomPadding, Math.max(edgePadding, mapRect.height - topPadding - 64)),
+      Math.min(rightPadding, Math.max(edgePadding, mapRect.width - edgePadding - config.minimumVisiblePixels)),
+      Math.min(bottomPadding, Math.max(edgePadding, mapRect.height - topPadding - config.minimumVisiblePixels)),
     ] as [number, number],
   };
 }
@@ -289,7 +290,7 @@ export function useMapViewport({
       return;
     }
     const duration = mapTravelDuration(distance, preset.minimumTravelSeconds, preset.maximumTravelSeconds);
-    if (animate && (distance > 50_000 || currentMap.getZoom() !== targetZoom)) {
+    if (animate && (distance > MAP_CAMERA_CONFIG.travel.localDistanceMeters || currentMap.getZoom() !== targetZoom)) {
       const movement = { animate, duration, maxZoom: targetZoom };
       const arrive = () => {
         markerFlightArrival.current = null;
@@ -411,17 +412,18 @@ export function useMapViewport({
     const animation = {
       ...leafletViewportPadding(mapElement, getDetailsElement()),
       animate: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-      duration: .45,
+      duration: MAP_CAMERA_CONFIG.filterFit.durationSeconds,
     };
     cancelMarkerFlightArrival();
     currentMap.stop();
     if (mapFitCoordinates.length) {
       currentMap.fitBounds(mapFitCoordinates, {
         ...animation,
-        maxZoom: mapFitCoordinates.length === 1 ? 6 : 7,
+        maxZoom: mapFitCoordinates.length === 1
+          ? MAP_CAMERA_CONFIG.filterFit.singleLocationZoom : MAP_CAMERA_CONFIG.filterFit.multipleLocationsZoom,
       });
     } else {
-      currentMap.setView([27, 8], 2, {
+      currentMap.setView(MAP_CAMERA_CONFIG.initialView.center, MAP_CAMERA_CONFIG.initialView.zoom, {
         animate: animation.animate,
         duration: animation.duration,
       });
@@ -432,7 +434,8 @@ export function useMapViewport({
     if (!ready || !runtime.getMap()) return;
     const refreshMapSize = () => runtime.getMap()?.invalidateSize({ pan: false });
     const animationFrame = requestAnimationFrame(refreshMapSize);
-    const transitionEnd = window.setTimeout(refreshMapSize, 340);
+    const transitionEnd = window.setTimeout(refreshMapSize,
+      MAP_CAMERA_CONFIG.sidebar.transitionMs + MAP_CAMERA_CONFIG.sidebar.settleBufferMs);
     return () => {
       cancelAnimationFrame(animationFrame);
       window.clearTimeout(transitionEnd);

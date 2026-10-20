@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { leafletEntryFocusTarget } from "../src/infrastructure/mapping/leaflet/leaflet-entry-focus-target.adapter.js";
 import { campaignFlightStages } from "../src/presentation/map/models/campaign-flight-stages.js";
-import { CAMPAIGN_FOCUS_PRESET } from "../src/presentation/map/models/map-focus-presets.ts";
+import { CAMPAIGN_FOCUS_PRESET } from "../src/shared/config/map-camera.config.js";
 
 const overlay = {
   corners: {

@@ -1,9 +1,10 @@
 import { createBrowserAnimationFrameClock } from "../../browser/animation/browser-animation-frame.clock.js";
+import { MAP_OVERLAY_CONFIG } from "../../../shared/config/map-overlay.config.js";
 
 export function animateLeafletOverlayOpacity({
   animationRef,
   clock = createBrowserAnimationFrameClock(),
-  durationMs = 320,
+  durationMs = MAP_OVERLAY_CONFIG.history.fadeMs,
   onComplete,
   opacityRef,
   overlay,

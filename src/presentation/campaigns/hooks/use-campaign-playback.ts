@@ -5,6 +5,7 @@ import type { CampaignOption } from "../../../application/campaigns/use-cases/bu
 import type { AtlasEntryDto } from "../../../infrastructure/atlas-data/dto/atlas-entry.dto.js";
 import type { AtlasGroupDto } from "../../../infrastructure/atlas-data/dto/atlas-group.dto.js";
 import { transitionCampaignPlayback } from "../state/campaign-playback.state.js";
+import { CAMPAIGN_PLAYBACK_CONFIG } from "../../../shared/config/campaign-playback.config.js";
 
 type Campaign = CampaignOption<AtlasGroupDto, AtlasEntryDto>;
 type Transport = ReturnType<typeof transitionCampaignPlayback>;
@@ -23,7 +24,7 @@ export function useCampaignPlayback({ campaign, filterScope, selectionVersion, r
   onVisit: (level: Campaign["levels"][number], reason: "start" | "step") => void;
 }) {
   const [session, setSession] = useState<Session | null>(null);
-  const [secondsPerMission, setSecondsPerMission] = useState(15);
+  const [secondsPerMission, setSecondsPerMission] = useState(CAMPAIGN_PLAYBACK_CONFIG.defaultSecondsPerMission);
   const onVisitRef = useRef(onVisit);
   useEffect(() => { onVisitRef.current = onVisit; }, [onVisit]);
 

@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { campaignTravelDuration } from "../src/presentation/map/models/campaign-travel-duration.js";
-import { CAMPAIGN_FOCUS_PRESET } from "../src/presentation/map/models/map-focus-presets.ts";
+import { CAMPAIGN_FOCUS_PRESET } from "../src/shared/config/map-camera.config.js";
 import { mapTravelDuration } from "../src/presentation/map/models/map-travel-duration.js";
 
 test("nearby pans and small zoom adjustments stay responsive", () => {
