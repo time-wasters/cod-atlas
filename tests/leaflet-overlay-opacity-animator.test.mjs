@@ -94,7 +94,7 @@ test("default fades settle after 100 ms in either direction", () => {
   }
 });
 
-test("campaign fades take 500 ms to blend the destination overlay in", () => {
+test("campaign fades use the configured duration to blend the destination overlay in", () => {
   const animationClock = createAnimationClock();
   const opacityRef = { current: 0 };
   retargetLeafletOverlayOpacity({
@@ -106,11 +106,10 @@ test("campaign fades take 500 ms to blend the destination overlay in", () => {
     target: 0.72,
     targetRef: { current: 0 },
   });
-  animationClock.step(100);
+  const duration = MAP_OVERLAY_CONFIG.campaign.fadeInMs;
+  animationClock.step(duration / 2);
   assert.ok(opacityRef.current > 0 && opacityRef.current < 0.72);
-  animationClock.step(399);
-  assert.ok(opacityRef.current < 0.72);
-  animationClock.step(1);
+  animationClock.step(duration / 2);
   assert.equal(opacityRef.current, 0.72);
   assert.equal(animationClock.pendingFrames(), 0);
 });

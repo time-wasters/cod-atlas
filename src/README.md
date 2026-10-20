@@ -189,19 +189,37 @@ All durations are in milliseconds.
 | Setting | Default browsing | Campaign playback |
 | --- | --- | --- |
 | `fadeOutMs` | 100 | 500 |
-| `fadeInMs` | 100 | 500 |
-| `fadeInBeforeArrivalMs` | Immediate fade-in | 500 |
+| `fadeInMs` | 100 | 1000 |
+| `fadeInBeforeArrivalMs` | Immediate fade-in | 1000 |
 
 When changing campaign stops, the outgoing overlay fades out while the camera
 starts moving. The destination overlay stays hidden during travel and any
-intermediate overview wait. Its fade-in begins 500 ms before the final camera
-stage finishes, blending it in as the camera arrives. For shorter flights the
-fade starts with the final stage. Disabling an overlay keeps it hidden.
+intermediate overview wait. Its fade-in begins `fadeInBeforeArrivalMs` before
+the final camera stage finishes, blending it in as the camera arrives. For
+shorter flights the fade starts with the final stage. Disabling an overlay
+keeps it hidden.
 
 Early arrival starts the fade-in immediately; cancellation clears the pending
 fade-in timer and restores the selected overlay. Reduced-motion visits reveal
 the overlay on arrival without an animated fade. Replaced overlays are removed
 only after their fade-out completes. Zoom-based opacity still applies.
+
+## Map overlay preloading
+
+The injected `OverlayImagePort` loads and decodes the selected overlay, the
+first stop of a selected campaign, and the previous/next campaign stops as soon
+as those selections are known. This also runs while a campaign is paused.
+Automatic playback starts its mission timer after the next overlay's preload
+attempt has completed, so the next transition has a prepared image. Download
+or decode failures do not block playback and can be retried later.
+
+The browser image cache retains up to eight upcoming decoded images, deduplicates
+requests by URL, and respects the deployment's base path. Rendering acquires
+the decoded image itself and gives it directly to Leaflet. Each acquisition
+consumes its cache entry so overlapping fades use independent image elements.
+An unexpectedly slow manual selection waits for decoding before its overlay
+can fade in; stale loads cannot add an overlay after selection changes.
+Previously fetched files also remain eligible for the browser's HTTP cache.
 
 ## Migration status
 

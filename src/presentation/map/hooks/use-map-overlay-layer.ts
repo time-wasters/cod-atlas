@@ -1,6 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import type { OverlayImagePort } from "../../../application/map/ports/overlay-image.port.js";
 import type { MapOverlayDto } from "../../../infrastructure/atlas-data/dto/map-overlay.dto.js";
 import { retargetLeafletOverlayOpacity } from "../../../infrastructure/mapping/leaflet/leaflet-overlay-opacity-retargeting.animator.js";
 import { animateLeafletOverlayOpacity } from "../../../infrastructure/mapping/leaflet/leaflet-overlay-opacity-transition.animator.js";
@@ -25,6 +26,7 @@ export function useMapOverlayLayer({
   enabled,
   levelId,
   overlay,
+  images,
   ready,
   runtime,
   title,
@@ -36,6 +38,7 @@ export function useMapOverlayLayer({
   enabled: boolean;
   levelId: string;
   overlay: MapOverlayDto | null;
+  images: OverlayImagePort;
   ready: boolean;
   runtime: LeafletMapRuntime;
   title: string;
@@ -45,6 +48,7 @@ export function useMapOverlayLayer({
   const imageOverlayOpacity = useRef(0);
   const imageOverlayAnimation = useRef<number | null>(null);
   const imageOverlayTargetOpacity = useRef(0);
+  const [loadedOverlay, setLoadedOverlay] = useState<import("leaflet").ImageOverlay.Rotated | null>(null);
   const retiringOverlays = useRef(new Set<RetiringOverlay>());
   const fade = campaignPlaybackActive ? MAP_OVERLAY_CONFIG.campaign : MAP_OVERLAY_CONFIG.default;
 
@@ -62,6 +66,7 @@ export function useMapOverlayLayer({
     imageOverlayAnimation.current = null;
     imageOverlayOpacity.current = 0;
     imageOverlayTargetOpacity.current = 0;
+    setLoadedOverlay(null);
     animateLeafletOverlayOpacity({
       ...retiring,
       durationMs: fade.fadeOutMs,
@@ -112,18 +117,28 @@ export function useMapOverlayLayer({
       return;
     }
     if (imageOverlay.current && imageOverlayLevelId.current === levelId) {
-      transitionOpacity(imageOverlay.current, opacityTarget(overlay, enabled));
       return;
     }
     retireCurrentOverlay();
-    const renderedOverlay = renderLeafletMapOverlay({ leaflet, map: currentMap, overlay, title });
-    imageOverlay.current = renderedOverlay;
-    imageOverlayLevelId.current = levelId;
-    imageOverlayOpacity.current = 0;
-    imageOverlayTargetOpacity.current = 0;
-    imageOverlayAnimation.current = null;
+    let cancelled = false;
+    void images.acquire(overlay.image).then((image) => {
+      if (cancelled || !image || runtime.getMap() !== currentMap) return;
+      const renderedOverlay = renderLeafletMapOverlay({ leaflet, map: currentMap, overlay, title, image });
+      imageOverlay.current = renderedOverlay;
+      imageOverlayLevelId.current = levelId;
+      imageOverlayOpacity.current = 0;
+      imageOverlayTargetOpacity.current = 0;
+      imageOverlayAnimation.current = null;
+      setLoadedOverlay(renderedOverlay);
+    }).catch(() => { /* Image failures leave the base map usable. */ });
+    return () => { cancelled = true; };
+  }, [images, levelId, overlay, ready, retireCurrentOverlay, runtime, title]);
+
+  useEffect(() => {
+    const renderedOverlay = imageOverlay.current;
+    if (!ready || !overlay || !renderedOverlay || imageOverlayLevelId.current !== levelId) return;
     transitionOpacity(renderedOverlay, opacityTarget(overlay, enabled));
-  }, [enabled, levelId, opacityTarget, overlay, ready, retireCurrentOverlay, runtime, title, transitionOpacity]);
+  }, [enabled, levelId, loadedOverlay, opacityTarget, overlay, ready, transitionOpacity]);
 
   useEffect(() => {
     const currentMap = runtime.getMap();

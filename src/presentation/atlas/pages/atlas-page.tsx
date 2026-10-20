@@ -54,6 +54,7 @@ import { useHistoryOverlayLayer } from "../../map/hooks/use-history-overlay-laye
 import { useLeafletMap } from "../../map/hooks/use-leaflet-map.js";
 import { useLeafletMarkers } from "../../map/hooks/use-leaflet-markers.js";
 import { useMapOverlayLayer } from "../../map/hooks/use-map-overlay-layer.js";
+import { useMapOverlayPreloading } from "../../map/hooks/use-map-overlay-preloading.js";
 import { useMapViewport } from "../../map/hooks/use-map-viewport.js";
 import { useSelectedMapOverlay } from "../../map/hooks/use-selected-map-overlay.js";
 import { SettingsDialog } from "../../settings/components/settings-dialog.js";
@@ -75,6 +76,7 @@ export function AtlasPage({
   kmlFileDownloaderPort,
   levelBriefingPort,
   mapOverlays,
+  overlayImagePort,
 }: AtlasPageProps) {
   const { group: initialGroup, entry: initialEntry } = initialAtlasSelection(data);
   const filterCatalog = useMemo(() => buildAtlasFilterCatalog(data), [data]);
@@ -233,11 +235,18 @@ export function AtlasPage({
     port: levelBriefingPort,
   });
 
+  const { nextOverlayReady } = useMapOverlayPreloading({
+    selectedEntry: selected.entry,
+    campaign: selectedCampaign,
+    overlays: mapOverlays,
+    images: overlayImagePort,
+  });
   const campaignPlayback = useCampaignPlayback({
     campaign: selectedCampaign,
     filterScope: filtered,
     selectionVersion,
-    ready: mapReady && !mapMoving && !campaignTravelPending && !settingsOpen && selectedLevelNotes?.status !== "loading",
+    ready: mapReady && !mapMoving && !campaignTravelPending && !settingsOpen
+      && selectedLevelNotes?.status !== "loading" && nextOverlayReady,
     onVisit: visitCampaignLevel,
   });
   useEffect(() => {
@@ -433,6 +442,7 @@ export function AtlasPage({
     getDetailsElement: getMapDetailsElement,
     levelId: selected.entry.levelId,
     overlay: selectedMapOverlay,
+    images: overlayImagePort,
     ready: mapReady,
     runtime: leafletMap,
     title: selectedAppearance.title,
