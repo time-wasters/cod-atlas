@@ -495,7 +495,11 @@ export function AtlasPage({
     if (group.kind === "off-world") {
       setSolarSystemDisplay({ hasSpaceLocations: true, expanded: true });
     }
-    const coordinates = group.entries.flatMap((candidate) => candidate.coordinates ? [candidate.coordinates] : []);
+    const coordinates = group.entries.flatMap((candidate) => {
+      if (!candidate.coordinates) return [];
+      const overlay = mapOverlays[candidate.levelId];
+      return overlay ? [candidate.coordinates, ...Object.values(overlay.corners)] : [candidate.coordinates];
+    });
     const fallbackCoordinate = group.coordinates ?? entry.coordinates ?? null;
     const bounds = coordinates.length ? coordinates : fallbackCoordinate ? [fallbackCoordinate] : [];
     // Do not zoom past the least precise location represented by the group.
@@ -504,7 +508,7 @@ export function AtlasPage({
 
     queueSidebarSelection(bounds.length ? { bounds, maxZoom } : null);
     selectEntry(group, entry);
-  }, [queueSidebarSelection, selectEntry]);
+  }, [mapOverlays, queueSidebarSelection, selectEntry]);
 
   /**
    * Toggles campaign browsing and reveals its first marker when activated.

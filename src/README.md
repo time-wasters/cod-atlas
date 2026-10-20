@@ -171,7 +171,11 @@ for approximate locations and 18 for exact locations. These require a named
 landmark, high confidence, and human location verification.
 
 Manual game overlay focus fits the overlay and marker bounds. Campaign
-playback uses the location's precision zoom even when an overlay is present.
+playback stops at the wider of the configured location view and the view needed
+to fit the attached overlay and marker. The fit accounts for viewport space
+covered by details and briefing panels. Sidebar group selection also includes
+attached overlays in its bounds. These limits apply to automatic camera focus;
+users can still zoom closer manually.
 Animation timing, campaign overview stops, and overlay zoom ceilings live in
 [`presentation/map/models/map-focus-presets.ts`](presentation/map/models/map-focus-presets.ts).
 Configuration changes take effect on the next development reload or site build.

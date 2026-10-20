@@ -14,6 +14,7 @@ import { campaignFlightStages } from "../models/campaign-flight-stages.js";
 import { createLeafletCampaignFlight } from "../../../infrastructure/mapping/leaflet/leaflet-campaign-flight.controller.js";
 import { waitForMapView } from "../../../infrastructure/mapping/leaflet/wait-for-map-view.js";
 import { markerFocusZoomLimit, revealLeafletMarker } from "../../../infrastructure/mapping/leaflet/leaflet-marker-reveal.adapter.js";
+import { leafletEntryFocusTarget } from "../../../infrastructure/mapping/leaflet/leaflet-entry-focus-target.adapter.js";
 
 type AtlasSelection = { group: AtlasGroupDto; entry: AtlasEntryDto };
 type EntryFocusContext = "manual" | "campaign-playback";
@@ -182,7 +183,7 @@ export function useMapViewport({
 
   const focusEntryOnMap = useCallback((entry: AtlasEntryDto, center = false, context: EntryFocusContext = "manual") => {
     const playback = context === "campaign-playback";
-    // Playback frames the curated location at its accuracy scale.
+    // Playback uses the location scale, limited by any attached overlay's extent.
     if (!center && !playback && focusEntryOverlay(entry, true)) return;
     const currentMap = runtime.getMap();
     const layer = runtime.getMarkerLayer();
@@ -207,16 +208,26 @@ export function useMapViewport({
       // Do not pan to a displaced spiderfied marker after arrival.
       markerRevealCleanup.current = revealLeafletMarker(layer, entryMarker);
     };
-    const targetZoom = Math.min(
-      currentMap.getMaxZoom(),
-      preset.maximumZoom,
-      playbackZoom ?? precisionZoom ?? Math.max(MARKER_FOCUS_PRESET.minimumZoom, currentMap.getZoom()),
-    );
+    const entryOverlay = mapOverlays[entry.levelId];
+    const { bounds: focusBounds, maximumZoom: targetZoom } = leafletEntryFocusTarget({
+      coordinates: destination,
+      overlay: entryOverlay,
+      maximumZoom: Math.min(
+        currentMap.getMaxZoom(),
+        preset.maximumZoom,
+        entryOverlay ? OVERLAY_FIT_PRESET.maximumZoom : Infinity,
+        playbackZoom ?? precisionZoom ?? Math.max(MARKER_FOCUS_PRESET.minimumZoom, currentMap.getZoom()),
+      ),
+      leaflet,
+      map: currentMap,
+      padding: leafletViewportPadding(mapElement, getDetailsElement()),
+    });
     if (playback) {
-      // Each stage centers the curated point in the current unobstructed viewport.
+      // Fit the same destination bounds at every stage so the final approach
+      // cannot zoom through an overlay or leave an offset marker out of view.
       const flight = createLeafletCampaignFlight({
         map: currentMap,
-        bounds: leaflet.latLngBounds([destination]),
+        bounds: focusBounds,
         stages: campaignFlightStages(distance, currentMap.getZoom(), targetZoom, CAMPAIGN_FOCUS_PRESET, animate),
         animate,
         getPadding: () => leafletViewportPadding(mapElement, getDetailsElement()),
@@ -252,8 +263,8 @@ export function useMapViewport({
       };
       markerFlightArrival.current = arrive;
       currentMap.once("moveend", arrive);
-      if (center) currentMap.flyTo(destination, targetZoom, movement);
-      else currentMap.flyToBounds(leaflet.latLngBounds([destination]), {
+      if (center && !entryOverlay) currentMap.flyTo(destination, targetZoom, movement);
+      else currentMap.flyToBounds(focusBounds, {
         ...leafletViewportPadding(mapElement, getDetailsElement()), ...movement,
       });
     } else {
@@ -264,8 +275,8 @@ export function useMapViewport({
       let moved = false;
       const markMoving = () => { moved = true; };
       currentMap.once("movestart", markMoving);
-      if (currentMap.getZoom() !== targetZoom) {
-        currentMap.fitBounds(leaflet.latLngBounds([destination]), {
+      if (entryOverlay || currentMap.getZoom() !== targetZoom) {
+        currentMap.fitBounds(focusBounds, {
           ...leafletViewportPadding(mapElement, getDetailsElement()), maxZoom: targetZoom, ...movement,
         });
       } else if (center) currentMap.panTo(destination, movement);
@@ -279,7 +290,7 @@ export function useMapViewport({
         reveal();
       }
     }
-  }, [cancelMarkerFlightArrival, focusEntryOverlay, getDetailsElement, onCampaignTravelChange, runtime]);
+  }, [cancelMarkerFlightArrival, focusEntryOverlay, getDetailsElement, mapOverlays, onCampaignTravelChange, runtime]);
 
   const focusSelectedMarker = useCallback(() => {
     focusEntryOnMap(selected.entry);
