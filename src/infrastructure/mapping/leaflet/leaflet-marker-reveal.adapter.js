@@ -1,8 +1,8 @@
+import { LOCATION_ZOOM_CONFIG } from "../../../shared/config/location-zoom.config.js";
+
 /** @param {string} precision */
 export function markerFocusZoomLimit(precision) {
-  if (precision === "country") return 5;
-  if (precision === "region") return 6;
-  if (precision === "city") return 8;
+  if (["country", "region", "city"].includes(precision)) return LOCATION_ZOOM_CONFIG[precision];
   return null;
 }
 

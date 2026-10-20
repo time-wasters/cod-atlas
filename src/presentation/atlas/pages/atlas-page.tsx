@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { LOCATION_ZOOM_CONFIG } from "../../../shared/config/location-zoom.config.js";
 import { findRelatedLevels } from "../../../application/atlas/use-cases/find-related-levels.js";
 import { getGameModeAvailability } from "../../../application/atlas/use-cases/get-game-mode-availability.js";
 import {
@@ -498,13 +499,8 @@ export function AtlasPage({
     const fallbackCoordinate = group.coordinates ?? entry.coordinates ?? null;
     const bounds = coordinates.length ? coordinates : fallbackCoordinate ? [fallbackCoordinate] : [];
     // Do not zoom past the least precise location represented by the group.
-    const maxZoom = group.entries.some((candidate) => ["country", "off-world"].includes(candidate.precision))
-      ? 5
-      : group.entries.some((candidate) => candidate.precision === "region")
-        ? 6
-        : group.entries.some((candidate) => candidate.precision === "city")
-          ? 8
-          : 10;
+    const maxZoom = Math.min(...group.entries.map((candidate) =>
+      LOCATION_ZOOM_CONFIG[candidate.precision] ?? LOCATION_ZOOM_CONFIG.country));
 
     queueSidebarSelection(bounds.length ? { bounds, maxZoom } : null);
     selectEntry(group, entry);

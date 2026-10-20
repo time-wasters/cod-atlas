@@ -208,9 +208,9 @@ export function useMapViewport({
       markerRevealCleanup.current = revealLeafletMarker(layer, entryMarker);
     };
     const targetZoom = Math.min(
-      precisionZoom ?? currentMap.getMaxZoom(),
+      currentMap.getMaxZoom(),
       preset.maximumZoom,
-      playbackZoom ?? Math.max(MARKER_FOCUS_PRESET.minimumZoom, currentMap.getZoom()),
+      playbackZoom ?? precisionZoom ?? Math.max(MARKER_FOCUS_PRESET.minimumZoom, currentMap.getZoom()),
     );
     if (playback) {
       // Each stage centers the curated point in the current unobstructed viewport.

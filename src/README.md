@@ -143,6 +143,39 @@ not a replacement data store.
 The placeholder files exist only so Git records the planned directories. They
 can be removed one at a time as real source files are introduced.
 
+## Map camera configuration
+
+Configure location zoom defaults in
+[`shared/config/location-zoom.config.js`](shared/config/location-zoom.config.js).
+Higher zoom values show a closer view.
+
+| Location precision | Default zoom |
+| --- | --- |
+| `country` | 5 |
+| `region` | 6 |
+| `city` | 12 |
+| `approximate` | 14 |
+| `exact` | 17 |
+
+City views use a fixed scale with surrounding context, rather than measured
+city boundaries. Off-world locations do not request an Earth camera target.
+
+Campaign playback chooses a fresh zoom for each stop from these defaults.
+Manual marker focus uses the country, region, and city defaults; precise
+markers retain the current zoom subject to the marker preset's limits.
+Sidebar selection fits all locations in a group, capped at the lowest configured
+zoom among them. The map's maximum zoom also limits camera movement.
+
+The same config file defines verified campaign landmark close-ups: zoom 16
+for approximate locations and 18 for exact locations. These require a named
+landmark, high confidence, and human location verification.
+
+Manual game overlay focus fits the overlay and marker bounds. Campaign
+playback uses the location's precision zoom even when an overlay is present.
+Animation timing, campaign overview stops, and overlay zoom ceilings live in
+[`presentation/map/models/map-focus-presets.ts`](presentation/map/models/map-focus-presets.ts).
+Configuration changes take effect on the next development reload or site build.
+
 ## Migration status
 
 The Wiki importer, external game-icon importer, level-image manager, progress

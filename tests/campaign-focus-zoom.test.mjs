@@ -15,8 +15,17 @@ test("playback zoom follows location precision from country context to street de
     assert.ok(zooms[index] > zooms[index - 1]);
   }
   assert.ok(zooms[0] <= 5);
-  assert.ok(zooms[2] <= 8);
+  assert.equal(zooms[2], 12);
   assert.ok(zooms.at(-1) >= 17);
+});
+
+test("city playback honors a configured closer view and the map zoom ceiling", () => {
+  const preset = {
+    ...CAMPAIGN_FOCUS_PRESET,
+    zoomByPrecision: { ...CAMPAIGN_FOCUS_PRESET.zoomByPrecision, city: 13 },
+  };
+  assert.equal(campaignFocusZoom({ precision: "city" }, preset), 13);
+  assert.equal(campaignFocusZoom({ precision: "city" }, preset, 11), 11);
 });
 
 test("verified landmarks get close views while approximate ones keep more context", () => {

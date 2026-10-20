@@ -77,9 +77,10 @@ test("a superseded marker reveal removes its pending animation listener", () => 
 });
 
 test("coarse precision limits remain below street zoom", () => {
-  for (const precision of ["country", "region", "city"]) {
+  for (const precision of ["country", "region"]) {
     assert.ok(markerFocusZoomLimit(precision) <= 8);
   }
+  assert.equal(markerFocusZoomLimit("city"), 12);
   assert.equal(markerFocusZoomLimit("exact"), null);
   assert.equal(markerFocusZoomLimit("approximate"), null);
 });
