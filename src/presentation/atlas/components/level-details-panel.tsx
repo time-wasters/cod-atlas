@@ -32,6 +32,30 @@ type LevelDetailsViewModel = {
   otherLocations: { group: AtlasGroupDto; entry: AtlasEntryDto }[];
 };
 
+function PlaceLink({ href, icon, title, ariaLabel }: {
+  href: string | null;
+  icon: "googleMaps" | "wikipedia" | "callOfDutyMaps" | "fandom";
+  title: string;
+  ariaLabel: string;
+}) {
+  return (
+    <Tooltip content={href ? title : `${title} unavailable`}>
+      <a
+        href={href || undefined}
+        target="_blank"
+        rel="noreferrer"
+        className={href ? undefined : "is-disabled"}
+        role={href ? undefined : "link"}
+        aria-disabled={href ? undefined : true}
+        aria-label={href ? ariaLabel : `${title} unavailable`}
+        tabIndex={href ? undefined : -1}
+      >
+        <ExternalLinkIcon name={icon} />
+      </a>
+    </Tooltip>
+  );
+}
+
 function LocationCountry({ group, entry }: { group: AtlasGroupDto; entry: AtlasEntryDto }) {
   return (
     <div className="intel-kicker">
@@ -161,10 +185,10 @@ export function LevelDetailsPanel({
             </div>
           )}
           <div className="place-links" aria-label="External place links">
-            {viewModel.links.googleMaps && <Tooltip content="Google Maps"><a href={viewModel.links.googleMaps} target="_blank" rel="noreferrer" aria-label="Open in Google Maps"><ExternalLinkIcon name="googleMaps" /><span>Google Maps</span></a></Tooltip>}
-            {viewModel.links.wikipedia && <Tooltip content="Wikipedia"><a href={viewModel.links.wikipedia} target="_blank" rel="noreferrer" aria-label="Open on Wikipedia"><ExternalLinkIcon name="wikipedia" /><span>Wikipedia</span></a></Tooltip>}
-            {viewModel.links.callOfDutyMaps && <Tooltip content="Call of Duty Maps"><a href={viewModel.links.callOfDutyMaps} target="_blank" rel="noreferrer" aria-label="Open this map on Call of Duty Maps"><ExternalLinkIcon name="callOfDutyMaps" /><span>CoD Maps</span></a></Tooltip>}
-            <Tooltip content="Call of Duty Wiki"><a href={appearance.wiki} target="_blank" rel="noreferrer" aria-label="Open on Call of Duty Wiki"><ExternalLinkIcon name="fandom" /><span>CoD Wiki</span></a></Tooltip>
+            <PlaceLink href={viewModel.links.googleMaps} icon="googleMaps" title="Google Maps" ariaLabel="Open in Google Maps" />
+            <PlaceLink href={viewModel.links.wikipedia} icon="wikipedia" title="Wikipedia" ariaLabel="Open on Wikipedia" />
+            <PlaceLink href={viewModel.links.callOfDutyMaps} icon="callOfDutyMaps" title="Call of Duty Maps" ariaLabel="Open this map on Call of Duty Maps" />
+            <PlaceLink href={appearance.wiki || entry.wiki || null} icon="fandom" title="Call of Duty Wiki" ariaLabel="Open on Call of Duty Wiki" />
           </div>
           <section className="level-briefing">
             <Tooltip content={appearance.hasLevelNotes ? undefined : "No level briefing available"}>
