@@ -27,6 +27,9 @@ export function serializeAtlasUrlState(input, state) {
   const mode = serializeAtlasUrlMode(state);
   if (mode) url.searchParams.set("mode", mode);
   if (state.sidebarListMode !== "locations") url.searchParams.set("browse", state.sidebarListMode);
+  if (state.sidebarListMode === "campaigns" && state.campaignKey) {
+    url.searchParams.set("campaign", state.campaignKey);
+  }
   if (state.levelId) {
     url.searchParams.set("level", state.levelId);
     if (state.locationId) url.searchParams.set("location", state.locationId);

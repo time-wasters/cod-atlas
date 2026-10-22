@@ -38,8 +38,10 @@ These instructions apply to everything under `content/`.
 - Canonical level files contain exactly one owner in `games`. Represent an
   unchanged appearance in another game with `<descriptive-name>.ref.md` under that
   game's directory. References may override only `title`, `wikiArticle`,
-  `campaign`, `metadata`, and their Markdown body; all protected geographic
-  and canonical fields inherit unchanged.
+  `campaign`, `content-update`, `metadata`, and their Markdown body. A Multiplayer
+  reference may also supply appearance-specific `modeSub` (scalar or non-empty
+  list of unique multiplayer subtypes); omission inherits the canonical value.
+  Mode, Other subtype, locations, and remaining canonical fields stay protected.
 - Use `metadata.variantOf` for a distinct canonical map or activity that is a
   variant of another canonical level. If `locations` is omitted, the build
   inherits the target's locations; if it is present, the variant keeps its own.

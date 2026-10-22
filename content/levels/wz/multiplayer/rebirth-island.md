@@ -4,6 +4,7 @@ title: Rebirth Island
 games:
   - wz
 mode: multiplayer
+modeSub: battle-royale
 wikiArticle: codwiki-rebirth-island-warzone
 locations:
   - id: main

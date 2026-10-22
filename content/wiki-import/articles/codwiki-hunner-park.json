@@ -3,8 +3,8 @@
   "fandomPageId": 90388,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Hunner_Park",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Hunner_Park",
-  "latestRevisionId": 2957223,
-  "importedAt": "2026-08-25T23:11:55.711Z",
+  "latestRevisionId": 3031043,
+  "importedAt": "2026-10-11T21:18:25.456Z",
   "levelLocation": {
     "raw": "Nijmegen, Netherlands",
     "label": "Nijmegen, Netherlands",
@@ -48,8 +48,8 @@
     }
   },
   "rawPayload": {
-    "revisionTimestamp": "2026-01-17T14:16:07Z",
-    "revisionSha1": "e3b2efceb6766f8af6aef08d95b445c337e59da9",
+    "revisionTimestamp": "2026-10-02T09:21:36Z",
+    "revisionSha1": "050ead7ddc9a4bab8432f571cce1f0150e20b443",
     "resolvedTitle": "Hunner Park",
     "mainImageTitle": "File:Hunner_Park_CODRTV.png",
     "mapImageTitle": null

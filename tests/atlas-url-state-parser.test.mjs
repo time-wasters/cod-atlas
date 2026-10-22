@@ -19,6 +19,7 @@ test("atlas URL parser applies concise defaults", () => {
     showZombies: false,
     showOther: false,
     sidebarListMode: "locations",
+    campaignKey: null,
     levelId: null,
     locationId: null,
   });
@@ -44,6 +45,14 @@ test("atlas URL parser supports content-update browsing", () => {
     parseAtlasUrlState("https://example.com/?browse=updates").sidebarListMode,
     "updates",
   );
+});
+
+test("atlas URL parser restores campaign identity only while browsing campaigns", () => {
+  const campaignKey = "fixture:default:singleplayer:chronological";
+  assert.equal(parseAtlasUrlState(`https://example.com/?browse=campaigns&campaign=${campaignKey}`).campaignKey,
+    campaignKey);
+  assert.equal(parseAtlasUrlState(`https://example.com/?browse=updates&campaign=${campaignKey}`).campaignKey,
+    null);
 });
 
 test("atlas URL parser supports every mode-filter encoding and legacy Other-subtype links", () => {

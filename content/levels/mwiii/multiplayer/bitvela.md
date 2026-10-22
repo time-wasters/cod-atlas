@@ -16,5 +16,11 @@ locations:
     confidence: fallback
     method: country-fallback
     primary: true
+campaign:
+  id: bit-party
+  label: Bit Party
+content-update:
+  id: "4"
+  label: Season 4
 ---
 

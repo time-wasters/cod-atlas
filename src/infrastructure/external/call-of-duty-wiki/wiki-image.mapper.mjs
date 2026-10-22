@@ -4,8 +4,8 @@ const COPYRIGHTED_MEDIA_TEMPLATE = /{{\s*Copyrighted[ _]Media(?:\s*[|}])/i;
 const COPYRIGHTED_MEDIA_NOTICE = `This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots
 
 for identification and critical commentary on
-  â€¢ the computer or video game in question or
-  â€¢ the copyrighted character(s) or item(s) depicted on the screenshot in question
+  \u2022 the computer or video game in question or
+  \u2022 the copyrighted character(s) or item(s) depicted on the screenshot in question
 on the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,
 
 qualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.`;

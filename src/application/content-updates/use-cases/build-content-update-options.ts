@@ -1,3 +1,5 @@
+import type { LevelModeSubValue } from "../../../domain/level/level-mode-sub.types.js";
+
 type ContentUpdateGame = {
   id: string;
   code: string;
@@ -16,7 +18,7 @@ type ContentUpdateAtlasEntry = {
   }[];
   coordinates?: [number, number] | null;
   modes: ("singleplayer" | "multiplayer" | "zombies" | "other")[];
-  modeSub?: "special-ops" | "survival" | "challenge";
+  modeSub?: LevelModeSubValue;
 };
 
 type ContentUpdateAtlasGroup<TEntry extends ContentUpdateAtlasEntry> = {

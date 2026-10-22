@@ -3,8 +3,8 @@
   "fandomPageId": 3346,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Killhouse_(Call_of_Duty_4)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Killhouse_(Call_of_Duty_4)",
-  "latestRevisionId": 2994823,
-  "importedAt": "2026-08-15T13:20:35.042Z",
+  "latestRevisionId": 3027327,
+  "importedAt": "2026-10-11T21:08:27.753Z",
   "levelLocation": {
     "raw": "{{w|Credenhill}}, [[United Kingdom]] (''CoD4'')<br>8 km outside of Suldal, [[Urzikstan]] (''MW'')",
     "label": "United Kingdom",
@@ -48,8 +48,8 @@
     }
   },
   "rawPayload": {
-    "revisionTimestamp": "2026-04-17T15:21:53Z",
-    "revisionSha1": "8b447037788e869d3327354e24b54a0b737a2edd",
+    "revisionTimestamp": "2026-09-17T04:05:24Z",
+    "revisionSha1": "dd05a813f740be55ef282f071798ea20490b2360",
     "resolvedTitle": "Killhouse (Call of Duty 4)",
     "mainImageTitle": "File:Cod4-killhouse.jpg",
     "mapImageTitle": null

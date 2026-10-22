@@ -4,6 +4,7 @@ import type { KmlFileDownloaderPort } from "../../../application/export/ports/km
 import type { ExternalGameIconManifestPort } from "../../../application/game-catalog/ports/external-game-icon-manifest.port.js";
 import type { LevelBriefingPort } from "../../../application/level-briefing/ports/level-briefing.port.js";
 import type { ClientSettingsPort } from "../../../application/settings/ports/client-settings.port.js";
+import type { OverlayImagePort } from "../../../application/map/ports/overlay-image.port.js";
 import type { AtlasDataDto } from "../../../infrastructure/atlas-data/dto/atlas-data.dto.js";
 import type { HistoryOverlayDto } from "../../../infrastructure/atlas-data/dto/history-overlay.dto.js";
 import type { MapOverlayDto } from "../../../infrastructure/atlas-data/dto/map-overlay.dto.js";
@@ -20,4 +21,5 @@ export type AtlasPageProps = {
   kmlFileDownloaderPort: KmlFileDownloaderPort;
   levelBriefingPort: LevelBriefingPort;
   mapOverlays: Record<string, MapOverlayDto>;
+  overlayImagePort: OverlayImagePort;
 };

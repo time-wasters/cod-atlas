@@ -4,6 +4,7 @@ title: Caldera
 games:
   - wz
 mode: multiplayer
+modeSub: battle-royale
 wikiArticle: codwiki-caldera
 locations:
   - id: main

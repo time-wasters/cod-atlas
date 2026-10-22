@@ -1,0 +1,19 @@
+.atlas-tooltip-surface, .leaflet-tooltip {
+  border: 1px solid #756234;
+  border-radius: 4px;
+  padding: 7px 9px;
+  color: #eee3c8;
+  background: linear-gradient(145deg, #20251bf5, #10140ff8);
+  box-shadow: 0 8px 22px #000c, inset 0 1px 0 #ffffff0a;
+  font: 650 11px/1.35 var(--font-geist-sans), Arial, sans-serif;
+  pointer-events: none;
+  overflow-wrap: anywhere;
+}
+.atlas-tooltip { position: fixed; z-index: 1950; width: max-content; max-width: min(260px, calc(100vw - 16px)); max-height: calc(100vh - 16px); overflow: hidden; }
+.atlas-tooltip--details { max-width: min(300px, calc(100vw - 16px)); padding: 13px; }
+/* Leaflet's tooltip pane has no intrinsic width; size labels by their content. */
+.leaflet-tooltip { width: max-content; max-width: min(300px, calc(100vw - 16px)); white-space: normal; }
+.leaflet-tooltip-top::before { border-top-color: #756234; }
+.leaflet-tooltip-bottom::before { border-bottom-color: #756234; }
+.leaflet-tooltip-left::before { border-left-color: #756234; }
+.leaflet-tooltip-right::before { border-right-color: #756234; }

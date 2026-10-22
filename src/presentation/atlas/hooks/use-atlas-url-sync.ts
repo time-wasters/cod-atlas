@@ -19,6 +19,7 @@ export type AppliedAtlasUrlState<TSelection> = {
   filters: AtlasFilterUrlState;
   selection: TSelection | null;
   sidebarListMode: "locations" | "campaigns" | "updates";
+  campaignKey: string | null;
   campaignLevelId: string | null;
   contentUpdateLevelId: string | null;
 };
@@ -44,6 +45,7 @@ type UseAtlasUrlSyncInput<TSelection extends UrlSelection> = {
   selected: TSelection;
   selectionInUrl: boolean;
   sidebarListMode: "locations" | "campaigns" | "updates";
+  campaignKey: string | null;
   urlStatePort: AtlasUrlStatePort;
   onApplyUrlState: (state: AppliedAtlasUrlState<TSelection>) => void;
 };
@@ -54,6 +56,7 @@ export function useAtlasUrlSync<TSelection extends UrlSelection>({
   selected,
   selectionInUrl,
   sidebarListMode,
+  campaignKey,
   urlStatePort,
   onApplyUrlState,
 }: UseAtlasUrlSyncInput<TSelection>) {
@@ -102,6 +105,7 @@ export function useAtlasUrlSync<TSelection extends UrlSelection>({
         },
         selection: requestedSelection,
         sidebarListMode: requestedGame ? urlState.sidebarListMode : "locations",
+        campaignKey: requestedGame && urlState.sidebarListMode === "campaigns" ? urlState.campaignKey : null,
         campaignLevelId: urlState.sidebarListMode === "campaigns" && requestedGame && requestedSelection
           ? requestedSelection.entry.levelId
           : null,
@@ -134,12 +138,14 @@ export function useAtlasUrlSync<TSelection extends UrlSelection>({
       showZombies: filters.showZombies,
       showOther: filters.showOther,
       sidebarListMode,
+      campaignKey,
       levelId: selectionInUrl ? selected.entry.levelId : null,
       locationId: selectionInUrl ? selected.entry.locationId : null,
     }, nextHistoryMode.current);
     nextHistoryMode.current = "push";
   }, [
     dataIndex,
+    campaignKey,
     filters.confidences,
     filters.continents,
     filters.country,

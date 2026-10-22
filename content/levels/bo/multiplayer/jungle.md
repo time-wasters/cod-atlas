@@ -1,7 +1,7 @@
 ---
 id: bo-jungle
 legacyIds:
-  - bo-bo3-bo4-bocw-jungle
+  - bo-bo3-bo4-bo5-jungle
 title: Jungle
 games:
   - bo

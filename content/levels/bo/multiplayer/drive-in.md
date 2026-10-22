@@ -1,7 +1,7 @@
 ---
 id: bo-drive-in
 legacyIds:
-  - bo-bocw-drive-in
+  - bo-bo5-drive-in
 title: Drive-In
 games:
   - bo

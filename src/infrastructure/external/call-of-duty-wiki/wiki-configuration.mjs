@@ -1,5 +1,15 @@
 import process from "node:process";
 
+export const WIKI_IMPORT_CONFIG = {
+  batchSize: 10,
+  requestTimeoutMs: 30_000,
+  maximumAttempts: 4,
+  defaultDelayMs: 5_000,
+  minimumDelayMs: 2_000,
+  retryBackoffFactor: 2,
+  maximumServerLagSeconds: 1,
+};
+
 export class WikiConfigurationError extends Error {
   constructor(message) {
     super(message);

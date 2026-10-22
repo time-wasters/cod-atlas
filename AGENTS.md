@@ -69,8 +69,12 @@ output of `npm run build:static`.
   research prose, citations, marker explanations, or AI disclosures into YAML.
   Report sources and uncertainty in the handoff when the body is excluded.
 - Game labels: short, readable, ordered by release date.
-- Modes: `singleplayer`, `multiplayer`, `zombies`, `other`. Only `other` requires
-  `modeSub`: `special-ops`, `survival`, or `challenge`; all other modes omit it.
+- Modes: `singleplayer`, `multiplayer`, `zombies`, `other`. `other` requires
+  `modeSub`: `special-ops`, `survival`, or `challenge`. `multiplayer` optionally
+  accepts `modeSub`: `battle-royale`, `dmz`, or a non-empty list of unique
+  multiplayer subtypes; omit for standard multiplayer. `singleplayer` and
+  `zombies` omit it. Multiplayer references may override appearance subtypes;
+  other references inherit the canonical subtype.
 - `content-update` supports every mode/subtype with a documented release grouping.
 - Prefer map-type directories: `campaign/`, `multiplayer/`, `special-ops/`,
   `survival/`, `zombies/`, `challenge/`. Only campaign filenames carry play-order prefixes.

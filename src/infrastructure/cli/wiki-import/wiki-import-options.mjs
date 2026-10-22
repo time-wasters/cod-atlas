@@ -1,5 +1,4 @@
-const DEFAULT_DELAY_MS = 5_000;
-const MIN_DELAY_MS = 2_000;
+import { WIKI_IMPORT_CONFIG } from "../../external/call-of-duty-wiki/wiki-configuration.mjs";
 
 export function parseWikiImportOptions(argv) {
   const options = {
@@ -9,7 +8,7 @@ export function parseWikiImportOptions(argv) {
     all: false,
     force: false,
     dryRun: false,
-    delayMs: DEFAULT_DELAY_MS,
+    delayMs: WIKI_IMPORT_CONFIG.defaultDelayMs,
   };
   for (let index = 0; index < argv.length; index += 1) {
     const argument = argv[index];
@@ -35,8 +34,8 @@ export function parseWikiImportOptions(argv) {
   if (options.limit !== null && (!Number.isInteger(options.limit) || options.limit < 1)) {
     throw new Error("--limit must be a positive integer");
   }
-  if (!Number.isInteger(options.delayMs) || options.delayMs < MIN_DELAY_MS) {
-    throw new Error(`--delay-ms must be at least ${MIN_DELAY_MS}`);
+  if (!Number.isInteger(options.delayMs) || options.delayMs < WIKI_IMPORT_CONFIG.minimumDelayMs) {
+    throw new Error(`--delay-ms must be at least ${WIKI_IMPORT_CONFIG.minimumDelayMs}`);
   }
   return options;
 }

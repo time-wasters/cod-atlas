@@ -22,14 +22,6 @@
 .leaflet-control-attribution a {
   color: #b99b53 !important;
 }
-.leaflet-tooltip {
-  border: 1px solid #8a6b2b !important;
-  border-radius: 3px !important;
-  color: #e5ddc7 !important;
-  background: #151a13ef !important;
-  box-shadow: 0 4px 18px #0008 !important;
-  font-size: 10px;
-}
 .country-boundary-outline {
   filter:
     drop-shadow(0 0 1px rgb(227 180 81 / 0.48))
@@ -70,17 +62,32 @@
   filter: grayscale(0.7) brightness(0.82);
 }
 .marker-cluster-spider-leg {
-  stroke: #d8bb65;
-  stroke-width: 1.5;
-  stroke-opacity: 0.8;
+  stroke: var(--marker-spider-leg-color);
+  stroke-width: var(--marker-spider-leg-weight);
+  stroke-opacity: var(--marker-spider-leg-opacity);
 }
 .atlas-marker-wrap {
   background: none !important;
   border: 0 !important;
 }
+.atlas-selection-pulse {
+  position: absolute;
+  inset: -5px;
+  border: 2px solid var(--amber);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: atlas-selection-pulse var(--selection-pulse-duration) ease-out both;
+}
+@keyframes atlas-selection-pulse {
+  from { transform: scale(1); opacity: 0.9; }
+  to { transform: scale(2.6); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .atlas-selection-pulse { display: none; animation: none; }
+}
 .atlas-marker {
-  width: 18px;
-  height: 18px;
+  width: var(--atlas-marker-size);
+  height: var(--atlas-marker-size);
   display: grid;
   place-items: center;
   border: 2px solid #b8af80;
@@ -116,8 +123,6 @@
   filter: brightness(1.2);
 }
 .atlas-marker.is-active {
-  width: 30px;
-  height: 30px;
   border-style: solid;
   border-color: #ffc13b;
   background: #d99819;

@@ -1,8 +1,7 @@
 import path from "node:path";
 import { levelImagePolicies } from "../../../domain/level/level-image.policy.mjs";
 import { classifyLevelImagePath } from "../../../domain/level/level-image-role.value-object.mjs";
-
-const jpegMinimumSavingsRatio = 0.1;
+import { IMAGE_OPTIMIZATION_CONFIG } from "./image-optimization.config.mjs";
 
 function resizePipeline(sharp, input, maxEdge, shouldResize) {
   let pipeline = sharp(input, { failOn: "error" }).rotate();
@@ -19,19 +18,19 @@ function resizePipeline(sharp, input, maxEdge, shouldResize) {
 
 async function pngCandidate(sharp, input, maxEdge, shouldResize, palette) {
   const options = palette
-    ? { compressionLevel: 9, adaptiveFiltering: true, palette: true, quality: 92, effort: 10, dither: 0.5 }
-    : { compressionLevel: 9, adaptiveFiltering: true, effort: 10 };
+    ? { ...IMAGE_OPTIMIZATION_CONFIG.png, ...IMAGE_OPTIMIZATION_CONFIG.pngPalette }
+    : { ...IMAGE_OPTIMIZATION_CONFIG.png };
   return resizePipeline(sharp, input, maxEdge, shouldResize).png(options).toBuffer();
 }
 
 async function jpegCandidate(sharp, input, maxEdge, shouldResize) {
   return resizePipeline(sharp, input, maxEdge, shouldResize)
-    .jpeg({ quality: 85, chromaSubsampling: "4:4:4", mozjpeg: true })
+    .jpeg(IMAGE_OPTIMIZATION_CONFIG.jpeg)
     .toBuffer();
 }
 
 async function webpCandidate(sharp, input, maxEdge, shouldResize) {
-  return resizePipeline(sharp, input, maxEdge, shouldResize).webp({ quality: 85, effort: 6 }).toBuffer();
+  return resizePipeline(sharp, input, maxEdge, shouldResize).webp(IMAGE_OPTIMIZATION_CONFIG.webp).toBuffer();
 }
 
 function smallestCandidate(candidates) {
@@ -78,5 +77,5 @@ export async function optimizeLevelImageCandidate(filename, input, metadata, sha
     format: "jpeg",
   };
   const savingRatio = 1 - jpeg.buffer.length / bestSameFormat.buffer.length;
-  return savingRatio >= jpegMinimumSavingsRatio ? jpeg : bestSameFormat;
+  return savingRatio >= IMAGE_OPTIMIZATION_CONFIG.minimumJpegSavingsRatio ? jpeg : bestSameFormat;
 }

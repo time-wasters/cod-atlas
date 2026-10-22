@@ -1,6 +1,7 @@
 import type { Map as LeafletMap } from "leaflet";
+import { MAP_CAMERA_CONFIG } from "../../../shared/config/map-camera.config.js";
 
-export const LEAFLET_MAX_ZOOM = 18;
+export const LEAFLET_MAX_ZOOM = MAP_CAMERA_CONFIG.maximumZoom;
 
 export async function loadLeafletRuntime() {
   const leafletModule = await import("leaflet");
@@ -17,9 +18,9 @@ export function createLeafletMap(
   container: HTMLElement,
 ): LeafletMap {
   const map = leaflet.map(container, {
-    center: [27, 8],
-    zoom: 2,
-    minZoom: 2,
+    center: MAP_CAMERA_CONFIG.initialView.center,
+    zoom: MAP_CAMERA_CONFIG.initialView.zoom,
+    minZoom: MAP_CAMERA_CONFIG.minimumZoom,
     maxZoom: LEAFLET_MAX_ZOOM,
     zoomControl: false,
     worldCopyJump: true,

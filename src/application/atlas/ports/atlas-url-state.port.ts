@@ -14,6 +14,7 @@ export type AtlasUrlState = {
   showZombies: boolean;
   showOther: boolean;
   sidebarListMode: "locations" | "campaigns" | "updates";
+  campaignKey: string | null;
   levelId: string | null;
   locationId: string | null;
 };

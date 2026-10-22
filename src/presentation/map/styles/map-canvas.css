@@ -37,8 +37,27 @@
   letter-spacing: 0.18em;
 }
 
+.mission-stack {
+  position: absolute;
+  z-index: 501;
+  top: 24px;
+  right: 365px;
+  bottom: 24px;
+  width: min(430px, calc(100% - 389px));
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+}
+.mission-stack .level-briefing-pane { pointer-events: auto; }
+
 @media (max-width: 900px) {
   .map-stage {
     grid-row: 2;
   }
+  .mission-stack { top: 14px; right: 303px; bottom: 14px; width: min(410px, calc(100% - 317px)); }
+}
+
+@media (max-width: 520px) {
+  .mission-stack { inset: 12px; width: auto; }
+  .map-stage.is-campaign-playback-active .mission-stack { bottom: 172px; }
 }

@@ -4,6 +4,7 @@ import os from "node:os";
 import path from "node:path";
 import test from "node:test";
 import { loadProgressData } from "../src/infrastructure/content/filesystem/progress-data.loader.mjs";
+import { loadProgressLevelData } from "../src/infrastructure/content/filesystem/progress-level-data.loader.mjs";
 
 const completedBody = [
   "## The Map in the Game",
@@ -78,5 +79,24 @@ test("canonical variants inherit locations for progress reporting", async () => 
     assert.deepEqual(variant.locations, [{ precision: "city" }]);
   } finally {
     await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("progress loading preserves multiplayer memberships and rejects an Other subtype on MP", async () => {
+  const levelsRoot = await mkdtemp(path.join(os.tmpdir(), "cod-atlas-subtypes-"));
+  const filename = path.join(levelsRoot, "fixture.md");
+  const games = new Map([["fixture", {}]]);
+  const source = "---\nid: fixture-map\ngames: [fixture]\nmode: multiplayer\nmodeSub: [battle-royale, dmz]\nlocations: []\n---\n";
+  try {
+    await writeFile(filename, source);
+    const [level] = await loadProgressLevelData(levelsRoot, games);
+    assert.equal(level.mode, "multiplayer");
+    assert.deepEqual(level.modeSub, ["battle-royale", "dmz"]);
+    assert.deepEqual(level.locations, []);
+
+    await writeFile(filename, source.replace("[battle-royale, dmz]", "challenge"));
+    await assert.rejects(loadProgressLevelData(levelsRoot, games), /invalid modeSub for multiplayer/);
+  } finally {
+    await rm(levelsRoot, { recursive: true, force: true });
   }
 });

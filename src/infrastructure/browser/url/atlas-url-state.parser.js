@@ -39,6 +39,7 @@ export function parseAtlasUrlState(input) {
     methods: commaSeparatedValues(url.searchParams, "method"),
     ...mode,
     sidebarListMode: browse === "campaigns" || browse === "updates" ? browse : "locations",
+    campaignKey: browse === "campaigns" ? url.searchParams.get("campaign") || null : null,
     levelId: url.searchParams.get("level") || null,
     locationId: url.searchParams.get("location") || null,
   };

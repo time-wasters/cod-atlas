@@ -66,7 +66,7 @@ into YAML fields or comments. Report sources and limitations in the handoff.
 | `title` | yes | Display name |
 | `games` | yes | Exactly one owner ID from `content/games/`; other appearances use references |
 | `mode` | yes | `singleplayer`, `multiplayer`, `zombies`, `other` |
-| `modeSub` | only `other` | Required: `special-ops`, `survival`, `challenge`; omit for other modes |
+| `modeSub` | only `other` | `other` requires scalar `special-ops`, `survival`, or `challenge`; `multiplayer` optionally accepts scalar `battle-royale` / `dmz` or a non-empty list of unique multiplayer subtypes (omit for standard MP); omit for `singleplayer` and `zombies` |
 | `campaign` | no | Named section: stable string `id`, display `label` |
 | `content-update` | no | Release grouping: stable string `id`, display `label`; any mode/subtype |
 | `wikiArticle` | yes | Separate Wiki import ID |
@@ -94,6 +94,15 @@ Describe its number/objectives in the Markdown body when included; do not invent
 metadata keys for them. Link the reused campaign via
 `metadata.variantOf`, and omit `locations` to inherit geography.
 
+Battle Royale and DMZ maps use `multiplayer` with `modeSub: battle-royale` or
+`modeSub: dmz`, respectively. All multiplayer subtypes stay in `multiplayer/`.
+For maps used by both multiplayer subtypes, use `modeSub: [battle-royale, dmz]`
+in one file. Multiplayer references may specify appearance-specific subtypes,
+or inherit by omitting `modeSub`. Other subtypes remain scalar and cannot be
+overridden in references. Subtype memberships may overlap; count unique levels
+separately from memberships. A subtype list documents mode availability;
+material geographic or layout changes still need a canonical variant.
+
 `metadata.variantOf` links distinct canonical levels, never unchanged
 cross-game appearances. Builds follow valid inheritance chains; unknown targets
 and cycles are invalid. Any supplied `locations`, including `[]`, overrides
@@ -114,9 +123,10 @@ level: cod-carentan
 ---
 ```
 
-Optional fields: `title`, `wikiArticle`, `campaign`, `content-update`, `metadata`. Omitted
+Optional fields: `title`, `wikiArticle`, `campaign`, `content-update`, `metadata`,
+and Multiplayer-only `modeSub`. Omitted
 values inherit; optional Markdown precedes canonical notes. References cannot
-supply protected canonical fields (including mode/subtype, locations,
+supply protected canonical fields (including mode, Other subtype, locations,
 precision/confidence/method). Appearance metadata must not contain `variantOf`;
 variants need canonical records.
 

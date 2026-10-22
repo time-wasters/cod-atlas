@@ -4,8 +4,10 @@ import process from "node:process";
 import countries from "world-countries";
 import YAML from "yaml";
 import { buildAtlasEntry } from "../src/application/atlas-compilation/use-cases/build-atlas-entry.mjs";
+import { buildChronologicalOrder } from "../src/application/campaigns/use-cases/build-chronological-order.mjs";
 import { resolveLevelLocationInheritance } from "../src/domain/level/resolve-level-location-inheritance.mjs";
 import { normalizeLevelVerification } from "../src/domain/level/level-verification.value-object.mjs";
+import { isValidLevelModeSub } from "../src/domain/level/level-mode-sub.value-object.mjs";
 
 const root = process.cwd();
 const contentRoot = path.join(root, "content");
@@ -17,7 +19,6 @@ const historyOverlaysOutputPath = path.join(outputDirectory, "history-overlays.g
 const levelBannersRoot = path.join(root, "public/images/levels");
 const checkOnly = process.argv.includes("--check");
 const validModes = new Set(["singleplayer", "multiplayer", "zombies", "other"]);
-const validModeSubs = new Set(["special-ops", "survival", "challenge"]);
 const mapTypeDirectoryByMode = new Map([
   ["singleplayer", "campaign"],
   ["multiplayer", "multiplayer"],
@@ -75,6 +76,7 @@ const specialContinents = new Map([
   ["Mars", "Off-world"],
   ["Mediterranean Sea", "Oceans"],
   ["Moon", "Off-world"],
+  ["North Africa", "Africa"],
   ["Pacific Ocean", "Oceans"],
   ["Philippine Sea", "Oceans"],
   ["Polynesia", "Oceania"],
@@ -447,11 +449,8 @@ for (const filename of levelFiles) {
   requireValue(level?.id && level.title, `${filename}: level id and title are required`);
   requireValue(!levelIds.has(level.id), `${filename}: duplicate level id ${level.id}`);
   requireValue(validModes.has(level.mode), `${filename}: invalid mode ${level.mode}`);
-  if (level.mode === "other") {
-    requireValue(validModeSubs.has(level.modeSub), `${filename}: other levels require modeSub special-ops, survival or challenge`);
-  } else {
-    requireValue(level.modeSub == null, `${filename}: modeSub is only valid for other levels`);
-  }
+  requireValue(isValidLevelModeSub(level.mode, level.modeSub),
+    `${filename}: invalid modeSub for ${level.mode}; other requires special-ops, survival or challenge; multiplayer optionally accepts battle-royale or dmz as a scalar or non-empty unique list; singleplayer and zombies must omit it`);
   if (level.metadata != null) {
     requireValue(
       level.metadata && typeof level.metadata === "object" && !Array.isArray(level.metadata),
@@ -633,7 +632,7 @@ const levelsById = new Map(levels.map((level) => [level.id, level]));
 for (const legacyId of Object.keys(levelIdAliases)) {
   requireValue(!levelsById.has(legacyId), `${legacyId}: legacy level ID collides with a current canonical level`);
 }
-const appearanceFields = new Set(["level", "title", "wikiArticle", "campaign", "content-update", "metadata"]);
+const appearanceFields = new Set(["level", "title", "wikiArticle", "campaign", "content-update", "metadata", "modeSub"]);
 for (const filename of levelReferenceFiles) {
   const { data: reference, body } = parseMarkdown(await readFile(filename, "utf8"), filename);
   requireValue(reference && typeof reference === "object" && !Array.isArray(reference), `${filename}: appearance reference frontmatter must be an object`);
@@ -643,6 +642,11 @@ for (const filename of levelReferenceFiles) {
   requireValue(typeof reference.level === "string" && reference.level, `${filename}: level is required`);
   const level = levelsById.get(reference.level);
   requireValue(level, `${filename}: unknown canonical level ${reference.level}`);
+  if (Object.hasOwn(reference, "modeSub")) {
+    requireValue(level.mode === "multiplayer", `${filename}: appearance modeSub is only valid for multiplayer levels`);
+    requireValue(reference.modeSub != null && isValidLevelModeSub(level.mode, reference.modeSub),
+      `${filename}: invalid modeSub; use battle-royale or dmz, or a non-empty list of unique multiplayer subtypes`);
+  }
   const parts = path.relative(levelsRoot, filename).split(path.sep);
   requireValue(parts.length === 2 || parts.length === 3, `${filename}: appearance references must live below a game directory`);
   const gameId = parts[0];
@@ -726,6 +730,8 @@ for (const filename of levelReferenceFiles) {
     title: reference.title ?? level.title,
     wikiArticle: reference.wikiArticle ?? level.wikiArticle,
     campaign: reference.campaign ?? level.campaign ?? null,
+    ...(level.mode === "multiplayer" && (reference.modeSub ?? level.modeSub)
+      ? { modeSub: reference.modeSub ?? level.modeSub } : {}),
     ...(contentUpdate ? { contentUpdate } : {}),
     ...(campaignOrder !== null ? { campaignOrder } : {}),
     ...(reference.metadata ? { metadata: reference.metadata } : {}),
@@ -743,6 +749,25 @@ for (const [gameId, campaignOrders] of campaignOrdersByGame) {
   );
 }
 
+const singleplayerLevelsByGame = new Map();
+for (const level of levels) {
+  if (level.mode !== "singleplayer") continue;
+  const appearances = [{ ...level, gameId: level.games[0] }, ...level.appearances];
+  for (const appearance of appearances) {
+    if (appearance.campaignOrder == null) continue;
+    const gameLevels = singleplayerLevelsByGame.get(appearance.gameId) ?? [];
+    gameLevels.push({ id: level.id, wikiArticle: appearance.wikiArticle });
+    singleplayerLevelsByGame.set(appearance.gameId, gameLevels);
+  }
+}
+const chronologicalOrdersByGame = new Map([...singleplayerLevelsByGame].map(([gameId, gameLevels]) => [
+  gameId, buildChronologicalOrder({ levels: gameLevels, wikiArticles }),
+]));
+function chronologicalOrderForAppearance(levelId, gameId) {
+  const chronologicalOrder = chronologicalOrdersByGame.get(gameId)?.get(levelId);
+  return chronologicalOrder ? { chronologicalOrder } : {};
+}
+
 const groups = new Map();
 for (const level of levels) {
   const article = wikiArticles.get(level.wikiArticle);
@@ -755,8 +780,10 @@ for (const level of levels) {
     notesId: level.id,
     hasLevelNotes: Boolean(level.notes.trim()),
     bannerKey: `${level.id}@${ownerGameId}`,
+    ...(level.mode === "multiplayer" && level.modeSub ? { modeSub: level.modeSub } : {}),
     ...(level.campaign ? { campaign: level.campaign } : {}),
     ...(level.campaignOrder ? { campaignOrder: level.campaignOrder } : {}),
+    ...chronologicalOrderForAppearance(level.id, ownerGameId),
     ...(level.contentUpdate ? { contentUpdate: level.contentUpdate } : {}),
     ...(level.metadata ? { metadata: level.metadata } : {}),
   }, ...level.appearances.map((appearance) => ({
@@ -767,8 +794,10 @@ for (const level of levels) {
     notesId: appearance.notesId,
     hasLevelNotes: Boolean(appearance.notes.trim()),
     bannerKey: appearance.bannerKey,
+    ...(appearance.modeSub ? { modeSub: appearance.modeSub } : {}),
     ...(appearance.campaign ? { campaign: appearance.campaign } : {}),
     ...(appearance.campaignOrder ? { campaignOrder: appearance.campaignOrder } : {}),
+    ...chronologicalOrderForAppearance(level.id, appearance.gameId),
     ...(appearance.contentUpdate ? { contentUpdate: appearance.contentUpdate } : {}),
     ...(appearance.metadata ? { metadata: appearance.metadata } : {}),
   }))];

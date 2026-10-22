@@ -1,7 +1,11 @@
 "use client";
 
+import { useEffect, useRef } from "react";
+import type { ReactNode } from "react";
 import type { AtlasEntryDto } from "../../../infrastructure/atlas-data/dto/atlas-entry.dto.js";
 import type { AtlasGroupDto } from "../../../infrastructure/atlas-data/dto/atlas-group.dto.js";
+import { CountryFlag } from "../../shared/components/country-flag.js";
+import { RELATED_LEVELS_CONFIG } from "../../../shared/config/related-levels.config.js";
 
 type RelatedLevel = { group: AtlasGroupDto; entry: AtlasEntryDto };
 
@@ -14,6 +18,7 @@ export type RelatedLevelsViewModel = {
   hiddenCount: number;
   items: RelatedLevel[];
   label: string;
+  locationIcon: { flagCode: string | null } | null;
   open: boolean;
   selectedLevelId: string;
   totalCount: number;
@@ -29,6 +34,7 @@ export function RelatedLevelsPanel({
   onGameIconError,
   onSelect,
   onToggle,
+  playback,
   viewModel,
 }: {
   onCollapse: () => void;
@@ -36,18 +42,32 @@ export function RelatedLevelsPanel({
   onGameIconError: (gameId: string) => void;
   onSelect: (group: AtlasGroupDto, entry: AtlasEntryDto) => void;
   onToggle: () => void;
+  playback?: ReactNode;
   viewModel: RelatedLevelsViewModel;
 }) {
+  const list = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const container = list.current;
+    const current = container?.querySelector<HTMLElement>(".intel-entry.is-selected");
+    if (!container || !current) return;
+    const listRect = container.getBoundingClientRect();
+    const currentRect = current.getBoundingClientRect();
+    if (currentRect.top < listRect.top) container.scrollTop -= listRect.top - currentRect.top;
+    else if (currentRect.bottom > listRect.bottom) container.scrollTop += currentRect.bottom - listRect.bottom;
+  }, [viewModel.expanded, viewModel.open, viewModel.selectedLevelId]);
+
   return (
     <aside className={`related-levels-panel${viewModel.open ? "" : " is-collapsed"}`} aria-label={viewModel.ariaLabel}>
       <button
-        className={`related-levels-toggle${viewModel.gameIcon ? " has-game-icon" : ""}`}
+        className={`related-levels-toggle${viewModel.locationIcon ? " has-location-icon" : viewModel.gameIcon ? " has-game-icon" : ""}`}
         type="button"
         aria-expanded={viewModel.open}
         aria-controls="related-level-list"
         onClick={onToggle}
       >
-        {viewModel.gameIcon && (
+        {viewModel.locationIcon ? (
+          <CountryFlag code={viewModel.locationIcon.flagCode} />
+        ) : viewModel.gameIcon && (
           // eslint-disable-next-line @next/next/no-img-element
           <img
             className={`related-levels-game-icon${viewModel.gameIcon.external ? " is-external" : ""}`}
@@ -62,11 +82,14 @@ export function RelatedLevelsPanel({
         <small>{viewModel.totalCount}</small>
         <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m4 6 4 4 4-4" /></svg>
       </button>
+      {viewModel.open && playback}
       {viewModel.open && (
-        <div className={`intel-entries${viewModel.expanded ? " is-expanded" : ""}`} id="related-level-list">
+        <div className={`intel-entries${viewModel.expanded ? " is-expanded" : ""}`} id="related-level-list" ref={list}>
           {viewModel.items.map(({ group, entry }) => (
             <div className={`intel-entry${entry.levelId === viewModel.selectedLevelId ? " is-selected" : ""}`} key={entry.levelId}>
-              <button className={viewModel.campaign && entry.campaignOrder != null ? "has-campaign-order" : undefined} onClick={() => onSelect(group, entry)}>
+              <button className={viewModel.campaign && entry.campaignOrder != null ? "has-campaign-order" : undefined}
+                aria-current={entry.levelId === viewModel.selectedLevelId ? viewModel.campaign ? "step" : true : undefined}
+                onClick={() => onSelect(group, entry)}>
                 {viewModel.campaign && entry.campaignOrder != null && (
                   <span className="campaign-route-stop campaign-related-level-number" aria-label={`Campaign mission ${entry.campaignOrder}`}>
                     {String(entry.campaignOrder).padStart(2, "0")}
@@ -84,7 +107,7 @@ export function RelatedLevelsPanel({
               + {viewModel.hiddenCount} more {viewModel.hiddenCount === 1 ? "level" : "levels"} in this {viewModel.collectionKind}
             </button>
           )}
-          {viewModel.expanded && viewModel.totalCount > 8 && (
+          {viewModel.expanded && viewModel.totalCount > RELATED_LEVELS_CONFIG.collapsedLimit && (
             <button className="more-row is-collapse" type="button" aria-expanded="true" aria-controls="related-level-list" onClick={onCollapse}>
               Show fewer
             </button>

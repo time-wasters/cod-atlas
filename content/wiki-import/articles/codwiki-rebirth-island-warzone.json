@@ -3,8 +3,8 @@
   "fandomPageId": 694617,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Rebirth_Island_(Warzone)",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Rebirth_Island_(Warzone)",
-  "latestRevisionId": 3012290,
-  "importedAt": "2026-08-15T13:19:45.134Z",
+  "latestRevisionId": 3032686,
+  "importedAt": "2026-10-11T21:08:49.246Z",
   "levelLocation": {
     "raw": "[[Rebirth Island]]",
     "label": "Rebirth Island",
@@ -48,8 +48,8 @@
     }
   },
   "rawPayload": {
-    "revisionTimestamp": "2026-07-02T14:54:58Z",
-    "revisionSha1": "0560b6bd71012b05d1a7ece03362e9f8e9fb1f2e",
+    "revisionTimestamp": "2026-10-09T01:26:51Z",
+    "revisionSha1": "5455c0850f55564a590ee0aae590b68fd3fd32bf",
     "resolvedTitle": "Rebirth Island (Warzone)",
     "mainImageTitle": "File:RebirthIsland_LoadingScreen_Season4Reloaded_BO7_WZ2.jpg",
     "mapImageTitle": null

@@ -4,6 +4,7 @@ title: Alcatraz
 games:
   - bo4
 mode: multiplayer
+modeSub: battle-royale
 wikiArticle: codwiki-alcatraz-blackout
 locations:
   - id: main

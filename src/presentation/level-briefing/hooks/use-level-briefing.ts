@@ -23,23 +23,31 @@ export function useLevelBriefing({ levelId, available, port }: UseLevelBriefingI
   const [briefing, setBriefing] = useState<LevelBriefingState | null>(null);
 
   const collapse = useCallback(() => setExpandedLevelId(null), []);
-  const toggle = useCallback(() => {
-    if (!available) return;
-    if (expandedLevelId === levelId) {
-      setExpandedLevelId(null);
+  const open = useCallback((requestedLevelId: string, hasNotes: boolean) => {
+    setExpandedLevelId(requestedLevelId);
+    if (!hasNotes) {
+      setBriefing({ levelId: requestedLevelId, status: "missing", content: null });
       return;
     }
-
-    setExpandedLevelId(levelId);
-    if (briefing?.levelId === levelId) return;
-    setBriefing({ levelId, status: "loading", content: null });
-    port.load(levelId).then(setBriefing);
-  }, [available, briefing?.levelId, expandedLevelId, levelId, port]);
+    if (briefing?.levelId === requestedLevelId) return;
+    setBriefing({ levelId: requestedLevelId, status: "loading", content: null });
+    const receive = (response: LevelBriefingState) => {
+      setBriefing((current) => current?.levelId === requestedLevelId ? response : current);
+    };
+    void port.load(requestedLevelId).then(receive).catch(() => {
+      receive({ levelId: requestedLevelId, status: "missing", content: null });
+    });
+  }, [briefing?.levelId, port]);
+  const toggle = useCallback(() => {
+    if (expandedLevelId === levelId) { collapse(); return; }
+    if (available) open(levelId, available);
+  }, [available, collapse, expandedLevelId, levelId, open]);
 
   return {
-    expanded: available && expandedLevelId === levelId,
+    expanded: expandedLevelId === levelId,
     briefing: briefing?.levelId === levelId ? briefing : null,
     toggle,
+    open,
     collapse,
   };
 }

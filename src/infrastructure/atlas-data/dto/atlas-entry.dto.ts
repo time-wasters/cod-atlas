@@ -1,5 +1,6 @@
 import type { LevelAppearanceDto } from "./level-appearance.dto.js";
 import type { LevelVerificationDto } from "./level-verification.dto.js";
+import type { LevelModeSubValue } from "../../../domain/level/level-mode-sub.types.js";
 
 export type AtlasEntryDto = {
   id: string;
@@ -26,6 +27,6 @@ export type AtlasEntryDto = {
   urls?: Partial<Record<"googleMaps" | "wikipedia" | "callOfDutyMaps", string>>[];
   hasLevelNotes: boolean;
   modes: ("singleplayer" | "multiplayer" | "zombies" | "other")[];
-  modeSub?: "special-ops" | "survival" | "challenge";
+  modeSub?: LevelModeSubValue;
   appearances: LevelAppearanceDto[];
 };

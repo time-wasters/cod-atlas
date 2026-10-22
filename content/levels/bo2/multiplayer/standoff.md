@@ -1,7 +1,7 @@
 ---
 id: bo2-standoff
 legacyIds:
-  - bo2-bocw-standoff
+  - bo2-bo5-standoff
 title: Standoff
 games:
   - bo2

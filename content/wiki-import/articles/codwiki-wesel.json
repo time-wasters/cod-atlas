@@ -1,10 +1,10 @@
 {
   "id": "codwiki-wesel",
-  "fandomPageId": null,
+  "fandomPageId": 745568,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Wesel",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Wesel",
-  "latestRevisionId": null,
-  "importedAt": null,
+  "latestRevisionId": 2794655,
+  "importedAt": "2026-10-11T21:18:36.215Z",
   "levelLocation": {
     "raw": null,
     "label": null,
@@ -21,9 +21,15 @@
     "links": []
   },
   "games": {
-    "raw": null,
-    "label": null,
-    "links": []
+    "raw": "''[[Call of Duty: Roads to Victory]]''",
+    "label": "Call of Duty: Roads to Victory",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Roads to Victory",
+        "label": "Call of Duty: Roads to Victory",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Roads_to_Victory"
+      }
+    ]
   },
   "date": {
     "raw": null,
@@ -73,5 +79,11 @@
       }
     }
   },
-  "rawPayload": null
+  "rawPayload": {
+    "revisionTimestamp": "2024-06-19T03:53:32Z",
+    "revisionSha1": "0103e5313fb29c43d4f82ced2554fa29172bc1d5",
+    "resolvedTitle": "Wesel",
+    "mainImageTitle": null,
+    "mapImageTitle": null
+  }
 }

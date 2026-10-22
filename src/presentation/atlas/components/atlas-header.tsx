@@ -1,3 +1,5 @@
+import { Tooltip } from "../../shared/components/tooltip.js";
+
 export function AtlasHeader({
   locationCount,
   onOpenSettings,
@@ -19,11 +21,14 @@ export function AtlasHeader({
         <strong>{locationCount}</strong>
         <span>locations</span>
       </div>
-      <button className="settings-button" type="button" aria-label="Open settings" onClick={onOpenSettings}>
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Zm8.1 5.1v-3.2l-2.3-.7a7 7 0 0 0-.7-1.6l1.1-2.2-2.2-2.2-2.2 1.1a7 7 0 0 0-1.6-.7L11.5 2H8.4l-.7 2.3a7 7 0 0 0-1.6.7L3.9 3.9 1.7 6.1l1.1 2.2a7 7 0 0 0-.7 1.6L0 10.5v3.1l2.3.7a7 7 0 0 0 .7 1.6l-1.1 2.2 2.2 2.2 2.2-1.1a7 7 0 0 0 1.6.7l.7 2.3h3.1l.7-2.3a7 7 0 0 0 1.6-.7l2.2 1.1 2.2-2.2-1.1-2.2a7 7 0 0 0 .7-1.6l2.2-.7Z" />
-        </svg>
-      </button>
+      <Tooltip content="Open settings">
+        <button className="settings-button" type="button" aria-label="Open settings" onClick={onOpenSettings}>
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M10 2h4l.5 2.5 1.5.7 2.2-1.4 2 2L18.8 8l.7 1.5 2.5.5v4l-2.5.5-.7 1.5 1.4 2.2-2 2-2.2-1.4-1.5.7L14 22h-4l-.5-2.5-1.5-.7-2.2 1.4-2-2L5.2 16l-.7-1.5L2 14v-4l2.5-.5L5.2 8 3.8 5.8l2-2L8 5.2l1.5-.7L10 2Z" />
+            <circle cx="12" cy="12" r="3.5" />
+          </svg>
+        </button>
+      </Tooltip>
     </header>
   );
 }

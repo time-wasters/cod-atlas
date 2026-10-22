@@ -13,6 +13,8 @@
 .country-select-chevron svg { width: 10px; height: 6px; display: block; fill: none; stroke: currentColor; }
 .country-select-trigger[data-state="open"] .country-select-chevron { transform: rotate(180deg); }
 .country-select-flag { --CountryFlagIcon-height: 14px; flex: 0 0 21px; }
+.country-select-flag.is-placeholder { width: 21px; height: 14px; display: grid; place-items: center; border: 1px dashed #697159; border-radius: 2px; color: #8e957f; }
+.country-select-flag.is-placeholder::after { content: ""; width: 7px; height: 1px; background: currentColor; }
 .country-select-content { z-index: 1200; width: var(--radix-select-trigger-width); max-height: min(420px, var(--radix-select-content-available-height)); overflow: hidden; border: 1px solid #60684f; border-radius: 5px; color: #d0cab8; background: #151a13f8; box-shadow: 0 12px 30px #000c, inset 0 1px 0 #ffffff0a; backdrop-filter: blur(8px); }
 .country-select-viewport { padding: 4px; }
 .country-select-item { min-height: 34px; display: flex; align-items: center; gap: 10px; border-radius: 3px; padding: 0 9px; outline: 0; font-size: 12px; cursor: pointer; user-select: none; }
@@ -72,7 +74,7 @@
 .advanced-filter-checkboxes label > small { color: #666d5f; font: 700 9px var(--font-geist-mono), monospace; letter-spacing: .06em; text-transform: uppercase; }
 .advanced-filter-checkboxes label.is-disabled { color: #555c51; cursor: not-allowed; }
 .advanced-filter-checkboxes label.is-disabled:hover { background: transparent; }
-.advanced-filter-hover-info { position: fixed; z-index: 1900; width: min(300px, calc(100vw - 16px)); max-height: calc(100vh - 16px); overflow: auto; border: 1px solid #756234; border-radius: 4px; padding: 13px; color: #c9c2af; background: linear-gradient(145deg, #20251b, #121710); box-shadow: 0 14px 34px #000c, inset 0 1px 0 #ffffff0a; pointer-events: none; scrollbar-color: #6f674b #171b14; scrollbar-width: thin; }
+.advanced-filter-hover-info { width: min(300px, calc(100vw - 16px)); overflow: auto; scrollbar-color: #6f674b #171b14; scrollbar-width: thin; }
 .advanced-filter-hover-info header { border-bottom: 1px solid #3c4334; padding-bottom: 8px; }
 .advanced-filter-hover-info header span { display: block; margin-bottom: 3px; color: #a8731d; font: 700 9px var(--font-geist-mono), monospace; letter-spacing: .14em; text-transform: uppercase; }
 .advanced-filter-hover-info h4 { margin: 0; color: #f0e4c8; font: 700 18px/1.1 "Arial Narrow", sans-serif; letter-spacing: .03em; }

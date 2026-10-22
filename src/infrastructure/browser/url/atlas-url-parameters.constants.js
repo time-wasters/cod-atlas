@@ -11,6 +11,7 @@ export const atlasUrlParameters = Object.freeze([
   "method",
   "mode",
   "browse",
+  "campaign",
   "level",
   "location",
 ]);
