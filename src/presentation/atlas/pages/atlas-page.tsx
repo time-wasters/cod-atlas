@@ -5,6 +5,7 @@ import { APP_DEFAULTS_CONFIG } from "../../../shared/config/app-defaults.config.
 import { MAP_CAMERA_CONFIG } from "../../../shared/config/map-camera.config.js";
 import { MAP_MARKERS_CONFIG } from "../../../shared/config/map-markers.config.js";
 import { CAMPAIGN_ROUTE_CONFIG } from "../../../shared/config/campaign-route.config.js";
+import { COUNTRY_BOUNDARY_CONFIG } from "../../../shared/config/country-boundary.config.js";
 import { LOCATION_ZOOM_CONFIG } from "../../../shared/config/location-zoom.config.js";
 import { findRelatedLevels } from "../../../application/atlas/use-cases/find-related-levels.js";
 import { getGameModeAvailability } from "../../../application/atlas/use-cases/get-game-mode-availability.js";
@@ -108,6 +109,7 @@ export function AtlasPage({
   const [sidebarOpen, setSidebarOpen] = useState(APP_DEFAULTS_CONFIG.panels.sidebarOpen);
   const [detailsOpen, setDetailsOpen] = useState(APP_DEFAULTS_CONFIG.panels.detailsOpen);
   const [selectionVersion, setSelectionVersion] = useState(0);
+  const [locationBoundaryGroup, setLocationBoundaryGroup] = useState<string | null>(null);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [campaignTravelPending, setCampaignTravelPending] = useState(false);
   const {
@@ -388,7 +390,7 @@ export function AtlasPage({
     ? new Set(selectedLevelCollection.levels.map(({ entry }) => entry.levelId))
     : null, [selectedLevelCollection]);
   const selectedCountryCode = country === "all"
-    ? null
+    ? selected.group.name === locationBoundaryGroup ? selected.group.flagCode : null
     : countries.find((candidate) => candidate.name === country)?.flagCode ?? null;
 
   const { replaySelectedMarkerPulse } = useLeafletMarkers({
@@ -400,12 +402,6 @@ export function AtlasPage({
     runtime: leafletMap,
     selected,
   });
-  useCountryBoundaryLayer({
-    countryCode: selectedCountryCode,
-    ready: mapReady,
-    runtime: leafletMap,
-  });
-
   // These hooks share one Leaflet runtime while owning independent map layers.
   const findSelectionByEntryId = useCallback(
     (entryId: string) => atlasDataIndex.findSelectionByEntryId(entryId),
@@ -421,6 +417,7 @@ export function AtlasPage({
     selectedCampaign,
   });
   const {
+    countryBoundaryVisible,
     campaignOverlayVisible,
     shouldCrossfadeOverlay,
     centerSelectedMarker,
@@ -439,6 +436,12 @@ export function AtlasPage({
     selected,
     selectedCampaign,
     sidebarOpen,
+  });
+  useCountryBoundaryLayer({
+    countryCode: selectedCountryCode,
+    visible: countryBoundaryVisible,
+    ready: mapReady,
+    runtime: leafletMap,
   });
   useMapOverlayLayer({
     adaptiveOpacity: mapOverlayZoomOpacityEnabled,
@@ -512,6 +515,7 @@ export function AtlasPage({
   const selectSidebarGroup = useCallback((group: AtlasGroupDto) => {
     const entry = group.entries[0];
     if (!entry) return;
+    setLocationBoundaryGroup(group.name);
     if (group.kind === "off-world") {
       setSolarSystemDisplay({ hasSpaceLocations: true, expanded: true });
     }
@@ -651,6 +655,7 @@ export function AtlasPage({
     <main className={`atlas-shell${sidebarOpen ? "" : " is-sidebar-collapsed"}`}
       style={{
         "--sidebar-transition-duration": `${MAP_CAMERA_CONFIG.sidebar.transitionMs}ms`,
+        "--country-boundary-fade-in-duration": `${COUNTRY_BOUNDARY_CONFIG.fadeInMs}ms`,
         "--marker-spider-leg-color": MAP_MARKERS_CONFIG.clustering.spiderLeg.color,
         "--marker-spider-leg-weight": MAP_MARKERS_CONFIG.clustering.spiderLeg.weight,
         "--marker-spider-leg-opacity": MAP_MARKERS_CONFIG.clustering.spiderLeg.opacity,

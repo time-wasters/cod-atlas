@@ -24,10 +24,19 @@
 }
 .country-boundary-outline {
   filter:
-    drop-shadow(0 0 1px rgb(227 180 81 / 0.48))
-    drop-shadow(0 0 3px rgb(227 180 81 / 0.2));
+    blur(3px)
+    drop-shadow(0 0 4px rgb(237 145 60 / 0.24))
+    drop-shadow(0 0 10px rgb(237 145 60 / 0.12));
   stroke-linecap: round;
   stroke-linejoin: round;
+  animation: country-boundary-appear var(--country-boundary-fade-in-duration) ease-out both;
+}
+@keyframes country-boundary-appear {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .country-boundary-outline { animation: none; }
 }
 .atlas-cluster-wrap {
   background: transparent !important;

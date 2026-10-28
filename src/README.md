@@ -158,6 +158,7 @@ distances are meters.
 | [`map-camera.config.js`](shared/config/map-camera.config.js) | Initial view and zoom limits, viewport padding, filter fits, travel timing, focus presets, campaign overviews, sidebar transition/settling |
 | [`location-zoom.config.js`](shared/config/location-zoom.config.js) | Location precision zooms and verified landmark close-ups |
 | [`map-markers.config.js`](shared/config/map-markers.config.js) | Marker sizes, clustering radius/count bands, spider legs, selection pulse timing |
+| [`country-boundary.config.js`](shared/config/country-boundary.config.js) | Country glow color, opacity, width, detail, fade-in duration (1000 ms), and lead before arrival (500 ms) |
 | [`map-overlay.config.js`](shared/config/map-overlay.config.js) | Browsing/campaign/history fades, stationary crossfades, decoded-image cache capacity, zoom-adaptive opacity curve |
 | [`basemap.config.js`](shared/config/basemap.config.js) | Vector style URL, raster fallback URL, paired attribution, fallback timeout |
 | [`related-levels.config.js`](shared/config/related-levels.config.js) | Collapsed list limit shared by the view model and expand/collapse control |

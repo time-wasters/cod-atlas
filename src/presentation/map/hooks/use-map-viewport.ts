@@ -16,6 +16,7 @@ import { waitForMapView } from "../../../infrastructure/mapping/leaflet/wait-for
 import { markerFocusZoomLimit, revealLeafletMarker } from "../../../infrastructure/mapping/leaflet/leaflet-marker-reveal.adapter.js";
 import { leafletEntryFocusTarget } from "../../../infrastructure/mapping/leaflet/leaflet-entry-focus-target.adapter.js";
 import { MAP_OVERLAY_CONFIG } from "../../../shared/config/map-overlay.config.js";
+import { COUNTRY_BOUNDARY_CONFIG } from "../../../shared/config/country-boundary.config.js";
 import { canCrossfadeLeafletOverlays } from "../../../infrastructure/mapping/leaflet/leaflet-overlay-crossfade.adapter.js";
 
 type AtlasSelection = { group: AtlasGroupDto; entry: AtlasEntryDto };
@@ -98,6 +99,8 @@ export function useMapViewport({
     entryId: string; context: EntryFocusContext; previousOverlay?: MapOverlayDto;
   } | null>(null);
   const markerFlightArrival = useRef<(() => void) | null>(null);
+  const countryBoundaryArrival = useRef<(() => void) | null>(null);
+  const [countryBoundaryVisible, setCountryBoundaryVisible] = useState(true);
   const markerRevealCleanup = useRef<(() => void) | null>(null);
   const campaignFlight = useRef<ReturnType<typeof createLeafletCampaignFlight> | null>(null);
   const [campaignOverlayEntryId, setCampaignOverlayEntryId] = useState<string | null>(null);
@@ -106,6 +109,7 @@ export function useMapViewport({
   // runs, so its outgoing image can be held without waiting for a state render.
   const shouldCrossfadeOverlay = useCallback((levelId: string) => campaignOverlayCrossfade.current === levelId, []);
   const cancelMarkerFlightArrival = useCallback(() => {
+    countryBoundaryArrival.current?.();
     if (markerFlightArrival.current) runtime.getMap()?.off("moveend", markerFlightArrival.current);
     markerFlightArrival.current = null;
     markerRevealCleanup.current?.();
@@ -135,7 +139,9 @@ export function useMapViewport({
   }, [cancelMarkerFlightArrival, ready, runtime]);
 
   const queueSidebarSelection = useCallback((target: SidebarSelectionTarget | null) => {
+    countryBoundaryArrival.current?.();
     sidebarSelectionTarget.current = target;
+    if (target && !target.fitOnlyWhenOutside) setCountryBoundaryVisible(false);
   }, []);
   const queueRelatedLevelFocus = useCallback((entryId: string | null, context: EntryFocusContext = "manual") => {
     cancelMarkerFlightArrival();
@@ -375,6 +381,21 @@ export function useMapViewport({
       };
       cancelMarkerFlightArrival();
       currentMap.stop();
+      if (!sidebarTarget.fitOnlyWhenOutside) {
+        setCountryBoundaryVisible(false);
+        let timer: number | undefined;
+        const revealBoundary = () => {
+          window.clearTimeout(timer);
+          currentMap.off("moveend", revealBoundary);
+          countryBoundaryArrival.current = null;
+          setCountryBoundaryVisible(true);
+        };
+        countryBoundaryArrival.current = revealBoundary;
+        currentMap.once("moveend", revealBoundary);
+        timer = window.setTimeout(revealBoundary, movement.animate
+          ? Math.max(0, movement.duration * 1000 - COUNTRY_BOUNDARY_CONFIG.fadeInBeforeArrivalMs)
+          : 0);
+      }
       if (movement.animate) currentMap.flyToBounds(sidebarTarget.bounds, movement);
       else currentMap.fitBounds(sidebarTarget.bounds, movement);
       return;
@@ -443,6 +464,7 @@ export function useMapViewport({
   }, [ready, runtime, sidebarOpen]);
 
   return {
+    countryBoundaryVisible,
     shouldCrossfadeOverlay,
     campaignOverlayVisible: !campaignPlaybackActive || campaignOverlayEntryId === selected.entry.id,
     centerSelectedMarker,
