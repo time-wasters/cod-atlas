@@ -145,7 +145,9 @@ export type AtlasSidebarViewModel = {
     value: string;
   };
   game: {
+    canReset: boolean;
     count: number;
+    multiple: boolean;
     filters: AdvancedFilterViewModel[];
     games: GameDto[];
     iconFor: (game: GameDto) => string | null | undefined;
@@ -277,11 +279,12 @@ export function AtlasSidebar({
             <small>Oldest to newest</small>
           </span>
           <GameSelect
+            canReset={game.canReset}
             count={game.count}
             filters={game.filters.map((filter) => <AdvancedFilterDropdown {...filter} key={filter.id} />)}
             games={game.games}
             iconFor={game.iconFor}
-            multiple={advanced.open}
+            multiple={game.multiple}
             selected={game.selected}
             onExternalIconError={game.onExternalIconError}
             onValueChange={game.onChange}

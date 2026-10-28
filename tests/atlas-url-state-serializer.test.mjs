@@ -5,7 +5,7 @@ import { serializeAtlasUrlState } from "../src/infrastructure/browser/url/atlas-
 
 const defaultState = {
   query: "",
-  gameIds: [],
+  gameIds: null,
   country: "all",
   series: [],
   subseries: [],
@@ -110,4 +110,11 @@ test("atlas URL serializer round-trips a stable multiple-game selection", () => 
   assert.equal(url.searchParams.get("game"), "fixture-a,fixture-b");
   assert.deepEqual(parseAtlasUrlState(url).gameIds, ["fixture-a", "fixture-b"]);
   assert.equal(serializeAtlasUrlState(url, defaultState).searchParams.has("game"), false);
+});
+
+test("an empty game selection stays empty when sharing and restoring the URL", () => {
+  const state = { ...defaultState, gameIds: [], series: ["fixture-series"] };
+  const url = serializeAtlasUrlState("https://example.com/?game=fixture-a", state);
+  assert.equal(url.searchParams.get("game"), "none");
+  assert.deepEqual(parseAtlasUrlState(url), state);
 });

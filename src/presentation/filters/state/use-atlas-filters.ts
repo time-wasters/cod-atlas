@@ -1,7 +1,8 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { APP_DEFAULTS_CONFIG } from "../../../shared/config/app-defaults.config.js";
+import { selectGamesForTemplate, type GameTemplate } from "../../../application/game-catalog/use-cases/select-games-for-template.js";
 
 export type AdvancedFilterGroupId =
   | "game-series"
@@ -14,7 +15,7 @@ export type AdvancedFilterGroupId =
 
 export type AtlasFilterUrlState = {
   query: string;
-  games: string[];
+  games: string[] | null;
   country: string;
   gameSeries: string[];
   gameSubseries: string[];
@@ -30,6 +31,7 @@ export type AtlasFilterUrlState = {
 };
 
 type UseAtlasFiltersOptions = {
+  games: Parameters<typeof selectGamesForTemplate>[0];
   gameSeriesValues: ReadonlySet<string>;
   gameSubseriesValues: ReadonlySet<string>;
   developerValues: ReadonlySet<string>;
@@ -48,8 +50,11 @@ function toggledValue(current: Set<string>, value: string) {
 
 export function useAtlasFilters(options: UseAtlasFiltersOptions) {
   const [query, setQuery] = useState("");
-  const [selectedGames, setSelectedGames] = useState<Set<string>>(() => new Set());
-  const game = selectedGames.size === 1 ? [...selectedGames][0] : "all";
+  // null selects every available game; an empty set deliberately selects none.
+  const [gameSelection, setGameSelection] = useState<Set<string> | null>(null);
+  const allGames = useMemo(() => new Set(options.games.map((game) => game.code)), [options.games]);
+  const selectedGames = gameSelection ?? allGames;
+  const game = gameSelection?.size === 1 ? [...gameSelection][0] : "all";
   const [country, setCountry] = useState("all");
   const [gameSeries, setGameSeries] = useState<Set<string>>(() => new Set());
   const [gameSubseries, setGameSubseries] = useState<Set<string>>(() => new Set());
@@ -67,11 +72,18 @@ export function useAtlasFilters(options: UseAtlasFiltersOptions) {
 
   const applyUrlState = useCallback((state: AtlasFilterUrlState) => {
     setQuery(state.query);
-    setSelectedGames(new Set(state.games));
+    const template = {
+      series: new Set(state.gameSeries.filter((value) => options.gameSeriesValues.has(value))),
+      subseries: new Set(state.gameSubseries.filter((value) => options.gameSubseriesValues.has(value))),
+      developers: new Set(state.developers.filter((value) => options.developerValues.has(value))),
+    };
+    const hasTemplate = template.series.size + template.subseries.size + template.developers.size > 0;
+    setGameSelection(state.games !== null ? new Set(state.games)
+      : hasTemplate ? selectGamesForTemplate(options.games, template) : null);
     setCountry(state.country);
-    setGameSeries(new Set(state.gameSeries.filter((value) => options.gameSeriesValues.has(value))));
-    setGameSubseries(new Set(state.gameSubseries.filter((value) => options.gameSubseriesValues.has(value))));
-    setDevelopers(new Set(state.developers.filter((value) => options.developerValues.has(value))));
+    setGameSeries(template.series);
+    setGameSubseries(template.subseries);
+    setDevelopers(template.developers);
     setContinents(new Set(state.continents.filter((value) => options.continentValues.has(value))));
     setPrecisions(new Set(state.precisions.filter((value) => options.precisionValues.has(value))));
     setConfidences(new Set(state.confidences.filter((value) => options.confidenceValues.has(value))));
@@ -82,6 +94,13 @@ export function useAtlasFilters(options: UseAtlasFiltersOptions) {
     setShowOther(state.showOther);
   }, [options]);
 
+  const applyGameTemplate = (template: GameTemplate) => {
+    setGameSeries(new Set(template.series));
+    setGameSubseries(new Set(template.subseries));
+    setDevelopers(new Set(template.developers));
+    setGameSelection(selectGamesForTemplate(options.games, template));
+  };
+
   const setAdvancedFilterDropdownOpen = useCallback((id: AdvancedFilterGroupId, open: boolean) => {
     setOpenAdvancedFilterDropdown((current) => open ? id : current === id ? null : current);
   }, []);
@@ -91,7 +110,7 @@ export function useAtlasFilters(options: UseAtlasFiltersOptions) {
     setOpenAdvancedFilterDropdown(null);
   }, []);
   const resetGameFilters = useCallback(() => {
-    setSelectedGames(new Set());
+    setGameSelection(null);
     setGameSeries(new Set());
     setGameSubseries(new Set());
     setDevelopers(new Set());
@@ -106,6 +125,7 @@ export function useAtlasFilters(options: UseAtlasFiltersOptions) {
   return {
     query,
     game,
+    gameSelection,
     selectedGames,
     country,
     gameSeries,
@@ -121,14 +141,19 @@ export function useAtlasFilters(options: UseAtlasFiltersOptions) {
     showOther,
     advancedFiltersOpen,
     openAdvancedFilterDropdown,
-    gameFilterCount: selectedGames.size + gameSeries.size + gameSubseries.size + developers.size,
+    gameTemplateActive: gameSeries.size + gameSubseries.size + developers.size > 0,
+    canResetGameFilters: gameSelection !== null || gameSeries.size + gameSubseries.size + developers.size > 0,
+    gameFilterCount: (gameSelection?.size ?? 0) + gameSeries.size + gameSubseries.size + developers.size,
     advancedFilterCount: continents.size
       + precisions.size
       + confidences.size
       + methods.size,
     setQuery,
-    setGame: (value: string) => setSelectedGames(new Set(value === "all" ? [] : [value])),
-    toggleGame: (value: string) => setSelectedGames((current) => toggledValue(current, value)),
+    setGame: (value: string) => {
+      if (value === "all") resetGameFilters();
+      else setGameSelection(new Set([value]));
+    },
+    toggleGame: (value: string) => setGameSelection((current) => toggledValue(current ?? allGames, value)),
     resetGameFilters,
     setCountry,
     setShowSingleplayer,
@@ -140,12 +165,12 @@ export function useAtlasFilters(options: UseAtlasFiltersOptions) {
     openAdvancedFilters,
     closeAdvancedFilters,
     resetAdvancedFilters,
-    toggleGameSeries: (value: string) => setGameSeries((current) => toggledValue(current, value)),
-    clearGameSeries: () => setGameSeries(new Set()),
-    toggleGameSubseries: (value: string) => setGameSubseries((current) => toggledValue(current, value)),
-    clearGameSubseries: () => setGameSubseries(new Set()),
-    toggleDeveloper: (value: string) => setDevelopers((current) => toggledValue(current, value)),
-    clearDevelopers: () => setDevelopers(new Set()),
+    toggleGameSeries: (value: string) => applyGameTemplate({ series: toggledValue(gameSeries, value), subseries: gameSubseries, developers }),
+    clearGameSeries: () => applyGameTemplate({ series: new Set(), subseries: gameSubseries, developers }),
+    toggleGameSubseries: (value: string) => applyGameTemplate({ series: gameSeries, subseries: toggledValue(gameSubseries, value), developers }),
+    clearGameSubseries: () => applyGameTemplate({ series: gameSeries, subseries: new Set(), developers }),
+    toggleDeveloper: (value: string) => applyGameTemplate({ series: gameSeries, subseries: gameSubseries, developers: toggledValue(developers, value) }),
+    clearDevelopers: () => applyGameTemplate({ series: gameSeries, subseries: gameSubseries, developers: new Set() }),
     toggleContinent: (value: string) => setContinents((current) => toggledValue(current, value)),
     clearContinents: () => setContinents(new Set()),
     togglePrecision: (value: string) => setPrecisions((current) => toggledValue(current, value)),

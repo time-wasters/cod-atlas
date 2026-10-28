@@ -28,11 +28,11 @@ export function getGameModeAvailability({
   games,
   groups,
 }: {
-  gameCodes: ReadonlySet<string>;
+  gameCodes: ReadonlySet<string> | null;
   games: readonly ModeAvailabilityGame[];
   groups: readonly ModeAvailabilityGroup[];
 }): GameModeAvailability {
-  if (gameCodes.size === 0) return ALL_MODES_AVAILABLE;
+  if (gameCodes === null) return ALL_MODES_AVAILABLE;
 
   const gameIds = new Set(games.filter((game) => gameCodes.has(game.code)).map((game) => game.id));
   const availability: GameModeAvailability = {

@@ -5,7 +5,7 @@ import { parseAtlasUrlState } from "../src/infrastructure/browser/url/atlas-url-
 test("atlas URL parser applies concise defaults", () => {
   assert.deepEqual(parseAtlasUrlState("https://example.com/"), {
     query: "",
-    gameIds: [],
+    gameIds: null,
     country: "all",
     series: [],
     subseries: [],
@@ -44,7 +44,8 @@ test("atlas URL parser supports single-game links and multiple game IDs", () => 
   assert.deepEqual(parseAtlasUrlState("https://example.com/?game=fixture-a").gameIds, ["fixture-a"]);
   assert.deepEqual(parseAtlasUrlState("https://example.com/?game=fixture-b,fixture-a,fixture-b,,all").gameIds,
     ["fixture-b", "fixture-a"]);
-  assert.deepEqual(parseAtlasUrlState("https://example.com/?game=all").gameIds, []);
+  assert.equal(parseAtlasUrlState("https://example.com/?game=all").gameIds, null);
+  assert.deepEqual(parseAtlasUrlState("https://example.com/?game=none").gameIds, []);
 });
 
 test("atlas URL parser supports content-update browsing", () => {

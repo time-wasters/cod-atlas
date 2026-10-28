@@ -36,6 +36,7 @@
 .game-select-filter-option { width: 100%; min-height: 40px; display: flex; align-items: center; justify-content: space-between; gap: 10px; border: 0; border-bottom: 1px solid #3c4334; padding: 0 12px; color: #e2aa42; background: #20251b; font: inherit; font-size: 12px; cursor: pointer; }
 .game-select-filter-option svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 1.5; }
 .game-select-filters { display: grid; gap: 12px; border-bottom: 1px solid #3c4334; padding: 12px; }
+.game-select-filters > p { margin: 0; color: #939987; font-size: 11px; line-height: 1.5; }
 .game-select-actions { min-height: 34px; display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 4px 10px; }
 .game-select-actions > span { color: #939987; font: 700 9px var(--font-geist-mono), monospace; }
 .game-select-actions button { border: 0; padding: 4px; color: #d59b30; background: transparent; font: 700 9px var(--font-geist-mono), monospace; cursor: pointer; }

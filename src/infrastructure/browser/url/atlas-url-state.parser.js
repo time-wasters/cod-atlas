@@ -26,9 +26,11 @@ export function parseAtlasUrlState(input) {
       : commaSeparatedValues(url.searchParams, "precision");
 
   const browse = url.searchParams.get("browse");
+  const gameIds = [...new Set(commaSeparatedValues(url.searchParams, "game")
+    .filter((value) => value !== "all" && value !== "none"))];
   return {
     query: url.searchParams.get("q") ?? "",
-    gameIds: [...new Set(commaSeparatedValues(url.searchParams, "game").filter((value) => value !== "all"))],
+    gameIds: url.searchParams.get("game") === "none" ? [] : gameIds.length ? gameIds : null,
     country: url.searchParams.get("country") || "all",
     series: commaSeparatedValues(url.searchParams, "series"),
     subseries: commaSeparatedValues(url.searchParams, "subseries"),

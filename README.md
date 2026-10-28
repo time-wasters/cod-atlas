@@ -18,8 +18,11 @@ the selected level are stored in the URL, so a view can be shared and revisited
 with the browser's Back and Forward buttons.
 
 The Games dropdown starts with **Filter**, which opens Series, Sub-series, and
-Developer filters. Open **Advanced filters** to select several games using
-checkboxes; closing the panel preserves that selection. The Advanced panel
+Developer templates. Changing these options checks the matching games; you can
+then check or uncheck individual games, including games outside the template.
+Only the checked games restrict the results. Open **Advanced filters** to use
+checkboxes without a template; closing the panel preserves that selection.
+Unchecking every game shows no results. The Advanced panel
 contains Continent, Precision, Confidence, and Method filters. Games and
 Advanced filters have separate reset actions. Campaign and update browsing
 requires exactly one selected game.

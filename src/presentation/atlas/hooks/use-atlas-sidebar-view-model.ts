@@ -90,10 +90,12 @@ export function useAtlasSidebarViewModel({
     onToggle: (value: string) => {
       pushHistory();
       onToggle(value);
+      if (id === "game-series" || id === "game-subseries" || id === "developer") clearGameBrowsing(0);
     },
     onClear: () => {
       pushHistory();
       onClear();
+      if (id === "game-series" || id === "game-subseries" || id === "developer") clearGameBrowsing(0);
     },
   });
 
@@ -108,7 +110,10 @@ export function useAtlasSidebarViewModel({
       onBlur: handlers.finishSearchUpdate,
     },
     game: {
+      canReset: filters.canResetGameFilters,
       count: filters.gameFilterCount,
+      multiple: filters.advancedFiltersOpen || filters.gameTemplateActive
+        || (filters.gameSelection !== null && filters.selectedGames.size !== 1),
       filters: [
         advancedFilter(
           "game-series",

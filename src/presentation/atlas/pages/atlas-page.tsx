@@ -88,6 +88,7 @@ export function AtlasPage({
   const {
     query,
     game,
+    gameSelection,
     selectedGames,
     country,
     gameSeries,
@@ -157,10 +158,10 @@ export function AtlasPage({
   const getMapDetailsElement = useCallback(() => intelCard.current, []);
   const openGameCatalog = useCallback(() => gameCatalogDialog.current?.showModal(), []);
   const gameModeAvailability = useMemo(() => getGameModeAvailability({
-    gameCodes: selectedGames,
+    gameCodes: gameSelection,
     games: data.games,
     groups: data.groups,
-  }), [data.games, data.groups, selectedGames]);
+  }), [data.games, data.groups, gameSelection]);
 
   const {
     countries,
@@ -172,11 +173,8 @@ export function AtlasPage({
     data,
     criteria: {
       query,
-      gameCodes: selectedGames,
+      gameCodes: gameSelection,
       country,
-      gameSeries,
-      gameSubseries,
-      developers,
       continents,
       precisions,
       confidences,
@@ -314,6 +312,7 @@ export function AtlasPage({
     dataIndex: atlasDataIndex,
     filters: {
       query,
+      gameSelection,
       selectedGames,
       country,
       gameSeries,

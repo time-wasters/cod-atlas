@@ -14,7 +14,10 @@ export function serializeAtlasUrlState(input, state) {
   atlasUrlParameters.forEach((parameter) => url.searchParams.delete(parameter));
 
   if (state.query) url.searchParams.set("q", state.query);
-  setCommaSeparatedValues(url.searchParams, "game", [...new Set(state.gameIds)]);
+  if (state.gameIds !== null) {
+    if (state.gameIds.length === 0) url.searchParams.set("game", "none");
+    else setCommaSeparatedValues(url.searchParams, "game", [...new Set(state.gameIds)]);
+  }
   if (state.country !== "all") url.searchParams.set("country", state.country);
   setCommaSeparatedValues(url.searchParams, "series", state.series);
   setCommaSeparatedValues(url.searchParams, "subseries", state.subseries);

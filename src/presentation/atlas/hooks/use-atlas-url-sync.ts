@@ -28,6 +28,7 @@ type UseAtlasUrlSyncInput<TSelection extends UrlSelection> = {
   dataIndex: AtlasUrlDataIndex<TSelection>;
   filters: {
     query: string;
+    gameSelection: ReadonlySet<string> | null;
     selectedGames: ReadonlySet<string>;
     country: string;
     gameSeries: ReadonlySet<string>;
@@ -78,7 +79,7 @@ export function useAtlasUrlSync<TSelection extends UrlSelection>({
   useEffect(() => {
     const applyUrl = () => {
       const urlState = urlStatePort.read();
-      const requestedGames = urlState.gameIds.flatMap((id) => {
+      const requestedGames = (urlState.gameIds ?? []).flatMap((id) => {
         const game = dataIndex.findGameById(id);
         return game ? [game] : [];
       });
@@ -93,7 +94,7 @@ export function useAtlasUrlSync<TSelection extends UrlSelection>({
       onApplyUrlState({
         filters: {
           query: urlState.query,
-          games: requestedGames.map((game) => game.code),
+          games: urlState.gameIds === null ? null : requestedGames.map((game) => game.code),
           country: dataIndex.hasCountry(urlState.country) ? urlState.country : "all",
           gameSeries: urlState.series,
           gameSubseries: urlState.subseries,
@@ -128,7 +129,7 @@ export function useAtlasUrlSync<TSelection extends UrlSelection>({
     if (!ready) return;
     urlStatePort.write({
       query: filters.query,
-      gameIds: [...filters.selectedGames].flatMap((code) => {
+      gameIds: filters.gameSelection === null ? null : [...filters.selectedGames].flatMap((code) => {
         const game = dataIndex.findGameByCode(code);
         return game ? [game.id] : [];
       }),
@@ -156,6 +157,7 @@ export function useAtlasUrlSync<TSelection extends UrlSelection>({
     filters.confidences,
     filters.continents,
     filters.country,
+    filters.gameSelection,
     filters.selectedGames,
     filters.gameSeries,
     filters.gameSubseries,

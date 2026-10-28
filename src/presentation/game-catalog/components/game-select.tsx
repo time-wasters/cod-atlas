@@ -7,6 +7,7 @@ import type { GameDto } from "../../../infrastructure/atlas-data/dto/game.dto.js
 const focusableSelector = 'button:not(:disabled), input:not(:disabled), a[href], [tabindex="0"]';
 
 export function GameSelect({
+  canReset,
   count,
   filters,
   games,
@@ -18,6 +19,7 @@ export function GameSelect({
   onValueChange,
   selected,
 }: {
+  canReset: boolean;
   count: number;
   filters: ReactNode;
   games: GameDto[];
@@ -31,13 +33,16 @@ export function GameSelect({
 }) {
   const [open, setOpen] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
+  const [customizingGames, setCustomizingGames] = useState(false);
+  const showCheckboxes = multiple || customizingGames;
   const trigger = useRef<HTMLButtonElement>(null);
   const popup = useRef<HTMLDivElement>(null);
   const id = `game-select-${useId()}`;
   const selectedGame = selected.size === 1 ? games.find((item) => selected.has(item.code)) : null;
-  const summary = selectedGame
+  const allSelected = games.every((game) => selected.has(game.code));
+  const summary = allSelected ? "All games" : selectedGame
     ? `${selectedGame.released.slice(0, 4)} · ${selectedGame.label}`
-    : selected.size > 0 ? `${selected.size} games selected` : "All games";
+    : selected.size > 0 ? `${selected.size} games selected` : "No games selected";
 
   function close(restoreFocus = false) {
     setOpen(false);
@@ -168,23 +173,26 @@ export function GameSelect({
             <span>Filter</span>
             <svg viewBox="0 0 16 16" aria-hidden="true"><path d={showFilters ? "m3 6 5 5 5-5" : "m6 3 5 5-5 5"} /></svg>
           </button>
-          {showFilters && <div className="game-select-filters" id={`${id}-filters`}>{filters}</div>}
+          {showFilters && <div className="game-select-filters" id={`${id}-filters`}>
+            <p>Choose a template to select matching games, then adjust the checkboxes below.</p>
+            {filters}
+          </div>}
           <div className="game-select-actions">
-            <span id={`${id}-hint`}>{multiple ? "Select one or more games" : "Choose a game"}</span>
-            <button type="button" disabled={count === 0} onClick={onReset}>Reset games</button>
+            <span id={`${id}-hint`}>{showCheckboxes ? "Select one or more games" : "Choose a game"}</span>
+            <button type="button" disabled={!canReset} onClick={onReset}>Reset games</button>
           </div>
-          <div className="game-select-options" role="group" aria-label={multiple ? "Select games" : "Choose a game"}>
-            <button className="game-select-option" type="button" aria-pressed={selected.size === 0} onClick={() => { onValueChange("all"); if (!multiple) close(true); }}>
+          <div className="game-select-options" role="group" aria-label={showCheckboxes ? "Select games" : "Choose a game"}>
+            <button className="game-select-option" type="button" aria-pressed={allSelected} onClick={() => { onValueChange("all"); if (!showCheckboxes) close(true); }}>
               <span>All games</span>
             </button>
-            {games.map((item) => multiple ? (
+            {games.map((item) => showCheckboxes ? (
               <label className="game-select-option" key={item.id}>
-                <input type="checkbox" checked={selected.has(item.code)} onChange={() => onToggle(item.code)} />
+                <input type="checkbox" checked={selected.has(item.code)} onChange={() => { setCustomizingGames(true); onToggle(item.code); }} />
                 <span>{item.released.slice(0, 4)} · {item.label}</span>
                 {gameIcon(item)}
               </label>
             ) : (
-              <button className="game-select-option" key={item.id} type="button" aria-pressed={selected.has(item.code)} onClick={() => { onValueChange(item.code); close(true); }}>
+              <button className="game-select-option" key={item.id} type="button" aria-pressed={!allSelected && selected.has(item.code)} onClick={() => { onValueChange(item.code); close(true); }}>
                 <span>{item.released.slice(0, 4)} · {item.label}</span>
                 {gameIcon(item)}
               </button>

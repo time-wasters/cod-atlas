@@ -1,9 +1,6 @@
 type FilterableGame = {
   id: string;
   code: string;
-  series: string;
-  subseries: string[];
-  developer: { id: string; name: string }[];
 };
 
 type FilterableAtlasEntry = {
@@ -29,11 +26,9 @@ type FilterableAtlasGroup<TEntry extends FilterableAtlasEntry> = {
 
 export type AtlasFilterCriteria = {
   query: string;
-  gameCodes: ReadonlySet<string>;
+  // Only checkbox selections filter results. null means all games; [] means none.
+  gameCodes: ReadonlySet<string> | null;
   country: string;
-  gameSeries: ReadonlySet<string>;
-  gameSubseries: ReadonlySet<string>;
-  developers: ReadonlySet<string>;
   continents: ReadonlySet<string>;
   precisions: ReadonlySet<string>;
   confidences: ReadonlySet<string>;
@@ -74,18 +69,9 @@ export function filterAtlasGroups<
   const gamesById = new Map(games.map((game) => [game.id, game]));
 
   function matchesStructuredFilters(entry: TEntry) {
-    const hasGameFilters = criteria.gameCodes.size > 0 || criteria.gameSeries.size > 0
-      || criteria.gameSubseries.size > 0 || criteria.developers.size > 0;
-    // All game constraints must match the same appearance of a shared level.
-    const matchesGame = !hasGameFilters || entry.gameIds.some((gameId) => {
+    const matchesGame = criteria.gameCodes === null || entry.gameIds.some((gameId) => {
       const entryGame = gamesById.get(gameId);
-      return entryGame !== undefined
-        && (criteria.gameCodes.size === 0 || criteria.gameCodes.has(entryGame.code))
-        && (criteria.gameSeries.size === 0 || criteria.gameSeries.has(entryGame.series))
-        && (criteria.gameSubseries.size === 0
-          || entryGame.subseries.some((value) => criteria.gameSubseries.has(value)))
-        && (criteria.developers.size === 0
-          || entryGame.developer.some((developer) => criteria.developers.has(developer.id)));
+      return entryGame !== undefined && criteria.gameCodes?.has(entryGame.code);
     });
     const matchesPrecision = criteria.precisions.size === 0 || criteria.precisions.has(entry.precision);
     const matchesConfidence = criteria.confidences.size === 0
