@@ -1,6 +1,7 @@
 export const atlasUrlParameters = Object.freeze([
   "q",
   "game",
+  "games",
   "country",
   "series",
   "subseries",

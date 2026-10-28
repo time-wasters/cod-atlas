@@ -8,7 +8,7 @@ test("atlas URL parser applies concise defaults", () => {
     gameIds: null,
     country: "all",
     series: [],
-    subseries: [],
+    subseries: ["main"],
     developers: [],
     continents: [],
     precisions: [],
@@ -44,8 +44,33 @@ test("atlas URL parser supports single-game links and multiple game IDs", () => 
   assert.deepEqual(parseAtlasUrlState("https://example.com/?game=fixture-a").gameIds, ["fixture-a"]);
   assert.deepEqual(parseAtlasUrlState("https://example.com/?game=fixture-b,fixture-a,fixture-b,,all").gameIds,
     ["fixture-b", "fixture-a"]);
-  assert.equal(parseAtlasUrlState("https://example.com/?game=all").gameIds, null);
+  assert.equal(parseAtlasUrlState("https://example.com/?game=all").gameIds, "all");
   assert.deepEqual(parseAtlasUrlState("https://example.com/?game=none").gameIds, []);
+});
+
+test("empty game parameters use Main and Campaign even with other atlas filters", () => {
+  for (const query of ["", "?q=fixture&country=France", "?mode=", "?mode=campaign"]) {
+    const state = parseAtlasUrlState(`https://example.com/${query}`);
+    assert.deepEqual(state.subseries, ["main"]);
+    assert.equal(state.gameIds, null);
+    assert.equal(state.showSingleplayer, true);
+    assert.equal(state.showMultiplayer || state.showZombies || state.showOther, false);
+  }
+});
+
+test("games=all explicitly selects all games instead of the default Main template", () => {
+  const state = parseAtlasUrlState("https://example.com/?games=all");
+  assert.equal(state.gameIds, "all");
+  assert.deepEqual(state.subseries, []);
+  assert.equal(state.showSingleplayer, true);
+  assert.equal(parseAtlasUrlState("https://example.com/?games=all&game=fixture-a").gameIds, "all");
+});
+
+test("explicit games and templates replace the default game template", () => {
+  for (const query of ["game=fixture-a", "game=none", "series=fixture-series", "developer=fixture-studio"]) {
+    assert.deepEqual(parseAtlasUrlState(`https://example.com/?${query}`).subseries, []);
+  }
+  assert.deepEqual(parseAtlasUrlState("https://example.com/?subseries=remaster").subseries, ["remaster"]);
 });
 
 test("atlas URL parser supports content-update browsing", () => {

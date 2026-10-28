@@ -9,6 +9,7 @@ const multiplayerDefaults = {
 test("custom mode defaults round-trip through URLs without a mode parameter", () => {
   assert.equal(serializeAtlasUrlMode(multiplayerDefaults, multiplayerDefaults), null);
   assert.deepEqual(parseAtlasUrlMode(null, multiplayerDefaults), multiplayerDefaults);
+  assert.deepEqual(parseAtlasUrlMode("", multiplayerDefaults), multiplayerDefaults);
 });
 
 test("singleplayer stays explicit when it is no longer the configured default", () => {

@@ -1,7 +1,7 @@
 export type AtlasUrlState = {
   query: string;
-  // null uses the template, or all games without a template; [] means no games.
-  gameIds: string[] | null;
+  // null uses the default/template; "all" explicitly selects all; [] selects none.
+  gameIds: string[] | "all" | null;
   country: string;
   series: string[];
   subseries: string[];

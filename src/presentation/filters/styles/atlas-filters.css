@@ -53,7 +53,6 @@
 .game-select-option > span { min-width: 0; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .game-select-option input { flex: none; margin: 0; }
 .game-select-option:hover, .game-select-filter-option:hover { color: #fff4d0; background: #303323; }
-.game-select-option:has(input:checked), .game-select-option[aria-pressed="true"] { color: #e8bc5b; background: #29291c; }
 .game-select-popup button:focus-visible, .game-select-popup input:focus-visible { outline: 2px solid var(--amber); outline-offset: -2px; }
 
 .advanced-filter-trigger { width: 100%; min-height: 42px; display: grid; grid-template-columns: minmax(0, 1fr) auto 14px; align-items: center; gap: 9px; border: 1px solid #59604a; border-radius: 4px; padding: 0 11px; color: #c6c1b1; background: linear-gradient(135deg, #191e16, #141811); font: inherit; cursor: pointer; }

@@ -1,4 +1,8 @@
 export const APP_DEFAULTS_CONFIG = {
+  gameTemplate: {
+    // Start with main-series games when no game selection or template is supplied.
+    subseries: ["main"],
+  },
   filters: {
     // Include campaign levels when the URL has no mode selection.
     showSingleplayer: true,

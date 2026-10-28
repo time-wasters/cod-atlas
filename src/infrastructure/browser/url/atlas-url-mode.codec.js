@@ -1,11 +1,12 @@
 import { APP_DEFAULTS_CONFIG } from "../../../shared/config/app-defaults.config.js";
 
 export function parseAtlasUrlMode(mode, defaults = APP_DEFAULTS_CONFIG.filters) {
-  if (mode == null) return { ...defaults };
+  if (!mode) return { ...defaults };
   const selectedModes = new Set(mode?.split(",") ?? []);
   return {
     showSingleplayer: mode === "both"
       || mode === "all"
+      || selectedModes.has("campaign")
       || selectedModes.has("singleplayer"),
     showMultiplayer: mode === "multiplayer"
       || mode === "both"

@@ -93,7 +93,7 @@ export function useAtlasUrlSync<TSelection extends UrlSelection>({
         ? selectGamesForTemplate(games, template) : null;
       const requestedGames = templateGames !== null
         ? games.filter((game) => templateGames.has(game.code))
-        : (urlState.gameIds ?? []).flatMap((id) => {
+        : (Array.isArray(urlState.gameIds) ? urlState.gameIds : []).flatMap((id) => {
           const game = dataIndex.findGameById(id);
           return game ? [game] : [];
         });
@@ -108,7 +108,7 @@ export function useAtlasUrlSync<TSelection extends UrlSelection>({
       onApplyUrlState({
         filters: {
           query: urlState.query,
-          games: urlState.gameIds === null ? null : requestedGames.map((game) => game.code),
+          games: urlState.gameIds === "all" ? "all" : urlState.gameIds === null ? null : requestedGames.map((game) => game.code),
           country: dataIndex.hasCountry(urlState.country) ? urlState.country : "all",
           gameSeries: urlState.series,
           gameSubseries: urlState.subseries,
@@ -146,9 +146,11 @@ export function useAtlasUrlSync<TSelection extends UrlSelection>({
       subseries: filters.gameSubseries,
       developers: filters.developers,
     });
+    const allSelected = filters.selectedGames.size === games.length
+      && games.every((game) => filters.selectedGames.has(game.code));
     urlStatePort.write({
       query: filters.query,
-      gameIds: filters.gameSelection === null || matchesTemplate ? null : [...filters.selectedGames].flatMap((code) => {
+      gameIds: matchesTemplate ? null : filters.gameSelection === null || allSelected ? "all" : [...filters.selectedGames].flatMap((code) => {
         const game = dataIndex.findGameByCode(code);
         return game ? [game.id] : [];
       }),

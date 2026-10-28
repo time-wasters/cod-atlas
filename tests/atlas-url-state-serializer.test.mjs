@@ -8,7 +8,7 @@ const defaultState = {
   gameIds: null,
   country: "all",
   series: [],
-  subseries: [],
+  subseries: ["main"],
   developers: [],
   continents: [],
   precisions: [],
@@ -55,7 +55,7 @@ test("atlas URL serializer round-trips shareable filters and selection", () => {
 
 test("atlas URL serializer omits defaults and encodes every mode-filter state", () => {
   const defaultUrl = serializeAtlasUrlState(
-    "https://example.com/?game=old&level=old&campaign=old",
+    "https://example.com/?games=all&game=old&level=old&campaign=old",
     defaultState,
   );
   assert.equal(defaultUrl.search, "");
@@ -130,5 +130,33 @@ test("template-only links keep the template and campaign without a game list", (
   };
   const url = serializeAtlasUrlState("https://example.com/?game=old", state);
   assert.equal(url.searchParams.has("game"), false);
+  assert.deepEqual(parseAtlasUrlState(url), state);
+});
+
+test("default Main and Campaign remain an empty URL and restore the same selection", () => {
+  const url = serializeAtlasUrlState("https://example.com/?subseries=main&mode=singleplayer", defaultState);
+  assert.equal(url.search, "");
+  assert.deepEqual(parseAtlasUrlState(url), defaultState);
+});
+
+test("explicit all-games selection round-trips as games=all", () => {
+  const state = { ...defaultState, gameIds: "all", subseries: [] };
+  const url = serializeAtlasUrlState("https://example.com/?game=old&subseries=main", state);
+  assert.equal(url.search, "?games=all");
+  assert.deepEqual(parseAtlasUrlState(url), state);
+});
+
+test("explicit all games can preserve a template for later checkbox adjustments", () => {
+  const state = { ...defaultState, gameIds: "all" };
+  const url = serializeAtlasUrlState("https://example.com/", state);
+  assert.equal(url.searchParams.get("games"), "all");
+  assert.equal(url.searchParams.get("subseries"), "main");
+  assert.deepEqual(parseAtlasUrlState(url), state);
+});
+
+test("Main stays explicit when it combines with another template constraint", () => {
+  const state = { ...defaultState, series: ["fixture-series"] };
+  const url = serializeAtlasUrlState("https://example.com/", state);
+  assert.equal(url.searchParams.get("subseries"), "main");
   assert.deepEqual(parseAtlasUrlState(url), state);
 });

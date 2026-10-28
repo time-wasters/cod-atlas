@@ -15,7 +15,7 @@ export type AdvancedFilterGroupId =
 
 export type AtlasFilterUrlState = {
   query: string;
-  games: string[] | null;
+  games: string[] | "all" | null;
   country: string;
   gameSeries: string[];
   gameSubseries: string[];
@@ -50,14 +50,17 @@ function toggledValue(current: Set<string>, value: string) {
 
 export function useAtlasFilters(options: UseAtlasFiltersOptions) {
   const [query, setQuery] = useState("");
+  const defaultGames = useMemo(() => selectGamesForTemplate(options.games, {
+    series: new Set(), subseries: new Set(APP_DEFAULTS_CONFIG.gameTemplate.subseries), developers: new Set(),
+  }), [options.games]);
   // null selects every available game; an empty set deliberately selects none.
-  const [gameSelection, setGameSelection] = useState<Set<string> | null>(null);
+  const [gameSelection, setGameSelection] = useState<Set<string> | null>(() => new Set(defaultGames));
   const allGames = useMemo(() => new Set(options.games.map((game) => game.code)), [options.games]);
   const selectedGames = gameSelection ?? allGames;
   const game = gameSelection?.size === 1 ? [...gameSelection][0] : "all";
   const [country, setCountry] = useState("all");
   const [gameSeries, setGameSeries] = useState<Set<string>>(() => new Set());
-  const [gameSubseries, setGameSubseries] = useState<Set<string>>(() => new Set());
+  const [gameSubseries, setGameSubseries] = useState<Set<string>>(() => new Set(APP_DEFAULTS_CONFIG.gameTemplate.subseries));
   const [developers, setDevelopers] = useState<Set<string>>(() => new Set());
   const [continents, setContinents] = useState<Set<string>>(() => new Set());
   const [precisions, setPrecisions] = useState<Set<string>>(() => new Set());
@@ -77,9 +80,12 @@ export function useAtlasFilters(options: UseAtlasFiltersOptions) {
       subseries: new Set(state.gameSubseries.filter((value) => options.gameSubseriesValues.has(value))),
       developers: new Set(state.developers.filter((value) => options.developerValues.has(value))),
     };
+    if (state.games === null && template.series.size + template.subseries.size + template.developers.size === 0) {
+      template.subseries = new Set(APP_DEFAULTS_CONFIG.gameTemplate.subseries);
+    }
     const hasTemplate = template.series.size + template.subseries.size + template.developers.size > 0;
-    setGameSelection(state.games !== null ? new Set(state.games)
-      : hasTemplate ? selectGamesForTemplate(options.games, template) : null);
+    setGameSelection(state.games === "all" ? null : state.games !== null ? new Set(state.games)
+      : hasTemplate ? selectGamesForTemplate(options.games, template) : new Set(defaultGames));
     setCountry(state.country);
     setGameSeries(template.series);
     setGameSubseries(template.subseries);
@@ -92,7 +98,7 @@ export function useAtlasFilters(options: UseAtlasFiltersOptions) {
     setShowMultiplayer(state.showMultiplayer);
     setShowZombies(state.showZombies);
     setShowOther(state.showOther);
-  }, [options]);
+  }, [defaultGames, options]);
 
   const applyGameTemplate = (template: GameTemplate) => {
     setGameSeries(new Set(template.series));
@@ -109,12 +115,18 @@ export function useAtlasFilters(options: UseAtlasFiltersOptions) {
     setAdvancedFiltersOpen(false);
     setOpenAdvancedFilterDropdown(null);
   }, []);
-  const resetGameFilters = useCallback(() => {
+  const selectAllGames = useCallback(() => {
     setGameSelection(null);
     setGameSeries(new Set());
     setGameSubseries(new Set());
     setDevelopers(new Set());
   }, []);
+  const resetGameFilters = useCallback(() => {
+    setGameSelection(new Set(defaultGames));
+    setGameSeries(new Set());
+    setGameSubseries(new Set(APP_DEFAULTS_CONFIG.gameTemplate.subseries));
+    setDevelopers(new Set());
+  }, [defaultGames]);
   const resetAdvancedFilters = useCallback(() => {
     setContinents(new Set());
     setPrecisions(new Set());
@@ -142,7 +154,10 @@ export function useAtlasFilters(options: UseAtlasFiltersOptions) {
     advancedFiltersOpen,
     openAdvancedFilterDropdown,
     gameTemplateActive: gameSeries.size + gameSubseries.size + developers.size > 0,
-    canResetGameFilters: gameSelection !== null || gameSeries.size + gameSubseries.size + developers.size > 0,
+    canResetGameFilters: gameSeries.size > 0 || developers.size > 0
+      || gameSubseries.size !== APP_DEFAULTS_CONFIG.gameTemplate.subseries.length
+      || !APP_DEFAULTS_CONFIG.gameTemplate.subseries.every((value) => gameSubseries.has(value))
+      || selectedGames.size !== defaultGames.size || [...selectedGames].some((value) => !defaultGames.has(value)),
     gameFilterCount: selectedGames.size,
     advancedFilterCount: continents.size
       + precisions.size
@@ -150,7 +165,7 @@ export function useAtlasFilters(options: UseAtlasFiltersOptions) {
       + methods.size,
     setQuery,
     setGame: (value: string) => {
-      if (value === "all") resetGameFilters();
+      if (value === "all") selectAllGames();
       else setGameSelection(new Set([value]));
     },
     toggleGame: (value: string) => setGameSelection((current) => toggledValue(current ?? allGames, value)),

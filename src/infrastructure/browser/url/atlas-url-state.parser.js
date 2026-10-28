@@ -1,4 +1,5 @@
 import { parseAtlasUrlMode } from "./atlas-url-mode.codec.js";
+import { APP_DEFAULTS_CONFIG } from "../../../shared/config/app-defaults.config.js";
 
 const legacyLocalizedPrecisions = Object.freeze([
   "exact",
@@ -26,15 +27,21 @@ export function parseAtlasUrlState(input) {
       : commaSeparatedValues(url.searchParams, "precision");
 
   const browse = url.searchParams.get("browse");
-  const gameIds = [...new Set(commaSeparatedValues(url.searchParams, "game")
+  const gameSelection = url.searchParams.get("games") ?? url.searchParams.get("game");
+  const gameIds = [...new Set((gameSelection ?? "").split(",")
+    .filter(Boolean)
     .filter((value) => value !== "all" && value !== "none"))];
+  const series = commaSeparatedValues(url.searchParams, "series");
+  const subseries = commaSeparatedValues(url.searchParams, "subseries");
+  const developers = commaSeparatedValues(url.searchParams, "developer");
+  const useDefaultTemplate = !gameSelection && series.length + subseries.length + developers.length === 0;
   return {
     query: url.searchParams.get("q") ?? "",
-    gameIds: url.searchParams.get("game") === "none" ? [] : gameIds.length ? gameIds : null,
+    gameIds: gameSelection === "all" ? "all" : gameSelection === "none" ? [] : gameIds.length ? gameIds : null,
     country: url.searchParams.get("country") || "all",
-    series: commaSeparatedValues(url.searchParams, "series"),
-    subseries: commaSeparatedValues(url.searchParams, "subseries"),
-    developers: commaSeparatedValues(url.searchParams, "developer"),
+    series,
+    subseries: useDefaultTemplate ? [...APP_DEFAULTS_CONFIG.gameTemplate.subseries] : subseries,
+    developers,
     continents: commaSeparatedValues(url.searchParams, "continent"),
     precisions,
     confidences: commaSeparatedValues(url.searchParams, "confidence"),
