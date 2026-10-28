@@ -28,7 +28,7 @@ type UseAtlasUrlSyncInput<TSelection extends UrlSelection> = {
   dataIndex: AtlasUrlDataIndex<TSelection>;
   filters: {
     query: string;
-    game: string;
+    selectedGames: ReadonlySet<string>;
     country: string;
     gameSeries: ReadonlySet<string>;
     gameSubseries: ReadonlySet<string>;
@@ -78,7 +78,11 @@ export function useAtlasUrlSync<TSelection extends UrlSelection>({
   useEffect(() => {
     const applyUrl = () => {
       const urlState = urlStatePort.read();
-      const requestedGame = dataIndex.findGameById(urlState.gameId);
+      const requestedGames = urlState.gameIds.flatMap((id) => {
+        const game = dataIndex.findGameById(id);
+        return game ? [game] : [];
+      });
+      const requestedGame = requestedGames.length === 1 ? requestedGames[0] : null;
       const requestedLevelId = urlState.levelId ? dataIndex.resolveLevelId(urlState.levelId) : null;
       const requestedSelection = requestedLevelId
         ? dataIndex.findSelectionByLevelId(requestedLevelId, urlState.locationId) ?? null
@@ -89,7 +93,7 @@ export function useAtlasUrlSync<TSelection extends UrlSelection>({
       onApplyUrlState({
         filters: {
           query: urlState.query,
-          game: requestedGame?.code ?? "all",
+          games: requestedGames.map((game) => game.code),
           country: dataIndex.hasCountry(urlState.country) ? urlState.country : "all",
           gameSeries: urlState.series,
           gameSubseries: urlState.subseries,
@@ -124,7 +128,10 @@ export function useAtlasUrlSync<TSelection extends UrlSelection>({
     if (!ready) return;
     urlStatePort.write({
       query: filters.query,
-      gameId: dataIndex.findGameByCode(filters.game)?.id ?? "all",
+      gameIds: [...filters.selectedGames].flatMap((code) => {
+        const game = dataIndex.findGameByCode(code);
+        return game ? [game.id] : [];
+      }),
       country: filters.country,
       series: [...filters.gameSeries],
       subseries: [...filters.gameSubseries],
@@ -149,7 +156,7 @@ export function useAtlasUrlSync<TSelection extends UrlSelection>({
     filters.confidences,
     filters.continents,
     filters.country,
-    filters.game,
+    filters.selectedGames,
     filters.gameSeries,
     filters.gameSubseries,
     filters.developers,

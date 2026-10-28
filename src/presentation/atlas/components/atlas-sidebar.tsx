@@ -145,11 +145,16 @@ export type AtlasSidebarViewModel = {
     value: string;
   };
   game: {
+    count: number;
+    filters: AdvancedFilterViewModel[];
     games: GameDto[];
     iconFor: (game: GameDto) => string | null | undefined;
     onChange: (value: string) => void;
+    onToggle: (value: string) => void;
+    onReset: () => void;
     onExternalIconError: (gameId: string) => void;
     onOpenCatalog: () => void;
+    selected: Set<string>;
     value: string;
   };
   modes: {
@@ -268,15 +273,20 @@ export function AtlasSidebar({
       <div className="filter-grid">
         <div className="filter-field game-filter">
           <span>
-            <button className="game-catalog-trigger" type="button" aria-haspopup="dialog" onClick={game.onOpenCatalog}>Game</button>
+            <button className="game-catalog-trigger" type="button" aria-haspopup="dialog" onClick={game.onOpenCatalog}>Games</button>
             <small>Oldest to newest</small>
           </span>
           <GameSelect
+            count={game.count}
+            filters={game.filters.map((filter) => <AdvancedFilterDropdown {...filter} key={filter.id} />)}
             games={game.games}
             iconFor={game.iconFor}
+            multiple={advanced.open}
+            selected={game.selected}
             onExternalIconError={game.onExternalIconError}
-            value={game.value}
             onValueChange={game.onChange}
+            onToggle={game.onToggle}
+            onReset={game.onReset}
           />
         </div>
         <div className="filter-field">
@@ -354,7 +364,7 @@ export function AtlasSidebar({
                 count={browse.campaigns.length}
                 disabled={game.value === "all"}
                 label="Campaigns"
-                tooltip={game.value === "all" ? "Choose a game to browse campaigns" : undefined}
+                tooltip={game.value === "all" ? "Choose exactly one game to browse campaigns" : undefined}
                 onSelect={() => browse.onModeChange("campaigns")}
               />
               <SidebarListTab
@@ -364,7 +374,7 @@ export function AtlasSidebar({
                 disabled={game.value === "all" || browse.contentUpdates.length === 0}
                 label="Updates"
                 tooltip={game.value === "all"
-                  ? "Choose a game to browse content updates"
+                  ? "Choose exactly one game to browse content updates"
                   : "No content-update data is available for this game"}
                 onSelect={() => browse.onModeChange("updates")}
               />

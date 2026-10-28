@@ -63,6 +63,14 @@ export function useAtlasSidebarViewModel({
 }): AtlasSidebarViewModel {
   const filteredEntries = filteredGroups.flatMap((group) => group.entries);
   const pushHistory = () => handlers.setNextHistoryMode("push");
+  const clearGameBrowsing = (selectedCount: number) => {
+    handlers.setSelectedCampaignKey(null);
+    handlers.setSelectedContentUpdateKey(null);
+    handlers.setUrlCampaignLevelId(null);
+    handlers.setUrlContentUpdateLevelId(null);
+    handlers.setExpandedRegionEntryId(null);
+    if (selectedCount !== 1) handlers.setSidebarListMode("locations");
+  };
   const advancedFilter = (
     id: Parameters<AtlasFilters["setAdvancedFilterDropdownOpen"]>[0],
     title: string,
@@ -100,20 +108,57 @@ export function useAtlasSidebarViewModel({
       onBlur: handlers.finishSearchUpdate,
     },
     game: {
+      count: filters.gameFilterCount,
+      filters: [
+        advancedFilter(
+          "game-series",
+          "Series",
+          catalog.gameSeriesOptions,
+          filters.gameSeries,
+          filters.toggleGameSeries,
+          filters.clearGameSeries,
+          catalog.gameSeriesDetails,
+        ),
+        advancedFilter(
+          "game-subseries",
+          "Sub-series",
+          catalog.gameSubseriesOptions,
+          filters.gameSubseries,
+          filters.toggleGameSubseries,
+          filters.clearGameSubseries,
+          catalog.gameSubseriesDetails,
+        ),
+        advancedFilter(
+          "developer",
+          "Developer",
+          catalog.developerOptions,
+          filters.developers,
+          filters.toggleDeveloper,
+          filters.clearDevelopers,
+          catalog.developerDetails,
+        ),
+      ],
       games,
       iconFor: handlers.gameIconFor,
       onExternalIconError: handlers.markExternalGameIconUnavailable,
       value: filters.game,
+      selected: filters.selectedGames,
       onOpenCatalog: handlers.onOpenGameCatalog,
       onChange: (value) => {
         pushHistory();
         filters.setGame(value);
-        handlers.setSelectedCampaignKey(null);
-        handlers.setSelectedContentUpdateKey(null);
-        handlers.setUrlCampaignLevelId(null);
-        handlers.setUrlContentUpdateLevelId(null);
-        handlers.setExpandedRegionEntryId(null);
-        if (value === "all") handlers.setSidebarListMode("locations");
+        clearGameBrowsing(value === "all" ? 0 : 1);
+      },
+      onToggle: (value) => {
+        pushHistory();
+        const nextCount = filters.selectedGames.size + (filters.selectedGames.has(value) ? -1 : 1);
+        filters.toggleGame(value);
+        clearGameBrowsing(nextCount);
+      },
+      onReset: () => {
+        pushHistory();
+        filters.resetGameFilters();
+        clearGameBrowsing(0);
       },
     },
     country: {
@@ -173,33 +218,6 @@ export function useAtlasSidebarViewModel({
       onOpen: filters.openAdvancedFilters,
       onReset: handlers.onResetAdvancedFilters,
       filters: [
-        advancedFilter(
-          "game-series",
-          "Series",
-          catalog.gameSeriesOptions,
-          filters.gameSeries,
-          filters.toggleGameSeries,
-          filters.clearGameSeries,
-          catalog.gameSeriesDetails,
-        ),
-        advancedFilter(
-          "game-subseries",
-          "Sub-series",
-          catalog.gameSubseriesOptions,
-          filters.gameSubseries,
-          filters.toggleGameSubseries,
-          filters.clearGameSubseries,
-          catalog.gameSubseriesDetails,
-        ),
-        advancedFilter(
-          "developer",
-          "Developer",
-          catalog.developerOptions,
-          filters.developers,
-          filters.toggleDeveloper,
-          filters.clearDevelopers,
-          catalog.developerDetails,
-        ),
         advancedFilter("continent", "Continent", catalog.continentOptions, filters.continents, filters.toggleContinent, filters.clearContinents),
         advancedFilter("precision", "Precision", catalog.precisionOptions, filters.precisions, filters.togglePrecision, filters.clearPrecisions),
         advancedFilter("confidence", "Confidence", catalog.confidenceOptions, filters.confidences, filters.toggleConfidence, filters.clearConfidences),

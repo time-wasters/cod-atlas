@@ -5,7 +5,7 @@ import { serializeAtlasUrlState } from "../src/infrastructure/browser/url/atlas-
 
 const defaultState = {
   query: "",
-  gameId: "all",
+  gameIds: [],
   country: "all",
   series: [],
   subseries: [],
@@ -28,7 +28,7 @@ test("atlas URL serializer round-trips shareable filters and selection", () => {
   const source = new URL("https://example.com/atlas/?utm_source=test#map");
   const state = {
     query: "Safehouse",
-    gameId: "cod4",
+    gameIds: ["cod4"],
     country: "Azerbaijan",
     series: ["modern-warfare"],
     subseries: ["main"],
@@ -85,7 +85,7 @@ test("atlas URL serializer omits defaults and encodes every mode-filter state", 
 test("atlas URL serializer preserves content-update browsing", () => {
   const url = serializeAtlasUrlState("https://example.com/", {
     ...defaultState,
-    gameId: "waw",
+    gameIds: ["waw"],
     sidebarListMode: "updates",
   });
 
@@ -100,4 +100,14 @@ test("atlas URL serializer clears campaign identity when leaving campaign browsi
     campaignKey: "fixture:default:singleplayer:chronological",
   });
   assert.equal(url.searchParams.has("campaign"), false);
+});
+
+test("atlas URL serializer round-trips a stable multiple-game selection", () => {
+  const url = serializeAtlasUrlState("https://example.com/?game=old", {
+    ...defaultState,
+    gameIds: ["fixture-b", "fixture-a", "fixture-b"],
+  });
+  assert.equal(url.searchParams.get("game"), "fixture-a,fixture-b");
+  assert.deepEqual(parseAtlasUrlState(url).gameIds, ["fixture-a", "fixture-b"]);
+  assert.equal(serializeAtlasUrlState(url, defaultState).searchParams.has("game"), false);
 });

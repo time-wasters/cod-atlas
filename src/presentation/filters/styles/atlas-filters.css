@@ -31,6 +31,23 @@
 .country-select-item.is-unavailable[data-state="checked"] { color: #858b78; background: #22271e; }
 .country-select-scroll-button { height: 24px; width: 100%; display: grid; place-items: center; border: 0; color: #aaa27f; background: #1d221a; font-size: 8px; cursor: default; }
 
+.game-select-count { border-radius: 9px; padding: 2px 6px; color: #211809; background: var(--amber); font: 700 9px var(--font-geist-mono), monospace; }
+.game-select-popup { position: fixed; z-index: 1200; overflow: auto; border: 1px solid #60684f; border-radius: 5px; color: #d0cab8; background: #151a13; box-shadow: 0 12px 30px #000c, inset 0 1px 0 #ffffff0a; scrollbar-color: #5f684e #151a13; scrollbar-width: thin; }
+.game-select-filter-option { width: 100%; min-height: 40px; display: flex; align-items: center; justify-content: space-between; gap: 10px; border: 0; border-bottom: 1px solid #3c4334; padding: 0 12px; color: #e2aa42; background: #20251b; font: inherit; font-size: 12px; cursor: pointer; }
+.game-select-filter-option svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 1.5; }
+.game-select-filters { display: grid; gap: 12px; border-bottom: 1px solid #3c4334; padding: 12px; }
+.game-select-actions { min-height: 34px; display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 4px 10px; }
+.game-select-actions > span { color: #939987; font: 700 9px var(--font-geist-mono), monospace; }
+.game-select-actions button { border: 0; padding: 4px; color: #d59b30; background: transparent; font: 700 9px var(--font-geist-mono), monospace; cursor: pointer; }
+.game-select-actions button:disabled { color: #656b5d; cursor: default; }
+.game-select-options { padding: 4px; }
+.game-select-option { width: 100%; min-height: 38px; display: flex; align-items: center; gap: 9px; border: 0; border-radius: 3px; padding: 5px 9px; color: inherit; background: transparent; font: inherit; font-size: 12px; text-align: left; cursor: pointer; }
+.game-select-option > span { min-width: 0; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.game-select-option input { flex: none; margin: 0; }
+.game-select-option:hover, .game-select-filter-option:hover { color: #fff4d0; background: #303323; }
+.game-select-option:has(input:checked), .game-select-option[aria-pressed="true"] { color: #e8bc5b; background: #29291c; }
+.game-select-popup button:focus-visible, .game-select-popup input:focus-visible { outline: 2px solid var(--amber); outline-offset: -2px; }
+
 .advanced-filter-trigger { width: 100%; min-height: 42px; display: grid; grid-template-columns: minmax(0, 1fr) auto 14px; align-items: center; gap: 9px; border: 1px solid #59604a; border-radius: 4px; padding: 0 11px; color: #c6c1b1; background: linear-gradient(135deg, #191e16, #141811); font: inherit; cursor: pointer; }
 .advanced-filter-trigger > span { min-width: 0; display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; letter-spacing: .04em; }
 .advanced-filter-trigger svg { width: 14px; height: 14px; fill: none; stroke: #a8a17e; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.5; }

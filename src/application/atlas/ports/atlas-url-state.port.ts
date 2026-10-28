@@ -1,6 +1,6 @@
 export type AtlasUrlState = {
   query: string;
-  gameId: string;
+  gameIds: string[];
   country: string;
   series: string[];
   subseries: string[];

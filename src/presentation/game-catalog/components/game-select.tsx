@@ -1,22 +1,120 @@
 "use client";
 
-import * as Select from "@radix-ui/react-select";
+import { useEffect, useId, useLayoutEffect, useRef, useState, type KeyboardEvent, type ReactNode } from "react";
+import { createPortal } from "react-dom";
 import type { GameDto } from "../../../infrastructure/atlas-data/dto/game.dto.js";
 
+const focusableSelector = 'button:not(:disabled), input:not(:disabled), a[href], [tabindex="0"]';
+
 export function GameSelect({
+  count,
+  filters,
   games,
   iconFor,
+  multiple,
   onExternalIconError,
-  value,
+  onReset,
+  onToggle,
   onValueChange,
+  selected,
 }: {
+  count: number;
+  filters: ReactNode;
   games: GameDto[];
   iconFor: (game: GameDto) => string | null | undefined;
+  multiple: boolean;
   onExternalIconError: (gameId: string) => void;
-  value: string;
+  onReset: () => void;
+  onToggle: (value: string) => void;
   onValueChange: (value: string) => void;
+  selected: ReadonlySet<string>;
 }) {
-  const selectedGame = games.find((item) => item.code === value) ?? null;
+  const [open, setOpen] = useState(false);
+  const [showFilters, setShowFilters] = useState(false);
+  const trigger = useRef<HTMLButtonElement>(null);
+  const popup = useRef<HTMLDivElement>(null);
+  const id = `game-select-${useId()}`;
+  const selectedGame = selected.size === 1 ? games.find((item) => selected.has(item.code)) : null;
+  const summary = selectedGame
+    ? `${selectedGame.released.slice(0, 4)} · ${selectedGame.label}`
+    : selected.size > 0 ? `${selected.size} games selected` : "All games";
+
+  function close(restoreFocus = false) {
+    setOpen(false);
+    setShowFilters(false);
+    if (restoreFocus) trigger.current?.focus();
+  }
+
+  useLayoutEffect(() => {
+    if (!open) return;
+    const position = () => {
+      const anchor = trigger.current;
+      const menu = popup.current;
+      if (!anchor || !menu) return;
+      const rect = anchor.getBoundingClientRect();
+      const width = Math.min(Math.max(rect.width, 280), window.innerWidth - 16);
+      const below = window.innerHeight - rect.bottom - 12;
+      const above = rect.top - 12;
+      const flip = below < 220 && above > below;
+      menu.style.width = `${width}px`;
+      menu.style.left = `${Math.max(8, Math.min(rect.left, window.innerWidth - width - 8))}px`;
+      menu.style.top = flip ? "auto" : `${rect.bottom + 4}px`;
+      menu.style.bottom = flip ? `${window.innerHeight - rect.top + 4}px` : "auto";
+      menu.style.maxHeight = `${Math.max(0, Math.min(520, flip ? above : below))}px`;
+      menu.style.visibility = "visible";
+    };
+    position();
+    popup.current?.querySelector<HTMLButtonElement>("button")?.focus({ preventScroll: true });
+    window.addEventListener("resize", position);
+    window.addEventListener("scroll", position, true);
+    return () => {
+      window.removeEventListener("resize", position);
+      window.removeEventListener("scroll", position, true);
+    };
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
+    const dismissOutside = (event: PointerEvent | FocusEvent) => {
+      const target = event.target as Node;
+      if (!trigger.current?.contains(target) && !popup.current?.contains(target)) {
+        setOpen(false);
+        setShowFilters(false);
+      }
+    };
+    document.addEventListener("pointerdown", dismissOutside);
+    document.addEventListener("focusin", dismissOutside);
+    return () => {
+      document.removeEventListener("pointerdown", dismissOutside);
+      document.removeEventListener("focusin", dismissOutside);
+    };
+  }, [open]);
+
+  function navigate(event: KeyboardEvent<HTMLDivElement>) {
+    if (event.key === "Escape") {
+      event.preventDefault();
+      event.stopPropagation();
+      close(true);
+      return;
+    }
+    const controls = [...(popup.current?.querySelectorAll<HTMLElement>(focusableSelector) ?? [])]
+      .filter((element) => element.getClientRects().length > 0);
+    const index = controls.indexOf(document.activeElement as HTMLElement);
+    if (event.key === "Tab" && ((event.shiftKey && index === 0) || (!event.shiftKey && index === controls.length - 1))) {
+      event.preventDefault();
+      const outside = [...document.querySelectorAll<HTMLElement>(focusableSelector)]
+        .filter((element) => !popup.current?.contains(element) && element.getClientRects().length > 0);
+      const anchorIndex = outside.indexOf(trigger.current!);
+      const destination = event.shiftKey ? trigger.current : outside[anchorIndex + 1];
+      close();
+      (destination ?? trigger.current)?.focus();
+    } else if (["ArrowDown", "ArrowUp", "Home", "End"].includes(event.key)) {
+      event.preventDefault();
+      const next = event.key === "Home" ? 0 : event.key === "End" ? controls.length - 1
+        : (index + (event.key === "ArrowDown" ? 1 : -1) + controls.length) % controls.length;
+      controls[next]?.focus();
+    }
+  }
 
   function gameIcon(game: GameDto) {
     const icon = iconFor(game);
@@ -38,32 +136,62 @@ export function GameSelect({
   }
 
   return (
-    <Select.Root value={value} onValueChange={onValueChange}>
-      <Select.Trigger className="country-select-trigger" aria-label="Filter by game, ordered by release date">
-        <Select.Value>{selectedGame ? `${selectedGame.released.slice(0, 4)} · ${selectedGame.label}` : "All games"}</Select.Value>
+    <>
+      <button
+        ref={trigger}
+        className="country-select-trigger game-select-trigger"
+        type="button"
+        aria-label={`Filter by game, ordered by release date: ${summary}`}
+        aria-haspopup="dialog"
+        aria-expanded={open}
+        aria-controls={open ? id : undefined}
+        data-state={open ? "open" : "closed"}
+        onClick={() => open ? close() : setOpen(true)}
+        onKeyDown={(event) => {
+          if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+            event.preventDefault();
+            setOpen(true);
+          }
+        }}
+      >
+        <span>{summary}</span>
         {selectedGame ? gameIcon(selectedGame) : null}
-        <Select.Icon className="country-select-chevron" aria-hidden="true">
+        {count > 0 && <small className="game-select-count">{count}</small>}
+        <span className="country-select-chevron" aria-hidden="true">
           <svg viewBox="0 0 10 6"><path d="m1 1 4 4 4-4" /></svg>
-        </Select.Icon>
-      </Select.Trigger>
+        </span>
+      </button>
 
-      <Select.Portal>
-        <Select.Content className="country-select-content" position="popper" align="start" sideOffset={4} collisionPadding={8}>
-          <Select.ScrollUpButton className="country-select-scroll-button" aria-label="Scroll up">▲</Select.ScrollUpButton>
-          <Select.Viewport className="country-select-viewport">
-            <Select.Item className="country-select-item" value="all">
-              <Select.ItemText>All games</Select.ItemText>
-            </Select.Item>
-            {games.map((item) => (
-              <Select.Item className="country-select-item" key={item.id} value={item.code}>
-                <Select.ItemText>{item.released.slice(0, 4)} · {item.label}</Select.ItemText>
+      {open && createPortal(
+        <div ref={popup} id={id} className="game-select-popup" role="dialog" aria-label="Games" aria-describedby={`${id}-hint`} onKeyDown={navigate} style={{ visibility: "hidden" }}>
+          <button className="game-select-filter-option" type="button" aria-expanded={showFilters} aria-controls={showFilters ? `${id}-filters` : undefined} onClick={() => setShowFilters(!showFilters)}>
+            <span>Filter</span>
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d={showFilters ? "m3 6 5 5 5-5" : "m6 3 5 5-5 5"} /></svg>
+          </button>
+          {showFilters && <div className="game-select-filters" id={`${id}-filters`}>{filters}</div>}
+          <div className="game-select-actions">
+            <span id={`${id}-hint`}>{multiple ? "Select one or more games" : "Choose a game"}</span>
+            <button type="button" disabled={count === 0} onClick={onReset}>Reset games</button>
+          </div>
+          <div className="game-select-options" role="group" aria-label={multiple ? "Select games" : "Choose a game"}>
+            <button className="game-select-option" type="button" aria-pressed={selected.size === 0} onClick={() => { onValueChange("all"); if (!multiple) close(true); }}>
+              <span>All games</span>
+            </button>
+            {games.map((item) => multiple ? (
+              <label className="game-select-option" key={item.id}>
+                <input type="checkbox" checked={selected.has(item.code)} onChange={() => onToggle(item.code)} />
+                <span>{item.released.slice(0, 4)} · {item.label}</span>
                 {gameIcon(item)}
-              </Select.Item>
+              </label>
+            ) : (
+              <button className="game-select-option" key={item.id} type="button" aria-pressed={selected.has(item.code)} onClick={() => { onValueChange(item.code); close(true); }}>
+                <span>{item.released.slice(0, 4)} · {item.label}</span>
+                {gameIcon(item)}
+              </button>
             ))}
-          </Select.Viewport>
-          <Select.ScrollDownButton className="country-select-scroll-button" aria-label="Scroll down">▼</Select.ScrollDownButton>
-        </Select.Content>
-      </Select.Portal>
-    </Select.Root>
+          </div>
+        </div>, document.body,
+      )}
+    </>
   );
 }

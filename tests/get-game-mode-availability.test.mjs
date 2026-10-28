@@ -15,13 +15,13 @@ const groups = [{
 }];
 
 test("reports only modes represented by the selected game", () => {
-  assert.deepEqual(getGameModeAvailability({ gameCode: "CAMPAIGN", games, groups }), {
+  assert.deepEqual(getGameModeAvailability({ gameCodes: new Set(["CAMPAIGN"]), games, groups }), {
     singleplayer: true,
     multiplayer: false,
     zombies: false,
     other: false,
   });
-  assert.deepEqual(getGameModeAvailability({ gameCode: "MIXED", games, groups }), {
+  assert.deepEqual(getGameModeAvailability({ gameCodes: new Set(["MIXED"]), games, groups }), {
     singleplayer: false,
     multiplayer: true,
     zombies: true,
@@ -30,10 +30,23 @@ test("reports only modes represented by the selected game", () => {
 });
 
 test("leaves every mode available when no individual game is selected", () => {
-  assert.deepEqual(getGameModeAvailability({ gameCode: "all", games, groups }), {
+  assert.deepEqual(getGameModeAvailability({ gameCodes: new Set(), games, groups }), {
     singleplayer: true,
     multiplayer: true,
     zombies: true,
     other: true,
+  });
+});
+
+test("combines only the modes represented by selected games", () => {
+  assert.deepEqual(getGameModeAvailability({
+    gameCodes: new Set(["CAMPAIGN", "MULTIPLAYER"]),
+    games: [...games, { id: "multiplayer-game", code: "MULTIPLAYER" }],
+    groups: [...groups, { entries: [{ gameIds: ["multiplayer-game"], modes: ["multiplayer"] }] }],
+  }), {
+    singleplayer: true,
+    multiplayer: true,
+    zombies: false,
+    other: false,
   });
 });

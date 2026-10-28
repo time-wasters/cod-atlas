@@ -14,7 +14,7 @@ export type AdvancedFilterGroupId =
 
 export type AtlasFilterUrlState = {
   query: string;
-  game: string;
+  games: string[];
   country: string;
   gameSeries: string[];
   gameSubseries: string[];
@@ -48,7 +48,8 @@ function toggledValue(current: Set<string>, value: string) {
 
 export function useAtlasFilters(options: UseAtlasFiltersOptions) {
   const [query, setQuery] = useState("");
-  const [game, setGame] = useState("all");
+  const [selectedGames, setSelectedGames] = useState<Set<string>>(() => new Set());
+  const game = selectedGames.size === 1 ? [...selectedGames][0] : "all";
   const [country, setCountry] = useState("all");
   const [gameSeries, setGameSeries] = useState<Set<string>>(() => new Set());
   const [gameSubseries, setGameSubseries] = useState<Set<string>>(() => new Set());
@@ -66,7 +67,7 @@ export function useAtlasFilters(options: UseAtlasFiltersOptions) {
 
   const applyUrlState = useCallback((state: AtlasFilterUrlState) => {
     setQuery(state.query);
-    setGame(state.game);
+    setSelectedGames(new Set(state.games));
     setCountry(state.country);
     setGameSeries(new Set(state.gameSeries.filter((value) => options.gameSeriesValues.has(value))));
     setGameSubseries(new Set(state.gameSubseries.filter((value) => options.gameSubseriesValues.has(value))));
@@ -89,10 +90,13 @@ export function useAtlasFilters(options: UseAtlasFiltersOptions) {
     setAdvancedFiltersOpen(false);
     setOpenAdvancedFilterDropdown(null);
   }, []);
-  const resetAdvancedFilters = useCallback(() => {
+  const resetGameFilters = useCallback(() => {
+    setSelectedGames(new Set());
     setGameSeries(new Set());
     setGameSubseries(new Set());
     setDevelopers(new Set());
+  }, []);
+  const resetAdvancedFilters = useCallback(() => {
     setContinents(new Set());
     setPrecisions(new Set());
     setConfidences(new Set());
@@ -102,6 +106,7 @@ export function useAtlasFilters(options: UseAtlasFiltersOptions) {
   return {
     query,
     game,
+    selectedGames,
     country,
     gameSeries,
     gameSubseries,
@@ -116,15 +121,15 @@ export function useAtlasFilters(options: UseAtlasFiltersOptions) {
     showOther,
     advancedFiltersOpen,
     openAdvancedFilterDropdown,
-    advancedFilterCount: gameSeries.size
-      + gameSubseries.size
-      + developers.size
-      + continents.size
+    gameFilterCount: selectedGames.size + gameSeries.size + gameSubseries.size + developers.size,
+    advancedFilterCount: continents.size
       + precisions.size
       + confidences.size
       + methods.size,
     setQuery,
-    setGame,
+    setGame: (value: string) => setSelectedGames(new Set(value === "all" ? [] : [value])),
+    toggleGame: (value: string) => setSelectedGames((current) => toggledValue(current, value)),
+    resetGameFilters,
     setCountry,
     setShowSingleplayer,
     setShowMultiplayer,

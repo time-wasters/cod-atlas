@@ -24,27 +24,26 @@ const ALL_MODES_AVAILABLE: GameModeAvailability = {
 };
 
 export function getGameModeAvailability({
-  gameCode,
+  gameCodes,
   games,
   groups,
 }: {
-  gameCode: string;
+  gameCodes: ReadonlySet<string>;
   games: readonly ModeAvailabilityGame[];
   groups: readonly ModeAvailabilityGroup[];
 }): GameModeAvailability {
-  if (gameCode === "all") return ALL_MODES_AVAILABLE;
+  if (gameCodes.size === 0) return ALL_MODES_AVAILABLE;
 
-  const gameId = games.find((game) => game.code === gameCode)?.id;
+  const gameIds = new Set(games.filter((game) => gameCodes.has(game.code)).map((game) => game.id));
   const availability: GameModeAvailability = {
     singleplayer: false,
     multiplayer: false,
     zombies: false,
     other: false,
   };
-  if (!gameId) return availability;
 
   for (const entry of groups.flatMap((group) => group.entries)) {
-    if (!entry.gameIds.includes(gameId)) continue;
+    if (!entry.gameIds.some((gameId) => gameIds.has(gameId))) continue;
     for (const mode of entry.modes) availability[mode] = true;
   }
 

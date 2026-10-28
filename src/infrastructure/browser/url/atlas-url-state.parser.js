@@ -28,7 +28,7 @@ export function parseAtlasUrlState(input) {
   const browse = url.searchParams.get("browse");
   return {
     query: url.searchParams.get("q") ?? "",
-    gameId: url.searchParams.get("game") || "all",
+    gameIds: [...new Set(commaSeparatedValues(url.searchParams, "game").filter((value) => value !== "all"))],
     country: url.searchParams.get("country") || "all",
     series: commaSeparatedValues(url.searchParams, "series"),
     subseries: commaSeparatedValues(url.searchParams, "subseries"),

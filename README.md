@@ -17,6 +17,13 @@ continent, mode, precision, confidence, and location method. Filters and
 the selected level are stored in the URL, so a view can be shared and revisited
 with the browser's Back and Forward buttons.
 
+The Games dropdown starts with **Filter**, which opens Series, Sub-series, and
+Developer filters. Open **Advanced filters** to select several games using
+checkboxes; closing the panel preserves that selection. The Advanced panel
+contains Continent, Precision, Confidence, and Method filters. Games and
+Advanced filters have separate reset actions. Campaign and update browsing
+requires exactly one selected game.
+
 Select a game and campaign, then choose **Follow campaign** to visit its missions
 in the displayed order, highlight each map stop, and open its briefing. Pause or
 resume, step backward or forward, and adjust the time per mission. Manual browsing
