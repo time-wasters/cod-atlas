@@ -143,7 +143,7 @@ export function useAtlasFilters(options: UseAtlasFiltersOptions) {
     openAdvancedFilterDropdown,
     gameTemplateActive: gameSeries.size + gameSubseries.size + developers.size > 0,
     canResetGameFilters: gameSelection !== null || gameSeries.size + gameSubseries.size + developers.size > 0,
-    gameFilterCount: (gameSelection?.size ?? 0) + gameSeries.size + gameSubseries.size + developers.size,
+    gameFilterCount: selectedGames.size,
     advancedFilterCount: continents.size
       + precisions.size
       + confidences.size

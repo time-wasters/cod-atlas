@@ -186,7 +186,11 @@ export function GameSelect({
               <span>All games</span>
             </button>
             {games.map((item) => showCheckboxes ? (
-              <label className="game-select-option" key={item.id}>
+              <label className="game-select-option" key={item.id} onDoubleClick={(event) => {
+                event.preventDefault();
+                setCustomizingGames(true);
+                onValueChange(item.code);
+              }}>
                 <input type="checkbox" checked={selected.has(item.code)} onChange={() => { setCustomizingGames(true); onToggle(item.code); }} />
                 <span>{item.released.slice(0, 4)} · {item.label}</span>
                 {gameIcon(item)}

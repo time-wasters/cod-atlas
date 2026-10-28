@@ -10,35 +10,13 @@ adapt, or draw inspiration from.
 
 ## Explore the geography of the series
 
-Browse the atlas on the map or search for a campaign, multiplayer, Zombies,
-Special Ops, Survival, or Challenge entry, country, or place. Results can be filtered
-by game, country, series, sub-series,
-continent, mode, precision, confidence, and location method. Filters and
-the selected level are stored in the URL, so a view can be shared and revisited
-with the browser's Back and Forward buttons.
+Browse the map or search for a mission, map, country, or place. Filter by game,
+geography, mode, or location accuracy, with game templates and advanced filters
+for more specific selections. Share a filtered view or selected level through
+its URL. Double-click a game to select it alone.
 
-The Games dropdown starts with **Filter**, which opens Series, Sub-series, and
-Developer templates. Changing these options checks the matching games; you can
-then check or uncheck individual games, including games outside the template.
-Only the checked games restrict the results. Open **Advanced filters** to use
-checkboxes without a template; closing the panel preserves that selection.
-Unchecking every game shows no results. The Advanced panel
-contains Continent, Precision, Confidence, and Method filters. Games and
-Advanced filters have separate reset actions. Campaign and update browsing
-requires exactly one selected game.
-
-Select a game and campaign, then choose **Follow campaign** to visit its missions
-in the displayed order, highlight each map stop, and open its briefing. Pause or
-resume, step backward or forward, and adjust the time per mission. Manual browsing
-or filter changes end the tour; missions without Earth coordinates show their
-briefing without moving the map. Playback also pauses when the tab is hidden.
-Long-distance flights and large zoom changes take longer, with campaign lines
-visible throughout travel.
-Large jumps to precise locations pause at a city overview while its tiles load,
-then continue into the location. The overview wait is capped at three seconds.
-The time per mission starts after the camera arrives and the briefing loads.
-Playback adjusts the zoom to each location's precision, with the closest views
-for human-verified, high-confidence landmarks.
+**Follow campaign** offers a guided map tour of a campaign's missions and
+briefings. Select a game and campaign to find this option.
 
 Each entry explains what the marker represents and distinguishes a well-sourced
 location from an approximate, regional, or country-level fallback. Where
