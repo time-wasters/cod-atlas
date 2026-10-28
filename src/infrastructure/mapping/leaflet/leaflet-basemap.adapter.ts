@@ -15,9 +15,14 @@ export async function attachLeafletBasemap({ leaflet, map, signal }: LeafletBase
   let vectorBasemap: ReturnType<(typeof import("@maplibre/maplibre-gl-leaflet"))["maplibreGL"]> | null = null;
   let rasterBasemap: import("leaflet").TileLayer | null = null;
 
+  // The wrapper resets the canvas transform on zoomend before MapLibre's
+  // queued frame renders. Draw the new view before Chromium paints that reset.
+  const redrawVectorBasemap = () => vectorBasemap?.getMaplibreMap().redraw();
+
   const cleanup = () => {
     if (fallbackTimer !== null) window.clearTimeout(fallbackTimer);
     fallbackTimer = null;
+    map.off("zoomend", redrawVectorBasemap);
     vectorBasemap?.remove();
     vectorBasemap = null;
     rasterBasemap?.remove();
@@ -55,12 +60,15 @@ export async function attachLeafletBasemap({ leaflet, map, signal }: LeafletBase
       style: BASEMAP_CONFIG.vectorStyleUrl,
       attributionControl: false,
     }).addTo(map);
+    // Register after addTo so the wrapper's zoomend handler runs first.
+    map.on("zoomend", redrawVectorBasemap);
     const vectorMap = vectorBasemap.getMaplibreMap();
     let vectorMapLoaded = false;
     const useRasterFallback = () => {
       if (vectorMapLoaded || signal.aborted) return;
       if (fallbackTimer !== null) window.clearTimeout(fallbackTimer);
       fallbackTimer = null;
+      map.off("zoomend", redrawVectorBasemap);
       vectorBasemap?.remove();
       vectorBasemap = null;
       addRasterFallback();
@@ -85,6 +93,7 @@ export async function attachLeafletBasemap({ leaflet, map, signal }: LeafletBase
   } catch (error) {
     if (!signal.aborted) {
       console.error("Could not initialize the English vector basemap; using the configured raster fallback.", error);
+      map.off("zoomend", redrawVectorBasemap);
       vectorBasemap?.remove();
       vectorBasemap = null;
       addRasterFallback();
