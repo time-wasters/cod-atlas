@@ -35,6 +35,8 @@ export const MAP_CAMERA_CONFIG = {
     durationSeconds: .45,
   },
   sidebar: {
+    // Multiply location-list flight durations by this factor; .8 is 20% shorter.
+    locationSelectionDurationScale: .8,
     // Duration in milliseconds of the sidebar's opening or closing transition.
     transitionMs: 300,
     // Extra milliseconds to wait after the sidebar transition before recalculating the map viewport.

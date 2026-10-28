@@ -371,7 +371,7 @@ export function useMapViewport({
           currentMap.getCenter().distanceTo(leaflet.latLngBounds(sidebarTarget.bounds).getCenter()),
           MARKER_FOCUS_PRESET.minimumTravelSeconds,
           MARKER_FOCUS_PRESET.maximumTravelSeconds,
-        ),
+        ) * (sidebarTarget.fitOnlyWhenOutside ? 1 : MAP_CAMERA_CONFIG.sidebar.locationSelectionDurationScale),
       };
       cancelMarkerFlightArrival();
       currentMap.stop();
