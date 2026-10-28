@@ -32,6 +32,13 @@
 .country-select-scroll-button { height: 24px; width: 100%; display: grid; place-items: center; border: 0; color: #aaa27f; background: #1d221a; font-size: 8px; cursor: default; }
 
 .game-select-count { border-radius: 9px; padding: 2px 6px; color: #211809; background: var(--amber); font: 700 9px var(--font-geist-mono), monospace; }
+.game-select-summary { position: relative; min-height: 24px; display: flex; align-items: center; }
+.game-select-summary-text { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.game-select-summary-icons { position: absolute; top: 50%; left: 0; width: max-content; display: flex; align-items: center; gap: 4px; visibility: hidden; transform: translateY(-50%); }
+.game-select-summary[data-icons-fit="true"] .game-select-summary-text { visibility: hidden; }
+.game-select-summary[data-icons-fit="true"] .game-select-summary-icons { visibility: visible; }
+.game-select-icon-placeholder { width: 24px; height: 24px; display: grid; place-items: center; border: 1px solid #48503d; border-radius: 3px; color: #aaa27f; font: 700 8px var(--font-geist-mono), monospace; }
+.game-select-trigger > .game-select-count, .game-select-trigger > .country-select-chevron { flex-shrink: 0; }
 .game-select-popup { position: fixed; z-index: 1200; overflow: auto; border: 1px solid #60684f; border-radius: 5px; color: #d0cab8; background: #151a13; box-shadow: 0 12px 30px #000c, inset 0 1px 0 #ffffff0a; scrollbar-color: #5f684e #151a13; scrollbar-width: thin; }
 .game-select-filter-option { width: 100%; min-height: 40px; display: flex; align-items: center; justify-content: space-between; gap: 10px; border: 0; border-bottom: 1px solid #3c4334; padding: 0 12px; color: #e2aa42; background: #20251b; font: inherit; font-size: 12px; cursor: pointer; }
 .game-select-filter-option svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 1.5; }

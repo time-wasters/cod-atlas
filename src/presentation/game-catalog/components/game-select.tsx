@@ -37,12 +37,34 @@ export function GameSelect({
   const showCheckboxes = multiple || customizingGames;
   const trigger = useRef<HTMLButtonElement>(null);
   const popup = useRef<HTMLDivElement>(null);
+  const selectionSummary = useRef<HTMLSpanElement>(null);
+  const selectionIcons = useRef<HTMLSpanElement>(null);
   const id = `game-select-${useId()}`;
   const selectedGame = selected.size === 1 ? games.find((item) => selected.has(item.code)) : null;
   const allSelected = games.every((game) => selected.has(game.code));
+  const selectedIconGames = games.filter((game) => selected.has(game.code));
+  const showSelectedIcons = !allSelected && selected.size >= 2 && selected.size <= 8
+    && selectedIconGames.length === selected.size;
   const summary = allSelected ? "All games" : selectedGame
     ? `${selectedGame.released.slice(0, 4)} · ${selectedGame.label}`
     : selected.size > 0 ? `${selected.size} games selected` : "No games selected";
+
+  useLayoutEffect(() => {
+    const container = selectionSummary.current;
+    const icons = selectionIcons.current;
+    if (!container) return;
+    if (!icons) {
+      delete container.dataset.iconsFit;
+      return;
+    }
+    const fit = () => {
+      container.dataset.iconsFit = String(icons.scrollWidth <= container.clientWidth);
+    };
+    fit();
+    const observer = new ResizeObserver(fit);
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, [showSelectedIcons, selected.size]);
 
   function close(restoreFocus = false) {
     setOpen(false);
@@ -146,7 +168,7 @@ export function GameSelect({
         ref={trigger}
         className="country-select-trigger game-select-trigger"
         type="button"
-        aria-label={`Filter by game, ordered by release date: ${summary}`}
+        aria-label={`Filter by game, ordered by release date: ${showSelectedIcons ? selectedIconGames.map((game) => game.label).join(", ") : summary}`}
         aria-haspopup="dialog"
         aria-expanded={open}
         aria-controls={open ? id : undefined}
@@ -159,7 +181,14 @@ export function GameSelect({
           }
         }}
       >
-        <span>{summary}</span>
+        <span ref={selectionSummary} className="game-select-summary">
+          <span className="game-select-summary-text">{summary}</span>
+          {showSelectedIcons && <span ref={selectionIcons} className="game-select-summary-icons" aria-hidden="true">
+            {selectedIconGames.map((game) => <span key={game.id} title={game.label}>
+              {gameIcon(game) ?? <span className="game-select-icon-placeholder">{game.code.slice(0, 3)}</span>}
+            </span>)}
+          </span>}
+        </span>
         {selectedGame ? gameIcon(selectedGame) : null}
         {count > 0 && <small className="game-select-count">{count}</small>}
         <span className="country-select-chevron" aria-hidden="true">

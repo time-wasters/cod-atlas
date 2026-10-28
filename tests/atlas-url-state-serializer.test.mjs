@@ -118,3 +118,17 @@ test("an empty game selection stays empty when sharing and restoring the URL", (
   assert.equal(url.searchParams.get("game"), "none");
   assert.deepEqual(parseAtlasUrlState(url), state);
 });
+
+test("template-only links keep the template and campaign without a game list", () => {
+  const state = {
+    ...defaultState,
+    series: ["fixture-series"],
+    subseries: ["main"],
+    developers: ["fixture-studio"],
+    sidebarListMode: "campaigns",
+    campaignKey: "fixture:default:singleplayer:chronological",
+  };
+  const url = serializeAtlasUrlState("https://example.com/?game=old", state);
+  assert.equal(url.searchParams.has("game"), false);
+  assert.deepEqual(parseAtlasUrlState(url), state);
+});

@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { selectGamesForTemplate } from "../src/application/game-catalog/use-cases/select-games-for-template.ts";
+import { gameSelectionMatchesTemplate, selectGamesForTemplate } from "../src/application/game-catalog/use-cases/select-games-for-template.ts";
 
 const games = [
   { code: "A", series: "series-a", subseries: ["main", "reboot"], developer: [{ id: "studio-a" }, { id: "studio-b" }] },
@@ -40,4 +40,29 @@ test("reapplying a template replaces manual changes and leaves source games inta
   assert.deepEqual([...selection], ["B", "C"]);
   assert.deepEqual([...selectGamesForTemplate(games, preset)], ["A", "B"]);
   assert.deepEqual(games.map((game) => game.code), ["A", "B", "C"]);
+});
+
+test("an exact template match omits game lists regardless of checkbox order", () => {
+  const preset = template({ series: new Set(["series-a"]) });
+  assert.equal(gameSelectionMatchesTemplate(games, new Set(["B", "A"]), preset), true);
+});
+
+test("manual changes require game lists until the exact template selection is restored", () => {
+  const preset = template({ series: new Set(["series-a"]) });
+  const selection = selectGamesForTemplate(games, preset);
+  selection.delete("A");
+  assert.equal(gameSelectionMatchesTemplate(games, selection, preset), false);
+  selection.add("C");
+  assert.equal(gameSelectionMatchesTemplate(games, selection, preset), false);
+  selection.add("A");
+  assert.equal(gameSelectionMatchesTemplate(games, selection, preset), false);
+  selection.delete("C");
+  assert.equal(gameSelectionMatchesTemplate(games, selection, preset), true);
+});
+
+test("empty matches can use a template while manual empty selections stay explicit", () => {
+  const noMatches = template({ series: new Set(["missing-series"]) });
+  assert.equal(gameSelectionMatchesTemplate(games, new Set(), noMatches), true);
+  assert.equal(gameSelectionMatchesTemplate(games, new Set(), template({ series: new Set(["series-a"]) })), false);
+  assert.equal(gameSelectionMatchesTemplate(games, new Set(["A", "B", "C"]), template()), false);
 });

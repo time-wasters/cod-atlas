@@ -19,3 +19,14 @@ export function selectGamesForTemplate(games: readonly TemplateGame[], template:
     && (template.developers.size === 0 || game.developer.some((developer) => template.developers.has(developer.id))),
   ).map((game) => game.code));
 }
+
+/** An active template can represent the selection in a URL without listing games. */
+export function gameSelectionMatchesTemplate(
+  games: readonly TemplateGame[],
+  selected: ReadonlySet<string>,
+  template: GameTemplate,
+) {
+  if (template.series.size + template.subseries.size + template.developers.size === 0) return false;
+  const matching = selectGamesForTemplate(games, template);
+  return selected.size === matching.size && [...selected].every((code) => matching.has(code));
+}

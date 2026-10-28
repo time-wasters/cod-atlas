@@ -310,6 +310,7 @@ export function AtlasPage({
     finishSearchUpdate,
   } = useAtlasUrlSync<AtlasSelection>({
     dataIndex: atlasDataIndex,
+    games,
     filters: {
       query,
       gameSelection,
