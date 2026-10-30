@@ -16,5 +16,11 @@ locations:
     confidence: fallback
     method: country-fallback
     primary: true
+campaign:
+  id: regular-seasonal
+  label: Regular / Seasonal
+content-update:
+  id: "6"
+  label: Season 6
 ---
 

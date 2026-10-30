@@ -2,6 +2,8 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { AtlasUrlStatePort } from "../../../application/atlas/ports/atlas-url-state.port.js";
+import { gameSelectionMatchesTemplate, selectGamesForTemplate } from "../../../application/game-catalog/use-cases/select-games-for-template.js";
+import type { GameDto } from "../../../infrastructure/atlas-data/dto/game.dto.js";
 import type { AtlasFilterUrlState } from "../../filters/state/use-atlas-filters.js";
 
 type UrlGame = { id: string; code: string };
@@ -19,15 +21,18 @@ export type AppliedAtlasUrlState<TSelection> = {
   filters: AtlasFilterUrlState;
   selection: TSelection | null;
   sidebarListMode: "locations" | "campaigns" | "updates";
+  campaignKey: string | null;
   campaignLevelId: string | null;
   contentUpdateLevelId: string | null;
 };
 
 type UseAtlasUrlSyncInput<TSelection extends UrlSelection> = {
   dataIndex: AtlasUrlDataIndex<TSelection>;
+  games: readonly GameDto[];
   filters: {
     query: string;
-    game: string;
+    gameSelection: ReadonlySet<string> | null;
+    selectedGames: ReadonlySet<string>;
     country: string;
     gameSeries: ReadonlySet<string>;
     gameSubseries: ReadonlySet<string>;
@@ -44,16 +49,19 @@ type UseAtlasUrlSyncInput<TSelection extends UrlSelection> = {
   selected: TSelection;
   selectionInUrl: boolean;
   sidebarListMode: "locations" | "campaigns" | "updates";
+  campaignKey: string | null;
   urlStatePort: AtlasUrlStatePort;
   onApplyUrlState: (state: AppliedAtlasUrlState<TSelection>) => void;
 };
 
 export function useAtlasUrlSync<TSelection extends UrlSelection>({
   dataIndex,
+  games,
   filters,
   selected,
   selectionInUrl,
   sidebarListMode,
+  campaignKey,
   urlStatePort,
   onApplyUrlState,
 }: UseAtlasUrlSyncInput<TSelection>) {
@@ -75,7 +83,21 @@ export function useAtlasUrlSync<TSelection extends UrlSelection>({
   useEffect(() => {
     const applyUrl = () => {
       const urlState = urlStatePort.read();
-      const requestedGame = dataIndex.findGameById(urlState.gameId);
+      const template = {
+        series: new Set(urlState.series),
+        subseries: new Set(urlState.subseries),
+        developers: new Set(urlState.developers),
+      };
+      const hasTemplate = template.series.size + template.subseries.size + template.developers.size > 0;
+      const templateGames = urlState.gameIds === null && hasTemplate
+        ? selectGamesForTemplate(games, template) : null;
+      const requestedGames = templateGames !== null
+        ? games.filter((game) => templateGames.has(game.code))
+        : (Array.isArray(urlState.gameIds) ? urlState.gameIds : []).flatMap((id) => {
+          const game = dataIndex.findGameById(id);
+          return game ? [game] : [];
+        });
+      const requestedGame = requestedGames.length === 1 ? requestedGames[0] : null;
       const requestedLevelId = urlState.levelId ? dataIndex.resolveLevelId(urlState.levelId) : null;
       const requestedSelection = requestedLevelId
         ? dataIndex.findSelectionByLevelId(requestedLevelId, urlState.locationId) ?? null
@@ -86,7 +108,7 @@ export function useAtlasUrlSync<TSelection extends UrlSelection>({
       onApplyUrlState({
         filters: {
           query: urlState.query,
-          game: requestedGame?.code ?? "all",
+          games: urlState.gameIds === "all" ? "all" : urlState.gameIds === null ? null : requestedGames.map((game) => game.code),
           country: dataIndex.hasCountry(urlState.country) ? urlState.country : "all",
           gameSeries: urlState.series,
           gameSubseries: urlState.subseries,
@@ -102,6 +124,7 @@ export function useAtlasUrlSync<TSelection extends UrlSelection>({
         },
         selection: requestedSelection,
         sidebarListMode: requestedGame ? urlState.sidebarListMode : "locations",
+        campaignKey: requestedGame && urlState.sidebarListMode === "campaigns" ? urlState.campaignKey : null,
         campaignLevelId: urlState.sidebarListMode === "campaigns" && requestedGame && requestedSelection
           ? requestedSelection.entry.levelId
           : null,
@@ -114,13 +137,23 @@ export function useAtlasUrlSync<TSelection extends UrlSelection>({
 
     applyUrl();
     return urlStatePort.subscribe(applyUrl);
-  }, [dataIndex, onApplyUrlState, urlStatePort]);
+  }, [dataIndex, games, onApplyUrlState, urlStatePort]);
 
   useEffect(() => {
     if (!ready) return;
+    const matchesTemplate = gameSelectionMatchesTemplate(games, filters.selectedGames, {
+      series: filters.gameSeries,
+      subseries: filters.gameSubseries,
+      developers: filters.developers,
+    });
+    const allSelected = filters.selectedGames.size === games.length
+      && games.every((game) => filters.selectedGames.has(game.code));
     urlStatePort.write({
       query: filters.query,
-      gameId: dataIndex.findGameByCode(filters.game)?.id ?? "all",
+      gameIds: matchesTemplate ? null : filters.gameSelection === null || allSelected ? "all" : [...filters.selectedGames].flatMap((code) => {
+        const game = dataIndex.findGameByCode(code);
+        return game ? [game.id] : [];
+      }),
       country: filters.country,
       series: [...filters.gameSeries],
       subseries: [...filters.gameSubseries],
@@ -134,16 +167,20 @@ export function useAtlasUrlSync<TSelection extends UrlSelection>({
       showZombies: filters.showZombies,
       showOther: filters.showOther,
       sidebarListMode,
+      campaignKey,
       levelId: selectionInUrl ? selected.entry.levelId : null,
       locationId: selectionInUrl ? selected.entry.locationId : null,
     }, nextHistoryMode.current);
     nextHistoryMode.current = "push";
   }, [
     dataIndex,
+    games,
+    campaignKey,
     filters.confidences,
     filters.continents,
     filters.country,
-    filters.game,
+    filters.gameSelection,
+    filters.selectedGames,
     filters.gameSeries,
     filters.gameSubseries,
     filters.developers,

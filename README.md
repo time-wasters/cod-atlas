@@ -10,12 +10,13 @@ adapt, or draw inspiration from.
 
 ## Explore the geography of the series
 
-Browse the atlas on the map or search for a campaign, multiplayer, Zombies,
-Special Ops, Survival, or Challenge entry, country, or place. Results can be filtered
-by game, country, series, sub-series,
-continent, mode, precision, confidence, and location method. Filters and
-the selected level are stored in the URL, so a view can be shared and revisited
-with the browser's Back and Forward buttons.
+Browse the map or search for a mission, map, country, or place. Filter by game,
+geography, mode, or location accuracy, with game templates and advanced filters
+for more specific selections. Share a filtered view or selected level through
+its URL. Double-click a game to select it alone.
+
+**Follow campaign** offers a guided map tour of a campaign's missions and
+briefings. Select a game and campaign to find this option.
 
 Each entry explains what the marker represents and distinguishes a well-sourced
 location from an approximate, regional, or country-level fallback. Where

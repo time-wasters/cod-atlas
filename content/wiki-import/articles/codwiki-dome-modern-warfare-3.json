@@ -7,8 +7,8 @@
   "mapStyleEvidence": "Classified by the atlas; verify against the Wiki during the next import.",
   "fandomPageId": 305162,
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Dome_(Modern_Warfare_3)",
-  "latestRevisionId": 2999447,
-  "importedAt": "2026-08-23T23:04:21.972Z",
+  "latestRevisionId": 3027053,
+  "importedAt": "2026-10-11T21:08:06.262Z",
   "levelLocation": {
     "raw": "Abandoned NATO Military Outpost, Middle East (''MW3'')<br>[[Al Mazrah/Infrastructure#Zaya Observatory (Zone 4B)|Zaya Observatory]], [[Al Mazrah]], [[United Republic of Adal]] (''MWII'' & ''MWIII'')",
     "label": "Zaya Observatory",
@@ -100,8 +100,8 @@
     }
   },
   "rawPayload": {
-    "revisionTimestamp": "2026-05-01T18:09:59Z",
-    "revisionSha1": "99824bad7c84cd5d9af5afb16c74aabd804bd977",
+    "revisionTimestamp": "2026-09-15T04:51:10Z",
+    "revisionSha1": "977f719ff7b211eecd1602fe8e6ffce6f3afb784",
     "resolvedTitle": "Dome (Modern Warfare 3)",
     "mainImageTitle": "File:Bare_Load_Screen_Dome_MW3.png",
     "mapImageTitle": null

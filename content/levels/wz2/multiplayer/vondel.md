@@ -4,6 +4,15 @@ title: Vondel
 games:
   - wz2
 mode: multiplayer
+modeSub:
+  - battle-royale
+  - dmz
+campaign:
+  id: maps
+  label: Maps
+content-update:
+  id: "2023-06"
+  label: MWII Season 4
 wikiArticle: codwiki-vondel
 locations:
   - id: main

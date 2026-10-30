@@ -6,6 +6,8 @@ import { renderLeafletHistoryOverlay } from "../../../infrastructure/mapping/lea
 import { animateLeafletOverlayOpacity } from "../../../infrastructure/mapping/leaflet/leaflet-overlay-opacity-transition.animator.js";
 import type { LeafletMapRuntime } from "./use-leaflet-map.js";
 import { leafletViewportPadding } from "./use-map-viewport.js";
+import { mapTravelDuration } from "../models/map-travel-duration.js";
+import { OVERLAY_FIT_PRESET } from "../../../shared/config/map-camera.config.js";
 
 export function useHistoryOverlayLayer({
   getDetailsElement,
@@ -26,7 +28,8 @@ export function useHistoryOverlayLayer({
   const focusHistoryOverlay = useCallback((historyOverlay: HistoryOverlayDto, coordinates?: [number, number] | null) => {
     const currentMap = runtime.getMap();
     const mapElement = runtime.getContainer();
-    if (!currentMap || !runtime.getLeaflet() || !mapElement) return;
+    const leaflet = runtime.getLeaflet();
+    if (!currentMap || !leaflet || !mapElement) return;
     const boundsCoordinates = [
       historyOverlay.corners.topLeft,
       historyOverlay.corners.topRight,
@@ -36,8 +39,13 @@ export function useHistoryOverlayLayer({
     ];
     const movement = {
       ...leafletViewportPadding(mapElement, getDetailsElement()),
+      maxZoom: OVERLAY_FIT_PRESET.maximumZoom,
       animate: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
-      duration: .55,
+      duration: mapTravelDuration(
+        currentMap.getCenter().distanceTo(leaflet.latLngBounds(boundsCoordinates).getCenter()),
+        OVERLAY_FIT_PRESET.minimumTravelSeconds,
+        OVERLAY_FIT_PRESET.maximumTravelSeconds,
+      ),
     };
     currentMap.stop();
     if (movement.animate) currentMap.flyToBounds(boundsCoordinates, movement);

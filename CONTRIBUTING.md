@@ -24,6 +24,9 @@ docker compose run --rm --service-ports cod-atlas-tools npm run dev -- --port 30
 
 See [Docker npm commands](docs/docker-commands.md) for other commands.
 
+See the [source architecture and module configuration](src/README.md)
+for implementation details and application/tooling settings.
+
 VSCodium users can run the common commands through **Terminal → Run Task**.
 
 ## Correct an existing level
@@ -103,6 +106,9 @@ instead of putting several IDs in `games`. A reference contains only
 notes inherit from the canonical record. Locations, mode, overlays, and stable
 IDs cannot be overridden. A reference's `content-update` describes its release
 in the appearance game and does not inherit the canonical game's group.
+A Multiplayer reference may supply `modeSub` as a scalar or list to describe
+that appearance's Battle Royale/DMZ memberships; omission inherits the
+canonical value. Other subtypes stay protected.
 A materially changed remake gets its own canonical
 level record instead. Such a distinct canonical variant may set
 `metadata.variantOf`. It may omit `locations` to inherit the linked canonical

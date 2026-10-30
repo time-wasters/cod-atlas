@@ -1,9 +1,12 @@
-export function parseAtlasUrlMode(mode) {
+import { APP_DEFAULTS_CONFIG } from "../../../shared/config/app-defaults.config.js";
+
+export function parseAtlasUrlMode(mode, defaults = APP_DEFAULTS_CONFIG.filters) {
+  if (!mode) return { ...defaults };
   const selectedModes = new Set(mode?.split(",") ?? []);
   return {
-    showSingleplayer: mode == null
-      || mode === "both"
+    showSingleplayer: mode === "both"
       || mode === "all"
+      || selectedModes.has("campaign")
       || selectedModes.has("singleplayer"),
     showMultiplayer: mode === "multiplayer"
       || mode === "both"
@@ -23,7 +26,8 @@ export function parseAtlasUrlMode(mode) {
 }
 
 /** @param {import("../../../application/atlas/ports/atlas-url-state.port.js").AtlasUrlState} state */
-export function serializeAtlasUrlMode(state) {
+export function serializeAtlasUrlMode(state, defaults = APP_DEFAULTS_CONFIG.filters) {
+  if (Object.entries(defaults).every(([key, value]) => state[key] === value)) return null;
   const selectedModes = [
     state.showSingleplayer ? "singleplayer" : null,
     state.showMultiplayer ? "multiplayer" : null,
@@ -33,7 +37,6 @@ export function serializeAtlasUrlMode(state) {
 
   if (selectedModes.length === 4) return "all";
   if (selectedModes.length === 0) return "none";
-  if (selectedModes.length === 1 && selectedModes[0] === "singleplayer") return null;
   if (selectedModes.length === 1) return selectedModes[0];
   if (selectedModes.length === 2 && state.showSingleplayer && state.showMultiplayer) return "both";
   return selectedModes.join(",");

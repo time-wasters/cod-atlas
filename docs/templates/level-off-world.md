@@ -8,13 +8,14 @@ title: Example Level
 games:
   - example-game
 mode: multiplayer
-# modeSub: challenge # Required only when mode is other; special-ops and survival are also valid.
+# modeSub: challenge # other requires special-ops, survival or challenge; multiplayer optionally accepts battle-royale or dmz.
+# modeSub: [battle-royale, dmz] # Multiplayer only: one or more unique subtypes; omit for standard MP.
 wikiArticle: codwiki-example-level
 # metadata:
 #   variantOf: example-game-source-level # Omit locations below to inherit them.
 locations:
   - id: main
-    country: Off-world
+    country: Virtual
     precision: off-world
     confidence: fallback
     method: region-fallback

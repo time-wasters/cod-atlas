@@ -1,7 +1,7 @@
 ---
 id: bo-wmd-mp
 legacyIds:
-  - bo-bo4-bocw-wmd-mp
+  - bo-bo4-bo5-wmd-mp
 title: WMD
 games:
   - bo

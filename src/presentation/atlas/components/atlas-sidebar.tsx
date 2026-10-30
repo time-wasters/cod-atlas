@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useId, useRef, useState } from "react";
-import { createPortal } from "react-dom";
+import { Tooltip } from "../../shared/components/tooltip.js";
 import type { CampaignOption } from "../../../application/campaigns/use-cases/build-campaign-options.js";
 import type { ContentUpdateOption } from "../../../application/content-updates/use-cases/build-content-update-options.js";
 import type { CountryAvailability } from "../../../application/atlas/use-cases/filter-atlas-groups.js";
@@ -18,6 +17,7 @@ import type { AdvancedFilterGroupId } from "../../filters/state/use-atlas-filter
 import { GameSelect } from "../../game-catalog/components/game-select.js";
 import { AtlasFooter } from "./atlas-footer.js";
 import { LevelModeIcon } from "./level-mode-icon.js";
+import { LocationGroupIcon } from "./location-group-icon.js";
 
 type AdvancedFilterViewModel = {
   id: AdvancedFilterGroupId;
@@ -70,56 +70,14 @@ function ResultMetricIcon({ kind }: { kind: ResultMetricKind }) {
 }
 
 function ResultMetric({ kind, value }: { kind: ResultMetricKind; value: number }) {
-  const anchor = useRef<HTMLDivElement>(null);
-  const tooltipId = `result-metric-tooltip-${useId().replaceAll(":", "")}`;
-  const [tooltipPosition, setTooltipPosition] = useState<{
-    top: number;
-    left: number;
-    side: "left" | "right" | "viewport";
-  } | null>(null);
   const copy = RESULT_METRIC_COPY[kind];
-
-  const showTooltip = () => {
-    const rect = anchor.current?.getBoundingClientRect();
-    if (!rect) return;
-    const gap = 9;
-    const tooltipWidth = Math.min(260, window.innerWidth - 16);
-    const fitsRight = rect.right + gap + tooltipWidth <= window.innerWidth - 8;
-    const fitsLeft = rect.left - gap - tooltipWidth >= 8;
-    const side = fitsRight ? "right" : fitsLeft ? "left" : "viewport";
-    setTooltipPosition({
-      top: Math.min(Math.max(28, rect.top + rect.height / 2), window.innerHeight - 28),
-      left: side === "right" ? rect.right + gap : side === "left" ? rect.left - gap : 8,
-      side,
-    });
-  };
-
   return (
-    <div
-      className="result-metric"
-      ref={anchor}
-      tabIndex={0}
-      aria-label={`${copy.label}: ${value}`}
-      aria-describedby={tooltipPosition ? tooltipId : undefined}
-      onMouseEnter={showTooltip}
-      onMouseLeave={() => setTooltipPosition(null)}
-      onFocus={showTooltip}
-      onBlur={() => setTooltipPosition(null)}
-    >
-      <dt><ResultMetricIcon kind={kind} /><span>{copy.label}</span></dt>
-      <dd>{value}</dd>
-      {tooltipPosition && typeof document !== "undefined" && createPortal(
-        <span
-          id={tooltipId}
-          className={`atlas-tooltip is-${tooltipPosition.side}`}
-          style={{ top: tooltipPosition.top, left: tooltipPosition.left }}
-          role="tooltip"
-        >
-          <strong>{copy.label}:</strong> {copy.description}
-        </span>,
-        document.body,
-      )}
-    </div>
+    <Tooltip content={<><strong>{copy.label}:</strong> {copy.description}</>} delay={0}>
+      <div className="result-metric" tabIndex={0} aria-label={`${copy.label}: ${value}`}>
+        <dt><ResultMetricIcon kind={kind} /><span>{copy.label}</span></dt>
+        <dd>{value}</dd>
+      </div>
+    </Tooltip>
   );
 }
 
@@ -140,73 +98,22 @@ function SidebarListTab({
   onSelect: () => void;
   tooltip?: string;
 }) {
-  const anchor = useRef<HTMLButtonElement>(null);
-  const showTimer = useRef<number | null>(null);
-  const tooltipId = `sidebar-list-tooltip-${useId().replaceAll(":", "")}`;
-  const [tooltipPosition, setTooltipPosition] = useState<{
-    top: number;
-    left: number;
-    side: "left" | "right";
-  } | null>(null);
-
-  const hideTooltip = () => {
-    if (showTimer.current !== null) window.clearTimeout(showTimer.current);
-    showTimer.current = null;
-    setTooltipPosition(null);
-  };
-
-  const scheduleTooltip = () => {
-    if (!disabled || !tooltip) return;
-    if (showTimer.current !== null) window.clearTimeout(showTimer.current);
-    showTimer.current = window.setTimeout(() => {
-      showTimer.current = null;
-      const rect = anchor.current?.getBoundingClientRect();
-      if (!rect) return;
-      const gap = 9;
-      const side = rect.right + gap + 260 <= window.innerWidth - 8 ? "right" : "left";
-      setTooltipPosition({
-        top: Math.min(Math.max(28, rect.top + rect.height / 2), window.innerHeight - 28),
-        left: side === "right" ? rect.right + gap : rect.left - gap,
-        side,
-      });
-    }, 300);
-  };
-
-  useEffect(() => () => {
-    if (showTimer.current !== null) window.clearTimeout(showTimer.current);
-  }, []);
-
   return (
-    <button
-      className={`${active ? "is-active" : ""}${disabled ? " is-disabled" : ""}`.trim()}
-      type="button"
-      role="tab"
-      aria-selected={active}
-      aria-controls={controls}
-      aria-disabled={disabled}
-      aria-describedby={tooltipPosition ? tooltipId : undefined}
-      ref={anchor}
-      onClick={() => {
-        if (!disabled) onSelect();
-      }}
-      onMouseEnter={scheduleTooltip}
-      onMouseLeave={hideTooltip}
-      onFocus={scheduleTooltip}
-      onBlur={hideTooltip}
-    >
-      <span>{label}</span><small>{count}</small>
-      {tooltipPosition && tooltip && typeof document !== "undefined" && createPortal(
-        <span
-          id={tooltipId}
-          className={`atlas-tooltip is-${tooltipPosition.side}`}
-          style={{ top: tooltipPosition.top, left: tooltipPosition.left }}
-          role="tooltip"
-        >
-          {tooltip}
-        </span>,
-        document.body,
-      )}
-    </button>
+    <Tooltip content={disabled ? tooltip : undefined}>
+      <button
+        className={`${active ? "is-active" : ""}${disabled ? " is-disabled" : ""}`.trim()}
+        type="button"
+        role="tab"
+        aria-selected={active}
+        aria-controls={controls}
+        aria-disabled={disabled}
+        onClick={() => {
+          if (!disabled) onSelect();
+        }}
+      >
+        <span>{label}</span><small>{count}</small>
+      </button>
+    </Tooltip>
   );
 }
 
@@ -238,11 +145,18 @@ export type AtlasSidebarViewModel = {
     value: string;
   };
   game: {
+    canReset: boolean;
+    count: number;
+    multiple: boolean;
+    filters: AdvancedFilterViewModel[];
     games: GameDto[];
     iconFor: (game: GameDto) => string | null | undefined;
     onChange: (value: string) => void;
+    onToggle: (value: string) => void;
+    onReset: () => void;
     onExternalIconError: (gameId: string) => void;
     onOpenCatalog: () => void;
+    selected: Set<string>;
     value: string;
   };
   modes: {
@@ -278,6 +192,8 @@ export function AtlasSidebar({
 }) {
   const { advanced, browse, country, game, modes, results, search } = viewModel;
   const campaignModeLabel = (campaign: CampaignOption<AtlasGroupDto, AtlasEntryDto>) => {
+    if (campaign.mode === "multiplayer" && campaign.modeSub === "battle-royale") return "Battle Royale";
+    if (campaign.mode === "multiplayer" && campaign.modeSub === "dmz") return "DMZ";
     if (campaign.mode === "other" && campaign.modeSub === "special-ops") return "Special Ops";
     if (campaign.mode === "other" && campaign.modeSub === "survival") return "Survival";
     if (campaign.mode === "other" && campaign.modeSub === "challenge") return "Challenge";
@@ -286,8 +202,11 @@ export function AtlasSidebar({
     return "Singleplayer";
   };
   const campaignSections = [
-    browse.campaigns.filter((campaign) => campaign.mode === "singleplayer"),
-    browse.campaigns.filter((campaign) => campaign.mode === "multiplayer"),
+    browse.campaigns.filter((campaign) => campaign.mode === "singleplayer" && campaign.sequence),
+    browse.campaigns.filter((campaign) => campaign.mode === "singleplayer" && !campaign.sequence),
+    browse.campaigns.filter((campaign) => campaign.mode === "multiplayer" && !campaign.modeSub),
+    browse.campaigns.filter((campaign) => campaign.mode === "multiplayer" && campaign.modeSub === "battle-royale"),
+    browse.campaigns.filter((campaign) => campaign.mode === "multiplayer" && campaign.modeSub === "dmz"),
     browse.campaigns.filter((campaign) => campaign.mode === "zombies"),
     browse.campaigns.filter((campaign) => campaign.mode === "other" && campaign.modeSub === "special-ops"),
     browse.campaigns.filter((campaign) => campaign.mode === "other" && campaign.modeSub === "survival"),
@@ -298,10 +217,11 @@ export function AtlasSidebar({
   ) => {
     const representative = campaigns[0];
     if (!representative) return null;
-    const modeLabel = campaignModeLabel(representative);
-    const heading = `${modeLabel} campaigns`;
+    const heading = representative.mode === "singleplayer"
+      ? representative.sequence ? "Singleplayer Campaign" : "Plot Campaigns"
+      : `${campaignModeLabel(representative)} campaigns`;
     return (
-      <section className="campaign-list-section" aria-label={heading} key={`${representative.mode}:${representative.modeSub ?? ""}`}>
+      <section className="campaign-list-section" aria-label={heading} key={heading}>
         <header className="campaign-list-section-label">
           <LevelModeIcon mode={representative.mode} modeSub={representative.modeSub} />
           <strong>{heading}</strong>
@@ -355,15 +275,21 @@ export function AtlasSidebar({
       <div className="filter-grid">
         <div className="filter-field game-filter">
           <span>
-            <button className="game-catalog-trigger" type="button" aria-haspopup="dialog" onClick={game.onOpenCatalog}>Game</button>
+            <button className="game-catalog-trigger" type="button" aria-haspopup="dialog" onClick={game.onOpenCatalog}>Games</button>
             <small>Oldest to newest</small>
           </span>
           <GameSelect
+            canReset={game.canReset}
+            count={game.count}
+            filters={game.filters.map((filter) => <AdvancedFilterDropdown {...filter} key={filter.id} />)}
             games={game.games}
             iconFor={game.iconFor}
+            multiple={game.multiple}
+            selected={game.selected}
             onExternalIconError={game.onExternalIconError}
-            value={game.value}
             onValueChange={game.onChange}
+            onToggle={game.onToggle}
+            onReset={game.onReset}
           />
         </div>
         <div className="filter-field">
@@ -441,7 +367,7 @@ export function AtlasSidebar({
                 count={browse.campaigns.length}
                 disabled={game.value === "all"}
                 label="Campaigns"
-                tooltip={game.value === "all" ? "Choose a game to browse campaigns" : undefined}
+                tooltip={game.value === "all" ? "Choose exactly one game to browse campaigns" : undefined}
                 onSelect={() => browse.onModeChange("campaigns")}
               />
               <SidebarListTab
@@ -451,7 +377,7 @@ export function AtlasSidebar({
                 disabled={game.value === "all" || browse.contentUpdates.length === 0}
                 label="Updates"
                 tooltip={game.value === "all"
-                  ? "Choose a game to browse content updates"
+                  ? "Choose exactly one game to browse content updates"
                   : "No content-update data is available for this game"}
                 onSelect={() => browse.onModeChange("updates")}
               />
@@ -464,9 +390,9 @@ export function AtlasSidebar({
                     className={group.name === browse.selectedGroupName ? "location-row is-selected" : "location-row"}
                     onClick={() => browse.onGroupSelect(group)}
                   >
-                    <i className="location-marker-icon" aria-hidden="true" />
+                    <LocationGroupIcon group={group} />
                     <span><b>{group.name}</b><small>{group.entries.length} appearances</small></span>
-                    <em>{group.coordinates ? "MAP" : "ORBIT"}</em>
+                    {!group.coordinates && <em>ORBIT</em>}
                   </button>
                 ))}
               </div>

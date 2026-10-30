@@ -14,5 +14,11 @@ locations:
     confidence: fallback
     method: country-fallback
     primary: true
+campaign:
+  id: war
+  label: War
+content-update:
+  id: "0"
+  label: Included
 ---
 

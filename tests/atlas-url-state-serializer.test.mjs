@@ -5,10 +5,10 @@ import { serializeAtlasUrlState } from "../src/infrastructure/browser/url/atlas-
 
 const defaultState = {
   query: "",
-  gameId: "all",
+  gameIds: null,
   country: "all",
   series: [],
-  subseries: [],
+  subseries: ["main"],
   developers: [],
   continents: [],
   precisions: [],
@@ -19,6 +19,7 @@ const defaultState = {
   showZombies: false,
   showOther: false,
   sidebarListMode: "locations",
+  campaignKey: null,
   levelId: null,
   locationId: null,
 };
@@ -27,7 +28,7 @@ test("atlas URL serializer round-trips shareable filters and selection", () => {
   const source = new URL("https://example.com/atlas/?utm_source=test#map");
   const state = {
     query: "Safehouse",
-    gameId: "cod4",
+    gameIds: ["cod4"],
     country: "Azerbaijan",
     series: ["modern-warfare"],
     subseries: ["main"],
@@ -41,6 +42,7 @@ test("atlas URL serializer round-trips shareable filters and selection", () => {
     showZombies: true,
     showOther: true,
     sidebarListMode: "campaigns",
+    campaignKey: "cod4:default:singleplayer:chronological",
     levelId: "cod4-safehouse",
     locationId: "main",
   };
@@ -53,7 +55,7 @@ test("atlas URL serializer round-trips shareable filters and selection", () => {
 
 test("atlas URL serializer omits defaults and encodes every mode-filter state", () => {
   const defaultUrl = serializeAtlasUrlState(
-    "https://example.com/?game=old&level=old",
+    "https://example.com/?games=all&game=old&level=old&campaign=old",
     defaultState,
   );
   assert.equal(defaultUrl.search, "");
@@ -83,10 +85,78 @@ test("atlas URL serializer omits defaults and encodes every mode-filter state", 
 test("atlas URL serializer preserves content-update browsing", () => {
   const url = serializeAtlasUrlState("https://example.com/", {
     ...defaultState,
-    gameId: "waw",
+    gameIds: ["waw"],
     sidebarListMode: "updates",
   });
 
   assert.equal(url.searchParams.get("browse"), "updates");
   assert.equal(parseAtlasUrlState(url).sidebarListMode, "updates");
+});
+
+test("atlas URL serializer clears campaign identity when leaving campaign browsing", () => {
+  const url = serializeAtlasUrlState("https://example.com/?browse=campaigns&campaign=old", {
+    ...defaultState,
+    sidebarListMode: "updates",
+    campaignKey: "fixture:default:singleplayer:chronological",
+  });
+  assert.equal(url.searchParams.has("campaign"), false);
+});
+
+test("atlas URL serializer round-trips a stable multiple-game selection", () => {
+  const url = serializeAtlasUrlState("https://example.com/?game=old", {
+    ...defaultState,
+    gameIds: ["fixture-b", "fixture-a", "fixture-b"],
+  });
+  assert.equal(url.searchParams.get("game"), "fixture-a,fixture-b");
+  assert.deepEqual(parseAtlasUrlState(url).gameIds, ["fixture-a", "fixture-b"]);
+  assert.equal(serializeAtlasUrlState(url, defaultState).searchParams.has("game"), false);
+});
+
+test("an empty game selection stays empty when sharing and restoring the URL", () => {
+  const state = { ...defaultState, gameIds: [], series: ["fixture-series"] };
+  const url = serializeAtlasUrlState("https://example.com/?game=fixture-a", state);
+  assert.equal(url.searchParams.get("game"), "none");
+  assert.deepEqual(parseAtlasUrlState(url), state);
+});
+
+test("template-only links keep the template and campaign without a game list", () => {
+  const state = {
+    ...defaultState,
+    series: ["fixture-series"],
+    subseries: ["main"],
+    developers: ["fixture-studio"],
+    sidebarListMode: "campaigns",
+    campaignKey: "fixture:default:singleplayer:chronological",
+  };
+  const url = serializeAtlasUrlState("https://example.com/?game=old", state);
+  assert.equal(url.searchParams.has("game"), false);
+  assert.deepEqual(parseAtlasUrlState(url), state);
+});
+
+test("default Main and Campaign remain an empty URL and restore the same selection", () => {
+  const url = serializeAtlasUrlState("https://example.com/?subseries=main&mode=singleplayer", defaultState);
+  assert.equal(url.search, "");
+  assert.deepEqual(parseAtlasUrlState(url), defaultState);
+});
+
+test("explicit all-games selection round-trips as games=all", () => {
+  const state = { ...defaultState, gameIds: "all", subseries: [] };
+  const url = serializeAtlasUrlState("https://example.com/?game=old&subseries=main", state);
+  assert.equal(url.search, "?games=all");
+  assert.deepEqual(parseAtlasUrlState(url), state);
+});
+
+test("explicit all games can preserve a template for later checkbox adjustments", () => {
+  const state = { ...defaultState, gameIds: "all" };
+  const url = serializeAtlasUrlState("https://example.com/", state);
+  assert.equal(url.searchParams.get("games"), "all");
+  assert.equal(url.searchParams.get("subseries"), "main");
+  assert.deepEqual(parseAtlasUrlState(url), state);
+});
+
+test("Main stays explicit when it combines with another template constraint", () => {
+  const state = { ...defaultState, series: ["fixture-series"] };
+  const url = serializeAtlasUrlState("https://example.com/", state);
+  assert.equal(url.searchParams.get("subseries"), "main");
+  assert.deepEqual(parseAtlasUrlState(url), state);
 });

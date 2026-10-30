@@ -9,6 +9,7 @@ import { ExternalLinkIcon } from "../../shared/components/external-link-icon.js"
 import { GameIcon } from "../../game-catalog/components/game-icon.js";
 import { FittedLevelTitle } from "./fitted-level-title.js";
 import { LevelModeIcon } from "./level-mode-icon.js";
+import { Tooltip } from "../../shared/components/tooltip.js";
 
 export type LevelGameViewModel = {
   external: boolean;
@@ -30,6 +31,30 @@ type LevelDetailsViewModel = {
   mapOverlay: { available: boolean; enabled: boolean };
   otherLocations: { group: AtlasGroupDto; entry: AtlasEntryDto }[];
 };
+
+function PlaceLink({ href, icon, title, ariaLabel }: {
+  href: string | null;
+  icon: "googleMaps" | "wikipedia" | "callOfDutyMaps" | "fandom";
+  title: string;
+  ariaLabel: string;
+}) {
+  return (
+    <Tooltip content={href ? title : `${title} unavailable`}>
+      <a
+        href={href || undefined}
+        target="_blank"
+        rel="noreferrer"
+        className={href ? undefined : "is-disabled"}
+        role={href ? undefined : "link"}
+        aria-disabled={href ? undefined : true}
+        aria-label={href ? ariaLabel : `${title} unavailable`}
+        tabIndex={href ? undefined : -1}
+      >
+        <ExternalLinkIcon name={icon} />
+      </a>
+    </Tooltip>
+  );
+}
 
 function LocationCountry({ group, entry }: { group: AtlasGroupDto; entry: AtlasEntryDto }) {
   return (
@@ -65,6 +90,7 @@ export function LevelDetailsPanel({
 }: {
   actions: {
     onFocus: () => void;
+    onCenter: () => void;
     onGameIconError: (gameId: string) => void;
     onToggleBriefing: () => void;
     onToggleDetails: () => void;
@@ -77,6 +103,7 @@ export function LevelDetailsPanel({
   viewModel: LevelDetailsViewModel;
 }) {
   const { appearance, entry, group } = viewModel;
+  const selectionKey = `${entry.id}:${appearance.gameId}`;
   const precisionLabel = entry.precision === "approximate"
     ? "Approximate historical position"
     : !["country", "off-world"].includes(entry.precision)
@@ -106,9 +133,9 @@ export function LevelDetailsPanel({
         <span>{appearance.title}</span>
       </button>
       <article className="intel-card" id="selected-level-details">
-        <div className="mission-heading">
-          <LevelModeIcon mode={entry.modes[0]} modeSub={entry.modeSub} tooltip />
-          <FittedLevelTitle disabled={!entry.coordinates} onActivate={actions.onFocus}>{appearance.title}</FittedLevelTitle>
+        <div className="mission-heading" key={`heading:${selectionKey}`}>
+          <LevelModeIcon mode={entry.modes[0]} modeSub={appearance.modeSub ?? entry.modeSub} tooltip />
+          <FittedLevelTitle disabled={!entry.coordinates} onActivate={actions.onFocus} onDoubleActivate={actions.onCenter}>{appearance.title}</FittedLevelTitle>
           <div className="mission-games">
             {viewModel.games.map(({ external, game, icon }) => icon ? (
               <GameIcon
@@ -126,55 +153,59 @@ export function LevelDetailsPanel({
           </div>
         </div>
         {media}
-        <div className="intel-location-row">
-          <LocationCountry group={group} entry={entry} />
-          {viewModel.mapOverlay.available && (
-            <button
-              className={`map-overlay-toggle${viewModel.mapOverlay.enabled ? " is-enabled" : ""}`}
-              type="button"
-              aria-pressed={viewModel.mapOverlay.enabled}
-              aria-label={`${viewModel.mapOverlay.enabled ? "Hide" : "Show"} game map overlay`}
-              title={`${viewModel.mapOverlay.enabled ? "Hide" : "Show"} game map overlay`}
-              onClick={actions.onToggleMapOverlay}
-            >
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5Zm-9 9 9 5 9-5M3 16l9 5 9-5" /></svg>
-            </button>
-          )}
-        </div>
-        <LocationTaxonomy entry={entry} />
-        <div className={`precision-badge ${entry.precision === "approximate" ? "is-approximate" : !["country", "off-world"].includes(entry.precision) ? "is-city" : "is-country"}`}>
-          {locationContextLabel}{precisionLabel}
-        </div>
-        {viewModel.otherLocations.length > 0 && (
-          <div className="related-level-locations" aria-label="Other locations in this level">
-            {viewModel.otherLocations.map(({ group: otherGroup, entry: otherEntry }) => (
-              <div className="related-level-location" key={otherEntry.id}>
-                <LocationCountry group={otherGroup} entry={otherEntry} />
-                <LocationTaxonomy entry={otherEntry} />
-              </div>
-            ))}
+        <div className="intel-mission-details" key={`details:${selectionKey}`}>
+          <div className="intel-location-row">
+            <LocationCountry group={group} entry={entry} />
+            {viewModel.mapOverlay.available && (
+              <Tooltip content={`${viewModel.mapOverlay.enabled ? "Hide" : "Show"} game map overlay`}>
+                <button
+                  className={`map-overlay-toggle${viewModel.mapOverlay.enabled ? " is-enabled" : ""}`}
+                  type="button"
+                  aria-pressed={viewModel.mapOverlay.enabled}
+                  aria-label={`${viewModel.mapOverlay.enabled ? "Hide" : "Show"} game map overlay`}
+                  onClick={actions.onToggleMapOverlay}
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5Zm-9 9 9 5 9-5M3 16l9 5 9-5" /></svg>
+                </button>
+              </Tooltip>
+            )}
           </div>
-        )}
-        <div className="place-links" aria-label="External place links">
-          {viewModel.links.googleMaps && <a href={viewModel.links.googleMaps} target="_blank" rel="noreferrer" aria-label="Open in Google Maps" title="Google Maps"><ExternalLinkIcon name="googleMaps" /><span>Google Maps</span></a>}
-          {viewModel.links.wikipedia && <a href={viewModel.links.wikipedia} target="_blank" rel="noreferrer" aria-label="Open on Wikipedia" title="Wikipedia"><ExternalLinkIcon name="wikipedia" /><span>Wikipedia</span></a>}
-          {viewModel.links.callOfDutyMaps && <a href={viewModel.links.callOfDutyMaps} target="_blank" rel="noreferrer" aria-label="Open this map on Call of Duty Maps" title="Call of Duty Maps"><ExternalLinkIcon name="callOfDutyMaps" /><span>CoD Maps</span></a>}
-          <a href={appearance.wiki} target="_blank" rel="noreferrer" aria-label="Open on Call of Duty Wiki" title="Call of Duty Wiki"><ExternalLinkIcon name="fandom" /><span>CoD Wiki</span></a>
+          <LocationTaxonomy entry={entry} />
+          <div className={`precision-badge ${entry.precision === "approximate" ? "is-approximate" : !["country", "off-world"].includes(entry.precision) ? "is-city" : "is-country"}`}>
+            {locationContextLabel}{precisionLabel}
+          </div>
+          {viewModel.otherLocations.length > 0 && (
+            <div className="related-level-locations" aria-label="Other locations in this level">
+              {viewModel.otherLocations.map(({ group: otherGroup, entry: otherEntry }) => (
+                <div className="related-level-location" key={otherEntry.id}>
+                  <LocationCountry group={otherGroup} entry={otherEntry} />
+                  <LocationTaxonomy entry={otherEntry} />
+                </div>
+              ))}
+            </div>
+          )}
+          <div className="place-links" aria-label="External place links">
+            <PlaceLink href={viewModel.links.googleMaps} icon="googleMaps" title="Google Maps" ariaLabel="Open in Google Maps" />
+            <PlaceLink href={viewModel.links.wikipedia} icon="wikipedia" title="Wikipedia" ariaLabel="Open on Wikipedia" />
+            <PlaceLink href={viewModel.links.callOfDutyMaps} icon="callOfDutyMaps" title="Call of Duty Maps" ariaLabel="Open this map on Call of Duty Maps" />
+            <PlaceLink href={appearance.wiki || entry.wiki || null} icon="fandom" title="Call of Duty Wiki" ariaLabel="Open on Call of Duty Wiki" />
+          </div>
+          <section className="level-briefing">
+            <Tooltip content={appearance.hasLevelNotes ? undefined : "No level briefing available"}>
+              <button
+                className="level-briefing-toggle"
+                type="button"
+                aria-expanded={viewModel.briefingExpanded}
+                aria-controls={appearance.hasLevelNotes ? "selected-level-briefing" : undefined}
+                onClick={actions.onToggleBriefing}
+                disabled={!appearance.hasLevelNotes}
+              >
+                <b aria-hidden="true">{viewModel.briefingExpanded ? "›" : "‹"}</b>
+                <span><small>Level briefing</small><strong>{appearance.hasLevelNotes ? "Research & historical context" : "No briefing available"}</strong></span>
+              </button>
+            </Tooltip>
+          </section>
         </div>
-        <section className="level-briefing">
-          <button
-            className="level-briefing-toggle"
-            type="button"
-            aria-expanded={viewModel.briefingExpanded}
-            aria-controls={appearance.hasLevelNotes ? "selected-level-briefing" : undefined}
-            onClick={actions.onToggleBriefing}
-            disabled={!appearance.hasLevelNotes}
-            title={appearance.hasLevelNotes ? undefined : "No level briefing available"}
-          >
-            <b aria-hidden="true">{viewModel.briefingExpanded ? "›" : "‹"}</b>
-            <span><small>Level briefing</small><strong>{appearance.hasLevelNotes ? "Research & historical context" : "No briefing available"}</strong></span>
-          </button>
-        </section>
       </article>
       {relatedLevels}
     </div>

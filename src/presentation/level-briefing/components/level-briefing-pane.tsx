@@ -1,6 +1,7 @@
 "use client";
 
 import ReactMarkdown from "react-markdown";
+import { Tooltip } from "../../shared/components/tooltip.js";
 import type { HistoryOverlayDto } from "../../../infrastructure/atlas-data/dto/history-overlay.dto.js";
 
 type BriefingState = {
@@ -42,37 +43,44 @@ export function LevelBriefingPane({
         {briefing?.status === "ready" && briefing.content && (
           <ReactMarkdown
             components={{
-              a: ({ children, ...props }) => <a {...props} target="_blank" rel="noreferrer">{children}</a>,
-              img: ({ src = "", alt = "" }) => {
+              a: ({ children, title: linkTooltip, ...props }) => (
+                <Tooltip content={linkTooltip}><a {...props} target="_blank" rel="noreferrer">{children}</a></Tooltip>
+              ),
+              img: ({ src = "", alt = "", title: imageTooltip }) => {
                 const imageSource = typeof src === "string" ? src : "";
                 const historyOverlay = historyOverlays.find(
                   (overlay) => imageBasename(overlay.image) === imageBasename(imageSource),
                 );
                 if (!historyOverlay) {
                   // Markdown images are authored content and cannot use the Next image optimizer.
-                  // eslint-disable-next-line @next/next/no-img-element
-                  return <img src={imageSource} alt={alt} />;
+                  return (
+                    <Tooltip content={imageTooltip}>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={imageSource} alt={alt} tabIndex={imageTooltip ? 0 : undefined} />
+                    </Tooltip>
+                  );
                 }
                 const isActive = activeOverlayId === historyOverlay.id;
                 const action = isActive ? "Hide from map" : "Show on map";
                 const imageUrl = new URL(historyOverlay.image.replace(/^\/+/, ""), document.baseURI).href;
                 return (
-                  <button
-                    className={`history-overlay-image${isActive ? " is-active" : ""}`}
-                    type="button"
-                    aria-pressed={isActive}
-                    aria-label={`${action}: ${historyOverlay.attribution.title}`}
-                    title={`${action}: ${historyOverlay.attribution.title}`}
-                    onClick={() => onToggleHistoryOverlay(historyOverlay)}
-                  >
-                    {/* Repository-hosted research figures do not use the Next image optimizer. */}
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={imageUrl} alt={alt || historyOverlay.attribution.title} />
-                    <span>
-                      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5Zm-9 9 9 5 9-5M3 16l9 5 9-5" /></svg>
-                      {action}
-                    </span>
-                  </button>
+                  <Tooltip content={`${action}: ${historyOverlay.attribution.title}`}>
+                    <button
+                      className={`history-overlay-image${isActive ? " is-active" : ""}`}
+                      type="button"
+                      aria-pressed={isActive}
+                      aria-label={`${action}: ${historyOverlay.attribution.title}`}
+                      onClick={() => onToggleHistoryOverlay(historyOverlay)}
+                    >
+                      {/* Repository-hosted research figures do not use the Next image optimizer. */}
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={imageUrl} alt={alt || historyOverlay.attribution.title} />
+                      <span>
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5 9-5Zm-9 9 9 5 9-5M3 16l9 5 9-5" /></svg>
+                        {action}
+                      </span>
+                    </button>
+                  </Tooltip>
                 );
               },
             }}

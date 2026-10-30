@@ -1,3 +1,5 @@
+import { WIKI_IMPORT_CONFIG } from "./wiki-configuration.mjs";
+
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 function wikiApiUrl(parameters, configuration) {
@@ -6,7 +8,7 @@ function wikiApiUrl(parameters, configuration) {
     action: "query",
     format: "json",
     formatversion: "2",
-    maxlag: "1",
+    maxlag: WIKI_IMPORT_CONFIG.maximumServerLagSeconds,
     ...parameters,
   })) {
     url.searchParams.set(name, String(value));
@@ -18,10 +20,10 @@ export async function requestWikiApi(parameters, options, state, configuration) 
   if (state.count) await sleep(options.delayMs);
   state.count += 1;
   const url = wikiApiUrl(parameters, configuration);
-  for (let attempt = 0; attempt < 4; attempt += 1) {
+  for (let attempt = 0; attempt < WIKI_IMPORT_CONFIG.maximumAttempts; attempt += 1) {
     const response = await fetch(url, {
       headers: { Accept: "application/json", "User-Agent": configuration.userAgent },
-      signal: AbortSignal.timeout(30_000),
+      signal: AbortSignal.timeout(WIKI_IMPORT_CONFIG.requestTimeoutMs),
     });
     const payload = response.ok ? await response.json() : null;
     const temporary = response.status === 429
@@ -32,11 +34,13 @@ export async function requestWikiApi(parameters, options, state, configuration) 
       if (payload.error) throw new Error(`Wiki API error ${payload.error.code}: ${payload.error.info}`);
       return payload;
     }
-    if (attempt === 3) throw new Error("Wiki API remained busy after four attempts; stopping");
+    if (attempt === WIKI_IMPORT_CONFIG.maximumAttempts - 1) {
+      throw new Error(`Wiki API remained busy after ${WIKI_IMPORT_CONFIG.maximumAttempts} attempts; stopping`);
+    }
     const retryAfterHeader = response.headers.get("retry-after");
     const retryAfter = retryAfterHeader === null ? Number.NaN : Number(retryAfterHeader);
     await sleep(Number.isFinite(retryAfter) && retryAfter > 0
       ? retryAfter * 1_000
-      : options.delayMs * (2 ** (attempt + 1)));
+      : options.delayMs * (WIKI_IMPORT_CONFIG.retryBackoffFactor ** (attempt + 1)));
   }
 }

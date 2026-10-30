@@ -4,6 +4,7 @@ title: Verdansk
 games:
   - wz
 mode: multiplayer
+modeSub: battle-royale
 wikiArticle: codwiki-verdansk
 locations:
   - id: main

@@ -63,7 +63,7 @@ Prefer `content/levels/<game>/<map-type>/<filename>`:
 | Mode | Subtype | Directory | Canonical filename |
 | --- | --- | --- | --- |
 | `singleplayer` | — | `campaign/` | `<order>-<descriptive-name>.md` |
-| `multiplayer` | — | `multiplayer/` | `<descriptive-name>.md` |
+| `multiplayer` | optional `battle-royale`, `dmz` | `multiplayer/` | `<descriptive-name>.md` |
 | `zombies` | — | `zombies/` | `<descriptive-name>.md` |
 | `other` | `special-ops` | `special-ops/` | `<descriptive-name>.md` |
 | `other` | `survival` | `survival/` | `<descriptive-name>.md` |
@@ -78,6 +78,17 @@ Campaign order starts at `1`, without leading zeros, unique and contiguous
 per game. It records play order, never part of stable ID or display title.
 Descriptive filenames organize files independently of IDs.
 
+The sidebar lists all ordered singleplayer appearances as **In-Game Order**
+under **Singleplayer Campaign**, alongside **Chronological** when available.
+Named singleplayer campaign sections declared in level files appear separately
+under **Plot Campaigns**.
+Compilation also derives `chronologicalOrder` on game appearances when imported
+Wiki previous/next links establish a complete, unambiguous sequence with explicit
+chronological evidence. Explicit chronological neighbors replace conflicting
+in-game neighbors; unaffected in-game links complete the sequence. Missing,
+unresolved, branching, or cyclic sequences leave **Chronological** unavailable.
+`chronologicalOrder` is generated data, not a supported curated frontmatter field.
+
 A canonical `.md` owns stable ID, mode/subtype, overlays, and research,
 normally embedding locations; a variant may inherit via `metadata.variantOf`.
 Unchanged appearances use `<descriptive-name>.ref.md` under the appearance
@@ -89,8 +100,30 @@ YAML frontmatter holds structured data; Markdown holds research/editorial notes.
 See the [field guide](contributing-data.md#level-fields) and [templates](templates/).
 
 Required: repository-wide `id`, readable `title`, `games` containing exactly
-one canonical owner ID, `mode`, `wikiArticle`. Only `other` requires
-`modeSub` (`special-ops`, `survival`, `challenge`); other modes omit it.
+one canonical owner ID, `mode`, `wikiArticle`. `other` requires `modeSub`
+(`special-ops`, `survival`, `challenge`). `multiplayer` optionally accepts
+`modeSub: battle-royale`, `modeSub: dmz`, or a non-empty list of unique
+multiplayer subtypes; omit it for standard multiplayer.
+`singleplayer` and `zombies` omit it. Multiplayer subtypes keep the
+`multiplayer/` directory and remain included by the Multiplayer mode filter.
+Multiplayer references may supply appearance-specific subtypes; omission
+inherits the canonical value. This allows one map to appear in multiple
+multiplayer subtypes within a game without adding levels or markers.
+Other subtypes remain scalar and protected on references.
+
+For example, Mobile's single Rebirth Island appearance supports both modes:
+
+```yaml
+level: wz-rebirth-island
+modeSub:
+  - battle-royale
+  - dmz
+```
+
+Compilation preserves scalar/list values and exposes resolved multiplayer
+subtypes on appearances. Campaign browsing includes a map in each of its
+subtype sections; overlapping memberships do not increase the unique level
+or marker total. The details tooltip uses the selected appearance's subtypes.
 
 `locations` embeds zero or more locations. Omit only to inherit from another
 canonical level via `metadata.variantOf`; explicit `[]` intentionally stays
@@ -104,7 +137,7 @@ Optional fields:
 
 - `campaign`: named section with stable string `id` and readable `label`,
   independent of filename order. Keep IDs through label corrections/translations.
-  Identity includes mode and, for `other`, subtype, so matching campaign IDs
+  Identity includes mode and subtype when present, so matching campaign IDs
   across categories remain separate interface groups.
 - `content-update`: original release/map pack/season/other release grouping,
   valid across all modes/subtypes within a game. Stable string `id` controls
@@ -171,12 +204,17 @@ wikiArticle: codwiki-carentan-remastered
 Optional notes specific to this appearance.
 ```
 
-Only `level`, `title`, `wikiArticle`, `campaign`, `content-update`, `metadata` are accepted;
+Only `level`, `title`, `wikiArticle`, `campaign`, `content-update`, `metadata`,
+and Multiplayer-only `modeSub` are accepted;
 omitted values inherit. Nonempty Markdown precedes canonical notes; empty bodies
-show canonical notes only. No overriding `id`, `games`, `mode`, `modeSub`,
+show canonical notes only. No overriding `id`, `games`, `mode`, Other `modeSub`,
 locations, precision/confidence/method, or geographic overlays. Material changes
 to geography/playable layout require a new canonical record; a shared name
 alone does not justify a reference.
+
+A Multiplayer reference's `modeSub` applies only to that game appearance and
+does not change the canonical level or other appearances. It accepts the same
+scalar/list multiplayer values as a canonical record. Omit it to inherit.
 
 `content-update` on a reference describes its release group in the appearance
 game. It does not inherit the canonical game's release group; omission leaves

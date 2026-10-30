@@ -1,6 +1,12 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
+import { APP_DEFAULTS_CONFIG } from "../../../shared/config/app-defaults.config.js";
+import { MAP_CAMERA_CONFIG } from "../../../shared/config/map-camera.config.js";
+import { MAP_MARKERS_CONFIG } from "../../../shared/config/map-markers.config.js";
+import { CAMPAIGN_ROUTE_CONFIG } from "../../../shared/config/campaign-route.config.js";
+import { COUNTRY_BOUNDARY_CONFIG } from "../../../shared/config/country-boundary.config.js";
+import { LOCATION_ZOOM_CONFIG } from "../../../shared/config/location-zoom.config.js";
 import { findRelatedLevels } from "../../../application/atlas/use-cases/find-related-levels.js";
 import { getGameModeAvailability } from "../../../application/atlas/use-cases/get-game-mode-availability.js";
 import {
@@ -42,6 +48,8 @@ import type { AtlasPageProps } from "./atlas-page.props.js";
 import { buildAtlasFilterCatalog } from "../../filters/models/build-atlas-filter-catalog.js";
 import { useAtlasFilters } from "../../filters/state/use-atlas-filters.js";
 import { useAtlasCampaignSelection } from "../../campaigns/hooks/use-atlas-campaign-selection.js";
+import { useCampaignPlayback } from "../../campaigns/hooks/use-campaign-playback.js";
+import { CampaignPlaybackControls } from "../../campaigns/components/campaign-playback-controls.js";
 import { GameCatalogDialog } from "../../game-catalog/components/game-catalog-dialog.js";
 import { LevelBriefingPane } from "../../level-briefing/components/level-briefing-pane.js";
 import { useLevelBriefing } from "../../level-briefing/hooks/use-level-briefing.js";
@@ -51,6 +59,7 @@ import { useHistoryOverlayLayer } from "../../map/hooks/use-history-overlay-laye
 import { useLeafletMap } from "../../map/hooks/use-leaflet-map.js";
 import { useLeafletMarkers } from "../../map/hooks/use-leaflet-markers.js";
 import { useMapOverlayLayer } from "../../map/hooks/use-map-overlay-layer.js";
+import { useMapOverlayPreloading } from "../../map/hooks/use-map-overlay-preloading.js";
 import { useMapViewport } from "../../map/hooks/use-map-viewport.js";
 import { useSelectedMapOverlay } from "../../map/hooks/use-selected-map-overlay.js";
 import { SettingsDialog } from "../../settings/components/settings-dialog.js";
@@ -72,6 +81,7 @@ export function AtlasPage({
   kmlFileDownloaderPort,
   levelBriefingPort,
   mapOverlays,
+  overlayImagePort,
 }: AtlasPageProps) {
   const { group: initialGroup, entry: initialEntry } = initialAtlasSelection(data);
   const filterCatalog = useMemo(() => buildAtlasFilterCatalog(data), [data]);
@@ -79,6 +89,8 @@ export function AtlasPage({
   const {
     query,
     game,
+    gameSelection,
+    selectedGames,
     country,
     gameSeries,
     gameSubseries,
@@ -94,9 +106,12 @@ export function AtlasPage({
     applyUrlState: applyFilterUrlState,
     resetAdvancedFilters: resetAdvancedFilterState,
   } = filters;
-  const [sidebarOpen, setSidebarOpen] = useState(true);
-  const [detailsOpen, setDetailsOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(APP_DEFAULTS_CONFIG.panels.sidebarOpen);
+  const [detailsOpen, setDetailsOpen] = useState(APP_DEFAULTS_CONFIG.panels.detailsOpen);
+  const [selectionVersion, setSelectionVersion] = useState(0);
+  const [locationBoundaryGroup, setLocationBoundaryGroup] = useState<string | null>(null);
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [campaignTravelPending, setCampaignTravelPending] = useState(false);
   const {
     enabled: externalIconsEnabled,
     unavailable: externalIconManifestUnavailable,
@@ -118,10 +133,10 @@ export function AtlasPage({
   } = useCampaignRouteAnimationPreference(clientSettingsPort);
   const [solarSystemDisplay, setSolarSystemDisplay] = useState({
     hasSpaceLocations: true,
-    expanded: true,
+    expanded: APP_DEFAULTS_CONFIG.panels.solarSystemExpanded,
   });
   const [expandedRegionEntryId, setExpandedRegionEntryId] = useState<string | null>(null);
-  const [relatedLevelsOpen, setRelatedLevelsOpen] = useState(true);
+  const [relatedLevelsOpen, setRelatedLevelsOpen] = useState(APP_DEFAULTS_CONFIG.panels.relatedLevelsOpen);
   const {
     selected,
     selectionInUrl,
@@ -133,6 +148,7 @@ export function AtlasPage({
   });
   const {
     ready: mapReady,
+    moving: mapMoving,
     runtime: leafletMap,
     mapNode,
     prepareMarkerSelection,
@@ -144,10 +160,10 @@ export function AtlasPage({
   const getMapDetailsElement = useCallback(() => intelCard.current, []);
   const openGameCatalog = useCallback(() => gameCatalogDialog.current?.showModal(), []);
   const gameModeAvailability = useMemo(() => getGameModeAvailability({
-    gameCode: game,
+    gameCodes: gameSelection,
     games: data.games,
     groups: data.groups,
-  }), [data.games, data.groups, game]);
+  }), [data.games, data.groups, gameSelection]);
 
   const {
     countries,
@@ -159,11 +175,8 @@ export function AtlasPage({
     data,
     criteria: {
       query,
-      gameCode: game,
+      gameCodes: gameSelection,
       country,
-      gameSeries,
-      gameSubseries,
-      developers,
       continents,
       precisions,
       confidences,
@@ -203,11 +216,6 @@ export function AtlasPage({
     && selectedCollectionGame
     && selectedCollectionGameIcon !== selectedCollectionGame.icon,
   );
-  const hasSpaceLocations = spaceLocations.length > 0;
-  // Re-open the schematic when changed filters make off-world results available again.
-  const solarSystemExpanded = solarSystemDisplay.hasSpaceLocations === hasSpaceLocations
-    ? solarSystemDisplay.expanded
-    : hasSpaceLocations;
   const selectedEntryLinks = buildAtlasEntryLinks(selected.entry);
   const selectedGameId = atlasDataIndex.findGameByCode(game)?.id ?? null;
   const {
@@ -224,6 +232,7 @@ export function AtlasPage({
     expanded: levelNotesExpanded,
     briefing: selectedLevelNotes,
     toggle: toggleLevelNotes,
+    open: openLevelBriefing,
     collapse: collapseLevelBriefing,
   } = useLevelBriefing({
     levelId: selectedAppearance.notesId,
@@ -231,16 +240,58 @@ export function AtlasPage({
     port: levelBriefingPort,
   });
 
+  const { nextOverlayReady } = useMapOverlayPreloading({
+    selectedEntry: selected.entry,
+    campaign: selectedCampaign,
+    overlays: mapOverlays,
+    images: overlayImagePort,
+  });
+  const campaignPlayback = useCampaignPlayback({
+    campaign: selectedCampaign,
+    filterScope: filtered,
+    selectionVersion,
+    ready: mapReady && !mapMoving && !campaignTravelPending && !settingsOpen
+      && selectedLevelNotes?.status !== "loading" && nextOverlayReady,
+    onVisit: visitCampaignLevel,
+  });
+  useEffect(() => {
+    const map = leafletMap.getMap();
+    if (!mapReady || !map) return;
+    const container = map.getContainer();
+    map.on("dragstart", campaignPlayback.pause);
+    container.addEventListener("wheel", campaignPlayback.pause, { passive: true });
+    return () => {
+      map.off("dragstart", campaignPlayback.pause);
+      container.removeEventListener("wheel", campaignPlayback.pause);
+    };
+  }, [campaignPlayback.pause, leafletMap, mapReady]);
+  // A tour shows its whole campaign; ending it restores the user's filters.
+  const mapGroups = useMemo(() => {
+    if (!campaignPlayback.active || !selectedCampaign) return filtered;
+    const levelIds = new Set(selectedCampaign.levels.map(({ entry }) => entry.levelId));
+    return groups.map((group) => ({ ...group,
+      entries: group.entries.filter((entry) => levelIds.has(entry.levelId)),
+    })).filter((group) => group.entries.length > 0);
+  }, [campaignPlayback.active, filtered, groups, selectedCampaign]);
+  const displayedSpaceLocations = useMemo(() => campaignPlayback.active
+    ? mapGroups.flatMap((group) => group.entries.filter((entry) => entry.precision === "off-world")
+      .map((entry) => ({ group, entry })))
+    : spaceLocations, [campaignPlayback.active, mapGroups, spaceLocations]);
+  const hasSpaceLocations = displayedSpaceLocations.length > 0;
+  const solarSystemExpanded = solarSystemDisplay.hasSpaceLocations === hasSpaceLocations
+    ? solarSystemDisplay.expanded : hasSpaceLocations && APP_DEFAULTS_CONFIG.panels.solarSystemExpanded;
+
   /**
    * Restores shareable URL state and clears transient UI tied to the previous selection.
    */
   const applyAtlasUrlState = useCallback((urlState: AppliedAtlasUrlState<AtlasSelection>) => {
+    setSelectionVersion((version) => version + 1);
     applyFilterUrlState(urlState.filters);
     applyUrlSelection(urlState.selection);
     setSidebarListMode(urlState.sidebarListMode);
     setUrlCampaignLevelId(urlState.campaignLevelId);
     setUrlContentUpdateLevelId(urlState.contentUpdateLevelId);
-    setSelectedCampaignKey(null);
+    setSelectedCampaignKey(urlState.campaignKey);
     setSelectedContentUpdateKey(null);
     setExpandedRegionEntryId(null);
     collapseLevelBriefing();
@@ -261,9 +312,11 @@ export function AtlasPage({
     finishSearchUpdate,
   } = useAtlasUrlSync<AtlasSelection>({
     dataIndex: atlasDataIndex,
+    games,
     filters: {
       query,
-      game,
+      gameSelection,
+      selectedGames,
       country,
       gameSeries,
       gameSubseries,
@@ -280,6 +333,7 @@ export function AtlasPage({
     selected,
     selectionInUrl,
     sidebarListMode,
+    campaignKey: selectedCampaign?.key ?? null,
     urlStatePort: atlasUrlStatePort,
     onApplyUrlState: applyAtlasUrlState,
   });
@@ -296,11 +350,12 @@ export function AtlasPage({
     selected,
     collectionLevels: selectedLevelCollection?.levels,
   });
+  // Keep the expanded list open while selecting levels in the same collection.
   const relatedLevelsExpansionKey = selectedCampaign
     ? `campaign:${selectedCampaign.key}`
     : selectedContentUpdate
       ? `update:${selectedContentUpdate.key}`
-      : selected.entry.id;
+      : `region:${selected.group.name}`;
   const relatedLevelsExpanded = expandedRegionEntryId === relatedLevelsExpansionKey;
   const {
     enabled: selectedMapOverlayEnabled,
@@ -316,9 +371,9 @@ export function AtlasPage({
    * Applies the canonical selection transition and resets level-scoped presentation state.
    */
   const selectEntry = useCallback((group: AtlasGroupDto, entry: AtlasEntryDto) => {
+    setSelectionVersion((version) => version + 1);
     setNextHistoryMode("push");
     selectAtlasEntry(group, entry);
-    setExpandedRegionEntryId(null);
     collapseLevelBriefing();
     setActiveHistoryOverlay(null);
   }, [collapseLevelBriefing, selectAtlasEntry, setNextHistoryMode]);
@@ -335,24 +390,18 @@ export function AtlasPage({
     ? new Set(selectedLevelCollection.levels.map(({ entry }) => entry.levelId))
     : null, [selectedLevelCollection]);
   const selectedCountryCode = country === "all"
-    ? null
+    ? selected.group.name === locationBoundaryGroup ? selected.group.flagCode : null
     : countries.find((candidate) => candidate.name === country)?.flagCode ?? null;
 
-  useLeafletMarkers({
+  const { replaySelectedMarkerPulse } = useLeafletMarkers({
     focusedLevelIds,
-    filteredGroups: filtered,
+    filteredGroups: mapGroups,
     locationLabel: formatAtlasLocationName,
     onSelect: selectMapMarker,
     ready: mapReady,
     runtime: leafletMap,
     selected,
   });
-  useCountryBoundaryLayer({
-    countryCode: selectedCountryCode,
-    ready: mapReady,
-    runtime: leafletMap,
-  });
-
   // These hooks share one Leaflet runtime while owning independent map layers.
   const findSelectionByEntryId = useCallback(
     (entryId: string) => atlasDataIndex.findSelectionByEntryId(entryId),
@@ -368,26 +417,42 @@ export function AtlasPage({
     selectedCampaign,
   });
   const {
+    countryBoundaryVisible,
+    campaignOverlayVisible,
+    shouldCrossfadeOverlay,
+    centerSelectedMarker,
     focusSelectedMarker,
     queueRelatedLevelFocus,
     queueSidebarSelection,
   } = useMapViewport({
-    filteredGroups: filtered,
+    campaignPlaybackActive: campaignPlayback.active,
+    filteredGroups: mapGroups,
     getDetailsElement: getMapDetailsElement,
     mapFitCoordinates,
     mapOverlays,
+    onCampaignTravelChange: setCampaignTravelPending,
     ready: mapReady,
     runtime: leafletMap,
     selected,
     selectedCampaign,
     sidebarOpen,
   });
+  useCountryBoundaryLayer({
+    countryCode: selectedCountryCode,
+    visible: countryBoundaryVisible,
+    ready: mapReady,
+    runtime: leafletMap,
+  });
   useMapOverlayLayer({
     adaptiveOpacity: mapOverlayZoomOpacityEnabled,
+    shouldCrossfadeOverlay,
+    campaignPlaybackActive: campaignPlayback.active,
+    campaignOverlayVisible,
     enabled: selectedMapOverlayEnabled,
     getDetailsElement: getMapDetailsElement,
     levelId: selected.entry.levelId,
     overlay: selectedMapOverlay,
+    images: overlayImagePort,
     ready: mapReady,
     runtime: leafletMap,
     title: selectedAppearance.title,
@@ -398,6 +463,37 @@ export function AtlasPage({
     ready: mapReady,
     runtime: leafletMap,
   });
+
+  function visitCampaignLevel(level: { group: AtlasGroupDto; entry: AtlasEntryDto }, reason: "start" | "step") {
+    const { group, entry } = level;
+    const appearance = entry.appearances.find((item) => item.gameId === selectedCampaign?.gameId)
+      ?? entry.appearances[0];
+    setNextHistoryMode(reason === "start" ? "push" : "replace");
+    queueSidebarSelection(null);
+    queueRelatedLevelFocus(entry.id, "campaign-playback");
+    prepareMarkerReveal(null);
+    selectAtlasEntry(group, entry);
+    setActiveHistoryOverlay(null);
+    setDetailsOpen(true);
+    setRelatedLevelsOpen(true);
+    setExpandedRegionEntryId(selectedCampaign ? `campaign:${selectedCampaign.key}` : null);
+    openLevelBriefing(appearance?.notesId ?? entry.levelId, appearance?.hasLevelNotes ?? entry.hasLevelNotes);
+    replaySelectedMarkerPulse();
+    if (entry.precision === "off-world") setSolarSystemDisplay({ hasSpaceLocations: true, expanded: true });
+  }
+
+  const focusLevelDetails = useCallback(() => {
+    replaySelectedMarkerPulse();
+    focusSelectedMarker();
+  }, [focusSelectedMarker, replaySelectedMarkerPulse]);
+
+  const centerLevelDetails = useCallback(() => {
+    replaySelectedMarkerPulse();
+    if (selectedMapOverlayEnabled) focusSelectedMarker();
+    else if (selectedHistoryOverlay) focusHistoryOverlay(selectedHistoryOverlay, selected.entry.coordinates);
+    else centerSelectedMarker();
+  }, [centerSelectedMarker, focusHistoryOverlay, focusSelectedMarker, replaySelectedMarkerPulse,
+    selected.entry.coordinates, selectedHistoryOverlay, selectedMapOverlayEnabled]);
 
   /**
    * Toggles a historical overlay and frames it together with the selected marker.
@@ -419,24 +515,24 @@ export function AtlasPage({
   const selectSidebarGroup = useCallback((group: AtlasGroupDto) => {
     const entry = group.entries[0];
     if (!entry) return;
+    setLocationBoundaryGroup(group.name);
     if (group.kind === "off-world") {
       setSolarSystemDisplay({ hasSpaceLocations: true, expanded: true });
     }
-    const coordinates = group.entries.flatMap((candidate) => candidate.coordinates ? [candidate.coordinates] : []);
+    const coordinates = group.entries.flatMap((candidate) => {
+      if (!candidate.coordinates) return [];
+      const overlay = mapOverlays[candidate.levelId];
+      return overlay ? [candidate.coordinates, ...Object.values(overlay.corners)] : [candidate.coordinates];
+    });
     const fallbackCoordinate = group.coordinates ?? entry.coordinates ?? null;
     const bounds = coordinates.length ? coordinates : fallbackCoordinate ? [fallbackCoordinate] : [];
     // Do not zoom past the least precise location represented by the group.
-    const maxZoom = group.entries.some((candidate) => ["country", "off-world"].includes(candidate.precision))
-      ? 5
-      : group.entries.some((candidate) => candidate.precision === "region")
-        ? 6
-        : group.entries.some((candidate) => candidate.precision === "city")
-          ? 8
-          : 10;
+    const maxZoom = Math.min(...group.entries.map((candidate) =>
+      LOCATION_ZOOM_CONFIG[candidate.precision] ?? LOCATION_ZOOM_CONFIG.country));
 
     queueSidebarSelection(bounds.length ? { bounds, maxZoom } : null);
     selectEntry(group, entry);
-  }, [queueSidebarSelection, selectEntry]);
+  }, [mapOverlays, queueSidebarSelection, selectEntry]);
 
   /**
    * Toggles campaign browsing and reveals its first marker when activated.
@@ -448,8 +544,15 @@ export function AtlasPage({
     setUrlCampaignLevelId(null);
     setSelectedCampaignKey(campaignIsActive ? null : campaign.key);
     if (!campaignIsActive && campaign.levels[0]) {
-      prepareMarkerReveal(campaign.levels[0].entry.id);
-      selectEntry(campaign.levels[0].group, campaign.levels[0].entry);
+      const { group, entry } = campaign.levels[0];
+      prepareMarkerReveal(entry.id);
+      selectEntry(group, entry);
+      // Keep an open briefing mounted as the campaign controls slide in above it.
+      if (levelNotesExpanded) {
+        const appearance = entry.appearances.find((item) => item.gameId === campaign.gameId)
+          ?? entry.appearances[0];
+        openLevelBriefing(appearance?.notesId ?? entry.levelId, appearance?.hasLevelNotes ?? entry.hasLevelNotes);
+      }
     } else {
       prepareMarkerReveal(null);
     }
@@ -509,6 +612,7 @@ export function AtlasPage({
     game: selectedCollectionGame,
     gameIcon: selectedCollectionGameIcon,
     gameIconIsExternal: selectedCollectionUsesExternalGameIcon,
+    group: selected.group,
     items: relatedLevels,
     open: relatedLevelsOpen,
     selectedLevelId: selected.entry.levelId,
@@ -548,7 +652,17 @@ export function AtlasPage({
     selectedGroupName: selected.group.name,
   });
   return (
-    <main className={`atlas-shell${sidebarOpen ? "" : " is-sidebar-collapsed"}`}>
+    <main className={`atlas-shell${sidebarOpen ? "" : " is-sidebar-collapsed"}`}
+      style={{
+        "--sidebar-transition-duration": `${MAP_CAMERA_CONFIG.sidebar.transitionMs}ms`,
+        "--country-boundary-fade-in-duration": `${COUNTRY_BOUNDARY_CONFIG.fadeInMs}ms`,
+        "--marker-spider-leg-color": MAP_MARKERS_CONFIG.clustering.spiderLeg.color,
+        "--marker-spider-leg-weight": MAP_MARKERS_CONFIG.clustering.spiderLeg.weight,
+        "--marker-spider-leg-opacity": MAP_MARKERS_CONFIG.clustering.spiderLeg.opacity,
+        "--campaign-stop-width": `${CAMPAIGN_ROUTE_CONFIG.marker.width}px`,
+        "--campaign-stop-height": `${CAMPAIGN_ROUTE_CONFIG.marker.height}px`,
+        "--campaign-stop-appear-duration": `${CAMPAIGN_ROUTE_CONFIG.marker.appearMs}ms`,
+      } as CSSProperties}>
       <AtlasHeader
         locationCount={data.totals.entries}
         onOpenSettings={() => setSettingsOpen(true)}
@@ -588,9 +702,11 @@ export function AtlasPage({
 
       <AtlasMapStage
         mapNode={mapNode}
+        mapReady={mapReady}
+        playbackActive={campaignPlayback.active}
         solarSystem={(
           <SolarSystemOverlay
-            locations={spaceLocations}
+            locations={displayedSpaceLocations}
             selectedEntryId={selected.entry.id}
             expanded={solarSystemExpanded}
             onExpandedChange={(expanded) => setSolarSystemDisplay({ hasSpaceLocations, expanded })}
@@ -602,7 +718,7 @@ export function AtlasPage({
             activeOverlayId={selectedHistoryOverlay?.id ?? null}
             briefing={selectedLevelNotes}
             historyOverlays={selectedHistoryOverlays}
-            onClose={toggleLevelNotes}
+            onClose={() => { campaignPlayback.pause(); collapseLevelBriefing(); }}
             onToggleHistoryOverlay={toggleHistoryOverlay}
             title={selectedAppearance.title}
           />
@@ -610,10 +726,11 @@ export function AtlasPage({
         details={(
           <LevelDetailsPanel
             actions={{
-              onFocus: focusSelectedMarker,
+              onFocus: focusLevelDetails,
+              onCenter: centerLevelDetails,
               onGameIconError: markExternalGameIconUnavailable,
-              onToggleBriefing: toggleLevelNotes,
-              onToggleDetails: () => setDetailsOpen((open) => !open),
+              onToggleBriefing: () => { campaignPlayback.pause(); toggleLevelNotes(); },
+              onToggleDetails: () => { campaignPlayback.pause(); setDetailsOpen((open) => !open); },
               onToggleMapOverlay: toggleSelectedMapOverlay,
             }}
             columnRef={intelCard}
@@ -629,6 +746,9 @@ export function AtlasPage({
             relatedLevels={relatedLevelsViewModel ? (
               <RelatedLevelsPanel
                 viewModel={relatedLevelsViewModel}
+                playback={selectedCampaign?.levels.length ? (
+                  <CampaignPlaybackControls label={selectedCampaign.label} count={selectedCampaign.levels.length} playback={campaignPlayback} />
+                ) : null}
                 onToggle={() => setRelatedLevelsOpen((open) => !open)}
                 onSelect={(group, entry) => {
                   queueRelatedLevelFocus(entry.id);

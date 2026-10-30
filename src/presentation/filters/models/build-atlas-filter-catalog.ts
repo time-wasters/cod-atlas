@@ -1,5 +1,6 @@
 import type { AtlasDataDto } from "../../../infrastructure/atlas-data/dto/atlas-data.dto.js";
 import type { GameDto } from "../../../infrastructure/atlas-data/dto/game.dto.js";
+import { listRepresentedGames } from "../../../application/atlas/use-cases/list-represented-games.js";
 import type {
   FilterHoverDetail,
   FilterOption,
@@ -132,6 +133,7 @@ export function buildAtlasFilterCatalog(data: AtlasDataDto) {
 
   return {
     atlasFilterValueSets: {
+      games: listRepresentedGames(data.games, data.groups),
       gameSeriesValues: valuesFor(gameSeriesOptions),
       gameSubseriesValues: valuesFor(gameSubseriesOptions),
       developerValues: valuesFor(developerOptions),

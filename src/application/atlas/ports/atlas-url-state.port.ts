@@ -1,6 +1,7 @@
 export type AtlasUrlState = {
   query: string;
-  gameId: string;
+  // null uses the default/template; "all" explicitly selects all; [] selects none.
+  gameIds: string[] | "all" | null;
   country: string;
   series: string[];
   subseries: string[];
@@ -14,6 +15,7 @@ export type AtlasUrlState = {
   showZombies: boolean;
   showOther: boolean;
   sidebarListMode: "locations" | "campaigns" | "updates";
+  campaignKey: string | null;
   levelId: string | null;
   locationId: string | null;
 };

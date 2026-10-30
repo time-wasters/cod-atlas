@@ -4,6 +4,7 @@ title: Fortune's Keep
 games:
   - wz
 mode: multiplayer
+modeSub: battle-royale
 wikiArticle: codwiki-fortune-s-keep
 locations:
   - id: main

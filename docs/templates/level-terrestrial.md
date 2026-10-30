@@ -8,7 +8,8 @@ title: Example Level
 games:
   - example-game
 mode: singleplayer
-# modeSub: special-ops # Required only when mode is other; survival and challenge are also valid.
+# modeSub: special-ops # other requires special-ops, survival or challenge; multiplayer optionally accepts battle-royale or dmz.
+# modeSub: [battle-royale, dmz] # Multiplayer only: one or more unique subtypes; omit for standard MP.
 wikiArticle: codwiki-example-level
 # campaign:
 #   id: example-campaign

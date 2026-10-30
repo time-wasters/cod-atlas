@@ -172,8 +172,8 @@ test("keeps calibrated game-map overlays in a separate generated store", async (
   const { default: overlays } = await import("../app/data/map-overlays.generated.json", {
     with: { type: "json" },
   });
-  const altavilla = overlays["rtv-altavilla"];
-  assert.equal(altavilla.image, "/images/levels/rtv/campaign/1-altavilla/maps/overlay.png");
+  const altavilla = overlays["cod3-rtv-altavilla"];
+  assert.equal(altavilla.image, "/images/levels/cod3-rtv/campaign/1-altavilla/maps/overlay.png");
   assert.deepEqual(altavilla.corners, {
     topLeft: [40.59997, 14.78375],
     topRight: [40.59054, 15.29434],
@@ -182,8 +182,8 @@ test("keeps calibrated game-map overlays in a separate generated store", async (
   });
   assert.equal(altavilla.attribution.rights, "non-free");
   await access(new URL(`../public${altavilla.image}`, import.meta.url));
-  const scavengerHunt = overlays["rtv-scavenger-hunt"];
-  assert.equal(scavengerHunt.image, "/images/levels/rtv/campaign/2-scavenger-hunt/maps/overlay.png");
+  const scavengerHunt = overlays["cod3-rtv-scavenger-hunt"];
+  assert.equal(scavengerHunt.image, "/images/levels/cod3-rtv/campaign/2-scavenger-hunt/maps/overlay.png");
   assert.deepEqual(scavengerHunt.corners, {
     topLeft: [49.41909, -1.36634],
     topRight: [49.42172, -1.26404],

@@ -16,5 +16,11 @@ locations:
     confidence: fallback
     method: country-fallback
     primary: true
+campaign:
+  id: vortex
+  label: Vortex
+content-update:
+  id: "2"
+  label: Season 2
 ---
 

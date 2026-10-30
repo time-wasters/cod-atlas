@@ -3,8 +3,8 @@
   "fandomPageId": 687303,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Cheshire_Park",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Cheshire_Park",
-  "latestRevisionId": 2992463,
-  "importedAt": "2026-08-15T13:20:13.503Z",
+  "latestRevisionId": 3031042,
+  "importedAt": "2026-10-11T21:07:55.549Z",
   "levelLocation": {
     "raw": "[[London]], {{w|England}}, [[United Kingdom]]",
     "label": "London",
@@ -48,8 +48,8 @@
     }
   },
   "rawPayload": {
-    "revisionTimestamp": "2026-04-14T02:26:33Z",
-    "revisionSha1": "cd415dec46a1eaa65c9a0ea5cc743f8fd1f19523",
+    "revisionTimestamp": "2026-10-02T09:21:15Z",
+    "revisionSha1": "ecb3f97812eb42c9b0c2cf828a58de4ca244ff8f",
     "resolvedTitle": "Cheshire Park",
     "mainImageTitle": "File:CheshirePark_LoadingScreen_MW.png",
     "mapImageTitle": null

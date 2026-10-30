@@ -1,7 +1,7 @@
 ---
 id: bo2-raid
 legacyIds:
-  - bo2-bocw-raid
+  - bo2-bo5-raid
 title: Raid
 games:
   - bo2

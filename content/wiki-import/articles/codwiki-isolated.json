@@ -1,0 +1,89 @@
+{
+  "id": "codwiki-isolated",
+  "fandomPageId": 686488,
+  "sourceUrl": "https://callofduty.fandom.com/wiki/Isolated",
+  "canonicalUrl": "https://callofduty.fandom.com/wiki/Isolated",
+  "latestRevisionId": 2998685,
+  "importedAt": "2026-10-11T21:08:17.058Z",
+  "levelLocation": {
+    "raw": null,
+    "label": null,
+    "url": null
+  },
+  "previousLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "nextLevels": {
+    "raw": null,
+    "label": null,
+    "links": []
+  },
+  "games": {
+    "raw": "''[[Call of Duty: Mobile]]",
+    "label": "Call of Duty: Mobile",
+    "links": [
+      {
+        "wikiTitle": "Call of Duty: Mobile",
+        "label": "Call of Duty: Mobile",
+        "url": "https://callofduty.fandom.com/wiki/Call_of_Duty%3A_Mobile"
+      }
+    ]
+  },
+  "date": {
+    "raw": null,
+    "label": null
+  },
+  "mapStyle": "multiplayer",
+  "mapStyleDetail": null,
+  "mapStyleConfidence": "curated",
+  "mapStyleEvidence": "Classified by the atlas; verify against the Wiki during the next import.",
+  "images": {
+    "main": {
+      "sourceUrl": "https://static.wikia.nocookie.net/callofduty/images/9/94/Isolated_Map_Overview_Season_4_Fool%27s_Gold_CODM.png/revision/latest?cb=20240414070316",
+      "thumbnailUrl": "https://static.wikia.nocookie.net/callofduty/images/9/94/Isolated_Map_Overview_Season_4_Fool%27s_Gold_CODM.png/revision/latest?cb=20240414070316",
+      "detailPageUrl": "https://callofduty.fandom.com/wiki/File:Isolated_Map_Overview_Season_4_Fool%27s_Gold_CODM.png",
+      "author": {
+        "name": "ScopeShadow",
+        "userUrl": "https://callofduty.fandom.com/wiki/User:ScopeShadow",
+        "role": "uploader"
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "non-free",
+        "notice": "This is an image/video/audio file of a non-free copyrighted video or computer game, and the copyright for it is most likely held by the company or person that developed the game. It is believed that the use of a limited number of web-resolution screenshots\n\nfor identification and critical commentary on\n  • the computer or video game in question or\n  • the copyrighted character(s) or item(s) depicted on the screenshot in question\non the Call of Duty Wiki, hosted on servers in the United States by the non-profit Fandom,\n\nqualifies as fair use under United States copyright law, as such display does not significantly impede the right of the copyright holder to sell the copyrighted material, is not being used to generate profit in this context, and presents ideas that cannot be exhibited otherwise. See Non-free content.",
+        "noticeUrl": "https://callofduty.fandom.com/wiki/Template:Copyrighted_Media"
+      }
+    },
+    "map": {
+      "sourceUrl": null,
+      "thumbnailUrl": null,
+      "detailPageUrl": null,
+      "author": {
+        "name": null,
+        "userUrl": null,
+        "role": null
+      },
+      "license": {
+        "name": null,
+        "url": null
+      },
+      "rights": {
+        "status": "unknown",
+        "notice": null,
+        "noticeUrl": null
+      }
+    }
+  },
+  "rawPayload": {
+    "revisionTimestamp": "2026-04-29T16:28:11Z",
+    "revisionSha1": "f1c4dfb0d8efc6e96abb86a34e826f4c93d6e6d9",
+    "resolvedTitle": "Isolated",
+    "mainImageTitle": "File:Isolated_Map_Overview_Season_4_Fool's_Gold_CODM.png",
+    "mapImageTitle": null
+  }
+}

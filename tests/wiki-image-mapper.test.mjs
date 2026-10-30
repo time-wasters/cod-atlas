@@ -49,6 +49,8 @@ test("mapWikiImage preserves the Wiki notice for copyrighted game media", () => 
   assert.equal(image.license.name, null);
   assert.equal(image.rights.status, "non-free");
   assert.match(image.rights.notice, /identification and critical commentary/);
+  assert.equal(image.rights.notice.split("\u2022").length - 1, 2);
+  assert.ok(!image.rights.notice.includes("\u00e2\u20ac\u00a2"));
   assert.equal(image.rights.noticeUrl, "https://wiki.example.test/wiki/Template:Copyrighted_Media");
   assert.equal(hasUsableWikiImage(image), true);
 });

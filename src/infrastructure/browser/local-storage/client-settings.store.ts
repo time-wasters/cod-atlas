@@ -3,15 +3,13 @@ import type {
   ClientSettingsPort,
 } from "../../../application/settings/ports/client-settings.port.js";
 
+import { APP_DEFAULTS_CONFIG } from "../../../shared/config/app-defaults.config.js";
+
 const STORAGE_KEY = "cod-atlas:client-settings";
 const LEGACY_EXTERNAL_GAME_ICONS_KEY = "cod-atlas:external-game-icons";
 const LEGACY_ZOOM_ADAPTIVE_MAP_OVERLAYS_KEY = "cod-atlas:zoom-adaptive-map-overlays";
 
-const DEFAULT_SETTINGS: ClientSettings = Object.freeze({
-  campaignRouteAnimationEnabled: true,
-  externalGameIconsEnabled: false,
-  zoomAdaptiveMapOverlaysEnabled: true,
-});
+const DEFAULT_SETTINGS: ClientSettings = Object.freeze({ ...APP_DEFAULTS_CONFIG.settings });
 
 const listeners = new Set<() => void>();
 let cachedStorageValue: string | null | undefined;

@@ -33,8 +33,7 @@ export function findRelatedLevels<
     .map((entry) => ({ group, entry })));
 
   const regionalLevels = selected.group.entries.filter((entry, index, entries) =>
-    entry.levelId !== selected.entry.levelId
-    && entries.findIndex((candidate) => candidate.levelId === entry.levelId) === index);
+    entries.findIndex((candidate) => candidate.levelId === entry.levelId) === index);
   const relatedLevels = collectionLevels
     ? [...collectionLevels]
     : regionalLevels.map((entry) => ({ group: selected.group, entry }));

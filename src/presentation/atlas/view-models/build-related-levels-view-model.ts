@@ -3,6 +3,7 @@ import type { ContentUpdateOption } from "../../../application/content-updates/u
 import type { AtlasEntryDto } from "../../../infrastructure/atlas-data/dto/atlas-entry.dto.js";
 import type { AtlasGroupDto } from "../../../infrastructure/atlas-data/dto/atlas-group.dto.js";
 import type { GameDto } from "../../../infrastructure/atlas-data/dto/game.dto.js";
+import { RELATED_LEVELS_CONFIG } from "../../../shared/config/related-levels.config.js";
 import type { RelatedLevelsViewModel } from "../components/related-levels-panel.js";
 
 type RelatedLevel = { group: AtlasGroupDto; entry: AtlasEntryDto };
@@ -14,6 +15,7 @@ export function buildRelatedLevelsViewModel({
   game,
   gameIcon,
   gameIconIsExternal,
+  group,
   items,
   open,
   selectedLevelId,
@@ -24,18 +26,19 @@ export function buildRelatedLevelsViewModel({
   game: GameDto | null;
   gameIcon: string | null | undefined;
   gameIconIsExternal: boolean;
+  group: AtlasGroupDto;
   items: RelatedLevel[];
   open: boolean;
   selectedLevelId: string;
 }): RelatedLevelsViewModel | null {
   if (!items.length) return null;
-  const visibleItems = expanded ? items : items.slice(0, 8);
+  const visibleItems = expanded ? items : items.slice(0, RELATED_LEVELS_CONFIG.collapsedLimit);
   return {
     ariaLabel: campaign
       ? `${campaign.label} levels`
       : contentUpdate
         ? `${contentUpdate.label} levels`
-        : "Related levels",
+        : `${group.name} levels`,
     campaign: campaign !== null,
     collectionKind: campaign ? "campaign" : contentUpdate ? "update" : "region",
     expanded,
@@ -46,7 +49,8 @@ export function buildRelatedLevelsViewModel({
     } : null,
     hiddenCount: items.length - visibleItems.length,
     items: visibleItems,
-    label: campaign?.label ?? contentUpdate?.label ?? "Related levels",
+    label: campaign?.label ?? contentUpdate?.label ?? group.name,
+    locationIcon: campaign || contentUpdate ? null : { flagCode: group.flagCode },
     open,
     selectedLevelId,
     totalCount: items.length,

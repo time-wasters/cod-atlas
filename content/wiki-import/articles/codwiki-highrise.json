@@ -3,8 +3,8 @@
   "fandomPageId": 15478,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Highrise",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Highrise",
-  "latestRevisionId": 2975183,
-  "importedAt": "2026-08-15T11:05:04.843Z",
+  "latestRevisionId": 3027056,
+  "importedAt": "2026-10-11T21:08:17.051Z",
   "levelLocation": {
     "raw": "[[New York City]], {{w|New York (state)|New York}}, [[United States of America]]",
     "label": "New York City",
@@ -48,8 +48,8 @@
     }
   },
   "rawPayload": {
-    "revisionTimestamp": "2026-03-10T20:00:56Z",
-    "revisionSha1": "1c66cfbbb7149ee71616c61916a680fcb2467cb0",
+    "revisionTimestamp": "2026-09-15T05:10:19Z",
+    "revisionSha1": "2b9c4d1d968bd778d7daeb51c8f51624189c4b90",
     "resolvedTitle": "Highrise",
     "mainImageTitle": "File:Highrise-promo.jpg",
     "mapImageTitle": null

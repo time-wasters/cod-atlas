@@ -1,0 +1,17 @@
+---
+id: bo5-armada
+title: Armada
+games:
+  - bo5
+mode: multiplayer
+wikiArticle: codwiki-armada-cold-war
+locations:
+  - id: main
+    country: Atlantic Ocean
+    latitude: 26
+    longitude: -38
+    precision: country
+    confidence: fallback
+    method: region-fallback
+    primary: true
+---

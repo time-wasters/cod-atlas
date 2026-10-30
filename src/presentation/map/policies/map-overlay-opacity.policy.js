@@ -1,24 +1,24 @@
-const FADE_START_ZOOM_DELTA = 0.5;
-const FULL_FADE_ZOOM_DELTA = 6;
-const FADE_CURVE_POWER = 1.6;
+import { MAP_OVERLAY_CONFIG } from "../../../shared/config/map-overlay.config.js";
+import { MAP_CAMERA_CONFIG } from "../../../shared/config/map-camera.config.js";
 
 export function calculateMapOverlayOpacity({
   baseOpacity,
   currentZoom,
   fitZoom,
   enabled,
-  maximumZoom = 18,
+  maximumZoom = MAP_CAMERA_CONFIG.maximumZoom,
 }) {
   if (!enabled || !Number.isFinite(currentZoom) || !Number.isFinite(fitZoom)) {
     return baseOpacity;
   }
   if (currentZoom >= maximumZoom) return 0;
 
+  const { fadeStartZoomDelta, fullFadeZoomDelta, curvePower } = MAP_OVERLAY_CONFIG.adaptiveOpacity;
   const fadeProgress = Math.min(1, Math.max(
     0,
-    (currentZoom - fitZoom - FADE_START_ZOOM_DELTA)
-      / (FULL_FADE_ZOOM_DELTA - FADE_START_ZOOM_DELTA),
+    (currentZoom - fitZoom - fadeStartZoomDelta)
+      / (fullFadeZoomDelta - fadeStartZoomDelta),
   ));
-  return baseOpacity * ((1 - fadeProgress) ** FADE_CURVE_POWER);
+  return baseOpacity * ((1 - fadeProgress) ** curvePower);
 }
 

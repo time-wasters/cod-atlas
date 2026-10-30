@@ -4,10 +4,10 @@ import { buildWikiArticleLookup } from "../../../domain/wiki-article/wiki-articl
 import { loadWikiArticleFileRecords } from "../../../infrastructure/content/filesystem/wiki-article-file.repository.mjs";
 import { loadWikiArticleIdsForGames } from "../../../infrastructure/content/filesystem/wiki-game-selection.loader.mjs";
 import { importWikiArticleBatch } from "./import-wiki-article-batch.mjs";
-
-const BATCH_SIZE = 10;
+import { WIKI_IMPORT_CONFIG } from "../../../infrastructure/external/call-of-duty-wiki/wiki-configuration.mjs";
 
 export async function importWikiArticles(options, configuration) {
+  const batchSize = WIKI_IMPORT_CONFIG.batchSize;
   const directory = path.join(process.cwd(), "content/wiki-import/articles");
   const records = await loadWikiArticleFileRecords(directory);
   const articleLookup = buildWikiArticleLookup(records, configuration.origin);
@@ -25,12 +25,12 @@ export async function importWikiArticles(options, configuration) {
     console.log("No records selected.");
     return;
   }
-  console.log(`Checking ${selected.length} record(s) in batches of ${BATCH_SIZE}; API delay ${options.delayMs}ms.`);
+  console.log(`Checking ${selected.length} record(s) in batches of ${batchSize}; API delay ${options.delayMs}ms.`);
   const state = { count: 0 };
   let changed = 0;
-  for (let index = 0; index < selected.length; index += BATCH_SIZE) {
+  for (let index = 0; index < selected.length; index += batchSize) {
     changed += await importWikiArticleBatch(
-      selected.slice(index, index + BATCH_SIZE),
+      selected.slice(index, index + batchSize),
       options,
       state,
       configuration,

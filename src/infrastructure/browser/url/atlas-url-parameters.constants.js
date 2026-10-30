@@ -1,6 +1,7 @@
 export const atlasUrlParameters = Object.freeze([
   "q",
   "game",
+  "games",
   "country",
   "series",
   "subseries",
@@ -11,6 +12,7 @@ export const atlasUrlParameters = Object.freeze([
   "method",
   "mode",
   "browse",
+  "campaign",
   "level",
   "location",
 ]);

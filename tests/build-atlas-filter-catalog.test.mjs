@@ -21,8 +21,8 @@ test("developer filters expose included games in hover details", () => {
         ],
       },
       {
-        id: "bocw",
-        code: "BOCW",
+        id: "bo5",
+        code: "BO5",
         label: "Black Ops Cold War",
         labelLong: "Call of Duty: Black Ops Cold War",
         released: "2020-11-13",

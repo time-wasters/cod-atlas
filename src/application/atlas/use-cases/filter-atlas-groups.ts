@@ -1,9 +1,6 @@
 type FilterableGame = {
   id: string;
   code: string;
-  series: string;
-  subseries: string[];
-  developer: { id: string; name: string }[];
 };
 
 type FilterableAtlasEntry = {
@@ -29,11 +26,9 @@ type FilterableAtlasGroup<TEntry extends FilterableAtlasEntry> = {
 
 export type AtlasFilterCriteria = {
   query: string;
-  gameCode: string;
+  // Only checkbox selections filter results. null means all games; [] means none.
+  gameCodes: ReadonlySet<string> | null;
   country: string;
-  gameSeries: ReadonlySet<string>;
-  gameSubseries: ReadonlySet<string>;
-  developers: ReadonlySet<string>;
   continents: ReadonlySet<string>;
   precisions: ReadonlySet<string>;
   confidences: ReadonlySet<string>;
@@ -74,19 +69,9 @@ export function filterAtlasGroups<
   const gamesById = new Map(games.map((game) => [game.id, game]));
 
   function matchesStructuredFilters(entry: TEntry) {
-    const matchesGame = criteria.gameCode === "all"
-      || entry.game.split(" / ").includes(criteria.gameCode);
-    const matchesSeries = criteria.gameSeries.size === 0 || entry.gameIds.some((gameId) => {
+    const matchesGame = criteria.gameCodes === null || entry.gameIds.some((gameId) => {
       const entryGame = gamesById.get(gameId);
-      return entryGame ? criteria.gameSeries.has(entryGame.series) : false;
-    });
-    const matchesSubseries = criteria.gameSubseries.size === 0 || entry.gameIds.some((gameId) => {
-      const entryGame = gamesById.get(gameId);
-      return entryGame?.subseries.some((value) => criteria.gameSubseries.has(value)) ?? false;
-    });
-    const matchesDeveloper = criteria.developers.size === 0 || entry.gameIds.some((gameId) => {
-      const entryGame = gamesById.get(gameId);
-      return entryGame?.developer.some((developer) => criteria.developers.has(developer.id)) ?? false;
+      return entryGame !== undefined && criteria.gameCodes?.has(entryGame.code);
     });
     const matchesPrecision = criteria.precisions.size === 0 || criteria.precisions.has(entry.precision);
     const matchesConfidence = criteria.confidences.size === 0
@@ -100,9 +85,6 @@ export function filterAtlasGroups<
       || (criteria.showOther && entry.modes.includes("other"));
 
     return matchesGame
-      && matchesSeries
-      && matchesSubseries
-      && matchesDeveloper
       && matchesPrecision
       && matchesConfidence
       && matchesMethod

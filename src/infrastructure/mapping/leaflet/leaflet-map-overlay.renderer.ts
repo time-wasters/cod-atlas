@@ -6,15 +6,16 @@ export function renderLeafletMapOverlay({
   map,
   overlay,
   title,
+  image,
 }: {
   leaflet: typeof import("leaflet");
   map: LeafletMap;
   overlay: MapOverlayDto;
   title: string;
+  image: HTMLImageElement;
 }) {
-  const imageUrl = new URL(overlay.image.replace(/^\/+/, ""), document.baseURI).href;
   return leaflet.imageOverlay.rotated(
-    imageUrl,
+    image,
     overlay.corners.topLeft,
     overlay.corners.topRight,
     overlay.corners.bottomLeft,

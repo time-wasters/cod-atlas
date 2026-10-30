@@ -3,8 +3,8 @@
   "fandomPageId": 3106,
   "sourceUrl": "https://callofduty.fandom.com/wiki/Crossfire",
   "canonicalUrl": "https://callofduty.fandom.com/wiki/Crossfire",
-  "latestRevisionId": 2994661,
-  "importedAt": "2026-08-14T23:36:58.459Z",
+  "latestRevisionId": 3027302,
+  "importedAt": "2026-10-11T21:07:55.528Z",
   "levelLocation": {
     "raw": "[[Middle East]]",
     "label": "Middle East",
@@ -48,8 +48,8 @@
     }
   },
   "rawPayload": {
-    "revisionTimestamp": "2026-04-17T05:23:36Z",
-    "revisionSha1": "e9bc8723a731e8475326dc0874d67474236d51e5",
+    "revisionTimestamp": "2026-09-17T00:37:54Z",
+    "revisionSha1": "1dc7da6e2b225849cb71b650bea80816add3ec0b",
     "resolvedTitle": "Crossfire",
     "mainImageTitle": "File:Cod4_map_crossfire.jpg",
     "mapImageTitle": null
