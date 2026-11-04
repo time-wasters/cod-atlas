@@ -8,7 +8,8 @@ content-update:
   id: "0"
   label: "Included"
 wikiArticle: codwiki-kill-block
-metadata:
-  mapType: "gunfight"
+campaign:
+  id: gunfight
+  label: Gunfight
 locations: []
 ---
