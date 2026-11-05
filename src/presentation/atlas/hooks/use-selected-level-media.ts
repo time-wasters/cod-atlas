@@ -2,16 +2,19 @@
 
 import { useCallback, useState } from "react";
 import { selectLevelMedia } from "../../../application/atlas/use-cases/select-level-media.js";
+import { canLoadResource } from "../../../application/settings/resource-consent.policy.js";
 import type { AtlasDataDto } from "../../../infrastructure/atlas-data/dto/atlas-data.dto.js";
 import type { AtlasEntryDto } from "../../../infrastructure/atlas-data/dto/atlas-entry.dto.js";
 import type { LevelMediaViewModel } from "../components/level-media.js";
 import { buildLevelMediaViewModel } from "../view-models/build-level-media-view-model.js";
 
 export function useSelectedLevelMedia({
+  externalServicesAllowed,
   data,
   entry,
   selectedGameId,
 }: {
+  externalServicesAllowed: boolean;
   data: Pick<AtlasDataDto, "levelBanners" | "wikiMedia">;
   entry: AtlasEntryDto;
   selectedGameId: string | null;
@@ -37,7 +40,8 @@ export function useSelectedLevelMedia({
   const viewModel = buildLevelMediaViewModel({
     appearance: selectedAppearance,
     failed,
-    image: selectedImage,
+    image: selectedImage && canLoadResource(selectedImage.thumbnailUrl, externalServicesAllowed,
+      typeof document === "undefined" ? "https://cod-atlas.invalid/" : document.baseURI) ? selectedImage : null,
     imageKey: selectedImageKey,
     isLocal: selectedImageIsLocal,
     loaded,

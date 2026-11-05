@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore, type CSSProperties } from "react";
 import { APP_DEFAULTS_CONFIG } from "../../../shared/config/app-defaults.config.js";
 import { MAP_CAMERA_CONFIG } from "../../../shared/config/map-camera.config.js";
 import { MAP_MARKERS_CONFIG } from "../../../shared/config/map-markers.config.js";
@@ -63,6 +63,7 @@ import { useMapOverlayPreloading } from "../../map/hooks/use-map-overlay-preload
 import { useMapViewport } from "../../map/hooks/use-map-viewport.js";
 import { useSelectedMapOverlay } from "../../map/hooks/use-selected-map-overlay.js";
 import { SettingsDialog } from "../../settings/components/settings-dialog.js";
+import { CookieConsentBanner } from "../../settings/components/cookie-consent.js";
 import { useCampaignRouteAnimationPreference } from "../../settings/hooks/use-campaign-route-animation-preference.js";
 import { useExternalGameIcons } from "../../settings/hooks/use-external-game-icons.js";
 import { useMapOverlayOpacityPreference } from "../../settings/hooks/use-map-overlay-opacity-preference.js";
@@ -74,6 +75,7 @@ import { SolarSystemOverlay } from "../../solar-system/components/solar-system-o
 export function AtlasPage({
   atlasUrlStatePort,
   clientSettingsPort,
+  cookieConsentPort,
   data,
   dataIndex: atlasDataIndex,
   externalGameIconManifestPort,
@@ -83,6 +85,7 @@ export function AtlasPage({
   mapOverlays,
   overlayImagePort,
 }: AtlasPageProps) {
+  const consent = useSyncExternalStore(cookieConsentPort.subscribe, cookieConsentPort.getSnapshot, cookieConsentPort.getServerSnapshot);
   const { group: initialGroup, entry: initialEntry } = initialAtlasSelection(data);
   const filterCatalog = useMemo(() => buildAtlasFilterCatalog(data), [data]);
   const filters = useAtlasFilters(filterCatalog.atlasFilterValueSets);
@@ -152,7 +155,7 @@ export function AtlasPage({
     runtime: leafletMap,
     mapNode,
     prepareMarkerSelection,
-  } = useLeafletMap();
+  } = useLeafletMap(consent.externalServices);
   const mediaDialog = useRef<HTMLDialogElement>(null);
   const infoDialog = useRef<HTMLDialogElement>(null);
   const gameCatalogDialog = useRef<HTMLDialogElement>(null);
@@ -224,6 +227,7 @@ export function AtlasPage({
     handleLoaded: handleMediaLoaded,
     viewModel: levelMediaViewModel,
   } = useSelectedLevelMedia({
+    externalServicesAllowed: consent.externalServices,
     data,
     entry: selected.entry,
     selectedGameId,
@@ -241,6 +245,7 @@ export function AtlasPage({
   });
 
   const { nextOverlayReady } = useMapOverlayPreloading({
+    enabled: consent.externalServices,
     selectedEntry: selected.entry,
     campaign: selectedCampaign,
     overlays: mapOverlays,
@@ -670,6 +675,8 @@ export function AtlasPage({
 
       {settingsOpen && (
         <SettingsDialog
+          consent={consent}
+          onConsentChange={cookieConsentPort.update}
           externalIcons={{
             enabled: externalIconsEnabled,
             onToggle: () => setExternalIconsEnabled(!externalIconsEnabled),
@@ -701,6 +708,8 @@ export function AtlasPage({
       />
 
       <AtlasMapStage
+        externalServicesAllowed={consent.externalServices}
+        onOpenSettings={() => setSettingsOpen(true)}
         mapNode={mapNode}
         mapReady={mapReady}
         playbackActive={campaignPlayback.active}
@@ -715,6 +724,7 @@ export function AtlasPage({
         )}
         briefing={detailsOpen && levelNotesExpanded ? (
           <LevelBriefingPane
+            externalServicesAllowed={consent.externalServices}
             activeOverlayId={selectedHistoryOverlay?.id ?? null}
             briefing={selectedLevelNotes}
             historyOverlays={selectedHistoryOverlays}
@@ -737,6 +747,7 @@ export function AtlasPage({
             detailsOpen={detailsOpen}
             media={levelMediaViewModel ? (
               <LevelMedia
+                externalServicesAllowed={consent.externalServices}
                 dialogRef={mediaDialog}
                 media={levelMediaViewModel}
                 onFailed={handleMediaFailure}
@@ -785,6 +796,9 @@ export function AtlasPage({
           />
         ) : null}
       />
+      {!consent.decided && !settingsOpen && (
+        <CookieConsentBanner onChange={cookieConsentPort.update} onCustomize={() => setSettingsOpen(true)} />
+      )}
     </main>
   );
 }

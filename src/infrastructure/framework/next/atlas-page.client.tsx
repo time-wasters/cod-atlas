@@ -9,6 +9,7 @@ import { kmlFileDownloader } from "../../browser/downloads/kml-file.downloader.j
 import { externalGameIconManifestClient } from "../../browser/http/external-game-icon-manifest.client.js";
 import { levelBriefingClient } from "../../browser/http/level-briefing.client.js";
 import { clientSettingsStore } from "../../browser/local-storage/client-settings.store.js";
+import { cookieConsentStore } from "../../browser/local-storage/cookie-consent.store.js";
 import { overlayImageCache } from "../../browser/images/overlay-image.cache.js";
 import { browserAtlasUrlStateAdapter } from "../../browser/url/browser-atlas-url-state.adapter.js";
 
@@ -22,6 +23,7 @@ export function AtlasPageClient() {
     <AtlasPage
       atlasUrlStatePort={browserAtlasUrlStateAdapter}
       clientSettingsPort={clientSettingsStore}
+      cookieConsentPort={cookieConsentStore}
       data={data}
       dataIndex={dataIndex}
       externalGameIconManifestPort={externalGameIconManifestClient}

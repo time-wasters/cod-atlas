@@ -1,5 +1,8 @@
 "use client";
 
+import type { CookieConsent, CookieConsentChoices } from "../../../application/settings/ports/cookie-consent.port.js";
+import { CookieConsentControls } from "./cookie-consent.js";
+
 type SettingSwitch = {
   enabled: boolean;
   onToggle: () => void;
@@ -21,16 +24,20 @@ function SettingsSwitch({ label, setting }: { label: string; setting: SettingSwi
 }
 
 export function SettingsDialog({
+  consent,
   externalIcons,
   externalIconsUnavailable,
   myrmecophobiaMode,
   onClose,
+  onConsentChange,
   overlayFading,
 }: {
+  consent: CookieConsent;
   externalIcons: SettingSwitch;
   externalIconsUnavailable: boolean;
   myrmecophobiaMode: SettingSwitch;
   onClose: () => void;
+  onConsentChange: (choices: CookieConsentChoices) => void;
   overlayFading: SettingSwitch;
 }) {
   return (
@@ -41,6 +48,7 @@ export function SettingsDialog({
           <button type="button" aria-label="Close settings" onClick={onClose}>×</button>
         </header>
         <div className="settings-content">
+          <CookieConsentControls consent={consent} onChange={onConsentChange} />
           <section className="settings-group">
             <div className="settings-copy">
               <h3>External game icons</h3>
@@ -63,7 +71,6 @@ export function SettingsDialog({
             </div>
             <SettingsSwitch label="Myrmecophobia mode" setting={myrmecophobiaMode} />
           </section>
-          <p className="settings-note">This preference is stored only in this browser.</p>
         </div>
       </div>
     </section>

@@ -2,6 +2,7 @@
 
 import { useEffect, useState, type CSSProperties, type RefObject } from "react";
 import { LEVEL_MEDIA_CONFIG } from "../../../shared/config/level-media.config.js";
+import { canLoadResource } from "../../../application/settings/resource-consent.policy.js";
 import type { WikiImageDto } from "../../../infrastructure/atlas-data/dto/wiki-image.dto.js";
 import { Tooltip } from "../../shared/components/tooltip.js";
 
@@ -16,11 +17,13 @@ export type LevelMediaViewModel = {
 };
 
 function LevelMediaFrame({
+  externalServicesAllowed,
   media,
   retained,
   onFailed,
   onLoaded,
 }: {
+  externalServicesAllowed: boolean;
   media: LevelMediaViewModel;
   retained: boolean;
   onFailed: (media: LevelMediaViewModel) => void;
@@ -39,6 +42,9 @@ function LevelMediaFrame({
     // event. Report its existing readiness so the new crossfade can finish.
     if (!retained && loaded && !media.loaded && !media.failed) onLoaded(media);
   }, [loaded, media, onLoaded, retained]);
+
+  if (!canLoadResource(media.image.thumbnailUrl, externalServicesAllowed,
+    typeof document === "undefined" ? "https://cod-atlas.invalid/" : document.baseURI)) return null;
 
   return media.image.mediaType === "video" ? (
     <video
@@ -68,11 +74,13 @@ function LevelMediaFrame({
 }
 
 export function LevelMedia({
+  externalServicesAllowed,
   dialogRef,
   media,
   onFailed,
   onLoaded,
 }: {
+  externalServicesAllowed: boolean;
   dialogRef: RefObject<HTMLDialogElement | null>;
   media: LevelMediaViewModel;
   onFailed: (media: LevelMediaViewModel) => void;
@@ -109,6 +117,7 @@ export function LevelMedia({
       style={{ "--level-media-crossfade-duration": `${LEVEL_MEDIA_CONFIG.crossfadeMs}ms` } as CSSProperties}>
         {retainedMedia && (
           <LevelMediaFrame
+            externalServicesAllowed={externalServicesAllowed}
             key={retainedMedia.imageKey}
             media={retainedMedia}
             retained
@@ -117,6 +126,7 @@ export function LevelMedia({
           />
         )}
         <LevelMediaFrame
+          externalServicesAllowed={externalServicesAllowed}
           key={media.imageKey}
           media={{ ...media, loaded }}
           retained={false}

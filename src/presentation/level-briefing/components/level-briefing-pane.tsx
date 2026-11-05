@@ -1,6 +1,7 @@
 "use client";
 
 import ReactMarkdown from "react-markdown";
+import { canLoadResource } from "../../../application/settings/resource-consent.policy.js";
 import { Tooltip } from "../../shared/components/tooltip.js";
 import type { HistoryOverlayDto } from "../../../infrastructure/atlas-data/dto/history-overlay.dto.js";
 
@@ -14,6 +15,7 @@ function imageBasename(source: string) {
 }
 
 export function LevelBriefingPane({
+  externalServicesAllowed,
   activeOverlayId,
   briefing,
   historyOverlays,
@@ -21,6 +23,7 @@ export function LevelBriefingPane({
   onToggleHistoryOverlay,
   title,
 }: {
+  externalServicesAllowed: boolean;
   activeOverlayId: string | null;
   briefing: BriefingState;
   historyOverlays: HistoryOverlayDto[];
@@ -48,6 +51,10 @@ export function LevelBriefingPane({
               ),
               img: ({ src = "", alt = "", title: imageTooltip }) => {
                 const imageSource = typeof src === "string" ? src : "";
+                const baseUrl = typeof document === "undefined" ? "https://cod-atlas.invalid/" : document.baseURI;
+                if (!canLoadResource(imageSource, externalServicesAllowed, baseUrl)) {
+                  return <span>{alt ? `${alt} — ` : ""}External image blocked. Allow external maps and images in Settings to load it.</span>;
+                }
                 const historyOverlay = historyOverlays.find(
                   (overlay) => imageBasename(overlay.image) === imageBasename(imageSource),
                 );
@@ -63,6 +70,7 @@ export function LevelBriefingPane({
                 const isActive = activeOverlayId === historyOverlay.id;
                 const action = isActive ? "Hide from map" : "Show on map";
                 const imageUrl = new URL(historyOverlay.image.replace(/^\/+/, ""), document.baseURI).href;
+                if (!canLoadResource(imageUrl, externalServicesAllowed, baseUrl)) return <span>External image blocked.</span>;
                 return (
                   <Tooltip content={`${action}: ${historyOverlay.attribution.title}`}>
                     <button
