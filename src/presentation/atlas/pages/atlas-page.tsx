@@ -63,7 +63,7 @@ import { useMapOverlayPreloading } from "../../map/hooks/use-map-overlay-preload
 import { useMapViewport } from "../../map/hooks/use-map-viewport.js";
 import { useSelectedMapOverlay } from "../../map/hooks/use-selected-map-overlay.js";
 import { SettingsDialog } from "../../settings/components/settings-dialog.js";
-import { CookieConsentBanner } from "../../settings/components/cookie-consent.js";
+import { CookieConsentDialog } from "../../settings/components/cookie-consent.js";
 import { useCampaignRouteAnimationPreference } from "../../settings/hooks/use-campaign-route-animation-preference.js";
 import { useExternalGameIcons } from "../../settings/hooks/use-external-game-icons.js";
 import { useMapOverlayOpacityPreference } from "../../settings/hooks/use-map-overlay-opacity-preference.js";
@@ -114,6 +114,7 @@ export function AtlasPage({
   const [selectionVersion, setSelectionVersion] = useState(0);
   const [locationBoundaryGroup, setLocationBoundaryGroup] = useState<string | null>(null);
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [cookieConsentOpen, setCookieConsentOpen] = useState(false);
   const [campaignTravelPending, setCampaignTravelPending] = useState(false);
   const {
     enabled: externalIconsEnabled,
@@ -158,10 +159,16 @@ export function AtlasPage({
   } = useLeafletMap();
   const mediaDialog = useRef<HTMLDialogElement>(null);
   const infoDialog = useRef<HTMLDialogElement>(null);
+  const cookieConsentDialog = useRef<HTMLDialogElement>(null);
   const gameCatalogDialog = useRef<HTMLDialogElement>(null);
   const intelCard = useRef<HTMLDivElement>(null);
   const getMapDetailsElement = useCallback(() => intelCard.current, []);
   const openGameCatalog = useCallback(() => gameCatalogDialog.current?.showModal(), []);
+  const openCookieConsent = useCallback(() => {
+    setSettingsOpen(false);
+    cookieConsentDialog.current?.showModal();
+    setCookieConsentOpen(true);
+  }, []);
   const gameModeAvailability = useMemo(() => getGameModeAvailability({
     gameCodes: gameSelection,
     games: data.games,
@@ -227,7 +234,6 @@ export function AtlasPage({
     handleLoaded: handleMediaLoaded,
     viewModel: levelMediaViewModel,
   } = useSelectedLevelMedia({
-    externalServicesAllowed: consent.externalServices,
     data,
     entry: selected.entry,
     selectedGameId,
@@ -254,7 +260,7 @@ export function AtlasPage({
     campaign: selectedCampaign,
     filterScope: filtered,
     selectionVersion,
-    ready: mapReady && !mapMoving && !campaignTravelPending && !settingsOpen
+    ready: mapReady && !mapMoving && !campaignTravelPending && !settingsOpen && !cookieConsentOpen
       && selectedLevelNotes?.status !== "loading" && nextOverlayReady,
     onVisit: visitCampaignLevel,
   });
@@ -674,8 +680,7 @@ export function AtlasPage({
 
       {settingsOpen && (
         <SettingsDialog
-          consent={consent}
-          onConsentChange={cookieConsentPort.update}
+          onOpenCookieConsent={openCookieConsent}
           externalIcons={{
             enabled: externalIconsEnabled,
             onToggle: () => setExternalIconsEnabled(!externalIconsEnabled),
@@ -699,6 +704,12 @@ export function AtlasPage({
         onToggle={() => setSidebarOpen((open) => !open)}
       />
       <ProjectInfoDialog dialogRef={infoDialog} />
+      <CookieConsentDialog
+        dialogRef={cookieConsentDialog}
+        consent={consent}
+        onChange={cookieConsentPort.update}
+        onClose={() => setCookieConsentOpen(false)}
+      />
       <GameCatalogDialog
         dialogRef={gameCatalogDialog}
         games={data.games}
@@ -722,6 +733,7 @@ export function AtlasPage({
         briefing={detailsOpen && levelNotesExpanded ? (
           <LevelBriefingPane
             externalServicesAllowed={consent.externalServices}
+            onOpenCookieConsent={openCookieConsent}
             activeOverlayId={selectedHistoryOverlay?.id ?? null}
             briefing={selectedLevelNotes}
             historyOverlays={selectedHistoryOverlays}
@@ -745,6 +757,7 @@ export function AtlasPage({
             media={levelMediaViewModel ? (
               <LevelMedia
                 externalServicesAllowed={consent.externalServices}
+                onOpenCookieConsent={openCookieConsent}
                 dialogRef={mediaDialog}
                 media={levelMediaViewModel}
                 onFailed={handleMediaFailure}
@@ -793,9 +806,6 @@ export function AtlasPage({
           />
         ) : null}
       />
-      {!consent.decided && !settingsOpen && (
-        <CookieConsentBanner onChange={cookieConsentPort.update} onCustomize={() => setSettingsOpen(true)} />
-      )}
     </main>
   );
 }

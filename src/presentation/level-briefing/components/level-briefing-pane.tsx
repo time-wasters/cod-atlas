@@ -3,6 +3,7 @@
 import ReactMarkdown from "react-markdown";
 import { canLoadResource } from "../../../application/settings/resource-consent.policy.js";
 import { Tooltip } from "../../shared/components/tooltip.js";
+import { ExternalImagePlaceholder } from "../../shared/components/external-image-placeholder.js";
 import type { HistoryOverlayDto } from "../../../infrastructure/atlas-data/dto/history-overlay.dto.js";
 
 type BriefingState = {
@@ -16,6 +17,7 @@ function imageBasename(source: string) {
 
 export function LevelBriefingPane({
   externalServicesAllowed,
+  onOpenCookieConsent,
   activeOverlayId,
   briefing,
   historyOverlays,
@@ -24,6 +26,7 @@ export function LevelBriefingPane({
   title,
 }: {
   externalServicesAllowed: boolean;
+  onOpenCookieConsent: () => void;
   activeOverlayId: string | null;
   briefing: BriefingState;
   historyOverlays: HistoryOverlayDto[];
@@ -53,7 +56,7 @@ export function LevelBriefingPane({
                 const imageSource = typeof src === "string" ? src : "";
                 const baseUrl = typeof document === "undefined" ? "https://cod-atlas.invalid/" : document.baseURI;
                 if (!canLoadResource(imageSource, externalServicesAllowed, baseUrl)) {
-                  return <span>{alt ? `${alt} — ` : ""}External image blocked. Allow external images in Settings to load it.</span>;
+                  return <ExternalImagePlaceholder label={alt || "External image"} onOpenCookieConsent={onOpenCookieConsent} />;
                 }
                 const historyOverlay = historyOverlays.find(
                   (overlay) => imageBasename(overlay.image) === imageBasename(imageSource),
@@ -70,7 +73,9 @@ export function LevelBriefingPane({
                 const isActive = activeOverlayId === historyOverlay.id;
                 const action = isActive ? "Hide from map" : "Show on map";
                 const imageUrl = new URL(historyOverlay.image.replace(/^\/+/, ""), document.baseURI).href;
-                if (!canLoadResource(imageUrl, externalServicesAllowed, baseUrl)) return <span>External image blocked.</span>;
+                if (!canLoadResource(imageUrl, externalServicesAllowed, baseUrl)) {
+                  return <ExternalImagePlaceholder label={alt || historyOverlay.attribution.title} onOpenCookieConsent={onOpenCookieConsent} />;
+                }
                 return (
                   <Tooltip content={`${action}: ${historyOverlay.attribution.title}`}>
                     <button

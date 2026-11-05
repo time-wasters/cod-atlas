@@ -5,6 +5,7 @@ import { LEVEL_MEDIA_CONFIG } from "../../../shared/config/level-media.config.js
 import { canLoadResource } from "../../../application/settings/resource-consent.policy.js";
 import type { WikiImageDto } from "../../../infrastructure/atlas-data/dto/wiki-image.dto.js";
 import { Tooltip } from "../../shared/components/tooltip.js";
+import { ExternalImagePlaceholder } from "../../shared/components/external-image-placeholder.js";
 
 export type LevelMediaViewModel = {
   appearanceTitle: string;
@@ -75,12 +76,14 @@ function LevelMediaFrame({
 
 export function LevelMedia({
   externalServicesAllowed,
+  onOpenCookieConsent,
   dialogRef,
   media,
   onFailed,
   onLoaded,
 }: {
   externalServicesAllowed: boolean;
+  onOpenCookieConsent: () => void;
   dialogRef: RefObject<HTMLDialogElement | null>;
   media: LevelMediaViewModel;
   onFailed: (media: LevelMediaViewModel) => void;
@@ -111,6 +114,15 @@ export function LevelMedia({
     }, LEVEL_MEDIA_CONFIG.crossfadeMs + LEVEL_MEDIA_CONFIG.retentionBufferMs);
     return () => window.clearTimeout(timer);
   }, [frames]);
+
+  if (!canLoadResource(media.image.thumbnailUrl, externalServicesAllowed,
+    typeof document === "undefined" ? "https://cod-atlas.invalid/" : document.baseURI)) {
+    return (
+      <figure className="intel-media is-consent-blocked">
+        <ExternalImagePlaceholder label={`${media.appearanceTitle} image`} onOpenCookieConsent={onOpenCookieConsent} />
+      </figure>
+    );
+  }
 
   return (
     <figure className={`intel-media${retainedMedia ? " has-retained-media" : ""}`}

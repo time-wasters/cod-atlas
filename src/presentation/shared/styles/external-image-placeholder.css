@@ -1,0 +1,9 @@
+.external-image-placeholder { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 8px; border: 1px solid #4c513f; border-radius: 4px; padding: 14px; color: #aaa995; background: linear-gradient(135deg, #141912, #0b0e0a); text-align: center; font-size: 11px; line-height: 1.5; }
+.external-image-placeholder strong { color: #e5dcc5; font-size: 12px; }
+.external-image-placeholder button { border: 1px solid #a8731d; border-radius: 4px; padding: 7px 12px; color: #e8e1cf; background: #20251c; font: inherit; cursor: pointer; }
+.external-image-placeholder button:hover { color: var(--amber); border-color: var(--amber); }
+.external-image-placeholder button:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+.external-image-placeholder small { color: #8f9583; font-size: 10px; }
+.intel-media.is-consent-blocked { max-height: none; aspect-ratio: auto; }
+.intel-media.is-consent-blocked .external-image-placeholder { border: 0; border-radius: 0; }
+.level-briefing-content .external-image-placeholder { margin: 8px 0; }
