@@ -27,12 +27,10 @@
 .consent-choice input { margin-top: 3px; }
 .consent-choice strong { display: block; color: #e5dcc5; font-size: 12px; }
 .consent-actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
-.consent-actions button, .map-consent-placeholder button { border: 1px solid #a8731d; border-radius: 4px; padding: 8px 12px; color: #e8e1cf; background: #20251c; font-size: 12px; cursor: pointer; }
-.consent-actions button:hover, .map-consent-placeholder button:hover { color: var(--amber); border-color: var(--amber); }
-.consent-actions button:focus-visible, .map-consent-placeholder button:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+.consent-actions button { border: 1px solid #a8731d; border-radius: 4px; padding: 8px 12px; color: #e8e1cf; background: #20251c; font-size: 12px; cursor: pointer; }
+.consent-actions button:hover { color: var(--amber); border-color: var(--amber); }
+.consent-actions button:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
 .cookie-consent-banner { position: fixed; z-index: 1990; right: 16px; bottom: 16px; width: min(500px, calc(100% - 32px)); max-height: calc(100dvh - 32px); overflow: auto; border: 1px solid #a8731d; border-radius: 6px; padding: 16px; background: #171c15; box-shadow: 0 10px 40px #000b; }
 .cookie-consent-banner h2 { margin: 0 0 8px; color: #fff4d7; font-size: 18px; }
 .cookie-consent-banner p { margin: 0; color: #aaa995; font-size: 12px; line-height: 1.5; }
 .cookie-consent-banner .consent-actions { margin-bottom: 0; }
-.map-consent-placeholder { position: absolute; z-index: 450; top: 18px; left: 18px; max-width: min(300px, calc(100% - 36px)); border: 1px solid #515a43; border-radius: 5px; padding: 12px; color: #aaa995; background: #171c15; font-size: 12px; line-height: 1.5; }
-.map-consent-placeholder p { margin: 0 0 8px; }

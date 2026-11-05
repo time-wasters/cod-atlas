@@ -155,7 +155,7 @@ export function AtlasPage({
     runtime: leafletMap,
     mapNode,
     prepareMarkerSelection,
-  } = useLeafletMap(consent.externalServices);
+  } = useLeafletMap();
   const mediaDialog = useRef<HTMLDialogElement>(null);
   const infoDialog = useRef<HTMLDialogElement>(null);
   const gameCatalogDialog = useRef<HTMLDialogElement>(null);
@@ -245,7 +245,6 @@ export function AtlasPage({
   });
 
   const { nextOverlayReady } = useMapOverlayPreloading({
-    enabled: consent.externalServices,
     selectedEntry: selected.entry,
     campaign: selectedCampaign,
     overlays: mapOverlays,
@@ -708,8 +707,6 @@ export function AtlasPage({
       />
 
       <AtlasMapStage
-        externalServicesAllowed={consent.externalServices}
-        onOpenSettings={() => setSettingsOpen(true)}
         mapNode={mapNode}
         mapReady={mapReady}
         playbackActive={campaignPlayback.active}

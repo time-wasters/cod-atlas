@@ -53,7 +53,7 @@ export function LevelBriefingPane({
                 const imageSource = typeof src === "string" ? src : "";
                 const baseUrl = typeof document === "undefined" ? "https://cod-atlas.invalid/" : document.baseURI;
                 if (!canLoadResource(imageSource, externalServicesAllowed, baseUrl)) {
-                  return <span>{alt ? `${alt} — ` : ""}External image blocked. Allow external maps and images in Settings to load it.</span>;
+                  return <span>{alt ? `${alt} — ` : ""}External image blocked. Allow external images in Settings to load it.</span>;
                 }
                 const historyOverlay = historyOverlays.find(
                   (overlay) => imageBasename(overlay.image) === imageBasename(imageSource),

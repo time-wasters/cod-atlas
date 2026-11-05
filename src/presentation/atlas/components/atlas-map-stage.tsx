@@ -4,8 +4,6 @@ import { ElementTooltip } from "../../shared/components/tooltip.js";
 export function AtlasMapStage({
   briefing,
   details,
-  externalServicesAllowed,
-  onOpenSettings,
   mapNode,
   mapReady,
   mediaDialog,
@@ -14,8 +12,6 @@ export function AtlasMapStage({
 }: {
   briefing: ReactNode;
   details: ReactNode;
-  externalServicesAllowed: boolean;
-  onOpenSettings: () => void;
   mapNode: RefObject<HTMLDivElement | null>;
   mapReady: boolean;
   mediaDialog: ReactNode;
@@ -31,12 +27,6 @@ export function AtlasMapStage({
         content="A JavaScript library for interactive maps" />
       <div className="map-grid" aria-hidden="true" />
       <div className="map-label" aria-hidden="true">TACTICAL GEOGRAPHY // GLOBAL</div>
-      {!externalServicesAllowed && (
-        <div className="map-consent-placeholder">
-          <p>External maps are blocked until you allow them.</p>
-          <button type="button" onClick={onOpenSettings}>Cookie settings</button>
-        </div>
-      )}
       {solarSystem}
       <div className="mission-stack">
         {briefing}

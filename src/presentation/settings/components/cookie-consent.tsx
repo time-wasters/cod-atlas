@@ -11,7 +11,7 @@ export function CookieConsentControls({ consent, onChange }: ConsentActions) {
   return (
     <section className="settings-cookie-notice" aria-labelledby="settings-cookies-title">
       <h3 id="settings-cookies-title">Cookie consent</h3>
-      <p>Optional storage and external services stay off until you allow them. CoD Atlas has no advertising or visitor analytics.</p>
+      <p>Saved preferences and external images stay off until you allow them. CoD Atlas has no advertising or visitor analytics.</p>
       <label className="consent-choice">
         <input type="checkbox" checked={consent.preferences}
           onChange={(event) => onChange({ preferences: event.target.checked, externalServices: consent.externalServices })} />
@@ -20,8 +20,9 @@ export function CookieConsentControls({ consent, onChange }: ConsentActions) {
       <label className="consent-choice">
         <input type="checkbox" checked={consent.externalServices}
           onChange={(event) => onChange({ preferences: consent.preferences, externalServices: event.target.checked })} />
-        <span><strong>Allow external maps and images</strong>Load maps from OpenFreeMap or OpenStreetMap and external Wiki images. Providers receive your IP address and may set cookies, including Cloudflare security cookies.</span>
+        <span><strong>Allow external images</strong>Load external Wiki images and images in briefing notes. Media providers receive your IP address and may set cookies, including Cloudflare security cookies.</span>
       </label>
+      <p>The map works without cookie consent. Map providers still receive your IP address when serving map data.</p>
       <div className="consent-actions">
         <button type="button" onClick={() => onChange({ preferences: false, externalServices: false })}>Reject all</button>
         <button type="button" onClick={() => onChange({ preferences: true, externalServices: true })}>Accept all</button>
@@ -38,7 +39,7 @@ export function CookieConsentBanner({ onChange, onCustomize }: {
   return (
     <section className="cookie-consent-banner" aria-labelledby="cookie-consent-title">
       <h2 id="cookie-consent-title">Your cookie choices</h2>
-      <p>Saved preferences and external maps/images are off. External providers receive connection data and may set cookies. Choose what to allow; you can keep browsing without them.</p>
+      <p>Saved preferences and external images are off. Media providers receive connection data and may set cookies. Choose what to allow; the map stays available either way.</p>
       <div className="consent-actions">
         <button type="button" onClick={() => onChange({ preferences: false, externalServices: false })}>Reject all</button>
         <button type="button" onClick={onCustomize}>Choose in Settings</button>

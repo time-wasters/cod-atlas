@@ -8,8 +8,7 @@ import type { AtlasGroupDto } from "../../../infrastructure/atlas-data/dto/atlas
 import type { MapOverlayDto } from "../../../infrastructure/atlas-data/dto/map-overlay.dto.js";
 import { mapOverlayPreloadPlan } from "../models/map-overlay-preload-plan.js";
 
-export function useMapOverlayPreloading({ enabled, selectedEntry, campaign, overlays, images }: {
-  enabled: boolean;
+export function useMapOverlayPreloading({ selectedEntry, campaign, overlays, images }: {
   selectedEntry: AtlasEntryDto;
   campaign: CampaignOption<AtlasGroupDto, AtlasEntryDto> | null;
   overlays: Record<string, MapOverlayDto>;
@@ -19,7 +18,6 @@ export function useMapOverlayPreloading({ enabled, selectedEntry, campaign, over
     [selectedEntry, campaign, overlays]);
   const [preparedNextImage, setPreparedNextImage] = useState<string | null>(null);
   useEffect(() => {
-    if (!enabled) return;
     let cancelled = false;
     for (const image of plan.images) {
       void images.preload(image).catch(() => false).then(() => {
@@ -28,6 +26,6 @@ export function useMapOverlayPreloading({ enabled, selectedEntry, campaign, over
       });
     }
     return () => { cancelled = true; };
-  }, [enabled, images, plan]);
+  }, [images, plan]);
   return { nextOverlayReady: plan.nextImage === null || preparedNextImage === plan.nextImage };
 }

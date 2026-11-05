@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useLayoutEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { Map as LeafletMap, Marker as LeafletMarker, MarkerClusterGroup } from "leaflet";
 import type { AtlasEntryDto } from "../../../infrastructure/atlas-data/dto/atlas-entry.dto.js";
 import { attachLeafletBasemap } from "../../../infrastructure/mapping/leaflet/leaflet-basemap.adapter.js";
@@ -53,14 +53,14 @@ export class LeafletMapRuntime {
   }
 }
 
-export function useLeafletMap(externalServicesAllowed: boolean) {
+export function useLeafletMap() {
   const [ready, setReady] = useState(false);
   const [moving, setMoving] = useState(false);
   const mapNode = useRef<HTMLDivElement>(null);
   const [runtime] = useState(() => new LeafletMapRuntime());
 
-  useLayoutEffect(() => {
-    if (!externalServicesAllowed || !mapNode.current || runtime.getMap()) return;
+  useEffect(() => {
+    if (!mapNode.current || runtime.getMap()) return;
     runtime.setContainer(mapNode.current);
     const abortController = new AbortController();
     let cancelled = false;
@@ -110,7 +110,7 @@ export function useLeafletMap(externalServicesAllowed: boolean) {
       setReady(false);
       setMoving(false);
     };
-  }, [externalServicesAllowed, runtime]);
+  }, [runtime]);
 
   const prepareMarkerSelection = useCallback((levelId: string | null) => {
     runtime.setMarkerOverlaySelectionLevelId(levelId);
