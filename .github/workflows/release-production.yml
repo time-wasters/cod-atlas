@@ -1,0 +1,178 @@
+name: Release to production
+
+on:
+  release:
+    types: [published]
+
+# Production releases are serialized, never cancelled mid-deployment.
+concurrency:
+  group: cod-atlas-production
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  verify-release:
+    name: Verify version, main ancestry and CI
+    if: ${{ !github.event.release.prerelease }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
+    outputs:
+      version: ${{ steps.verify.outputs.version }}
+      sha: ${{ steps.verify.outputs.sha }}
+    steps:
+      - name: Check out released commit
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Validate release tag and ancestry
+        id: verify
+        shell: bash
+        env:
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+        run: |
+          set -euo pipefail
+          if [[ ! "$RELEASE_TAG" =~ ^v(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$ ]]; then
+            echo "Only stable SemVer releases (for example v1.2.3) are deployable." >&2
+            exit 1
+          fi
+
+          git fetch --no-tags origin main
+          RELEASE_SHA="$(git rev-parse "refs/tags/${RELEASE_TAG}^{commit}")"
+          if ! git merge-base --is-ancestor "$RELEASE_SHA" refs/remotes/origin/main; then
+            echo "Release tag does not point to a commit already on main." >&2
+            exit 1
+          fi
+
+          echo "version=$RELEASE_TAG" >> "$GITHUB_OUTPUT"
+          echo "sha=$RELEASE_SHA" >> "$GITHUB_OUTPUT"
+          echo "Verified release $RELEASE_TAG from main commit $RELEASE_SHA"
+
+      - name: Require successful main CI for the exact commit
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_SHA: ${{ steps.verify.outputs.sha }}
+        run: |
+          set -euo pipefail
+          gh api -X GET "repos/${GITHUB_REPOSITORY}/actions/workflows/ci.yml/runs" \
+            -f head_sha="$RELEASE_SHA" \
+            -f branch=main \
+            -f status=success \
+            -f per_page=100 \
+            --jq '.workflow_runs' > ci-runs.json
+          if ! jq -e --arg sha "$RELEASE_SHA" \
+            'any(.[]; .head_sha == $sha and .event == "push" and .conclusion == "success")' \
+            ci-runs.json >/dev/null; then
+            echo "No successful ci.yml push run on main for $RELEASE_SHA" >&2
+            exit 1
+          fi
+
+
+  deploy-production:
+    name: Promote release and deploy to Portainer
+    needs: verify-release
+    runs-on: ubuntu-latest
+
+    environment:
+      name: production
+      url: https://cod-atlas.com
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Verify release tag after approval
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Ensure release tag is unchanged
+        shell: bash
+        env:
+          VERSION: ${{ needs.verify-release.outputs.version }}
+          RELEASE_SHA: ${{ needs.verify-release.outputs.sha }}
+        run: |
+          set -euo pipefail
+          git fetch --force --no-tags origin \
+            "+refs/tags/${VERSION}:refs/tags/${VERSION}"
+          CURRENT_SHA="$(git rev-parse "refs/tags/${VERSION}^{commit}")"
+          test "$CURRENT_SHA" = "$RELEASE_SHA"
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Authenticate to GHCR
+        uses: docker/login-action@v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Promote existing image to release version
+        shell: bash
+        env:
+          VERSION: ${{ needs.verify-release.outputs.version }}
+          RELEASE_SHA: ${{ needs.verify-release.outputs.sha }}
+        run: |
+          set -euo pipefail
+
+          IMAGE="ghcr.io/${GITHUB_REPOSITORY,,}"
+          SOURCE="$IMAGE:$RELEASE_SHA"
+          TARGET="$IMAGE:$VERSION"
+
+          get_digest() {
+            docker buildx imagetools inspect "$1" \
+              | sed -nE 's/^Digest:[[:space:]]*(sha256:[a-f0-9]{64}).*/\1/p' \
+              | head -n 1
+          }
+
+          SOURCE_DIGEST="$(get_digest "$SOURCE")"
+          test -n "$SOURCE_DIGEST" || {
+            echo "Source image missing: $SOURCE" >&2
+            exit 1
+          }
+
+          if docker buildx imagetools inspect "$TARGET" >/dev/null 2>&1; then
+            echo "Release image already exists."
+          else
+            docker buildx imagetools create \
+              --prefer-index=false \
+              --tag "$TARGET" \
+              "$IMAGE@$SOURCE_DIGEST"
+          fi
+
+          TARGET_DIGEST="$(get_digest "$TARGET")"
+          test "$SOURCE_DIGEST" = "$TARGET_DIGEST" || {
+            echo "Release image digest mismatch." >&2
+            exit 1
+          }
+
+          echo "Published $TARGET"
+
+      - name: Trigger Portainer production deployment
+        shell: bash
+        env:
+          WEBHOOK: ${{ secrets.PORTAINER_PRODUCTION_WEBHOOK }}
+          VERSION: ${{ needs.verify-release.outputs.version }}
+        run: |
+          set -euo pipefail
+
+          test -n "$WEBHOOK" || {
+            echo "Portainer production webhook not configured." >&2
+            exit 1
+          }
+
+          curl --fail --silent --show-error \
+            --request POST \
+            "${WEBHOOK}?tag=${VERSION}"
+
+          echo "Portainer deployment triggered for $VERSION"
+          echo "Service rollout must be verified separately."
