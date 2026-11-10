@@ -1,5 +1,6 @@
 @import "../src/presentation/shared/styles/vendor.css";
 @import "../src/presentation/shared/styles/foundation.css";
+@import "../src/presentation/shared/styles/external-image-placeholder.css";
 @import "../src/presentation/atlas/styles/atlas-shell.css";
 @import "../src/presentation/settings/styles/settings.css";
 @import "../src/presentation/atlas/styles/atlas-sidebar.css";

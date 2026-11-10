@@ -25,12 +25,14 @@ export function SettingsDialog({
   externalIconsUnavailable,
   myrmecophobiaMode,
   onClose,
+  onOpenCookieConsent,
   overlayFading,
 }: {
   externalIcons: SettingSwitch;
   externalIconsUnavailable: boolean;
   myrmecophobiaMode: SettingSwitch;
   onClose: () => void;
+  onOpenCookieConsent: () => void;
   overlayFading: SettingSwitch;
 }) {
   return (
@@ -63,7 +65,7 @@ export function SettingsDialog({
             </div>
             <SettingsSwitch label="Myrmecophobia mode" setting={myrmecophobiaMode} />
           </section>
-          <p className="settings-note">This preference is stored only in this browser.</p>
+          <button className="settings-consent-button" type="button" aria-haspopup="dialog" onClick={onOpenCookieConsent}>Cookie consent</button>
         </div>
       </div>
     </section>
