@@ -58,7 +58,7 @@ jobs:
 
       # Enable ARM builds on the amd64 GitHub runner.
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
+        uses: docker/setup-qemu-action@v4
 
       # Build multi-platform container images.
       - name: Set up Docker Buildx
