@@ -3,20 +3,29 @@
 GitHub Actions handles CI and container publishing:
 
 ```text
-feature/* → PR → validate/test/static build → main → multi-arch image → GHCR → Staging
+feature/* → PR → validate/lint/test/static build → main → multi-arch image → GHCR → Staging
 ```
 
 ## Continuous integration
 
 `.github/workflows/ci.yml` runs on PRs and pushes to `main`: install dependencies,
-validate curated data, generate/test, then build static output.
+validate curated data and committed images, lint, run tests, then build static output.
 `npm run data:check` needs no generated files; tests, application builds, and
 container builds generate fresh ignored JSON before compiling.
 
 ## Container publishing
 
-Successful pushes to `main` publish `ghcr.io/time-wasters/cod-atlas` with a
+Successful pushes to `main` publish `ghcr.io/<owner>/<repository>` with a
 moving `:staging` tag and an immutable `:<commit-sha>` tag for each build.
+The image name is derived from `GITHUB_REPOSITORY` and converted to lowercase,
+so forks publish to their own GHCR namespace. Pull-request runs only validate
+and build; they do not publish images.
+
+Fork maintainers must enable GitHub Actions and allow package publishing for
+their repository. The checked-in deployment Compose files reference the
+official `ghcr.io/time-wasters/cod-atlas` images; replace those references to
+deploy a fork's images. Configure the production URL and Portainer webhook for
+the fork's own deployment as well.
 
 ## Supported platforms
 
@@ -74,7 +83,7 @@ the `production` GitHub environment at <https://cod-atlas.com>.
 3. The deployment job uses the `production` environment, subject to any
    configured protection or approval rules. It rechecks that the tag still
    points to the verified commit.
-4. The existing `ghcr.io/time-wasters/cod-atlas:<commit-sha>` image is promoted
+4. The existing `ghcr.io/<owner>/<repository>:<commit-sha>` image is promoted
    to `:<release-tag>` without rebuilding. Source and release digests must
    match; an existing release image with a different digest fails the job.
 5. The workflow posts to the Portainer production webhook with

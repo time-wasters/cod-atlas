@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   atlas:
-    # Validate the atlas data, run tests and build the static site.
+    # Validate the atlas data, lint, run tests and build the static site.
     runs-on: ubuntu-latest
 
     steps:
@@ -31,6 +31,7 @@ jobs:
       # Decode level images and enforce committed-media limits.
       - run: npm run images:check
 
+      - run: npm run lint
       - run: npm test
       - run: npm run build:static
 
@@ -55,6 +56,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v7
+
+      # GHCR image names must be lowercase, including for mixed-case fork names.
+      - name: Determine image name
+        id: image
+        shell: bash
+        run: echo "name=ghcr.io/${GITHUB_REPOSITORY,,}" >> "$GITHUB_OUTPUT"
 
       # Enable ARM builds on the amd64 GitHub runner.
       - name: Set up QEMU
@@ -81,8 +88,8 @@ jobs:
           push: true
           platforms: linux/amd64,linux/arm64
           tags: |
-            ghcr.io/time-wasters/cod-atlas:staging
-            ghcr.io/time-wasters/cod-atlas:${{ github.sha }}
+            ${{ steps.image.outputs.name }}:staging
+            ${{ steps.image.outputs.name }}:${{ github.sha }}
           build-args: |
             STEAM_ICON_URL=${{ vars.STEAM_ICON_URL }}
             STEAMGRIDDB_ICON_URL=${{ vars.STEAMGRIDDB_ICON_URL }}
