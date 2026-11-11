@@ -59,5 +59,46 @@ long-lived branch: `feature/* → PR → main → Staging`.
 
 ## Production
 
-Not configured. When introduced, use an explicit release or immutable image tag,
-not the moving `:staging` tag.
+Production is defined by
+[the release workflow](../.github/workflows/release-production.yml) and
+[`compose.production.yaml`](../compose.production.yaml). The workflow targets
+the `production` GitHub environment at <https://cod-atlas.com>.
+
+### Release process
+
+1. Merge the release commit into `main` and wait for its complete `ci.yml` push
+   run to succeed, including publication of the commit-SHA image to GHCR.
+2. Publish a GitHub release with a stable `vMAJOR.MINOR.PATCH` tag, such as
+   `v1.2.3`. Prereleases are skipped. The workflow requires the tagged commit
+   to be on `main` and checks for successful push CI on that exact commit.
+3. The deployment job uses the `production` environment, subject to any
+   configured protection or approval rules. It rechecks that the tag still
+   points to the verified commit.
+4. The existing `ghcr.io/time-wasters/cod-atlas:<commit-sha>` image is promoted
+   to `:<release-tag>` without rebuilding. Source and release digests must
+   match; an existing release image with a different digest fails the job.
+5. The workflow posts to the Portainer production webhook with
+   `?tag=<release-tag>`. Production release runs are serialized and are not
+   cancelled by a newer release.
+
+### Deployment configuration
+
+Configure the `PORTAINER_PRODUCTION_WEBHOOK` GitHub Actions secret for the
+production deployment job. GHCR authentication uses the automatic
+`GITHUB_TOKEN` with package-write permission.
+
+`compose.production.yaml` consumes a versioned GHCR image, currently pinned to
+`v1.0.0`, with one replica and an external `proxy-network`. The deployment
+environment must provide that network and route traffic to the service's nginx
+port 80. The Portainer webhook must apply the requested release tag to the
+service image; the workflow does not update the Compose file's image pin.
+
+### Rollout verification and rollback
+
+A successful webhook request confirms that deployment was triggered. Verify
+the running service's image version/digest in Portainer and check the production
+site separately to confirm the rollout.
+
+To roll back, select a previously verified release image tag or digest in the
+production stack and redeploy it through Portainer. Confirm the running image
+and site again after the rollback.
