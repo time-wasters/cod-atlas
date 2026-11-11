@@ -2,7 +2,6 @@
 .github
 .next
 .pnp
-.sites-runtime
 .vscode
 .wrangler
 coverage

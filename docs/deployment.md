@@ -32,6 +32,17 @@ needed. The job receives only repository-read and package-publish permissions.
 Optional Docker build arguments, configured through GitHub Actions variables:
 `STEAM_ICON_URL`, `STEAMGRIDDB_ICON_URL`, `MOBYGAMES_ICON_URL`.
 
+## Standalone hosting
+
+Build with `npm run build:static` (Docker:
+`docker compose run --rm cod-atlas-tools npm run build:static`) and serve
+`dist-static/` from any static web server. The Docker image serves this output
+with nginx. No hosting account, project binding, or runtime locations API is
+required.
+
+`npm run dev` uses Vite/Vinext for local development. `npm run build` builds the
+Vinext renderer, which the fixture-based render tests also exercise.
+
 ## Wiki imports
 
 Wiki imports are manual, committed before deployment, and excluded from CI/deployment.

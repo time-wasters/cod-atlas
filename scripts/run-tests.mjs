@@ -8,6 +8,7 @@ import { fileURLToPath } from "node:url";
 const projectRoot = fileURLToPath(new URL("../", import.meta.url));
 const fixtureRoot = fileURLToPath(new URL("../test-fixtures/compiled-atlas/", import.meta.url));
 const compilerPath = fileURLToPath(new URL("./build-atlas-data.mjs", import.meta.url));
+const vinextCli = fileURLToPath(new URL("../node_modules/vinext/dist/cli.js", import.meta.url));
 const testsRoot = path.join(projectRoot, "tests");
 const generatedDataDirectory = path.join(projectRoot, "app/data");
 const generatedFilenames = [
@@ -89,10 +90,10 @@ try {
   await cp(fixtureRoot, fixtureWorkspace, { recursive: true });
   await run(process.execPath, [compilerPath], { cwd: fixtureWorkspace });
   await stageFixtureData();
-  console.log("Building hosted-render test worker from compiled atlas fixtures...");
-  await run("bash", [path.join(projectRoot, "scripts/build-verified.sh")]);
+  console.log("Building render-test Worker from compiled atlas fixtures...");
+  await run(process.execPath, [vinextCli, "build"]);
 
-  // The hosted worker has embedded the fixture data. Restore production data
+  // The render-test Worker has embedded the fixture data. Restore production data
   // for the focused source-data regression tests that run in the same suite.
   await restoreGeneratedData();
   await run(process.execPath, [compilerPath]);
