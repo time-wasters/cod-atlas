@@ -3,7 +3,7 @@
 This directory is a tracked scaffold for gradually modularizing CoD Atlas.
 Creating it does not move or replace any current runtime, build, content, or
 test files. The application continues to run from `app/`, `static/`, `worker/`,
-`build/`, and `scripts/` until code is migrated in focused changes.
+and `scripts/` until code is migrated in focused changes.
 
 ## Structure
 

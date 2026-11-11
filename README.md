@@ -30,14 +30,14 @@ misleading point on Earth.
 
 CoD Atlas is open and community-maintained. Locations are curated with
 attention to source quality, geographic precision, and the difference between
-a confirmed setting and a plausible real-world inspiration. Whenever a location
-is confirmed by a human, it is flagged as so in the MD file incl. credits to 
-the reviewer and a reason.
+a confirmed setting and a plausible real-world inspiration. Human verification
+is recorded in each level's Markdown frontmatter, with reviewer credit and an
+optional explanation.
 
 The project is not production-ready yet. But you can have a first look on the
 staging environment:
 
-* Visit the page: *not yet*
+* Visit the page: https://cod-atlas.com/
 * Staging (main branch): https://staging.cod-atlas.com/
 * Test (develop nightly): *not yet*
 
@@ -51,11 +51,14 @@ Whenever AI is used to produce content, that content is explicitly marked at
 the point where it appears. The disclosure is kept beside the affected text so
 readers do not have to find a separate policy to understand how it was made.
 
-The exact position of a marker is almost always verified or confirmed by a
-human before it is published. When the evidence supports only an approximate
-area, region, or country, the atlas says so instead of presenting the marker as
-more precise than it is. This review-first approach is intended to keep
-unverified "AI slop" out of the project.
+Most marker locations are not yet recorded as verified by a human. Location
+precision, research completion, and human verification are tracked separately.
+See the
+[human verification progress report](docs/progress.md#human-verification-progress)
+for recorded coverage.
+
+When the evidence supports only an approximate area, region, or country, the
+atlas labels that precision explicitly.
 
 ## Documentation
 

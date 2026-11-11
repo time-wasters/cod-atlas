@@ -383,7 +383,6 @@ export function useMapViewport({
       currentMap.stop();
       if (!sidebarTarget.fitOnlyWhenOutside) {
         setCountryBoundaryVisible(false);
-        let timer: number | undefined;
         const revealBoundary = () => {
           window.clearTimeout(timer);
           currentMap.off("moveend", revealBoundary);
@@ -392,7 +391,7 @@ export function useMapViewport({
         };
         countryBoundaryArrival.current = revealBoundary;
         currentMap.once("moveend", revealBoundary);
-        timer = window.setTimeout(revealBoundary, movement.animate
+        const timer = window.setTimeout(revealBoundary, movement.animate
           ? Math.max(0, movement.duration * 1000 - COUNTRY_BOUNDARY_CONFIG.fadeInBeforeArrivalMs)
           : 0);
       }

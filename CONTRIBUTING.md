@@ -169,8 +169,10 @@ docker compose run --rm cod-atlas-tools npm test
 docker compose run --rm cod-atlas-tools npm run build:static
 ```
 
-If a change intentionally adds or removes marker locations, update the explicit
-regression count in the tests and explain the count change in the pull request.
+Explain intentional additions or removals of marker locations in the pull
+request. Use `npm run data:check` to validate curated content. Tests for code
+behavior must use synthetic fixtures; do not add tests that read real curated
+files under `content/` or assert the live roster, coordinates, or marker totals.
 
 ## Pull-request checklist
 

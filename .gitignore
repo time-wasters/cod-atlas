@@ -15,6 +15,7 @@
 
 # next.js
 /.next/
+/.vinext/
 /out/
 
 # misc
@@ -42,7 +43,6 @@ next-env.d.ts
 /app/data/*.generated.json
 /public/images/games_external/
 /.wrangler/
-/.sites-runtime/
 /outputs/
 /work/
 /.research-cache/

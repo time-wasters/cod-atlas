@@ -4,6 +4,9 @@ label: Example Game
 labelLong: "Call of Duty: Example Game"
 released: 2026-01-01
 series: standalone
+developer:
+  - id: example_studio
+    name: Example Studio
 # Optional memberships: main, reboot, remaster, add-on, or spin-off
 # subseries: [main, reboot]
 # Required when subseries includes remaster; use the original game's ID
