@@ -252,5 +252,8 @@ toolchain available, contributor checks are `npm run data:check`,
 Agents follow `AGENTS.md`: recommend the smallest relevant set and run only
 on explicit request.
 
-Explain evidence with reliable PR source links. Explicitly explain marker-count
-changes and update the regression test.
+Include reliable PR source links and explain intentional marker-count changes.
+Use `npm run data:check` to validate curated content.
+Tests for code behavior must use synthetic fixtures; do not add tests that read
+real curated files under `content/` or assert the live roster, coordinates, or
+marker totals.
